@@ -21,7 +21,7 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
     <SCRIPT src="document.js"></SCRIPT>
     <SCRIPT src="LabeledEnd.js"></SCRIPT>
@@ -32,9 +32,9 @@ $(window).load(function () {
 	  // create the canvas for the user interaction
 	  //
 	  var canvas = new draw2d.Canvas("gfx_holder");
-	  
-	  // unmarshal the JSON document into the canvas 
-	  // (load) 
+
+	  // unmarshal the JSON document into the canvas
+	  // (load)
 	  var reader = new draw2d.io.json.Reader();
 	  reader.unmarshal(canvas, jsonDocument);
 });

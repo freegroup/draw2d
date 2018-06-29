@@ -22,24 +22,24 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
 	<SCRIPT src="./TimerFigure.js"></SCRIPT>
-	
+
 <script type="text/javascript">
 $(window).load(function () {
 
 
 	  var canvas = new draw2d.Canvas("gfx_holder");
-	
+
 	  var figure = new TimerFigure({x:150, y:150});
 	  canvas.add( figure);
-	
-	 
+
+
 	  // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
 	  var msg = new draw2d.shape.note.PostIt({text:"SetFigure with internal timer and a minimum of sin/cos math.\nYou can drag&drop the rectangle as well."});
 	  canvas.add(msg, 20,20);
-		   
+
 });
 
 </script>

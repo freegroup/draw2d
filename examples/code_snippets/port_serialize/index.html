@@ -21,7 +21,7 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
     <SCRIPT src="document.json"></SCRIPT>
 
@@ -31,17 +31,17 @@ $(window).load(function () {
 
     var canvas = new draw2d.Canvas("gfx_holder");
 
-    
+
     // unmarshal the JSON document into the canvas
     // (load)
     var reader = new draw2d.io.json.Reader();
     reader.unmarshal(canvas, jsonDocument);
-    
+
     // display the JSON document in the preview DIV
     //
     displayJSON(canvas);
-  
-    
+
+
     // add an event listener to the Canvas for change notifications.
     // We just dump the current canvas document into the DIV
     //

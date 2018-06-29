@@ -22,12 +22,12 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
 <script type="text/javascript">
 
 // the document to load....in this case a simple JSON Object
-var jsonDocument = 
+var jsonDocument =
     [
       {
         "type": "draw2d.shape.basic.Oval",
@@ -63,18 +63,18 @@ $(window).load(function () {
   // create the canvas for the user interaction
   //
   var canvas = new draw2d.Canvas("gfx_holder");
-  
+
   // unmarshal the JSON document into the canvas
   // (load)
   var reader = new draw2d.io.json.Reader();
   reader.unmarshal(canvas, jsonDocument);
-  
+
   // display the SVG into the preview DIV
   //
   showSVG(canvas);
 
   // add an event listener to the Canvas for change notifications.
-  // We just dump the current canvas document into the DIV 
+  // We just dump the current canvas document into the DIV
   //
   canvas.getCommandStack().addEventListener(function(e){
       if(e.isPostChangeEvent()){

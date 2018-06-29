@@ -21,12 +21,12 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
 <script type="text/javascript">
 
 // the document to load....in this case a simple JSON Object
-var jsonDocument = 
+var jsonDocument =
     [
      {
         "type": "draw2d.shape.basic.Image",
@@ -77,27 +77,27 @@ $(window).load(function () {
   //
   canvas = new draw2d.Canvas("gfx_holder");
   canvas.installEditPolicy(new draw2d.policy.canvas.ShowGridEditPolicy(20));
-  
+
   // unmarshal the JSON document into the canvas
   // (load)
   var reader = new draw2d.io.json.Reader();
   reader.unmarshal(canvas, jsonDocument);
-  
+
   updatePreview(canvas);
 
   // add an event listener to the Canvas for change notifications.
-  // We just dump the current canvas document into the IMG 
+  // We just dump the current canvas document into the IMG
   //
   canvas.getCommandStack().addEventListener(function(e){
       if(e.isPostChangeEvent()){
           updatePreview(canvas);
        }
-  }); 
+  });
 });
 
 function updatePreview(canvas){
-    // convert the canvas into a PNG image source string 
-    // 
+    // convert the canvas into a PNG image source string
+    //
     var writer = new draw2d.io.png.Writer();
     writer.marshal(canvas,function(png){
        $("#preview").attr("src",png);

@@ -22,10 +22,10 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
 	<SCRIPT src="CustomFigure.js"></SCRIPT>
-	
+
 <script type="text/javascript">
 
 $(window).load(function () {
@@ -35,9 +35,9 @@ $(window).load(function () {
 
      canvas.add( new CustomFigure({x:100, y:100}));
 
-     ///////////////////////////////////////////////////////////////////// 
+     /////////////////////////////////////////////////////////////////////
      // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
-     ///////////////////////////////////////////////////////////////////// 
+     /////////////////////////////////////////////////////////////////////
      var msg = new draw2d.shape.note.PostIt({text:"Just a simple SVG figure with some text. You can toggle the SVG by\nclicking on the figure.", x:20, y:20});
      canvas.add(msg);
 });

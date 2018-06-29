@@ -24,7 +24,7 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
     <SCRIPT src="./lib/jquery.browser.js"></SCRIPT>
     <SCRIPT src="./lib/jquery-ui-1.8.23.custom.min.js"></SCRIPT>
@@ -35,24 +35,24 @@
 	<SCRIPT src="./gui/Toolbar.js"></SCRIPT>
 
 	<SCRIPT src="./gui/example.json"></SCRIPT>
- 
+
 <script type="text/javascript">
-// set this to true if you want see the JSON serilization/debug panel 
+// set this to true if you want see the JSON serilization/debug panel
 var showJSON =false;
 
 var app;
 $(window).load(function () {
-	
 
-	     
+
+
     app  = new example.Application();
     app.load(jsonDocument);
-    
+
     if(showJSON===true){
 	    // display the JSON document in the preview DIV
 	    //
 	    displayJSON(app.view);
-	  
+
 	    // add an event listener to the Canvas for change notifications.
 	    // We just dump the current canvas document into the DIV
 	    //
@@ -81,7 +81,7 @@ function displayJSON(canvas){
 	<div id="toolbar">
 	   <div id="radio">
    	     <!--    <button id="clear" >Clear</button> -->
-   	        
+
     	    <input                   type="radio" id="radio1" name="radio" data-router="draw2d.layout.connection.ManhattanConnectionRouter"/><label for="radio1">Manhattan</label>
             <input                   type="radio" id="radio2" name="radio" data-router="draw2d.layout.connection.ManhattanBridgedConnectionRouter"/><label for="radio2">Manhattan Bridged</label>
             <input                   type="radio" id="radio8" name="radio" data-router="draw2d.layout.connection.InteractiveManhattanConnectionRouter"/><label for="radio8">Interactive Manhattan</label>

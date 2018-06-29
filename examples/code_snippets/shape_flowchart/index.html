@@ -22,10 +22,10 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
 	<SCRIPT src="PredefinedProcess.js"></SCRIPT>
-	
+
 <script type="text/javascript">
 
 $(window).load(function () {
@@ -36,9 +36,9 @@ $(window).load(function () {
      var figure = new PredefinedProcess({x:100, y:100});
      canvas.add( figure);
 
-     ///////////////////////////////////////////////////////////////////// 
+     /////////////////////////////////////////////////////////////////////
      // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
-     ///////////////////////////////////////////////////////////////////// 
+     /////////////////////////////////////////////////////////////////////
      var msg = new draw2d.shape.note.PostIt({text:"A custom label with an internal timer/counter.\nDrag&Drop me around."});
      canvas.add(msg, 20,20);
 });

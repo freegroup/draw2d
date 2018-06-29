@@ -21,7 +21,7 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
     <SCRIPT src="CustomFigure.js"></SCRIPT>
     <SCRIPT src="DecoratedInputPort.js"></SCRIPT>
@@ -46,7 +46,7 @@ $(window).load(function () {
 
     f1.getInputPort(0).useDefaultValue();
 
-  // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN 
+  // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
   var msg = new draw2d.shape.note.PostIt({text:"Mouse over to the input ports to see InputPort decorations for default values.\nCan be used for circuits or workflow diagrams.\n \n - Decoration is hidden if a connection is present.\n - Change the default value if you click on the label.\n - Stick/Unstick the decoration with a click on the circle.", x:20, y:20});
   canvas.add(msg);
 

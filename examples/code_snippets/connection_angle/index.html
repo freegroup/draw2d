@@ -4,7 +4,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, , maximum-scale=1.0" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-   
+
     <link type="text/css" rel="stylesheet" href="./css/example.css" />
     <link type="text/css" rel="stylesheet" href="../../../css/contextmenu.css" />
 
@@ -21,7 +21,7 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
 <script type="text/javascript">
 
@@ -45,9 +45,9 @@ var createConnection=function(){
 };
 
 $(window).load(function () {
-    
+
 	     // Create the paint area. The id in the constructor must be
-	     // an existing DIV 
+	     // an existing DIV
 		 var canvas = new draw2d.Canvas("gfx_holder");
         // Override the default connection type. This is used during drag&drop operations of ports.
         canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({
@@ -58,21 +58,21 @@ $(window).load(function () {
 	     //
 		 var start = new draw2d.shape.node.Start({x:50, y:250});
 		 var end   = new draw2d.shape.node.End({x:430, y:150});
-		
-		 // ...add it to the canvas 
+
+		 // ...add it to the canvas
 		 canvas.add( start);
 		 canvas.add( end);
-			
+
 		 // Create a Connection and connect the Start and End node
 		 //
 		 var c = createConnection();
          c.setSource(start.getOutputPort(0));
          c.setTarget(end.getInputPort(0));
-     		 
+
 		 // and finally add the connection to the canvas
 		 canvas.add(c);
-		 
-		 ///////////////////////////////////////////////////////////////////// 
+
+		 /////////////////////////////////////////////////////////////////////
 		 // this is the text in the upper left corner
 		 /////////////////////////////////////////////////////////////////////
 		 var msg = new draw2d.shape.note.PostIt({text:"Move the start or destination figure to update the label.\nThe label is always readable and isn't upside down in any cases."});

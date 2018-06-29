@@ -21,7 +21,7 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
     <SCRIPT src="document.json"></SCRIPT>
 
@@ -29,7 +29,7 @@
 
 
 	var canvas = null;
-	
+
 	$(window).load(function() {
 
 
@@ -51,10 +51,10 @@
 		// (load)
 		var reader = new draw2d.io.json.Reader();
 		reader.unmarshal(canvas, jsonDocument);
-		
-		
+
+
 		// get the bounding box of the document and translate the complete document
-		// into the center of the canvas. Scroll to the top left corner after them 
+		// into the center of the canvas. Scroll to the top left corner after them
 	    //
 	    var xCoords = [];
 	    var yCoords = [];
@@ -72,12 +72,12 @@
         var dy = (canvas.getHeight()/2)-(minY+height/2);
         canvas.getFigures().each(function(i,f){
             f.translate(dx,dy);
-        });	    
+        });
         canvas.getLines().each(function(i,f){
             f.translate(dx,dy);
-        });   
-        
-        // scroll the document top/left corner into the viewport 
+        });
+
+        // scroll the document top/left corner into the viewport
         //
         $("#gfx_holder").parent().animate({ scrollTop: minY+dy-50, scrollLeft: minX+dx-50 });
 	});

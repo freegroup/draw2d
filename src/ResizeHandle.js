@@ -91,7 +91,7 @@ draw2d.ResizeHandle = draw2d.shape.basic.Rectangle.extend({
      */
     createShapeElement: function()
     {
-       var shape= this._super();
+       let shape= this._super();
 
        shape.node.setAttribute("type",this.type);
        this.updateCursor(shape);
@@ -211,8 +211,8 @@ draw2d.ResizeHandle = draw2d.shape.basic.Rectangle.extend({
             return;
         }
 
-        var oldX = this.getAbsoluteX();
-        var oldY = this.getAbsoluteY();
+        let oldX = this.getAbsoluteX();
+        let oldY = this.getAbsoluteY();
 
         // call the super.drag method with all snapTo### handler and adjustments
         this._super(dx, dy, dx2, dy2);

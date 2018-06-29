@@ -21,35 +21,35 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
 <script type="text/javascript">
 
 $(window).load(function () {
 
-    
+
     // create the canvas for the user interaction
     //
     var canvas = new draw2d.Canvas("gfx_holder");
 
     var hbus = new draw2d.shape.node.HorizontalBus({width:600, height:20, lable:"horizontal bus"});
     canvas.add( hbus,100,60);
-    
+
     var vbus = new draw2d.shape.node.VerticalBus({width:10,height:200, label:"vertical bus"});
     canvas.add( vbus,400,160);
-  
+
     var vbus = new draw2d.shape.node.Fulcrum();
     canvas.add( vbus,300,360);
-    
+
     // create and add two nodes which contains Ports (In and OUT)
     //
 	 var start = new draw2d.shape.node.Start();
 	 var end   = new draw2d.shape.node.End();
-	
-	 // ...add it to the canvas 
+
+	 // ...add it to the canvas
 	 canvas.add( start, 50,250);
   	 canvas.add( end, 630,250);
-	    
+
 });
 </script>
 

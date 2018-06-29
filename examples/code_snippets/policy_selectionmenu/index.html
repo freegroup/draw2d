@@ -23,7 +23,7 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
     <SCRIPT src="SelectionMenuPolicy.js"></SCRIPT>
     <SCRIPT src="CustomFigure.js"></SCRIPT>
@@ -42,15 +42,15 @@ $(window).load(function () {
     //
      var start = new CustomFigure();
      var end   = new CustomFigure();
-    
-     // ...add it to the canvas 
+
+     // ...add it to the canvas
      canvas.add( start, 50,250);
      canvas.add( end, 630,250);
 
 
     /////////////////////////////////////////////////////////////////////
      // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
-     ///////////////////////////////////////////////////////////////////// 
+     /////////////////////////////////////////////////////////////////////
      var msg = new draw2d.shape.note.PostIt({text:"Show a figure flyout menu if an element is selected.\nSelect an shape and press the 'delete' icon."});
      canvas.add(msg, 20,20);
 });

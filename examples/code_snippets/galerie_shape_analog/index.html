@@ -22,13 +22,13 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
 <script type="text/javascript">
 
 $(window).load(function () {
 
-    
+
         // create the canvas for the user interaction
         //
         var canvas = new draw2d.Canvas("gfx_holder");
@@ -63,9 +63,9 @@ $(window).load(function () {
         );
 
         canvas.add(new draw2d.shape.analog.OpAmp({x:50,y:50}));
-        
+
         canvas.add(new draw2d.shape.basic.Label({text:"draw2d.shape.analog.OpAmp"}),200,55);
-        
+
         var greenOpAmp= new draw2d.shape.analog.OpAmp({
            bgColor:"#a0ffa0",
            angle:90
@@ -73,10 +73,10 @@ $(window).load(function () {
 
         canvas.add(greenOpAmp,50,150);
         canvas.add(new draw2d.shape.basic.Label({text:"draw2d.shape.analog.OpAmp (with setBackgroundColor(\"#A0ffA0\"))"}),200,155);
- 
+
         canvas.add(new draw2d.shape.analog.ResistorBridge({x:50,y:250}));
         canvas.add(new draw2d.shape.basic.Label({text:"draw2d.shape.analog.ResistorBridge", x:200, y:250}));
-        
+
         canvas.add(new draw2d.shape.analog.VoltageSupplyHorizontal(),50,350);
         canvas.add(new draw2d.shape.basic.Label({text:"draw2d.shape.analog.VoltageSupplyHorizontal"}),200,355);
 
@@ -85,7 +85,7 @@ $(window).load(function () {
 
         canvas.add(new draw2d.shape.analog.ResistorVertical(),50,550);
         canvas.add(new draw2d.shape.basic.Label({text:"draw2d.shape.analog.ResistorVertical"}),200,555);
-        
+
 });
 </script>
 

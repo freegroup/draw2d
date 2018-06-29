@@ -4,7 +4,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, , maximum-scale=1.0" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-   
+
     <link type="text/css" rel="stylesheet" href="./css/example.css" />
     <link type="text/css" rel="stylesheet" href="../../../css/contextmenu.css" />
 
@@ -21,16 +21,16 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
 	<SCRIPT src="MyConnection.js"></SCRIPT>
-	
+
 <script type="text/javascript">
 
 $(window).load(function () {
 
      // create the paint area. The id in the constructor must be
-     // an existing DIV 
+     // an existing DIV
 	 var canvas = new draw2d.Canvas("gfx_holder");
      canvas.installEditPolicy(new draw2d.policy.canvas.FadeoutDecorationPolicy());
      canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({
@@ -42,10 +42,10 @@ $(window).load(function () {
      // create and add two Node which contains Ports (In and OUT)
 	 var start = new draw2d.shape.node.Start({x:50, y:450});
 	 var end   = new draw2d.shape.node.End({x:230, y:150});
-	
+
 	 canvas.add( start);
 	 canvas.add( end);
-		
+
 	 // Create a Connection and connect he Start and End node
 	 //
 	 var c = new MyConnection({
@@ -53,14 +53,14 @@ $(window).load(function () {
 	     target:end.getInputPort(0)
 	 });
 	 canvas.add(c);
-	
-	 ///////////////////////////////////////////////////////////////////// 
-	 // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN 
-	 ///////////////////////////////////////////////////////////////////// 
+
+	 /////////////////////////////////////////////////////////////////////
+	 // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
+	 /////////////////////////////////////////////////////////////////////
 
 	 var msg = new draw2d.shape.note.PostIt({text:"Use the context menu of the connection\nto change the color or delete the connection."});
 	 canvas.add(msg, 20,20);
-	 
+
 	 $("body").scrollTop(0)
 	          .scrollLeft(0);
 	});
@@ -70,7 +70,7 @@ $(window).load(function () {
 
 <body>
    <div onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:1500px; height:1500px; ">
- 
+
    </div>
 
 </body>

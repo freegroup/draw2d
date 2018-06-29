@@ -22,15 +22,15 @@
     <SCRIPT src="../../../lib/Class.js"></SCRIPT>
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
     <SCRIPT src="BetweenFigure.js"></SCRIPT>
     <SCRIPT src="MyInterceptorPolicy.js"></SCRIPT>
-	
+
 <script type="text/javascript">
 
 var createConnection=function(sourcePort, targetPort){
-    
+
     var conn= new draw2d.Connection({
         router:new draw2d.layout.connection.InteractiveManhattanConnectionRouter(),
         outlineStroke:1,
@@ -57,8 +57,8 @@ var createConnection=function(sourcePort, targetPort){
 
 $(window).load(function () {
 
-       // Everything is loaded - core and application. Now can create the 
-       // application 
+       // Everything is loaded - core and application. Now can create the
+       // application
        //
 
 	  var canvas = new draw2d.Canvas("gfx_holder");
@@ -71,32 +71,32 @@ $(window).load(function () {
       }));
 
       // This is the key!! The interceptor allows that a figure is droppable to a
-      // connection 
-      // 
+      // connection
+      //
       canvas.installEditPolicy(new MyInterceptorPolicy());
-       
+
 	  // Create two standard nodes for "start" and "end" and link
 	  // this figures with a standard Connecotr
 	  //
 	  var start  = new draw2d.shape.node.Start({x:130,y:130,width:60,height:60});
 	  var end    = new draw2d.shape.node.End({x:450,y:250});
-	  
+
 	  canvas.add(start);
 	  canvas.add(end);
-	
+
 	  // Add a connection via API calls between Start and Stop
 	  //
 	  var connection =createConnection(start.getOutputPort(0),end.getInputPort(0));
 	  canvas.add(connection);
-	  
+
 	  // Add my implemention of a "Between" figure for the smart insert feature
 	  // inspect the "Between.onDrop" method for more details
 	  //
 	  canvas.add( new BetweenFigure({x:250,y:340}));
-	 
-	 ///////////////////////////////////////////////////////////////////// 
-	 // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN 
-	 ///////////////////////////////////////////////////////////////////// 
+
+	 /////////////////////////////////////////////////////////////////////
+	 // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
+	 /////////////////////////////////////////////////////////////////////
 	 var msg = new draw2d.shape.note.PostIt({text:"Drag&Drop the orange box onto the connector.\nThe orange box will be injected into the Connection.\n \nSmart - right?"});
 	 canvas.add(msg, 20,20);
 });

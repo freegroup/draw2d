@@ -23,7 +23,7 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
 <script type="text/javascript">
 
@@ -48,7 +48,7 @@ $(window).load(function () {
     circle =new draw2d.shape.basic.Circle({diameter:80, x:50, y:150});
     canvas.add(circle);
     canvas.add(new draw2d.shape.basic.Label({text:"draw2d.shape.basic.Circle"}),200,175);
-    
+
     canvas.add(new draw2d.shape.basic.Rectangle({width:80,height:40, x:50, y:300, keepAspectRatio:true}));
     canvas.add(new draw2d.shape.basic.Label({text:"draw2d.shape.basic.Rectangle", x:200, y:305}));
 
@@ -60,13 +60,13 @@ $(window).load(function () {
 
     line = new draw2d.shape.basic.Line({startX:340,startY:160, endX:620, endY:90});
     canvas.add(line);
-   
+
     canvas.add(new draw2d.shape.basic.Polygon({x:50, y:800, width:100, height:100}));
     canvas.add(new draw2d.shape.basic.Label({text:"draw2d.shape.basic.Polygon (radius=0)", x:200, y:805}));
-        
+
     canvas.add(new draw2d.shape.basic.Polygon({radius:15, x:50, y:1000, width:100, height:100, dasharray:"-"}));
     canvas.add(new draw2d.shape.basic.Label({text:"draw2d.shape.basic.Polygon (radius=15)", x:200, y:1005}));
-    
+
     textFigure = new draw2d.shape.basic.Text({text:"The quick brown fox jumps over the lazy dog", x:50, y:1200});
     canvas.add(textFigure);
     canvas.add(new draw2d.shape.basic.Label({text:"draw2d.shape.basic.Text", x:200, y:1205}));

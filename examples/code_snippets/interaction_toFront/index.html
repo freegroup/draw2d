@@ -21,7 +21,7 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
     <SCRIPT src="document.json"></SCRIPT>
 
@@ -65,11 +65,11 @@ $(window).load(function () {
      // (load)
      var reader = new draw2d.io.json.Reader();
      reader.unmarshal(canvas, jsonDocument);
-    
 
-	 ///////////////////////////////////////////////////////////////////// 
+
+	 /////////////////////////////////////////////////////////////////////
 	 // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
-	 ///////////////////////////////////////////////////////////////////// 
+	 /////////////////////////////////////////////////////////////////////
 	 var msg = new draw2d.shape.note.PostIt({text:"Click on one shape to change the z-order of the element."});
 	 canvas.add(msg, 20,20);
 });

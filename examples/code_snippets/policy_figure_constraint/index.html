@@ -21,7 +21,7 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
 <script type="text/javascript">
 
@@ -31,28 +31,28 @@ $(window).load(function () {
         //
         var canvas = new draw2d.Canvas("gfx_holder");
 
-        // Install a Edit Policy for a DragDrop region 
-        // It is now not possible to move the element outside the given 
-        // rectangle 
+        // Install a Edit Policy for a DragDrop region
+        // It is now not possible to move the element outside the given
+        // rectangle
         //
         var oval1 = new draw2d.shape.basic.Oval({width:80,height:30});
         oval1.installEditPolicy(new draw2d.policy.figure.RegionEditPolicy(30,30,300,300));
         canvas.add(oval1,50,100);
         canvas.add(new draw2d.shape.basic.Label({text:"oval1.installEditPolicy(new draw2d.policy.RegionEditPolicy(30,30,300,300));"}),200,105);
-        
+
 		var oval2 = new draw2d.shape.basic.Oval({width:80,height:30});
         oval2.installEditPolicy(new draw2d.policy.figure.VerticalEditPolicy());
         canvas.add(oval2,50,180);
         canvas.add(new draw2d.shape.basic.Label({text:"oval2.installEditPolicy(new draw2d.policy.VerticalEditPolicy());"}),200,185);
-        
+
 		var oval3 = new draw2d.shape.basic.Oval({width:80,height:30});
         oval3.installEditPolicy(new draw2d.policy.figure.HorizontalEditPolicy());
         canvas.add(oval3,50,280);
         canvas.add(new draw2d.shape.basic.Label({text:"oval3.installEditPolicy(new draw2d.policy.HorizontalEditPolicy());"}),200,285);
-        
+
 
 	   	 var msg = new draw2d.shape.note.PostIt({text:"Drag&Drop the red oval. They have installed different EditPolicy constraints.\nRectangle, vertical or horizontal."});
-	   	 canvas.add(msg, 20,20);   	 
+	   	 canvas.add(msg, 20,20);
 });
 
 </script>

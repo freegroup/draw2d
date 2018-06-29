@@ -23,29 +23,29 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
 <script type="text/javascript">
 
 var textFigure = null;
 $(window).load(function () {
 
-    
+
     // create the canvas for the user interaction
     //
     var canvas = new draw2d.Canvas("gfx_holder");
-    
+
 
     textFigure = new draw2d.shape.basic.Text({
-          text:"The quick brown fox jumps over the lazy dog", 
-          fontFamily:"Curier New", 
-          fontSize:20, 
-          bgColor:"#f0f0f0", 
-          fontColor:"#ff00f0", 
-          x:150, 
+          text:"The quick brown fox jumps over the lazy dog",
+          fontFamily:"Curier New",
+          fontSize:20,
+          bgColor:"#f0f0f0",
+          fontColor:"#ff00f0",
+          x:150,
           y:300
     });
-    
+
     canvas.add(textFigure);
 
 

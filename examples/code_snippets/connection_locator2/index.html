@@ -4,7 +4,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, , maximum-scale=1.0" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-   
+
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-select.css">
     <link type="text/css" rel="stylesheet" href="./css/example.css" />
@@ -23,13 +23,13 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
     <script src="./lib/bootstrap.min.js"></script>
     <script src="./lib/bootstrap-select.js"></script>
 
     <script src="./LabelConnection.js"></script>
-	
+
 <script type="text/javascript">
 
 $(window).load(function () {
@@ -44,7 +44,7 @@ $(window).load(function () {
 
        var rect2    = new draw2d.shape.basic.Rectangle({x:350, y:350, width:120,  height:50, bgColor:'#3366FF' });
        var textFig2 = new draw2d.shape.basic.Label({text:'Step-2', stroke:0});
-       
+
 
        rect1.createPort("hybrid", new draw2d.layout.locator.BottomLocator(rect1));
        rect1.add(textFig1, new draw2d.layout.locator.CenterLocator(rect1));
@@ -52,7 +52,7 @@ $(window).load(function () {
        draw2DCanvas.add(rect1);
 
 
-       
+
        rect2.createPort("hybrid", new draw2d.layout.locator.RightLocator(rect2));
        rect2.add(textFig2, new draw2d.layout.locator.CenterLocator(rect2));
        insertChildShape(rect2);
@@ -66,7 +66,7 @@ $(window).load(function () {
            source:rect1.getHybridPort(0),
            target:rect2.getHybridPort(0)
        });
-       
+
        insertChildShape(c.label);
        draw2DCanvas.add(c);
 
@@ -80,7 +80,7 @@ $(window).load(function () {
        imgGear.on("click", function () {
            alert('Image Shape Clicked');
        });
-       
+
        //seting Click event on Child Shape
        shapeObj.on("click",function () {
            alert('Parent Shape Clicked');

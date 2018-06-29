@@ -21,33 +21,33 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
 	<SCRIPT src="MySlider.js"></SCRIPT>
 	<SCRIPT src="MyPie.js"></SCRIPT>
-	
+
 <script type="text/javascript">
 
 createConnection=function(sourcePort, targetPort){
-    
-    // you can configure the connection in the constructor.... 
+
+    // you can configure the connection in the constructor....
     var conn= new draw2d.Connection({
         source:sourcePort,
         target:targetPort,
         router:new draw2d.layout.connection.InteractiveManhattanConnectionRouter()
     });
-    
-    // ...or via API call 
+
+    // ...or via API call
     conn.setOutlineStroke(1);
     conn.setOutlineColor("#303030");
-    
-    // ...or via "attr" 
+
+    // ...or via "attr"
     conn.attr({stroke:5, color:'#00A8F0',radius:20});
-    
+
     return conn;
 };
 
-//Called from draw2d if everything is loaded 
+//Called from draw2d if everything is loaded
 //
 $(window).load(function () {
 
@@ -88,9 +88,9 @@ $(window).load(function () {
      slider2.setValue(44);
      slider3.setValue(4);
 
-     ///////////////////////////////////////////////////////////////////// 
+     /////////////////////////////////////////////////////////////////////
 	 // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
-	 ///////////////////////////////////////////////////////////////////// 
+	 /////////////////////////////////////////////////////////////////////
 	 var msg = new draw2d.shape.note.PostIt({text:"Simple experiment with 3 slider,\nConnections and a Pie chart."});
 	 canvas.add(msg, 20,20);
 });

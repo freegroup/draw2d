@@ -22,10 +22,10 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
 	<SCRIPT src="LabeldComplexFigure.js"></SCRIPT>
-	
+
 <script type="text/javascript">
 
 $(window).load(function () {
@@ -36,9 +36,9 @@ $(window).load(function () {
      var figure = new LabeldComplexFigure({x:100, y:100});
      canvas.add( figure);
 
-     ///////////////////////////////////////////////////////////////////// 
+     /////////////////////////////////////////////////////////////////////
      // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
-     ///////////////////////////////////////////////////////////////////// 
+     /////////////////////////////////////////////////////////////////////
      var msg = new draw2d.shape.note.PostIt({text:"adding custom labels via raphaelJS to the shape"});
      canvas.add(msg, 20,20);
 });

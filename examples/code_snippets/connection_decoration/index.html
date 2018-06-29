@@ -4,7 +4,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, , maximum-scale=1.0" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-   
+
     <link type="text/css" rel="stylesheet" href="./css/example.css" />
     <link type="text/css" rel="stylesheet" href="../../../css/contextmenu.css" />
 
@@ -21,7 +21,7 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
 <script type="text/javascript">
 
@@ -29,20 +29,20 @@ var canvas = null;
 
 $(window).load(function () {
 
-    
+
 	     // Create the paint area. The id in the constructor must be
-	     // an existing DIV 
+	     // an existing DIV
 		 canvas = new draw2d.Canvas("gfx_holder");
-		
+
 	     // create and add two nodes which contains Ports (In and OUT)
 	     //
 		 var start = new draw2d.shape.node.Start({x:50, y:250});
 		 var end   = new draw2d.shape.node.End({x:430, y:150});
-		
-		 // ...add it to the canvas 
+
+		 // ...add it to the canvas
 		 canvas.add( start);
 		 canvas.add( end);
-			
+
 		 // Create a Connection and connect the Start and End node
 		 //
 		 var c = new draw2d.Connection({
@@ -51,13 +51,13 @@ $(window).load(function () {
 		     source: start.getOutputPort(0),
 		     target:end.getInputPort(0)
 		 });
-		 
+
 		 // and finally add the connection to the canvas
 		 canvas.add(c);
 
 	     c.toFront();
 
-		 // Add another source/target/connection combination with 
+		 // Add another source/target/connection combination with
 		 // another connection router
 		 // create and add two nodes which contains Ports (In and OUT)
 	     //
@@ -65,7 +65,7 @@ $(window).load(function () {
 		 end   = new draw2d.shape.node.End({x:430, y:350});
 		 canvas.add( start);
 		 canvas.add( end);
-		 
+
 		 c = new draw2d.Connection({
 		     router:new draw2d.layout.connection.DirectRouter(),
              sourceDecorator: new draw2d.decoration.connection.BarDecorator(),
@@ -75,13 +75,13 @@ $(window).load(function () {
 		 });
 		 canvas.add(c);
 
-		 ///////////////////////////////////////////////////////////////////// 
+		 /////////////////////////////////////////////////////////////////////
 		 // THIS IS ONLY FOR THE ARROW AND THE POST-IT
-		 ///////////////////////////////////////////////////////////////////// 
-	
+		 /////////////////////////////////////////////////////////////////////
+
 		 var msg = new draw2d.shape.note.PostIt({text:"Add to the standard connector some endpoint decorations."});
 		 canvas.add(msg, 20,20);
-		 
+
 		 $("body").scrollTop(0)
 		          .scrollLeft(0);
 });

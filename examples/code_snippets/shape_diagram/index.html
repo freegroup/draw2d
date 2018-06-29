@@ -21,7 +21,7 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
 <script type="text/javascript">
 
@@ -32,11 +32,11 @@ $(window).load(function () {
     for(var i=0;i<100;i++) {
         testData.push(Math.floor(Math.random() * 100));
     }
-    
+
     var canvas = new draw2d.Canvas("gfx_holder");
 
     var sparkline = new draw2d.shape.diagram.Sparkline({x:100, y:100, data: testData});
-   
+
     canvas.add( sparkline);
 });
 

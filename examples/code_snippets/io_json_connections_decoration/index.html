@@ -21,10 +21,10 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
     <SCRIPT src="document.js"></SCRIPT>
-    
+
     <SCRIPT src="MyConnection.js"></SCRIPT>
 
 <script type="text/javascript">
@@ -34,21 +34,21 @@ $(window).load(function () {
 	  // create the canvas for the user interaction
 	  //
 	  var canvas = new draw2d.Canvas("gfx_holder");
-	  
+
 	  // unmarshal the JSON document into the canvas
 	  // (load)
 	  var reader = new draw2d.io.json.Reader();
 	  reader.unmarshal(canvas, jsonDocument);
-	  
-	  
+
+
 	  var msg = new draw2d.shape.note.PostIt({text:"The circle/arrow decoration of the connection is part of the JSON."});
 	  canvas.add(msg, 20,20);
 
-	  
+
 	  // display the JSON document in the preview DIV
 	  //
 	  displayJSON(canvas);
-	
+
 	  // add an event listener to the Canvas for change notifications.
 	  // We just dump the current canvas document into the DIV
 	  //

@@ -23,8 +23,8 @@
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
-    
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
+
     <SCRIPT src="./lib/jquery.browser.js"></SCRIPT>
     <SCRIPT src="./lib/jquery-ui-1.8.23.custom.min.js"></SCRIPT>
 
@@ -32,9 +32,9 @@
     <SCRIPT src="./app/View.js"></SCRIPT>
     <SCRIPT src="./app/Toolbar.js"></SCRIPT>
     <SCRIPT src="./app/TableShape.js"></SCRIPT>
- 
+
     <SCRIPT src="document.js"></SCRIPT>
-	
+
 	<style>
 	.draw2d_InputPort{
 	   fill:#F7F7F7;
@@ -51,7 +51,7 @@
  * @method
  * Factory method to provide a default connection for all drag&drop connections. You
  * can override this method and customize this for your personal purpose.
- * 
+ *
  * @param {draw2d.Port} sourcePort port of the source of the connection
  * @param {draw2d.Port} targetPort port of the target of the connection
  * @template
@@ -92,7 +92,7 @@ $(window).load(function () {
 
    <div id="toolbar" class="navbar-default">
    </div>
-   
+
    <div id="side-nav" >
      <span id="logo">Draw2D</span>
      <div id="layer_elements"></div>
@@ -100,7 +100,7 @@ $(window).load(function () {
             <div data-shape="TableShape"   class="palette_node_element draw2d_droppable" title="drag&amp;drop the table into the canvas..">Table</div>
      </div>
    </div>
-   
+
    <div id="canvas" >
    </div>
 </body>

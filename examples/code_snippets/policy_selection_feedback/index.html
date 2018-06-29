@@ -21,7 +21,7 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
 <script type="text/javascript">
 
@@ -31,18 +31,18 @@ $(window).load(function () {
         var canvas = new draw2d.Canvas("gfx_holder");
 
         var circle =new draw2d.shape.basic.Circle({diameter:30});
-        // standard selectionFeedback. It is not neccessary to install it manually 
+        // standard selectionFeedback. It is not neccessary to install it manually
         circle.installEditPolicy(new draw2d.policy.figure.RectangleSelectionFeedbackPolicy());
         canvas.add(circle,90,100);
-        
+
         circle =new draw2d.shape.basic.Circle({diameter:30});
         circle.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
         canvas.add(circle,90,150);
-        
+
         circle =new draw2d.shape.basic.Circle({diameter:30});
         circle.installEditPolicy(new draw2d.policy.figure.GlowSelectionFeedbackPolicy());
         canvas.add(circle,90,200);
-        
+
         circle =new draw2d.shape.basic.Circle({diameter:30});
         circle.installEditPolicy(new draw2d.policy.figure.BigRectangleSelectionFeedbackPolicy());
         canvas.add(circle,90,250);
@@ -56,7 +56,7 @@ $(window).load(function () {
         canvas.add(circle,90,350);
 
 
-        // annotations / documentation 
+        // annotations / documentation
         var msg = new draw2d.shape.note.PostIt({text:"Install different kind of selection feedback policies.\nSelect the circles to see the effect"});
         canvas.add(msg, 20,20);
         canvas.add(new draw2d.shape.basic.Label({text:"circle.installEditPolicy(new draw2d.policy.figure.RectangleSelectionFeedbackPolicy());"}),200,100);

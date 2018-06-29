@@ -21,10 +21,10 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
 	<SCRIPT src="MyFigure.js"></SCRIPT>
-	
+
 <script type="text/javascript">
 
 $(window).load(function () {
@@ -34,10 +34,10 @@ $(window).load(function () {
 
      var figure = new MyFigure({width:50, height:50});
      canvas.add( figure,150,150);
- 
-	 ///////////////////////////////////////////////////////////////////// 
+
+	 /////////////////////////////////////////////////////////////////////
 	 // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
-	 ///////////////////////////////////////////////////////////////////// 
+	 /////////////////////////////////////////////////////////////////////
 	 var arrowLeft = new draw2d.shape.arrow.CalligrapherArrowLeft();
 	 arrowLeft.setColor("#0d0d0d");
 	 canvas.add(arrowLeft, 250,160);

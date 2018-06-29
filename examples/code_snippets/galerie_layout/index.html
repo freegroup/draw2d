@@ -21,7 +21,7 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
 <script type="text/javascript">
 
@@ -30,7 +30,7 @@ $(window).load(function () {
     // create the canvas for the user interaction
     //
     var canvas = new draw2d.Canvas("gfx_holder");
-    
+
     /*
     var f = new draw2d.shape.layout.TableLayout();
     canvas.add(f);
@@ -51,14 +51,14 @@ $(window).load(function () {
     	stroke:1,
     	padding:10
     });
-    
+
       f.removeRow(5);
-    
-    
+
+
     var table = new draw2d.shape.layout.VerticalLayout();
     canvas.add(table,200,100);
     table.add(new draw2d.shape.basic.Label({text:"Header of the table",bold:true, stroke:4, resizeable:true}));
-    
+
     var grid = new draw2d.shape.layout.TableLayout({resizeable:true});
     grid.addRow(new draw2d.shape.basic.Label({text:"key1",resizeable:true}), new draw2d.shape.basic.Label({text:"value1",resizeable:true}));
     grid.addRow(new draw2d.shape.basic.Label({text:"key2",resizeable:true}), "value2");
@@ -69,7 +69,7 @@ $(window).load(function () {
     grid.setCellPadding(0,3,5);
 
     table.add(grid);
-   
+
     */
     var label1 =  new draw2d.shape.basic.Label({text:"[0,1] with long long long long label", fontColor:"#00AF00"});
     var label2 =  new draw2d.shape.basic.Label({text:"[1,1] padding:10", fontColor:"#00AF00"});
@@ -91,7 +91,7 @@ $(window).load(function () {
 
     container.setCellVerticalAlign(1, 0, "bottom");
     canvas.add(container,400,100);
-    
+
     /*
     var table = new draw2d.shape.layout.FlexGridLayout({
         rows:"20px, 5px,grow,60px, 5px",
@@ -99,7 +99,7 @@ $(window).load(function () {
         x:100,
         y:100
     });
-    
+
     table.add(new draw2d.shape.basic.Label({text:"value", resizeable:true}), {row:0, col:0, colspan:4});
     table.add(new draw2d.shape.basic.Rectangle({stroke:1}), {row:3, col:1,colspan:3});
     canvas.add(table,200,200);

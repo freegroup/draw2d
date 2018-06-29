@@ -25,7 +25,7 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
     <SCRIPT src="./lib/jquery.browser.js"></SCRIPT>
     <SCRIPT src="./lib/jquery-ui-1.8.23.custom.min.js"></SCRIPT>
@@ -34,12 +34,12 @@
 	<SCRIPT src="./gui/Application.js"></SCRIPT>
 	<SCRIPT src="./gui/View.js"></SCRIPT>
 	<SCRIPT src="./gui/Toolbar.js"></SCRIPT>
- 
+
 <script type="text/javascript">
 
 // some test data
 //
-var jsonDocument = 
+var jsonDocument =
      [
       {
           "type": "draw2d.shape.note.PostIt",
@@ -85,12 +85,12 @@ var jsonDocument =
          }
        }
      ];
-          
+
 
 $(window).load(function () {
- 
-    // Everything is loaded - core and application. Now can create the 
-    // application 
+
+    // Everything is loaded - core and application. Now can create the
+    // application
     //
    	var app  = new example.Application();
 
@@ -123,6 +123,6 @@ $(window).load(function () {
 
    		<div id="toolbar"></div>
    		<div id="canvas" class="" style="width:3000px; height:3000px;"></div>
-   
+
 </body>
 </html>

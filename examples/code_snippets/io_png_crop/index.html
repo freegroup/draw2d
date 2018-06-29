@@ -21,12 +21,12 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
 <script type="text/javascript">
 
 // the document to load....in this case a simple JSON Object
-var jsonDocument = 
+var jsonDocument =
     [
      {
         "type": "draw2d.shape.basic.Image",
@@ -76,12 +76,12 @@ $(window).load(function () {
   // create the canvas for the user interaction
   //
   canvas = new draw2d.Canvas("gfx_holder");
-  
+
   // unmarshal the JSON document into the canvas
   // (load)
   var reader = new draw2d.io.json.Reader();
   reader.unmarshal(canvas, jsonDocument);
-  
+
   var msg = new draw2d.shape.note.PostIt({text:"Export the canvas area that actually has objects in it to\na PNG and display them in the upper right corner"});
   canvas.add(msg, 20,20);
 
@@ -91,17 +91,17 @@ $(window).load(function () {
     },1);
 
   // add an event listener to the Canvas for change notifications.
-  // We just dump the current canvas document into the IMG 
+  // We just dump the current canvas document into the IMG
   //
   canvas.getCommandStack().addEventListener(function(e){
       if(e.isPostChangeEvent()){
           updatePreview(canvas);
        }
-  }); 
+  });
 });
 
 function updatePreview(canvas){
-    // convert the canvas into a PNG image source string 
+    // convert the canvas into a PNG image source string
     //
     var xCoords = [];
     var yCoords = [];
@@ -114,7 +114,7 @@ function updatePreview(canvas){
     var minY   = Math.min.apply(Math, yCoords);
     var width  = Math.max.apply(Math, xCoords)-minX;
     var height = Math.max.apply(Math, yCoords)-minY;
-    
+
     var writer = new draw2d.io.png.Writer();
     writer.marshal(canvas,function(png){
        $("#preview").attr("src",png);

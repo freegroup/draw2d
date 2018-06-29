@@ -21,19 +21,19 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
 	<SCRIPT src="LabeledEnd.js"></SCRIPT>
-	
+
 <script type="text/javascript">
 
-// the document to load....in this case a simple JSON Object 
-// You can create the canvas content via "native" API calls or with a 
-// JSON, XML,...document. 
-// 
-var jsonDocument = 
+// the document to load....in this case a simple JSON Object
+// You can create the canvas content via "native" API calls or with a
+// JSON, XML,...document.
+//
+var jsonDocument =
     [
-      
+
       {
         "type": "example.LabeledEnd",
         "id": "ebfb35bb-5767-8155-c804-14bda7759dc2",
@@ -42,7 +42,7 @@ var jsonDocument =
         "width": 50,
         "height": 50,
         "radius": 2,
-        "labels": [  // Custom attribute. 
+        "labels": [  // Custom attribute.
                      // See LabeledEnd.js setPersistendAttributes/getPersistendAttributes for more information
                    {
                      "id": "2d6ec69b-cd3c-f36b-7384-fdb2325e9081",
@@ -51,7 +51,7 @@ var jsonDocument =
                      "bold" : true,
                      "fontSize":14,
                      "locator": "draw2d.layout.locator.BottomLocator"
-                   }, 
+                   },
                    {
                        "id": "2d6ec69b-cd3c-f36b-7384-fdb2325e9081",
                        "type": "draw2d.shape.basic.Label",
@@ -76,30 +76,30 @@ $(window).load(function () {
                 return this;
             }
       });
-    
+
 	  // create the canvas for the user interaction
 	  //
 	  var canvas = new draw2d.Canvas("gfx_holder");
-	  
-	  // unmarshal the JSON document into the canvas 
-	  // (load) 
+
+	  // unmarshal the JSON document into the canvas
+	  // (load)
 	  var reader = new draw2d.io.json.Reader();
 	  reader.unmarshal(canvas, jsonDocument);
-	  
-	  // display the JSON text in the preview DIV 
+
+	  // display the JSON text in the preview DIV
 	  //
 	  displayJSON(canvas);
-	  
+
 	  // add an event listener to the Canvas for change notifications.
-	  // We just dump the current canvas document as simple text into 
-	  // the DIV 
+	  // We just dump the current canvas document as simple text into
+	  // the DIV
 	  //
 	  canvas.getCommandStack().addEventListener(function(e){
 	      if(e.isPostChangeEvent()){
 	          displayJSON(canvas);
 	      }
 	  });
-	
+
 	  // add an information PostIt to the canvas
 	  var msg = new draw2d.shape.note.PostIt({text:"Purpose of this example: How to import/export your own \nattributes, in this case a label, via  JSON.\n \nInspect LabeledEnd.js for further details."});
 	  canvas.add(msg, 20,20);

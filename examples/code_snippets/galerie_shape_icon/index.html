@@ -22,19 +22,19 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
 <script type="text/javascript">
 
 $(window).load(function () {
 
-    
+
      // create the canvas for the user interaction
      //
      var canvas = new draw2d.Canvas("gfx_holder");
 
-     // add all icons to the canvas 
-     // 
+     // add all icons to the canvas
+     //
      canvas.add(new draw2d.shape.icon.Thunder({width:30, height:30}),50,100);
      canvas.add(new draw2d.shape.icon.Snow({width:30, height:30}),100,100);
      canvas.add(new draw2d.shape.icon.Hail({width:30, height:30}),150,100);
@@ -250,21 +250,21 @@ $(window).load(function () {
      canvas.add(new draw2d.shape.icon.Svg({width:30, height:30}),650,600);
      canvas.add(new draw2d.shape.icon.Usb({width:30, height:30}),700,600);
      canvas.add(new draw2d.shape.icon.Ethernet({width:30, height:30}),750,600);
-           
-   	 
-   	 ///////////////////////////////////////////////////////////////////// 
+
+
+   	 /////////////////////////////////////////////////////////////////////
    	 // THIS IS ONLY FOR THE POST-IT
-   	 ///////////////////////////////////////////////////////////////////// 
+   	 /////////////////////////////////////////////////////////////////////
 
    	 var msg = new draw2d.shape.note.PostIt({text:"Icons copied from raphaeljs.com"});
    	 canvas.add(msg, 20,20);
-   	 
+
    	 $("body").scrollTop(0)
    	          .scrollLeft(0);
-   	 
+
 });
-    
-    
+
+
 </script>
 
 </head>

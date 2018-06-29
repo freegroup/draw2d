@@ -21,7 +21,7 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
     <SCRIPT src="document_01.json"></SCRIPT>
     <SCRIPT src="document_02.json"></SCRIPT>
@@ -35,25 +35,25 @@ $(window).load(function () {
 	  // create the canvas for the user interaction
 	  //
 	  var canvas = new draw2d.Canvas("gfx_holder");
-	  
-	  // create a defualt JSON reader 
+
+	  // create a defualt JSON reader
 	  var reader = new draw2d.io.json.Reader();
-	  
-	  // load the first document into the canvas... 
+
+	  // load the first document into the canvas...
 	  reader.unmarshal(canvas, jsonDocument_01);
-	  
-	  // ...load the second document into the canvas without to clear it before. 
+
+	  // ...load the second document into the canvas without to clear it before.
       var s = reader.unmarshal(canvas, jsonDocument_02);
 	  canvas.addSelection(s);
-	  
+
       reader.unmarshal(canvas, jsonDocument_03);
-	  
+
 
 	  // display the JSON document in the preview DIV
 	  //
 	  displayJSON(canvas);
-	
-	  
+
+
 	  // add an event listener to the Canvas for change notifications.
 	  // We just dump the current canvas document into the DIV
 	  //
@@ -62,7 +62,7 @@ $(window).load(function () {
 	          displayJSON(canvas);
 	      }
 	  });
-	
+
 });
 
 function displayJSON(canvas){

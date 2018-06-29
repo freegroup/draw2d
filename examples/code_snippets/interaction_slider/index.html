@@ -21,7 +21,7 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
 	<SCRIPT src="MySparkline.js"></SCRIPT>
 	<SCRIPT src="MySlider.js"></SCRIPT>
@@ -29,7 +29,7 @@
 <script type="text/javascript">
 
 //the document to load....in this case a simple JSON Object
-var jsonDocument = 
+var jsonDocument =
 
     [
       {
@@ -66,10 +66,10 @@ $(window).load(function () {
      // (load)
      var reader = new draw2d.io.json.Reader();
      reader.unmarshal(canvas, jsonDocument);
-     
-	 ///////////////////////////////////////////////////////////////////// 
+
+	 /////////////////////////////////////////////////////////////////////
 	 // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
-	 ///////////////////////////////////////////////////////////////////// 
+	 /////////////////////////////////////////////////////////////////////
 	 var msg = new draw2d.shape.note.PostIt({text:"Drag the slider thumb to change the\nvalue and propagate these to the Sparkline"});
 	 canvas.add(msg, 20,20);
 });

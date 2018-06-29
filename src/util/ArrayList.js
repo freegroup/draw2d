@@ -84,9 +84,6 @@ draw2d.util.ArrayList = Class.extend({
      {
          return this.data[this.data.length - 1];
      },
-     /* @deprecated */
-     getLastElement: function(){return this.last();},
-
 
      /**
       * @method
@@ -112,8 +109,6 @@ draw2d.util.ArrayList = Class.extend({
         }
         return null;
      },
-     /* @deprecated */
-     getFirstElement: function(){return this.first();},
 
 
      /**
@@ -174,7 +169,7 @@ draw2d.util.ArrayList = Class.extend({
      * @since 2.0.0
      */
      find: function(func){
-        var result= $.grep(this.data, func);
+        let result= $.grep(this.data, func);
         if(result.length===0){
             return null;
         }
@@ -268,7 +263,7 @@ draw2d.util.ArrayList = Class.extend({
       */
      remove: function( obj)
      {
-        var index = this.indexOf(obj);
+        let index = this.indexOf(obj);
         if(index>=0){
            return this.removeElementAt(index);
         }
@@ -302,7 +297,7 @@ draw2d.util.ArrayList = Class.extend({
      */
      removeElementAt: function(index)
      {
-        var element = this.data[index];
+        let element = this.data[index];
 
         this.data.splice(index,1);
 
@@ -394,11 +389,11 @@ draw2d.util.ArrayList = Class.extend({
       */
      clone: function(deep)
      {
-        var newVector = new draw2d.util.ArrayList();
+        let newVector = new draw2d.util.ArrayList();
 
 
         if (deep) {
-            for ( var i = 0; i < this.data.length; i++) {
+            for ( let i = 0; i < this.data.length; i++) {
                 newVector.data.push(this.data[i].clone());
             }
         }
@@ -425,13 +420,13 @@ draw2d.util.ArrayList = Class.extend({
       each: function(func, reverse)
       {
          if(typeof reverse !=="undefined" && reverse===true){
-             for (var i=this.data.length-1; i>=0; i--) {
+             for (let i=this.data.length-1; i>=0; i--) {
                  if(func(i, this.data[i])===false)
                      break;
              }
           }
          else{
-             for (var i=0; i<this.data.length; i++) {
+             for (let i=0; i<this.data.length; i++) {
                 if(func(i, this.data[i])===false)
                     break;
              }

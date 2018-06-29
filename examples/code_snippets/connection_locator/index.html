@@ -4,7 +4,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, , maximum-scale=1.0" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-   
+
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-select.css">
     <link type="text/css" rel="stylesheet" href="./css/example.css" />
@@ -23,11 +23,11 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
     <script src="./lib/bootstrap.min.js"></script>
     <script src="./lib/bootstrap-select.js"></script>
-	
+
 <script type="text/javascript">
 
 var createStandardConnection= function(locator){
@@ -50,19 +50,19 @@ var createConnection=function(sourcePort, targetPort, callback, dropTarget){
     // way
     //
     var pos = dropTarget.getAbsolutePosition();
-    
+
     var context = $('<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">'+
                     '<li><a data-locator="draw2d.layout.locator.ParallelMidpointLocator" tabindex="-1" href="#">Parallel Label</a></li>'+
                     '<li><a data-locator="draw2d.layout.locator.ManhattanMidpointLocator" tabindex="-1" href="#">Horizontal Label</a></li>'+
                     '</ul>');
     $("body").append(context);
-    
+
     context.show()
            .css({left:pos.x, top:pos.y})
            .find("a").on("click", function(){
-               
+
                 context.remove();
-                
+
                 var locator = eval("new "+$(this).data("locator")+"()");
                 var connection = createStandardConnection(locator);
                 callback(connection);
@@ -75,9 +75,9 @@ $(window).load(function () {
 
 
      // Create the paint area. The id in the constructor must be
-     // an existing DIV 
+     // an existing DIV
 	 var canvas = new draw2d.Canvas("gfx_holder");
-	
+
      var start;
      var end;
      canvas.add( new draw2d.shape.node.Start(), 50,150);
@@ -88,7 +88,7 @@ $(window).load(function () {
      canvas.add( new draw2d.shape.node.End(), 300,250);
      canvas.add( new draw2d.shape.node.End(), 300,350);
      canvas.add( new draw2d.shape.node.End(), 300,450);
-	
+
      // Create a Connection and connect the Start and End node
      //
      var c = createStandardConnection(new draw2d.layout.locator.ParallelMidpointLocator());
@@ -96,10 +96,10 @@ $(window).load(function () {
      c.setTarget(end.getInputPort(0));
      canvas.add(c);
 
-     ///////////////////////////////////////////////////////////////////// 
+     /////////////////////////////////////////////////////////////////////
 	 // THIS IS ONLY FOR THE ARROW AND THE POST-IT
-	 ///////////////////////////////////////////////////////////////////// 
-	 
+	 /////////////////////////////////////////////////////////////////////
+
 	 var msg = new draw2d.shape.note.PostIt({text:"Drag&Drop the blue box and notice the label.\nIt sticks always in the middle of the connector.\nCreate new a connection to choose the kind of locator."});
 	 canvas.add(msg, 20,20);
 });

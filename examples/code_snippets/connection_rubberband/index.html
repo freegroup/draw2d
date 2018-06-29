@@ -4,7 +4,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, , maximum-scale=1.0" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-   
+
     <link type="text/css" rel="stylesheet" href="./css/example.css" />
     <link type="text/css" rel="stylesheet" href="../../../css/contextmenu.css" />
 
@@ -21,14 +21,14 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
 
     <script src="./RubberConnection.js"></script>
-	
+
 <script type="text/javascript">
 
-// override the draw2d factory method for connection creation 
+// override the draw2d factory method for connection creation
 //
 createConnection=function(sourcePort, targetPort){
     return new RubberConnection({

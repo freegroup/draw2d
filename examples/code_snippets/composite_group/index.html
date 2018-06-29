@@ -26,8 +26,8 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
-    
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
+
     <SCRIPT src="./lib/jquery-ui-1.8.23.custom.min.js"></SCRIPT>
     <SCRIPT src="./lib/bootstrap/js/bootstrap.js"></SCRIPT>
 
@@ -45,7 +45,7 @@ $(window).load(function () {
     canvas = new draw2d.Canvas("canvas", 2000,2000);
 
     // this example is different than the other ones. In this example the div is the scroll
-    // area and not the body itself 
+    // area and not the body itself
     canvas.setScrollArea("#canvas");
 
     // install some additional edit policies. An edit policy is responsible for
@@ -60,13 +60,13 @@ $(window).load(function () {
         }
     }));
 
-    // Create the top toolbar with bootstrap.js element/buttons 
+    // Create the top toolbar with bootstrap.js element/buttons
     //
     var toolbarDiv = $("#toolbar");
     var buttonGroup=$('<div class="btn-group" ></div>');
     toolbarDiv.append(buttonGroup);
 
-    // Inject the GROUP Button and the callbacks 
+    // Inject the GROUP Button and the callbacks
     //
     var groupButton  = $('<button title="Group figures" class=\"btn btn-default\" ><img src="./icons/group.png"></button>');
     buttonGroup.append(groupButton);
@@ -74,7 +74,7 @@ $(window).load(function () {
         canvas.getCommandStack().execute(new draw2d.command.CommandGroup(canvas, canvas.getSelection()));
     },this)).button().prop("disabled",true);
 
-    // Inject the UNGROUP Button and the callbacks 
+    // Inject the UNGROUP Button and the callbacks
     //
     var ungroupButton  = $('<button title="Ungroup figures" class=\"btn btn-default\" ><img src="./icons/ungroup.png"></button>');
     buttonGroup.append(ungroupButton);
@@ -88,9 +88,9 @@ $(window).load(function () {
         ungroupButton.prop("disabled",!(event.figure instanceof draw2d.shape.composite.Group) );
         groupButton.prop("disabled", !(canvas.getSelection().getSize()>=2) );
     });
-    
-    // load an JSON document into the canvas 
-    // 
+
+    // load an JSON document into the canvas
+    //
     var reader = new draw2d.io.json.Reader();
     reader.unmarshal(canvas, jsonDocument);
 

@@ -144,8 +144,8 @@ draw2d.Selection = Class.extend({
     getAll: function(expand)
     {
         if(expand ===true){
-            var result = new draw2d.util.ArrayList();
-            var addRecursive = function(figures){
+            let result = new draw2d.util.ArrayList();
+            let addRecursive = function(figures){
                 result.addAll(figures,true);
                 figures.each(function(index, figure){
                     if(figure instanceof draw2d.shape.composite.StrongComposite){

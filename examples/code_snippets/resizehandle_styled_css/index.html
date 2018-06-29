@@ -21,7 +21,7 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
 <script type="text/javascript">
 
@@ -32,16 +32,16 @@ $(window).load(function () {
 
   canvas.add( new draw2d.shape.basic.Oval(),100,100);
   canvas.add( new draw2d.shape.basic.Rectangle(),120,150);
-  
+
   canvas.add( new draw2d.shape.node.Start(), 80,80);
   canvas.add( new draw2d.shape.node.Start(), 50,50);
 
   canvas.add( new draw2d.shape.node.End(), 150,150);
   canvas.add( new draw2d.shape.node.End(), 350,250);
 
-  ///////////////////////////////////////////////////////////////////// 
-  // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN 
-  ///////////////////////////////////////////////////////////////////// 
+  /////////////////////////////////////////////////////////////////////
+  // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
+  /////////////////////////////////////////////////////////////////////
   var msg = new draw2d.shape.note.PostIt({text:"Select a shape to see CSS styled resize handles", x:20, y:20});
   canvas.add(msg);
 

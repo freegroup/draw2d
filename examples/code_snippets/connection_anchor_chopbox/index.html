@@ -21,14 +21,14 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
     <SCRIPT src="document.json"></SCRIPT>
 
 <script type="text/javascript">
 
 	var canvas = null;
-	
+
 	$(window).load(function() {
 
 		// create the canvas for the user interaction
@@ -53,18 +53,18 @@
 		var reader = new draw2d.io.json.Reader();
 		reader.unmarshal(canvas, jsonDocument);
 
-		// tweak the loaded ports and set a anchor implementation for this 
+		// tweak the loaded ports and set a anchor implementation for this
 		//
 		canvas.getFigures().each(function(i,f){
 		    f.getPorts().each(function(i,port){
 		        port.setConnectionAnchor(new draw2d.layout.anchor.ChopboxConnectionAnchor(port));
 		    });
 		})
-		
+
 		var msg = new draw2d.shape.note.PostIt("Connections are not bounded to the ports. All ports have a ChopboxConnectionAnchor policy installed");
         canvas.add(msg, 20,20);
 
-     
+
 		// display the JSON document in the preview DIV
 		//
 		displayJSON(canvas);

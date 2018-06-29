@@ -21,7 +21,7 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../dist/draw2d.js"></SCRIPT>
 
 <script type="text/javascript">
 
@@ -30,8 +30,8 @@ $(window).load(function () {
     var canvas = new draw2d.Canvas("gfx_holder");
 
 
-    // Add input and output ports to any shape via generic API calls 
-    // and custom locators 
+    // Add input and output ports to any shape via generic API calls
+    // and custom locators
     //
     var d = new draw2d.shape.basic.Rectangle({width:50, height:100, x:100, y:100});
     var inputLocator  = new draw2d.layout.locator.InputPortLocator();
@@ -44,39 +44,39 @@ $(window).load(function () {
 
     canvas.add( d);
     canvas.add(new draw2d.shape.basic.Label({text:"Add ports to the shape with a given locator", x:230, y:130}));
-    
-    
-    
-    // add input and output ports via generic API calls and DEFAULT 
-    // locators. The default locator arrange input on the left and ouput on the right 
+
+
+
+    // add input and output ports via generic API calls and DEFAULT
+    // locators. The default locator arrange input on the left and ouput on the right
     // side of the shape
     //
     var d2 = new draw2d.shape.basic.Diamond({width:50, height:60,x:100, y:300});
     canvas.add( d2);
     d2.createPort("input");
     d2.createPort("output");
-    
+
     canvas.add(new draw2d.shape.basic.Label({text:"Add ports to the shape after canvas assignment with default locator", x:230, y:330}));
-       
-    
-    
+
+
+
     // create my own implementation for the locators and use this for the port position
-    // calculation 
-    // 
+    // calculation
+    //
     var MyInputPortLocator = draw2d.layout.locator.PortLocator.extend({
         init:function( ){
           this._super();
-        },    
+        },
         relocate:function(index, figure){
             this.applyConsiderRotation(figure, figure.getParent().getWidth()/2, 0);
         }
     });
 
-    
+
     var MyOutputPortLocator = draw2d.layout.locator.PortLocator.extend({
         init:function( ){
           this._super();
-        },    
+        },
         relocate:function(index, figure){
             var p = figure.getParent();
 
@@ -90,8 +90,8 @@ $(window).load(function () {
 
   canvas.add( topBottom);
   canvas.add(new draw2d.shape.basic.Label({text:"Add ports to the shape with a custom locator", x:230, y:530}));
-   
- 
+
+
   // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
   var msg = new draw2d.shape.note.PostIt({text:"Add input and output ports at any position of the \nshape via generic API calls.", x:20, y:20});
   canvas.add(msg);
