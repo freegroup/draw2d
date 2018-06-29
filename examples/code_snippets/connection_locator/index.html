@@ -1,0 +1,116 @@
+﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<title></title>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, , maximum-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-select.css">
+    <link type="text/css" rel="stylesheet" href="./css/example.css" />
+    <link type="text/css" rel="stylesheet" href="../../../css/contextmenu.css" />
+
+    <SCRIPT src="../../../lib/shifty.js"></SCRIPT>
+    <SCRIPT src="../../../lib/raphael.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery-1.12.0.min.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery.autoresize.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery-touch_punch.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery.contextmenu.js"></SCRIPT>
+    <SCRIPT src="../../../lib/rgbcolor.js"></SCRIPT>
+    <SCRIPT src="../../../lib/StackBlur.js"></SCRIPT>
+    <SCRIPT src="../../../lib/canvg.js"></SCRIPT>
+    <SCRIPT src="../../../lib/Class.js"></SCRIPT>
+    <SCRIPT src="../../../lib/json2.js"></SCRIPT>
+    <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
+
+    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+
+    <script src="./lib/bootstrap.min.js"></script>
+    <script src="./lib/bootstrap-select.js"></script>
+	
+<script type="text/javascript">
+
+var createStandardConnection= function(locator){
+    var connection = new draw2d.Connection();
+    var label = new draw2d.shape.basic.Label({text:"I'm a Label", stroke:1, color:"#FF0000", fontColor:"#0d0d0d"});
+
+
+    connection.add(label, locator);
+    connection.setStroke(2);
+    connection.setOutlineStroke(1);
+    connection.setOutlineColor("#303030");
+    connection.setRouter(null);
+    connection.setColor("#91B93E");
+    return connection;
+}
+
+var createConnection=function(sourcePort, targetPort, callback, dropTarget){
+
+    // get the coordinate of the drop target element to place the context menu in a propper
+    // way
+    //
+    var pos = dropTarget.getAbsolutePosition();
+    
+    var context = $('<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">'+
+                    '<li><a data-locator="draw2d.layout.locator.ParallelMidpointLocator" tabindex="-1" href="#">Parallel Label</a></li>'+
+                    '<li><a data-locator="draw2d.layout.locator.ManhattanMidpointLocator" tabindex="-1" href="#">Horizontal Label</a></li>'+
+                    '</ul>');
+    $("body").append(context);
+    
+    context.show()
+           .css({left:pos.x, top:pos.y})
+           .find("a").on("click", function(){
+               
+                context.remove();
+                
+                var locator = eval("new "+$(this).data("locator")+"()");
+                var connection = createStandardConnection(locator);
+                callback(connection);
+           });
+};
+
+
+
+$(window).load(function () {
+
+
+     // Create the paint area. The id in the constructor must be
+     // an existing DIV 
+	 var canvas = new draw2d.Canvas("gfx_holder");
+	
+     var start;
+     var end;
+     canvas.add( new draw2d.shape.node.Start(), 50,150);
+     canvas.add( start= new draw2d.shape.node.Start(), 50,250);
+     canvas.add( new draw2d.shape.node.Start(), 50,350);
+     canvas.add( new draw2d.shape.node.Start(), 50,450);
+     canvas.add( end = new draw2d.shape.node.End(), 300,150);
+     canvas.add( new draw2d.shape.node.End(), 300,250);
+     canvas.add( new draw2d.shape.node.End(), 300,350);
+     canvas.add( new draw2d.shape.node.End(), 300,450);
+	
+     // Create a Connection and connect the Start and End node
+     //
+     var c = createStandardConnection(new draw2d.layout.locator.ParallelMidpointLocator());
+     c.setSource(start.getOutputPort(0));
+     c.setTarget(end.getInputPort(0));
+     canvas.add(c);
+
+     ///////////////////////////////////////////////////////////////////// 
+	 // THIS IS ONLY FOR THE ARROW AND THE POST-IT
+	 ///////////////////////////////////////////////////////////////////// 
+	 
+	 var msg = new draw2d.shape.note.PostIt({text:"Drag&Drop the blue box and notice the label.\nIt sticks always in the middle of the connector.\nCreate new a connection to choose the kind of locator."});
+	 canvas.add(msg, 20,20);
+});
+</script>
+
+</head>
+
+<body>
+
+   <div  onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:1500px; height:1500px; ">
+   </div>
+
+</body>
+</html>

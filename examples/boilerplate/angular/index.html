@@ -1,0 +1,108 @@
+﻿<html ng-app="draw2dApp">
+<head>
+<title></title>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.css" />
+
+    <link rel="stylesheet/less" type="text/css" href="css/styles.less" />
+
+    <link type="text/css" rel="stylesheet" href="../../../css/contextmenu.css" />
+
+    <SCRIPT src="../../../lib/shifty.js"></SCRIPT>
+    <SCRIPT src="../../../lib/raphael.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery-1.10.2.min.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery.autoresize.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery.contextmenu.js"></SCRIPT>
+    <SCRIPT src="../../../lib/rgbcolor.js"></SCRIPT>
+    <SCRIPT src="../../../lib/canvg.js"></SCRIPT>
+    <SCRIPT src="../../../lib/Class.js"></SCRIPT>
+    <SCRIPT src="../../../lib/json2.js"></SCRIPT>
+    <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
+
+    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+
+    <SCRIPT src="./lib/less-1.7.5.min.js"></SCRIPT>
+
+</head>
+
+
+<body id="container"  ng-controller="EditorController">
+
+   <div id="logo">Draw2D</div>
+   <div id="toolbar" class="navbar-default">
+      <button class="btn btn-lg btn-primary"                                             ng-click="editor.fileOpen()"  > Open   </button>
+      <div class="btn-group">
+      <button class="btn btn-lg btn-default" ng-disabled="!editor.state.canUndo"         ng-click="editor.undo()"  > Undo   </button>
+      <button class="btn btn-lg btn-default" ng-disabled="!editor.state.canRedo"         ng-click="editor.redo()"  > Redo   </button>
+      <button class="btn btn-lg btn-default" ng-disabled="editor.selection.figure==null" ng-click="editor.delete()"> Delete </button>
+      </div>
+   </div>
+   
+
+   <div id="propertyPane" >
+     <div id="propertyHeader" class="highlight panetitle blackgradient">
+         Shape Properties
+     </div>
+     <div id="properties" ng-switch on="editor.selection.className">
+         
+         <div ng-switch-when="draw2d.shape.node.Start">
+           Start
+           <div class="panel panel-default">
+	           <div class="panel-heading" >Position</div>
+	           <div class="panel-body" id="position_panel">
+	               <div class="form-group">
+	                   x: <input class="form-control" type="number" ng-model="editor.selection.attr.x" ><br>
+	                   y: <input class="form-control" type="number" ng-model="editor.selection.attr.y" >
+	               </div>
+	           </div>
+           </div>
+         </div>
+         
+         <div ng-switch-when="draw2d.shape.node.End" >
+           End
+           <div class="panel panel-default">
+	           <div class="panel-heading" >Position</div>
+	           <div class="panel-body" id="position_panel">
+	               <div class="form-group">
+	                   x: <input class="form-control" type="number" ng-model="editor.selection.attr.x" ><br>
+	                   y: <input class="form-control" type="number" ng-model="editor.selection.attr.y" >
+	               </div>
+	           </div>
+           </div>
+        </div>    
+     </div>
+     
+   </div>
+   
+   <div id="palettePane" draw2d-palette>
+   </div>
+         
+   <div id="canvas" draw2d-canvas>
+   </div>
+
+
+</body>
+
+    <!-- common libs -->
+    <SCRIPT src="./lib/angular.min.js"></SCRIPT>
+    <SCRIPT src="./lib/jquery.browser.js"></SCRIPT>
+    <SCRIPT src="./lib/jquery-ui-1.8.23.custom.min.js"></SCRIPT>
+    <SCRIPT src="./lib/ui-bootstrap-tpls-0.11.2.min.js"></SCRIPT>
+
+    <!-- draw2d directrives. Possibly belongs in the future to Draw2d -->
+    <SCRIPT src="./src/directrives/draw2d.js"></SCRIPT>
+    <SCRIPT src="./src/directrives/canvas.js"></SCRIPT>
+    <SCRIPT src="./src/directrives/palette.js"></SCRIPT>
+
+    <!-- appliction specific coding -->
+    <SCRIPT src="./src/app.js"></SCRIPT>
+    <SCRIPT src="./src/factories/DemoData.js"></SCRIPT>
+    <SCRIPT src="./src/factories/FileFactory.js"></SCRIPT>
+    <SCRIPT src="./src/controllers/EditorController.js"></SCRIPT>
+    <SCRIPT src="./src/controllers/FileOpenController.js"></SCRIPT>
+    
+    
+</html>

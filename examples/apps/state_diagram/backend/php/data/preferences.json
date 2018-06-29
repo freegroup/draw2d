@@ -1,0 +1,56 @@
+[
+  {
+    "type": "example.shape.Start",
+    "id": "5a96eaa6-5e5c-7689-b95b-b434888c987e",
+    "x": 292,
+    "y": 80,
+    "width": 50,
+    "height": 50,
+    "userData": null
+  },
+  {
+    "type": "example.shape.Activity",
+    "id": "f1c44ab8-497c-3b49-0840-391d5a0745a8",
+    "x": 412,
+    "y": 157,
+    "width": 107.0625,
+    "height": 54,
+    "userData": {
+      "activity": "NOP",
+      "mapping": []
+    },
+    "radius": 5,
+    "label": "Activity"
+  },
+  {
+    "type": "example.shape.RegExConnection",
+    "id": "691552c7-a1c9-e938-89fa-27c214293f24",
+    "userData": [
+      {
+        "regexpr": "nummer",
+        "defaultAnswer": "",
+        "test": "",
+        "mapping": []
+      },
+      {
+        "regexpr": null,
+        "defaultAnswer": null,
+        "test": null,
+        "mapping": null
+      }
+    ],
+    "cssClass": "stroke",
+    "stroke": 2,
+    "color": "#303030",
+    "source": {
+      "node": "5a96eaa6-5e5c-7689-b95b-b434888c987e",
+      "port": "output0"
+    },
+    "target": {
+      "node": "f1c44ab8-497c-3b49-0840-391d5a0745a8",
+      "port": "hybrid0"
+    },
+    "router": "draw2d.layout.connection.FanConnectionRouter",
+    "label": null
+  }
+]

@@ -1,0 +1,87 @@
+﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<title></title>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, , maximum-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   
+    <link type="text/css" rel="stylesheet" href="./css/example.css" />
+    <link type="text/css" rel="stylesheet" href="../../../css/contextmenu.css" />
+
+
+    <SCRIPT src="../../../lib/shifty.js"></SCRIPT>
+    <SCRIPT src="../../../lib/raphael.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery-1.12.0.min.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery.autoresize.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery-touch_punch.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery.contextmenu.js"></SCRIPT>
+    <SCRIPT src="../../../lib/rgbcolor.js"></SCRIPT>
+    <SCRIPT src="../../../lib/StackBlur.js"></SCRIPT>
+    <SCRIPT src="../../../lib/canvg.js"></SCRIPT>
+    <SCRIPT src="../../../lib/Class.js"></SCRIPT>
+    <SCRIPT src="../../../lib/json2.js"></SCRIPT>
+    <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
+
+    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+	<SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+
+	<SCRIPT src="./LabeledEnd.js"></SCRIPT>
+	
+<script type="text/javascript">
+
+$(window).load(function () {
+
+     // Create the paint area. The id in the constructor must be
+     // an existing DIV 
+	 var canvas = new draw2d.Canvas("gfx_holder");
+	
+     // create a basic figure and add a Label/child via API call
+     //
+	 var start = new draw2d.shape.node.Start();
+	 start.add(new draw2d.shape.basic.Label({text:"Test Label"}), new draw2d.layout.locator.TopLocator());
+	 canvas.add( start, 80,150);
+	 
+	 // Create a custom shape with a build in feature for decoration/labels 
+	 // Good example for inheritence of shapes
+	 //
+	 var end = new LabeledEnd();
+	 canvas.add( end, 350,250);
+	 
+     // create a basic figure and add a Label/child via API call
+     //
+	 var start2 = new draw2d.shape.node.Start();
+	 start2.add(new draw2d.shape.basic.Label({text:"Left Label"}), new draw2d.layout.locator.LeftLocator());
+	 canvas.add( start2, 80,250);
+		
+     // create a basic figure and add a Label/child via API call
+     //
+	 var end2 = new draw2d.shape.node.End();
+	 end2.add(new draw2d.shape.basic.Label({text:"Right Label"}), new draw2d.layout.locator.RightLocator());
+	 canvas.add( end2, 350,100);
+
+    var end3 = new draw2d.shape.node.End();
+    end3.add(new draw2d.shape.basic.Label({text:"draggable Label", x:55, y:25}), new draw2d.layout.locator.DraggableLocator());
+    canvas.add( end3, 350,180);
+
+
+    /////////////////////////////////////////////////////////////////////
+	 // THIS IS ONLY FOR THE ARROW AND THE POST-IT
+	 ///////////////////////////////////////////////////////////////////// 
+	 var msg = new draw2d.shape.note.PostIt({text:"Drag&Drop the blue box and notice the label.\nIt sticks always on the top or bottom of the shape."});
+	 canvas.add(msg, 20,20);
+	 
+	 $("body").scrollTop(0)
+	          .scrollLeft(0);
+});
+
+</script>
+
+</head>
+
+<body>
+
+   <div  onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:1500px; height:1500px; ">
+   </div>
+
+</body>
+</html>

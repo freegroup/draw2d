@@ -1,0 +1,100 @@
+﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<title></title>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, , maximum-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-select.css">
+    <link type="text/css" rel="stylesheet" href="./css/example.css" />
+    <link type="text/css" rel="stylesheet" href="../../../css/contextmenu.css" />
+
+    <SCRIPT src="../../../lib/shifty.js"></SCRIPT>
+    <SCRIPT src="../../../lib/raphael.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery-1.12.0.min.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery.autoresize.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery-touch_punch.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery.contextmenu.js"></SCRIPT>
+    <SCRIPT src="../../../lib/rgbcolor.js"></SCRIPT>
+    <SCRIPT src="../../../lib/StackBlur.js"></SCRIPT>
+    <SCRIPT src="../../../lib/canvg.js"></SCRIPT>
+    <SCRIPT src="../../../lib/Class.js"></SCRIPT>
+    <SCRIPT src="../../../lib/json2.js"></SCRIPT>
+    <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
+
+    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+
+    <script src="./lib/bootstrap.min.js"></script>
+    <script src="./lib/bootstrap-select.js"></script>
+
+    <script src="./LabelConnection.js"></script>
+	
+<script type="text/javascript">
+
+$(window).load(function () {
+
+       var draw2DCanvas = new draw2d.Canvas("gfx_holder");
+       draw2DCanvas.setScrollArea($(window));
+
+
+       //Creating Rectangle 1
+       var rect1    = new draw2d.shape.basic.Rectangle({x:50, y:50, width:120,  height:50, bgColor:'#3366FF' });
+       var textFig1 = new draw2d.shape.basic.Label({text:'Step-1', stroke:0});
+
+       var rect2    = new draw2d.shape.basic.Rectangle({x:350, y:350, width:120,  height:50, bgColor:'#3366FF' });
+       var textFig2 = new draw2d.shape.basic.Label({text:'Step-2', stroke:0});
+       
+
+       rect1.createPort("hybrid", new draw2d.layout.locator.BottomLocator(rect1));
+       rect1.add(textFig1, new draw2d.layout.locator.CenterLocator(rect1));
+       insertChildShape(rect1);
+       draw2DCanvas.add(rect1);
+
+
+       
+       rect2.createPort("hybrid", new draw2d.layout.locator.RightLocator(rect2));
+       rect2.add(textFig2, new draw2d.layout.locator.CenterLocator(rect2));
+       insertChildShape(rect2);
+       draw2DCanvas.add(rect2);
+
+       //Creating LabelConnection
+       var c = new LabelConnection({
+           text: "Label Connection",
+           fontSize:16,
+           bgColor:"#eeeeee",
+           source:rect1.getHybridPort(0),
+           target:rect2.getHybridPort(0)
+       });
+       
+       insertChildShape(c.label);
+       draw2DCanvas.add(c);
+
+   });
+
+   function insertChildShape(shapeObj) {
+       var imgGear = new draw2d.shape.icon.Gear({width:20, height:20});
+       shapeObj.add(imgGear, new draw2d.layout.locator.TopLocator(shapeObj));
+
+       //seting Click event on Child Shape
+       imgGear.on("click", function () {
+           alert('Image Shape Clicked');
+       });
+       
+       //seting Click event on Child Shape
+       shapeObj.on("click",function () {
+           alert('Parent Shape Clicked');
+       });
+   }
+
+</script>
+
+</head>
+
+<body>
+
+   <div  onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:1500px; height:1500px; ">
+   </div>
+
+</body>
+</html>

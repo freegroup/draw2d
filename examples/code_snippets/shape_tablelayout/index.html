@@ -1,0 +1,72 @@
+﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<title></title>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link type="text/css" rel="stylesheet" href="./css/example.css" />
+
+    <link type="text/css" rel="stylesheet" href="../../../css/contextmenu.css" />
+
+    <SCRIPT src="../../../lib/shifty.js"></SCRIPT>
+    <SCRIPT src="../../../lib/raphael.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery-1.12.0.min.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery.autoresize.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery-touch_punch.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery.contextmenu.js"></SCRIPT>
+    <SCRIPT src="../../../lib/rgbcolor.js"></SCRIPT>
+    <SCRIPT src="../../../lib/StackBlur.js"></SCRIPT>
+    <SCRIPT src="../../../lib/canvg.js"></SCRIPT>
+    <SCRIPT src="../../../lib/Class.js"></SCRIPT>
+    <SCRIPT src="../../../lib/json2.js"></SCRIPT>
+    <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
+
+    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+
+	<SCRIPT src="TableTestFigure.js"></SCRIPT>
+	
+<script type="text/javascript">
+
+$(window).load(function () {
+
+
+     var canvas = new draw2d.Canvas("gfx_holder");
+
+     var figure = new TableTestFigure({x:100, y:100});
+     canvas.add( figure);
+
+     ///////////////////////////////////////////////////////////////////// 
+     // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
+     ///////////////////////////////////////////////////////////////////// 
+     var msg = new draw2d.shape.note.PostIt({text:"Test page for TableLayout figure a different text length with border-padding"});
+     canvas.add(msg, 20,20);
+
+
+    $('#set-default-name').on('click', function () {
+        figure.setText('Hello World');
+    });
+
+    $('#set-short-name').on('click', function () {
+        figure.setText('Foo');
+    });
+
+    $('#set-long-name').on('click', function () {
+        figure.setText('The quick brown fox jumped over the lazy dog');
+    });
+});
+</script>
+
+</head>
+
+<body>
+<button id="set-default-name">Set Default</button>
+<button id="set-short-name">Set Short Name</button>
+<button id="set-long-name">Set Long Name</button>
+
+<div  oncontextmenu="return false;" onselectstart="javascript:/*IE8 hack*/return false"  id="gfx_holder" style="width:3000px; height:3000px;">
+</div>
+
+
+</body>
+</html>

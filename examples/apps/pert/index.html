@@ -1,0 +1,61 @@
+﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<title></title>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+   <link type="text/css" rel="stylesheet" href="./css/aristo/jquery-ui-1.8.16.custom.css" />
+   <link type="text/css" rel="stylesheet" href="./css/jquery.layout.css" />
+   <link type="text/css" rel="stylesheet" href="./css/application.css" />
+
+    <link type="text/css" rel="stylesheet" href="../../../css/contextmenu.css" />
+
+    <SCRIPT src="../../../lib/shifty.js"></SCRIPT>
+    <SCRIPT src="../../../lib/raphael.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery-1.10.2.min.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery.autoresize.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery-touch_punch.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery.contextmenu.js"></SCRIPT>
+    <SCRIPT src="../../../lib/rgbcolor.js"></SCRIPT>
+    <SCRIPT src="../../../lib/canvg.js"></SCRIPT>
+    <SCRIPT src="../../../lib/Class.js"></SCRIPT>
+    <SCRIPT src="../../../lib/json2.js"></SCRIPT>
+    <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
+
+    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+
+    <SCRIPT src="./lib/jquery.browser.js"></SCRIPT>
+    <SCRIPT src="./lib/jquery-ui-1.8.23.custom.min.js"></SCRIPT>
+    <SCRIPT src="./lib/jquery.layout.js"></SCRIPT>
+	
+
+	<SCRIPT src="./gui/Application.js"></SCRIPT>
+	<SCRIPT src="./gui/View.js"></SCRIPT>
+	<SCRIPT src="./gui/Toolbar.js"></SCRIPT>
+ 
+ <script type="text/javascript">
+
+$(window).load(function () {
+
+      var app  = new example.Application();
+});
+
+</script>
+
+</head>
+
+<body id="container">
+
+   <div id="content">
+   		<div id="toolbar"> <a style="float:right" href="http://en.wikipedia.org/wiki/Program_Evaluation_and_Review_Technique" target="_blank">PERT on wikipedia</a></div>
+   		<div id="canvas" class="" style="width:1500px; height:1500px;-webkit-tap-highlight-color: rgba(0,0,0,0); "></div>
+   </div>
+   
+   <div id="navigation" class="">
+    	<div data-shape="draw2d.shape.pert.Start"     class="palette_node_element draw2d_droppable">Start</div>
+    	<div data-shape="draw2d.shape.pert.Activity"   class="palette_node_element draw2d_droppable">Activity</div>
+   </div>
+   
+</body>
+</html>

@@ -1,0 +1,214 @@
+*
+{
+	font-family:"Open Sans",sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6 
+{
+font-weight: 300;
+}
+
+.btn{
+	border-radius:1px;
+}
+
+tr.success td
+{
+	border-left:2px solid #5292F7;
+	background-color: #EEF4FF !important;
+}
+
+.start{
+	stroke:#e3e3e3;
+	stroke-width:1px;	
+	fill:#33b679;	
+}
+
+.RegExConnection
+{
+	stroke:#00aF26;	
+}
+
+.AutoConnection
+{
+	stroke:#00A1FF;	
+}
+
+table.htCore thead tr th div
+{
+	text-align:left;
+}
+
+#cursorPos{
+	margin: -2px !important;
+}
+
+.palette_node_element
+{
+	cursor:move;
+}
+
+.open_regexpr_editor
+{
+	cursor: pointer;
+	width:16px;
+	height:16px;
+}
+
+.regexeditor_container
+{
+	height:50px;
+	position:relative;
+	border:1px solid gray;
+	overflow:hidden;
+	border-radius: 4px;
+}
+
+.regexeditor_container > *
+{
+	margin:0px;
+	padding:2px;
+	border:0px;
+	font:100% "courier new",monospace;
+	height:50px;
+	width:100%;
+	top:0px;
+	left:0px;
+	position:absolute;
+}
+
+.regexeditor_cursor{
+    background-color:transparent;
+	color:transparent;
+	overflow-y:scroll;
+}
+
+.regexeditor_editor{
+    background-color:transparent;
+	color:transparent;
+	resize:none;
+	overflow-y:scroll;
+}
+
+
+.regexeditor_testinput{
+	resize:none;
+    background-color:transparent;
+}
+
+.regexeditor_result{
+	margin:0px;
+	padding:2px;
+	font:100% "courier new",monospace;
+	height:50px;
+	width:100%;
+	border:1px solid gray;
+}
+
+.variable_container{
+	height:90px;
+	position:relative;
+	border:1px solid gray;
+	overflow:hidden;
+	border-radius: 4px;
+}
+
+.variable_container > *
+{
+	margin:0px;
+	padding:2px;
+	border:0px;
+	font:100% "courier new",monospace;
+	height:90px;
+	width:100%;
+	top:0px;
+	left:0px;
+	position:absolute;
+}
+
+.variable_cursor{
+    background-color:transparent;
+	color:transparent;
+	overflow-y:scroll;
+}
+
+.variable_editor{
+    background-color:transparent;
+	color:transparent;
+	resize:none;
+	overflow-y:scroll;
+}
+
+
+.modal-body
+{
+	min-height:150px;
+}
+
+#loadedFileName
+{
+ display: inline-block;
+ float:right;
+ font-size: 21px;
+ font-weight: 300;
+ line-height: 30px;
+ margin-bottom: 20px;
+ color: #0091E5;	
+}
+
+
+#regexp_mapping
+{
+ min-height:80px;	
+}
+
+#content {
+  padding:15px;
+}
+
+
+#canvas {
+ background-color:#FAFAFA;
+}
+
+#palette{
+}
+
+#editor{
+}
+
+#toolbar{
+  overflow: visible;
+  padding:15px;
+}
+
+#view{
+	 border: 1px solid #1BA1E2;
+}
+
+#title{
+	padding:10px;
+	padding-right:40px;
+}
+
+#myModal{
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Bootstrap override CSS*/
+.control-group{
+    padding: 10px;
+}
+
+.form-horizontal .control-label {
+    width: 80px;
+}
+
+.form-horizontal .controls {
+    margin-left: 100px;
+}
+
+

@@ -1,0 +1,102 @@
+﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<title></title>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link type="text/css" rel="stylesheet" href="./css/example.css" />
+
+    <link type="text/css" rel="stylesheet" href="../../../css/contextmenu.css" />
+
+
+    <SCRIPT src="../../../lib/shifty.js"></SCRIPT>
+    <SCRIPT src="../../../lib/raphael.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery-1.12.0.min.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery.autoresize.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery-touch_punch.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery.contextmenu.js"></SCRIPT>
+    <SCRIPT src="../../../lib/rgbcolor.js"></SCRIPT>
+    <SCRIPT src="../../../lib/StackBlur.js"></SCRIPT>
+    <SCRIPT src="../../../lib/canvg.js"></SCRIPT>
+    <SCRIPT src="../../../lib/Class.js"></SCRIPT>
+    <SCRIPT src="../../../lib/json2.js"></SCRIPT>
+    <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
+
+    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+
+    <SCRIPT src="CardJailhouse.js"></SCRIPT>
+
+    <SCRIPT src="document.json"></SCRIPT>
+
+<script type="text/javascript">
+
+// just for debugging
+var canvas = null;
+var oval =null;
+var circle =null;
+var rect =null;
+var jail =null;
+// end debug variables 
+
+$(window).load(function () {
+
+    
+    // create the canvas for the user interaction
+    //
+    canvas = new draw2d.Canvas("gfx_holder");
+    canvas.installEditPolicy(new draw2d.policy.canvas.FadeoutDecorationPolicy());
+    canvas.installEditPolicy(new draw2d.policy.canvas.ExtendedKeyboardPolicy());
+
+    // install a custom connection create policy
+    //
+    var router = new draw2d.layout.connection.InteractiveManhattanConnectionRouter();
+    canvas.installEditPolicy( new draw2d.policy.connection.ComposedConnectionCreatePolicy(
+       [
+            // create a connection via Drag&Drop of ports
+            //
+            new draw2d.policy.connection.DragConnectionCreatePolicy({
+                createConnection:function(){
+                    return new draw2d.Connection({
+                        radius:3,
+                        stroke:2,
+                        color: "#129CE4",
+                        outlineStroke:1,
+                        outlineColor:"#ffffff",
+                        router: router});
+                }
+            }),
+            // or via click and point
+            //
+            new draw2d.policy.connection.OrthogonalConnectionCreatePolicy({
+                createConnection:function(){
+                    return new draw2d.Connection({
+                        radius:3,
+                        stroke:2,
+                        color: "#129CE4",
+                        outlineStroke:1,
+                        outlineColor:"#ffffff",
+                        router: router});
+                }
+            })
+        ])
+    );
+
+
+    // unmarshal the JSON document into the canvas
+    // (load)
+    var reader = new draw2d.io.json.Reader();
+    reader.unmarshal(canvas, jsonDocument);
+
+});
+
+</script>
+
+</head>
+
+<body>
+<div  onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:3000px; height:3000px; ">
+</div>
+
+</body>
+</html>

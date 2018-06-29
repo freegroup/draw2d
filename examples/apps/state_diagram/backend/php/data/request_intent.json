@@ -1,0 +1,338 @@
+[
+  {
+    "type": "example.shape.Start",
+    "id": "dc1a0681-a414-e274-d38a-89c02d879481",
+    "x": 327,
+    "y": 17,
+    "width": 50,
+    "height": 50,
+    "userData": null,
+    "cssClass": "start"
+  },
+  {
+    "type": "example.shape.Activity",
+    "id": "3c37bd14-3197-bb98-349b-1350a07fba84",
+    "x": 281,
+    "y": 126,
+    "width": 146.3125,
+    "height": 52,
+    "userData": {
+      "activity": "IntentRequestForDay",
+      "mapping": [
+        {
+          "parameterName": "requestedDayStart",
+          "value": "{{when}}"
+        },
+        {
+          "parameterName": "requestedDayEnd"
+        },
+        {
+          "parameterName": "maxResultSize",
+          "value": "1"
+        }
+      ]
+    },
+    "cssClass": "activity",
+    "label": "Request intents for a day"
+  },
+  {
+    "type": "example.shape.Activity",
+    "id": "30a4e7cd-5ca5-f62c-696f-677c7d91bfcf",
+    "x": 508,
+    "y": 371,
+    "width": 137.625,
+    "height": 52,
+    "userData": {
+      "activity": "IntentDeleteFromList",
+      "mapping": [
+        {
+          "parameterName": "indexOfIntent",
+          "value": "{{indexToDelete}}"
+        }
+      ]
+    },
+    "cssClass": "activity",
+    "label": "Delete Intent with index"
+  },
+  {
+    "type": "draw2d.shape.state.State",
+    "id": "91ce7a4f-be84-6e1f-caf6-df52fe85bfd2",
+    "x": 533,
+    "y": 252,
+    "width": 91,
+    "height": 59,
+    "userData": null,
+    "radius": 5,
+    "label": "More Intents"
+  },
+  {
+    "type": "example.shape.Activity",
+    "id": "674841f1-0f84-00a7-d051-28f87c62d32d",
+    "x": 56,
+    "y": 257,
+    "width": 157.640625,
+    "height": 52,
+    "userData": {
+      "activity": "TextResponse_FreeMarker",
+      "mapping": [
+        {
+          "parameterName": "messageTemplate",
+          "value": "Ich konnte für ${requestedDay?date} keine Fahrt finden."
+        }
+      ]
+    },
+    "cssClass": "activity",
+    "label": "No Intent"
+  },
+  {
+    "type": "example.shape.Activity",
+    "id": "7f26bf4a-1508-f600-0aa6-15dd785c65c7",
+    "x": 311,
+    "y": 374,
+    "width": 91,
+    "height": 52,
+    "userData": {
+      "activity": "IntentDelete",
+      "mapping": []
+    },
+    "cssClass": "activity",
+    "label": "Activity"
+  },
+  {
+    "type": "example.shape.Activity",
+    "id": "1c0fa11d-df5b-07ef-d1d5-58d4ad636b6d",
+    "x": 276,
+    "y": 259,
+    "width": 157.640625,
+    "height": 52,
+    "userData": {
+      "activity": "TextResponse_FreeMarker",
+      "mapping": [
+        {
+          "parameterName": "messageTemplate",
+          "value": "Ich habe eine Fahrt um ${selectedIntent.earliestDeparture?time} gefunden."
+        }
+      ]
+    },
+    "cssClass": "activity",
+    "label": "One Intent"
+  },
+  {
+    "type": "example.shape.RegExConnection",
+    "id": "b708489f-958e-034b-1e03-6db172c124ac",
+    "userData": [
+      {
+        "regexpr": "(?:habe ich ){0,1}(.*) eine fah.*",
+        "defaultAnswer": "Ich konnte keine Fahrt für diesen Tag finden",
+        "test": "habe ich am freitag eine fahrt",
+        "mapping": [
+          {
+            "variable": "when"
+          },
+          {}
+        ]
+      },
+      {
+        "regexpr": "",
+        "defaultAnswer": null,
+        "test": null,
+        "mapping": [
+          {}
+        ]
+      }
+    ],
+    "cssClass": "RegExConnection",
+    "stroke": 2,
+    "color": "#303030",
+    "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+    "router": "draw2d.layout.connection.FanConnectionRouter",
+    "source": {
+      "node": "dc1a0681-a414-e274-d38a-89c02d879481",
+      "port": "output0"
+    },
+    "target": {
+      "node": "3c37bd14-3197-bb98-349b-1350a07fba84",
+      "port": "hybrid0"
+    },
+    "label": null
+  },
+  {
+    "type": "example.shape.RegExConnection",
+    "id": "1f467f61-2f2e-906b-4043-dcd682de68c9",
+    "userData": [
+      {
+        "regexpr": "lösche (?:den|die) ([1-9])[.,!]*",
+        "defaultAnswer": "",
+        "test": "lösche die 1.",
+        "mapping": [
+          {
+            "variable": "indexToDelete"
+          },
+          {}
+        ]
+      },
+      {
+        "regexpr": null,
+        "defaultAnswer": null,
+        "test": null,
+        "mapping": null
+      }
+    ],
+    "cssClass": "RegExConnection",
+    "stroke": 2,
+    "color": "#303030",
+    "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+    "router": "draw2d.layout.connection.FanConnectionRouter",
+    "source": {
+      "node": "91ce7a4f-be84-6e1f-caf6-df52fe85bfd2",
+      "port": "hybrid0"
+    },
+    "target": {
+      "node": "30a4e7cd-5ca5-f62c-696f-677c7d91bfcf",
+      "port": "hybrid0"
+    },
+    "label": null
+  },
+  {
+    "type": "example.shape.AutoConnection",
+    "id": "2c9418f2-8c48-4d05-d869-f75b78ff19ae",
+    "userData": {
+      "condition": "IsNotNull",
+      "variable": "selectedIntent",
+      "defaultAnswer": "Ich habe einen Gefunden. {{selectedIntents}}"
+    },
+    "cssClass": "AutoConnection",
+    "stroke": 2,
+    "color": "#1B1B1B",
+    "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+    "router": "draw2d.layout.connection.FanConnectionRouter",
+    "source": {
+      "node": "3c37bd14-3197-bb98-349b-1350a07fba84",
+      "port": "hybrid0"
+    },
+    "target": {
+      "node": "1c0fa11d-df5b-07ef-d1d5-58d4ad636b6d",
+      "port": "hybrid0"
+    },
+    "label": null
+  },
+  {
+    "type": "example.shape.AutoConnection",
+    "id": "29f49b08-87e7-cfae-58d2-bbca90c80e51",
+    "userData": {
+      "condition": "IsNotNull",
+      "variable": "selectedIntents",
+      "defaultAnswer": "Viele Gefunden"
+    },
+    "cssClass": "AutoConnection",
+    "stroke": 2,
+    "color": "#1B1B1B",
+    "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+    "router": "draw2d.layout.connection.FanConnectionRouter",
+    "source": {
+      "node": "3c37bd14-3197-bb98-349b-1350a07fba84",
+      "port": "hybrid0"
+    },
+    "target": {
+      "node": "91ce7a4f-be84-6e1f-caf6-df52fe85bfd2",
+      "port": "hybrid0"
+    },
+    "label": null
+  },
+  {
+    "type": "example.shape.AutoConnection",
+    "id": "87c50188-192a-f9d0-21ed-cfca7c3cb0ae",
+    "userData": {
+      "condition": "IsFalse",
+      "variable": "activityResult",
+      "defaultAnswer": "Keine Fahrten gefunden für {{when}}"
+    },
+    "cssClass": "AutoConnection",
+    "stroke": 2,
+    "color": "#1B1B1B",
+    "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+    "router": "draw2d.layout.connection.FanConnectionRouter",
+    "source": {
+      "node": "3c37bd14-3197-bb98-349b-1350a07fba84",
+      "port": "hybrid0"
+    },
+    "target": {
+      "node": "674841f1-0f84-00a7-d051-28f87c62d32d",
+      "port": "hybrid0"
+    },
+    "label": null
+  },
+  {
+    "type": "example.shape.RegExConnection",
+    "id": "69d33e35-0865-83a2-cc35-c77df5d9ddf8",
+    "userData": [
+      {
+        "regexpr": "und (.*)",
+        "defaultAnswer": "",
+        "test": "und übermorgen",
+        "mapping": [
+          {
+            "variable": "when"
+          },
+          {}
+        ]
+      },
+      {
+        "regexpr": null,
+        "defaultAnswer": null,
+        "test": null,
+        "mapping": [
+          {}
+        ]
+      }
+    ],
+    "cssClass": "RegExConnection",
+    "stroke": 2,
+    "color": "#303030",
+    "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+    "router": "draw2d.layout.connection.FanConnectionRouter",
+    "source": {
+      "node": "674841f1-0f84-00a7-d051-28f87c62d32d",
+      "port": "hybrid0"
+    },
+    "target": {
+      "node": "3c37bd14-3197-bb98-349b-1350a07fba84",
+      "port": "hybrid0"
+    },
+    "label": null
+  },
+  {
+    "type": "example.shape.RegExConnection",
+    "id": "a8cba57f-38d9-e0d4-92cd-19894672191f",
+    "userData": [
+      {
+        "regexpr": "lösch",
+        "defaultAnswer": "",
+        "test": "lösche diese",
+        "mapping": [
+          {}
+        ]
+      },
+      {
+        "regexpr": null,
+        "defaultAnswer": null,
+        "test": null,
+        "mapping": null
+      }
+    ],
+    "cssClass": "RegExConnection",
+    "stroke": 2,
+    "color": "#303030",
+    "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+    "router": "draw2d.layout.connection.FanConnectionRouter",
+    "source": {
+      "node": "1c0fa11d-df5b-07ef-d1d5-58d4ad636b6d",
+      "port": "hybrid0"
+    },
+    "target": {
+      "node": "7f26bf4a-1508-f600-0aa6-15dd785c65c7",
+      "port": "hybrid0"
+    },
+    "label": null
+  }
+]

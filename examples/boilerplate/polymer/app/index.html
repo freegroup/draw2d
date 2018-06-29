@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Polymer Draw2D WebApp</title>
+<meta name="description" content="">
+<meta name="viewport"
+	content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+<!-- build:css styles/main.css -->
+<link rel="stylesheet" href="styles/main.css">
+<!-- endbuild-->
+
+<script src="bower_components/platform/platform.js"></script>
+
+<!-- build:vulcanized elements/elements.vulcanized.html -->
+<link rel="import" href="elements/elements.html">
+<!-- endbuild-->
+</head>
+
+<body unresolved fullbleed  vertical layout>
+	<template is="auto-binding"> 
+	
+	<core-scaffold id="scaffold">
+
+	<nav>
+		<core-toolbar> <span>Draw2D & Polymer</span> </core-toolbar>
+		<core-menu valueattr="hash"  selected="{{route}}"> 
+			<template repeat="{{page in pages}}"> 
+				<paper-item label="{{page.name}}" hash="{{page.hash}}"> <a href="#{{page.hash}}"></a>
+				</paper-item> 
+			</template> 
+		</core-menu>
+	</nav>
+
+	<core-toolbar tool flex>
+	<div flex>{{selectedPage.page.label}}</div>
+
+	</core-toolbar>
+
+	<div layout horizontal center-center fit>
+	
+		<core-animated-pages id="pages" selected="{{route}}" valueattr="hash" transitions="slide-from-right" on-tap="{{cyclePages}}">
+		<template repeat="{{page in pages}}">
+
+		      <draw2d-canvas  hash="{{page.hash}}"></draw2d-canvas>
+
+		</template>
+		  
+
+		</core-animated-pages>
+	</div>
+
+	</core-scaffold> 
+	</template>
+	<!-- build:js scripts/app.js --> 
+	<script src="scripts/app.js"></script>
+	<!-- endbuild--> 
+</body>
+
+</html>

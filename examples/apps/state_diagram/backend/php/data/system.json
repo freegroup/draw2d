@@ -1,0 +1,239 @@
+[
+  {
+    "type": "example.shape.Start",
+    "id": "d3af5eb5-5c47-2367-688e-17893acde77c",
+    "x": 299,
+    "y": 45,
+    "width": 50,
+    "height": 50,
+    "userData": null,
+    "cssClass": "start"
+  },
+  {
+    "type": "example.shape.Activity",
+    "id": "61342d94-189e-503d-b70b-203b704f2575",
+    "x": 553,
+    "y": 190,
+    "width": 109,
+    "height": 54.03125,
+    "userData": {
+      "activity": "ReloadDefinitions",
+      "mapping": []
+    },
+    "cssClass": "activity",
+    "label": "Reboot"
+  },
+  {
+    "type": "draw2d.shape.state.End",
+    "id": "047ebb07-69d0-91dc-9e04-6d9d24127b25",
+    "x": 306,
+    "y": 432,
+    "width": 50,
+    "height": 50,
+    "userData": null,
+    "cssClass": "draw2d_shape_state_End"
+  },
+  {
+    "type": "draw2d.shape.state.State",
+    "id": "de443e38-484f-6d1c-b373-c7dcbf6ea86d",
+    "x": 250,
+    "y": 159,
+    "width": 147,
+    "height": 60.015625,
+    "userData": null,
+    "cssClass": "draw2d_shape_state_State",
+    "radius": 5,
+    "label": "prompt for confirm reboot"
+  },
+  {
+    "type": "example.shape.Activity",
+    "id": "aa9cadbe-70c4-325f-0dff-71c6ee6a6ee9",
+    "x": 540,
+    "y": 433,
+    "width": 91,
+    "height": 54.03125,
+    "userData": {
+      "activity": "NOP",
+      "mapping": []
+    },
+    "cssClass": "activity",
+    "label": "Activity"
+  },
+  {
+    "type": "example.shape.RegExConnection",
+    "id": "fc8097a8-9828-1637-480b-1a66841ab096",
+    "userData": [
+      {
+        "regexpr": "(reload)$",
+        "defaultAnswer": "wirklich?",
+        "test": "reload",
+        "mapping": [
+          {
+            "variable": "firstCommand"
+          },
+          {}
+        ]
+      },
+      {
+        "regexpr": "reboot",
+        "defaultAnswer": "rebooten?",
+        "test": "",
+        "mapping": [
+          {}
+        ]
+      },
+      {
+        "regexpr": null,
+        "defaultAnswer": null,
+        "test": null,
+        "mapping": []
+      }
+    ],
+    "cssClass": "RegExConnection",
+    "stroke": 2,
+    "color": "#303030",
+    "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+    "router": "draw2d.layout.connection.FanConnectionRouter",
+    "source": {
+      "node": "d3af5eb5-5c47-2367-688e-17893acde77c",
+      "port": "output0"
+    },
+    "target": {
+      "node": "de443e38-484f-6d1c-b373-c7dcbf6ea86d",
+      "port": "hybrid0"
+    },
+    "label": null
+  },
+  {
+    "type": "example.shape.RegExConnection",
+    "id": "089e3c4c-0185-c1b9-d6d1-22f0c48c1017",
+    "userData": [
+      {
+        "regexpr": "ja{0,1}|y(?:es){0,1} (sofort)*",
+        "defaultAnswer": "Reload wurde durchgeführt",
+        "test": "yes sofort",
+        "mapping": [
+          {
+            "variable": "wann"
+          },
+          {}
+        ]
+      },
+      {
+        "regexpr": "",
+        "defaultAnswer": null,
+        "mapping": []
+      }
+    ],
+    "cssClass": "RegExConnection",
+    "stroke": 2,
+    "color": "#303030",
+    "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+    "router": "draw2d.layout.connection.FanConnectionRouter",
+    "source": {
+      "node": "de443e38-484f-6d1c-b373-c7dcbf6ea86d",
+      "port": "hybrid0"
+    },
+    "target": {
+      "node": "61342d94-189e-503d-b70b-203b704f2575",
+      "port": "hybrid0"
+    },
+    "label": null
+  },
+  {
+    "type": "example.shape.RegExConnection",
+    "id": "44f2208d-8a10-dabc-c9a4-8f10119ec619",
+    "userData": [
+      {
+        "regexpr": "n(o){0,1}|n(ein){0,1}",
+        "defaultAnswer": "Abbruch des reload",
+        "test": "no",
+        "mapping": [
+          {
+            "variable": "ooo"
+          },
+          {}
+        ]
+      },
+      {
+        "regexpr": null,
+        "defaultAnswer": null,
+        "mapping": []
+      }
+    ],
+    "cssClass": "RegExConnection",
+    "stroke": 2,
+    "color": "#303030",
+    "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+    "router": "draw2d.layout.connection.FanConnectionRouter",
+    "source": {
+      "node": "de443e38-484f-6d1c-b373-c7dcbf6ea86d",
+      "port": "hybrid0"
+    },
+    "target": {
+      "node": "047ebb07-69d0-91dc-9e04-6d9d24127b25",
+      "port": "input0"
+    },
+    "label": null
+  },
+  {
+    "type": "example.shape.RegExConnection",
+    "id": "ae034be8-70e6-cd4a-ec2f-f3c7cadb08c1",
+    "userData": [
+      {
+        "regexpr": "",
+        "defaultAnswer": "",
+        "test": "",
+        "mapping": [
+          {}
+        ]
+      }
+    ],
+    "cssClass": "RegExConnection",
+    "stroke": 2,
+    "color": "#303030",
+    "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+    "router": "draw2d.layout.connection.FanConnectionRouter",
+    "source": {
+      "node": "61342d94-189e-503d-b70b-203b704f2575",
+      "port": "hybrid0"
+    },
+    "target": {
+      "node": "aa9cadbe-70c4-325f-0dff-71c6ee6a6ee9",
+      "port": "hybrid0"
+    },
+    "label": null
+  },
+  {
+    "type": "example.shape.RegExConnection",
+    "id": "33f9e7ec-33a6-bf28-7a4e-f50d87085f2c",
+    "userData": [
+      {
+        "regexpr": ".*",
+        "defaultAnswer": "",
+        "test": "",
+        "mapping": []
+      },
+      {
+        "regexpr": null,
+        "defaultAnswer": null,
+        "test": null,
+        "mapping": null
+      }
+    ],
+    "cssClass": "RegExConnection",
+    "stroke": 2,
+    "color": "#303030",
+    "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+    "router": "draw2d.layout.connection.FanConnectionRouter",
+    "source": {
+      "node": "aa9cadbe-70c4-325f-0dff-71c6ee6a6ee9",
+      "port": "hybrid0"
+    },
+    "target": {
+      "node": "047ebb07-69d0-91dc-9e04-6d9d24127b25",
+      "port": "input0"
+    },
+    "label": null
+  }
+]

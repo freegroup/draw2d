@@ -1,0 +1,66 @@
+﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<title></title>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+   <link type="text/css" rel="stylesheet" href="./css/aristo/jquery-ui-1.8.16.custom.css" />
+   <link type="text/css" rel="stylesheet" href="./css/jquery.layout.css" />
+   <link type="text/css" rel="stylesheet" href="./css/application.css" />
+
+    <link type="text/css" rel="stylesheet" href="../../../css/contextmenu.css" />
+
+    <SCRIPT src="../../../lib/shifty.js"></SCRIPT>
+    <SCRIPT src="../../../lib/raphael.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery-1.12.0.min.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery.autoresize.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery-touch_punch.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery.contextmenu.js"></SCRIPT>
+    <SCRIPT src="../../../lib/rgbcolor.js"></SCRIPT>
+    <SCRIPT src="../../../lib/StackBlur.js"></SCRIPT>
+    <SCRIPT src="../../../lib/canvg.js"></SCRIPT>
+    <SCRIPT src="../../../lib/Class.js"></SCRIPT>
+    <SCRIPT src="../../../lib/json2.js"></SCRIPT>
+    <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
+
+    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+
+    <SCRIPT src="./lib/jquery.browser.js"></SCRIPT>
+    <SCRIPT src="./lib/jquery-ui-1.8.23.custom.min.js"></SCRIPT>
+    <SCRIPT src="./lib/jquery.layout.js"></SCRIPT>
+
+
+	<SCRIPT src="./gui/Application.js"></SCRIPT>
+	<SCRIPT src="./gui/Toolbar.js"></SCRIPT>
+
+	<SCRIPT src="./document.json"></SCRIPT>
+ 
+<script type="text/javascript">
+
+$(window).load(function () {
+
+    
+    var app  = new example.Application();
+    app.load(jsonDocument);
+
+    var msg = new draw2d.shape.note.PostIt({text:"You can install different selection policy into the canvas.Multi selection, single selection, \npanning or just a readOnly policy to avoid model modifications"});
+    app.view.add(msg, 20,10);
+});
+
+</script>
+
+</head>
+
+<body id="container">
+	<div id="toolbar">
+	   <div id="radio">
+    	    <input type="radio" id="radio1" name="radio" data-policy="draw2d.policy.canvas.BoundingboxSelectionPolicy"  checked="checked" /><label for="radio1">Multiple Selection</label>
+        	<input type="radio" id="radio2" name="radio" data-policy="draw2d.policy.canvas.SingleSelectionPolicy"/><label for="radio2">Single Selection</label>
+        	<input type="radio" id="radio3" name="radio" data-policy="draw2d.policy.canvas.PanningSelectionPolicy" /><label for="radio3">Panning</label>
+        	<input type="radio" id="radio4" name="radio" data-policy="draw2d.policy.canvas.ReadOnlySelectionPolicy"/><label for="radio4">ReadOnly</label>
+	    </div>
+    </div>
+	<div id="canvas" class="" style="width:3000px; height:3000px;"></div>
+</body>
+</html>

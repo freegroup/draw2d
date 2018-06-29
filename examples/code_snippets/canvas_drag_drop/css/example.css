@@ -1,0 +1,24 @@
+body{
+ background: transparent url(background.png);
+ margin:0px;
+ width:100%;
+ height:100%;
+ overflow:hidden;
+}
+
+
+#container1{
+ width:50%;
+ height:100%;
+ overflow:scroll;
+ position:absolute;
+}
+
+#container2{
+ left:50%;
+ width:50%;
+ height:100%;
+ overflow:scroll;
+ position:absolute;
+}
+
