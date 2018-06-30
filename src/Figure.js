@@ -7,6 +7,8 @@
  */
 
 import draw2d from 'packages';
+import jsonUtil from 'util/JSONUtil';
+import UUID from 'util/UUID';
 
 draw2d.Figure = Class.extend({
 
@@ -82,7 +84,7 @@ draw2d.Figure = Class.extend({
         var _this = this;
 
         // all figures has an unique id. Required for figure get and persistence storage
-        this.id = draw2d.util.UUID.create();
+        this.id = UUID.create();
 
         // required for the SelectionEditPolicy to indicate the type of figure
         // which the user clicks
@@ -266,26 +268,26 @@ draw2d.Figure = Class.extend({
      * @experimental
      * @returns
      **/
-    attr: function(name, value){
-        var _this = this;
-        var orig = this.repaintBlocked;
+    attr: function(name, value) {
+        let _this = this
+        let orig = this.repaintBlocked
 
         try{
             // call of attr as setter method with {name1:val1, name2:val2 }  argument list
             //
             if($.isPlainObject(name)){
-                for(var key in name){
+                for(let key in name){
                     // user can set the "userData" with path notation. In this case we
                     // expand the path to a real JSON object and set the data.
                     // index/brackets are allowed too.
                     //
                     if(key.substring(0,9)==="userData."){
                         if(this.userData===null){this.userData={};}
-                        draw2d.util.JSON.set({userData:this.userData}, key, name[key]);
+                        jsonUtil.set({userData:this.userData}, key, name[key]);
                         this.fireEvent("change:"+key,{value:name[key]});
                     }
                     else{
-                        var func=this.setterWhitelist[key];
+                        let func=this.setterWhitelist[key];
                         if(func){
                             func.call(this,name[key]);
                         }
@@ -307,15 +309,15 @@ draw2d.Figure = Class.extend({
             else if(typeof name === "string"){
                 // call attr as getter
                 //
-                if(typeof value ==="undefined"){
+                if(typeof value === "undefined"){
                     var getter = this.getterWhitelist[name];
-                    if($.isFunction(getter)){
+                    if(typeof getter === "function"){
                         return getter.call(this);
                     }
                     // or it is a userData path notation like "userData.any.path.value"
                     else if(name.substring(0,9)==="userData."){
                         var data = {userData:this.userData};
-                        return draw2d.util.JSON.get(data, name);
+                        return jsonUtil.get(data, name);
                     }
                     return; // undefined
                 }
@@ -328,7 +330,7 @@ draw2d.Figure = Class.extend({
                 }
                 if(name.substring(0,9)==="userData."){
                     if(this.userData===null){this.userData={};}
-                    draw2d.util.JSON.set({userData:this.userData}, name, value);
+                    jsonUtil.set({userData:this.userData}, name, value);
                     this.fireEvent("change:"+name,{value:value});
                 }
                 else{
@@ -339,17 +341,21 @@ draw2d.Figure = Class.extend({
             // may it is a array of attributes used for the getter
             //
             else if($.isArray(name)){
-                result = {};
+              result = {};
+              $.each(name,(_, entry)=>{
+                result[entry] = _this.attr(entry);
+              });
+              console.log(result);
 
-                $.each(name,function(index, entry){
-                    result[entry] = _this.attr(entry);
-                });
-                return result;
+
+              console.log(Object.assign({}, ...Object.keys(name).map(k => ({[k]: _this.attr(k)}))));
+
+              return Object.assign({}, ...Object.keys(name).map(k => ({[k]: _this.attr(k)})));
             }
             // generic getter of all registered attributes
             else if(typeof name === "undefined"){
-            	var result = {};
-            	for(key in this.getterWhitelist){
+            	let result = {};
+            	for(let key in this.getterWhitelist){
              		result[key] = this.getterWhitelist[key].call(this);
             	}
             	return result;
@@ -368,8 +374,8 @@ draw2d.Figure = Class.extend({
      * @deprecated
      */
     pick: function(obj, var_keys) {
-        var keys = typeof arguments[1] !== 'string' ? arguments[1] : Array.prototype.slice.call(arguments, 1);
-        var out = {}, key;
+        let keys = typeof arguments[1] !== 'string' ? arguments[1] : Array.prototype.slice.call(arguments, 1);
+        let out = {}, key;
         for (key in keys) {
             if(typeof obj[key] !== "undefined")
                 out[key] = obj[key];
@@ -391,7 +397,7 @@ draw2d.Figure = Class.extend({
 
         // apply all EditPolicy for select Operations
         //
-        var _this=this;
+        let _this=this;
         this.editPolicy.each(function(i,e){
               if(e instanceof draw2d.policy.figure.SelectionPolicy){
                   e.onSelect(_this.canvas, _this,asPrimarySelection);
@@ -1171,7 +1177,7 @@ draw2d.Figure = Class.extend({
          // Only apply attributes which has changed. This ends in a big performance improvement
          // because the raphael shape isn't redraw at all.
          //
-         attributes = draw2d.util.JSON.flatDiff(attributes, this.lastAppliedAttributes);
+         attributes = jsonUtil.flatDiff(attributes, this.lastAppliedAttributes);
          this.lastAppliedAttributes= attributes;
 
 

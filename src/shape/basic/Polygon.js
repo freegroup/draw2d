@@ -1,31 +1,34 @@
 /**
  * @class draw2d.shape.basic.Polygon
  * A Polygon figure.
- * 
+ *
  * See the example:
  *
  *     @example preview small frame
- *     
+ *
  *     var p1 =  new draw2d.shape.basic.Polygon({width:100, height:100});
  *     var p2 =  new draw2d.shape.basic.Polygon({width:100, height:60});
- *     
+ *
  *     canvas.add(p1,10,10);
  *     canvas.add(p2,100,10);
- *     
+ *
  *     p2.attr({color:"#f0f000", alpha:0.7});
- *     
+ *
  *     canvas.setCurrentSelection(p2);
- *     
+ *
  * @author Andreas Herz
  * @extends draw2d.VectorFigure
- */ import draw2d from '../../packages';
+ */
+
+import draw2d from '../../packages';
+
 draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
-    
+
     NAME: "draw2d.shape.basic.Polygon",
-    
+
     /**
      * @constructor
-     * 
+     *
      * @param {Object} [attr] the configuration of the shape
      */
     init: function(attr, setter, getter )
@@ -55,17 +58,17 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
 
         this.installEditPolicy(new draw2d.policy.figure.VertexSelectionFeedbackPolicy());
     },
-    
+
     /**
      * @inheritdoc
      */
      setRadius: function(radius)
      {
         this.svgPathString =null;
-        
+
         this._super(radius);
         this.fireEvent("change:radius",{value:radius});
-        
+
         return this;
     },
 
@@ -81,7 +84,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
     /**
      * @method
      * calculate the path of the polygon
-     * 
+     *
      */
     calculatePath: function()
     {
@@ -123,7 +126,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
         this.svgPathString = path.join("");
         return this;
     },
-    
+
 
     /**
      * @inheritdoc
@@ -137,10 +140,10 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
         if(this.svgPathString===null){
             this.calculatePath();
         }
-        
+
         attributes= attributes || {};
 
-        draw2d.util.JSON.ensureDefault(attributes,"path" ,this.svgPathString);
+        JSON.ensureDefault(attributes,"path" ,this.svgPathString);
 
         this._super(attributes);
     },
@@ -199,11 +202,11 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
 
         return this;
     },
-  
+
     /**
      * @method
      * Change the position of the polygon. This method updates all vertices.
-     * 
+     *
      * @param {Number|draw2d.geo.Point} x
      * @param {Number} y
      */
@@ -219,13 +222,13 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
         var dy = y-this.minY;
 
         this.translate(dx,dy);
-        
+
         this.x = x;
         this.y = y;
 
         return this;
     },
-    
+
     /**
      * @inheritdoc
      */
@@ -233,12 +236,12 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
     {
         var oldWidth = this.width;
         var oldHeight= this.height;
-        
+
         this._super(w,h);
-        
+
         var fracWidth  = (1/oldWidth)*this.width;
         var fracHeight = (1/oldHeight)*this.height;
-        
+
         var thisX = this.x;
         var thisY = this.y;
         this.vertices.each(function(i,e){
@@ -251,21 +254,21 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
         this.svgPathString = null;
         this.repaint();
         this.fireEvent("change:dimension",{value:{width:this.width, height:this.height}});
-        
+
         return this;
     },
-    
+
     /**
      * @method
      * Return all vertices of the polygon.
-     * 
+     *
      * @returns {draw2d.util.ArrayList}
      */
     getVertices: function()
     {
         return this.vertices;
     },
-    
+
 
     /**
      * @method
@@ -283,12 +286,12 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
     resetVertices: function()
     {
         this.vertices = new draw2d.util.ArrayList();
-        
+
         this.svgPathString = null;
         this.repaint();
 
         this.updateBoundingBox();
-        
+
         var _this = this;
         this.editPolicy.each(function(i, e) {
             if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
@@ -296,12 +299,12 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
             }
         });
     },
-    
+
     /**
      * @method
-     * Update the vertex at the given index. The method call didn't have any effect 
+     * Update the vertex at the given index. The method call didn't have any effect
      * if the vertex didn't exists.
-     * 
+     *
      * @param {Number} index
      * @param {Number} x
      * @param {Number} y
@@ -318,12 +321,12 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
 
         vertex.x = parseFloat(x);
         vertex.y = parseFloat(y);
-        
+
         this.svgPathString = null;
         this.repaint();
 
         this.updateBoundingBox();
-        
+
         var _this = this;
         this.editPolicy.each(function(i, e) {
             if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
@@ -334,23 +337,23 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
 
         return this;
     },
-    
+
     /**
      * @method
      * Append a new vertex to the polygon.
-     * 
+     *
      * @param {Number | draw2d.geo.Point} x
      * @param {Number} [y]
      */
     addVertex: function( x, y)
     {
         this.vertices.add(new draw2d.geo.Point(x,y));
-      
+
         this.svgPathString = null;
         this.repaint();
 
         this.updateBoundingBox();
-        
+
         var _this = this;
         this.editPolicy.each(function(i, e) {
             if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
@@ -364,9 +367,9 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
 
     /**
      * @method
-     * Insert a new vertex at the given index. All vertices will be shifted to 
+     * Insert a new vertex at the given index. All vertices will be shifted to
      * free the requested index.
-     * 
+     *
      * @param {Number} index
      * @param {Number} x
      * @param {Number} y
@@ -374,12 +377,12 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
     insertVertexAt: function(index, x, y)
     {
         this.vertices.insertElementAt(new draw2d.geo.Point(x,y),index);
-        
+
         this.svgPathString = null;
         this.repaint();
 
         this.updateBoundingBox();
-        
+
         if(!this.selectionHandles.isEmpty()){
             var _this = this;
 	        this.editPolicy.each(function(i, e) {
@@ -398,9 +401,9 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
     /**
      * @method
      * Remove a vertex from the polygon and return the removed point.
-     * 
+     *
      * @param {Number} index
-     * 
+     *
      * @returns {draw2d.geo.Point} the removed vertex
      */
     removeVertexAt: function(index)
@@ -410,14 +413,14 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
         if(this.vertices.getSize()<=3){
             return null;
         }
-        
+
         var vertex = this.vertices.removeElementAt(index);
-        
+
         this.svgPathString = null;
         this.repaint();
 
         this.updateBoundingBox();
-        
+
         if(!this.selectionHandles.isEmpty()){
             var _this = this;
 	        this.editPolicy.each(function(i, e) {
@@ -431,20 +434,20 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
 
         return vertex;
     },
-    
 
-    
+
+
     /**
      * @inheritdoc
      */
     setRotationAngle: function(angle)
     {
         this.rotationAngle = 360%angle;
-        
+
         // The different to the other figures is, the the vertices must rotated instead of
-        // transform the shape with SVG matrix. 
+        // transform the shape with SVG matrix.
         //
-        // Reason: the vertices are selectable and in this case the coordinates must transform 
+        // Reason: the vertices are selectable and in this case the coordinates must transform
         //         and not only the resulting SVG shape.
         //
         var radian =  angle / (180/Math.PI);
@@ -455,15 +458,15 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
                 return {x: (x - xm) * cos(radian) - (y - ym) * sin(radian)   + xm,
                         y: (x - xm) * sin(radian) + (y - ym) * cos(radian)   + ym};
         };
-        
+
         this.vertices.each(function(i,e){
             var rot =rotate(e.x,e.y,center.x,center.y,radian);
             e.setPosition(rot.x,rot.y);
         });
-        
+
         this.updateBoundingBox();
 
-        
+
         // Update the resize handles if the user change the position of the element via an API call.
         //
         var _this = this;
@@ -483,7 +486,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
      * @method
      * Calculate the bounding box of the shape and store them in an internal
      * variable for fast access.
-     * 
+     *
      * @private
      */
     updateBoundingBox: function()
@@ -503,40 +506,40 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
             this.height= this.maxY - this.minY;
         }
     },
-    
-    
+
+
     /**
      * @inheritdoc
      */
     createCommand: function(request)
     {
- 
+
       if(request.getPolicy() === draw2d.command.CommandType.MOVE_VERTEX){
           if(this.isResizeable()===true){
               return new draw2d.command.CommandMoveVertex(this);
             }
       }
-    
+
       return this._super(request);
     },
-   
-    
+
+
     /**
      * @inheritdoc
      */
     getPersistentAttributes: function()
-    {   
+    {
         var memento = this._super();
-        
+
         memento.vertices = [];
 
         this.vertices.each(function(i,e){
             memento.vertices.push({x:e.x, y:e.y});
         });
- 
+
         return memento;
     },
-    
+
     /**
      * @inheritdoc
      */

@@ -6,6 +6,7 @@
  * @author Andreas Herz
  */
 import draw2d from '../../packages';
+import Color  from '../../util/Color'
 
 
 draw2d.decoration.connection.Decorator = Class.extend({
@@ -31,8 +32,8 @@ draw2d.decoration.connection.Decorator = Class.extend({
             this.height = height;
         }
 
-		this.color = new draw2d.util.Color(0, 0, 0);
-		this.backgroundColor = new  draw2d.util.Color(250, 250, 250);
+		this.color = new Color(0, 0, 0);
+		this.backgroundColor = new  Color(250, 250, 250);
 	},
 
 	/**
@@ -69,7 +70,7 @@ draw2d.decoration.connection.Decorator = Class.extend({
 	 * @param {draw2d.util.Color|String} c
 	 */
 	setColor: function(c) {
-		this.color = new draw2d.util.Color(c);
+		this.color = new Color(c);
 
 		return this;
 	},
@@ -81,7 +82,7 @@ draw2d.decoration.connection.Decorator = Class.extend({
 	 * @param {draw2d.util.Color|String} c
 	 */
 	setBackgroundColor: function(c) {
-		this.backgroundColor = new draw2d.util.Color(c);
+		this.backgroundColor = new Color(c);
 
 		return this;
 	},

@@ -1,7 +1,7 @@
 
 /**
  * @class draw2d.shape.basic.PolyLine
- * 
+ *
  * A PolyLine is a line with more than 2 points.
  *
  *
@@ -17,15 +17,18 @@
  * @inheritable
  * @author Andreas Herz
  * @extends draw2d.shape.basic.Line
- */ import draw2d from '../../packages';
+ */
+import draw2d from '../../packages';
+import jsonUtil from '../../util/JSONUtil';
+
 draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
-    
+
 	NAME : "draw2d.shape.basic.PolyLine",
-	
+
     /**
      * @constructor
      * Creates a new figure element which are not assigned to any canvas.
-     * 
+     *
      * @param {Object} [attr] the configuration of the shape
      */
     init: function( attr, setter, getter )
@@ -34,7 +37,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
       //
       this.svgPathString = null;
       this.oldPoint=null;
-    
+
       this.router = null;
       this.routingRequired = true;
       this.lineSegments = new draw2d.util.ArrayList();
@@ -58,11 +61,11 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
         }, getter)
       );
     },
-    
+
     /**
      * @method
-     * Sets the corner radius of the edges. 
-     * 
+     * Sets the corner radius of the edges.
+     *
      * @param {Number} radius the corner radius
      * @since 4.2.1
      */
@@ -72,14 +75,14 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
         this.svgPathString =null;
         this.repaint();
         this.fireEvent("change:radius",{value:this.radius});
-        
+
         return this;
     },
-    
+
     /**
      * @method
      * Get the corner radius of the edges.
-     * 
+     *
      * @return {Number}
      * @since 4.2.1
      */
@@ -87,8 +90,8 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
     {
         return this.radius;
     },
-    
-    
+
+
     /**
      * @method
      * Set the start point of the line.
@@ -118,14 +121,14 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
 		});
 
         this.fireEvent("change:start",{value:this.start});
-		
+
 		return this;
     },
 
     /**
      * @method
 	 * Set the end point of the line.
-	 * 
+	 *
 	 * @param {Number} x the x coordinate of the end point
 	 * @param {Number} y the y coordinate of the end point
 	 */
@@ -151,27 +154,27 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
             }
         });
         this.fireEvent("change:end",{value:this.end});
-        
+
         return this;
     },
 
     /**
      * @method
      * Inserts the draw2d.geo.Point object into the vertex list of the polyline just after the object with the given index.
-     *  
+     *
      * @param {Number} index the insert index
      * @param {Number|draw2d.geo.Point} x the x coordinate or the draw2d.geo.Point object
      * @param {Number} [y] the y coordinate or undefined of the second argument is a point
-     * 
+     *
      * @since 4.0.0
      */
     addVertex: function(x, y)
     {
         this.vertices.add(new draw2d.geo.Point(x,y));
-        
+
         this.start=this.vertices.first().clone();
         this.end=this.vertices.last().clone();
-       
+
         this.svgPathString = null;
         this.repaint();
 
@@ -193,11 +196,11 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
     /**
      * @method
      * Inserts the draw2d.geo.Point object into the vertex list of the polyline just after the object with the given index.
-     *  
+     *
      * @param {Number} index the insert index
      * @param {Number|draw2d.geo.Point} x the x coordinate or the draw2d.geo.Point object
      * @param {Number} [y] the y coordinate or undefined of the second argument is a point
-     * 
+     *
      * @since 4.0.0
      */
     insertVertexAt: function(index, x, y)
@@ -231,7 +234,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
      * @method
      * Remove a vertex from the polyline and return the removed point. The current installed connection router
      * can send an veto for this operation.
-     * 
+     *
      * @param index
      * @returns {draw2d.geo.Point} the removed point or null of the current router decline this operation
      * @since 4.0.0
@@ -239,7 +242,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
     removeVertexAt: function(index)
     {
         var removedPoint = this.vertices.removeElementAt(index);
-        
+
         this.start=this.vertices.first().clone();
         this.end=this.vertices.last().clone();
 
@@ -260,11 +263,11 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
         return removedPoint;
     },
 
-    
+
     /**
      * @method
      * Set the router for this connection.
-     * 
+     *
      * @param {draw2d.layout.connection.ConnectionRouter} [router] the new router for this connection or null if the connection should use the default routing
      **/
     setRouter: function(router)
@@ -272,26 +275,26 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
       if(this.router !==null){
           this.router.onUninstall(this);
       }
-      
+
       if(typeof router ==="undefined" || router===null){
           this.router = new draw2d.layout.connection.DirectRouter();
       }
       else{
           this.router = router;
       }
-      
+
       this.router.onInstall(this);
-      
+
       this.routingRequired =true;
-    
+
       // repaint the connection with the new router
       this.repaint();
-      
+
       this.fireEvent("change:router",{value:this.router});
 
       return this;
     },
-    
+
     /**
      * @method
      * Return the current active router of this connection.
@@ -302,7 +305,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
     {
       return this.router;
     },
-    
+
     /**
      * @method
      * Calculate the path of the polyline
@@ -320,17 +323,17 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
         if(this.shape===null){
             return;
         }
-    
+
         this.svgPathString = null;
 
         routingHints.oldVertices = this.vertices;
-        
+
         // cleanup the routing cache
         //
         this.oldPoint=null;
         this.lineSegments = new draw2d.util.ArrayList();
         this.vertices     = new draw2d.util.ArrayList();
-    
+
         // Use the internal router
         //
         this.router.route(this, routingHints);
@@ -338,7 +341,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
         this.fireEvent("routed");
         this.fireEvent("change:route",{});
      },
-    
+
     /**
      * @inheritdoc
      */
@@ -356,28 +359,28 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
             attributes = {};
         }
         attributes.path=this.svgPathString;
-        draw2d.util.JSON.ensureDefault(attributes,"stroke-linecap" , "round");
-        draw2d.util.JSON.ensureDefault(attributes,"stroke-linejoin", "round");
+        jsonUtil.ensureDefault(attributes,"stroke-linecap" , "round");
+        jsonUtil.ensureDefault(attributes,"stroke-linejoin", "round");
 
         return this._super( attributes);
     },
-    
+
 
     /**
      * @method
      * Return all line segments of the polyline.
-     * 
+     *
      * @returns {draw2d.util.ArrayList}
      */
     getSegments: function()
     {
         return this.lineSegments;
     },
-    
+
     /**
      * @method
      * used for the router to add the calculated points
-     * 
+     *
      * @protected
      *
      **/
@@ -528,8 +531,8 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
     /**
      * @method
      * get the best segment of the line which is below the given coordinate or null if
-     * all segment are not below the coordinate. <br> 
-     * The 'corona' property of the polyline is considered for this test. This means 
+     * all segment are not below the coordinate. <br>
+     * The 'corona' property of the polyline is considered for this test. This means
      * the point isn't direct on the line. Is it only close to the line!
      *
      * @param {Number} px the x coordinate of the test point
@@ -550,7 +553,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
 
    /**
     * @method
-    * Checks if the hands over coordinate close to the line. The 'corona' property of the polyline 
+    * Checks if the hands over coordinate close to the line. The 'corona' property of the polyline
     * is considered for this test. This means the point isn't direct on the line. Is it only close to the
     * line!
     *
@@ -568,7 +571,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
      */
     createCommand: function(request)
     {
- 
+
       if(request.getPolicy() === draw2d.command.CommandType.DELETE){
         if(this.isDeleteable()===true){
           return new draw2d.command.CommandDelete(this);
@@ -584,25 +587,25 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
               return new draw2d.command.CommandMoveVertices(this);
             }
       }
-    
+
       return this._super(request);
     },
-    
+
     /**
      * @inheritdoc
      */
     getPersistentAttributes: function()
-    {   
+    {
         var memento=  $.extend( this._super() ,{
             router : this.router.NAME,
             radius : this.radius
         });
-      
+
         memento = this.router.getPersistentAttributes(this, memento);
-        
+
         return memento;
     },
-    
+
     /**
      * @inheritdoc
      */
@@ -618,7 +621,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
                 debug.warn("Unable to install router '"+memento.router+"' forced by "+this.NAME+".setPersistendAttributes. Using default");
             }
         }
-        
+
         if(typeof memento.radius !=="undefined"){
             this.setRadius(memento.radius);
         }

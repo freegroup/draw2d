@@ -30,6 +30,8 @@
  * @extends draw2d.Figure
  */
 import draw2d from '../../packages';
+import jsonUtil from '../../util/JSONUtil';
+
 draw2d.shape.basic.Line = draw2d.Figure.extend({
     NAME : "draw2d.shape.basic.Line",
 
@@ -391,11 +393,11 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
            if(typeof attributes.path ==="undefined"){
     		   attributes.path =["M",this.start.x,this.start.y,"L",this.end.x,this.end.y].join(" ");
     	   }
-           draw2d.util.JSON.ensureDefault(attributes,"stroke" ,this.lineColor.hash());
-           draw2d.util.JSON.ensureDefault(attributes,"stroke-width" ,this.stroke);
+    	   jsonUtil.ensureDefault(attributes,"stroke" ,this.lineColor.hash());
+         jsonUtil.ensureDefault(attributes,"stroke-width" ,this.stroke);
        }
 
-       draw2d.util.JSON.ensureDefault(attributes,"stroke-dasharray" ,this.dasharray);
+       jsonUtil.ensureDefault(attributes,"stroke-dasharray" ,this.dasharray);
        this._super(attributes);
 
        if(this.outlineStroke>0){

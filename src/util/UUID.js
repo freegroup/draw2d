@@ -34,3 +34,5 @@ draw2d.util.UUID.create=function()
   };
   return (segment()+segment()+"-"+segment()+"-"+segment()+"-"+segment()+"-"+segment()+segment()+segment());
 };
+
+module.exports = draw2d.util.UUID;

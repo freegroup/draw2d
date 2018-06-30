@@ -1,27 +1,30 @@
 /**
  * @class draw2d.shape.composite.StrongComposite
  * A StrongComposite is a composite figure with strong assignment of the children and the composite.
- * The child knows everything about the assigned composite and receives events about assignment to a 
+ * The child knows everything about the assigned composite and receives events about assignment to a
  * composite.
- * 
- *     
+ *
+ *
  * @author Andreas Herz
  * @extends draw2d.shape.composite.Composite
  * @since 4.8.0
- */ import draw2d from '../../packages';
+ */
+
+import draw2d from '../../packages';
+
 draw2d.shape.composite.StrongComposite = draw2d.shape.composite.Composite.extend({
     NAME : "draw2d.shape.composite.StrongComposite",
 
     /**
      * @constructor
      * Creates a new strong composite element which are not assigned to any canvas.
-     * 
+     *
      * @param {Object} [attr] the configuration of the shape
      */
-    init: function( attr, setter, getter) 
+    init: function( attr, setter, getter)
     {
         this.assignedFigures = new draw2d.util.ArrayList();
-   
+
         this._super(attr, setter, getter);
     },
 
@@ -49,7 +52,7 @@ draw2d.shape.composite.StrongComposite = draw2d.shape.composite.Composite.extend
     /**
      * @method
      * Assign a figure to the composite.
-     * 
+     *
      * @param {draw2d.Figure} figure
      * @template
      */
@@ -57,11 +60,11 @@ draw2d.shape.composite.StrongComposite = draw2d.shape.composite.Composite.extend
     {
         return this;
     },
-    
+
     /**
      * @method
      * Remove the given figure from the group assignment
-     * 
+     *
      * @param {draw2d.Figure} figure the figure to remove
      * @template
      */
@@ -69,25 +72,25 @@ draw2d.shape.composite.StrongComposite = draw2d.shape.composite.Composite.extend
     {
         return this;
     },
-    
+
     /**
      * @method
      * Return all assigned figures of the composite
-     * 
+     *
      * @returns {draw2d.util.ArrayList}
      */
     getAssignedFigures: function()
     {
         return this.assignedFigures;
     },
-    
-    
+
+
     /**
      * @method
      * Called if the user drop this element onto the dropTarget. This event is ONLY fired if the
      * shape return "this" in the onDragEnter method.
-     * 
-     * 
+     *
+     *
      * @param {draw2d.Figure} dropTarget The drop target.
      * @param {Number} x the x-coordinate of the mouse up event
      * @param {Number} y the y-coordinate of the mouse up event
@@ -99,13 +102,13 @@ draw2d.shape.composite.StrongComposite = draw2d.shape.composite.Composite.extend
     onDrop: function(dropTarget, x, y, shiftKey, ctrlKey)
     {
     },
-    
+
     /**
      * @method
      * Called if the user dropped an figure onto this element. This event is ONLY fired if the
      * shape return "this" in the onDragEnter method.
-     * 
-     * 
+     *
+     *
      * @param {draw2d.Figure} droppedFigure The dropped figure.
      * @param {Number} x the x-coordinate of the mouse up event
      * @param {Number} y the y-coordinate of the mouse up event
@@ -117,15 +120,15 @@ draw2d.shape.composite.StrongComposite = draw2d.shape.composite.Composite.extend
     onCatch: function(droppedFigure, x, y, shiftKey, ctrlKey)
     {
     },
-    
+
     /**
      * @method
      * Moves the element so it is the closest to the viewer’s eyes, on top of other elements. Additional
      * the internal model changed as well.
-     * 
-     * Optional: Inserts current object in front of the given one. 
-     * 
-     * @param {draw2d.Figure} [figure] move current object in front of the given one. 
+     *
+     * Optional: Inserts current object in front of the given one.
+     *
+     * @param {draw2d.Figure} [figure] move current object in front of the given one.
      */
      toFront: function(figure)
      {
@@ -142,7 +145,7 @@ draw2d.shape.composite.StrongComposite = draw2d.shape.composite.Composite.extend
          figures.each(function(i,f){
              f.toFront(_this);
          });
-         
+
          return this;
      },
 
@@ -164,14 +167,14 @@ draw2d.shape.composite.StrongComposite = draw2d.shape.composite.Composite.extend
              // return -1 if b before a
              return a.getZOrder()>b.getZOrder()?-1:1;
          });
-         
+
          var _this = this;
          figures.each(function(i,f){
              f.toBack(_this);
          });
-         
+
          return this;
-     }     
+     }
 });
 
 

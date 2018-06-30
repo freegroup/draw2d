@@ -7,6 +7,7 @@
  * @extends draw2d.policy.EditPolicy
  */
 import draw2d from '../../packages';
+import Color from '../../util/Color';
 
 draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend({
 
@@ -216,7 +217,7 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend({
      */
     createMonochromGif: function(w,h,d,color)
     {
-      color = new draw2d.util.Color(color);
+      color = new Color(color);
         var r = String.fromCharCode(w%256) + String.fromCharCode(w/256) + String.fromCharCode(h%256) + String.fromCharCode(h/256) ;
 
         var gif = "GIF89a" + r + "\xf0\0\0\xff\xff\xff" + String.fromCharCode(color.red) + String.fromCharCode(color.green) + String.fromCharCode(color.blue) + "\x21\xf9\u{4}\u{1}\0\0\0,\0\0\0\0" + r + "\0\u{2}";

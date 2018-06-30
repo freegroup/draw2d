@@ -10,6 +10,7 @@
  */
 
 import draw2d from 'packages';
+import jsonUtil from 'util/JSONUtil';
 
 draw2d.VectorFigure = draw2d.shape.node.Node.extend({
     NAME : "draw2d.VectorFigure",
@@ -169,9 +170,9 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend({
             }
         }
 
-        draw2d.util.JSON.ensureDefault(attributes,"stroke-width" , this.stroke);
-        draw2d.util.JSON.ensureDefault(attributes,"fill" ,this.bgColor.hash());
-        draw2d.util.JSON.ensureDefault(attributes,"dasharray" , this.dasharray);
+        jsonUtil.ensureDefault(attributes,"stroke-width" , this.stroke);
+        jsonUtil.ensureDefault(attributes,"fill" ,this.bgColor.hash());
+        jsonUtil.ensureDefault(attributes,"dasharray" , this.dasharray);
 
         this._super(attributes);
 

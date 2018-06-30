@@ -4,12 +4,12 @@ require('./util/raphael_ext');
 require('./util/Polyfill');
 require('./util/Base64');
 require('./util/Debug');
-require('./util/Color');
+// require('./util/Color');
 
 require('./util/ArrayList');
 require('./util/SVGUtil');
-require('./util/JSONUtil');
-require('./util/UUID');
+//require('./util/JSONUtil');
+//require('./util/UUID');
 require('./util/spline/Spline');
 require('./util/spline/CubicSpline');
 require('./util/spline/CatmullRomSpline');

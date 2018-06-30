@@ -1,36 +1,40 @@
 
 /**
  * @class draw2d.shape.node.Hub
- * 
+ *
  * A hub is a shape with a special kind of port handling. The hole figure is a hybrid port. You can drag&drop a Port directly on
  * the figure.
- * 
+ *
  * See the example:
  *
  *     @example preview small frame
- *     
- *     
+ *
+ *
  *     canvas.add(new draw2d.shape.node.Start({x:50, y:50}));
  *     canvas.add(new draw2d.shape.node.Hub({x:150, y:50}));
- *     
+ *
  * @extends draw2d.shape.basic.Rectangle
- */ import draw2d from '../../packages';
+ */
+
+import draw2d from '../../packages';
+import Color  from '../../util/Color'
+
 draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend({
 
     NAME : "draw2d.shape.node.Hub",
 
-    DEFAULT_COLOR : new draw2d.util.Color("#4DF0FE"),
-    BACKGROUND_COLOR : new draw2d.util.Color("#29AA77"),
+    DEFAULT_COLOR : new Color("#4DF0FE"),
+    BACKGROUND_COLOR : new Color("#29AA77"),
 
 	/**
 	 * @constructor
-	 * 
+	 *
      * @param {Object} [attr] the configuration of the shape
 	 */
 	init: function(attr, setter, getter)
     {
         this.label = null;
-	    
+
         this._super(
                 $.extend({color:this.DEFAULT_COLOR.darker(), bgColor:this.BACKGROUND_COLOR},attr),
                 $.extend({
@@ -43,7 +47,7 @@ draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend({
                     label: this.getLabel,
                     text : this.getLabel
                 },getter));
-        
+
         var _port = this.port = this.createPort("hybrid", new draw2d.layout.locator.CenterLocator());
 
         var r = draw2d.geo.Rectangle;
@@ -56,15 +60,15 @@ draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend({
         this.port.setGlow = $.proxy(this.setGlow,this);
         this.port._orig_hitTest = this.port.hitTest;
         this.port.hitTest = $.proxy(this.hitTest,this);
-       
-        
+
+
         // provide a special connection anchor for this port. We use the bounding box of the
         // parent as connection border
         //
         this.port.setConnectionAnchor(new draw2d.layout.anchor.ShortesPathConnectionAnchor(this.port));
         this.port.setVisible(false);
         this.port.setVisible= function(){};
-        
+
         this.setConnectionDirStrategy(0);
     },
 
@@ -97,11 +101,11 @@ draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend({
          }
          return this._super();
      },
-     
+
 
      /**
       * @inheritdoc
-      * 
+      *
       * @private
       */
      repaint: function(attributes)
@@ -111,7 +115,7 @@ draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend({
          }
 
          attributes= attributes || {};
-         
+
          // set some good defaults if the parent didn't
          if(typeof attributes.fill ==="undefined"){
              if(this.bgColor!==null){
@@ -121,20 +125,20 @@ draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend({
                  attributes.fill ="none";
              }
         }
-         
+
         this._super(attributes);
      },
-     
+
      /**
       * @method
       * Set the label for the Hub
-      * 
+      *
       *      // Alternatively you can use the attr method:
       *      figure.attr({
       *        text: label
       *      });
-      * 
-      * 
+      *
+      *
       * @param {String} label
       * @since 3.0.4
       */
@@ -159,14 +163,14 @@ draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend({
          else{
              this.label.setText(label);
          }
-         
+
      },
-     
+
      /**
       * @method
       * Set the strategy for the connection direction calculation.<br>
       * <br>
-      * 
+      *
       * <ul>
       * <li>0 - Use the best/shortest direction (UP/RIGHT/DOWN/LEFT) for the connection routing (default)</li>
       * <li>1 - Use UP/DOWN for the connection direction</li>
@@ -185,36 +189,36 @@ draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend({
                  break;
          }
      },
-     
+
      /**
       * @inheritdoc
       */
      getPersistentAttributes: function()
      {
          var memento = this._super();
-         
+
          memento.dirStrategy = this.CONNECTION_DIR_STRATEGY.indexOf(this.port.getConnectionDirection);
          if(this.label !==null){
              memento.label = this.label.getText();
          }
-         
+
          return memento;
      },
-     
+
      /**
       * @inheritdoc
       */
      setPersistentAttributes: function(memento)
      {
          this._super(memento);
-         
+
          if(typeof memento.dirStrategy ==="number") {
              this.setConnectionDirStrategy( memento.dirStrategy);
          }
-         
+
          if(typeof memento.label !== "undefined"){
              this.setLabel(memento.label);
          }
      }
-     
+
 });

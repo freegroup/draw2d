@@ -126,3 +126,5 @@ draw2d.util.JSON = {
             }
         }
 };
+
+module.exports = draw2d.util.JSON;
