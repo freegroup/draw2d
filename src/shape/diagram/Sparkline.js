@@ -24,7 +24,10 @@
  *     canvas.add( sparkline);
  *
  * @extends draw2d.shape.diagram.Diagram
- */ import draw2d from '../../packages';
+ */
+import draw2d from '../../packages';
+import extend from '../../util/extend';
+
 draw2d.shape.diagram.Sparkline = draw2d.shape.diagram.Diagram.extend({
 
     /**
@@ -37,7 +40,7 @@ draw2d.shape.diagram.Sparkline = draw2d.shape.diagram.Diagram.extend({
         this.max = 10;
         this.padding =4;
 
-        this._super( $.extend({width:180, height:50},attr), setter, getter);
+        this._super( extend({width:180, height:50},attr), setter, getter);
     },
 
     /**
@@ -107,7 +110,7 @@ draw2d.shape.diagram.Sparkline = draw2d.shape.diagram.Diagram.extend({
 
         if(this.svgNodes!==null && (typeof this.cache.pathString ==="undefined")){
             var prev_pt=null;
-            $.each(this.data, $.proxy(function(idx, item) {
+            this.data.forEach((item) =>{
                 var pt = toCoords(item, idx);
                 if(prev_pt===null) {
                     this.cache.pathString = [ "M", pt.x, pt.y].join(" ");
@@ -116,7 +119,7 @@ draw2d.shape.diagram.Sparkline = draw2d.shape.diagram.Diagram.extend({
                     this.cache.pathString = [ this.cache.pathString,"L", pt.x, pt.y].join(" ");
                 }
                 prev_pt = pt;
-            },this));
+            });
 
             this.svgNodes.attr({path:this.cache.pathString, stroke: "#f0f0f0"});
 

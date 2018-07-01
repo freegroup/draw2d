@@ -17,6 +17,7 @@
  */
 import draw2d from '../../packages';
 import jsonUtil from '../../util/JSONUtil';
+import extend from '../../util/extend';
 
 draw2d.shape.basic.Label= draw2d.SetFigure.extend({
 
@@ -72,8 +73,8 @@ draw2d.shape.basic.Label= draw2d.SetFigure.extend({
         this.editor = null;
 
         this._super(
-            $.extend({stroke:1, width:1,height:1,resizeable:false},attr),
-            $.extend({
+            extend({stroke:1, width:1,height:1,resizeable:false},attr),
+            extend({
                 /** @attr {String} text the text to show */
                 text  : this.setText,
                 /** @attr {String} set the editor to use see {@link draw2d.ui.LabelEditor} */
@@ -93,7 +94,7 @@ draw2d.shape.basic.Label= draw2d.SetFigure.extend({
                 /** @attr {Boolean} bold indicator if bold text should be used*/
                 bold  : this.setBold
             }, setter),
-            $.extend({
+            extend({
                 text          : this.getText,
                 outlineStroke : this.getOutlineStroke,
                 outlineColor  : this.getOutlineColor,
@@ -159,7 +160,7 @@ draw2d.shape.basic.Label= draw2d.SetFigure.extend({
 
         // the two "attr" calls takes 2/3 of the complete method call (chrome performance check).
         // now we check if any changes happens and call this method only if neccessary.
-        if(!$.isEmptyObject(attrDiff)){
+        if(Object.getOwnPropertyNames(attrDiff).length > 0){
             this.svgNodes.attr(lattr);
             // set of the x/y must be done AFTER the font-size and bold has been set.
             // Reason: the getBBox method needs the font attributes for calculation
@@ -399,7 +400,7 @@ draw2d.shape.basic.Label= draw2d.SetFigure.extend({
           this.padding = {top:padding, right:padding, bottom:padding, left:padding};
       }
       else{
-          $.extend(this.padding, padding);
+          extend(this.padding, padding);
       }
       this.repaint();
       this.fireEvent("change:padding",{value:this.padding});
@@ -694,11 +695,11 @@ draw2d.shape.basic.Label= draw2d.SetFigure.extend({
         });
 
         var polySides=4;
-        var i=0;
+
         var j=polySides-1 ;
         var oddNodes=false;
 
-        for (i=0; i<polySides; i++) {
+        for (let i=0; i<polySides; i++) {
             var pi = points.get(i);
             var pj = points.get(j);
             if ((pi.y< y && pj.y>=y

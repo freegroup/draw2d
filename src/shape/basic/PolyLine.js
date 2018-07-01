@@ -20,6 +20,7 @@
  */
 import draw2d from '../../packages';
 import jsonUtil from '../../util/JSONUtil';
+import extend from '../../util/extend';
 
 draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
 
@@ -45,17 +46,17 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
       this.radius = "";
 
       this._super(
-         $.extend(
+         extend(
               {
                   router:new draw2d.layout.connection.VertexRouter()
               },attr),
-         $.extend({},{
+         extend({},{
              /** @attr {draw2d.layout.connection.ConnectionRouter} the router to use to layout the polyline */
              router : this.setRouter,
              /** @attr {Number} radius the radius to render the line edges */
              radius : this.setRadius
         }, setter),
-        $.extend({},{
+        extend({},{
             router: this.getRouter,
             radius: this.getRadius
         }, getter)
@@ -596,7 +597,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
      */
     getPersistentAttributes: function()
     {
-        var memento=  $.extend( this._super() ,{
+        var memento=  extend( this._super() ,{
             router : this.router.NAME,
             radius : this.radius
         });

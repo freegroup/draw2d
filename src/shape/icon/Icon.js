@@ -16,7 +16,7 @@ draw2d.shape.icon.Icon = draw2d.SetFigure.extend({
      * @param {Object} attr the configuration of the shape
      */
     init: function(attr, setter, getter ) {
-      this._super($.extend({width:50,height:50},attr), setter, getter);
+      this._super(extend({width:50,height:50},attr), setter, getter);
       this.setBackgroundColor("#333333");
       this.keepAspectRatio = false;
     },

@@ -8,6 +8,8 @@
  */
 
 import draw2d from '../../packages';
+import extend from '../../util/extend';
+import jsonUtil from '../../util/JSONUtil';
 
 draw2d.shape.diagram.Diagram = draw2d.SetFigure.extend({
 
@@ -22,12 +24,12 @@ draw2d.shape.diagram.Diagram = draw2d.SetFigure.extend({
         this.cache = {};
 
         this._super(
-            $.extend({data:[], bgColor:"#8dabf2", stroke:1, color:"#f0f0f0",radius:2, resizeable:true},attr),
-            $.extend({},{
+            extend({data:[], bgColor:"#8dabf2", stroke:1, color:"#f0f0f0",radius:2, resizeable:true},attr),
+            extend({},{
                 /** @attr {Array} data the data to display in the diagram */
                 data  : this.setData
             }, setter),
-            $.extend({},{
+            extend({},{
                 data : this.getData
             }, getter)
         );
@@ -117,7 +119,7 @@ draw2d.shape.diagram.Diagram = draw2d.SetFigure.extend({
 
         attributes= attributes || {};
 
-        JSON.ensureDefault(attributes,"fill" ,"none");
+        jsonUtil.ensureDefault(attributes,"fill" ,"none");
 
         return this._super(attributes);
     },

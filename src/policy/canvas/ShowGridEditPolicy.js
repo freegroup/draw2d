@@ -1,7 +1,7 @@
 
 /**
  * @class draw2d.policy.canvas.ShowGridEditPolicy
- * 
+ *
  * A cavas decoration which paints a grid in the background.
  * <br>
  * <br>
@@ -15,7 +15,7 @@
  *     canvas.add(shape,40,10);
  *
  * @author Andreas Herz
- * 
+ *
  * @extends draw2d.policy.canvas.DecorationPolicy
  */
 import draw2d from '../../packages';
@@ -23,14 +23,14 @@ import draw2d from '../../packages';
 draw2d.policy.canvas.ShowGridEditPolicy = draw2d.policy.canvas.DecorationPolicy.extend({
 
     NAME : "draw2d.policy.canvas.ShowGridEditPolicy",
-    
+
     GRID_COLOR  : "#f0f0f0",
     GRID_WIDTH  : 20,
-    
+
     /**
-     * @constructor 
+     * @constructor
      * Creates a new constraint policy for snap to grid
-     * 
+     *
      * @param {Number} [grid] the grid width of the canvas
      */
     init: function( grid)
@@ -48,14 +48,14 @@ draw2d.policy.canvas.ShowGridEditPolicy = draw2d.policy.canvas.DecorationPolicy.
             this.grid = this.GRID_WIDTH;
         }
     },
-	
+
 	onInstall: function(canvas)
 	{
         this._super(canvas);
 	    this.zoom = canvas.getZoom();
         this.setGrid(this.grid);
 	},
-	
+
 	onUninstall: function(canvas)
 	{
         this._super(canvas);
@@ -63,11 +63,11 @@ draw2d.policy.canvas.ShowGridEditPolicy = draw2d.policy.canvas.DecorationPolicy.
             this.svg.remove();
         }
 	},
-	
+
 	/**
 	 * @method
-	 * Set the grid color 
-	 * 
+	 * Set the grid color
+	 *
 	 * @param {draw2d.util.Color|String} color a color object or the CSS string declaration for a color
 	 * @since 5.0.3
 	 */
@@ -76,11 +76,11 @@ draw2d.policy.canvas.ShowGridEditPolicy = draw2d.policy.canvas.DecorationPolicy.
 	    this.color=new draw2d.util.Color(color);
         this.setGrid(this.grid);
 	},
-	
+
 	/**
 	 * @method
 	 * Set a new grid width/height
-	 * 
+	 *
 	 * @param {Number} grid
      * @since 5.0.3
 	 */
@@ -90,7 +90,7 @@ draw2d.policy.canvas.ShowGridEditPolicy = draw2d.policy.canvas.DecorationPolicy.
 
         if(this.canvas !=null){
             if(this.svg  !==null){
-                    this.svg.remove();
+              this.svg.remove();
             }
 
             var r= this.canvas.paper;
@@ -100,11 +100,11 @@ draw2d.policy.canvas.ShowGridEditPolicy = draw2d.policy.canvas.DecorationPolicy.
             var props = {stroke: this.color.hash()};
             r.setStart();
                 // horizontal
-                for (i = d+0.5; i < h; i += d) {
+                for (let i = d+0.5; i < h; i += d) {
                     r.path([[ "M", 0, i], ["L", w, i]]).attr(props);
                 }
                 // vertical
-                for (i = d+0.5; i < w; i += d) {
+                for (let i = d+0.5; i < w; i += d) {
                     r.path([["M", i, 0], ["L", i, h]]).attr(props);
                 }
             this.svg = r.setFinish();

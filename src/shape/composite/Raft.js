@@ -35,7 +35,7 @@ draw2d.shape.composite.Raft = draw2d.shape.composite.WeakComposite.extend({
        
       this.aboardFigures = new draw2d.util.ArrayList();
       
-      this._super($.extend({bgColor:"#f0f0f0", color:"#1B1B1B"},attr), setter, getter);
+      this._super(extend({bgColor:"#f0f0f0", color:"#1B1B1B"},attr), setter, getter);
     },
     
 

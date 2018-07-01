@@ -39,7 +39,7 @@ draw2d.shape.state.Connection = draw2d.Connection.extend({
 
 	init: function(attr, setter, getter )
     {
-        this._super($.extend({router: null, stroke:2},attr), setter, getter);
+        this._super(extend({router: null, stroke:2},attr), setter, getter);
 
         this.setTargetDecorator(new draw2d.decoration.connection.ArrowDecorator(17,8));
 
@@ -85,7 +85,7 @@ draw2d.shape.state.Connection = draw2d.Connection.extend({
      */
     getPersistentAttributes: function()
     {
-        return $.extend(this._super(), {
+        return extend(this._super(), {
             label : this.getLabel()
         });
     },

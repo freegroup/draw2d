@@ -1,52 +1,55 @@
 
 /**
  * @class draw2d.shape.layout.HorizontalLayout
- * The HorizontalLayout class arranges the layout elements in a horizontal sequence, 
- * left to right, with optional gaps between the elements. 
- * 
- * During the execution of the setDimension() method, the minimum width of the container is calculated 
- * by accumulating the minimum sizes of the elements, including stroke, gaps and padding. 
- * 
- * 
+ * The HorizontalLayout class arranges the layout elements in a horizontal sequence,
+ * left to right, with optional gaps between the elements.
+ *
+ * During the execution of the setDimension() method, the minimum width of the container is calculated
+ * by accumulating the minimum sizes of the elements, including stroke, gaps and padding.
+ *
+ *
  * See the example below with and without gap and border settings
- * 
- *     
+ *
+ *
  *     @example preview small frame
- *     
+ *
  *     // first container without any gap and a border of the parent
  *     // container
  *     var label1 =  new draw2d.shape.basic.Label({text:"Label 1"});
  *     var label2 =  new draw2d.shape.basic.Label({text:"Label 2"});
  *     var label3 =  new draw2d.shape.basic.Label({text:"Label 3"});
- *     
+ *
  *     var container1 = new draw2d.shape.layout.HorizontalLayout();
- *     
+ *
  *     container1.add(label1);
  *     container1.add(label2);
  *     container1.add(label3);
  *     container1.setGap(10);
  *     container1.setStroke(2);
  *     canvas.add(container1,50,10);
- *     
+ *
  *     // second container without any gab or border
  *     //
  *     var label11 =  new draw2d.shape.basic.Label({text:"Label 1"});
  *     var label12 =  new draw2d.shape.basic.Label({text:"Label 2"});
  *     var label13 =  new draw2d.shape.basic.Label({text:"Label 3"});
- *     
+ *
  *     var container2 = new draw2d.shape.layout.HorizontalLayout();
- *     
+ *
  *     container2.add(label11);
  *     container2.add(label12);
  *     container2.add(label13);
- *     
+ *
  *     canvas.add(container2,50,90);
- *     
- *     
+ *
+ *
  * @author Andreas Herz
  * @extends draw2d.shape.layout.Layout
  * @since 2.5.1
- */ import draw2d from '../../packages';
+ */
+import draw2d from '../../packages';
+import extend from '../../util/extend';
+
 draw2d.shape.layout.HorizontalLayout= draw2d.shape.layout.Layout.extend({
 
 	NAME : "draw2d.shape.layout.HorizontalLayout",
@@ -54,14 +57,14 @@ draw2d.shape.layout.HorizontalLayout= draw2d.shape.layout.Layout.extend({
     /**
      * @constructor
      * Create a new instance
-     * 
+     *
      * @param {Object} [attr] the configuration of the shape
      */
     init: function(attr, setter, getter)
     {
         this.gap = 0;
         var _this = this;
-        this.locator ={ 
+        this.locator ={
                 translate: function(figure, diff){
                     figure.setPosition(figure.x+diff.x,figure.y+diff.y);
                 },
@@ -78,18 +81,18 @@ draw2d.shape.layout.HorizontalLayout= draw2d.shape.layout.Layout.extend({
                             xPos += child.getWidth()+_this.gap;
                         }
                     }
-                    
+
                     target.setPosition(xPos,yPos);
                  }
         };
 
         this._super(
-                $.extend({width:1, height:1, gap:0},attr),
-                $.extend({
+                extend({width:1, height:1, gap:0},attr),
+                extend({
                     /** @attr {Number} gap the gap between the children shapes */
                     gap : this.setGap
                 },setter),
-                $.extend({
+                extend({
                     gap : this.getGap
                 },getter));
 
@@ -110,9 +113,9 @@ draw2d.shape.layout.HorizontalLayout= draw2d.shape.layout.Layout.extend({
 
     /**
     * @method
-    * Set the gap width between child components within this layout. 
+    * Set the gap width between child components within this layout.
     * This will only affect the space between components, not the space around all the components in the layout.
-    * 
+    *
     * @param {Number} gap The space, in pixels, between items.
     * @since 2.5.1
     */
@@ -121,16 +124,16 @@ draw2d.shape.layout.HorizontalLayout= draw2d.shape.layout.Layout.extend({
        this.gap = gap;
        // this forces a relayout of the element
        this.setDimension(1,1);
-       
+
        return this;
    },
-   
+
    /**
     * @method
     * Return the gap between the children shapes
-    * 
+    *
     * @since 5.0.0
-    * 
+    *
     */
    getGap: function()
    {
@@ -170,7 +173,7 @@ draw2d.shape.layout.HorizontalLayout= draw2d.shape.layout.Layout.extend({
 
         return height+markup;
     },
-    
+
     /**
      * @inheritdoc
      */
@@ -190,7 +193,7 @@ draw2d.shape.layout.HorizontalLayout= draw2d.shape.layout.Layout.extend({
         else{
             var minHeight = this.getMinHeight();
             this.children.each(function(i,e){
-                // The layout respect the "resizeable" flag because a layout is a kind of layouter and 
+                // The layout respect the "resizeable" flag because a layout is a kind of layouter and
                 // any kind of autolayouter must respect this flag
                 if(e.figure.isResizeable()===true){
                     // reset the shape to the minimum width/height. see setMinWidth/setMinHeight

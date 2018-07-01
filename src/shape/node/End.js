@@ -26,7 +26,7 @@ draw2d.shape.node.End = draw2d.shape.basic.Rectangle.extend({
      */
     init: function(attr, setter, getter )
     {
-        this._super($.extend({bgColor:this.DEFAULT_COLOR, color:this.DEFAULT_COLOR.darker() ,width:50, height:50},attr), setter, getter);
+        this._super(extend({bgColor:this.DEFAULT_COLOR, color:this.DEFAULT_COLOR.darker() ,width:50, height:50},attr), setter, getter);
 
         this.createPort("input");
 

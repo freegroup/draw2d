@@ -17,7 +17,7 @@ draw2d.shape.composite.Composite = draw2d.SetFigure.extend({
     */
     init: function( attr, setter, getter) 
     {
-      this._super($.extend({stroke:1,"color": "#f0f0f0"},attr), setter, getter);
+      this._super(extend({stroke:1,"color": "#f0f0f0"},attr), setter, getter);
     },
     
     /**

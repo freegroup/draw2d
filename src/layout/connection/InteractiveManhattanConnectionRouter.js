@@ -49,6 +49,7 @@
  * @extends  draw2d.layout.connection.ManhattanConnectionRouter
  */
 import draw2d from '../../packages';
+import extend from '../../util/extend';
 
 
 draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.connection.ManhattanConnectionRouter.extend({
@@ -522,7 +523,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
         line.getVertices().each(function(i,e){
             memento.vertex.push({x:e.x, y:e.y});
         });
-        memento.routingMetaData = $.extend({},line._routingMetaData);
+        memento.routingMetaData = extend({},line._routingMetaData);
 
         return memento;
     },
@@ -538,7 +539,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
     {
         // restore the points from the JSON data and add them to the polyline
         //
-        if($.isArray(memento.vertex)){
+        if(Array.isArray(memento.vertex)){
 
             line.oldPoint=null;
             line.lineSegments = new draw2d.util.ArrayList();
@@ -554,7 +555,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
         }
 
         if(typeof memento.routingMetaData !== "undefined"){
-            line._routingMetaData = $.extend({},memento.routingMetaData);
+            line._routingMetaData = extend({},memento.routingMetaData);
         }
     }
 

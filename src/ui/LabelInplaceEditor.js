@@ -37,7 +37,7 @@ draw2d.ui.LabelInplaceEditor =  draw2d.ui.LabelEditor.extend({
         this._super();
 
         // register some default listener and override this with the handover one
-        this.listener = $.extend({onCommit: function(){}, onCancel: function(){}},listener);
+        this.listener = extend({onCommit: function(){}, onCancel: function(){}},listener);
     },
 
     /**
@@ -50,7 +50,7 @@ draw2d.ui.LabelInplaceEditor =  draw2d.ui.LabelEditor.extend({
     {
         this.label = label;
 
-        this.commitCallback = $.proxy(this.commit,this);
+        this.commitCallback = this.commit.bind(this);
 
         // commit the editor if the user clicks anywhere in the document
         //
@@ -67,7 +67,7 @@ draw2d.ui.LabelInplaceEditor =  draw2d.ui.LabelEditor.extend({
 
         this.html.autoResize({animate:false});
 
-        this.html.bind("keyup",$.proxy(function(e){
+        this.html.bind("keyup",function(e){
             switch (e.which) {
             case 13:
                  this.commit();
@@ -76,7 +76,7 @@ draw2d.ui.LabelInplaceEditor =  draw2d.ui.LabelEditor.extend({
                 this.cancel();
                  break;
            }
-         },this));
+         }.bind(this));
 
          this.html.bind("blur",this.commitCallback);
 
@@ -104,9 +104,9 @@ draw2d.ui.LabelInplaceEditor =  draw2d.ui.LabelEditor.extend({
         bb.resize(2,2);
 
         this.html.css({position:"absolute","top": bb.y, "left":bb.x, "min-width":bb.w*(1/canvas.getZoom()), "height":Math.max(25,bb.h*(1/canvas.getZoom()))});
-        this.html.fadeIn($.proxy(function(){
+        this.html.fadeIn(()=>{
             this.html.focus();
-        },this));
+        });
     },
 
     /**
@@ -123,11 +123,11 @@ draw2d.ui.LabelInplaceEditor =  draw2d.ui.LabelEditor.extend({
         var label = this.html.val();
         var cmd =new draw2d.command.CommandAttr(this.label, {text:label});
         this.label.getCanvas().getCommandStack().execute(cmd);
-        this.html.fadeOut($.proxy(function(){
+        this.html.fadeOut(()=>{
             this.html.remove();
             this.html = null;
             this.listener.onCommit(this.label.getText());
-        },this));
+        });
     },
 
     /**
@@ -140,11 +140,11 @@ draw2d.ui.LabelInplaceEditor =  draw2d.ui.LabelEditor.extend({
     {
         this.html.unbind("blur",this.commitCallback);
         $("body").unbind("click",this.commitCallback);
-        this.html.fadeOut($.proxy(function(){
+        this.html.fadeOut(()=>{
             this.html.remove();
             this.html = null;
             this.listener.onCancel();
-        },this));
+        });
 
     }
 });

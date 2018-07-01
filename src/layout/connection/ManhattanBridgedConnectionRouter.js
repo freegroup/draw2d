@@ -63,7 +63,7 @@ draw2d.layout.connection.ManhattanBridgedConnectionRouter = draw2d.layout.connec
         var intersectionsDESC= intersectionsASC.clone().reverse();
 
         var intersectionForCalc = intersectionsASC;
-		var i = 0;
+
 
 		// ATTENTION: we cast all x/y coordinates to int and add 0.5 to avoid subpixel rendering of
 		//            the connection. The 1px or 2px lines look much clearer than before.
@@ -72,7 +72,7 @@ draw2d.layout.connection.ManhattanBridgedConnectionRouter = draw2d.layout.connec
 		var p = ps.get(0);
 		var path = [ "M", (p.x|0)+0.5, " ", (p.y|0)+0.5 ];
 		var oldP = p;
-		for (i = 1; i < ps.getSize(); i++) {
+		for (let i = 1; i < ps.getSize(); i++) {
 			p = ps.get(i);
 
 			// check for intersection and paint a bridge if required

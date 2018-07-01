@@ -21,6 +21,7 @@
  */
 
 import draw2d from '../../packages';
+import jsonUtil from '../../util/JSONUtil';
 
 draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
 
@@ -143,7 +144,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
 
         attributes= attributes || {};
 
-        JSON.ensureDefault(attributes,"path" ,this.svgPathString);
+        jsonUtil.ensureDefault(attributes,"path" ,this.svgPathString);
 
         this._super(attributes);
     },
@@ -551,9 +552,8 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
         //
         if(typeof memento.vertices !=="undefined"){
             this.vertices = new draw2d.util.ArrayList();
-            var _this = this;
-            $.each(memento.vertices, function(i,point){
-                _this.addVertex(point);
+            memento.vertices.forEach(point=>{
+                this.addVertex(point);
             });
         }
     }

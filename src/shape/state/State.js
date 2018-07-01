@@ -127,7 +127,7 @@ draw2d.shape.state.State = draw2d.shape.layout.VerticalLayout.extend({
       */
     getPersistentAttributes: function()
     {
-        return $.extend(this._super(), {
+        return extend(this._super(), {
             label : this.getLabel()
         });
     },

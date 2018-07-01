@@ -17,7 +17,7 @@ draw2d.util.ArrayList = Class.extend({
      *
      */
     init: function( a) {
-        if($.isArray(a)){
+        if(Array.isArray(a)){
             this.data = a;
         }
         else{
@@ -148,7 +148,7 @@ draw2d.util.ArrayList = Class.extend({
       * @since 2.0.0
       */
      grep: function(func){
-         this.data = $.grep(this.data, func);
+         this.data = this.data.filter(func);
 
          return this;
      },
@@ -169,7 +169,7 @@ draw2d.util.ArrayList = Class.extend({
      * @since 2.0.0
      */
      find: function(func){
-        let result= $.grep(this.data, func);
+        let result= this.data.filter(func);
         if(result.length===0){
             return null;
         }
@@ -316,10 +316,10 @@ draw2d.util.ArrayList = Class.extend({
             elements = elements.data;
         }
 
-        if($.isArray(elements)){
-            $.each(elements, $.proxy(function (i, e) {
+        if(Array.isArray(elements)){
+            elements.forEach( (e) => {
                 this.remove(e);
-            }, this));
+            });
         }
 
         return this;

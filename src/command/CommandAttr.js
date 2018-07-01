@@ -1,19 +1,19 @@
 
 /**
  * @class draw2d.command.CommandAattr
- * 
+ *
  *Command to change attributes of a shape with undo/redo support
  *
  * @inheritable
  * @author Andreas Herz
- * 
+ *
  * @extends draw2d.command.Command
  */
 import draw2d from '../packages';
 
 draw2d.command.CommandAttr = draw2d.command.Command.extend({
     NAME : "draw2d.command.CommandAttr",
-  
+
     /**
      * @constructor
      * Create a new Command objects which provides undo/redo for attributes.
@@ -32,12 +32,12 @@ draw2d.command.CommandAttr = draw2d.command.Command.extend({
         this.figure = figure;
         this.newAttributes = newAttributes;
         this.oldAttributes = {};
-        $.each(newAttributes, function(key, value){
+        Object.keys(newAttributes).forEach(function(key){
             _this.oldAttributes[key] = figure.attr(key);
         });
     },
-    
-  
+
+
     /**
      * @method
      * Returns [true] if the command can be execute and the execution of the
@@ -52,17 +52,17 @@ draw2d.command.CommandAttr = draw2d.command.Command.extend({
       // return false if we doesn't modify the model => NOP Command
       return true;
     },
-    
+
     /**
      * @method
      * Execute the command the first time
-     * 
+     *
      **/
     execute: function()
     {
        this.redo();
     },
-    
+
     /**
      * @method
      *
@@ -73,10 +73,10 @@ draw2d.command.CommandAttr = draw2d.command.Command.extend({
     {
         this.figure.attr(this.oldAttributes);
     },
-    
+
     /**
      * @method
-     * 
+     *
      * Redo the move command after the user has undo this command
      *
      **/

@@ -37,7 +37,7 @@ draw2d.ui.LabelEditor = Class.extend({
     init: function(listener)
     {
         // register some default listener and override this with the handover one
-        this.configuration = $.extend({onCommit: function(){}, onCancel: function(){}, text:"Value"},listener);
+        this.configuration = extend({onCommit: function(){}, onCancel: function(){}, text:"Value"},listener);
      },
 
     /**

@@ -262,12 +262,12 @@ draw2d.policy.canvas.SnapToCenterEditPolicy = draw2d.policy.canvas.SnapToEditPol
             this.horizontalGuideLines.animate(
                 {opacity: 0.1},
                 this.FADEOUT_DURATION,
-                $.proxy(function () {
+                () => {
                     if (this.horizontalGuideLines !== null) {
                         this.horizontalGuideLines.remove();
                         this.horizontalGuideLines = null;
                     }
-                }, this)
+                }
             );
         }
     },
@@ -315,12 +315,12 @@ draw2d.policy.canvas.SnapToCenterEditPolicy = draw2d.policy.canvas.SnapToEditPol
             this.verticalGuideLines.animate(
                 {opacity: 0.1},
                 this.FADEOUT_DURATION,
-                $.proxy(function () {
+                () => {
                     if (this.verticalGuideLines !== null) {
                         this.verticalGuideLines.remove();
                         this.verticalGuideLines = null;
                     }
-                }, this)
+                }
             );
         }
     }

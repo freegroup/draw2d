@@ -699,7 +699,7 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
             {
                 hide: function(){ $.contextMenu( 'destroy' ); }
             },
-            callback: $.proxy(function(key, options)
+            callback: (key, options)=>
             {
                switch(key){
                case "remove":
@@ -720,7 +720,7 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
                    break;
                }
 
-            },this),
+            },
             x:x,
             y:y,
             items: items

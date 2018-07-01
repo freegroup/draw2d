@@ -464,12 +464,12 @@ draw2d.policy.canvas.SnapToInBetweenEditPolicy = draw2d.policy.canvas.SnapToEdit
             this.horizontalGuideLines.animate(
                 {opacity: 0.1},
                 this.FADEOUT_DURATION,
-                $.proxy(function () {
+                () => {
                     if (this.horizontalGuideLines !== null) {
                         this.horizontalGuideLines.remove();
                         this.horizontalGuideLines = null;
                     }
-                }, this)
+                }
             );
         }
     },
@@ -545,12 +545,12 @@ draw2d.policy.canvas.SnapToInBetweenEditPolicy = draw2d.policy.canvas.SnapToEdit
         this.verticalGuideLines.animate(
             {opacity: 0.1},
             this.FADEOUT_DURATION,
-            $.proxy(function(){
+            () => {
                 if(this.verticalGuideLines!==null) {
                     this.verticalGuideLines.remove();
                     this.verticalGuideLines = null;
                 }
-            },this)
+            }
         );
     }
 

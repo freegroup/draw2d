@@ -9,7 +9,10 @@
  *     canvas.add( slider,100,60);
  *
  * @extends draw2d.shape.widget.Widget
- */ import draw2d from '../../packages';
+ */
+import draw2d from '../../packages';
+import {Tweenable} from 'shifty';
+
 draw2d.shape.widget.Slider = draw2d.shape.widget.Widget.extend({
 
     NAME : "draw2d.shape.widget.Slider",
@@ -26,7 +29,7 @@ draw2d.shape.widget.Slider = draw2d.shape.widget.Widget.extend({
         this.thumbGrow = 0;
 
         this._super(
-            $.extend({
+            extend({
                 width:150,
                 height:15,
                 stroke:1,
@@ -36,13 +39,13 @@ draw2d.shape.widget.Slider = draw2d.shape.widget.Widget.extend({
                 bgColor:this.DEFAULT_COLOR_BG,
                 value:50
             },attr),
-            $.extend({
+            extend({
                 /** @attr {Number} padding the padding in pixel around the text */
                 padding  : this.setPadding,
                 /** @attr {Number} value the new value of the slider. values must be in range of [0..100] */
                 value    : this.setValue
             }, setter),
-            $.extend({
+            extend({
                 padding  : this.getPadding,
                 value    : this.getValue
             }, getter));
@@ -107,7 +110,7 @@ draw2d.shape.widget.Slider = draw2d.shape.widget.Widget.extend({
             this.padding = {top:padding, right:padding, bottom:padding, left:padding};
         }
         else{
-            $.extend(this.padding, padding);
+            extend(this.padding, padding);
         }
         this.repaint();
         this.fireEvent("change:padding",{value:this.padding});
@@ -166,10 +169,10 @@ draw2d.shape.widget.Slider = draw2d.shape.widget.Widget.extend({
                 to:   { grow: 10 },
                 duration: 500,
                 easing: 'easeOutQuart',
-                step: $.proxy(function (state) {
+                step: function(state) {
                     this.thumbGrow = state.grow;
                     this.repaint();
-                },this),
+                }.bind(this),
                 finish: function(){
                     tweenable.dispose();
                 }
@@ -219,10 +222,10 @@ draw2d.shape.widget.Slider = draw2d.shape.widget.Widget.extend({
             to:   { grow: 0 },
             duration: 300,
             easing: 'easeOutQuart',
-            step: $.proxy(function (state) {
+            step: function(state) {
                 this.thumbGrow = state.grow;
                 this.repaint();
-            },this),
+            }.bind(this),
             finish: function(){
                 tweenable.dispose();
             }

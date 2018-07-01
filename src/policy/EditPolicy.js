@@ -17,6 +17,8 @@
  * @author Andreas Herz
  */
 import draw2d from '../packages';
+import extend from '../util/extend';
+import isPlainObject from '../util/isPlainObject';
 
 draw2d.policy.EditPolicy = Class.extend({
 
@@ -27,10 +29,10 @@ draw2d.policy.EditPolicy = Class.extend({
      *
      */
     init: function( attr, setter, getter){
-        this.setterWhitelist = $.extend({
+        this.setterWhitelist = extend({
         },setter);
 
-        this.getterWhitelist = $.extend({
+        this.getterWhitelist = extend({
         },getter);
 
         this.attr(attr);
@@ -52,7 +54,7 @@ draw2d.policy.EditPolicy = Class.extend({
     {
         // call of attr as setter method with {name1:val1, name2:val2 }  argument list
         //
-        if($.isPlainObject(name)){
+        if(isPlainObject(name)){
             for(let key in name){
                 let func=this.setterWhitelist[key];
                 // call the assigned method if given
@@ -67,8 +69,8 @@ draw2d.policy.EditPolicy = Class.extend({
                 //
                 // in this case we assign the method to this object and wrap it with "this" as context
                 // a very, very simple method to replace default implemenations of the object
-                else if($.isFunction(name[key])){
-                    this[key] = $.proxy(name[key],this);
+                else if(typeof name[key]==="function"){
+                    this[key] = name[key].bind(this);
                 }
             }
         }
@@ -77,7 +79,7 @@ draw2d.policy.EditPolicy = Class.extend({
             //
             if(typeof value ==="undefined"){
                 var getter = this.getterWhitelist[name];
-                if($.isFunction(getter)){
+                if(typeof getter ==="function"){
                     return getter.call(this);
                 }
                 return; // undefined
@@ -86,7 +88,7 @@ draw2d.policy.EditPolicy = Class.extend({
             //
 
             // the value can be a function. In this case we must call the value().
-            if($.isFunction(value)){
+            if(typeof value ==="function"){
                 value = value();
             }
             var setter = this.setterWhitelist[name];

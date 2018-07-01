@@ -1,4 +1,5 @@
 import draw2d from '../../packages';
+import extend from '../../util/extend';
 
 draw2d.SnapToHelper = {};
 
@@ -41,14 +42,14 @@ draw2d.policy.canvas.SnapToEditPolicy = draw2d.policy.canvas.CanvasPolicy.extend
         this.lineColor = null;
 
         this._super(
-            $.extend({
+            extend({
                 lineColor: "#51C1FC"
             },attr),
-            $.extend({
+            extend({
                 /** @attr {draw2d.util.Color} color the line color of the snapTo lines */
                 lineColor : this.setLineColor
             }, setter),
-            $.extend({
+            extend({
                 lineColor : this.getLineColor
             }, getter));
     },

@@ -57,7 +57,7 @@
  *          //
  *         init: function(attr, setter, getter)
  *         {
- *            this._super($.extend({
+ *            this._super(extend({
  *                 columns:"10px, grow, 10px",
  *                 rows:   "grow",
  *                 bgColor:"#FFFFFF",
@@ -81,7 +81,10 @@
  * @author Andreas Herz
  * @extends draw2d.shape.layout.Layout
  * @since 2.5.1
- */ import draw2d from '../../packages';
+ */
+import draw2d from '../../packages';
+import extend from '../../util/extend';
+
 draw2d.shape.layout.FlexGridLayout= draw2d.shape.layout.Layout.extend({
 
 	NAME : "draw2d.shape.layout.FlexGridLayout",
@@ -161,11 +164,11 @@ draw2d.shape.layout.FlexGridLayout= draw2d.shape.layout.Layout.extend({
         };
 
         this._super(
-                $.extend({stroke:2},attr),
-                $.extend({
+                extend({stroke:2},attr),
+                extend({
 
                 }, setter),
-                $.extend({
+                extend({
 
                 }, getter));
 
@@ -202,7 +205,7 @@ draw2d.shape.layout.FlexGridLayout= draw2d.shape.layout.Layout.extend({
 
     add: function(figure, cellConstraint){
 
-        figure.__cellConstraint=  $.extend({},{row:0, col:0, rowspan:1, colspan:1, align:"left", valign:"top", width:1, height:1}, cellConstraint);
+        figure.__cellConstraint=  extend({},{row:0, col:0, rowspan:1, colspan:1, align:"left", valign:"top", width:1, height:1}, cellConstraint);
         this.gridDef.layoutRequired=true;
         this._super(figure, this.cellLocator);
         this._layout();

@@ -116,7 +116,7 @@ draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.Connect
 
         // transfer the path from the grid based coordinates back to the real coordinates
         //
-        $.each(path,function(i,e){
+        path.forEach( e =>{
             e.x=e[0]=e[0]<<shift;
             e.y=e[1]=e[1]<<shift;
         });
@@ -139,7 +139,7 @@ draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.Connect
             ROUTER_RECTS.push( conn.canvas.paper.rect(toPt.x-3,toPt.y-3,6,6).attr({"fill":"#ff0000","opacity": "0.8"}));
 
             // paint the original calculated path without any simplification in BLUE
-            $.each(path,function(i,e){
+            path.forEach( e =>{
                 ROUTER_RECTS.push( conn.canvas.paper.rect(e.x-3,e.y-3,6,6).attr({"fill":"#0000ff","opacity": "0.8"}));
             });
             var p= path[0];
@@ -158,7 +158,7 @@ draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.Connect
         this.adjustPath(toPt, path, toDir);
         path.reverse();
 
-        $.each(path,function(i,e){
+        path.forEach( e =>{
             e.x=e[0];
             e.y=e[1];
         });
@@ -167,13 +167,13 @@ draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.Connect
         if(this.useSpline){
 	        var p  =new draw2d.util.ArrayList();
 	        p.add(oldFromPt);
-	        $.each(path,function(i,e){
+          path.forEach( e =>{
 	            p.add(new draw2d.geo.Point(e[0], e[1]));
 	        });
 	        p.add(oldToPt);
 
             if(this.useDebug){
-                $.each(path,function(i,e){
+               path.forEach( e =>{
                     ROUTER_RECTS.push( conn.canvas.paper.rect(e.x-3,e.y-3,6,6).attr({"fill":"#00ff00","opacity": "0.8"}));
                 });
                 var pt= path[0];
@@ -196,7 +196,7 @@ draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.Connect
 		        });
 		        path = this.simplify(path,this.useSimplifyValue ,true);
 
-		        $.each(path,function(i,e){
+            path.forEach( e =>{
 		            conn.addPoint(e.x,e.y);
 		        });
 	        }
@@ -212,7 +212,7 @@ draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.Connect
         	}
 
         	if(this.useDebug){
-                $.each(path,function(i,e){
+                path.forEach( e =>{
                     ROUTER_RECTS.push( conn.canvas.paper.rect(e.x-3,e.y-3,6,6).attr({"fill":"#00ff00","opacity": "0.8"}));
                 });
                 var p= path[0];
@@ -226,10 +226,10 @@ draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.Connect
             }
 
             conn.addPoint(oldFromPt);
-	        $.each(path,function(i,e){
-	            conn.addPoint(e[0], e[1]);
-	        });
-	        conn.addPoint(oldToPt);
+            path.forEach( e =>{
+              conn.addPoint(e[0], e[1]);
+	          });
+	          conn.addPoint(oldToPt);
 
         }
 
@@ -352,10 +352,10 @@ draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.Connect
 	},
 
 	adjustPath: function(pt , path, direction){
-        var shift = this.useShift;
-        var x = pt.x>>shift;
-        var y = pt.y>>shift;
-        $.each(path,function(i,e){
+        let shift = this.useShift;
+        let x = pt.x>>shift;
+        let y = pt.y>>shift;
+        path.forEach( e =>{
             if(y===(e[1]>>shift)){
                 e[1]=pt.y;
             }
@@ -363,7 +363,7 @@ draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.Connect
                 return false;
             }
         });
-        $.each(path,function(i,e){
+        path.forEach( e =>{
             if(x===(e[0]>>shift)){
                 e[0]=pt.x;
             }

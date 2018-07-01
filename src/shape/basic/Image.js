@@ -2,44 +2,47 @@
 /**
  * @class draw2d.shape.basic.Image
  * Simple Image shape.
- * 
+ *
  * @inheritable
  * @author Andreas Herz
  * @extends draw2d.shape.node.Node
- */ import draw2d from '../../packages';
+ */
+import draw2d from '../../packages';
+import extend from '../../util/extend';
+
 draw2d.shape.basic.Image = draw2d.shape.node.Node.extend({
     NAME : "draw2d.shape.basic.Image",
 
     /**
      * @constructor
      * Creates a new figure element which are not assigned to any canvas.
-     * 
+     *
      * @param {Object} [attr] the configuration of the shape
      */
     init: function(attr, setter, getter)
     {
-        this._super(attr, 
-        $.extend({
+        this._super(attr,
+        extend({
             /** @attr {String} path the image path (absolute or relative) of the shape */
             path  : this.setPath
         }, setter),
-        $.extend({
+        extend({
             path : this.getPath
         }, getter));
     },
-      
+
 
     /**
      * @method
      * Set the image path attribute of the Image shape and repaint them.
      * The path can be relative or absolute
-     * 
+     *
      * @param path
      * @since 2.8.0
      */
     setPath: function(path){
         this.path = path;
-        
+
         if(this.shape!==null){
             this.shape.attr({src:this.path});
         }
@@ -47,11 +50,11 @@ draw2d.shape.basic.Image = draw2d.shape.node.Node.extend({
 
         return this;
     },
-    
+
     /**
      * @method
      * Return the image path attribute of the shape.
-     * 
+     *
      * @returns {String}
      * @since 2.8.0
      */
@@ -59,7 +62,7 @@ draw2d.shape.basic.Image = draw2d.shape.node.Node.extend({
     {
         return this.path;
     },
-    
+
     /**
      * @inheritdoc
      */
@@ -76,13 +79,13 @@ draw2d.shape.basic.Image = draw2d.shape.node.Node.extend({
         attributes.width = this.getWidth();
         attributes.height = this.getHeight();
         attributes.src = this.path;
-        
+
         // propagate the width/height and the display:inline-block as CSS attribute as well because Chrome
-        // did some "flickering" in some versions and sometimes the image disappear complete 
+        // did some "flickering" in some versions and sometimes the image disappear complete
         $(this.shape.node).css({ display: "inline-block", "width":attributes.width, "height":attributes.height});
-        
+
         this._super(attributes);
-        
+
         return this;
     },
 
@@ -93,18 +96,18 @@ draw2d.shape.basic.Image = draw2d.shape.node.Node.extend({
     {
        return this.canvas.paper.image(this.path,this.getX(),this.getY(),this.getWidth(), this.getHeight());
     },
-    
+
 
     /**
      * @inheritdoc
      */
     getPersistentAttributes: function()
     {
-        return $.extend( this._super(),{
+        return extend( this._super(),{
             path : this.path
         });
     },
-    
+
     /**
      * @inheritdoc
      */

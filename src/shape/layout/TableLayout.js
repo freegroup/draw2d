@@ -124,12 +124,12 @@ draw2d.shape.layout.TableLayout= draw2d.shape.layout.Layout.extend({
         
         
         this._super(
-                $.extend({stroke:1, resizeable:false},attr),
-                $.extend({
+                extend({stroke:1, resizeable:false},attr),
+                extend({
                     /** @attr {Number} padding the padding in pixel around the text */
                     padding  : this.setPadding
                 }, setter),
-                $.extend({
+                extend({
                     padding  : this.getPadding
                 }, getter));
                 
@@ -154,7 +154,7 @@ draw2d.shape.layout.TableLayout= draw2d.shape.layout.Layout.extend({
           layout.padding = {top:padding, right:padding, bottom:padding, left:padding};
     	}
     	else{
-          $.extend(layout.padding, padding);
+          extend(layout.padding, padding);
     	}
     	
         this.calculateLayout();
@@ -203,7 +203,7 @@ draw2d.shape.layout.TableLayout= draw2d.shape.layout.Layout.extend({
             this.padding = {top:padding, right:padding, bottom:padding, left:padding };
         }
         else{
-            $.extend(this.padding, padding);
+            extend(this.padding, padding);
         }
         this.calculateLayout();
         this.setDimension(1,1);

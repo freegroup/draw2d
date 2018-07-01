@@ -31,38 +31,38 @@ draw2d.policy.connection.ComposedConnectionCreatePolicy = draw2d.policy.connecti
 
     onMouseDown: function()
     {
-        var _arg = arguments;
-        $.each(this.policies, function(i,p){
+        let _arg = arguments;
+        this.policies.forEach((p)=>{
             p.onMouseDown.apply(p,_arg);
         });
     },
     onMouseDrag: function()
     {
-        var _arg = arguments;
-        $.each(this.policies, function(i,p){
+      let _arg = arguments;
+      this.policies.forEach((p)=>{
             p.onMouseDrag.apply(p,_arg);
         });
     },
 
     onMouseUp: function()
     {
-        var _arg = arguments;
-        $.each(this.policies, function(i,p){
+      let _arg = arguments;
+      this.policies.forEach((p)=>{
             p.onMouseUp.apply(p,_arg);
         });
     },
 
     onClick: function()
     {
-        var _arg = arguments;
-        $.each(this.policies, function(i,p){
+      let _arg = arguments;
+      this.policies.forEach((p)=>{
             p.onClick.apply(p,_arg);
         });
     },
     onMouseMove: function()
     {
-        var _arg = arguments;
-        $.each(this.policies, function(i,p){
+      let _arg = arguments;
+      this.policies.forEach((p)=>{
             p.onMouseMove.apply(p,_arg);
         });
     },
@@ -72,8 +72,8 @@ draw2d.policy.connection.ComposedConnectionCreatePolicy = draw2d.policy.connecti
      **/
     onKeyUp: function(canvas, keyCode, shiftKey, ctrlKey)
     {
-        var _arg = arguments;
-        $.each(this.policies, function(i,p){
+      let _arg = arguments;
+      this.policies.forEach((p)=>{
             p.onKeyUp.apply(p,_arg);
         });
     },
@@ -83,8 +83,8 @@ draw2d.policy.connection.ComposedConnectionCreatePolicy = draw2d.policy.connecti
      **/
     onKeyDown: function(canvas, keyCode, shiftKey, ctrlKey)
     {
-        var _arg = arguments;
-        $.each(this.policies, function(i,p){
+      let _arg = arguments;
+      this.policies.forEach((p)=>{
             p.onKeyDown.apply(p,_arg);
         });
     },
@@ -97,8 +97,8 @@ draw2d.policy.connection.ComposedConnectionCreatePolicy = draw2d.policy.connecti
      */
     onInstall: function(canvas)
     {
-        var _arg = arguments;
-        $.each(this.policies, function(i,p){
+      let _arg = arguments;
+      this.policies.forEach((p)=>{
             p.onInstall.apply(p,_arg);
         });
     },
@@ -111,8 +111,8 @@ draw2d.policy.connection.ComposedConnectionCreatePolicy = draw2d.policy.connecti
      */
     onUninstall: function(canvas)
     {
-        var _arg = arguments;
-        $.each(this.policies, function(i,p){
+      let _arg = arguments;
+      this.policies.forEach((p)=>{
             p.onUninstall.apply(p,_arg);
         });
     }

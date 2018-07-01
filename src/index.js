@@ -440,10 +440,6 @@ require('./io/svg/Writer');
 require('./io/png/Writer');
 require('./io/json/Writer');
 require('./io/json/Reader');
-require('./storage/FileStorage');
-require('./storage/GoogleDrive');
-require('./storage/LocalFileStorage');
-require('./storage/TideSDKStorage');
 
 import draw2d from 'packages';
 module.exports = draw2d;

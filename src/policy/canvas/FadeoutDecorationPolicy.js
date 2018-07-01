@@ -1,10 +1,10 @@
 
 /**
  * @class draw2d.policy.canvas.FadeoutDecorationPolicy
- * 
- * Install this edit policy in a canvas if you want fadeout all decorations like ports, resize handles 
+ *
+ * Install this edit policy in a canvas if you want fadeout all decorations like ports, resize handles
  * if the user didn't move the mouse. This is good for a clean representation of your diagram.
- *  
+ *
  *
  * @author Andreas Herz
  * @extends draw2d.policy.canvas.DecorationPolicy
@@ -14,14 +14,14 @@ import draw2d from '../../packages';
 draw2d.policy.canvas.FadeoutDecorationPolicy = draw2d.policy.canvas.DecorationPolicy.extend({
 
     NAME : "draw2d.policy.canvas.FadeoutDecorationPolicy",
-    
+
     DEFAULT_FADEOUT_DURATION : 60,
     DEFAULT_ALPHA_DECREMENT: 0.05,
-    
+
     /**
-     * @constructor 
+     * @constructor
      * Creates a new fade out policy. Don't forget to install them into the canvas.
-     * 
+     *
      */
     init: function()
     {
@@ -38,8 +38,8 @@ draw2d.policy.canvas.FadeoutDecorationPolicy = draw2d.policy.canvas.DecorationPo
     onInstall: function(canvas)
     {
         this._super(canvas);
-        this.timerId = window.setInterval($.proxy(this.onTimer,this), 50);
-        
+        this.timerId = window.setInterval(this.onTimer.bind(this), 50);
+
         // initial hide all decorations after install of this policy
         //
         this.hidePortsCounter=1;
@@ -71,11 +71,11 @@ draw2d.policy.canvas.FadeoutDecorationPolicy = draw2d.policy.canvas.DecorationPo
         var _this = this;
         if(this.hidePortsCounter<=0 && this.alpha >0){
             this.alpha = Math.max(0,this.alpha-this.alphaDec);
-            
+
             this.canvas.getAllPorts().each(function(i,port){
                 port.setAlpha(_this.alpha);
             });
-            
+
             this.canvas.getSelection().getAll().each(function(i,figure){
                 figure.selectionHandles.each(function(i,handle){
                     handle.setAlpha(_this.alpha);
@@ -96,11 +96,11 @@ draw2d.policy.canvas.FadeoutDecorationPolicy = draw2d.policy.canvas.DecorationPo
             });
         }
     },
-    
-    
+
+
     /**
      * @method
-     * 
+     *
      * @param {draw2d.Canvas} canvas
      * @param {Number} x the x-coordinate of the mouse down event
      * @param {Number} y the y-coordinate of the mouse down event
@@ -112,10 +112,10 @@ draw2d.policy.canvas.FadeoutDecorationPolicy = draw2d.policy.canvas.DecorationPo
         this.hidePortsCounter=this.DEFAULT_FADEOUT_DURATION;
         this.portDragging = (canvas.getBestFigure(x, y) instanceof draw2d.Port);
     },
-    
+
     /**
      * @method
-     * 
+     *
      * @param {draw2d.Canvas} canvas
      * @param {Number} x the x-coordinate of the mouse event
      * @param {Number} y the y-coordinate of the mouse event
@@ -127,10 +127,10 @@ draw2d.policy.canvas.FadeoutDecorationPolicy = draw2d.policy.canvas.DecorationPo
         this.hidePortsCounter=this.DEFAULT_FADEOUT_DURATION;
         this.portDragging = false;
     },
-    
+
     /**
      * @method
-     * 
+     *
      * @param {draw2d.Canvas} canvas
      * @param {Number} dx The x diff between start of dragging and this event
      * @param {Number} dy The y diff between start of dragging and this event
@@ -147,10 +147,10 @@ draw2d.policy.canvas.FadeoutDecorationPolicy = draw2d.policy.canvas.DecorationPo
             this.onTimer();
         }
     },
-    
+
     /**
      * @method
-     * 
+     *
      * @param {draw2d.Canvas} canvas
      * @param {Number} x the x-coordinate of the mouse down event
      * @param {Number} y the y-coordinate of the mouse down event
@@ -162,5 +162,5 @@ draw2d.policy.canvas.FadeoutDecorationPolicy = draw2d.policy.canvas.DecorationPo
         this.hidePortsCounter=this.DEFAULT_FADEOUT_DURATION;
         this.portDragging = false;
     }
-    
+
 });

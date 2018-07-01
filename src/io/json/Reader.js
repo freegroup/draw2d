@@ -3,10 +3,10 @@
  * @class draw2d.io.json.Reader
  * Read a JSON data and import them into the canvas. The JSON must be generated with the
  * {@link draw2d.io.json.Writer}.
- * 
+ *
  *      // Load a standard draw2d JSON object into the canvas
  *      //
- *      var jsonDocument = 
+ *      var jsonDocument =
  *          [
   *           {
  *              "type": "draw2d.shape.basic.Oval",
@@ -30,44 +30,44 @@
  *      // (load)
  *      var reader = new draw2d.io.json.Reader();
  *      reader.unmarshal(canvas, jsonDocument);
- *      
- * 
+ *
+ *
  * @extends draw2d.io.Reader
  */
 import draw2d from '../../packages';
 
 
 draw2d.io.json.Reader = draw2d.io.Reader.extend({
-    
+
     NAME : "draw2d.io.json.Reader",
-    
+
     init: function(){
         this._super();
     },
-    
+
     /**
      * @method
-     * 
+     *
      * Restore the canvas from a given JSON object.
-     * 
+     *
      * @param {draw2d.Canvas} canvas the canvas to restore
      * @param {Object} document the json object to load.
      */
     unmarshal: function(canvas, json){
         var _this = this;
         var result = new draw2d.util.ArrayList();
-        
+
         if(typeof json ==="string"){
             json = JSON.parse(json);
         }
 
         var node=null;
-        $.each(json, $.proxy(function(i, element){
+        json.forEach((element)=>{
             try{
-                var o = _this.createFigureFromType(element.type);
-                var source= null;
-                var target=null;
-                for(i in element){
+                let o = _this.createFigureFromType(element.type);
+                let source= null;
+                let target=null;
+                for(let i in element){
                     var val = element[i];
                     if(i === "source"){
                         node = canvas.getFigure(val.node);
@@ -106,32 +106,32 @@ draw2d.io.json.Reader = draw2d.io.Reader.extend({
                 debug.error(exc);
                 debug.warn(element);
             }
-        },this));
-        
+        });
+
         // restore group assignment
         //
-        $.each(json, $.proxy(function(i, element){
+        json.forEach( element => {
             if(typeof element.composite !== "undefined"){
-               var figure = canvas.getFigure(element.id);
+               let figure = canvas.getFigure(element.id);
                if(figure===null){
                    figure =canvas.getLine(element.id);
                }
-               var group = canvas.getFigure(element.composite);
+               let group = canvas.getFigure(element.composite);
                group.assignFigure(figure);
             }
-        },this));
-        
-        // recalculate all crossings and repaint the connections with 
+        });
+
+        // recalculate all crossings and repaint the connections with
         // possible crossing decoration
         canvas.calculateConnectionIntersection();
-        canvas.getLines().each(function(i,line){
+        canvas.getLines().each((i,line)=>{
             line.svgPathString=null;
             line.repaint();
         });
         canvas.linesToRepaintAfterDragDrop = canvas.getLines().clone();
 
         canvas.showDecoration();
-        
+
         return result;
     },
 

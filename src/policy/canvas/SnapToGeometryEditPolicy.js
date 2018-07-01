@@ -2,14 +2,14 @@
 
 /**
  * @class draw2d.policy.canvas.SnapToGeometryEditPolicy
- * 
- * Snapping is based on the existing children of a container. When snapping a shape, 
- * the edges of the bounding box will snap to edges of other rectangles generated 
- * from the children of the given canvas. 
- * 
- * 
+ *
+ * Snapping is based on the existing children of a container. When snapping a shape,
+ * the edges of the bounding box will snap to edges of other rectangles generated
+ * from the children of the given canvas.
+ *
+ *
  * @author Andreas Herz
- * 
+ *
  * @extends draw2d.policy.canvas.SnapToEditPolicy
  */
 import draw2d from '../../packages';
@@ -17,14 +17,14 @@ import draw2d from '../../packages';
 draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditPolicy.extend({
 
     NAME : "draw2d.policy.canvas.SnapToGeometryEditPolicy",
-    
+
     SNAP_THRESHOLD   : 3,
     FADEOUT_DURATION : 300,
-    
+
     /**
-     * @constructor 
+     * @constructor
      * Creates a new constraint policy for snap to geometry
-     * 
+     *
      */
     init: function( attr, setter, getter)
     {
@@ -37,7 +37,7 @@ draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditP
     },
 
 
-    
+
     /**
      * @method
      *
@@ -54,7 +54,7 @@ draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditP
         this.hideVerticalLine();
         this.hideHorizontalLine();
     },
-    
+
     /**
      * @method
      * Adjust the coordinates to the canvas neighbours
@@ -193,7 +193,7 @@ draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditP
 
         return {edge: topLeft.edge|bottomRight.edge , bounds:resultBounds};
     },
-    
+
     snapPoint: function(/*:int*/ snapOrientation, /*:draw2d.Point*/ inputPoint)
     {
         var resultPoint = inputPoint.clone();
@@ -201,40 +201,40 @@ draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditP
        if(this.rows===null || this.cols===null)
          this.populateRowsAndCols();
 
-       if ((snapOrientation & draw2d.SnapToHelper.EAST) !== 0) 
+       if ((snapOrientation & draw2d.SnapToHelper.EAST) !== 0)
        {
           var rightCorrection = this.getCorrectionFor(this.cols, inputPoint.x +1, 1);
-          if (rightCorrection !== this.SNAP_THRESHOLD) 
+          if (rightCorrection !== this.SNAP_THRESHOLD)
           {
              snapOrientation &= ~draw2d.SnapToHelper.EAST;
              resultPoint.x += rightCorrection;
           }
        }
 
-       if ((snapOrientation & draw2d.SnapToHelper.WEST) !== 0) 
+       if ((snapOrientation & draw2d.SnapToHelper.WEST) !== 0)
        {
           var leftCorrection = this.getCorrectionFor(this.cols, inputPoint.x, -1);
-          if (leftCorrection !== this.SNAP_THRESHOLD) 
+          if (leftCorrection !== this.SNAP_THRESHOLD)
           {
              snapOrientation &= ~draw2d.SnapToHelper.WEST;
              resultPoint.x += leftCorrection;
           }
        }
 
-       if ((snapOrientation & draw2d.SnapToHelper.SOUTH) !== 0) 
+       if ((snapOrientation & draw2d.SnapToHelper.SOUTH) !== 0)
        {
           var bottomCorrection = this.getCorrectionFor(this.rows,  inputPoint.y +1, 1);
-          if (bottomCorrection !== this.SNAP_THRESHOLD) 
+          if (bottomCorrection !== this.SNAP_THRESHOLD)
           {
              snapOrientation &= ~draw2d.SnapToHelper.SOUTH;
              resultPoint.y += bottomCorrection;
           }
        }
 
-       if ((snapOrientation & draw2d.SnapToHelper.NORTH) !== 0) 
+       if ((snapOrientation & draw2d.SnapToHelper.NORTH) !== 0)
        {
           var topCorrection = this.getCorrectionFor(this.rows, inputPoint.y, -1);
-          if (topCorrection !== this.SNAP_THRESHOLD) 
+          if (topCorrection !== this.SNAP_THRESHOLD)
           {
              snapOrientation &= ~draw2d.SnapToHelper.NORTH;
              resultPoint.y += topCorrection;
@@ -243,13 +243,13 @@ draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditP
 
        return {edge: snapOrientation, point: resultPoint};
     },
-    
+
     populateRowsAndCols: function()
     {
        var selection = this.canvas.getSelection();
        this.rows = [];
        this.cols = [];
-       
+
        var figures = this.canvas.getFigures();
        for (var i = 0; i < figures.getSize();i++ )
        {
@@ -275,12 +275,12 @@ draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditP
        var resultMag = this.SNAP_THRESHOLD;
        var result = this.SNAP_THRESHOLD;
 
-       for (var i = 0; i < entries.length; i++) 
+       for (var i = 0; i < entries.length; i++)
        {
           var entry = entries[i];
           var magnitude;
 
-          if (entry.type === -1 && side !== 0) 
+          if (entry.type === -1 && side !== 0)
           {
              magnitude = Math.abs(value - entry.location);
              if (magnitude < resultMag)
@@ -289,7 +289,7 @@ draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditP
                    result = entry.location - value;
              }
           }
-          else if (entry.type === 0 && side === 0) 
+          else if (entry.type === 0 && side === 0)
           {
              magnitude = Math.abs(value - entry.location);
              if (magnitude < resultMag)
@@ -298,7 +298,7 @@ draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditP
                 result = entry.location - value;
              }
           }
-          else if (entry.type === 1 && side !== 0) 
+          else if (entry.type === 1 && side !== 0)
           {
              magnitude = Math.abs(value - entry.location);
              if (magnitude < resultMag)
@@ -310,7 +310,7 @@ draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditP
        }
        return result;
     },
-    
+
     showVerticalLine: function(causedFigure, edge, x)
     {
         if(this.vline!=null){
@@ -365,7 +365,7 @@ draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditP
         this.vline = this.canvas.paper.setFinish();
         this.vline.toBack();
     },
-    
+
     hideVerticalLine: function()
     {
         if(this.vline==null){
@@ -374,15 +374,15 @@ draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditP
         this.vline.animate(
             {opacity: 0.1},
             this.FADEOUT_DURATION,
-            $.proxy(function(){
+            ()=>{
                 if(this.vline!==null) {
                     this.vline.remove();
                     this.vline = null;
                 }
-            },this)
+            }
         );
     },
-    
+
     showHorizontalLine: function(causedFigure, edge, y)
     {
         if(this.hline!=null){
@@ -449,13 +449,13 @@ draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditP
         this.hline.animate(
             {opacity: 0.1},
             this.FADEOUT_DURATION,
-            $.proxy(function(){
+            ()=>{
                 if(this.hline!==null) {
                     this.hline.remove();
                     this.hline = null;
                 }
-            },this)
+            }
         );
     }
-    
+
 });

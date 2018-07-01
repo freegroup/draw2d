@@ -9,6 +9,7 @@
  */
 
 import draw2d from 'packages';
+import extend from 'util/extend';
 
 draw2d.SVGFigure = draw2d.SetFigure.extend({
 
@@ -25,11 +26,11 @@ draw2d.SVGFigure = draw2d.SetFigure.extend({
         this.svg = null;
 
         this._super(
-            $.extend({},attr),
-            $.extend({
+            extend({},attr),
+            extend({
                 svg : this.setSVG
             },setter),
-            $.extend({
+            extend({
                 svg : this.getSVG
             },getter)
 
@@ -81,7 +82,7 @@ draw2d.SVGFigure = draw2d.SetFigure.extend({
         //
         if(this.canvas !==null && this.svgNodes !==null){
             var newSVGNodes = this.createSet();
-            if($.isNumeric(duration)) {
+            if(!isNaN(parseFloat(duration))) {
                 newSVGNodes.hide();
                 newSVGNodes.insertAfter(this.svgNodes);
                 var oldSVG = this.svgNodes;

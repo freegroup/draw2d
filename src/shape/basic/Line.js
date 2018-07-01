@@ -31,6 +31,7 @@
  */
 import draw2d from '../../packages';
 import jsonUtil from '../../util/JSONUtil';
+import extend from '../../util/extend';
 
 draw2d.shape.basic.Line = draw2d.Figure.extend({
     NAME : "draw2d.shape.basic.Line",
@@ -67,11 +68,11 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
         this.vertices.add(this.end.clone());
 
         this._super(
-             $.extend({
+             extend({
                 deleteable:false,
                 selectable:true
              },attr),
-             $.extend({},{
+             extend({},{
                     /** @attr {Number} start the  coordinates of the start point */
                     start: this.setStartPosition,
                     /** @attr {Number} startX the x coordinate of the start point */
@@ -100,7 +101,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
                     glow  : this.setGlow
                 }, setter),
 
-             $.extend({},{
+             extend({},{
                 start:         this.getStartPosition,
                 end:           this.getEndPosition,
                 outlineColor:  this.getOutlineColor,
@@ -877,10 +878,10 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
        var _this = this;
        // convert json document/array to draw2d ArrayList
        //
-       if($.isArray(vertices)){
+       if(Array.isArray(vertices)){
            this.vertices= new draw2d.util.ArrayList();
-           $.each(vertices,function(index, element){
-                _this.vertices.add(new draw2d.geo.Point(element));
+           vertices.forEach(element =>{
+                this.vertices.add(new draw2d.geo.Point(element));
            });
        }
        // use the given ArrayList
@@ -1193,7 +1194,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
        //
        // it makes no sense to restore vertices with only zero or one vertex. This
        // isn't a "line" at all.
-       if($.isArray(memento.vertex) && memento.vertex.length>1) {
+       if(Array.isArray(memento.vertex) && memento.vertex.length>1) {
            this.setVertices(memento.vertex);
        }
 

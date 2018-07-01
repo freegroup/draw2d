@@ -36,14 +36,14 @@ draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend({
         this.label = null;
 
         this._super(
-                $.extend({color:this.DEFAULT_COLOR.darker(), bgColor:this.BACKGROUND_COLOR},attr),
-                $.extend({
+                extend({color:this.DEFAULT_COLOR.darker(), bgColor:this.BACKGROUND_COLOR},attr),
+                extend({
                     // deprecated
                     label : this.setLabel,
                     /** @attr {String} text the text to display in the center of the hub */
                     text  : this.setLabel
                 },setter),
-                $.extend({
+                extend({
                     label: this.getLabel,
                     text : this.getLabel
                 },getter));
@@ -57,9 +57,9 @@ draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend({
 
         // redirect the glow effect and the hitTest for the port to the parent node
         //
-        this.port.setGlow = $.proxy(this.setGlow,this);
+        this.port.setGlow = this.setGlow.bind(this);
         this.port._orig_hitTest = this.port.hitTest;
-        this.port.hitTest = $.proxy(this.hitTest,this);
+        this.port.hitTest = this.hitTest.bind(this);
 
 
         // provide a special connection anchor for this port. We use the bounding box of the

@@ -209,18 +209,18 @@ draw2d.layout.connection.CircuitConnectionRouter = draw2d.layout.connection.Manh
             // bridge   => the connections didn't have a common port
             // vertex => the connections did have a common source or target port
             //
-            intersectionForCalc.each($.proxy(function(ii, interP) {
-                if (draw2d.shape.basic.Line.hit(1, oldP.x, oldP.y, p.x, p.y, interP.x, interP.y) === true) {
+            intersectionForCalc.each((ii, interP)=> {
+               if (draw2d.shape.basic.Line.hit(1, oldP.x, oldP.y, p.x, p.y, interP.x, interP.y) === true) {
 
                     // It is a vertex node..
                     //
-    			    if(conn.sharingPorts(interP.other)){
-    			        var other = interP.other;
-                        var otherZ = other.getZOrder();
-                        var connZ = conn.getZOrder();
-                        if(connZ<otherZ){
-                            var vertexNode=conn.canvas.paper.ellipse(interP.x,interP.y, this.vertexRadius, this.vertexRadius).attr({fill:conn.lineColor.hash()});
-        			        conn.vertexNodes.push(vertexNode);
+    			     if(conn.sharingPorts(interP.other)){
+    			        let other = interP.other;
+                  let otherZ = other.getZOrder();
+                  let connZ = conn.getZOrder();
+                  if(connZ<otherZ){
+                    var vertexNode=conn.canvas.paper.ellipse(interP.x,interP.y, this.vertexRadius, this.vertexRadius).attr({fill:conn.lineColor.hash()});
+                    conn.vertexNodes.push(vertexNode);
         				    // we found a vertex node. In this case an already existing connection did draw the connection.
         				    //
         			        if(this.abortRoutingOnFirstVertexNode===true){
@@ -242,7 +242,7 @@ draw2d.layout.connection.CircuitConnectionRouter = draw2d.layout.connection.Manh
                         path.push(bridgeCode);
     			    }
                 }
-			},this));
+			});
 
 			path.push(" L", (p.x|0)+0.5, " ", (p.y|0)+0.5);
 			oldP = p;

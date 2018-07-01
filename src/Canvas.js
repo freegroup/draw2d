@@ -20,6 +20,7 @@
  * @author Andreas Herz
  */
 import draw2d from 'packages';
+import $ from 'jquery';
 
 draw2d.Canvas = Class.extend(
 {
@@ -40,7 +41,7 @@ draw2d.Canvas = Class.extend(
         this.canvasId = canvasId;
         this.html = $("#"+canvasId);
         this.html.css({"cursor":"default"});
-        if($.isNumeric(width) && $.isNumeric(height)){
+        if(!isNaN(parseFloat(width)) && !isNaN(parseFloat(height))){
             this.initialWidth  = width;
             this.initialHeight = height;
         }
@@ -98,7 +99,7 @@ draw2d.Canvas = Class.extend(
 
         // painting stuff
         //
-        if($.isNumeric(height)){
+        if(!isNaN(parseFloat(height))){
             this.paper = Raphael(canvasId, width, height);
         }
         else{
@@ -1299,14 +1300,14 @@ draw2d.Canvas = Class.extend(
      **/
     getBestFigure: function(x, y, blacklist, whitelist)
     {
-    	if(!$.isArray(blacklist)){
+    	if(!Array.isArray(blacklist)){
             if(blacklist)
                 blacklist = [blacklist];
             else
                 blacklist = [];
     	}
 
-        if(!$.isArray(whitelist)){
+        if(!Array.isArray(whitelist)){
             if(whitelist)
                 whitelist = [whitelist];
             else
@@ -1318,10 +1319,9 @@ draw2d.Canvas = Class.extend(
 
 
         var isInList = function(testFigure, list){
-            let i,len; // inner function scope of vars. take care about this and don't move them outside
-            for(i=0,len=list.length; i<len;i++){
+            for(let i=0,len=list.length; i<len;i++){
                 var considering=list[i];
-                if($.isFunction(considering)){
+                if(typeof considering ==="function"){
                     if(testFigure instanceof considering){
                         return true;
                     }
@@ -1456,7 +1456,7 @@ draw2d.Canvas = Class.extend(
      **/
     getBestLine: function( x,  y,  lineToIgnore)
     {
-    	if(!$.isArray(lineToIgnore)){
+    	if(!Array.isArray(lineToIgnore)){
     		if(lineToIgnore instanceof draw2d.Figure){
     			lineToIgnore = [lineToIgnore];
     		}

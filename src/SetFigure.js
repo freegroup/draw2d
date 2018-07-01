@@ -9,6 +9,7 @@
  */
 
 import draw2d from 'packages';
+import extend from 'util/extend';
 
 draw2d.SetFigure = draw2d.shape.basic.Rectangle.extend({
 
@@ -33,7 +34,7 @@ draw2d.SetFigure = draw2d.shape.basic.Rectangle.extend({
 
       this.strokeScale = true; // scale the stroke width of the children nodes if the parent resize
 
-      this._super( $.extend({ stroke:0, bgColor:null},attr),setter, getter );
+      this._super( extend({ stroke:0, bgColor:null},attr),setter, getter );
     },
 
     /**

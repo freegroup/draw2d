@@ -28,7 +28,7 @@ draw2d.shape.node.Fulcrum = draw2d.shape.node.Hub.extend({
 	 */
 	init: function(attr, setter, getter )
     {
-        this._super($.extend({width:40, height:40},attr), setter, getter);
+        this._super(extend({width:40, height:40},attr), setter, getter);
 
 
         this.port.setConnectionAnchor(new draw2d.layout.anchor.ConnectionAnchor(this.port));

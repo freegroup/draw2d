@@ -9,6 +9,8 @@
 import draw2d from 'packages';
 import jsonUtil from 'util/JSONUtil';
 import UUID from 'util/UUID';
+import extend from 'util/extend';
+import $ from "jquery"
 
 draw2d.Figure = Class.extend({
 
@@ -27,7 +29,7 @@ draw2d.Figure = Class.extend({
      */
     init: function( attr, setter, getter) {
 
-        this.setterWhitelist = $.extend({
+        this.setterWhitelist = extend({
             /** @attr {String} id the unique id of the figure */
             id   : this.setId,
             /** @attr {Number} x the x offset of the figure in relation to the parent figure or canvas */
@@ -67,7 +69,7 @@ draw2d.Figure = Class.extend({
 
         },setter);
 
-        this.getterWhitelist = $.extend({
+        this.getterWhitelist = extend({
             id: this.getId,
             visible: this.isVisible,
             angle: this.getRotationAngle,
@@ -299,8 +301,8 @@ draw2d.Figure = Class.extend({
                         //
                         // in this case we assign the method to this object and wrap it with "this" as context
                         // a very, very simple method to replace default implemenations of the object
-                        else if($.isFunction(name[key])){
-                            this[key] = $.proxy(name[key],this);
+                        else if(typeof name[key] === "funktion"){
+                            this[key] = name[key].bind(this);
                         }
 
                     }
@@ -325,7 +327,7 @@ draw2d.Figure = Class.extend({
                 //
 
                 // the value can be a function. In this case we must call the value().
-                if($.isFunction(value)){
+                if(typeof value ==="function"){
                     value = value();
                 }
                 if(name.substring(0,9)==="userData."){
@@ -340,9 +342,9 @@ draw2d.Figure = Class.extend({
             }
             // may it is a array of attributes used for the getter
             //
-            else if($.isArray(name)){
+            else if(Array.isArray(name)){
               result = {};
-              $.each(name,(_, entry)=>{
+              name.forEach((_, entry)=>{
                 result[entry] = _this.attr(entry);
               });
               console.log(result);
@@ -607,7 +609,7 @@ draw2d.Figure = Class.extend({
      */
     addCssClass: function( className)
     {
-        className = $.trim(className);
+        className = className.trim();
         if (!this.hasCssClass( className)) {
             if(this.cssClass===null){
                 this.setCssClass(className);
@@ -630,8 +632,8 @@ draw2d.Figure = Class.extend({
      */
     removeCssClass: function(className)
     {
-        className = $.trim(className);
-        var newClass = ' ' + this.cssClass.replace( /[\t\r\n]/g, ' ') + ' ';
+        className = className.trim();
+        let newClass = ' ' + this.cssClass.replace( /[\t\r\n]/g, ' ') + ' ';
         if (this.hasCssClass(className)) {
             while (newClass.indexOf(' ' + className + ' ') >= 0 ) {
                 newClass = newClass.replace(' ' + className + ' ', ' ');
@@ -652,8 +654,8 @@ draw2d.Figure = Class.extend({
      */
     toggleCssClass: function( className)
     {
-        className = $.trim(className);
-        var newClass = ' ' + this.cssClass.replace( /[\t\r\n]/g, ' ' ) + ' ';
+        className = className.trim();
+        let newClass = ' ' + this.cssClass.replace( /[\t\r\n]/g, ' ' ) + ' ';
         if (this.hasCssClass( className)) {
             while (newClass.indexOf(' ' + className + ' ') >= 0 ) {
                 newClass = newClass.replace( ' ' + className + ' ' , ' ' );
@@ -738,10 +740,10 @@ draw2d.Figure = Class.extend({
     	 this.timerInterval = Math.max(this.MIN_TIMER_INTERVAL, milliSeconds);
 
     	 if(this.canvas!==null){
-    		 this.timerId = window.setInterval($.proxy(function(){
+    		 this.timerId = window.setInterval(()=>{
     		     this.onTimer();
     		     this.fireEvent("timer");
-    		 },this), this.timerInterval);
+    		 }, this.timerInterval);
     	 }
 
     	 return this;
@@ -987,7 +989,7 @@ draw2d.Figure = Class.extend({
 
          child.on("resize", this.relocateChildrenEventCallback);
 
-         if($.isNumeric(index)){
+         if(!isNaN(parseInt(index))){
              this.children.insertElementAt({figure:child, locator:locator}, index);
          }
          else{
@@ -1146,7 +1148,7 @@ draw2d.Figure = Class.extend({
 
          if(this.visible===true){
              if(this.shape.isVisible()===false){
-                 if($.isNumeric(attributes.visibleDuration)){
+                 if(!isNaN(parseFloat(attributes.visibleDuration))){
                      $(this.shape.node).fadeIn(attributes.visibleDuration, function(){
                          _this.shape.show();
                      });
@@ -1158,7 +1160,7 @@ draw2d.Figure = Class.extend({
          }
          else{
              if(this.shape.isVisible()===true){
-                 if($.isNumeric(attributes.visibleDuration)){
+                 if(!isNaN(parseFloat(attributes.visibleDuration))){
                      $(this.shape.node).fadeOut(attributes.visibleDuration, function(){
                          _this.shape.hide();
                      });
@@ -1181,7 +1183,7 @@ draw2d.Figure = Class.extend({
          this.lastAppliedAttributes= attributes;
 
 
-         if(!$.isEmptyObject(attributes)) {
+         if(Object.getOwnPropertyNames(attributes).length > 0) {
              this.shape.attr(attributes);
          }
 
@@ -2628,7 +2630,7 @@ draw2d.Figure = Class.extend({
         // The project "backbone.ModelBinder" requires this signature and we want to be nice.
         //
         if(context){
-            callback = $.proxy(callback,context);
+            callback = callback.bind(context);
             callback.___originalCallback = callback;
         }
 
@@ -2693,7 +2695,7 @@ draw2d.Figure = Class.extend({
      **/
     getBestChild: function(x, y, figureToIgnore)
     {
-        if(!$.isArray(figureToIgnore)){
+        if(!Array.isArray(figureToIgnore)){
             if(figureToIgnore instanceof draw2d.Figure){
                 figureToIgnore = [figureToIgnore];
             }
@@ -2781,7 +2783,7 @@ draw2d.Figure = Class.extend({
      */
     clone: function(cloneMetaData)
     {
-        cloneMetaData = $.extend({exludeChildren:false},cloneMetaData);
+        cloneMetaData = extend({exludeChildren:false},cloneMetaData);
 
         var clone = eval("new "+this.NAME+"();");
         var initialId = clone.id;
@@ -2827,7 +2829,7 @@ draw2d.Figure = Class.extend({
             height: this.height,
             alpha : this.alpha,
             angle : this.rotationAngle,
-           userData: $.extend(true,{},this.userData)
+           userData: extend(true,{},this.userData)
         };
 
 

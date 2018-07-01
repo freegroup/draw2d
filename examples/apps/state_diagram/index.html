@@ -13,14 +13,14 @@
         <link rel="stylesheet" href="css/jquery.layout.css" />
         <link rel="stylesheet" href="css/jquery.handsontable.full.css" />
 
-    <SCRIPT src="../../../lib/shifty.js"></SCRIPT>
+
     <SCRIPT src="../../../lib/raphael.js"></SCRIPT>
-    <SCRIPT src="../../../lib/jquery-1.12.0.min.js"></SCRIPT>
+
     <SCRIPT src="../../../lib/jquery.autoresize.js"></SCRIPT>
     <SCRIPT src="../../../lib/jquery-touch_punch.js"></SCRIPT>
     <SCRIPT src="../../../lib/jquery.contextmenu.js"></SCRIPT>
-    <SCRIPT src="../../../lib/rgbcolor.js"></SCRIPT>
-    <SCRIPT src="../../../lib/canvg.js"></SCRIPT>
+
+
     <SCRIPT src="../../../lib/Class.js"></SCRIPT>
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
@@ -40,11 +40,11 @@
         <script src="lib/regex-colorizer.js"></script>
         <script src="lib/jquery-caretposition.js"></script>
         <script src="lib/jquery.pulse.js"></script>
-        
-       
+
+
         <!--  conflict with Draw2D autoresizer. In this case we must add this after the Draw2D resizer include to override the Draw2d behaviour -->
 		<SCRIPT src="lib/jquery.handsontable.full.js"></SCRIPT>
-         
+
 		<SCRIPT src="./src/Application.js"></SCRIPT>
 		<SCRIPT src="./src/Toolbar.js"></SCRIPT>
 		<SCRIPT src="./src/View.js"></SCRIPT>
@@ -80,16 +80,16 @@
 
         <script type="text/javascript">
         var app = null;
-			$(window).load(function () {
+			document.addEventListener("DOMContentLoaded",function () {
 				 app = new example.Application();
 			});
 		</script>
-        
+
     </head>
-    
+
 <body id="container">
 
-   
+
   <div id="content">
       <div id="editor" class="well">
 		   <div id="palette" class="">
@@ -100,7 +100,7 @@
 		   </div>
 		   <div id="view">
 		   	    <div id="canvas"  style="width:1500px; height:1500px;-webkit-tap-highlight-color: rgba(0,0,0,0); "></div>
-	            <div id="property">            
+	            <div id="property">
 	            </div>
 	       </div>
        </div>

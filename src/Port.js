@@ -32,7 +32,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
         this.lighterBgColor =null;
         this.name = null;
 
-        this._super($.extend({
+        this._super(extend({
                 bgColor: "#4f6870",
                 stroke:1,
                 diameter:draw2d.isTouchDevice?25:10,

@@ -18,7 +18,10 @@
  *     canvas.add( pie);
  *
  * @extends draw2d.shape.diagram.Diagram
- */ import draw2d from '../../packages';
+ */
+import draw2d from '../../packages';
+import extend from '../../util/extend';
+
 draw2d.shape.diagram.Pie = draw2d.shape.diagram.Diagram.extend({
 
     COLORS: ['#00A8F0', '#b9dd69', '#f3546a', '#4DA74D', '#9440ED'],
@@ -32,14 +35,14 @@ draw2d.shape.diagram.Pie = draw2d.shape.diagram.Diagram.extend({
 
 
         this._super(
-                $.extend({stroke:0},attr),
-                $.extend({
+                extend({stroke:0},attr),
+                extend({
                     /** @attr {Number} diameter the diameter of the pie chart */
                     diameter  : this.setDiameter,
                     /** @attr {Number} radius the radius of the pie chart */
                     radius    : this.setRadius
                 },setter),
-                $.extend({
+                extend({
                     diameter : this.getDiameter,
                     radius   : this.getRadius
                 },getter));
@@ -128,10 +131,9 @@ draw2d.shape.diagram.Pie = draw2d.shape.diagram.Diagram.extend({
         // Normalize the Data.
         // The SUM must be == 1.
         this.sum = 0;
-        var _this = this;
-        $.each(data,function(i,val){_this.sum +=val;});
-        var _sum=1/this.sum;
-        $.each(data,function(i,val){data[i] = _sum*val;});
+        data.forEach(val=>{this.sum +=val;});
+        let _sum=1/this.sum;
+        data.forEach((val,i)=>{data[i] = _sum*val;});
 
         //  pass the normalize data to the base implementation
         //

@@ -31,7 +31,7 @@ draw2d.shape.basic.Text= draw2d.shape.basic.Label.extend({
     {
         this.cachedWrappedAttr = null;
 
-        this._super($.extend({width:100, height:50, resizeable:true},attr), setter, getter);
+        this._super(extend({width:100, height:50, resizeable:true},attr), setter, getter);
         
         this.installEditPolicy(new draw2d.policy.figure.WidthSelectionFeedbackPolicy());
     },
@@ -48,7 +48,7 @@ draw2d.shape.basic.Text= draw2d.shape.basic.Label.extend({
         }
 
         // style the label
-       this.svgNodes.attr($.extend({},this.calculateTextAttr(),this.wrappedTextAttr(this.text, this.getWidth()-this.padding.left-this.padding.right)));
+       this.svgNodes.attr(extend({},this.calculateTextAttr(),this.wrappedTextAttr(this.text, this.getWidth()-this.padding.left-this.padding.right)));
         
         // set of the x/y must be done AFTER the font-size and bold has been set.
         // Reason: the getHeight method needs the font-size for calculation because
@@ -108,7 +108,7 @@ draw2d.shape.basic.Text= draw2d.shape.basic.Label.extend({
             var longestWord = this.text.split(" ").reduce(function(arg1,arg2){ return arg1.length > arg2.length ? arg1 : arg2; });
             var svgText = this.canvas.paper
                                      .text(0, 0, longestWord)
-                                     .attr($.extend({},this.calculateTextAttr(),{text:longestWord}));
+                                     .attr(extend({},this.calculateTextAttr(),{text:longestWord}));
             this.cachedMinWidth= svgText.getBBox(true).width+this.padding.left+this.padding.right+2*this.getStroke();
             svgText.remove();
         }
@@ -132,7 +132,7 @@ draw2d.shape.basic.Text= draw2d.shape.basic.Label.extend({
         
         if(this.cachedWrappedAttr===null){
             var abc = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            var svgText = this.canvas.paper.text(0, 0, "").attr($.extend({},this.calculateTextAttr(),{text:abc}));
+            var svgText = this.canvas.paper.text(0, 0, "").attr(extend({},this.calculateTextAttr(),{text:abc}));
             
             // get a good estimation of a letter width...not correct but this is working for the very first draft implementation
             var letterWidth = svgText.getBBox(true).width / abc.length;

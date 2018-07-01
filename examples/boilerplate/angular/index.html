@@ -11,13 +11,13 @@
 
     <link type="text/css" rel="stylesheet" href="../../../css/contextmenu.css" />
 
-    <SCRIPT src="../../../lib/shifty.js"></SCRIPT>
+
     <SCRIPT src="../../../lib/raphael.js"></SCRIPT>
     <SCRIPT src="../../../lib/jquery-1.10.2.min.js"></SCRIPT>
     <SCRIPT src="../../../lib/jquery.autoresize.js"></SCRIPT>
     <SCRIPT src="../../../lib/jquery.contextmenu.js"></SCRIPT>
-    <SCRIPT src="../../../lib/rgbcolor.js"></SCRIPT>
-    <SCRIPT src="../../../lib/canvg.js"></SCRIPT>
+
+
     <SCRIPT src="../../../lib/Class.js"></SCRIPT>
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
@@ -40,14 +40,14 @@
       <button class="btn btn-lg btn-default" ng-disabled="editor.selection.figure==null" ng-click="editor.delete()"> Delete </button>
       </div>
    </div>
-   
+
 
    <div id="propertyPane" >
      <div id="propertyHeader" class="highlight panetitle blackgradient">
          Shape Properties
      </div>
      <div id="properties" ng-switch on="editor.selection.className">
-         
+
          <div ng-switch-when="draw2d.shape.node.Start">
            Start
            <div class="panel panel-default">
@@ -60,7 +60,7 @@
 	           </div>
            </div>
          </div>
-         
+
          <div ng-switch-when="draw2d.shape.node.End" >
            End
            <div class="panel panel-default">
@@ -72,14 +72,14 @@
 	               </div>
 	           </div>
            </div>
-        </div>    
+        </div>
      </div>
-     
+
    </div>
-   
+
    <div id="palettePane" draw2d-palette>
    </div>
-         
+
    <div id="canvas" draw2d-canvas>
    </div>
 
@@ -103,6 +103,6 @@
     <SCRIPT src="./src/factories/FileFactory.js"></SCRIPT>
     <SCRIPT src="./src/controllers/EditorController.js"></SCRIPT>
     <SCRIPT src="./src/controllers/FileOpenController.js"></SCRIPT>
-    
-    
+
+
 </html>

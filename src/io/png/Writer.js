@@ -1,8 +1,8 @@
 /**
  * @class draw2d.io.png.Writer
  * Convert the canvas document into a PNG Image.
- * 
- *     // example how to create a PNG image and set an 
+ *
+ *     // example how to create a PNG image and set an
  *     // image src attribute.
  *     //
  *     var writer = new draw2d.io.png.Writer();
@@ -15,9 +15,10 @@
  */
 import draw2d from '../../packages';
 
+var canvg = require('canvg-browser');
 
 draw2d.io.png.Writer = draw2d.io.Writer.extend({
-    
+
     init: function(){
         this._super();
     },
@@ -28,16 +29,16 @@ draw2d.io.png.Writer = draw2d.io.Writer.extend({
      * the result is encoded as data source url <b>data:image/png;base64....</b>
      * <br>
      * <br>
-     * 
+     *
      * Method signature has been changed from version 2.10.1 to version 3.0.0.<br>
      * The parameter <b>resultCallback</b> is required and new. The method calls
      * the callback instead of return the result.
-     * 
+     *
      * @param {draw2d.Canvas} canvas
      * @param {Function} resultCallback the method to call on success. The first argument is the dataUrl, the second is the base64 formated png image
      * @param {String} resultCallback.img  The image as data source url <b>data:image/png;base64....</b>
      * @param {String} resultCallback.base64  the image encoded in base64
-     * @param {draw2d.geo.Rectangle} cropBoundingBox optional cropping/clipping bounding box 
+     * @param {draw2d.geo.Rectangle} cropBoundingBox optional cropping/clipping bounding box
      */
     marshal: function(canvas, resultCallback, cropBoundingBox){
         // I change the API signature from version 2.10.1 to 3.0.0. Throw an exception
@@ -76,7 +77,7 @@ draw2d.io.png.Writer = draw2d.io.Writer.extend({
             }
         }
 
-        // required for IE9 support. 
+        // required for IE9 support.
         // The following table contains ready-to-use conditions to detec IE Browser versions
         //
         // IE versions     Condition to check for
@@ -90,31 +91,31 @@ draw2d.io.png.Writer = draw2d.io.Writer.extend({
         if(document.all){
             svg = svg.replace(/xmlns=\"http:\/\/www\.w3\.org\/2000\/svg\"/, '');
         }
-        
-        canvasDomNode= $('<canvas id="canvas_png_export_for_draw2d" style="display:none"></canvas>');
+
+        let canvasDomNode= $('<canvas id="canvas_png_export_for_draw2d" style="display:none"></canvas>');
         $('body').append(canvasDomNode);
-        fullSizeCanvas = $("#canvas_png_export_for_draw2d")[0];
+        let fullSizeCanvas = $("#canvas_png_export_for_draw2d")[0];
         fullSizeCanvas.width = canvas.initialWidth;
         fullSizeCanvas.height = canvas.initialHeight;
-          
-        canvg("canvas_png_export_for_draw2d", svg, { 
-            ignoreMouse: true, 
+
+        canvg("canvas_png_export_for_draw2d", svg, {
+            ignoreMouse: true,
             ignoreAnimation: true,
             renderCallback: function(){
                 try{
                     if(canvas instanceof draw2d.Canvas)
                         canvas.showDecoration();
-    
+
                     if(typeof cropBoundingBox!=="undefined"){
                           var sourceX = cropBoundingBox.x;
                           var sourceY = cropBoundingBox.y;
                           var sourceWidth = cropBoundingBox.w;
                           var sourceHeight = cropBoundingBox.h;
-                          
+
                           croppedCanvas = document.createElement('canvas');
                           croppedCanvas.width = sourceWidth;
                           croppedCanvas.height = sourceHeight;
-                          
+
                           croppedCanvas.getContext("2d").drawImage(fullSizeCanvas, sourceX, sourceY, sourceWidth, sourceHeight, 0, 0,sourceWidth, sourceHeight);
 
                           var dataUrl = croppedCanvas.toDataURL("image/png");
@@ -130,6 +131,6 @@ draw2d.io.png.Writer = draw2d.io.Writer.extend({
                     canvasDomNode.remove();
                 }
            }
-        }) ;   
+        }) ;
     }
 });

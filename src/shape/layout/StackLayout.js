@@ -7,7 +7,10 @@
  *
  * @author Andreas Herz
  * @extends draw2d.shape.layout.Layout
- */ import draw2d from '../../packages';
+ */
+import draw2d from '../../packages';
+import extend from '../../util/extend';
+
 draw2d.shape.layout.StackLayout= draw2d.shape.layout.Layout.extend({
 
 	NAME : "draw2d.shape.layout.StackLayout",
@@ -15,18 +18,18 @@ draw2d.shape.layout.StackLayout= draw2d.shape.layout.Layout.extend({
     /**
      * @constructor
      * Create a new instance
-     * 
+     *
      * @param {Object} [attr] the configuration of the shape
      */
     init: function(attr, setter, getter)
     {
         this.visibleLayer = 0;
         this.locator = new draw2d.layout.locator.XYAbsPortLocator(0,0);
-        
+
         this._super(
-                $.extend({resizeable:true, width:10, height:10},attr),
-                $.extend({}, setter),
-                $.extend({}, getter));
+                extend({resizeable:true, width:10, height:10},attr),
+                extend({}, setter),
+                extend({}, getter));
 
         this.resizeListener = function(figure){ };
         // install default selection handler. Can be overridden or replaced
@@ -88,7 +91,7 @@ draw2d.shape.layout.StackLayout= draw2d.shape.layout.Layout.extend({
         return this;
     },
 
-    
+
     /**
      * @inheritdoc
      */
@@ -101,7 +104,7 @@ draw2d.shape.layout.StackLayout= draw2d.shape.layout.Layout.extend({
         });
         return width+markup;
     },
-    
+
     /**
      * @inheritdoc
      */
@@ -114,7 +117,7 @@ draw2d.shape.layout.StackLayout= draw2d.shape.layout.Layout.extend({
         });
         return height+markup;
     },
-    
+
     /**
      * @inheritdoc
      */

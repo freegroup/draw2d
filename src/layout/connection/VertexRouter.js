@@ -3,11 +3,11 @@
  * @class draw2d.layout.connection.VertexRouter
  *
  * A Router with unlimited vertices.
- * 
+ *
  * See the example:
  *
  *     @example preview small frame
- *     
+ *
  *     // Override the default connection type. This is used during drag&drop operations of ports.
  *     //
  *     var createConnection=function(){
@@ -28,22 +28,22 @@
  *     //
  *     var start = new draw2d.shape.node.Start();
  *     var end   = new draw2d.shape.node.End();
-        
- *     // ...add it to the canvas 
+
+ *     // ...add it to the canvas
  *     canvas.add( start, 50,50);
  *     canvas.add( end, 230,80);
- *          
+ *
  *     // first Connection
  *     //
  *     var c = createConnection();
  *     c.setSource(start.getOutputPort(0));
  *     c.setTarget(end.getInputPort(0));
  *     canvas.add(c);
- * 
- * 
+ *
+ *
  * @inheritable
  * @author Andreas Herz
- * 
+ *
  * @extends  draw2d.layout.connection.ConnectionRouter
  */
 import draw2d from '../../packages';
@@ -53,19 +53,19 @@ draw2d.layout.connection.VertexRouter = draw2d.layout.connection.ConnectionRoute
     NAME : "draw2d.layout.connection.VertexRouter",
 
     /**
-	 * @constructor 
+	 * @constructor
 	 * Creates a new Router object
 	 */
     init: function()
     {
         this._super();
     },
-    
-    
+
+
     /**
      * @method
      * Callback method if the router has been assigned to a connection.
-     * 
+     *
      * @param {draw2d.Connection} connection The assigned connection
      * @template
      * @since 2.7.2
@@ -74,7 +74,7 @@ draw2d.layout.connection.VertexRouter = draw2d.layout.connection.ConnectionRoute
     {
         connection.installEditPolicy(new draw2d.policy.line.VertexSelectionFeedbackPolicy());
     },
- 
+
     /**
      * @method
      * Invalidates the given Connection
@@ -96,16 +96,16 @@ draw2d.layout.connection.VertexRouter = draw2d.layout.connection.ConnectionRoute
        }
 
        var ps = connection.getVertices();
-       
+
        // respect the calculated anchor position if the start/end port has set any Anchor impl.
        var startAnchor = connection.getStartPoint(ps.get(1));
        var endAnchor   = connection.getEndPoint(ps.get(ps.getSize()-2));
        ps.first().setPosition(startAnchor);
        ps.last().setPosition(endAnchor);
-       
+
        this._paint(connection);
     },
-    
+
     /**
      * @method
      * Callback method for the PolyLine or Connection to check if it possible to remove a vertex from
@@ -122,7 +122,7 @@ draw2d.layout.connection.VertexRouter = draw2d.layout.connection.ConnectionRoute
     {
         return false;
     },
-    
+
     /**
      * Callback method for the PolyLine or Connection to verify that a segment is deletable.
      *
@@ -136,7 +136,7 @@ draw2d.layout.connection.VertexRouter = draw2d.layout.connection.ConnectionRoute
     {
 
        var segmentCount= conn.getVertices().getSize()-1; // segmentCount is one less than vertex count
-        
+
        // The first and last segment isn't deletable
        //
        if( (index<=0) || (index>= segmentCount)){
@@ -154,9 +154,9 @@ draw2d.layout.connection.VertexRouter = draw2d.layout.connection.ConnectionRoute
 
 
     /**
-     * @method 
+     * @method
      * Tweak or enrich the polyline persistence data with routing information
-     * 
+     *
      * @since 2.10.0
      * @param {draw2d.shape.basic.PolyLine} line
      * @param {Object} memento The memento data of the polyline
@@ -164,20 +164,20 @@ draw2d.layout.connection.VertexRouter = draw2d.layout.connection.ConnectionRoute
      * @returns {Object}
      */
     getPersistentAttributes: function(line, memento)
-    {   
+    {
         memento.vertex = [];
-        
+
         line.getVertices().each(function(i,e){
             memento.vertex.push({x:e.x, y:e.y});
         });
-        
+
         return memento;
     },
-    
+
     /**
-     * @method 
+     * @method
      * set the attributes for the polyline with routing information
-     * 
+     *
      * @since 2.10.0
      * @param {Object} memento
      */
@@ -185,8 +185,8 @@ draw2d.layout.connection.VertexRouter = draw2d.layout.connection.ConnectionRoute
     {
         // restore the points from the JSON data and add them to the polyline
         //
-        if($.isArray(memento.vertex) && memento.vertex.length>1){
-            
+        if(Array.isArray(memento.vertex) && memento.vertex.length>1){
+
             line.oldPoint=null;
             line.lineSegments = new draw2d.util.ArrayList();
 

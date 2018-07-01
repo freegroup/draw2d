@@ -1,14 +1,17 @@
 
 /**
  * @class draw2d.shape.layout.Layout
- * 
- * A base class for positioning child figures and determining the ideal size for 
- * a figure with children. 
- * 
- *     
+ *
+ * A base class for positioning child figures and determining the ideal size for
+ * a figure with children.
+ *
+ *
  * @author Andreas Herz
  * @extends draw2d.shape.basic.Rectangle
- */ import draw2d from '../../packages';
+ */
+import draw2d from '../../packages';
+import extend from '../../util/extend';
+
 draw2d.shape.layout.Layout= draw2d.shape.basic.Rectangle.extend({
 
 	NAME : "draw2d.shape.layout.Layout",
@@ -16,7 +19,7 @@ draw2d.shape.layout.Layout= draw2d.shape.basic.Rectangle.extend({
     /**
      * @constructor
      * Create a new instance
-     * 
+     *
      * @param {Object} [attr] the configuration of the shape
      */
     init: function(attr, setter, getter )
@@ -24,12 +27,12 @@ draw2d.shape.layout.Layout= draw2d.shape.basic.Rectangle.extend({
         // @since 4.3.3
         this.padding = {top:0, right:0, bottom:0,left:0};
 
-        this._super($.extend({bgColor:null, radius:0, stroke:0},attr),
-            $.extend({
+        this._super(extend({bgColor:null, radius:0, stroke:0},attr),
+            extend({
                 /** @attr {Number} padding the padding in pixel around the text */
                 padding  : this.setPadding
             }, setter),
-            $.extend({
+            extend({
                 padding  : this.getPadding
             }, getter));
 
@@ -47,10 +50,10 @@ draw2d.shape.layout.Layout= draw2d.shape.basic.Rectangle.extend({
                 _this.fireEvent("resize");
             }
         };
-        
+
         this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
     },
-    
+
     /**
      * @inheritdoc
      */
@@ -78,7 +81,7 @@ draw2d.shape.layout.Layout= draw2d.shape.basic.Rectangle.extend({
        var r= this._super(child);
        child.off(this.resizeListener);
        this.setDimension(1,1);
-       
+
        return r;
     },
 
@@ -108,7 +111,7 @@ draw2d.shape.layout.Layout= draw2d.shape.basic.Rectangle.extend({
             this.padding = {top:padding, right:padding, bottom:padding, left:padding};
         }
         else{
-            $.extend(this.padding, padding);
+            extend(this.padding, padding);
         }
         this.fireEvent("change:padding",{value:this.padding});
 

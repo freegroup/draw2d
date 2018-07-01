@@ -11,6 +11,7 @@
 
 import draw2d from 'packages';
 import jsonUtil from 'util/JSONUtil';
+import extend from 'util/extend';
 
 draw2d.VectorFigure = draw2d.shape.node.Node.extend({
     NAME : "draw2d.VectorFigure",
@@ -35,7 +36,7 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend({
         this.glowIsActive = false;
 
         this._super( attr,
-            $.extend({
+            extend({
                 /** @attr {String} dasharray the line pattern see {@link draw2d.shape.basic.Line#setDashArray} for more information*/
                 dasharray : this.setDashArray,
                 /** @attr {Number} radius the radius to render the line edges */
@@ -47,7 +48,7 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend({
                 /** @attr {Number} stroke the stroke width */
                 stroke : this.setStroke
             }, setter),
-            $.extend({
+            extend({
                dasharray: this.getDashArray,
                radius :   this.getRadius,
                bgColor:   this.getBackgroundColor,
@@ -286,7 +287,7 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend({
     */
    getPersistentAttributes: function()
    {
-       var memento = $.extend(this._super(), {
+       var memento = extend(this._super(), {
            bgColor : this.bgColor.hash(),
            color   : this.color.hash(),
            stroke  : this.stroke,

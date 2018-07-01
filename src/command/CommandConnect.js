@@ -63,12 +63,12 @@ draw2d.command.CommandConnect = draw2d.command.Command.extend({
      **/
     execute: function()
     {
-        var optionalCallback = $.proxy(function(conn){
+        let optionalCallback = conn =>{
             this.connection = conn;
             this.connection.setSource(this.source);
             this.connection.setTarget(this.target);
             this.canvas.add(this.connection);
-        },this);
+        };
 
         // the createConnection must return either a connection or "undefined". If the method return "undefined"
         // the asynch callback must be called. Usefull if the createConnection shows a selection dialog

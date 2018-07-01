@@ -2,14 +2,14 @@
 
 /**
  * @class draw2d.policy.canvas.SnapToVerticesEditPolicy
- * 
- * Snapping is based on the existing children of a container. When snapping a shape, 
- * the edges of the bounding box will snap to edges of other rectangles generated 
- * from the children of the given canvas. 
- * 
- * 
+ *
+ * Snapping is based on the existing children of a container. When snapping a shape,
+ * the edges of the bounding box will snap to edges of other rectangles generated
+ * from the children of the given canvas.
+ *
+ *
  * @author Andreas Herz
- * 
+ *
  * @extends draw2d.policy.canvas.SnapToEditPolicy
  */
 import draw2d from '../../packages';
@@ -17,14 +17,14 @@ import draw2d from '../../packages';
 draw2d.policy.canvas.SnapToVerticesEditPolicy = draw2d.policy.canvas.SnapToEditPolicy.extend({
 
     NAME : "draw2d.policy.canvas.SnapToVerticesEditPolicy",
-    
+
     SNAP_THRESHOLD   : 3,
     FADEOUT_DURATION : 300,
-    
+
     /**
-     * @constructor 
+     * @constructor
      * Creates a new constraint policy for snap to geometry
-     * 
+     *
      */
     init: function( attr, setter, getter)
     {
@@ -52,7 +52,7 @@ draw2d.policy.canvas.SnapToVerticesEditPolicy = draw2d.policy.canvas.SnapToEditP
         this.hideVerticalLine();
         this.hideHorizontalLine();
     },
-    
+
     /**
      * @method
      * Adjust the coordinates to the canvas neighbours
@@ -150,7 +150,7 @@ draw2d.policy.canvas.SnapToVerticesEditPolicy = draw2d.policy.canvas.SnapToEditP
        }
        return {vertical:vertical, horizontal:horizontal};
     },
-    
+
     showVerticalLine: function(originalPos, snappedPos)
     {
         if(this.vline!=null){
@@ -170,7 +170,7 @@ draw2d.policy.canvas.SnapToVerticesEditPolicy = draw2d.policy.canvas.SnapToEditP
         this.vline = this.canvas.paper.setFinish();
         this.vline.toBack();
     },
-    
+
     hideVerticalLine: function()
     {
         if(this.vline==null){
@@ -179,15 +179,15 @@ draw2d.policy.canvas.SnapToVerticesEditPolicy = draw2d.policy.canvas.SnapToEditP
         this.vline.animate(
             {opacity: 0.1},
             this.FADEOUT_DURATION,
-            $.proxy(function(){
+            ()=>{
                 if(this.vline!==null) {
                     this.vline.remove();
                     this.vline = null;
                 }
-            },this)
+            }
         );
     },
-    
+
     showHorizontalLine: function(originalPos, snappedPos)
     {
         if(this.hline!=null) {
@@ -217,13 +217,13 @@ draw2d.policy.canvas.SnapToVerticesEditPolicy = draw2d.policy.canvas.SnapToEditP
         this.hline.animate(
             {opacity: 0.1},
             this.FADEOUT_DURATION,
-            $.proxy(function(){
+            ()=>{
                 if(this.hline!==null) {
                     this.hline.remove();
                     this.hline = null;
                 }
-            },this)
+            }
         );
     }
-    
+
 });

@@ -2,60 +2,63 @@
 /**
  * @class draw2d.shape.basic.Oval
  * Oval figure.
- * 
- * 
+ *
+ *
  * See the example:
  *
  *     @example preview small frame
- *     
+ *
  *     var oval =  new draw2d.shape.basic.Oval({width:150, height:100, x:50, y:10});
- *     
+ *
  *     canvas.add(oval);
- *     
+ *
  * @inheritable
  * @author Andreas Herz
  * @extends draw2d.VectorFigure
- */ import draw2d from '../../packages';
+ */
+import draw2d from '../../packages';
+import extend from '../../util/extend';
+
 draw2d.shape.basic.Oval = draw2d.VectorFigure.extend({
     NAME : "draw2d.shape.basic.Oval",
 
     /**
-     * 
+     *
      * @constructor
      * Creates a new figure element which are not assigned to any canvas.
-     * 
+     *
      * @param {Object} [attr] the configuration of the shape
      */
-    init: function(attr, setter, getter ) 
+    init: function(attr, setter, getter )
     {
-        this._super( 
-                $.extend({
-                    bgColor:"#C02B1D", 
+        this._super(
+                extend({
+                    bgColor:"#C02B1D",
                     color:"#1B1B1B"
                     },attr),
-                $.extend({
+                extend({
                     center: this.setCenter
                     },setter),
                 getter);
     },
-      
 
-   /** 
+
+   /**
     * @template
     **/
    createShapeElement: function()
    {
      var halfW = this.getWidth()/2;
      var halfH = this.getHeight()/2;
-     
+
      return this.canvas.paper.ellipse(this.getAbsoluteX()+halfW, this.getAbsoluteY()+halfH, halfW, halfH);
    },
 
-   
+
    /**
     * @method
     * Get the center of the figure
-    * 
+    *
     */
    getCenter: function(){
        var w2= this.getWidth()/2;
@@ -67,7 +70,7 @@ draw2d.shape.basic.Oval = draw2d.VectorFigure.extend({
    /**
     * @method
     * Set the center of the figure.
-    * 
+    *
     * @param {Number|draw2d.geo.Point} x the new x coordinate of the center or a draw2d.geo.Point object with the center
     * @param {Number} [y] the y coordinate of the new center of the first argument isn't a draw2d.geo.Point object
     */
@@ -84,11 +87,11 @@ draw2d.shape.basic.Oval = draw2d.VectorFigure.extend({
 
        return this;
    },
-   
+
 
    /**
     * @inheritdoc
-    * 
+    *
     * @template
     **/
    repaint: function(attributes)
@@ -98,23 +101,23 @@ draw2d.shape.basic.Oval = draw2d.VectorFigure.extend({
        }
 
        attributes= attributes || {};
-       
-       
+
+
        // don't override cx/cy if inherited class has set the center already.
        if(typeof attributes.rx === "undefined"){
            attributes.rx = this.width/2;
            attributes.ry = this.height/2;
        }
- 
+
        // don't override cx/cy if inherited class has set the center already.
        if(typeof attributes.cx === "undefined"){
            attributes.cx = this.getAbsoluteX()+attributes.rx;
            attributes.cy = this.getAbsoluteY()+attributes.ry;
        }
-       
+
        this._super(attributes);
    },
-   
+
    /**
     * @method
    *
@@ -125,9 +128,9 @@ draw2d.shape.basic.Oval = draw2d.VectorFigure.extend({
    {
 	   var rx = this.getWidth()/2;
 	   var ry = this.getHeight()/2;
-       
+
 	   var result= new draw2d.util.ArrayList();
-       
+
        var origin = new draw2d.geo.Point(a1.x, a1.y);
        var dir    = a2.subtract(a1);
        var center = new draw2d.geo.Point(this.getAbsoluteX()+rx, this.getAbsoluteY()+ry);
@@ -151,7 +154,7 @@ draw2d.shape.basic.Oval = draw2d.VectorFigure.extend({
                if ( (t_a < 0 && t_b < 0) || (t_a > 1 && t_b > 1) ){
                    //"Outside";
                }
-               else{            	   
+               else{
                    ;//"Inside";
                }
            } else {
@@ -168,9 +171,9 @@ draw2d.shape.basic.Oval = draw2d.VectorFigure.extend({
                //"Outside";
            }
        }
-       
+
        return result;
-   }	 
-    
+   }
+
 });
 
