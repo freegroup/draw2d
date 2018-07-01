@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/freegroup/draw2D.git"
+    "url": "https://github.com/freegroup/draw2d.git"
   },
   "keywords": [
     "draw2d",
@@ -20,9 +20,9 @@
   "author": "Andreas Herz",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/freegroup/draw2D/issues"
+    "url": "https://github.com/freegroup/draw2d/issues"
   },
-  "homepage": "https://github.com/freegroup/draw2D",
+  "homepage": "https://github.com/freegroup/draw2d",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
