@@ -19,6 +19,8 @@
  * @since 5.8.0
  */
 import draw2d from '../../packages';
+import $ from "jquery";
+import {Tweenable} from "shifty"
 
 draw2d.policy.canvas.WheelZoomPolicy = draw2d.policy.canvas.ZoomPolicy.extend({
 
@@ -113,16 +115,16 @@ draw2d.policy.canvas.WheelZoomPolicy = draw2d.policy.canvas.ZoomPolicy.extend({
         // determine the center of the current canvas. We try to keep the
         // current center during zoom operation
         //
-        var scrollTop   = this.canvas.getScrollTop();
-        var scrollLeft  = this.canvas.getScrollLeft();
-        var scrollWidth = this.canvas.getScrollArea().width();
-        var scrollHeight= this.canvas.getScrollArea().width();
-        var centerY = scrollTop+(scrollHeight/2)*this.canvas.zoomFactor;
-        var centerX = scrollLeft+(scrollWidth/2)*this.canvas.zoomFactor;
+        let scrollTop   = this.canvas.getScrollTop();
+        let scrollLeft  = this.canvas.getScrollLeft();
+        let scrollWidth = this.canvas.getScrollArea().width();
+        let scrollHeight= this.canvas.getScrollArea().width();
+        let centerY = scrollTop+(scrollHeight/2)*this.canvas.zoomFactor;
+        let centerX = scrollLeft+(scrollWidth/2)*this.canvas.zoomFactor;
 
-        var _this = this;
+        let _this = this;
         if(animated){
-            var myTweenable = new Tweenable();
+            let myTweenable = new Tweenable();
             myTweenable.tween({
                 from:     { 'x': this.canvas.zoomFactor  },
                 to:       { 'x': zoomFactor },

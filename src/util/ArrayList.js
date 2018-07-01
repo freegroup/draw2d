@@ -192,7 +192,7 @@ draw2d.util.ArrayList = Class.extend({
       * @since 4.0.0
       */
      map: function(func){
-         this.data = $.map(this.data, func);
+         this.data = this.data.map( func);
 
          return this;
      },
@@ -205,7 +205,7 @@ draw2d.util.ArrayList = Class.extend({
      * @since 4.0.0
       */
      unique: function(){
-         this.data = $.unique(this.data);
+         this.data = this.data.filter( (value, index, self)=> self.indexOf(value) === index);
 
          return this;
      },

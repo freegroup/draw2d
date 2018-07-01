@@ -499,10 +499,10 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
             this.maxY = this.y+this.height;
         }
         else{
-            this.minX = this.x= Math.min.apply(Math,$.map(this.vertices.asArray(),function(n,i){return n.x;}));
-            this.minY = this.y= Math.min.apply(Math,$.map(this.vertices.asArray(),function(n,i){return n.y;}));
-            this.maxX = Math.max.apply(Math,$.map(this.vertices.asArray(),function(n,i){return n.x;}));
-            this.maxY = Math.max.apply(Math,$.map(this.vertices.asArray(),function(n,i){return n.y;}));
+            this.minX = this.x= Math.min.apply(Math,this.vertices.asArray().map(n=> n.x));
+            this.minY = this.y= Math.min.apply(Math,this.vertices.asArray().map(n=> n.y));
+            this.maxX = Math.max.apply(this.vertices.asArray().map(n=> n.x));
+            this.maxY = Math.max.apply(this.vertices.asArray().map(n=> n.y));
             this.width = this.maxX - this.minX;
             this.height= this.maxY - this.minY;
         }

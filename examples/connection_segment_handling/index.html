@@ -1,0 +1,128 @@
+﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<title></title>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+   <link type="text/css" rel="stylesheet" href="./css/aristo/jquery-ui-1.8.16.custom.css" />
+   <link type="text/css" rel="stylesheet" href="./css/jquery.layout.css" />
+   <link type="text/css" rel="stylesheet" href="./css/application.css" />
+
+
+
+
+
+    <SCRIPT src="../../lib/raphael.js"></SCRIPT>
+
+
+
+
+
+
+
+    <SCRIPT src="../../lib/Class.js"></SCRIPT>
+
+    <SCRIPT src="../../lib/pathfinding-browser.min.js"></SCRIPT>
+
+    <SCRIPT src="../../dist/draw2d.js"></SCRIPT>
+
+    <SCRIPT src="./lib/jquery.browser.js"></SCRIPT>
+    <SCRIPT src="./lib/jquery-ui-1.8.23.custom.min.js"></SCRIPT>
+    <SCRIPT src="./lib/jquery.layout.js"></SCRIPT>
+
+	<SCRIPT src="./gui/Application.js"></SCRIPT>
+	<SCRIPT src="./gui/View.js"></SCRIPT>
+	<SCRIPT src="./gui/Toolbar.js"></SCRIPT>
+
+<script type="text/javascript">
+
+// some test data
+//
+var jsonDocument =
+     [
+      {
+          "type": "draw2d.shape.note.PostIt",
+          "id": "ebfb35bb-5767-8155-c804-any",
+          "x": 20,
+          "y": 20,
+          "text":"Use the right mouse button on the \nconnection to add or remove segments"
+      },
+      {
+         "type": "draw2d.shape.node.Start",
+         "id": "354fa3b9-a834-0221-2009-abc2d6bd852a",
+         "x": 25,
+         "y": 120,
+         "width": 50,
+         "height": 50,
+         "radius": 2
+       },
+       {
+         "type": "draw2d.shape.node.End",
+         "id": "ebfb35bb-5767-8155-c804-14bda7759dc2",
+         "x": 332,
+         "y": 175,
+         "width": 50,
+         "height": 50,
+         "radius": 2
+       },
+       {
+         "type": "draw2d.Connection",
+         "id": "74ce9e7e-5f0e-8642-6bec-4ff9c54b3f0a",
+         "radius":8,
+         "stroke":3,
+         "color":'#00A8F0',
+         "outlineStroke":1,
+         "outlineColor":"#303030",
+         "router":"draw2d.layout.connection.InteractiveManhattanConnectionRouter",
+         "source": {
+           "node": "354fa3b9-a834-0221-2009-abc2d6bd852a",
+           "port": "output0"
+         },
+         "target": {
+           "node": "ebfb35bb-5767-8155-c804-14bda7759dc2",
+           "port": "input0"
+         }
+       }
+     ];
+
+
+document.addEventListener("DOMContentLoaded",function () {
+
+    // Everything is loaded - core and application. Now can create the
+    // application
+    //
+   	var app  = new example.Application();
+
+    // and install a customized ConnectionCreatePolicy into the canvas
+    //
+    app.view.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({
+        createConnection: function(sourcePort, targetPort){
+            var c = new draw2d.Connection();
+            c.setOutlineColor("#00A8F0");
+            c.setOutlineStroke(1);
+            c.setRadius(5);
+            c.setStroke(3);
+            c.setRouter(new draw2d.layout.connection.InteractiveManhattanConnectionRouter());
+            return c;
+        }
+    }));
+
+    // unmarshal the JSON document into the canvas
+    // (load)
+    var reader = new draw2d.io.json.Reader();
+    reader.unmarshal(app.view, jsonDocument);
+});
+
+
+</script>
+
+</head>
+
+<body id="container">
+
+   		<div id="toolbar"></div>
+   		<div id="canvas" class="" style="width:3000px; height:3000px;"></div>
+
+</body>
+</html>

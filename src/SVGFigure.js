@@ -10,6 +10,7 @@
 
 import draw2d from 'packages';
 import extend from 'util/extend';
+import $ from "jquery";
 
 draw2d.SVGFigure = draw2d.SetFigure.extend({
 

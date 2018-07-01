@@ -10,7 +10,7 @@ import draw2d from 'packages';
 import jsonUtil from 'util/JSONUtil';
 import UUID from 'util/UUID';
 import extend from 'util/extend';
-import $ from "jquery"
+import $ from "jquery";
 
 draw2d.Figure = Class.extend({
 
@@ -565,7 +565,7 @@ draw2d.Figure = Class.extend({
      */
     setCssClass: function(cssClass)
     {
-        this.cssClass = cssClass===null?null:$.trim(cssClass);
+        this.cssClass = cssClass===null?null:cssClass.trim();
 
         if(this.shape===null){
             return this;
@@ -595,7 +595,7 @@ draw2d.Figure = Class.extend({
             return false;
         }
 
-        return new RegExp(' ' + $.trim(className) + ' ').test(' ' + this.cssClass + ' ');
+        return new RegExp(' ' + className.trim() + ' ').test(' ' + this.cssClass + ' ');
     },
 
     /**
@@ -2670,7 +2670,7 @@ draw2d.Figure = Class.extend({
         }
         else{
             for(var event in this.eventSubscriptions ){
-                this.eventSubscriptions[event] =$.grep(this.eventSubscriptions[event], function( callback ) {
+                this.eventSubscriptions[event] =this.eventSubscriptions[event].filter( callback => {
                     if(typeof callback.___originalCallback !=="undefined"){
                         return callback.___originalCallback !== eventOrFunction;
                     }

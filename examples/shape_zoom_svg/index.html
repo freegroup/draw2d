@@ -1,0 +1,120 @@
+﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<title></title>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link type="text/css" rel="stylesheet" href="./css/example.css" />
+    <link type="text/css" rel="stylesheet" href="./css/aristo/jquery-ui-1.8.16.custom.css" />
+    <link type="text/css" rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css" />
+    <link type="text/css" rel="stylesheet" href="./lib/bootstrap/css/bootstrap-theme.css" />
+
+
+
+
+
+    <SCRIPT src="../../lib/raphael.js"></SCRIPT>
+
+
+
+
+
+
+
+    <SCRIPT src="../../lib/Class.js"></SCRIPT>
+
+    <SCRIPT src="../../lib/pathfinding-browser.min.js"></SCRIPT>
+
+    <SCRIPT src="../../dist/draw2d.js"></SCRIPT>
+
+    <SCRIPT src="./lib/jquery-ui-1.8.23.custom.min.js"></SCRIPT>
+    <SCRIPT src="./lib/bootstrap/js/bootstrap.js"></SCRIPT>
+
+    <SCRIPT src="document.json"></SCRIPT>
+    <SCRIPT src="ZoomFigure.js"></SCRIPT>
+
+<script type="text/javascript">
+
+var canvas = null;
+document.addEventListener("DOMContentLoaded",function () {
+
+    // create the canvas for the user interaction
+    //
+    canvas = new draw2d.Canvas("canvas", 2000,2000);
+    // this example is different than the other ones. In this example the div is the scroll
+    // area and not the body itself
+    canvas.setScrollArea("#canvas");
+
+    canvas.installEditPolicy(new draw2d.policy.canvas.FadeoutDecorationPolicy());
+    canvas.installEditPolicy(new draw2d.policy.canvas.ExtendedKeyboardPolicy());
+    canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({
+        createConnection: function(){
+            return  new LabelConnection();
+        }
+    }));
+
+    // Create the top toolbar with bootstrap.js element/buttons
+    //
+    var toolbarDiv = $("#toolbar");
+    var buttonGroup=$('<div class="btn-group" ></div>');
+    toolbarDiv.append(buttonGroup);
+
+
+    // Inject the UNDO Button and the callbacks
+    //
+    var zoomInButton  = $("<button>Zoom In</button>");
+    buttonGroup.append(zoomInButton);
+    zoomInButton.button().click($.proxy(function(){
+        canvas.setZoom(canvas.getZoom()*0.7,true);
+    },this));
+
+    // Inject the DELETE Button
+    //
+    var resetButton  = $("<button>1:1</button>");
+    buttonGroup.append(resetButton);
+    resetButton.button().click($.proxy(function(){
+        canvas.setZoom(1.0, true);
+    },this));
+
+    // Inject the REDO Button and the callback
+    //
+    var zoomOutButton  = $("<button>Zoom Out</button>");
+    buttonGroup.append(zoomOutButton);
+    zoomOutButton.button().click($.proxy(function(){
+        canvas.setZoom(canvas.getZoom()*1.3, true);
+    },this));
+
+
+    // load an JSON document into the canvas
+    //
+    var reader = new draw2d.io.json.Reader();
+    reader.unmarshal(canvas, jsonDocument);
+
+
+    // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
+    var msg = new draw2d.shape.note.PostIt({text:"Use the Shift key + mouse wheel to zoom in/out. \nThe figures changes the SVG in relation to the zoom level"});
+    canvas.add(msg, 20,20);
+
+    // for test purpose only
+    //
+//    canvas.installEditPolicy(new draw2d.policy.canvas.SnapToGeometryEditPolicy({lineColor:"#ff0000"}));
+//    canvas.installEditPolicy(new draw2d.policy.canvas.SnapToInBetweenEditPolicy({lineColor:"#ff0000"}));
+//    canvas.installEditPolicy(new draw2d.policy.canvas.SnapToCenterEditPolicy({lineColor:"#ff0000"}));
+
+});
+
+
+</script>
+
+</head>
+
+<body id="container">
+
+   <div id="toolbar" class="navbar-default">
+   </div>
+   <div  onselectstart="javascript:/*IE8 hack*/return false" id="canvas" >
+   </div>
+
+</body>
+</html>

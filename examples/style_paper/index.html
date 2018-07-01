@@ -1,0 +1,149 @@
+﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<title></title>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link type="text/css" rel="stylesheet" href="./css/example.css" />
+
+
+
+    <SCRIPT src="../../lib/raphael.js"></SCRIPT>
+
+
+
+
+
+
+
+    <SCRIPT src="../../lib/Class.js"></SCRIPT>
+
+    <SCRIPT src="../../lib/pathfinding-browser.min.js"></SCRIPT>
+
+    <SCRIPT src="../../dist/draw2d.js"></SCRIPT>
+    <SCRIPT src="./lib/fraphael.js"></SCRIPT>
+    <SCRIPT src="./colors.js"></SCRIPT>
+
+<script type="text/javascript">
+
+document.addEventListener("DOMContentLoaded",function () {
+
+    var canvas = new draw2d.Canvas("gfx_holder");
+
+    var randomColor=function(weight){
+        return colors[Math.floor(Math.random()*colors.length)][weight];
+    };
+
+    // Override the standard ResizeHandle and add some fancy filter to the SVG element
+    // We need the fraphael.js lib to apply the filter
+    //
+    var filter = canvas.paper.createFilter();
+    filter.createShadow(1.7, 1.7, 2, 0.8, "#303030");
+    filter.element.setAttribute("x", "-55%");
+    filter.element.setAttribute("y", "-55%");
+    filter.element.setAttribute("width",  "400%");
+    filter.element.setAttribute("height", "400%");
+
+    draw2d.Configuration.factory = $.extend({}, draw2d.Configuration.factory,{
+
+        createResizeHandle: function(forShape, type){
+            var handle= new draw2d.ResizeHandle(forShape, type);
+            handle.attr({
+                width:10,
+                height:10,
+                radius:4,
+                bgColor:"#2196f3",
+                stroke:0
+            });
+
+            handle.useGradient=false;
+            handle._origShow = handle.show;
+            // override the standard "show" method to apply the filter to the create raphael element
+            //
+            handle.show= function(canvas){
+                this._origShow(canvas);
+                this.shape.filter(filter);
+            }.bind(handle);
+
+            return handle;
+        },
+
+        // @since 5.3.0
+        createInputPort: function(relatedFigure){
+            var p= new draw2d.InputPort({bgColor:"#ff9100", stroke:0});
+            p.useGradient=false;
+            return p;
+        },
+        // @since 5.3.0
+        createOutputPort: function(relatedFigure){
+            var p= new draw2d.OutputPort({bgColor:"#ff9100", stroke:0});
+            p.useGradient=false;
+            return p;
+        },
+        // @since 5.3.0
+        createHybridPort: function(relatedFigure){
+            var p= new draw2d.HybridPort({bgColor:"#ff9100", stroke:0});
+            p.useGradient=false;
+            return p;
+        }
+  });
+
+  canvas.on("figure:add",function(emitter, event){
+     if(!(event.figure instanceof draw2d.Connection)){
+         event.figure.shape.filter(filter);
+     }
+  });
+
+  canvas.installEditPolicy(new draw2d.policy.canvas.FadeoutDecorationPolicy());
+  canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({
+        createConnection: function(){
+            var conn = new draw2d.Connection({
+                stroke:5,
+                color: randomColor("100"),
+                router:null
+            });
+
+            conn.on("added", function(emitter){
+                emitter.toBack();
+                emitter.shape[1].filter(filter);
+            });
+            return conn;
+        }
+  }));
+
+
+  canvas.add( new draw2d.shape.basic.Oval({stroke:0, bgColor: randomColor("600")}),100,100);
+  canvas.add( new draw2d.shape.basic.Rectangle({radius:2, stroke:0, bgColor: randomColor("600")}),120,150);
+
+  canvas.add( new draw2d.shape.node.Start({radius:2, stroke:0, bgColor: randomColor("600")}), 80,80);
+  canvas.add( new draw2d.shape.node.Start({radius:2, stroke:0, bgColor: randomColor("600")}), 50,50);
+
+  canvas.add( new draw2d.shape.node.End({radius:2, stroke:0, bgColor: randomColor("600")}), 150,150);
+  canvas.add( new draw2d.shape.node.End({
+      radius:2,
+      stroke:0,
+      width:90,
+      height:90,
+      bgColor: randomColor("600")
+      }), 350,250);
+
+  /////////////////////////////////////////////////////////////////////
+  // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
+  /////////////////////////////////////////////////////////////////////
+  var msg = new draw2d.shape.note.PostIt({text:"Select a shape to see CSS styled resize handles", x:20, y:20});
+  canvas.add(msg);
+
+});
+
+</script>
+
+</head>
+
+<body>
+<div  onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:3000px; height:3000px;">
+</div>
+
+
+</body>
+</html>

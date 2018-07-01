@@ -327,7 +327,7 @@ draw2d.HeadlessCanvas = Class.extend(
         }
         else{
             for(var event in this.eventSubscriptions ){
-                this.eventSubscriptions[event] =$.grep(this.eventSubscriptions[event], function( callback ) { return callback !== eventOrFunction; });
+                this.eventSubscriptions[event] =this.eventSubscriptions[event].filter( callback => { return callback !== eventOrFunction; });
             }
         }
 

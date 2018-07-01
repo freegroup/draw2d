@@ -1773,7 +1773,7 @@ draw2d.Canvas = Class.extend(
         }
         else{
             for(var event in this.eventSubscriptions ){
-                this.eventSubscriptions[event] =$.grep(this.eventSubscriptions[event], function( callback ) { return callback !== eventOrFunction; });
+                this.eventSubscriptions[event] =this.eventSubscriptions[event].filter( function( callback ) { return callback !== eventOrFunction; });
             }
         }
 

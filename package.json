@@ -2,30 +2,27 @@
   "name": "draw2d",
   "version": "1.0.0",
   "description": "JS drag&drop lib",
-  "main": "lib/draw2d.js",
+  "main": "dist/draw2d.js",
   "scripts": {
     "build": "webpack --env dev && webpack --env build",
     "dev": "webpack --progress --colors --watch --env dev"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/krasimir/webpack-library-starter.git"
+    "url": "https://github.com/freegroup/draw2D.git"
   },
   "keywords": [
-    "webpack",
-    "es6",
-    "starter",
-    "library",
-    "universal",
-    "umd",
-    "commonjs"
+    "draw2d",
+    "js",
+    "drag drop",
+    "library"
   ],
   "author": "Andreas Herz",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/krasimir/webpack-library-starter/issues"
+    "url": "https://github.com/freegroup/draw2D/issues"
   },
-  "homepage": "https://github.com/krasimir/webpack-library-starter",
+  "homepage": "https://github.com/freegroup/draw2D",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
@@ -34,9 +31,11 @@
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-env": "^1.6.1",
     "chai": "^4.1.2",
+    "css-loader": "^0.28.11",
     "eslint": "^4.13.1",
     "eslint-loader": "^1.9.0",
     "mocha": "^4.0.1",
+    "style-loader": "^0.21.0",
     "webpack": "^3.10.0",
     "yargs": "^10.0.3"
   },

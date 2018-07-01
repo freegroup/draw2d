@@ -1,4 +1,5 @@
 import draw2d from '../packages';
+import $ from "jquery";
 
 draw2d.util.JSON = {
 
@@ -37,13 +38,13 @@ draw2d.util.JSON = {
 
             // Number, treat it as an array
             if (!isNaN(+parentKey) || parentKey === "[]") {
-              if($.type(parent)!=="array" ) {
+              if(parent.constructor !== Array ) {
                 parent = [];
                 addObj(grandParent, grandParentKey, parent);
               }
             // String, treat it as a key
             }
-            else if ($.type(parentKey)==="string") {
+            else if (typeof parentKey==="string") {
               if(!$.isPlainObject(parent)) {
                 parent = {};
                 addObj(grandParent, grandParentKey, parent);

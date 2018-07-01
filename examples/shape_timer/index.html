@@ -1,0 +1,55 @@
+﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<title></title>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link type="text/css" rel="stylesheet" href="./css/example.css" />
+
+
+
+
+    <SCRIPT src="../../lib/raphael.js"></SCRIPT>
+
+
+
+
+
+
+
+    <SCRIPT src="../../lib/Class.js"></SCRIPT>
+
+    <SCRIPT src="../../lib/pathfinding-browser.min.js"></SCRIPT>
+
+    <SCRIPT src="../../dist/draw2d.js"></SCRIPT>
+
+	<SCRIPT src="TimerFigure.js"></SCRIPT>
+
+<script type="text/javascript">
+
+document.addEventListener("DOMContentLoaded",function () {
+
+
+     var canvas = new draw2d.Canvas("gfx_holder");
+
+     var figure = new TimerFigure({x:100, y:100});
+     canvas.add( figure);
+
+     /////////////////////////////////////////////////////////////////////
+     // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
+     /////////////////////////////////////////////////////////////////////
+     var msg = new draw2d.shape.note.PostIt({text:"A custom label with an internal timer/counter.\nDrag&Drop me around."});
+     canvas.add(msg, 20,20);
+});
+</script>
+
+</head>
+
+<body>
+<div onselectstart="javascript:/*IE8 hack*/return false"  id="gfx_holder" style="width:3000px; height:3000px;">
+</div>
+
+
+</body>
+</html>

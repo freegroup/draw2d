@@ -18,7 +18,7 @@
  */
 import draw2d from '../packages';
 import extend from '../util/extend';
-import isPlainObject from '../util/isPlainObject';
+import $ from "jquery";
 
 draw2d.policy.EditPolicy = Class.extend({
 
@@ -54,7 +54,7 @@ draw2d.policy.EditPolicy = Class.extend({
     {
         // call of attr as setter method with {name1:val1, name2:val2 }  argument list
         //
-        if(isPlainObject(name)){
+        if($.isPlainObject(name)){
             for(let key in name){
                 let func=this.setterWhitelist[key];
                 // call the assigned method if given

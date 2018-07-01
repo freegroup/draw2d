@@ -23,6 +23,9 @@
  * @extends draw2d.ui.LabelEditor
 */
 import draw2d from '../packages';
+import $ from "jquery";
+
+import r from "lib/jquery.autoresize";
 
 draw2d.ui.LabelInplaceEditor =  draw2d.ui.LabelEditor.extend({
 
@@ -65,7 +68,7 @@ draw2d.ui.LabelInplaceEditor =  draw2d.ui.LabelEditor.extend({
 
         $("body").append(this.html);
 
-        this.html.autoResize({animate:false});
+        this.html.autoResize();
 
         this.html.bind("keyup",function(e){
             switch (e.which) {

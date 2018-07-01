@@ -11,6 +11,7 @@
  * @since 5.8.0
  */
 import draw2d from '../../packages';
+import {Tweenable} from "shifty"
 
 draw2d.policy.canvas.ZoomPolicy = draw2d.policy.canvas.CanvasPolicy.extend({
 
