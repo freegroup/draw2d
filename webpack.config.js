@@ -40,6 +40,10 @@ const config = {
       {
         test: /\.css$/,
         use: [ 'style-loader', 'css-loader' ]
+      },
+      {
+        test: /\.exec\.js$/,
+        use: [ 'script-loader' ]
       }
     ]
   },

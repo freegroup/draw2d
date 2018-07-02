@@ -1,4 +1,7 @@
 
+import raph from 'lib/raphael.exec.js';
+import cl   from 'lib/Class.exec.js';
+import path from 'lib/pathfinding.exec.js';
 
 require('./util/raphael_ext');
 require('./util/Polyfill');
