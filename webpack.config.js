@@ -21,6 +21,7 @@ const config = {
   entry: __dirname + '/src/index.js',
   devtool: 'source-map',
   output: {
+    libraryTarget: 'umd', // make the bundle export
     path: __dirname + '/dist',
     filename: outputFile,
     library: 'draw2d'
