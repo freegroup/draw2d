@@ -1,5 +1,5 @@
 import draw2d from '../packages';
-import $ from "jquery";
+
 
 draw2d.util.JSON = {
 

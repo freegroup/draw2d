@@ -19,7 +19,6 @@
  * @since 5.8.0
  */
 import draw2d from '../../packages';
-import $ from "jquery";
 import {Tweenable} from "shifty"
 
 draw2d.policy.canvas.WheelZoomPolicy = draw2d.policy.canvas.ZoomPolicy.extend({

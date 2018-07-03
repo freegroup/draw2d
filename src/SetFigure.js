@@ -10,7 +10,6 @@
 
 import draw2d from 'packages';
 import extend from 'util/extend';
-import $ from "jquery";
 
 draw2d.SetFigure = draw2d.shape.basic.Rectangle.extend({
 

@@ -8,7 +8,6 @@
  * @extends draw2d.policy.line.LineSelectionFeedbackPolicy
  */
 import draw2d from '../../packages';
-import $ from "jquery";
 
 // do not delete them
 import plugin from "lib/jquery.contextmenu";

@@ -11,7 +11,6 @@
  *   GPL v3 http://opensource.org/licenses/GPL-3.0
  *
  */
-import jQuery from  "jquery";
 
 (function($, undefined){
 

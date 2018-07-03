@@ -18,7 +18,6 @@
  */
 import draw2d from '../packages';
 import extend from '../util/extend';
-import $ from "jquery";
 
 draw2d.policy.EditPolicy = Class.extend({
 

@@ -14,7 +14,7 @@
  * @extends draw2d.io.Writer
  */
 import draw2d from '../../packages';
-import $ from "jquery";
+
 
 var canvg = require('canvg-browser');
 

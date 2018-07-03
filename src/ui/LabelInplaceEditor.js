@@ -23,7 +23,7 @@
  * @extends draw2d.ui.LabelEditor
 */
 import draw2d from '../packages';
-import $ from "jquery";
+
 
 import r from "lib/jquery.autoresize";
 

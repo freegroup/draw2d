@@ -9,7 +9,7 @@
  */
 import draw2d from '../../packages';
 import extend from '../../util/extend';
-import $ from "jquery";
+
 
 draw2d.shape.basic.Image = draw2d.shape.node.Node.extend({
     NAME : "draw2d.shape.basic.Image",

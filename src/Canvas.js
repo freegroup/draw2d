@@ -20,7 +20,6 @@
  * @author Andreas Herz
  */
 import draw2d from 'packages';
-import $ from 'jquery';
 
 draw2d.Canvas = Class.extend(
 {
@@ -61,8 +60,8 @@ draw2d.Canvas = Class.extend(
         // This can be done by a palette of toolbar or something else.
         // For more information see : http://jqueryui.com/demos/droppable/
         //
-        if(typeof this.html.droppable !=="undefined"){
-            this.html.droppable({
+
+            $(this.html).droppable({
                 accept: '.draw2d_droppable',
                 over: function(event, ui) {
                     _this.onDragEnter(ui.draggable);
@@ -95,7 +94,7 @@ draw2d.Canvas = Class.extend(
                     $(ui.helper).addClass("shadow");
                 }
            });
-        }
+
 
         // painting stuff
         //

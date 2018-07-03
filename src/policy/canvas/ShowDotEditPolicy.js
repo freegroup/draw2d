@@ -20,7 +20,7 @@
  * @since 4.0.1
  */
 import draw2d from '../../packages';
-import $ from "jquery";
+
 
 draw2d.policy.canvas.ShowDotEditPolicy = draw2d.policy.canvas.DecorationPolicy.extend({
 
