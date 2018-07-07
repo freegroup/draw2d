@@ -141,8 +141,8 @@ draw2d.util.Color = Class.extend({
      **/
     getIdealTextColor: function()
     {
-       var nThreshold = 105;
-       var bgDelta = (this.red * 0.299) + (this.green * 0.587) + (this.blue * 0.114);
+       let nThreshold = 105;
+       let bgDelta = (this.red * 0.299) + (this.green * 0.587) + (this.blue * 0.114);
        return (255 - bgDelta < nThreshold) ? new  draw2d.util.Color(0,0,0) : new  draw2d.util.Color(255,255,255);
     },
 
