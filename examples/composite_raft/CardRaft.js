@@ -33,11 +33,6 @@ var CardRaft = draw2d.shape.composite.Raft.extend({
     },
 
     applyAlpha: function(){
-    },
-
-    setPosition:function(x,y){
-        this._super(x,y);
-        console.log(arguments);
     }
 });
 

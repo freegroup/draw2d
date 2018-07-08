@@ -289,8 +289,9 @@ draw2d.Figure = Class.extend({
                     }
                     else{
                         let func=this.setterWhitelist[key];
-                        if(func){
-                            func.call(this,name[key]);
+                        let param = name[key];
+                        if(func && param!== undefined){
+                            func.call(this,param);
                         }
                         // maybe the user adds a function as property to the attr call
                         // e.g.:
@@ -301,7 +302,7 @@ draw2d.Figure = Class.extend({
                         // in this case we assign the method to this object and wrap it with "this" as context
                         // a very, very simple method to replace default implemenations of the object
                         else if(typeof name[key] === "funktion"){
-                            this[key] = name[key].bind(this);
+                            this[key] = param.bind(this);
                         }
 
                     }
