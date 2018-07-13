@@ -108,20 +108,20 @@ draw2d.io.png.Writer = draw2d.io.Writer.extend({
                         canvas.showDecoration();
 
                     if(typeof cropBoundingBox!=="undefined"){
-                          var sourceX = cropBoundingBox.x;
-                          var sourceY = cropBoundingBox.y;
-                          var sourceWidth = cropBoundingBox.w;
-                          var sourceHeight = cropBoundingBox.h;
+                      let sourceX = cropBoundingBox.x;
+                      let sourceY = cropBoundingBox.y;
+                      let sourceWidth = cropBoundingBox.w;
+                      let sourceHeight = cropBoundingBox.h;
 
-                          croppedCanvas = document.createElement('canvas');
-                          croppedCanvas.width = sourceWidth;
-                          croppedCanvas.height = sourceHeight;
+                      let croppedCanvas = document.createElement('canvas');
+                      croppedCanvas.width = sourceWidth;
+                      croppedCanvas.height = sourceHeight;
 
-                          croppedCanvas.getContext("2d").drawImage(fullSizeCanvas, sourceX, sourceY, sourceWidth, sourceHeight, 0, 0,sourceWidth, sourceHeight);
+                      croppedCanvas.getContext("2d").drawImage(fullSizeCanvas, sourceX, sourceY, sourceWidth, sourceHeight, 0, 0,sourceWidth, sourceHeight);
 
-                          var dataUrl = croppedCanvas.toDataURL("image/png");
-                          var base64Image = dataUrl.replace("data:image/png;base64,","");
-                          resultCallback(dataUrl, base64Image);
+                      var dataUrl = croppedCanvas.toDataURL("image/png");
+                      var base64Image = dataUrl.replace("data:image/png;base64,","");
+                      resultCallback(dataUrl, base64Image);
                     }
                     else{
                         var img = fullSizeCanvas.toDataURL("image/png");

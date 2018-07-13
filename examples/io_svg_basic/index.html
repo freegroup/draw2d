@@ -5,24 +5,12 @@
 <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <link type="text/css" rel="stylesheet" href="./css/example.css" />
+  <link type="text/css" rel="stylesheet" href="./css/example.css" />
 
+  <script src="./lib/jquery.js"></script>
+  <script src="./lib/jquery-ui.js"></script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script src="../../dist/draw2d.js"></script>
+  <script src="../../dist/draw2d.js"></script>
 
 <script type="text/javascript">
 
@@ -86,7 +74,7 @@ document.addEventListener("DOMContentLoaded",function () {
 function showSVG(canvas){
     var writer = new draw2d.io.svg.Writer();
     writer.marshal(canvas,function(svg){
-      document.querySelectorAll("#log").textContent=svg;
+      $("#log").text(svg);
     });
 }
 

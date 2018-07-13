@@ -5,28 +5,15 @@
 <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <link type="text/css" rel="stylesheet" href="./css/example.css" />
+  <link type="text/css" rel="stylesheet" href="./css/example.css" />
 
+  <script src="./lib/jquery.js"></script>
+  <script src="./lib/jquery-ui.js"></script>
 
+  <script src="../../dist/draw2d.js"></script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script src="../../dist/draw2d.js"></script>
-
-    <SCRIPT src="SelectionMenuPolicy.js"></SCRIPT>
-    <SCRIPT src="CustomFigure.js"></SCRIPT>
+  <script src="SelectionMenuPolicy.js"></script>
+  <script src="CustomFigure.js"></script>
 
 <script type="text/javascript">
 
@@ -40,15 +27,15 @@ document.addEventListener("DOMContentLoaded",function () {
 
     // create and add two nodes which contains Ports (In and OUT)
     //
-     var start = new CustomFigure();
-     var end   = new CustomFigure();
+     let start = new CustomFigure();
+     let end   = new CustomFigure();
 
      // ...add it to the canvas
      canvas.add( start, 50,250);
      canvas.add( end, 630,250);
 
 
-    /////////////////////////////////////////////////////////////////////
+     /////////////////////////////////////////////////////////////////////
      // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
      /////////////////////////////////////////////////////////////////////
      var msg = new draw2d.shape.note.PostIt({text:"Show a figure flyout menu if an element is selected.\nSelect an shape and press the 'delete' icon."});
