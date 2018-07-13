@@ -589,10 +589,10 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
     */
    getBoundingBox: function()
    {
-       var minX = Math.min.apply(Math,this.vertices.asArray().map(n => n.x));
-       var minY = Math.min.apply(Math,this.vertices.asArray().map(n => n.y));
-       var maxX = Math.max.apply(Math,this.vertices.asArray().map(n => n.x));
-       var maxY = Math.max.apply(Math,this.vertices.asArray().map(n => n.y));
+       var minX = Math.min(...this.vertices.asArray().map(n => n.x));
+       var minY = Math.min(...this.vertices.asArray().map(n => n.y));
+       var maxX = Math.max(...this.vertices.asArray().map(n => n.x));
+       var maxY = Math.max(...this.vertices.asArray().map(n => n.y));
        var width = maxX - minX;
        var height= maxY - minY;
 

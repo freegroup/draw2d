@@ -50,8 +50,8 @@ draw2d.shape.diagram.Sparkline = draw2d.shape.diagram.Diagram.extend({
     {
         if(data.length>0){
             // get the min/max from an array and not only from two elements..
-            this.min = Math.min.apply(Math, data);
-            this.max = Math.max.apply(Math, data);
+            this.min = Math.min(...data);
+            this.max = Math.max(...data);
         }
         else{
             this.min = 0;

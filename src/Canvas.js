@@ -667,8 +667,8 @@ draw2d.Canvas = Class.extend(
         if (typeof dim === "undefined"){
             var widths  = this.getFigures().clone().map(function(f){ return f.getAbsoluteX()+f.getWidth();});
             var heights = this.getFigures().clone().map(function(f){ return f.getAbsoluteY()+f.getHeight();});
-            this.initialHeight = Math.max.apply(Math,heights.asArray());
-            this.initialWidth  = Math.max.apply(Math,widths.asArray());
+            this.initialHeight = Math.max(...heights.asArray());
+            this.initialWidth  = Math.max(...widths.asArray());
         }
         else if(dim instanceof draw2d.geo.Rectangle){
             this.initialWidth  = dim.w;
