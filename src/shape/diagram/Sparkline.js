@@ -110,7 +110,7 @@ draw2d.shape.diagram.Sparkline = draw2d.shape.diagram.Diagram.extend({
 
         if(this.svgNodes!==null && (typeof this.cache.pathString ==="undefined")){
             var prev_pt=null;
-            this.data.forEach((item) =>{
+            this.data.forEach((item, idx) =>{
                 var pt = toCoords(item, idx);
                 if(prev_pt===null) {
                     this.cache.pathString = [ "M", pt.x, pt.y].join(" ");
