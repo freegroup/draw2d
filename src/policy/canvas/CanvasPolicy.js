@@ -240,11 +240,11 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend({
             },
 
             get: function() {
-                var result = "";
-                var data = this.data;
+                let result = "";
+                let data = this.data;
                 if(this.bit != 1) { data += String.fromCharCode(this.byte_); }
                 for(var i=0; i<data.length + 1; i+=255) {
-                    chunklen = data.length - i; if(chunklen < 0) chunklen = 0;
+                    let chunklen = data.length - i; if(chunklen < 0) chunklen = 0;
                     if(chunklen > 255) chunklen=255;
                     result += String.fromCharCode(chunklen) + data.substring(i,i+255);
                 }
@@ -252,8 +252,8 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend({
             }
         };
 
-        for(var y=0; y<h; y++) {
-            for(var x=0; x<w; x++) {
+        for(let y=0; y<h; y++) {
+            for(let x=0; x<w; x++) {
                 b.writeBit(d[x+w*y]); b.writeBit(0); b.writeBit(0);
                 b.writeBit(0); b.writeBit(0); b.writeBit(1);
             }
