@@ -73,7 +73,7 @@ draw2d.io.png.Writer = draw2d.io.Writer.extend({
 
             // add missing namespace for images in SVG if missing
             // depends on raphaelJS version
-            if(!svg.includes("http://www.w3.org/1999/xlink")) {
+            if(svg.indexOf("http://www.w3.org/1999/xlink")===-1) {
                 svg = svg.replace("<svg ", "<svg xmlns:xlink=\"http://www.w3.org/1999/xlink\" ");
             }
         }

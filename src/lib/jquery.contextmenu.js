@@ -654,12 +654,12 @@ var // currently active contextMenu trigger
         // :hover on menu
         menuMouseenter: function(e) {
             var root = $(this).data().contextMenuRoot;
-            root.hovering = true;
+            if(root)root.hovering = true;
         },
         // :hover on menu
         menuMouseleave: function(e) {
             var root = $(this).data().contextMenuRoot;
-            if (root.$layer && root.$layer.is(e.relatedTarget)) {
+            if (root && root.$layer && root.$layer.is(e.relatedTarget)) {
                 root.hovering = false;
             }
         },
@@ -670,6 +670,9 @@ var // currently active contextMenu trigger
                 data = $this.data(),
                 opt = data.contextMenu,
                 root = data.contextMenuRoot;
+
+            if(!root)
+              return
 
             root.hovering = true;
 
@@ -697,7 +700,7 @@ var // currently active contextMenu trigger
                 opt = data.contextMenu,
                 root = data.contextMenuRoot;
 
-            if (root !== opt && root.$layer && root.$layer.is(e.relatedTarget)) {
+            if (root && root !== opt && root.$layer && root.$layer.is(e.relatedTarget)) {
                 root.$selected && root.$selected.trigger('contextmenu:blur');
                 e.preventDefault();
                 e.stopImmediatePropagation();
@@ -776,11 +779,10 @@ var // currently active contextMenu trigger
             e.stopPropagation();
             var $this = $(this),
                 data = $this.data(),
-                opt = data.contextMenu,
-                root = data.contextMenuRoot;
+                opt = data.contextMenu;
 
             $this.removeClass('hover');
-            opt.$selected = null;
+            if(opt)opt.$selected = null;
         }
     },
     // operations
@@ -934,20 +936,22 @@ var // currently active contextMenu trigger
             root.accesskeys || (root.accesskeys = {});
 
             // create contextMenu items
-            $.each(opt.items, function(key, item){
-                var $t = $('<li class="context-menu-item"></li>').addClass(item.className || ""),
-                    $label = null,
-                    $input = null;
+            $.each(opt.items, function(key, item) {
+              var $t = $('<li class="context-menu-item"></li>').addClass(item.className || ""),
+                $label = null,
+                $input = null;
 
-                // iOS needs to see a click-event bound to an element to actually
-                // have the TouchEvents infrastructure trigger the click event
-                $t.on('click', $.noop);
+              // iOS needs to see a click-event bound to an element to actually
+              // have the TouchEvents infrastructure trigger the click event
+              $t.on('click', $.noop);
 
+              if (typeof item !== "string"){
                 item.$node = $t.data({
-                    'contextMenu': opt,
-                    'contextMenuRoot': root,
-                    'contextMenuKey': key
+                  'contextMenu': opt,
+                  'contextMenuRoot': root,
+                  'contextMenuKey': key
                 });
+              }
 
                 // register accesskey
                 // NOTE: the accesskey attribute should be applicable to any element, but Safari5 and Chrome13 still can't do that
@@ -1081,8 +1085,10 @@ var // currently active contextMenu trigger
                 }
 
                 // cache contained elements
-                item.$input = $input;
-                item.$label = $label;
+                if(typeof item !=="string") {
+                  item.$input = $input;
+                  item.$label = $label;
+                }
 
                 // attach item to menu
                 $t.appendTo(opt.$menu);
@@ -1145,12 +1151,12 @@ var // currently active contextMenu trigger
                 var $item = $(this),
                     key = $item.data('contextMenuKey'),
                     item = opt.items[key],
-                    disabled = ($.isFunction(item.disabled) && item.disabled.call($trigger, key, root)) || item.disabled === true;
+                    disabled = (item === undefined)||(typeof item ==="string") || ($.isFunction(item.disabled) && item.disabled.call($trigger, key, root)) || item.disabled === true;
 
                 // dis- / enable item
                 $item[disabled ? 'addClass' : 'removeClass']('disabled');
 
-                if (item.type) {
+                if (item && item.type) {
                     // dis- / enable input elements
                     $item.find('input, select, textarea').prop('disabled', disabled);
 
@@ -1172,7 +1178,7 @@ var // currently active contextMenu trigger
                     }
                 }
 
-                if (item.$menu) {
+                if (item && item.$menu) {
                     // update sub-menu
                     op.update.call($trigger, item, root);
                 }
