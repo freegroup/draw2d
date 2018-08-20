@@ -3,6 +3,8 @@
 .babelrc
 .eslintrc
 .nvmrc
+.idea
+.editorconfig
 package-lock.json
 webpack.config.js
 yarn.lock
