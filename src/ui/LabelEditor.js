@@ -37,7 +37,13 @@ draw2d.ui.LabelEditor = Class.extend({
     init: function(listener)
     {
         // register some default listener and override this with the handover one
-        this.configuration = extend({onCommit: function(){}, onCancel: function(){}, text:"Value"},listener);
+        this.configuration = extend({
+            onCommit: function(){},
+            onCancel: function(){},
+            onStart: function(){},
+            text:"Value"
+          },
+          listener);
      },
 
     /**
@@ -48,6 +54,7 @@ draw2d.ui.LabelEditor = Class.extend({
      */
     start: function( label)
     {
+        this.configuration.onStart()
         var newText = prompt(this.configuration.text, label.getText());
         if(newText){
             var cmd =new draw2d.command.CommandAttr(label, {text:newText});

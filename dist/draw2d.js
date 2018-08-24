@@ -61483,7 +61483,12 @@ _packages2.default.ui.LabelEditor = Class.extend({
       */
     init: function init(listener) {
         // register some default listener and override this with the handover one
-        this.configuration = extend({ onCommit: function onCommit() {}, onCancel: function onCancel() {}, text: "Value" }, listener);
+        this.configuration = extend({
+            onCommit: function onCommit() {},
+            onCancel: function onCancel() {},
+            onStart: function onStart() {},
+            text: "Value"
+        }, listener);
     },
 
     /**
@@ -61493,6 +61498,7 @@ _packages2.default.ui.LabelEditor = Class.extend({
      * @param {draw2d.shape.basic.Label} label the label to edit
      */
     start: function start(label) {
+        this.configuration.onStart();
         var newText = prompt(this.configuration.text, label.getText());
         if (newText) {
             var cmd = new _packages2.default.command.CommandAttr(label, { text: newText });
@@ -61588,7 +61594,11 @@ _packages2.default.ui.LabelInplaceEditor = _packages2.default.ui.LabelEditor.ext
         this._super();
 
         // register some default listener and override this with the handover one
-        this.listener = extend({ onCommit: function onCommit() {}, onCancel: function onCancel() {} }, listener);
+        this.listener = extend({
+            onCommit: function onCommit() {},
+            onCancel: function onCancel() {},
+            onStart: function onStart() {}
+        }, listener);
     },
 
     /**
@@ -61658,6 +61668,7 @@ _packages2.default.ui.LabelInplaceEditor = _packages2.default.ui.LabelEditor.ext
         this.html.css({ position: "absolute", "top": bb.y, "left": bb.x, "min-width": bb.w * (1 / canvas.getZoom()), "height": Math.max(25, bb.h * (1 / canvas.getZoom())) });
         this.html.fadeIn(function () {
             _this.html.focus();
+            _this.listener.onStart();
         });
     },
 

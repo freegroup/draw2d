@@ -40,7 +40,11 @@ draw2d.ui.LabelInplaceEditor =  draw2d.ui.LabelEditor.extend({
         this._super();
 
         // register some default listener and override this with the handover one
-        this.listener = extend({onCommit: function(){}, onCancel: function(){}},listener);
+        this.listener = extend({
+          onCommit: function(){},
+          onCancel: function(){},
+          onStart: function(){}
+          },listener);
     },
 
     /**
@@ -109,6 +113,7 @@ draw2d.ui.LabelInplaceEditor =  draw2d.ui.LabelEditor.extend({
         this.html.css({position:"absolute","top": bb.y, "left":bb.x, "min-width":bb.w*(1/canvas.getZoom()), "height":Math.max(25,bb.h*(1/canvas.getZoom()))});
         this.html.fadeIn(()=>{
             this.html.focus();
+            this.listener.onStart()
         });
     },
 
