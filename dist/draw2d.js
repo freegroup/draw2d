@@ -9411,2695 +9411,2696 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 _packages2.default.Figure = Class.extend({
 
-    NAME: "draw2d.Figure",
+  NAME: "draw2d.Figure",
 
-    MIN_TIMER_INTERVAL: 50, // minimum timer interval in milliseconds
+  MIN_TIMER_INTERVAL: 50, // minimum timer interval in milliseconds
 
-    // special attributes that should be get/set via method calls
+  // special attributes that should be get/set via method calls
 
-    /**
-     * @constructor
-     * Creates a new figure element which is not assigned to any canvas.
-     *
-     *
-     * @param {Object} [attr] the configuration of the shape
-     */
-    init: function init(attr, setter, getter) {
+  /**
+   * @constructor
+   * Creates a new figure element which is not assigned to any canvas.
+   *
+   *
+   * @param {Object} [attr] the configuration of the shape
+   */
+  init: function init(attr, setter, getter) {
 
-        this.setterWhitelist = (0, _extend2.default)({
-            /** @attr {String} id the unique id of the figure */
-            id: this.setId,
-            /** @attr {Number} x the x offset of the figure in relation to the parent figure or canvas */
-            x: this.setX,
-            /** @attr {Number} y the y offset of the figure in relation to the parent figure or canvas */
-            y: this.setY,
-            /** @attr {Number} width the new width of the figure. Considering the minWidth of the shape */
-            width: this.setWidth,
-            /** @attr {Number} height the new height of the figure. Considering the minHeight of the shape */
-            height: this.setHeight,
-            /** @attr {draw2d.geo.Rectangle} boundingBox set the new bounding box of the shape */
-            boundingBox: this.setBoundingBox,
-            /** @attr {Number} minWidth the new min width of the figure. */
-            minWidth: this.setMinWidth,
-            /** @attr {Number} minHeight the new min height of the figure. */
-            minHeight: this.setMinHeight,
-            /** @attr {String} cssClass the css class of the shape. can be used to style the shape via CSS3 (SVG only) */
-            cssClass: this.setCssClass,
-            /** @attr {Object} userData additional custom data which can be stored by the shape */
-            userData: this.setUserData,
-            /** @attr {Boolean} resizeable drives the resizeable behaviour of the shape */
-            resizeable: this.setResizeable,
-            /** @attr {Boolean} selectable drives the selectable behaviour of the shape */
-            selectable: this.setSelectable,
-            /** @attr {Number} angle the rotation angle of the shape. At the moment only 90 degree increments are possible */
-            angle: this.setRotationAngle,
-            /** @attr {Number} alpha the the alpha/opacity of the shape. value must be between [0..1] */
-            alpha: this.setAlpha,
-            /** @attr {Number} opacity the the alpha/opacity of the shape. value must be between [0..1] */
-            opacity: this.setAlpha,
-            /** @attr {Boolean} glow the glow flag for the shape. The representation of the "glow" depends on the shape */
-            glow: this.setGlow,
-            /** @attr {Boolean} visible set the visibility flag of the shape */
-            visible: this.setVisible,
-            /** @attr {Boolean} keepAspectRatio indicate if the shape should keep the aspect ratio during resize */
-            keepAspectRatio: this.setKeepAspectRatio
+    this.setterWhitelist = (0, _extend2.default)({
+      /** @attr {String} id the unique id of the figure */
+      id: this.setId,
+      /** @attr {Number} x the x offset of the figure in relation to the parent figure or canvas */
+      x: this.setX,
+      /** @attr {Number} y the y offset of the figure in relation to the parent figure or canvas */
+      y: this.setY,
+      /** @attr {Number} width the new width of the figure. Considering the minWidth of the shape */
+      width: this.setWidth,
+      /** @attr {Number} height the new height of the figure. Considering the minHeight of the shape */
+      height: this.setHeight,
+      /** @attr {draw2d.geo.Rectangle} boundingBox set the new bounding box of the shape */
+      boundingBox: this.setBoundingBox,
+      /** @attr {Number} minWidth the new min width of the figure. */
+      minWidth: this.setMinWidth,
+      /** @attr {Number} minHeight the new min height of the figure. */
+      minHeight: this.setMinHeight,
+      /** @attr {String} cssClass the css class of the shape. can be used to style the shape via CSS3 (SVG only) */
+      cssClass: this.setCssClass,
+      /** @attr {Object} userData additional custom data which can be stored by the shape */
+      userData: this.setUserData,
+      /** @attr {Boolean} resizeable drives the resizeable behaviour of the shape */
+      resizeable: this.setResizeable,
+      /** @attr {Boolean} selectable drives the selectable behaviour of the shape */
+      selectable: this.setSelectable,
+      /** @attr {Number} angle the rotation angle of the shape. At the moment only 90 degree increments are possible */
+      angle: this.setRotationAngle,
+      /** @attr {Number} alpha the the alpha/opacity of the shape. value must be between [0..1] */
+      alpha: this.setAlpha,
+      /** @attr {Number} opacity the the alpha/opacity of the shape. value must be between [0..1] */
+      opacity: this.setAlpha,
+      /** @attr {Boolean} glow the glow flag for the shape. The representation of the "glow" depends on the shape */
+      glow: this.setGlow,
+      /** @attr {Boolean} visible set the visibility flag of the shape */
+      visible: this.setVisible,
+      /** @attr {Boolean} keepAspectRatio indicate if the shape should keep the aspect ratio during resize */
+      keepAspectRatio: this.setKeepAspectRatio
 
-        }, setter);
+    }, setter);
 
-        this.getterWhitelist = (0, _extend2.default)({
-            id: this.getId,
-            visible: this.isVisible,
-            angle: this.getRotationAngle,
-            x: this.getX,
-            y: this.getY,
-            width: this.getWidth,
-            height: this.getHeight,
-            resizeable: this.isResizeable,
-            selectable: this.isSelectable,
-            alpha: this.getAlpha,
-            opacity: this.getAlpha
-        }, getter);
+    this.getterWhitelist = (0, _extend2.default)({
+      id: this.getId,
+      visible: this.isVisible,
+      angle: this.getRotationAngle,
+      x: this.getX,
+      y: this.getY,
+      width: this.getWidth,
+      height: this.getHeight,
+      resizeable: this.isResizeable,
+      selectable: this.isSelectable,
+      alpha: this.getAlpha,
+      opacity: this.getAlpha
+    }, getter);
 
-        var _this = this;
+    var _this = this;
 
-        // all figures has an unique id. Required for figure get and persistence storage
-        this.id = _UUID2.default.create();
+    // all figures has an unique id. Required for figure get and persistence storage
+    this.id = _UUID2.default.create();
 
-        // required for the SelectionEditPolicy to indicate the type of figure
-        // which the user clicks
-        this.isResizeHandle = false;
+    // required for the SelectionEditPolicy to indicate the type of figure
+    // which the user clicks
+    this.isResizeHandle = false;
 
-        // for undo/redo operation. It holds the command during a drag/drop operation
-        // and execute it on the CommandStack if the user drop the figure.
-        this.command = null;
+    // for undo/redo operation. It holds the command during a drag/drop operation
+    // and execute it on the CommandStack if the user drop the figure.
+    this.command = null;
 
-        // the assigned canvas
-        this.canvas = null;
+    // the assigned canvas
+    this.canvas = null;
 
-        // the RaphaelJS element reference
-        this.shape = null;
+    // the RaphaelJS element reference
+    this.shape = null;
 
-        // possible decorations ( e.g. a Label) of the Connection
-        // children are fixed bounded the figure. Most of the events of the child will bee
-        // routed to the parent
-        this.children = new _packages2.default.util.ArrayList();
+    // possible decorations ( e.g. a Label) of the Connection
+    // children are fixed bounded the figure. Most of the events of the child will bee
+    // routed to the parent
+    this.children = new _packages2.default.util.ArrayList();
 
-        // behavior flags
-        //
-        this.selectable = true;
-        this.deleteable = true;
-        this.resizeable = true;
-        this.draggable = true;
-        this.visible = true;
-        // since 4.1.0.
-        this.keepAspectRatio = false;
+    // behavior flags
+    //
+    this.selectable = true;
+    this.deleteable = true;
+    this.resizeable = true;
+    this.draggable = true;
+    this.visible = true;
+    // since 4.1.0.
+    this.keepAspectRatio = false;
 
-        this.canSnapToHelper = true;
-        this.snapToGridAnchor = new _packages2.default.geo.Point(0, 0); // hot spot for snap to grid
-        this.editPolicy = new _packages2.default.util.ArrayList();
+    this.canSnapToHelper = true;
+    this.snapToGridAnchor = new _packages2.default.geo.Point(0, 0); // hot spot for snap to grid
+    this.editPolicy = new _packages2.default.util.ArrayList();
 
-        // timer for animation or automatic update
-        //
-        this.timerId = -1;
-        this.timerInterval = 0;
+    // timer for animation or automatic update
+    //
+    this.timerId = -1;
+    this.timerInterval = 0;
 
-        // possible parent of the figure.
-        // @see: this.children
-        this.parent = null;
+    // possible parent of the figure.
+    // @see: this.children
+    this.parent = null;
 
-        // a figure can be part of a StrongComposite like a group, ...
-        //
-        this.composite = null;
+    // a figure can be part of a StrongComposite like a group, ...
+    //
+    this.composite = null;
 
-        // generic handle for the JSON read/write of user defined data
-        this.userData = null;
+    // generic handle for the JSON read/write of user defined data
+    this.userData = null;
 
-        // appearance, position and dim properties
-        //
-        this.x = 0;
-        this.y = 0;
-        this.minHeight = 5;
-        this.minWidth = 5;
-        this.rotationAngle = 0;
-        // add the name of the class to the css attribute
-        this.cssClass = this.NAME.replace(new RegExp("[.]", "g"), "_");
+    // appearance, position and dim properties
+    //
+    this.x = 0;
+    this.y = 0;
+    this.minHeight = 5;
+    this.minWidth = 5;
+    this.rotationAngle = 0;
+    // add the name of the class to the css attribute
+    this.cssClass = this.NAME.replace(new RegExp("[.]", "g"), "_");
 
-        this.width = this.getMinWidth();
-        this.height = this.getMinHeight();
+    this.width = this.getMinWidth();
+    this.height = this.getMinHeight();
 
-        this.alpha = 1.0;
+    this.alpha = 1.0;
 
-        // internal status flags for the Drag&Drop operation handling and other stuff
-        //
-        this.isInDragDrop = false;
+    // internal status flags for the Drag&Drop operation handling and other stuff
+    //
+    this.isInDragDrop = false;
 
-        this.ox = 0;
-        this.oy = 0;
-        this.repaintBlocked = false;
-        this.lastAppliedAttributes = {};
-        this.selectionHandles = new _packages2.default.util.ArrayList();
-        this.panningDelegate = null;
+    this.ox = 0;
+    this.oy = 0;
+    this.repaintBlocked = false;
+    this.lastAppliedAttributes = {};
+    this.selectionHandles = new _packages2.default.util.ArrayList();
+    this.panningDelegate = null;
 
-        // even handling since version 5.0.0
-        this.eventSubscriptions = {};
+    // even handling since version 5.0.0
+    this.eventSubscriptions = {};
 
-        this.relocateChildrenEventCallback = function () {
-            _this.children.each(function (i, e) {
-                e.locator.relocate(i, e.figure);
-            });
-        };
+    this.relocateChildrenEventCallback = function () {
+      _this.children.each(function (i, e) {
+        e.locator.relocate(i, e.figure);
+      });
+    };
 
-        // new approach to delegate selection requests.
-        //
-        this.defaultSelectionAdapter = this.selectionAdapter = function () {
-            return _this;
-        };
+    // new approach to delegate selection requests.
+    //
+    this.defaultSelectionAdapter = this.selectionAdapter = function () {
+      return _this;
+    };
 
-        // install default selection handler. Can be overridden or replaced
-        this.installEditPolicy(new _packages2.default.policy.figure.RectangleSelectionFeedbackPolicy());
+    // install default selection handler. Can be overridden or replaced
+    this.installEditPolicy(new _packages2.default.policy.figure.RectangleSelectionFeedbackPolicy());
 
-        // the new style attr call with object attributes
-        this.attr(attr);
-    },
+    // the new style attr call with object attributes
+    this.attr(attr);
+  },
 
-    /**
-     * @method
-     * Read or set shape attributes.<br>
-     * When no value is given, reads specified attribute from the element.<br>
-     * When value is given, sets the attribute to that value.
-     * Multiple attributes can be set by passing an object with name-value pairs.
-     *
-     *     var figure = new draw2d.shape.basic.Rectangle();
-     *     figure.attr('x');      //=> read value
-     *     figure.attr('x', 30);  //=> set value
-     *
-     *     // multiple attributes:
-     *     figure.attr({
-     *       x: 30,
-     *       y: 40,
-     *       width : 200,
-     *       height: 50,
-     *       cssClass: "red_border_figure"
-     *     });
-     *
-     *     // it is possible to override any method of the figure as well
-     *     // Instead of inheritance you can just override the callback methods
-     *     // like
-     *     //
-     *     figure.attr({
-     *        onClick : function(){
-     *            alert("click");
-     *        }
-     *     });
-     *
-     *     // or you can pass the attr values in the constructor
-     *     //
-     *     var clickFigure = new draw2d.shape.basic.Rectangle({
-     *        onClick : function(){
-     *            alert("click");
-     *        }
-     *     });
-     *
-     *
-     * Additional you can set the user defined values (userData) with this method
-     * using the dot-notation. User defined values are always part of the exported
-     * JSON data.
-     *
-     *     // setting multiple attributes:
-     *     figure.attr({
-     *       "userData.my.property.x": 30,
-     *       "userData.my.property.y": 40
-     *     });
-     *
-     * Also set using array notation is possible for the userData:
-     *
-     *     // dot notation and array brackets:
-     *     figure.attr({
-     *       "userData.my.names[0]": "John",
-     *       "userData.my.names[1]": "Doe"
-     *     });
-     *
-     *
-     * The Object returned should be the equivalent structured object:
-     *
-     *     var obj = figure.getUserData();
-     *
-     * That is, where obj is equivalent to:
-     *
-     *     var obj = {
-     *         my:{
-     *             property:{
-     *                 x: 30,
-     *                 y: 40
-     *            },
-     *            names:  ["John", "Doe"]
-     *        }
-     *    };
-     *
-     *
-     *
-     * @param {String/Object} name
-     * @param {Object} [value]
-     * @since 5.0.1
-     * @experimental
-     * @returns
-     **/
-    attr: function attr(name, value) {
-        var _this = this;
-        var orig = this.repaintBlocked;
+  /**
+   * @method
+   * Read or set shape attributes.<br>
+   * When no value is given, reads specified attribute from the element.<br>
+   * When value is given, sets the attribute to that value.
+   * Multiple attributes can be set by passing an object with name-value pairs.
+   *
+   *     let figure = new draw2d.shape.basic.Rectangle();
+   *     figure.attr('x');      //=> read value
+   *     figure.attr('x', 30);  //=> set value
+   *
+   *     // multiple attributes:
+   *     figure.attr({
+   *       x: 30,
+   *       y: 40,
+   *       width : 200,
+   *       height: 50,
+   *       cssClass: "red_border_figure"
+   *     });
+   *
+   *     // it is possible to override any method of the figure as well
+   *     // Instead of inheritance you can just override the callback methods
+   *     // like
+   *     //
+   *     figure.attr({
+   *        onClick : function(){
+   *            alert("click");
+   *        }
+   *     });
+   *
+   *     // or you can pass the attr values in the constructor
+   *     //
+   *     let clickFigure = new draw2d.shape.basic.Rectangle({
+   *        onClick : function(){
+   *            alert("click");
+   *        }
+   *     });
+   *
+   *
+   * Additional you can set the user defined values (userData) with this method
+   * using the dot-notation. User defined values are always part of the exported
+   * JSON data.
+   *
+   *     // setting multiple attributes:
+   *     figure.attr({
+   *       "userData.my.property.x": 30,
+   *       "userData.my.property.y": 40
+   *     });
+   *
+   * Also set using array notation is possible for the userData:
+   *
+   *     // dot notation and array brackets:
+   *     figure.attr({
+   *       "userData.my.names[0]": "John",
+   *       "userData.my.names[1]": "Doe"
+   *     });
+   *
+   *
+   * The Object returned should be the equivalent structured object:
+   *
+   *     let obj = figure.getUserData();
+   *
+   * That is, where obj is equivalent to:
+   *
+   *     let obj = {
+   *         my:{
+   *             property:{
+   *                 x: 30,
+   *                 y: 40
+   *            },
+   *            names:  ["John", "Doe"]
+   *        }
+   *    };
+   *
+   *
+   *
+   * @param {String/Object} name
+   * @param {Object} [value]
+   * @since 5.0.1
+   * @experimental
+   * @returns
+   **/
+  attr: function attr(name, value) {
+    var _this = this;
+    var orig = this.repaintBlocked;
 
-        try {
-            // call of attr as setter method with {name1:val1, name2:val2 }  argument list
+    try {
+      // call of attr as setter method with {name1:val1, name2:val2 }  argument list
+      //
+      if ($.isPlainObject(name)) {
+        for (var key in name) {
+          // user can set the "userData" with path notation. In this case we
+          // expand the path to a real JSON object and set the data.
+          // index/brackets are allowed too.
+          //
+          if (key.substring(0, 9) === "userData.") {
+            if (this.userData === null) {
+              this.userData = {};
+            }
+            _JSONUtil2.default.set({ userData: this.userData }, key, name[key]);
+            this.fireEvent("change:" + key, { value: name[key] });
+          } else {
+            var func = this.setterWhitelist[key];
+            var param = name[key];
+            if (func && param !== undefined) {
+              func.call(this, param);
+            }
+            // maybe the user adds a function as property to the attr call
+            // e.g.:
+            // {
+            //     doIt: function(){}
+            // }
             //
-            if ($.isPlainObject(name)) {
-                for (var key in name) {
-                    // user can set the "userData" with path notation. In this case we
-                    // expand the path to a real JSON object and set the data.
-                    // index/brackets are allowed too.
-                    //
-                    if (key.substring(0, 9) === "userData.") {
-                        if (this.userData === null) {
-                            this.userData = {};
-                        }
-                        _JSONUtil2.default.set({ userData: this.userData }, key, name[key]);
-                        this.fireEvent("change:" + key, { value: name[key] });
-                    } else {
-                        var func = this.setterWhitelist[key];
-                        var param = name[key];
-                        if (func && param !== undefined) {
-                            func.call(this, param);
-                        }
-                        // maybe the user adds a function as property to the attr call
-                        // e.g.:
-                        // {
-                        //     doIt: function(){}
-                        // }
-                        //
-                        // in this case we assign the method to this object and wrap it with "this" as context
-                        // a very, very simple method to replace default implemenations of the object
-                        else if (typeof name[key] === "funktion") {
-                                this[key] = param.bind(this);
-                            }
-                    }
-                }
-            } else if (typeof name === "string") {
-                // call attr as getter
-                //
-                if (typeof value === "undefined") {
-                    var getter = this.getterWhitelist[name];
-                    if (typeof getter === "function") {
-                        return getter.call(this);
-                    }
-                    // or it is a userData path notation like "userData.any.path.value"
-                    else if (name.substring(0, 9) === "userData.") {
-                            var data = { userData: this.userData };
-                            return _JSONUtil2.default.get(data, name);
-                        }
-                    return; // undefined
-                }
-                // call attr as simple setter with (key , value)
-                //
-
-                // the value can be a function. In this case we must call the value().
-                if (typeof value === "function") {
-                    value = value();
-                }
-                if (name.substring(0, 9) === "userData.") {
-                    if (this.userData === null) {
-                        this.userData = {};
-                    }
-                    _JSONUtil2.default.set({ userData: this.userData }, name, value);
-                    this.fireEvent("change:" + name, { value: value });
-                } else {
-                    var setter = this.setterWhitelist[name];
-                    if (setter) {
-                        setter.call(this, value);
-                    }
-                }
-            }
-            // may it is a array of attributes used for the getter
-            //
-            else if (Array.isArray(name)) {
-                    result = {};
-                    name.forEach(function (_, entry) {
-                        result[entry] = _this.attr(entry);
-                    });
-                    console.log(result);
-
-                    console.log(Object.assign.apply(Object, [{}].concat(_toConsumableArray(Object.keys(name).map(function (k) {
-                        return _defineProperty({}, k, _this.attr(k));
-                    })))));
-
-                    return Object.assign.apply(Object, [{}].concat(_toConsumableArray(Object.keys(name).map(function (k) {
-                        return _defineProperty({}, k, _this.attr(k));
-                    }))));
-                }
-                // generic getter of all registered attributes
-                else if (typeof name === "undefined") {
-                        var _result = {};
-                        for (var _key in this.getterWhitelist) {
-                            _result[_key] = this.getterWhitelist[_key].call(this);
-                        }
-                        return _result;
-                    }
-        } finally {
-            this.repaintBlocked = orig;
+            // in this case we assign the method to this object and wrap it with "this" as context
+            // a very, very simple method to replace default implemenations of the object
+            else if (typeof name[key] === "funktion") {
+                this[key] = param.bind(this);
+              }
+          }
         }
-        //  this.repaint();
-
-        return this;
-    },
-
-    /**
-     * Return a copy of the object, filtered to only have values for the whitelisted keys.
-     * @deprecated
-     */
-    pick: function pick(obj, var_keys) {
-        var keys = typeof arguments[1] !== 'string' ? arguments[1] : Array.prototype.slice.call(arguments, 1);
-        var out = {},
-            key = void 0;
-        for (key in keys) {
-            if (typeof obj[key] !== "undefined") out[key] = obj[key];
-        }
-        return out;
-    },
-
-    /**
-     * @method
-     * Add the figure to the current selection and propagate this to all edit policies.
-     *
-     * @param {Boolean} [asPrimarySelection] true if the element should be the primary selection
-     * @private
-     */
-    select: function select(asPrimarySelection) {
-        if (typeof asPrimarySelection === "undefined") {
-            asPrimarySelection = true;
-        }
-
-        // apply all EditPolicy for select Operations
+      } else if (typeof name === "string") {
+        // call attr as getter
         //
-        var _this = this;
-        this.editPolicy.each(function (i, e) {
-            if (e instanceof _packages2.default.policy.figure.SelectionPolicy) {
-                e.onSelect(_this.canvas, _this, asPrimarySelection);
+        if (typeof value === "undefined") {
+          var getter = this.getterWhitelist[name];
+          if (typeof getter === "function") {
+            return getter.call(this);
+          }
+          // or it is a userData path notation like "userData.any.path.value"
+          else if (name.substring(0, 9) === "userData.") {
+              var data = { userData: this.userData };
+              return _JSONUtil2.default.get(data, name);
             }
-        });
-
-        if (this.canvas !== null) {
-            this.canvas.getSelection().add(this);
+          return; // undefined
         }
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Unselect the figure and propagete this event to all edit policies.
-     *
-     * @private
-     **/
-    unselect: function unselect() {
-        var _this = this;
-        // apply all EditPolicy for select Operations
+        // call attr as simple setter with (key , value)
         //
-        this.editPolicy.each(function (i, e) {
-            if (e instanceof _packages2.default.policy.figure.SelectionPolicy) {
-                e.onUnselect(_this.canvas, _this);
-            }
-        });
 
-        if (this.canvas !== null) {
-            this.canvas.getSelection().remove(this);
+        // the value can be a function. In this case we must call the value().
+        if (typeof value === "function") {
+          value = value();
         }
-
-        return this;
-    },
-
-    setSelectionAdapter: function setSelectionAdapter(adapter) {
-        if (adapter == null) {
-            this.selectionAdapter = this.defaultSelectionAdapter;
+        if (name.substring(0, 9) === "userData.") {
+          if (this.userData === null) {
+            this.userData = {};
+          }
+          _JSONUtil2.default.set({ userData: this.userData }, name, value);
+          this.fireEvent("change:" + name, { value: value });
         } else {
-            this.selectionAdapter = adapter;
+          var setter = this.setterWhitelist[name];
+          if (setter) {
+            setter.call(this, value);
+          }
         }
+      }
+      // may it is a array of attributes used for the getter
+      //
+      else if (Array.isArray(name)) {
+          result = {};
+          name.forEach(function (_, entry) {
+            result[entry] = _this.attr(entry);
+          });
+          console.log(result);
 
-        return this;
-    },
+          console.log(Object.assign.apply(Object, [{}].concat(_toConsumableArray(Object.keys(name).map(function (k) {
+            return _defineProperty({}, k, _this.attr(k));
+          })))));
 
-    /**
-     * @method
-     *
-     * @returns {Function}
-     */
-    getSelectionAdapter: function getSelectionAdapter() {
-        return this.selectionAdapter;
-    },
-
-    /**
-     * @method
-     * Returns true if the figure part of the current canvas selection.
-     *
-     * @since 5.5.6
-     *
-     * @return {Boolean}
-     */
-    isSelected: function isSelected() {
-        if (this.canvas !== null) {
-            return this.canvas.getSelection().contains(this);
+          return Object.assign.apply(Object, [{}].concat(_toConsumableArray(Object.keys(name).map(function (k) {
+            return _defineProperty({}, k, _this.attr(k));
+          }))));
         }
-
-        return false;
-    },
-
-    /**
-     * @method
-     * Allows a user to attach (or remove) data to an element, without needing to create a custom figure or shape.
-     * The data must be a valid JSON object.
-     *
-     *      // Alternatively you can use the attr method:
-     *      figure.attr({
-     *        userData: object
-     *      });
-     *
-     * @since 2.7.2
-     * @param {Object} object
-     */
-    setUserData: function setUserData(object) {
-        this.userData = object;
-        this.fireEvent("change:userData", { value: object });
-        return this;
-    },
-
-    /**
-     * @method
-     * Returns any user data set previously on the given figure by setUserData.
-     *
-     * @since 2.7.2
-     * @returns {Object}
-     */
-    getUserData: function getUserData() {
-        return this.userData;
-    },
-
-    /**
-     * @method
-     * Return the UUID of this element.
-     *
-     * @return {String}
-     */
-    getId: function getId() {
-        return this.id;
-    },
-
-    /**
-     * @method
-     * Set the id of this element.
-     *
-     *     // Alternatively you can use the attr method:
-     *     figure.attr({
-     *       id: newId
-     *     });
-     *
-     * @param {String} newId the new id for this figure
-     */
-    setId: function setId(newId) {
-        this.id = newId;
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Return the css styling class name of the element.
-     *
-     *
-     * @return {String}
-     */
-    getCssClass: function getCssClass() {
-        return this.cssClass;
-    },
-
-    /**
-     * @method
-     * Set the css class of the node.
-     *
-     *      // Alternatively you can use the attr method:
-     *      figure.attr({
-     *        "cssClass": "red_border_figure"
-     *      });
-     *
-     * @param {String} cssClass the new css class name of the node
-     * @since 2.9.0
-     */
-    setCssClass: function setCssClass(cssClass) {
-        this.cssClass = cssClass === null ? null : cssClass.trim();
-
-        if (this.shape === null) {
-            return this;
-        }
-
-        if (this.cssClass === null) {
-            this.shape.node.removeAttribute("class");
-        } else {
-            this.shape.node.setAttribute("class", this.cssClass);
-        }
-        this.fireEvent("change:cssClass", { value: this.cssClass });
-
-        return this;
-    },
-
-    /**
-     * @method
-     * The method will return true if the class is assigned to the element, even if other classes also are.
-     *
-     * @param {String} className the class name to check
-     * @since 2.9.0
-     */
-    hasCssClass: function hasCssClass(className) {
-        if (this.cssClass === null) {
-            return false;
-        }
-
-        return new RegExp(' ' + className.trim() + ' ').test(' ' + this.cssClass + ' ');
-    },
-
-    /**
-     * @method
-     * Add a CSS class to the figure.<br>
-     * It's important to note that this method does not replace a class. It simply adds the class,
-     * appending it to any which may already be assigned to the elements.
-     *
-     * @param {String} className
-     * @since 2.9.0
-     */
-    addCssClass: function addCssClass(className) {
-        className = className.trim();
-        if (!this.hasCssClass(className)) {
-            if (this.cssClass === null) {
-                this.setCssClass(className);
-            } else {
-                this.setCssClass(this.cssClass + ' ' + className);
+        // generic getter of all registered attributes
+        else if (typeof name === "undefined") {
+            var _result = {};
+            for (var _key in this.getterWhitelist) {
+              _result[_key] = this.getterWhitelist[_key].call(this);
             }
-            this.fireEvent("change:cssClass", { value: this.cssClass });
-        }
-
-        return this;
-    },
-
-    /**
-     * @method
-     *
-     * Remove the given css class name from the figure
-     *
-     * @param {String} className the css class name to add
-     */
-    removeCssClass: function removeCssClass(className) {
-        className = className.trim();
-        var newClass = ' ' + this.cssClass.replace(/[\t\r\n]/g, ' ') + ' ';
-        if (this.hasCssClass(className)) {
-            while (newClass.indexOf(' ' + className + ' ') >= 0) {
-                newClass = newClass.replace(' ' + className + ' ', ' ');
-            }
-            this.setCssClass(newClass.replace(/^\s+|\s+$/g, ''));
-            this.fireEvent("change:cssClass", { value: this.cssClass });
-        }
-
-        return this;
-    },
-
-    /**
-     * @method
-     *
-     * Add or remove the given css class name from the figure
-     *
-     * @param {String} className the class name to toggle
-     */
-    toggleCssClass: function toggleCssClass(className) {
-        className = className.trim();
-        var newClass = ' ' + this.cssClass.replace(/[\t\r\n]/g, ' ') + ' ';
-        if (this.hasCssClass(className)) {
-            while (newClass.indexOf(' ' + className + ' ') >= 0) {
-                newClass = newClass.replace(' ' + className + ' ', ' ');
-            }
-            this.setCssClass(newClass.replace(/^\s+|\s+$/g, ''));
-        } else {
-            this.setCssClass(this.cssClass + ' ' + className);
-        }
-        this.fireEvent("change:cssClass", { value: this.cssClass });
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Set the canvas element of this figures. This can be used to determine whenever an element
-     * is added or removed to the canvas.
-     *
-     * @param {draw2d.Canvas} canvas the new parent of the figure or null
-     */
-    setCanvas: function setCanvas(canvas) {
-        // remove the shape if we reset the canvas and the element
-        // was already drawn
-        if (canvas === null && this.shape !== null) {
-            if (this.isSelected()) {
-                this.unselect();
-            }
-            this.shape.remove();
-            this.shape = null;
-        }
-
-        this.canvas = canvas;
-
-        if (this.canvas !== null) {
-            this.getShapeElement();
-        }
-
-        // reset the attribute cache. We must start by paint all attributes
-        //
-        this.lastAppliedAttributes = {};
-
-        if (canvas === null) {
-            this.stopTimer();
-        } else {
-            if (this.timerInterval >= this.MIN_TIMER_INTERVAL) {
-                this.startTimer(this.timerInterval);
-            }
-        }
-
-        this.children.each(function (i, e) {
-            e.figure.setCanvas(canvas);
-        });
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Return the current assigned canvas container.
-     *
-     * @return {draw2d.Canvas}
-     */
-    getCanvas: function getCanvas() {
-        return this.canvas;
-    },
-
-    /**
-     * @method
-     * Start a timer which calls the onTimer method in the given interval.
-     *
-     * @param {Number} milliSeconds
-     */
-    startTimer: function startTimer(milliSeconds) {
-        var _this2 = this;
-
-        this.stopTimer();
-        this.timerInterval = Math.max(this.MIN_TIMER_INTERVAL, milliSeconds);
-
-        if (this.canvas !== null) {
-            this.timerId = window.setInterval(function () {
-                _this2.onTimer();
-                _this2.fireEvent("timer");
-            }, this.timerInterval);
-        }
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Stop the internal timer.
-     *
-     */
-    stopTimer: function stopTimer() {
-        if (this.timerId >= 0) {
-            window.clearInterval(this.timerId);
-            this.timerId = -1;
-        }
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Callback method for the internal timer handling<br>
-     * Inherit classes must override this method if they want use the timer feature.
-     *
-     *      // Alternatively you can register for this event with
-     *      figure.on("timer", function(emitter){
-     *          alert("timer fired");
-     *      });
-     *
-     * @template
-     */
-    onTimer: function onTimer() {},
-
-    /**
-     * @method
-     * Moves the element so it is the closest to the viewer’s eyes, on top of other elements. Additional
-     * the internal model changed as well.
-     *
-     * Optional: Inserts current object in front of the given one.
-     *
-     * @param {draw2d.Figure} [figure] move current object in front of the given one.
-     * @since 3.0.0
-     */
-    toFront: function toFront(figure) {
-        // ensure that the z-oder is still correct if the figure is assigned
-        // to a StrongComposite
-        //
-        if (this.composite instanceof _packages2.default.shape.composite.StrongComposite && typeof figure !== "undefined") {
-            var indexFigure = figure.getZOrder();
-            var indexComposite = this.composite.getZOrder();
-            if (indexFigure < indexComposite) {
-                figure = this.composite;
-            }
-        }
-
-        if (typeof figure === "undefined") {
-            this.getShapeElement().toFront();
-
-            if (this.canvas !== null) {
-                var figures = this.canvas.getFigures();
-                var lines = this.canvas.getLines();
-                if (figures.remove(this) !== null) {
-                    figures.add(this);
-                } else if (lines.remove(this) !== null) {
-                    lines.add(this);
-                }
-            }
-        } else {
-            this.getShapeElement().insertAfter(figure.getTopLevelShapeElement());
-
-            if (this.canvas !== null) {
-                var figures = this.canvas.getFigures();
-                var lines = this.canvas.getLines();
-                if (figures.remove(this) !== null) {
-                    var index = figures.indexOf(figure);
-                    figures.insertElementAt(this, index + 1);
-                } else if (lines.remove(this) !== null) {
-                    lines.add(this);
-                }
-            }
-        }
-
-        // bring all children in front of the parent
-        var _this = this;
-        this.children.each(function (i, child) {
-            child.figure.toFront(_this);
-        });
-
-        // and last but not lease the ResizeHandles if any present
-        //
-        this.selectionHandles.each(function (i, handle) {
-            handle.toFront();
-        });
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Moves the element to the background. Additional
-     * the internal model changed as well.
-     *
-     * @since 4.7.2
-     */
-    toBack: function toBack(figure) {
-        // it is not allowed that a figure is behind an assigned composite
-        //
-        if (this.composite instanceof _packages2.default.shape.composite.StrongComposite) {
-            this.toFront(this.composite);
-            return;
-        }
-
-        if (this.canvas !== null) {
-            var figures = this.canvas.getFigures();
-            var lines = this.canvas.getLines();
-            if (figures.remove(this) !== null) {
-                figures.insertElementAt(this, 0);
-            } else if (lines.remove(this) !== null) {
-                lines.insertElementAt(this, 0);
-            }
-            if (typeof figure !== "undefined") {
-                this.getShapeElement().insertBefore(figure.getShapeElement());
-            } else {
-                this.getShapeElement().toBack();
-            }
-        }
-
-        // Bring all children in front of "this" figure
-        //
-        var _this = this;
-        this.children.each(function (i, child) {
-            child.figure.toFront(_this);
-        }, true);
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Install a new edit policy to the figure. Each editpolicy is able to focus on a single editing
-     * task or group of related tasks. This also allows editing behavior to be selectively reused across
-     * different figure implementations. Also, behavior can change dynamically, such as when the layouts
-     * or routing methods change.
-     *
-     * Example for limited DragDrop behavior can be a draw2d.layout.constraint.RegionConstriantPolicy.
-     *
-     * @param {draw2d.policy.EditPolicy} policy
-     */
-    installEditPolicy: function installEditPolicy(policy) {
-        // it is only possible to install one SelectionFeedbackPolicy at once
-        //
-        if (policy instanceof _packages2.default.policy.figure.SelectionFeedbackPolicy) {
-            var _this = this;
-            this.editPolicy.grep(function (p) {
-                var stay = !(p instanceof _packages2.default.policy.figure.SelectionFeedbackPolicy);
-                if (!stay) {
-                    p.onUninstall(_this);
-                }
-                return stay;
-            });
-        }
-        policy.onInstall(this);
-        this.editPolicy.add(policy);
-
-        return this;
-    },
-
-    /**
-     * @method
-     *
-     * UnInstall the edit policy from the figure. Either the instance itself if found
-     * or all kind of the given edit policies.
-     *
-     *
-     * @param {draw2d.policy.EditPolicy} policy
-     * @since 4.81
-     */
-    uninstallEditPolicy: function uninstallEditPolicy(policy) {
-        var removedPolicy = this.editPolicy.remove(policy);
-
-        // we found the policy and we are happy
-        //
-        if (removedPolicy !== null) {
-            removedPolicy.onUninstall(this);
-            return;
-        }
-
-        // The policy isn'T part of the figure. In this case we "think" the user want
-        // deinstall all instances of the policy
-        //
-        var _this = this;
-        var name = typeof policy === "string" ? policy : policy.NAME;
-        this.editPolicy.grep(function (p) {
-            if (p.NAME === name) {
-                p.onUninstall(_this);
-                return false;
-            }
-            return true;
-        });
-    },
-
-    /**
-     * @method
-     * Add a child figure to the figure. The hands over figure doesn't support drag&drop
-     * operations. It's only a decorator for the connection.<br>
-     * Mainly for labels or other decorations
-     *
-     *
-     *     var start = new draw2d.shape.node.Start({x:80, y:150});
-     *     start.add(new draw2d.shape.basic.Label({text:"Test Label"}), new draw2d.layout.locator.TopLocator());
-     *
-     *     canvas.add( start);
-     *
-     * @param {draw2d.Figure} child the figure to add as decoration to the connection.
-     * @param {draw2d.layout.locator.Locator} locator the locator for the child.
-     * @param {Number} [index] optional index where to insert the figure
-    **/
-    add: function add(child, locator, index) {
-        if (typeof locator === "undefined" || locator === null) {
-            throw "Second parameter 'locator' is required for method 'Figure#add'";
-        }
-
-        // the child is now a slave of the parent
-        //
-        child.setParent(this);
-
-        // inform the locator that a new child is bounded to the parent
-        // The call must happen after parent assignment. Reason: the locator
-        // can override some behaviours which are propagated from the parent.
-        //
-        locator.bind(this, child);
-
-        child.on("resize", this.relocateChildrenEventCallback);
-
-        if (!isNaN(parseInt(index))) {
-            this.children.insertElementAt({ figure: child, locator: locator }, index);
-        } else {
-            this.children.add({ figure: child, locator: locator });
-        }
-
-        if (this.canvas !== null) {
-            child.setCanvas(this.canvas);
-        }
-
-        this.repaint();
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Remove the child figure from this figure and the canvas
-     *
-     * @param {draw2d.Figure} child the figure to remove.
-     *
-     * @return {Object} the removed tupple of figure/locator or null if the child isn't found
-     * @return {draw2d.Figure} return.figure The removed figure
-     * @return {draw2d.shape.layout.Layout} return.locator The used locator of the figure
-     *
-     * @since 5.0.0
-    **/
-    remove: function remove(child) {
-        if (typeof child === "undefined" || child === null) {
-            debug.warn("The parameter child is required for Figure.remove");
-            return null;
-        }
-
-        var removed = null;
-        this.children.grep(function (e) {
-            var stay = e.figure !== child;
-            if (!stay) {
-                removed = e;
-            }
-            return stay;
-        });
-
-        if (removed !== null) {
-            child.setParent(null);
-            child.setCanvas(null);
-            removed.locator.unbind(this, child);
-            child.off(this.relocateChildrenEventCallback);
-
-            this.repaint();
-            return removed;
-        }
-
-        return null;
-    },
-
-    /**
-     * @method
-     * Return all children/decorations of this shape which has been added with
-     * draw2d.Figure.add
-     *
-     * @returns {draw2d.util.ArrayList}
-     */
-    getChildren: function getChildren() {
-        return this.children.clone().map(function (e) {
-            return e.figure;
-        });
-    },
-
-    /**
-     * @method
-     * Remove all children/decorations of this shape
-     *
-     */
-    resetChildren: function resetChildren() {
-        this.children.each(function (i, e) {
-            e.figure.setCanvas(null);
-        });
-        this.children = new _packages2.default.util.ArrayList();
-        this.repaint();
-
-        return this;
-    },
-
-    /**
-    * @method
-    * return the current SVG shape element or create it on demand.
-    *
-    * @protected
-    */
-    getShapeElement: function getShapeElement() {
-        if (this.shape !== null) {
-            return this.shape;
-        }
-
-        this.shape = this.createShapeElement();
-        if (!this.isVisible()) {
-            this.shape.hide();
-        }
-
-        // add CSS class to enable styling of the element with CSS rules/files
-        //
-        if (this.cssClass !== null) {
-            this.shape.node.setAttribute("class", this.cssClass);
-        }
-
-        return this.shape;
-    },
-
-    /**
-     * @method
-     * Get the top level shape element. May the figure has a set of SVG elements. In this case this
-     * method must return the top level node.<br>
-     * This method is used for the toFront/toBack method to order the nodes in the correct way.
-     *
-     * @since 5.0.0
-     * @private
-     */
-    getTopLevelShapeElement: function getTopLevelShapeElement() {
-        return this.getShapeElement();
-    },
-
-    /**
-     * @method
-     * Inherited classes must override this method to implement it's own draw functionality.
-     *
-     * @template
-     * @abstract
-     */
-    createShapeElement: function createShapeElement() {
-        throw "Inherited class [" + this.NAME + "] must override the abstract method createShapeElement";
-    },
-
-    /**
-     * @method
-     * propagate all attributes like color, stroke,... to the shape element
-     *
-     * @param {Object} [attributes] the style attributes for the SVG shape
-     * @private
-     **/
-    repaint: function repaint(attributes) {
-        if (this.repaintBlocked === true || this.shape === null) {
-            return this;
-        }
-        var _this = this;
-        attributes = attributes || {};
-
-        if (this.visible === true) {
-            if (this.shape.isVisible() === false) {
-                if (!isNaN(parseFloat(attributes.visibleDuration))) {
-                    $(this.shape.node).fadeIn(attributes.visibleDuration, function () {
-                        _this.shape.show();
-                    });
-                } else {
-                    this.shape.show();
-                }
-            }
-        } else {
-            if (this.shape.isVisible() === true) {
-                if (!isNaN(parseFloat(attributes.visibleDuration))) {
-                    $(this.shape.node).fadeOut(attributes.visibleDuration, function () {
-                        _this.shape.hide();
-                    });
-                } else {
-                    this.shape.hide();
-                }
-            }
-            return this;
-        }
-
-        // enrich with common properties
-        attributes.opacity = this.alpha;
-
-        // performance improvement
-        // Only apply attributes which has changed. This ends in a big performance improvement
-        // because the raphael shape isn't redraw at all.
-        //
-        attributes = _JSONUtil2.default.flatDiff(attributes, this.lastAppliedAttributes);
-        this.lastAppliedAttributes = attributes;
-
-        if (Object.getOwnPropertyNames(attributes).length > 0) {
-            this.shape.attr(attributes);
-        }
-
-        this.applyTransformation();
-
-        // Relocate all children of the figure.
-        // This means that the Locator can calculate the new Position of the child.
-        // This is not the best place for this. Move it to dim/size/shape changing
-        // methods of the figure. A "repaint" isn't always dimension changing the figure.
-        //
-        this.children.each(function (i, e) {
-            e.locator.relocate(i, e.figure);
-        });
-
-        return this;
-    },
-
-    /**
-     * @method
-     * apply a transformation to the shape like rotation, translate,..
-     *
-     * @private
-     * @template
-     */
-    applyTransformation: function applyTransformation() {
-        return this;
-    },
-
-    /**
-     * @method
-     * Highlight the element or remove the highlighting
-     *
-     *      // Alternatively you can use the attr method:
-     *      figure.attr({
-     *        glow: flag
-     *      });
-     *
-     * @param {Boolean} flag indicates glow/noGlow
-     * @template
-     */
-    setGlow: function setGlow(flag) {
-        // do nothing in the base class.
-        // Subclasses must implement this method.
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Allow dragging only when the cursor is over a specific part of the figure.
-     * <br>
-     * Override this method to specify the bounding box of an element or a draw2d.util.ArrayList
-     * of draw2d.geo.Rectangle of bounding boxes used to drag the figure. The returned coordinates
-     * are absolute coordinates to the canvas.
-     * <br>
-     * <br>
-     * Default implementation returns <b>null</b> to indicate to use the complete figures as
-     * drag handle.
-     *
-     * @since 5.6.0
-     * @returns {draw2d.geo.Rectangle|draw2d.util.ArrayList}
-     */
-    getHandleBBox: function getHandleBBox() {
-        return null;
-    },
-
-    /**
-     * @method
-     * Called if the drag and drop action begins. You can return [false] if you
-     * want avoid that the figure can be move.
-     *
-     * @param {Number} x the x-coordinate of the mouse up event
-     * @param {Number} y the y-coordinate of the mouse up event
-     * @param {Boolean} shiftKey true if the shift key has been pressed during this event
-     * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
-     *
-     * @return {Boolean} true if the figure accepts dragging
-     **/
-    onDragStart: function onDragStart(x, y, shiftKey, ctrlKey) {
-        this.isInDragDrop = false;
-
-        // Check whenever the figures has a drag-handle. Allow drag&drop
-        // operation only if the x/y is inside this area.
-        //
-        // @since 5.6.0
-        var bbox = this.getHandleBBox();
-        if (bbox !== null && bbox.translate(this.getAbsolutePosition().scale(-1)).hitTest(x, y) === false) {
-            // design failure: we must catch the figure below the mouse to forward
-            // the panning event to this figure. Special handling to provide sliders
-            // and other UI elements which requires the panning event. Hack.
-            this.panningDelegate = this.getBestChild(this.getX() + x, this.getY() + y);
-            if (this.panningDelegate !== null) {
-                // transform x/y relative to the panning figure and request the dragStart event
-                this.panningDelegate.onDragStart(x - this.panningDelegate.x, y - this.panningDelegate.y, shiftKey, ctrlKey);
-            }
-            return false;
-        }
-
-        this.command = this.createCommand(new _packages2.default.command.CommandType(_packages2.default.command.CommandType.MOVE));
-
-        if (this.command !== null) {
-            this.ox = this.getX();
-            this.oy = this.getY();
-            this.isInDragDrop = true;
-
-            // notify all installed policies
-            //
-            var _this = this;
-            var canStartDrag = true;
-
-            this.editPolicy.each(function (i, e) {
-                if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
-                    canStartDrag = canStartDrag && e.onDragStart(_this.canvas, _this, x, y, shiftKey, ctrlKey);
-                }
-            });
-
-            if (canStartDrag) {
-                // fire an event
-                // @since 5.3.3
-                this.fireEvent("dragstart", { x: x, y: y, shiftKey: shiftKey, ctrlKey: ctrlKey });
-            }
-            return canStartDrag;
-        }
-
-        return false;
-    },
-
-    /**
-     * @method
-     * Don't call them manually. This will be done by the framework.<br>
-     * Will be called if the object are moved via drag and drop.
-     * Sub classes can override this method to implement additional stuff. Don't forget to call
-     * the super implementation via <code>this._super(dx, dy, dx2, dy2);</code>
-     *
-     * @private
-     * @param {Number} dx the x difference between the start of the drag drop operation and now
-     * @param {Number} dy the y difference between the start of the drag drop operation and now
-     * @param {Number} dx2 The x diff since the last call of this dragging operation
-     * @param {Number} dy2 The y diff since the last call of this dragging operation
-     * @param {Boolean} shiftKey true if the shift key has been pressed during this event
-     * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
-     **/
-    onDrag: function onDrag(dx, dy, dx2, dy2, shiftKey, ctrlKey) {
-        var _this = this;
-
-        // apply all EditPolicy for DragDrop Operations
-        //
-        this.editPolicy.each(function (i, e) {
-            if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
-                var newPos = e.adjustPosition(_this, _this.ox + dx, _this.oy + dy);
-                if (newPos) {
-                    dx = newPos.x - _this.ox;
-                    dy = newPos.y - _this.oy;
-                }
-            }
-        });
-
-        var newPos = new _packages2.default.geo.Point(this.ox + dx, this.oy + dy);
-
-        // Adjust the new location if the object can snap to a helper
-        // like grid, geometry, ruler,...
-        //
-        if (this.getCanSnapToHelper()) {
-            newPos = this.getCanvas().snapToHelper(this, newPos);
-        }
-
-        this.setPosition(newPos);
-
-        // notify all installed policies
-        //
-        this.editPolicy.each(function (i, e) {
-            if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
-                e.onDrag(_this.canvas, _this);
-            }
-        });
-
-        // fire an event
-        // @since 5.3.3
-        this.fireEvent("drag", { dx: dx, dy: dy, dx2: dx2, dy2: dy2, shiftKey: shiftKey, ctrlKey: ctrlKey });
-    },
-
-    /**
-     * @method
-     * Called by the framework if the figure returns false for the drag operation. In this
-     * case we send a "panning" event - mouseDown + mouseMove. This is very useful for
-     * UI-Widget like slider, spinner,...
-     *
-     *      // You can alternatively register an event handler with:
-     *      figure.on("panning", function(emitter, eventData){
-     *          alert("panning of the figure called");
-     *      });
-     *
-     * @param {Number} dx the x difference between the mouse down operation and now
-     * @param {Number} dy the y difference between the mouse down operation and now
-     * @param {Number} dx2 The x diff since the last call of this dragging operation
-     * @param {Number} dy2 The y diff since the last call of this dragging operation
-     * @param {Boolean} shiftKey true if the shift key has been pressed during this event
-     * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
-     * @template
-     */
-    onPanning: function onPanning(dx, dy, dx2, dy2, shiftKey, ctrlKey) {},
-
-    /**
-     * @method
-     * Called by the framework if the panning event of the figures ends. This happens
-     * after the mous up event if the panning is active.
-     *
-     *      // You can alternatively register an event handler with:
-     *      figure.on("panningEnd", function(emitter){
-     *          alert("panning of the figure called");
-     *      });
-     *
-     */
-    onPanningEnd: function onPanningEnd() {},
-
-    /**
-     * @method
-     * Will be called after a drag and drop action.<br>
-     * Sub classes can override this method to implement additional stuff. Don't forget to call
-     * the super implementation via <code>this._super();</code>
-     *
-     * @param {Number} x the x-coordinate of the mouse event
-     * @param {Number} y the y-coordinate of the mouse event
-     * @param {Boolean} shiftKey true if the shift key has been pressed during this event
-     * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
-     *
-     * @template
-     **/
-    onDragEnd: function onDragEnd(x, y, shiftKey, ctrlKey) {
-        var _this = this;
-
-        // Element ist zwar schon an seine Position, das Command muss aber trotzdem
-        // in dem CommandStack gelegt werden damit das Undo funktioniert.
-        //
-        if (this.command !== null) {
-            this.command.setPosition(this.x, this.y);
-            this.canvas.getCommandStack().execute(this.command);
-            this.command = null;
-        }
-        this.isInDragDrop = false;
-        this.panningDelegate = null;
-
-        // notify all installed policies
-        //
-        this.editPolicy.each(function (i, e) {
-            if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
-                e.onDragEnd(_this.canvas, _this, x, y, shiftKey, ctrlKey);
-            }
-        });
-
-        this.fireEvent("move", { figure: this, dx: 0, dy: 0 });
-        this.fireEvent("change:x", { figure: this, dx: 0 });
-        this.fireEvent("change:y", { figure: this, dy: 0 });
-
-        // fire an event
-        // @since 5.3.3
-        this.fireEvent("dragend", { x: x, y: y, shiftKey: shiftKey, ctrlKey: ctrlKey });
-    },
-
-    /**
-     * @method
-     * Called by the framework during drag&drop operations if the user drag a figure over this figure
-     *
-     * @param {draw2d.Figure} draggedFigure The figure which is currently dragging
-     *
-     * @return {draw2d.Figure} the figure which should receive the drop event or null if the element didn't want a drop event
-     * @since 6.1.0
-     * @private
-     **/
-    delegateTarget: function delegateTarget(draggedFigure) {
-        var _this = this;
-        var delegate = draggedFigure;
-        this.getCanvas().getDropInterceptorPolicies().each(function (i, policy) {
-            delegate = policy.delegateTarget(draggedFigure, _this);
-            if (delegate !== null) {
-                return false; // break the loop
-            }
-        });
-
-        return delegate;
-    },
-
-    /**
-     * @method
-     * Called by the framework during drag&drop operations if the user drag a figure over this figure
-     *
-     * @param {draw2d.Figure} draggedFigure The figure which is currently dragging
-     *
-     * @template
-     **/
-    onDragEnter: function onDragEnter(draggedFigure) {},
-
-    /**
-     * @method
-     * Called if the DragDrop object leaving the current hover figure.
-     *
-     * @param {draw2d.Figure} draggedFigure The figure which is currently dragging
-     * @template
-     **/
-    onDragLeave: function onDragLeave(draggedFigure) {},
-
-    /**
-     * @method
-     * Called if the user drop this element onto the dropTarget. This event is ONLY fired if the
-     * shape return "this" in the {@link draw2d.Figure#onDragEnter} method.
-     *
-     *
-     * @param {draw2d.Figure} dropTarget The drop target.
-     * @param {Number} x the x-coordinate of the mouse up event
-     * @param {Number} y the y-coordinate of the mouse up event
-     * @param {Boolean} shiftKey true if the shift key has been pressed during this event
-     * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
-     * @template
-     **/
-    onDrop: function onDrop(dropTarget, x, y, shiftKey, ctrlKey) {},
-
-    /**
-     * @method
-     * Called if the user dropped an figure onto this element. This event is ONLY fired if the
-     * in the canvas installed {@link draw2d.policy.canvas.DropInterceptorPolicy} allow this.
-     *
-     *
-     * @param {draw2d.Figure} droppedFigure The dropped figure.
-     * @param {Number} x the x-coordinate of the mouse up event
-     * @param {Number} y the y-coordinate of the mouse up event
-     * @param {Boolean} shiftKey true if the shift key has been pressed during this event
-     * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
-     * @template
-     * @since 4.8.0
-     **/
-    onCatch: function onCatch(droppedFigure, x, y, shiftKey, ctrlKey) {},
-
-    /**
-     * @method
-     * Callback method for the mouse enter event. Usefull for mouse hover-effects.
-     * Override this method for your own effects. Don't call them manually.
-     *
-     * @template
-     **/
-    onMouseEnter: function onMouseEnter() {},
-
-    /**
-     * @method
-     * Callback method for the mouse leave event. Useful for mouse hover-effects.
-     *
-     * @template
-     **/
-    onMouseLeave: function onMouseLeave() {},
-
-    /**
-     * @method
-     * Called when a user dbl clicks on the element
-     *
-     *      // Alternatively you can register an event with:
-     *      //
-     *      figure.on("dblclick", function(emitter, event){
-     *          alert("user dbl click on the figure");
-     *      });
-     *
-     * @template
-     */
-    onDoubleClick: function onDoubleClick() {},
-
-    /**
-     * @method
-     * Called when a user clicks on the element.
-     *
-     *      // You can alternatively register an event handler with:
-     *      figure.on("click", function(emitter, event){
-     *          alert("user click on the figure");
-     *      });
-     *
-     * @template
-     * @deprecated
-     */
-    onClick: function onClick() {},
-
-    /**
-     * @method
-     * called by the framework if the figure should show the context menu.<br>
-     * The strategy to show the context menu depends on the platform. Either looong press or
-     * right click with the mouse.
-     *
-     *      // Alternatively you register for this event with:
-     *      figure.on("contextmenu", function(emitter, event){
-     *          alert("user press the right mouse button for a context menu");
-     *      });
-     *
-     * @param {Number} x the x-coordinate to show the menu
-     * @param {Number} y the y-coordinate to show the menu
-     * @since 1.1.0
-     * @template
-     */
-    onContextMenu: function onContextMenu(x, y) {},
-
-    /**
-     * @method
-     * Set the alpha blending of this figure.
-     *
-     *      // Alternatively you can use the attr method:
-     *      figure.attr({
-     *        "alpha": percent
-     *      });
-     *
-     *      // ...or:
-     *      figure.attr({
-     *        "opacity": percent
-     *      });
-     *
-     * @param {Number} percent value between [0..1].
-     * @template
-     **/
-    setAlpha: function setAlpha(percent) {
-        percent = Math.min(1, Math.max(0, parseFloat(percent)));
-        if (percent === this.alpha) {
-            return;
-        }
-
-        this.alpha = percent;
-        this.repaint();
-        this.fireEvent("change:opacity", { value: this.alpha });
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Return the alpha blending of the figure
-     *
-     * @return {Number} the current alpha blending
-     */
-    getAlpha: function getAlpha() {
-        return this.alpha;
-    },
-
-    /**
-     * @method
-     * Set the rotation angle in degree [0..356]<br>
-     * <b>Only steps of 90 degree is working well</b>
-     * <br>
-      *      // Alternatively you can use the attr method:
-      *      figure.attr({
-      *        angle: angle
-      *      });
-      *
-     * @param {Number} angle the rotation angle in degree
-     */
-    setRotationAngle: function setRotationAngle(angle) {
-        var _this = this;
-
-        this.rotationAngle = angle;
-
-        // Update the resize handles if the user change the position of the element via an API call.
-        //
-        this.editPolicy.each(function (i, e) {
-            if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
-                e.moved(_this.canvas, _this);
-            }
-        });
-
-        this.fireEvent("change:angle", { value: this.rotationAngle });
-        this.repaint();
-
-        return this;
-    },
-
-    /**
-     * @method
-     * return the rotation angle of the figure in degree of [0..356].
-     *
-     * <br>
-     * <b>NOTE: this method is pre alpha and not for production. Only steps of 90 degree is working well</b>
-     * <br>
-     * @returns {Number}
-     */
-    getRotationAngle: function getRotationAngle() {
-        return this.rotationAngle;
-    },
-
-    /**
-     * @method
-     * Show/hide the element. The element didn't receive any mouse events (click, dblclick) if you hide the
-     * figure.
-     *
-      *      // Alternatively you can use the attr method:
-      *      figure.attr({
-      *        visible: flag
-      *      });
-      *
-     * @param {Boolean} flag
-     * @param {Number} [duration] the optional number for the fadeIn /fadeOut of the figure
-     * @since 1.1.0
-     */
-    setVisible: function setVisible(flag, duration) {
-        flag = !!flag;
-        if (flag === this.visible) {
-            return;
-        }
-        this.visible = flag;
-
-        this.repaint({ visibleDuration: duration });
-
-        if (this.visible) {
-            this.fireEvent("show");
-        } else {
-            this.fireEvent("hide");
-        }
-        this.fireEvent("change:visibility", { value: this.visible });
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Return true if the figure visible.
-     *
-     * @return {Boolean}
-     * @since 1.1.0
-     */
-    isVisible: function isVisible() {
-        return this.visible && this.shape !== null;
-    },
-
-    /**
-     * @method
-     * Guarantee, that the figure width/height will not be distorted. Applicable before calling setDimension().
-     * It is false by default.
-     *
-     * @since 4.1.0
-     * @param {Boolean} flag boolean flag if the figure should respect the aspect ratio
-     */
-    setKeepAspectRatio: function setKeepAspectRatio(flag) {
-        this.keepAspectRatio = flag;
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Return the flag if the shape keep the aspect ratio.
-     *
-     * @since 4.1.0
-     */
-    getKeepAspectRatio: function getKeepAspectRatio() {
-        return this.keepAspectRatio;
-    },
-
-    /**
-     * @method
-     * Return the current z-index of the element. Currently this is an expensive method. The index will be calculated
-     * all the time. Caching is not implemented at the moment.
-     *
-     * @return {Number}
-     */
-    getZOrder: function getZOrder() {
-        if (this.shape === null) {
-            return -1;
-        }
-
-        var i = 0;
-        var child = this.shape.node;
-        while ((child = child.previousSibling) !== null) {
-            i++;
-        }
-        return i;
-    },
-
-    /**
-     * @method
-     * Set the flag if this object can snap to grid or geometry.
-     * A window of dialog should set this flag to false.
-     *
-     * @param {Boolean} flag The snap to grid/geometry enable flag.
-     *
-     **/
-    setCanSnapToHelper: function setCanSnapToHelper(flag) {
-        this.canSnapToHelper = !!flag;
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Returns true if the figure can snap to any helper like a grid, guide, geometrie
-     * or something else.
-     *
-     * @return {Boolean}
-     **/
-    getCanSnapToHelper: function getCanSnapToHelper() {
-        return this.canSnapToHelper;
-    },
-
-    /**
-     *
-     * @return {draw2d.geo.Point}
-     **/
-    getSnapToGridAnchor: function getSnapToGridAnchor() {
-        return this.snapToGridAnchor;
-    },
-
-    /**
-     * @method
-     * Set the hot spot for all snapTo### operations.
-     *
-     * @param {draw2d.geo.Point} point
-     **/
-    setSnapToGridAnchor: function setSnapToGridAnchor(point) {
-        this.snapToGridAnchor = point;
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Set the width of the figure and consider the minWidth attribute
-     *
-     * @param {Number} width the new width of the figure
-     * @since 5.1.0
-     */
-    setWidth: function setWidth(width) {
-        this.setDimension(parseFloat(width), this.getHeight());
-        this.fireEvent("change:width", { value: this.width });
-
-        return this;
-    },
-
-    /**
-     * @method
-     * The current width of the figure.
-     *
-     * @type {Number}
-     **/
-    getWidth: function getWidth() {
-        return this.width;
-    },
-
-    /**
-     * @method
-     * Set the heigth of the figure and consider the minWidth attribute
-     *
-     * @param {Number} height the new height of the figure
-     * @since 5.1.0
-     */
-    setHeight: function setHeight(height) {
-        this.setDimension(this.getWidth(), parseFloat(height));
-        this.fireEvent("change:height", { value: this.height });
-
-        return this;
-    },
-
-    /**
-     * @method
-     * The current height of the figure.
-     *
-     * @return {Number}
-     **/
-    getHeight: function getHeight() {
-        return this.height;
-    },
-
-    /**
-     * @method
-     * This value is relevant for the interactive resize of the figure.
-     *
-     * @return {Number} Returns the min. width of this object.
-     */
-    getMinWidth: function getMinWidth() {
-        return this.minWidth;
-    },
-
-    /**
-     * @method
-     * Set the minimum width of this figure
-     *
-     * @param {Number} w
-     */
-    setMinWidth: function setMinWidth(w) {
-        this.minWidth = parseFloat(w);
-        this.fireEvent("change:minWidth", { value: this.minWidth });
-
-        // fit the width with the new constraint
-        this.setWidth(this.getWidth());
-
-        return this;
-    },
-
-    /**
-     * @method
-     * This value is relevant for the interactive resize of the figure.
-     *
-     * @return {Number} Returns the min. height of this object.
-     */
-    getMinHeight: function getMinHeight() {
-        return this.minHeight;
-    },
-
-    /**
-     * @method
-     * Set the minimum height of the figure.
-     *
-     * @param {Number} h
-     */
-    setMinHeight: function setMinHeight(h) {
-        this.minHeight = parseFloat(h);
-        this.fireEvent("change:minHeight", { value: this.minHeight });
-
-        // fit the height with the new constraint
-        this.setHeight(this.getHeight());
-
-        return this;
-    },
-
-    /**
-     * @method
-     * the the x-offset related to the parent figure or canvas
-     *
-     * @param {Number} x the new x offset of the figure
-     * @since 5.0.8
-     */
-    setX: function setX(x) {
-        this.setPosition(parseFloat(x), this.y);
-        this.fireEvent("change:x", { value: this.x });
-
-        return this;
-    },
-
-    /**
-     * @method
-     * The x-offset related to the parent figure or canvas.
-     *
-     * @return {Number} the x-offset to the parent figure
-     **/
-    getX: function getX() {
-        return this.x;
-    },
-
-    /**
-     * @method
-     * the the y-offset related to the parent figure or canvas
-     *
-     * @param {Number} y the new x offset of the figure
-     * @since 5.0.8
-     */
-    setY: function setY(y) {
-        this.setPosition(this.x, parseFloat(y));
-        this.fireEvent("change:y", { value: this.y });
-
-        return this;
-    },
-
-    /**
-     * @method
-     * The y-offset related to the parent figure or canvas.
-     *
-     * @return {Number} The y-offset to the parent figure.
-     **/
-    getY: function getY() {
-        return this.y;
-    },
-
-    /**
-     * @method
-     * The x-offset related to the canvas.
-     *
-     * @return {Number} the x-offset to the canvas
-     **/
-    getAbsoluteX: function getAbsoluteX() {
-        if (!this.parent) {
-            return this.getX();
-        }
-
-        return this.getX() + this.parent.getAbsoluteX();
-    },
-
-    /**
-     * @method
-     * The y-offset related to the canvas.
-     *
-     * @return {Number} The y-offset to the canvas.
-     **/
-    getAbsoluteY: function getAbsoluteY() {
-        if (!this.parent) {
-            return this.getY();
-        }
-        return this.getY() + this.parent.getAbsoluteY();
-    },
-
-    /**
-     * @method
-     * Returns the absolute y-position of the port.
-     *
-     * @type {draw2d.geo.Point}
-     **/
-    getAbsolutePosition: function getAbsolutePosition() {
-        return new _packages2.default.geo.Point(this.getAbsoluteX(), this.getAbsoluteY());
-    },
-
-    /**
-     * @method
-     * Returns the absolute y-position of the port.
-     *
-     * @return {draw2d.geo.Rectangle}
-     **/
-    getAbsoluteBounds: function getAbsoluteBounds() {
-        return new _packages2.default.geo.Rectangle(this.getAbsoluteX(), this.getAbsoluteY(), this.getWidth(), this.getHeight());
-    },
-
-    /**
-     * @method
-     * Set the position of the object.
-     *
-      *      // Alternatively you can use the attr method:
-      *      figure.attr({
-      *        x: x,
-      *        y: y
-      *      });
-      *
-     * @param {Number|draw2d.geo.Point} x The new x coordinate of the figure or the x/y coordinate if it is an draw2d.geo.Point
-     * @param {Number} [y] The new y coordinate of the figure
-     **/
-    setPosition: function setPosition(x, y) {
-        if (typeof x === "undefined") {
-            debugger;
-        }
-
-        var oldPos = { x: this.x, y: this.y };
-
-        if (x instanceof _packages2.default.geo.Point) {
-            this.x = x.x;
-            this.y = x.y;
-        } else {
-            this.x = x;
-            this.y = y;
-        }
-
-        var _this = this;
-
-        this.editPolicy.each(function (i, e) {
-            if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
-                var newPos = e.adjustPosition(_this, _this.x, _this.y);
-                _this.x = newPos.x;
-                _this.y = newPos.y;
-            }
-        });
-
-        this.repaint();
-
-        // don't fire any events or update the ResizeHandles if nothing has happen
-        //
-        //  if(oldPos.x!=this.x || oldPos.y!=this.y)
-        {
-
-            // Update the resize handles if the user change the position of the
-            // element via an API call.
-            //
-            this.editPolicy.each(function (i, e) {
-                if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
-                    e.moved(_this.canvas, _this);
-                }
-            });
-
-            var dx = this.x - oldPos.x;
-            var dy = this.y - oldPos.y;
-            this.fireEvent("move", { figure: this, dx: dx, dy: dy });
-            this.fireEvent("change:x", { figure: this, dx: dx });
-            this.fireEvent("change:y", { figure: this, dy: dy });
-        }
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Get the current position of the figure
-     *
-     * @return {draw2d.geo.Point}
-     * @since 2.0.0
-     */
-    getPosition: function getPosition() {
-        return new _packages2.default.geo.Point(this.getX(), this.getY());
-    },
-
-    /**
-     * @method
-     * Translate the figure with the given x/y offset.
-     *
-     * @param {Number} dx The x offset to translate
-     * @param {Number} dy The y offset to translate
-     **/
-    translate: function translate(dx, dy) {
-        this.setPosition(this.getX() + dx, this.getY() + dy);
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Set the new width and height of the figure.
-     *
-     *      // Alternatively you can use the attr method:
-     *      figure.attr({
-     *         width:  w,
-     *         height: h
-     *      });
-     *
-     * @param {Number} w The new width of the figure
-     * @param {Number} h The new height of the figure
-     **/
-    setDimension: function setDimension(w, h) {
-        var old = { width: this.width, height: this.height };
-
-        var _this = this;
-        w = Math.max(this.getMinWidth(), w);
-        h = Math.max(this.getMinHeight(), h);
-
-        if (this.width === w && this.height === h) {
-            // required if an inherit figure changed the w/h to a given constraint.
-            // In this case the Resize handles must be informed that the shape didn't resized.
-            // because the minWidth/minHeight did have a higher prio.
-            this.editPolicy.each(function (i, e) {
-                if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
-                    e.moved(_this.canvas, _this);
-                }
-            });
-            return this;
-        }
-
-        // apply all EditPolicy to adjust/modify the new dimension
-        //
-        this.editPolicy.each(function (i, e) {
-            if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
-                var newDim = e.adjustDimension(_this, w, h);
-                w = newDim.w;
-                h = newDim.h;
-            }
-        });
-
-        // respect the aspect ratio if required
-        //
-        if (this.keepAspectRatio === true) {
-            if (w >= this.getMinWidth()) {
-                // scale the height to the given ratio
-                h = this.getHeight() * (w / this.getWidth());
-                // and apply the new dimension only if the values are in range of the given constraints
-                if (h >= this.getMinHeight()) {
-                    this.width = w;
-                    this.height = h;
-                }
-            }
-        } else {
-            this.width = Math.max(this.getMinWidth(), w);
-            this.height = Math.max(this.getMinHeight(), h);
-        }
-
-        // just fire the event if really something happens
-        //
-        //if(old.w!=this.width || old.h != this.height)
-        {
-            this.repaint();
-
-            this.fireEvent("resize");
-            this.fireEvent("change:dimension", { value: { height: this.height, width: this.width, old: old } });
-
-            // Update the resize handles if the user change the position of the element via an API call.
-            //
-            this.editPolicy.each(function (i, e) {
-                if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
-                    e.moved(_this.canvas, _this);
-                }
-            });
-        }
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Set the bounding box of the figure
-     *
-     *      // Alternatively you can use the attr method:
-     *      figure.attr({
-     *        width: w,
-     *        height: h,
-     *        x: x,
-     *        y: y
-     *      });
-     *
-     *      // or
-     *      figure.attr({
-     *        boundingBox: {x:1, y:100, width:30, height:30}
-     *      });
-     *
-     * @param {draw2d.geo.Rectangle} rect
-     * @since 4.8.0
-     */
-    setBoundingBox: function setBoundingBox(rect) {
-        rect = new _packages2.default.geo.Rectangle(rect);
-
-        var orig = this.repaintBlocked;
-        this.repaintBlocked = true;
-        this.setPosition(rect.x, rect.y);
-        this.repaintBlocked = orig;
-        this.setDimension(rect.w, rect.h);
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Return the bounding box of the figure in absolute position to the canvas.
-     *
-     * @return {draw2d.geo.Rectangle}
-     **/
-    getBoundingBox: function getBoundingBox() {
-        return new _packages2.default.geo.Rectangle(this.getAbsoluteX(), this.getAbsoluteY(), this.getWidth(), this.getHeight());
-    },
-
-    /**
-     * @method
-     * Detect whenever the hands over coordinate is inside the figure.
-     * The default implementation is a simple bounding box test.
-     *
-     * @param {Number} iX
-     * @param {Number} iY
-     * @param {Number} [corona]
-     *
-     * @returns {Boolean}
-     */
-    hitTest: function hitTest(iX, iY, corona) {
-        if (typeof corona === "number") {
-            return this.getBoundingBox().scale(corona, corona).hitTest(iX, iY);
-        }
-        return this.getBoundingBox().hitTest(iX, iY);
-    },
-
-    /**
-     * @method
-     * Switch on/off the drag drop behaviour of this object
-     *
-     * @param {Boolean} flag The new drag drop indicator
-     **/
-    setDraggable: function setDraggable(flag) {
-        this.draggable = !!flag;
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Get the Drag drop enable flag
-     *
-     * @return {Boolean} The new drag drop indicator
-     **/
-    isDraggable: function isDraggable() {
-        // delegate to the composite if given
-        if (this.composite !== null) {
-            return this.composite.isMemberDraggable(this, this.draggable);
-        }
-
-        return this.draggable;
-    },
-
-    /**
-     * @method
-     * Returns the true if the figure can be resized.
-     *
-     * @return {Boolean}
-     **/
-    isResizeable: function isResizeable() {
-        return this.resizeable;
-    },
-
-    /**
-     * @method
-     * You can change the resizeable behaviour of this object. Hands over [false] and
-     * the figure has no resizehandles if you select them with the mouse.<br>
-     *
-     *      // Alternatively you can use the attr method:
-     *      figure.attr({
-     *        resizeable: flag
-     *      });
-     *
-     * @param {Boolean} flag The resizeable flag.
-     **/
-    setResizeable: function setResizeable(flag) {
-        this.resizeable = !!flag;
-        this.fireEvent("change:resizeable", { value: this.resizeable });
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Indicates whenever the element is selectable by user interaction or API.
-     *
-     * @return {Boolean}
-     **/
-    isSelectable: function isSelectable() {
-        // delegate to the composite if given
-        if (this.composite !== null) {
-            return this.composite.isMemberSelectable(this, this.selectable);
-        }
-
-        return this.selectable;
-    },
-
-    /**
-     * @method
-     * You can change the selectable behavior of this object. Hands over [false] and
-     * the figure has no selection handles if you try to select them with the mouse.<br>
-     *
-     * @param {Boolean} flag The selectable flag.
-     **/
-    setSelectable: function setSelectable(flag) {
-        this.selectable = !!flag;
-        this.fireEvent("change:selectable", { value: this.selectable });
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Return true if the object doesn't care about the aspect ratio.
-     * You can change the height and width independent.<br>
-     *
-     * Replaced with "getKeepAspectRatio"
-     * @return {Boolean}
-     * @deprecated
-     */
-    isStrechable: function isStrechable() {
-        return !this.getKeepAspectRatio();
-    },
-
-    /**
-     * @method
-     * Return false if you avoid that the user can delete your figure.
-     * Sub class can override this method.
-     *
-     * @return {Boolean}
-     **/
-    isDeleteable: function isDeleteable() {
-        return this.deleteable;
-    },
-
-    /**
-     * @method
-     * Set the flag if the shape is deleteable.
-     *
-     * @param {Boolean} flag enable or disable flag for the delete operation
-     **/
-    setDeleteable: function setDeleteable(flag) {
-        this.deleteable = !!flag;
-        this.fireEvent("change:deleteable", { value: this.deleteable });
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Set the parent of this figure.
-     * Don't call them manually.
-     *
-     * @param {draw2d.Figure} parent The new parent of this figure
-     * @private
-     **/
-    setParent: function setParent(parent) {
-        this.parent = parent;
-
-        if (parent !== null) {
-            // inherit the selection handling impl from the parent
-            this.setSelectionAdapter(parent.getSelectionAdapter());
-        } else {
-            // use default
-            this.setSelectionAdapter(null);
-        }
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Get the parent of this figure.
-     *
-     * @return {draw2d.Figure}
-     **/
-    getParent: function getParent() {
-        return this.parent;
-    },
-
-    /**
-     * @method
-     * Check to see if a figure is a descendant of another figure.
-     * <br>
-     * The contains() method returns true if the figure provided by the argument is a descendant of this figure,
-     * whether it is a direct child or nested more deeply. Otherwise, it returns false.
-     *
-     * @param {draw2d.Figure} containedFigure The figure that may be contained by (a descendant of) this figure.
-     * @since 5.5.4
-     */
-    contains: function contains(containedFigure) {
-        if (containedFigure.getParent() === this) {
-            return true;
-        }
-
-        for (var i = 0, len = this.children.getSize(); i < len; i++) {
-            var child = this.children.get(i).figure;
-            if (child.contains(containedFigure)) {
-                return true;
-            }
-        }
-        return false;
-    },
-
-    /**
-     * @method
-     * Get the top most parent of this figure. This can be an layout figure or parent container
-     *
-     * @return {draw2d.Figure}
-     * @since 5.0.6
-     **/
-    getRoot: function getRoot() {
-        var root = this.parent;
-        while (root !== null && root.parent !== null) {
-            root = root.parent;
-        }
-        return root;
-    },
-
-    /**
-     * @method
-     * Set the assigned composite of this figure.
-     *
-     * @param {draw2d.shape.composite.StrongComposite} composite The assigned composite of this figure
-     * @private
-     * @since 4.8.0
-     **/
-    setComposite: function setComposite(composite) {
-        if (composite !== null && !(composite instanceof _packages2.default.shape.composite.StrongComposite)) {
-            throw "'composite must inherit from 'draw2d.shape.composite.StrongComposite'";
-        }
-
-        this.composite = composite;
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Get the assigned composite of this figure.
-     *
-     * @return {draw2d.shape.composite.StrongComposite}
-     * @since 4.8.0
-     **/
-    getComposite: function getComposite() {
-        return this.composite;
-    },
-
-    /**
-     * @method
-     * Execute all handlers and behaviors attached to the figure for the given event type.
-     *
-     *
-     * @param {String} event the event to trigger
-     * @param {Object} [args] optional parameters for the triggered event callback
-     *
-     * @since 5.0.0
-     */
-    fireEvent: function fireEvent(event, args) {
-        try {
-            if (typeof this.eventSubscriptions[event] === 'undefined') {
-                return;
-            }
-
-            // avoid recursion
-            if (this._inEvent === true) {
-                return;
-            }
-            this._inEvent = true;
-            var subscribers = this.eventSubscriptions[event];
-            for (var i = 0; i < subscribers.length; i++) {
-                subscribers[i](this, args);
-            }
-        } finally {
-            this._inEvent = false;
-
-            // fire a generic change event if an attribute has changed
-            // required for some DataBinding frameworks or for the Backbone.Model compatibility
-            // the event "change" with the corresponding attribute name as additional parameter
-            if (event.substring(0, 7) === "change:") {
-                this.fireEvent("change", event.substring(7));
-            }
-        }
-    },
-
-    /**
-     * @method
-     * Attach an event handler function for one or more events to the figure.
-     * To remove events bound with .on(), see {@link #off}.
-     *
-     * possible events are:<br>
-     * <ul>
-     *   <li>click</li>
-     *   <li>dblclick</li>
-     *   <li>move</li>
-     *   <li>resize</li>
-     *   <li>timer</li>
-     *   <li>contextmenu</li>
-     *   <li>show</li>
-     *   <li>hide</li>
-     *   <li>added</li>
-     *   <li>removed</li>
-     *   <li>change:[attr]</li>
-     * </ul>
-     *
-     * @param {String}   event One or more space-separated event types
-     * @param {Function} callback A function to execute when the event is triggered.
-     * @param {draw2d.Figure} callback.emitter the emitter of the event
-     * @param {Object} [callback.obj] optional event related data
-     * @param {Object} [context] optional context of the function callback.
-     * @since 5.0.0
-     */
-    on: function on(event, callback, context) {
-        var events = event.split(" ");
-        if (typeof callback === "undefined") {
-            debugger;
-        }
-        // the "context" param is add to be compatible with Backbone.Model.
-        // The project "backbone.ModelBinder" requires this signature and we want to be nice.
-        //
-        if (context) {
-            callback = callback.bind(context);
-            callback.___originalCallback = callback;
-        }
-
-        for (var i = 0; i < events.length; i++) {
-            if (typeof this.eventSubscriptions[events[i]] === 'undefined') {
-                this.eventSubscriptions[events[i]] = [];
-            }
-            // avoid doublicate registration for the same event with the same callback method
-            if (-1 !== $.inArray(callback, this.eventSubscriptions[events[i]])) {
-                //   debugger
-            } else {
-                this.eventSubscriptions[events[i]].push(callback);
-            }
-        }
-        return this;
-    },
-
-    /**
-     * @method
-     * The .off() method removes event handlers that were attached with {@link #on}.<br>
-     * Calling .off() with no arguments removes all handlers attached to the elements.<br>
-     * <br>
-     * If a simple event name such as "move" is provided, all events of that type are removed from the figure.
-     *
-     *
-     * @param {String|Function} eventOrFunction the event name of the registerd function or the function itself
-     * @since 5.0.0
-     */
-    off: function off(eventOrFunction) {
-        if (typeof eventOrFunction === "undefined") {
-            this.eventSubscriptions = {};
-        } else if (typeof eventOrFunction === 'string') {
-            this.eventSubscriptions[eventOrFunction] = [];
-        } else {
-            for (var event in this.eventSubscriptions) {
-                this.eventSubscriptions[event] = this.eventSubscriptions[event].filter(function (callback) {
-                    if (typeof callback.___originalCallback !== "undefined") {
-                        return callback.___originalCallback !== eventOrFunction;
-                    }
-                    return callback !== eventOrFunction;
-                });
-            }
-        }
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Returns the best figure at the location [x,y]. It is a simple hit test. Keep in mind that only visible objects
-     * are returned.
-     *
-     * @param {Number} x The x position.
-     * @param {Number} y The y position.
-     * @param {draw2d.Figure|Array} [figureToIgnore] The figures which should be ignored.
-     **/
-    getBestChild: function getBestChild(x, y, figureToIgnore) {
-        if (!Array.isArray(figureToIgnore)) {
-            if (figureToIgnore instanceof _packages2.default.Figure) {
-                figureToIgnore = [figureToIgnore];
-            } else {
-                figureToIgnore = [];
-            }
-        }
-
-        var result = null;
-
-        // tool method to check recursive a figure for hitTest
-        //
-        var checkRecursive = function checkRecursive(children) {
-            children.each(function (i, e) {
-                var c = e.figure;
-                checkRecursive(c.children);
-                if (result === null && c.isVisible() === true && c.hitTest(x, y) === true && $.inArray(c, figureToIgnore) === -1) {
-                    result = c;
-                }
-                return result === null; // break the each-loop if we found an element
-            });
-        };
-
-        checkRecursive(this.children);
-
-        return result;
-    },
-
-    /**
-     * @method
-     * Returns the Command to perform the specified Request or null.
-      *
-     * @param {draw2d.command.CommandType} request describes the Command being requested
-     * @return {draw2d.command.Command} null or a Command
-     * @private
-     **/
-    createCommand: function createCommand(request) {
-        if (request === null) {
-            return null;
-        }
-
-        if (request.getPolicy() === _packages2.default.command.CommandType.MOVE) {
-            if (!this.isDraggable()) {
-                return null;
-            }
-            return new _packages2.default.command.CommandMove(this);
-        }
-
-        if (request.getPolicy() === _packages2.default.command.CommandType.DELETE) {
-            if (!this.isDeleteable()) {
-                return null;
-            }
-            return new _packages2.default.command.CommandDelete(this);
-        }
-
-        if (request.getPolicy() === _packages2.default.command.CommandType.RESIZE) {
-            if (!this.isResizeable()) {
-                return null;
-            }
-            return new _packages2.default.command.CommandResize(this);
-        }
-
-        return null;
-    },
-
-    /**
-     * @method
-     * Clone the figure. <br>
-     * You must override and implement the methods <b>getPersistentAttributes</b> and <b>setPersistentAttributes</b> for your custom
-     * figures if the have special attributes.
-     *
-     * The clone() method performs a deep copy of the object, meaning that it copies the children, ports and decorations
-     * per default. You can control the clone procedure with the 'cloneMetaData'.
-     *
-     *
-     * @param {Object} [cloneMetaData] controls the clone procedure
-     * @param {Boolean} [cloneMetaData.excludeChildren] set it to true if you want exclude the children.
-     *
-     * @since 4.1.0
-     * @experimental
-     */
-    clone: function clone(cloneMetaData) {
-        cloneMetaData = (0, _extend2.default)({ exludeChildren: false }, cloneMetaData);
-
-        var clone = eval("new " + this.NAME + "();");
-        var initialId = clone.id;
-
-        clone.setPersistentAttributes(this.getPersistentAttributes());
-
-        clone.id = initialId;
-
-        // add all decorations to the memento
-        //
-        if (cloneMetaData.exludeChildren === false) {
-            clone.resetChildren();
-            this.children.each(function (i, entry) {
-                var child = entry.figure.clone();
-                // we can ignore the locator if this didn't provide a "correct" name, this can happen in some
-                // Layout shapes like VerticalLayout or Horziontal Layout. This figures injects it own kind
-                // of layouter...so didn'T care about this.
-
-                var locator = entry.locator.NAME ? eval("new " + entry.locator.NAME + "();") : null;
-                clone.add(child, locator);
-            });
-        }
-
-        return clone;
-    },
-
-    /**
-     * @method
-     * Return an objects with all important attributes for XML or JSON serialization
-     *
-     * @return
-     */
-    getPersistentAttributes: function getPersistentAttributes() {
-        // force deep copy of userData to avoid side effects in the clone method.
-        //
-        var memento = {
-            type: this.NAME,
-            id: this.id,
-            x: this.getX(),
-            y: this.getY(),
-            width: this.width,
-            height: this.height,
-            alpha: this.alpha,
-            angle: this.rotationAngle,
-            userData: (0, _extend2.default)(true, {}, this.userData)
-        };
-
-        if (this.cssClass !== null) {
-            memento.cssClass = this.cssClass;
-        }
-
-        if (this.composite !== null) {
-            memento.composite = this.composite.getId();
-        }
-
-        return memento;
-    },
-
-    /**
-     * @method
-     * Read all attributes from the serialized properties and transfer them into the shape.
-     *
-     * @param {Object} memento
-     */
-    setPersistentAttributes: function setPersistentAttributes(memento) {
-        this.id = memento.id;
-        this.setPosition(parseFloat(memento.x), parseFloat(memento.y));
-
-        // width and height are optional parameter for the JSON stuff.
-        // We use the defaults if the attributes not present
-        if (typeof memento.width !== "undefined") {
-            this.width = parseFloat(memento.width);
-        }
-
-        if (typeof memento.height !== "undefined") {
-            this.height = parseFloat(memento.height);
-        }
-
-        if (typeof memento.userData !== "undefined") {
-            this.userData = memento.userData;
-        }
-
-        if (typeof memento.cssClass !== "undefined") {
-            this.setCssClass(memento.cssClass);
-        }
-
-        if (typeof memento.alpha !== "undefined") {
-            this.setAlpha(parseFloat(memento.alpha));
-        }
-
-        if (typeof memento.angle !== "undefined") {
-            this.rotationAngle = parseFloat(memento.angle);
-        }
-
-        return this;
+            return _result;
+          }
+    } finally {
+      this.repaintBlocked = orig;
     }
+    //  this.repaint();
+
+    return this;
+  },
+
+  /**
+   * Return a copy of the object, filtered to only have values for the whitelisted keys.
+   * @deprecated
+   */
+  pick: function pick(obj, var_keys) {
+    var keys = typeof arguments[1] !== 'string' ? arguments[1] : Array.prototype.slice.call(arguments, 1);
+    var out = {},
+        key = void 0;
+    for (key in keys) {
+      if (typeof obj[key] !== "undefined") out[key] = obj[key];
+    }
+    return out;
+  },
+
+  /**
+   * @method
+   * Add the figure to the current selection and propagate this to all edit policies.
+   *
+   * @param {Boolean} [asPrimarySelection] true if the element should be the primary selection
+   * @private
+   */
+  select: function select(asPrimarySelection) {
+    if (typeof asPrimarySelection === "undefined") {
+      asPrimarySelection = true;
+    }
+
+    // apply all EditPolicy for select Operations
+    //
+    var _this = this;
+    this.editPolicy.each(function (i, e) {
+      if (e instanceof _packages2.default.policy.figure.SelectionPolicy) {
+        e.onSelect(_this.canvas, _this, asPrimarySelection);
+      }
+    });
+
+    if (this.canvas !== null) {
+      this.canvas.getSelection().add(this);
+    }
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Unselect the figure and propagete this event to all edit policies.
+   *
+   * @private
+   **/
+  unselect: function unselect() {
+    var _this = this;
+    // apply all EditPolicy for select Operations
+    //
+    this.editPolicy.each(function (i, e) {
+      if (e instanceof _packages2.default.policy.figure.SelectionPolicy) {
+        e.onUnselect(_this.canvas, _this);
+      }
+    });
+
+    if (this.canvas !== null) {
+      this.canvas.getSelection().remove(this);
+    }
+
+    return this;
+  },
+
+  setSelectionAdapter: function setSelectionAdapter(adapter) {
+    if (adapter == null) {
+      this.selectionAdapter = this.defaultSelectionAdapter;
+    } else {
+      this.selectionAdapter = adapter;
+    }
+
+    return this;
+  },
+
+  /**
+   * @method
+   *
+   * @returns {Function}
+   */
+  getSelectionAdapter: function getSelectionAdapter() {
+    return this.selectionAdapter;
+  },
+
+  /**
+   * @method
+   * Returns true if the figure part of the current canvas selection.
+   *
+   * @since 5.5.6
+   *
+   * @return {Boolean}
+   */
+  isSelected: function isSelected() {
+    if (this.canvas !== null) {
+      return this.canvas.getSelection().contains(this);
+    }
+
+    return false;
+  },
+
+  /**
+   * @method
+   * Allows a user to attach (or remove) data to an element, without needing to create a custom figure or shape.
+   * The data must be a valid JSON object.
+   *
+   *      // Alternatively you can use the attr method:
+   *      figure.attr({
+   *        userData: object
+   *      });
+   *
+   * @since 2.7.2
+   * @param {Object} object
+   */
+  setUserData: function setUserData(object) {
+    this.userData = object;
+    this.fireEvent("change:userData", { value: object });
+    return this;
+  },
+
+  /**
+   * @method
+   * Returns any user data set previously on the given figure by setUserData.
+   *
+   * @since 2.7.2
+   * @returns {Object}
+   */
+  getUserData: function getUserData() {
+    return this.userData;
+  },
+
+  /**
+   * @method
+   * Return the UUID of this element.
+   *
+   * @return {String}
+   */
+  getId: function getId() {
+    return this.id;
+  },
+
+  /**
+   * @method
+   * Set the id of this element.
+   *
+   *     // Alternatively you can use the attr method:
+   *     figure.attr({
+   *       id: newId
+   *     });
+   *
+   * @param {String} newId the new id for this figure
+   */
+  setId: function setId(newId) {
+    this.id = newId;
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Return the css styling class name of the element.
+   *
+   *
+   * @return {String}
+   */
+  getCssClass: function getCssClass() {
+    return this.cssClass;
+  },
+
+  /**
+   * @method
+   * Set the css class of the node.
+   *
+   *      // Alternatively you can use the attr method:
+   *      figure.attr({
+   *        "cssClass": "red_border_figure"
+   *      });
+   *
+   * @param {String} cssClass the new css class name of the node
+   * @since 2.9.0
+   */
+  setCssClass: function setCssClass(cssClass) {
+    this.cssClass = cssClass === null ? null : cssClass.trim();
+
+    if (this.shape === null) {
+      return this;
+    }
+
+    if (this.cssClass === null) {
+      this.shape.node.removeAttribute("class");
+    } else {
+      this.shape.node.setAttribute("class", this.cssClass);
+    }
+    this.fireEvent("change:cssClass", { value: this.cssClass });
+
+    return this;
+  },
+
+  /**
+   * @method
+   * The method will return true if the class is assigned to the element, even if other classes also are.
+   *
+   * @param {String} className the class name to check
+   * @since 2.9.0
+   */
+  hasCssClass: function hasCssClass(className) {
+    if (this.cssClass === null) {
+      return false;
+    }
+
+    return new RegExp(' ' + className.trim() + ' ').test(' ' + this.cssClass + ' ');
+  },
+
+  /**
+   * @method
+   * Add a CSS class to the figure.<br>
+   * It's important to note that this method does not replace a class. It simply adds the class,
+   * appending it to any which may already be assigned to the elements.
+   *
+   * @param {String} className
+   * @since 2.9.0
+   */
+  addCssClass: function addCssClass(className) {
+    className = className.trim();
+    if (!this.hasCssClass(className)) {
+      if (this.cssClass === null) {
+        this.setCssClass(className);
+      } else {
+        this.setCssClass(this.cssClass + ' ' + className);
+      }
+      this.fireEvent("change:cssClass", { value: this.cssClass });
+    }
+
+    return this;
+  },
+
+  /**
+   * @method
+   *
+   * Remove the given css class name from the figure
+   *
+   * @param {String} className the css class name to add
+   */
+  removeCssClass: function removeCssClass(className) {
+    className = className.trim();
+    var newClass = ' ' + this.cssClass.replace(/[\t\r\n]/g, ' ') + ' ';
+    if (this.hasCssClass(className)) {
+      while (newClass.indexOf(' ' + className + ' ') >= 0) {
+        newClass = newClass.replace(' ' + className + ' ', ' ');
+      }
+      this.setCssClass(newClass.replace(/^\s+|\s+$/g, ''));
+      this.fireEvent("change:cssClass", { value: this.cssClass });
+    }
+
+    return this;
+  },
+
+  /**
+   * @method
+   *
+   * Add or remove the given css class name from the figure
+   *
+   * @param {String} className the class name to toggle
+   */
+  toggleCssClass: function toggleCssClass(className) {
+    className = className.trim();
+    var newClass = ' ' + this.cssClass.replace(/[\t\r\n]/g, ' ') + ' ';
+    if (this.hasCssClass(className)) {
+      while (newClass.indexOf(' ' + className + ' ') >= 0) {
+        newClass = newClass.replace(' ' + className + ' ', ' ');
+      }
+      this.setCssClass(newClass.replace(/^\s+|\s+$/g, ''));
+    } else {
+      this.setCssClass(this.cssClass + ' ' + className);
+    }
+    this.fireEvent("change:cssClass", { value: this.cssClass });
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Set the canvas element of this figures. This can be used to determine whenever an element
+   * is added or removed to the canvas.
+   *
+   * @param {draw2d.Canvas} canvas the new parent of the figure or null
+   */
+  setCanvas: function setCanvas(canvas) {
+    // remove the shape if we reset the canvas and the element
+    // was already drawn
+    if (canvas === null && this.shape !== null) {
+      if (this.isSelected()) {
+        this.unselect();
+      }
+      this.shape.remove();
+      this.shape = null;
+    }
+
+    this.canvas = canvas;
+
+    if (this.canvas !== null) {
+      this.getShapeElement();
+    }
+
+    // reset the attribute cache. We must start by paint all attributes
+    //
+    this.lastAppliedAttributes = {};
+
+    if (canvas === null) {
+      this.stopTimer();
+    } else {
+      if (this.timerInterval >= this.MIN_TIMER_INTERVAL) {
+        this.startTimer(this.timerInterval);
+      }
+    }
+
+    this.children.each(function (i, e) {
+      e.figure.setCanvas(canvas);
+    });
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Return the current assigned canvas container.
+   *
+   * @return {draw2d.Canvas}
+   */
+  getCanvas: function getCanvas() {
+    return this.canvas;
+  },
+
+  /**
+   * @method
+   * Start a timer which calls the onTimer method in the given interval.
+   *
+   * @param {Number} milliSeconds
+   */
+  startTimer: function startTimer(milliSeconds) {
+    var _this2 = this;
+
+    this.stopTimer();
+    this.timerInterval = Math.max(this.MIN_TIMER_INTERVAL, milliSeconds);
+
+    if (this.canvas !== null) {
+      this.timerId = window.setInterval(function () {
+        _this2.onTimer();
+        _this2.fireEvent("timer");
+      }, this.timerInterval);
+    }
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Stop the internal timer.
+   *
+   */
+  stopTimer: function stopTimer() {
+    if (this.timerId >= 0) {
+      window.clearInterval(this.timerId);
+      this.timerId = -1;
+    }
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Callback method for the internal timer handling<br>
+   * Inherit classes must override this method if they want use the timer feature.
+   *
+   *      // Alternatively you can register for this event with
+   *      figure.on("timer", function(emitter){
+   *          alert("timer fired");
+   *      });
+   *
+   * @template
+   */
+  onTimer: function onTimer() {},
+
+  /**
+   * @method
+   * Moves the element so it is the closest to the viewer’s eyes, on top of other elements. Additional
+   * the internal model changed as well.
+   *
+   * Optional: Inserts current object in front of the given one.
+   *
+   * @param {draw2d.Figure} [figure] move current object in front of the given one.
+   * @since 3.0.0
+   */
+  toFront: function toFront(figure) {
+    // ensure that the z-oder is still correct if the figure is assigned
+    // to a StrongComposite
+    //
+    if (this.composite instanceof _packages2.default.shape.composite.StrongComposite && typeof figure !== "undefined") {
+      var indexFigure = figure.getZOrder();
+      var indexComposite = this.composite.getZOrder();
+      if (indexFigure < indexComposite) {
+        figure = this.composite;
+      }
+    }
+
+    if (typeof figure === "undefined") {
+      this.getShapeElement().toFront();
+
+      if (this.canvas !== null) {
+        var figures = this.canvas.getFigures();
+        var lines = this.canvas.getLines();
+        if (figures.remove(this) !== null) {
+          figures.add(this);
+        } else if (lines.remove(this) !== null) {
+          lines.add(this);
+        }
+      }
+    } else {
+      this.getShapeElement().insertAfter(figure.getTopLevelShapeElement());
+
+      if (this.canvas !== null) {
+        var _figures = this.canvas.getFigures();
+        var _lines = this.canvas.getLines();
+        if (_figures.remove(this) !== null) {
+          var index = _figures.indexOf(figure);
+          _figures.insertElementAt(this, index + 1);
+        } else if (_lines.remove(this) !== null) {
+          _lines.add(this);
+        }
+      }
+    }
+
+    // bring all children in front of the parent
+    var _this = this;
+    this.children.each(function (i, child) {
+      child.figure.toFront(_this);
+    });
+
+    // and last but not lease the ResizeHandles if any present
+    //
+    this.selectionHandles.each(function (i, handle) {
+      handle.toFront();
+    });
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Moves the element to the background. Additional
+   * the internal model changed as well.
+   *
+   * @since 4.7.2
+   */
+  toBack: function toBack(figure) {
+    // it is not allowed that a figure is behind an assigned composite
+    //
+    if (this.composite instanceof _packages2.default.shape.composite.StrongComposite) {
+      this.toFront(this.composite);
+      return;
+    }
+
+    if (this.canvas !== null) {
+      var figures = this.canvas.getFigures();
+      var lines = this.canvas.getLines();
+      if (figures.remove(this) !== null) {
+        figures.insertElementAt(this, 0);
+      } else if (lines.remove(this) !== null) {
+        lines.insertElementAt(this, 0);
+      }
+      if (typeof figure !== "undefined") {
+        this.getShapeElement().insertBefore(figure.getShapeElement());
+      } else {
+        this.getShapeElement().toBack();
+      }
+    }
+
+    // Bring all children in front of "this" figure
+    //
+    var _this = this;
+    this.children.each(function (i, child) {
+      child.figure.toFront(_this);
+    }, true);
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Install a new edit policy to the figure. Each editpolicy is able to focus on a single editing
+   * task or group of related tasks. This also allows editing behavior to be selectively reused across
+   * different figure implementations. Also, behavior can change dynamically, such as when the layouts
+   * or routing methods change.
+   *
+   * Example for limited DragDrop behavior can be a draw2d.layout.constraint.RegionConstriantPolicy.
+   *
+   * @param {draw2d.policy.EditPolicy} policy
+   */
+  installEditPolicy: function installEditPolicy(policy) {
+    // it is only possible to install one SelectionFeedbackPolicy at once
+    //
+    if (policy instanceof _packages2.default.policy.figure.SelectionFeedbackPolicy) {
+      var _this = this;
+      this.editPolicy.grep(function (p) {
+        var stay = !(p instanceof _packages2.default.policy.figure.SelectionFeedbackPolicy);
+        if (!stay) {
+          p.onUninstall(_this);
+        }
+        return stay;
+      });
+    }
+    policy.onInstall(this);
+    this.editPolicy.add(policy);
+
+    return this;
+  },
+
+  /**
+   * @method
+   *
+   * UnInstall the edit policy from the figure. Either the instance itself if found
+   * or all kind of the given edit policies.
+   *
+   *
+   * @param {draw2d.policy.EditPolicy} policy
+   * @since 4.81
+   */
+  uninstallEditPolicy: function uninstallEditPolicy(policy) {
+    var removedPolicy = this.editPolicy.remove(policy);
+
+    // we found the policy and we are happy
+    //
+    if (removedPolicy !== null) {
+      removedPolicy.onUninstall(this);
+      return;
+    }
+
+    // The policy isn'T part of the figure. In this case we "think" the user want
+    // deinstall all instances of the policy
+    //
+    var _this = this;
+    var name = typeof policy === "string" ? policy : policy.NAME;
+    this.editPolicy.grep(function (p) {
+      if (p.NAME === name) {
+        p.onUninstall(_this);
+        return false;
+      }
+      return true;
+    });
+  },
+
+  /**
+   * @method
+   * Add a child figure to the figure. The hands over figure doesn't support drag&drop
+   * operations. It's only a decorator for the connection.<br>
+   * Mainly for labels or other decorations
+   *
+   *
+   *     let start = new draw2d.shape.node.Start({x:80, y:150});
+   *     start.add(new draw2d.shape.basic.Label({text:"Test Label"}), new draw2d.layout.locator.TopLocator());
+   *
+   *     canvas.add( start);
+   *
+   * @param {draw2d.Figure} child the figure to add as decoration to the connection.
+   * @param {draw2d.layout.locator.Locator} locator the locator for the child.
+   * @param {Number} [index] optional index where to insert the figure
+   **/
+  add: function add(child, locator, index) {
+    if (typeof locator === "undefined" || locator === null) {
+      throw "Second parameter 'locator' is required for method 'Figure#add'";
+    }
+
+    // the child is now a slave of the parent
+    //
+    child.setParent(this);
+
+    // inform the locator that a new child is bounded to the parent
+    // The call must happen after parent assignment. Reason: the locator
+    // can override some behaviours which are propagated from the parent.
+    //
+    locator.bind(this, child);
+
+    child.on("resize", this.relocateChildrenEventCallback);
+
+    if (!isNaN(parseInt(index))) {
+      this.children.insertElementAt({ figure: child, locator: locator }, index);
+    } else {
+      this.children.add({ figure: child, locator: locator });
+    }
+
+    if (this.canvas !== null) {
+      child.setCanvas(this.canvas);
+    }
+
+    this.repaint();
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Remove the child figure from this figure and the canvas
+   *
+   * @param {draw2d.Figure} child the figure to remove.
+   *
+   * @return {Object} the removed tupple of figure/locator or null if the child isn't found
+   * @return {draw2d.Figure} return.figure The removed figure
+   * @return {draw2d.shape.layout.Layout} return.locator The used locator of the figure
+   *
+   * @since 5.0.0
+   **/
+  remove: function remove(child) {
+    if (typeof child === "undefined" || child === null) {
+      debug.warn("The parameter child is required for Figure.remove");
+      return null;
+    }
+
+    var removed = null;
+    this.children.grep(function (e) {
+      var stay = e.figure !== child;
+      if (!stay) {
+        removed = e;
+      }
+      return stay;
+    });
+
+    if (removed !== null) {
+      child.setParent(null);
+      child.setCanvas(null);
+      removed.locator.unbind(this, child);
+      child.off(this.relocateChildrenEventCallback);
+
+      this.repaint();
+      return removed;
+    }
+
+    return null;
+  },
+
+  /**
+   * @method
+   * Return all children/decorations of this shape which has been added with
+   * draw2d.Figure.add
+   *
+   * @returns {draw2d.util.ArrayList}
+   */
+  getChildren: function getChildren() {
+    return this.children.clone().map(function (e) {
+      return e.figure;
+    });
+  },
+
+  /**
+   * @method
+   * Remove all children/decorations of this shape
+   *
+   */
+  resetChildren: function resetChildren() {
+    this.children.each(function (i, e) {
+      e.figure.setCanvas(null);
+    });
+    this.children = new _packages2.default.util.ArrayList();
+    this.repaint();
+
+    return this;
+  },
+
+  /**
+   * @method
+   * return the current SVG shape element or create it on demand.
+   *
+   * @protected
+   */
+  getShapeElement: function getShapeElement() {
+    if (this.shape !== null) {
+      return this.shape;
+    }
+
+    this.shape = this.createShapeElement();
+    if (!this.isVisible()) {
+      this.shape.hide();
+    }
+
+    // add CSS class to enable styling of the element with CSS rules/files
+    //
+    if (this.cssClass !== null) {
+      this.shape.node.setAttribute("class", this.cssClass);
+    }
+
+    return this.shape;
+  },
+
+  /**
+   * @method
+   * Get the top level shape element. May the figure has a set of SVG elements. In this case this
+   * method must return the top level node.<br>
+   * This method is used for the toFront/toBack method to order the nodes in the correct way.
+   *
+   * @since 5.0.0
+   * @private
+   */
+  getTopLevelShapeElement: function getTopLevelShapeElement() {
+    return this.getShapeElement();
+  },
+
+  /**
+   * @method
+   * Inherited classes must override this method to implement it's own draw functionality.
+   *
+   * @template
+   * @abstract
+   */
+  createShapeElement: function createShapeElement() {
+    throw "Inherited class [" + this.NAME + "] must override the abstract method createShapeElement";
+  },
+
+  /**
+   * @method
+   * propagate all attributes like color, stroke,... to the shape element
+   *
+   * @param {Object} [attributes] the style attributes for the SVG shape
+   * @private
+   **/
+  repaint: function repaint(attributes) {
+    if (this.repaintBlocked === true || this.shape === null) {
+      return this;
+    }
+    var _this = this;
+    attributes = attributes || {};
+
+    if (this.visible === true) {
+      if (this.shape.isVisible() === false) {
+        if (!isNaN(parseFloat(attributes.visibleDuration))) {
+          $(this.shape.node).fadeIn(attributes.visibleDuration, function () {
+            _this.shape.show();
+          });
+        } else {
+          this.shape.show();
+        }
+      }
+    } else {
+      if (this.shape.isVisible() === true) {
+        if (!isNaN(parseFloat(attributes.visibleDuration))) {
+          $(this.shape.node).fadeOut(attributes.visibleDuration, function () {
+            _this.shape.hide();
+          });
+        } else {
+          this.shape.hide();
+        }
+      }
+      return this;
+    }
+
+    // enrich with common properties
+    attributes.opacity = this.alpha;
+
+    // performance improvement
+    // Only apply attributes which has changed. This ends in a big performance improvement
+    // because the raphael shape isn't redraw at all.
+    //
+    attributes = _JSONUtil2.default.flatDiff(attributes, this.lastAppliedAttributes);
+    this.lastAppliedAttributes = attributes;
+
+    if (Object.getOwnPropertyNames(attributes).length > 0) {
+      this.shape.attr(attributes);
+    }
+
+    this.applyTransformation();
+
+    // Relocate all children of the figure.
+    // This means that the Locator can calculate the new Position of the child.
+    // This is not the best place for this. Move it to dim/size/shape changing
+    // methods of the figure. A "repaint" isn't always dimension changing the figure.
+    //
+    this.children.each(function (i, e) {
+      e.locator.relocate(i, e.figure);
+    });
+
+    return this;
+  },
+
+  /**
+   * @method
+   * apply a transformation to the shape like rotation, translate,..
+   *
+   * @private
+   * @template
+   */
+  applyTransformation: function applyTransformation() {
+    return this;
+  },
+
+  /**
+   * @method
+   * Highlight the element or remove the highlighting
+   *
+   *      // Alternatively you can use the attr method:
+   *      figure.attr({
+   *        glow: flag
+   *      });
+   *
+   * @param {Boolean} flag indicates glow/noGlow
+   * @template
+   */
+  setGlow: function setGlow(flag) {
+    // do nothing in the base class.
+    // Subclasses must implement this method.
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Allow dragging only when the cursor is over a specific part of the figure.
+   * <br>
+   * Override this method to specify the bounding box of an element or a draw2d.util.ArrayList
+   * of draw2d.geo.Rectangle of bounding boxes used to drag the figure. The returned coordinates
+   * are absolute coordinates to the canvas.
+   * <br>
+   * <br>
+   * Default implementation returns <b>null</b> to indicate to use the complete figures as
+   * drag handle.
+   *
+   * @since 5.6.0
+   * @returns {draw2d.geo.Rectangle|draw2d.util.ArrayList}
+   */
+  getHandleBBox: function getHandleBBox() {
+    return null;
+  },
+
+  /**
+   * @method
+   * Called if the drag and drop action begins. You can return [false] if you
+   * want avoid that the figure can be move.
+   *
+   * @param {Number} x the x-coordinate of the mouse up event
+   * @param {Number} y the y-coordinate of the mouse up event
+   * @param {Boolean} shiftKey true if the shift key has been pressed during this event
+   * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
+   *
+   * @return {Boolean} true if the figure accepts dragging
+   **/
+  onDragStart: function onDragStart(x, y, shiftKey, ctrlKey) {
+    this.isInDragDrop = false;
+
+    // Check whenever the figures has a drag-handle. Allow drag&drop
+    // operation only if the x/y is inside this area.
+    //
+    // @since 5.6.0
+    var bbox = this.getHandleBBox();
+    if (bbox !== null && bbox.translate(this.getAbsolutePosition().scale(-1)).hitTest(x, y) === false) {
+      // design failure: we must catch the figure below the mouse to forward
+      // the panning event to this figure. Special handling to provide sliders
+      // and other UI elements which requires the panning event. Hack.
+      this.panningDelegate = this.getBestChild(this.getX() + x, this.getY() + y);
+      if (this.panningDelegate !== null) {
+        // transform x/y relative to the panning figure and request the dragStart event
+        this.panningDelegate.onDragStart(x - this.panningDelegate.x, y - this.panningDelegate.y, shiftKey, ctrlKey);
+      }
+      return false;
+    }
+
+    this.command = this.createCommand(new _packages2.default.command.CommandType(_packages2.default.command.CommandType.MOVE));
+
+    if (this.command !== null) {
+      this.ox = this.getX();
+      this.oy = this.getY();
+      this.isInDragDrop = true;
+
+      // notify all installed policies
+      //
+      var _this = this;
+      var canStartDrag = true;
+
+      this.editPolicy.each(function (i, e) {
+        if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
+          canStartDrag = canStartDrag && e.onDragStart(_this.canvas, _this, x, y, shiftKey, ctrlKey);
+        }
+      });
+
+      if (canStartDrag) {
+        // fire an event
+        // @since 5.3.3
+        this.fireEvent("dragstart", { x: x, y: y, shiftKey: shiftKey, ctrlKey: ctrlKey });
+      }
+      return canStartDrag;
+    }
+
+    return false;
+  },
+
+  /**
+   * @method
+   * Don't call them manually. This will be done by the framework.<br>
+   * Will be called if the object are moved via drag and drop.
+   * Sub classes can override this method to implement additional stuff. Don't forget to call
+   * the super implementation via <code>this._super(dx, dy, dx2, dy2);</code>
+   *
+   * @private
+   * @param {Number} dx the x difference between the start of the drag drop operation and now
+   * @param {Number} dy the y difference between the start of the drag drop operation and now
+   * @param {Number} dx2 The x diff since the last call of this dragging operation
+   * @param {Number} dy2 The y diff since the last call of this dragging operation
+   * @param {Boolean} shiftKey true if the shift key has been pressed during this event
+   * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
+   **/
+  onDrag: function onDrag(dx, dy, dx2, dy2, shiftKey, ctrlKey) {
+    var _this3 = this;
+
+    // apply all EditPolicy for DragDrop Operations
+    //
+    this.editPolicy.each(function (i, e) {
+      if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
+        var _newPos = e.adjustPosition(_this3, _this3.ox + dx, _this3.oy + dy);
+        if (_newPos) {
+          dx = _newPos.x - _this3.ox;
+          dy = _newPos.y - _this3.oy;
+        }
+      }
+    });
+
+    var newPos = new _packages2.default.geo.Point(this.ox + dx, this.oy + dy);
+
+    // Adjust the new location if the object can snap to a helper
+    // like grid, geometry, ruler,...
+    //
+    if (this.getCanSnapToHelper()) {
+      newPos = this.getCanvas().snapToHelper(this, newPos);
+    }
+
+    this.setPosition(newPos);
+
+    // notify all installed policies
+    //
+    this.editPolicy.each(function (i, e) {
+      if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
+        e.onDrag(_this3.canvas, _this3);
+      }
+    });
+
+    // fire an event
+    // @since 5.3.3
+    this.fireEvent("drag", { dx: dx, dy: dy, dx2: dx2, dy2: dy2, shiftKey: shiftKey, ctrlKey: ctrlKey });
+  },
+
+  /**
+   * @method
+   * Called by the framework if the figure returns false for the drag operation. In this
+   * case we send a "panning" event - mouseDown + mouseMove. This is very useful for
+   * UI-Widget like slider, spinner,...
+   *
+   *      // You can alternatively register an event handler with:
+   *      figure.on("panning", function(emitter, eventData){
+   *          alert("panning of the figure called");
+   *      });
+   *
+   * @param {Number} dx the x difference between the mouse down operation and now
+   * @param {Number} dy the y difference between the mouse down operation and now
+   * @param {Number} dx2 The x diff since the last call of this dragging operation
+   * @param {Number} dy2 The y diff since the last call of this dragging operation
+   * @param {Boolean} shiftKey true if the shift key has been pressed during this event
+   * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
+   * @template
+   */
+  onPanning: function onPanning(dx, dy, dx2, dy2, shiftKey, ctrlKey) {},
+
+  /**
+   * @method
+   * Called by the framework if the panning event of the figures ends. This happens
+   * after the mous up event if the panning is active.
+   *
+   *      // You can alternatively register an event handler with:
+   *      figure.on("panningEnd", function(emitter){
+   *          alert("panning of the figure called");
+   *      });
+   *
+   */
+  onPanningEnd: function onPanningEnd() {},
+
+  /**
+   * @method
+   * Will be called after a drag and drop action.<br>
+   * Sub classes can override this method to implement additional stuff. Don't forget to call
+   * the super implementation via <code>this._super();</code>
+   *
+   * @param {Number} x the x-coordinate of the mouse event
+   * @param {Number} y the y-coordinate of the mouse event
+   * @param {Boolean} shiftKey true if the shift key has been pressed during this event
+   * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
+   *
+   * @template
+   **/
+  onDragEnd: function onDragEnd(x, y, shiftKey, ctrlKey) {
+    var _this4 = this;
+
+    // Element ist zwar schon an seine Position, das Command muss aber trotzdem
+    // in dem CommandStack gelegt werden damit das Undo funktioniert.
+    //
+    if (this.command !== null) {
+      this.command.setPosition(this.x, this.y);
+      this.canvas.getCommandStack().execute(this.command);
+      this.command = null;
+    }
+    this.isInDragDrop = false;
+    this.panningDelegate = null;
+
+    // notify all installed policies
+    //
+    this.editPolicy.each(function (i, e) {
+      if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
+        e.onDragEnd(_this4.canvas, _this4, x, y, shiftKey, ctrlKey);
+      }
+    });
+
+    this.fireEvent("move", { figure: this, dx: 0, dy: 0 });
+    this.fireEvent("change:x", { figure: this, dx: 0 });
+    this.fireEvent("change:y", { figure: this, dy: 0 });
+
+    // fire an event
+    // @since 5.3.3
+    this.fireEvent("dragend", { x: x, y: y, shiftKey: shiftKey, ctrlKey: ctrlKey });
+  },
+
+  /**
+   * @method
+   * Called by the framework during drag&drop operations if the user drag a figure over this figure
+   *
+   * @param {draw2d.Figure} draggedFigure The figure which is currently dragging
+   *
+   * @return {draw2d.Figure} the figure which should receive the drop event or null if the element didn't want a drop event
+   * @since 6.1.0
+   * @private
+   **/
+  delegateTarget: function delegateTarget(draggedFigure) {
+    var _this5 = this;
+
+    var delegate = draggedFigure;
+    this.getCanvas().getDropInterceptorPolicies().each(function (i, policy) {
+      delegate = policy.delegateTarget(draggedFigure, _this5);
+      if (delegate !== null) {
+        return false; // break the loop
+      }
+    });
+
+    return delegate;
+  },
+
+  /**
+   * @method
+   * Called by the framework during drag&drop operations if the user drag a figure over this figure
+   *
+   * @param {draw2d.Figure} draggedFigure The figure which is currently dragging
+   *
+   * @template
+   **/
+  onDragEnter: function onDragEnter(draggedFigure) {},
+
+  /**
+   * @method
+   * Called if the DragDrop object leaving the current hover figure.
+   *
+   * @param {draw2d.Figure} draggedFigure The figure which is currently dragging
+   * @template
+   **/
+  onDragLeave: function onDragLeave(draggedFigure) {},
+
+  /**
+   * @method
+   * Called if the user drop this element onto the dropTarget. This event is ONLY fired if the
+   * shape return "this" in the {@link draw2d.Figure#onDragEnter} method.
+   *
+   *
+   * @param {draw2d.Figure} dropTarget The drop target.
+   * @param {Number} x the x-coordinate of the mouse up event
+   * @param {Number} y the y-coordinate of the mouse up event
+   * @param {Boolean} shiftKey true if the shift key has been pressed during this event
+   * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
+   * @template
+   **/
+  onDrop: function onDrop(dropTarget, x, y, shiftKey, ctrlKey) {},
+
+  /**
+   * @method
+   * Called if the user dropped an figure onto this element. This event is ONLY fired if the
+   * in the canvas installed {@link draw2d.policy.canvas.DropInterceptorPolicy} allow this.
+   *
+   *
+   * @param {draw2d.Figure} droppedFigure The dropped figure.
+   * @param {Number} x the x-coordinate of the mouse up event
+   * @param {Number} y the y-coordinate of the mouse up event
+   * @param {Boolean} shiftKey true if the shift key has been pressed during this event
+   * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
+   * @template
+   * @since 4.8.0
+   **/
+  onCatch: function onCatch(droppedFigure, x, y, shiftKey, ctrlKey) {},
+
+  /**
+   * @method
+   * Callback method for the mouse enter event. Usefull for mouse hover-effects.
+   * Override this method for your own effects. Don't call them manually.
+   *
+   * @template
+   **/
+  onMouseEnter: function onMouseEnter() {},
+
+  /**
+   * @method
+   * Callback method for the mouse leave event. Useful for mouse hover-effects.
+   *
+   * @template
+   **/
+  onMouseLeave: function onMouseLeave() {},
+
+  /**
+   * @method
+   * Called when a user dbl clicks on the element
+   *
+   *      // Alternatively you can register an event with:
+   *      //
+   *      figure.on("dblclick", function(emitter, event){
+   *          alert("user dbl click on the figure");
+   *      });
+   *
+   * @template
+   */
+  onDoubleClick: function onDoubleClick() {},
+
+  /**
+   * @method
+   * Called when a user clicks on the element.
+   *
+   *      // You can alternatively register an event handler with:
+   *      figure.on("click", function(emitter, event){
+   *          alert("user click on the figure");
+   *      });
+   *
+   * @template
+   * @deprecated
+   */
+  onClick: function onClick() {},
+
+  /**
+   * @method
+   * called by the framework if the figure should show the context menu.<br>
+   * The strategy to show the context menu depends on the platform. Either looong press or
+   * right click with the mouse.
+   *
+   *      // Alternatively you register for this event with:
+   *      figure.on("contextmenu", function(emitter, event){
+   *          alert("user press the right mouse button for a context menu");
+   *      });
+   *
+   * @param {Number} x the x-coordinate to show the menu
+   * @param {Number} y the y-coordinate to show the menu
+   * @since 1.1.0
+   * @template
+   */
+  onContextMenu: function onContextMenu(x, y) {},
+
+  /**
+   * @method
+   * Set the alpha blending of this figure.
+   *
+   *      // Alternatively you can use the attr method:
+   *      figure.attr({
+   *        "alpha": percent
+   *      });
+   *
+   *      // ...or:
+   *      figure.attr({
+   *        "opacity": percent
+   *      });
+   *
+   * @param {Number} percent value between [0..1].
+   * @template
+   **/
+  setAlpha: function setAlpha(percent) {
+    percent = Math.min(1, Math.max(0, parseFloat(percent)));
+    if (percent === this.alpha) {
+      return;
+    }
+
+    this.alpha = percent;
+    this.repaint();
+    this.fireEvent("change:opacity", { value: this.alpha });
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Return the alpha blending of the figure
+   *
+   * @return {Number} the current alpha blending
+   */
+  getAlpha: function getAlpha() {
+    return this.alpha;
+  },
+
+  /**
+   * @method
+   * Set the rotation angle in degree [0..356]<br>
+   * <b>Only steps of 90 degree is working well</b>
+   * <br>
+   *      // Alternatively you can use the attr method:
+   *      figure.attr({
+   *        angle: angle
+   *      });
+   *
+   * @param {Number} angle the rotation angle in degree
+   */
+  setRotationAngle: function setRotationAngle(angle) {
+    var _this6 = this;
+
+    this.rotationAngle = angle;
+
+    // Update the resize handles if the user change the position of the element via an API call.
+    //
+    this.editPolicy.each(function (i, e) {
+      if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
+        e.moved(_this6.canvas, _this6);
+      }
+    });
+
+    this.fireEvent("change:angle", { value: this.rotationAngle });
+    this.repaint();
+
+    return this;
+  },
+
+  /**
+   * @method
+   * return the rotation angle of the figure in degree of [0..356].
+   *
+   * <br>
+   * <b>NOTE: this method is pre alpha and not for production. Only steps of 90 degree is working well</b>
+   * <br>
+   * @returns {Number}
+   */
+  getRotationAngle: function getRotationAngle() {
+    return this.rotationAngle;
+  },
+
+  /**
+   * @method
+   * Show/hide the element. The element didn't receive any mouse events (click, dblclick) if you hide the
+   * figure.
+   *
+   *      // Alternatively you can use the attr method:
+   *      figure.attr({
+   *        visible: flag
+   *      });
+   *
+   * @param {Boolean} flag
+   * @param {Number} [duration] the optional number for the fadeIn /fadeOut of the figure
+   * @since 1.1.0
+   */
+  setVisible: function setVisible(flag, duration) {
+    flag = !!flag;
+    if (flag === this.visible) {
+      return;
+    }
+    this.visible = flag;
+
+    this.repaint({ visibleDuration: duration });
+
+    if (this.visible) {
+      this.fireEvent("show");
+    } else {
+      this.fireEvent("hide");
+    }
+    this.fireEvent("change:visibility", { value: this.visible });
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Return true if the figure visible.
+   *
+   * @return {Boolean}
+   * @since 1.1.0
+   */
+  isVisible: function isVisible() {
+    return this.visible && this.shape !== null;
+  },
+
+  /**
+   * @method
+   * Guarantee, that the figure width/height will not be distorted. Applicable before calling setDimension().
+   * It is false by default.
+   *
+   * @since 4.1.0
+   * @param {Boolean} flag boolean flag if the figure should respect the aspect ratio
+   */
+  setKeepAspectRatio: function setKeepAspectRatio(flag) {
+    this.keepAspectRatio = flag;
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Return the flag if the shape keep the aspect ratio.
+   *
+   * @since 4.1.0
+   */
+  getKeepAspectRatio: function getKeepAspectRatio() {
+    return this.keepAspectRatio;
+  },
+
+  /**
+   * @method
+   * Return the current z-index of the element. Currently this is an expensive method. The index will be calculated
+   * all the time. Caching is not implemented at the moment.
+   *
+   * @return {Number}
+   */
+  getZOrder: function getZOrder() {
+    if (this.shape === null) {
+      return -1;
+    }
+
+    var i = 0;
+    var child = this.shape.node;
+    while ((child = child.previousSibling) !== null) {
+      i++;
+    }
+    return i;
+  },
+
+  /**
+   * @method
+   * Set the flag if this object can snap to grid or geometry.
+   * A window of dialog should set this flag to false.
+   *
+   * @param {Boolean} flag The snap to grid/geometry enable flag.
+   *
+   **/
+  setCanSnapToHelper: function setCanSnapToHelper(flag) {
+    this.canSnapToHelper = !!flag;
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Returns true if the figure can snap to any helper like a grid, guide, geometrie
+   * or something else.
+   *
+   * @return {Boolean}
+   **/
+  getCanSnapToHelper: function getCanSnapToHelper() {
+    return this.canSnapToHelper;
+  },
+
+  /**
+   *
+   * @return {draw2d.geo.Point}
+   **/
+  getSnapToGridAnchor: function getSnapToGridAnchor() {
+    return this.snapToGridAnchor;
+  },
+
+  /**
+   * @method
+   * Set the hot spot for all snapTo### operations.
+   *
+   * @param {draw2d.geo.Point} point
+   **/
+  setSnapToGridAnchor: function setSnapToGridAnchor(point) {
+    this.snapToGridAnchor = point;
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Set the width of the figure and consider the minWidth attribute
+   *
+   * @param {Number} width the new width of the figure
+   * @since 5.1.0
+   */
+  setWidth: function setWidth(width) {
+    this.setDimension(parseFloat(width), this.getHeight());
+    this.fireEvent("change:width", { value: this.width });
+
+    return this;
+  },
+
+  /**
+   * @method
+   * The current width of the figure.
+   *
+   * @type {Number}
+   **/
+  getWidth: function getWidth() {
+    return this.width;
+  },
+
+  /**
+   * @method
+   * Set the heigth of the figure and consider the minWidth attribute
+   *
+   * @param {Number} height the new height of the figure
+   * @since 5.1.0
+   */
+  setHeight: function setHeight(height) {
+    this.setDimension(this.getWidth(), parseFloat(height));
+    this.fireEvent("change:height", { value: this.height });
+
+    return this;
+  },
+
+  /**
+   * @method
+   * The current height of the figure.
+   *
+   * @return {Number}
+   **/
+  getHeight: function getHeight() {
+    return this.height;
+  },
+
+  /**
+   * @method
+   * This value is relevant for the interactive resize of the figure.
+   *
+   * @return {Number} Returns the min. width of this object.
+   */
+  getMinWidth: function getMinWidth() {
+    return this.minWidth;
+  },
+
+  /**
+   * @method
+   * Set the minimum width of this figure
+   *
+   * @param {Number} w
+   */
+  setMinWidth: function setMinWidth(w) {
+    this.minWidth = parseFloat(w);
+    this.fireEvent("change:minWidth", { value: this.minWidth });
+
+    // fit the width with the new constraint
+    this.setWidth(this.getWidth());
+
+    return this;
+  },
+
+  /**
+   * @method
+   * This value is relevant for the interactive resize of the figure.
+   *
+   * @return {Number} Returns the min. height of this object.
+   */
+  getMinHeight: function getMinHeight() {
+    return this.minHeight;
+  },
+
+  /**
+   * @method
+   * Set the minimum height of the figure.
+   *
+   * @param {Number} h
+   */
+  setMinHeight: function setMinHeight(h) {
+    this.minHeight = parseFloat(h);
+    this.fireEvent("change:minHeight", { value: this.minHeight });
+
+    // fit the height with the new constraint
+    this.setHeight(this.getHeight());
+
+    return this;
+  },
+
+  /**
+   * @method
+   * the the x-offset related to the parent figure or canvas
+   *
+   * @param {Number} x the new x offset of the figure
+   * @since 5.0.8
+   */
+  setX: function setX(x) {
+    this.setPosition(parseFloat(x), this.y);
+    this.fireEvent("change:x", { value: this.x });
+
+    return this;
+  },
+
+  /**
+   * @method
+   * The x-offset related to the parent figure or canvas.
+   *
+   * @return {Number} the x-offset to the parent figure
+   **/
+  getX: function getX() {
+    return this.x;
+  },
+
+  /**
+   * @method
+   * the the y-offset related to the parent figure or canvas
+   *
+   * @param {Number} y the new x offset of the figure
+   * @since 5.0.8
+   */
+  setY: function setY(y) {
+    this.setPosition(this.x, parseFloat(y));
+    this.fireEvent("change:y", { value: this.y });
+
+    return this;
+  },
+
+  /**
+   * @method
+   * The y-offset related to the parent figure or canvas.
+   *
+   * @return {Number} The y-offset to the parent figure.
+   **/
+  getY: function getY() {
+    return this.y;
+  },
+
+  /**
+   * @method
+   * The x-offset related to the canvas.
+   *
+   * @return {Number} the x-offset to the canvas
+   **/
+  getAbsoluteX: function getAbsoluteX() {
+    if (!this.parent) {
+      return this.getX();
+    }
+
+    return this.getX() + this.parent.getAbsoluteX();
+  },
+
+  /**
+   * @method
+   * The y-offset related to the canvas.
+   *
+   * @return {Number} The y-offset to the canvas.
+   **/
+  getAbsoluteY: function getAbsoluteY() {
+    if (!this.parent) {
+      return this.getY();
+    }
+    return this.getY() + this.parent.getAbsoluteY();
+  },
+
+  /**
+   * @method
+   * Returns the absolute y-position of the port.
+   *
+   * @type {draw2d.geo.Point}
+   **/
+  getAbsolutePosition: function getAbsolutePosition() {
+    return new _packages2.default.geo.Point(this.getAbsoluteX(), this.getAbsoluteY());
+  },
+
+  /**
+   * @method
+   * Returns the absolute y-position of the port.
+   *
+   * @return {draw2d.geo.Rectangle}
+   **/
+  getAbsoluteBounds: function getAbsoluteBounds() {
+    return new _packages2.default.geo.Rectangle(this.getAbsoluteX(), this.getAbsoluteY(), this.getWidth(), this.getHeight());
+  },
+
+  /**
+   * @method
+   * Set the position of the object.
+   *
+   *      // Alternatively you can use the attr method:
+   *      figure.attr({
+   *        x: x,
+   *        y: y
+   *      });
+   *
+   * @param {Number|draw2d.geo.Point} x The new x coordinate of the figure or the x/y coordinate if it is an draw2d.geo.Point
+   * @param {Number} [y] The new y coordinate of the figure
+   **/
+  setPosition: function setPosition(x, y) {
+    var _this7 = this;
+
+    if (typeof x === "undefined") {
+      debugger;
+    }
+
+    var oldPos = { x: this.x, y: this.y };
+
+    if (x instanceof _packages2.default.geo.Point) {
+      this.x = x.x;
+      this.y = x.y;
+    } else {
+      this.x = x;
+      this.y = y;
+    }
+
+    this.editPolicy.each(function (i, e) {
+      if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
+        var newPos = e.adjustPosition(_this7, _this7.x, _this7.y);
+        _this7.x = newPos.x;
+        _this7.y = newPos.y;
+      }
+    });
+
+    this.repaint();
+
+    // don't fire any events or update the ResizeHandles if nothing has happen
+    //
+    //  if(oldPos.x!=this.x || oldPos.y!=this.y)
+    {
+
+      // Update the resize handles if the user change the position of the
+      // element via an API call.
+      //
+      this.editPolicy.each(function (i, e) {
+        if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
+          e.moved(_this7.canvas, _this7);
+        }
+      });
+
+      var dx = this.x - oldPos.x;
+      var dy = this.y - oldPos.y;
+      this.fireEvent("move", { figure: this, dx: dx, dy: dy });
+      this.fireEvent("change:x", { figure: this, dx: dx });
+      this.fireEvent("change:y", { figure: this, dy: dy });
+    }
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Get the current position of the figure
+   *
+   * @return {draw2d.geo.Point}
+   * @since 2.0.0
+   */
+  getPosition: function getPosition() {
+    return new _packages2.default.geo.Point(this.getX(), this.getY());
+  },
+
+  /**
+   * @method
+   * Translate the figure with the given x/y offset.
+   *
+   * @param {Number} dx The x offset to translate
+   * @param {Number} dy The y offset to translate
+   **/
+  translate: function translate(dx, dy) {
+    this.setPosition(this.getX() + dx, this.getY() + dy);
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Set the new width and height of the figure.
+   *
+   *      // Alternatively you can use the attr method:
+   *      figure.attr({
+   *         width:  w,
+   *         height: h
+   *      });
+   *
+   * @param {Number} w The new width of the figure
+   * @param {Number} h The new height of the figure
+   **/
+  setDimension: function setDimension(w, h) {
+    var _this8 = this;
+
+    var old = { width: this.width, height: this.height };
+
+    w = Math.max(this.getMinWidth(), w);
+    h = Math.max(this.getMinHeight(), h);
+
+    if (this.width === w && this.height === h) {
+      // required if an inherit figure changed the w/h to a given constraint.
+      // In this case the Resize handles must be informed that the shape didn't resized.
+      // because the minWidth/minHeight did have a higher prio.
+      this.editPolicy.each(function (i, e) {
+        if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
+          e.moved(_this8.canvas, _this8);
+        }
+      });
+      return this;
+    }
+
+    // apply all EditPolicy to adjust/modify the new dimension
+    //
+    this.editPolicy.each(function (i, e) {
+      if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
+        var newDim = e.adjustDimension(_this8, w, h);
+        w = newDim.w;
+        h = newDim.h;
+      }
+    });
+
+    // respect the aspect ratio if required
+    //
+    if (this.keepAspectRatio === true) {
+      if (w >= this.getMinWidth()) {
+        // scale the height to the given ratio
+        h = this.getHeight() * (w / this.getWidth());
+        // and apply the new dimension only if the values are in range of the given constraints
+        if (h >= this.getMinHeight()) {
+          this.width = w;
+          this.height = h;
+        }
+      }
+    } else {
+      this.width = Math.max(this.getMinWidth(), w);
+      this.height = Math.max(this.getMinHeight(), h);
+    }
+
+    // just fire the event if really something happens
+    //
+    //if(old.w!=this.width || old.h != this.height)
+    {
+      this.repaint();
+
+      this.fireEvent("resize");
+      this.fireEvent("change:dimension", { value: { height: this.height, width: this.width, old: old } });
+
+      // Update the resize handles if the user change the position of the element via an API call.
+      //
+      this.editPolicy.each(function (i, e) {
+        if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
+          e.moved(_this8.canvas, _this8);
+        }
+      });
+    }
+    return this;
+  },
+
+  /**
+   * @method
+   * Set the bounding box of the figure
+   *
+   *      // Alternatively you can use the attr method:
+   *      figure.attr({
+   *        width: w,
+   *        height: h,
+   *        x: x,
+   *        y: y
+   *      });
+   *
+   *      // or
+   *      figure.attr({
+   *        boundingBox: {x:1, y:100, width:30, height:30}
+   *      });
+   *
+   * @param {draw2d.geo.Rectangle} rect
+   * @since 4.8.0
+   */
+  setBoundingBox: function setBoundingBox(rect) {
+    rect = new _packages2.default.geo.Rectangle(rect);
+
+    var orig = this.repaintBlocked;
+    this.repaintBlocked = true;
+    this.setPosition(rect.x, rect.y);
+    this.repaintBlocked = orig;
+    this.setDimension(rect.w, rect.h);
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Return the bounding box of the figure in absolute position to the canvas.
+   *
+   * @return {draw2d.geo.Rectangle}
+   **/
+  getBoundingBox: function getBoundingBox() {
+    return new _packages2.default.geo.Rectangle(this.getAbsoluteX(), this.getAbsoluteY(), this.getWidth(), this.getHeight());
+  },
+
+  /**
+   * @method
+   * Detect whenever the hands over coordinate is inside the figure.
+   * The default implementation is a simple bounding box test.
+   *
+   * @param {Number} iX
+   * @param {Number} iY
+   * @param {Number} [corona]
+   *
+   * @returns {Boolean}
+   */
+  hitTest: function hitTest(iX, iY, corona) {
+    if (typeof corona === "number") {
+      return this.getBoundingBox().scale(corona, corona).hitTest(iX, iY);
+    }
+    return this.getBoundingBox().hitTest(iX, iY);
+  },
+
+  /**
+   * @method
+   * Switch on/off the drag drop behaviour of this object
+   *
+   * @param {Boolean} flag The new drag drop indicator
+   **/
+  setDraggable: function setDraggable(flag) {
+    this.draggable = !!flag;
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Get the Drag drop enable flag
+   *
+   * @return {Boolean} The new drag drop indicator
+   **/
+  isDraggable: function isDraggable() {
+    // delegate to the composite if given
+    if (this.composite !== null) {
+      return this.composite.isMemberDraggable(this, this.draggable);
+    }
+
+    return this.draggable;
+  },
+
+  /**
+   * @method
+   * Returns the true if the figure can be resized.
+   *
+   * @return {Boolean}
+   **/
+  isResizeable: function isResizeable() {
+    return this.resizeable;
+  },
+
+  /**
+   * @method
+   * You can change the resizeable behaviour of this object. Hands over [false] and
+   * the figure has no resizehandles if you select them with the mouse.<br>
+   *
+   *      // Alternatively you can use the attr method:
+   *      figure.attr({
+   *        resizeable: flag
+   *      });
+   *
+   * @param {Boolean} flag The resizeable flag.
+   **/
+  setResizeable: function setResizeable(flag) {
+    this.resizeable = !!flag;
+    this.fireEvent("change:resizeable", { value: this.resizeable });
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Indicates whenever the element is selectable by user interaction or API.
+   *
+   * @return {Boolean}
+   **/
+  isSelectable: function isSelectable() {
+    // delegate to the composite if given
+    if (this.composite !== null) {
+      return this.composite.isMemberSelectable(this, this.selectable);
+    }
+
+    return this.selectable;
+  },
+
+  /**
+   * @method
+   * You can change the selectable behavior of this object. Hands over [false] and
+   * the figure has no selection handles if you try to select them with the mouse.<br>
+   *
+   * @param {Boolean} flag The selectable flag.
+   **/
+  setSelectable: function setSelectable(flag) {
+    this.selectable = !!flag;
+    this.fireEvent("change:selectable", { value: this.selectable });
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Return true if the object doesn't care about the aspect ratio.
+   * You can change the height and width independent.<br>
+   *
+   * Replaced with "getKeepAspectRatio"
+   * @return {Boolean}
+   * @deprecated
+   */
+  isStrechable: function isStrechable() {
+    return !this.getKeepAspectRatio();
+  },
+
+  /**
+   * @method
+   * Return false if you avoid that the user can delete your figure.
+   * Sub class can override this method.
+   *
+   * @return {Boolean}
+   **/
+  isDeleteable: function isDeleteable() {
+    return this.deleteable;
+  },
+
+  /**
+   * @method
+   * Set the flag if the shape is deleteable.
+   *
+   * @param {Boolean} flag enable or disable flag for the delete operation
+   **/
+  setDeleteable: function setDeleteable(flag) {
+    this.deleteable = !!flag;
+    this.fireEvent("change:deleteable", { value: this.deleteable });
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Set the parent of this figure.
+   * Don't call them manually.
+   *
+   * @param {draw2d.Figure} parent The new parent of this figure
+   * @private
+   **/
+  setParent: function setParent(parent) {
+    this.parent = parent;
+
+    if (parent !== null) {
+      // inherit the selection handling impl from the parent
+      this.setSelectionAdapter(parent.getSelectionAdapter());
+    } else {
+      // use default
+      this.setSelectionAdapter(null);
+    }
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Get the parent of this figure.
+   *
+   * @return {draw2d.Figure}
+   **/
+  getParent: function getParent() {
+    return this.parent;
+  },
+
+  /**
+   * @method
+   * Check to see if a figure is a descendant of another figure.
+   * <br>
+   * The contains() method returns true if the figure provided by the argument is a descendant of this figure,
+   * whether it is a direct child or nested more deeply. Otherwise, it returns false.
+   *
+   * @param {draw2d.Figure} containedFigure The figure that may be contained by (a descendant of) this figure.
+   * @since 5.5.4
+   */
+  contains: function contains(containedFigure) {
+    if (containedFigure.getParent() === this) {
+      return true;
+    }
+
+    for (var i = 0, len = this.children.getSize(); i < len; i++) {
+      var child = this.children.get(i).figure;
+      if (child.contains(containedFigure)) {
+        return true;
+      }
+    }
+    return false;
+  },
+
+  /**
+   * @method
+   * Get the top most parent of this figure. This can be an layout figure or parent container
+   *
+   * @return {draw2d.Figure}
+   * @since 5.0.6
+   **/
+  getRoot: function getRoot() {
+    var root = this.parent;
+    while (root !== null && root.parent !== null) {
+      root = root.parent;
+    }
+    return root;
+  },
+
+  /**
+   * @method
+   * Set the assigned composite of this figure.
+   *
+   * @param {draw2d.shape.composite.StrongComposite} composite The assigned composite of this figure
+   * @private
+   * @since 4.8.0
+   **/
+  setComposite: function setComposite(composite) {
+    if (composite !== null && !(composite instanceof _packages2.default.shape.composite.StrongComposite)) {
+      throw "'composite must inherit from 'draw2d.shape.composite.StrongComposite'";
+    }
+
+    this.composite = composite;
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Get the assigned composite of this figure.
+   *
+   * @return {draw2d.shape.composite.StrongComposite}
+   * @since 4.8.0
+   **/
+  getComposite: function getComposite() {
+    return this.composite;
+  },
+
+  /**
+   * @method
+   * Execute all handlers and behaviors attached to the figure for the given event type.
+   *
+   *
+   * @param {String} event the event to trigger
+   * @param {Object} [args] optional parameters for the triggered event callback
+   *
+   * @since 5.0.0
+   */
+  fireEvent: function fireEvent(event, args) {
+    try {
+      if (typeof this.eventSubscriptions[event] === 'undefined') {
+        return;
+      }
+
+      // avoid recursion
+      if (this._inEvent === true) {
+        return;
+      }
+      this._inEvent = true;
+      var subscribers = this.eventSubscriptions[event];
+      for (var i = 0; i < subscribers.length; i++) {
+        subscribers[i](this, args);
+      }
+    } finally {
+      this._inEvent = false;
+
+      // fire a generic change event if an attribute has changed
+      // required for some DataBinding frameworks or for the Backbone.Model compatibility
+      // the event "change" with the corresponding attribute name as additional parameter
+      if (event.substring(0, 7) === "change:") {
+        this.fireEvent("change", event.substring(7));
+      }
+    }
+  },
+
+  /**
+   * @method
+   * Attach an event handler function for one or more events to the figure.
+   * To remove events bound with .on(), see {@link #off}.
+   *
+   * possible events are:<br>
+   * <ul>
+   *   <li>click</li>
+   *   <li>dblclick</li>
+   *   <li>move</li>
+   *   <li>resize</li>
+   *   <li>timer</li>
+   *   <li>contextmenu</li>
+   *   <li>show</li>
+   *   <li>hide</li>
+   *   <li>added</li>
+   *   <li>removed</li>
+   *   <li>change:[attr]</li>
+   * </ul>
+   *
+   * @param {String}   event One or more space-separated event types
+   * @param {Function} callback A function to execute when the event is triggered.
+   * @param {draw2d.Figure} callback.emitter the emitter of the event
+   * @param {Object} [callback.obj] optional event related data
+   * @param {Object} [context] optional context of the function callback.
+   * @since 5.0.0
+   */
+  on: function on(event, callback, context) {
+    var events = event.split(" ");
+    if (typeof callback === "undefined") {
+      debugger;
+    }
+    // the "context" param is add to be compatible with Backbone.Model.
+    // The project "backbone.ModelBinder" requires this signature and we want to be nice.
+    //
+    if (context) {
+      callback = callback.bind(context);
+      callback.___originalCallback = callback;
+    }
+
+    for (var i = 0; i < events.length; i++) {
+      if (typeof this.eventSubscriptions[events[i]] === 'undefined') {
+        this.eventSubscriptions[events[i]] = [];
+      }
+      // avoid doublicate registration for the same event with the same callback method
+      if (-1 !== $.inArray(callback, this.eventSubscriptions[events[i]])) {
+        //   debugger
+      } else {
+        this.eventSubscriptions[events[i]].push(callback);
+      }
+    }
+    return this;
+  },
+
+  /**
+   * @method
+   * The .off() method removes event handlers that were attached with {@link #on}.<br>
+   * Calling .off() with no arguments removes all handlers attached to the elements.<br>
+   * <br>
+   * If a simple event name such as "move" is provided, all events of that type are removed from the figure.
+   *
+   *
+   * @param {String|Function} eventOrFunction the event name of the registerd function or the function itself
+   * @since 5.0.0
+   */
+  off: function off(eventOrFunction) {
+    if (typeof eventOrFunction === "undefined") {
+      this.eventSubscriptions = {};
+    } else if (typeof eventOrFunction === 'string') {
+      this.eventSubscriptions[eventOrFunction] = [];
+    } else {
+      for (var event in this.eventSubscriptions) {
+        this.eventSubscriptions[event] = this.eventSubscriptions[event].filter(function (callback) {
+          if (typeof callback.___originalCallback !== "undefined") {
+            return callback.___originalCallback !== eventOrFunction;
+          }
+          return callback !== eventOrFunction;
+        });
+      }
+    }
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Returns the best figure at the location [x,y]. It is a simple hit test. Keep in mind that only visible objects
+   * are returned.
+   *
+   * @param {Number} x The x position.
+   * @param {Number} y The y position.
+   * @param {draw2d.Figure|Array} [figureToIgnore] The figures which should be ignored.
+   **/
+  getBestChild: function getBestChild(x, y, figureToIgnore) {
+    if (!Array.isArray(figureToIgnore)) {
+      if (figureToIgnore instanceof _packages2.default.Figure) {
+        figureToIgnore = [figureToIgnore];
+      } else {
+        figureToIgnore = [];
+      }
+    }
+
+    var result = null;
+
+    // tool method to check recursive a figure for hitTest
+    //
+    var checkRecursive = function checkRecursive(children) {
+      children.each(function (i, e) {
+        var c = e.figure;
+        checkRecursive(c.children);
+        if (result === null && c.isVisible() === true && c.hitTest(x, y) === true && $.inArray(c, figureToIgnore) === -1) {
+          result = c;
+        }
+        return result === null; // break the each-loop if we found an element
+      });
+    };
+
+    checkRecursive(this.children);
+
+    return result;
+  },
+
+  /**
+   * @method
+   * Returns the Command to perform the specified Request or null.
+   *
+   * @param {draw2d.command.CommandType} request describes the Command being requested
+   * @return {draw2d.command.Command} null or a Command
+   * @private
+   **/
+  createCommand: function createCommand(request) {
+    if (request === null) {
+      return null;
+    }
+
+    if (request.getPolicy() === _packages2.default.command.CommandType.MOVE) {
+      if (!this.isDraggable()) {
+        return null;
+      }
+      return new _packages2.default.command.CommandMove(this);
+    }
+
+    if (request.getPolicy() === _packages2.default.command.CommandType.DELETE) {
+      if (!this.isDeleteable()) {
+        return null;
+      }
+      return new _packages2.default.command.CommandDelete(this);
+    }
+
+    if (request.getPolicy() === _packages2.default.command.CommandType.RESIZE) {
+      if (!this.isResizeable()) {
+        return null;
+      }
+      return new _packages2.default.command.CommandResize(this);
+    }
+
+    return null;
+  },
+
+  /**
+   * @method
+   * Clone the figure. <br>
+   * You must override and implement the methods <b>getPersistentAttributes</b> and <b>setPersistentAttributes</b> for your custom
+   * figures if the have special attributes.
+   *
+   * The clone() method performs a deep copy of the object, meaning that it copies the children, ports and decorations
+   * per default. You can control the clone procedure with the 'cloneMetaData'.
+   *
+   *
+   * @param {Object} [cloneMetaData] controls the clone procedure
+   * @param {Boolean} [cloneMetaData.excludeChildren] set it to true if you want exclude the children.
+   *
+   * @since 4.1.0
+   * @experimental
+   */
+  clone: function clone(cloneMetaData) {
+    cloneMetaData = (0, _extend2.default)({ exludeChildren: false }, cloneMetaData);
+
+    var clone = eval("new " + this.NAME + "();");
+    var initialId = clone.id;
+
+    clone.setPersistentAttributes(this.getPersistentAttributes());
+
+    clone.id = initialId;
+
+    // add all decorations to the memento
+    //
+    if (cloneMetaData.exludeChildren === false) {
+      clone.resetChildren();
+      this.children.each(function (i, entry) {
+        var child = entry.figure.clone();
+        // we can ignore the locator if this didn't provide a "correct" name, this can happen in some
+        // Layout shapes like VerticalLayout or Horziontal Layout. This figures injects it own kind
+        // of layouter...so didn'T care about this.
+
+        var locator = entry.locator.NAME ? eval("new " + entry.locator.NAME + "();") : null;
+        clone.add(child, locator);
+      });
+    }
+
+    return clone;
+  },
+
+  /**
+   * @method
+   * Return an objects with all important attributes for XML or JSON serialization
+   *
+   * @return
+   */
+  getPersistentAttributes: function getPersistentAttributes() {
+    // force deep copy of userData to avoid side effects in the clone method.
+    //
+    var memento = {
+      type: this.NAME,
+      id: this.id,
+      x: this.getX(),
+      y: this.getY(),
+      width: this.width,
+      height: this.height,
+      alpha: this.alpha,
+      angle: this.rotationAngle,
+      userData: (0, _extend2.default)(true, {}, this.userData)
+    };
+
+    if (this.cssClass !== null) {
+      memento.cssClass = this.cssClass;
+    }
+
+    if (this.composite !== null) {
+      memento.composite = this.composite.getId();
+    }
+
+    return memento;
+  },
+
+  /**
+   * @method
+   * Read all attributes from the serialized properties and transfer them into the shape.
+   *
+   * @param {Object} memento
+   */
+  setPersistentAttributes: function setPersistentAttributes(memento) {
+    this.id = memento.id;
+    this.setPosition(parseFloat(memento.x), parseFloat(memento.y));
+
+    // width and height are optional parameter for the JSON stuff.
+    // We use the defaults if the attributes not present
+    if (typeof memento.width !== "undefined") {
+      this.width = parseFloat(memento.width);
+    }
+
+    if (typeof memento.height !== "undefined") {
+      this.height = parseFloat(memento.height);
+    }
+
+    if (typeof memento.userData !== "undefined") {
+      this.userData = memento.userData;
+    }
+
+    if (typeof memento.cssClass !== "undefined") {
+      this.setCssClass(memento.cssClass);
+    }
+
+    if (typeof memento.alpha !== "undefined") {
+      this.setAlpha(parseFloat(memento.alpha));
+    }
+
+    if (typeof memento.angle !== "undefined") {
+      this.rotationAngle = parseFloat(memento.angle);
+    }
+
+    return this;
+  }
 });
 
 /***/ }),
@@ -12476,13 +12477,13 @@ _packages2.default.HybridPort = _packages2.default.Port.extend({
 
          if (request.source instanceof _packages2.default.InputPort) {
             // This is the difference to the InputPort implementation of createCommand.
-            return new _packages2.default.command.CommandConnect(request.target, request.source, request.source, request.router);
+            return new _packages2.default.command.CommandConnect(request.target, request.source, request.source);
          } else if (request.source instanceof _packages2.default.OutputPort) {
             // This is the different to the OutputPort implementation of createCommand
-            return new _packages2.default.command.CommandConnect(request.source, request.target, request.source, request.router);
+            return new _packages2.default.command.CommandConnect(request.source, request.target, request.source);
          } else if (request.source instanceof _packages2.default.HybridPort) {
             // This is the different to the OutputPort implementation of createCommand
-            return new _packages2.default.command.CommandConnect(request.target, request.source, request.source, request.router);
+            return new _packages2.default.command.CommandConnect(request.target, request.source, request.source);
          }
 
          return null;
@@ -12542,7 +12543,7 @@ _packages2.default.InputPort = _packages2.default.Port.extend({
     // Connect request between two ports
     //
     if (request.getPolicy() === _packages2.default.command.CommandType.CONNECT) {
-      return new _packages2.default.command.CommandConnect(request.source, request.target, request.source, request.router);
+      return new _packages2.default.command.CommandConnect(request.source, request.target, request.source);
     }
 
     // ...else call the base class
@@ -12600,7 +12601,7 @@ _packages2.default.OutputPort = _packages2.default.Port.extend({
     //
     if (request.getPolicy() === _packages2.default.command.CommandType.CONNECT) {
       // source and target are changed.
-      return new _packages2.default.command.CommandConnect(request.target, request.source, request.source, request.router);
+      return new _packages2.default.command.CommandConnect(request.target, request.source, request.source);
     }
 
     // ...else call the base class
@@ -15826,7 +15827,6 @@ _packages2.default.command.CommandConnect = _packages2.default.command.Command.e
    * @param {draw2d.Port} source the source port for the connection to create
    * @param {draw2d.Port} target the target port for the connection to create
    * @param {draw2d.Port} [dropTarget] the port who has initiate the connection creation. mainly the drop target
-   * @param {draw2d.layout.connection.ConnectionRouter} [router] the default router to use for the connection
    */
   init: function init(source, target, dropTarget) {
     this._super(_packages2.default.Configuration.i18n.command.connectPorts);
@@ -15839,7 +15839,7 @@ _packages2.default.command.CommandConnect = _packages2.default.command.Command.e
 
   /**
    * @method
-   * set the connection to use. called by the COnnectionCreatePolicy
+   * set the connection to use. called by the ConnectionCreatePolicy
    */
   setConnection: function setConnection(connection) {
     this.connection = connection;
@@ -17356,288 +17356,301 @@ var _packages2 = _interopRequireDefault(_packages);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _packages2.default.command.CommandStack = Class.extend({
-   NAME: "draw2d.command.CommandStack",
+  NAME: "draw2d.command.CommandStack",
 
-   /**
-    * @constructor
-    * Create a new CommandStack objects which can be execute via the CommandStack.
-    *
-    */
-   init: function init() {
-      this.undostack = [];
-      this.redostack = [];
-      this.maxundo = 50;
-      this.transactionCommand = null;
-      this.eventListeners = new _packages2.default.util.ArrayList();
-   },
+  /**
+   * @constructor
+   * Create a new CommandStack objects which can be execute via the CommandStack.
+   *
+   */
+  init: function init() {
+    this.undostack = [];
+    this.redostack = [];
+    this.maxundo = 50;
+    this.transactionCommand = null;
+    this.eventListeners = new _packages2.default.util.ArrayList();
+  },
 
-   /**
-    * @method
-    * Set the maximal undo stack size. Entries will be remove if the max. stack
-    * size has been reached.
-    *
-    * @param {Number} count The maximal undo stack size.
-    *
-    **/
-   setUndoLimit: function setUndoLimit(count) {
-      this.maxundo = count;
-
-      return this;
-   },
-
-   /**
-    * @method
-    * Remove the undo / redo history. This is useful if the user has been save the
-    * document.
-    *
-    **/
-   markSaveLocation: function markSaveLocation() {
-      this.undostack = [];
-      this.redostack = [];
-
-      // fire an empty command to inform all listener that the stack has been changed
-      this.notifyListeners(new _packages2.default.command.Command(), _packages2.default.command.CommandStack.POST_EXECUTE);
-
-      return this;
-   },
-
-   /**
-    * @method
-    *
-    * Executes the specified Command if possible. Prior to executing the command, a
-    * draw2d.command.CommandStackEvent for {@link #PRE_EXECUTE} will be fired to event listeners.
-    * Similarly, after attempting to execute the command, an event for {@link #POST_EXECUTE}
-    * will be fired.
-    *
-    * @param {draw2d.command.Command} command The command to execute.
-    *
-    **/
-   execute: function execute(command) {
-      if (typeof command === "undefined") throw "Missing parameter [command] for method call CommandStack.execute";
-
-      // nothing to do
-      if (command === null) return; //silently
-
-      // return if the command can't execute or it doesn't change the model
-      // => Empty command
-      if (command.canExecute() === false) return;
-
-      // A command stack transaction is open.
-      // The execution will be postpone until the transaction will commit
-      //
-      if (this.transactionCommand !== null) {
-         this.transactionCommand.add(command);
-         return;
-      }
-
-      this.notifyListeners(command, _packages2.default.command.CommandStack.PRE_EXECUTE);
-
-      this.undostack.push(command);
-      command.execute();
-
-      // cleanup the redo stack if the user execute a new command.
-      // I think this will create a "clean" behaviour of the unde/redo mechanism.
-      //
-      this.redostack = [];
-
-      // monitor only the max. undo stack size
-      //
-      if (this.undostack.length > this.maxundo) {
-         this.undostack = this.undostack.slice(this.undostack.length - this.maxundo);
-      }
-      this.notifyListeners(command, _packages2.default.command.CommandStack.POST_EXECUTE);
-
-      return this;
-   },
-
-   /**
-    * @method
-    * Opens a transaction for further multiple commands. If you execute a command all
-    * {@ #execute} calls will be ignored until you commit the current transaction.
-    *
-    * @param {String} [commandLabel] the label to show for the undo/redo operation
-    *
-    * @since 4.0.0
-    */
-   startTransaction: function startTransaction(commandLabel) {
-      this.transactionCommand = new _packages2.default.command.CommandCollection(commandLabel);
-
-      return this;
-   },
-
-   /**
-    * @method
-    * Commit the running transaction. All commands between the start/end of a transaction
-    * can be undo/redo in a single step.
-    *
-    * @since 4.0.0
-    */
-   commitTransaction: function commitTransaction() {
-      if (this.transactionCommand === null) {
-         return; //silently
-      }
-
-      var cmd = this.transactionCommand;
-      this.transactionCommand = null;
-      // we can drop the CommandCollection if the collection contains only one command.
-      if (cmd.commands.getSize() === 1) {
-         this.execute(cmd.commands.first());
-      } else {
-         this.execute(cmd);
-      }
-
-      return this;
-   },
-
-   /**
-    * @method
-    * Undo on command from the stack and store them on the redo command stack.
-    *
-    **/
-   undo: function undo() {
-      var command = this.undostack.pop();
-      if (command) {
-         this.notifyListeners(command, _packages2.default.command.CommandStack.PRE_UNDO);
-         this.redostack.push(command);
-         command.undo();
-         this.notifyListeners(command, _packages2.default.command.CommandStack.POST_UNDO);
-      }
-
-      return this;
-   },
-
-   /**
-    * @method
-    * Redo a command after the user has undo a command
-    *
-    **/
-   redo: function redo() {
-      var command = this.redostack.pop();
-
-      if (command) {
-         this.notifyListeners(command, _packages2.default.command.CommandStack.PRE_REDO);
-         this.undostack.push(command);
-         command.redo();
-         this.notifyListeners(command, _packages2.default.command.CommandStack.POST_REDO);
-      }
-
-      return this;
-   },
-
-   /**
-    * @method
-    * Return the label of the next REDO command.
-    *
-    * @return {String}
+  /**
+   * @method
+   * Set the maximal undo stack size. Entries will be remove if the max. stack
+   * size has been reached.
+   *
+   * @param {Number} count The maximal undo stack size.
+   *
    **/
-   getRedoLabel: function getRedoLabel() {
-      if (this.redostack.length === 0) return "";
+  setUndoLimit: function setUndoLimit(count) {
+    this.maxundo = count;
 
-      var command = this.redostack[this.redostack.length - 1];
+    return this;
+  },
 
-      if (command) {
-         return command.getLabel();
+  /**
+   * @method
+   * Remove the undo / redo history. This is useful if the user has been save the
+   * document.
+   *
+   **/
+  markSaveLocation: function markSaveLocation() {
+    this.undostack = [];
+    this.redostack = [];
+
+    // fire an empty command to inform all listener that the stack has been changed
+    this.notifyListeners(new _packages2.default.command.Command(), _packages2.default.command.CommandStack.POST_EXECUTE);
+
+    return this;
+  },
+
+  /**
+   * @method
+   *
+   * Executes the specified Command if possible. Prior to executing the command, a
+   * draw2d.command.CommandStackEvent for {@link #PRE_EXECUTE} will be fired to event listeners.
+   * Similarly, after attempting to execute the command, an event for {@link #POST_EXECUTE}
+   * will be fired.
+   *
+   * @param {draw2d.command.Command} command The command to execute.
+   *
+   **/
+  execute: function execute(command) {
+    if (typeof command === "undefined") throw "Missing parameter [command] for method call CommandStack.execute";
+
+    // nothing to do
+    if (command === null) return; //silently
+
+    // return if the command can't execute or it doesn't change the model
+    // => Empty command
+    if (command.canExecute() === false) return;
+
+    // A command stack transaction is open.
+    // The execution will be postpone until the transaction will commit
+    //
+    if (this.transactionCommand !== null) {
+      this.transactionCommand.add(command);
+      return;
+    }
+
+    this.notifyListeners(command, _packages2.default.command.CommandStack.PRE_EXECUTE);
+
+    this.undostack.push(command);
+    command.execute();
+
+    // cleanup the redo stack if the user execute a new command.
+    // I think this will create a "clean" behaviour of the unde/redo mechanism.
+    //
+    this.redostack = [];
+
+    // monitor only the max. undo stack size
+    //
+    if (this.undostack.length > this.maxundo) {
+      this.undostack = this.undostack.slice(this.undostack.length - this.maxundo);
+    }
+    this.notifyListeners(command, _packages2.default.command.CommandStack.POST_EXECUTE);
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Opens a transaction for further multiple commands. If you execute a command all
+   * {@ #execute} calls will be ignored until you commit the current transaction.
+   *
+   * @param {String} [commandLabel] the label to show for the undo/redo operation
+   *
+   * @since 4.0.0
+   */
+  startTransaction: function startTransaction(commandLabel) {
+    if (this.transactionCommand !== null) {
+      throw "CommandStack is already within transactional mode. Don't call 'startTransaction";
+    }
+
+    this.transactionCommand = new _packages2.default.command.CommandCollection(commandLabel);
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Returns true if the Command Stack has an open transaction.
+   *
+   *
+   */
+  isInTransaction: function isInTransaction() {
+    return this.transactionCommand !== null;
+  },
+
+  /**
+  * @method
+  * Commit the running transaction. All commands between the start/end of a transaction
+  * can be undo/redo in a single step.
+  *
+  * @since 4.0.0
+  */
+  commitTransaction: function commitTransaction() {
+    if (this.transactionCommand === null) {
+      return; //silently
+    }
+
+    var cmd = this.transactionCommand;
+    this.transactionCommand = null;
+    // we can drop the CommandCollection if the collection contains only one command.
+    if (cmd.commands.getSize() === 1) {
+      this.execute(cmd.commands.first());
+    } else {
+      this.execute(cmd);
+    }
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Undo on command from the stack and store them on the redo command stack.
+   *
+   **/
+  undo: function undo() {
+    var command = this.undostack.pop();
+    if (command) {
+      this.notifyListeners(command, _packages2.default.command.CommandStack.PRE_UNDO);
+      this.redostack.push(command);
+      command.undo();
+      this.notifyListeners(command, _packages2.default.command.CommandStack.POST_UNDO);
+    }
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Redo a command after the user has undo a command
+   *
+   **/
+  redo: function redo() {
+    var command = this.redostack.pop();
+
+    if (command) {
+      this.notifyListeners(command, _packages2.default.command.CommandStack.PRE_REDO);
+      this.undostack.push(command);
+      command.redo();
+      this.notifyListeners(command, _packages2.default.command.CommandStack.POST_REDO);
+    }
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Return the label of the next REDO command.
+   *
+   * @return {String}
+   **/
+  getRedoLabel: function getRedoLabel() {
+    if (this.redostack.length === 0) return "";
+
+    var command = this.redostack[this.redostack.length - 1];
+
+    if (command) {
+      return command.getLabel();
+    }
+    return "";
+  },
+
+  /**
+   * @method
+   * Return the label of the next UNDO command.
+   *
+   * @return {String}
+   **/
+  getUndoLabel: function getUndoLabel() {
+    if (this.undostack.length === 0) return "";
+
+    var command = this.undostack[this.undostack.length - 1];
+
+    if (command) {
+      return command.getLabel();
+    }
+    return "";
+  },
+
+  /**
+   * @method
+   * Indicates whenever a REDO is possible.
+   *
+   * @return boolean <code>true</code> if it is appropriate to call {@link #redo()}.
+   */
+  canRedo: function canRedo() {
+    return this.redostack.length > 0;
+  },
+
+  /**
+   * @method
+   * indicator whenever a undo is possible.
+   *
+   * @return {Boolean} <code>true</code> if {@link #undo()} can be called
+   **/
+  canUndo: function canUndo() {
+    return this.undostack.length > 0;
+  },
+
+  /**
+   * @method
+   * Adds a listener to the command stack, which will be notified whenever a command has been processed on the stack.
+   *
+   * @param {draw2d.command.CommandStackEventListener|Function} listener the listener to add.
+   */
+  addEventListener: function addEventListener(listener) {
+    if (listener instanceof _packages2.default.command.CommandStackEventListener) {
+      this.eventListeners.add(listener);
+    } else if (typeof listener.stackChanged === "function") {
+      this.eventListeners.add(listener);
+    } else if (typeof listener === "function") {
+      this.eventListeners.add({ stackChanged: listener });
+    } else {
+      throw "Object doesn't implement required callback interface [draw2d.command.CommandStackListener]";
+    }
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Removes a listener from the command stack.
+   *
+   * @param {draw2d.command.CommandStackEventListener} listener the listener to remove.
+   */
+  removeEventListener: function removeEventListener(listener) {
+    var size = this.eventListeners.getSize();
+    for (var i = 0; i < size; i++) {
+      var entry = this.eventListeners.get(i);
+      if (entry === listener || entry.stackChanged === listener) {
+        this.eventListeners.remove(entry);
+        return;
       }
-      return "";
-   },
+    }
 
-   /**
-    * @method
-    * Return the label of the next UNDO command.
-    *
-    * @return {String}
-    **/
-   getUndoLabel: function getUndoLabel() {
-      if (this.undostack.length === 0) return "";
+    return this;
+  },
 
-      var command = this.undostack[this.undostack.length - 1];
+  /**
+   * @method
+   * Notifies command stack event listeners that the command stack has changed to the
+   * specified state.
+   *
+   * @param {draw2d.command.Command} command the command
+   * @param {Number} state the current stack state
+   *
+   **/
+  notifyListeners: function notifyListeners(command, state) {
+    var event = new _packages2.default.command.CommandStackEvent(this, command, state);
+    var size = this.eventListeners.getSize();
 
-      if (command) {
-         return command.getLabel();
-      }
-      return "";
-   },
-
-   /**
-    * @method
-    * Indicates whenever a REDO is possible.
-    *
-    * @return boolean <code>true</code> if it is appropriate to call {@link #redo()}.
-    */
-   canRedo: function canRedo() {
-      return this.redostack.length > 0;
-   },
-
-   /**
-    * @method
-    * indicator whenever a undo is possible.
-    *
-    * @return {Boolean} <code>true</code> if {@link #undo()} can be called
-    **/
-   canUndo: function canUndo() {
-      return this.undostack.length > 0;
-   },
-
-   /**
-    * @method
-    * Adds a listener to the command stack, which will be notified whenever a command has been processed on the stack.
-    *
-    * @param {draw2d.command.CommandStackEventListener|Function} listener the listener to add.
-    */
-   addEventListener: function addEventListener(listener) {
-      if (listener instanceof _packages2.default.command.CommandStackEventListener) {
-         this.eventListeners.add(listener);
-      } else if (typeof listener.stackChanged === "function") {
-         this.eventListeners.add(listener);
-      } else if (typeof listener === "function") {
-         this.eventListeners.add({ stackChanged: listener });
-      } else {
-         throw "Object doesn't implement required callback interface [draw2d.command.CommandStackListener]";
-      }
-
-      return this;
-   },
-
-   /**
-    * @method
-    * Removes a listener from the command stack.
-    *
-    * @param {draw2d.command.CommandStackEventListener} listener the listener to remove.
-    */
-   removeEventListener: function removeEventListener(listener) {
-      var size = this.eventListeners.getSize();
-      for (var i = 0; i < size; i++) {
-         var entry = this.eventListeners.get(i);
-         if (entry === listener || entry.stackChanged === listener) {
-            this.eventListeners.remove(entry);
-            return;
-         }
-      }
-
-      return this;
-   },
-
-   /**
-    * @method
-    * Notifies command stack event listeners that the command stack has changed to the
-    * specified state.
-    *
-    * @param {draw2d.command.Command} command the command
-    * @param {Number} state the current stack state
-    *
-    **/
-   notifyListeners: function notifyListeners(command, state) {
-      var event = new _packages2.default.command.CommandStackEvent(this, command, state);
-      var size = this.eventListeners.getSize();
-
-      for (var i = 0; i < size; i++) {
-         this.eventListeners.get(i).stackChanged(event);
-      }
-   }
+    for (var i = 0; i < size; i++) {
+      this.eventListeners.get(i).stackChanged(event);
+    }
+  }
 });
 
 /** Constant indicating notification prior to executing a command (value is 1).*/
-
 /**
  * @class draw2d.command.CommandStack
  * Stack for undo/redo operations
@@ -40105,7 +40118,7 @@ _packages2.default.shape.basic.Line = _packages2.default.Figure.extend({
         // indicate that the outline is visible at the moment
         // the repaint update the status correct and set the attributes for
         // the first time
-        this.outlineVisible = true;
+        this.outlineVisible = true; //this.outlineStroke>0;
 
         return set;
     },
@@ -40145,6 +40158,7 @@ _packages2.default.shape.basic.Line = _packages2.default.Figure.extend({
             // reset them once
             this.shape.items[0].attr({ "stroke-width": 0, "stroke": "none" });
             this.shape.items[0].hide();
+            this.outlineVisible = false;
         }
     },
 
@@ -41728,596 +41742,605 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 _packages2.default.shape.basic.PolyLine = _packages2.default.shape.basic.Line.extend({
 
-    NAME: "draw2d.shape.basic.PolyLine",
-
-    /**
-     * @constructor
-     * Creates a new figure element which are not assigned to any canvas.
-     *
-     * @param {Object} [attr] the configuration of the shape
-     */
-    init: function init(attr, setter, getter) {
-        // internal status handling for performance reasons
-        //
-        this.svgPathString = null;
-        this.oldPoint = null;
-
-        this.router = null;
-        this.routingRequired = true;
-        this.lineSegments = new _packages2.default.util.ArrayList();
-
-        this.radius = "";
-
-        this._super((0, _extend2.default)({
-            router: new _packages2.default.layout.connection.VertexRouter()
-        }, attr), (0, _extend2.default)({}, {
-            /** @attr {draw2d.layout.connection.ConnectionRouter} the router to use to layout the polyline */
-            router: this.setRouter,
-            /** @attr {Number} radius the radius to render the line edges */
-            radius: this.setRadius
-        }, setter), (0, _extend2.default)({}, {
-            router: this.getRouter,
-            radius: this.getRadius
-        }, getter));
-    },
-
-    /**
-     * @method
-     * Sets the corner radius of the edges.
-     *
-     * @param {Number} radius the corner radius
-     * @since 4.2.1
-     */
-    setRadius: function setRadius(radius) {
-        this.radius = radius;
-        this.svgPathString = null;
-        this.repaint();
-        this.fireEvent("change:radius", { value: this.radius });
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Get the corner radius of the edges.
-     *
-     * @return {Number}
-     * @since 4.2.1
-     */
-    getRadius: function getRadius() {
-        return this.radius;
-    },
-
-    /**
-     * @method
-     * Set the start point of the line.
-     *
-     * @param {Number} x the x coordinate of the start point
-     * @param {Number} y the y coordinate of the start point
-     **/
-    setStartPoint: function setStartPoint(x, y) {
-        if (this.vertices.getSize() > 0) {
-            this.vertices.first().setPosition(x, y);
-        } else {
-            this.vertices.add(new _packages2.default.geo.Point(x, y));
-        }
-        this.start = this.vertices.first().clone();
-        //     if(this.isInDragDrop===false)
-        this.calculatePath({ startMoved: true, endMoved: false });
-
-        this.repaint();
-
-        var _this = this;
-        this.editPolicy.each(function (i, e) {
-            if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
-                e.moved(_this.canvas, _this);
-            }
-        });
-
-        this.fireEvent("change:start", { value: this.start });
-
-        return this;
-    },
-
-    /**
-     * @method
-    * Set the end point of the line.
-    *
-    * @param {Number} x the x coordinate of the end point
-    * @param {Number} y the y coordinate of the end point
-    */
-    setEndPoint: function setEndPoint(x, y) {
-        if (this.vertices.getSize() > 1) {
-            this.vertices.last().setPosition(x, y);
-        } else {
-            this.vertices.add(new _packages2.default.geo.Point(x, y));
-        }
-        this.end = this.vertices.last().clone();
-
-        if (this.isInDragDrop === false) this.calculatePath({ startMoved: false, endMoved: true });
-
-        this.repaint();
-
-        var _this = this;
-        this.editPolicy.each(function (i, e) {
-            if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
-                e.moved(_this.canvas, _this);
-            }
-        });
-        this.fireEvent("change:end", { value: this.end });
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Inserts the draw2d.geo.Point object into the vertex list of the polyline just after the object with the given index.
-     *
-     * @param {Number} index the insert index
-     * @param {Number|draw2d.geo.Point} x the x coordinate or the draw2d.geo.Point object
-     * @param {Number} [y] the y coordinate or undefined of the second argument is a point
-     *
-     * @since 4.0.0
-     */
-    addVertex: function addVertex(x, y) {
-        this.vertices.add(new _packages2.default.geo.Point(x, y));
-
-        this.start = this.vertices.first().clone();
-        this.end = this.vertices.last().clone();
-
-        this.svgPathString = null;
-        this.repaint();
-
-        if (!this.selectionHandles.isEmpty()) {
-            var _this = this;
-            this.editPolicy.each(function (i, e) {
-                if (e instanceof _packages2.default.policy.figure.SelectionFeedbackPolicy) {
-                    e.onUnselect(_this.canvas, _this);
-                    e.onSelect(_this.canvas, _this);
-                }
-            });
-        }
-        this.fireEvent("change:vertices", { value: this.vertices });
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Inserts the draw2d.geo.Point object into the vertex list of the polyline just after the object with the given index.
-     *
-     * @param {Number} index the insert index
-     * @param {Number|draw2d.geo.Point} x the x coordinate or the draw2d.geo.Point object
-     * @param {Number} [y] the y coordinate or undefined of the second argument is a point
-     *
-     * @since 4.0.0
-     */
-    insertVertexAt: function insertVertexAt(index, x, y) {
-        var vertex = new _packages2.default.geo.Point(x, y);
-
-        this.vertices.insertElementAt(vertex, index);
-
-        this.start = this.vertices.first().clone();
-        this.end = this.vertices.last().clone();
-
-        this.svgPathString = null;
-        this.repaint();
-
-        if (!this.selectionHandles.isEmpty()) {
-            var _this = this;
-            this.editPolicy.each(function (i, e) {
-                if (e instanceof _packages2.default.policy.figure.SelectionFeedbackPolicy) {
-                    e.onUnselect(_this.canvas, _this);
-                    e.onSelect(_this.canvas, _this);
-                }
-            });
-        }
-        this.fireEvent("change:vertices", { value: this.vertices });
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Remove a vertex from the polyline and return the removed point. The current installed connection router
-     * can send an veto for this operation.
-     *
-     * @param index
-     * @returns {draw2d.geo.Point} the removed point or null of the current router decline this operation
-     * @since 4.0.0
-     */
-    removeVertexAt: function removeVertexAt(index) {
-        var removedPoint = this.vertices.removeElementAt(index);
-
-        this.start = this.vertices.first().clone();
-        this.end = this.vertices.last().clone();
-
-        this.svgPathString = null;
-        this.repaint();
-
-        if (!this.selectionHandles.isEmpty()) {
-            var _this = this;
-            this.editPolicy.each(function (i, e) {
-                if (e instanceof _packages2.default.policy.figure.SelectionFeedbackPolicy) {
-                    e.onUnselect(_this.canvas, _this);
-                    e.onSelect(_this.canvas, _this);
-                }
-            });
-        }
-        this.fireEvent("change:vertices", { value: this.vertices });
-
-        return removedPoint;
-    },
-
-    /**
-     * @method
-     * Set the router for this connection.
-     *
-     * @param {draw2d.layout.connection.ConnectionRouter} [router] the new router for this connection or null if the connection should use the default routing
-     **/
-    setRouter: function setRouter(router) {
-        if (this.router !== null) {
-            this.router.onUninstall(this);
-        }
-
-        if (typeof router === "undefined" || router === null) {
-            this.router = new _packages2.default.layout.connection.DirectRouter();
-        } else {
-            this.router = router;
-        }
-
-        this.router.onInstall(this);
-
-        this.routingRequired = true;
-
-        // repaint the connection with the new router
-        this.repaint();
-
-        this.fireEvent("change:router", { value: this.router });
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Return the current active router of this connection.
-     *
-     * @type draw2d.layout.connection.ConnectionRouter
-     **/
-    getRouter: function getRouter() {
-        return this.router;
-    },
-
-    /**
-     * @method
-     * Calculate the path of the polyline
-     *
-     * @param {Object} routingHints some helper attributes for the router
-     * @param {Boolean} routingHints.startMoved is true if just the start location has moved
-     * @param {Boolean} routingHints.endMoved is true if the destination location has changed
-     *
-     * @private
-     */
-    calculatePath: function calculatePath(routingHints) {
-        routingHints = routingHints || {};
-
-        if (this.shape === null) {
-            return;
-        }
-
-        this.svgPathString = null;
-
-        routingHints.oldVertices = this.vertices;
-
-        // cleanup the routing cache
-        //
-        this.oldPoint = null;
-        this.lineSegments = new _packages2.default.util.ArrayList();
-        this.vertices = new _packages2.default.util.ArrayList();
-
-        // Use the internal router
-        //
-        this.router.route(this, routingHints);
-        this.routingRequired = false;
-        this.fireEvent("routed");
-        this.fireEvent("change:route", {});
-    },
-
-    /**
-     * @inheritdoc
-     */
-    repaint: function repaint(attributes) {
-        if (this.repaintBlocked === true || this.shape === null) {
-            return this;
-        }
-
-        if (this.svgPathString === null || this.routingRequired === true) {
-            this.calculatePath();
-        }
-
-        if (typeof attributes === "undefined") {
-            attributes = {};
-        }
-        attributes.path = this.svgPathString;
-        _JSONUtil2.default.ensureDefault(attributes, "stroke-linecap", "round");
-        _JSONUtil2.default.ensureDefault(attributes, "stroke-linejoin", "round");
-
-        return this._super(attributes);
-    },
-
-    /**
-     * @method
-     * Return all line segments of the polyline.
-     *
-     * @returns {draw2d.util.ArrayList}
-     */
-    getSegments: function getSegments() {
-        return this.lineSegments;
-    },
-
-    /**
-     * @method
-     * used for the router to add the calculated points
-     *
-     * @protected
-     *
-     **/
-    addPoint: function addPoint( /*:draw2d.geo.Point*/p, y) {
-        if (typeof y !== "undefined") {
-            p = new _packages2.default.geo.Point(p, y);
-        }
-        this.vertices.add(p);
-
-        if (this.oldPoint !== null) {
-            // store the painted line segment for the "mouse selection test"
-            // (required for user interaction)
-            this.lineSegments.add({
-                start: this.oldPoint,
-                end: p
-            });
-        }
-        this.svgPathString = null;
-        this.oldPoint = p;
-    },
-
-    /**
-     * @method
-     * Called if the drag and drop action begins. You can return [false] if you
-     * want avoid that the figure can be move.
-     *
-     * @param {Number} x the x-coordinate of the mouse up event
-     * @param {Number} y the y-coordinate of the mouse up event
-     * @param {Boolean} shiftKey true if the shift key has been pressed during this event
-     * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
-     *
-     * @return {Boolean} true if the figure accepts dragging
-     **/
-    onDragStart: function onDragStart(x, y, shiftKey, ctrlKey, isFaked) {
-        var result = this._super(x, y, shiftKey, ctrlKey, isFaked);
-
-        if (result === true && isFaked !== true) {
-            this.draggedSegment = this.hitSegment(x, y);
-        }
-        return result;
-    },
-
-    /**
-     * @method
-     * Returns the length of the polyline.
-     *
-     * @return {Number}
-     * @since 6.1.43
-     **/
-    getLength: function getLength() {
-        var result = 0;
-        for (var i = 0; i < this.lineSegments.getSize(); i++) {
-            var segment = this.lineSegments.get(i);
-            var p1 = segment.start;
-            var p2 = segment.end;
-            result += Math.sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y));
-        }
-        return result;
-    },
-
-    setVertices: function setVertices(vertices) {
-        // inform the router tha the vertices has set outside. This switch some
-        // router from full autoroute to half autoroute
-        this.router.verticesSet(this);
-
-        this._super(vertices);
-    },
-
-    /**
-     * @method
-     * Returns the projection of the point on the line.
-     *
-     * @param {Number} px the x coordinate of the test point
-     * @param {Number} py the y coordinate of the test point
-     * @return {draw2d.geo.Point}
-     **/
-    pointProjection: function pointProjection(px, py) {
-        var result = null,
-            projection = null,
-            p1 = null,
-            p2 = null,
-            segment = null;
-        var lastDist = Number.MAX_SAFE_INTEGER;
-        var pt = new _packages2.default.geo.Point(px, py);
-        for (var i = 0; i < this.lineSegments.getSize(); i++) {
-            segment = this.lineSegments.get(i);
-            p1 = segment.start;
-            p2 = segment.end;
-            projection = _packages2.default.geo.Line.pointProjection(p1.x, p1.y, p2.x, p2.y, pt.x, pt.y);
-            if (projection !== null) {
-                var dist = projection.distance(pt);
-                if (result == null || dist < lastDist) {
-                    result = projection;
-                    result.index = i;
-                    lastDist = dist;
-                }
-            }
-        }
-
-        if (result !== null) {
-            var length = 0;
-            var segment;
-            for (var i = 0; i < result.index; i++) {
-                segment = this.lineSegments.get(i);
-                length += segment.start.distance(segment.end);
-            }
-            segment = this.lineSegments.get(result.index);
-            p1 = segment.start;
-            p2 = segment.end;
-            length += p1.distance(p2) * _packages2.default.geo.Line.inverseLerp(p2.x, p2.y, p1.x, p1.y, result.x, result.y);
-            result.percentage = 1.0 / this.getLength() * length;
-        }
-        return result;
-    },
-
-    /**
-     * @method
-     * Returns the point onto the line which has the relative 'percentage' position onto the line.
-     *
-     * @param {Number} percentage the relative position between [0..1]
-     * @returns {draw2d.geo.Point}
-     */
-    lerp: function lerp(percentage) {
-        var length = this.getLength() * percentage;
-        var lastValidLength = length;
-        var segment = null,
-            p1 = null,
-            p2 = null;
-        for (var i = 0; i < this.lineSegments.getSize(); i++) {
-            segment = this.lineSegments.get(i);
-            p1 = segment.start;
-            p2 = segment.end;
-            length = length - p1.distance(p2);
-            if (length <= 0) {
-                percentage = 1.0 / p1.distance(p2) * lastValidLength;
-                return new _packages2.default.geo.Point(p1.x + (p2.x - p1.x) * percentage, p1.y + (p2.y - p1.y) * percentage);
-            }
-            lastValidLength = length;
-        }
-        return p2;
-    },
-
-    /**
-     * @method
-     * get the best segment of the line which is below the given coordinate or null if
-     * all segment are not below the coordinate. <br>
-     * The 'corona' property of the polyline is considered for this test. This means
-     * the point isn't direct on the line. Is it only close to the line!
-     *
-     * @param {Number} px the x coordinate of the test point
-     * @param {Number} py the y coordinate of the test point
-     * @return {Object}
-     * @since 4.4.0
-      **/
-    hitSegment: function hitSegment(px, py) {
-        for (var i = 0; i < this.lineSegments.getSize(); i++) {
-            var segment = this.lineSegments.get(i);
-            if (_packages2.default.shape.basic.Line.hit(this.corona + this.stroke, segment.start.x, segment.start.y, segment.end.x, segment.end.y, px, py)) {
-                return { index: i, start: segment.start, end: segment.end };
-            }
-        }
-        return null;
-    },
-
-    /**
-     * @method
-     * Checks if the hands over coordinate close to the line. The 'corona' property of the polyline
-     * is considered for this test. This means the point isn't direct on the line. Is it only close to the
-     * line!
-     *
-     * @param {Number} px the x coordinate of the test point
-     * @param {Number} py the y coordinate of the test point
-     * @return {Boolean}
-      **/
-    hitTest: function hitTest(px, py) {
-        return this.hitSegment(px, py) !== null;
-    },
-
-    /**
-     * @inheritdoc
-     */
-    createCommand: function createCommand(request) {
-
-        if (request.getPolicy() === _packages2.default.command.CommandType.DELETE) {
-            if (this.isDeleteable() === true) {
-                return new _packages2.default.command.CommandDelete(this);
-            }
-        } else if (request.getPolicy() === _packages2.default.command.CommandType.MOVE_VERTEX) {
-            if (this.isResizeable() === true) {
-                return new _packages2.default.command.CommandMoveVertex(this);
-            }
-        } else if (request.getPolicy() === _packages2.default.command.CommandType.MOVE_VERTICES) {
-            if (this.isResizeable() === true) {
-                return new _packages2.default.command.CommandMoveVertices(this);
-            }
-        }
-
-        return this._super(request);
-    },
-
-    /**
-     * @inheritdoc
-     */
-    getPersistentAttributes: function getPersistentAttributes() {
-        var memento = (0, _extend2.default)(this._super(), {
-            router: this.router.NAME,
-            radius: this.radius
-        });
-
-        memento = this.router.getPersistentAttributes(this, memento);
-
-        return memento;
-    },
-
-    /**
-     * @inheritdoc
-     */
-    setPersistentAttributes: function setPersistentAttributes(memento) {
-        this._super(memento);
-
-        if (typeof memento.router !== "undefined") {
-            try {
-                this.setRouter(eval("new " + memento.router + "()"));
-            } catch (exc) {
-                debug.warn("Unable to install router '" + memento.router + "' forced by " + this.NAME + ".setPersistendAttributes. Using default");
-            }
-        }
-
-        if (typeof memento.radius !== "undefined") {
-            this.setRadius(memento.radius);
-        }
-
-        this.router.setPersistentAttributes(this, memento);
-
-        if (this.vertices.getSize() > 1) {
-            this.start = this.vertices.first().clone();
-            this.end = this.vertices.last().clone();
-        }
+  NAME: "draw2d.shape.basic.PolyLine",
+
+  /**
+   * @constructor
+   * Creates a new figure element which are not assigned to any canvas.
+   *
+   * @param {Object} [attr] the configuration of the shape
+   */
+  init: function init(attr, setter, getter) {
+    // internal status handling for performance reasons
+    //
+    this.svgPathString = null;
+    this.oldPoint = null;
+
+    this.router = null;
+    this.routingRequired = true;
+    this.lineSegments = new _packages2.default.util.ArrayList();
+
+    this.radius = "";
+
+    this._super((0, _extend2.default)({
+      router: new _packages2.default.layout.connection.VertexRouter()
+    }, attr), (0, _extend2.default)({}, {
+      /** @attr {draw2d.layout.connection.ConnectionRouter} the router to use to layout the polyline */
+      router: this.setRouter,
+      /** @attr {Number} radius the radius to render the line edges */
+      radius: this.setRadius
+    }, setter), (0, _extend2.default)({}, {
+      router: this.getRouter,
+      radius: this.getRadius
+    }, getter));
+  },
+
+  /**
+   * @method
+   * Sets the corner radius of the edges.
+   *
+   * @param {Number} radius the corner radius
+   * @since 4.2.1
+   */
+  setRadius: function setRadius(radius) {
+    this.radius = radius;
+    this.svgPathString = null;
+    this.repaint();
+    this.fireEvent("change:radius", { value: this.radius });
+
+    return this;
+  },
+
+  setOutlineStroke: function setOutlineStroke(w) {
+    if (this.outlineStroke !== w) {
+      this.svgPathString = null;
+      this.routingRequired = true;
     }
-});
-/**
- * @class draw2d.shape.basic.PolyLine
- *
- * A PolyLine is a line with more than 2 points.
- *
- *
- *     @example preview small frame
- *
- *     var line = new draw2d.shape.basic.PolyLine();
- *     line.setVertices([{x:10,y:10},{x:80,y:70},{x:100,y:110}]);
- *     canvas.add(line);
- *
- *
- *     canvas.setCurrentSelection(line);
- *
- * @inheritable
- * @author Andreas Herz
- * @extends draw2d.shape.basic.Line
- */
+    this._super(w);
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Get the corner radius of the edges.
+   *
+   * @return {Number}
+   * @since 4.2.1
+   */
+  getRadius: function getRadius() {
+    return this.radius;
+  },
+
+  /**
+   * @method
+   * Set the start point of the line.
+   *
+   * @param {Number} x the x coordinate of the start point
+   * @param {Number} y the y coordinate of the start point
+   **/
+  setStartPoint: function setStartPoint(x, y) {
+    if (this.vertices.getSize() > 0) {
+      this.vertices.first().setPosition(x, y);
+    } else {
+      this.vertices.add(new _packages2.default.geo.Point(x, y));
+    }
+    this.start = this.vertices.first().clone();
+    //     if(this.isInDragDrop===false)
+    this.calculatePath({ startMoved: true, endMoved: false });
+
+    this.repaint();
+
+    var _this = this;
+    this.editPolicy.each(function (i, e) {
+      if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
+        e.moved(_this.canvas, _this);
+      }
+    });
+
+    this.fireEvent("change:start", { value: this.start });
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Set the end point of the line.
+   *
+   * @param {Number} x the x coordinate of the end point
+   * @param {Number} y the y coordinate of the end point
+   */
+  setEndPoint: function setEndPoint(x, y) {
+    if (this.vertices.getSize() > 1) {
+      this.vertices.last().setPosition(x, y);
+    } else {
+      this.vertices.add(new _packages2.default.geo.Point(x, y));
+    }
+    this.end = this.vertices.last().clone();
+
+    if (this.isInDragDrop === false) this.calculatePath({ startMoved: false, endMoved: true });
+
+    this.repaint();
+
+    var _this = this;
+    this.editPolicy.each(function (i, e) {
+      if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
+        e.moved(_this.canvas, _this);
+      }
+    });
+    this.fireEvent("change:end", { value: this.end });
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Inserts the draw2d.geo.Point object into the vertex list of the polyline just after the object with the given index.
+   *
+   * @param {Number} index the insert index
+   * @param {Number|draw2d.geo.Point} x the x coordinate or the draw2d.geo.Point object
+   * @param {Number} [y] the y coordinate or undefined of the second argument is a point
+   *
+   * @since 4.0.0
+   */
+  addVertex: function addVertex(x, y) {
+    this.vertices.add(new _packages2.default.geo.Point(x, y));
+
+    this.start = this.vertices.first().clone();
+    this.end = this.vertices.last().clone();
+
+    this.svgPathString = null;
+    this.repaint();
+
+    if (!this.selectionHandles.isEmpty()) {
+      var _this = this;
+      this.editPolicy.each(function (i, e) {
+        if (e instanceof _packages2.default.policy.figure.SelectionFeedbackPolicy) {
+          e.onUnselect(_this.canvas, _this);
+          e.onSelect(_this.canvas, _this);
+        }
+      });
+    }
+    this.fireEvent("change:vertices", { value: this.vertices });
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Inserts the draw2d.geo.Point object into the vertex list of the polyline just after the object with the given index.
+   *
+   * @param {Number} index the insert index
+   * @param {Number|draw2d.geo.Point} x the x coordinate or the draw2d.geo.Point object
+   * @param {Number} [y] the y coordinate or undefined of the second argument is a point
+   *
+   * @since 4.0.0
+   */
+  insertVertexAt: function insertVertexAt(index, x, y) {
+    var vertex = new _packages2.default.geo.Point(x, y);
+
+    this.vertices.insertElementAt(vertex, index);
+
+    this.start = this.vertices.first().clone();
+    this.end = this.vertices.last().clone();
+
+    this.svgPathString = null;
+    this.repaint();
+
+    if (!this.selectionHandles.isEmpty()) {
+      var _this = this;
+      this.editPolicy.each(function (i, e) {
+        if (e instanceof _packages2.default.policy.figure.SelectionFeedbackPolicy) {
+          e.onUnselect(_this.canvas, _this);
+          e.onSelect(_this.canvas, _this);
+        }
+      });
+    }
+    this.fireEvent("change:vertices", { value: this.vertices });
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Remove a vertex from the polyline and return the removed point. The current installed connection router
+   * can send an veto for this operation.
+   *
+   * @param index
+   * @returns {draw2d.geo.Point} the removed point or null of the current router decline this operation
+   * @since 4.0.0
+   */
+  removeVertexAt: function removeVertexAt(index) {
+    var removedPoint = this.vertices.removeElementAt(index);
+
+    this.start = this.vertices.first().clone();
+    this.end = this.vertices.last().clone();
+
+    this.svgPathString = null;
+    this.repaint();
+
+    if (!this.selectionHandles.isEmpty()) {
+      var _this = this;
+      this.editPolicy.each(function (i, e) {
+        if (e instanceof _packages2.default.policy.figure.SelectionFeedbackPolicy) {
+          e.onUnselect(_this.canvas, _this);
+          e.onSelect(_this.canvas, _this);
+        }
+      });
+    }
+    this.fireEvent("change:vertices", { value: this.vertices });
+
+    return removedPoint;
+  },
+
+  /**
+   * @method
+   * Set the router for this connection.
+   *
+   * @param {draw2d.layout.connection.ConnectionRouter} [router] the new router for this connection or null if the connection should use the default routing
+   **/
+  setRouter: function setRouter(router) {
+    if (this.router !== null) {
+      this.router.onUninstall(this);
+    }
+
+    if (typeof router === "undefined" || router === null) {
+      this.router = new _packages2.default.layout.connection.DirectRouter();
+    } else {
+      this.router = router;
+    }
+
+    this.router.onInstall(this);
+
+    this.routingRequired = true;
+
+    // repaint the connection with the new router
+    this.repaint();
+
+    this.fireEvent("change:router", { value: this.router });
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Return the current active router of this connection.
+   *
+   * @type draw2d.layout.connection.ConnectionRouter
+   **/
+  getRouter: function getRouter() {
+    return this.router;
+  },
+
+  /**
+   * @method
+   * Calculate the path of the polyline
+   *
+   * @param {Object} routingHints some helper attributes for the router
+   * @param {Boolean} routingHints.startMoved is true if just the start location has moved
+   * @param {Boolean} routingHints.endMoved is true if the destination location has changed
+   *
+   * @private
+   */
+  calculatePath: function calculatePath(routingHints) {
+    routingHints = routingHints || {};
+
+    if (this.shape === null) {
+      return;
+    }
+
+    this.svgPathString = null;
+
+    routingHints.oldVertices = this.vertices;
+
+    // cleanup the routing cache
+    //
+    this.oldPoint = null;
+    this.lineSegments = new _packages2.default.util.ArrayList();
+    this.vertices = new _packages2.default.util.ArrayList();
+
+    // Use the internal router
+    //
+    this.router.route(this, routingHints);
+    this.routingRequired = false;
+    this.fireEvent("routed");
+    this.fireEvent("change:route", {});
+  },
+
+  /**
+   * @inheritdoc
+   */
+  repaint: function repaint(attributes) {
+    if (this.repaintBlocked === true || this.shape === null) {
+      return this;
+    }
+
+    if (this.svgPathString === null || this.routingRequired === true) {
+      this.calculatePath();
+    }
+
+    if (typeof attributes === "undefined") {
+      attributes = {};
+    }
+    attributes.path = this.svgPathString;
+    _JSONUtil2.default.ensureDefault(attributes, "stroke-linecap", "round");
+    _JSONUtil2.default.ensureDefault(attributes, "stroke-linejoin", "round");
+
+    return this._super(attributes);
+  },
+
+  /**
+   * @method
+   * Return all line segments of the polyline.
+   *
+   * @returns {draw2d.util.ArrayList}
+   */
+  getSegments: function getSegments() {
+    return this.lineSegments;
+  },
+
+  /**
+   * @method
+   * used for the router to add the calculated points
+   *
+   * @protected
+   *
+   **/
+  addPoint: function addPoint( /*:draw2d.geo.Point*/p, y) {
+    if (typeof y !== "undefined") {
+      p = new _packages2.default.geo.Point(p, y);
+    }
+    this.vertices.add(p);
+
+    if (this.oldPoint !== null) {
+      // store the painted line segment for the "mouse selection test"
+      // (required for user interaction)
+      this.lineSegments.add({
+        start: this.oldPoint,
+        end: p
+      });
+    }
+    this.svgPathString = null;
+    this.oldPoint = p;
+  },
+
+  /**
+   * @method
+   * Called if the drag and drop action begins. You can return [false] if you
+   * want avoid that the figure can be move.
+   *
+   * @param {Number} x the x-coordinate of the mouse up event
+   * @param {Number} y the y-coordinate of the mouse up event
+   * @param {Boolean} shiftKey true if the shift key has been pressed during this event
+   * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
+   *
+   * @return {Boolean} true if the figure accepts dragging
+   **/
+  onDragStart: function onDragStart(x, y, shiftKey, ctrlKey, isFaked) {
+    var result = this._super(x, y, shiftKey, ctrlKey, isFaked);
+
+    if (result === true && isFaked !== true) {
+      this.draggedSegment = this.hitSegment(x, y);
+    }
+    return result;
+  },
+
+  /**
+   * @method
+   * Returns the length of the polyline.
+   *
+   * @return {Number}
+   * @since 6.1.43
+   **/
+  getLength: function getLength() {
+    var result = 0;
+    for (var i = 0; i < this.lineSegments.getSize(); i++) {
+      var segment = this.lineSegments.get(i);
+      var p1 = segment.start;
+      var p2 = segment.end;
+      result += Math.sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y));
+    }
+    return result;
+  },
+
+  setVertices: function setVertices(vertices) {
+    // inform the router tha the vertices has set outside. This switch some
+    // router from full autoroute to half autoroute
+    this.router.verticesSet(this);
+
+    this._super(vertices);
+  },
+
+  /**
+   * @method
+   * Returns the projection of the point on the line.
+   *
+   * @param {Number} px the x coordinate of the test point
+   * @param {Number} py the y coordinate of the test point
+   * @return {draw2d.geo.Point}
+   **/
+  pointProjection: function pointProjection(px, py) {
+    var result = null,
+        projection = null,
+        p1 = null,
+        p2 = null,
+        segment = null;
+    var lastDist = Number.MAX_SAFE_INTEGER;
+    var pt = new _packages2.default.geo.Point(px, py);
+    for (var i = 0; i < this.lineSegments.getSize(); i++) {
+      segment = this.lineSegments.get(i);
+      p1 = segment.start;
+      p2 = segment.end;
+      projection = _packages2.default.geo.Line.pointProjection(p1.x, p1.y, p2.x, p2.y, pt.x, pt.y);
+      if (projection !== null) {
+        var dist = projection.distance(pt);
+        if (result == null || dist < lastDist) {
+          result = projection;
+          result.index = i;
+          lastDist = dist;
+        }
+      }
+    }
+
+    if (result !== null) {
+      var length = 0;
+      var segment;
+      for (var i = 0; i < result.index; i++) {
+        segment = this.lineSegments.get(i);
+        length += segment.start.distance(segment.end);
+      }
+      segment = this.lineSegments.get(result.index);
+      p1 = segment.start;
+      p2 = segment.end;
+      length += p1.distance(p2) * _packages2.default.geo.Line.inverseLerp(p2.x, p2.y, p1.x, p1.y, result.x, result.y);
+      result.percentage = 1.0 / this.getLength() * length;
+    }
+    return result;
+  },
+
+  /**
+   * @method
+   * Returns the point onto the line which has the relative 'percentage' position onto the line.
+   *
+   * @param {Number} percentage the relative position between [0..1]
+   * @returns {draw2d.geo.Point}
+   */
+  lerp: function lerp(percentage) {
+    var length = this.getLength() * percentage;
+    var lastValidLength = length;
+    var segment = null,
+        p1 = null,
+        p2 = null;
+    for (var i = 0; i < this.lineSegments.getSize(); i++) {
+      segment = this.lineSegments.get(i);
+      p1 = segment.start;
+      p2 = segment.end;
+      length = length - p1.distance(p2);
+      if (length <= 0) {
+        percentage = 1.0 / p1.distance(p2) * lastValidLength;
+        return new _packages2.default.geo.Point(p1.x + (p2.x - p1.x) * percentage, p1.y + (p2.y - p1.y) * percentage);
+      }
+      lastValidLength = length;
+    }
+    return p2;
+  },
+
+  /**
+   * @method
+   * get the best segment of the line which is below the given coordinate or null if
+   * all segment are not below the coordinate. <br>
+   * The 'corona' property of the polyline is considered for this test. This means
+   * the point isn't direct on the line. Is it only close to the line!
+   *
+   * @param {Number} px the x coordinate of the test point
+   * @param {Number} py the y coordinate of the test point
+   * @return {Object}
+   * @since 4.4.0
+   **/
+  hitSegment: function hitSegment(px, py) {
+    for (var i = 0; i < this.lineSegments.getSize(); i++) {
+      var segment = this.lineSegments.get(i);
+      if (_packages2.default.shape.basic.Line.hit(this.corona + this.stroke, segment.start.x, segment.start.y, segment.end.x, segment.end.y, px, py)) {
+        return { index: i, start: segment.start, end: segment.end };
+      }
+    }
+    return null;
+  },
+
+  /**
+   * @method
+   * Checks if the hands over coordinate close to the line. The 'corona' property of the polyline
+   * is considered for this test. This means the point isn't direct on the line. Is it only close to the
+   * line!
+   *
+   * @param {Number} px the x coordinate of the test point
+   * @param {Number} py the y coordinate of the test point
+   * @return {Boolean}
+   **/
+  hitTest: function hitTest(px, py) {
+    return this.hitSegment(px, py) !== null;
+  },
+
+  /**
+   * @inheritdoc
+   */
+  createCommand: function createCommand(request) {
+
+    if (request.getPolicy() === _packages2.default.command.CommandType.DELETE) {
+      if (this.isDeleteable() === true) {
+        return new _packages2.default.command.CommandDelete(this);
+      }
+    } else if (request.getPolicy() === _packages2.default.command.CommandType.MOVE_VERTEX) {
+      if (this.isResizeable() === true) {
+        return new _packages2.default.command.CommandMoveVertex(this);
+      }
+    } else if (request.getPolicy() === _packages2.default.command.CommandType.MOVE_VERTICES) {
+      if (this.isResizeable() === true) {
+        return new _packages2.default.command.CommandMoveVertices(this);
+      }
+    }
+
+    return this._super(request);
+  },
+
+  /**
+   * @inheritdoc
+   */
+  getPersistentAttributes: function getPersistentAttributes() {
+    var memento = (0, _extend2.default)(this._super(), {
+      router: this.router.NAME,
+      radius: this.radius
+    });
+
+    memento = this.router.getPersistentAttributes(this, memento);
+
+    return memento;
+  },
+
+  /**
+   * @inheritdoc
+   */
+  setPersistentAttributes: function setPersistentAttributes(memento) {
+    this._super(memento);
+
+    if (typeof memento.router !== "undefined") {
+      try {
+        this.setRouter(eval("new " + memento.router + "()"));
+      } catch (exc) {
+        debug.warn("Unable to install router '" + memento.router + "' forced by " + this.NAME + ".setPersistendAttributes. Using default");
+      }
+    }
+
+    if (typeof memento.radius !== "undefined") {
+      this.setRadius(memento.radius);
+    }
+
+    this.router.setPersistentAttributes(this, memento);
+
+    if (this.vertices.getSize() > 1) {
+      this.start = this.vertices.first().clone();
+      this.end = this.vertices.last().clone();
+    }
+  }
+}); /**
+     * @class draw2d.shape.basic.PolyLine
+     *
+     * A PolyLine is a line with more than 2 points.
+     *
+     *
+     *     @example preview small frame
+     *
+     *     var line = new draw2d.shape.basic.PolyLine();
+     *     line.setVertices([{x:10,y:10},{x:80,y:70},{x:100,y:110}]);
+     *     canvas.add(line);
+     *
+     *
+     *     canvas.setCurrentSelection(line);
+     *
+     * @inheritable
+     * @author Andreas Herz
+     * @extends draw2d.shape.basic.Line
+     */
 
 /***/ }),
 
@@ -42349,8 +42372,8 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
                                                                                                                                                                                                      *
                                                                                                                                                                                                      *     @example preview small frame
                                                                                                                                                                                                      *
-                                                                                                                                                                                                     *     var p1 =  new draw2d.shape.basic.Polygon({width:100, height:100});
-                                                                                                                                                                                                     *     var p2 =  new draw2d.shape.basic.Polygon({width:100, height:60});
+                                                                                                                                                                                                     *     let p1 =  new draw2d.shape.basic.Polygon({width:100, height:100});
+                                                                                                                                                                                                     *     let p2 =  new draw2d.shape.basic.Polygon({width:100, height:60});
                                                                                                                                                                                                      *
                                                                                                                                                                                                      *     canvas.add(p1,10,10);
                                                                                                                                                                                                      *     canvas.add(p2,100,10);
@@ -42451,9 +42474,9 @@ _packages2.default.shape.basic.Polygon = _packages2.default.VectorFigure.extend(
         }
         var begin = _packages2.default.geo.Util.insetPoint(start, end, radius);
         path.push("M", begin.x, ",", begin.y);
-        for (var i = 0; i < length; i++) {
-          start = this.vertices.get(i);
-          end = this.vertices.get((i + 1) % length);
+        for (var _i = 0; _i < length; _i++) {
+          start = this.vertices.get(_i);
+          end = this.vertices.get((_i + 1) % length);
           var modStart = _packages2.default.geo.Util.insetPoint(start, end, radius);
           var modEnd = _packages2.default.geo.Util.insetPoint(end, start, radius);
           path.push("Q", start.x, ",", start.y, " ", modStart.x, ", ", modStart.y);
@@ -42609,6 +42632,8 @@ _packages2.default.shape.basic.Polygon = _packages2.default.VectorFigure.extend(
   },
 
   resetVertices: function resetVertices() {
+    var _this2 = this;
+
     this.vertices = new _packages2.default.util.ArrayList();
 
     this.svgPathString = null;
@@ -42616,12 +42641,13 @@ _packages2.default.shape.basic.Polygon = _packages2.default.VectorFigure.extend(
 
     this.updateBoundingBox();
 
-    var _this = this;
     this.editPolicy.each(function (i, e) {
       if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
-        e.moved(_this.canvas, _this);
+        e.moved(_this2.canvas, _this2);
       }
     });
+
+    return this;
   },
 
   /**
@@ -42863,7 +42889,7 @@ _packages2.default.shape.basic.Polygon = _packages2.default.VectorFigure.extend(
    * @inheritdoc
    */
   setPersistentAttributes: function setPersistentAttributes(memento) {
-    var _this2 = this;
+    var _this3 = this;
 
     this._super(memento);
 
@@ -42872,7 +42898,7 @@ _packages2.default.shape.basic.Polygon = _packages2.default.VectorFigure.extend(
     if (typeof memento.vertices !== "undefined") {
       this.vertices = new _packages2.default.util.ArrayList();
       memento.vertices.forEach(function (point) {
-        _this2.addVertex(point);
+        _this3.addVertex(point);
       });
     }
   }
@@ -59405,623 +59431,635 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 _packages2.default.shape.node.Node = _packages2.default.Figure.extend({
 
-    NAME: "draw2d.shape.node.Node",
+  NAME: "draw2d.shape.node.Node",
 
-    /**
-      * @constructor
-      * Creates a new Node element which are not assigned to any canvas.
-      *
-      * @param {Object} [attr] the configuration of the shape
-     */
-    init: function init(attr, setter, getter) {
-        this.inputPorts = new _packages2.default.util.ArrayList();
-        this.outputPorts = new _packages2.default.util.ArrayList();
-        this.hybridPorts = new _packages2.default.util.ArrayList();
+  /**
+   * @constructor
+   * Creates a new Node element which are not assigned to any canvas.
+   *
+   * @param {Object} [attr] the configuration of the shape
+   */
+  init: function init(attr, setter, getter) {
+    this.inputPorts = new _packages2.default.util.ArrayList();
+    this.outputPorts = new _packages2.default.util.ArrayList();
+    this.hybridPorts = new _packages2.default.util.ArrayList();
 
-        // flag which indicates if the figure should read/write ports to
-        // JSON
-        this.persistPorts = true;
+    // flag which indicates if the figure should read/write ports to
+    // JSON
+    this.persistPorts = true;
 
-        // Flags just for performance reasons
-        //
-        this.portRelayoutRequired = true;
+    // Flags just for performance reasons
+    //
+    this.portRelayoutRequired = true;
 
-        // just for performance reasons
-        //
-        this.cachedPorts = null;
+    // just for performance reasons
+    //
+    this.cachedPorts = null;
 
-        this._super((0, _extend2.default)({ width: 50, height: 50 }, attr), (0, _extend2.default)({
-            /** @attr {Number} indicate whenever you want persists the ports too */
-            persistPorts: this.setPersistPorts
-        }, setter), (0, _extend2.default)({
-            persistPorts: this.getPersistPorts
-        }, getter));
-    },
+    this._super((0, _extend2.default)({ width: 50, height: 50 }, attr), (0, _extend2.default)({
+      /** @attr {Number} indicate whenever you want persists the ports too */
+      persistPorts: this.setPersistPorts
+    }, setter), (0, _extend2.default)({
+      persistPorts: this.getPersistPorts
+    }, getter));
+  },
 
-    /**
-     * @method
-     * Indicates if the node should read/write the ports via the draw2d.Figure.getPersistenAttributes
-     * to the JSON object
-     *
-     * @param {Boolean} flag
-     * @since 5.0.4
-     */
-    setPersistPorts: function setPersistPorts(flag) {
-        this.persistPorts = flag;
-        this.fireEvent("change:persistPorts", { value: this.persistPorts });
+  /**
+   * @method
+   * Indicates if the node should read/write the ports via the draw2d.Figure.getPersistenAttributes
+   * to the JSON object
+   *
+   * @param {Boolean} flag
+   * @since 5.0.4
+   */
+  setPersistPorts: function setPersistPorts(flag) {
+    this.persistPorts = flag;
+    this.fireEvent("change:persistPorts", { value: this.persistPorts });
 
-        return this;
-    },
+    return this;
+  },
 
-    /**
-     * @method
-     * Indicates if the figure writes the ports to the JSON structore too.
-     * Default is "false"
-     *
-     * @returns {Boolean}
-     */
-    getPersistPorts: function getPersistPorts() {
-        return this.persistPorts;
-    },
+  /**
+   * @method
+   * Indicates if the figure writes the ports to the JSON structore too.
+   * Default is "false"
+   *
+   * @returns {Boolean}
+   */
+  getPersistPorts: function getPersistPorts() {
+    return this.persistPorts;
+  },
 
-    /**
-     * @inheritdoc
-     */
-    toFront: function toFront(figure) {
-        this._super(figure);
+  /**
+   * @inheritdoc
+   */
+  toFront: function toFront(figure) {
+    var _this = this;
 
-        var _this = this;
-        this.getPorts().each(function (i, port) {
-            port.getConnections().each(function (i, connection) {
-                connection.toFront(figure);
-            });
-            // a port should always be in front of the shape dosn't matter what the
-            // "figure" parameter says.
-            //
-            port.toFront(_this);
-        });
+    this._super(figure);
 
-        return this;
-    },
+    this.getPorts().each(function (i, port) {
+      port.getConnections().each(function (i, connection) {
+        connection.toFront(figure);
+      });
+      // a port should always be in front of the shape dosn't matter what the
+      // "figure" parameter says.
+      //
+      port.toFront(_this);
+    });
 
-    /**
-     * @inheritdoc
-     */
-    toBack: function toBack(figure) {
+    return this;
+  },
 
-        this.getPorts().each(function (i, port) {
-            port.getConnections().each(function (i, connection) {
-                connection.toBack(figure);
-            });
-            port.toBack(figure);
-        });
+  /**
+   * @inheritdoc
+   */
+  toBack: function toBack(figure) {
 
-        this._super(figure);
+    this.getPorts().each(function (i, port) {
+      port.getConnections().each(function (i, connection) {
+        connection.toBack(figure);
+      });
+      port.toBack(figure);
+    });
 
-        return this;
-    },
+    this._super(figure);
 
-    /**
-     * @inheritdoc
-     */
-    setVisible: function setVisible(flag, duration) {
-        // adjust the visibility of the ports to the parent state
-        //
-        if (!flag) {
-            this.getPorts().each(function (i, port) {
-                port.__initialVisibilityState = port.isVisible();
-                port.setVisible(false, duration);
-            });
+    return this;
+  },
+
+  /**
+   * @inheritdoc
+   */
+  setVisible: function setVisible(flag, duration) {
+    // adjust the visibility of the ports to the parent state
+    //
+    if (!flag) {
+      this.getPorts().each(function (i, port) {
+        port.__initialVisibilityState = port.isVisible();
+        port.setVisible(false, duration);
+      });
+    } else {
+      this.getPorts().each(function (i, port) {
+        if (typeof port.__initialVisibilityState !== "undefined") {
+          port.setVisible(port.__initialVisibilityState, duration);
         } else {
-            this.getPorts().each(function (i, port) {
-                if (typeof port.__initialVisibilityState !== "undefined") {
-                    port.setVisible(port.__initialVisibilityState, duration);
-                } else {
-                    port.setVisible(true, duration);
-                }
-                delete port.__initialVisibilityState;
-            });
+          port.setVisible(true, duration);
         }
-        this._super(flag, duration);
-    },
-
-    /**
-     * @method
-     * Return all ports of the node. The results contains
-     * all ports of the children too per default. Set <b>recursive</b>
-     * to false to retrieve direct assigned ports only.
-     *
-     * @param {Boolean} [recursive] indicates if the method should return children ports too. Default is <b>true</b>
-     * @return  {draw2d.util.ArrayList}
-     **/
-    getPorts: function getPorts(recursive) {
-        if (typeof recursive === "boolean" && recursive === false) {
-            var ports = new _packages2.default.util.ArrayList();
-            ports.addAll(this.inputPorts);
-            ports.addAll(this.outputPorts);
-            ports.addAll(this.hybridPorts);
-            return ports;
-        }
-
-        if (this.cachedPorts === null) {
-            this.cachedPorts = new _packages2.default.util.ArrayList();
-            this.cachedPorts.addAll(this.inputPorts);
-            this.cachedPorts.addAll(this.outputPorts);
-            this.cachedPorts.addAll(this.hybridPorts);
-
-            var _this = this;
-            this.children.each(function (i, e) {
-                _this.cachedPorts.addAll(e.figure.getPorts());
-            });
-        }
-
-        return this.cachedPorts;
-    },
-
-    /**
-     * @method
-     * Return all input ports of the node.
-     *
-     * @return {draw2d.util.ArrayList}
-     **/
-    getInputPorts: function getInputPorts() {
-        return this.inputPorts.clone().addAll(this.hybridPorts);
-    },
-
-    /**
-     * @method
-     * Return all output ports of the node.
-     *
-     * @return {draw2d.util.ArrayList}
-     **/
-    getOutputPorts: function getOutputPorts() {
-        return this.outputPorts.clone().addAll(this.hybridPorts);
-    },
-
-    /**
-     * @method
-     * Clone the figure. <br>
-     * You must override and implement the methods <b>getPersistentAttributes</b> and <b>setPersistentAttributes</b> for your custom
-     * figures if the have special attributes.
-     *
-     * The clone() method performs a deep copy of the object, meaning that it copies the children, ports and decorations
-     * per default. You can control the clone procedure with the 'cloneMetaData'.
-     *
-     *
-     * @param {Object} [cloneMetaData] controls the clone procedure
-     * @param {Boolean} [cloneMetaData.excludeChildren] set it to true if you want exclude the children.
-     * @param {Boolean} [cloneMetaData.excludePorts] set it to true if you want exclude the ports of the node.
-     *
-     * @since 4.1.0
-     * @experimental
-     */
-    clone: function clone(cloneMetaData) {
-        cloneMetaData = (0, _extend2.default)({ excludePorts: false }, cloneMetaData);
-
-        var clone = this._super(cloneMetaData);
-
-        // remove all ports of the clone. the "init" method can have create some. but this must
-        // removed because we want a clone of an existing figure
-        //
-        if (cloneMetaData.excludePorts === false) {
-            clone.resetPorts();
-            var ports = this.getPorts(false);
-
-            ports.each(function (i, port) {
-                var clonePort = port.clone();
-                var locator = port.getLocator().clone();
-                clone.addPort(clonePort, locator);
-            });
-        }
-
-        return clone;
-    },
-
-    /**
-     * @method
-     * Return the port with the corresponding name.
-     *
-     *
-     * @param {String} portName The name of the port to return.
-     * @return {draw2d.Port} Returns the port with the hands over name or null.
-     **/
-    getPort: function getPort(portName) {
-        var port = null;
-
-        this.getPorts().each(function (i, e) {
-
-            if (e.getName() === portName) {
-                port = e;
-                return false;
-            }
-        });
-
-        return port;
-    },
-
-    /**
-     * @method
-     * Return the input port with the corresponding name.
-     *
-     *
-     * @param {String/Number} portNameOrIndex The name or numeric index of the port to return.
-     * @return {draw2d.InputPort} Returns the port with the hands over name or null.
-     **/
-    getInputPort: function getInputPort(portNameOrIndex) {
-        if (typeof portNameOrIndex === "number") {
-            return this.inputPorts.get(portNameOrIndex);
-        }
-
-        for (var i = 0; i < this.inputPorts.getSize(); i++) {
-            var port = this.inputPorts.get(i);
-            if (port.getName() === portNameOrIndex) {
-                return port;
-            }
-        }
-
-        return null;
-    },
-
-    /**
-     * @method
-     * Return the output port with the corresponding name.
-     *
-     * @param {String/Number} portNameOrIndex The name or the numeric index of the port to return.
-     * @return {draw2d.OutputPort} Returns the port with the hands over name or null.
-     **/
-    getOutputPort: function getOutputPort(portNameOrIndex) {
-        if (typeof portNameOrIndex === "number") {
-            return this.outputPorts.get(portNameOrIndex);
-        }
-
-        for (var i = 0; i < this.outputPorts.getSize(); i++) {
-            var port = this.outputPorts.get(i);
-            if (port.getName() === portNameOrIndex) {
-                return port;
-            }
-        }
-
-        return null;
-    },
-
-    /**
-     * @method
-     * Return the input port with the corresponding name.
-     *
-     *
-     * @param {String/Number} portNameOrIndex The name or numeric index of the port to return.
-     * @return {draw2d.InputPort} Returns the port with the hands over name or null.
-     **/
-    getHybridPort: function getHybridPort(portNameOrIndex) {
-        if (typeof portNameOrIndex === "number") {
-            return this.hybridPorts.get(portNameOrIndex);
-        }
-
-        for (var i = 0; i < this.hybridPorts.getSize(); i++) {
-            var port = this.hybridPorts.get(i);
-            if (port.getName() === portNameOrIndex) {
-                return port;
-            }
-        }
-
-        return null;
-    },
-
-    /**
-     * @method
-     * Add a port to this node at the given position.<br>
-     *
-     * @param {draw2d.Port} port The new port to add.
-     * @param {draw2d.layout.locator.Locator} locator The layouter for the port.
-     **/
-    addPort: function addPort(port, locator) {
-        if (!(port instanceof _packages2.default.Port)) {
-            throw "Argument is not typeof 'draw2d.Port'. \nFunction: draw2d.shape.node.Node#addPort";
-        }
-
-        // add to the internal cache if already build
-        if (this.cachedPorts !== null) {
-            this.cachedPorts.add(port);
-        };
-
-        this.portRelayoutRequired = true;
-
-        if (port instanceof _packages2.default.InputPort) {
-            this.inputPorts.add(port);
-        } else if (port instanceof _packages2.default.OutputPort) {
-            this.outputPorts.add(port);
-        } else if (port instanceof _packages2.default.HybridPort) {
-            this.hybridPorts.add(port);
-        }
-
-        if (typeof locator !== "undefined" && locator instanceof _packages2.default.layout.locator.Locator) {
-            port.setLocator(locator);
-        }
-
-        port.setParent(this);
-        port.setCanvas(this.canvas);
-
-        // You can't delete a port with the [DEL] key if a port is a child of a node
-        port.setDeleteable(false);
-
-        if (this.canvas !== null) {
-            port.getShapeElement();
-            this.canvas.registerPort(port);
-        }
-    },
-
-    /**
-     * @method
-     * Remove all ports of this node
-     *
-     * @since 5.0.0
-     */
-    resetPorts: function resetPorts() {
-        var _this = this;
-        this.getPorts().each(function (i, port) {
-            _this.removePort(port);
-        });
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Removes a port and all related connections from this node.<br>
-     *
-     * @param {draw2d.Port} port The port to remove.
-     **/
-    removePort: function removePort(port) {
-        this.portRelayoutRequired = true;
-
-        this.cachedPorts = null;
-        this.inputPorts.remove(port);
-        this.outputPorts.remove(port);
-        this.hybridPorts.remove(port);
-
-        if (port.getCanvas() !== null) {
-            port.getCanvas().unregisterPort(port);
-            // remove the related connections of the port too.
-            var connections = port.getConnections();
-            for (var i = 0; i < connections.getSize(); ++i) {
-                port.getCanvas().remove(connections.get(i));
-            }
-        }
-
-        port.setCanvas(null);
-    },
-
-    /**
-     * @method
-     * Create a standard Port for this element. Inherited class can override this
-     * method to create its own type of ports.
-     *
-     * @param {String} type the type of the requested port. possible ["input", "output"]
-     * @param {draw2d.layout.locator.Locator} [locator] the layouter to use for this port
-     * @template
-     */
-    createPort: function createPort(type, locator) {
-        var newPort = null;
-        var count = 0;
-
-        switch (type) {
-            case "input":
-                newPort = _packages2.default.Configuration.factory.createInputPort(this);
-                count = this.inputPorts.getSize();
-                break;
-            case "output":
-                newPort = _packages2.default.Configuration.factory.createOutputPort(this);
-                count = this.outputPorts.getSize();
-                break;
-            case "hybrid":
-                newPort = _packages2.default.Configuration.factory.createHybridPort(this);
-                count = this.hybridPorts.getSize();
-                break;
-            default:
-                throw "Unknown type [" + type + "] of port requested";
-        }
-
-        newPort.setName(type + count);
-
-        this.addPort(newPort, locator);
-        // relayout the ports
-        this.setDimension(this.width, this.height);
-
-        //        this.layoutPorts();
-
-        return newPort;
-    },
-
-    /**
-     * @method
-     * Return all connections related to this node.
-     *
-     * @returns {draw2d.util.ArrayList}
-     */
-    getConnections: function getConnections() {
-        var connections = new _packages2.default.util.ArrayList();
-        var ports = this.getPorts();
-        for (var i = 0; i < ports.getSize(); i++) {
-            var port = ports.get(i);
-            // Do NOT add twice the same connection if it is linking ports from the same node
-            for (var c = 0, c_size = port.getConnections().getSize(); c < c_size; c++) {
-                if (!connections.contains(port.getConnections().get(c))) {
-                    connections.add(port.getConnections().get(c));
-                }
-            }
-        }
-        return connections;
-    },
-
-    /**
-     * @inheritdoc
-     */
-    setCanvas: function setCanvas(canvas) {
-        var oldCanvas = this.canvas;
-        this._super(canvas);
-
-        var ports = this.getPorts();
-        if (oldCanvas !== null) {
-            ports.each(function (i, port) {
-                oldCanvas.unregisterPort(port);
-            });
-        }
-
-        if (canvas !== null) {
-            ports.each(function (i, port) {
-                port.setCanvas(canvas);
-                canvas.registerPort(port);
-            });
-            // relayout the ports
-            this.setDimension(this.width, this.height);
-        } else {
-            ports.each(function (i, port) {
-                port.setCanvas(null);
-            });
-        }
-    },
-
-    /**
-     * @inheritdoc
-     */
-    setRotationAngle: function setRotationAngle(angle) {
-        this.portRelayoutRequired = true;
-        this._super(angle);
-
-        this.layoutPorts();
-    },
-
-    /**
-     * @inheritdoc
-     */
-    setDimension: function setDimension(w, h) {
-        this.portRelayoutRequired = true;
-        this._super(w, h);
-    },
-
-    /**
-     * @method
-     * Called if the value of any port has been changed
-     *
-     * @param {draw2d.Port} relatedPort
-     * @template
-     */
-    onPortValueChanged: function onPortValueChanged(relatedPort) {},
-
-    /**
-     * @inheritdoc
-     */
-    repaint: function repaint(attributes) {
-        if (this.repaintBlocked === true || this.shape === null) {
-            return;
-        }
-
-        this._super(attributes);
-        this.layoutPorts();
-    },
-
-    /**
-     * @method
-     *
-     * @private
-     */
-    layoutPorts: function layoutPorts() {
-        if (this.portRelayoutRequired === false) {
-            return; //silently
-        }
-        this.portRelayoutRequired = false;
-
-        // layout the ports
-        //
-        this.outputPorts.each(function (i, port) {
-            port.locator.relocate(i, port);
-        });
-
-        this.inputPorts.each(function (i, port) {
-            port.locator.relocate(i, port);
-        });
-
-        this.hybridPorts.each(function (i, port) {
-            port.locator.relocate(i, port);
-        });
-    },
-
-    /**
-     * @method
-     * Returns the Command to perform the specified Request or null.
-     *
-     * @param {draw2d.command.CommandType} request describes the Command being requested
-     * @return {draw2d.command.Command} null or a Command
-     * @private
-     **/
-    createCommand: function createCommand(request) {
-        if (request === null) {
-            return null;
-        }
-
-        if (request.getPolicy() === _packages2.default.command.CommandType.ROTATE) {
-            return new _packages2.default.command.CommandRotate(this, (this.getRotationAngle() + 90) % 360);
-        }
-
-        return this._super(request);
-    },
-
-    /**
-      * @method
-      * Return an objects with all important attributes for XML or JSON serialization
-      *
-      * @returns {Object}
-      */
-    getPersistentAttributes: function getPersistentAttributes() {
-        var memento = this._super();
-
-        // write all ports to the JSON
-        //
-        if (this.persistPorts === true) {
-            memento.ports = [];
-            this.getPorts().each(function (i, port) {
-                memento.ports.push((0, _extend2.default)(port.getPersistentAttributes(), {
-                    name: port.getName(),
-                    port: port.NAME,
-                    locator: port.getLocator().NAME
-                }));
-            });
-        }
-
-        return memento;
-    },
-
-    /**
-     * @method
-     * Read all attributes from the serialized properties and transfer them into the shape.
-     *
-     * @param {Object} memento
-     * @returns
-     */
-    setPersistentAttributes: function setPersistentAttributes(memento) {
-        var _this2 = this;
-
-        this._super(memento);
-
-        if (typeof memento.ports !== "undefined") {
-            // we read the ports from the JSON and now we save it to the JSON too.
-            this.persistPorts = true;
-
-            // remove all ports created in the init method
-            //
-            this.resetPorts();
-
-            // and restore all ports of the JSON document instead.
-            //
-            memento.ports.forEach(function (e) {
-                var port = eval("new " + e.port + "()");
-                var locator = eval("new " + e.locator + "()");
-                port.setPersistentAttributes(e);
-                _this2.addPort(port, locator);
-                port.setName(e.name);
-            });
-        }
+        delete port.__initialVisibilityState;
+      });
     }
+    this._super(flag, duration);
+  },
+
+  /**
+   * @method
+   * Return all ports of the node. The results contains
+   * all ports of the children too per default. Set <b>recursive</b>
+   * to false to retrieve direct assigned ports only.
+   *
+   * @param {Boolean} [recursive] indicates if the method should return children ports too. Default is <b>true</b>
+   * @return  {draw2d.util.ArrayList}
+   **/
+  getPorts: function getPorts(recursive) {
+    var _this2 = this;
+
+    if (typeof recursive === "boolean" && recursive === false) {
+      var ports = new _packages2.default.util.ArrayList();
+      ports.addAll(this.inputPorts);
+      ports.addAll(this.outputPorts);
+      ports.addAll(this.hybridPorts);
+      return ports;
+    }
+
+    if (this.cachedPorts === null) {
+      this.cachedPorts = new _packages2.default.util.ArrayList();
+      this.cachedPorts.addAll(this.inputPorts);
+      this.cachedPorts.addAll(this.outputPorts);
+      this.cachedPorts.addAll(this.hybridPorts);
+
+      this.children.each(function (i, e) {
+        _this2.cachedPorts.addAll(e.figure.getPorts());
+      });
+    }
+
+    return this.cachedPorts;
+  },
+
+  /**
+   * @method
+   * Return all input ports of the node.
+   *
+   * @return {draw2d.util.ArrayList}
+   **/
+  getInputPorts: function getInputPorts() {
+    return this.inputPorts.clone().addAll(this.hybridPorts);
+  },
+
+  /**
+   * @method
+   * Return all output ports of the node.
+   *
+   * @return {draw2d.util.ArrayList}
+   **/
+  getOutputPorts: function getOutputPorts() {
+    return this.outputPorts.clone().addAll(this.hybridPorts);
+  },
+
+  /**
+   * @method
+   * Clone the figure. <br>
+   * You must override and implement the methods <b>getPersistentAttributes</b> and <b>setPersistentAttributes</b> for your custom
+   * figures if the have special attributes.
+   *
+   * The clone() method performs a deep copy of the object, meaning that it copies the children, ports and decorations
+   * per default. You can control the clone procedure with the 'cloneMetaData'.
+   *
+   *
+   * @param {Object} [cloneMetaData] controls the clone procedure
+   * @param {Boolean} [cloneMetaData.excludeChildren] set it to true if you want exclude the children.
+   * @param {Boolean} [cloneMetaData.excludePorts] set it to true if you want exclude the ports of the node.
+   *
+   * @since 4.1.0
+   * @experimental
+   */
+  clone: function clone(cloneMetaData) {
+    cloneMetaData = (0, _extend2.default)({ excludePorts: false }, cloneMetaData);
+
+    var clone = this._super(cloneMetaData);
+
+    // remove all ports of the clone. the "init" method can have create some. but this must
+    // removed because we want a clone of an existing figure
+    //
+    if (cloneMetaData.excludePorts === false) {
+      clone.resetPorts();
+      var ports = this.getPorts(false);
+
+      ports.each(function (i, port) {
+        var clonePort = port.clone();
+        var locator = port.getLocator().clone();
+        clone.addPort(clonePort, locator);
+      });
+    }
+
+    return clone;
+  },
+
+  /**
+   * @method
+   * Return the port with the corresponding name.
+   *
+   *
+   * @param {String} portName The name of the port to return.
+   * @return {draw2d.Port} Returns the port with the hands over name or null.
+   **/
+  getPort: function getPort(portName) {
+    var port = null;
+
+    this.getPorts().each(function (i, e) {
+
+      if (e.getName() === portName) {
+        port = e;
+        return false;
+      }
+    });
+
+    return port;
+  },
+
+  /**
+   * @method
+   * Return the input port with the corresponding name.
+   *
+   *
+   * @param {String/Number} portNameOrIndex The name or numeric index of the port to return.
+   * @return {draw2d.InputPort} Returns the port with the hands over name or null.
+   **/
+  getInputPort: function getInputPort(portNameOrIndex) {
+    if (typeof portNameOrIndex === "number") {
+      return this.inputPorts.get(portNameOrIndex);
+    }
+
+    for (var i = 0; i < this.inputPorts.getSize(); i++) {
+      var port = this.inputPorts.get(i);
+      if (port.getName() === portNameOrIndex) {
+        return port;
+      }
+    }
+
+    return null;
+  },
+
+  /**
+   * @method
+   * Return the output port with the corresponding name.
+   *
+   * @param {String/Number} portNameOrIndex The name or the numeric index of the port to return.
+   * @return {draw2d.OutputPort} Returns the port with the hands over name or null.
+   **/
+  getOutputPort: function getOutputPort(portNameOrIndex) {
+    if (typeof portNameOrIndex === "number") {
+      return this.outputPorts.get(portNameOrIndex);
+    }
+
+    for (var i = 0; i < this.outputPorts.getSize(); i++) {
+      var port = this.outputPorts.get(i);
+      if (port.getName() === portNameOrIndex) {
+        return port;
+      }
+    }
+
+    return null;
+  },
+
+  /**
+   * @method
+   * Return the input port with the corresponding name.
+   *
+   *
+   * @param {String/Number} portNameOrIndex The name or numeric index of the port to return.
+   * @return {draw2d.InputPort} Returns the port with the hands over name or null.
+   **/
+  getHybridPort: function getHybridPort(portNameOrIndex) {
+    if (typeof portNameOrIndex === "number") {
+      return this.hybridPorts.get(portNameOrIndex);
+    }
+
+    for (var i = 0; i < this.hybridPorts.getSize(); i++) {
+      var port = this.hybridPorts.get(i);
+      if (port.getName() === portNameOrIndex) {
+        return port;
+      }
+    }
+
+    return null;
+  },
+
+  /**
+   * @method
+   * Add a port to this node at the given position.<br>
+   *
+   * @param {draw2d.Port} port The new port to add.
+   * @param {draw2d.layout.locator.Locator} locator The layout for the port.
+   **/
+  addPort: function addPort(port, locator) {
+    if (!(port instanceof _packages2.default.Port)) {
+      throw "Argument is not typeof 'draw2d.Port'. \nFunction: draw2d.shape.node.Node#addPort";
+    }
+
+    // add to the internal cache if already build
+    if (this.cachedPorts !== null) {
+      this.cachedPorts.add(port);
+    }
+
+    this.portRelayoutRequired = true;
+
+    if (port instanceof _packages2.default.InputPort) {
+      this.inputPorts.add(port);
+    } else if (port instanceof _packages2.default.OutputPort) {
+      this.outputPorts.add(port);
+    } else if (port instanceof _packages2.default.HybridPort) {
+      this.hybridPorts.add(port);
+    }
+
+    if (typeof locator !== "undefined" && locator instanceof _packages2.default.layout.locator.Locator) {
+      port.setLocator(locator);
+    }
+
+    port.setParent(this);
+    port.setCanvas(this.canvas);
+
+    // You can't delete a port with the [DEL] key if a port is a child of a node
+    port.setDeleteable(false);
+
+    if (this.canvas !== null) {
+      port.getShapeElement();
+      this.canvas.registerPort(port);
+    }
+
+    return port;
+  },
+
+  /**
+   * @method
+   * Remove all ports of this node
+   *
+   * @since 5.0.0
+   */
+  resetPorts: function resetPorts() {
+    var _this3 = this;
+
+    this.getPorts().each(function (i, port) {
+      _this3.removePort(port);
+    });
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Removes a port and all related connections from this node.<br>
+   *
+   * @param {draw2d.Port} port The port to remove.
+   **/
+  removePort: function removePort(port) {
+    this.portRelayoutRequired = true;
+
+    this.cachedPorts = null;
+    this.inputPorts.remove(port);
+    this.outputPorts.remove(port);
+    this.hybridPorts.remove(port);
+
+    if (port.getCanvas() !== null) {
+      port.getCanvas().unregisterPort(port);
+      // remove the related connections of the port too.
+      var connections = port.getConnections();
+      for (var i = 0; i < connections.getSize(); ++i) {
+        port.getCanvas().remove(connections.get(i));
+      }
+    }
+
+    port.setCanvas(null);
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Create a standard Port for this element. Inherited class can override this
+   * method to create its own type of ports.
+   *
+   * @param {String} type the type of the requested port. possible ["input", "output"]
+   * @param {draw2d.layout.locator.Locator} [locator] the layouter to use for this port
+   * @template
+   */
+  createPort: function createPort(type, locator) {
+    var newPort = null;
+    var count = 0;
+
+    switch (type) {
+      case "input":
+        newPort = _packages2.default.Configuration.factory.createInputPort(this);
+        count = this.inputPorts.getSize();
+        break;
+      case "output":
+        newPort = _packages2.default.Configuration.factory.createOutputPort(this);
+        count = this.outputPorts.getSize();
+        break;
+      case "hybrid":
+        newPort = _packages2.default.Configuration.factory.createHybridPort(this);
+        count = this.hybridPorts.getSize();
+        break;
+      default:
+        throw "Unknown type [" + type + "] of port requested";
+    }
+
+    newPort.setName(type + count);
+
+    this.addPort(newPort, locator);
+    // relayout the ports
+    this.setDimension(this.width, this.height);
+
+    return newPort;
+  },
+
+  /**
+   * @method
+   * Return all connections related to this node.
+   *
+   * @returns {draw2d.util.ArrayList}
+   */
+  getConnections: function getConnections() {
+    var connections = new _packages2.default.util.ArrayList();
+    var ports = this.getPorts();
+    for (var i = 0; i < ports.getSize(); i++) {
+      var port = ports.get(i);
+      // Do NOT add twice the same connection if it is linking ports from the same node
+      for (var c = 0, c_size = port.getConnections().getSize(); c < c_size; c++) {
+        if (!connections.contains(port.getConnections().get(c))) {
+          connections.add(port.getConnections().get(c));
+        }
+      }
+    }
+    return connections;
+  },
+
+  /**
+   * @inheritdoc
+   */
+  setCanvas: function setCanvas(canvas) {
+    var oldCanvas = this.canvas;
+    this._super(canvas);
+
+    var ports = this.getPorts();
+    if (oldCanvas !== null) {
+      ports.each(function (i, port) {
+        oldCanvas.unregisterPort(port);
+      });
+    }
+
+    if (canvas !== null) {
+      ports.each(function (i, port) {
+        port.setCanvas(canvas);
+        canvas.registerPort(port);
+      });
+      // relayout the ports
+      this.setDimension(this.width, this.height);
+    } else {
+      ports.each(function (i, port) {
+        port.setCanvas(null);
+      });
+    }
+    return this;
+  },
+
+  /**
+   * @inheritdoc
+   */
+  setRotationAngle: function setRotationAngle(angle) {
+    this.portRelayoutRequired = true;
+    this._super(angle);
+
+    this.layoutPorts();
+
+    return this;
+  },
+
+  /**
+   * @inheritdoc
+   */
+  setDimension: function setDimension(w, h) {
+    this.portRelayoutRequired = true;
+    this._super(w, h);
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Called if the value of any port has been changed
+   *
+   * @param {draw2d.Port} relatedPort
+   * @template
+   */
+  onPortValueChanged: function onPortValueChanged(relatedPort) {},
+
+  /**
+   * @inheritdoc
+   */
+  repaint: function repaint(attributes) {
+    if (this.repaintBlocked === true || this.shape === null) {
+      return;
+    }
+
+    this._super(attributes);
+    this.layoutPorts();
+  },
+
+  /**
+   * @method
+   *
+   * @private
+   */
+  layoutPorts: function layoutPorts() {
+    if (this.portRelayoutRequired === false) {
+      return; //silently
+    }
+    this.portRelayoutRequired = false;
+
+    // layout the ports
+    //
+    this.outputPorts.each(function (i, port) {
+      port.locator.relocate(i, port);
+    });
+
+    this.inputPorts.each(function (i, port) {
+      port.locator.relocate(i, port);
+    });
+
+    this.hybridPorts.each(function (i, port) {
+      port.locator.relocate(i, port);
+    });
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Returns the Command to perform the specified Request or null.
+   *
+   * @param {draw2d.command.CommandType} request describes the Command being requested
+   * @return {draw2d.command.Command} null or a Command
+   * @private
+   **/
+  createCommand: function createCommand(request) {
+    if (request === null) {
+      return null;
+    }
+
+    if (request.getPolicy() === _packages2.default.command.CommandType.ROTATE) {
+      return new _packages2.default.command.CommandRotate(this, (this.getRotationAngle() + 90) % 360);
+    }
+
+    return this._super(request);
+  },
+
+  /**
+   * @method
+   * Return an objects with all important attributes for XML or JSON serialization
+   *
+   * @returns {Object}
+   */
+  getPersistentAttributes: function getPersistentAttributes() {
+    var memento = this._super();
+
+    // write all ports to the JSON
+    //
+    if (this.persistPorts === true) {
+      memento.ports = [];
+      this.getPorts().each(function (i, port) {
+        memento.ports.push((0, _extend2.default)(port.getPersistentAttributes(), {
+          name: port.getName(),
+          port: port.NAME,
+          locator: port.getLocator().NAME
+        }));
+      });
+    }
+
+    return memento;
+  },
+
+  /**
+   * @method
+   * Read all attributes from the serialized properties and transfer them into the shape.
+   *
+   * @param {Object} memento
+   * @returns
+   */
+  setPersistentAttributes: function setPersistentAttributes(memento) {
+    var _this4 = this;
+
+    this._super(memento);
+
+    if (typeof memento.ports !== "undefined") {
+      // we read the ports from the JSON and now we save it to the JSON too.
+      this.persistPorts = true;
+
+      // remove all ports created in the init method
+      //
+      this.resetPorts();
+
+      // and restore all ports of the JSON document instead.
+      //
+      memento.ports.forEach(function (e) {
+        var port = eval("new " + e.port + "()");
+        var locator = eval("new " + e.locator + "()");
+        port.setPersistentAttributes(e);
+        _this4.addPort(port, locator);
+        port.setName(e.name);
+      });
+    }
+  }
 
 });
 

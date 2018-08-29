@@ -367,7 +367,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
      // indicate that the outline is visible at the moment
      // the repaint update the status correct and set the attributes for
      // the first time
-     this.outlineVisible = true;
+     this.outlineVisible = true;//this.outlineStroke>0;
 
      return set;
    },
@@ -411,6 +411,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
            // reset them once
            this.shape.items[0].attr({"stroke-width":0, "stroke":"none"});
            this.shape.items[0].hide();
+           this.outlineVisible = false;
        }
    },
 

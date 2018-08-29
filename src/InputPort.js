@@ -36,7 +36,7 @@ draw2d.InputPort = draw2d.Port.extend({
        // Connect request between two ports
        //
        if(request.getPolicy() === draw2d.command.CommandType.CONNECT)  {
-           return new draw2d.command.CommandConnect(request.source, request.target, request.source, request.router);
+           return new draw2d.command.CommandConnect(request.source, request.target, request.source);
        }
 
        // ...else call the base class

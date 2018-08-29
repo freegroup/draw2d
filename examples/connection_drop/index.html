@@ -21,11 +21,10 @@ var createConnection=function(sourcePort, targetPort){
 
     var conn= new draw2d.Connection({
         router:new draw2d.layout.connection.InteractiveManhattanConnectionRouter(),
-        outlineStroke:1,
-        outlineColor:"#303030",
         stroke:2,
         color:"#00a8f0",
         radius:20,
+        outlineColor:"#30ff30",
         source:sourcePort,
         target:targetPort
     });
@@ -33,23 +32,28 @@ var createConnection=function(sourcePort, targetPort){
     // since version 3.5.6
     //
     conn.on("dragEnter", function(emitter, event){
-        conn.attr({outlineColor:"#30ff30"});
+      conn.attr({
+        outlineStroke:2
+      });
     });
     conn.on("dragLeave", function(emitter, event){
-        conn.attr({outlineColor:"#303030"});
+      conn.attr({
+        outlineStroke:0
+      });
     });
 
     return conn;
 
 };
 
+var canvas = null;
 document.addEventListener("DOMContentLoaded",function () {
 
        // Everything is loaded - core and application. Now can create the
        // application
        //
 
-	  var canvas = new draw2d.Canvas("gfx_holder");
+	    canvas = new draw2d.Canvas("gfx_holder");
 
       // Install a special policy into the canvas to use my own implementation of connection
       // if we drag&drop a port
@@ -64,7 +68,7 @@ document.addEventListener("DOMContentLoaded",function () {
       canvas.installEditPolicy(new MyInterceptorPolicy());
 
 	  // Create two standard nodes for "start" and "end" and link
-	  // this figures with a standard Connecotr
+	  // this figures with a standard Connector
 	  //
 	  var start  = new draw2d.shape.node.Start({x:130,y:130,width:60,height:60});
 	  var end    = new draw2d.shape.node.End({x:450,y:250});

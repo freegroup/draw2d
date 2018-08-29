@@ -6,8 +6,8 @@
  *
  *     @example preview small frame
  *
- *     var p1 =  new draw2d.shape.basic.Polygon({width:100, height:100});
- *     var p2 =  new draw2d.shape.basic.Polygon({width:100, height:60});
+ *     let p1 =  new draw2d.shape.basic.Polygon({width:100, height:100});
+ *     let p2 =  new draw2d.shape.basic.Polygon({width:100, height:60});
  *
  *     canvas.add(p1,10,10);
  *     canvas.add(p2,100,10);
@@ -44,9 +44,9 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
     // we must cache the initial width/height because the width/height of the shape
     // is recalculated in the addVertex method. After the first call this values are 0/0
     if (this.vertices.getSize() === 0) {
-      var w = this.width
-      var h = this.height
-      var pos = this.getPosition()
+      let w = this.width
+      let h = this.height
+      let pos = this.getPosition()
       this.addVertex(new draw2d.geo.Point(0, 0))
       this.addVertex(new draw2d.geo.Point(w, 0))
       this.addVertex(new draw2d.geo.Point(w, h))
@@ -93,7 +93,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
       let length = this.vertices.getSize()
       let p = this.vertices.get(0)
       path.push("M", p.x, " ", p.y)
-      for (var i = 1; i < length; i++) {
+      for (let i = 1; i < length; i++) {
         p = this.vertices.get(i)
         path.push("L", p.x, " ", p.y)
       }
@@ -109,9 +109,9 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
         length = length - 1
         end = this.vertices.get(length - 1)
       }
-      var begin = draw2d.geo.Util.insetPoint(start, end, radius)
+      let begin = draw2d.geo.Util.insetPoint(start, end, radius)
       path.push("M", begin.x, ",", begin.y)
-      for (var i = 0; i < length; i++) {
+      for (let i = 0; i < length; i++) {
         start = this.vertices.get(i)
         end = this.vertices.get((i + 1) % length)
         let modStart = draw2d.geo.Util.insetPoint(start, end, radius)
@@ -153,7 +153,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
    * @param {Number} dy The new y translate offset
    **/
   translate: function (dx, dy) {
-    var _this = this
+    let _this = this
 
     // TODO: This is not good. If the polygon part of an "Composite" I should call
     //       the adjustPosition. IF we DragDrap the composition the figures inside should follow
@@ -163,7 +163,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
     dy = this.y + dy
     this.editPolicy.each(function (i, e) {
       if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
-        var newPos = e.adjustPosition(_this, dx, dy)
+        let newPos = e.adjustPosition(_this, dx, dy)
         dx = newPos.x
         dy = newPos.y
       }
@@ -211,8 +211,8 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
     }
     this.svgPathString = null
 
-    var dx = x - this.minX
-    var dy = y - this.minY
+    let dx = x - this.minX
+    let dy = y - this.minY
 
     this.translate(dx, dy)
 
@@ -226,20 +226,20 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
    * @inheritdoc
    */
   setDimension: function (w, h) {
-    var oldWidth = this.width
-    var oldHeight = this.height
+    let oldWidth = this.width
+    let oldHeight = this.height
 
     this._super(w, h)
 
-    var fracWidth = (1 / oldWidth) * this.width
-    var fracHeight = (1 / oldHeight) * this.height
+    let fracWidth = (1 / oldWidth) * this.width
+    let fracHeight = (1 / oldHeight) * this.height
 
-    var thisX = this.x
-    var thisY = this.y
+    let thisX = this.x
+    let thisY = this.y
     this.vertices.each(function (i, e) {
       // calculate difference between point and figure origin
-      var diffX = (e.getX() - thisX) * fracWidth
-      var diffY = (e.getY() - thisY) * fracHeight
+      let diffX = (e.getX() - thisX) * fracWidth
+      let diffY = (e.getY() - thisY) * fracHeight
       e.setPosition(thisX + diffX, thisY + diffY)
     })
 
@@ -281,12 +281,13 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
 
     this.updateBoundingBox()
 
-    var _this = this
-    this.editPolicy.each(function (i, e) {
+    this.editPolicy.each( (i, e) => {
       if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
-        e.moved(_this.canvas, _this)
+        e.moved(this.canvas, this)
       }
     })
+
+    return this
   },
 
   /**
@@ -299,7 +300,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
    * @param {Number} y
    */
   setVertex: function (index, x, y) {
-    var vertex = this.vertices.get(index)
+    let vertex = this.vertices.get(index)
 
     // invalid point or nothing to do
     //
@@ -315,7 +316,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
 
     this.updateBoundingBox()
 
-    var _this = this
+    let _this = this
     this.editPolicy.each(function (i, e) {
       if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
         e.moved(_this.canvas, _this)
@@ -341,7 +342,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
 
     this.updateBoundingBox()
 
-    var _this = this
+    let _this = this
     this.editPolicy.each(function (i, e) {
       if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
         e.moved(_this.canvas, _this)
@@ -370,7 +371,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
     this.updateBoundingBox()
 
     if (!this.selectionHandles.isEmpty()) {
-      var _this = this
+      let _this = this
       this.editPolicy.each(function (i, e) {
         if (e instanceof draw2d.policy.figure.SelectionFeedbackPolicy) {
           e.onUnselect(_this.canvas, _this)
@@ -399,7 +400,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
       return null
     }
 
-    var vertex = this.vertices.removeElementAt(index)
+    let vertex = this.vertices.removeElementAt(index)
 
     this.svgPathString = null
     this.repaint()
@@ -407,7 +408,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
     this.updateBoundingBox()
 
     if (!this.selectionHandles.isEmpty()) {
-      var _this = this
+      let _this = this
       this.editPolicy.each(function (i, e) {
         if (e instanceof draw2d.policy.figure.SelectionFeedbackPolicy) {
           e.onUnselect(_this.canvas, _this)
@@ -433,10 +434,10 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
     // Reason: the vertices are selectable and in this case the coordinates must transform
     //         and not only the resulting SVG shape.
     //
-    var radian = angle / (180 / Math.PI)
-    var center = this.getBoundingBox().getCenter()
-    var rotate = function (x, y, xm, ym, radian) {
-      var cos = Math.cos,
+    let radian = angle / (180 / Math.PI)
+    let center = this.getBoundingBox().getCenter()
+    let rotate = function (x, y, xm, ym, radian) {
+      let cos = Math.cos,
         sin = Math.sin
       return {
         x: (x - xm) * cos(radian) - (y - ym) * sin(radian) + xm,
@@ -445,7 +446,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
     }
 
     this.vertices.each(function (i, e) {
-      var rot = rotate(e.x, e.y, center.x, center.y, radian)
+      let rot = rotate(e.x, e.y, center.x, center.y, radian)
       e.setPosition(rot.x, rot.y)
     })
 
@@ -454,7 +455,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
 
     // Update the resize handles if the user change the position of the element via an API call.
     //
-    var _this = this
+    let _this = this
     this.editPolicy.each(function (i, e) {
       if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
         e.moved(_this.canvas, _this)
@@ -511,7 +512,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
    * @inheritdoc
    */
   getPersistentAttributes: function () {
-    var memento = this._super()
+    let memento = this._super()
 
     memento.vertices = []
 

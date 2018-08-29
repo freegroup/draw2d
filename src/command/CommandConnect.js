@@ -21,7 +21,6 @@ draw2d.command.CommandConnect = draw2d.command.Command.extend({
      * @param {draw2d.Port} source the source port for the connection to create
      * @param {draw2d.Port} target the target port for the connection to create
      * @param {draw2d.Port} [dropTarget] the port who has initiate the connection creation. mainly the drop target
-     * @param {draw2d.layout.connection.ConnectionRouter} [router] the default router to use for the connection
      */
     init: function(source, target, dropTarget)
      {
@@ -35,7 +34,7 @@ draw2d.command.CommandConnect = draw2d.command.Command.extend({
 
     /**
      * @method
-     * set the connection to use. called by the COnnectionCreatePolicy
+     * set the connection to use. called by the ConnectionCreatePolicy
      */
     setConnection: function(connection)
     {
@@ -76,7 +75,7 @@ draw2d.command.CommandConnect = draw2d.command.Command.extend({
         if(this.connection===null){
           // deprecated call!!!!
           //
-          var result = draw2d.Configuration.factory.createConnection(this.source, this.target, optionalCallback, this.dropTarget);
+          let result = draw2d.Configuration.factory.createConnection(this.source, this.target, optionalCallback, this.dropTarget);
           debugger;
           // will be handled by the optional callback
           if(typeof result==="undefined"){

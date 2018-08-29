@@ -1,5 +1,5 @@
 
-var BetweenFigure = draw2d.shape.node.Between.extend({
+let BetweenFigure = draw2d.shape.node.Between.extend({
 
     init : function(attr)
     {
@@ -26,16 +26,24 @@ var BetweenFigure = draw2d.shape.node.Between.extend({
      **/
     onDrop:function(dropTarget, x, y, shiftKey, ctrlKey)
     {
+      console.log("onDrop")
     	// Activate a "smart insert" If the user drop this figure on connection
     	//
     	if(dropTarget instanceof draw2d.Connection){
-    		var oldSource = dropTarget.getSource();
-    		dropTarget.setSource(this.getOutputPort(0));
-   		
-    		var additionalConnection = createConnection();
-    		this.getCanvas().add(additionalConnection);
-    		additionalConnection.setSource(oldSource);
-    		additionalConnection.setTarget(this.getInputPort(0));
+    	  let oldSource = dropTarget.getSource();
+    	  let oldTarget = dropTarget.getTarget();
+
+    	  let stack = this.getCanvas().getCommandStack();
+
+    	  let cmd = new draw2d.command.CommandReconnect(dropTarget);
+        cmd.setNewPorts(oldSource, this.getInputPort(0));
+        stack.execute(cmd);
+
+    		let additionalConnection = createConnection();
+    		cmd = new draw2d.command.CommandConnect(oldTarget,this.getOutputPort(0));
+    		cmd.setConnection(additionalConnection);
+        stack.execute(cmd);
+
     	}
     }
 
