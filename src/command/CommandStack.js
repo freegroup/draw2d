@@ -84,7 +84,7 @@ draw2d.command.CommandStack = Class.extend({
       return
     }
 
-    this.notifyListeners(command, draw2d.command.CommandStack.PRE_EXECUTE)
+    this.notifyListeners(command, draw2d.command.CommandStack.PRE_EXECUTE,"PRE_EXECUTE")
 
     this.undostack.push(command)
     command.execute()
@@ -99,7 +99,7 @@ draw2d.command.CommandStack = Class.extend({
     if (this.undostack.length > this.maxundo) {
       this.undostack = this.undostack.slice(this.undostack.length - this.maxundo)
     }
-    this.notifyListeners(command, draw2d.command.CommandStack.POST_EXECUTE)
+    this.notifyListeners(command, draw2d.command.CommandStack.POST_EXECUTE,"POST_EXECUTE")
 
     return this
   },
@@ -254,10 +254,21 @@ draw2d.command.CommandStack = Class.extend({
   /**
    * @method
    * Adds a listener to the command stack, which will be notified whenever a command has been processed on the stack.
-   *
+   * @deprecated use on/off to register events
    * @param {draw2d.command.CommandStackEventListener|Function} listener the listener to add.
    */
   addEventListener: function (listener) {
+    return this.on("change", listener)
+  },
+  /**
+   * Adds a listener to the command stack, which will be notified whenever a command has been processed on the stack.
+   * @param event
+   * @param func
+   */
+  on: function(event, listener){
+    if(event !== "change")
+      throw "only event of kind 'change' is supported"
+
     if (listener instanceof draw2d.command.CommandStackEventListener) {
       this.eventListeners.add(listener)
     }
@@ -281,6 +292,9 @@ draw2d.command.CommandStack = Class.extend({
    * @param {draw2d.command.CommandStackEventListener} listener the listener to remove.
    */
   removeEventListener: function (listener) {
+    this.off("change", listener)
+  },
+  off: function(event, listener){
     let size = this.eventListeners.getSize()
     for (let i = 0; i < size; i++) {
       let entry = this.eventListeners.get(i)
@@ -302,8 +316,8 @@ draw2d.command.CommandStack = Class.extend({
    * @param {Number} state the current stack state
    *
    **/
-  notifyListeners: function (command, state) {
-    let event = new draw2d.command.CommandStackEvent(this, command, state)
+  notifyListeners: function (command, state, action) {
+    let event = new draw2d.command.CommandStackEvent(this, command, state, action)
     let size = this.eventListeners.getSize()
 
     for (let i = 0; i < size; i++) {
