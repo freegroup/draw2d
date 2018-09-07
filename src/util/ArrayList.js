@@ -143,7 +143,7 @@ draw2d.util.ArrayList = Class.extend({
       * provided test. The test is a function that is passed an array item and the index of the
       * item within the array. Only if the test returns true will the item stay in the array.
       *
-      * @param {Function} func the filter function
+      * @param {Function} func the filter function(element,index)
       * @param {Object} func.value value of the element in iteration.
       * @since 2.0.0
       */
