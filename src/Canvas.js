@@ -7,10 +7,10 @@
  *
  *      $(window).load(function () {
  *
- *          var canvas = new draw2d.Canvas("gfx_holder");
+ *          let canvas = new draw2d.Canvas("gfx_holder");
  *
- *          var figure1 = new draw2d.shape.basic.Oval();
- *          var figure2 = new draw2d.shape.basic.Rectangle();
+ *          let figure1 = new draw2d.shape.basic.Oval();
+ *          let figure2 = new draw2d.shape.basic.Rectangle();
  *          canvas.add(figure1,100,100);
  *          canvas.add(figure2,120,150);
  *      });
@@ -32,7 +32,7 @@ draw2d.Canvas = Class.extend(
      * @param {String} canvasId the id of the DOM element to use a parent container
      */
     init: function (canvasId, width, height) {
-      var _this = this
+      let _this = this
 
 
       this.setScrollArea(document.body)
@@ -70,7 +70,7 @@ draw2d.Canvas = Class.extend(
         },
         drop: function (event, ui) {
           event = _this._getEvent(event)
-          var pos = _this.fromDocumentToCanvasCoordinate(event.clientX, event.clientY)
+          let pos = _this.fromDocumentToCanvasCoordinate(event.clientX, event.clientY)
           _this.onDrop(ui.draggable, pos.getX(), pos.getY(), event.shiftKey, event.ctrlKey)
         }
       })
@@ -84,7 +84,7 @@ draw2d.Canvas = Class.extend(
         helper: "clone",
         drag: function (event, ui) {
           event = _this._getEvent(event)
-          var pos = _this.fromDocumentToCanvasCoordinate(event.clientX, event.clientY)
+          let pos = _this.fromDocumentToCanvasCoordinate(event.clientX, event.clientY)
           _this.onDrag(ui.draggable, pos.getX(), pos.getY(), event.shiftKey, event.ctrlKey)
         },
         stop: function (e, ui) {
@@ -127,7 +127,6 @@ draw2d.Canvas = Class.extend(
       this.figures = new draw2d.util.ArrayList()
       this.lines = new draw2d.util.ArrayList() // crap - why are connections not just figures. Design by accident
       this.commonPorts = new draw2d.util.ArrayList()
-      this.dropTargets = new draw2d.util.ArrayList()
 
       // all visible resize handles which can be drag&drop around. Selection handles like AntRectangleSelectionFeedback
       // are not part of this collection. Required for hitTest only
@@ -185,7 +184,7 @@ draw2d.Canvas = Class.extend(
         _this.calculateConnectionIntersection()
 
         _this.mouseDown = false
-        var pos = _this.fromDocumentToCanvasCoordinate(event.clientX, event.clientY)
+        let pos = _this.fromDocumentToCanvasCoordinate(event.clientX, event.clientY)
         _this.editPolicy.each(function (i, policy) {
           policy.onMouseUp(_this, pos.x, pos.y, event.shiftKey, event.ctrlKey)
         })
@@ -196,7 +195,7 @@ draw2d.Canvas = Class.extend(
 
       this.html.bind("mousemove touchmove", function (event) {
         event = _this._getEvent(event)
-        var pos = _this.fromDocumentToCanvasCoordinate(event.clientX, event.clientY)
+        let pos = _this.fromDocumentToCanvasCoordinate(event.clientX, event.clientY)
         if (_this.mouseDown === false) {
           // mouseEnter/mouseLeave events for Figures. Don't use the Raphael or DOM native functions.
           // Raphael didn't work for Rectangle with transparent fill (events only fired for the border line)
@@ -205,7 +204,7 @@ draw2d.Canvas = Class.extend(
           //
           // don't break the main event loop if one element fires an error during enter/leave event.
           try {
-            var hover = _this.getBestFigure(pos.x, pos.y)
+            let hover = _this.getBestFigure(pos.x, pos.y)
             if (hover !== _this.currentHoverFigure && _this.currentHoverFigure !== null) {
               _this.currentHoverFigure.onMouseLeave() // deprecated
               _this.currentHoverFigure.fireEvent("mouseleave")
@@ -235,8 +234,8 @@ draw2d.Canvas = Class.extend(
           })
         }
         else {
-          var diffXAbs = (event.clientX - _this.mouseDownX) * _this.zoomFactor
-          var diffYAbs = (event.clientY - _this.mouseDownY) * _this.zoomFactor
+          let diffXAbs = (event.clientX - _this.mouseDownX) * _this.zoomFactor
+          let diffYAbs = (event.clientY - _this.mouseDownY) * _this.zoomFactor
           _this.editPolicy.each(function (i, policy) {
             policy.onMouseDrag(_this, diffXAbs, diffYAbs, diffXAbs - _this.mouseDragDiffX, diffYAbs - _this.mouseDragDiffY, event.shiftKey, event.ctrlKey)
           })
@@ -254,7 +253,7 @@ draw2d.Canvas = Class.extend(
 
       this.html.bind("mousedown touchstart", function (event) {
         try {
-          var pos = null
+          let pos = null
           switch (event.which) {
             case 1: //touch pressed
             case 0: //Left mouse button pressed
@@ -304,7 +303,7 @@ draw2d.Canvas = Class.extend(
 
         _this.mouseDownX = event.clientX
         _this.mouseDownY = event.clientY
-        var pos = _this.fromDocumentToCanvasCoordinate(event.clientX, event.clientY)
+        let pos = _this.fromDocumentToCanvasCoordinate(event.clientX, event.clientY)
         _this.onDoubleClick(pos.x, pos.y, event.shiftKey, event.ctrlKey)
       })
 
@@ -317,7 +316,7 @@ draw2d.Canvas = Class.extend(
         // fire only the click event if we didn't move the mouse (drag&drop)
         //
         if (_this.mouseDownX === event.clientX || _this.mouseDownY === event.clientY) {
-          var pos = _this.fromDocumentToCanvasCoordinate(event.clientX, event.clientY)
+          let pos = _this.fromDocumentToCanvasCoordinate(event.clientX, event.clientY)
           _this.onClick(pos.x, pos.y, event.shiftKey, event.ctrlKey)
         }
       })
@@ -325,10 +324,10 @@ draw2d.Canvas = Class.extend(
       // Important: MozMousePixelScroll is required to prevent 1px scrolling
       // in FF event if we call "e.preventDefault()"
       this.html.on('MozMousePixelScroll DOMMouseScroll mousewheel', function (e) {
-        var event = _this._getEvent(e)
-        var pos = _this.fromDocumentToCanvasCoordinate(event.originalEvent.clientX, event.originalEvent.clientY)
+        let event = _this._getEvent(e)
+        let pos = _this.fromDocumentToCanvasCoordinate(event.originalEvent.clientX, event.originalEvent.clientY)
 
-        var delta = 0
+        let delta = 0
         if (e.type == 'mousewheel') {
           delta = (e.originalEvent.wheelDelta * -1)
         }
@@ -336,7 +335,7 @@ draw2d.Canvas = Class.extend(
           delta = 40 * e.originalEvent.detail
         }
 
-        var returnValue = _this.onMouseWheel(delta, pos.x, pos.y, event.shiftKey, event.ctrlKey)
+        let returnValue = _this.onMouseWheel(delta, pos.x, pos.y, event.shiftKey, event.ctrlKey)
 
         if (returnValue === false) {
           e.preventDefault()
@@ -348,7 +347,7 @@ draw2d.Canvas = Class.extend(
       this.keyupCallback = function (event) {
         // don't initiate the delete command if the event comes from an INPUT field. In this case the user want delete
         // a character in the input field and not the related shape
-        var target = $(event.target)
+        let target = $(event.target)
         if (!target.is("input") && !target.is("textarea")) {
           _this.editPolicy.each(function (i, policy) {
             if (policy instanceof draw2d.policy.canvas.KeyboardPolicy) {
@@ -364,7 +363,7 @@ draw2d.Canvas = Class.extend(
       this.keydownCallback = function (event) {
         // don't initiate the delete command if the event comes from an INPUT field. In this case the user want delete
         // a character in the input field and not the related shape
-        var target = $(event.target)
+        let target = $(event.target)
         if (!target.is("input") && !target.is("textarea")) {
           _this.editPolicy.each(function (i, policy) {
             if (policy instanceof draw2d.policy.canvas.KeyboardPolicy) {
@@ -410,7 +409,7 @@ draw2d.Canvas = Class.extend(
       // notice all listener that the canvas will be cleared
       this.fireEvent("clear")
 
-      var _this = this
+      let _this = this
 
       this.lines.clone().each(function (i, e) {
         _this.remove(e)
@@ -429,7 +428,6 @@ draw2d.Canvas = Class.extend(
       this.figures = new draw2d.util.ArrayList()
       this.lines = new draw2d.util.ArrayList()
       this.commonPorts = new draw2d.util.ArrayList()
-      this.dropTargets = new draw2d.util.ArrayList()
 
       this.commandStack.markSaveLocation()
 
@@ -478,16 +476,16 @@ draw2d.Canvas = Class.extend(
      * @private
      */
     calculateConnectionIntersection: function () {
-      var _this = this
+
       this.lineIntersections = new draw2d.util.ArrayList()
-      var lines = this.getLines().clone()
+      let lines = this.getLines().clone()
       while (lines.getSize() > 0) {
-        var l1 = lines.removeElementAt(0)
-        lines.each(function (ii, l2) {
-          var partInter = l1.intersection(l2)
+        let l1 = lines.removeElementAt(0)
+        lines.each( (ii, l2) =>{
+          let partInter = l1.intersection(l2)
           if (partInter.getSize() > 0) {
-            _this.lineIntersections.add({line: l1, other: l2, intersection: partInter})
-            _this.lineIntersections.add({line: l2, other: l1, intersection: partInter})
+            this.lineIntersections.add({line: l1, other: l2, intersection: partInter})
+            this.lineIntersections.add({line: l2, other: l1, intersection: partInter})
           }
         })
       }
@@ -505,20 +503,20 @@ draw2d.Canvas = Class.extend(
      * @param {draw2d.policy.EditPolicy} policy
      */
     installEditPolicy: function (policy) {
-      var _this = this
+
       // a canvas can handle only one selection policy
       //
       if (policy instanceof draw2d.policy.canvas.SelectionPolicy) {
         // reset old selection before install new selection strategy
-        this.getSelection().getAll().each(function (i, figure) {
+        this.getSelection().getAll().each( (i, figure)=> {
           figure.unselect()
         })
 
         // remove existing selection policy
-        this.editPolicy.grep(function (p) {
-          var stay = !(p instanceof draw2d.policy.canvas.SelectionPolicy)
+        this.editPolicy.grep( (p) =>{
+          let stay = !(p instanceof draw2d.policy.canvas.SelectionPolicy)
           if (stay === false) {
-            p.onUninstall(_this)
+            p.onUninstall(this)
           }
           return stay
         })
@@ -527,10 +525,10 @@ draw2d.Canvas = Class.extend(
       //
       else if (policy instanceof draw2d.policy.canvas.ZoomPolicy) {
         // remove existing zoom policy
-        this.editPolicy.grep(function (p) {
-          var stay = !(p instanceof draw2d.policy.canvas.ZoomPolicy)
+        this.editPolicy.grep( (p) =>{
+          let stay = !(p instanceof draw2d.policy.canvas.ZoomPolicy)
           if (stay === false) {
-            p.onUninstall(_this)
+            p.onUninstall(this)
           }
           return stay
         })
@@ -538,10 +536,10 @@ draw2d.Canvas = Class.extend(
         this.zoomPolicy = policy
       }
       else if (policy instanceof draw2d.policy.connection.ConnectionCreatePolicy) {
-        this.editPolicy.grep(function (p) {
-          var stay = !(p instanceof draw2d.policy.connection.ConnectionCreatePolicy)
+        this.editPolicy.grep( (p) =>{
+          let stay = !(p instanceof draw2d.policy.connection.ConnectionCreatePolicy)
           if (stay === false) {
-            p.onUninstall(_this)
+            p.onUninstall(this)
           }
           return stay
         })
@@ -571,7 +569,7 @@ draw2d.Canvas = Class.extend(
 
       // either remove exact the policy instance...
       //
-      var removed = this.editPolicy.remove(policy)
+      let removed = this.editPolicy.remove(policy)
       if (removed !== null) {
         removed.onUninstall(this)
         if (removed instanceof draw2d.policy.canvas.ZoomPolicy) {
@@ -583,8 +581,8 @@ draw2d.Canvas = Class.extend(
         // With this kind of behaviour it is possible to deinstall all policies with
         // the same class at once
         //
-        var _this = this
-        var name = (typeof policy === "string") ? policy : policy.NAME
+        let _this = this
+        let name = (typeof policy === "string") ? policy : policy.NAME
         this.editPolicy.grep(function (p) {
           if (p.NAME === name) {
             p.onUninstall(_this)
@@ -659,10 +657,10 @@ draw2d.Canvas = Class.extend(
      */
     setDimension: function (dim, height) {
       if (typeof dim === "undefined") {
-        var widths = this.getFigures().clone().map(function (f) {
+        let widths = this.getFigures().clone().map(function (f) {
           return f.getAbsoluteX() + f.getWidth()
         })
-        var heights = this.getFigures().clone().map(function (f) {
+        let heights = this.getFigures().clone().map(function (f) {
           return f.getAbsoluteY() + f.getHeight()
         })
         this.initialHeight = Math.max(...heights.asArray())
@@ -988,7 +986,7 @@ draw2d.Canvas = Class.extend(
 
       // remove the figure from a selection handler as well and cleanup the
       // selection feedback
-      var _this = this
+      let _this = this
       if (this.getSelection().contains(figure)) {
         this.editPolicy.each(function (i, policy) {
           if (typeof policy.unselect === "function") {
@@ -1046,9 +1044,9 @@ draw2d.Canvas = Class.extend(
      * @return {draw2d.shape.basic.Line}
      **/
     getLine: function (id) {
-      var count = this.lines.getSize()
-      for (var i = 0; i < count; i++) {
-        var line = this.lines.get(i)
+      let count = this.lines.getSize()
+      for (let i = 0; i < count; i++) {
+        let line = this.lines.get(i)
         if (line.getId() === id) {
           return line
         }
@@ -1064,7 +1062,7 @@ draw2d.Canvas = Class.extend(
      * @return {draw2d.Figure}
      **/
     getFigure: function (id) {
-      var figure = null
+      let figure = null
       this.figures.each(function (i, e) {
         if (e.id === id) {
           figure = e
@@ -1083,7 +1081,7 @@ draw2d.Canvas = Class.extend(
      * @return {draw2d.util.ArrayList}
      */
     getIntersection: function (line) {
-      var result = new draw2d.util.ArrayList()
+      let result = new draw2d.util.ArrayList()
 
       this.lineIntersections.each(function (i, entry) {
         if (entry.line === line) {
@@ -1115,8 +1113,8 @@ draw2d.Canvas = Class.extend(
         return pos
       }
 
-      var _this = this
-      var orig = pos.clone()
+      let _this = this
+      let orig = pos.clone()
       this.editPolicy.each(function (i, policy) {
         pos = policy.snap(_this, figure, pos, orig)
       })
@@ -1203,14 +1201,12 @@ draw2d.Canvas = Class.extend(
      * @param {draw2d.Figure| draw2d.util.ArrayList} object The figure or list of figures to select.
      **/
     setCurrentSelection: function (object) {
-      var _this = this
-
       // deselect the current selected figures
       //
-      this.selection.each(function (i, e) {
-        _this.editPolicy.each(function (i, policy) {
+      this.selection.each( (i, e) =>{
+        this.editPolicy.each( (i, policy) =>{
           if (typeof policy.unselect === "function") {
-            policy.unselect(_this, e)
+            policy.unselect(this, e)
           }
         })
       })
@@ -1228,9 +1224,9 @@ draw2d.Canvas = Class.extend(
      * @since 4.6.0
      **/
     addSelection: function (object) {
-      var _this = this
+      let _this = this
 
-      var add = function (i, figure) {
+      let add = function (i, figure) {
         _this.editPolicy.each(function (i, policy) {
           if (typeof policy.select === "function") {
             policy.select(_this, figure)
@@ -1278,13 +1274,13 @@ draw2d.Canvas = Class.extend(
           whitelist = []
       }
 
-      var result = null
-      var testFigure = null
+      let result = null
+      let testFigure = null
 
 
-      var isInList = function (testFigure, list) {
+      let isInList = function (testFigure, list) {
         for (let i = 0, len = list.length; i < len; i++) {
-          var considering = list[i]
+          let considering = list[i]
           if (typeof considering === "function") {
             if (testFigure instanceof considering) {
               return true
@@ -1296,11 +1292,11 @@ draw2d.Canvas = Class.extend(
         }
         return false
       }
-      var isInBlacklist = function (item) {
+      let isInBlacklist = function (item) {
         return isInList(item, blacklist)
       }
       // empty whitelist means that every kind of object is allowed
-      var isInWhitelist = whitelist.length === 0 ? function () {
+      let isInWhitelist = whitelist.length === 0 ? function () {
         return true
       } : function (item) {
         return isInList(item, whitelist)
@@ -1309,7 +1305,7 @@ draw2d.Canvas = Class.extend(
 
       // tool method to check recursive a figure for hitTest
       //
-      var checkRecursive = function (children) {
+      let checkRecursive = function (children) {
         children.each(function (i, e) {
           let c = e.figure
           checkRecursive(c.children)
@@ -1323,7 +1319,7 @@ draw2d.Canvas = Class.extend(
 
       // ResizeHandles
       //
-      var len
+      let len
       for (let i = 0, len = this.resizeHandles.getSize(); i < len; i++) {
         testFigure = this.resizeHandles.get(i)
         if (testFigure.isVisible() && testFigure.hitTest(x, y) && !isInBlacklist(testFigure) && isInWhitelist(testFigure)) {
@@ -1352,7 +1348,7 @@ draw2d.Canvas = Class.extend(
       //  Check now the common objects.
       //  run reverse to aware the z-oder of the figures
       for (let i = (this.figures.getSize() - 1); i >= 0; i--) {
-        var figure = this.figures.get(i)
+        let figure = this.figures.get(i)
         // check first a children of the figure
         //
         checkRecursive(figure.children)
@@ -1368,12 +1364,12 @@ draw2d.Canvas = Class.extend(
           //
           //if (result instanceof draw2d.shape.composite.Composite)
           {
-            var resultLine = this.getBestLine(x, y, result)
+            let resultLine = this.getBestLine(x, y, result)
             // conflict between line and normal shape -> calculate the DOM index and return the higher (on Top)
             // element
             if (resultLine !== null) {
-              var lineIndex = $(resultLine.shape.node).index()
-              var resultIndex = $(result.shape.node).index()
+              let lineIndex = $(resultLine.shape.node).index()
+              let resultIndex = $(result.shape.node).index()
               if (resultIndex < lineIndex) {
                 return resultLine
               }
@@ -1386,9 +1382,9 @@ draw2d.Canvas = Class.extend(
       // Check the children of the lines as well
       // Not selectable/draggable. But should receive onClick/onDoubleClick events
       // as well.
-      var count = this.lines.getSize()
+      let count = this.lines.getSize()
       for (let i = 0; i < count; i++) {
-        var line = this.lines.get(i)
+        let line = this.lines.get(i)
         // check first a children of the figure
         //
         checkRecursive(line.children)
@@ -1429,10 +1425,10 @@ draw2d.Canvas = Class.extend(
           lineToIgnore = []
         }
       }
-      var count = this.lines.getSize()
+      let count = this.lines.getSize()
 
-      for (var i = 0; i < count; i++) {
-        var line = this.lines.get(i)
+      for (let i = 0; i < count; i++) {
+        let line = this.lines.get(i)
         if (line.isVisible() === true && line.hitTest(x, y) === true && $.inArray(line, lineToIgnore) === -1) {
           return line
         }
@@ -1526,7 +1522,7 @@ draw2d.Canvas = Class.extend(
     onDoubleClick: function (x, y, shiftKey, ctrlKey) {
       // check if a line has been hit
       //
-      var figure = this.getBestFigure(x, y)
+      let figure = this.getBestFigure(x, y)
 
       // or a line/connection. May we should test the line before a figure..?
       // (since 4.0.0)
@@ -1554,7 +1550,7 @@ draw2d.Canvas = Class.extend(
     onClick: function (x, y, shiftKey, ctrlKey) {
       // check if a figure has been hit
       //
-      var figure = this.getBestFigure(x, y)
+      let figure = this.getBestFigure(x, y)
 
       this.fireEvent("click", {
         figure: figure,
@@ -1586,7 +1582,7 @@ draw2d.Canvas = Class.extend(
      * @since 1.1.0
      **/
     onRightMouseDown: function (x, y, shiftKey, ctrlKey) {
-      var figure = this.getBestFigure(x, y)
+      let figure = this.getBestFigure(x, y)
       this.fireEvent("contextmenu", {figure: figure, x: x, y: y, shiftKey: shiftKey, ctrlKey: ctrlKey})
 
       if (figure !== null) {
@@ -1620,7 +1616,7 @@ draw2d.Canvas = Class.extend(
      * @private
      **/
     onMouseWheel: function (wheelDelta, x, y, shiftKey, ctrlKey) {
-      var returnValue = true
+      let returnValue = true
       this.fireEvent("wheel", {wheelDelta: wheelDelta, x: x, y: y, shiftKey: shiftKey, ctrlKey: ctrlKey})
 
       // forward the event to all install policies as well.
@@ -1649,8 +1645,8 @@ draw2d.Canvas = Class.extend(
         return
       }
 
-      var subscribers = this.eventSubscriptions[event]
-      for (var i = 0; i < subscribers.length; i++) {
+      let subscribers = this.eventSubscriptions[event]
+      for (let i = 0; i < subscribers.length; i++) {
         try {
           subscribers[i](this, args)
         }
@@ -1696,8 +1692,8 @@ draw2d.Canvas = Class.extend(
      * @since 5.0.0
      */
     on: function (event, callback) {
-      var events = event.split(" ")
-      for (var i = 0; i < events.length; i++) {
+      let events = event.split(" ")
+      for (let i = 0; i < events.length; i++) {
         if (typeof this.eventSubscriptions[events[i]] === 'undefined') {
           this.eventSubscriptions[events[i]] = []
         }
@@ -1725,7 +1721,7 @@ draw2d.Canvas = Class.extend(
         this.eventSubscriptions[eventOrFunction] = []
       }
       else {
-        for (var event in this.eventSubscriptions) {
+        for (let event in this.eventSubscriptions) {
           this.eventSubscriptions[event] = this.eventSubscriptions[event].filter(function (callback) {
             return callback !== eventOrFunction
           })

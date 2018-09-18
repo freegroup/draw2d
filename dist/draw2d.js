@@ -6734,10 +6734,10 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
                                                                                                                                                                                                      *
                                                                                                                                                                                                      *      $(window).load(function () {
                                                                                                                                                                                                      *
-                                                                                                                                                                                                     *          var canvas = new draw2d.Canvas("gfx_holder");
+                                                                                                                                                                                                     *          let canvas = new draw2d.Canvas("gfx_holder");
                                                                                                                                                                                                      *
-                                                                                                                                                                                                     *          var figure1 = new draw2d.shape.basic.Oval();
-                                                                                                                                                                                                     *          var figure2 = new draw2d.shape.basic.Rectangle();
+                                                                                                                                                                                                     *          let figure1 = new draw2d.shape.basic.Oval();
+                                                                                                                                                                                                     *          let figure2 = new draw2d.shape.basic.Rectangle();
                                                                                                                                                                                                      *          canvas.add(figure1,100,100);
                                                                                                                                                                                                      *          canvas.add(figure2,120,150);
                                                                                                                                                                                                      *      });
@@ -6848,7 +6848,6 @@ _packages2.default.Canvas = Class.extend({
     this.figures = new _packages2.default.util.ArrayList();
     this.lines = new _packages2.default.util.ArrayList(); // crap - why are connections not just figures. Design by accident
     this.commonPorts = new _packages2.default.util.ArrayList();
-    this.dropTargets = new _packages2.default.util.ArrayList();
 
     // all visible resize handles which can be drag&drop around. Selection handles like AntRectangleSelectionFeedback
     // are not part of this collection. Required for hitTest only
@@ -7141,7 +7140,6 @@ _packages2.default.Canvas = Class.extend({
     this.figures = new _packages2.default.util.ArrayList();
     this.lines = new _packages2.default.util.ArrayList();
     this.commonPorts = new _packages2.default.util.ArrayList();
-    this.dropTargets = new _packages2.default.util.ArrayList();
 
     this.commandStack.markSaveLocation();
 
@@ -7187,18 +7185,24 @@ _packages2.default.Canvas = Class.extend({
    * @private
    */
   calculateConnectionIntersection: function calculateConnectionIntersection() {
-    var _this = this;
+    var _this2 = this;
+
     this.lineIntersections = new _packages2.default.util.ArrayList();
     var lines = this.getLines().clone();
-    while (lines.getSize() > 0) {
+
+    var _loop = function _loop() {
       var l1 = lines.removeElementAt(0);
       lines.each(function (ii, l2) {
         var partInter = l1.intersection(l2);
         if (partInter.getSize() > 0) {
-          _this.lineIntersections.add({ line: l1, other: l2, intersection: partInter });
-          _this.lineIntersections.add({ line: l2, other: l1, intersection: partInter });
+          _this2.lineIntersections.add({ line: l1, other: l2, intersection: partInter });
+          _this2.lineIntersections.add({ line: l2, other: l1, intersection: partInter });
         }
       });
+    };
+
+    while (lines.getSize() > 0) {
+      _loop();
     }
 
     return this;
@@ -7213,7 +7217,8 @@ _packages2.default.Canvas = Class.extend({
    * @param {draw2d.policy.EditPolicy} policy
    */
   installEditPolicy: function installEditPolicy(policy) {
-    var _this = this;
+    var _this3 = this;
+
     // a canvas can handle only one selection policy
     //
     if (policy instanceof _packages2.default.policy.canvas.SelectionPolicy) {
@@ -7226,7 +7231,7 @@ _packages2.default.Canvas = Class.extend({
       this.editPolicy.grep(function (p) {
         var stay = !(p instanceof _packages2.default.policy.canvas.SelectionPolicy);
         if (stay === false) {
-          p.onUninstall(_this);
+          p.onUninstall(_this3);
         }
         return stay;
       });
@@ -7238,7 +7243,7 @@ _packages2.default.Canvas = Class.extend({
         this.editPolicy.grep(function (p) {
           var stay = !(p instanceof _packages2.default.policy.canvas.ZoomPolicy);
           if (stay === false) {
-            p.onUninstall(_this);
+            p.onUninstall(_this3);
           }
           return stay;
         });
@@ -7248,7 +7253,7 @@ _packages2.default.Canvas = Class.extend({
         this.editPolicy.grep(function (p) {
           var stay = !(p instanceof _packages2.default.policy.connection.ConnectionCreatePolicy);
           if (stay === false) {
-            p.onUninstall(_this);
+            p.onUninstall(_this3);
           }
           return stay;
         });
@@ -7890,14 +7895,14 @@ _packages2.default.Canvas = Class.extend({
    * @param {draw2d.Figure| draw2d.util.ArrayList} object The figure or list of figures to select.
    **/
   setCurrentSelection: function setCurrentSelection(object) {
-    var _this = this;
+    var _this4 = this;
 
     // deselect the current selected figures
     //
     this.selection.each(function (i, e) {
-      _this.editPolicy.each(function (i, policy) {
+      _this4.editPolicy.each(function (i, policy) {
         if (typeof policy.unselect === "function") {
-          policy.unselect(_this, e);
+          policy.unselect(_this4, e);
         }
       });
     });
@@ -7997,7 +8002,7 @@ _packages2.default.Canvas = Class.extend({
 
     // ResizeHandles
     //
-    var len;
+    var len = void 0;
     for (var i = 0, _len2 = this.resizeHandles.getSize(); i < _len2; i++) {
       testFigure = this.resizeHandles.get(i);
       if (testFigure.isVisible() && testFigure.hitTest(x, y) && !isInBlacklist(testFigure) && isInWhitelist(testFigure)) {
@@ -12138,7 +12143,6 @@ _packages2.default.HeadlessCanvas = Class.extend({
         this.figures = new _packages2.default.util.ArrayList();
         this.lines = new _packages2.default.util.ArrayList(); // crap - why are connections not just figures. Design by accident
         this.commonPorts = new _packages2.default.util.ArrayList();
-        this.dropTargets = new _packages2.default.util.ArrayList();
 
         this.eventSubscriptions = {};
 
@@ -12160,7 +12164,6 @@ _packages2.default.HeadlessCanvas = Class.extend({
         this.figures = new _packages2.default.util.ArrayList();
         this.lines = new _packages2.default.util.ArrayList();
         this.commonPorts = new _packages2.default.util.ArrayList();
-        this.dropTargets = new _packages2.default.util.ArrayList();
 
         this.commandStack.markSaveLocation();
 
@@ -14186,168 +14189,167 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 _packages2.default.Selection = Class.extend({
 
-    NAME: "draw2d.Selection",
+  NAME: "draw2d.Selection",
 
-    /**
-     * @constructor
-     * Creates a new figure element which are not assigned to any canvas.
-     *
-     */
-    init: function init() {
-        this.primary = null;
-        this.all = new _packages2.default.util.ArrayList();
-    },
+  /**
+   * @constructor
+   * Creates a new figure element which are not assigned to any canvas.
+   *
+   */
+  init: function init() {
+    this.primary = null;
+    this.all = new _packages2.default.util.ArrayList();
+  },
 
-    /**
-     * @method
-     * Reset the current selection
-     *
-     */
-    clear: function clear() {
-        this.primary = null;
-        this.all = new _packages2.default.util.ArrayList();
+  /**
+   * @method
+   * Reset the current selection
+   *
+   */
+  clear: function clear() {
+    this.primary = null;
+    this.all = new _packages2.default.util.ArrayList();
 
-        return this;
-    },
+    return this;
+  },
 
-    /**
-     * @method
-     * Return the primary selection. This can only one figure at once.
-     *
-     * @return {draw2d.Figure} the primary selected figure
-     */
-    getPrimary: function getPrimary() {
-        return this.primary;
-    },
+  /**
+   * @method
+   * Return the primary selection. This can only one figure at once.
+   *
+   * @return {draw2d.Figure} the primary selected figure
+   */
+  getPrimary: function getPrimary() {
+    return this.primary;
+  },
 
-    /**
-     * @method
-     * Set the primary selection.
-     *
-     * @param {draw2d.Figure} figure The new primary selection
-     */
-    setPrimary: function setPrimary(figure) {
-        this.primary = figure;
-        this.add(figure);
+  /**
+   * @method
+   * Set the primary selection.
+   *
+   * @param {draw2d.Figure} figure The new primary selection
+   */
+  setPrimary: function setPrimary(figure) {
+    this.primary = figure;
+    this.add(figure);
 
-        return this;
-    },
+    return this;
+  },
 
-    /**
-     * @method
-     * Remove the given figure from the selection (primary,all)
-     *
-     * @param {draw2d.Figure} figure
-     */
-    remove: function remove(figure) {
-        this.all.remove(figure);
-        if (this.primary === figure) {
-            this.primary = null;
-        }
-
-        return this;
-    },
-
-    /**
-     * @method
-     * Add a figure to the selection. No events are fired or update the selection handle. This method just
-     * add the figure to the internal management data structure.
-     *
-     * @param figure
-     * @private
-     */
-    add: function add(figure) {
-        if (figure !== null && !this.all.contains(figure)) {
-            this.all.add(figure);
-        }
-
-        return this;
-    },
-
-    /**
-     * @method
-     * return true if the given figure part of the selection.
-     *
-     * @param {draw2d.Figure} figure The figure to check
-     * @param {Boolean} [checkDescendant] Check if the figure provided by the argument is a descendant of the selection whether it is a direct child or nested more deeply.
-     *
-     * @since 2.2.0
-     * @return {Boolean}
-     */
-    contains: function contains(figure, checkDescendant) {
-        if (checkDescendant) {
-            for (var i = 0; i < this.all.getSize(); i++) {
-                var figureToCheck = this.all.get(i);
-                if (figureToCheck === figure || figureToCheck.contains(figure)) {
-                    return true;
-                }
-            }
-            return false;
-        }
-        return this.all.contains(figure);
-    },
-
-    /**
-     * @method
-     * Return the size of the selection
-     *
-     * @since 4.8.0
-     */
-    getSize: function getSize() {
-        return this.all.getSize();
-    },
-
-    /**
-     * @method
-     * Return the complete selection - including the primary selection.
-     *
-     * @param {Boolean} [expand] expand all StrongComposite and WeakComposite to get all figures. Didn't expand any SetFigures or LayoutFigures
-     * @return {draw2d.util.ArrayList}
-     *
-     */
-    getAll: function getAll(expand) {
-        if (expand === true) {
-            var result = new _packages2.default.util.ArrayList();
-            var addRecursive = function addRecursive(figures) {
-                result.addAll(figures, true);
-                figures.each(function (index, figure) {
-                    if (figure instanceof _packages2.default.shape.composite.StrongComposite) {
-                        addRecursive(figure.getAssignedFigures());
-                    }
-                });
-            };
-            addRecursive(this.all);
-
-            return result;
-        }
-
-        return this.all.clone();
-    },
-
-    /**
-     * @method
-     * Iterates over the current selection with <b>func</b> as callback handler.
-     *
-     * @param {Function} func the callback function to call for each element
-     * @param {Number} func.i index of the element in iteration
-     * @param {Object} func.value value of the element in iteration.
-     * @param {Boolean} [reverse] optional parameter. Iterate the collection reverse if it set to <b>true</b>
-     */
-    each: function each(func, reverse) {
-        this.all.each(func, reverse);
-
-        return this;
+  /**
+   * @method
+   * Remove the given figure from the selection (primary,all)
+   *
+   * @param {draw2d.Figure} figure
+   */
+  remove: function remove(figure) {
+    this.all.remove(figure);
+    if (this.primary === figure) {
+      this.primary = null;
     }
-});
-/**
- * @class draw2d.Selection
- *
- * Represents the current selection in the canvas. The selection element is a pure passive element which
- * manage/store the selection.
- *
- *
- * @author Andreas Herz
- */
+
+    return this;
+  },
+
+  /**
+   * @method
+   * Add a figure to the selection. No events are fired or update the selection handle. This method just
+   * add the figure to the internal management data structure.
+   *
+   * @param figure
+   * @private
+   */
+  add: function add(figure) {
+    if (figure !== null && !this.all.contains(figure)) {
+      this.all.add(figure);
+    }
+
+    return this;
+  },
+
+  /**
+   * @method
+   * return true if the given figure part of the selection.
+   *
+   * @param {draw2d.Figure} figure The figure to check
+   * @param {Boolean} [checkDescendant] Check if the figure provided by the argument is a descendant of the selection whether it is a direct child or nested more deeply.
+   *
+   * @since 2.2.0
+   * @return {Boolean}
+   */
+  contains: function contains(figure, checkDescendant) {
+    if (checkDescendant) {
+      for (var i = 0; i < this.all.getSize(); i++) {
+        var figureToCheck = this.all.get(i);
+        if (figureToCheck === figure || figureToCheck.contains(figure)) {
+          return true;
+        }
+      }
+      return false;
+    }
+    return this.all.contains(figure);
+  },
+
+  /**
+   * @method
+   * Return the size of the selection
+   *
+   * @since 4.8.0
+   */
+  getSize: function getSize() {
+    return this.all.getSize();
+  },
+
+  /**
+   * @method
+   * Return the complete selection - including the primary selection.
+   *
+   * @param {Boolean} [expand] expand all StrongComposite and WeakComposite to get all figures. Didn't expand any SetFigures or LayoutFigures
+   * @return {draw2d.util.ArrayList}
+   *
+   */
+  getAll: function getAll(expand) {
+    if (expand === true) {
+      var result = new _packages2.default.util.ArrayList();
+      var addRecursive = function addRecursive(figures) {
+        result.addAll(figures, true);
+        figures.each(function (index, figure) {
+          if (figure instanceof _packages2.default.shape.composite.StrongComposite) {
+            addRecursive(figure.getAssignedFigures());
+          }
+        });
+      };
+      addRecursive(this.all);
+
+      return result;
+    }
+
+    return this.all.clone();
+  },
+
+  /**
+   * @method
+   * Iterates over the current selection with <b>func</b> as callback handler.
+   *
+   * @param {Function} func the callback function to call for each element
+   * @param {Number} func.i index of the element in iteration
+   * @param {Object} func.value value of the element in iteration.
+   * @param {Boolean} [reverse] optional parameter. Iterate the collection reverse if it set to <b>true</b>
+   */
+  each: function each(func, reverse) {
+    this.all.each(func, reverse);
+
+    return this;
+  }
+}); /**
+     * @class draw2d.Selection
+     *
+     * Represents the current selection in the canvas. The selection element is a pure passive element which
+     * manage/store the selection.
+     *
+     *
+     * @author Andreas Herz
+     */
 
 /***/ }),
 
@@ -17436,7 +17438,7 @@ _packages2.default.command.CommandStack = Class.extend({
       return;
     }
 
-    this.notifyListeners(command, _packages2.default.command.CommandStack.PRE_EXECUTE);
+    this.notifyListeners(command, _packages2.default.command.CommandStack.PRE_EXECUTE, "PRE_EXECUTE");
 
     this.undostack.push(command);
     command.execute();
@@ -17451,7 +17453,7 @@ _packages2.default.command.CommandStack = Class.extend({
     if (this.undostack.length > this.maxundo) {
       this.undostack = this.undostack.slice(this.undostack.length - this.maxundo);
     }
-    this.notifyListeners(command, _packages2.default.command.CommandStack.POST_EXECUTE);
+    this.notifyListeners(command, _packages2.default.command.CommandStack.POST_EXECUTE, "POST_EXECUTE");
 
     return this;
   },
@@ -17659,8 +17661,8 @@ _packages2.default.command.CommandStack = Class.extend({
    * @param {Number} state the current stack state
    *
    **/
-  notifyListeners: function notifyListeners(command, state) {
-    var event = new _packages2.default.command.CommandStackEvent(this, command, state);
+  notifyListeners: function notifyListeners(command, state, action) {
+    var event = new _packages2.default.command.CommandStackEvent(this, command, state, action);
     var size = this.eventListeners.getSize();
 
     for (var i = 0; i < size; i++) {
@@ -17719,10 +17721,11 @@ _packages2.default.command.CommandStackEvent = Class.extend({
    * @param {Number} details the current state of the command execution
    *
    */
-  init: function init(stack, command, details) {
+  init: function init(stack, command, details, action) {
     this.stack = stack;
     this.command = command;
-    this.details = details;
+    this.details = details; // deprecated
+    this.action = action;
   },
 
   /**
@@ -17763,7 +17766,7 @@ _packages2.default.command.CommandStackEvent = Class.extend({
    * @return {Boolean} true if post-change event
    **/
   isPostChangeEvent: function isPostChangeEvent() {
-    return 0 != (this.getDetails() & _packages2.default.command.CommandStack.POST_MASK);
+    return 0 !== (this.getDetails() & _packages2.default.command.CommandStack.POST_MASK);
   },
 
   /**
@@ -17773,13 +17776,12 @@ _packages2.default.command.CommandStackEvent = Class.extend({
    * @return {Boolean} true if pre-change event
    **/
   isPreChangeEvent: function isPreChangeEvent() {
-    return 0 != (this.getDetails() & _packages2.default.command.CommandStack.PRE_MASK);
+    return 0 !== (this.getDetails() & _packages2.default.command.CommandStack.PRE_MASK);
   }
-});
-/**
- * @class draw2d.command.CommandStackEvent
- * Event class which will be fired for every CommandStack operation. Required for CommandStackListener.
- */
+}); /**
+     * @class draw2d.command.CommandStackEvent
+     * Event class which will be fired for every CommandStack operation. Required for CommandStackListener.
+     */
 
 /***/ }),
 
@@ -20030,6 +20032,8 @@ __webpack_require__(/*! ./policy/canvas/DecorationPolicy */ "./src/policy/canvas
 __webpack_require__(/*! ./policy/canvas/FadeoutDecorationPolicy */ "./src/policy/canvas/FadeoutDecorationPolicy.js");
 __webpack_require__(/*! ./policy/canvas/CoronaDecorationPolicy */ "./src/policy/canvas/CoronaDecorationPolicy.js");
 __webpack_require__(/*! ./policy/canvas/SnapToEditPolicy */ "./src/policy/canvas/SnapToEditPolicy.js");
+__webpack_require__(/*! ./policy/canvas/ShowDimetricGridEditPolicy */ "./src/policy/canvas/ShowDimetricGridEditPolicy.js");
+__webpack_require__(/*! ./policy/canvas/SnapToDimetricGridEditPolicy */ "./src/policy/canvas/SnapToDimetricGridEditPolicy.js");
 __webpack_require__(/*! ./policy/canvas/ShowGridEditPolicy */ "./src/policy/canvas/ShowGridEditPolicy.js");
 __webpack_require__(/*! ./policy/canvas/SnapToGridEditPolicy */ "./src/policy/canvas/SnapToGridEditPolicy.js");
 __webpack_require__(/*! ./policy/canvas/ShowDotEditPolicy */ "./src/policy/canvas/ShowDotEditPolicy.js");
@@ -20093,6 +20097,7 @@ __webpack_require__(/*! ./shape/basic/PolyLine */ "./src/shape/basic/PolyLine.js
 __webpack_require__(/*! ./shape/basic/Image */ "./src/shape/basic/Image.js");
 __webpack_require__(/*! ./shape/basic/Polygon */ "./src/shape/basic/Polygon.js");
 __webpack_require__(/*! ./shape/basic/Diamond */ "./src/shape/basic/Diamond.js");
+__webpack_require__(/*! ./shape/dimetric/Rectangle */ "./src/shape/dimetric/Rectangle.js");
 __webpack_require__(/*! ./shape/composite/Composite */ "./src/shape/composite/Composite.js");
 __webpack_require__(/*! ./shape/composite/StrongComposite */ "./src/shape/composite/StrongComposite.js");
 __webpack_require__(/*! ./shape/composite/Group */ "./src/shape/composite/Group.js");
@@ -28603,6 +28608,7 @@ exports.default = {
 
   shape: {
     basic: {},
+    dimetric: {},
     composite: {},
     arrow: {},
     node: {},
@@ -28843,6 +28849,8 @@ _packages2.default.policy.canvas.BoundingboxSelectionPolicy = _packages2.default
    * @inheritdoc
    */
   select: function select(canvas, figure) {
+    var _this = this;
+
     if (canvas.getSelection().contains(figure)) {
       return; // nothing to to
     }
@@ -28858,12 +28866,11 @@ _packages2.default.policy.canvas.BoundingboxSelectionPolicy = _packages2.default
 
       // inform all selection listeners about the new selection.
       //
-      canvas.fireEvent("select", { figure: figure });
+      canvas.fireEvent("select", { figure: figure, selection: canvas.getSelection() });
     }
 
     // adding connections to the selection of the source and target port part of the current selection
     //
-    var _this = this;
     var selection = canvas.getSelection();
     canvas.getLines().each(function (i, line) {
       if (line instanceof _packages2.default.Connection) {
@@ -28905,9 +28912,9 @@ _packages2.default.policy.canvas.BoundingboxSelectionPolicy = _packages2.default
    * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
    */
   onMouseDown: function onMouseDown(canvas, x, y, shiftKey, ctrlKey) {
-    try {
-      var _this = this;
+    var _this2 = this;
 
+    try {
       this.x = x;
       this.y = y;
 
@@ -28963,7 +28970,7 @@ _packages2.default.policy.canvas.BoundingboxSelectionPolicy = _packages2.default
       if (shiftKey === false) {
         if (this.mouseDownElement !== null && this.mouseDownElement.isResizeHandle === false && !currentSelection.contains(this.mouseDownElement)) {
           currentSelection.each(function (i, figure) {
-            _this.unselect(canvas, figure);
+            _this2.unselect(canvas, figure);
           });
         }
       }
@@ -29009,7 +29016,7 @@ _packages2.default.policy.canvas.BoundingboxSelectionPolicy = _packages2.default
           if (figure instanceof _packages2.default.shape.basic.Line) {
             // no special handling
           } else if (canDragStart === false) {
-            _this.unselect(canvas, figure);
+            _this2.unselect(canvas, figure);
           }
         });
       }
@@ -29085,13 +29092,14 @@ _packages2.default.policy.canvas.BoundingboxSelectionPolicy = _packages2.default
    * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
    */
   onMouseUp: function onMouseUp(canvas, x, y, shiftKey, ctrlKey) {
+    var _this3 = this;
+
     try {
-      var _this = this;
       // delete the current selection if you have clicked in the empty
       // canvas.
       if (this.mouseDownElement === null) {
         canvas.getSelection().getAll().each(function (i, figure) {
-          _this.unselect(canvas, figure);
+          _this3.unselect(canvas, figure);
         });
       } else if (this.mouseDownElement instanceof _packages2.default.ResizeHandle || this.mouseDownElement instanceof _packages2.default.shape.basic.LineResizeHandle) {}
       // Do nothing
@@ -29104,7 +29112,7 @@ _packages2.default.policy.canvas.BoundingboxSelectionPolicy = _packages2.default
           var sel = canvas.getSelection().getAll();
           if (!sel.contains(this.mouseDownElement)) {
             canvas.getSelection().getAll().each(function (i, figure) {
-              _this.unselect(canvas, figure);
+              _this3.unselect(canvas, figure);
             });
           }
         }
@@ -29115,7 +29123,7 @@ _packages2.default.policy.canvas.BoundingboxSelectionPolicy = _packages2.default
         //
         var selectionRect = this.boundingBoxFigure1.getBoundingBox();
         canvas.getFigures().each(function (i, figure) {
-          if (figure.isSelectable() === true && _this.decision(figure.getBoundingBox(), selectionRect)) {
+          if (figure.isSelectable() === true && _this3.decision(figure.getBoundingBox(), selectionRect)) {
             var fakeDragX = 1;
             var fakeDragY = 1;
 
@@ -29127,7 +29135,7 @@ _packages2.default.policy.canvas.BoundingboxSelectionPolicy = _packages2.default
             }
             var canDragStart = figure.onDragStart(fakeDragX, fakeDragY, shiftKey, ctrlKey);
             if (canDragStart === true) {
-              _this.select(canvas, figure, false);
+              _this3.select(canvas, figure, false);
             }
           }
         });
@@ -30604,9 +30612,6 @@ _packages2.default.policy.canvas.SelectionPolicy = _packages2.default.policy.can
 
     // @since 6.1.42
     canvas.fireEvent("unselect", { figure: figure });
-
-    // deprecated
-    canvas.fireEvent("select", { figure: null });
   }
 });
 /**
@@ -30718,6 +30723,143 @@ _packages2.default.policy.canvas.ShowChessboardEditPolicy = _packages2.default.p
  * 
  * @extends draw2d.policy.canvas.DecorationPolicy
  */
+
+/***/ }),
+
+/***/ "./src/policy/canvas/ShowDimetricGridEditPolicy.js":
+/*!*********************************************************!*\
+  !*** ./src/policy/canvas/ShowDimetricGridEditPolicy.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _packages = __webpack_require__(/*! ../../packages */ "./src/packages.js");
+
+var _packages2 = _interopRequireDefault(_packages);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_packages2.default.policy.canvas.ShowDimetricGridEditPolicy = _packages2.default.policy.canvas.DecorationPolicy.extend({
+
+  NAME: "draw2d.policy.canvas.ShowDimetricGridEditPolicy",
+
+  GRID_COLOR: "#f0f0f0",
+  GRID_WIDTH: 30,
+
+  /**
+   * @constructor
+   * Creates a new constraint policy for snap to grid
+   *
+   * @param {Number} [grid] the grid width of the canvas
+   */
+  init: function init(grid) {
+    this.color = new _packages2.default.util.Color(this.GRID_COLOR);
+    this.zoom = 1;
+    this.shapes = null;
+
+    this._super();
+
+    if (typeof grid === "number") {
+      this.grid = grid;
+    } else {
+      this.grid = this.GRID_WIDTH;
+    }
+  },
+
+  onInstall: function onInstall(canvas) {
+    this._super(canvas);
+    this.zoom = canvas.getZoom();
+    this.setGrid(this.grid);
+  },
+
+  onUninstall: function onUninstall(canvas) {
+    this._super(canvas);
+    if (this.shapes !== null) {
+      this.shapes.remove();
+    }
+  },
+
+  /**
+   * @method
+   * Set the grid color
+   *
+   * @param {draw2d.util.Color|String} color a color object or the CSS string declaration for a color
+   * @since 5.0.3
+   */
+  setGridColor: function setGridColor(color) {
+    this.color = new _packages2.default.util.Color(color);
+    this.setGrid(this.grid);
+  },
+
+  /**
+   * @method
+   * Set a new grid width/height
+   *
+   * @param {Number} grid
+   * @since 5.0.3
+   */
+  setGrid: function setGrid(grid) {
+    this.grid = grid;
+
+    if (this.canvas != null) {
+      if (this.shapes !== null) {
+        this.shapes.remove();
+      }
+
+      var r = this.canvas.paper;
+      var d = this.grid,
+          i = void 0;
+      var w = r.width;
+      var h = r.height;
+      var props = { stroke: this.color.hash() };
+
+      var max = Math.sqrt(w * w + h * h);
+      var angle26 = Math.atan(.5);
+      var angle153 = Math.PI - angle26;
+      var cos30 = Math.cos(angle26);
+      var sin30 = Math.sin(angle26);
+      var cos150 = Math.cos(angle153);
+      var sin150 = Math.sin(angle153);
+
+      r.setStart();
+      // horizontal
+      for (i = 0; i <= w; i += d * 2) {
+        r.path([["M", i, 0], ["L", i + cos30 * max, sin30 * max]]).attr(props);
+        r.path([["M", i, 0], ["L", i + cos150 * max, sin150 * max]]).attr(props);
+      }
+      for (i = d; i <= h; i += d) {
+        r.path([["M", 0, i], ["L", cos30 * max, i + sin30 * max]]).attr(props);
+        r.path([["M", w, i], ["L", w + cos150 * max, i + sin150 * max]]).attr(props);
+      }
+      // vertical
+      this.shapes = r.setFinish();
+
+      this.shapes.toBack();
+    }
+  }
+
+}); /**
+     * @class draw2d.policy.canvas.ShowDimetricGridEditPolicy
+     *
+     * A canvas decoration which paints a dimetric in the background.
+     * <br>
+     * <br>
+     * See the example:
+     *
+     *     @example preview small frame
+     *
+     *     canvas.installEditPolicy(new draw2d.policy.canvas.ShowDimetricGridEditPolicy());
+     *     let shape =  new draw2d.shape.basic.Text({text:"This is a simple text in a canvas with grid background."});
+     *
+     *     canvas.add(shape,40,10);
+     *
+     * @author Andreas Herz
+     *
+     * @extends draw2d.policy.canvas.DecorationPolicy
+     */
 
 /***/ }),
 
@@ -30949,309 +31091,323 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 _packages2.default.policy.canvas.SingleSelectionPolicy = _packages2.default.policy.canvas.SelectionPolicy.extend({
 
-    NAME: "draw2d.policy.canvas.SingleSelectionPolicy",
+  NAME: "draw2d.policy.canvas.SingleSelectionPolicy",
 
-    /**
-     * @constructor
-     * Creates a new Router object
-     */
-    init: function init() {
-        this._super();
-        this.mouseMovedDuringMouseDown = false;
-        this.mouseDraggingElement = null;
-        this.mouseDownElement = null;
-    },
+  /**
+   * @constructor
+   * Creates a new Router object
+   */
+  init: function init() {
+    this._super();
+    this.mouseMovedDuringMouseDown = false;
+    this.mouseDraggingElement = null;
+    this.mouseDownElement = null;
+  },
 
-    /**
-     * @inheritdoc
-     */
-    select: function select(canvas, figure) {
-        if (canvas.getSelection().contains(figure)) {
-            return; // nothing to to
-        }
-
-        var oldSelection = canvas.getSelection().getPrimary();
-        if (canvas.getSelection().getPrimary() !== null) {
-            this.unselect(canvas, canvas.getSelection().getPrimary());
-        }
-
-        if (figure !== null) {
-            figure.select(true); // primary selection
-        }
-
-        canvas.getSelection().setPrimary(figure);
-
-        // inform all selection listeners about the new selection.
-        //
-        if (oldSelection !== figure) {
-            canvas.fireEvent("select", { figure: figure });
-        }
-    },
-
-    /**
-     * @method
-     *
-     * @param {draw2d.Canvas} canvas
-     * @param {Number} x the x-coordinate of the mouse down event
-     * @param {Number} y the y-coordinate of the mouse down event
-     * @param {Boolean} shiftKey true if the shift key has been pressed during this event
-     * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
-     */
-    onMouseDown: function onMouseDown(canvas, x, y, shiftKey, ctrlKey) {
-        this.mouseMovedDuringMouseDown = false;
-        var canDragStart = true;
-
-        // ignore ports since version 6.1.0. This is handled by the ConnectionCreatePolicy
-        //
-        var figure = canvas.getBestFigure(x, y);
-
-        // may the figure is assigned to a composite. In this case the composite can
-        // override the event receiver
-        while (figure !== null) {
-            var delegate = figure.getSelectionAdapter()();
-            if (delegate === figure) {
-                break;
-            }
-            figure = delegate;
-        }
-
-        // ignore ports since version 6.1.0. This is handled by the ConnectionCreatePolicy
-        //
-        if (figure instanceof _packages2.default.Port) {
-            return; // silently
-        }
-
-        if (figure !== null && figure.isDraggable()) {
-            canDragStart = figure.onDragStart(x - figure.getAbsoluteX(), y - figure.getAbsoluteY(), shiftKey, ctrlKey);
-            // Element send a veto about the drag&drop operation
-            this.mouseDraggingElement = canDragStart === false ? null : figure;
-        }
-
-        this.mouseDownElement = figure;
-        if (this.mouseDownElement !== null) {
-            this.mouseDownElement.fireEvent("mousedown", { x: x, y: y, shiftKey: shiftKey, ctrlKey: ctrlKey });
-        }
-
-        if (figure !== canvas.getSelection().getPrimary() && figure !== null && figure.isSelectable() === true) {
-            this.select(canvas, figure);
-
-            // it's a line
-            if (figure instanceof _packages2.default.shape.basic.Line) {
-                // you can move a line with Drag&Drop...but not a connection.
-                // A Connection is fixed linked with the corresponding ports.
-                //
-                if (!(figure instanceof _packages2.default.Connection)) {
-                    canvas.draggingLineCommand = figure.createCommand(new _packages2.default.command.CommandType(_packages2.default.command.CommandType.MOVE));
-                    if (canvas.draggingLineCommand !== null) {
-                        canvas.draggingLine = figure;
-                    }
-                }
-            } else if (canDragStart === false) {
-                figure.unselect();
-            }
-        }
-    },
-
-    /**
-     * @method
-     *
-     * @param {draw2d.Canvas} canvas
-     * @param {Number} dx The x diff between start of dragging and this event
-     * @param {Number} dy The y diff between start of dragging and this event
-     * @param {Number} dx2 The x diff since the last call of this dragging operation
-     * @param {Number} dy2 The y diff since the last call of this dragging operation
-     * @param {Boolean} shiftKey true if the shift key has been pressed during this event
-     * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
-     * @template
-     */
-    onMouseDrag: function onMouseDrag(canvas, dx, dy, dx2, dy2, shiftKey, ctrlKey) {
-        this.mouseMovedDuringMouseDown = true;
-        if (this.mouseDraggingElement !== null) {
-            // Can be a ResizeHandle or a normal Figure
-            //
-            var sel = canvas.getSelection();
-            if (!sel.contains(this.mouseDraggingElement)) {
-                this.mouseDraggingElement.onDrag(dx, dy, dx2, dy2, shiftKey, ctrlKey);
-            } else {
-                sel.each(function (i, figure) {
-                    figure.onDrag(dx, dy, dx2, dy2, shiftKey, ctrlKey);
-                });
-            }
-
-            var p = canvas.fromDocumentToCanvasCoordinate(canvas.mouseDownX + dx / canvas.zoomFactor, canvas.mouseDownY + dy / canvas.zoomFactor);
-            var target = canvas.getBestFigure(p.x, p.y, this.mouseDraggingElement);
-
-            if (target !== canvas.currentDropTarget) {
-                if (canvas.currentDropTarget !== null) {
-                    canvas.currentDropTarget.onDragLeave(this.mouseDraggingElement);
-                    canvas.currentDropTarget.fireEvent("dragLeave", { draggingElement: this.mouseDraggingElement });
-                    canvas.currentDropTarget = null;
-                }
-                if (target !== null) {
-                    canvas.currentDropTarget = target.delegateTarget(this.mouseDraggingElement);
-                    // inform all listener that the element has accept the dragEnter event
-                    //
-                    if (canvas.currentDropTarget !== null) {
-                        canvas.currentDropTarget.onDragEnter(this.mouseDraggingElement); // legacy
-                        canvas.currentDropTarget.fireEvent("dragEnter", { draggingElement: this.mouseDraggingElement });
-                    }
-                }
-            }
-        }
-        // Connection didn't support panning at the moment. There is no special reason for that. Just an interaction
-        // decision.
-        //
-        else if (this.mouseDownElement !== null && !(this.mouseDownElement instanceof _packages2.default.Connection)) {
-                if (this.mouseDownElement.panningDelegate !== null) {
-                    this.mouseDownElement.panningDelegate.fireEvent("panning", { dx: dx, dy: dy, dx2: dx2, dy2: dy2, shiftKey: shiftKey, ctrlKey: ctrlKey });
-                    this.mouseDownElement.panningDelegate.onPanning(dx, dy, dx2, dy2, shiftKey, ctrlKey);
-                } else {
-                    this.mouseDownElement.fireEvent("panning", { dx: dx, dy: dy, dx2: dx2, dy2: dy2, shiftKey: shiftKey, ctrlKey: ctrlKey });
-                    this.mouseDownElement.onPanning(dx, dy, dx2, dy2, shiftKey, ctrlKey);
-                }
-            }
-    },
-
-    /**
-     * @method
-     *
-     * @param {draw2d.Figure} figure the shape below the mouse or null
-     * @param {Number} x the x-coordinate of the mouse down event
-     * @param {Number} y the y-coordinate of the mouse down event
-     * @param {Boolean} shiftKey true if the shift key has been pressed during this event
-     * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
-     */
-    onMouseUp: function onMouseUp(canvas, x, y, shiftKey, ctrlKey) {
-        if (this.mouseDraggingElement !== null) {
-            var redrawConnection = new _packages2.default.util.ArrayList();
-            if (this.mouseDraggingElement instanceof _packages2.default.shape.node.Node) {
-                // TODO: don't add the connections with to check if a repaint is required
-                //       may a moved connection didn't have an intersection with the named lines.
-                //       in this case a redraw is useless
-                canvas.lineIntersections.each(function (i, inter) {
-                    if (!redrawConnection.contains(inter.line)) redrawConnection.add(inter.line);
-                    if (!redrawConnection.contains(inter.other)) redrawConnection.add(inter.other);
-                });
-            }
-
-            // start CommandStack transaction
-            canvas.getCommandStack().startTransaction();
-
-            var sel = canvas.getSelection().getAll();
-            if (!sel.contains(this.mouseDraggingElement)) {
-                this.mouseDraggingElement.onDragEnd(x, y, shiftKey, ctrlKey);
-            } else {
-                canvas.getSelection().getAll().each(function (i, figure) {
-                    figure.onDragEnd(x, y, shiftKey, ctrlKey);
-                });
-            }
-
-            if (canvas.currentDropTarget !== null && !this.mouseDraggingElement.isResizeHandle) {
-                this.mouseDraggingElement.onDrop(canvas.currentDropTarget, x, y, shiftKey, ctrlKey);
-                canvas.currentDropTarget.onDragLeave(this.mouseDraggingElement);
-                canvas.currentDropTarget.fireEvent("dragLeave", { draggingElement: this.mouseDraggingElement });
-                canvas.currentDropTarget.onCatch(this.mouseDraggingElement, x, y, shiftKey, ctrlKey);
-                canvas.currentDropTarget = null;
-            }
-
-            // end command stack trans
-            canvas.getCommandStack().commitTransaction();
-
-            if (this.mouseDraggingElement instanceof _packages2.default.shape.node.Node) {
-                canvas.lineIntersections.each(function (i, inter) {
-                    if (!redrawConnection.contains(inter.line)) redrawConnection.add(inter.line);
-                    if (!redrawConnection.contains(inter.other)) redrawConnection.add(inter.other);
-                });
-                redrawConnection.each(function (i, line) {
-                    line.svgPathString = null;
-                    line.repaint();
-                });
-            }
-
-            this.mouseDraggingElement = null;
-        }
-        // Connection didn't support panning at the moment. There is no special reason for that. Just an interaction
-        // decision.
-        //
-        else if (this.mouseDownElement !== null && !(this.mouseDownElement instanceof _packages2.default.Connection)) {
-                if (this.mouseDownElement.panningDelegate !== null) {
-                    this.mouseDownElement.panningDelegate.fireEvent("panningEnd");
-                    this.mouseDownElement.panningDelegate.onPanningEnd();
-                } else {
-                    this.mouseDownElement.fireEvent("panningEnd");
-                    this.mouseDownElement.onPanningEnd();
-                }
-            }
-
-        // Reset the current selection if the user click in the blank canvas.
-        // Don't reset the selection if the user pan the canvas
-        //
-        if (this.mouseDownElement === null && this.mouseMovedDuringMouseDown === false) {
-            this.select(canvas, null);
-        }
-
-        if (this.mouseDownElement !== null) {
-            this.mouseDownElement.fireEvent("mouseup", { x: x, y: y, shiftKey: shiftKey, ctrlKey: ctrlKey });
-        }
-
-        this.mouseDownElement = null;
-        this.mouseMovedDuringMouseDown = false;
-    },
-
-    /**
-     * @method
-     * Called by the canvas if the user click on a figure.
-     *
-     * @param {draw2d.Figure} the figure under the click event. Can be null
-     * @param {Number} mouseX the x coordinate of the mouse during the click event
-     * @param {Number} mouseY the y coordinate of the mouse during the click event
-     * @param {Boolean} shiftKey true if the shift key has been pressed during this event
-     * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
-     *
-     * @since 3.0.0
-     */
-    onClick: function onClick(figure, mouseX, mouseY, shiftKey, ctrlKey) {
-        if (figure !== null) {
-            figure.fireEvent("click", {
-                figure: figure,
-                x: mouseX,
-                y: mouseY,
-                relX: mouseX - figure.getAbsoluteX(),
-                relY: mouseY - figure.getAbsoluteY(),
-                shiftKey: shiftKey,
-                ctrlKey: ctrlKey });
-
-            figure.onClick();
-        }
-    },
-
-    /**
-     * @method
-     * Called by the canvas if the user double click on a figure.
-     *
-     * @param {draw2d.Figure} the figure under the double click event. Can be null
-     * @param {Number} mouseX the x coordinate of the mouse during the click event
-     * @param {Number} mouseY the y coordinate of the mouse during the click event
-     * @param {Boolean} shiftKey true if the shift key has been pressed during this event
-     * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
-     *
-     * @since 4.1.0
-     */
-    onDoubleClick: function onDoubleClick(figure, mouseX, mouseY, shiftKey, ctrlKey) {
-        if (figure !== null) {
-            figure.fireEvent("dblclick", { x: mouseX, y: mouseY, shiftKey: shiftKey, ctrlKey: ctrlKey });
-            figure.onDoubleClick();
-        }
+  /**
+   * @inheritdoc
+   */
+  select: function select(canvas, figure) {
+    if (canvas.getSelection().contains(figure)) {
+      return; // nothing to to
     }
 
-});
-/**
- * @class draw2d.policy.canvas.SingleSelectionPolicy
- *
- *
- * @author Andreas Herz
- * @extends draw2d.policy.canvas.SelectionPolicy
- */
+    var oldSelection = canvas.getSelection().getPrimary();
+    if (canvas.getSelection().getPrimary() !== null) {
+      this.unselect(canvas, canvas.getSelection().getPrimary());
+    }
+
+    if (figure !== null) {
+      figure.select(true); // primary selection
+    }
+
+    canvas.getSelection().setPrimary(figure);
+
+    // inform all selection listeners about the new selection.
+    //
+    if (oldSelection !== figure) {
+      canvas.fireEvent("select", { figure: figure, selection: canvas.getSelection() });
+    }
+  },
+
+  /**
+   * @method
+   *
+   * @param {draw2d.Canvas} canvas
+   * @param {Number} x the x-coordinate of the mouse down event
+   * @param {Number} y the y-coordinate of the mouse down event
+   * @param {Boolean} shiftKey true if the shift key has been pressed during this event
+   * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
+   */
+  onMouseDown: function onMouseDown(canvas, x, y, shiftKey, ctrlKey) {
+    this.mouseMovedDuringMouseDown = false;
+    var canDragStart = true;
+
+    // ignore ports since version 6.1.0. This is handled by the ConnectionCreatePolicy
+    //
+    var figure = canvas.getBestFigure(x, y);
+
+    // may the figure is assigned to a composite. In this case the composite can
+    // override the event receiver
+    while (figure !== null) {
+      var delegate = figure.getSelectionAdapter()();
+      if (delegate === figure) {
+        break;
+      }
+      figure = delegate;
+    }
+
+    // ignore ports since version 6.1.0. This is handled by the ConnectionCreatePolicy
+    //
+    if (figure instanceof _packages2.default.Port) {
+      return; // silently
+    }
+
+    if (figure !== null && figure.isDraggable()) {
+      canDragStart = figure.onDragStart(x - figure.getAbsoluteX(), y - figure.getAbsoluteY(), shiftKey, ctrlKey);
+      // Element send a veto about the drag&drop operation
+      this.mouseDraggingElement = canDragStart === false ? null : figure;
+    }
+
+    this.mouseDownElement = figure;
+    if (this.mouseDownElement !== null) {
+      this.mouseDownElement.fireEvent("mousedown", { x: x, y: y, shiftKey: shiftKey, ctrlKey: ctrlKey });
+    }
+
+    if (figure !== canvas.getSelection().getPrimary() && figure !== null && figure.isSelectable() === true) {
+      this.select(canvas, figure);
+
+      // it's a line
+      if (figure instanceof _packages2.default.shape.basic.Line) {
+        // you can move a line with Drag&Drop...but not a connection.
+        // A Connection is fixed linked with the corresponding ports.
+        //
+        if (!(figure instanceof _packages2.default.Connection)) {
+          canvas.draggingLineCommand = figure.createCommand(new _packages2.default.command.CommandType(_packages2.default.command.CommandType.MOVE));
+          if (canvas.draggingLineCommand !== null) {
+            canvas.draggingLine = figure;
+          }
+        }
+      } else if (canDragStart === false) {
+        figure.unselect();
+      }
+    }
+  },
+
+  /**
+   * @method
+   *
+   * @param {draw2d.Canvas} canvas
+   * @param {Number} dx The x diff between start of dragging and this event
+   * @param {Number} dy The y diff between start of dragging and this event
+   * @param {Number} dx2 The x diff since the last call of this dragging operation
+   * @param {Number} dy2 The y diff since the last call of this dragging operation
+   * @param {Boolean} shiftKey true if the shift key has been pressed during this event
+   * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
+   * @template
+   */
+  onMouseDrag: function onMouseDrag(canvas, dx, dy, dx2, dy2, shiftKey, ctrlKey) {
+    this.mouseMovedDuringMouseDown = true;
+    if (this.mouseDraggingElement !== null) {
+      // Can be a ResizeHandle or a normal Figure
+      //
+      var sel = canvas.getSelection();
+      if (!sel.contains(this.mouseDraggingElement)) {
+        this.mouseDraggingElement.onDrag(dx, dy, dx2, dy2, shiftKey, ctrlKey);
+      } else {
+        sel.each(function (i, figure) {
+          figure.onDrag(dx, dy, dx2, dy2, shiftKey, ctrlKey);
+        });
+      }
+
+      var p = canvas.fromDocumentToCanvasCoordinate(canvas.mouseDownX + dx / canvas.zoomFactor, canvas.mouseDownY + dy / canvas.zoomFactor);
+      var target = canvas.getBestFigure(p.x, p.y, this.mouseDraggingElement);
+
+      if (target !== canvas.currentDropTarget) {
+        if (canvas.currentDropTarget !== null) {
+          canvas.currentDropTarget.onDragLeave(this.mouseDraggingElement);
+          canvas.currentDropTarget.fireEvent("dragLeave", { draggingElement: this.mouseDraggingElement });
+          canvas.currentDropTarget = null;
+        }
+        if (target !== null) {
+          canvas.currentDropTarget = target.delegateTarget(this.mouseDraggingElement);
+          // inform all listener that the element has accept the dragEnter event
+          //
+          if (canvas.currentDropTarget !== null) {
+            canvas.currentDropTarget.onDragEnter(this.mouseDraggingElement); // legacy
+            canvas.currentDropTarget.fireEvent("dragEnter", { draggingElement: this.mouseDraggingElement });
+          }
+        }
+      }
+    }
+    // Connection didn't support panning at the moment. There is no special reason for that. Just an interaction
+    // decision.
+    //
+    else if (this.mouseDownElement !== null && !(this.mouseDownElement instanceof _packages2.default.Connection)) {
+        if (this.mouseDownElement.panningDelegate !== null) {
+          this.mouseDownElement.panningDelegate.fireEvent("panning", {
+            dx: dx,
+            dy: dy,
+            dx2: dx2,
+            dy2: dy2,
+            shiftKey: shiftKey,
+            ctrlKey: ctrlKey
+          });
+          this.mouseDownElement.panningDelegate.onPanning(dx, dy, dx2, dy2, shiftKey, ctrlKey);
+        } else {
+          this.mouseDownElement.fireEvent("panning", {
+            dx: dx,
+            dy: dy,
+            dx2: dx2,
+            dy2: dy2,
+            shiftKey: shiftKey,
+            ctrlKey: ctrlKey
+          });
+          this.mouseDownElement.onPanning(dx, dy, dx2, dy2, shiftKey, ctrlKey);
+        }
+      }
+  },
+
+  /**
+   * @method
+   *
+   * @param {draw2d.Figure} figure the shape below the mouse or null
+   * @param {Number} x the x-coordinate of the mouse down event
+   * @param {Number} y the y-coordinate of the mouse down event
+   * @param {Boolean} shiftKey true if the shift key has been pressed during this event
+   * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
+   */
+  onMouseUp: function onMouseUp(canvas, x, y, shiftKey, ctrlKey) {
+    if (this.mouseDraggingElement !== null) {
+      var redrawConnection = new _packages2.default.util.ArrayList();
+      if (this.mouseDraggingElement instanceof _packages2.default.shape.node.Node) {
+        // TODO: don't add the connections with to check if a repaint is required
+        //       may a moved connection didn't have an intersection with the named lines.
+        //       in this case a redraw is useless
+        canvas.lineIntersections.each(function (i, inter) {
+          if (!redrawConnection.contains(inter.line)) redrawConnection.add(inter.line);
+          if (!redrawConnection.contains(inter.other)) redrawConnection.add(inter.other);
+        });
+      }
+
+      // start CommandStack transaction
+      canvas.getCommandStack().startTransaction();
+
+      var sel = canvas.getSelection().getAll();
+      if (!sel.contains(this.mouseDraggingElement)) {
+        this.mouseDraggingElement.onDragEnd(x, y, shiftKey, ctrlKey);
+      } else {
+        canvas.getSelection().getAll().each(function (i, figure) {
+          figure.onDragEnd(x, y, shiftKey, ctrlKey);
+        });
+      }
+
+      if (canvas.currentDropTarget !== null && !this.mouseDraggingElement.isResizeHandle) {
+        this.mouseDraggingElement.onDrop(canvas.currentDropTarget, x, y, shiftKey, ctrlKey);
+        canvas.currentDropTarget.onDragLeave(this.mouseDraggingElement);
+        canvas.currentDropTarget.fireEvent("dragLeave", { draggingElement: this.mouseDraggingElement });
+        canvas.currentDropTarget.onCatch(this.mouseDraggingElement, x, y, shiftKey, ctrlKey);
+        canvas.currentDropTarget = null;
+      }
+
+      // end command stack trans
+      canvas.getCommandStack().commitTransaction();
+
+      if (this.mouseDraggingElement instanceof _packages2.default.shape.node.Node) {
+        canvas.lineIntersections.each(function (i, inter) {
+          if (!redrawConnection.contains(inter.line)) redrawConnection.add(inter.line);
+          if (!redrawConnection.contains(inter.other)) redrawConnection.add(inter.other);
+        });
+        redrawConnection.each(function (i, line) {
+          line.svgPathString = null;
+          line.repaint();
+        });
+      }
+
+      this.mouseDraggingElement = null;
+    }
+    // Connection didn't support panning at the moment. There is no special reason for that. Just an interaction
+    // decision.
+    //
+    else if (this.mouseDownElement !== null && !(this.mouseDownElement instanceof _packages2.default.Connection)) {
+        if (this.mouseDownElement.panningDelegate !== null) {
+          this.mouseDownElement.panningDelegate.fireEvent("panningEnd");
+          this.mouseDownElement.panningDelegate.onPanningEnd();
+        } else {
+          this.mouseDownElement.fireEvent("panningEnd");
+          this.mouseDownElement.onPanningEnd();
+        }
+      }
+
+    // Reset the current selection if the user click in the blank canvas.
+    // Don't reset the selection if the user pan the canvas
+    //
+    if (this.mouseDownElement === null && this.mouseMovedDuringMouseDown === false) {
+      this.select(canvas, null);
+    }
+
+    if (this.mouseDownElement !== null) {
+      this.mouseDownElement.fireEvent("mouseup", { x: x, y: y, shiftKey: shiftKey, ctrlKey: ctrlKey });
+    }
+
+    this.mouseDownElement = null;
+    this.mouseMovedDuringMouseDown = false;
+  },
+
+  /**
+   * @method
+   * Called by the canvas if the user click on a figure.
+   *
+   * @param {draw2d.Figure} the figure under the click event. Can be null
+   * @param {Number} mouseX the x coordinate of the mouse during the click event
+   * @param {Number} mouseY the y coordinate of the mouse during the click event
+   * @param {Boolean} shiftKey true if the shift key has been pressed during this event
+   * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
+   *
+   * @since 3.0.0
+   */
+  onClick: function onClick(figure, mouseX, mouseY, shiftKey, ctrlKey) {
+    if (figure !== null) {
+      figure.fireEvent("click", {
+        figure: figure,
+        x: mouseX,
+        y: mouseY,
+        relX: mouseX - figure.getAbsoluteX(),
+        relY: mouseY - figure.getAbsoluteY(),
+        shiftKey: shiftKey,
+        ctrlKey: ctrlKey
+      });
+
+      figure.onClick();
+    }
+  },
+
+  /**
+   * @method
+   * Called by the canvas if the user double click on a figure.
+   *
+   * @param {draw2d.Figure} the figure under the double click event. Can be null
+   * @param {Number} mouseX the x coordinate of the mouse during the click event
+   * @param {Number} mouseY the y coordinate of the mouse during the click event
+   * @param {Boolean} shiftKey true if the shift key has been pressed during this event
+   * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
+   *
+   * @since 4.1.0
+   */
+  onDoubleClick: function onDoubleClick(figure, mouseX, mouseY, shiftKey, ctrlKey) {
+    if (figure !== null) {
+      figure.fireEvent("dblclick", { x: mouseX, y: mouseY, shiftKey: shiftKey, ctrlKey: ctrlKey });
+      figure.onDoubleClick();
+    }
+  }
+
+}); /**
+     * @class draw2d.policy.canvas.SingleSelectionPolicy
+     *
+     *
+     * @author Andreas Herz
+     * @extends draw2d.policy.canvas.SelectionPolicy
+     */
 
 /***/ }),
 
@@ -31566,6 +31722,81 @@ _packages2.default.policy.canvas.SnapToCenterEditPolicy = _packages2.default.pol
  * @extends draw2d.policy.canvas.SnapToEditPolicy
  * @since 5.6.4
  */
+
+/***/ }),
+
+/***/ "./src/policy/canvas/SnapToDimetricGridEditPolicy.js":
+/*!***********************************************************!*\
+  !*** ./src/policy/canvas/SnapToDimetricGridEditPolicy.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _packages = __webpack_require__(/*! ../../packages */ "./src/packages.js");
+
+var _packages2 = _interopRequireDefault(_packages);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_packages2.default.policy.canvas.SnapToDimetricGridEditPolicy = _packages2.default.policy.canvas.ShowDimetricGridEditPolicy.extend({
+
+  NAME: "draw2d.policy.canvas.SnapToDimetricGridEditPolicy",
+
+  /**
+   * @constructor
+   * Creates a new constraint policy for snap to grid
+   *
+   * @param {Number} grid the grid width of the canvas
+   */
+  init: function init(grid) {
+    this._super(grid);
+  },
+
+  /**
+   * @method
+   * Applies a snapping correction to the given result.
+   *
+   * @param {draw2d.Canvas} canvas the related canvas
+   * @param {draw2d.Figure} figure the figure to snap
+   * @param {draw2d.geo.Point} modifiedPos the already modified position of the figure (e.g. from an another Policy)
+   * @param {draw2d.geo.Point} originalPos the original requested position of the figure
+   * @since 2.3.0
+   */
+  snap: function snap(canvas, figure, modifiedPos, originalPos) {
+    // do nothing for lines
+    if (figure instanceof _packages2.default.shape.basic.Line) {
+      return modifiedPos;
+    }
+
+    var snapPoint = figure.getSnapToGridAnchor();
+
+    modifiedPos.x = modifiedPos.x + snapPoint.x;
+    modifiedPos.y = modifiedPos.y + snapPoint.y;
+
+    var g = this.grid / 5;
+
+    modifiedPos.x = g * Math.floor((modifiedPos.x + g / 2.0) / g);
+    modifiedPos.y = g * Math.floor((modifiedPos.y + g / 2.0) / g);
+
+    modifiedPos.x = modifiedPos.x - snapPoint.x;
+    modifiedPos.y = modifiedPos.y - snapPoint.y;
+
+    return modifiedPos;
+  }
+}); /**
+     * @class draw2d.policy.canvas.SnapToDimetricGridEditPolicy
+     *
+     * A helper used to perform snapping to a grid, which is specified on the canvas via the various
+     * properties defined in this class.
+     *
+     *
+     * @author Andreas Herz
+     *
+     * @extends draw2d.policy.canvas.ShowDimetricGridEditPolicy
+     */
 
 /***/ }),
 
@@ -44920,6 +45151,81 @@ _packages2.default.shape.diagram.Sparkline = _packages2.default.shape.diagram.Di
         return this;
     }
 });
+
+/***/ }),
+
+/***/ "./src/shape/dimetric/Rectangle.js":
+/*!*****************************************!*\
+  !*** ./src/shape/dimetric/Rectangle.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _packages = __webpack_require__(/*! ../../packages */ "./src/packages.js");
+
+var _packages2 = _interopRequireDefault(_packages);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_packages2.default.shape.dimetric.Rectangle = _packages2.default.shape.basic.Polygon.extend({
+  NAME: "draw2d.shape.dimetric.Rectangle",
+
+  /**
+   * @constructor
+   * Creates a new figure element which are not assigned to any canvas.
+   *
+   * @param {Object} [attr] the configuration of the shape
+   */
+  init: function init(attr, setter, getter) {
+    this._super(extend({ bgColor: "#00a3f6", color: "#1B1B1B" }, attr), setter, getter);
+
+    var pos = this.getPosition();
+
+    this.resetVertices();
+
+    var angle26 = Math.atan(.5);
+    var cos30 = Math.cos(angle26);
+    var sin30 = Math.sin(angle26);
+
+    var box = this.getBoundingBox();
+    var w = box.w;
+    var h = box.h;
+
+    this.addVertex(0, 0); // topLeft
+    this.addVertex(cos30 * w, sin30 * w); // topRight
+    this.addVertex(cos30 * w - cos30 * h, sin30 * w + sin30 * h); // bottomRight
+    this.addVertex(-cos30 * h, sin30 * h); // bottomLeft
+
+    // override the selection handler from the polygon. Because the vertices of
+    // the diamond are not selectable and modifiable
+    //
+    this.installEditPolicy(new _packages2.default.policy.figure.RectangleSelectionFeedbackPolicy());
+
+    this.setPosition(pos);
+  }
+});
+/**
+ * @class draw2d.shape.dimetric.Rectangle
+ * A Rectangle Figure in a dimetric perspective.
+ *
+ * See the example:
+ *
+ *     @example preview small frame
+ *
+ *     let d1 =  new draw2d.shape.dimetric.Rectangle({x:10,y:10});
+ *     let d2 =  new draw2d.shape.dimetric.Rectangle({x:100,y:10, bgColor:"#f0f000", alpha:0.7, width:100, height:60});
+ *
+ *     canvas.add(d1);
+ *     canvas.add(d2);
+ *
+ *     canvas.setCurrentSelection(d2);
+ *
+ * @author Andreas Herz
+ * @extends draw2d.shape.basic.Polygon
+ */
 
 /***/ }),
 
@@ -61930,7 +62236,7 @@ _packages2.default.util.ArrayList = Class.extend({
    * provided test. The test is a function that is passed an array item and the index of the
    * item within the array. Only if the test returns true will the item stay in the array.
    *
-   * @param {Function} func the filter function
+   * @param {Function} func the filter function(element,index)
    * @param {Object} func.value value of the element in iteration.
    * @since 2.0.0
    */

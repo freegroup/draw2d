@@ -49,9 +49,6 @@ draw2d.policy.canvas.SelectionPolicy = draw2d.policy.canvas.CanvasPolicy.extend(
 
         // @since 6.1.42
         canvas.fireEvent("unselect",{figure:figure});
-
-        // deprecated
-        canvas.fireEvent("select",{figure:null});
     }
 });
 

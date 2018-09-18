@@ -26,7 +26,6 @@ draw2d.HeadlessCanvas = Class.extend(
         this.figures     = new draw2d.util.ArrayList();
         this.lines       = new draw2d.util.ArrayList(); // crap - why are connections not just figures. Design by accident
         this.commonPorts = new draw2d.util.ArrayList();
-        this.dropTargets = new draw2d.util.ArrayList();
 
         this.eventSubscriptions = {};
 
@@ -49,7 +48,6 @@ draw2d.HeadlessCanvas = Class.extend(
         this.figures     = new draw2d.util.ArrayList();
         this.lines       = new draw2d.util.ArrayList();
         this.commonPorts = new draw2d.util.ArrayList();
-        this.dropTargets = new draw2d.util.ArrayList();
 
         this.commandStack.markSaveLocation();
 

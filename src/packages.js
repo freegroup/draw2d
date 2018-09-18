@@ -22,6 +22,7 @@ export default {
 
     shape : {
       basic:{},
+      dimetric:{},
       composite:{},
       arrow:{},
       node: {},
