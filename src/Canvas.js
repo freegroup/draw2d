@@ -75,6 +75,7 @@ draw2d.Canvas = Class.extend(
         }
       })
 
+      
       // Create the jQuery-Draggable for the palette -> canvas drag&drop interaction
       //
       $(".draw2d_droppable").draggable({
