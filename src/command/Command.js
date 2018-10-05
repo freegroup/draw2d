@@ -1,4 +1,3 @@
-
 /**
  * @class draw2d.command.Command
  *
@@ -11,89 +10,82 @@
  * @inheritable
  * @author Andreas Herz
  */
-import draw2d from '../packages';
+import draw2d from '../packages'
 
 draw2d.command.Command = Class.extend({
 
-    NAME : "draw2d.command.Command",
+  NAME: "draw2d.command.Command",
 
-    /**
-     * @constructor
-     * Create a new Command objects which can be execute via the CommandStack.
-     *
-     * @param {String} label
-     */
-    init: function( label)
-    {
-        this.label = label;
-    },
-
-
-    /**
-     * @method
-     * Returns a label of the Command. e.g. "move figure".
-     *
-     * @return {String} the label for this command
-     **/
-    getLabel: function()
-    {
-       return this.label;
-    },
+  /**
+   * @constructor
+   * Create a new Command objects which can be execute via the CommandStack.
+   *
+   * @param {String} label
+   */
+  init: function (label) {
+    this.label = label
+  },
 
 
-    /**
-     * @method
-     * Returns [true] if the command can be execute and the execution of the
-     * command modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should
-     * return false. The execution of this Command doesn't modify the model.
-     *
-     * @return {Boolean} return try if the command modify the model or make any relevant changes
-     **/
-    canExecute: function()
-    {
-      return true;
-    },
+  /**
+   * @method
+   * Returns a label of the Command. e.g. "move figure".
+   *
+   * @return {String} the label for this command
+   **/
+  getLabel: function () {
+    return this.label
+  },
 
-    /**
-     * @method
-     * Execute the command the first time.
-     * Sup-classes must implement this method.
-     *
-     * @template
-     **/
-    execute: function()
-    {
-    },
 
-    /**
-     * @method
-     * Will be called if the user cancel the operation.
-     *
-     * @template
-     **/
-    cancel: function()
-    {
-    },
+  /**
+   * @method
+   * Returns [true] if the command can be execute and the execution of the
+   * command modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should
+   * return false. The execution of this Command doesn't modify the model.
+   *
+   * @return {Boolean} return try if the command modify the model or make any relevant changes
+   **/
+  canExecute: function () {
+    return true
+  },
 
-    /**
-     * @method
-     * Undo the command.
-     * Sup-classes must implement this method.
-     *
-     * @template
-     **/
-    undo: function()
-    {
-    },
+  /**
+   * @method
+   * Execute the command the first time.
+   * Sup-classes must implement this method.
+   *
+   * @template
+   **/
+  execute: function () {
+  },
 
-    /**
-     * @method
-     * Redo the command after the user has undo this command.
-     * Sup-classes must implement this method.
-     *
-     * @template
-     **/
-    redo: function()
-    {
-    }
-});
+  /**
+   * @method
+   * Will be called if the user cancel the operation.
+   *
+   * @template
+   **/
+  cancel: function () {
+  },
+
+  /**
+   * @method
+   * Undo the command.
+   * Sup-classes must implement this method.
+   *
+   * @template
+   **/
+  undo: function () {
+  },
+
+  /**
+   * @method
+   * Redo the command after the user has undo this command.
+   * Sup-classes must implement this method.
+   *
+   * @template
+   **/
+  redo: function () {
+  }
+})

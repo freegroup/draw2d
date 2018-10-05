@@ -11,7 +11,7 @@
  *
  *     @example preview small frame
  *
- *     var figure =  new draw2d.shape.basic.Rectangle({x:130,y:30,width:100,height:60});
+ *     let figure =  new draw2d.shape.basic.Rectangle({x:130,y:30,width:100,height:60});
  *     figure.createPort("input", new draw2d.layout.locator.XYRelPortLocator(0,20));
  *
  *     canvas.add(figure);
@@ -21,45 +21,45 @@
  * @extend draw2d.layout.locator.PortLocator
  * @since 4.0.0
  */
-import draw2d from '../../packages';
+import draw2d from '../../packages'
 
 draw2d.layout.locator.XYRelPortLocator = draw2d.layout.locator.PortLocator.extend({
-    NAME : "draw2d.layout.locator.XYRelPortLocator",
+  NAME: "draw2d.layout.locator.XYRelPortLocator",
 
-    /**
-     * @constructor
-     *
-     *
-     * @param {Number} xPercentage the x coordinate in percent of the port relative to the left of the parent
-     * @param {Number} yPercentage the y coordinate in percent of the port relative to the top of the parent
-     */
-    init: function(xPercentage ,yPercentage )
-    {
-      this._super();
+  /**
+   * @constructor
+   *
+   *
+   * @param {Number} xPercentage the x coordinate in percent of the port relative to the left of the parent
+   * @param {Number} yPercentage the y coordinate in percent of the port relative to the top of the parent
+   */
+  init: function (xPercentage, yPercentage) {
+    this._super()
 
-      this.x = xPercentage;
-      this.y = yPercentage;
-    },
+    this.x = xPercentage
+    this.y = yPercentage
+  },
 
-   /**
-    * @method
-    * Controls the location of an I{@link draw2d.Figure}
-    *
-    * @param {Number} index child index of the figure
-    * @param {draw2d.Figure} figure the figure to control
-    *
-    * @template
-    **/
-    relocate: function(index, figure)
-    {
-        var node = figure.getParent();
-        var x = node.getWidth()/100 * this.x;
-        var y = node.getHeight()/100  * this.y;
+  /**
+   * @method
+   * Controls the location of an I{@link draw2d.Figure}
+   *
+   * @param {Number} index child index of the figure
+   * @param {draw2d.Figure} figure the figure to control
+   *
+   * @template
+   **/
+  relocate: function (index, figure) {
+    let parent = figure.getParent()
 
-        this.applyConsiderRotation( figure, x, y);
-    }
+    this.applyConsiderRotation(
+      figure,
+      parent.getWidth() / 100 * this.x,
+      parent.getHeight() / 100 * this.y
+    )
+  }
 
-});
+})
 
 
 

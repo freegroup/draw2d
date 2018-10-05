@@ -59,7 +59,6 @@ draw2d.Canvas = Class.extend(
       // This can be done by a palette of toolbar or something else.
       // For more information see : http://jqueryui.com/demos/droppable/
       //
-
       $(this.html).droppable({
         accept: '.draw2d_droppable',
         over: function (event, ui) {
@@ -277,7 +276,7 @@ draw2d.Canvas = Class.extend(
               break
             case 3: //Right mouse button pressed
               event.preventDefault()
-              if (typeof event.stopPropagation != "undefined")
+              if (typeof event.stopPropagation !== "undefined")
                 event.stopPropagation()
               event = _this._getEvent(event)
               pos = _this.fromDocumentToCanvasCoordinate(event.clientX, event.clientY)
@@ -1320,7 +1319,6 @@ draw2d.Canvas = Class.extend(
 
       // ResizeHandles
       //
-      let len
       for (let i = 0, len = this.resizeHandles.getSize(); i < len; i++) {
         testFigure = this.resizeHandles.get(i)
         if (testFigure.isVisible() && testFigure.hitTest(x, y) && !isInBlacklist(testFigure) && isInWhitelist(testFigure)) {
@@ -1609,7 +1607,7 @@ draw2d.Canvas = Class.extend(
 
     /**
      *
-     * @param {Number} delta the delata of the wheel rotation
+     * @param {Number} wheelDelta the delata of the wheel rotation
      * @param {Number} x the x coordinate of the event
      * @param {Number} y the y coordinate of the event
      * @param {Boolean} shiftKey true if the shift key has been pressed during this event

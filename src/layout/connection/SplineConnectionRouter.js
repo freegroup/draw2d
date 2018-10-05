@@ -5,8 +5,8 @@
  *
  *     @example preview small frame
  *
- *     var createConnection=function(){
- *        var con = new draw2d.Connection();
+ *     let createConnection=function(){
+ *        let con = new draw2d.Connection();
  *        con.setRouter(new draw2d.layout.connection.SplineConnectionRouter());
  *        return con;
  *     };
@@ -19,8 +19,8 @@
  *
  *     // create and add two nodes which contains Ports (In and OUT)
  *     //
- *     var f1 = new draw2d.shape.analog.OpAmp({x:10, y:10});
- *     var f2 = new draw2d.shape.analog.ResistorVertical({angle:90, height:20, x:300, y:150});
+ *     let f1 = new draw2d.shape.analog.OpAmp({x:10, y:10});
+ *     let f2 = new draw2d.shape.analog.ResistorVertical({angle:90, height:20, x:300, y:150});
  *
  *     // ...add it to the canvas
  *     //
@@ -29,7 +29,7 @@
  *
  *     // first Connection
  *     //
- *     var c = createConnection();
+ *     let c = createConnection();
  *     c.setSource(f1.getOutputPort(0));
  *     c.setTarget(f2.getHybridPort(0));
  *     canvas.add(c);
@@ -38,78 +38,74 @@
  * @author Andreas Herz
  * @extends draw2d.layout.connection.ManhattanConnectionRouter
  */
-import draw2d from '../../packages';
+import draw2d from '../../packages'
 
 draw2d.layout.connection.SplineConnectionRouter = draw2d.layout.connection.ManhattanConnectionRouter.extend({
 
-	NAME : "draw2d.layout.connection.SplineConnectionRouter",
+  NAME: "draw2d.layout.connection.SplineConnectionRouter",
 
-    /**
-     * @constructor Creates a new Router object
-     */
-    init: function()
-    {
-        this._super();
+  /**
+   * @constructor Creates a new Router object
+   */
+  init: function () {
+    this._super()
 
 //        this.spline = new draw2d.util.spline.CatmullRomSpline();
-        this.spline = new draw2d.util.spline.CubicSpline();
+    this.spline = new draw2d.util.spline.CubicSpline()
 //        this.spline = new draw2d.util.spline.BezierSpline();
 
-        this.MINDIST = 50;
-        this.cheapRouter = null;
-    },
+    this.MINDIST = 50
+  },
 
 
-    /**
-     * @method
-     * Callback method if the router has been assigned to a connection.
-     *
-     * @param {draw2d.Connection} connection The assigned connection
-     * @template
-     * @since 2.7.2
-     */
-    onInstall: function(connection)
-    {
-        connection.installEditPolicy(new draw2d.policy.line.LineSelectionFeedbackPolicy());
-    },
+  /**
+   * @method
+   * Callback method if the router has been assigned to a connection.
+   *
+   * @param {draw2d.Connection} connection The assigned connection
+   * @template
+   * @since 2.7.2
+   */
+  onInstall: function (connection) {
+    connection.installEditPolicy(new draw2d.policy.line.LineSelectionFeedbackPolicy())
+  },
 
-    /**
-     * @inheritdoc
-     */
-    route: function(conn, routingHints)
-    {
-    	var i;
-		var fromPt  = conn.getStartPoint();
-		var fromDir = conn.getSource().getConnectionDirection( conn.getTarget());
+  /**
+   * @inheritdoc
+   */
+  route: function (conn, routingHints) {
+    let i
+    let fromPt = conn.getStartPoint()
+    let fromDir = conn.getSource().getConnectionDirection(conn.getTarget())
 
-		var toPt  = conn.getEndPoint();
-		var toDir = conn.getTarget().getConnectionDirection( conn.getSource());
+    let toPt = conn.getEndPoint()
+    let toDir = conn.getTarget().getConnectionDirection(conn.getSource())
 
-		// calculate the manhatten bend points between start/end.
-		//
-		this._route(conn, toPt, toDir, fromPt, fromDir);
+    // calculate the manhatten bend points between start/end.
+    //
+    this._route(conn, toPt, toDir, fromPt, fromDir)
 
-        var ps = conn.getVertices();
+    let ps = conn.getVertices()
 
-        conn.oldPoint=null;
-        conn.lineSegments = new draw2d.util.ArrayList();
-        conn.vertices     = new draw2d.util.ArrayList();
+    conn.oldPoint = null
+    conn.lineSegments = new draw2d.util.ArrayList()
+    conn.vertices = new draw2d.util.ArrayList()
 
-        var splinePoints = this.spline.generate(ps,8);
-        splinePoints.each(function(i,e){
-            conn.addPoint(e);
-        });
+    let splinePoints = this.spline.generate(ps, 8)
+    splinePoints.each(function (i, e) {
+      conn.addPoint(e)
+    })
 
-        // calculate the path string for the SVG rendering
-        //
-        var ps = conn.getVertices();
-        var length = ps.getSize();
-        var p = ps.get(0);
-        var path = ["M",p.x," ",p.y];
-        for( i=1;i<length;i++){
-              p = ps.get(i);
-              path.push("L", p.x, " ", p.y);
-        }
-        conn.svgPathString = path.join("");
+    // calculate the path string for the SVG rendering
+    //
+    ps = conn.getVertices()
+    let length = ps.getSize()
+    let p = ps.get(0)
+    let path = ["M", p.x, " ", p.y]
+    for (i = 1; i < length; i++) {
+      p = ps.get(i)
+      path.push("L", p.x, " ", p.y)
     }
-});
+    conn.svgPathString = path.join("")
+  }
+})

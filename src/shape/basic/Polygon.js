@@ -202,7 +202,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
    * Change the position of the polygon. This method updates all vertices.
    *
    * @param {Number|draw2d.geo.Point} x
-   * @param {Number} y
+   * @param {Number} [y]
    */
   setPosition: function (x, y) {
     if (x instanceof draw2d.geo.Point) {
@@ -281,7 +281,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
 
     this.updateBoundingBox()
 
-    this.editPolicy.each( (i, e) => {
+    this.editPolicy.each((i, e) => {
       if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
         e.moved(this.canvas, this)
       }

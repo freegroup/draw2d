@@ -1,4 +1,3 @@
-
 /**
  * @class draw2d.policy.figure.SelectionFeedbackPolicy
  *
@@ -10,88 +9,62 @@
  * @author Andreas Herz
  * @extends draw2d.policy.figure.DragDropEditPolicy
  */
-import draw2d from '../../packages';
+import draw2d from '../../packages'
 
 draw2d.policy.figure.SelectionFeedbackPolicy = draw2d.policy.figure.SelectionPolicy.extend({
 
-    NAME : "draw2d.policy.figure.SelectionFeedbackPolicy",
+  NAME: "draw2d.policy.figure.SelectionFeedbackPolicy",
 
-    /**
-     * @constructor
-     *
-     */
-    init: function( attr, setter, getter)
-    {
-        this._super( attr, setter, getter);
-    },
-
+  /**
+   * @constructor
+   *
+   */
+  init: function (attr, setter, getter) {
+    this._super(attr, setter, getter)
+  },
 
 
-    /**
-     * @method
-     *
-     * @template
-     * @param figure
-     * @param isPrimarySelection
-     */
-    onSelect: function(canvas, figure, isPrimarySelection)
-    {
-        this._super(canvas, figure,isPrimarySelection);
-    },
+  /**
+   * @method
+   *
+   * @param {draw2d.Figure} figure the unselected figure
+   */
+  onUnselect: function (canvas, figure) {
+    this._super(canvas, figure)
 
+    figure.selectionHandles.each( (i, e) => e.hide())
+    figure.selectionHandles = new draw2d.util.ArrayList()
+  },
 
-    /**
-     * @method
-     *
-     * @param {draw2d.Figure} figure the unselected figure
-     */
-    onUnselect: function(canvas, figure )
-    {
-        this._super(canvas, figure);
+  /**
+   * @method
+   * Called by the host if the policy has been installed.
+   *
+   * @param {draw2d.Figure} figure
+   */
+  onInstall: function (figure) {
+    this._super(figure)
 
-        figure.selectionHandles.each(function(i,e){
-            e.hide();
-        });
-        figure.selectionHandles = new draw2d.util.ArrayList();
-    },
-
-    /**
-     * @method
-     * Called by the host if the policy has been installed.
-     *
-     * @param {draw2d.Figure} figure
-     */
-    onInstall: function( figure)
-    {
-        this._super(figure);
-
-        var canvas = figure.getCanvas();
-        if(canvas!==null){
-            if(canvas.getSelection().contains(figure)){
-                this.onSelect(canvas, figure, true);
-            }
-        }
-    },
-
-
-    /**
-     * @method
-     * Called by the host if the policy has been uninstalled.
-     *
-     * @param {draw2d.Figure} figure
-     */
-    onUninstall: function( figure)
-    {
-        this._super(figure);
-
-        if(typeof figure.selectionHandles ==="undefined"){
-            return;
-        }
-
-        figure.selectionHandles.each(function(i,e){
-            e.hide();
-        });
-        figure.selectionHandles = new draw2d.util.ArrayList();
+    let canvas = figure.getCanvas()
+    if (canvas !== null) {
+      if (canvas.getSelection().contains(figure)) {
+        this.onSelect(canvas, figure, true)
+      }
     }
+  },
 
-});
+
+  /**
+   * @method
+   * Called by the host if the policy has been uninstalled.
+   *
+   * @param {draw2d.Figure} figure
+   */
+  onUninstall: function (figure) {
+    this._super(figure)
+
+    figure.selectionHandles.each( (i, e) => e.hide())
+    figure.selectionHandles = new draw2d.util.ArrayList()
+  }
+
+})

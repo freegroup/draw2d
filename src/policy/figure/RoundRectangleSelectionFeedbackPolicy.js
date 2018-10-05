@@ -1,4 +1,3 @@
-
 /**
  * @class draw2d.policy.figure.RoundRectangleSelectionFeedbackPolicy
  *
@@ -14,42 +13,22 @@
  * @author Andreas Herz
  * @extends draw2d.policy.figure.RectangleSelectionFeedbackPolicy
  */
-import draw2d from '../../packages';
+import draw2d from '../../packages'
 
 draw2d.policy.figure.RoundRectangleSelectionFeedbackPolicy = draw2d.policy.figure.RectangleSelectionFeedbackPolicy.extend({
 
-    NAME : "draw2d.policy.figure.RoundRectangleSelectionFeedbackPolicy",
+  NAME: "draw2d.policy.figure.RoundRectangleSelectionFeedbackPolicy",
 
-    /**
-     * @constructor
-     * Creates a new Router object
-     */
-    init: function( attr, setter, getter)
-    {
-        this._super( attr, setter, getter);
-    },
+  /**
+   * @constructor
+   * Creates a new Router object
+   */
+  init: function (attr, setter, getter) {
+    this._super(attr, setter, getter)
+  },
 
 
-    /**
-     * @method
-     * Called by the framework of the Policy should show a resize handle for the given shape
-     *
-     * @param {draw2d.Canvas} canvas The host canvas
-     * @param {draw2d.Figure} figure The related figure
-     * @param {Boolean} isPrimarySelection
-     */
-    onSelect: function(canvas,figure, isPrimarySelection)
-    {
-
-        this._super(canvas,figure, isPrimarySelection);
-
-        if(!figure.selectionHandles.isEmpty())
-        {
-            figure.selectionHandles.each(function(i,e){
-               e.setDimension(12,12);
-               e.setRadius(4);
-            });
-        }
-        this.moved(canvas,figure);
-   }
-});
+  createResizeHandle: function (owner, type) {
+    return new draw2d.ResizeHandle({owner: owner, type: type, width: 12, height: 12, radius: 4})
+  }
+})

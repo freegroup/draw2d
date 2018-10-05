@@ -1,5 +1,3 @@
-
-
 /**
  * @class draw2d.command.CommandType
  *
@@ -13,45 +11,43 @@
  *
  * @author Andreas Herz
  */
-import draw2d from '../packages';
+import draw2d from '../packages'
 
 
 draw2d.command.CommandType = Class.extend({
 
-    NAME : "draw2d.command.CommandType",
+  NAME: "draw2d.command.CommandType",
 
-    /**
-     * @constructor
-     * Create a new edit policy object
-     *
-     * @param {String} policy
-     */
-    init: function( policy)
-    {
-       this.policy = policy;
-    },
+  /**
+   * @constructor
+   * Create a new edit policy object
+   *
+   * @param {String} policy
+   */
+  init: function (policy) {
+    this.policy = policy
+  },
 
-    /**
-     * @method
-     * Return the String representation of the policy
-     *
-     * @return {String}
-     **/
-    getPolicy: function()
-    {
-       return this.policy;
-    }
-});
+  /**
+   * @method
+   * Return the String representation of the policy
+   *
+   * @return {String}
+   **/
+  getPolicy: function () {
+    return this.policy
+  }
+})
 
-draw2d.command.CommandType.DELETE               = "DELETE";
-draw2d.command.CommandType.MOVE                 = "MOVE";
-draw2d.command.CommandType.CONNECT              = "CONNECT";
-draw2d.command.CommandType.MOVE_BASEPOINT       = "MOVE_BASEPOINT";
-draw2d.command.CommandType.MOVE_VERTEX          = "MOVE_VERTEX";
-draw2d.command.CommandType.MOVE_VERTICES        = "MOVE_VERTICES";
-draw2d.command.CommandType.MOVE_GHOST_VERTEX    = "MOVE_GHOST_VERTEX";
-draw2d.command.CommandType.RESIZE               = "RESIZE";
-draw2d.command.CommandType.RESET                = "RESET";
-draw2d.command.CommandType.ROTATE               = "ROTATE";
+draw2d.command.CommandType.DELETE = "DELETE"
+draw2d.command.CommandType.MOVE = "MOVE"
+draw2d.command.CommandType.CONNECT = "CONNECT"
+draw2d.command.CommandType.MOVE_BASEPOINT = "MOVE_BASEPOINT"
+draw2d.command.CommandType.MOVE_VERTEX = "MOVE_VERTEX"
+draw2d.command.CommandType.MOVE_VERTICES = "MOVE_VERTICES"
+draw2d.command.CommandType.MOVE_GHOST_VERTEX = "MOVE_GHOST_VERTEX"
+draw2d.command.CommandType.RESIZE = "RESIZE"
+draw2d.command.CommandType.RESET = "RESET"
+draw2d.command.CommandType.ROTATE = "ROTATE"
 
 

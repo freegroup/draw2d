@@ -84,7 +84,7 @@ draw2d.command.CommandStack = Class.extend({
       return
     }
 
-    this.notifyListeners(command, draw2d.command.CommandStack.PRE_EXECUTE,"PRE_EXECUTE")
+    this.notifyListeners(command, draw2d.command.CommandStack.PRE_EXECUTE, "PRE_EXECUTE")
 
     this.undostack.push(command)
     command.execute()
@@ -99,7 +99,7 @@ draw2d.command.CommandStack = Class.extend({
     if (this.undostack.length > this.maxundo) {
       this.undostack = this.undostack.slice(this.undostack.length - this.maxundo)
     }
-    this.notifyListeners(command, draw2d.command.CommandStack.POST_EXECUTE,"POST_EXECUTE")
+    this.notifyListeners(command, draw2d.command.CommandStack.POST_EXECUTE, "POST_EXECUTE")
 
     return this
   },
@@ -115,6 +115,7 @@ draw2d.command.CommandStack = Class.extend({
    */
   startTransaction: function (commandLabel) {
     if (this.transactionCommand !== null) {
+      debugger
       throw "CommandStack is already within transactional mode. Don't call 'startTransaction"
     }
 
@@ -129,11 +130,11 @@ draw2d.command.CommandStack = Class.extend({
    *
    *
    */
-    isInTransaction: function() {
-      return this.transactionCommand !==null;
-    },
+  isInTransaction: function () {
+    return this.transactionCommand !== null
+  },
 
-    /**
+  /**
    * @method
    * Commit the running transaction. All commands between the start/end of a transaction
    * can be undo/redo in a single step.
@@ -265,8 +266,8 @@ draw2d.command.CommandStack = Class.extend({
    * @param event
    * @param func
    */
-  on: function(event, listener){
-    if(event !== "change")
+  on: function (event, listener) {
+    if (event !== "change")
       throw "only event of kind 'change' is supported"
 
     if (listener instanceof draw2d.command.CommandStackEventListener) {
@@ -292,9 +293,13 @@ draw2d.command.CommandStack = Class.extend({
    * @param {draw2d.command.CommandStackEventListener} listener the listener to remove.
    */
   removeEventListener: function (listener) {
-    this.off("change", listener)
+    this.off(listener)
   },
-  off: function(event, listener){
+
+  off: function (listener) {
+    console.log(listener)
+    this.eventListeners.grep(entry => (entry === listener || entry.stackChanged === listener))
+    /*
     let size = this.eventListeners.getSize()
     for (let i = 0; i < size; i++) {
       let entry = this.eventListeners.get(i)
@@ -303,7 +308,7 @@ draw2d.command.CommandStack = Class.extend({
         return
       }
     }
-
+    */
     return this
   },
 

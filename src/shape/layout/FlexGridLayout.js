@@ -1,4 +1,3 @@
-
 /**
  * @class draw2d.shape.layout.FlexGridLayout
  *
@@ -40,7 +39,7 @@
  * Example Implementation of a shape:
  *
  *     @example preview small frame
- *     var PredefinedProcess = draw2d.shape.layout.FlexGridLayout.extend({
+ *     let PredefinedProcess = draw2d.shape.layout.FlexGridLayout.extend({
  *
  *
  *          //     10px       grow         10px
@@ -74,7 +73,7 @@
  *             this.setDimension(120,80);
  *         }
  *     });
- *     var shape = new PredefinedProcess();
+ *     let shape = new PredefinedProcess();
  *     canvas.add(shape,10,10);
  *
  *
@@ -82,390 +81,387 @@
  * @extends draw2d.shape.layout.Layout
  * @since 2.5.1
  */
-import draw2d from '../../packages';
-import extend from '../../util/extend';
+import draw2d from '../../packages'
+import extend from '../../util/extend'
 
-draw2d.shape.layout.FlexGridLayout= draw2d.shape.layout.Layout.extend({
+draw2d.shape.layout.FlexGridLayout = draw2d.shape.layout.Layout.extend({
 
-	NAME : "draw2d.shape.layout.FlexGridLayout",
+  NAME: "draw2d.shape.layout.FlexGridLayout",
 
 
-    /**
-     * @constructor
-     * Create a new instance
-     *
-     * @param {Object} [attr] the configuration of the shape
-     */
-    init: function(attr, setter, getter)
-    {
-        var _this = this;
-        this.cellLocator = {
-            relocate: function(index, figure){
-                if(_this.gridDef.layoutRequired===true){
-                    _this._layout();
-                }
-                var cell = figure.__cellConstraint;
-                var x = cell.x;
-                var y = cell.y;
-
-                // stretch the figure to fill the complete cell
-                //
-                if(figure.isResizeable()){
-                    figure.setDimension(
-                            Math.max(figure.getMinWidth() , cell.width),
-                            Math.max(figure.getMinHeight(), cell.height));
-                }
-                // else apply the valign and align property
-                //
-                else{
-                    // apply vertical alignment
-                    //
-                    switch(cell.valign){
-                    case "middle":
-                        y=y+ (cell.height-figure.getHeight())/2;
-                        break;
-                    case "bottom":
-                        y=y+ (cell.height-figure.getHeight());
-                        break;
-                    }
-
-                    // apply horizontal alignment
-                    //
-                    switch(cell.align){
-                    case "center":
-                        x=x+ (cell.width-figure.getWidth())/2;
-                        break;
-                    case "right":
-                        x=x+ (cell.width-figure.getWidth());
-                        break;
-                    }
-                }
-                figure.setPosition(x, y);
-            },
-            bind: function(){},
-            unbind: function(){},
-            translate: function(figure, diff){
-                figure.setPosition(figure.x+diff.x,figure.y+diff.y);
-            }
-        };
-
-        this.debug=false;
-        this.gridDef={
-            debugLines : [],
-            def_cols  : [],
-            def_rows  : [],
-            min_height: [],
-            min_width : [],
-            minGridWidth:10,
-            minGridHeight:10,
-            hResizeable:false,
-            vResizeable:false,
-            layoutRequired:true
-        };
-
-        this._super(
-                extend({stroke:2},attr),
-                extend({
-
-                }, setter),
-                extend({
-
-                }, getter));
-
-        this.resizeListener = function(figure)
-        {
-            _this.gridDef.layoutRequired=true;
-            // propagate the event to the parent or other listener if existing
-            //
-            if(_this.getParent() instanceof draw2d.shape.layout.Layout){
-                _this.fireEvent("resize");
-            }
-            // or we are the parent and must consume it self
-            else {
-                _this.setDimension(
-                        _this.gridDef.hResizeable===true?_this.getWidth():1,
-                        _this.gridDef.vResizeable===true?_this.getHeight():1
-                        );
-
-            }
-        };
-
-        var rows   = attr.rows.split(",");
-        var columns= attr.columns.split(",");
-        for(var i=0;i<columns.length;i++){
-            this.gridDef.def_cols[i]=this.cellWidthFromDef(columns[i]);
+  /**
+   * @constructor
+   * Create a new instance
+   *
+   * @param {Object} [attr] the configuration of the shape
+   */
+  init: function (attr, setter, getter) {
+    let _this = this
+    this.cellLocator = {
+      relocate: function (index, figure) {
+        if (_this.gridDef.layoutRequired === true) {
+          _this._layout()
         }
+        let cell = figure.__cellConstraint
+        let x = cell.x
+        let y = cell.y
 
-        for(var i=0;i<rows.length;i++){
-            this.gridDef.def_rows[i]=this.cellWidthFromDef(rows[i]);
-        }
-
-        this.installEditPolicy(new draw2d.policy.figure.RectangleSelectionFeedbackPolicy());
-    },
-
-    add: function(figure, cellConstraint){
-
-        figure.__cellConstraint=  extend({},{row:0, col:0, rowspan:1, colspan:1, align:"left", valign:"top", width:1, height:1}, cellConstraint);
-        this.gridDef.layoutRequired=true;
-        this._super(figure, this.cellLocator);
-        this._layout();
-    },
-
-
-    /**
-     * @inheritdoc
-     */
-    getMinWidth: function()
-    {
-        return this.gridDef.minGridWidth;
-    },
-
-    /**
-     * @inheritdoc
-     */
-    getMinHeight: function()
-    {
-        return this.gridDef.minGridHeight;
-    },
-
-    /**
-     * @inheritdoc
-     */
-    setCanvas: function(canvas){
-        // layout must be recalculated if the shape will be assigned
-        // to a canvas. "Text" elements can now calculate correct with the right font settings.
+        // stretch the figure to fill the complete cell
         //
-        this.gridDef.layoutRequired=true;
-        this._super(canvas);
-
-        return this;
-    },
-
-    repaint: function(attributes){
-        if (this.repaintBlocked===true || this.shape === null){
-            return this;
+        if (figure.isResizeable()) {
+          figure.setDimension(
+            Math.max(figure.getMinWidth(), cell.width),
+            Math.max(figure.getMinHeight(), cell.height))
         }
-        this._super(attributes);
-        if(this.debug){
-            this.paintDebugGrid();
-        }
-
-        return this;
-    },
-
-    setDimension: function(w,h)
-    {
-        // we need the calculated layout to determine the min width/height of the figure
+        // else apply the valign and align property
         //
-        if(this.gridDef.layoutRequired===true){
-            this._layout();
+        else {
+          // apply vertical alignment
+          //
+          switch (cell.valign) {
+            case "middle":
+              y = y + (cell.height - figure.getHeight()) / 2
+              break
+            case "bottom":
+              y = y + (cell.height - figure.getHeight())
+              break
+          }
+
+          // apply horizontal alignment
+          //
+          switch (cell.align) {
+            case "center":
+              x = x + (cell.width - figure.getWidth()) / 2
+              break
+            case "right":
+              x = x + (cell.width - figure.getWidth())
+              break
+          }
         }
-        // set the new dimension
-        this._super(w,h);
-
-        // after setting the new dimension a recalculation of the layout is required. May the shape
-        // has grown up
-        this.gridDef.layoutRequired=true;
-        this.repaint();
-
-        return this;
-    },
-
-    _layout: function()
-    {
-       this.gridDef.layoutRequired=false;
-
-       var figures = this.getChildren();
-
-       // copy the initial requested width/heights
-       //
-       this.gridDef.min_height = this.gridDef.def_rows.slice(0);
-       this.gridDef.min_width  = this.gridDef.def_cols.slice(0);
-
-       // Calculate the basic width/height of the elements without considering the "span" and "grow"
-       //
-       for(var i=0;i<figures.getSize();i++){
-           var figure = figures.get(i);
-           var cell = figure.__cellConstraint;
-       		// ermitteln der derzeitig zur verfügung stehenden weite
-           this.gridDef.min_width[cell.col]=Math.max(this.gridDef.min_width[cell.col],figure.getMinWidth());
-
-       		// Falls das Elemente eine y_span hat, dann versuchen ob es auf die ganze
-       		// höhe rein passt. Wenn nicht wird der Teil der 'grow' angegeben hat verändert.
-       		// Wenn kein Element 'grow' angegeben hat, dann wird das letzte Element verändert
-       		if(cell.rowspan>1){
-       			var eHeight = figure.getMinHeight();
-       			var cHeight = this.cellHeight(cell.row,cell.row+cell.rowspan);
-       		    if(cHeight<eHeight){
-       		        var diff= eHeight-cHeight;
-       		     this.gridDef.min_height[cell.row+cell.rowspan-1] = this.gridDef.min_height[cell.row+cell.rowspan-1]+diff;
-       		    }
-       		}
-       		else{
-       		 this.gridDef.min_height[cell.row]=Math.max(this.gridDef.min_height[cell.row],figure.getMinHeight());
-    	   	}
-       }
-       this.gridDef.minGridWidth =this._getGridWidth();
-       this.gridDef.minGridHeight=this._getGridHeight();
-
-       // Resize the grid height if at least one row supports "grow"
-       //
-       var gridHeight = this._getGridHeight();
-       for ( var i = 0; i < this.gridDef.def_rows.length; i++) {
-           // row found which can grow
-           if (this.gridDef.def_rows[i] === -1){
-               this.gridDef.min_height[i] = this.gridDef.min_height[i] +Math.max(0,this.getHeight() - gridHeight);
-               this.gridDef.vResizeable=true;
-               break;
-           }
-       }
-
-       // Resize the grid if at least one column supports "grow"
-       //
-       var gridWidth= this._getGridWidth();
-       for(var i=0;i<this.gridDef.def_cols.length;i++){
-           // column found which can grow
-           if(this.gridDef.def_cols[i] === -1){
-               this.gridDef.min_width[i]= this.gridDef.min_width[i]+Math.max(0,this.getWidth()-gridWidth);
-               this.gridDef.hResizeable=true;
-      	       break;
-       	   }
-       }
-
-       // apply the cell constraints to the elements
-       //
-       for(var i=0;i<figures.getSize();i++) {
-           var cell = figures.get(i).__cellConstraint;
-     	   cell.width  = this.cellWidth(cell.col ,cell.col+cell.colspan);
-     	   cell.height = this.cellHeight(cell.row,cell.row+cell.rowspan);
-           cell.x   = this.cellX(cell.col);
-           cell.y   = this.cellY(cell.row);
-       }
-
-        return this;
-    },
-
-    cellX: function(col )
-    {
-        var r=0;
-    	for(var i=0;i<col;i++){
-    	 r= r+this.gridDef.min_width[i];
-    	}
-
-    	return r;
-    },
-
-    cellY: function(row )
-    {
-        var r=0;
-    	for(var i=0;i<row;i++){
-    	    r= r+this.gridDef.min_height[i];
-    	}
-
-    	return r;
-    },
-
-    cellWidth: function(from, to)
-    {
-    	var r =0;
-    	for(var i=from;i<to;i++){
-    	    r= r+this.gridDef.min_width[i];
-    	}
-
-        return r;
-    },
-
-    cellHeight: function(from, to)
-    {
-    	var r =0;
-    	for(var i=from;i<to;i++){
-    	    r= r+this.gridDef.min_height[i];
-    	}
-
-    	return r;
-    },
-
-    paintDebugGrid: function()
-    {
-        // alte Linien erstmal entfernen bevor man neue zeichnet
-        //
-        for(var i=0;i<this.gridDef.debugLines.length;i++)
-            this.gridDef.debugLines[i].remove();
-        this.gridDef.debugLines= [];
-
-    	var gridHeight=this._getGridHeight();
-    	var gridWidth=this._getGridWidth();
-    	var posX = this.getAbsoluteX();
-    	var posY = this.getAbsoluteY();
-
-        // draw the cols first
-        var x=posX;
-        for(var i=0;i<=this.gridDef.min_width.length;i++)
-        {
-           var newLine =  this.canvas.paper.path("M "+x+" " + posY + " l 0 " + gridHeight) .attr({"stroke":"#FF0000","stroke-width":1});
-           this.gridDef.debugLines.push(newLine);
-           if(i<this.gridDef.min_width.length)
-    	       x=x+this.gridDef.min_width[i];
-        }
-
-        var y=posY;
-        for(var i=0;i<=this.gridDef.min_height.length;i++)
-        {
-            var newLine =  this.canvas.paper.path("M "+posX+" " + y + " l " + gridWidth + " 0") .attr({"stroke":"#FF0000","stroke-width":1});
-            this.gridDef.debugLines.push(newLine);
-            if(i<this.gridDef.min_height.length)
-    	       y=y+this.gridDef.min_height[i];
-        }
-    },
-
-    _getGridWidth: function()
-    {
-        var gridWidth=0;
-        for(var i=0;i<this.gridDef.min_width.length;i++) {
-            gridWidth = gridWidth + this.gridDef.min_width[i];
-        }
-
-        return gridWidth;
-    },
-
-    _getGridHeight: function()
-    {
-        var gridHeight=0;
-        for(var i=0;i<this.gridDef.min_height.length;i++) {
-            gridHeight = gridHeight + this.gridDef.min_height[i];
-        }
-
-        return gridHeight;
-    },
-
-
-    cellWidthFromDef: function( def)
-    {
-      var pattern = new RegExp("(\\d+)(?:px)?");
-      var match = def.match(pattern);
-
-      if (match!=null) {
-          return parseInt(match[1]);
+        figure.setPosition(x, y)
+      },
+      bind: function () {
+      },
+      unbind: function () {
+      },
+      translate: function (figure, diff) {
+        figure.setPosition(figure.x + diff.x, figure.y + diff.y)
       }
-
-      pattern = new RegExp("p(?:ref)?");
-      match = def.match(pattern);
-      if (match!=null) {
-          return 0;
-      }
-
-      pattern = new RegExp("g(?:row)?");
-      match = def.match(pattern);
-      if (match!=null){
-        this.autoResize=false;
-        return -1;
-      }
-
-      return 0;
     }
 
+    this.debug = false
+    this.gridDef = {
+      debugLines: [],
+      def_cols: [],
+      def_rows: [],
+      min_height: [],
+      min_width: [],
+      minGridWidth: 10,
+      minGridHeight: 10,
+      hResizeable: false,
+      vResizeable: false,
+      layoutRequired: true
+    }
 
-});
+    this._super(
+      extend({stroke: 2}, attr),
+      extend({}, setter),
+      extend({}, getter))
+
+    this.resizeListener = function (figure) {
+      _this.gridDef.layoutRequired = true
+      // propagate the event to the parent or other listener if existing
+      //
+      if (_this.getParent() instanceof draw2d.shape.layout.Layout) {
+        _this.fireEvent("resize")
+      }
+      // or we are the parent and must consume it self
+      else {
+        _this.setDimension(
+          _this.gridDef.hResizeable === true ? _this.getWidth() : 1,
+          _this.gridDef.vResizeable === true ? _this.getHeight() : 1
+        )
+
+      }
+    }
+
+    let rows = attr.rows.split(",")
+    let columns = attr.columns.split(",")
+    for (let i = 0; i < columns.length; i++) {
+      this.gridDef.def_cols[i] = this.cellWidthFromDef(columns[i])
+    }
+
+    for (let i = 0; i < rows.length; i++) {
+      this.gridDef.def_rows[i] = this.cellWidthFromDef(rows[i])
+    }
+
+    this.installEditPolicy(new draw2d.policy.figure.RectangleSelectionFeedbackPolicy())
+  },
+
+  add: function (figure, cellConstraint) {
+
+    figure.__cellConstraint = extend({}, {
+      row: 0,
+      col: 0,
+      rowspan: 1,
+      colspan: 1,
+      align: "left",
+      valign: "top",
+      width: 1,
+      height: 1
+    }, cellConstraint)
+    this.gridDef.layoutRequired = true
+    this._super(figure, this.cellLocator)
+    this._layout()
+  },
+
+
+  /**
+   * @inheritdoc
+   */
+  getMinWidth: function () {
+    return this.gridDef.minGridWidth
+  },
+
+  /**
+   * @inheritdoc
+   */
+  getMinHeight: function () {
+    return this.gridDef.minGridHeight
+  },
+
+  /**
+   * @inheritdoc
+   */
+  setCanvas: function (canvas) {
+    // layout must be recalculated if the shape will be assigned
+    // to a canvas. "Text" elements can now calculate correct with the right font settings.
+    //
+    this.gridDef.layoutRequired = true
+    this._super(canvas)
+
+    return this
+  },
+
+  repaint: function (attributes) {
+    if (this.repaintBlocked === true || this.shape === null) {
+      return this
+    }
+    this._super(attributes)
+    if (this.debug) {
+      this.paintDebugGrid()
+    }
+
+    return this
+  },
+
+  setDimension: function (w, h) {
+    // we need the calculated layout to determine the min width/height of the figure
+    //
+    if (this.gridDef.layoutRequired === true) {
+      this._layout()
+    }
+    // set the new dimension
+    this._super(w, h)
+
+    // after setting the new dimension a recalculation of the layout is required. May the shape
+    // has grown up
+    this.gridDef.layoutRequired = true
+    this.repaint()
+
+    return this
+  },
+
+  _layout: function () {
+    this.gridDef.layoutRequired = false
+
+    let figures = this.getChildren()
+
+    // copy the initial requested width/heights
+    //
+    this.gridDef.min_height = this.gridDef.def_rows.slice(0)
+    this.gridDef.min_width = this.gridDef.def_cols.slice(0)
+
+    // Calculate the basic width/height of the elements without considering the "span" and "grow"
+    //
+    for (let i = 0; i < figures.getSize(); i++) {
+      let figure = figures.get(i)
+      let cell = figure.__cellConstraint
+      // ermitteln der derzeitig zur verfügung stehenden weite
+      this.gridDef.min_width[cell.col] = Math.max(this.gridDef.min_width[cell.col], figure.getMinWidth())
+
+      // Falls das Elemente eine y_span hat, dann versuchen ob es auf die ganze
+      // höhe rein passt. Wenn nicht wird der Teil der 'grow' angegeben hat verändert.
+      // Wenn kein Element 'grow' angegeben hat, dann wird das letzte Element verändert
+      if (cell.rowspan > 1) {
+        let eHeight = figure.getMinHeight()
+        let cHeight = this.cellHeight(cell.row, cell.row + cell.rowspan)
+        if (cHeight < eHeight) {
+          let diff = eHeight - cHeight
+          this.gridDef.min_height[cell.row + cell.rowspan - 1] = this.gridDef.min_height[cell.row + cell.rowspan - 1] + diff
+        }
+      }
+      else {
+        this.gridDef.min_height[cell.row] = Math.max(this.gridDef.min_height[cell.row], figure.getMinHeight())
+      }
+    }
+    this.gridDef.minGridWidth = this._getGridWidth()
+    this.gridDef.minGridHeight = this._getGridHeight()
+
+    // Resize the grid height if at least one row supports "grow"
+    //
+    let gridHeight = this._getGridHeight()
+    for (let i = 0; i < this.gridDef.def_rows.length; i++) {
+      // row found which can grow
+      if (this.gridDef.def_rows[i] === -1) {
+        this.gridDef.min_height[i] = this.gridDef.min_height[i] + Math.max(0, this.getHeight() - gridHeight)
+        this.gridDef.vResizeable = true
+        break
+      }
+    }
+
+    // Resize the grid if at least one column supports "grow"
+    //
+    let gridWidth = this._getGridWidth()
+    for (let i = 0; i < this.gridDef.def_cols.length; i++) {
+      // column found which can grow
+      if (this.gridDef.def_cols[i] === -1) {
+        this.gridDef.min_width[i] = this.gridDef.min_width[i] + Math.max(0, this.getWidth() - gridWidth)
+        this.gridDef.hResizeable = true
+        break
+      }
+    }
+
+    // apply the cell constraints to the elements
+    //
+    for (let i = 0; i < figures.getSize(); i++) {
+      let cell = figures.get(i).__cellConstraint
+      cell.width = this.cellWidth(cell.col, cell.col + cell.colspan)
+      cell.height = this.cellHeight(cell.row, cell.row + cell.rowspan)
+      cell.x = this.cellX(cell.col)
+      cell.y = this.cellY(cell.row)
+    }
+
+    return this
+  },
+
+  cellX: function (col) {
+    let r = 0
+    for (let i = 0; i < col; i++) {
+      r = r + this.gridDef.min_width[i]
+    }
+
+    return r
+  },
+
+  cellY: function (row) {
+    let r = 0
+    for (let i = 0; i < row; i++) {
+      r = r + this.gridDef.min_height[i]
+    }
+
+    return r
+  },
+
+  cellWidth: function (from, to) {
+    let r = 0
+    for (let i = from; i < to; i++) {
+      r = r + this.gridDef.min_width[i]
+    }
+
+    return r
+  },
+
+  cellHeight: function (from, to) {
+    let r = 0
+    for (let i = from; i < to; i++) {
+      r = r + this.gridDef.min_height[i]
+    }
+
+    return r
+  },
+
+  paintDebugGrid: function () {
+    // alte Linien erstmal entfernen bevor man neue zeichnet
+    //
+    for (let i = 0; i < this.gridDef.debugLines.length; i++)
+      this.gridDef.debugLines[i].remove()
+    this.gridDef.debugLines = []
+
+    let gridHeight = this._getGridHeight()
+    let gridWidth = this._getGridWidth()
+    let posX = this.getAbsoluteX()
+    let posY = this.getAbsoluteY()
+
+    // draw the cols first
+    let x = posX
+    for (let i = 0; i <= this.gridDef.min_width.length; i++) {
+      let newLine = this.canvas.paper.path("M " + x + " " + posY + " l 0 " + gridHeight).attr({
+        "stroke": "#FF0000",
+        "stroke-width": 1
+      })
+      this.gridDef.debugLines.push(newLine)
+      if (i < this.gridDef.min_width.length)
+        x = x + this.gridDef.min_width[i]
+    }
+
+    let y = posY
+    for (let i = 0; i <= this.gridDef.min_height.length; i++) {
+      let newLine = this.canvas.paper.path("M " + posX + " " + y + " l " + gridWidth + " 0").attr({
+        "stroke": "#FF0000",
+        "stroke-width": 1
+      })
+      this.gridDef.debugLines.push(newLine)
+      if (i < this.gridDef.min_height.length)
+        y = y + this.gridDef.min_height[i]
+    }
+  },
+
+  _getGridWidth: function () {
+    let gridWidth = 0
+    for (let i = 0; i < this.gridDef.min_width.length; i++) {
+      gridWidth = gridWidth + this.gridDef.min_width[i]
+    }
+
+    return gridWidth
+  },
+
+  _getGridHeight: function () {
+    let gridHeight = 0
+    for (let i = 0; i < this.gridDef.min_height.length; i++) {
+      gridHeight = gridHeight + this.gridDef.min_height[i]
+    }
+
+    return gridHeight
+  },
+
+
+  cellWidthFromDef: function (def) {
+    let pattern = new RegExp("(\\d+)(?:px)?")
+    let match = def.match(pattern)
+
+    if (match != null) {
+      return parseInt(match[1])
+    }
+
+    pattern = new RegExp("p(?:ref)?")
+    match = def.match(pattern)
+    if (match != null) {
+      return 0
+    }
+
+    pattern = new RegExp("g(?:row)?")
+    match = def.match(pattern)
+    if (match != null) {
+      this.autoResize = false
+      return -1
+    }
+
+    return 0
+  }
+
+
+})
 
 
 

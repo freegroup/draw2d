@@ -1,4 +1,3 @@
-
 /**
  * @class draw2d.shape.note.PostIt
  *
@@ -8,7 +7,7 @@
  *
  *     @example preview small frame
  *
- *     var shape =  new draw2d.shape.note.PostIt({
+ *     let shape =  new draw2d.shape.note.PostIt({
  *        text:"This is a simple sticky note",
  *        color:"#000000",
  *        padding:20
@@ -18,29 +17,30 @@
  *
  * @author Andreas Herz
  * @extends draw2d.shape.basic.Label
- */ import draw2d from '../../packages';
-draw2d.shape.note.PostIt= draw2d.shape.basic.Label.extend({
+ */
+import draw2d from '../../packages'
 
-	NAME : "draw2d.shape.note.PostIt",
+draw2d.shape.note.PostIt = draw2d.shape.basic.Label.extend({
 
-    /**
-     * @constructor
-     *
-     * @param {Object} [attr] the configuration of the shape
-     */
-    init: function(attr, setter, getter )
-    {
-        this._super(attr, setter, getter);
+  NAME: "draw2d.shape.note.PostIt",
 
-        this.setStroke(1);
-        this.setBackgroundColor("#5b5b5b");
-        this.setColor("#FFFFFF");
-        this.setFontColor("#ffffff");
-        this.setFontSize(14);
-        this.setPadding(5);
-        this.setRadius(5);
-    }
-});
+  /**
+   * @constructor
+   *
+   * @param {Object} [attr] the configuration of the shape
+   */
+  init: function (attr, setter, getter) {
+    this._super(attr, setter, getter)
+
+    this.setStroke(1)
+    this.setBackgroundColor("#5b5b5b")
+    this.setColor("#FFFFFF")
+    this.setFontColor("#ffffff")
+    this.setFontSize(14)
+    this.setPadding(5)
+    this.setRadius(5)
+  }
+})
 
 
 

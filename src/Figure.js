@@ -167,17 +167,15 @@ draw2d.Figure = Class.extend({
     // even handling since version 5.0.0
     this.eventSubscriptions = {}
 
-    this.relocateChildrenEventCallback = function () {
-      _this.children.each(function (i, e) {
+    this.relocateChildrenEventCallback = () => {
+      this.children.each( (i, e) => {
         e.locator.relocate(i, e.figure)
       })
     }
 
     // new approach to delegate selection requests.
     //
-    this.defaultSelectionAdapter = this.selectionAdapter = function () {
-      return _this
-    }
+    this.defaultSelectionAdapter = this.selectionAdapter =  () => this
 
     // install default selection handler. Can be overridden or replaced
     this.installEditPolicy(new draw2d.policy.figure.RectangleSelectionFeedbackPolicy())
@@ -349,15 +347,6 @@ draw2d.Figure = Class.extend({
       // may it is a array of attributes used for the getter
       //
       else if (Array.isArray(name)) {
-        result = {}
-        name.forEach((_, entry) => {
-          result[entry] = _this.attr(entry)
-        })
-        console.log(result)
-
-
-        console.log(Object.assign({}, ...Object.keys(name).map(k => ({[k]: _this.attr(k)}))))
-
         return Object.assign({}, ...Object.keys(name).map(k => ({[k]: _this.attr(k)})))
       }
       // generic getter of all registered attributes
@@ -442,6 +431,12 @@ draw2d.Figure = Class.extend({
     return this
   },
 
+  /**
+   * @method
+   * Returns a function which returns the the figure which must handle the selection handling.
+   *
+   * @param {Function} [adapter] function which returns the figure which handles the selection handling
+   */
   setSelectionAdapter: function (adapter) {
     if (adapter == null) {
       this.selectionAdapter = this.defaultSelectionAdapter
@@ -888,11 +883,11 @@ draw2d.Figure = Class.extend({
     // it is only possible to install one SelectionFeedbackPolicy at once
     //
     if (policy instanceof draw2d.policy.figure.SelectionFeedbackPolicy) {
-      let _this = this
-      this.editPolicy.grep(function (p) {
+      this.editPolicy.grep( (p) => {
         let stay = !(p instanceof draw2d.policy.figure.SelectionFeedbackPolicy)
         if (!stay) {
-          p.onUninstall(_this)
+
+           p.onUninstall(this)
         }
         return stay
       })
@@ -2029,26 +2024,21 @@ draw2d.Figure = Class.extend({
 
     this.repaint()
 
-    // don't fire any events or update the ResizeHandles if nothing has happen
+
+    // Update the resize handles if the user change the position of the
+    // element via an API call.
     //
-    //  if(oldPos.x!=this.x || oldPos.y!=this.y)
-    {
+    this.editPolicy.each((i, e) => {
+      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+        e.moved(this.canvas, this)
+      }
+    })
 
-      // Update the resize handles if the user change the position of the
-      // element via an API call.
-      //
-      this.editPolicy.each((i, e) => {
-        if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
-          e.moved(this.canvas, this)
-        }
-      })
 
-      let dx = this.x - oldPos.x
-      let dy = this.y - oldPos.y
-      this.fireEvent("move", {figure: this, dx: dx, dy: dy})
-      this.fireEvent("change:x", {figure: this, dx: dx})
-      this.fireEvent("change:y", {figure: this, dy: dy})
-    }
+    let event = {figure:  this, dx: this.x - oldPos.x, dy: this.y - oldPos.y}
+    this.fireEvent("move",     event)
+    this.fireEvent("change:x", event)
+    this.fireEvent("change:y", event)
 
     return this
   },
@@ -2140,23 +2130,19 @@ draw2d.Figure = Class.extend({
     }
 
 
-    // just fire the event if really something happens
+    this.repaint()
+
+    this.fireEvent("resize")
+    this.fireEvent("change:dimension", {value: {height: this.height, width: this.width, old: old}})
+
+    // Update the resize handles if the user change the position of the element via an API call.
     //
-    //if(old.w!=this.width || old.h != this.height)
-    {
-      this.repaint()
+    this.editPolicy.each((i, e) => {
+      if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+        e.moved(this.canvas, this)
+      }
+    })
 
-      this.fireEvent("resize")
-      this.fireEvent("change:dimension", {value: {height: this.height, width: this.width, old: old}})
-
-      // Update the resize handles if the user change the position of the element via an API call.
-      //
-      this.editPolicy.each((i, e) => {
-        if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
-          e.moved(this.canvas, this)
-        }
-      })
-    }
     return this
   },
 
@@ -2195,7 +2181,7 @@ draw2d.Figure = Class.extend({
 
   /**
    * @method
-   * Return the bounding box of the figure in absolute position to the canvas.
+   * Returns the bounding box of the figure in absolute position to the canvas.
    *
    * @return {draw2d.geo.Rectangle}
    **/
@@ -2423,7 +2409,6 @@ draw2d.Figure = Class.extend({
    * Set the assigned composite of this figure.
    *
    * @param {draw2d.shape.composite.StrongComposite} composite The assigned composite of this figure
-   * @private
    * @since 4.8.0
    **/
   setComposite: function (composite) {
@@ -2473,6 +2458,10 @@ draw2d.Figure = Class.extend({
       for (let i = 0; i < subscribers.length; i++) {
         subscribers[i](this, args)
       }
+    }
+    catch(exc){
+      console.log(exc)
+      throw exc
     }
     finally {
       this._inEvent = false
@@ -2530,7 +2519,7 @@ draw2d.Figure = Class.extend({
       if (typeof this.eventSubscriptions[events[i]] === 'undefined') {
         this.eventSubscriptions[events[i]] = []
       }
-      // avoid doublicate registration for the same event with the same callback method
+      // avoid duplicate registration for the same event with the same callback method
       if (-1 !== $.inArray(callback, this.eventSubscriptions[events[i]])) {
         //   debugger
       }
@@ -2680,7 +2669,7 @@ draw2d.Figure = Class.extend({
     //
     if (cloneMetaData.exludeChildren === false) {
       clone.resetChildren()
-      this.children.each(function (i, entry) {
+      this.children.each( (i, entry) =>{
         let child = entry.figure.clone()
         // we can ignore the locator if this didn't provide a "correct" name, this can happen in some
         // Layout shapes like VerticalLayout or Horziontal Layout. This figures injects it own kind

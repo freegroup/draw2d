@@ -6,7 +6,7 @@
  *
  *     @example preview small frame
  *
- *     var line = new draw2d.shape.basic.PolyLine();
+ *     let line = new draw2d.shape.basic.PolyLine();
  *     line.setVertices([{x:10,y:10},{x:80,y:70},{x:100,y:110}]);
  *     canvas.add(line);
  *
@@ -120,7 +120,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
 
     this.repaint()
 
-    var _this = this
+    let _this = this
     this.editPolicy.each(function (i, e) {
       if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
         e.moved(_this.canvas, _this)
@@ -153,7 +153,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
 
     this.repaint()
 
-    var _this = this
+    let _this = this
     this.editPolicy.each(function (i, e) {
       if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
         e.moved(_this.canvas, _this)
@@ -168,7 +168,6 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
    * @method
    * Inserts the draw2d.geo.Point object into the vertex list of the polyline just after the object with the given index.
    *
-   * @param {Number} index the insert index
    * @param {Number|draw2d.geo.Point} x the x coordinate or the draw2d.geo.Point object
    * @param {Number} [y] the y coordinate or undefined of the second argument is a point
    *
@@ -184,7 +183,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
     this.repaint()
 
     if (!this.selectionHandles.isEmpty()) {
-      var _this = this
+      let _this = this
       this.editPolicy.each(function (i, e) {
         if (e instanceof draw2d.policy.figure.SelectionFeedbackPolicy) {
           e.onUnselect(_this.canvas, _this)
@@ -209,7 +208,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
    * @since 4.0.0
    */
   insertVertexAt: function (index, x, y) {
-    var vertex = new draw2d.geo.Point(x, y)
+    let vertex = new draw2d.geo.Point(x, y)
 
     this.vertices.insertElementAt(vertex, index)
 
@@ -220,7 +219,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
     this.repaint()
 
     if (!this.selectionHandles.isEmpty()) {
-      var _this = this
+      let _this = this
       this.editPolicy.each(function (i, e) {
         if (e instanceof draw2d.policy.figure.SelectionFeedbackPolicy) {
           e.onUnselect(_this.canvas, _this)
@@ -244,7 +243,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
    * @since 4.0.0
    */
   removeVertexAt: function (index) {
-    var removedPoint = this.vertices.removeElementAt(index)
+    let removedPoint = this.vertices.removeElementAt(index)
 
     this.start = this.vertices.first().clone()
     this.end = this.vertices.last().clone()
@@ -253,7 +252,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
     this.repaint()
 
     if (!this.selectionHandles.isEmpty()) {
-      var _this = this
+      let _this = this
       this.editPolicy.each(function (i, e) {
         if (e instanceof draw2d.policy.figure.SelectionFeedbackPolicy) {
           e.onUnselect(_this.canvas, _this)
@@ -413,7 +412,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
    * @return {Boolean} true if the figure accepts dragging
    **/
   onDragStart: function (x, y, shiftKey, ctrlKey, isFaked) {
-    var result = this._super(x, y, shiftKey, ctrlKey, isFaked)
+    let result = this._super(x, y, shiftKey, ctrlKey, isFaked)
 
     if (result === true && isFaked !== true) {
       this.draggedSegment = this.hitSegment(x, y)
@@ -429,11 +428,11 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
    * @since 6.1.43
    **/
   getLength: function () {
-    var result = 0
-    for (var i = 0; i < this.lineSegments.getSize(); i++) {
-      var segment = this.lineSegments.get(i)
-      var p1 = segment.start
-      var p2 = segment.end
+    let result = 0
+    for (let i = 0; i < this.lineSegments.getSize(); i++) {
+      let segment = this.lineSegments.get(i)
+      let p1 = segment.start
+      let p2 = segment.end
       result += Math.sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y))
     }
     return result
@@ -457,20 +456,20 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
    * @return {draw2d.geo.Point}
    **/
   pointProjection: function (px, py) {
-    var result = null,
+    let result = null,
       projection = null,
       p1 = null,
       p2 = null,
       segment = null
-    var lastDist = Number.MAX_SAFE_INTEGER
-    var pt = new draw2d.geo.Point(px, py)
-    for (var i = 0; i < this.lineSegments.getSize(); i++) {
+    let lastDist = Number.MAX_SAFE_INTEGER
+    let pt = new draw2d.geo.Point(px, py)
+    for (let i = 0; i < this.lineSegments.getSize(); i++) {
       segment = this.lineSegments.get(i)
       p1 = segment.start
       p2 = segment.end
       projection = draw2d.geo.Line.pointProjection(p1.x, p1.y, p2.x, p2.y, pt.x, pt.y)
       if (projection !== null) {
-        var dist = projection.distance(pt)
+        let dist = projection.distance(pt)
         if (result == null || dist < lastDist) {
           result = projection
           result.index = i
@@ -480,9 +479,9 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
     }
 
     if (result !== null) {
-      var length = 0
-      var segment
-      for (var i = 0; i < result.index; i++) {
+      let length = 0
+      let segment
+      for (let i = 0; i < result.index; i++) {
         segment = this.lineSegments.get(i)
         length += segment.start.distance(segment.end)
       }
@@ -503,10 +502,10 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
    * @returns {draw2d.geo.Point}
    */
   lerp: function (percentage) {
-    var length = this.getLength() * percentage
-    var lastValidLength = length
-    var segment = null, p1 = null, p2 = null
-    for (var i = 0; i < this.lineSegments.getSize(); i++) {
+    let length = this.getLength() * percentage
+    let lastValidLength = length
+    let segment = null, p1 = null, p2 = null
+    for (let i = 0; i < this.lineSegments.getSize(); i++) {
       segment = this.lineSegments.get(i)
       p1 = segment.start
       p2 = segment.end
@@ -533,8 +532,8 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
    * @since 4.4.0
    **/
   hitSegment: function (px, py) {
-    for (var i = 0; i < this.lineSegments.getSize(); i++) {
-      var segment = this.lineSegments.get(i)
+    for (let i = 0; i < this.lineSegments.getSize(); i++) {
+      let segment = this.lineSegments.get(i)
       if (draw2d.shape.basic.Line.hit(this.corona + this.stroke, segment.start.x, segment.start.y, segment.end.x, segment.end.y, px, py)) {
         return {index: i, start: segment.start, end: segment.end}
       }
@@ -584,7 +583,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
    * @inheritdoc
    */
   getPersistentAttributes: function () {
-    var memento = extend(this._super(), {
+    let memento = extend(this._super(), {
       router: this.router.NAME,
       radius: this.radius
     })

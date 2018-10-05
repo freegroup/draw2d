@@ -1,4 +1,3 @@
-
 /**
  * @class draw2d.policy.figure.GlowSelectionFeedbackPolicy
  *
@@ -14,42 +13,41 @@
  * @author Andreas Herz
  * @extends draw2d.policy.figure.SelectionFeedbackPolicy
  */
-import draw2d from '../../packages';
+import draw2d from '../../packages'
 
 draw2d.policy.figure.GlowSelectionFeedbackPolicy = draw2d.policy.figure.SelectionFeedbackPolicy.extend({
 
-    NAME : "draw2d.policy.figure.GlowSelectionFeedbackPolicy",
+  NAME: "draw2d.policy.figure.GlowSelectionFeedbackPolicy",
 
-    /**
-     * @constructor
-     * Creates a new Router object
-     */
-    init: function( attr, setter, getter)
-    {
-        this._super( attr, setter, getter);
-    },
-
-
-    /**
-     * @method
-     * Called by the framework of the Policy should show a resize handle for the given shape
-     *
-     * @param {Boolean} isPrimarySelection
-     */
-    onSelect: function(canvas, figure, isPrimarySelection){
-        figure.setGlow(true);
-        this.moved(canvas, figure);
-   },
+  /**
+   * @constructor
+   * Creates a new Router object
+   */
+  init: function (attr, setter, getter) {
+    this._super(attr, setter, getter)
+  },
 
 
-   /**
-    * @method
-    *
-    * @param {draw2d.Figure} figure the unselected figure
-    */
-   onUnselect: function(canvas, figure ){
-		this._super(canvas, figure);
-		figure.setGlow(false);
-   }
+  /**
+   * @method
+   * Called by the framework of the Policy should show a resize handle for the given shape
+   *
+   * @param {Boolean} isPrimarySelection
+   */
+  onSelect: function (canvas, figure, isPrimarySelection) {
+    figure.setGlow(true)
+    this.moved(canvas, figure)
+  },
 
-});
+
+  /**
+   * @method
+   *
+   * @param {draw2d.Figure} figure the unselected figure
+   */
+  onUnselect: function (canvas, figure) {
+    this._super(canvas, figure)
+    figure.setGlow(false)
+  }
+
+})

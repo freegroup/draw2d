@@ -82,13 +82,8 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
   toFront: function (figure) {
     this._super(figure)
 
-    this.getPorts().each( (i, port) =>{
-      port.getConnections().each( (i, connection) =>{
-        connection.toFront(figure)
-      })
-      // a port should always be in front of the shape dosn't matter what the
-      // "figure" parameter says.
-      //
+    this.getPorts().each((i, port) => {
+      port.getConnections().each((i, connection) => connection.toFront(figure))
       port.toFront(this)
     })
 
@@ -100,10 +95,8 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
    */
   toBack: function (figure) {
 
-    this.getPorts().each(function (i, port) {
-      port.getConnections().each(function (i, connection) {
-        connection.toBack(figure)
-      })
+    this.getPorts().each((i, port) => {
+      port.getConnections().each((i, connection) => connection.toBack(figure))
       port.toBack(figure)
     })
 
@@ -149,6 +142,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
    * @return  {draw2d.util.ArrayList}
    **/
   getPorts: function (recursive) {
+
     if (typeof recursive === "boolean" && recursive === false) {
       let ports = new draw2d.util.ArrayList()
       ports.addAll(this.inputPorts)
@@ -163,11 +157,10 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
       this.cachedPorts.addAll(this.outputPorts)
       this.cachedPorts.addAll(this.hybridPorts)
 
-      this.children.each( (i, e) =>{
+      this.children.each((i, e) => {
         this.cachedPorts.addAll(e.figure.getPorts())
       })
     }
-
     return this.cachedPorts
   },
 
@@ -245,17 +238,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
    * @return {draw2d.Port} Returns the port with the hands over name or null.
    **/
   getPort: function (portName) {
-    let port = null
-
-    this.getPorts().each(function (i, e) {
-
-      if (e.getName() === portName) {
-        port = e
-        return false
-      }
-    })
-
-    return port
+    return this.getPorts().find(e => e.getName() === portName)
   },
 
   /**
@@ -380,10 +363,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
    * @since 5.0.0
    */
   resetPorts: function () {
-    this.getPorts().each( (i, port) =>{
-      this.removePort(port)
-    })
-
+    this.getPorts().each((i, port) => this.removePort(port))
     return this
   },
 
@@ -486,13 +466,11 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
 
     let ports = this.getPorts()
     if (oldCanvas !== null) {
-      ports.each(function (i, port) {
-        oldCanvas.unregisterPort(port)
-      })
+      ports.each((i, port) => oldCanvas.unregisterPort(port))
     }
 
     if (canvas !== null) {
-      ports.each(function (i, port) {
+      ports.each((i, port) => {
         port.setCanvas(canvas)
         canvas.registerPort(port)
       })
@@ -500,9 +478,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
       this.setDimension(this.width, this.height)
     }
     else {
-      ports.each(function (i, port) {
-        port.setCanvas(null)
-      })
+      ports.each((i, port) => port.setCanvas(null))
     }
     return this
   },
@@ -565,17 +541,9 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
 
     // layout the ports
     //
-    this.outputPorts.each(function (i, port) {
-      port.locator.relocate(i, port)
-    })
-
-    this.inputPorts.each(function (i, port) {
-      port.locator.relocate(i, port)
-    })
-
-    this.hybridPorts.each(function (i, port) {
-      port.locator.relocate(i, port)
-    })
+    this.outputPorts.each((i, port) => port.locator.relocate(i, port))
+    this.inputPorts.each((i, port) => port.locator.relocate(i, port))
+    this.hybridPorts.each((i, port) => port.locator.relocate(i, port))
 
     return this
   },
@@ -655,6 +623,8 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
         port.setName(e.name)
       })
     }
+
+    return this
   }
 
 })

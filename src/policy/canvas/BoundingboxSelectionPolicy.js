@@ -16,8 +16,8 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
    * Creates a new selection policy for a canvas.
    */
   init: function () {
-    this.isInsideMode   =  (rect1, rect2) => rect1.isInside(rect2)
-    this.intersectsMode =  (rect1, rect2) => rect1.intersects(rect2)
+    this.isInsideMode = (rect1, rect2) => rect1.isInside(rect2)
+    this.intersectsMode = (rect1, rect2) => rect1.intersects(rect2)
 
     this.decision = this.isInsideMode
 
@@ -58,7 +58,7 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
     // adding connections to the selection of the source and target port part of the current selection
     //
     let selection = canvas.getSelection()
-    canvas.getLines().each( (i, line) =>{
+    canvas.getLines().each((i, line) => {
       if (line instanceof draw2d.Connection) {
         if (selection.contains(line.getSource().getRoot()) && selection.contains(line.getTarget().getRoot())) {
           this.select(canvas, line, false)
@@ -155,7 +155,7 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
       // => reset the "old" current selection if we didn't press the shift key
       if (shiftKey === false) {
         if (this.mouseDownElement !== null && this.mouseDownElement.isResizeHandle === false && !currentSelection.contains(this.mouseDownElement)) {
-          currentSelection.each( (i, figure) => {
+          currentSelection.each((i, figure) => {
             this.unselect(canvas, figure)
           })
         }
@@ -187,7 +187,7 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
       // drag/drop operation
       if (this.mouseDownElement !== null && this.mouseDownElement.isResizeHandle === false) {
         currentSelection = canvas.getSelection().getAll()
-        currentSelection.each( (i, figure)=>{
+        currentSelection.each((i, figure) => {
           let fakeDragX = 1
           let fakeDragY = 1
 
@@ -211,6 +211,7 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
     }
     catch (exc) {
       console.log(exc)
+      throw exc
     }
   },
 
@@ -259,11 +260,11 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
         })
         this.boundingBoxFigure2.setCanvas(canvas)
       }
-
+      let abs = Math.abs
       if (this.boundingBoxFigure1 !== null) {
-        this.boundingBoxFigure1.setDimension(Math.abs(dx), Math.abs(dy))
+        this.boundingBoxFigure1.setDimension(abs(dx), abs(dy))
         this.boundingBoxFigure1.setPosition(this.x + Math.min(0, dx), this.y + Math.min(0, dy))
-        this.boundingBoxFigure2.setDimension(Math.abs(dx), Math.abs(dy))
+        this.boundingBoxFigure2.setDimension(abs(dx), abs(dy))
         this.boundingBoxFigure2.setPosition(this.x + Math.min(0, dx), this.y + Math.min(0, dy))
       }
     }
@@ -286,7 +287,7 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
       // delete the current selection if you have clicked in the empty
       // canvas.
       if (this.mouseDownElement === null) {
-        canvas.getSelection().getAll().each((i, figure) =>{
+        canvas.getSelection().getAll().each((i, figure) => {
           this.unselect(canvas, figure)
         })
       }
@@ -300,7 +301,7 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
       else if (this.mouseDownElement !== null && this.mouseMovedDuringMouseDown === false) {
         let sel = canvas.getSelection().getAll()
         if (!sel.contains(this.mouseDownElement)) {
-          canvas.getSelection().getAll().each((i, figure)=> {
+          canvas.getSelection().getAll().each((i, figure) => {
             this.unselect(canvas, figure)
           })
         }
@@ -311,7 +312,7 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
         // retrieve all figures which are inside the bounding box and select all of them
         //
         let selectionRect = this.boundingBoxFigure1.getBoundingBox()
-        canvas.getFigures().each( (i, figure) => {
+        canvas.getFigures().each((i, figure) => {
           if (figure.isSelectable() === true && this.decision(figure.getBoundingBox(), selectionRect)) {
             let fakeDragX = 1
             let fakeDragY = 1
@@ -324,7 +325,7 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
             }
             let canDragStart = figure.onDragStart(fakeDragX, fakeDragY, shiftKey, ctrlKey)
             if (canDragStart === true) {
-              this.select(canvas, figure, false)
+              this.select(canvas, figure)
             }
           }
         })

@@ -1,4 +1,3 @@
-
 /**
  * @class draw2d.policy.figure.SelectionFeedbackPolicy
  *
@@ -10,42 +9,38 @@
  * @author Andreas Herz
  * @extends draw2d.policy.figure.DragDropEditPolicy
  */
-import draw2d from '../../packages';
+import draw2d from '../../packages'
 
 draw2d.policy.figure.SelectionPolicy = draw2d.policy.figure.DragDropEditPolicy.extend({
 
-    NAME : "draw2d.policy.figure.SelectionPolicy",
+  NAME: "draw2d.policy.figure.SelectionPolicy",
 
-    /**
-     * @constructor
-     *
-     */
-    init: function( attr, setter, getter)
-    {
-        this._super( attr, setter, getter);
-    },
-
+  /**
+   * @constructor
+   *
+   */
+  init: function (attr, setter, getter) {
+    this._super(attr, setter, getter)
+  },
 
 
-    /**
-     * @method
-     *
-     * @template
-     * @param figure
-     * @param isPrimarySelection
-     */
-    onSelect: function(canvas, figure, isPrimarySelection)
-    {
-    },
+  /**
+   * @method
+   *
+   * @template
+   * @param figure
+   * @param isPrimarySelection
+   */
+  onSelect: function (canvas, figure, isPrimarySelection) {
+  },
 
 
-    /**
-     * @method
-     *
-     * @param {draw2d.Figure} figure the unselected figure
-     */
-    onUnselect: function(canvas, figure )
-    {
-    }
+  /**
+   * @method
+   *
+   * @param {draw2d.Figure} figure the unselected figure
+   */
+  onUnselect: function (canvas, figure) {
+  }
 
-});
+})

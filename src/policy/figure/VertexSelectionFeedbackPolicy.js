@@ -1,4 +1,3 @@
-
 /**
  * @class draw2d.policy.figure.VertexSelectionFeedbackPolicy
  *
@@ -8,64 +7,59 @@
  * @author  Andreas Herz
  * @extends draw2d.policy.figure.SelectionFeedbackPolicy
  */
-import draw2d from '../../packages';
+import draw2d from '../../packages'
 
 draw2d.policy.figure.VertexSelectionFeedbackPolicy = draw2d.policy.figure.SelectionFeedbackPolicy.extend({
 
-    NAME : "draw2d.policy.figure.VertexSelectionFeedbackPolicy",
+  NAME: "draw2d.policy.figure.VertexSelectionFeedbackPolicy",
 
-    /**
-     * @constructor
-     * Creates a new Router object
-     */
-    init: function( attr, setter, getter)
-    {
-        this._super( attr, setter, getter);
-    },
+  /**
+   * @constructor
+   * Creates a new Router object
+   */
+  init: function (attr, setter, getter) {
+    this._super(attr, setter, getter)
+  },
 
 
-    /**
-     * @method
-     *
-     * @param {draw2d.Canvas} canvas The host canvas
-     * @param {draw2d.Connection} connection the selected figure
-     * @param {Boolean} isPrimarySelection
-     */
-    onSelect: function(canvas, connection, isPrimarySelection)
-    {
+  /**
+   * @method
+   *
+   * @param {draw2d.Canvas} canvas The host canvas
+   * @param {draw2d.Connection} connection the selected figure
+   * @param {Boolean} isPrimarySelection
+   */
+  onSelect: function (canvas, connection, isPrimarySelection) {
 //    	this._super(canvas, connection, isPrimarySelection);
 
-    	var points = connection.getVertices();
-    	for(var i=0 ; i<points.getSize(); i++){
-    		var handle = new draw2d.shape.basic.VertexResizeHandle(connection, i);
-            connection.selectionHandles.add( handle);
-            handle.setDraggable(connection.isResizeable());
-            handle.show(canvas);
+    let points = connection.getVertices()
+    for (let i = 0; i < points.getSize(); i++) {
+      let handle = new draw2d.shape.basic.VertexResizeHandle(connection, i)
+      connection.selectionHandles.add(handle)
+      handle.setDraggable(connection.isResizeable())
+      handle.show(canvas)
 
-            if(i!==0){
-        		var handle = new draw2d.shape.basic.GhostVertexResizeHandle(connection, i-1);
-                connection.selectionHandles.add( handle);
-                handle.setDraggable(connection.isResizeable());
-                handle.show(canvas);
-            }
-        }
-
-        this.moved(canvas, connection);
-    },
-
-    /**
-     * @method
-     * Callback method if the figure has been moved.
-     *
-     * @param {draw2d.Canvas} canvas The host canvas
-     * @param {draw2d.Figure} figure The related figure
-     */
-    moved: function(canvas,figure)
-    {
-        figure.selectionHandles.each(function(i,e){
-            e.relocate();
-        });
+      if (i !== 0) {
+        let handle = new draw2d.shape.basic.GhostVertexResizeHandle(connection, i - 1)
+        connection.selectionHandles.add(handle)
+        handle.setDraggable(connection.isResizeable())
+        handle.show(canvas)
+      }
     }
 
+    this.moved(canvas, connection)
+  },
 
-});
+  /**
+   * @method
+   * Callback method if the figure has been moved.
+   *
+   * @param {draw2d.Canvas} canvas The host canvas
+   * @param {draw2d.Figure} figure The related figure
+   */
+  moved: function (canvas, figure) {
+    figure.selectionHandles.each( (i, e) => e.relocate())
+  }
+
+
+})

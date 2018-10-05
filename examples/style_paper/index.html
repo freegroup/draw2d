@@ -47,9 +47,11 @@ document.addEventListener("DOMContentLoaded",function () {
 
     draw2d.Configuration.factory = $.extend({}, draw2d.Configuration.factory,{
 
-        createResizeHandle: function(forShape, type){
-            var handle= new draw2d.ResizeHandle(forShape, type);
-            handle.attr({
+        createResizeHandle: function(owner, type){
+            var handle= new draw2d.ResizeHandle(
+              {
+                owner: owner,
+                type: type,
                 width:10,
                 height:10,
                 radius:4,

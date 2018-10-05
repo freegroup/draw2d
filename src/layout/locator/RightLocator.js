@@ -1,4 +1,3 @@
-
 /**
  * @class draw2d.layout.locator.RightLocator
  *
@@ -22,47 +21,45 @@
  * @author Andreas Herz
  * @extend draw2d.layout.locator.Locator
  */
-import draw2d from '../../packages';
+import draw2d from '../../packages'
 
 draw2d.layout.locator.RightLocator = draw2d.layout.locator.Locator.extend({
-    NAME : "draw2d.layout.locator.RightLocator",
+  NAME: "draw2d.layout.locator.RightLocator",
 
-    /**
-     * @constructor
-     * Constructs a locator with associated parent.
-     *
-     */
-    init: function(attr)
-    {
-      this._super();
+  /**
+   * @constructor
+   * Constructs a locator with associated parent.
+   *
+   */
+  init: function (attr) {
+    this._super()
 
-      this.margin = (attr && ( "margin" in attr))?attr.margin :5;
-    },
+    this.margin = (attr && ("margin" in attr)) ? attr.margin : 5
+  },
 
 
-    /**
-     * @method
-     * Relocates the given Figure.
-     *
-     * @param {Number} index child index of the target
-     * @param {draw2d.Figure} target The figure to relocate
-     **/
-    relocate: function(index, target)
-    {
-       var parent = target.getParent();
-       var boundingBox = parent.getBoundingBox();
+  /**
+   * @method
+   * Relocates the given Figure.
+   *
+   * @param {Number} index child index of the target
+   * @param {draw2d.Figure} target The figure to relocate
+   **/
+  relocate: function (index, target) {
+    var parent = target.getParent()
+    var boundingBox = parent.getBoundingBox()
 
-       // I made a wrong decision in the port handling: anchor point
-       // is in the center and not topLeft. Now I must correct this flaw here, and there, and...
-       // shit happens.
-       var offset = (parent instanceof draw2d.Port)?boundingBox.h/2:0;
+    // I made a wrong decision in the port handling: anchor point
+    // is in the center and not topLeft. Now I must correct this flaw here, and there, and...
+    // shit happens.
+    var offset = (parent instanceof draw2d.Port) ? boundingBox.h / 2 : 0
 
-       if(target instanceof draw2d.Port){
-           target.setPosition(boundingBox.w,(boundingBox.h/2)-offset);
-       }
-       else{
-           var targetBoundingBox = target.getBoundingBox();
-           target.setPosition(boundingBox.w+this.margin,(boundingBox.h/2)-(targetBoundingBox.h/2)-offset);
-       }
+    if (target instanceof draw2d.Port) {
+      target.setPosition(boundingBox.w, (boundingBox.h / 2) - offset)
     }
-});
+    else {
+      var targetBoundingBox = target.getBoundingBox()
+      target.setPosition(boundingBox.w + this.margin, (boundingBox.h / 2) - (targetBoundingBox.h / 2) - offset)
+    }
+  }
+})

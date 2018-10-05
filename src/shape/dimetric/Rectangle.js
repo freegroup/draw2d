@@ -1,4 +1,3 @@
-
 /**
  * @class draw2d.shape.dimetric.Rectangle
  * A Rectangle Figure in a dimetric perspective.
@@ -17,41 +16,43 @@
  *
  * @author Andreas Herz
  * @extends draw2d.shape.basic.Polygon
- */ import draw2d from '../../packages';
+ */
+import draw2d from '../../packages'
+
 draw2d.shape.dimetric.Rectangle = draw2d.shape.basic.Polygon.extend({
-    NAME : "draw2d.shape.dimetric.Rectangle",
+  NAME: "draw2d.shape.dimetric.Rectangle",
 
-    /**
-     * @constructor
-     * Creates a new figure element which are not assigned to any canvas.
-     *
-     * @param {Object} [attr] the configuration of the shape
-     */
-    init: function( attr, setter, getter) {
-      this._super(extend({bgColor:"#00a3f6",color:"#1B1B1B"},attr), setter, getter);
+  /**
+   * @constructor
+   * Creates a new figure element which are not assigned to any canvas.
+   *
+   * @param {Object} [attr] the configuration of the shape
+   */
+  init: function (attr, setter, getter) {
+    this._super(extend({bgColor: "#00a3f6", color: "#1B1B1B"}, attr), setter, getter)
 
-      let pos = this.getPosition()
+    let pos = this.getPosition()
 
-      this.resetVertices()
+    this.resetVertices()
 
-      let angle26 = Math.atan(.5);
-      let cos30 = Math.cos(angle26);
-      let sin30 = Math.sin(angle26);
+    let angle26 = Math.atan(.5)
+    let cos30 = Math.cos(angle26)
+    let sin30 = Math.sin(angle26)
 
-      let box = this.getBoundingBox();
-      let w  = box.w
-      let h = box.h
+    let box = this.getBoundingBox()
+    let w = box.w
+    let h = box.h
 
-      this.addVertex( 0                  , 0                ); // topLeft
-      this.addVertex(  cos30*w           , sin30*w          ); // topRight
-      this.addVertex(  cos30*w-cos30*h   , sin30*w + sin30*h); // bottomRight
-      this.addVertex( -cos30*h           ,           sin30*h); // bottomLeft
+    this.addVertex(0, 0) // topLeft
+    this.addVertex(cos30 * w, sin30 * w) // topRight
+    this.addVertex(cos30 * w - cos30 * h, sin30 * w + sin30 * h) // bottomRight
+    this.addVertex(-cos30 * h, sin30 * h) // bottomLeft
 
-      // override the selection handler from the polygon. Because the vertices of
-      // the diamond are not selectable and modifiable
-      //
-      this.installEditPolicy(new draw2d.policy.figure.RectangleSelectionFeedbackPolicy());
+    // override the selection handler from the polygon. Because the vertices of
+    // the diamond are not selectable and modifiable
+    //
+    this.installEditPolicy(new draw2d.policy.figure.RectangleSelectionFeedbackPolicy())
 
-      this.setPosition(pos);
-    }
-});
+    this.setPosition(pos)
+  }
+})

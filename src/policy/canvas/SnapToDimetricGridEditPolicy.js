@@ -9,7 +9,7 @@
  *
  * @extends draw2d.policy.canvas.ShowDimetricGridEditPolicy
  */
-import draw2d from '../../packages';
+import draw2d from '../../packages'
 
 draw2d.policy.canvas.SnapToDimetricGridEditPolicy = draw2d.policy.canvas.ShowDimetricGridEditPolicy.extend({
 
@@ -40,7 +40,7 @@ draw2d.policy.canvas.SnapToDimetricGridEditPolicy = draw2d.policy.canvas.ShowDim
   snap: function (canvas, figure, modifiedPos, originalPos) {
     // do nothing for lines
     if (figure instanceof draw2d.shape.basic.Line) {
-      return modifiedPos;
+      return modifiedPos
     }
 
     let snapPoint = figure.getSnapToGridAnchor()
@@ -48,14 +48,14 @@ draw2d.policy.canvas.SnapToDimetricGridEditPolicy = draw2d.policy.canvas.ShowDim
     modifiedPos.x = modifiedPos.x + snapPoint.x
     modifiedPos.y = modifiedPos.y + snapPoint.y
 
-    let g = this.grid/5
+    let g = this.grid / 5
 
     modifiedPos.x = g * Math.floor(((modifiedPos.x + g / 2.0) / g))
-    modifiedPos.y = g * Math.floor(((modifiedPos.y + g / 2.0) /g))
+    modifiedPos.y = g * Math.floor(((modifiedPos.y + g / 2.0) / g))
 
     modifiedPos.x = modifiedPos.x - snapPoint.x
     modifiedPos.y = modifiedPos.y - snapPoint.y
 
-    return modifiedPos;
+    return modifiedPos
   }
-});
+})

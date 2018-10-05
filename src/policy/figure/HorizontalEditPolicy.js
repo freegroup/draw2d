@@ -1,4 +1,3 @@
-
 /**
  * @class draw2d.policy.figure.HorizontalEditPolicy
  *
@@ -23,36 +22,34 @@
  *
  * @extends draw2d.policy.figure.DragDropEditPolicy
  */
-import draw2d from '../../packages';
+import draw2d from '../../packages'
 
 draw2d.policy.figure.HorizontalEditPolicy = draw2d.policy.figure.DragDropEditPolicy.extend({
 
-    NAME : "draw2d.policy.figure.HorizontalEditPolicy",
+  NAME: "draw2d.policy.figure.HorizontalEditPolicy",
 
-    /**
-     * @constructor
-     * Creates a new constraint object
-     *
-     */
-    init: function( attr, setter, getter)
-    {
-        this._super( attr, setter, getter);
-    },
+  /**
+   * @constructor
+   * Creates a new constraint object
+   *
+   */
+  init: function (attr, setter, getter) {
+    this._super(attr, setter, getter)
+  },
 
 
-    /**
-     * @method
-     * It is only possible to drag&drop the element in a horizontal line
-     *
-     * @param figure
-     * @param {Number|draw2d.geo.Point} x
-     * @param {number} [y]
-     *
-     * @returns {draw2d.geo.Point} the constraint position of the figure
-     */
-    adjustPosition: function(figure, x, y)
-    {
-        return new draw2d.geo.Point(x,figure.getY());
-    }
+  /**
+   * @method
+   * It is only possible to drag&drop the element in a horizontal line
+   *
+   * @param figure
+   * @param {Number|draw2d.geo.Point} x
+   * @param {number} [y]
+   *
+   * @returns {draw2d.geo.Point} the constraint position of the figure
+   */
+  adjustPosition: function (figure, x, y) {
+    return new draw2d.geo.Point(x, figure.getY())
+  }
 
-});
+})

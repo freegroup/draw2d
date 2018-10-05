@@ -49,8 +49,7 @@ draw2d.policy.figure.WidthSelectionFeedbackPolicy = draw2d.policy.figure.Selecti
 
             r4.installEditPolicy(new draw2d.policy.figure.HorizontalEditPolicy());
             r8.installEditPolicy(new draw2d.policy.figure.HorizontalEditPolicy());
-            figure.selectionHandles.add(r4);
-            figure.selectionHandles.add(r8);
+            figure.selectionHandles.add(r4, r8);
 
             r4.setDraggable(figure.isResizeable());
             r8.setDraggable(figure.isResizeable());

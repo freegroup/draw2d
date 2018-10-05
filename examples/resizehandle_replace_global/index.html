@@ -8,19 +8,6 @@
     <link type="text/css" rel="stylesheet" href="./css/example.css" />
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     <script src="../../dist/draw2d.js"></script>
     <script src="./lib/fraphael.js"></script>
 
@@ -32,15 +19,17 @@ document.addEventListener("DOMContentLoaded",function () {
     // Override the standard ResizeHanlde and add some fancy filter to the SVG element
     // We need the fraphael.js lib to apply the filter
     //
-    var filter = null;
-    draw2d.Configuration.factory.createResizeHandle= function(forShape, type){
-        var handle= new draw2d.ResizeHandle(forShape, type);
-        handle.attr({
-            width:10,
-            height:10,
-            radius:4,
-            color:"#ffffff",
-            stroke:1
+    let filter = null;
+    draw2d.Configuration.factory.createResizeHandle= function(owner, type, width, height){
+      var handle= new draw2d.ResizeHandle(
+        {
+          owner: owner,
+          type: type,
+          width:10,
+          height:10,
+          radius:4,
+          color:"#ffffff",
+          stroke:1
         });
 
         handle._origShow = handle.show;
@@ -66,7 +55,7 @@ document.addEventListener("DOMContentLoaded",function () {
 
     };
 
-  var canvas = new draw2d.Canvas("gfx_holder");
+  let canvas = new draw2d.Canvas("gfx_holder");
 
   canvas.add( new draw2d.shape.basic.Oval(),100,100);
   canvas.add( new draw2d.shape.basic.Rectangle(),120,150);
@@ -80,7 +69,7 @@ document.addEventListener("DOMContentLoaded",function () {
   /////////////////////////////////////////////////////////////////////
   // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
   /////////////////////////////////////////////////////////////////////
-  var msg = new draw2d.shape.note.PostIt({text:"Select a shape to see the custom resize handles", x:20, y:20});
+  let msg = new draw2d.shape.note.PostIt({text:"Select a shape to see the custom resize handles", x:20, y:20});
   canvas.add(msg);
 
 });

@@ -15,8 +15,6 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
 
   DEFAULT_BORDER_COLOR: new draw2d.util.Color("#1B1B1B"),
 
-  MAX_SAFE_INTEGER: 9007199254740991,
-
   /**
    * @constructor
    * Creates a new Node element which are not assigned to any canvas.
@@ -24,8 +22,6 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {
-    var _this = this
-
     this.locator = null
     this.lighterBgColor = null
     this.name = null
@@ -33,7 +29,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
     this._super(extend({
         bgColor: "#4f6870",
         stroke: 1,
-        diameter: draw2d.isTouchDevice ? 25 : 10,
+        diameter: 10,
         color: "#1B1B1B",
         selectable: false
       }, attr),
@@ -55,11 +51,11 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
     this.connections = new draw2d.util.ArrayList()
 
 
-    this.moveListener = function (emitter, event) {
-      _this.repaint()
+    this.moveListener = (emitter, event) =>{
+      this.repaint()
       // Falls sich der parent bewegt hat, dann muss der Port dies seinen
       // Connections mitteilen
-      _this.fireEvent("move", {figure: _this, dx: 0, dy: 0})
+      this.fireEvent("move", {figure: this, dx: 0, dy: 0})
     }
 
     this.connectionAnchor = new draw2d.layout.anchor.ConnectionAnchor(this)
@@ -67,23 +63,19 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
     // for dynamic diagrams. A Port can have a value which is set by a connector
     //
     this.value = null
-    this.maxFanOut = this.MAX_SAFE_INTEGER
+    this.maxFanOut = Number.MAX_SAFE_INTEGER
 
     this.setCanSnapToHelper(false)
 
     // uninstall all default selection policies. This is not required for Ports
-    this.editPolicy.each(function (i, policy) {
-      _this.uninstallEditPolicy(policy)
-    })
+    this.editPolicy.each( (i, policy) => this.uninstallEditPolicy(policy))
 
     this.installEditPolicy(new draw2d.policy.port.IntrusivePortsFeedbackPolicy())
     //    this.installEditPolicy(new draw2d.policy.port.ElasticStrapFeedbackPolicy());
 
     // a port handles the selection handling always by its own regardless if
     // the port is part of an composite, node, group or whatever.
-    this.portSelectionAdapter = function () {
-      return _this
-    }
+    this.portSelectionAdapter = () => this
   },
 
   getSelectionAdapter: function () {

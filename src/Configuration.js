@@ -16,6 +16,7 @@ draw2d.Configuration = {
             moveVertices : "Move Vertices",
             deleteVertex : "Delete Vertex",
             resizeShape : "Resize Shape",
+            rotateShape : "Rotate Shape",
             collection : "Execute Commands",
             addVertex : "Add Vertex",
             changeAttributes:"Change Attributes",
@@ -34,8 +35,11 @@ draw2d.Configuration = {
     	// all selection policies calles this method to create a ResizeHandle.
     	// It is possible to replace this method with a custom implementation
     	// @since 5.2.0
-    	createResizeHandle: function(forShape, type){
-    		return new draw2d.ResizeHandle(forShape, type);
+    	createResizeHandle: function(owner, type, width, height){
+        // create a custom SelectionPolicy instead
+        console.log("deprecated call factory.createResizeHandle");
+
+    		return new draw2d.ResizeHandle({ owner, type, width, height });
     	},
     	// The commands an canvas calles this method to create a new connection.
     	// all parameters are optional.

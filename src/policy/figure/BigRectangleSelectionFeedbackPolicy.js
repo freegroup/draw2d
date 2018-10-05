@@ -1,7 +1,6 @@
-
 /**
- * @class draw2d.policy.figure.BigRectangleSelectionFeedbackPolicy 
- * 
+ * @class draw2d.policy.figure.BigRectangleSelectionFeedbackPolicy
+ *
  * See the example:
  *
  *     @example preview small frame
@@ -14,38 +13,24 @@
  * @author Andreas Herz
  * @extends draw2d.policy.figure.SelectionFeedbackPolicy
  */
-import draw2d from '../../packages';
+import draw2d from '../../packages'
 
 draw2d.policy.figure.BigRectangleSelectionFeedbackPolicy = draw2d.policy.figure.RectangleSelectionFeedbackPolicy.extend({
 
-    NAME : "draw2d.policy.figure.BigRectangleSelectionFeedbackPolicy",
-    
-    /**
-     * @constructor 
-     * Creates a new Router object
-     */
-    init: function( attr, setter, getter)
-    {
-        this._super( attr, setter, getter);
-   },
-    
+  NAME: "draw2d.policy.figure.BigRectangleSelectionFeedbackPolicy",
 
-    /**
-     * @method
-     * Called by the framework of the Policy should show a resize handle for the given shape
-     * 
-     * @param {Boolean} isPrimarySelection
-     */
-    onSelect: function(canvas, figure, isPrimarySelection){
-        
-        this._super(canvas, figure, isPrimarySelection);
-        
-        if(!figure.selectionHandles.isEmpty())
-        {
-            figure.selectionHandles.each(function(i,e){
-               e.setDimension(15,15); 
-            });
-        }
-        this.moved(canvas, figure);
-   }
-});
+  /**
+   * @constructor
+   * Creates a new Router object
+   */
+  init: function (attr, setter, getter) {
+    this._super(attr, setter, getter)
+  },
+
+
+
+  createResizeHandle: function (owner, type){
+    return new draw2d.ResizeHandle({ owner:owner, type:type, width:15, height:15 });
+  }
+
+})
