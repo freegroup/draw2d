@@ -16,7 +16,7 @@ class FilesToJSON{
         if (err) {
           console.log(err);
         } else {
-          fs.writeFile(this.filename, JSON.stringify(files,undefined,2), (err)=>{
+          fs.writeFile(this.filename, "var examples= "+JSON.stringify(files,undefined,2), (err)=>{
             console.log(err)
           });
         }

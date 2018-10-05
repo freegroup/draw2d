@@ -1,5 +1,9 @@
 /* global __dirname, require, module*/
 
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ReplaceInFileWebpackPlugin = require('replace-in-file-webpack-plugin');
+
+
 const webpack = require('webpack');
 const path = require('path');
 const env = require('yargs').argv.env; // use --env with webpack 2
@@ -10,10 +14,26 @@ var FilesToJSON = require('./build/FilesToJSON');
 
 let libraryName = pkg.name;
 
-let plugins = [new FilesToJSON({
-  pattern: "./examples/**/*.html",
-  filename: "./examples/index.json"
-})], outputFile;
+let plugins = [
+  new FilesToJSON({
+    pattern: "./examples/**/*.html",
+    filename: "./examples/index.js"
+  }),
+  new CopyWebpackPlugin([
+    {
+      context: './examples/',
+      from: '**/*',
+      to : __dirname + '/dist/examples'
+    }]),
+  new ReplaceInFileWebpackPlugin([{
+    dir: __dirname + '/dist/examples/',
+    test: /\.html$/,
+    rules: [{
+      search: '../../dist/draw2d.js',
+      replace: '../../draw2d.js'
+    }]
+  }]),
+], outputFile;
 
 
 outputFile = libraryName + '.js';

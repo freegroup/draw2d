@@ -1,0 +1,37 @@
+<html>
+<head>
+  <script src="jquery.js"></script>
+  <script src="index.js"></script>
+
+  <style>
+    ul{
+      padding:0;
+    }
+  </style>
+</head>
+<body>
+<div  id="list">
+
+</div>
+
+<script>
+  var parent = $("<ul></ul>");
+  $("#list").append(parent);
+
+
+  for(var i = 0; i < examples.length; i++) {
+    var link = examples[i];
+    var txt = link.split("/")[2]
+    txt = txt.replace(new RegExp("_","g")," ")
+    var a = $("<a></a>");
+    a.html(txt);
+    a.attr({
+      "href": "../"+link,
+      "target":"demo"
+    })
+    parent
+      .append(a)
+      .append("<br>");
+  }
+</script>
+</body>

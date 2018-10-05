@@ -1,4 +1,4 @@
-[
+var examples= [
   "./examples/buildin_bridge/index.html",
   "./examples/buildin_commandstack/index.html",
   "./examples/buildin_event/index.html",
@@ -40,6 +40,7 @@
   "./examples/galerie_shape_icon/index.html",
   "./examples/galerie_shape_node/index.html",
   "./examples/galerie_shape_widget/index.html",
+  "./examples/index.html",
   "./examples/interaction_click/index.html",
   "./examples/interaction_dblclick_figure/index.html",
   "./examples/interaction_dblclick_policy/index.html",
@@ -61,6 +62,7 @@
   "./examples/io_png_overview/index.html",
   "./examples/io_svg_basic/index.html",
   "./examples/keyboard_handler/index.html",
+  "./examples/menu.html",
   "./examples/policy_canvas_decoration/index.html",
   "./examples/policy_drag_copy/index.html",
   "./examples/policy_figure_constraint/index.html",
