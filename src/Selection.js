@@ -103,8 +103,8 @@ draw2d.Selection = Class.extend({
    */
   contains: function (figure, checkDescendant) {
     if (checkDescendant) {
-      for (var i = 0; i < this.all.getSize(); i++) {
-        var figureToCheck = this.all.get(i);
+      for (let i = 0; i < this.all.getSize(); i++) {
+        let figureToCheck = this.all.get(i);
         if (figureToCheck === figure || figureToCheck.contains(figure)) {
           return true;
         }

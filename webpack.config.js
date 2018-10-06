@@ -4,9 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ReplaceInFileWebpackPlugin = require('replace-in-file-webpack-plugin');
 
 
-const webpack = require('webpack');
 const path = require('path');
-const env = require('yargs').argv.env; // use --env with webpack 2
 const pkg = require('./package.json');
 
 var FilesToJSON = require('./build/FilesToJSON');
@@ -17,7 +15,7 @@ let libraryName = pkg.name;
 let plugins = [
   new FilesToJSON({
     pattern: "./examples/**/*.html",
-    filename: "./examples/index.js"
+    filename: "./dist/examples/index.js"
   }),
   new CopyWebpackPlugin([
     {

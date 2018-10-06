@@ -171,7 +171,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend({
 
   /**
    *
-   * @private
+   * @protected
    */
   calculateTextAttr: function () {
     let lattr = {

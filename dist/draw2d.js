@@ -9007,8 +9007,13 @@ _packages2.default.Connection = _packages2.default.shape.basic.PolyLine.extend({
    * the installed connection anchor locator.
    *
    * @return {draw2d.geo.Point}
+   * @deprecated
    **/
   getStartPoint: function getStartPoint(refPoint) {
+    return this.getStartPosition(refPoint);
+  },
+
+  getStartPosition: function getStartPosition(refPoint) {
     if (this.isMoving === false) {
       if (refPoint) {
         return this.sourcePort.getConnectionAnchorLocation(refPoint, this);
@@ -9025,8 +9030,13 @@ _packages2.default.Connection = _packages2.default.shape.basic.PolyLine.extend({
    * the installed connection anchor locator.
    *
    * @return {draw2d.geo.Point}
+   * @deprecated
    **/
   getEndPoint: function getEndPoint(refPoint) {
+    return this.getEndPosition(refPoint);
+  },
+
+  getEndPosition: function getEndPosition(refPoint) {
     if (this.isMoving === false) {
       if (refPoint) {
         return this.targetPort.getConnectionAnchorLocation(refPoint, this);
@@ -21427,6 +21437,7 @@ _packages2.default.layout.anchor.FanConnectionAnchor = _packages2.default.layout
    * @return {draw2d.geo.Point} The anchor's location
    */
   getLocation: function getLocation(reference, inquiringConnection) {
+
     var r = new _packages2.default.geo.Rectangle(0, 0);
     r.setBounds(this.getBox());
     r.translate(-1, -1);
@@ -22306,7 +22317,7 @@ _packages2.default.layout.connection.FanConnectionRouter = _packages2.default.la
     var midPoint = new _packages2.default.geo.Point((end.x + start.x) / 2, (end.y + start.y) / 2);
     var position = end.getPosition(start);
     var ray = void 0;
-    if (position == _packages2.default.geo.PositionConstants.SOUTH || position == _packages2.default.geo.PositionConstants.EAST) {
+    if (position === _packages2.default.geo.PositionConstants.SOUTH || position === _packages2.default.geo.PositionConstants.EAST) {
       ray = new _packages2.default.geo.Point(end.x - start.x, end.y - start.y);
     } else {
       ray = new _packages2.default.geo.Point(start.x - end.x, start.y - end.y);
@@ -36893,12 +36904,14 @@ _packages2.default.policy.figure.WidthSelectionFeedbackPolicy = _packages2.defau
    * @method
    * Called by the framework of the Policy should show a resize handle for the given shape
    *
+   * @param {draw2d.Canvas} canvas the host of the diagram
+   * @param {draw2d.Figure} figure the figure to select
    * @param {Boolean} isPrimarySelection
    */
   onSelect: function onSelect(canvas, figure, isPrimarySelection) {
     if (figure.selectionHandles.isEmpty()) {
-      var r4 = _packages2.default.Configuration.factory.createResizeHandle(figure, 4); // 4 = RIGHT_MIDDLE
-      var r8 = _packages2.default.Configuration.factory.createResizeHandle(figure, 8); // 8 = LEFT_MIDDLE
+      var r4 = new _packages2.default.ResizeHandle({ owner: figure, type: 4 }); // 4 = RIGHT_MIDDLE
+      var r8 = new _packages2.default.ResizeHandle({ owner: figure, type: 8 }); // 8 = LEFT_MIDDLE
 
       r4.installEditPolicy(new _packages2.default.policy.figure.HorizontalEditPolicy());
       r8.installEditPolicy(new _packages2.default.policy.figure.HorizontalEditPolicy());
@@ -36942,27 +36955,26 @@ _packages2.default.policy.figure.WidthSelectionFeedbackPolicy = _packages2.defau
     r4.setPosition(xPos + objWidth, yPos);
     r8.setPosition(xPos - r8.getWidth(), yPos);
   }
-});
-/**
- * @class draw2d.policy.figure.WidthSelectionFeedbackPolicy
- * This selection shows only selection handles for the width. It is only possible to change the width
- * of an shaped. The height stays always the same or is recalculated by the figure itself.
- *
- *     @example preview small frame
- *
- *
- *       // add some demo figure to the canvas
- *       //
- *       var shape =new draw2d.shape.basic.Rectangle({width:50, height:100, x:10, y:30});
- *       canvas.add(shape);
- *
- *       // At this point you can only change the width of the shape
- *       //
- *       shape.installEditPolicy(new draw2d.policy.figure.WidthSelectionFeedbackPolicy());
- *
- * @author Andreas Herz
- * @extends draw2d.policy.figure.SelectionFeedbackPolicy
- */
+}); /**
+     * @class draw2d.policy.figure.WidthSelectionFeedbackPolicy
+     * This selection shows only selection handles for the width. It is only possible to change the width
+     * of an shaped. The height stays always the same or is recalculated by the figure itself.
+     *
+     *     @example preview small frame
+     *
+     *
+     *       // add some demo figure to the canvas
+     *       //
+     *       let shape =new draw2d.shape.basic.Rectangle({width:50, height:100, x:10, y:30});
+     *       canvas.add(shape);
+     *
+     *       // At this point you can only change the width of the shape
+     *       //
+     *       shape.installEditPolicy(new draw2d.policy.figure.WidthSelectionFeedbackPolicy());
+     *
+     * @author Andreas Herz
+     * @extends draw2d.policy.figure.SelectionFeedbackPolicy
+     */
 
 /***/ }),
 
@@ -39424,7 +39436,7 @@ _packages2.default.shape.basic.Label = _packages2.default.SetFigure.extend({
 
   /**
    *
-   * @private
+   * @protected
    */
   calculateTextAttr: function calculateTextAttr() {
     var lattr = {
@@ -43559,24 +43571,6 @@ _packages2.default.shape.basic.Text = _packages2.default.shape.basic.Label.exten
       };
     }
     return this.cachedWrappedAttr;
-  },
-
-  /**
-   * @inheritdoc
-   */
-  getPersistentAttributes: function getPersistentAttributes() {
-    var memento = this._super();
-
-    return memento;
-  },
-
-  /**
-   * @inheritdoc
-   */
-  setPersistentAttributes: function setPersistentAttributes(memento) {
-    this._super(memento);
-
-    return this;
   }
 
 }); /**
@@ -58826,17 +58820,17 @@ _packages2.default.shape.layout.TableLayout = _packages2.default.shape.layout.La
     var columnCount = this.grid.length > 0 ? this.grid[0].length : 0;
 
     var newLayoutInfos = [];
-    for (var _row = 0; _row < rowCount; _row++) {
-      newLayoutInfos[_row] = [];
-      for (var _column = 0; _column < columnCount; _column++) {
-        newLayoutInfos[_row][_column] = {
+    for (var row = 0; row < rowCount; row++) {
+      newLayoutInfos[row] = [];
+      for (var column = 0; column < columnCount; column++) {
+        newLayoutInfos[row][column] = {
           width: 0,
           height: 0,
           x: 0,
           y: 0,
-          valign: this.getCellVerticalAlign(_row, _column),
-          align: this.getCellAlign(_row, _column),
-          padding: this.getCellPadding(_row, _column)
+          valign: this.getCellVerticalAlign(row, column),
+          align: this.getCellAlign(row, column),
+          padding: this.getCellPadding(row, column)
         };
       }
     }
@@ -58846,27 +58840,27 @@ _packages2.default.shape.layout.TableLayout = _packages2.default.shape.layout.La
     var layoutWidths = new Array(columnCount + 1).join('0').split('').map(parseFloat);
     var layoutHeights = new Array(rowCount + 1).join('0').split('').map(parseFloat);
     this.grid.forEach(function (figures, row) {
-      for (var _column2 = 0; _column2 < columnCount; _column2++) {
-        var layout = newLayoutInfos[row][_column2];
-        var figure = figures[_column2];
-        figure.__cell = { row: row, column: _column2 };
+      for (var _column = 0; _column < columnCount; _column++) {
+        var layout = newLayoutInfos[row][_column];
+        var figure = figures[_column];
+        figure.__cell = { row: row, column: _column };
         layoutHeights[row] = Math.max(layoutHeights[row], figure.getMinHeight() + layout.padding.top + layout.padding.bottom);
-        layoutWidths[_column2] = Math.max(layoutWidths[_column2], figure.getMinWidth() + layout.padding.left + layout.padding.right);
+        layoutWidths[_column] = Math.max(layoutWidths[_column], figure.getMinWidth() + layout.padding.left + layout.padding.right);
       }
     });
 
     var x = 0,
         y = 0;
-    for (row = 0; row < rowCount; row++) {
-      for (column = 0; column < columnCount; column++) {
-        var layout = newLayoutInfos[row][column];
-        layout.w = layoutWidths[column];
-        layout.h = layoutHeights[row];
+    for (var _row = 0; _row < rowCount; _row++) {
+      for (var _column2 = 0; _column2 < columnCount; _column2++) {
+        var layout = newLayoutInfos[_row][_column2];
+        layout.w = layoutWidths[_column2];
+        layout.h = layoutHeights[_row];
         layout.x = x;
         layout.y = y;
         x = x + layout.w;
       }
-      y = y + layoutHeights[row];
+      y = y + layoutHeights[_row];
       x = 0;
     }
 

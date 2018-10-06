@@ -160,25 +160,6 @@ draw2d.shape.basic.Text = draw2d.shape.basic.Label.extend({
       }
     }
     return this.cachedWrappedAttr
-  },
-
-  /**
-   * @inheritdoc
-   */
-  getPersistentAttributes: function () {
-    let memento = this._super()
-
-
-    return memento
-  },
-
-  /**
-   * @inheritdoc
-   */
-  setPersistentAttributes: function (memento) {
-    this._super(memento)
-
-    return this
   }
 
 })

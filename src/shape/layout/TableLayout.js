@@ -519,8 +519,8 @@ draw2d.shape.layout.TableLayout = draw2d.shape.layout.Layout.extend({
     })
 
     let x = 0, y = 0
-    for (row = 0; row < rowCount; row++) {
-      for (column = 0; column < columnCount; column++) {
+    for (let row = 0; row < rowCount; row++) {
+      for (let column = 0; column < columnCount; column++) {
         let layout = newLayoutInfos[row][column]
         layout.w = layoutWidths[column]
         layout.h = layoutHeights[row]

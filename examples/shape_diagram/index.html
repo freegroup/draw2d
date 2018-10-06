@@ -5,23 +5,11 @@
 <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <link type="text/css" rel="stylesheet" href="./css/example.css" />
+  <link type="text/css" rel="stylesheet" href="./css/example.css" />
+  <script src="./lib/jquery.js"></script>
+  <script src="./lib/jquery-ui.js"></script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script src="../../dist/draw2d.js"></script>
+  <script src="../../dist/draw2d.js"></script>
 
 <script type="text/javascript">
 
@@ -38,6 +26,12 @@ document.addEventListener("DOMContentLoaded",function () {
     var sparkline = new draw2d.shape.diagram.Sparkline({x:100, y:100, data: testData});
 
     canvas.add( sparkline);
+
+  /////////////////////////////////////////////////////////////////////
+  // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
+  /////////////////////////////////////////////////////////////////////
+  var msg = new draw2d.shape.note.PostIt({text:"A simple SparkLineChart with some random data"});
+  canvas.add(msg, 20,20);
 });
 
 </script>

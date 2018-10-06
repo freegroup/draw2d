@@ -527,8 +527,13 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend({
    * the installed connection anchor locator.
    *
    * @return {draw2d.geo.Point}
+   * @deprecated
    **/
   getStartPoint: function (refPoint) {
+    return this.getStartPosition(refPoint)
+  },
+  
+  getStartPosition: function (refPoint) {
     if (this.isMoving === false) {
       if (refPoint) {
         return this.sourcePort.getConnectionAnchorLocation(refPoint, this)
@@ -539,15 +544,19 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend({
     return this._super()
   },
 
-
   /**
    * @method
    * Return the recalculated position of the start point with the usage of
    * the installed connection anchor locator.
    *
    * @return {draw2d.geo.Point}
+   * @deprecated
    **/
   getEndPoint: function (refPoint) {
+    return this.getEndPosition(refPoint)
+  },
+
+  getEndPosition: function (refPoint) {
     if (this.isMoving === false) {
       if (refPoint) {
         return this.targetPort.getConnectionAnchorLocation(refPoint, this)

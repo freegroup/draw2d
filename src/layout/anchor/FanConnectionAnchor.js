@@ -51,6 +51,7 @@ draw2d.layout.anchor.FanConnectionAnchor = draw2d.layout.anchor.ConnectionAnchor
    * @return {draw2d.geo.Point} The anchor's location
    */
   getLocation: function (reference, inquiringConnection) {
+
     let r = new draw2d.geo.Rectangle(0, 0)
     r.setBounds(this.getBox())
     r.translate(-1, -1)

@@ -82,7 +82,6 @@ draw2d.layout.connection.FanConnectionRouter = draw2d.layout.connection.DirectRo
    */
   onInstall: function (connection) {
     connection.installEditPolicy(new draw2d.policy.line.LineSelectionFeedbackPolicy())
-
   },
 
   /**
@@ -97,9 +96,7 @@ draw2d.layout.connection.FanConnectionRouter = draw2d.layout.connection.DirectRo
    */
   route: function (conn, routingHints) {
     let lines = conn.getSource().getConnections().clone()
-    lines.grep(function (other) {
-      return other.getTarget() === conn.getTarget() || other.getSource() === conn.getTarget()
-    })
+    lines.grep( other => other.getTarget() === conn.getTarget() || other.getSource() === conn.getTarget())
 
     if (lines.getSize() > 1) {
       this.routeCollision(conn, lines.indexOf(conn))
@@ -127,7 +124,7 @@ draw2d.layout.connection.FanConnectionRouter = draw2d.layout.connection.DirectRo
     let midPoint = new draw2d.geo.Point((end.x + start.x) / 2, (end.y + start.y) / 2)
     let position = end.getPosition(start)
     let ray
-    if (position == draw2d.geo.PositionConstants.SOUTH || position == draw2d.geo.PositionConstants.EAST) {
+    if (position === draw2d.geo.PositionConstants.SOUTH || position === draw2d.geo.PositionConstants.EAST) {
       ray = new draw2d.geo.Point(end.x - start.x, end.y - start.y)
     }
     else {

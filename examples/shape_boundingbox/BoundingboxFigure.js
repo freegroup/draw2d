@@ -18,9 +18,10 @@ var BoundingboxFigure = draw2d.shape.basic.Rectangle.extend({
         // override the standard behaviour of the connection direction calculation.
         // This is not a perfect solution because I didn't implement a behaviour pattern or something similar
         //
-        mainPort.getConnectionDirection = function(conn, relatedPort){ 
+        mainPort.getConnectionDirection = function(relatedPort){
             return mainPort.getParent().getBoundingBox().getDirection(relatedPort.getAbsolutePosition());
         };
 
     }
 });
+

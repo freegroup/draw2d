@@ -42,13 +42,13 @@
 		var reader = new draw2d.io.json.Reader();
 		reader.unmarshal(canvas, jsonDocument);
 
-	    // tweak the loaded ports and set a anchor implementation for this
-        //
-        canvas.getFigures().each(function(i,f){
-            f.getPorts().each(function(i,port){
-                port.setConnectionAnchor(new draw2d.layout.anchor.FanConnectionAnchor(port));
-            });
+    // tweak the loaded ports and set a anchor implementation for this
+    //
+    canvas.getFigures().each(function(i,f){
+        f.getPorts().each(function(i,port){
+            port.setConnectionAnchor(new draw2d.layout.anchor.FanConnectionAnchor(port));
         });
+    });
 
  		// display the JSON document in the preview DIV
 		//
