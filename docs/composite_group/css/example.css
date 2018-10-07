@@ -1,0 +1,61 @@
+body {
+	overflow: hidden;
+	font-family: 'Lato', sans-serif !important;
+	font-weight: 300;
+}
+
+#canvas {
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+	position: absolute;
+	top: 80px;
+	right: 0px;
+	left: 0px;
+	bottom: 0px;
+	overflow: scroll;
+	background-color: #FFFFFF;
+}
+
+#toolbar {
+	margin: 0px;
+	padding-top: 10px;
+	padding-right: 10px;
+	padding-left: 20px;
+	top: 0px;
+	left: 0px;
+	height: 80px;
+	width: 100%;
+	overflow: visible !important;
+	z-index: 1000 !important;
+	border: 0 none;
+	border-radius: 0;
+	border-bottom: 1px solid #d6d6d6;
+	background-color: #E9E9E9 !important;
+	background-image: none;
+}
+
+#toolbar .btn:hover {
+	border: 1px solid #26B4A8 !important;
+}
+
+#inputbox {
+	border: 1px solid white;
+	border-radius: 10px;
+	background-color: #3b3b3b;
+	color: #f3f3f3;
+	position: absolute;
+	padding: 20px;
+	top: 10px;
+	left: 10px
+}
+
+.shadow {
+	-moz-box-shadow: 3px 3px 4px #000;
+	-webkit-box-shadow: 3px 3px 4px #000;
+	box-shadow: 3px 3px 4px #000;
+	-ms-filter:
+		"progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135,
+		Color='#000000');
+}

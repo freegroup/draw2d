@@ -1,0 +1,73 @@
+﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<title></title>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link type="text/css" rel="stylesheet" href="./css/example.css" />
+
+    <script src="./lib/jquery.js"></script>
+    <script src="./lib/jquery-ui.js"></script>
+
+    <script src="../draw2d.js"></script>
+
+    <script src="CardRaft.js"></script>
+
+    <script type="text/javascript">
+
+var textFigure = null;
+var canvas = null;
+document.addEventListener("DOMContentLoaded",function () {
+
+
+    // create the canvas for the user interaction
+    //
+    canvas = new draw2d.Canvas("gfx_holder");
+    canvas.installEditPolicy(new draw2d.policy.canvas.FadeoutDecorationPolicy());
+
+
+    canvas.add(new draw2d.shape.basic.Oval({width:80,height:30, x:50, y:50}));
+
+    canvas.add(new draw2d.shape.basic.Circle({radius:40, x:50, y:150}));
+
+    canvas.add(new draw2d.shape.basic.Rectangle({width:80, height:40, x:50, y:300}));
+
+    canvas.add(new draw2d.shape.composite.Raft({width:200,height:150,x:250,y:150}));
+    canvas.add(new CardRaft({width:200,height:150,x:250,y:350}));
+
+
+    // display the SVG into the preview DIV
+	//
+	displayJSON(canvas);
+
+
+	  // add an event listener to the Canvas for change notifications.
+	  // We just dump the current canvas document into the DIV
+	  //
+	  canvas.getCommandStack().addEventListener(function(e){
+	      if(e.isPostChangeEvent()){
+	          displayJSON(canvas);
+	      }
+	  });
+});
+
+function displayJSON(canvas){
+    var writer = new draw2d.io.json.Writer();
+    writer.marshal(canvas,function(json){
+        $("#json").text(JSON.stringify(json, null, 2));
+    });
+}
+
+</script>
+
+</head>
+
+<body>
+<div  onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:1500px; height:1500px; ">
+</div>
+
+<pre id="json" style="overflow:auto;position:absolute; top:10px; right:10px; width:450; height:500;background:white;border:1px solid gray">
+</pre>
+</body>
+</html>

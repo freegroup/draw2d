@@ -17,11 +17,20 @@ let plugins = [
     pattern: "./examples/**/*.html",
     filename: "./dist/examples/index.js"
   }),
-  new CopyWebpackPlugin([
-    {
+  new CopyWebpackPlugin([{
       context: './examples/',
       from: '**/*',
       to : __dirname + '/dist/examples'
+    }]),
+  new CopyWebpackPlugin([{
+      context: './examples/',
+      from: '**/*',
+      to : __dirname + '/docs'
+    }]),
+  new CopyWebpackPlugin([{
+      from: './dist/draw2d.js',
+      to: __dirname + '/docs/draw2d.js',
+      toType: 'file'
     }]),
   new ReplaceInFileWebpackPlugin([{
     dir: __dirname + '/dist/examples/',
@@ -29,6 +38,14 @@ let plugins = [
     rules: [{
       search: '../../dist/draw2d.js',
       replace: '../../draw2d.js'
+    }]
+  }]),
+  new ReplaceInFileWebpackPlugin([{
+    dir: __dirname + '/docs',
+    test: /\.html$/,
+    rules: [{
+      search: '../../dist/draw2d.js',
+      replace: '../draw2d.js'
     }]
   }]),
 ], outputFile;

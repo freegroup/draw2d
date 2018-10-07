@@ -532,7 +532,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend({
   getStartPoint: function (refPoint) {
     return this.getStartPosition(refPoint)
   },
-  
+
   getStartPosition: function (refPoint) {
     if (this.isMoving === false) {
       if (refPoint) {

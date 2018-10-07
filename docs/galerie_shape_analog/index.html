@@ -1,0 +1,88 @@
+﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<title></title>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+  <link type="text/css" rel="stylesheet" href="./css/example.css" />
+
+  <script src="./lib/jquery.js"></script>
+  <script src="./lib/jquery-ui.js"></script>
+
+  <script src="../draw2d.js"></script>
+
+<script type="text/javascript">
+
+document.addEventListener("DOMContentLoaded",function () {
+
+
+        // create the canvas for the user interaction
+        //
+        var canvas = new draw2d.Canvas("gfx_holder");
+
+        // install a Connection create policy which matches to a "circuit like"
+        // connections
+        //
+        var router = new draw2d.layout.connection.InteractiveManhattanConnectionRouter();
+        canvas.installEditPolicy( new draw2d.policy.connection.ComposedConnectionCreatePolicy(// Responsible for connection creation....
+                [
+                    // create a connection via Drag&Drop of ports
+                    //
+                    new draw2d.policy.connection.DragConnectionCreatePolicy({
+                        createConnection:function(){
+                            return new draw2d.Connection({
+                                radius:2,
+                                stroke:2,
+                                router: router});
+                        }
+                    }),
+                    // or via click and point
+                    //
+                    new draw2d.policy.connection.OrthogonalConnectionCreatePolicy({
+                        createConnection:function(){
+                            return new draw2d.Connection({
+                                radius:2,
+                                stroke:2,
+                                router: router});
+                       }
+                    })
+                ])
+        );
+
+        canvas.add(new draw2d.shape.analog.OpAmp({x:50,y:50}));
+
+        canvas.add(new draw2d.shape.basic.Label({text:"draw2d.shape.analog.OpAmp"}),200,55);
+
+        var greenOpAmp= new draw2d.shape.analog.OpAmp({
+           bgColor:"#a0ffa0",
+           angle:90
+        });
+
+        canvas.add(greenOpAmp,50,150);
+        canvas.add(new draw2d.shape.basic.Label({text:"draw2d.shape.analog.OpAmp (with setBackgroundColor(\"#A0ffA0\"))"}),200,155);
+
+        canvas.add(new draw2d.shape.analog.ResistorBridge({x:50,y:250}));
+        canvas.add(new draw2d.shape.basic.Label({text:"draw2d.shape.analog.ResistorBridge", x:200, y:250}));
+
+        canvas.add(new draw2d.shape.analog.VoltageSupplyHorizontal(),50,350);
+        canvas.add(new draw2d.shape.basic.Label({text:"draw2d.shape.analog.VoltageSupplyHorizontal"}),200,355);
+
+        canvas.add(new draw2d.shape.analog.VoltageSupplyVertical(),50,450);
+        canvas.add(new draw2d.shape.basic.Label({text:"draw2d.shape.analog.VoltageSupplyVertical"}),200,455);
+
+        canvas.add(new draw2d.shape.analog.ResistorVertical(),50,550);
+        canvas.add(new draw2d.shape.basic.Label({text:"draw2d.shape.analog.ResistorVertical"}),200,555);
+
+});
+</script>
+
+</head>
+
+<body>
+<div  onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:3000px; height:3000px;">
+</div>
+
+</body>
+</html>
