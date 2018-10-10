@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded",function () {
 
     // create the canvas for the user interaction
     //
-    canvas = new draw2d.Canvas("canvas", 2000,2000);
+    canvas = new draw2d.Canvas("canvas");
 
     // this example is different than the other ones. In this example the div is the scroll
     // area and not the body itself
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded",function () {
 
    <div id="toolbar" class="navbar-default">
    </div>
-   <div  onselectstart="javascript:/*IE8 hack*/return false" id="canvas" >
+   <div  onselectstart="javascript:/*IE8 hack*/return false" id="canvas" style="width:3000px; height:3000px;">
    </div>
 
 </body>

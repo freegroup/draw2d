@@ -126,7 +126,7 @@ button.gray,a.gray,input[type=submit].gray {
 
 .gray:hover {
 	border: 1px solid #c6c6c4;
-	background: background:  #f8f8f8; /* Old browsers */
+  background:  #f8f8f8; /* Old browsers */
 	background: -moz-linear-gradient(top, #f8f8f8 0%, #f1f1f1 100%);
 	/* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f8f8f8),

@@ -5,25 +5,24 @@ body {
 }
 
 #canvas {
-	padding: 0px;
-	margin: 0px;
-	border: 0px;
+	padding: 0;
+	margin: 0;
+	border: 0;
 	position: absolute;
 	top: 80px;
-	right: 0px;
-	left: 0px;
-	bottom: 0px;
+	left: 0;
+	bottom: 0;
 	overflow: scroll;
 	background-color: #FFFFFF;
 }
 
 #toolbar {
-	margin: 0px;
+	margin: 0;
 	padding-top: 10px;
 	padding-right: 10px;
 	padding-left: 20px;
-	top: 0px;
-	left: 0px;
+	top: 0;
+	left: 0;
 	height: 80px;
 	width: 100%;
 	overflow: visible !important;
@@ -37,25 +36,4 @@ body {
 
 #toolbar .btn:hover {
 	border: 1px solid #26B4A8 !important;
-}
-
-#inputbox {
-	border: 1px solid white;
-	border-radius: 10px;
-	background-color: #3b3b3b;
-	color: #f3f3f3;
-	position: absolute;
-	padding: 20px;
-	top: 10px;
-	left: 10px
-}
-
-.shadow {
-	-moz-box-shadow: 3px 3px 4px #000;
-	-webkit-box-shadow: 3px 3px 4px #000;
-	box-shadow: 3px 3px 4px #000;
-	-ms-filter:
-		"progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
-	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135,
-		Color='#000000');
 }
