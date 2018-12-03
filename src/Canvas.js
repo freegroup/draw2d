@@ -714,7 +714,7 @@ draw2d.Canvas = Class.extend(
     fromCanvasToDocumentCoordinate: function (x, y) {
       var rect = this.paper.canvas.getBoundingClientRect()
 
-      return new _packages2.default.geo.Point(
+      return new draw2d.geo.Point(
         x * (1 / this.zoomFactor) + rect.left, 
         y * (1 / this.zoomFactor) + rect.top
         )
