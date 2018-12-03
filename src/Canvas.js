@@ -34,11 +34,10 @@ draw2d.Canvas = Class.extend(
     init: function (canvasId, width, height) {
       let _this = this
 
-
-      this.setScrollArea(document.body)
       this.canvasId = canvasId
       this.html = $("#" + canvasId)
       this.html.css({"cursor": "default"})
+      this.setScrollArea(this.html)
       if (!isNaN(parseFloat(width)) && !isNaN(parseFloat(height))) {
         this.initialWidth = width
         this.initialHeight = height
@@ -103,7 +102,6 @@ draw2d.Canvas = Class.extend(
       else {
         this.paper = Raphael(canvasId, this.getWidth(), this.getHeight())
       }
-      this.paper.canvas.style.position = "absolute"
 
       // Status handling
       //
@@ -115,7 +113,7 @@ draw2d.Canvas = Class.extend(
 
       // installed to all added figures to avoid that a figure can be placed outside the canvas area
       // during a drag&drop operation
-      this.regionDragDropConstraint = new draw2d.policy.figure.RegionEditPolicy(0, 0, this.getWidth(), this.getHeight())
+      this.regionDragDropConstraint = new draw2d.policy.figure.RegionEditPolicy(0, 0, this.initialWidth, this.initialHeight)
 
       // event handling since version 5.0.0
       this.eventSubscriptions = {}
@@ -696,9 +694,12 @@ draw2d.Canvas = Class.extend(
      * @returns {draw2d.geo.Point} The coordinate in relation to the canvas [0,0] position
      */
     fromDocumentToCanvasCoordinate: function (x, y) {
+      var rect = this.paper.canvas.getBoundingClientRect()
+      
       return new draw2d.geo.Point(
-        (x - this.getAbsoluteX() + this.getScrollLeft()) * this.zoomFactor,
-        (y - this.getAbsoluteY() + this.getScrollTop()) * this.zoomFactor)
+        (x - rect.left) * this.zoomFactor, 
+        (y - rect.top) * this.zoomFactor
+        )
     },
 
     /**
@@ -711,9 +712,12 @@ draw2d.Canvas = Class.extend(
      * @returns {draw2d.geo.Point} the coordinate in relation to the document [0,0] position
      */
     fromCanvasToDocumentCoordinate: function (x, y) {
-      return new draw2d.geo.Point(
-        ((x * (1 / this.zoomFactor)) + this.getAbsoluteX() - this.getScrollLeft()),
-        ((y * (1 / this.zoomFactor)) + this.getAbsoluteY() - this.getScrollTop()))
+      var rect = this.paper.canvas.getBoundingClientRect()
+
+      return new _packages2.default.geo.Point(
+        x * (1 / this.zoomFactor) + rect.left, 
+        y * (1 / this.zoomFactor) + rect.top
+        )
     },
 
     /**
