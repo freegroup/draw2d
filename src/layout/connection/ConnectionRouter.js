@@ -41,13 +41,10 @@ draw2d.layout.connection.ConnectionRouter = Class.extend({
     _paint: function(conn)
     {
         // calculate the path string for the SVG rendering
-        // Important: to avoid subpixel error rendering we add 0.5 to each coordinate
-        //            With this offset the canvas can paint the line on a "full pixel" instead
-        //            of subpixel rendering.
         var ps = conn.getVertices();
         var p = ps.get(0);
         var radius = conn.getRadius();
-        var path = ["M",(p.x|0)+0.5," ",(p.y|0)+0.5];
+        var path = ["M",(p.x)," ",(p.y)];
         var i=1;
         var length,inset, p2;
         if(radius>0){
@@ -56,22 +53,22 @@ draw2d.layout.connection.ConnectionRouter = Class.extend({
             for(  ;i<length;i++){
                   p = ps.get(i);
                   inset = draw2d.geo.Util.insetPoint(p,lastP, radius);
-                  path.push("L", (inset.x|0)+0.5, ",", (inset.y|0)+0.5);
+                  path.push("L", (inset.x), ",", (inset.y));
 
                   p2 = ps.get(i+1);
                   inset = draw2d.geo.Util.insetPoint(p,p2,radius);
 
-                  path.push("Q",p.x,",",p.y," ", (inset.x|0)+0.5, ", ", (inset.y|0)+0.5);
+                  path.push("Q",p.x,",",p.y," ", (inset.x), ", ", (inset.y));
                   lastP = p;
             }
             p = ps.get(i);
-            path.push("L", (p.x|0)+0.5, ",", (p.y|0)+0.5);
+            path.push("L", (p.x)+0.5, ",", (p.y)+0.5);
        }
         else{
             length = ps.getSize();
             for( ;i<length;i++){
                 p = ps.get(i);
-                path.push("L", (p.x|0)+0.5, ",", (p.y|0)+0.5);
+                path.push("L", (p.x), ",", (p.y));
           }
         }
          conn.svgPathString = path.join("");
