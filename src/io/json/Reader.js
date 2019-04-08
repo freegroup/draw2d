@@ -64,7 +64,7 @@ draw2d.io.json.Reader = draw2d.io.Reader.extend({
         var node=null;
         json.forEach((element)=>{
             try{
-                let o = _this.createFigureFromType(element.type);
+                let o = _this.createFigureFromElement(element) || _this.createFigureFromType(element.type);
                 let source= null;
                 let target=null;
                 for(let i in element){
@@ -145,5 +145,17 @@ draw2d.io.json.Reader = draw2d.io.Reader.extend({
     createFigureFromType:function(type)
     {
         return eval("new "+type+"()");
-    }
+    },
+
+    /**
+     * @method
+     * Factory method to create an instance of the given element.
+     *
+     * @param {Object} element
+     * @return {draw2d.Figure}
+     */
+    createFigureFromElement: function createFigureFromElement(element)
+    {
+        return null;
+	  }
 });
