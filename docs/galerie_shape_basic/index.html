@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded",function () {
     canvas.add(circle);
     canvas.add(new draw2d.shape.basic.Label({text:"draw2d.shape.basic.Circle"}),200,175);
 
-    canvas.add(new draw2d.shape.basic.Rectangle({width:80,height:40, x:50, y:300, keepAspectRatio:true}));
+    canvas.add(new draw2d.shape.basic.Rectangle({width:80,height:40, x:50, y:300, resizeable:false}));
     canvas.add(new draw2d.shape.basic.Label({text:"draw2d.shape.basic.Rectangle", x:200, y:305}));
 
     canvas.add(new draw2d.shape.basic.Diamond({width:40,height:60, x:50, y:450}));

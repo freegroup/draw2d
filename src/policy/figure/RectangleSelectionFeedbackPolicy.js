@@ -78,6 +78,10 @@ draw2d.policy.figure.RectangleSelectionFeedbackPolicy = draw2d.policy.figure.Sel
         r3.attr(attr)
         r5.attr(attr)
         r7.attr(attr)
+        r1.setDraggable(false)
+        r3.setDraggable(false)
+        r5.setDraggable(false)
+        r7.setDraggable(false)
       }
 
       // show only the additional resizehandles if the figure is resizeable and didn't care about
