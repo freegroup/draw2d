@@ -6,7 +6,7 @@
  * (source), middle, or end (target) of the Connection.
  *
  * @author Andreas Herz
- * @extend draw2d.layout.locator.Locator
+ * @extend draw2d.layout.locator.PortLocator
  */
 import draw2d from '../../packages'
 
