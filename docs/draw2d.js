@@ -63212,7 +63212,7 @@ _packages2.default.util.JSON = {
     // parse path on dots, and brackets
     var pathList = path.match(re);
     var parent = data;
-    var parentKey;
+    var parentKey = void 0;
     var grandParent = null;
     var grandParentKey = null;
 
@@ -63282,7 +63282,7 @@ _packages2.default.util.JSON = {
    */
   diff: function diff(obj1, obj2) {
     var result = {};
-    for (key in obj1) {
+    for (var key in obj1) {
       var v1 = obj1[key];
       var v2 = obj2[key];
       if (v1 !== v2) {
@@ -63300,9 +63300,9 @@ _packages2.default.util.JSON = {
 
   flatDiff: function flatDiff(obj1, obj2) {
     var result = {};
-    for (var _key in obj1) {
-      if (obj1[_key] !== obj2[_key]) {
-        result[_key] = obj1[_key];
+    for (var key in obj1) {
+      if (obj1[key] !== obj2[key]) {
+        result[key] = obj1[key];
       }
     }
     return result;

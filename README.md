@@ -17,6 +17,10 @@ npm install
 yarn dev
 ```
 
+## publish new version
+``` 
+
+```
 
 ## Projects using Draw2D
 

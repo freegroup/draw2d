@@ -17,15 +17,15 @@ draw2d.util.JSON = {
               return;
           }
 
-          var re = /[\w-]+|\[\]|([^\[[\w]\]]|["'](.*?)['"])/g;
+          let re = /[\w-]+|\[\]|([^\[[\w]\]]|["'](.*?)['"])/g;
           // parse path on dots, and brackets
-          var pathList = path.match(re);
-          var parent = data;
-          var parentKey;
-          var grandParent = null;
-          var grandParentKey = null;
+          let pathList = path.match(re);
+          let parent = data;
+          let parentKey;
+          let grandParent = null;
+          let grandParentKey = null;
 
-          var addObj = function(obj, key, data) {
+          let addObj = function(obj, key, data) {
             if(key === '[]') {
               obj.push(data);
             } else {
@@ -67,13 +67,13 @@ draw2d.util.JSON = {
          * @param  {String} path string leading to a desired value
          */
         get: function(data, path) {
-          var regex = /[\w-]+|\[\]|([^\[[\w]\]]|["'](.*?)['"])/g;
+          let regex = /[\w-]+|\[\]|([^\[[\w]\]]|["'](.*?)['"])/g;
           //check if path is truthy
           if (!path){
               return undefined;
           }
           //parse path on dots and brackets
-          var paths = path.match(regex);
+          let paths = path.match(regex);
           //step through data object until all keys in path have been processed
           while (data !== null && paths.length > 0) {
             if(data.propertyIsEnumerable(paths[0].replace(/"/g, ''))){
@@ -92,10 +92,10 @@ draw2d.util.JSON = {
          *
          */
         diff: function(obj1, obj2) {
-            var result = {};
-            for(key in obj1) {
-            	var v1 = obj1[key];
-            	var v2 = obj2[key];
+            let result = {};
+            for(let key in obj1) {
+              let v1 = obj1[key];
+              let v2 = obj2[key];
                 if(v1 !== v2) {
                 	if(v1.equals ){
                 		if(!v1.equals(v2)){
@@ -111,7 +111,7 @@ draw2d.util.JSON = {
         },
 
         flatDiff: function(obj1, obj2) {
-            var result = {};
+          let result = {};
             for(let key in obj1) {
                 if(obj1[key] !== obj2[key]) {
                     result[key] = obj1[key];
