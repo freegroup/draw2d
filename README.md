@@ -19,7 +19,8 @@ yarn dev
 
 ## publish new version
 ``` 
-
+npm version patch
+npm publish
 ```
 
 ## Projects using Draw2D
