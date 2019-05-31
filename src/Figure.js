@@ -301,7 +301,7 @@ draw2d.Figure = Class.extend({
             //
             // in this case we assign the method to this object and wrap it with "this" as context
             // a very, very simple method to replace default implemenations of the object
-            else if (typeof name[key] === "funktion") {
+            else if (typeof name[key] === "function") {
               this[key] = param.bind(this)
             }
 
