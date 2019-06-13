@@ -9467,6 +9467,8 @@ _packages2.default.Figure = Class.extend({
       cssClass: this.setCssClass,
       /** @attr {Object} userData additional custom data which can be stored by the shape */
       userData: this.setUserData,
+      /** @attr {Boolean} draggable drives the dragging behaviour of the shape */
+      draggable: this.setDraggable,
       /** @attr {Boolean} resizeable drives the resizeable behaviour of the shape */
       resizeable: this.setResizeable,
       /** @attr {Boolean} selectable drives the selectable behaviour of the shape */
@@ -9494,6 +9496,7 @@ _packages2.default.Figure = Class.extend({
       y: this.getY,
       width: this.getWidth,
       height: this.getHeight,
+      draggable: this.isDraggable,
       resizeable: this.isResizeable,
       selectable: this.isSelectable,
       alpha: this.getAlpha,
@@ -9717,7 +9720,7 @@ _packages2.default.Figure = Class.extend({
             //
             // in this case we assign the method to this object and wrap it with "this" as context
             // a very, very simple method to replace default implemenations of the object
-            else if (typeof name[key] === "funktion") {
+            else if (typeof name[key] === "function") {
                 this[key] = param.bind(this);
               }
           }
@@ -12057,6 +12060,8 @@ _packages2.default.Figure = Class.extend({
       width: this.width,
       height: this.height,
       alpha: this.alpha,
+      selectable: this.selectable,
+      draggable: this.draggable,
       angle: this.rotationAngle,
       userData: (0, _extend2.default)(true, {}, this.userData)
     };
@@ -12094,6 +12099,14 @@ _packages2.default.Figure = Class.extend({
 
     if (typeof memento.userData !== "undefined") {
       this.userData = memento.userData;
+    }
+
+    if (typeof memento.selectable !== "undefined") {
+      this.selectable = memento.selectable;
+    }
+
+    if (typeof memento.draggable !== "undefined") {
+      this.draggable = memento.draggable;
     }
 
     if (typeof memento.cssClass !== "undefined") {
@@ -25276,7 +25289,7 @@ _packages2.default.layout.locator.InputPortLocator = _packages2.default.layout.l
      * (source), middle, or end (target) of the Connection.
      *
      * @author Andreas Herz
-     * @extend draw2d.layout.locator.Locator
+     * @extend draw2d.layout.locator.PortLocator
      */
 
 /***/ }),
@@ -25593,7 +25606,7 @@ _packages2.default.layout.locator.OutputPortLocator = _packages2.default.layout.
      * (source), middle, or end (target) of the Connection.
      *
      * @author Andreas Herz
-     * @extend draw2d.layout.locator.Locator
+     * @extend draw2d.layout.locator.PortLocator
      */
 
 /***/ }),
@@ -28998,6 +29011,10 @@ _packages2.default.policy.canvas.BoundingboxSelectionPolicy = _packages2.default
       //
       if (figure instanceof _packages2.default.Port) {
         return; // silently
+      }
+
+      if (figure !== null && figure.isSelectable() === false && figure.isDraggable() === false) {
+        figure = null;
       }
 
       this.canDrawBoundingBox = true;

@@ -49,6 +49,8 @@ draw2d.Figure = Class.extend({
       cssClass: this.setCssClass,
       /** @attr {Object} userData additional custom data which can be stored by the shape */
       userData: this.setUserData,
+      /** @attr {Boolean} draggable drives the dragging behaviour of the shape */
+      draggable: this.setDraggable,
       /** @attr {Boolean} resizeable drives the resizeable behaviour of the shape */
       resizeable: this.setResizeable,
       /** @attr {Boolean} selectable drives the selectable behaviour of the shape */
@@ -76,6 +78,7 @@ draw2d.Figure = Class.extend({
       y: this.getY,
       width: this.getWidth,
       height: this.getHeight,
+      draggable: this.isDraggable,
       resizeable: this.isResizeable,
       selectable: this.isSelectable,
       alpha: this.getAlpha,
@@ -2700,6 +2703,8 @@ draw2d.Figure = Class.extend({
       width: this.width,
       height: this.height,
       alpha: this.alpha,
+      selectable: this.selectable,
+      draggable: this.draggable,
       angle: this.rotationAngle,
       userData: extend(true, {}, this.userData)
     }
@@ -2738,6 +2743,14 @@ draw2d.Figure = Class.extend({
 
     if (typeof memento.userData !== "undefined") {
       this.userData = memento.userData
+    }
+
+    if (typeof memento.selectable !== "undefined") {
+      this.selectable = memento.selectable
+    }
+
+    if (typeof memento.draggable !== "undefined") {
+      this.draggable = memento.draggable
     }
 
     if (typeof memento.cssClass !== "undefined") {

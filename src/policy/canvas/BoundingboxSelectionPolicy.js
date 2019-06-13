@@ -100,6 +100,7 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
    * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
    */
   onMouseDown: function (canvas, x, y, shiftKey, ctrlKey) {
+
     try {
       this.x = x
       this.y = y
@@ -137,7 +138,12 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
         return// silently
       }
 
+      if( figure !==null && figure.isSelectable() === false && figure.isDraggable()===false){
+        figure=null;
+      }
+
       this.canDrawBoundingBox = true
+
 
       if (figure !== null && figure.isDraggable()) {
         canDragStart = figure.onDragStart(x - figure.getAbsoluteX(), y - figure.getAbsoluteY(), shiftKey, ctrlKey)
