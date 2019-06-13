@@ -91,7 +91,7 @@ draw2d.policy.canvas.ShowDimetricGridEditPolicy = draw2d.policy.canvas.Decoratio
       let d = this.grid, i
       let w = r.width
       let h = r.height
-      let props = {stroke: this.color.hash()}
+      let props = {stroke: this.color.rgba()}
 
       let max = Math.sqrt(w * w + h * h)
       let angle26 = Math.atan(.5)

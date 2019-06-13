@@ -71,7 +71,7 @@ draw2d.decoration.connection.BarDecorator = draw2d.decoration.connection.Decorat
 		st.push(
 	        paper.path(path.join(""))
 		);
-		st.attr({fill:this.backgroundColor.hash(),stroke:this.color.hash()});
+		st.attr({fill:this.backgroundColor.rgba(),stroke:this.color.rgba()});
 		return st;
 	}
 

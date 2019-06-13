@@ -156,7 +156,7 @@ draw2d.shape.diagram.Pie = draw2d.shape.diagram.Diagram.extend({
       let angle = this.TWO_PI * this.data[i]
       let color = this.COLORS[i % length]
       let seg = this.drawSegment(radius, angle, offsetAngle, 0.1)
-      seg.attr({stroke: this.color.hash(), fill: color})
+      seg.attr({stroke: this.color.rgba(), fill: color})
       pie.push(seg)
       offsetAngle += angle
     }

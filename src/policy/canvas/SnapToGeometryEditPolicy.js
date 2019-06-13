@@ -329,9 +329,9 @@ draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditP
     x = (x | 0) + 0.5 // force a .5 number to avoid subpixel rendering. Blurry lines...
     this.canvas.paper.setStart()
     this.canvas.paper.path("M " + x + " 0 l 0 " + maxLength)
-      .attr({"stroke": this.lineColor.hash(), "stroke-width": 1, "stroke-dasharray": ". "})
+      .attr({"stroke": this.lineColor.rgba(), "stroke-width": 1, "stroke-dasharray": ". "})
     this.canvas.paper.path("M " + x + " " + fromY + " l 0 " + yLength)
-      .attr({"stroke": this.lineColor.hash(), "stroke-width": 1})
+      .attr({"stroke": this.lineColor.rgba(), "stroke-width": 1})
 
     this.vline = this.canvas.paper.setFinish()
     this.vline.toBack()
@@ -401,9 +401,9 @@ draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditP
 
     this.canvas.paper.setStart()
     this.canvas.paper.path("M 0 " + y + " l " + maxLength + " 0")
-      .attr({"stroke": this.lineColor.hash(), "stroke-width": 1, "stroke-dasharray": ". "})
+      .attr({"stroke": this.lineColor.rgba(), "stroke-width": 1, "stroke-dasharray": ". "})
     this.canvas.paper.path("M " + fromX + " " + y + " l " + xLength + " 0")
-      .attr({"stroke": this.lineColor.hash(), "stroke-width": 1})
+      .attr({"stroke": this.lineColor.rgba(), "stroke-width": 1})
 
     this.hline = this.canvas.paper.setFinish()
     this.hline.toBack()

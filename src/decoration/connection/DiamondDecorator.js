@@ -75,7 +75,7 @@ draw2d.decoration.connection.DiamondDecorator = draw2d.decoration.connection.Dec
 	                    "Z"].join(""))
 		);
 
-		st.attr({fill:this.backgroundColor.hash(),stroke:this.color.hash()});
+		st.attr({fill:this.backgroundColor.rgba(),stroke:this.color.rgba()});
 		return st;
 	}
 

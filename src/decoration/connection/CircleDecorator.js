@@ -65,7 +65,7 @@ draw2d.decoration.connection.CircleDecorator = draw2d.decoration.connection.Deco
         var st = paper.set();
 
 		st.push(paper.circle(0, 0, this.width/2));
-        st.attr({fill:this.backgroundColor.hash(),stroke:this.color.hash()});
+        st.attr({fill:this.backgroundColor.rgba(),stroke:this.color.rgba()});
 
 		return st;
 	}

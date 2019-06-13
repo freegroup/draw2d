@@ -395,26 +395,26 @@ draw2d.policy.canvas.SnapToInBetweenEditPolicy = draw2d.policy.canvas.SnapToEdit
     // Vertical lines from left to the right order
     //
     this.canvas.paper.path("M " + ((constraint.leftSide.x | 0) + 0.5) + " " + y + " L " + ((constraint.leftSide.x | 0) + 0.5) + " " + constraint.leftSide.y)
-      .attr({"stroke": this.lineColor.hash(), "stroke-width": 1, "stroke-dasharray": ". "})
+      .attr({"stroke": this.lineColor.rgba(), "stroke-width": 1, "stroke-dasharray": ". "})
 
     this.canvas.paper.path("M " + ((snapTopLeft.x | 0) + 0.5) + " " + y + " L " + ((snapTopLeft.x | 0) + 0.5) + " " + snapTopLeft.y)
-      .attr({"stroke": this.lineColor.hash(), "stroke-width": 1, "stroke-dasharray": ". "})
+      .attr({"stroke": this.lineColor.rgba(), "stroke-width": 1, "stroke-dasharray": ". "})
 
     this.canvas.paper.path("M " + ((snapTopRight.x | 0) + 0.5) + " " + y + " L " + ((snapTopRight.x | 0) + 0.5) + " " + snapTopRight.y)
-      .attr({"stroke": this.lineColor.hash(), "stroke-width": 1, "stroke-dasharray": ". "})
+      .attr({"stroke": this.lineColor.rgba(), "stroke-width": 1, "stroke-dasharray": ". "})
 
     this.canvas.paper.path("M " + ((constraint.rightSide.x | 0) + 0.5) + " " + y + " L " + ((constraint.rightSide.x | 0) + 0.5) + " " + constraint.rightSide.y)
-      .attr({"stroke": this.lineColor.hash(), "stroke-width": 1, "stroke-dasharray": ". "})
+      .attr({"stroke": this.lineColor.rgba(), "stroke-width": 1, "stroke-dasharray": ". "})
 
 
     // horizontal lines
     //
     this.canvas.paper.path("M " + (constraint.leftSide.x) + " " + (y + 5) + " L " + (snapTopLeft.x) + " " + (y + 5)).attr({
-      "stroke": this.lineColor.hash(),
+      "stroke": this.lineColor.rgba(),
       "stroke-width": 1
     })
     this.canvas.paper.path("M " + (constraint.rightSide.x) + " " + (y + 5) + " L " + (snapTopRight.x) + " " + (y + 5)).attr({
-      "stroke": this.lineColor.hash(),
+      "stroke": this.lineColor.rgba(),
       "stroke-width": 1
     })
 
@@ -424,27 +424,27 @@ draw2d.policy.canvas.SnapToInBetweenEditPolicy = draw2d.policy.canvas.SnapToEdit
       " M " + (constraint.leftSide.x + 5) + " " + (y)
       + " L " + (constraint.leftSide.x) + " " + (y + 5)
       + " L " + (constraint.leftSide.x + 5) + " " + (y + 10))
-      .attr({"stroke": this.lineColor.hash(), "stroke-width": 1})
+      .attr({"stroke": this.lineColor.rgba(), "stroke-width": 1})
 
     this.canvas.paper.path(
       " M " + (snapTopLeft.x - 5) + " " + (y)
       + " L " + (snapTopLeft.x) + " " + (y + 5)
       + " L " + (snapTopLeft.x - 5) + " " + (y + 10))
-      .attr({"stroke": this.lineColor.hash(), "stroke-width": 1})
+      .attr({"stroke": this.lineColor.rgba(), "stroke-width": 1})
 
 
     this.canvas.paper.path(
       " M " + (snapTopRight.x + 5) + " " + (y)
       + " L " + (snapTopRight.x) + " " + (y + 5)
       + " L " + (snapTopRight.x + 5) + " " + (y + 10))
-      .attr({"stroke": this.lineColor.hash(), "stroke-width": 1})
+      .attr({"stroke": this.lineColor.rgba(), "stroke-width": 1})
 
 
     this.canvas.paper.path(
       " M " + (constraint.rightSide.x - 5) + " " + (y)
       + " L " + (constraint.rightSide.x) + " " + (y + 5)
       + " L " + (constraint.rightSide.x - 5) + " " + (y + 10))
-      .attr({"stroke": this.lineColor.hash(), "stroke-width": 1})
+      .attr({"stroke": this.lineColor.rgba(), "stroke-width": 1})
 
 
     this.horizontalGuideLines = this.canvas.paper.setFinish()
@@ -497,20 +497,20 @@ draw2d.policy.canvas.SnapToInBetweenEditPolicy = draw2d.policy.canvas.SnapToEdit
     // Vertical lines from left to the right order
     //
     this.canvas.paper.path("M " + x + " " + ((constraint.topSide.y | 0) + 0.5) + " L " + ((constraint.topSide.x | 0) + 0.5) + " " + ((constraint.topSide.y | 0) + 0.5))
-      .attr({"stroke": this.lineColor.hash(), "stroke-width": 1, "stroke-dasharray": ". "})
+      .attr({"stroke": this.lineColor.rgba(), "stroke-width": 1, "stroke-dasharray": ". "})
     this.canvas.paper.path("M " + x + " " + ((snapTopRight.y | 0) + 0.5) + " L " + ((snapTopRight.x | 0) + 0.5) + " " + ((snapTopRight.y | 0) + 0.5))
-      .attr({"stroke": this.lineColor.hash(), "stroke-width": 1, "stroke-dasharray": ". "})
+      .attr({"stroke": this.lineColor.rgba(), "stroke-width": 1, "stroke-dasharray": ". "})
     this.canvas.paper.path("M " + x + " " + ((snapBottomRight.y | 0) + 0.5) + " L " + ((snapBottomRight.x | 0) + 0.5) + " " + ((snapBottomRight.y | 0) + 0.5))
-      .attr({"stroke": this.lineColor.hash(), "stroke-width": 1, "stroke-dasharray": ". "})
+      .attr({"stroke": this.lineColor.rgba(), "stroke-width": 1, "stroke-dasharray": ". "})
     this.canvas.paper.path("M " + x + " " + ((constraint.bottomSide.y | 0) + 0.5) + " L " + ((constraint.bottomSide.x | 0) + 0.5) + " " + ((constraint.bottomSide.y | 0) + 0.5))
-      .attr({"stroke": this.lineColor.hash(), "stroke-width": 1, "stroke-dasharray": ". "})
+      .attr({"stroke": this.lineColor.rgba(), "stroke-width": 1, "stroke-dasharray": ". "})
 
     // horizontal lines
     //
     this.canvas.paper.path("M " + (x - 5) + " " + (((constraint.topSide.y | 0) + 0.5)) + " L " + (x - 5) + " " + ((snapTopRight.y | 0) + 0.5))
-      .attr({"stroke": this.lineColor.hash(), "stroke-width": 1})
+      .attr({"stroke": this.lineColor.rgba(), "stroke-width": 1})
     this.canvas.paper.path("M " + (x - 5) + " " + (((constraint.bottomSide.y | 0) + 0.5)) + " L " + (x - 5) + " " + ((snapBottomRight.y | 0) + 0.5))
-      .attr({"stroke": this.lineColor.hash(), "stroke-width": 1})
+      .attr({"stroke": this.lineColor.rgba(), "stroke-width": 1})
 
 
     // 4 arrow heads starting on the left side and add one by one
@@ -519,25 +519,25 @@ draw2d.policy.canvas.SnapToInBetweenEditPolicy = draw2d.policy.canvas.SnapToEdit
       " M " + (x - 10) + " " + (constraint.topSide.y + 5)
       + " L " + (x - 5) + " " + (constraint.topSide.y)
       + " L " + (x) + " " + (constraint.topSide.y + 5))
-      .attr({"stroke": this.lineColor.hash(), "stroke-width": 1})
+      .attr({"stroke": this.lineColor.rgba(), "stroke-width": 1})
 
     this.canvas.paper.path(
       " M " + (x - 10) + " " + (snapTopRight.y - 5)
       + " L " + (x - 5) + " " + (snapTopRight.y)
       + " L " + (x) + " " + (snapTopRight.y - 5))
-      .attr({"stroke": this.lineColor.hash(), "stroke-width": 1})
+      .attr({"stroke": this.lineColor.rgba(), "stroke-width": 1})
 
     this.canvas.paper.path(
       " M " + (x - 10) + " " + (snapBottomRight.y + 5)
       + " L " + (x - 5) + " " + (snapBottomRight.y)
       + " L " + (x) + " " + (snapBottomRight.y + 5))
-      .attr({"stroke": this.lineColor.hash(), "stroke-width": 1})
+      .attr({"stroke": this.lineColor.rgba(), "stroke-width": 1})
 
     this.canvas.paper.path(
       " M " + (x - 10) + " " + (constraint.bottomSide.y - 5)
       + " L " + (x - 5) + " " + (constraint.bottomSide.y)
       + " L " + (x) + " " + (constraint.bottomSide.y - 5))
-      .attr({"stroke": this.lineColor.hash(), "stroke-width": 1})
+      .attr({"stroke": this.lineColor.rgba(), "stroke-width": 1})
 
     this.verticalGuideLines = this.canvas.paper.setFinish()
     this.verticalGuideLines.toFront()

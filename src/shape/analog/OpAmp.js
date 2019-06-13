@@ -78,7 +78,7 @@ draw2d.shape.analog.OpAmp = draw2d.SVGFigure.extend({
     //
     attributes["fill"] = "none"
     if (this.bgColor != null) {
-      this.svgNodes[0].attr({fill: this.bgColor.hash()})
+      this.svgNodes[0].attr({fill: this.bgColor.rgba()})
     }
 
     this._super(attributes)

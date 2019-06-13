@@ -148,10 +148,10 @@ draw2d.shape.basic.LineResizeHandle = draw2d.shape.basic.Circle.extend({
 
 
     if (this.bgColor.hash() === "none") {
-      attributes.fill = this.bgColor.hash()
+      attributes.fill = this.bgColor.rgba()
     }
     else if (this.getAlpha() < 0.9) {
-      attributes.fill = this.bgColor.hash()
+      attributes.fill = this.bgColor.rgba()
     }
     else {
       attributes.fill = this.bgGradient

@@ -48,7 +48,7 @@ draw2d.shape.arrow.CalligrapherArrowLeft = draw2d.SVGFigure.extend({
 
 
     if (this.svgNodes !== null) {
-      this.svgNodes.attr({fill: this.color.hash()})
+      this.svgNodes.attr({fill: this.color.rgba()})
     }
 
     this._super(attributes)

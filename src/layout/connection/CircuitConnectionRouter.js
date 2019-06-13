@@ -213,7 +213,7 @@ draw2d.layout.connection.CircuitConnectionRouter = draw2d.layout.connection.Manh
             let otherZ = other.getZOrder()
             let connZ = conn.getZOrder()
             if (connZ < otherZ) {
-              let vertexNode = conn.canvas.paper.ellipse(interP.x, interP.y, this.vertexRadius, this.vertexRadius).attr({fill: conn.lineColor.hash()})
+              let vertexNode = conn.canvas.paper.ellipse(interP.x, interP.y, this.vertexRadius, this.vertexRadius).attr({fill: conn.lineColor.rgba()})
               conn.vertexNodes.push(vertexNode)
               // we found a vertex node. In this case an already existing connection did draw the connection.
               //

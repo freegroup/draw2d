@@ -37,7 +37,7 @@ draw2d.shape.icon.Icon = draw2d.SetFigure.extend({
     //
     attributes.fill = "none"
     if (this.svgNodes !== null) {
-      this.svgNodes.attr({fill: this.bgColor.hash(), stroke: "none"})
+      this.svgNodes.attr({fill: this.bgColor.rgba(), stroke: "none"})
     }
 
     this._super(attributes)

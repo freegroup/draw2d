@@ -178,8 +178,8 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend({
       "text-anchor": "start",
       "font-size": this.fontSize,
       "font-weight": (this.bold === true) ? "bold" : "normal",
-      fill: this.fontColor.hash(),
-      stroke: this.outlineColor.hash(),
+      fill: this.fontColor.rgba(),
+      stroke: this.outlineColor.rgba(),
       "stroke-width": this.outlineStroke
     }
     if (this.fontFamily !== null) {
@@ -697,9 +697,9 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend({
 
     memento.text = this.text
     memento.outlineStroke = this.outlineStroke
-    memento.outlineColor = this.outlineColor.hash()
+    memento.outlineColor = this.outlineColor.rgba()
     memento.fontSize = this.fontSize
-    memento.fontColor = this.fontColor.hash()
+    memento.fontColor = this.fontColor.rgba()
     memento.fontFamily = this.fontFamily
 
     if (this.editor !== null) {

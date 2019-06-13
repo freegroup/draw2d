@@ -12871,7 +12871,7 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend({
    **/
   setBackgroundColor: function setBackgroundColor(color) {
     this._super(color);
-    this.lighterBgColor = this.bgColor.lighter(0.3).hash();
+    this.lighterBgColor = this.bgColor.lighter(0.3).rgba();
 
     return this;
   },
@@ -12926,7 +12926,7 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend({
     attributes.cursor = "move";
 
     if (this.getAlpha() < 0.9 || this.useGradient === false) {
-      attributes.fill = this.bgColor.hash();
+      attributes.fill = this.bgColor.rgba();
     } else {
       attributes.fill = ["90", this.bgColor.hash(), this.lighterBgColor].join("-");
     }
@@ -13885,7 +13885,7 @@ _packages2.default.ResizeHandle = _packages2.default.shape.basic.Rectangle.exten
     if (this.bgColor.hash() === "none") {
       attributes.fill = "none";
     } else if (this.getAlpha() < 0.9 || this.useGradient === false) {
-      attributes.fill = this.bgColor.hash();
+      attributes.fill = this.bgColor.rgba();
     } else {
       attributes.fill = this.bgGradient;
     }
@@ -15018,12 +15018,12 @@ _packages2.default.VectorFigure = _packages2.default.shape.node.Node.extend({
             if (this.color === null || this.stroke === 0) {
                 attributes.stroke = "none";
             } else {
-                attributes.stroke = this.color.hash();
+                attributes.stroke = this.color.rgba();
             }
         }
 
         _JSONUtil2.default.ensureDefault(attributes, "stroke-width", this.stroke);
-        _JSONUtil2.default.ensureDefault(attributes, "fill", this.bgColor.hash());
+        _JSONUtil2.default.ensureDefault(attributes, "fill", this.bgColor.rgba());
         _JSONUtil2.default.ensureDefault(attributes, "dasharray", this.dasharray);
 
         this._super(attributes);
@@ -15130,8 +15130,8 @@ _packages2.default.VectorFigure = _packages2.default.shape.node.Node.extend({
      */
     getPersistentAttributes: function getPersistentAttributes() {
         var memento = (0, _extend2.default)(this._super(), {
-            bgColor: this.bgColor.hash(),
-            color: this.color.hash(),
+            bgColor: this.bgColor.rgba(),
+            color: this.color.rgba(),
             stroke: this.stroke,
             radius: this.radius,
             dasharray: this.dasharray
@@ -17719,7 +17719,6 @@ _packages2.default.command.CommandStack = Class.extend({
   },
 
   off: function off(listener) {
-    console.log(listener);
     this.eventListeners.grep(function (entry) {
       return entry === listener || entry.stackChanged === listener;
     });
@@ -18159,7 +18158,7 @@ _packages2.default.decoration.connection.ArrowDecorator = _packages2.default.dec
 
     st.push(paper.path(["M0 0", "L", this.width, " ", -this.height / 2, "L", this.width, " ", this.height / 2, "L0 0"].join("")));
 
-    st.attr({ fill: this.backgroundColor.hash(), stroke: this.color.hash() });
+    st.attr({ fill: this.backgroundColor.rgba(), stroke: this.color.rgba() });
 
     return st;
   }
@@ -18249,7 +18248,7 @@ _packages2.default.decoration.connection.BarDecorator = _packages2.default.decor
     path.push("L", this.width / 2, " ", this.height / 2); // ...bottom center...
 
     st.push(paper.path(path.join("")));
-    st.attr({ fill: this.backgroundColor.hash(), stroke: this.color.hash() });
+    st.attr({ fill: this.backgroundColor.rgba(), stroke: this.color.rgba() });
     return st;
   }
 
@@ -18334,7 +18333,7 @@ _packages2.default.decoration.connection.CircleDecorator = _packages2.default.de
     var st = paper.set();
 
     st.push(paper.circle(0, 0, this.width / 2));
-    st.attr({ fill: this.backgroundColor.hash(), stroke: this.color.hash() });
+    st.attr({ fill: this.backgroundColor.rgba(), stroke: this.color.rgba() });
 
     return st;
   }
@@ -18548,7 +18547,7 @@ _packages2.default.decoration.connection.DiamondDecorator = _packages2.default.d
     "L", this.width / 2, " ", -this.height / 2, // and close the path
     "Z"].join("")));
 
-    st.attr({ fill: this.backgroundColor.hash(), stroke: this.color.hash() });
+    st.attr({ fill: this.backgroundColor.rgba(), stroke: this.color.rgba() });
     return st;
   }
 
@@ -21872,7 +21871,7 @@ _packages2.default.layout.connection.CircuitConnectionRouter = _packages2.defaul
             var otherZ = other.getZOrder();
             var connZ = conn.getZOrder();
             if (connZ < otherZ) {
-              var vertexNode = conn.canvas.paper.ellipse(interP.x, interP.y, _this.vertexRadius, _this.vertexRadius).attr({ fill: conn.lineColor.hash() });
+              var vertexNode = conn.canvas.paper.ellipse(interP.x, interP.y, _this.vertexRadius, _this.vertexRadius).attr({ fill: conn.lineColor.rgba() });
               conn.vertexNodes.push(vertexNode);
               // we found a vertex node. In this case an already existing connection did draw the connection.
               //
@@ -30884,7 +30883,7 @@ _packages2.default.policy.canvas.ShowDimetricGridEditPolicy = _packages2.default
           i = void 0;
       var w = r.width;
       var h = r.height;
-      var props = { stroke: this.color.hash() };
+      var props = { stroke: this.color.rgba() };
 
       var max = Math.sqrt(w * w + h * h);
       var angle26 = Math.atan(.5);
@@ -31103,7 +31102,7 @@ _packages2.default.policy.canvas.ShowGridEditPolicy = _packages2.default.policy.
           i;
       var w = r.width;
       var h = r.height;
-      var props = { stroke: this.color.hash() };
+      var props = { stroke: this.color.rgba() };
       r.setStart();
       // horizontal
       for (var _i = d + 0.5; _i < h; _i += d) {
@@ -31700,7 +31699,7 @@ _packages2.default.policy.canvas.SnapToCenterEditPolicy = _packages2.default.pol
     // horizontal lines
     //
     this.canvas.paper.path("M " + start.x + " " + ((start.y | 0) + 0.5) + " L " + end.x + " " + ((end.y | 0) + 0.5)).attr({
-      "stroke": this.lineColor.hash(),
+      "stroke": this.lineColor.rgba(),
       "stroke-width": 1
     });
 
@@ -31749,7 +31748,7 @@ _packages2.default.policy.canvas.SnapToCenterEditPolicy = _packages2.default.pol
     // horizontal lines
     //
     this.canvas.paper.path("M " + ((start.x | 0) + 0.5) + " " + start.y + " L " + ((end.x | 0) + 0.5) + " " + end.y).attr({
-      "stroke": this.lineColor.hash(),
+      "stroke": this.lineColor.rgba(),
       "stroke-width": 1
     });
 
@@ -32303,8 +32302,8 @@ _packages2.default.policy.canvas.SnapToGeometryEditPolicy = _packages2.default.p
 
     x = (x | 0) + 0.5; // force a .5 number to avoid subpixel rendering. Blurry lines...
     this.canvas.paper.setStart();
-    this.canvas.paper.path("M " + x + " 0 l 0 " + maxLength).attr({ "stroke": this.lineColor.hash(), "stroke-width": 1, "stroke-dasharray": ". " });
-    this.canvas.paper.path("M " + x + " " + fromY + " l 0 " + yLength).attr({ "stroke": this.lineColor.hash(), "stroke-width": 1 });
+    this.canvas.paper.path("M " + x + " 0 l 0 " + maxLength).attr({ "stroke": this.lineColor.rgba(), "stroke-width": 1, "stroke-dasharray": ". " });
+    this.canvas.paper.path("M " + x + " " + fromY + " l 0 " + yLength).attr({ "stroke": this.lineColor.rgba(), "stroke-width": 1 });
 
     this.vline = this.canvas.paper.setFinish();
     this.vline.toBack();
@@ -32369,8 +32368,8 @@ _packages2.default.policy.canvas.SnapToGeometryEditPolicy = _packages2.default.p
     y = (y | 0) + 0.5; // force a .5 number to avoid subpixel rendering. Blurry lines...
 
     this.canvas.paper.setStart();
-    this.canvas.paper.path("M 0 " + y + " l " + maxLength + " 0").attr({ "stroke": this.lineColor.hash(), "stroke-width": 1, "stroke-dasharray": ". " });
-    this.canvas.paper.path("M " + fromX + " " + y + " l " + xLength + " 0").attr({ "stroke": this.lineColor.hash(), "stroke-width": 1 });
+    this.canvas.paper.path("M 0 " + y + " l " + maxLength + " 0").attr({ "stroke": this.lineColor.rgba(), "stroke-width": 1, "stroke-dasharray": ". " });
+    this.canvas.paper.path("M " + fromX + " " + y + " l " + xLength + " 0").attr({ "stroke": this.lineColor.rgba(), "stroke-width": 1 });
 
     this.hline = this.canvas.paper.setFinish();
     this.hline.toBack();
@@ -32860,34 +32859,34 @@ _packages2.default.policy.canvas.SnapToInBetweenEditPolicy = _packages2.default.
 
     // Vertical lines from left to the right order
     //
-    this.canvas.paper.path("M " + ((constraint.leftSide.x | 0) + 0.5) + " " + y + " L " + ((constraint.leftSide.x | 0) + 0.5) + " " + constraint.leftSide.y).attr({ "stroke": this.lineColor.hash(), "stroke-width": 1, "stroke-dasharray": ". " });
+    this.canvas.paper.path("M " + ((constraint.leftSide.x | 0) + 0.5) + " " + y + " L " + ((constraint.leftSide.x | 0) + 0.5) + " " + constraint.leftSide.y).attr({ "stroke": this.lineColor.rgba(), "stroke-width": 1, "stroke-dasharray": ". " });
 
-    this.canvas.paper.path("M " + ((snapTopLeft.x | 0) + 0.5) + " " + y + " L " + ((snapTopLeft.x | 0) + 0.5) + " " + snapTopLeft.y).attr({ "stroke": this.lineColor.hash(), "stroke-width": 1, "stroke-dasharray": ". " });
+    this.canvas.paper.path("M " + ((snapTopLeft.x | 0) + 0.5) + " " + y + " L " + ((snapTopLeft.x | 0) + 0.5) + " " + snapTopLeft.y).attr({ "stroke": this.lineColor.rgba(), "stroke-width": 1, "stroke-dasharray": ". " });
 
-    this.canvas.paper.path("M " + ((snapTopRight.x | 0) + 0.5) + " " + y + " L " + ((snapTopRight.x | 0) + 0.5) + " " + snapTopRight.y).attr({ "stroke": this.lineColor.hash(), "stroke-width": 1, "stroke-dasharray": ". " });
+    this.canvas.paper.path("M " + ((snapTopRight.x | 0) + 0.5) + " " + y + " L " + ((snapTopRight.x | 0) + 0.5) + " " + snapTopRight.y).attr({ "stroke": this.lineColor.rgba(), "stroke-width": 1, "stroke-dasharray": ". " });
 
-    this.canvas.paper.path("M " + ((constraint.rightSide.x | 0) + 0.5) + " " + y + " L " + ((constraint.rightSide.x | 0) + 0.5) + " " + constraint.rightSide.y).attr({ "stroke": this.lineColor.hash(), "stroke-width": 1, "stroke-dasharray": ". " });
+    this.canvas.paper.path("M " + ((constraint.rightSide.x | 0) + 0.5) + " " + y + " L " + ((constraint.rightSide.x | 0) + 0.5) + " " + constraint.rightSide.y).attr({ "stroke": this.lineColor.rgba(), "stroke-width": 1, "stroke-dasharray": ". " });
 
     // horizontal lines
     //
     this.canvas.paper.path("M " + constraint.leftSide.x + " " + (y + 5) + " L " + snapTopLeft.x + " " + (y + 5)).attr({
-      "stroke": this.lineColor.hash(),
+      "stroke": this.lineColor.rgba(),
       "stroke-width": 1
     });
     this.canvas.paper.path("M " + constraint.rightSide.x + " " + (y + 5) + " L " + snapTopRight.x + " " + (y + 5)).attr({
-      "stroke": this.lineColor.hash(),
+      "stroke": this.lineColor.rgba(),
       "stroke-width": 1
     });
 
     // 4 arrow heads starting on the left side and add one by one
     //
-    this.canvas.paper.path(" M " + (constraint.leftSide.x + 5) + " " + y + " L " + constraint.leftSide.x + " " + (y + 5) + " L " + (constraint.leftSide.x + 5) + " " + (y + 10)).attr({ "stroke": this.lineColor.hash(), "stroke-width": 1 });
+    this.canvas.paper.path(" M " + (constraint.leftSide.x + 5) + " " + y + " L " + constraint.leftSide.x + " " + (y + 5) + " L " + (constraint.leftSide.x + 5) + " " + (y + 10)).attr({ "stroke": this.lineColor.rgba(), "stroke-width": 1 });
 
-    this.canvas.paper.path(" M " + (snapTopLeft.x - 5) + " " + y + " L " + snapTopLeft.x + " " + (y + 5) + " L " + (snapTopLeft.x - 5) + " " + (y + 10)).attr({ "stroke": this.lineColor.hash(), "stroke-width": 1 });
+    this.canvas.paper.path(" M " + (snapTopLeft.x - 5) + " " + y + " L " + snapTopLeft.x + " " + (y + 5) + " L " + (snapTopLeft.x - 5) + " " + (y + 10)).attr({ "stroke": this.lineColor.rgba(), "stroke-width": 1 });
 
-    this.canvas.paper.path(" M " + (snapTopRight.x + 5) + " " + y + " L " + snapTopRight.x + " " + (y + 5) + " L " + (snapTopRight.x + 5) + " " + (y + 10)).attr({ "stroke": this.lineColor.hash(), "stroke-width": 1 });
+    this.canvas.paper.path(" M " + (snapTopRight.x + 5) + " " + y + " L " + snapTopRight.x + " " + (y + 5) + " L " + (snapTopRight.x + 5) + " " + (y + 10)).attr({ "stroke": this.lineColor.rgba(), "stroke-width": 1 });
 
-    this.canvas.paper.path(" M " + (constraint.rightSide.x - 5) + " " + y + " L " + constraint.rightSide.x + " " + (y + 5) + " L " + (constraint.rightSide.x - 5) + " " + (y + 10)).attr({ "stroke": this.lineColor.hash(), "stroke-width": 1 });
+    this.canvas.paper.path(" M " + (constraint.rightSide.x - 5) + " " + y + " L " + constraint.rightSide.x + " " + (y + 5) + " L " + (constraint.rightSide.x - 5) + " " + (y + 10)).attr({ "stroke": this.lineColor.rgba(), "stroke-width": 1 });
 
     this.horizontalGuideLines = this.canvas.paper.setFinish();
     this.horizontalGuideLines.toFront();
@@ -32935,25 +32934,25 @@ _packages2.default.policy.canvas.SnapToInBetweenEditPolicy = _packages2.default.
 
     // Vertical lines from left to the right order
     //
-    this.canvas.paper.path("M " + x + " " + ((constraint.topSide.y | 0) + 0.5) + " L " + ((constraint.topSide.x | 0) + 0.5) + " " + ((constraint.topSide.y | 0) + 0.5)).attr({ "stroke": this.lineColor.hash(), "stroke-width": 1, "stroke-dasharray": ". " });
-    this.canvas.paper.path("M " + x + " " + ((snapTopRight.y | 0) + 0.5) + " L " + ((snapTopRight.x | 0) + 0.5) + " " + ((snapTopRight.y | 0) + 0.5)).attr({ "stroke": this.lineColor.hash(), "stroke-width": 1, "stroke-dasharray": ". " });
-    this.canvas.paper.path("M " + x + " " + ((snapBottomRight.y | 0) + 0.5) + " L " + ((snapBottomRight.x | 0) + 0.5) + " " + ((snapBottomRight.y | 0) + 0.5)).attr({ "stroke": this.lineColor.hash(), "stroke-width": 1, "stroke-dasharray": ". " });
-    this.canvas.paper.path("M " + x + " " + ((constraint.bottomSide.y | 0) + 0.5) + " L " + ((constraint.bottomSide.x | 0) + 0.5) + " " + ((constraint.bottomSide.y | 0) + 0.5)).attr({ "stroke": this.lineColor.hash(), "stroke-width": 1, "stroke-dasharray": ". " });
+    this.canvas.paper.path("M " + x + " " + ((constraint.topSide.y | 0) + 0.5) + " L " + ((constraint.topSide.x | 0) + 0.5) + " " + ((constraint.topSide.y | 0) + 0.5)).attr({ "stroke": this.lineColor.rgba(), "stroke-width": 1, "stroke-dasharray": ". " });
+    this.canvas.paper.path("M " + x + " " + ((snapTopRight.y | 0) + 0.5) + " L " + ((snapTopRight.x | 0) + 0.5) + " " + ((snapTopRight.y | 0) + 0.5)).attr({ "stroke": this.lineColor.rgba(), "stroke-width": 1, "stroke-dasharray": ". " });
+    this.canvas.paper.path("M " + x + " " + ((snapBottomRight.y | 0) + 0.5) + " L " + ((snapBottomRight.x | 0) + 0.5) + " " + ((snapBottomRight.y | 0) + 0.5)).attr({ "stroke": this.lineColor.rgba(), "stroke-width": 1, "stroke-dasharray": ". " });
+    this.canvas.paper.path("M " + x + " " + ((constraint.bottomSide.y | 0) + 0.5) + " L " + ((constraint.bottomSide.x | 0) + 0.5) + " " + ((constraint.bottomSide.y | 0) + 0.5)).attr({ "stroke": this.lineColor.rgba(), "stroke-width": 1, "stroke-dasharray": ". " });
 
     // horizontal lines
     //
-    this.canvas.paper.path("M " + (x - 5) + " " + ((constraint.topSide.y | 0) + 0.5) + " L " + (x - 5) + " " + ((snapTopRight.y | 0) + 0.5)).attr({ "stroke": this.lineColor.hash(), "stroke-width": 1 });
-    this.canvas.paper.path("M " + (x - 5) + " " + ((constraint.bottomSide.y | 0) + 0.5) + " L " + (x - 5) + " " + ((snapBottomRight.y | 0) + 0.5)).attr({ "stroke": this.lineColor.hash(), "stroke-width": 1 });
+    this.canvas.paper.path("M " + (x - 5) + " " + ((constraint.topSide.y | 0) + 0.5) + " L " + (x - 5) + " " + ((snapTopRight.y | 0) + 0.5)).attr({ "stroke": this.lineColor.rgba(), "stroke-width": 1 });
+    this.canvas.paper.path("M " + (x - 5) + " " + ((constraint.bottomSide.y | 0) + 0.5) + " L " + (x - 5) + " " + ((snapBottomRight.y | 0) + 0.5)).attr({ "stroke": this.lineColor.rgba(), "stroke-width": 1 });
 
     // 4 arrow heads starting on the left side and add one by one
     //
-    this.canvas.paper.path(" M " + (x - 10) + " " + (constraint.topSide.y + 5) + " L " + (x - 5) + " " + constraint.topSide.y + " L " + x + " " + (constraint.topSide.y + 5)).attr({ "stroke": this.lineColor.hash(), "stroke-width": 1 });
+    this.canvas.paper.path(" M " + (x - 10) + " " + (constraint.topSide.y + 5) + " L " + (x - 5) + " " + constraint.topSide.y + " L " + x + " " + (constraint.topSide.y + 5)).attr({ "stroke": this.lineColor.rgba(), "stroke-width": 1 });
 
-    this.canvas.paper.path(" M " + (x - 10) + " " + (snapTopRight.y - 5) + " L " + (x - 5) + " " + snapTopRight.y + " L " + x + " " + (snapTopRight.y - 5)).attr({ "stroke": this.lineColor.hash(), "stroke-width": 1 });
+    this.canvas.paper.path(" M " + (x - 10) + " " + (snapTopRight.y - 5) + " L " + (x - 5) + " " + snapTopRight.y + " L " + x + " " + (snapTopRight.y - 5)).attr({ "stroke": this.lineColor.rgba(), "stroke-width": 1 });
 
-    this.canvas.paper.path(" M " + (x - 10) + " " + (snapBottomRight.y + 5) + " L " + (x - 5) + " " + snapBottomRight.y + " L " + x + " " + (snapBottomRight.y + 5)).attr({ "stroke": this.lineColor.hash(), "stroke-width": 1 });
+    this.canvas.paper.path(" M " + (x - 10) + " " + (snapBottomRight.y + 5) + " L " + (x - 5) + " " + snapBottomRight.y + " L " + x + " " + (snapBottomRight.y + 5)).attr({ "stroke": this.lineColor.rgba(), "stroke-width": 1 });
 
-    this.canvas.paper.path(" M " + (x - 10) + " " + (constraint.bottomSide.y - 5) + " L " + (x - 5) + " " + constraint.bottomSide.y + " L " + x + " " + (constraint.bottomSide.y - 5)).attr({ "stroke": this.lineColor.hash(), "stroke-width": 1 });
+    this.canvas.paper.path(" M " + (x - 10) + " " + (constraint.bottomSide.y - 5) + " L " + (x - 5) + " " + constraint.bottomSide.y + " L " + x + " " + (constraint.bottomSide.y - 5)).attr({ "stroke": this.lineColor.rgba(), "stroke-width": 1 });
 
     this.verticalGuideLines = this.canvas.paper.setFinish();
     this.verticalGuideLines.toFront();
@@ -33138,8 +33137,8 @@ _packages2.default.policy.canvas.SnapToVerticesEditPolicy = _packages2.default.p
     var maxLength = this.canvas.getHeight();
     var x = (snappedPos.x | 0) + 0.5; // force a .5 number to avoid subpixel rendering. Blurry lines...
     this.canvas.paper.setStart();
-    this.canvas.paper.path("M " + x + " 0 l 0 " + maxLength).attr({ "stroke": this.lineColor.hash(), "stroke-width": 1, "stroke-dasharray": ". " });
-    this.canvas.paper.path("M " + x + " " + originalPos.y + " L " + x + " " + snappedPos.y).attr({ "stroke": this.lineColor.hash(), "stroke-width": 1 });
+    this.canvas.paper.path("M " + x + " 0 l 0 " + maxLength).attr({ "stroke": this.lineColor.rgba(), "stroke-width": 1, "stroke-dasharray": ". " });
+    this.canvas.paper.path("M " + x + " " + originalPos.y + " L " + x + " " + snappedPos.y).attr({ "stroke": this.lineColor.rgba(), "stroke-width": 1 });
 
     this.vline = this.canvas.paper.setFinish();
     this.vline.toBack();
@@ -33169,8 +33168,8 @@ _packages2.default.policy.canvas.SnapToVerticesEditPolicy = _packages2.default.p
     var y = (snappedPos.y | 0) + 0.5; // force a .5 number to avoid subpixel rendering. Blurry lines...
 
     this.canvas.paper.setStart();
-    this.canvas.paper.path("M 0 " + y + " l " + maxLength + " 0").attr({ "stroke": this.lineColor.hash(), "stroke-width": 1, "stroke-dasharray": ". " });
-    this.canvas.paper.path("M " + originalPos.x + " " + y + " L " + snappedPos.x + " " + y).attr({ "stroke": this.lineColor.hash(), "stroke-width": 1 });
+    this.canvas.paper.path("M 0 " + y + " l " + maxLength + " 0").attr({ "stroke": this.lineColor.rgba(), "stroke-width": 1, "stroke-dasharray": ". " });
+    this.canvas.paper.path("M " + originalPos.x + " " + y + " L " + snappedPos.x + " " + y).attr({ "stroke": this.lineColor.rgba(), "stroke-width": 1 });
 
     this.hline = this.canvas.paper.setFinish();
     this.hline.toBack();
@@ -38281,7 +38280,7 @@ _packages2.default.shape.analog.OpAmp = _packages2.default.SVGFigure.extend({
     //
     attributes["fill"] = "none";
     if (this.bgColor != null) {
-      this.svgNodes[0].attr({ fill: this.bgColor.hash() });
+      this.svgNodes[0].attr({ fill: this.bgColor.rgba() });
     }
 
     this._super(attributes);
@@ -38683,7 +38682,7 @@ _packages2.default.shape.arrow.CalligrapherArrowDownLeft = _packages2.default.SV
     }
 
     if (this.svgNodes !== null) {
-      this.svgNodes.attr({ fill: this.color.hash() });
+      this.svgNodes.attr({ fill: this.color.rgba() });
     }
 
     this._super(attributes);
@@ -38751,7 +38750,7 @@ _packages2.default.shape.arrow.CalligrapherArrowLeft = _packages2.default.SVGFig
     }
 
     if (this.svgNodes !== null) {
-      this.svgNodes.attr({ fill: this.color.hash() });
+      this.svgNodes.attr({ fill: this.color.rgba() });
     }
 
     this._super(attributes);
@@ -39475,8 +39474,8 @@ _packages2.default.shape.basic.Label = _packages2.default.SetFigure.extend({
       "text-anchor": "start",
       "font-size": this.fontSize,
       "font-weight": this.bold === true ? "bold" : "normal",
-      fill: this.fontColor.hash(),
-      stroke: this.outlineColor.hash(),
+      fill: this.fontColor.rgba(),
+      stroke: this.outlineColor.rgba(),
       "stroke-width": this.outlineStroke
     };
     if (this.fontFamily !== null) {
@@ -39972,9 +39971,9 @@ _packages2.default.shape.basic.Label = _packages2.default.SetFigure.extend({
 
     memento.text = this.text;
     memento.outlineStroke = this.outlineStroke;
-    memento.outlineColor = this.outlineColor.hash();
+    memento.outlineColor = this.outlineColor.rgba();
     memento.fontSize = this.fontSize;
-    memento.fontColor = this.fontColor.hash();
+    memento.fontColor = this.fontColor.rgba();
     memento.fontFamily = this.fontFamily;
 
     if (this.editor !== null) {
@@ -40277,7 +40276,7 @@ _packages2.default.shape.basic.Line = _packages2.default.Figure.extend({
     });
     this.command.updateVertices(this.vertices.clone());
 
-    // start/end are seperate draw23d.geo.Point objects. Required for routing and determining if a node is dragged away
+    // start/end are separate draw2d.geo.Point objects. Required for routing and determining if a node is dragged away
     // from the connection. In this case we must modify the start/end by hand
     this.start.translate(dx2, dy2);
     this.end.translate(dx2, dy2);
@@ -40294,6 +40293,8 @@ _packages2.default.shape.basic.Line = _packages2.default.Figure.extend({
    * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
    */
   onDragEnd: function onDragEnd(x, y, shiftKey, ctrlKey) {
+    var _this2 = this;
+
     // Element ist zwar schon an seine Position, das Command muss aber trotzdem
     // in dem CommandStack gelegt werden damit das Undo funktioniert.
     //
@@ -40304,8 +40305,6 @@ _packages2.default.shape.basic.Line = _packages2.default.Figure.extend({
       return;
     }
 
-    var _this = this;
-
     this.canvas.getCommandStack().execute(this.command);
     this.command = null;
     this.isMoving = false;
@@ -40314,7 +40313,7 @@ _packages2.default.shape.basic.Line = _packages2.default.Figure.extend({
     //
     this.editPolicy.each(function (i, e) {
       if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
-        e.onDragEnd(_this.canvas, _this, x, y, shiftKey, ctrlKey);
+        e.onDragEnd(_this2.canvas, _this2, x, y, shiftKey, ctrlKey);
       }
     });
 
@@ -40421,7 +40420,7 @@ _packages2.default.shape.basic.Line = _packages2.default.Figure.extend({
     //
     if (typeof attributes === "undefined") {
       attributes = {
-        "stroke": this.lineColor.hash(),
+        "stroke": this.lineColor.rgba(),
         "stroke-width": this.stroke,
         "path": ["M", this.start.x, this.start.y, "L", this.end.x, this.end.y].join(" ")
       };
@@ -40430,7 +40429,7 @@ _packages2.default.shape.basic.Line = _packages2.default.Figure.extend({
       if (typeof attributes.path === "undefined") {
         attributes.path = ["M", this.start.x, this.start.y, "L", this.end.x, this.end.y].join(" ");
       }
-      _JSONUtil2.default.ensureDefault(attributes, "stroke", this.lineColor.hash());
+      _JSONUtil2.default.ensureDefault(attributes, "stroke", this.lineColor.rgba());
       _JSONUtil2.default.ensureDefault(attributes, "stroke-width", this.stroke);
     }
 
@@ -40440,7 +40439,7 @@ _packages2.default.shape.basic.Line = _packages2.default.Figure.extend({
     if (this.outlineStroke > 0) {
       this.shape.items[0].attr({
         "stroke-width": this.outlineStroke + this.stroke,
-        "stroke": this.outlineColor.hash()
+        "stroke": this.outlineColor.rgba()
       });
       if (this.outlineVisible === false) this.shape.items[0].show();
       this.outlineVisible = true;
@@ -40505,7 +40504,7 @@ _packages2.default.shape.basic.Line = _packages2.default.Figure.extend({
 
   /**
    * You can't drag&drop the resize handles if the line not resizeable.
-   * @type boolean
+   * @returns boolean
    **/
   isResizeable: function isResizeable() {
     return true;
@@ -40891,7 +40890,7 @@ _packages2.default.shape.basic.Line = _packages2.default.Figure.extend({
    * @since 4.0.1
    */
   setVertices: function setVertices(vertices) {
-    var _this2 = this;
+    var _this3 = this;
 
     var _this = this;
     // convert json document/array to draw2d ArrayList
@@ -40899,7 +40898,7 @@ _packages2.default.shape.basic.Line = _packages2.default.Figure.extend({
     if (Array.isArray(vertices)) {
       this.vertices = new _packages2.default.util.ArrayList();
       vertices.forEach(function (element) {
-        _this2.vertices.add(new _packages2.default.geo.Point(element));
+        _this3.vertices.add(new _packages2.default.geo.Point(element));
       });
     }
     // use the given ArrayList
@@ -41131,9 +41130,9 @@ _packages2.default.shape.basic.Line = _packages2.default.Figure.extend({
     delete memento.height;
 
     memento.stroke = this.stroke;
-    memento.color = this.getColor().hash();
+    memento.color = this.getColor().rgba();
     memento.outlineStroke = this.outlineStroke;
-    memento.outlineColor = this.outlineColor.hash();
+    memento.outlineColor = this.outlineColor.rgba();
     if (this.dasharray !== null) {
       memento.dasharray = this.dasharray;
     }
@@ -41183,7 +41182,7 @@ _packages2.default.shape.basic.Line = _packages2.default.Figure.extend({
       try {
         this.installEditPolicy(eval("new " + memento.policy + "()"));
       } catch (exc) {
-        debug.warn("Unable to install edit policy '" + memento.policy + "' forced by " + this.NAME + ".setPersistendAttributes. Using default.");
+        debug.warn("Unable to install edit policy '" + memento.policy + "' forced by " + this.NAME + ".setPersistentAttributes. Using default.");
       }
     }
 
@@ -41540,9 +41539,9 @@ _packages2.default.shape.basic.LineResizeHandle = _packages2.default.shape.basic
     attributes = attributes || {};
 
     if (this.bgColor.hash() === "none") {
-      attributes.fill = this.bgColor.hash();
+      attributes.fill = this.bgColor.rgba();
     } else if (this.getAlpha() < 0.9) {
-      attributes.fill = this.bgColor.hash();
+      attributes.fill = this.bgColor.rgba();
     } else {
       attributes.fill = this.bgGradient;
     }
@@ -42368,7 +42367,7 @@ _packages2.default.shape.basic.PolyLine = _packages2.default.shape.basic.Line.ex
    * @method
    * Return the current active router of this connection.
    *
-   * @type draw2d.layout.connection.ConnectionRouter
+   * @return draw2d.layout.connection.ConnectionRouter
    **/
   getRouter: function getRouter() {
     return this.router;
@@ -42378,9 +42377,10 @@ _packages2.default.shape.basic.PolyLine = _packages2.default.shape.basic.Line.ex
    * @method
    * Calculate the path of the polyline
    *
-   * @param {Object} routingHints some helper attributes for the router
+   * @param {Object} [routingHints] some helper attributes for the router
    * @param {Boolean} routingHints.startMoved is true if just the start location has moved
    * @param {Boolean} routingHints.endMoved is true if the destination location has changed
+   * @param {Boolean} routingHints.oldVertices store old vertices for after processing
    *
    * @private
    */
@@ -42669,7 +42669,7 @@ _packages2.default.shape.basic.PolyLine = _packages2.default.shape.basic.Line.ex
       try {
         this.setRouter(eval("new " + memento.router + "()"));
       } catch (exc) {
-        debug.warn("Unable to install router '" + memento.router + "' forced by " + this.NAME + ".setPersistendAttributes. Using default");
+        debug.warn("Unable to install router '" + memento.router + "' forced by " + this.NAME + ".setPersistentAttributes. Using default");
       }
     }
 
@@ -45029,7 +45029,7 @@ _packages2.default.shape.diagram.Pie = _packages2.default.shape.diagram.Diagram.
       var angle = this.TWO_PI * this.data[i];
       var color = this.COLORS[i % length];
       var seg = this.drawSegment(radius, angle, offsetAngle, 0.1);
-      seg.attr({ stroke: this.color.hash(), fill: color });
+      seg.attr({ stroke: this.color.rgba(), fill: color });
       pie.push(seg);
       offsetAngle += angle;
     }
@@ -50213,7 +50213,7 @@ _packages2.default.shape.icon.Icon = _packages2.default.SetFigure.extend({
     //
     attributes.fill = "none";
     if (this.svgNodes !== null) {
-      this.svgNodes.attr({ fill: this.bgColor.hash(), stroke: "none" });
+      this.svgNodes.attr({ fill: this.bgColor.rgba(), stroke: "none" });
     }
 
     this._super(attributes);
@@ -59336,7 +59336,7 @@ _packages2.default.shape.node.Fulcrum = _packages2.default.shape.node.Hub.extend
     attributes = attributes || {};
 
     // set some good defaults if the parent didn't
-    _JSONUtil2.default.ensureDefault(attributes, "fill", this.bgColor.hash());
+    _JSONUtil2.default.ensureDefault(attributes, "fill", this.bgColor.rgba());
 
     return this._super(attributes);
   }
@@ -60528,8 +60528,8 @@ _packages2.default.shape.pert.Activity = _packages2.default.shape.layout.Vertica
 
       // just some color attributes for the rendering/gradient
     };this.bgColor = new _packages2.default.util.Color("#f3f3f3");
-    this.lighterBgColor = this.bgColor.lighter(0.2).hash();
-    this.darkerBgColor = this.bgColor.darker(0.2).hash();
+    this.lighterBgColor = this.bgColor.lighter(0.2).rgba();
+    this.darkerBgColor = this.bgColor.darker(0.2).rgba();
 
     this._super(extend({ bgColor: this.bgColor, stroke: 2, radius: 2, color: this.darkerBgColor }, attr), setter, getter);
 
@@ -60721,8 +60721,8 @@ _packages2.default.shape.pert.Activity = _packages2.default.shape.layout.Vertica
 
     // calculate the new lighter and darker colors for the gradient
     //
-    this.lighterBgColor = this.bgColor.lighter(0.2).hash();
-    this.darkerBgColor = this.bgColor.darker(0.2).hash();
+    this.lighterBgColor = this.bgColor.lighter(0.2).rgba();
+    this.darkerBgColor = this.bgColor.darker(0.2).rgba();
   },
 
   /**
@@ -60740,7 +60740,7 @@ _packages2.default.shape.pert.Activity = _packages2.default.shape.layout.Vertica
     attributes = attributes || {};
 
     if (this.getAlpha() < 0.9) {
-      attributes.fill = this.bgColor.hash();
+      attributes.fill = this.bgColor.rgba();
     } else {
       attributes.fill = ["90", this.bgColor.hash(), this.lighterBgColor].join("-");
     }
@@ -60808,8 +60808,8 @@ _packages2.default.shape.pert.Start = _packages2.default.shape.layout.VerticalLa
 
       // just some color attributes for the rendering/gradient
     };this.bgColor = new _packages2.default.util.Color("#f3f3f3");
-    this.lighterBgColor = this.bgColor.lighter(0.2).hash();
-    this.darkerBgColor = this.bgColor.darker(0.2).hash();
+    this.lighterBgColor = this.bgColor.lighter(0.2).rgba();
+    this.darkerBgColor = this.bgColor.darker(0.2).rgba();
 
     this._super(extend({ bgColor: this.bgColor, stroke: 2, radius: 2, color: this.darkerBgColor }, attr), setter, getter);
 
@@ -60955,8 +60955,8 @@ _packages2.default.shape.pert.Start = _packages2.default.shape.layout.VerticalLa
 
     // calculate the new lighter and darker colors for the gradient
     //
-    this.lighterBgColor = this.bgColor.lighter(0.2).hash();
-    this.darkerBgColor = this.bgColor.darker(0.2).hash();
+    this.lighterBgColor = this.bgColor.lighter(0.2).rgba();
+    this.darkerBgColor = this.bgColor.darker(0.2).rgba();
   },
 
   /**
@@ -60974,7 +60974,7 @@ _packages2.default.shape.pert.Start = _packages2.default.shape.layout.VerticalLa
     attributes = attributes || {};
 
     if (this.getAlpha() < 0.9) {
-      attributes.fill = this.bgColor.hash();
+      attributes.fill = this.bgColor.rgba();
     } else {
       attributes.fill = ["90", this.bgColor.hash(), this.lighterBgColor].join("-");
     }
@@ -61682,14 +61682,14 @@ _packages2.default.shape.widget.Slider = _packages2.default.shape.widget.Widget.
       var attr = this.slideBoundingBox.toJSON();
       attr.y -= this.thumbGrow / 2;
       attr.height += this.thumbGrow;
-      attr.fill = this.getColor().hash();
-      attr.stroke = this.getColor().darker(0.2).hash();
+      attr.fill = this.getColor().rgba();
+      attr.stroke = this.getColor().darker(0.2).rgba();
       attr.r = 4;
       this.svgNodes.attr(attr);
     }
 
     attributes.fill = "90-" + this.bgColor.hash() + ":5-" + this.bgColor.lighter(0.3).hash() + ":95";
-    attributes.stroke = this.bgColor.darker(0.1).hash();
+    attributes.stroke = this.bgColor.darker(0.1).rgba();
 
     this._super(attributes);
   },
@@ -62693,8 +62693,9 @@ _packages2.default.util.Color = Class.extend({
    * @param {Number|String|draw2d.util.Color|Array} red
    * @param {Number} green
    * @param {Number} blue
+   * @param {Number} [alpha]
    */
-  init: function init(red, green, blue) {
+  init: function init(red, green, blue, alpha) {
 
     this.hashString = null;
 
@@ -62707,15 +62708,17 @@ _packages2.default.util.Color = Class.extend({
         this.red = red.red;
         this.green = red.green;
         this.blue = red.blue;
+        this.alpha = red.alpha;
       }
     } else if (typeof red === "string") {
       if (red === "none") {
         this.hashString = "none";
       } else {
-        var rgb = this.hex2rgb(red);
-        this.red = rgb[0];
-        this.green = rgb[1];
-        this.blue = rgb[2];
+        var rgba = this.hex2rgb(red);
+        this.red = rgba[0];
+        this.green = rgba[1];
+        this.blue = rgba[2];
+        this.alpha = rgba[3];
       }
     }
     // JSON struct of {red:###, green:###, blue:### }
@@ -62723,22 +62726,26 @@ _packages2.default.util.Color = Class.extend({
         this.red = red.red;
         this.green = red.green;
         this.blue = red.blue;
+        this.alpha = red.alpha;
       }
       // array detection 1
       else if (red instanceof Array && red.length === 3) {
           this.red = red[0];
           this.green = red[1];
           this.blue = red[2];
+          this.alpha = red[3];
         }
         // array detection 2
         else if ((typeof red === "undefined" ? "undefined" : _typeof(red)) === "object" && typeof red.length === "number" && red.length === 3) {
             this.red = red[0];
             this.green = red[1];
             this.blue = red[2];
+            this.alpha = red[3];
           } else {
             this.red = parseInt(red);
             this.green = parseInt(green);
             this.blue = parseInt(blue);
+            this.alpha = typeof alpha === 'undefined' ? 1 : parseFloat(alpha);
           }
   },
 
@@ -62748,7 +62755,7 @@ _packages2.default.util.Color = Class.extend({
    * @return {String} the color in rgb(##,##,##) representation
    **/
   getHTMLStyle: function getHTMLStyle() {
-    return "rgb(" + this.red + "," + this.green + "," + this.blue + ")";
+    return "rgba(" + this.red + "," + this.green + "," + this.blue + "," + this.alpha + ")";
   },
 
   /**
@@ -62783,6 +62790,16 @@ _packages2.default.util.Color = Class.extend({
 
   /**
    * @method
+   * The alpha part of the color
+   *
+   * @return {Number} the [alpha] part of the color.
+   **/
+  getAlpha: function getAlpha() {
+    return this.alpha;
+  },
+
+  /**
+   * @method
    * Returns the ideal Text Color. Useful for font color selection by a given background color.
    *
    * @return {draw2d.util.Color} The <i>ideal</i> inverse color.
@@ -62794,20 +62811,72 @@ _packages2.default.util.Color = Class.extend({
   },
 
   /**
-   * @private
+   * return array of [r,g,b,a] from any valid color. if failed returns [0,0,0,1]
+   *
+   * @param hexcolor
+   * @returns {*}
    */
-  hex2rgb: function hex2rgb( /*:String */hexcolor) {
-    hexcolor = hexcolor.replace("#", "");
-    return { 0: parseInt(hexcolor.substr(0, 2), 16),
-      1: parseInt(hexcolor.substr(2, 2), 16),
-      2: parseInt(hexcolor.substr(4, 2), 16) };
+  hex2rgb: function hex2rgb(color) {
+    if (!color) {
+      return [0, 0, 0, 1];
+    }
+
+    if (color.toLowerCase() === 'transparent') {
+      return [0, 0, 0, 0];
+    }
+
+    if (color[0] === '#') {
+      if (color.length < 7) {
+        // convert #RGB and #RGBA to #RRGGBB and #RRGGBBAA
+        color = '#' + color[1] + color[1] + color[2] + color[2] + color[3] + color[3] + (color.length > 4 ? color[4] + color[4] : '');
+      }
+      return [parseInt(color.substr(1, 2), 16), parseInt(color.substr(3, 2), 16), parseInt(color.substr(5, 2), 16), color.length > 7 ? parseInt(color.substr(7, 2), 16) / 255 : 1];
+    }
+
+    if (color.indexOf('rgb') === -1) {
+      // convert named colors
+      var temp_elem = document.body.appendChild(document.createElement('fictum')); // intentionally use unknown tag to lower chances of css rule override with !important
+      var flag = 'rgb(1, 2, 3)'; // this flag tested on chrome 59, ff 53, ie9, ie10, ie11, edge 14
+      temp_elem.style.color = flag;
+      if (temp_elem.style.color !== flag) {
+        return [0, 0, 0, 1]; // color set failed - some monstrous css rule is probably taking over the color of our object
+      }
+      temp_elem.style.color = color;
+
+      if (temp_elem.style.color === flag || temp_elem.style.color === '') {
+        return [0, 0, 0, 1]; // color parse failed
+      }
+      color = getComputedStyle(temp_elem).color;
+      document.body.removeChild(temp_elem);
+    }
+
+    if (color.indexOf('rgb') === 0) {
+      if (color.indexOf('rgba') === -1) {
+        color += ',1'; // convert 'rgb(R,G,B)' to 'rgb(R,G,B)A' which looks awful but will pass the regxep below
+      }
+      return color.match(/[\.\d]+/g).map(function (a) {
+        return +a;
+      });
+    }
   },
 
   /**
    *
    **/
   hex: function hex() {
-    return this.int2hex(this.red) + this.int2hex(this.green) + this.int2hex(this.blue);
+    return this.int2hex(this.red) + this.int2hex(this.green) + this.int2hex(this.blue)
+    // breaks raphaelJS...so don'T use it right now
+    //(this.alpha * 255).toString(16).substring(0,2).toUpperCase()
+    ;
+  },
+
+  /**
+   * @method
+   * Convert the color object into a HTML CSS representation
+   * @return {String} the color in rgb(##,##,##) representation
+   **/
+  rgba: function rgba() {
+    return this.getHTMLStyle();
   },
 
   /**
@@ -62838,9 +62907,11 @@ _packages2.default.util.Color = Class.extend({
    * @return{draw2d.util.Color}        Darker color.
    */
   darker: function darker(fraction) {
-    // we can "darker" a undefined color. In this case we return the undefnied color itself
+    // we can't "darker" a undefined color. In this case we return the undefnied color itself
     //
     if (this.hashString === "none") return this;
+
+    fraction = typeof fraction === 'undefined' ? 0.1 : fraction;
 
     var red = parseInt(Math.round(this.getRed() * (1.0 - fraction)));
     var green = parseInt(Math.round(this.getGreen() * (1.0 - fraction)));
@@ -62850,7 +62921,7 @@ _packages2.default.util.Color = Class.extend({
     if (green < 0) green = 0;else if (green > 255) green = 255;
     if (blue < 0) blue = 0;else if (blue > 255) blue = 255;
 
-    return new _packages2.default.util.Color(red, green, blue);
+    return new _packages2.default.util.Color(red, green, blue, this.alpha);
   },
 
   /**
@@ -62861,9 +62932,11 @@ _packages2.default.util.Color = Class.extend({
    * @return {draw2d.util.Color} Lighter color.
    */
   lighter: function lighter(fraction) {
-    // we can "lighter" a undefined color. In this case we return the undefined color itself
+    // we can't "lighter" a undefined color. In this case we return the undefined color itself
     //
     if (this.hashString === "none") return this;
+
+    fraction = typeof fraction === 'undefined' ? 0.1 : fraction;
 
     var red = parseInt(Math.round(this.getRed() * (1.0 + fraction)));
     var green = parseInt(Math.round(this.getGreen() * (1.0 + fraction)));
@@ -62873,7 +62946,7 @@ _packages2.default.util.Color = Class.extend({
     if (green < 0) green = 0;else if (green > 255) green = 255;
     if (blue < 0) blue = 0;else if (blue > 255) blue = 255;
 
-    return new _packages2.default.util.Color(red, green, blue);
+    return new _packages2.default.util.Color(red, green, blue, this.alpha);
   },
 
   /**
@@ -62890,8 +62963,9 @@ _packages2.default.util.Color = Class.extend({
     var r = Math.floor(this.red + pc * (color.red - this.red) + .5);
     var g = Math.floor(this.green + pc * (color.green - this.green) + .5);
     var b = Math.floor(this.blue + pc * (color.blue - this.blue) + .5);
+    var a = Math.floor(this.alpha + pc * (color.alpha - this.alpha) + .5);
 
-    return new _packages2.default.util.Color(r, g, b);
+    return new _packages2.default.util.Color(r, g, b, a);
   },
 
   /**
@@ -62905,7 +62979,7 @@ _packages2.default.util.Color = Class.extend({
     if (!(o instanceof _packages2.default.util.Color)) {
       return false;
     }
-    return this.hash() == o.hash();
+    return this.rgba() === o.rgba();
   }
 
 });

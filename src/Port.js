@@ -229,7 +229,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
    **/
   setBackgroundColor: function (color) {
     this._super(color)
-    this.lighterBgColor = this.bgColor.lighter(0.3).hash()
+    this.lighterBgColor = this.bgColor.lighter(0.3).rgba()
 
     return this
   },
@@ -285,7 +285,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
     attributes.cursor = "move"
 
     if (this.getAlpha() < 0.9 || this.useGradient === false) {
-      attributes.fill = this.bgColor.hash()
+      attributes.fill = this.bgColor.rgba()
     }
     else {
       attributes.fill = ["90", this.bgColor.hash(), this.lighterBgColor].join("-")

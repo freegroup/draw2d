@@ -222,7 +222,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
     })
     this.command.updateVertices(this.vertices.clone())
 
-    // start/end are seperate draw23d.geo.Point objects. Required for routing and determining if a node is dragged away
+    // start/end are separate draw2d.geo.Point objects. Required for routing and determining if a node is dragged away
     // from the connection. In this case we must modify the start/end by hand
     this.start.translate(dx2, dy2)
     this.end.translate(dx2, dy2)
@@ -250,17 +250,15 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
       return
     }
 
-    let _this = this
-
     this.canvas.getCommandStack().execute(this.command)
     this.command = null
     this.isMoving = false
 
     // notify all installed policies
     //
-    this.editPolicy.each(function (i, e) {
+    this.editPolicy.each( (i, e) => {
       if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
-        e.onDragEnd(_this.canvas, _this, x, y, shiftKey, ctrlKey)
+        e.onDragEnd(this.canvas, this, x, y, shiftKey, ctrlKey)
       }
     })
 
@@ -371,7 +369,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
     //
     if (typeof attributes === "undefined") {
       attributes = {
-        "stroke": this.lineColor.hash(),
+        "stroke": this.lineColor.rgba(),
         "stroke-width": this.stroke,
         "path": ["M", this.start.x, this.start.y, "L", this.end.x, this.end.y].join(" ")
       }
@@ -381,7 +379,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
       if (typeof attributes.path === "undefined") {
         attributes.path = ["M", this.start.x, this.start.y, "L", this.end.x, this.end.y].join(" ")
       }
-      jsonUtil.ensureDefault(attributes, "stroke", this.lineColor.hash())
+      jsonUtil.ensureDefault(attributes, "stroke", this.lineColor.rgba())
       jsonUtil.ensureDefault(attributes, "stroke-width", this.stroke)
     }
 
@@ -391,7 +389,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
     if (this.outlineStroke > 0) {
       this.shape.items[0].attr({
         "stroke-width": (this.outlineStroke + this.stroke),
-        "stroke": this.outlineColor.hash()
+        "stroke": this.outlineColor.rgba()
       })
       if (this.outlineVisible === false)
         this.shape.items[0].show()
@@ -461,7 +459,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
 
   /**
    * You can't drag&drop the resize handles if the line not resizeable.
-   * @type boolean
+   * @returns boolean
    **/
   isResizeable: function () {
     return true
@@ -1092,9 +1090,9 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
     delete memento.height
 
     memento.stroke = this.stroke
-    memento.color = this.getColor().hash()
+    memento.color = this.getColor().rgba()
     memento.outlineStroke = this.outlineStroke
-    memento.outlineColor = this.outlineColor.hash()
+    memento.outlineColor = this.outlineColor.rgba()
     if (this.dasharray !== null) {
       memento.dasharray = this.dasharray
     }
@@ -1145,7 +1143,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
         this.installEditPolicy(eval("new " + memento.policy + "()"))
       }
       catch (exc) {
-        debug.warn("Unable to install edit policy '" + memento.policy + "' forced by " + this.NAME + ".setPersistendAttributes. Using default.")
+        debug.warn("Unable to install edit policy '" + memento.policy + "' forced by " + this.NAME + ".setPersistentAttributes. Using default.")
       }
     }
 

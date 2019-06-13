@@ -27,8 +27,9 @@ draw2d.util.Color = Class.extend({
      * @param {Number|String|draw2d.util.Color|Array} red
      * @param {Number} green
      * @param {Number} blue
+     * @param {Number} [alpha]
      */
-    init: function( red, green, blue) {
+    init: function(red, green, blue, alpha) {
 
       this.hashString = null;
 
@@ -43,6 +44,7 @@ draw2d.util.Color = Class.extend({
               this.red = red.red;
               this.green = red.green;
               this.blue = red.blue;
+              this.alpha = red.alpha;
           }
       }
       else if(typeof red === "string")
@@ -51,10 +53,11 @@ draw2d.util.Color = Class.extend({
               this.hashString = "none";
            }
            else {
-              var rgb = this.hex2rgb(red);
-              this.red = rgb[0];
-              this.green = rgb[1];
-              this.blue = rgb[2];
+              let rgba = this.hex2rgb(red);
+              this.red = rgba[0];
+              this.green = rgba[1];
+              this.blue = rgba[2];
+              this.alpha = rgba[3];
           }
       }
       // JSON struct of {red:###, green:###, blue:### }
@@ -63,6 +66,7 @@ draw2d.util.Color = Class.extend({
         this.red= red.red;
         this.green = red.green;
         this.blue = red.blue;
+        this.alpha = red.alpha;
       }
       // array detection 1
       else if(red instanceof Array && red.length===3)
@@ -70,19 +74,22 @@ draw2d.util.Color = Class.extend({
         this.red= red[0];
         this.green = red[1];
         this.blue = red[2];
+        this.alpha = red[3];
       }
       // array detection 2
       else if(typeof red === "object" && typeof red.length ==="number" && red.length===3)
       {
-        this.red= red[0];
-        this.green = red[1];
-        this.blue = red[2];
+        this.red= red[0]
+        this.green = red[1]
+        this.blue = red[2]
+        this.alpha = red[3]
       }
       else
       {
-        this.red= parseInt(red);
-        this.green = parseInt(green);
-        this.blue = parseInt(blue);
+        this.red= parseInt(red)
+        this.green = parseInt(green)
+        this.blue = parseInt(blue)
+        this.alpha = (typeof alpha === 'undefined')? 1 : parseFloat(alpha)
       }
     },
 
@@ -94,7 +101,7 @@ draw2d.util.Color = Class.extend({
      **/
     getHTMLStyle: function()
     {
-      return "rgb("+this.red+","+this.green+","+this.blue+")";
+      return "rgba("+this.red+","+this.green+","+this.blue+","+this.alpha+")"
     },
 
 
@@ -106,7 +113,7 @@ draw2d.util.Color = Class.extend({
      **/
     getRed: function()
     {
-      return this.red;
+      return this.red
     },
 
 
@@ -133,6 +140,18 @@ draw2d.util.Color = Class.extend({
       return this.blue;
     },
 
+
+    /**
+     * @method
+     * The alpha part of the color
+     *
+     * @return {Number} the [alpha] part of the color.
+     **/
+    getAlpha: function()
+    {
+      return this.alpha;
+    },
+
     /**
      * @method
      * Returns the ideal Text Color. Useful for font color selection by a given background color.
@@ -146,18 +165,56 @@ draw2d.util.Color = Class.extend({
        return (255 - bgDelta < nThreshold) ? new  draw2d.util.Color(0,0,0) : new  draw2d.util.Color(255,255,255);
     },
 
-
     /**
-     * @private
+     * return array of [r,g,b,a] from any valid color. if failed returns [0,0,0,1]
+     *
+     * @param hexcolor
+     * @returns {*}
      */
-    hex2rgb: function(/*:String */hexcolor)
+    hex2rgb: function(color)
     {
-      hexcolor = hexcolor.replace("#","");
-      return(
-             {0:parseInt(hexcolor.substr(0,2),16),
-              1:parseInt(hexcolor.substr(2,2),16),
-              2:parseInt(hexcolor.substr(4,2),16)}
-             );
+      if (!color) {
+        return [0, 0, 0, 1]
+      }
+
+      if (color.toLowerCase() === 'transparent') {
+        return [0, 0, 0, 0]
+      }
+
+      if (color[0] === '#'){
+        if (color.length < 7){
+          // convert #RGB and #RGBA to #RRGGBB and #RRGGBBAA
+          color = '#' + color[1] + color[1] + color[2] + color[2] + color[3] + color[3] + (color.length > 4 ? color[4] + color[4] : '');
+        }
+        return [parseInt(color.substr(1, 2), 16),
+          parseInt(color.substr(3, 2), 16),
+          parseInt(color.substr(5, 2), 16),
+          color.length > 7 ? parseInt(color.substr(7, 2), 16)/255 : 1]
+      }
+
+      if (color.indexOf('rgb') === -1){
+        // convert named colors
+        let temp_elem = document.body.appendChild(document.createElement('fictum')); // intentionally use unknown tag to lower chances of css rule override with !important
+        let flag = 'rgb(1, 2, 3)' // this flag tested on chrome 59, ff 53, ie9, ie10, ie11, edge 14
+        temp_elem.style.color = flag
+        if (temp_elem.style.color !== flag) {
+          return [0, 0, 0, 1] // color set failed - some monstrous css rule is probably taking over the color of our object
+        }
+        temp_elem.style.color = color
+
+        if (temp_elem.style.color === flag || temp_elem.style.color === '') {
+          return [0, 0, 0, 1] // color parse failed
+        }
+        color = getComputedStyle(temp_elem).color
+        document.body.removeChild(temp_elem)
+      }
+
+      if (color.indexOf('rgb') === 0) {
+        if (color.indexOf('rgba') === -1) {
+          color += ',1'; // convert 'rgb(R,G,B)' to 'rgb(R,G,B)A' which looks awful but will pass the regxep below
+        }
+        return color.match(/[\.\d]+/g).map( a => +a);
+      }
     },
 
     /**
@@ -165,7 +222,24 @@ draw2d.util.Color = Class.extend({
      **/
     hex: function()
     {
-      return(this.int2hex(this.red)+this.int2hex(this.green)+this.int2hex(this.blue));
+      return(
+        this.int2hex(this.red)+
+        this.int2hex(this.green)+
+        this.int2hex(this.blue)
+        // breaks raphaelJS...so don'T use it right now
+        //(this.alpha * 255).toString(16).substring(0,2).toUpperCase()
+      );
+    },
+
+
+    /**
+     * @method
+     * Convert the color object into a HTML CSS representation
+     * @return {String} the color in rgb(##,##,##) representation
+     **/
+    rgba: function()
+    {
+      return this.getHTMLStyle()
     },
 
 
@@ -200,20 +274,22 @@ draw2d.util.Color = Class.extend({
      */
     darker: function(fraction)
     {
-       // we can "darker" a undefined color. In this case we return the undefnied color itself
+       // we can't "darker" a undefined color. In this case we return the undefnied color itself
        //
        if(this.hashString==="none")
            return this;
 
-       var red   = parseInt(Math.round (this.getRed()   * (1.0 - fraction)));
-       var green = parseInt(Math.round (this.getGreen() * (1.0 - fraction)));
-       var blue  = parseInt(Math.round (this.getBlue()  * (1.0 - fraction)));
+       fraction = (typeof fraction === 'undefined') ? 0.1 : fraction;
+
+       let red   = parseInt(Math.round (this.getRed()   * (1.0 - fraction)));
+       let green = parseInt(Math.round (this.getGreen() * (1.0 - fraction)));
+       let blue  = parseInt(Math.round (this.getBlue()  * (1.0 - fraction)));
 
        if (red   < 0) red   = 0; else if (red   > 255) red   = 255;
        if (green < 0) green = 0; else if (green > 255) green = 255;
        if (blue  < 0) blue  = 0; else if (blue  > 255) blue  = 255;
 
-       return new draw2d.util.Color(red, green, blue);
+       return new draw2d.util.Color(red, green, blue, this.alpha);
     },
 
 
@@ -226,20 +302,22 @@ draw2d.util.Color = Class.extend({
      */
     lighter: function( fraction)
     {
-        // we can "lighter" a undefined color. In this case we return the undefined color itself
+        // we can't "lighter" a undefined color. In this case we return the undefined color itself
         //
         if(this.hashString==="none")
             return this;
 
-        var red   = parseInt(Math.round (this.getRed()   * (1.0 + fraction)));
-        var green = parseInt(Math.round (this.getGreen() * (1.0 + fraction)));
-        var blue  = parseInt(Math.round (this.getBlue()  * (1.0 + fraction)));
+        fraction = (typeof fraction === 'undefined') ? 0.1 : fraction;
+
+        let red   = parseInt(Math.round (this.getRed()   * (1.0 + fraction)));
+        let green = parseInt(Math.round (this.getGreen() * (1.0 + fraction)));
+        let blue  = parseInt(Math.round (this.getBlue()  * (1.0 + fraction)));
 
         if (red   < 0) red   = 0; else if (red   > 255) red   = 255;
         if (green < 0) green = 0; else if (green > 255) green = 255;
         if (blue  < 0) blue  = 0; else if (blue  > 255) blue  = 255;
 
-        return new draw2d.util.Color(red, green, blue);
+        return new draw2d.util.Color(red, green, blue, this.alpha);
     },
 
     /**
@@ -253,11 +331,12 @@ draw2d.util.Color = Class.extend({
      */
     fadeTo: function(color, pc){
 
-        var r= Math.floor(this.red+(pc*(color.red-this.red)) + .5);
-        var g= Math.floor(this.green+(pc*(color.green-this.green)) + .5);
-        var b= Math.floor(this.blue+(pc*(color.blue-this.blue)) + .5);
+        let r= Math.floor(this.red+(pc*(color.red-this.red)) + .5);
+        let g= Math.floor(this.green+(pc*(color.green-this.green)) + .5);
+        let b= Math.floor(this.blue+(pc*(color.blue-this.blue)) + .5);
+        let a= Math.floor(this.alpha+(pc*(color.alpha-this.alpha)) + .5);
 
-        return new draw2d.util.Color(r,g,b);
+        return new draw2d.util.Color(r,g,b,a);
     },
 
 	/**
@@ -272,7 +351,7 @@ draw2d.util.Color = Class.extend({
 		if(!(o instanceof draw2d.util.Color)){
 			return false;
 		}
-		return this.hash()==o.hash();
+		return this.rgba()===o.rgba();
 	}
 
 });

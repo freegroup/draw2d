@@ -224,7 +224,7 @@ draw2d.policy.canvas.SnapToCenterEditPolicy = draw2d.policy.canvas.SnapToEditPol
       .path(
         "M " + (start.x) + " " + ((start.y | 0) + 0.5) + " L " + (end.x) + " " + ((end.y | 0) + 0.5))
       .attr({
-      "stroke": this.lineColor.hash(),
+      "stroke": this.lineColor.rgba(),
       "stroke-width": 1
     })
 
@@ -280,7 +280,7 @@ draw2d.policy.canvas.SnapToCenterEditPolicy = draw2d.policy.canvas.SnapToEditPol
       .path(
         "M " + ((start.x | 0) + 0.5) + " " + (start.y) + " L " + ((end.x | 0) + 0.5) + " " + (end.y))
       .attr({
-        "stroke": this.lineColor.hash(),
+        "stroke": this.lineColor.rgba(),
         "stroke-width": 1
     })
 

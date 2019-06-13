@@ -300,7 +300,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
    * @method
    * Return the current active router of this connection.
    *
-   * @type draw2d.layout.connection.ConnectionRouter
+   * @return draw2d.layout.connection.ConnectionRouter
    **/
   getRouter: function () {
     return this.router
@@ -310,9 +310,10 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
    * @method
    * Calculate the path of the polyline
    *
-   * @param {Object} routingHints some helper attributes for the router
+   * @param {Object} [routingHints] some helper attributes for the router
    * @param {Boolean} routingHints.startMoved is true if just the start location has moved
    * @param {Boolean} routingHints.endMoved is true if the destination location has changed
+   * @param {Boolean} routingHints.oldVertices store old vertices for after processing
    *
    * @private
    */
@@ -604,7 +605,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
         this.setRouter(eval("new " + memento.router + "()"))
       }
       catch (exc) {
-        debug.warn("Unable to install router '" + memento.router + "' forced by " + this.NAME + ".setPersistendAttributes. Using default")
+        debug.warn("Unable to install router '" + memento.router + "' forced by " + this.NAME + ".setPersistentAttributes. Using default")
       }
     }
 

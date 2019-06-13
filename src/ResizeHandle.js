@@ -561,7 +561,7 @@ draw2d.ResizeHandle = draw2d.shape.basic.Rectangle.extend({
       attributes.fill = "none"
     }
     else if (this.getAlpha() < 0.9 || this.useGradient === false) {
-      attributes.fill = this.bgColor.hash()
+      attributes.fill = this.bgColor.rgba()
     }
     else {
       attributes.fill = this.bgGradient

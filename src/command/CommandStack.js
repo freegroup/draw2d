@@ -297,7 +297,6 @@ draw2d.command.CommandStack = Class.extend({
   },
 
   off: function (listener) {
-    console.log(listener)
     this.eventListeners.grep(entry => (entry === listener || entry.stackChanged === listener))
     /*
     let size = this.eventListeners.getSize()

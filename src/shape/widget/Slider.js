@@ -275,15 +275,15 @@ draw2d.shape.widget.Slider = draw2d.shape.widget.Widget.extend({
       let attr = this.slideBoundingBox.toJSON()
       attr.y -= (this.thumbGrow / 2)
       attr.height += this.thumbGrow
-      attr.fill = this.getColor().hash()
-      attr.stroke = this.getColor().darker(0.2).hash()
+      attr.fill = this.getColor().rgba()
+      attr.stroke = this.getColor().darker(0.2).rgba()
       attr.r = 4
       this.svgNodes.attr(attr)
     }
 
 
     attributes.fill = "90-" + this.bgColor.hash() + ":5-" + this.bgColor.lighter(0.3).hash() + ":95"
-    attributes.stroke = this.bgColor.darker(0.1).hash()
+    attributes.stroke = this.bgColor.darker(0.1).rgba()
 
     this._super(attributes)
   },

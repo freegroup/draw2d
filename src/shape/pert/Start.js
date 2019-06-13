@@ -43,8 +43,8 @@ draw2d.shape.pert.Start = draw2d.shape.layout.VerticalLayout.extend({
 
     // just some color attributes for the rendering/gradient
     this.bgColor = new draw2d.util.Color("#f3f3f3")
-    this.lighterBgColor = this.bgColor.lighter(0.2).hash()
-    this.darkerBgColor = this.bgColor.darker(0.2).hash()
+    this.lighterBgColor = this.bgColor.lighter(0.2).rgba()
+    this.darkerBgColor = this.bgColor.darker(0.2).rgba()
 
 
     this._super(extend({bgColor: this.bgColor, stroke: 2, radius: 2, color: this.darkerBgColor}, attr), setter, getter)
@@ -196,8 +196,8 @@ draw2d.shape.pert.Start = draw2d.shape.layout.VerticalLayout.extend({
 
     // calculate the new lighter and darker colors for the gradient
     //
-    this.lighterBgColor = this.bgColor.lighter(0.2).hash()
-    this.darkerBgColor = this.bgColor.darker(0.2).hash()
+    this.lighterBgColor = this.bgColor.lighter(0.2).rgba()
+    this.darkerBgColor = this.bgColor.darker(0.2).rgba()
   },
 
   /**
@@ -216,7 +216,7 @@ draw2d.shape.pert.Start = draw2d.shape.layout.VerticalLayout.extend({
     attributes = attributes || {}
 
     if (this.getAlpha() < 0.9) {
-      attributes.fill = this.bgColor.hash()
+      attributes.fill = this.bgColor.rgba()
     }
     else {
       attributes.fill = ["90", this.bgColor.hash(), this.lighterBgColor].join("-")
