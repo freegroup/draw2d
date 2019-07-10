@@ -287,15 +287,13 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend({
     */
    getPersistentAttributes: function()
    {
-       var memento = extend(this._super(), {
+       return  extend(this._super(), {
            bgColor : this.bgColor.rgba(),
            color   : this.color.rgba(),
            stroke  : this.stroke,
            radius  : this.radius,
            dasharray : this.dasharray
        });
-
-       return memento;
    },
 
    /**

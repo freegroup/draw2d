@@ -101,6 +101,9 @@ draw2d.util.Color = Class.extend({
      **/
     getHTMLStyle: function()
     {
+      if(typeof this.red ==="undefined")
+        return "rgba(0,0,0,0)";
+
       return "rgba("+this.red+","+this.green+","+this.blue+","+this.alpha+")"
     },
 

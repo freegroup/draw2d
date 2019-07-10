@@ -15129,15 +15129,13 @@ _packages2.default.VectorFigure = _packages2.default.shape.node.Node.extend({
      * @inheritdoc
      */
     getPersistentAttributes: function getPersistentAttributes() {
-        var memento = (0, _extend2.default)(this._super(), {
+        return (0, _extend2.default)(this._super(), {
             bgColor: this.bgColor.rgba(),
             color: this.color.rgba(),
             stroke: this.stroke,
             radius: this.radius,
             dasharray: this.dasharray
         });
-
-        return memento;
     },
 
     /**
@@ -62755,6 +62753,8 @@ _packages2.default.util.Color = Class.extend({
    * @return {String} the color in rgb(##,##,##) representation
    **/
   getHTMLStyle: function getHTMLStyle() {
+    if (typeof this.red === "undefined") return "rgba(0,0,0,0)";
+
     return "rgba(" + this.red + "," + this.green + "," + this.blue + "," + this.alpha + ")";
   },
 
