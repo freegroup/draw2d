@@ -1356,27 +1356,16 @@ draw2d.Canvas = Class.extend(
         //
         if (result === null && figure.isVisible() && figure.hitTest(x, y) && !isInBlacklist(figure) && isInWhitelist(figure)) {
           result = figure
-        }
-
-        if (result !== null) {
-          //added check for best line to allow connections in composites to be selected
-          //
-          //if (result instanceof draw2d.shape.composite.Composite)
-          {
-            let resultLine = this.getBestLine(x, y, result)
-            // conflict between line and normal shape -> calculate the DOM index and return the higher (on Top)
-            // element
-            if (resultLine !== null) {
-              let lineIndex = $(resultLine.shape.node).index()
-              let resultIndex = $(result.shape.node).index()
-              if (resultIndex < lineIndex) {
-                return resultLine
-              }
-            }
-          }
-          return result
+          break
         }
       }
+
+      let figureResult = result
+      let childResult = null
+      let lineResult = null
+      result = null;
+
+
 
       // Check the children of the lines as well
       // Not selectable/draggable. But should receive onClick/onDoubleClick events
@@ -1389,15 +1378,28 @@ draw2d.Canvas = Class.extend(
         checkRecursive(line.children)
 
         if (result !== null) {
-          return result
+          childResult = result
+          break
         }
       }
 
-      // A line is the last option in the priority queue for a "Best" figure
-      //
-      result = this.getBestLine(x, y, blacklist, whitelist)
-      if (result !== null) {
-        return result
+
+      lineResult = this.getBestLine(x, y, blacklist, whitelist)
+
+      let figureIndex = figureResult!==null? $(figureResult.shape.node).index():-1
+      let childIndex  = childResult!==null? $(childResult.shape.node).index():-1
+      let lineIndex   = lineResult!==null? $(lineResult.shape.node).index():-1
+      let array = [
+        {i:figureIndex, f:figureResult},
+        {i:childIndex, f:childResult},
+        {i:lineIndex, f:lineResult}
+      ]
+      array = array.filter((e) =>  e.i !== -1 );
+      array = array.sort((a,b) => b.i-a.i)
+
+      //console.log(array)
+      if(array.length>0) {
+        result = array[0].f
       }
 
       return result

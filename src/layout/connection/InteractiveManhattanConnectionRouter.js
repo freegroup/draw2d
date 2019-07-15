@@ -115,7 +115,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
     let max = Math.max
     let min = Math.min
 
-    routingHints = routingHints || {}
+    routingHints = routingHints || {oldVertices: new draw2d.util.ArrayList()}
     let oldVertices = routingHints.oldVertices
     let vertexCount = oldVertices.getSize()
 
@@ -130,10 +130,10 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
     // we must recalculate the routing.
     if (conn._routingMetaData.fromDir !== fromDir || conn._routingMetaData.toDir !== toDir) {
       conn._routingMetaData.routedByUserInteraction = false
-      this.route(conn, oldVertices)
+      this.route(conn, routingHints)
     }
 
-    // TODO: detection for switch back to autoroute isn'T good enough.
+    // TODO: detection for switch back to autoroute isn't good enough.
     //       Add more logic. e.g. if the fromDir!==1. This happens if
     //       The ports are at bottom and top.
     //       The code below covers only the classic workflow configuration left->right
@@ -144,7 +144,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
       && (fromPt.x > toPt.x) && (vertexCount <= 4)) {
 
       conn._routingMetaData.routedByUserInteraction = false
-      this.route(conn, {oldVertices: oldVertices})
+      this.route(conn, routingHints)
     }
 
     // transfer the old vertices into the connection

@@ -8037,27 +8037,14 @@ _packages2.default.Canvas = Class.extend({
       //
       if (result === null && figure.isVisible() && figure.hitTest(x, y) && !isInBlacklist(figure) && isInWhitelist(figure)) {
         result = figure;
-      }
-
-      if (result !== null) {
-        //added check for best line to allow connections in composites to be selected
-        //
-        //if (result instanceof draw2d.shape.composite.Composite)
-        {
-          var resultLine = this.getBestLine(x, y, result);
-          // conflict between line and normal shape -> calculate the DOM index and return the higher (on Top)
-          // element
-          if (resultLine !== null) {
-            var lineIndex = $(resultLine.shape.node).index();
-            var resultIndex = $(result.shape.node).index();
-            if (resultIndex < lineIndex) {
-              return resultLine;
-            }
-          }
-        }
-        return result;
+        break;
       }
     }
+
+    var figureResult = result;
+    var childResult = null;
+    var lineResult = null;
+    result = null;
 
     // Check the children of the lines as well
     // Not selectable/draggable. But should receive onClick/onDoubleClick events
@@ -8070,15 +8057,27 @@ _packages2.default.Canvas = Class.extend({
       checkRecursive(line.children);
 
       if (result !== null) {
-        return result;
+        childResult = result;
+        break;
       }
     }
 
-    // A line is the last option in the priority queue for a "Best" figure
-    //
-    result = this.getBestLine(x, y, blacklist, whitelist);
-    if (result !== null) {
-      return result;
+    lineResult = this.getBestLine(x, y, blacklist, whitelist);
+
+    var figureIndex = figureResult !== null ? $(figureResult.shape.node).index() : -1;
+    var childIndex = childResult !== null ? $(childResult.shape.node).index() : -1;
+    var lineIndex = lineResult !== null ? $(lineResult.shape.node).index() : -1;
+    var array = [{ i: figureIndex, f: figureResult }, { i: childIndex, f: childResult }, { i: lineIndex, f: lineResult }];
+    array = array.filter(function (e) {
+      return e.i !== -1;
+    });
+    array = array.sort(function (a, b) {
+      return b.i - a.i;
+    });
+
+    //console.log(array)
+    if (array.length > 0) {
+      result = array[0].f;
     }
 
     return result;
@@ -22560,7 +22559,7 @@ _packages2.default.layout.connection.InteractiveManhattanConnectionRouter = _pac
     var max = Math.max;
     var min = Math.min;
 
-    routingHints = routingHints || {};
+    routingHints = routingHints || { oldVertices: new _packages2.default.util.ArrayList() };
     var oldVertices = routingHints.oldVertices;
     var vertexCount = oldVertices.getSize();
 
@@ -22574,10 +22573,10 @@ _packages2.default.layout.connection.InteractiveManhattanConnectionRouter = _pac
     // we must recalculate the routing.
     if (conn._routingMetaData.fromDir !== fromDir || conn._routingMetaData.toDir !== toDir) {
       conn._routingMetaData.routedByUserInteraction = false;
-      this.route(conn, oldVertices);
+      this.route(conn, routingHints);
     }
 
-    // TODO: detection for switch back to autoroute isn'T good enough.
+    // TODO: detection for switch back to autoroute isn't good enough.
     //       Add more logic. e.g. if the fromDir!==1. This happens if
     //       The ports are at bottom and top.
     //       The code below covers only the classic workflow configuration left->right
@@ -22587,7 +22586,7 @@ _packages2.default.layout.connection.InteractiveManhattanConnectionRouter = _pac
     if (fromDir === _packages2.default.geo.Rectangle.DIRECTION_RIGHT && toDir === _packages2.default.geo.Rectangle.DIRECTION_LEFT && fromPt.x > toPt.x && vertexCount <= 4) {
 
       conn._routingMetaData.routedByUserInteraction = false;
-      this.route(conn, { oldVertices: oldVertices });
+      this.route(conn, routingHints);
     }
 
     // transfer the old vertices into the connection
