@@ -384,7 +384,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend({
       this.padding = {top: padding, right: padding, bottom: padding, left: padding}
     }
     else {
-      extend(this.padding, padding)
+      this.padding = extend(this.padding, padding)
     }
     this.repaint()
     this.fireEvent("change:padding", {value: this.padding})
