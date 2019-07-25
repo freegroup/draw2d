@@ -207,7 +207,7 @@ draw2d.shape.layout.TableLayout = draw2d.shape.layout.Layout.extend({
       this.padding = {top: padding, right: padding, bottom: padding, left: padding}
     }
     else {
-      extend(this.padding, padding)
+      this.padding = extend(this.padding, padding)
     }
     this.calculateLayout()
     this.setDimension(1, 1)

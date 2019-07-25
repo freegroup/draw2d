@@ -106,7 +106,7 @@ draw2d.shape.layout.Layout = draw2d.shape.basic.Rectangle.extend({
       this.padding = {top: padding, right: padding, bottom: padding, left: padding}
     }
     else {
-      extend(this.padding, padding)
+      this.padding = extend(this.padding, padding)
     }
     this.fireEvent("change:padding", {value: this.padding})
 
