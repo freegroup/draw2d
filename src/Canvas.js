@@ -1202,8 +1202,8 @@ draw2d.Canvas = Class.extend(
      **/
     setCurrentSelection: function (object) {
       // deselect the current selected figures
-      //
-      this.selection.each( (i, e) =>{
+      // "getAll()" method serve to pass all elements of the original list
+      this.selection.getAll().each( (i, e) =>{
         this.editPolicy.each( (i, policy) =>{
           if (typeof policy.unselect === "function") {
             policy.unselect(this, e)
