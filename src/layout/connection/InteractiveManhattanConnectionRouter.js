@@ -146,10 +146,15 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
       conn._routingMetaData.routedByUserInteraction = false
       this.route(conn, routingHints)
     }
+    // it makes no sense to have just 2 vertices and manual routing for Manhattan-style routing
+    else if(conn.getVertices().getSize() <=2 && conn._routingMetaData.routedByUserInteraction === true){
+      conn._routingMetaData.routedByUserInteraction = false
+      this.route(conn, routingHints)
+    }
 
     // transfer the old vertices into the connection
     //
-    oldVertices.each(function (i, vertex) {
+    oldVertices.each( (i, vertex) =>{
       conn.addPoint(vertex)
     })
 
@@ -289,10 +294,10 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
       return false
     }
 
-    let fromPt = conn.getStartPoint()
+    let fromPt = conn.getStartPosition()
     let fromDir = conn.getSource().getConnectionDirection(conn.getTarget())
 
-    let toPt = conn.getEndPoint()
+    let toPt = conn.getEndPosition()
     let toDir = conn.getTarget().getConnectionDirection(conn.getSource())
 
     if (segmentCount <= 5) {

@@ -7898,7 +7898,8 @@ _packages2.default.Canvas = Class.extend({
 
     // deselect the current selected figures
     //
-    this.selection.each(function (i, e) {
+    // clone the array (getAll) before iterate and modify the initial array
+    this.selection.getAll().each(function (i, e) {
       _this4.editPolicy.each(function (i, policy) {
         if (typeof policy.unselect === "function") {
           policy.unselect(_this4, e);
@@ -22588,6 +22589,11 @@ _packages2.default.layout.connection.InteractiveManhattanConnectionRouter = _pac
       conn._routingMetaData.routedByUserInteraction = false;
       this.route(conn, routingHints);
     }
+    // it makes no sense to have just 2 vertices and manual routing for Manhattan-style routing
+    else if (conn.getVertices().getSize() <= 2 && conn._routingMetaData.routedByUserInteraction === true) {
+        conn._routingMetaData.routedByUserInteraction = false;
+        this.route(conn, routingHints);
+      }
 
     // transfer the old vertices into the connection
     //
@@ -22730,10 +22736,10 @@ _packages2.default.layout.connection.InteractiveManhattanConnectionRouter = _pac
       return false;
     }
 
-    var fromPt = conn.getStartPoint();
+    var fromPt = conn.getStartPosition();
     var fromDir = conn.getSource().getConnectionDirection(conn.getTarget());
 
-    var toPt = conn.getEndPoint();
+    var toPt = conn.getEndPosition();
     var toDir = conn.getTarget().getConnectionDirection(conn.getSource());
 
     if (segmentCount <= 5) {
@@ -39671,7 +39677,7 @@ _packages2.default.shape.basic.Label = _packages2.default.SetFigure.extend({
     if (typeof padding === "number") {
       this.padding = { top: padding, right: padding, bottom: padding, left: padding };
     } else {
-      (0, _extend2.default)(this.padding, padding);
+      this.padding = (0, _extend2.default)(this.padding, padding);
     }
     this.repaint();
     this.fireEvent("change:padding", { value: this.padding });
@@ -58181,7 +58187,7 @@ _packages2.default.shape.layout.Layout = _packages2.default.shape.basic.Rectangl
     if (typeof padding === "number") {
       this.padding = { top: padding, right: padding, bottom: padding, left: padding };
     } else {
-      (0, _extend2.default)(this.padding, padding);
+      this.padding = (0, _extend2.default)(this.padding, padding);
     }
     this.fireEvent("change:padding", { value: this.padding });
 
@@ -58572,7 +58578,7 @@ _packages2.default.shape.layout.TableLayout = _packages2.default.shape.layout.La
     if (typeof padding === "number") {
       this.padding = { top: padding, right: padding, bottom: padding, left: padding };
     } else {
-      extend(this.padding, padding);
+      this.padding = extend(this.padding, padding);
     }
     this.calculateLayout();
     this.setDimension(1, 1);
@@ -61514,7 +61520,7 @@ _packages2.default.shape.widget.Slider = _packages2.default.shape.widget.Widget.
     if (typeof padding === "number") {
       this.padding = { top: padding, right: padding, bottom: padding, left: padding };
     } else {
-      extend(this.padding, padding);
+      this.padding = extend(this.padding, padding);
     }
     this.repaint();
     this.fireEvent("change:padding", { value: this.padding });
