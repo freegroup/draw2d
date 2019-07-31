@@ -331,7 +331,7 @@ draw2d.layout.connection.MuteableManhattanConnectionRouter = draw2d.layout.conne
     if (horizontal)
       pos.push(start.x)
     else
-      pos.oush(start.y)
+      pos.push(start.y)
     let i
     for (i = 0; i < positions.getSize(); i++) {
       pos.push(positions.get(i))
