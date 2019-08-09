@@ -29,22 +29,31 @@ let BetweenFigure = draw2d.shape.node.Between.extend({
       console.log("onDrop")
     	// Activate a "smart insert" If the user drop this figure on connection
     	//
-    	if(dropTarget instanceof draw2d.Connection){
-    	  let oldSource = dropTarget.getSource();
-    	  let oldTarget = dropTarget.getTarget();
+    	if(dropTarget instanceof draw2d.Connection) {
+        let oldSource = dropTarget.getSource();
+        let oldTarget = dropTarget.getTarget();
 
-    	  let stack = this.getCanvas().getCommandStack();
+        let insertionSource = this.getOutputPort(0)
+        let insertionTarget = this.getInputPort(0)
 
-    	  let cmd = new draw2d.command.CommandReconnect(dropTarget);
-        cmd.setNewPorts(oldSource, this.getInputPort(0));
+        // ensure that oldSource ---> insertionTarget.... insertionSource ------>oldTarget
+        //
+        if (oldSource instanceof draw2d.InputPort){
+          oldSource = dropTarget.getTarget();
+          oldTarget = dropTarget.getSource();
+        }
+
+        let stack = this.getCanvas().getCommandStack();
+
+        let cmd = new draw2d.command.CommandReconnect(dropTarget);
+        cmd.setNewPorts(oldSource, insertionTarget);
         stack.execute(cmd);
 
-    		let additionalConnection = createConnection();
-    		cmd = new draw2d.command.CommandConnect(oldTarget,this.getOutputPort(0));
-    		cmd.setConnection(additionalConnection);
+        let additionalConnection = createConnection();
+        cmd = new draw2d.command.CommandConnect(oldTarget, insertionSource);
+        cmd.setConnection(additionalConnection);
         stack.execute(cmd);
-
-    	}
+      }
     }
 
 });

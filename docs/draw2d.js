@@ -22590,7 +22590,7 @@ _packages2.default.layout.connection.InteractiveManhattanConnectionRouter = _pac
       this.route(conn, routingHints);
     }
     // it makes no sense to have just 2 vertices and manual routing for Manhattan-style routing
-    else if (conn.getVertices().getSize() <= 2 && conn._routingMetaData.routedByUserInteraction === true) {
+    else if (conn.getVertices().getSize() === 2 && conn._routingMetaData.routedByUserInteraction === true) {
         conn._routingMetaData.routedByUserInteraction = false;
         this.route(conn, routingHints);
       }
@@ -24166,7 +24166,7 @@ _packages2.default.layout.connection.MuteableManhattanConnectionRouter = _packag
     this.removeReservedLines(conn);
 
     var pos = [];
-    if (horizontal) pos.push(start.x);else pos.oush(start.y);
+    if (horizontal) pos.push(start.x);else pos.push(start.y);
     var i = void 0;
     for (i = 0; i < positions.getSize(); i++) {
       pos.push(positions.get(i));
