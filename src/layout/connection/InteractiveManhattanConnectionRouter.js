@@ -147,7 +147,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
       this.route(conn, routingHints)
     }
     // it makes no sense to have just 2 vertices and manual routing for Manhattan-style routing
-    else if(conn.getVertices().getSize() <=2 && conn._routingMetaData.routedByUserInteraction === true){
+    else if(conn.getVertices().getSize() ===2 && conn._routingMetaData.routedByUserInteraction === true){
       conn._routingMetaData.routedByUserInteraction = false
       this.route(conn, routingHints)
     }
