@@ -3714,7 +3714,7 @@ In case you find this class useful - especially in commercial projects -
 I am not totally unhappy for a small donation to my PayPal account
 mario@quasimondo.de
 
-Or support me on flattr: 
+Or support me on flattr:
 https://flattr.com/thing/72791/StackBlur-a-fast-almost-Gaussian-Blur-Effect-for-CanvasJavascript
 
 Copyright (c) 2010 Mario Klingemann
@@ -3758,21 +3758,21 @@ var mul_table = [
         385,381,377,374,370,367,363,360,357,354,350,347,344,341,338,335,
         332,329,326,323,320,318,315,312,310,307,304,302,299,297,294,292,
         289,287,285,282,280,278,275,273,271,269,267,265,263,261,259];
-        
-   
+
+
 var shg_table = [
-	     9, 11, 12, 13, 13, 14, 14, 15, 15, 15, 15, 16, 16, 16, 16, 17, 
-		17, 17, 17, 17, 17, 17, 18, 18, 18, 18, 18, 18, 18, 18, 18, 19, 
+	     9, 11, 12, 13, 13, 14, 14, 15, 15, 15, 15, 16, 16, 16, 16, 17,
+		17, 17, 17, 17, 17, 17, 18, 18, 18, 18, 18, 18, 18, 18, 18, 19,
 		19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 20, 20, 20,
 		20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 21,
 		21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21,
-		21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 22, 22, 22, 22, 22, 22, 
+		21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 22, 22, 22, 22, 22, 22,
 		22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22,
-		22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 23, 
+		22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 23,
 		23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23,
 		23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23,
-		23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 
-		23, 23, 23, 23, 23, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 
+		23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23,
+		23, 23, 23, 23, 23, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24,
 		24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24,
 		24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24,
 		24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24,
@@ -3783,18 +3783,18 @@ function blur( pixels, width, height, radius )
 	if ( isNaN(radius) || radius < 1 ) return;
 	radius |= 0;
 
-	var x, y, i, p, yp, yi, yw, r_sum, g_sum, b_sum, a_sum, 
+	var x, y, i, p, yp, yi, yw, r_sum, g_sum, b_sum, a_sum,
 	r_out_sum, g_out_sum, b_out_sum, a_out_sum,
-	r_in_sum, g_in_sum, b_in_sum, a_in_sum, 
+	r_in_sum, g_in_sum, b_in_sum, a_in_sum,
 	pr, pg, pb, pa, rbs;
-			
+
 	var div = radius + radius + 1;
 	var w4 = width << 2;
 	var widthMinus1  = width - 1;
 	var heightMinus1 = height - 1;
 	var radiusPlus1  = radius + 1;
 	var sumFactor = radiusPlus1 * ( radiusPlus1 + 1 ) / 2;
-	
+
 	var stackStart = new BlurStack();
 	var stack = stackStart;
 	for ( i = 1; i < div; i++ )
@@ -3805,28 +3805,28 @@ function blur( pixels, width, height, radius )
 	stack.next = stackStart;
 	var stackIn = null;
 	var stackOut = null;
-	
+
 	yw = yi = 0;
-	
+
 	var mul_sum = mul_table[radius];
 	var shg_sum = shg_table[radius];
-	
+
 	for ( y = 0; y < height; y++ )
 	{
 		r_in_sum = g_in_sum = b_in_sum = a_in_sum = r_sum = g_sum = b_sum = a_sum = 0;
-		
+
 		r_out_sum = radiusPlus1 * ( pr = pixels[yi] );
 		g_out_sum = radiusPlus1 * ( pg = pixels[yi+1] );
 		b_out_sum = radiusPlus1 * ( pb = pixels[yi+2] );
 		a_out_sum = radiusPlus1 * ( pa = pixels[yi+3] );
-		
+
 		r_sum += sumFactor * pr;
 		g_sum += sumFactor * pg;
 		b_sum += sumFactor * pb;
 		a_sum += sumFactor * pa;
-		
+
 		stack = stackStart;
-		
+
 		for( i = 0; i < radiusPlus1; i++ )
 		{
 			stack.r = pr;
@@ -3835,7 +3835,7 @@ function blur( pixels, width, height, radius )
 			stack.a = pa;
 			stack = stack.next;
 		}
-		
+
 		for( i = 1; i < radiusPlus1; i++ )
 		{
 			p = yi + (( widthMinus1 < i ? widthMinus1 : i ) << 2 );
@@ -3843,16 +3843,16 @@ function blur( pixels, width, height, radius )
 			g_sum += ( stack.g = ( pg = pixels[p+1])) * rbs;
 			b_sum += ( stack.b = ( pb = pixels[p+2])) * rbs;
 			a_sum += ( stack.a = ( pa = pixels[p+3])) * rbs;
-			
+
 			r_in_sum += pr;
 			g_in_sum += pg;
 			b_in_sum += pb;
 			a_in_sum += pa;
-			
+
 			stack = stack.next;
 		}
-		
-		
+
+
 		stackIn = stackStart;
 		stackOut = stackEnd;
 		for ( x = 0; x < width; x++ )
@@ -3867,41 +3867,41 @@ function blur( pixels, width, height, radius )
 			} else {
 				pixels[yi] = pixels[yi+1] = pixels[yi+2] = 0;
 			}
-			
+
 			r_sum -= r_out_sum;
 			g_sum -= g_out_sum;
 			b_sum -= b_out_sum;
 			a_sum -= a_out_sum;
-			
+
 			r_out_sum -= stackIn.r;
 			g_out_sum -= stackIn.g;
 			b_out_sum -= stackIn.b;
 			a_out_sum -= stackIn.a;
-			
+
 			p =  ( yw + ( ( p = x + radius + 1 ) < widthMinus1 ? p : widthMinus1 ) ) << 2;
-			
+
 			r_in_sum += ( stackIn.r = pixels[p]);
 			g_in_sum += ( stackIn.g = pixels[p+1]);
 			b_in_sum += ( stackIn.b = pixels[p+2]);
 			a_in_sum += ( stackIn.a = pixels[p+3]);
-			
+
 			r_sum += r_in_sum;
 			g_sum += g_in_sum;
 			b_sum += b_in_sum;
 			a_sum += a_in_sum;
-			
+
 			stackIn = stackIn.next;
-			
+
 			r_out_sum += ( pr = stackOut.r );
 			g_out_sum += ( pg = stackOut.g );
 			b_out_sum += ( pb = stackOut.b );
 			a_out_sum += ( pa = stackOut.a );
-			
+
 			r_in_sum -= pr;
 			g_in_sum -= pg;
 			b_in_sum -= pb;
 			a_in_sum -= pa;
-			
+
 			stackOut = stackOut.next;
 
 			yi += 4;
@@ -3909,24 +3909,24 @@ function blur( pixels, width, height, radius )
 		yw += width;
 	}
 
-	
+
 	for ( x = 0; x < width; x++ )
 	{
 		g_in_sum = b_in_sum = a_in_sum = r_in_sum = g_sum = b_sum = a_sum = r_sum = 0;
-		
+
 		yi = x << 2;
 		r_out_sum = radiusPlus1 * ( pr = pixels[yi]);
 		g_out_sum = radiusPlus1 * ( pg = pixels[yi+1]);
 		b_out_sum = radiusPlus1 * ( pb = pixels[yi+2]);
 		a_out_sum = radiusPlus1 * ( pa = pixels[yi+3]);
-		
+
 		r_sum += sumFactor * pr;
 		g_sum += sumFactor * pg;
 		b_sum += sumFactor * pb;
 		a_sum += sumFactor * pa;
-		
+
 		stack = stackStart;
-		
+
 		for( i = 0; i < radiusPlus1; i++ )
 		{
 			stack.r = pr;
@@ -3935,31 +3935,31 @@ function blur( pixels, width, height, radius )
 			stack.a = pa;
 			stack = stack.next;
 		}
-		
+
 		yp = width;
-		
+
 		for( i = 1; i <= radius; i++ )
 		{
 			yi = ( yp + x ) << 2;
-			
+
 			r_sum += ( stack.r = ( pr = pixels[yi])) * ( rbs = radiusPlus1 - i );
 			g_sum += ( stack.g = ( pg = pixels[yi+1])) * rbs;
 			b_sum += ( stack.b = ( pb = pixels[yi+2])) * rbs;
 			a_sum += ( stack.a = ( pa = pixels[yi+3])) * rbs;
-		   
+
 			r_in_sum += pr;
 			g_in_sum += pg;
 			b_in_sum += pb;
 			a_in_sum += pa;
-			
+
 			stack = stack.next;
-		
+
 			if( i < heightMinus1 )
 			{
 				yp += width;
 			}
 		}
-		
+
 		yi = x;
 		stackIn = stackStart;
 		stackOut = stackEnd;
@@ -3976,38 +3976,38 @@ function blur( pixels, width, height, radius )
 			} else {
 				pixels[p] = pixels[p+1] = pixels[p+2] = 0;
 			}
-			
+
 			r_sum -= r_out_sum;
 			g_sum -= g_out_sum;
 			b_sum -= b_out_sum;
 			a_sum -= a_out_sum;
-		   
+
 			r_out_sum -= stackIn.r;
 			g_out_sum -= stackIn.g;
 			b_out_sum -= stackIn.b;
 			a_out_sum -= stackIn.a;
-			
+
 			p = ( x + (( ( p = y + radiusPlus1) < heightMinus1 ? p : heightMinus1 ) * width )) << 2;
-			
+
 			r_sum += ( r_in_sum += ( stackIn.r = pixels[p]));
 			g_sum += ( g_in_sum += ( stackIn.g = pixels[p+1]));
 			b_sum += ( b_in_sum += ( stackIn.b = pixels[p+2]));
 			a_sum += ( a_in_sum += ( stackIn.a = pixels[p+3]));
-		   
+
 			stackIn = stackIn.next;
-			
+
 			r_out_sum += ( pr = stackOut.r );
 			g_out_sum += ( pg = stackOut.g );
 			b_out_sum += ( pb = stackOut.b );
 			a_out_sum += ( pa = stackOut.a );
-			
+
 			r_in_sum -= pr;
 			g_in_sum -= pg;
 			b_in_sum -= pb;
 			a_in_sum -= pa;
-			
+
 			stackOut = stackOut.next;
-			
+
 			yi += width;
 		}
 	}
@@ -4557,7 +4557,7 @@ module.exports = g;
 
 function DOMParser(options){
 	this.options = options ||{locator:{}};
-	
+
 }
 DOMParser.prototype.parseFromString = function(source,mimeType){
 	var options = this.options;
@@ -4570,7 +4570,7 @@ DOMParser.prototype.parseFromString = function(source,mimeType){
 	if(locator){
 		domBuilder.setDocumentLocator(locator)
 	}
-	
+
 	sax.errorHandler = buildErrorHandler(errorHandler,domBuilder,locator);
 	sax.domBuilder = options.domBuilder || domBuilder;
 	if(/\/x?html?$/.test(mimeType)){
@@ -4615,8 +4615,8 @@ function buildErrorHandler(errorImpl,domBuilder,locator){
 /**
  * +ContentHandler+ErrorHandler
  * +LexicalHandler+EntityResolver2
- * -DeclHandler-DTDHandler 
- * 
+ * -DeclHandler-DTDHandler
+ *
  * DefaultHandler:EntityResolver, DTDHandler, ContentHandler, ErrorHandler
  * DefaultHandler2:DefaultHandler,LexicalHandler, DeclHandler, EntityResolver2
  * @link http://www.saxproject.org/apidoc/org/xml/sax/helpers/DefaultHandler.html
@@ -4631,7 +4631,7 @@ function position(locator,node){
 /**
  * @see org.xml.sax.ContentHandler#startDocument
  * @link http://www.saxproject.org/apidoc/org/xml/sax/ContentHandler.html
- */ 
+ */
 DOMHandler.prototype = {
 	startDocument : function() {
     	this.doc = new DOMImplementation().createDocument(null, null, null);
@@ -4645,7 +4645,7 @@ DOMHandler.prototype = {
 	    var len = attrs.length;
 	    appendElement(this, el);
 	    this.currentElement = el;
-	    
+
 		this.locator && position(this.locator,el)
 	    for (var i = 0 ; i < len; i++) {
 	        var namespaceURI = attrs.getURI(i);
@@ -4708,7 +4708,7 @@ DOMHandler.prototype = {
 	    this.locator && position(this.locator,comm)
 	    appendElement(this, comm);
 	},
-	
+
 	startCDATA:function() {
 	    //used in characters() methods
 	    this.cdata = true;
@@ -4716,7 +4716,7 @@ DOMHandler.prototype = {
 	endCDATA:function() {
 	    this.cdata = false;
 	},
-	
+
 	startDTD:function(name, publicId, systemId) {
 		var impl = this.doc.implementation;
 	    if (impl && impl.createDocumentType) {
@@ -4917,14 +4917,14 @@ NodeList.prototype = {
 	 * The number of nodes in the list. The range of valid child node indices is 0 to length-1 inclusive.
 	 * @standard level1
 	 */
-	length:0, 
+	length:0,
 	/**
 	 * Returns the indexth item in the collection. If index is greater than or equal to the number of nodes in the list, this returns null.
 	 * @standard level1
-	 * @param index  unsigned long 
+	 * @param index  unsigned long
 	 *   Index into the collection.
 	 * @return Node
-	 * 	The node at the indexth position in the NodeList, or null if that is not a valid index. 
+	 * 	The node at the indexth position in the NodeList, or null if that is not a valid index.
 	 */
 	item: function(index) {
 		return this[index] || null;
@@ -4958,10 +4958,10 @@ LiveNodeList.prototype.item = function(i){
 
 _extends(LiveNodeList,NodeList);
 /**
- * 
+ *
  * Objects implementing the NamedNodeMap interface are used to represent collections of nodes that can be accessed by name. Note that NamedNodeMap does not inherit from NodeList; NamedNodeMaps are not maintained in any particular order. Objects contained in an object implementing NamedNodeMap may also be accessed by an ordinal index, but this is simply to allow convenient enumeration of the contents of a NamedNodeMap, and does not imply that the DOM specifies an order to these Nodes.
  * NamedNodeMap objects in the DOM are live.
- * used for attributes or DocumentType entities 
+ * used for attributes or DocumentType entities
  */
 function NamedNodeMap() {
 };
@@ -5050,10 +5050,10 @@ NamedNodeMap.prototype = {
 		var attr = this.getNamedItem(key);
 		_removeNamedNode(this._ownerElement,this,attr);
 		return attr;
-		
-		
+
+
 	},// raises: NOT_FOUND_ERR,NO_MODIFICATION_ALLOWED_ERR
-	
+
 	//for level2
 	removeNamedItemNS:function(namespaceURI,localName){
 		var attr = this.getNamedItemNS(namespaceURI,localName);
@@ -5116,7 +5116,7 @@ DOMImplementation.prototype = {
 		node.systemId = systemId;
 		// Introduced in DOM Level 2:
 		//readonly attribute DOMString        internalSubset;
-		
+
 		//TODO:..
 		//  readonly attribute NamedNodeMap     entities;
 		//  readonly attribute NamedNodeMap     notations;
@@ -5146,10 +5146,10 @@ Node.prototype = {
 	prefix : null,
 	localName : null,
 	// Modified in DOM Level 2:
-	insertBefore:function(newChild, refChild){//raises 
+	insertBefore:function(newChild, refChild){//raises
 		return _insertBefore(this,newChild,refChild);
 	},
-	replaceChild:function(newChild, oldChild){//raises 
+	replaceChild:function(newChild, oldChild){//raises
 		this.insertBefore(newChild,oldChild);
 		if(oldChild){
 			this.removeChild(oldChild);
@@ -5298,7 +5298,7 @@ function _onUpdateChild(doc,el,newChild){
 /**
  * attributes;
  * children;
- * 
+ *
  * writeable properties:
  * nodeValue,Attr:value,CharacterData:data
  * prefix
@@ -5340,8 +5340,8 @@ function _insertBefore(parentNode,newChild,nextChild){
 
 	newFirst.previousSibling = pre;
 	newLast.nextSibling = nextChild;
-	
-	
+
+
 	if(pre){
 		pre.nextSibling = newFirst;
 	}else{
@@ -5390,8 +5390,8 @@ Document.prototype = {
 	doctype :  null,
 	documentElement :  null,
 	_inc : 1,
-	
-	insertBefore :  function(newChild, refChild){//raises 
+
+	insertBefore :  function(newChild, refChild){//raises
 		if(newChild.nodeType == DOCUMENT_FRAGMENT_NODE){
 			var child = newChild.firstChild;
 			while(child){
@@ -5404,7 +5404,7 @@ Document.prototype = {
 		if(this.documentElement == null && newChild.nodeType == ELEMENT_NODE){
 			this.documentElement = newChild;
 		}
-		
+
 		return _insertBefore(this,newChild,refChild),(newChild.ownerDocument = this),newChild;
 	},
 	removeChild :  function(oldChild){
@@ -5430,7 +5430,7 @@ Document.prototype = {
 		})
 		return rtv;
 	},
-	
+
 	//document factory method:
 	createElement :	function(tagName){
 		var node = new Element();
@@ -5554,7 +5554,7 @@ Element.prototype = {
 		var attr = this.getAttributeNode(name)
 		attr && this.removeAttributeNode(attr);
 	},
-	
+
 	//four real opeartion method
 	appendChild:function(newChild){
 		if(newChild.nodeType === DOCUMENT_FRAGMENT_NODE){
@@ -5578,7 +5578,7 @@ Element.prototype = {
 		var old = this.getAttributeNodeNS(namespaceURI, localName);
 		old && this.removeAttributeNode(old);
 	},
-	
+
 	hasAttributeNS : function(namespaceURI, localName){
 		return this.getAttributeNodeNS(namespaceURI, localName)!=null;
 	},
@@ -5594,7 +5594,7 @@ Element.prototype = {
 	getAttributeNodeNS : function(namespaceURI, localName){
 		return this.attributes.getNamedItemNS(namespaceURI, localName);
 	},
-	
+
 	getElementsByTagName : function(tagName){
 		return new LiveNodeList(this,function(base){
 			var ls = [];
@@ -5615,7 +5615,7 @@ Element.prototype = {
 				}
 			});
 			return ls;
-			
+
 		});
 	}
 };
@@ -5644,7 +5644,7 @@ CharacterData.prototype = {
 	},
 	insertData: function(offset,text) {
 		this.replaceData(offset,0,text);
-	
+
 	},
 	appendChild:function(newChild){
 		throw new Error(ExceptionMessage[HIERARCHY_REQUEST_ERR])
@@ -5738,7 +5738,7 @@ function nodeSerializeToString(isHtml,nodeFilter){
 	var refNode = this.nodeType == 9?this.documentElement:this;
 	var prefix = refNode.prefix;
 	var uri = refNode.namespaceURI;
-	
+
 	if(uri && prefix == null){
 		//console.log(prefix)
 		var prefix = refNode.lookupPrefix(uri);
@@ -5760,12 +5760,12 @@ function needNamespaceDefine(node,isHTML, visibleNamespaces) {
 	if (!prefix && !uri){
 		return false;
 	}
-	if (prefix === "xml" && uri === "http://www.w3.org/XML/1998/namespace" 
+	if (prefix === "xml" && uri === "http://www.w3.org/XML/1998/namespace"
 		|| uri == 'http://www.w3.org/2000/xmlns/'){
 		return false;
 	}
-	
-	var i = visibleNamespaces.length 
+
+	var i = visibleNamespaces.length
 	//console.log('@@@@',node.tagName,prefix,uri,visibleNamespaces)
 	while (i--) {
 		var ns = visibleNamespaces[i];
@@ -5804,12 +5804,12 @@ function serializeToString(node,buf,isHTML,nodeFilter,visibleNamespaces){
 		var len = attrs.length;
 		var child = node.firstChild;
 		var nodeName = node.tagName;
-		
-		isHTML =  (htmlns === node.namespaceURI) ||isHTML 
+
+		isHTML =  (htmlns === node.namespaceURI) ||isHTML
 		buf.push('<',nodeName);
-		
-		
-		
+
+
+
 		for(var i=0;i<len;i++){
 			// add namespaces for attributes
 			var attr = attrs.item(i);
@@ -5830,7 +5830,7 @@ function serializeToString(node,buf,isHTML,nodeFilter,visibleNamespaces){
 			}
 			serializeToString(attr,buf,isHTML,nodeFilter,visibleNamespaces);
 		}
-		// add namespace for current node		
+		// add namespace for current node
 		if (needNamespaceDefine(node,isHTML, visibleNamespaces)) {
 			var prefix = node.prefix||'';
 			var uri = node.namespaceURI;
@@ -5838,7 +5838,7 @@ function serializeToString(node,buf,isHTML,nodeFilter,visibleNamespaces){
 			buf.push(ns, '="' , uri , '"');
 			visibleNamespaces.push({ prefix: prefix, namespace:uri });
 		}
-		
+
 		if(child || isHTML && !/^(?:meta|link|img|br|hr|input)$/i.test(nodeName)){
 			buf.push('>');
 			//if is cdata child node
@@ -6031,7 +6031,7 @@ try{
 				}
 			}
 		})
-		
+
 		function getTextContent(node){
 			switch(node.nodeType){
 			case ELEMENT_NODE:
@@ -6084,7 +6084,7 @@ var tagNamePattern = new RegExp('^'+nameStartChar.source+nameChar.source+'*(?:\:
 //S_TAG,	S_ATTR,	S_EQ,	S_ATTR_NOQUOT_VALUE
 //S_ATTR_SPACE,	S_ATTR_END,	S_TAG_SPACE, S_TAG_CLOSE
 var S_TAG = 0;//tag name offerring
-var S_ATTR = 1;//attr name offerring 
+var S_ATTR = 1;//attr name offerring
 var S_ATTR_SPACE=2;//attr name end and space offer
 var S_EQ = 3;//=space?
 var S_ATTR_NOQUOT_VALUE = 4;//attr value(no quot value only)
@@ -6093,7 +6093,7 @@ var S_TAG_SPACE = 6;//(attr value end || tag end ) && (space offer)
 var S_TAG_CLOSE = 7;//closed el<el />
 
 function XMLReader(){
-	
+
 }
 
 XMLReader.prototype = {
@@ -6123,7 +6123,7 @@ function parse(source,defaultNSMapCopy,entityMap,domBuilder,errorHandler){
 	function entityReplacer(a){
 		var k = a.slice(1,-1);
 		if(k in entityMap){
-			return entityMap[k]; 
+			return entityMap[k];
 		}else if(k.charAt(0) === '#'){
 			return fixedFromCharCode(parseInt(k.substr(1).replace('x','0x')))
 		}else{
@@ -6152,7 +6152,7 @@ function parse(source,defaultNSMapCopy,entityMap,domBuilder,errorHandler){
 	var lineEnd = 0;
 	var linePattern = /.*(?:\r\n?|\n)|.*$/g
 	var locator = domBuilder.locator;
-	
+
 	var parseStack = [{currentNSMap:defaultNSMapCopy}]
 	var closeMap = {};
 	var start = 0;
@@ -6177,7 +6177,7 @@ function parse(source,defaultNSMapCopy,entityMap,domBuilder,errorHandler){
 				var tagName = source.substring(tagStart+2,end);
 				var config = parseStack.pop();
 				if(end<0){
-					
+
 	        		tagName = source.substring(tagStart+2).replace(/[\s<].*/,'');
 	        		//console.error('#@@@@@@'+tagName)
 	        		errorHandler.error("end tag name: "+tagName+' is not complete:'+config.tagName);
@@ -6205,7 +6205,7 @@ function parse(source,defaultNSMapCopy,entityMap,domBuilder,errorHandler){
 		        }else{
 		        	parseStack.push(config)
 		        }
-				
+
 				end++;
 				break;
 				// end elment
@@ -6224,8 +6224,8 @@ function parse(source,defaultNSMapCopy,entityMap,domBuilder,errorHandler){
 				//elStartEnd
 				var end = parseElementStartPart(source,tagStart,el,currentNSMap,entityReplacer,errorHandler);
 				var len = el.length;
-				
-				
+
+
 				if(!el.closed && fixSelfClosed(source,end,el.tagName,closeMap)){
 					el.closed = true;
 					if(!entityMap.nbsp){
@@ -6251,9 +6251,9 @@ function parse(source,defaultNSMapCopy,entityMap,domBuilder,errorHandler){
 						parseStack.push(el)
 					}
 				}
-				
-				
-				
+
+
+
 				if(el.uri === 'http://www.w3.org/1999/xhtml' && !el.closed){
 					end = parseHtmlSpecialContent(source,end,el.tagName,entityReplacer,domBuilder)
 				}else{
@@ -6480,7 +6480,7 @@ function appendElement(el,domBuilder,currentNSMap){
 		}
 		//can not set prefix,because prefix !== ''
 		a.localName = localName ;
-		//prefix == null for no ns prefix attribute 
+		//prefix == null for no ns prefix attribute
 		if(nsPrefix !== false){//hack!!
 			if(localNSMap == null){
 				localNSMap = {}
@@ -6490,7 +6490,7 @@ function appendElement(el,domBuilder,currentNSMap){
 			}
 			currentNSMap[nsPrefix] = localNSMap[nsPrefix] = value;
 			a.uri = 'http://www.w3.org/2000/xmlns/'
-			domBuilder.startPrefixMapping(nsPrefix, value) 
+			domBuilder.startPrefixMapping(nsPrefix, value)
 		}
 	}
 	var i = el.length;
@@ -6502,7 +6502,7 @@ function appendElement(el,domBuilder,currentNSMap){
 				a.uri = 'http://www.w3.org/XML/1998/namespace';
 			}if(prefix !== 'xmlns'){
 				a.uri = currentNSMap[prefix || '']
-				
+
 				//{console.log('###'+a.qName,domBuilder.locator.systemId+'',currentNSMap,a.uri)}
 			}
 		}
@@ -6524,7 +6524,7 @@ function appendElement(el,domBuilder,currentNSMap){
 		domBuilder.endElement(ns,localName,tagName);
 		if(localNSMap){
 			for(prefix in localNSMap){
-				domBuilder.endPrefixMapping(prefix) 
+				domBuilder.endPrefixMapping(prefix)
 			}
 		}
 	}else{
@@ -6551,7 +6551,7 @@ function parseHtmlSpecialContent(source,elStartEnd,tagName,entityReplacer,domBui
 				domBuilder.characters(text,0,text.length);
 				return elEndStart;
 			//}
-			
+
 		}
 	}
 	return elStartEnd+1;
@@ -6568,7 +6568,7 @@ function fixSelfClosed(source,elStartEnd,tagName,closeMap){
 		closeMap[tagName] =pos
 	}
 	return pos<elStartEnd;
-	//} 
+	//}
 }
 function _copy(source,target){
 	for(var n in source){target[n] = source[n]}
@@ -6596,11 +6596,11 @@ function parseDCC(source,start,domBuilder,errorHandler){//sure start with '<!'
 			var end = source.indexOf(']]>',start+9);
 			domBuilder.startCDATA();
 			domBuilder.characters(source,start+9,end-start-9);
-			domBuilder.endCDATA() 
+			domBuilder.endCDATA()
 			return end+3;
 		}
 		//<!DOCTYPE
-		//startDTD(java.lang.String name, java.lang.String publicId, java.lang.String systemId) 
+		//startDTD(java.lang.String name, java.lang.String publicId, java.lang.String systemId)
 		var matchs = split(source,start);
 		var len = matchs.length;
 		if(len>1 && /!doctype/i.test(matchs[0][0])){
@@ -6611,7 +6611,7 @@ function parseDCC(source,start,domBuilder,errorHandler){//sure start with '<!'
 			domBuilder.startDTD(name,pubid && pubid.replace(/^(['"])(.*?)\1$/,'$2'),
 					sysid && sysid.replace(/^(['"])(.*?)\1$/,'$2'));
 			domBuilder.endDTD();
-			
+
 			return lastMatch.index+lastMatch[0].length
 		}
 	}
@@ -6639,7 +6639,7 @@ function parseInstruction(source,start,domBuilder){
  * @param source
  */
 function ElementAttributes(source){
-	
+
 }
 ElementAttributes.prototype = {
 	setTagName:function(tagName){
@@ -6662,7 +6662,7 @@ ElementAttributes.prototype = {
 	getValue:function(i){return this[i].value}
 //	,getIndex:function(uri, localName)){
 //		if(localName){
-//			
+//
 //		}else{
 //			var qName = uri
 //		}
@@ -18171,7 +18171,7 @@ _packages2.default.decoration.connection.ArrowDecorator = _packages2.default.dec
      *     //
      *     var start = new draw2d.shape.node.Start();
      *     var end   = new draw2d.shape.node.End();
-    
+
      *     // ...add it to the canvas
      *     canvas.add( start, 50,50);
      *     canvas.add( end, 230,80);
@@ -18261,7 +18261,7 @@ _packages2.default.decoration.connection.BarDecorator = _packages2.default.decor
      *     //
      *     var start = new draw2d.shape.node.Start();
      *     var end   = new draw2d.shape.node.End();
-    
+
      *     // ...add it to the canvas
      *     canvas.add( start, 50,50);
      *     canvas.add( end, 230,80);
@@ -18346,7 +18346,7 @@ _packages2.default.decoration.connection.CircleDecorator = _packages2.default.de
      *     //
      *     var start = new draw2d.shape.node.Start();
      *     var end   = new draw2d.shape.node.End();
-    
+
      *     // ...add it to the canvas
      *     canvas.add( start, 50,50);
      *     canvas.add( end, 230,80);
@@ -18559,7 +18559,7 @@ _packages2.default.decoration.connection.DiamondDecorator = _packages2.default.d
      *     //
      *     var start = new draw2d.shape.node.Start();
      *     var end   = new draw2d.shape.node.End();
-    
+
      *     // ...add it to the canvas
      *     canvas.add( start, 50,50);
      *     canvas.add( end, 230,80);
@@ -19086,7 +19086,7 @@ _packages2.default.geo.PositionConstants = function () {};
 /**
  * @class draw2d.geo.PositionConstants
  * Static values for point orientation.
- * 
+ *
  */
 
 
@@ -19118,9 +19118,9 @@ _packages2.default.geo.Ray = _packages2.default.geo.Point.extend({
     NAME: "draw2d.geo.Ray",
 
     /**
-     * @constructor 
-     * Creates a ray object. 
-     * 
+     * @constructor
+     * Creates a ray object.
+     *
      * @param {Number} x
      * @param {Number} y
      */
@@ -19146,7 +19146,7 @@ _packages2.default.geo.Ray = _packages2.default.geo.Point.extend({
  * @class draw2d.geo.Ray
  * A ray is a line starting in [0,0,] with some additional
  * helper functions required for some router.
- * 
+ *
  * @inheritable
  * @extends draw2d.geo.Point
  * @author Andreas Herz
@@ -19175,7 +19175,7 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
     NAME: "draw2d.geo.Rectangle",
 
     /**
-     * @constructor 
+     * @constructor
      * Creates a new Point object with the hands over coordinates.
     * <br>
     * The constructor consumes almost any kind of rectangel definitions
@@ -19235,17 +19235,17 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
 
     /**
      * @method
-     * Resizes this Rectangle by the values supplied as input and returns this for 
-     * convenience. This Rectangle's width will become this.width + dw. This 
+     * Resizes this Rectangle by the values supplied as input and returns this for
+     * convenience. This Rectangle's width will become this.width + dw. This
      * Rectangle's height will become this.height + dh.
      * <br>
-     * The method return the object itself. This allows you to do command chaining, where 
+     * The method return the object itself. This allows you to do command chaining, where
      * you can perform multiple methods on the same elements.
      *
      *
      * @param {Number} dw  Amount by which width is to be resized
      * @param {Number} dh  Amount by which height is to be resized
-     * 
+     *
      * @return  {draw2d.geo.Rectangle} The method return the object itself
      **/
     resize: function resize(dw, dh) {
@@ -19262,13 +19262,13 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
     * will become this.width + dw. The Rectangle's height will become this.height + dh.
     * The top left corner moves -dw/2, -dh/2
      * <br>
-     * The method return the object itself. This allows you to do command chaining, where 
+     * The method return the object itself. This allows you to do command chaining, where
      * you can perform multiple methods on the same elements.
      *
      *
      * @param {Number} dw  Amount by which width is to be resized
      * @param {Number} dh  Amount by which height is to be resized
-     * 
+     *
      **/
     scale: function scale(dw, dh) {
         this.w += dw;
@@ -19319,11 +19319,11 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
      * Sets the parameters of this Rectangle from the Rectangle passed in and
      * returns this for convenience.<br>
      * <br>
-     * The method return the object itself. This allows you to do command chaining, where 
+     * The method return the object itself. This allows you to do command chaining, where
      * you can perform multiple methods on the same elements.
      *
      * @param {draw2d.geo.Rectangle} Rectangle providing the bounding values
-     * 
+     *
      * @return  {draw2d.geo.Rectangle} The method return the object itself
      */
     setBounds: function setBounds(rect) {
@@ -19339,7 +19339,7 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
      * @method
      * Returns <code>true</code> if this Rectangle's width or height is less than or
      * equal to 0.
-     * 
+     *
      * @return {Boolean}
      */
     isEmpty: function isEmpty() {
@@ -19349,7 +19349,7 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
     /**
      * @method
      * The width of the dimension element.
-     * 
+     *
      * @return {Number}
      **/
     getWidth: function getWidth() {
@@ -19359,7 +19359,7 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
     /**
      * @method
      * Set the new width of the rectangle.
-     * 
+     *
      * @param {Number} w the new width of the rectangle
      */
     setWidth: function setWidth(w) {
@@ -19372,7 +19372,7 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
     /**
      * @method
      * The height of the dimension element.
-     * 
+     *
      * @return {Number}
      **/
     getHeight: function getHeight() {
@@ -19382,7 +19382,7 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
     /**
      * @method
      * Set the new height of the rectangle.
-     * 
+     *
      * @param {Number} h the new height of the rectangle
      */
     setHeight: function setHeight(h) {
@@ -19395,7 +19395,7 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
     /**
      * @method
      * The x coordinate of the left corner.
-     * 
+     *
      * @return {Number}
      **/
     getLeft: function getLeft() {
@@ -19405,7 +19405,7 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
     /**
      * @method
      * The x coordinate of the right corner.
-     * 
+     *
      * @return {Number}
      **/
     getRight: function getRight() {
@@ -19415,7 +19415,7 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
     /**
      * @method
      * The y coordinate of the top.
-     * 
+     *
      *@return {Number}
      **/
     getTop: function getTop() {
@@ -19425,7 +19425,7 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
     /**
     * @method
     * The y coordinate of the bottom.
-    * 
+    *
     *@return {Number}
     **/
     getBottom: function getBottom() {
@@ -19435,7 +19435,7 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
     /**
      * @method
      * The top left corner of the dimension object.
-     * 
+     *
      * @return {draw2d.geo.Point} a new point objects which holds the coordinates
      **/
     getTopLeft: function getTopLeft() {
@@ -19445,7 +19445,7 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
     /**
      * @method
      * The top center coordinate of the dimension object.
-     * 
+     *
      * @return {draw2d.geo.Point} a new point objects which holds the coordinates
      **/
     getTopCenter: function getTopCenter() {
@@ -19455,7 +19455,7 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
     /**
     * @method
     * The top right corner of the dimension object.
-    * 
+    *
     * @return {draw2d.geo.Point} a new point objects which holds the coordinates
     **/
     getTopRight: function getTopRight() {
@@ -19475,7 +19475,7 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
     /**
      * @method
      * The bottom left corner of the dimension object.
-     * 
+     *
      * @return {draw2d.geo.Point} a new point objects which holds the coordinates
      **/
     getBottomLeft: function getBottomLeft() {
@@ -19485,7 +19485,7 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
     /**
         * @method
         * The bottom center coordinate of the dimension object.
-        * 
+        *
         * @return {draw2d.geo.Point} a new point objects which holds the coordinates
         **/
     getBottomCenter: function getBottomCenter() {
@@ -19495,7 +19495,7 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
     /**
      * @method
      * The center of the dimension object
-     * 
+     *
      * @return {draw2d.geo.Point} a new point which holds the center of the object
      **/
     getCenter: function getCenter() {
@@ -19505,7 +19505,7 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
     /**
      * @method
      * Bottom right corner of the object
-     * 
+     *
      * @return {draw2d.geo.Point} a new point which holds the bottom right corner
      **/
     getBottomRight: function getBottomRight() {
@@ -19516,7 +19516,7 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
      * @method
      * Return all points of the rectangle as array. Starting at topLeft and the
      * clockwise.
-     * 
+     *
      * @return {draw2d.util.ArrayList} the points starting at top/left and the clockwise
      */
     getVertices: function getVertices() {
@@ -19536,7 +19536,7 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
      * @method
      * Return a new rectangle which fits into this rectangle. <b>ONLY</b> the x/y coordinates
      * will be changed. Not the dimension of the given rectangle.
-     * 
+     *
      * @param {draw2d.geo.Rectangle} rect the rectangle to adjust
      * @return the new shifted rectangle
      */
@@ -19547,7 +19547,7 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
         newRect.x = Math.max(newRect.x, this.x);
         newRect.y = Math.max(newRect.y, this.y);
 
-        // ensure that the right border is inside this rect (if possible). 
+        // ensure that the right border is inside this rect (if possible).
         //
         if (newRect.w < this.w) {
             newRect.x = Math.min(newRect.x + newRect.w, this.x + this.w) - newRect.w;
@@ -19568,9 +19568,9 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
 
     /**
      * @method
-     * Return the minimum distance of this rectangle to the given {@link draw2d.geo.Point} or 
+     * Return the minimum distance of this rectangle to the given {@link draw2d.geo.Point} or
      * {link draw2d.geo.Rectangle}.
-     * 
+     *
      * @param {draw2d.geo.Point|draw2d.geo.Rectangle} pointOrRectangle the reference point/rectangle for the distance calculation
      */
     getDistance: function getDistance(pointOrRectangle) {
@@ -19667,7 +19667,7 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
      * </pre>
      *
      * @param {draw2d.geo.Rectangle} r2
-     * 
+     *
      */
     determineOctant: function determineOctant(r2) {
         var HISTERESE = 3; // Toleranz um diese vermieden wird, dass der Octant "8" zurückgegeben wird
@@ -19719,7 +19719,7 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
      * @method
      * Returns the direction the point <i>p</i> is in relation to the given rectangle.
      * Util method for inherit router implementations.
-     * 
+     *
      * <p>
      * Possible values:
      * <ul>
@@ -19729,9 +19729,9 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
      *   <li>left -&gt; 3</li>
      * </ul>
      * <p>
-     * 
+     *
      * @param {draw2d.geo.Point} other the point in relation to the given rectangle
-     * 
+     *
      * @return {Number} the direction from <i>r</i> to <i>p</i>
      */
     getDirection: function getDirection(other) {
@@ -19773,7 +19773,7 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
     /**
      * @method
      * Compares two rectangle objects
-     * 
+     *
      * @param {draw2d.geo.Rectangle} o
         *
      * @return {Boolean}
@@ -19803,7 +19803,7 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
     /**
      * @method
      * return true if this rectangle inside the hand over rectangle
-     * 
+     *
      *
      * @param {draw2d.geo.Rectangle} rect
      * @returns {Boolean}
@@ -19815,7 +19815,7 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
     /**
      * @method
      * return true if this rectangle contains the hand over rectangle.
-     * 
+     *
      *
      * @param {draw2d.geo.Rectangle} rect
      * @returns {Boolean}
@@ -19828,7 +19828,7 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
     /**
      * @method
      * checks whenever the rectangles has an intersection.
-     * 
+     *
      * @param {draw2d.geo.Rectangle} rect
      * @returns {Boolean}
      */
@@ -19851,7 +19851,7 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
     /**
      * @method
      * Merge this rectangle with the given one.
-     * 
+     *
      * @param {draw2d.geo.Rectangle} rect
      * @since 4.8.0
      */
@@ -19870,7 +19870,7 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
     /**
      * @method
      * returns the intersection points with the given line if any exists
-     * 
+     *
      * @param {draw2d.geo.Point} start
      * @param {draw2d.geo.Point} end
      */
@@ -19906,7 +19906,7 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
     /**
         * @method
         * converts the rectangle to JSON representation. required for the draw2d.io.Writer
-        * 
+        *
         * @returns {Object}
         */
     toJSON: function toJSON() {
@@ -19925,12 +19925,12 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend({
  */
 /**
  * @class draw2d.geo.Rectangle
- * 
+ *
  * Util class for geometrie handling.
- * 
+ *
  * @inheritable
  * @author Andreas Herz
- * 
+ *
  * @extends draw2d.geo.Point
  */
 _packages2.default.geo.Rectangle.DIRECTION_UP = 0;
@@ -19976,7 +19976,7 @@ _packages2.default.geo.Util = {
  * @class draw2d.geo.Ray
  * A ray is a line starting in [0,0,] with some additional
  * helper functions required for some router.
- * 
+ *
  * @inheritable
  * @extends draw2d.geo.Point
  * @author Andreas Herz
@@ -20811,11 +20811,11 @@ _packages2.default.io.json.Writer = _packages2.default.io.Writer.extend({
      * content specific writer.
      * <br>
      * <br>
-     * 
+     *
      * Method signature has been changed from version 2.10.1 to version 3.0.0.<br>
      * The parameter <b>resultCallback</b> is required and new. The method calls
      * the callback instead of return the result.
-     * 
+     *
      * @param {draw2d.Canvas} canvas
      * @param {Function} resultCallback the method to call on success. The first argument is the result object, the second the base64 representation of the file content
      * @param {Object} resultCallback.json  the canvas document as JSON object
@@ -20848,22 +20848,22 @@ _packages2.default.io.json.Writer = _packages2.default.io.Writer.extend({
  * @class draw2d.io.json.Writer
  * Serialize the canvas document into a JSON object which can be read from the corresponding
  * {@link draw2d.io.json.Reader}.
- * 
+ *
  *      // Create a JSON writer and convert it into a JSON-String representation.
  *      //
  *      var writer = new draw2d.io.json.Writer();
  *      writer.marshal(canvas, function(json){
  *         // convert the json object into string representation
  *         var jsonTxt = JSON.stringify(json,null,2);
- *      
+ *
  *         // insert the json string into a DIV for preview or post
  *         // it via ajax to the server....
  *         $("#json").text(jsonTxt);
- *      
- *      });
- *      
  *
- * 
+ *      });
+ *
+ *
+ *
  * @author Andreas Herz
  * @extends draw2d.io.Writer
  */
@@ -21044,12 +21044,12 @@ _packages2.default.io.svg.Writer = _packages2.default.io.Writer.extend({
      * Export the content of the canvas into SVG. The SVG document can be loaded with Inkscape or any other SVG Editor.
      * <br>
      * <br>
-     * 
+     *
      * Method signature has been changed from version 2.10.1 to version 3.0.0.<br>
      * The parameter <b>resultCallback</b> is required and new. The method calls
      * the callback instead of return the result.
-     * 
-     * 
+     *
+     *
      * @param {draw2d.Canvas} canvas the canvas to marshal
      * @param {Function} callback the method to call on success. The first argument is the SVG document
      * @param {String} callback.svg  the SVG document
@@ -21077,9 +21077,9 @@ _packages2.default.io.svg.Writer = _packages2.default.io.Writer.extend({
 
 /**
  * @class draw2d.io.svg.Writer
- * 
+ *
  * Serialize the canvas document into a SVG document.
- * 
+ *
  *      // Create a SVG writer and convert the canvas into a SVG document.
  *      //
  *      var writer = new draw2d.io.svg.Writer();
@@ -21088,9 +21088,9 @@ _packages2.default.io.svg.Writer = _packages2.default.io.Writer.extend({
  *          // it via ajax to the server....
  *          $("#svg").text(svg);
  *      });
- *      
  *
- * 
+ *
+ *
  * @author Andreas Herz
  * @extends draw2d.io.Writer
  */
@@ -22238,7 +22238,7 @@ _packages2.default.layout.connection.DirectRouter = _packages2.default.layout.co
      *     //
      *     let start = new draw2d.shape.node.Start();
      *     let end   = new draw2d.shape.node.End();
-    
+
      *     // ...add it to the canvas
      *     canvas.add( start, 50,50);
      *     canvas.add( end, 230,80);
@@ -22395,7 +22395,7 @@ _packages2.default.layout.connection.FanConnectionRouter = _packages2.default.la
      *     //
      *     let start = new draw2d.shape.node.Start();
      *     let end   = new draw2d.shape.node.End();
-    
+
      *     // ...add it to the canvas
      *     canvas.add( start, 50,50);
      *     canvas.add( end, 230,80);
@@ -23332,7 +23332,7 @@ _packages2.default.layout.connection.ManhattanConnectionRouter = _packages2.defa
      *     //
      *     let start = new draw2d.shape.node.Start();
      *     let end   = new draw2d.shape.node.End();
-    
+
      *     // ...add it to the canvas
      *     canvas.add( start, 50,50);
      *     canvas.add( end, 230,80);
@@ -24514,7 +24514,7 @@ _packages2.default.layout.connection.RubberbandRouter = _packages2.default.layou
      *     //
      *     let start = new draw2d.shape.node.Start();
      *     let end   = new draw2d.shape.node.End();
-    
+
      *     // ...add it to the canvas
      *     canvas.add( start, 50,50);
      *     canvas.add( end, 230,80);
@@ -24947,7 +24947,7 @@ _packages2.default.layout.connection.VertexRouter = _packages2.default.layout.co
      *     //
      *     let start = new draw2d.shape.node.Start();
      *     let end   = new draw2d.shape.node.End();
-    
+
      *     // ...add it to the canvas
      *     canvas.add( start, 50,50);
      *     canvas.add( end, 230,80);
@@ -25089,7 +25089,7 @@ _packages2.default.layout.locator.CenterLocator = _packages2.default.layout.loca
     var parent = target.getParent();
     var boundingBox = parent.getBoundingBox();
 
-    // TODO: instanceof is always a HACK. ugly. Redirect the call to the figure instead of 
+    // TODO: instanceof is always a HACK. ugly. Redirect the call to the figure instead of
     // determine the position with a miracle.
     //
     if (target instanceof _packages2.default.Port) {
@@ -25829,7 +25829,7 @@ _packages2.default.layout.locator.PortLocator = _packages2.default.layout.locato
   applyConsiderRotation: function applyConsiderRotation(port, x, y) {
     var parent = port.getParent();
 
-    // determine the width/height before manipulate the 
+    // determine the width/height before manipulate the
     // matrix of the shape
     var halfW = parent.getWidth() / 2;
     var halfH = parent.getHeight() / 2;
@@ -26337,22 +26337,22 @@ _packages2.default.layout.mesh.ExplodeLayouter = _packages2.default.layout.mesh.
   MIN_MARGIN: 40,
 
   /**
-   * @constructor 
+   * @constructor
    * Creates a new layouter object.
    */
   init: function init() {},
 
   /**
    * @method
-   * Return a changes list for an existing mesh/canvas to ensure that the element to insert 
+   * Return a changes list for an existing mesh/canvas to ensure that the element to insert
    * did have enough space.
-   * 
+   *
    * @param {draw2d.Canvas} canvas the canvas to use for the analytic
    * @param {draw2d.Figure} figure The figure to add to the exising canvas
    * @param {Number} x requested x-position for the figure
    * @param {Number} y requested y-position for the figure
-   * 
-   * 
+   *
+   *
    * @return {draw2d.util.ArrayList} a list of changes to apply if the user want to insert he figure.
    */
   add: function add(canvas, figureToAdd) {
@@ -26956,20 +26956,20 @@ __webpack_require__(/*! !./node_modules/script-loader/addScript.js */ "./node_mo
     $.support.cssUserSelect = (function(){
         var t = false,
             e = document.createElement('div');
-    
+
         $.each('Moz|Webkit|Khtml|O|ms|Icab|'.split('|'), function(i, prefix) {
             var propCC = prefix + (prefix ? 'U' : 'u') + 'serSelect',
                 prop = (prefix ? ('-' + prefix.toLowerCase() + '-') : '') + 'user-select';
-    
+
             e.style.cssText = prop + ': text;';
             if (e.style[propCC] == 'text') {
                 t = true;
                 return false;
             }
-    
+
             return true;
         });
-    
+
         return t;
     })();
     */
@@ -29759,7 +29759,7 @@ _packages2.default.policy.canvas.DefaultKeyboardPolicy = _packages2.default.poli
   onKeyDown: function onKeyDown(canvas, keyCode, shiftKey, ctrlKey) {
     //
     if (keyCode === 46 && canvas.getPrimarySelection() !== null) {
-      // create a single undo/redo transaction if the user delete more than one element. 
+      // create a single undo/redo transaction if the user delete more than one element.
       // This happens with command stack transactions.
       //
       canvas.getCommandStack().startTransaction(_packages2.default.Configuration.i18n.command.deleteShape);
@@ -42868,6 +42868,9 @@ _packages2.default.shape.basic.Polygon = _packages2.default.VectorFigure.extend(
 
     _JSONUtil2.default.ensureDefault(attributes, "path", this.svgPathString);
 
+    if (this.dasharray !== null) {
+      attributes["stroke-dasharray"] = this.dasharray;
+    }
     this._super(attributes);
   },
 
@@ -45473,7 +45476,7 @@ _packages2.default.shape.icon.Acw = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Acw
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -45528,7 +45531,7 @@ _packages2.default.shape.icon.Alarm = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Alarm
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -45583,7 +45586,7 @@ _packages2.default.shape.icon.Anonymous = _packages2.default.shape.icon.Icon.ext
   }
 }); /**
      * @class draw2d.shape.icon.Anonymous
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -45638,7 +45641,7 @@ _packages2.default.shape.icon.Apple = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Apple
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -45693,7 +45696,7 @@ _packages2.default.shape.icon.Apps = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Apps
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -45748,7 +45751,7 @@ _packages2.default.shape.icon.ArrowDown = _packages2.default.shape.icon.Icon.ext
   }
 }); /**
      * @class draw2d.shape.icon.ArrowDown
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -45803,7 +45806,7 @@ _packages2.default.shape.icon.ArrowLeft = _packages2.default.shape.icon.Icon.ext
   }
 }); /**
      * @class draw2d.shape.icon.ArrowLeft
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -45858,7 +45861,7 @@ _packages2.default.shape.icon.ArrowLeft2 = _packages2.default.shape.icon.Icon.ex
   }
 }); /**
      * @class draw2d.shape.icon.ArrowLeft2
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -45913,7 +45916,7 @@ _packages2.default.shape.icon.ArrowRight = _packages2.default.shape.icon.Icon.ex
   }
 }); /**
      * @class draw2d.shape.icon.ArrowRight
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -45968,7 +45971,7 @@ _packages2.default.shape.icon.ArrowRight2 = _packages2.default.shape.icon.Icon.e
   }
 }); /**
      * @class draw2d.shape.icon.ArrowRight2
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -46023,7 +46026,7 @@ _packages2.default.shape.icon.ArrowUp = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.ArrowUp
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -46078,7 +46081,7 @@ _packages2.default.shape.icon.Aumade = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.Aumade
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -46133,7 +46136,7 @@ _packages2.default.shape.icon.BarChart = _packages2.default.shape.icon.Icon.exte
   }
 }); /**
      * @class draw2d.shape.icon.BarChart
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -46188,7 +46191,7 @@ _packages2.default.shape.icon.BioHazard = _packages2.default.shape.icon.Icon.ext
   }
 }); /**
      * @class draw2d.shape.icon.BioHazard
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -46243,7 +46246,7 @@ _packages2.default.shape.icon.Book = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Book
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -46298,7 +46301,7 @@ _packages2.default.shape.icon.Bookmark = _packages2.default.shape.icon.Icon.exte
   }
 }); /**
      * @class draw2d.shape.icon.Bookmark
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -46353,7 +46356,7 @@ _packages2.default.shape.icon.Books = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Books
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -46408,7 +46411,7 @@ _packages2.default.shape.icon.Bubble = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.Bubble
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -46463,7 +46466,7 @@ _packages2.default.shape.icon.Bug = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Bug
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -46518,7 +46521,7 @@ _packages2.default.shape.icon.Calendar = _packages2.default.shape.icon.Icon.exte
   }
 }); /**
      * @class draw2d.shape.icon.Calendar
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -46573,7 +46576,7 @@ _packages2.default.shape.icon.Cart = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Cart
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -46628,7 +46631,7 @@ _packages2.default.shape.icon.Ccw = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Ccw
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -46683,7 +46686,7 @@ _packages2.default.shape.icon.Chat = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Chat
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -46738,7 +46741,7 @@ _packages2.default.shape.icon.Check = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Check
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -46793,7 +46796,7 @@ _packages2.default.shape.icon.Chrome = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.Chrome
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -46848,7 +46851,7 @@ _packages2.default.shape.icon.Clip = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Clip
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -46903,7 +46906,7 @@ _packages2.default.shape.icon.Clock = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Clock
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -46958,7 +46961,7 @@ _packages2.default.shape.icon.Cloud = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Cloud
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -47013,7 +47016,7 @@ _packages2.default.shape.icon.Cloud2 = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.Cloud2
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -47068,7 +47071,7 @@ _packages2.default.shape.icon.CloudDown = _packages2.default.shape.icon.Icon.ext
   }
 }); /**
      * @class draw2d.shape.icon.CloudDown
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -47123,7 +47126,7 @@ _packages2.default.shape.icon.CloudUp = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.CloudUp
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -47178,7 +47181,7 @@ _packages2.default.shape.icon.Cloudy = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.Cloudy
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -47233,7 +47236,7 @@ _packages2.default.shape.icon.Code = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Code
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -47288,7 +47291,7 @@ _packages2.default.shape.icon.CodeTalk = _packages2.default.shape.icon.Icon.exte
   }
 }); /**
      * @class draw2d.shape.icon.CodeTalk
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -47343,7 +47346,7 @@ _packages2.default.shape.icon.CommandLine = _packages2.default.shape.icon.Icon.e
   }
 }); /**
      * @class draw2d.shape.icon.CommandLine
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -47398,7 +47401,7 @@ _packages2.default.shape.icon.Connect = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.Connect
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -47453,7 +47456,7 @@ _packages2.default.shape.icon.Contract = _packages2.default.shape.icon.Icon.exte
   }
 }); /**
      * @class draw2d.shape.icon.Contract
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -47508,7 +47511,7 @@ _packages2.default.shape.icon.Crop = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Crop
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -47563,7 +47566,7 @@ _packages2.default.shape.icon.Cross = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Cross
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -47618,7 +47621,7 @@ _packages2.default.shape.icon.Cube = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Cube
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -47673,7 +47676,7 @@ _packages2.default.shape.icon.Customer = _packages2.default.shape.icon.Icon.exte
   }
 }); /**
      * @class draw2d.shape.icon.Customer
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -47728,7 +47731,7 @@ _packages2.default.shape.icon.Db = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Db
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -47783,7 +47786,7 @@ _packages2.default.shape.icon.Detour = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.Detour
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -47898,7 +47901,7 @@ _packages2.default.shape.icon.Disconnect = _packages2.default.shape.icon.Icon.ex
   }
 }); /**
      * @class draw2d.shape.icon.Disconnect
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -47953,7 +47956,7 @@ _packages2.default.shape.icon.DockBottom = _packages2.default.shape.icon.Icon.ex
   }
 }); /**
      * @class draw2d.shape.icon.DockBottom
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -48008,7 +48011,7 @@ _packages2.default.shape.icon.DockLeft = _packages2.default.shape.icon.Icon.exte
   }
 }); /**
      * @class draw2d.shape.icon.DockLeft
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -48063,7 +48066,7 @@ _packages2.default.shape.icon.DockRight = _packages2.default.shape.icon.Icon.ext
   }
 }); /**
      * @class draw2d.shape.icon.DockRight
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -48118,7 +48121,7 @@ _packages2.default.shape.icon.DockTop = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.DockTop
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -48173,7 +48176,7 @@ _packages2.default.shape.icon.Download = _packages2.default.shape.icon.Icon.exte
   }
 }); /**
      * @class draw2d.shape.icon.Download
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -48228,7 +48231,7 @@ _packages2.default.shape.icon.Dry = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Dry
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -48283,7 +48286,7 @@ _packages2.default.shape.icon.Employee = _packages2.default.shape.icon.Icon.exte
   }
 }); /**
      * @class draw2d.shape.icon.Employee
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -48338,7 +48341,7 @@ _packages2.default.shape.icon.End = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.End
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -48393,7 +48396,7 @@ _packages2.default.shape.icon.Ethernet = _packages2.default.shape.icon.Icon.exte
   }
 }); /**
      * @class draw2d.shape.icon.Ethernet
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -48448,7 +48451,7 @@ _packages2.default.shape.icon.Exchange = _packages2.default.shape.icon.Icon.exte
   }
 }); /**
      * @class draw2d.shape.icon.Exchange
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -48503,7 +48506,7 @@ _packages2.default.shape.icon.Expand = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.Expand
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -48558,7 +48561,7 @@ _packages2.default.shape.icon.Export = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.Export
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -48613,7 +48616,7 @@ _packages2.default.shape.icon.Fave = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Fave
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -48668,7 +48671,7 @@ _packages2.default.shape.icon.Feed = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Feed
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -48723,7 +48726,7 @@ _packages2.default.shape.icon.Ff = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Ff
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -48778,7 +48781,7 @@ _packages2.default.shape.icon.Firefox = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.Firefox
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -48833,7 +48836,7 @@ _packages2.default.shape.icon.Flag = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Flag
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -48888,7 +48891,7 @@ _packages2.default.shape.icon.Flickr = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.Flickr
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -48943,7 +48946,7 @@ _packages2.default.shape.icon.Folder = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.Folder
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -48998,7 +49001,7 @@ _packages2.default.shape.icon.Font = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Font
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -49053,7 +49056,7 @@ _packages2.default.shape.icon.Fork = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Fork
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -49108,7 +49111,7 @@ _packages2.default.shape.icon.ForkAlt = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.ForkAlt
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -49163,7 +49166,7 @@ _packages2.default.shape.icon.FullCube = _packages2.default.shape.icon.Icon.exte
   }
 }); /**
      * @class draw2d.shape.icon.FullCube
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -49218,7 +49221,7 @@ _packages2.default.shape.icon.Future = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.Future
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -49273,7 +49276,7 @@ _packages2.default.shape.icon.GRaphael = _packages2.default.shape.icon.Icon.exte
   }
 }); /**
      * @class draw2d.shape.icon.GRaphael
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -49328,7 +49331,7 @@ _packages2.default.shape.icon.Gear = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Gear
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -49383,7 +49386,7 @@ _packages2.default.shape.icon.Gear2 = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Gear2
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -49438,7 +49441,7 @@ _packages2.default.shape.icon.GitHub = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.GitHub
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -49493,7 +49496,7 @@ _packages2.default.shape.icon.GitHubAlt = _packages2.default.shape.icon.Icon.ext
   }
 }); /**
      * @class draw2d.shape.icon.GitHubAlt
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -49548,7 +49551,7 @@ _packages2.default.shape.icon.Glasses = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.Glasses
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -49603,7 +49606,7 @@ _packages2.default.shape.icon.Globe = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Globe
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -49658,7 +49661,7 @@ _packages2.default.shape.icon.GlobeAlt = _packages2.default.shape.icon.Icon.exte
   }
 }); /**
      * @class draw2d.shape.icon.GlobeAlt
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -49713,7 +49716,7 @@ _packages2.default.shape.icon.GlobeAlt2 = _packages2.default.shape.icon.Icon.ext
   }
 }); /**
      * @class draw2d.shape.icon.GlobeAlt2
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -49768,7 +49771,7 @@ _packages2.default.shape.icon.Hail = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Hail
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -49823,7 +49826,7 @@ _packages2.default.shape.icon.Hammer = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.Hammer
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -49878,7 +49881,7 @@ _packages2.default.shape.icon.HammerAndScrewDriver = _packages2.default.shape.ic
   }
 }); /**
      * @class draw2d.shape.icon.HammerAndScrewDriver
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -49933,7 +49936,7 @@ _packages2.default.shape.icon.HangUp = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.HangUp
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -49988,7 +49991,7 @@ _packages2.default.shape.icon.Help = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Help
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -50043,7 +50046,7 @@ _packages2.default.shape.icon.History = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.History
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -50098,7 +50101,7 @@ _packages2.default.shape.icon.Home = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Home
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -50153,7 +50156,7 @@ _packages2.default.shape.icon.IMac = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.IMac
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -50308,7 +50311,7 @@ _packages2.default.shape.icon.Icons = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Icons
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -50363,7 +50366,7 @@ _packages2.default.shape.icon.Ie = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Ie
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -50418,7 +50421,7 @@ _packages2.default.shape.icon.Ie9 = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Ie9
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -50473,7 +50476,7 @@ _packages2.default.shape.icon.Import = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.Import
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -50528,7 +50531,7 @@ _packages2.default.shape.icon.InkScape = _packages2.default.shape.icon.Icon.exte
   }
 }); /**
      * @class draw2d.shape.icon.InkScape
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -50583,7 +50586,7 @@ _packages2.default.shape.icon.Ipad = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Ipad
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -50638,7 +50641,7 @@ _packages2.default.shape.icon.Iphone = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.Iphone
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -50693,7 +50696,7 @@ _packages2.default.shape.icon.JQuery = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.JQuery
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -50748,7 +50751,7 @@ _packages2.default.shape.icon.Jigsaw = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.Jigsaw
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -50803,7 +50806,7 @@ _packages2.default.shape.icon.Key = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Key
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -50858,7 +50861,7 @@ _packages2.default.shape.icon.Lab = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Lab
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -50913,7 +50916,7 @@ _packages2.default.shape.icon.Lamp = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Lamp
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -50968,7 +50971,7 @@ _packages2.default.shape.icon.Lamp_alt = _packages2.default.shape.icon.Icon.exte
   }
 }); /**
      * @class draw2d.shape.icon.Lamp_alt
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -51023,7 +51026,7 @@ _packages2.default.shape.icon.Landing = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.Landing
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -51078,7 +51081,7 @@ _packages2.default.shape.icon.Landscape1 = _packages2.default.shape.icon.Icon.ex
   }
 }); /**
      * @class draw2d.shape.icon.Landscape1
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -51133,7 +51136,7 @@ _packages2.default.shape.icon.Landscape2 = _packages2.default.shape.icon.Icon.ex
   }
 }); /**
      * @class draw2d.shape.icon.Landscape2
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -51188,7 +51191,7 @@ _packages2.default.shape.icon.LineChart = _packages2.default.shape.icon.Icon.ext
   }
 }); /**
      * @class draw2d.shape.icon.LineChart
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -51243,7 +51246,7 @@ _packages2.default.shape.icon.Link = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Link
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -51298,7 +51301,7 @@ _packages2.default.shape.icon.LinkedIn = _packages2.default.shape.icon.Icon.exte
   }
 }); /**
      * @class draw2d.shape.icon.LinkedIn
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -51353,7 +51356,7 @@ _packages2.default.shape.icon.Linux = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Linux
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -51408,7 +51411,7 @@ _packages2.default.shape.icon.List = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.List
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -51463,7 +51466,7 @@ _packages2.default.shape.icon.Location = _packages2.default.shape.icon.Icon.exte
   }
 }); /**
      * @class draw2d.shape.icon.Location
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -51518,7 +51521,7 @@ _packages2.default.shape.icon.Lock = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Lock
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -51573,7 +51576,7 @@ _packages2.default.shape.icon.Locked = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.Locked
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -51628,7 +51631,7 @@ _packages2.default.shape.icon.Magic = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Magic
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -51683,7 +51686,7 @@ _packages2.default.shape.icon.Magnet = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.Magnet
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -51738,7 +51741,7 @@ _packages2.default.shape.icon.Mail = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Mail
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -51793,7 +51796,7 @@ _packages2.default.shape.icon.Man = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Man
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -51848,7 +51851,7 @@ _packages2.default.shape.icon.Merge = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Merge
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -51903,7 +51906,7 @@ _packages2.default.shape.icon.Mic = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Mic
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -51958,7 +51961,7 @@ _packages2.default.shape.icon.MicMute = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.MicMute
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -52013,7 +52016,7 @@ _packages2.default.shape.icon.Minus = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Minus
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -52068,7 +52071,7 @@ _packages2.default.shape.icon.NewWindow = _packages2.default.shape.icon.Icon.ext
   }
 }); /**
      * @class draw2d.shape.icon.NewWindow
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -52123,7 +52126,7 @@ _packages2.default.shape.icon.No = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.No
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -52178,7 +52181,7 @@ _packages2.default.shape.icon.NoMagnet = _packages2.default.shape.icon.Icon.exte
   }
 }); /**
      * @class draw2d.shape.icon.NoMagnet
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -52233,7 +52236,7 @@ _packages2.default.shape.icon.NodeJs = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.NodeJs
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -52288,7 +52291,7 @@ _packages2.default.shape.icon.Notebook = _packages2.default.shape.icon.Icon.exte
   }
 }); /**
      * @class draw2d.shape.icon.Notebook
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -52343,7 +52346,7 @@ _packages2.default.shape.icon.Noview = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.Noview
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -52398,7 +52401,7 @@ _packages2.default.shape.icon.Opera = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Opera
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -52453,7 +52456,7 @@ _packages2.default.shape.icon.Package = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.Package
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -52508,7 +52511,7 @@ _packages2.default.shape.icon.Page = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Page
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -52563,7 +52566,7 @@ _packages2.default.shape.icon.Page2 = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Page2
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -52618,7 +52621,7 @@ _packages2.default.shape.icon.Pallete = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.Pallete
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -52673,7 +52676,7 @@ _packages2.default.shape.icon.Palm = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Palm
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -52728,7 +52731,7 @@ _packages2.default.shape.icon.Paper = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Paper
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -52783,7 +52786,7 @@ _packages2.default.shape.icon.Parent = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.Parent
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -52838,7 +52841,7 @@ _packages2.default.shape.icon.Pc = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Pc
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -52893,7 +52896,7 @@ _packages2.default.shape.icon.Pen = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Pen
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -52948,7 +52951,7 @@ _packages2.default.shape.icon.Pensil = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.Pensil
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -53003,7 +53006,7 @@ _packages2.default.shape.icon.People = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.People
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -53058,7 +53061,7 @@ _packages2.default.shape.icon.Phone = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Phone
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -53113,7 +53116,7 @@ _packages2.default.shape.icon.Photo = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Photo
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -53168,7 +53171,7 @@ _packages2.default.shape.icon.Picker = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.Picker
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -53223,7 +53226,7 @@ _packages2.default.shape.icon.Picture = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.Picture
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -53278,7 +53281,7 @@ _packages2.default.shape.icon.PieChart = _packages2.default.shape.icon.Icon.exte
   }
 }); /**
      * @class draw2d.shape.icon.PieChart
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -53333,7 +53336,7 @@ _packages2.default.shape.icon.Plane = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Plane
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -53388,7 +53391,7 @@ _packages2.default.shape.icon.Plugin = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.Plugin
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -53443,7 +53446,7 @@ _packages2.default.shape.icon.Plus = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Plus
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -53498,7 +53501,7 @@ _packages2.default.shape.icon.Power = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Power
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -53553,7 +53556,7 @@ _packages2.default.shape.icon.Ppt = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Ppt
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -53608,7 +53611,7 @@ _packages2.default.shape.icon.Printer = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.Printer
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -53663,7 +53666,7 @@ _packages2.default.shape.icon.Quote = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Quote
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -53718,7 +53721,7 @@ _packages2.default.shape.icon.Rain = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Rain
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -53773,7 +53776,7 @@ _packages2.default.shape.icon.Raphael = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.Raphael
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -53828,7 +53831,7 @@ _packages2.default.shape.icon.ReflectH = _packages2.default.shape.icon.Icon.exte
   }
 }); /**
      * @class draw2d.shape.icon.ReflectH
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -53883,7 +53886,7 @@ _packages2.default.shape.icon.ReflectV = _packages2.default.shape.icon.Icon.exte
   }
 }); /**
      * @class draw2d.shape.icon.ReflectV
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -53938,7 +53941,7 @@ _packages2.default.shape.icon.Refresh = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.Refresh
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -53993,7 +53996,7 @@ _packages2.default.shape.icon.Resize2 = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.Resize2
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -54048,7 +54051,7 @@ _packages2.default.shape.icon.Rotate = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.Rotate
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -54103,7 +54106,7 @@ _packages2.default.shape.icon.Ruler = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Ruler
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -54158,7 +54161,7 @@ _packages2.default.shape.icon.Run = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Run
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -54213,7 +54216,7 @@ _packages2.default.shape.icon.Rw = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Rw
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -54268,7 +54271,7 @@ _packages2.default.shape.icon.Safari = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.Safari
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -54323,7 +54326,7 @@ _packages2.default.shape.icon.ScrewDriver = _packages2.default.shape.icon.Icon.e
   }
 }); /**
      * @class draw2d.shape.icon.ScrewDriver
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -54378,7 +54381,7 @@ _packages2.default.shape.icon.Search = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.Search
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -54433,7 +54436,7 @@ _packages2.default.shape.icon.Sencha = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.Sencha
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -54488,7 +54491,7 @@ _packages2.default.shape.icon.Settings = _packages2.default.shape.icon.Icon.exte
   }
 }); /**
      * @class draw2d.shape.icon.Settings
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -54543,7 +54546,7 @@ _packages2.default.shape.icon.SettingsAlt = _packages2.default.shape.icon.Icon.e
   }
 }); /**
      * @class draw2d.shape.icon.SettingsAlt
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -54598,7 +54601,7 @@ _packages2.default.shape.icon.Shuffle = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.Shuffle
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -54653,7 +54656,7 @@ _packages2.default.shape.icon.Skull = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Skull
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -54708,7 +54711,7 @@ _packages2.default.shape.icon.Skype = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Skype
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -54763,7 +54766,7 @@ _packages2.default.shape.icon.SlideShare = _packages2.default.shape.icon.Icon.ex
   }
 }); /**
      * @class draw2d.shape.icon.SlideShare
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -54818,7 +54821,7 @@ _packages2.default.shape.icon.Smile = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Smile
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -54873,7 +54876,7 @@ _packages2.default.shape.icon.Smile2 = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.Smile2
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -54928,7 +54931,7 @@ _packages2.default.shape.icon.Snow = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Snow
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -54983,7 +54986,7 @@ _packages2.default.shape.icon.Split = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Split
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -55038,7 +55041,7 @@ _packages2.default.shape.icon.Star = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Star
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -55093,7 +55096,7 @@ _packages2.default.shape.icon.Star2 = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Star2
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -55148,7 +55151,7 @@ _packages2.default.shape.icon.Star2Off = _packages2.default.shape.icon.Icon.exte
   }
 }); /**
      * @class draw2d.shape.icon.Star2Off
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -55203,7 +55206,7 @@ _packages2.default.shape.icon.Star3 = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Star3
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -55258,7 +55261,7 @@ _packages2.default.shape.icon.Star3Off = _packages2.default.shape.icon.Icon.exte
   }
 }); /**
      * @class draw2d.shape.icon.Star3Off
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -55313,7 +55316,7 @@ _packages2.default.shape.icon.StarOff = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.StarOff
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -55368,7 +55371,7 @@ _packages2.default.shape.icon.Start = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Start
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -55423,7 +55426,7 @@ _packages2.default.shape.icon.Sticker = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.Sticker
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -55478,7 +55481,7 @@ _packages2.default.shape.icon.Stop = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Stop
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -55533,7 +55536,7 @@ _packages2.default.shape.icon.StopWatch = _packages2.default.shape.icon.Icon.ext
   }
 }); /**
      * @class draw2d.shape.icon.StopWatch
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -55588,7 +55591,7 @@ _packages2.default.shape.icon.Sun = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Sun
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -55643,7 +55646,7 @@ _packages2.default.shape.icon.Svg = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Svg
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -55698,7 +55701,7 @@ _packages2.default.shape.icon.TShirt = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.TShirt
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -55753,7 +55756,7 @@ _packages2.default.shape.icon.Tag = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Tag
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -55808,7 +55811,7 @@ _packages2.default.shape.icon.TakeOff = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.TakeOff
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -55863,7 +55866,7 @@ _packages2.default.shape.icon.Talke = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Talke
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -55918,7 +55921,7 @@ _packages2.default.shape.icon.Talkq = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Talkq
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -55973,7 +55976,7 @@ _packages2.default.shape.icon.Thunder = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.Thunder
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -56028,7 +56031,7 @@ _packages2.default.shape.icon.Trash = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Trash
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -56083,7 +56086,7 @@ _packages2.default.shape.icon.Twitter = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.Twitter
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -56138,7 +56141,7 @@ _packages2.default.shape.icon.TwitterBird = _packages2.default.shape.icon.Icon.e
   }
 }); /**
      * @class draw2d.shape.icon.TwitterBird
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -56193,7 +56196,7 @@ _packages2.default.shape.icon.Umbrella = _packages2.default.shape.icon.Icon.exte
   }
 }); /**
      * @class draw2d.shape.icon.Umbrella
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -56248,7 +56251,7 @@ _packages2.default.shape.icon.Undo = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Undo
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -56303,7 +56306,7 @@ _packages2.default.shape.icon.Unlock = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.Unlock
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -56358,7 +56361,7 @@ _packages2.default.shape.icon.Usb = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Usb
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -56413,7 +56416,7 @@ _packages2.default.shape.icon.User = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.User
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -56468,7 +56471,7 @@ _packages2.default.shape.icon.Users = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Users
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -56523,7 +56526,7 @@ _packages2.default.shape.icon.Video = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Video
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -56578,7 +56581,7 @@ _packages2.default.shape.icon.View = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.View
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -56633,7 +56636,7 @@ _packages2.default.shape.icon.Vim = _packages2.default.shape.icon.Icon.extend({
   }
 }); /**
      * @class draw2d.shape.icon.Vim
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -56688,7 +56691,7 @@ _packages2.default.shape.icon.Volume0 = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.Volume0
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -56743,7 +56746,7 @@ _packages2.default.shape.icon.Volume1 = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.Volume1
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -56798,7 +56801,7 @@ _packages2.default.shape.icon.Volume2 = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.Volume2
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -56853,7 +56856,7 @@ _packages2.default.shape.icon.Volume3 = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.Volume3
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -56908,7 +56911,7 @@ _packages2.default.shape.icon.Warning = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.Warning
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -56963,7 +56966,7 @@ _packages2.default.shape.icon.WheelChair = _packages2.default.shape.icon.Icon.ex
   }
 }); /**
      * @class draw2d.shape.icon.WheelChair
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -57018,7 +57021,7 @@ _packages2.default.shape.icon.Windows = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.Windows
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -57073,7 +57076,7 @@ _packages2.default.shape.icon.Woman = _packages2.default.shape.icon.Icon.extend(
   }
 }); /**
      * @class draw2d.shape.icon.Woman
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -57128,7 +57131,7 @@ _packages2.default.shape.icon.Wrench = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.Wrench
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -57183,7 +57186,7 @@ _packages2.default.shape.icon.Wrench2 = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.Wrench2
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -57238,7 +57241,7 @@ _packages2.default.shape.icon.Wrench3 = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.Wrench3
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -57293,7 +57296,7 @@ _packages2.default.shape.icon.ZoomIn = _packages2.default.shape.icon.Icon.extend
   }
 }); /**
      * @class draw2d.shape.icon.ZoomIn
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -57348,7 +57351,7 @@ _packages2.default.shape.icon.ZoomOut = _packages2.default.shape.icon.Icon.exten
   }
 }); /**
      * @class draw2d.shape.icon.ZoomOut
-    
+
      * See the example:
      *
      *     @example preview small frame
@@ -61100,7 +61103,7 @@ _packages2.default.shape.state.Connection = _packages2.default.Connection.extend
      *     //
      *     let start = new draw2d.shape.state.Start();
      *     let end   = new draw2d.shape.state.End();
-    
+
      *     // ...add it to the canvas
      *     canvas.add( start, 50,50);
      *     canvas.add( end, 230,180);
@@ -61179,7 +61182,7 @@ _packages2.default.shape.state.End = _packages2.default.shape.basic.Circle.exten
      *
      *     @example preview small frame
      *     let end   = new draw2d.shape.state.End();
-    
+
      *     // ...add it to the canvas
      *     canvas.add( end, 230,80);
      *
@@ -61382,7 +61385,7 @@ _packages2.default.shape.state.State = _packages2.default.shape.layout.VerticalL
      *     //
      *     let start = new draw2d.shape.state.Start();
      *     let state   = new draw2d.shape.state.State();
-    
+
      *     // ...add it to the canvas
      *     canvas.add( start, 50,50);
      *     canvas.add( state, 230,180);
