@@ -141,6 +141,9 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
 
     jsonUtil.ensureDefault(attributes, "path", this.svgPathString)
 
+    if (this.dasharray !== null) {
+      attributes["stroke-dasharray"] = this.dasharray;
+    }
     this._super(attributes)
   },
 
