@@ -15666,7 +15666,7 @@ _packages2.default.command.CommandAttr = _packages2.default.command.Command.exte
     this.figure.attr(this.newAttributes);
   }
 }); /**
-     * @class draw2d.command.CommandAattr
+     * @class draw2d.command.CommandAttr
      *
      *Command to change attributes of a shape with undo/redo support
      *
