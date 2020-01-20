@@ -60317,8 +60317,6 @@ _packages2.default.shape.node.Start = _packages2.default.shape.basic.Rectangle.e
       height: 50
     }, attr), setter, getter);
     this.createPort("output");
-    this.installEditPolicy(new _packages2.default.policy.figure.RectangleSelectionFeedbackPolicy());
-    this.createPort("output");
   }
 
 }); /**

@@ -33,8 +33,6 @@ draw2d.shape.node.Start = draw2d.shape.basic.Rectangle.extend({
       height: 50
     }, attr), setter, getter)
     this.createPort("output")
-    this.installEditPolicy(new draw2d.policy.figure.RectangleSelectionFeedbackPolicy())
-    this.createPort("output")
   }
 
 })
