@@ -174,6 +174,7 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend({
         jsonUtil.ensureDefault(attributes,"stroke-width" , this.stroke);
         jsonUtil.ensureDefault(attributes,"fill" ,this.bgColor.rgba());
         jsonUtil.ensureDefault(attributes,"dasharray" , this.dasharray);
+        jsonUtil.ensureDefault(attributes,"stroke-dasharray" , this.dasharray);
 
         this._super(attributes);
 
