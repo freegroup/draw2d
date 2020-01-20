@@ -59,7 +59,7 @@ draw2d.policy.canvas.ReadOnlySelectionPolicy = draw2d.policy.canvas.SelectionPol
    * @template
    */
   onMouseDrag: function (canvas, dx, dy, dx2, dy2, shiftKey, ctrlKey) {
-    var area = canvas.getScrollArea()
+    let area = canvas.getScrollArea()
     area.scrollTop(area.scrollTop() - dy2)
     area.scrollLeft(area.scrollLeft() - dx2)
   }

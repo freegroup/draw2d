@@ -169,7 +169,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
     //
     if (routingHints.startMoved || !fromPt.equals(oldVertices.get(0))) {
       let p1 = oldVertices.get(1)
-      let p2 = oldVertices.get(2)
+      let p2 = oldVertices.get(2) // optional. Happens if the connection has just 2 points
       conn.setVertex(0, fromPt)
       switch (fromDir) {
         //          .
@@ -180,7 +180,8 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
         //
         case draw2d.geo.Rectangle.DIRECTION_RIGHT:
           conn.setVertex(1, max(fromPt.x + MINDIST, p1.x), fromPt.y)// p1
-          conn.setVertex(2, max(fromPt.x + MINDIST, p1.x), p2.y)    // p2
+          if(p2)
+            conn.setVertex(2, max(fromPt.x + MINDIST, p1.x), p2.y)    // p2
           break
         //   .
         //   . p1     p0
@@ -190,7 +191,8 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
         //
         case draw2d.geo.Rectangle.DIRECTION_LEFT:
           conn.setVertex(1, min(fromPt.x - MINDIST, p1.x), fromPt.y)// p1
-          conn.setVertex(2, min(fromPt.x - MINDIST, p1.x), p2.y)    // p2
+          if(p2)
+            conn.setVertex(2, min(fromPt.x - MINDIST, p1.x), p2.y)    // p2
           break
         //     ...+....
         //     p1 |
@@ -200,7 +202,8 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
         //
         case draw2d.geo.Rectangle.DIRECTION_UP:
           conn.setVertex(1, fromPt.x, min(fromPt.y - MINDIST, p1.y)) // p1
-          conn.setVertex(2, p2.x, min(fromPt.y - MINDIST, p1.y)) // p2
+          if(p2)
+            conn.setVertex(2, p2.x, min(fromPt.y - MINDIST, p1.y)) // p2
           break
         //        x
         //     p0 |
@@ -210,7 +213,8 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
         //
         case draw2d.geo.Rectangle.DIRECTION_DOWN:
           conn.setVertex(1, fromPt.x, max(fromPt.y + MINDIST, p1.y)) // p1
-          conn.setVertex(2, p2.x, max(fromPt.y + MINDIST, p1.y))     // p2
+          if(p2)
+            conn.setVertex(2, p2.x, max(fromPt.y + MINDIST, p1.y))     // p2
           break
       }
     }
@@ -219,7 +223,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
     //
     if (routingHints.endMoved || !toPt.equals(oldVertices.get(vertexCount - 1))) {
       let p1 = oldVertices.get(vertexCount - 2)
-      let p2 = oldVertices.get(vertexCount - 3)
+      let p2 = oldVertices.get(vertexCount - 3) // optional
       conn.setVertex(vertexCount - 1, toPt)                        // p0
 
       switch (toDir) {
@@ -230,7 +234,8 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
         //               .
         case draw2d.geo.Rectangle.DIRECTION_RIGHT:
           conn.setVertex(vertexCount - 2, max(toPt.x + MINDIST, p1.x), toPt.y)  // p1
-          conn.setVertex(vertexCount - 3, max(toPt.x + MINDIST, p1.x), p2.y)    // p2
+          if(p2)
+            conn.setVertex(vertexCount - 3, max(toPt.x + MINDIST, p1.x), p2.y)    // p2
           break
 
         //    .
@@ -242,7 +247,8 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
         //
         case draw2d.geo.Rectangle.DIRECTION_LEFT:
           conn.setVertex(vertexCount - 2, min(toPt.x - MINDIST, p1.x), toPt.y)  // p1
-          conn.setVertex(vertexCount - 3, min(toPt.x - MINDIST, p1.x), p2.y)    // p2
+          if(p2)
+            conn.setVertex(vertexCount - 3, min(toPt.x - MINDIST, p1.x), p2.y)    // p2
           break
 
         //     ...+....
@@ -253,7 +259,8 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
         //
         case draw2d.geo.Rectangle.DIRECTION_UP:
           conn.setVertex(vertexCount - 2, toPt.x, min(toPt.y - MINDIST, p1.y))  // p1
-          conn.setVertex(vertexCount - 3, p2.x, min(toPt.y - MINDIST, p1.y))  // p2
+          if(p2)
+            conn.setVertex(vertexCount - 3, p2.x, min(toPt.y - MINDIST, p1.y))  // p2
           break
 
         //        +
@@ -264,7 +271,8 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
         //
         case draw2d.geo.Rectangle.DIRECTION_DOWN:
           conn.setVertex(vertexCount - 2, toPt.x, max(toPt.y + MINDIST, p1.y))  // p1
-          conn.setVertex(vertexCount - 3, p2.x, max(toPt.y + MINDIST, p1.y))  // p2
+          if(p2)
+            conn.setVertex(vertexCount - 3, p2.x, max(toPt.y + MINDIST, p1.y))  // p2
           break
       }
     }
