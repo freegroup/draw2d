@@ -19,7 +19,6 @@ draw2d.command.CommandAssignFigure = draw2d.command.Command.extend(
   /**
    * Create a new Command objects which can be execute via the CommandStack.
    *
-   * @constructs
    * @param {draw2d.Figure} figure the figure to assign
    * @param {draw2d.Figure} composite the composite where the figure should assign
    */

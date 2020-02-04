@@ -23,7 +23,6 @@ draw2d.policy.canvas.SnapToCenterEditPolicy = draw2d.policy.canvas.SnapToEditPol
   /**
    * Creates a new constraint policy for snap to geometry
    *
-   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)

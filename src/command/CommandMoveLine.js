@@ -19,7 +19,6 @@ draw2d.command.CommandMoveLine = draw2d.command.Command.extend(
   /**
    * Create a new Command objects which can be execute via the CommandStack.
    *
-   * @constructs
    * @param {draw2d.shape.basic.Line} figure the line to move
    */
   init: function (figure) {

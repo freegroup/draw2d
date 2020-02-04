@@ -19,7 +19,6 @@ draw2d.command.CommandConnect = draw2d.command.Command.extend(
   /**
    * Create a new CommandConnect objects which can be execute via the CommandStack.
    *
-   * @constructs
    * @param {draw2d.Port} source the source port for the connection to create
    * @param {draw2d.Port} target the target port for the connection to create
    * @param {draw2d.Port} [dropTarget] the port who has initiate the connection creation. mainly the drop target

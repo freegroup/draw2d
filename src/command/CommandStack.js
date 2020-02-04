@@ -14,7 +14,6 @@ draw2d.command.CommandStack = Class.extend(
   /**
    * Create a new CommandStack objects which can be execute via the CommandStack.
    *
-   * @constructs
    */
   init: function () {
     this.undostack = []

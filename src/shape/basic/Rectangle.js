@@ -1,10 +1,13 @@
+import draw2d from '../../packages'
+import extend from '../../util/extend'
+
 /**
- * @class draw2d.shape.basic.Rectangle
+ * @class
  * A Rectangle Figure.
  *
  * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     let rect1 =  new draw2d.shape.basic.Rectangle({
  *     	x:10,
@@ -29,9 +32,6 @@
  * @author Andreas Herz
  * @extends draw2d.VectorFigure
  */
-import draw2d from '../../packages'
-import extend from '../../util/extend'
-
 draw2d.shape.basic.Rectangle = draw2d.VectorFigure.extend(
   /** @lends draw2d.shape.basic.Rectangle.prototype */
   {
@@ -40,8 +40,7 @@ draw2d.shape.basic.Rectangle = draw2d.VectorFigure.extend(
 
   /**
    * Creates a new figure element which are not assigned to any canvas.
-   *
-   * @constructs
+   * @constructor
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {

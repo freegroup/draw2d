@@ -10,13 +10,16 @@
 import draw2d from 'packages';
 
 draw2d.HeadlessCanvas = Class.extend(
-{
-    NAME : "draw2d.HeadlessCanvas",
+  /** @lends draw2d.HeadlessCanvas.prototype */
+
+    /** @lends draw2d.HeadlessCanvas.prototype */
+    {
+
+    NAME: "draw2d.HeadlessCanvas",
 
     /**
      * Create a new canvas with the given HTML DOM references.
      *
-     * @constructs
      * @param {String} canvasId the id of the DOM element to use a parent container
      */
     init: function()

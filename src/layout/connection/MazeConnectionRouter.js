@@ -22,7 +22,6 @@ draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.Connect
   /**
    * Creates a new Router object.
    *
-   * @constructs
    */
   init: function () {
     this._super()

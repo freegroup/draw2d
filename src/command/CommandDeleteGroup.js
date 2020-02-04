@@ -16,7 +16,6 @@ draw2d.command.CommandDeleteGroup = draw2d.command.Command.extend(
   /**
    * Create a delete command for the given figure.
    *
-   * @constructs
    * @param {draw2d.shape.composite.Group} group
    */
   init: function (group) {

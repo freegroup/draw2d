@@ -23,7 +23,6 @@ draw2d.command.CommandType = Class.extend(
   /**
    * Create a new edit policy object
    *
-   * @constructs
    * @param {String} policy
    */
   init: function (policy) {

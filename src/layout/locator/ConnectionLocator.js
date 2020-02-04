@@ -20,7 +20,6 @@ draw2d.layout.locator.ConnectionLocator = draw2d.layout.locator.Locator.extend(
    * Default constructor for a Locator which can layout a figure in context of a
    * {@link draw2d.Connector}
    *
-   * @constructs
    */
   init: function () {
     this._super()

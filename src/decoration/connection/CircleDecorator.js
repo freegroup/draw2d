@@ -42,11 +42,10 @@ import draw2d from '../../packages';
 
 draw2d.decoration.connection.CircleDecorator = draw2d.decoration.connection.Decorator.extend({
 
-	NAME : "draw2d.decoration.connection.CircleDecorator",
+	NAME: "draw2d.decoration.connection.CircleDecorator",
 
 	/**
 	 *
-	 * @constructs
 	 * @param {Number} [width] the width of the arrow
 	 * @param {Number} [height] the height of the arrow
 	 */

@@ -16,7 +16,6 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend(
 
   /**
    * Creates a new Router object
-   * @constructs
    */
   init: function (attr, setter, getter) {
     this.canvas = null

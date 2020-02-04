@@ -17,7 +17,6 @@ draw2d.InputPort = draw2d.Port.extend(
   /**
    * Create a new InputPort element
    *
-   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {

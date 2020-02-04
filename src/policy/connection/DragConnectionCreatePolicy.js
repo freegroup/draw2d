@@ -39,14 +39,15 @@
  */
 import draw2d from '../../packages';
 
-draw2d.policy.connection.DragConnectionCreatePolicy = draw2d.policy.connection.ConnectionCreatePolicy.extend({
-
-    NAME : "draw2d.policy.connection.DragConnectionCreatePolicy",
+draw2d.policy.connection.DragConnectionCreatePolicy = draw2d.policy.connection.ConnectionCreatePolicy.extend(
+    /** @lends draw2d.policy.connection.DragConnectionCreatePolicy.prototype */
+    {
+    
+    NAME: "draw2d.policy.connection.DragConnectionCreatePolicy",
     
     /**
      *
      * Creates a new connection create policy instance
-     * @constructs
      */
     init: function(attr, setter, getter)
     {

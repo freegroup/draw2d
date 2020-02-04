@@ -8,12 +8,13 @@
  */
 import draw2d from '../../packages';
 
-draw2d.policy.figure.HBusSelectionFeedbackPolicy = draw2d.policy.figure.BusSelectionFeedbackPolicy.extend({
-
-    NAME : "draw2d.policy.figure.HBusSelectionFeedbackPolicy",
+draw2d.policy.figure.HBusSelectionFeedbackPolicy = draw2d.policy.figure.BusSelectionFeedbackPolicy.extend(
+    /** @lends draw2d.policy.figure.HBusSelectionFeedbackPolicy.prototype */
+    {
+    
+    NAME: "draw2d.policy.figure.HBusSelectionFeedbackPolicy",
     /**
      * Creates a new Router object
-     * @constructs
      */
     init: function( attr, setter, getter)
     {

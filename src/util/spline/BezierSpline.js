@@ -12,11 +12,13 @@
 import draw2d from '../../packages';
 
 draw2d.util.spline.BezierSpline = draw2d.util.spline.Spline.extend(
-{
-    NAME : "draw2d.util.spline.BezierSpline",
+
+    /** @lends draw2d.util.spline.BezierSpline.prototype */
+    {
+    
+    NAME: "draw2d.util.spline.BezierSpline",
 
     /**
-     * @constructs
      */
     init: function()
     {

@@ -9,12 +9,13 @@
  */
 import draw2d from '../../packages';
 
-draw2d.policy.figure.VBusSelectionFeedbackPolicy = draw2d.policy.figure.BusSelectionFeedbackPolicy.extend({
-
-    NAME : "draw2d.policy.figure.VBusSelectionFeedbackPolicy",
+draw2d.policy.figure.VBusSelectionFeedbackPolicy = draw2d.policy.figure.BusSelectionFeedbackPolicy.extend(
+    /** @lends draw2d.policy.figure.VBusSelectionFeedbackPolicy.prototype */
+    {
+    
+    NAME: "draw2d.policy.figure.VBusSelectionFeedbackPolicy",
     /**
      * Creates a new Router object
-     * @constructs
      */
     init: function( attr, setter, getter)
     {

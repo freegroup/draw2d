@@ -16,7 +16,6 @@ draw2d.command.CommandStackEventListener = Class.extend(
   /**
    * Creates a new Listener Object
    *
-   * @constructs
    */
   init: function () {
   },

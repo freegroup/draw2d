@@ -20,7 +20,6 @@ draw2d.layout.locator.PolylineMidpointLocator = draw2d.layout.locator.ManhattanM
   /**
    * Constructs a ManhattanMidpointLocator with associated Connection c.
    *
-   * @constructs
    */
   init: function () {
     this._super()

@@ -19,7 +19,6 @@ draw2d.command.CommandAttr = draw2d.command.Command.extend(
   /**
    * Create a new Command objects which provides undo/redo for attributes.
    *
-   * @constructs
    * @param {draw2d.Figure} figure the figure to handle
    * @param {Object} attributes new attributes to set
    */

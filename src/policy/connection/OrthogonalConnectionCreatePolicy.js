@@ -44,14 +44,16 @@
  */
 import draw2d from '../../packages';
 
-draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connection.ConnectionCreatePolicy.extend({
-
-    NAME : "draw2d.policy.connection.ClickConnectionCreatePolicy",
+draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connection.ConnectionCreatePolicy.extend(
+    /** @lends draw2d.policy.connection.ClickConnectionCreatePolicy.prototype */
+    {
+    
+    NAME: "draw2d.policy.connection.ClickConnectionCreatePolicy",
 
     /**
      *
      * Creates a new connection create policy instance
-     * @constructs
+
      */
     init: function(attr, setter, getter)
     {

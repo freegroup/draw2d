@@ -25,7 +25,6 @@ draw2d.layout.connection.MuteableManhattanConnectionRouter = draw2d.layout.conne
   /**
    * Creates a new Router object.
    *
-   * @constructs
    */
   init: function () {
     this._super()

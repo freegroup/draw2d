@@ -15,7 +15,6 @@ draw2d.policy.canvas.ReadOnlySelectionPolicy = draw2d.policy.canvas.SelectionPol
 
   /**
    * Creates a new Router object
-   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)

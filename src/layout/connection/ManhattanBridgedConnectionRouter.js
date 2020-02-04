@@ -23,7 +23,6 @@ draw2d.layout.connection.ManhattanBridgedConnectionRouter = draw2d.layout.connec
   /**
    * Creates a new Router object.
    *
-   * @constructs
    */
   init: function () {
     this._super()

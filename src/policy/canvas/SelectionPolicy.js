@@ -15,7 +15,6 @@ draw2d.policy.canvas.SelectionPolicy = draw2d.policy.canvas.CanvasPolicy.extend(
 
   /**
    * Creates a new selection policy
-   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)

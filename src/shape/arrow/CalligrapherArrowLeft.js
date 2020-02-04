@@ -22,7 +22,6 @@ draw2d.shape.arrow.CalligrapherArrowLeft = draw2d.SVGFigure.extend(
   /**
    * Creates a new instance
    *
-   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {

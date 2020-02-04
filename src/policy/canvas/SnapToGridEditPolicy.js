@@ -21,7 +21,6 @@ draw2d.policy.canvas.SnapToGridEditPolicy = draw2d.policy.canvas.ShowGridEditPol
   /**
    * Creates a new constraint policy for snap to grid
    *
-   * @constructs
    * @param {Number} grid the grid width of the canvas
    */
   init: function (grid) {

@@ -23,7 +23,6 @@ draw2d.util.Color = Class.extend({
     /**
      * Create a new Color object
      *
-     * @constructs
      * @param {Number|String|draw2d.util.Color|Array} red
      * @param {Number} green
      * @param {Number} blue

@@ -1,75 +1,67 @@
-/**
- * @class draw2d.Figure
- * @classdesc  A lightweight graphical object. Figures are rendered to a {@link draw2d.Canvas} object.
- *
- * @inheritable
- * @author Andreas Herz
- */
 
 import draw2d from 'packages'
 import jsonUtil from 'util/JSONUtil'
 import UUID from 'util/UUID'
 import extend from 'util/extend'
 
+/**
+ * @class
+ */
 draw2d.Figure = Class.extend(
   /** @lends draw2d.Figure.prototype */
   {
   
   NAME: "draw2d.Figure",
-
   MIN_TIMER_INTERVAL: 50, // minimum timer interval in milliseconds
-
-  // special attributes that should be get/set via method calls
 
   /**
    * Creates a new figure element which is not assigned to any canvas.
-   *
    *
    * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {
 
+    // @private
     this.setterWhitelist = extend({
-      /** @attr {String} id the unique id of the figure */
+      /** id the unique id of the figure */
       id: this.setId,
-      /** @attr {Number} x the x offset of the figure in relation to the parent figure or canvas */
+      /** x the x offset of the figure in relation to the parent figure or canvas */
       x: this.setX,
-      /** @attr {Number} y the y offset of the figure in relation to the parent figure or canvas */
+      /** y the y offset of the figure in relation to the parent figure or canvas */
       y: this.setY,
-      /** @attr {Number} width the new width of the figure. Considering the minWidth of the shape */
+      /** width the new width of the figure. Considering the minWidth of the shape */
       width: this.setWidth,
-      /** @attr {Number} height the new height of the figure. Considering the minHeight of the shape */
+      /** height the new height of the figure. Considering the minHeight of the shape */
       height: this.setHeight,
-      /** @attr {draw2d.geo.Rectangle} boundingBox set the new bounding box of the shape */
+      /** boundingBox set the new bounding box of the shape */
       boundingBox: this.setBoundingBox,
-      /** @attr {Number} minWidth the new min width of the figure. */
+      /**  minWidth the new min width of the figure. */
       minWidth: this.setMinWidth,
-      /** @attr {Number} minHeight the new min height of the figure. */
+      /**minHeight the new min height of the figure. */
       minHeight: this.setMinHeight,
-      /** @attr {String} cssClass the css class of the shape. can be used to style the shape via CSS3 (SVG only) */
+      /** cssClass the css class of the shape. can be used to style the shape via CSS3 (SVG only) */
       cssClass: this.setCssClass,
-      /** @attr {Object} userData additional custom data which can be stored by the shape */
+      /** userData additional custom data which can be stored by the shape */
       userData: this.setUserData,
-      /** @attr {Boolean} draggable drives the dragging behaviour of the shape */
+      /**draggable drives the dragging behaviour of the shape */
       draggable: this.setDraggable,
-      /** @attr {Boolean} resizeable drives the resizeable behaviour of the shape */
+      /** resizeable drives the resizeable behaviour of the shape */
       resizeable: this.setResizeable,
-      /** @attr {Boolean} selectable drives the selectable behaviour of the shape */
+      /** selectable drives the selectable behaviour of the shape */
       selectable: this.setSelectable,
-      /** @attr {Number} angle the rotation angle of the shape. At the moment only 90 degree increments are possible */
+      /** angle the rotation angle of the shape. At the moment only 90 degree increments are possible */
       angle: this.setRotationAngle,
-      /** @attr {Number} alpha the the alpha/opacity of the shape. value must be between [0..1] */
+      /** alpha the the alpha/opacity of the shape. value must be between [0..1] */
       alpha: this.setAlpha,
-      /** @attr {Number} opacity the the alpha/opacity of the shape. value must be between [0..1] */
+      /** opacity the the alpha/opacity of the shape. value must be between [0..1] */
       opacity: this.setAlpha,
-      /** @attr {Boolean} glow the glow flag for the shape. The representation of the "glow" depends on the shape */
+      /** glow the glow flag for the shape. The representation of the "glow" depends on the shape */
       glow: this.setGlow,
-      /** @attr {Boolean} visible set the visibility flag of the shape */
+      /** visible set the visibility flag of the shape */
       visible: this.setVisible,
-      /** @attr {Boolean} keepAspectRatio indicate if the shape should keep the aspect ratio during resize */
+      /** keepAspectRatio indicate if the shape should keep the aspect ratio during resize */
       keepAspectRatio: this.setKeepAspectRatio
-
     }, setter)
 
     this.getterWhitelist = extend({
@@ -86,8 +78,6 @@ draw2d.Figure = Class.extend(
       alpha: this.getAlpha,
       opacity: this.getAlpha
     }, getter)
-
-    let _this = this
 
     // all figures has an unique id. Required for figure get and persistence storage
     this.id = UUID.create()
@@ -1585,7 +1575,6 @@ draw2d.Figure = Class.extend(
    *      });
    *
    * @param {Number} percent value between [0..1].
-   * @template
    **/
   setAlpha: function (percent) {
     percent = Math.min(1, Math.max(0, parseFloat(percent)))

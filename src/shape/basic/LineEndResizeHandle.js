@@ -18,7 +18,6 @@ draw2d.shape.basic.LineEndResizeHandle = draw2d.shape.basic.LineResizeHandle.ext
 
   /**
    *
-   * @constructs
    */
   init: function (figure) {
     this._super({owner: figure, index: figure.getVertices().getSize() - 1})

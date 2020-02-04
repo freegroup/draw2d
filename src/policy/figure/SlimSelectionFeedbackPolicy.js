@@ -25,7 +25,6 @@ draw2d.policy.figure.SlimSelectionFeedbackPolicy = draw2d.policy.figure.Rectangl
 
   /**
    * Creates a new Router object
-   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)

@@ -23,7 +23,6 @@ draw2d.layout.anchor.ChopboxConnectionAnchor = draw2d.layout.anchor.ConnectionAn
 
   /**
    *
-   * @constructs
    * @param {draw2d.Figure} owner the figure to use for the anchor calculation
    */
   init: function (owner) {

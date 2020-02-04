@@ -19,7 +19,6 @@ draw2d.Selection = Class.extend(
   /**
    * Creates a new figure element which are not assigned to any canvas.
    *
-   * @constructs
    */
   init: function () {
     this.primary = null;

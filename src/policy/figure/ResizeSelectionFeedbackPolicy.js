@@ -28,7 +28,6 @@ draw2d.policy.figure.ResizeSelectionFeedbackPolicy = draw2d.policy.figure.Select
   /**
    * Creates a new Router object
    *
-   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)

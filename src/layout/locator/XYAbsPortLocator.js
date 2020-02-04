@@ -29,7 +29,6 @@ draw2d.layout.locator.XYAbsPortLocator = draw2d.layout.locator.PortLocator.exten
    *
    * {@link draw2d.shape.node.Node}
    *
-   * @constructs
    * @param {Number} x the x coordinate of the port relative to the left of the parent
    * @param {Number} y the y coordinate of the port relative to the top of the parent
    */

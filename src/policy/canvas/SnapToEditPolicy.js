@@ -37,7 +37,6 @@ draw2d.policy.canvas.SnapToEditPolicy = draw2d.policy.canvas.CanvasPolicy.extend
   /**
    * Creates a new constraint policy for snap to grid
    *
-   * @constructs
    */
   init: function (attr, setter, getter) {
     this.lineColor = null

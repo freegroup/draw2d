@@ -25,7 +25,6 @@ draw2d.policy.canvas.DropInterceptorPolicy = draw2d.policy.canvas.CanvasPolicy.e
 
   /**
    *
-   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)

@@ -13,7 +13,6 @@ draw2d.command.CommandStackEvent = Class.extend(
   /**
    * Create a new CommandStack objects which can be execute via the CommandStack.
    *
-   * @constructs
    * @param {draw2d.command.Command} command the related command
    * @param {Number} details the current state of the command execution
    *

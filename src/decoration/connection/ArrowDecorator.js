@@ -43,11 +43,10 @@ import draw2d from '../../packages';
 
 draw2d.decoration.connection.ArrowDecorator = draw2d.decoration.connection.Decorator.extend({
 
-	NAME : "draw2d.decoration.connection.ArrowDecorator",
+	NAME: "draw2d.decoration.connection.ArrowDecorator",
 
 	/**
 	 *
-	 * @constructs
 	 * @param {Number} [width] the width of the arrow
 	 * @param {Number} [height] the height of the arrow
 	 */

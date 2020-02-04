@@ -24,7 +24,6 @@ draw2d.layout.locator.ParallelMidpointLocator = draw2d.layout.locator.Connection
    * if the parameter <b>distanceFromConnection</b> is less than zero the label is
    * placed above of the connection. Else the label is below the connection.
    *
-   * @constructs
    * @param {Number} distanceFromConnection the distance of the label to the connection.
    */
   init: function (distanceFromConnection) {

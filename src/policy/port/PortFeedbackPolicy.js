@@ -16,7 +16,6 @@ draw2d.policy.port.PortFeedbackPolicy = draw2d.policy.figure.DragDropEditPolicy.
   NAME: "draw2d.policy.port.PortFeedbackPolicy",
 
   /**
-   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)

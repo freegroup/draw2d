@@ -25,7 +25,6 @@ draw2d.shape.icon.Woman = draw2d.shape.icon.Icon.extend(
    *
    * Creates a new icon element which are not assigned to any canvas.
    * 
-   * @constructs
    * @param {Object} attr the configuration of the shape
    */
   init: function (attr, setter, getter) {

@@ -20,7 +20,6 @@ draw2d.command.CommandReconnect = draw2d.command.Command.extend(
   /**
    * Create a new Command objects which can be execute via the CommandStack.
    *
-   * @constructs
    * @param {draw2d.Connection} conn the related Connection which is currently in the drag&drop operation
    */
   init: function (conn) {

@@ -20,7 +20,6 @@ draw2d.shape.layout.Layout = draw2d.shape.basic.Rectangle.extend(
   /**
    * Create a new instance
    *
-   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {

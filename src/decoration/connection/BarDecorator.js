@@ -42,11 +42,10 @@ import draw2d from '../../packages';
 
 draw2d.decoration.connection.BarDecorator = draw2d.decoration.connection.Decorator.extend({
 
-	NAME : "draw2d.decoration.connection.BarDecorator",
+	NAME: "draw2d.decoration.connection.BarDecorator",
 
 	/**
 	 *
-	 * @constructs
 	 * @param {Number} [width] the width of the bar
 	 * @param {Number} [height] the height of the bar
 	 */

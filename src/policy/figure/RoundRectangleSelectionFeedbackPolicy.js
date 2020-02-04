@@ -24,7 +24,6 @@ draw2d.policy.figure.RoundRectangleSelectionFeedbackPolicy = draw2d.policy.figur
   /**
    * Creates a new Router object
    *
-   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)

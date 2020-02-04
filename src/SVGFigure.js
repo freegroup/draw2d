@@ -11,14 +11,15 @@
 import draw2d from 'packages';
 import extend from 'util/extend';
 
-draw2d.SVGFigure = draw2d.SetFigure.extend({
-
-    NAME : "draw2d.SVGFigure",
+draw2d.SVGFigure = draw2d.SetFigure.extend(
+    /** @lends draw2d.SVGFigure.prototype */
+    {
+    
+    NAME: "draw2d.SVGFigure",
 
     /**
      * Creates a new figure element which are not assigned to any canvas.
      *
-     * @constructs
      * @param {Object} [attr] the configuration of the shape
      */
     init: function(attr, setter, getter)

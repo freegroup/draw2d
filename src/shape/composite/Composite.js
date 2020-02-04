@@ -17,7 +17,6 @@ draw2d.shape.composite.Composite = draw2d.SetFigure.extend(
   /**
    * Creates a new composite element which are not assigned to any canvas.
    *
-   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {

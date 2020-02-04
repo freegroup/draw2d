@@ -7,11 +7,13 @@
  */
 import draw2d from '../../packages';
 
-draw2d.layout.mesh.ProposedMeshChange = Class.extend({
+draw2d.layout.mesh.ProposedMeshChange = Class.extend(
+  /** @lends draw2d.layout.mesh.ProposedMeshChange.prototype */
+
+  {
 
 	/**
 	 * Creates change object.
-	 * @constructs
 	 */
     init: function(figure, x, y)
     {

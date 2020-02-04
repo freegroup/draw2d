@@ -23,7 +23,6 @@ draw2d.policy.figure.GlowSelectionFeedbackPolicy = draw2d.policy.figure.Selectio
 
   /**
    * Creates a new Router object
-   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)

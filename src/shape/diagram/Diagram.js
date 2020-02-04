@@ -14,7 +14,6 @@ draw2d.shape.diagram.Diagram = draw2d.SetFigure.extend({
 
   /**
    *
-   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {

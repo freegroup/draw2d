@@ -11,10 +11,9 @@ import Color  from '../../util/Color'
 
 draw2d.decoration.connection.Decorator = Class.extend({
 
-	NAME : "draw2d.decoration.connection.Decorator",
+	NAME: "draw2d.decoration.connection.Decorator",
 
 	/**
-	 * @constructs
 	 */
 	init: function(width, height) {
 

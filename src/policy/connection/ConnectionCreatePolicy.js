@@ -10,14 +10,15 @@
  */
 import draw2d from '../../packages';
 
-draw2d.policy.connection.ConnectionCreatePolicy = draw2d.policy.canvas.KeyboardPolicy.extend({
-
-    NAME : "draw2d.policy.connection.ConnectionCreatePolicy",
+draw2d.policy.connection.ConnectionCreatePolicy = draw2d.policy.canvas.KeyboardPolicy.extend(
+    /** @lends draw2d.policy.connection.ConnectionCreatePolicy.prototype */
+    {
+    
+    NAME: "draw2d.policy.connection.ConnectionCreatePolicy",
 
     /**
      *
      * Creates a new connection create policy instance
-     * @constructs
      */
     init: function(attr, setter, getter)
     {

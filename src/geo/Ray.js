@@ -12,14 +12,15 @@
 import draw2d from '../packages';
 
 
-draw2d.geo.Ray = draw2d.geo.Point.extend({
-
-    NAME : "draw2d.geo.Ray",
+draw2d.geo.Ray = draw2d.geo.Point.extend(
+    /** @lends draw2d.geo.Ray.prototype */
+    {
+    
+    NAME: "draw2d.geo.Ray",
     
     /**
      * Creates a ray object.
      *
-     * @constructs
      * @param {Number} x
      * @param {Number} y
      */

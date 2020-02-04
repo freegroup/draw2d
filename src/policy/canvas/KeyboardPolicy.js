@@ -15,7 +15,6 @@ draw2d.policy.canvas.KeyboardPolicy = draw2d.policy.canvas.CanvasPolicy.extend(
   NAME: "draw2d.policy.canvas.KeyboardPolicy",
 
   /**
-   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)

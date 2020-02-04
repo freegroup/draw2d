@@ -1,5 +1,5 @@
 /**
- * @class draw2d.Canvas
+ * @constructor draw2d.Canvas
  * @classdesc Interactive paint area of the draw2d library.
  *
  *

@@ -83,7 +83,6 @@ draw2d.layout.connection.RubberbandRouter = draw2d.layout.connection.ConnectionR
   /**
    * Creates a new Router object
    *
-   * @constructs
    */
   init: function () {
     this._super()

@@ -13,13 +13,15 @@ import draw2d from 'packages';
 import jsonUtil from 'util/JSONUtil';
 import extend from 'util/extend';
 
-draw2d.VectorFigure = draw2d.shape.node.Node.extend({
-    NAME : "draw2d.VectorFigure",
+draw2d.VectorFigure = draw2d.shape.node.Node.extend(
+    /** @lends draw2d.VectorFigure.prototype */
+    {
+    
+    NAME: "draw2d.VectorFigure",
 
     /**
      * Creates a new figure element which are not assigned to any canvas.
      *
-     * @constructs
      * @param {Object} [attr] the configuration of the shape
      */
     init: function( attr, setter, getter)

@@ -19,7 +19,6 @@ draw2d.shape.basic.Image = draw2d.shape.node.Node.extend(
   /**
    * Creates a new figure element which are not assigned to any canvas.
    *
-   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {

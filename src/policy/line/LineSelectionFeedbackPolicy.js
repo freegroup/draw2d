@@ -15,7 +15,6 @@ draw2d.policy.line.LineSelectionFeedbackPolicy = draw2d.policy.figure.SelectionF
 
   /**
    * Creates a new selection feedback policy for a line or connection
-   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)

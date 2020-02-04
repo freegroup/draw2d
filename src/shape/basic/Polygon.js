@@ -31,7 +31,6 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend(
 
   /**
    *
-   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {

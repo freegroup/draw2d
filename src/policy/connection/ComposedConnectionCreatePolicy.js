@@ -12,15 +12,16 @@
  */
 import draw2d from '../../packages';
 
-draw2d.policy.connection.ComposedConnectionCreatePolicy = draw2d.policy.connection.ConnectionCreatePolicy.extend({
-
-    NAME : "draw2d.policy.connection.ComposedConnectionCreatePolicy",
+draw2d.policy.connection.ComposedConnectionCreatePolicy = draw2d.policy.connection.ConnectionCreatePolicy.extend(
+    /** @lends draw2d.policy.connection.ComposedConnectionCreatePolicy.prototype */
+    {
+    
+    NAME: "draw2d.policy.connection.ComposedConnectionCreatePolicy",
 
     /**
      *
      * Creates a new connection create policy instance
      *
-     * @constructs
      * @param {array} policies the policies to use
      */
     init: function( policies )

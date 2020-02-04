@@ -13,7 +13,6 @@ draw2d.geo.Point = Class.extend(
   /**
    * Creates a new Point object with the hands over coordinates.
    *
-   * @constructs
    * @param {Number|draw2d.geo.Point} x
    * @param {Number} y
    */

@@ -16,7 +16,6 @@ draw2d.policy.figure.BusSelectionFeedbackPolicy = draw2d.policy.figure.Selection
   /**
    * Creates a new Router object
    *
-   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)

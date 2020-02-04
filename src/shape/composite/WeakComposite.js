@@ -22,7 +22,6 @@ draw2d.shape.composite.WeakComposite = draw2d.shape.composite.Composite.extend(
   /**
    * Creates a new weak composite element which are not assigned to any canvas.
    *
-   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {

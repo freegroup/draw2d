@@ -19,7 +19,6 @@ draw2d.policy.port.ElasticStrapFeedbackPolicy = draw2d.policy.port.PortFeedbackP
 
   /**
    * Creates a new Router object
-   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)

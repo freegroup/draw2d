@@ -19,7 +19,6 @@ draw2d.policy.figure.SelectionPolicy = draw2d.policy.figure.DragDropEditPolicy.e
 
   /**
    *
-   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)

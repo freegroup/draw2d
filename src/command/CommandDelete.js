@@ -15,7 +15,6 @@ draw2d.command.CommandDelete = draw2d.command.Command.extend(
   /**
    * Create a delete command for the given figure.
    *
-   * @constructs
    * @param {draw2d.Figure} figure
    */
   init: function (figure) {

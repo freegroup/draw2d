@@ -15,7 +15,6 @@ draw2d.command.CommandGroup = draw2d.command.Command.extend(
   /**
    * Create a group command for the given figure.
    *
-   * @constructs
    * @param {draw2d.util.ArrayList} figures the figures to group
    */
   init: function (canvas, figures) {

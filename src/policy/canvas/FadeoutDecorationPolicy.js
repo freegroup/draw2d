@@ -22,7 +22,6 @@ draw2d.policy.canvas.FadeoutDecorationPolicy = draw2d.policy.canvas.DecorationPo
   /**
    * Creates a new fade out policy. Don't forget to install them into the canvas.
    *
-   * @constructs
    */
   init: function () {
     this._super()

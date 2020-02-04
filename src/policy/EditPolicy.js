@@ -26,7 +26,6 @@ draw2d.policy.EditPolicy = Class.extend(
 
   /**
    *
-   * @constructs
    */
   init: function (attr, setter, getter) {
     this.setterWhitelist = extend({}, setter)

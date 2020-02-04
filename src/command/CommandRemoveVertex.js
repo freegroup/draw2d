@@ -19,7 +19,6 @@ draw2d.command.CommandRemoveVertex = draw2d.command.Command.extend(
   /**
    * Create a new Command objects which add a vertex to a PloyLine.
    *
-   * @constructs
    * @param {draw2d.shape.basic.PolyLine} line the related line
    * @param {Number} index the index where to add
    */

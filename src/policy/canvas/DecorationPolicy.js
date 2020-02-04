@@ -16,7 +16,6 @@ draw2d.policy.canvas.DecorationPolicy = draw2d.policy.canvas.CanvasPolicy.extend
 
   /**
    *
-   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)

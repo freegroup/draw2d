@@ -11,9 +11,11 @@
 import draw2d from '../packages';
 
 
-draw2d.geo.Rectangle = draw2d.geo.Point.extend({
-
-    NAME : "draw2d.geo.Rectangle",
+draw2d.geo.Rectangle = draw2d.geo.Point.extend(
+    /** @lends draw2d.geo.Rectangle.prototype */
+    {
+    
+    NAME: "draw2d.geo.Rectangle",
     
     /**
      * Creates a new Point object with the hands over coordinates.
@@ -28,7 +30,6 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
      * The rectangle class is usefull for any kind of intersection, hitTest, contains,...calculation
      * or to set the bounding box of any shape.
      *
-     * @constructs
      * @param {Number|draw2d.geo.Rectangle} x
      * @param {Number} y
      * @param {Number} w

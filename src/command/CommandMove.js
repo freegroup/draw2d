@@ -18,7 +18,6 @@ draw2d.command.CommandMove = draw2d.command.Command.extend(
   /**
    * Create a new Command objects which can be execute via the CommandStack.
    *
-   * @constructs
    * @param {draw2d.Figure} figure the figure to move
    * @param {Number} [x] the current x position
    * @param {Number} [y] the current y position

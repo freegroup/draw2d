@@ -8,14 +8,15 @@
 
 import draw2d from 'packages';
 
-draw2d.OutputPort = draw2d.Port.extend({
+draw2d.OutputPort = draw2d.Port.extend(
+  /** @lends draw2d.OutputPort.prototype */
+    {
 
-    NAME : "draw2d.OutputPort",
+    NAME: "draw2d.OutputPort",
 
     /**
      * Create a new OutputPort element
      *
-     * @constructs
      * @param {Object} [attr] the configuration of the shape
      */
     init: function(attr, setter, getter)

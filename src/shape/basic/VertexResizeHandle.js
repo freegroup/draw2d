@@ -30,7 +30,6 @@ draw2d.shape.basic.VertexResizeHandle = draw2d.ResizeHandle.extend(
   /**
    * Called when a user double clicks on the element
    *
-   * @constructs
    * @template
    */
   onDoubleClick: function () {

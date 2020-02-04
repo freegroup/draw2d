@@ -61,7 +61,6 @@ draw2d.layout.connection.ManhattanConnectionRouter = draw2d.layout.connection.Co
   /**
    * Creates a new Router object.
    *
-   * @constructs
    */
   init: function () {
     this._super()

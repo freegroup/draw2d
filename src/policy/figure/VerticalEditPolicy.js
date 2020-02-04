@@ -24,13 +24,14 @@
  */
 import draw2d from '../../packages';
 
-draw2d.policy.figure.VerticalEditPolicy = draw2d.policy.figure.DragDropEditPolicy.extend({
-
-    NAME : "draw2d.policy.figure.VerticalEditPolicy",
+draw2d.policy.figure.VerticalEditPolicy = draw2d.policy.figure.DragDropEditPolicy.extend(
+    /** @lends draw2d.policy.figure.VerticalEditPolicy.prototype */
+    {
+    
+    NAME: "draw2d.policy.figure.VerticalEditPolicy",
 
     /**
      * Creates a new constraint object
-     * @constructs
      */
     init: function( attr, setter, getter)
     {

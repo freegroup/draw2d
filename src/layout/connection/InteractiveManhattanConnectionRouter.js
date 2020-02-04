@@ -61,7 +61,6 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
   /**
    * Creates a new Router object.
    *
-   * @constructs
    */
   init: function () {
     this._super()

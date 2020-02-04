@@ -46,7 +46,6 @@ draw2d.shape.analog.ResistorVertical = draw2d.SetFigure.extend(
   /**
    * Create a new instance
    *
-   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {

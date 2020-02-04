@@ -8,13 +8,14 @@
  */
 import draw2d from '../../packages';
 
-draw2d.layout.mesh.ExplodeLayouter = draw2d.layout.mesh.MeshLayouter.extend({
+draw2d.layout.mesh.ExplodeLayouter = draw2d.layout.mesh.MeshLayouter.extend(
+  /** @lends draw2d.layout.mesh.ExplodeLayouter.prototype */
+  {
 
 	MIN_MARGIN : 40,
 	
 	/**
 	 * Creates a new layouter object.
-	 * @constructs
 	 */
     init: function()
 	{

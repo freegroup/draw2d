@@ -16,7 +16,6 @@ draw2d.policy.line.VertexSelectionFeedbackPolicy = draw2d.policy.line.LineSelect
 
   /**
    *
-   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)

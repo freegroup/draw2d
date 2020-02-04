@@ -37,9 +37,11 @@
 import draw2d from '../../packages';
 
 
-draw2d.io.json.Reader = draw2d.io.Reader.extend({
-
-    NAME : "draw2d.io.json.Reader",
+draw2d.io.json.Reader = draw2d.io.Reader.extend(
+    /** @lends draw2d.io.json.Reader.prototype */
+    {
+    
+    NAME: "draw2d.io.json.Reader",
 
     init: function(){
         this._super();

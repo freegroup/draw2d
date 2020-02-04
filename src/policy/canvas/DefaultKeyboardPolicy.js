@@ -20,7 +20,6 @@ draw2d.policy.canvas.DefaultKeyboardPolicy = draw2d.policy.canvas.KeyboardPolicy
   NAME: "draw2d.policy.canvas.DefaultKeyboardPolicy",
 
   /**
-   * @constructs
    */
   init: function () {
     this._super()

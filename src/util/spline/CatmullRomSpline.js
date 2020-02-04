@@ -11,11 +11,13 @@
 import draw2d from '../../packages';
 
 draw2d.util.spline.CatmullRomSpline = draw2d.util.spline.CubicSpline.extend(
-{
-    NAME : "draw2d.util.spline.CatmullRomSpline",
+
+    /** @lends draw2d.util.spline.CatmullRomSpline.prototype */
+    {
+    
+    NAME: "draw2d.util.spline.CatmullRomSpline",
 
     /**
-     * @constructs
      */
     init: function()
     {

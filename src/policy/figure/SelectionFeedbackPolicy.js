@@ -19,7 +19,6 @@ draw2d.policy.figure.SelectionFeedbackPolicy = draw2d.policy.figure.SelectionPol
 
   /**
    *
-   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)

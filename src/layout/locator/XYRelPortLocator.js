@@ -32,7 +32,6 @@ draw2d.layout.locator.XYRelPortLocator = draw2d.layout.locator.PortLocator.exten
   /**
    *
    *
-   * @constructs
    * @param {Number} xPercentage the x coordinate in percent of the port relative to the left of the parent
    * @param {Number} yPercentage the y coordinate in percent of the port relative to the top of the parent
    */

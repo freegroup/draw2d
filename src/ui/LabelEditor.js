@@ -25,14 +25,15 @@
  */
 import draw2d from '../packages';
 
-draw2d.ui.LabelEditor = Class.extend({
-
-    NAME : "draw2d.ui.LabelEditor",
+draw2d.ui.LabelEditor = Class.extend(
+    /** @lends draw2d.ui.LabelEditor.prototype */
+    {
+    
+    NAME: "draw2d.ui.LabelEditor",
 
     /**
      * Create an label editor with a dedicated callback listener
      *
-     * @constructs
      */
     init: function(listener)
     {

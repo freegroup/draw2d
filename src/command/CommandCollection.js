@@ -21,7 +21,6 @@ draw2d.command.CommandCollection = draw2d.command.Command.extend(
   /**
    * Create a new CommandConnect objects which can be execute via the CommandStack.
    *
-   * @constructs
    * @param {String} [commandLabel] the label to show on the command stack for the undo/redo operation
    */
   init: function (commandLabel) {

@@ -54,7 +54,6 @@ draw2d.shape.layout.VerticalLayout = draw2d.shape.layout.Layout.extend(
   /**
    * Create a new instance
    *
-   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {

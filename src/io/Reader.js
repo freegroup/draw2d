@@ -11,7 +11,6 @@ import draw2d from '../packages';
 draw2d.io.Reader = Class.extend({
 
     /**
-     * @constructs
      * @private
      */
     init: function(){

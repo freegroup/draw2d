@@ -24,7 +24,6 @@ draw2d.shape.node.Fulcrum = draw2d.shape.node.Hub.extend(
 
   /**
    *
-   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {

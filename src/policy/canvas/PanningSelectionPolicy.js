@@ -15,7 +15,6 @@ draw2d.policy.canvas.PanningSelectionPolicy = draw2d.policy.canvas.SingleSelecti
 
   /**
    * Creates a new Router object
-   * @constructs
    */
   init: function () {
     this._super()

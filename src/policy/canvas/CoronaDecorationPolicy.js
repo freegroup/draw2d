@@ -33,7 +33,6 @@ draw2d.policy.canvas.CoronaDecorationPolicy = draw2d.policy.canvas.DecorationPol
 
   /**
    *
-   * @constructs
    */
   init: function (attr, setter, getter) {
 

@@ -42,11 +42,10 @@ import draw2d from '../../packages';
 
 draw2d.decoration.connection.DiamondDecorator = draw2d.decoration.connection.Decorator.extend({
 
-	NAME : "draw2d.decoration.connection.DiamondDecorator",
+	NAME: "draw2d.decoration.connection.DiamondDecorator",
 
 	/**
 	 *
-	 * @constructs
 	 * @param {Number} [width] the width of the arrow
 	 * @param {Number} [height] the height of the arrow
 	 */

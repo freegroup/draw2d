@@ -19,7 +19,6 @@ draw2d.policy.canvas.ZoomPolicy = draw2d.policy.canvas.CanvasPolicy.extend(
   NAME: "draw2d.policy.canvas.ZoomPolicy",
 
   /**
-   * @constructs
    */
   init: function () {
     this._super()

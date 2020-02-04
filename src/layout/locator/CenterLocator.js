@@ -33,7 +33,6 @@ draw2d.layout.locator.CenterLocator = draw2d.layout.locator.Locator.extend(
   /**
    * Constructs a locator with associated parent.
    *
-   * @constructs
    */
   init: function () {
     this._super()

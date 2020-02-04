@@ -9,14 +9,13 @@
 import draw2d from 'packages';
 
 draw2d.HybridPort = draw2d.Port.extend(
-  /** @lends draw2d.HybridPort.prototype */
-  {
-    NAME : "draw2d.HybridPort",
+    /** @lends draw2d.HybridPort.prototype */
+    {
+    NAME: "draw2d.HybridPort",
 
     /**
      * Create a new HybridPort element
      *
-     * @constructs
      * @param {Object} [attr] the configuration of the shape
      */
     init: function(attr, setter, getter)

@@ -25,7 +25,6 @@ draw2d.policy.canvas.SnapToInBetweenEditPolicy = draw2d.policy.canvas.SnapToEdit
   /**
    * Creates a new constraint policy for snap to geometry
    *
-   * @constructs
    */
   init: function (attr, setter, getter) {
 

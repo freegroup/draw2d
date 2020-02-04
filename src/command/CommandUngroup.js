@@ -16,7 +16,6 @@ draw2d.command.CommandUngroup = draw2d.command.Command.extend(
   /**
    * Create a group command for the given figure.
    *
-   * @constructs
    * @param {draw2d.Canvas} canvas the responsible canvas
    * @param {draw2d.util.ArrayList|draw2d.Selection} group the figures to group
    */

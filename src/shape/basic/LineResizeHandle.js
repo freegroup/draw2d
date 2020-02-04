@@ -18,7 +18,6 @@ draw2d.shape.basic.LineResizeHandle = draw2d.shape.basic.Circle.extend(
 
   /**
    *
-   * @constructs
    */
   init: function (attr, setter, getter) {
 

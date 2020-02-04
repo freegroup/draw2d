@@ -16,7 +16,6 @@ draw2d.policy.figure.DragDropEditPolicy = draw2d.policy.figure.FigureEditPolicy.
   NAME: "draw2d.policy.figure.DragDropEditPolicy",
 
   /**
-   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)

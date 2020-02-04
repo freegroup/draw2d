@@ -27,7 +27,6 @@ draw2d.shape.basic.Circle = draw2d.shape.basic.Oval.extend(
   /**
    * Create a new circle figure.
    *
-   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {

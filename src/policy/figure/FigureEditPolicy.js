@@ -20,7 +20,6 @@ draw2d.policy.figure.FigureEditPolicy = draw2d.policy.EditPolicy.extend(
   /**
    * Creates a new Router object
    *
-   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)

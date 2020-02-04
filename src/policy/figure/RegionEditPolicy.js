@@ -20,7 +20,6 @@ draw2d.policy.figure.RegionEditPolicy = draw2d.policy.figure.DragDropEditPolicy.
   /**
    * Creates a new constraint object
    *
-   * @constructs
    * @param {Number|draw2d.geo.Rectangle} x x coordinate or a rectangle as constraint for the assigned figure.
    * @param {Number} y
    * @param {Number} w

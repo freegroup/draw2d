@@ -19,7 +19,6 @@ draw2d.shape.basic.GhostVertexResizeHandle = draw2d.shape.basic.LineResizeHandle
     /**
      *
      *
-     * @constructs
      */
     init: function (owner, precursorIndex) {
     this.maxOpacity = 0.35

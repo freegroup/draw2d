@@ -15,7 +15,6 @@ draw2d.layout.connection.ConnectionRouter = Class.extend(
 
   /**
    * Creates a new Router object
-   * @constructs
    */
   init: function () {
   },

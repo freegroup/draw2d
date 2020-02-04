@@ -11,11 +11,13 @@
 import draw2d from '../../packages';
 
 draw2d.util.spline.CubicSpline = draw2d.util.spline.Spline.extend(
-{
-    NAME : "draw2d.util.spline.CubicSpline",
+
+    /** @lends draw2d.util.spline.CubicSpline.prototype */
+    {
+    
+    NAME: "draw2d.util.spline.CubicSpline",
 
     /**
-     * @constructs
      */
     init: function()
     {

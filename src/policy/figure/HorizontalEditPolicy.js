@@ -33,7 +33,6 @@ draw2d.policy.figure.HorizontalEditPolicy = draw2d.policy.figure.DragDropEditPol
   /**
    * Creates a new constraint object
    *
-   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)

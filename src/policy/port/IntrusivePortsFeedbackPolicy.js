@@ -15,7 +15,6 @@ draw2d.policy.port.IntrusivePortsFeedbackPolicy = draw2d.policy.port.PortFeedbac
   NAME: "draw2d.policy.port.IntrusivePortsFeedbackPolicy",
 
   /**
-   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)

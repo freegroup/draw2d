@@ -34,7 +34,6 @@ draw2d.ui.LabelInplaceEditor =  draw2d.ui.LabelEditor.extend(
     NAME: "draw2d.ui.LabelInplaceEditor",
 
     /**
-     * @constructs
      * @private
      */
     init: function(listener)
