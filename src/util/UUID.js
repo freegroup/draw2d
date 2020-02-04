@@ -18,7 +18,7 @@ draw2d.util.UUID=function()
 
 
 /**
- * @method
+ * 
  * Generates a unique id.<br>
  * But just for the correctness: <strong>this is no Global Unique Identifier</strong>, it is just a random generator
  * with the output that looks like a GUID. <br>

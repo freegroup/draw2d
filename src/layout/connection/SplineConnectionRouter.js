@@ -40,8 +40,10 @@
  */
 import draw2d from '../../packages'
 
-draw2d.layout.connection.SplineConnectionRouter = draw2d.layout.connection.ManhattanConnectionRouter.extend({
-
+draw2d.layout.connection.SplineConnectionRouter = draw2d.layout.connection.ManhattanConnectionRouter.extend(
+  /** @lends draw2d.layout.connection.SplineConnectionRouter.prototype */
+  {
+  
   NAME: "draw2d.layout.connection.SplineConnectionRouter",
 
   /**
@@ -59,7 +61,7 @@ draw2d.layout.connection.SplineConnectionRouter = draw2d.layout.connection.Manha
 
 
   /**
-   * @method
+   *
    * Callback method if the router has been assigned to a connection.
    *
    * @param {draw2d.Connection} connection The assigned connection

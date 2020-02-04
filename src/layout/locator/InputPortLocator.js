@@ -10,21 +10,24 @@
  */
 import draw2d from '../../packages'
 
-draw2d.layout.locator.InputPortLocator = draw2d.layout.locator.PortLocator.extend({
+draw2d.layout.locator.InputPortLocator = draw2d.layout.locator.PortLocator.extend(
+  /** @lends draw2d.layout.locator.InputPortLocator.prototype */
+  {
+
   NAME: "draw2d.layout.locator.InputPortLocator",
 
   /**
-   * @constructs
    * Default constructor for a Locator which can layout a port in context of a
    * {@link draw2d.shape.node.Node}
    *
+   * @constructs
    */
   init: function () {
     this._super()
   },
 
   /**
-   * @method
+   *
    * Controls the location of an {@link draw2d.Figure}
    *
    * @param {Number} index port index of the figure

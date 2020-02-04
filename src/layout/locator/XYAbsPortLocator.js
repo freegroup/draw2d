@@ -19,14 +19,17 @@
  */
 import draw2d from '../../packages'
 
-draw2d.layout.locator.XYAbsPortLocator = draw2d.layout.locator.PortLocator.extend({
+draw2d.layout.locator.XYAbsPortLocator = draw2d.layout.locator.PortLocator.extend(
+  /** @lends draw2d.layout.locator.XYAbsPortLocator.prototype */
+  {
+
   NAME: "draw2d.layout.locator.XYAbsPortLocator",
 
   /**
-   * @constructs
    *
    * {@link draw2d.shape.node.Node}
    *
+   * @constructs
    * @param {Number} x the x coordinate of the port relative to the left of the parent
    * @param {Number} y the y coordinate of the port relative to the top of the parent
    */
@@ -38,7 +41,7 @@ draw2d.layout.locator.XYAbsPortLocator = draw2d.layout.locator.PortLocator.exten
   },
 
   /**
-   * @method
+   *
    * Controls the location of an {@link draw2d.Figure}
    *
    * @param {Number} index child index of the figure

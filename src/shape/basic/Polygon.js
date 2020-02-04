@@ -23,7 +23,9 @@
 import draw2d from '../../packages'
 import jsonUtil from '../../util/JSONUtil'
 
-draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
+draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend(
+  /** @lends draw2d.shape.basic.Polygon.prototype */
+  {
 
   NAME: "draw2d.shape.basic.Polygon",
 
@@ -80,7 +82,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
   },
 
   /**
-   * @method
+   * 
    * calculate the path of the polygon
    *
    */
@@ -145,7 +147,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
   },
 
   /**
-   * @method
+   * 
    * Translate the figure with the given x/y offset. This method modifies all
    * vertices and the bounding box.
    *
@@ -198,7 +200,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
   },
 
   /**
-   * @method
+   * 
    * Change the position of the polygon. This method updates all vertices.
    *
    * @param {Number|draw2d.geo.Point} x
@@ -251,7 +253,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
   },
 
   /**
-   * @method
+   * 
    * Return all vertices of the polygon.
    *
    * @returns {draw2d.util.ArrayList}
@@ -262,7 +264,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
 
 
   /**
-   * @method
+   * 
    * Return the Vertex with the given index.
    *
    * @param {Number} index the index of the vertex to return
@@ -291,7 +293,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
   },
 
   /**
-   * @method
+   * 
    * Update the vertex at the given index. The method call didn't have any effect
    * if the vertex didn't exists.
    *
@@ -328,7 +330,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
   },
 
   /**
-   * @method
+   * 
    * Append a new vertex to the polygon.
    *
    * @param {Number | draw2d.geo.Point} x
@@ -354,7 +356,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
   },
 
   /**
-   * @method
+   * 
    * Insert a new vertex at the given index. All vertices will be shifted to
    * free the requested index.
    *
@@ -386,7 +388,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
 
 
   /**
-   * @method
+   * 
    * Remove a vertex from the polygon and return the removed point.
    *
    * @param {Number} index
@@ -469,7 +471,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
   },
 
   /**
-   * @method
+   * 
    * Calculate the bounding box of the shape and store them in an internal
    * variable for fast access.
    *

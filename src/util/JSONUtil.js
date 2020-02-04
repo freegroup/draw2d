@@ -4,7 +4,7 @@ import draw2d from '../packages';
 draw2d.util.JSON = {
 
         /**
-         * @method
+         * 
          * Given a dot deliminated string set will create an object
          * based on the structure of the string with the desired value
          *
@@ -60,7 +60,7 @@ draw2d.util.JSON = {
         },
 
         /**
-         * @method
+         * 
          * Returns the value defined by the path passed in
          *
          * @param  {Object} data the JSON data object
@@ -87,7 +87,7 @@ draw2d.util.JSON = {
         },
 
         /**
-         * @method
+         * 
          * calculates the diff between the given json objects
          *
          */

@@ -12,14 +12,16 @@
  */
 import draw2d from '../packages'
 
-draw2d.command.Command = Class.extend({
-
+draw2d.command.Command = Class.extend(
+  /** @lends draw2d.command.Command.prototype */
+  {
+  
   NAME: "draw2d.command.Command",
 
   /**
-   * @constructs
    * Create a new Command objects which can be execute via the CommandStack.
    *
+   * @constructs
    * @param {String} label
    */
   init: function (label) {
@@ -28,8 +30,8 @@ draw2d.command.Command = Class.extend({
 
 
   /**
-   * @method
-   * Returns a label of the Command. e.g. "move figure".
+   * 
+   * Returns a label of the Command. e.g. `move figure`.
    *
    * @return {String} the label for this command
    **/
@@ -39,7 +41,7 @@ draw2d.command.Command = Class.extend({
 
 
   /**
-   * @method
+   * 
    * Returns [true] if the command can be execute and the execution of the
    * command modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should
    * return false. The execution of this Command doesn't modify the model.
@@ -51,7 +53,7 @@ draw2d.command.Command = Class.extend({
   },
 
   /**
-   * @method
+   * 
    * Execute the command the first time.
    * Sup-classes must implement this method.
    *
@@ -61,7 +63,7 @@ draw2d.command.Command = Class.extend({
   },
 
   /**
-   * @method
+   * 
    * Will be called if the user cancel the operation.
    *
    * @template
@@ -70,7 +72,7 @@ draw2d.command.Command = Class.extend({
   },
 
   /**
-   * @method
+   * 
    * Undo the command.
    * Sup-classes must implement this method.
    *
@@ -80,7 +82,7 @@ draw2d.command.Command = Class.extend({
   },
 
   /**
-   * @method
+   * 
    * Redo the command after the user has undo this command.
    * Sup-classes must implement this method.
    *

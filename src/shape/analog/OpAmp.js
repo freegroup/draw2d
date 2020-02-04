@@ -15,7 +15,9 @@
  */
 import draw2d from '../../packages'
 
-draw2d.shape.analog.OpAmp = draw2d.SVGFigure.extend({
+draw2d.shape.analog.OpAmp = draw2d.SVGFigure.extend(
+  /** @lends draw2d.shape.analog.OpAmp.prototype */
+  {
 
   NAME: "draw2d.shape.analog.OpAmp",
 
@@ -32,9 +34,9 @@ draw2d.shape.analog.OpAmp = draw2d.SVGFigure.extend({
   }),
 
   /**
-   * @constructs
    * Create a new instance
    *
+   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {

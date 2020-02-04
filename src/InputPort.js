@@ -8,7 +8,9 @@
 
 import draw2d from 'packages'
 
-draw2d.InputPort = draw2d.Port.extend({
+draw2d.InputPort = draw2d.Port.extend(
+  /** @lends draw2d.InputPort.prototype */
+  {
 
   NAME: "draw2d.InputPort",
 

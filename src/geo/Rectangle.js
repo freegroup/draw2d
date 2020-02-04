@@ -65,7 +65,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 
 
     /**
-     * @method
+     * 
      * @private
      */
     adjustBoundary: function()
@@ -80,7 +80,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
     },
     
 	/**
-	 * @method
+	 * 
 	 * Resizes this Rectangle by the values supplied as input and returns this for 
 	 * convenience. This Rectangle's width will become this.width + dw. This 
 	 * Rectangle's height will become this.height + dh.
@@ -104,7 +104,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 	},
 	
     /**
-     * @method
+     * 
 	 * Adds the specified padding to the rectangle's bounds. This Rectangle's width
 	 * will become this.width + dw. The Rectangle's height will become this.height + dh.
 	 * The top left corner moves -dw/2, -dh/2
@@ -129,7 +129,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
     },
 
 	/**
-	 * @method
+	 * 
 	 * Translate the rectangle with the given x/y coordiante.
 	 *
 	 * @param {draw2d.geo.Point|Number} x the x translation or the complete point to translate
@@ -150,7 +150,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 
 
 	/**
-	 * @method
+	 * 
 	 * Returns a copy of the translated rectangle
 	 *
 	 * @param {draw2d.geo.Point|Number} x the x translation or the complete point to translate
@@ -189,7 +189,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 	},
 	
 	/**
-	 * @method
+	 * 
 	 * Returns <code>true</code> if this Rectangle's width or height is less than or
 	 * equal to 0.
 	 * 
@@ -201,7 +201,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 	},
 	
 	/**
-	 * @method
+	 * 
 	 * The width of the dimension element.
 	 * 
 	 * @return {Number}
@@ -212,7 +212,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 	},
 	
 	/**
-	 * @method
+	 * 
 	 * Set the new width of the rectangle.
 	 * 
 	 * @param {Number} w the new width of the rectangle
@@ -226,7 +226,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 	},
 	
 	/**
-	 * @method
+	 * 
 	 * The height of the dimension element.
 	 * 
 	 * @return {Number}
@@ -237,7 +237,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 	},
 
     /**
-     * @method
+     * 
      * Set the new height of the rectangle.
      * 
      * @param {Number} h the new height of the rectangle
@@ -251,7 +251,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
     },	
     
     /**
-     * @method
+     * 
      * The x coordinate of the left corner.
      * 
      * @return {Number}
@@ -262,7 +262,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
     },
     
 	/**
-	 * @method
+	 * 
 	 * The x coordinate of the right corner.
 	 * 
 	 * @return {Number}
@@ -273,7 +273,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 	},
 	
     /**
-     * @method
+     * 
      * The y coordinate of the top.
      * 
      *@return {Number}
@@ -284,7 +284,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
     },
     
     /**
-	 * @method
+	 * 
 	 * The y coordinate of the bottom.
 	 * 
 	 *@return {Number}
@@ -295,7 +295,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 	},
 	
 	/**
-	 * @method
+	 * 
 	 * The top left corner of the dimension object.
 	 * 
 	 * @return {draw2d.geo.Point} a new point objects which holds the coordinates
@@ -306,7 +306,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 	},
 	
     /**
-     * @method
+     * 
      * The top center coordinate of the dimension object.
      * 
      * @return {draw2d.geo.Point} a new point objects which holds the coordinates
@@ -317,7 +317,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
     },
 
     /**
-	 * @method
+	 * 
 	 * The top right corner of the dimension object.
 	 * 
 	 * @return {draw2d.geo.Point} a new point objects which holds the coordinates
@@ -328,7 +328,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 	},
 
 	/**
-	 * @method
+	 * 
 	 * The center left  of the dimension object.
 	 *
 	 * @return {draw2d.geo.Point} a new point objects which holds the coordinates
@@ -339,7 +339,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 	},
 
 	/**
-	 * @method
+	 * 
 	 * The bottom left corner of the dimension object.
 	 * 
 	 * @return {draw2d.geo.Point} a new point objects which holds the coordinates
@@ -350,7 +350,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 	},
 	
 	/**
-     * @method
+     * 
      * The bottom center coordinate of the dimension object.
      * 
      * @return {draw2d.geo.Point} a new point objects which holds the coordinates
@@ -361,7 +361,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
     },
     
 	/**
-	 * @method
+	 * 
 	 * The center of the dimension object
 	 * 
 	 * @return {draw2d.geo.Point} a new point which holds the center of the object
@@ -373,7 +373,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 	
 	
 	/**
-	 * @method
+	 * 
 	 * Bottom right corner of the object
 	 * 
 	 * @return {draw2d.geo.Point} a new point which holds the bottom right corner
@@ -384,7 +384,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 	},
 	
 	/**
-	 * @method
+	 * 
 	 * Return all points of the rectangle as array. Starting at topLeft and the
 	 * clockwise.
 	 * 
@@ -405,7 +405,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 	},
 
 	/**
-	 * @method
+	 * 
 	 * Return a new rectangle which fits into this rectangle. <b>ONLY</b> the x/y coordinates
 	 * will be changed. Not the dimension of the given rectangle.
 	 * 
@@ -442,7 +442,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 	},
 	
 	/**
-	 * @method
+	 * 
 	 * Return the minimum distance of this rectangle to the given {@link draw2d.geo.Point} or 
 	 * {link draw2d.geo.Rectangle}.
 	 * 
@@ -541,7 +541,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 	
     
     /**
-     * @method
+     * 
      * Determin the octant of r2 in relation to this rectangle.
      * <pre>
      *
@@ -612,7 +612,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
   
     
     /**
-     * @method
+     * 
      * Returns the direction the point <i>p</i> is in relation to the given rectangle.
      * Util method for inherit router implementations.
      * 
@@ -673,7 +673,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
     
     
 	/**
-	 * @method
+	 * 
 	 * Compares two rectangle objects
 	 * 
 	 * @param {draw2d.geo.Rectangle} o
@@ -686,7 +686,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 	},
 	
     /**
-     * @method
+     * 
      * Detect whenever the hands over coordinate is inside the rectangle.
      *
      * @param {Number/draw2d.geo.Point} iX
@@ -705,7 +705,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
     },
     
     /**
-     * @method
+     * 
      * return true if this rectangle inside the hand over rectangle
      * 
      *
@@ -721,7 +721,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
     },
 
     /**
-     * @method
+     * 
      * return true if this rectangle contains the hand over rectangle.
      * 
      *
@@ -738,7 +738,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
     },
  
     /**
-     * @method
+     * 
      * checks whenever the rectangles has an intersection.
      * 
      * @param {draw2d.geo.Rectangle} rect
@@ -762,7 +762,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
     },
     
     /**
-     * @method
+     * 
      * Merge this rectangle with the given one.
      * 
      * @param {draw2d.geo.Rectangle} rect
@@ -782,7 +782,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
     },
     
     /**
-     * @method
+     * 
      * returns the intersection points with the given line if any exists
      * 
      * @param {draw2d.geo.Point} start
@@ -807,7 +807,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
     },
 
 	/**
-	 * @method
+	 * 
 	 * Returns a copy of this rectangle
 	 *
 	 *
@@ -820,7 +820,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
 	},
 
 	/**
-     * @method
+     * 
      * converts the rectangle to JSON representation. required for the draw2d.io.Writer
      * 
      * @returns {Object}

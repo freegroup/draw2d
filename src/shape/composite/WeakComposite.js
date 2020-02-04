@@ -13,13 +13,16 @@
  */
 import draw2d from '../../packages'
 
-draw2d.shape.composite.WeakComposite = draw2d.shape.composite.Composite.extend({
+draw2d.shape.composite.WeakComposite = draw2d.shape.composite.Composite.extend(
+  /** @lends draw2d.shape.composite.WeakComposite.prototype */
+  {
+
   NAME: "draw2d.shape.composite.WeakComposite",
 
   /**
-   * @constructs
    * Creates a new weak composite element which are not assigned to any canvas.
    *
+   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {

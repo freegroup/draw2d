@@ -44,9 +44,9 @@ draw2d.policy.connection.DragConnectionCreatePolicy = draw2d.policy.connection.C
     NAME : "draw2d.policy.connection.DragConnectionCreatePolicy",
     
     /**
-     * @constructs
      *
      * Creates a new connection create policy instance
+     * @constructs
      */
     init: function(attr, setter, getter)
     {
@@ -58,7 +58,7 @@ draw2d.policy.connection.DragConnectionCreatePolicy = draw2d.policy.connection.C
     },
 
     /**
-     * @method
+     * 
      *
      * @param {draw2d.Canvas} canvas
      * @param {Number} x the x-coordinate of the mouse down event
@@ -109,7 +109,7 @@ draw2d.policy.connection.DragConnectionCreatePolicy = draw2d.policy.connection.C
     },
 
     /**
-     * @method
+     * 
      *
      * @param {draw2d.Canvas} canvas
      * @param {Number} dx The x diff between start of dragging and this event
@@ -191,7 +191,7 @@ draw2d.policy.connection.DragConnectionCreatePolicy = draw2d.policy.connection.C
 
 
     /**
-     * @method
+     * 
      *
      * @param {draw2d.Figure} figure the shape below the mouse or null
      * @param {Number} x the x-coordinate of the mouse down event

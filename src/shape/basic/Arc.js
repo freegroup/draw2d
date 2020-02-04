@@ -18,7 +18,10 @@
 import draw2d from '../../packages'
 import extend from '../../util/extend'
 
-draw2d.shape.basic.Arc = draw2d.SetFigure.extend({
+draw2d.shape.basic.Arc = draw2d.SetFigure.extend(
+  /** @lends draw2d.shape.basic.Arc.prototype */
+  {
+
   NAME: "draw2d.shape.basic.Arc",
 
   /**

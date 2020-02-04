@@ -18,7 +18,9 @@
 import draw2d from '../../packages'
 import Color from '../../util/Color'
 
-draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend({
+draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend(
+  /** @lends draw2d.shape.node.Hub.prototype */
+  {
 
   NAME: "draw2d.shape.node.Hub",
 
@@ -78,7 +80,7 @@ draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend({
   },
 
   /**
-   * @method
+   * 
    * Called by the framework during drag&drop operations if the user drag a figure over this figure
    *
    * @param {draw2d.Figure} draggedFigure The figure which is currently dragging
@@ -93,7 +95,7 @@ draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend({
 
 
   /**
-   * @method
+   * 
    * This value is relevant for the interactive resize of the figure.
    *
    * @return {Number} Returns the min. width of this object.
@@ -132,7 +134,7 @@ draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend({
   },
 
   /**
-   * @method
+   * 
    * Set the label for the Hub
    *
    *      // Alternatively you can use the attr method:
@@ -168,7 +170,7 @@ draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend({
   },
 
   /**
-   * @method
+   * 
    * Set the strategy for the connection direction calculation.<br>
    * <br>
    *

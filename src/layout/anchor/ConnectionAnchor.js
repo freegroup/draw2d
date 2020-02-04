@@ -8,12 +8,15 @@
 import draw2d from '../../packages'
 
 
-draw2d.layout.anchor.ConnectionAnchor = Class.extend({
+draw2d.layout.anchor.ConnectionAnchor = Class.extend(
+  /** @lends draw2d.layout.anchor.ConnectionAnchor.prototype */
+  {
+
   NAME: "draw2d.layout.anchor.ConnectionAnchor",
 
   /**
-   * @constructs
    *
+   * @constructs
    * @param {draw2d.Figure} owner the figure to use for the anchor calculation
    */
   init: function (owner) {
@@ -21,7 +24,7 @@ draw2d.layout.anchor.ConnectionAnchor = Class.extend({
   },
 
   /**
-   * @method
+   * 
    * Returns the location where the Connection should be anchored in absolute coordinates.
    * The anchor may use the given reference Point to calculate this location.
    *
@@ -36,7 +39,7 @@ draw2d.layout.anchor.ConnectionAnchor = Class.extend({
   },
 
   /**
-   * @method
+   * 
    * Returns the Figure that contains this ConnectionAnchor.
    *
    * @return {draw2d.Figure} The Figure that contains this ConnectionAnchor
@@ -46,7 +49,7 @@ draw2d.layout.anchor.ConnectionAnchor = Class.extend({
   },
 
   /**
-   * @method
+   * 
    * Set the owner of the Anchor.
    *
    * @param {draw2d.Figure} owner the new owner of the anchor locator
@@ -59,7 +62,7 @@ draw2d.layout.anchor.ConnectionAnchor = Class.extend({
   },
 
   /**
-   * @method
+   * 
    * Returns the bounds of this Anchor's owner.  Subclasses can override this method
    * to adjust the box. Maybe you return the box of the port parent (the parent figure)
    *
@@ -70,7 +73,7 @@ draw2d.layout.anchor.ConnectionAnchor = Class.extend({
   },
 
   /**
-   * @method
+   * 
    * Returns the reference point for this anchor in absolute coordinates. This might be used
    * by another anchor to determine its own location.
    *

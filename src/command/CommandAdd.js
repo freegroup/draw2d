@@ -7,14 +7,16 @@
  */
 import draw2d from '../packages'
 
-draw2d.command.CommandAdd = draw2d.command.Command.extend({
-
+draw2d.command.CommandAdd = draw2d.command.Command.extend(
+  /** @lends draw2d.command.CommandAdd.prototype */
+  {
+  
   NAME: "draw2d.command.CommandAdd",
 
   /**
-   * @constructs
    * Create a add command for the given figure.
    *
+   * @constructs
    * @param {draw2d.Canvas} canvas the canvas to use
    * @param {draw2d.Figure} figure the figure to add
    * @param {Number|draw2d.geo.Point} x the x-coordinate or a complete point where to place the figure
@@ -29,7 +31,7 @@ draw2d.command.CommandAdd = draw2d.command.Command.extend({
 
 
   /**
-   * @method
+   * 
    * Returns [true] if the command can be execute and the execution of the
    * command modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should
    * return false. The execution of this Command doesn't modify the model.
@@ -42,7 +44,7 @@ draw2d.command.CommandAdd = draw2d.command.Command.extend({
   },
 
   /**
-   * @method
+   * 
    * Execute the command the first time
    *
    **/
@@ -51,7 +53,7 @@ draw2d.command.CommandAdd = draw2d.command.Command.extend({
   },
 
   /**
-   * @method
+   * 
    * Redo the command after the user has undo this command
    *
    **/
@@ -60,7 +62,7 @@ draw2d.command.CommandAdd = draw2d.command.Command.extend({
   },
 
   /**
-   * @method
+   * 
    * Undo the command
    *
    **/

@@ -11,7 +11,10 @@
 import draw2d from '../../packages'
 
 
-draw2d.layout.connection.MuteableManhattanConnectionRouter = draw2d.layout.connection.ManhattanConnectionRouter.extend({
+draw2d.layout.connection.MuteableManhattanConnectionRouter = draw2d.layout.connection.ManhattanConnectionRouter.extend(
+  /** @lends draw2d.layout.connection.MuteableManhattanConnectionRouter.prototype */
+  {
+
   NAME: "draw2d.layout.connection.MuteableManhattanConnectionRouter",
 
   UP: new draw2d.geo.Ray(0, -1),
@@ -170,7 +173,7 @@ draw2d.layout.connection.MuteableManhattanConnectionRouter = draw2d.layout.conne
   },
 
   /**
-   * @method
+   *
    *
    * @param {draw2d.Connection} connection
    * @param {Number} r

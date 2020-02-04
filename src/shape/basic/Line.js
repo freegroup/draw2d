@@ -32,7 +32,10 @@ import draw2d from '../../packages'
 import jsonUtil from '../../util/JSONUtil'
 import extend from '../../util/extend'
 
-draw2d.shape.basic.Line = draw2d.Figure.extend({
+draw2d.shape.basic.Line = draw2d.Figure.extend(
+  /** @lends draw2d.shape.basic.Line.prototype */
+  {
+
   NAME: "draw2d.shape.basic.Line",
 
   DEFAULT_COLOR: new draw2d.util.Color(0, 0, 0),
@@ -118,7 +121,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Set the outline color of the line.
    *
    *      // Alternatively you can use the attr method:
@@ -138,7 +141,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * The outline color of the text
    *
    * @returns {draw2d.util.Color}
@@ -149,7 +152,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Set the outline stroke of the line to use.
    *
    *      // Alternatively you can use the attr method:
@@ -169,7 +172,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * The used outline line width.
    *
    * @returns {Number}
@@ -180,7 +183,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Called if the drag and drop action begins. You can return [false] if you
    * want avoid that the figure can be move.
    *
@@ -201,7 +204,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Don't call them manually. This will be done by the framework.<br>
    * Will be called if the object are moved via drag and drop.
    * Sub classes can override this method to implement additional stuff. Don't forget to call
@@ -272,7 +275,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Called when a user clicks on the element.
    *
    *      // Alternatively you can register for this event with
@@ -287,7 +290,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Set the line style for this object.
    *
    *      // Alternatively you can use the attr method:
@@ -307,7 +310,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Get the line style for this object.
    *
    *      // Alternatively you can use the attr method:
@@ -321,7 +324,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
 
 
   /**
-   * @method
+   *
    * Set the width for the click hit test of this line.
    *
    * @param {Number} width the width of the line hit test.
@@ -334,7 +337,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
 
 
   /**
-   * @method
+   *
    * Called by the framework. Don't call them manually.
    *
    * @private
@@ -404,7 +407,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Moves the element to the background. Additional
    * the internal model changed as well.
    *
@@ -422,7 +425,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
 
 
   /**
-   * @method
+   *
    * Highlight the element or remove the highlighting
    *
    *      // Alternatively you can use the attr method:
@@ -488,7 +491,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
 
 
   /**
-   * @method
+   *
    * The used line width.
    *
    * @returns {Number}
@@ -499,7 +502,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
 
 
   /**
-   * @method
+   *
    * Set the color of the line.
    * This method fires a <i>document dirty</i> event.
    *
@@ -519,7 +522,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Return the current paint color.
    *
    * @return {draw2d.util.Color} The paint color of the line.
@@ -529,7 +532,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Translate the line with the given x/y offset.
    *
    * @param {Number} dx The new x translate offset
@@ -560,7 +563,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * return the bounding box of the line or polygon
    *
    * TODO: precalculate or cache this values
@@ -581,7 +584,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
 
 
   /**
-   * @method
+   *
    * Set the start point of the line.
    * This method fires a <i>document dirty</i> event.
    *
@@ -679,7 +682,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Return the x coordinate of the start.
    * @return {Number}
    **/
@@ -688,7 +691,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Return the y coordinate of the start.
    *
    * @return {Number}
@@ -698,7 +701,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Return the start point.
    *
    * @return {draw2d.geo.Point}
@@ -713,7 +716,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
 
 
   /**
-   * @method
+   *
    * Return the x coordinate of the end point
    *
    * @return {Number}
@@ -723,7 +726,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Return the y coordinate of the end point.
    *
    * @return {Number}
@@ -733,7 +736,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Return the end point.
    *
    * @return {draw2d.geo.Point}
@@ -747,7 +750,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * The x-offset related to the parent figure or canvas.
    *
    * @return {Number} the x-offset to the parent figure
@@ -758,7 +761,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
 
 
   /**
-   * @method
+   *
    * The x-offset related to the parent figure or canvas.
    *
    * @return {Number} the x-offset to the parent figure
@@ -769,7 +772,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
 
 
   /**
-   * @method
+   *
    * Return the Vertex with the given index.
    *
    * @param {Number} index the index of the vertex to return
@@ -780,7 +783,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
 
 
   /**
-   * @method
+   *
    * Update the vertex at the give position with the new coordinate
    *
    * @param {Number} index the index of the vertex to update
@@ -827,7 +830,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Returns the vertices of the connection
    *
    * @return {draw2d.util.ArrayList} an draw2d.util.ArrayList of type draw2d.Point
@@ -837,7 +840,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Update the vertices of the object. The given array is copied and assigned.
    *
    * @param {draw2d.util.ArrayList|Array} vertices the new vertices of the polyline.
@@ -899,7 +902,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Return the segments of the line with {start:s, end: e} JSON array list
    *
    * @returns {draw2d.util.ArrayList}
@@ -912,7 +915,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Returns the length of the line.
    *
    * @return {Number}
@@ -922,7 +925,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Returns the angle of the line in degree.
    *
    * <pre>
@@ -962,7 +965,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Returns the Command to perform the specified Request or null if the shape want cancel the
    * operation or it can't operate the command.
    *
@@ -1002,7 +1005,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Checks if the hands over coordinate close to the line. The 'corona' is considered
    * for this test. This means the point isn't direct on the line. Is it only close to the
    * line!
@@ -1016,7 +1019,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Returns the projection of the point on the line.
    *
    * @param {Number} px the x coordinate of the test point
@@ -1032,7 +1035,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
 
 
   /**
-   * @method
+   *
    * Returns the point onto the line which has the 'percentage' position onto the line.
    *
    * @param {Number} percentage value between [0..1]
@@ -1047,7 +1050,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
 
 
   /**
-   * @method
+   *
    * Return all intersection points between the given Line.
    *
    * @param {draw2d.shape.basic.Line} other
@@ -1077,7 +1080,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
 
 
   /**
-   * @method
+   *
    * Return an objects with all important attributes for XML or JSON serialization
    *
    * @returns {Object}
@@ -1114,7 +1117,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Read all attributes from the serialized properties and transfer them into the shape.
    *
    * @param {Object} memento

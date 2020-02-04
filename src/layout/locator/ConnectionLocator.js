@@ -10,13 +10,17 @@
  */
 import draw2d from '../../packages'
 
-draw2d.layout.locator.ConnectionLocator = draw2d.layout.locator.Locator.extend({
+draw2d.layout.locator.ConnectionLocator = draw2d.layout.locator.Locator.extend(
+  /** @lends draw2d.layout.locator.ConnectionLocator.prototype */
+  {
+  
   NAME: "draw2d.layout.locator.ConnectionLocator",
 
   /**
-   * @constructs
    * Default constructor for a Locator which can layout a figure in context of a
    * {@link draw2d.Connector}
+   *
+   * @constructs
    */
   init: function () {
     this._super()

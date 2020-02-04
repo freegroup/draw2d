@@ -25,13 +25,15 @@
 import draw2d from '../../packages'
 import extend from '../../util/extend'
 
-draw2d.policy.canvas.CoronaDecorationPolicy = draw2d.policy.canvas.DecorationPolicy.extend({
+draw2d.policy.canvas.CoronaDecorationPolicy = draw2d.policy.canvas.DecorationPolicy.extend(
+  /** @lends draw2d.policy.canvas.CoronaDecorationPolicy.prototype */
+  {
 
   NAME: "draw2d.policy.canvas.CoronaDecorationPolicy",
 
   /**
-   * @constructs
    *
+   * @constructs
    */
   init: function (attr, setter, getter) {
 
@@ -126,7 +128,7 @@ draw2d.policy.canvas.CoronaDecorationPolicy = draw2d.policy.canvas.DecorationPol
 
 
   /**
-   * @method
+   * 
    * Update all ports with the new calculated opacity in relation to the distance to the current
    * mouse position
    *

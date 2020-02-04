@@ -15,13 +15,16 @@
  */
 import draw2d from '../../packages'
 
-draw2d.policy.figure.RoundRectangleSelectionFeedbackPolicy = draw2d.policy.figure.RectangleSelectionFeedbackPolicy.extend({
-
+draw2d.policy.figure.RoundRectangleSelectionFeedbackPolicy = draw2d.policy.figure.RectangleSelectionFeedbackPolicy.extend(
+  /** @lends draw2d.policy.figure.RoundRectangleSelectionFeedbackPolicy.prototype */
+  {
+  
   NAME: "draw2d.policy.figure.RoundRectangleSelectionFeedbackPolicy",
 
   /**
-   * @constructs
    * Creates a new Router object
+   *
+   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)

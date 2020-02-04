@@ -9,13 +9,15 @@
  */
 import draw2d from '../../packages'
 
-draw2d.policy.figure.VertexSelectionFeedbackPolicy = draw2d.policy.figure.SelectionFeedbackPolicy.extend({
+draw2d.policy.figure.VertexSelectionFeedbackPolicy = draw2d.policy.figure.SelectionFeedbackPolicy.extend(
+  /** @lends draw2d.policy.figure.VertexSelectionFeedbackPolicy.prototype */
+  {
 
   NAME: "draw2d.policy.figure.VertexSelectionFeedbackPolicy",
 
   /**
-   * @constructs
    * Creates a new Router object
+   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)
@@ -23,7 +25,7 @@ draw2d.policy.figure.VertexSelectionFeedbackPolicy = draw2d.policy.figure.Select
 
 
   /**
-   * @method
+   *
    *
    * @param {draw2d.Canvas} canvas The host canvas
    * @param {draw2d.Connection} connection the selected figure
@@ -51,7 +53,7 @@ draw2d.policy.figure.VertexSelectionFeedbackPolicy = draw2d.policy.figure.Select
   },
 
   /**
-   * @method
+   *
    * Callback method if the figure has been moved.
    *
    * @param {draw2d.Canvas} canvas The host canvas

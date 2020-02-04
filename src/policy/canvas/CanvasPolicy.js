@@ -8,13 +8,15 @@
 import draw2d from '../../packages'
 import Color from '../../util/Color'
 
-draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend({
+draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend(
+  /** @lends draw2d.policy.canvas.CanvasPolicy.prototype */
+  {
 
   NAME: "draw2d.policy.canvas.CanvasPolicy",
 
   /**
-   * @constructs
    * Creates a new Router object
+   * @constructs
    */
   init: function (attr, setter, getter) {
     this.canvas = null
@@ -22,7 +24,7 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend({
   },
 
   /**
-   * @method
+   *
    * Called if the policy is installed into the canvas.
    *
    * @param {draw2d.Canvas} canvas
@@ -32,7 +34,7 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend({
   },
 
   /**
-   * @method
+   *
    * Called if the policy is deinstalled from the canvas
    *
    * @param {draw2d.Canvas} canvas
@@ -42,7 +44,7 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend({
   },
 
   /**
-   * @method
+   *
    * Called by the canvas if the user click on a figure.
    *
    * @param {draw2d.Figure} the figure under the click event. Can be null
@@ -59,7 +61,7 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend({
   },
 
   /**
-   * @method
+   *
    *
    * @param {draw2d.Canvas} canvas
    * @param {Number} x the x-coordinate of the mouse event
@@ -72,7 +74,7 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend({
   },
 
   /**
-   * @method
+   *
    * Called by the canvas if the user double click on a figure.
    *
    * @param {draw2d.Figure} the figure under the double click event. Can be null
@@ -90,7 +92,7 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend({
 
 
   /**
-   * @method
+   *
    *
    * @param {draw2d.Canvas} canvas
    * @param {Number} x the x-coordinate of the mouse down event
@@ -102,7 +104,7 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend({
   },
 
   /**
-   * @method
+   *
    *
    * @param {draw2d.Canvas} canvas
    * @param {Number} dx The x diff between start of dragging and this event
@@ -117,7 +119,7 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend({
   },
 
   /**
-   * @method
+   *
    *
    * @param {draw2d.Figure} figure the shape below the mouse or null
    * @param {Number} x the x-coordinate of the mouse down event
@@ -131,7 +133,7 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend({
 
 
   /**
-   * @method
+   *
    * Called if the user press the right mouse in the canvas.
    *
    * @param {draw2d.Figure|draw2d.shape.basic.Line} figure the figure below the mouse
@@ -147,7 +149,7 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend({
 
 
   /**
-   * @method
+   *
    * called if the user uses the mouse wheel.
    *
    *
@@ -168,7 +170,7 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend({
 
 
   /**
-   * @method
+   *
    * Adjust the coordinates to the given constraint.
    *
    * @param {draw2d.Canvas} canvas the related canvas
@@ -183,7 +185,7 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend({
   },
 
   /**
-   * @method
+   *
    * Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W*H);.
    * Then, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y*W] = 1;.
    * Finally, create the image: var my_glif = createGif(W, H, pixels, color);

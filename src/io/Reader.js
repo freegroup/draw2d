@@ -19,7 +19,7 @@ draw2d.io.Reader = Class.extend({
     },
 
     /**
-     * @method
+     *
      *
      * Restore the canvas from a given String.
      *

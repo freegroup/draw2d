@@ -11,13 +11,15 @@
  */
 import draw2d from '../../packages'
 
-draw2d.policy.figure.SelectionPolicy = draw2d.policy.figure.DragDropEditPolicy.extend({
-
+draw2d.policy.figure.SelectionPolicy = draw2d.policy.figure.DragDropEditPolicy.extend(
+  /** @lends draw2d.policy.figure.SelectionPolicy.prototype */
+  {
+  
   NAME: "draw2d.policy.figure.SelectionPolicy",
 
   /**
-   * @constructs
    *
+   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)
@@ -25,7 +27,7 @@ draw2d.policy.figure.SelectionPolicy = draw2d.policy.figure.DragDropEditPolicy.e
 
 
   /**
-   * @method
+   *
    *
    * @template
    * @param figure
@@ -36,7 +38,7 @@ draw2d.policy.figure.SelectionPolicy = draw2d.policy.figure.DragDropEditPolicy.e
 
 
   /**
-   * @method
+   *
    *
    * @param {draw2d.Figure} figure the unselected figure
    */

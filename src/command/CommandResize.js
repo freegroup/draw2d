@@ -8,13 +8,16 @@
  */
 import draw2d from '../packages'
 
-draw2d.command.CommandResize = draw2d.command.Command.extend({
+draw2d.command.CommandResize = draw2d.command.Command.extend(
+  /** @lends draw2d.command.CommandResize.prototype */
+  {
+
   NAME: "draw2d.command.CommandResize",
 
   /**
-   * @constructs
    * Create a new resize Command objects which can be execute via the CommandStack.
    *
+   * @constructs
    * @param {draw2d.Figure} figure the figure to resize
    * @param {Number} [width] the current width
    * @param {Number} [height] the current height
@@ -34,7 +37,7 @@ draw2d.command.CommandResize = draw2d.command.Command.extend({
   },
 
   /**
-   * @method
+   * 
    * Set the new dimension of the element.
    *
    * @param {Number} width the new width.
@@ -46,7 +49,7 @@ draw2d.command.CommandResize = draw2d.command.Command.extend({
   },
 
   /**
-   * @method
+   * 
    * Returns [true] if the command can be execute and the execution of the
    * command modify the model. A CommandMove with [startX,startX] == [endX,endY] should
    * return false. <br>
@@ -60,7 +63,7 @@ draw2d.command.CommandResize = draw2d.command.Command.extend({
   },
 
   /**
-   * @method
+   * 
    * Execute the command the first time
    *
    **/
@@ -69,7 +72,7 @@ draw2d.command.CommandResize = draw2d.command.Command.extend({
   },
 
   /**
-   * @method
+   * 
    * Undo the command
    *
    **/
@@ -78,7 +81,7 @@ draw2d.command.CommandResize = draw2d.command.Command.extend({
   },
 
   /**
-   * @method
+   * 
    * Redo the command after the user has undo this command
    *
    **/

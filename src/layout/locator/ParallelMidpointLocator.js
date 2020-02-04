@@ -12,16 +12,19 @@
  */
 import draw2d from '../../packages'
 
-draw2d.layout.locator.ParallelMidpointLocator = draw2d.layout.locator.ConnectionLocator.extend({
+draw2d.layout.locator.ParallelMidpointLocator = draw2d.layout.locator.ConnectionLocator.extend(
+  /** @lends draw2d.layout.locator.ParallelMidpointLocator.prototype */
+  {
+
   NAME: "draw2d.layout.locator.ParallelMidpointLocator",
 
   /**
-   * @constructs
    * Constructs a ParallelMidpointLocator with optional padding to the connection.
    *
    * if the parameter <b>distanceFromConnection</b> is less than zero the label is
    * placed above of the connection. Else the label is below the connection.
    *
+   * @constructs
    * @param {Number} distanceFromConnection the distance of the label to the connection.
    */
   init: function (distanceFromConnection) {
@@ -37,7 +40,7 @@ draw2d.layout.locator.ParallelMidpointLocator = draw2d.layout.locator.Connection
 
 
   /**
-   * @method
+   *
    * Relocates the given Figure always in the center of an edge.
    *
    * @param {Number} index child index of the target

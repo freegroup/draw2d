@@ -49,9 +49,9 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
     NAME : "draw2d.policy.connection.ClickConnectionCreatePolicy",
 
     /**
-     * @constructs
      *
      * Creates a new connection create policy instance
+     * @constructs
      */
     init: function(attr, setter, getter)
     {
@@ -66,7 +66,7 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
     },
 
     /**
-     * @method
+     * 
      * Called by the canvas if the user click on a figure.
      *
      * @param {draw2d.Figure} the figure under the click event. Can be null
@@ -852,7 +852,7 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
 
 
     /**
-     * @method
+     * 
      *
      * @param {draw2d.Canvas} canvas
      * @param {Number} x the x-coordinate of the mouse event
@@ -869,7 +869,7 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
     },
 
     /**
-     * @method
+     * 
      * Callback if the user press a key down
      *
      * @param {draw2d.Canvas} canvas the related canvas

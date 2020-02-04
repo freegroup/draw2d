@@ -15,7 +15,9 @@
  */
 import draw2d from '../../packages'
 
-draw2d.shape.state.Start = draw2d.shape.basic.Circle.extend({
+draw2d.shape.state.Start = draw2d.shape.basic.Circle.extend(
+  /** @lends draw2d.shape.state.Start.prototype */
+  {
 
   NAME: "draw2d.shape.state.Start",
 

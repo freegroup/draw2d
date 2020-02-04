@@ -10,7 +10,10 @@
 
 import draw2d from 'packages'
 
-draw2d.Port = draw2d.shape.basic.Circle.extend({
+draw2d.Port = draw2d.shape.basic.Circle.extend(
+  /** @lends draw2d.Port.prototype */
+  {
+
   NAME: "draw2d.Port",
 
   DEFAULT_BORDER_COLOR: new draw2d.util.Color("#1B1B1B"),
@@ -83,7 +86,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
   },
 
   /**
-   * @method
+   * 
    * set the maximal possible count of connections for this port.<br>
    * This method din't delete any connection if you reduce the number and a bunch of
    * connection are bounded already.
@@ -98,7 +101,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
   },
 
   /**
-   * @method
+   * 
    * return the maximal possible connections (in+out) for this port.
    *
    * @return {Number}
@@ -108,7 +111,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
   },
 
   /**
-   * @method
+   * 
    * Set the Anchor for this object. An anchor is responsible for the endpoint calculation
    * of an connection. just visible representation.
    *
@@ -140,7 +143,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
 
 
   /**
-   * @method
+   * 
    * Returns the **direction** for the connection in relation to the given port and it's parent.
    *
    * <p>
@@ -169,7 +172,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
 
 
   /**
-   * @method
+   * 
    * Set the **direction** for the connection in relation to the given port and it's parent.
    *
    * <p>
@@ -196,7 +199,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
   },
 
   /**
-   * @method
+   * 
    * Set the locator/layouter of the port. A locator is responsive for the x/y arrangement of the
    * port in relation to the parent node.
    *
@@ -209,7 +212,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
   },
 
   /**
-   * @method
+   * 
    * Get the locator/layouter of the port. A locator is responsive for the x/y arrangement of the
    * port in relation to the parent node.
    *
@@ -221,7 +224,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
 
 
   /**
-   * @method
+   * 
    * Set the new background color of the figure. It is possible to hands over
    * <code>null</code> to set the background transparent.
    *
@@ -235,7 +238,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
   },
 
   /**
-   * @method
+   * 
    * Set a value for the port. This is useful for interactive/dynamic diagrams like circuits, simulator,...
    *
    * @param {Object} value the new value for the port
@@ -256,7 +259,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
   },
 
   /**
-   * @method
+   * 
    * Return the user defined value of the port.
    *
    * @returns {Object}
@@ -315,7 +318,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
 
 
   /**
-   * @method
+   * 
    * Returns a {@link draw2d.util.ArrayList} of {@link draw2d.Connection}s of all related connections to this port.
    *
    * @return {draw2d.util.ArrayList}
@@ -342,7 +345,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
 
 
   /**
-   * @method
+   * 
    * Returns the corona width of the Port. The corona width will be used during the
    * drag&drop of a port.
    *
@@ -354,7 +357,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
 
 
   /**
-   * @method
+   * 
    * Set the corona width of the Port. The corona width will be used during the
    * drag&drop of a port. You can drop a port in the corona of this port to create
    * a connection. It is not neccessary to drop exactly on the port.
@@ -444,7 +447,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
 
 
   /**
-   * @method
+   * 
    * Called if the user drop this element onto the dropTarget
    *
    * @param {draw2d.Figure} dropTarget The drop target.
@@ -460,7 +463,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
 
 
   /**
-   * @method
+   * 
    * Callback method if a new connection has created with this port
    *
    *      // Alternatively you register for this event with:
@@ -477,7 +480,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
   },
 
   /**
-   * @method
+   * 
    * Callback method if a new connection has created with this port
    *
    *      // Alternatively you register for this event with:
@@ -495,7 +498,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
 
 
   /**
-   * @method
+   * 
    * Return the name of this port.
    *
    * @return {String}
@@ -505,7 +508,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
   },
 
   /**
-   * @method
+   * 
    * Set the name of this port. The name of the port can be referenced by the lookup of
    * ports in the node.
    *
@@ -518,7 +521,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
 
 
   /**
-   * @method
+   * 
    * Hit test for ports. This method respect the corona diameter of the port for the hit test.
    * The corona width can be set with {@link draw2d.Port#setCoronaWidth}
    * @param {Number} iX
@@ -536,7 +539,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
   },
 
   /**
-   * @method
+   * 
    * Highlight this port
    *
    * @param {Boolean} flag indicator if the figure should glow.
@@ -579,7 +582,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
 
 
   /**
-   * @method
+   * 
    * Called from the figure itself when any position changes happens. All listener
    * will be informed.
    * <br>
@@ -595,7 +598,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
   },
 
   /**
-   * @method
+   * 
    * Return an objects with all important attributes for XML or JSON serialization
    *
    * @return
@@ -620,7 +623,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
   },
 
   /**
-   * @method
+   * 
    * Read all attributes from the serialized properties and transfer them into the shape.
    *
    * @param {Object} memento
@@ -671,7 +674,7 @@ draw2d.Corona = draw2d.shape.basic.Circle.extend({
   },
 
   /**
-   * @method
+   * 
    * the the opacity of the element.
    *
    * @param {Number} percent

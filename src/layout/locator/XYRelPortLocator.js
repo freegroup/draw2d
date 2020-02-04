@@ -23,13 +23,16 @@
  */
 import draw2d from '../../packages'
 
-draw2d.layout.locator.XYRelPortLocator = draw2d.layout.locator.PortLocator.extend({
+draw2d.layout.locator.XYRelPortLocator = draw2d.layout.locator.PortLocator.extend(
+  /** @lends draw2d.layout.locator.XYRelPortLocator.prototype */
+  {
+
   NAME: "draw2d.layout.locator.XYRelPortLocator",
 
   /**
+   *
+   *
    * @constructs
-   *
-   *
    * @param {Number} xPercentage the x coordinate in percent of the port relative to the left of the parent
    * @param {Number} yPercentage the y coordinate in percent of the port relative to the top of the parent
    */
@@ -41,7 +44,7 @@ draw2d.layout.locator.XYRelPortLocator = draw2d.layout.locator.PortLocator.exten
   },
 
   /**
-   * @method
+   *
    * Controls the location of an I{@link draw2d.Figure}
    *
    * @param {Number} index child index of the figure

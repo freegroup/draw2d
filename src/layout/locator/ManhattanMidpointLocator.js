@@ -38,13 +38,16 @@
  */
 import draw2d from '../../packages'
 
-draw2d.layout.locator.ManhattanMidpointLocator = draw2d.layout.locator.ConnectionLocator.extend({
+draw2d.layout.locator.ManhattanMidpointLocator = draw2d.layout.locator.ConnectionLocator.extend(
+  /** @lends draw2d.layout.locator.ManhattanMidpointLocator.prototype */
+  {
+
   NAME: "draw2d.layout.locator.ManhattanMidpointLocator",
 
   /**
-   * @constructs
    * Constructs a ManhattanMidpointLocator with associated Connection c.
    *
+   * @constructs
    */
   init: function () {
     this._super()
@@ -52,7 +55,7 @@ draw2d.layout.locator.ManhattanMidpointLocator = draw2d.layout.locator.Connectio
 
 
   /**
-   * @method
+   *
    * Relocates the given Figure always in the center of an edge.
    *
    * @param {Number} index child index of the target

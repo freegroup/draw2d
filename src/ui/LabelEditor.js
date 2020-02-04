@@ -47,7 +47,7 @@ draw2d.ui.LabelEditor = Class.extend({
      },
 
     /**
-     * @method
+     * 
      * Trigger the edit of the label text.
      *
      * @param {draw2d.shape.basic.Label} label the label to edit

@@ -10,14 +10,16 @@
 import draw2d from '../../packages'
 import extend from '../../util/extend'
 
-draw2d.shape.layout.StackLayout = draw2d.shape.layout.Layout.extend({
-
+draw2d.shape.layout.StackLayout = draw2d.shape.layout.Layout.extend(
+  /** @lends draw2d.shape.layout.StackLayout.prototype */
+  {
+  
   NAME: "draw2d.shape.layout.StackLayout",
 
   /**
-   * @constructs
    * Create a new instance
    *
+   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {
@@ -36,7 +38,7 @@ draw2d.shape.layout.StackLayout = draw2d.shape.layout.Layout.extend({
   },
 
   /**
-   * @method
+   *
    * Set the current visible layer of the stack layout
    *
    * @param {Number} visibleLayer
@@ -50,7 +52,7 @@ draw2d.shape.layout.StackLayout = draw2d.shape.layout.Layout.extend({
   },
 
   /**
-   * @method
+   *
    * Returns the current visible layer
    *
    * @returns {Number}

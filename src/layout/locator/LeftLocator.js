@@ -23,13 +23,16 @@
  */
 import draw2d from '../../packages'
 
-draw2d.layout.locator.LeftLocator = draw2d.layout.locator.Locator.extend({
+draw2d.layout.locator.LeftLocator = draw2d.layout.locator.Locator.extend(
+  /** @lends draw2d.layout.locator.LeftLocator.prototype */
+  {
+  
   NAME: "draw2d.layout.locator.LeftLocator",
 
   /**
-   * @constructs
    * Constructs a locator with associated parent.
    *
+   * @constructs
    * @param attr
    */
   init: function (attr) {
@@ -40,7 +43,7 @@ draw2d.layout.locator.LeftLocator = draw2d.layout.locator.Locator.extend({
 
 
   /**
-   * @method
+   *
    * Relocates the given Figure.
    *
    * @param {Number} index child index of the target

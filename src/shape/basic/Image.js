@@ -10,7 +10,10 @@ import draw2d from '../../packages'
 import extend from '../../util/extend'
 
 
-draw2d.shape.basic.Image = draw2d.shape.node.Node.extend({
+draw2d.shape.basic.Image = draw2d.shape.node.Node.extend(
+  /** @lends draw2d.shape.basic.Image.prototype */
+  {
+
   NAME: "draw2d.shape.basic.Image",
 
   /**
@@ -32,7 +35,7 @@ draw2d.shape.basic.Image = draw2d.shape.node.Node.extend({
 
 
   /**
-   * @method
+   * 
    * Set the image path attribute of the Image shape and repaint them.
    * The path can be relative or absolute
    *
@@ -51,7 +54,7 @@ draw2d.shape.basic.Image = draw2d.shape.node.Node.extend({
   },
 
   /**
-   * @method
+   * 
    * Return the image path attribute of the shape.
    *
    * @returns {String}

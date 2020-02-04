@@ -15,7 +15,10 @@
  */
 import draw2d from '../../packages'
 
-draw2d.shape.icon.Parent = draw2d.shape.icon.Icon.extend({
+draw2d.shape.icon.Parent = draw2d.shape.icon.Icon.extend(
+  /** @lends draw2d.shape.icon.Parent.prototype */
+  {
+  
   NAME: "draw2d.shape.icon.Parent",
 
   /**

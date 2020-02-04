@@ -37,7 +37,7 @@ draw2d.decoration.connection.Decorator = Class.extend({
 	},
 
 	/**
-	 * @method
+	 * 
 	 * Paint the decoration for a connector. The Connector starts always in
 	 * [0,0] and ends in [x,0].
 	 * It is not necessary to consider any rotation of the connection. This will be done by the
@@ -64,7 +64,7 @@ draw2d.decoration.connection.Decorator = Class.extend({
 	},
 
 	/**
-	 * @method
+	 * 
 	 * Set the stroke color for the decoration
 	 *
 	 * @param {draw2d.util.Color|String} c
@@ -76,7 +76,7 @@ draw2d.decoration.connection.Decorator = Class.extend({
 	},
 
 	/**
-	 * @method
+	 * 
 	 * Set the background color for the decoration
 	 *
 	 * @param {draw2d.util.Color|String} c
@@ -88,7 +88,7 @@ draw2d.decoration.connection.Decorator = Class.extend({
 	},
 
 	/**
-	 * @method
+	 * 
      * Change the dimension of the decoration shape
      *
      * @param {Number} width  The new width of the decoration

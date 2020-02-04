@@ -18,17 +18,19 @@
  */
 import draw2d from '../../packages'
 
-draw2d.policy.canvas.ShowChessboardEditPolicy = draw2d.policy.canvas.DecorationPolicy.extend({
-
+draw2d.policy.canvas.ShowChessboardEditPolicy = draw2d.policy.canvas.DecorationPolicy.extend(
+  /** @lends draw2d.policy.canvas.ShowChessboardEditPolicy.prototype */
+  {
+  
   NAME: "draw2d.policy.canvas.ShowChessboardEditPolicy",
 
   GRID_COLOR: "#e0e0e0",
   GRID_WIDTH: 20,
 
   /**
-   * @constructs
    * Creates a new constraint policy for snap to grid
    *
+   * @constructs
    * @param {Number} grid the grid width of the canvas
    */
   init: function (grid) {
@@ -53,7 +55,7 @@ draw2d.policy.canvas.ShowChessboardEditPolicy = draw2d.policy.canvas.DecorationP
   },
 
   /**
-   * @method
+   *
    * paint the grid into the canvas
    *
    * @private

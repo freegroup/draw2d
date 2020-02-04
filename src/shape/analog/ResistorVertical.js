@@ -14,7 +14,9 @@
  */
 import draw2d from '../../packages'
 
-draw2d.shape.analog.ResistorVertical = draw2d.SetFigure.extend({
+draw2d.shape.analog.ResistorVertical = draw2d.SetFigure.extend(
+  /** @lends draw2d.shape.analog.ResistorVertical.prototype */
+  {
 
   NAME: "draw2d.shape.analog.ResistorVertical",
 
@@ -42,8 +44,9 @@ draw2d.shape.analog.ResistorVertical = draw2d.SetFigure.extend({
   }),
 
   /**
-   * @constructs
    * Create a new instance
+   *
+   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {

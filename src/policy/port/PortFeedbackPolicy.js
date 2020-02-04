@@ -9,8 +9,9 @@
  */
 import draw2d from '../../packages'
 
-draw2d.policy.port.PortFeedbackPolicy = draw2d.policy.figure.DragDropEditPolicy.extend({
-
+draw2d.policy.port.PortFeedbackPolicy = draw2d.policy.figure.DragDropEditPolicy.extend(
+  /** @lends draw2d.policy.port.PortFeedbackPolicy.prototype */
+  {
 
   NAME: "draw2d.policy.port.PortFeedbackPolicy",
 
@@ -22,7 +23,7 @@ draw2d.policy.port.PortFeedbackPolicy = draw2d.policy.figure.DragDropEditPolicy.
   },
 
   /**
-   * @method
+   *
    * Called if the dragged port hove another port
    *
    * @param {draw2d.Canvas} canvas
@@ -33,7 +34,7 @@ draw2d.policy.port.PortFeedbackPolicy = draw2d.policy.figure.DragDropEditPolicy.
   },
 
   /**
-   * @method
+   *
    * Fired if the dragged figures leaves the hover figure
    *
    * @param {draw2d.Canvas} canvas

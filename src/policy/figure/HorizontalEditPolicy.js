@@ -24,14 +24,16 @@
  */
 import draw2d from '../../packages'
 
-draw2d.policy.figure.HorizontalEditPolicy = draw2d.policy.figure.DragDropEditPolicy.extend({
+draw2d.policy.figure.HorizontalEditPolicy = draw2d.policy.figure.DragDropEditPolicy.extend(
+  /** @lends draw2d.policy.figure.HorizontalEditPolicy.prototype */
+  {
 
   NAME: "draw2d.policy.figure.HorizontalEditPolicy",
 
   /**
-   * @constructs
    * Creates a new constraint object
    *
+   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)
@@ -39,7 +41,7 @@ draw2d.policy.figure.HorizontalEditPolicy = draw2d.policy.figure.DragDropEditPol
 
 
   /**
-   * @method
+   * 
    * It is only possible to drag&drop the element in a horizontal line
    *
    * @param figure

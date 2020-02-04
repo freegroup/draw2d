@@ -11,13 +11,16 @@
  */
 import draw2d from '../../packages'
 
-draw2d.layout.locator.PolylineMidpointLocator = draw2d.layout.locator.ManhattanMidpointLocator.extend({
+draw2d.layout.locator.PolylineMidpointLocator = draw2d.layout.locator.ManhattanMidpointLocator.extend(
+  /** @lends draw2d.layout.locator.PolylineMidpointLocator.prototype */
+  {
+
   NAME: "draw2d.layout.locator.PolylineMidpointLocator",
 
   /**
-   * @constructs
    * Constructs a ManhattanMidpointLocator with associated Connection c.
    *
+   * @constructs
    */
   init: function () {
     this._super()
@@ -25,7 +28,7 @@ draw2d.layout.locator.PolylineMidpointLocator = draw2d.layout.locator.ManhattanM
 
 
   /**
-   * @method
+   *
    * Relocates the given Figure.
    *
    * @param {Number} index child index of the target

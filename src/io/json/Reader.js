@@ -46,7 +46,7 @@ draw2d.io.json.Reader = draw2d.io.Reader.extend({
     },
 
     /**
-     * @method
+     * 
      *
      * Restore the canvas from a given JSON object.
      *
@@ -136,7 +136,7 @@ draw2d.io.json.Reader = draw2d.io.Reader.extend({
     },
 
     /**
-     * @method
+     * 
      * Factory method to create an instance of the given element type.
      *
      * @param {String} type
@@ -148,7 +148,7 @@ draw2d.io.json.Reader = draw2d.io.Reader.extend({
     },
 
     /**
-     * @method
+     * 
      * Factory method to create an instance of the given element.
      *
      * @param {Object} element

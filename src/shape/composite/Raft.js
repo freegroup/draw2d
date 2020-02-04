@@ -23,13 +23,16 @@
  */
 import draw2d from '../../packages'
 
-draw2d.shape.composite.Raft = draw2d.shape.composite.WeakComposite.extend({
+draw2d.shape.composite.Raft = draw2d.shape.composite.WeakComposite.extend(
+  /** @lends draw2d.shape.composite.Raft.prototype */
+  {
+
   NAME: "draw2d.shape.composite.Raft",
 
   /**
-   * @constructs
    * Creates a new figure element which are not assigned to any canvas.
    *
+   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {
@@ -41,7 +44,7 @@ draw2d.shape.composite.Raft = draw2d.shape.composite.WeakComposite.extend({
 
 
   /**
-   * @method
+   *
    * Will be called if the drag and drop action begins. You can return [false] if you
    * want avoid that the figure can be move.
    *
@@ -63,7 +66,7 @@ draw2d.shape.composite.Raft = draw2d.shape.composite.WeakComposite.extend({
   },
 
   /**
-   * @method
+   *
    * Set the position of the object.
    *
    * @param {Number/draw2d.geo.Point} x The new x coordinate of the figure
@@ -153,7 +156,7 @@ draw2d.shape.composite.Raft = draw2d.shape.composite.WeakComposite.extend({
   },
 
   /**
-   * @method
+   *
    * Return all figures which are aboard of this shape. These shapes are moved as well if the raft
    * is moving.
    *
@@ -184,7 +187,7 @@ draw2d.shape.composite.Raft = draw2d.shape.composite.WeakComposite.extend({
   },
 
   /**
-   * @method
+   *
    * return the next potential composite parent figure
    *
    * @param {draw2d.Figure} figureToTest

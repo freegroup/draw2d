@@ -23,13 +23,16 @@
  */
 import draw2d from '../../packages'
 
-draw2d.layout.locator.RightLocator = draw2d.layout.locator.Locator.extend({
+draw2d.layout.locator.RightLocator = draw2d.layout.locator.Locator.extend(
+  /** @lends draw2d.layout.locator.RightLocator.prototype */
+  {
+  
   NAME: "draw2d.layout.locator.RightLocator",
 
   /**
-   * @constructs
    * Constructs a locator with associated parent.
    *
+   * @constructs
    */
   init: function (attr) {
     this._super()
@@ -39,7 +42,7 @@ draw2d.layout.locator.RightLocator = draw2d.layout.locator.Locator.extend({
 
 
   /**
-   * @method
+   * 
    * Relocates the given Figure.
    *
    * @param {Number} index child index of the target

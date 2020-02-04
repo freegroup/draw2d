@@ -32,7 +32,9 @@
  */
 import draw2d from '../../packages'
 
-draw2d.shape.state.Connection = draw2d.Connection.extend({
+draw2d.shape.state.Connection = draw2d.Connection.extend(
+  /** @lends draw2d.shape.state.Connection.prototype */
+  {
 
   NAME: "draw2d.shape.state.Connection",
 
@@ -52,7 +54,7 @@ draw2d.shape.state.Connection = draw2d.Connection.extend({
 
   },
   /**
-   * @method
+   * 
    * Set the text to show if the state shape
    *
    * @param {String} text
@@ -69,7 +71,7 @@ draw2d.shape.state.Connection = draw2d.Connection.extend({
 
 
   /**
-   * @method
+   * 
    * Return the label of the shape
    *
    */

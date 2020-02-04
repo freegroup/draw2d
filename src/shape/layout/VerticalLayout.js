@@ -45,14 +45,16 @@
  */
 import draw2d from '../../packages'
 
-draw2d.shape.layout.VerticalLayout = draw2d.shape.layout.Layout.extend({
+draw2d.shape.layout.VerticalLayout = draw2d.shape.layout.Layout.extend(
+  /** @lends draw2d.shape.layout.VerticalLayout.prototype */
+  {
 
   NAME: "draw2d.shape.layout.VerticalLayout",
 
   /**
-   * @constructs
    * Create a new instance
    *
+   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {
@@ -113,7 +115,7 @@ draw2d.shape.layout.VerticalLayout = draw2d.shape.layout.Layout.extend({
 
 
   /**
-   * @method
+   * 
    * Set the gap width between child components within this layout.
    * This will only affect the space between components, not the space around all the components in the layout.
    *

@@ -7,7 +7,9 @@
  */
 import draw2d from '../../packages'
 
-draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSelectionPolicy.extend({
+draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSelectionPolicy.extend(
+  /** @lends draw2d.policy.canvas.BoundingboxSelectionPolicy.prototype */
+  {
 
   NAME: "draw2d.policy.canvas.BoundingboxSelectionPolicy",
 
@@ -69,7 +71,7 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
 
 
   /**
-   * @method
+   * 
    * Set the selection handling mode to <b>intersection</b> or to <b>isInside</b>.
    * <ul>
    *   <li>true = intersection, shapes must only touch the selection bounding box </li>
@@ -91,7 +93,7 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
   },
 
   /**
-   * @method
+   * 
    *
    * @param {draw2d.Canvas} canvas
    * @param {Number} x the x-coordinate of the mouse down event
@@ -222,7 +224,7 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
   },
 
   /**
-   * @method
+   * 
    *
    * @param {draw2d.Canvas} canvas
    * @param {Number} dx The x diff between start of dragging and this event
@@ -280,7 +282,7 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
   },
 
   /**
-   * @method
+   * 
    *
    * @param {draw2d.Canvas} canvas
    * @param {Number} x the x-coordinate of the mouse down event

@@ -21,14 +21,16 @@
  */
 import draw2d from '../../packages'
 
-draw2d.shape.pert.Start = draw2d.shape.layout.VerticalLayout.extend({
+draw2d.shape.pert.Start = draw2d.shape.layout.VerticalLayout.extend(
+  /** @lends draw2d.shape.pert.Start.prototype */
+  {
 
   NAME: "draw2d.shape.pert.Start",
 
   /**
-   * @constructs
    * Create a new instance
    *
+   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {
@@ -120,7 +122,7 @@ draw2d.shape.pert.Start = draw2d.shape.layout.VerticalLayout.extend({
   },
 
   /**
-   * @method
+   * 
    * Set the duration for the activity. This triggers a complete recalculation of the complete
    * diagram. No further calls are required
    *
@@ -168,7 +170,7 @@ draw2d.shape.pert.Start = draw2d.shape.layout.VerticalLayout.extend({
   },
 
   /**
-   * @method
+   * 
    * help method to create some labels
    *
    * @param {String} txt the label to display

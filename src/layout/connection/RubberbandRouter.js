@@ -74,13 +74,16 @@
  */
 import draw2d from '../../packages'
 
-draw2d.layout.connection.RubberbandRouter = draw2d.layout.connection.ConnectionRouter.extend({
+draw2d.layout.connection.RubberbandRouter = draw2d.layout.connection.ConnectionRouter.extend(
+  /** @lends draw2d.layout.connection.RubberbandRouter.prototype */
+  {
 
   NAME: "draw2d.layout.connection.RubberbandRouter",
 
   /**
-   * @constructs
    * Creates a new Router object
+   *
+   * @constructs
    */
   init: function () {
     this._super()
@@ -88,7 +91,7 @@ draw2d.layout.connection.RubberbandRouter = draw2d.layout.connection.ConnectionR
 
 
   /**
-   * @method
+   * 
    * Callback method if the router has been assigned to a connection.
    *
    * @param {draw2d.Connection} connection The assigned connection
@@ -101,7 +104,7 @@ draw2d.layout.connection.RubberbandRouter = draw2d.layout.connection.ConnectionR
   },
 
   /**
-   * @method
+   * 
    * Invalidates the given Connection
    */
   invalidate: function () {

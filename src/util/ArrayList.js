@@ -29,7 +29,7 @@ draw2d.util.ArrayList = Class.extend({
 
 
   /**
-   * @method
+   *
    * Clears the array
    *
    * @since 6.1.0
@@ -41,7 +41,7 @@ draw2d.util.ArrayList = Class.extend({
   },
 
   /**
-   * @method
+   *
    * Reverses the order of the elements in the ArrayList. The array will be modified!
    *
    */
@@ -52,7 +52,7 @@ draw2d.util.ArrayList = Class.extend({
   },
 
   /**
-   * @method
+   *
    * The size/count of the stored objects.
    *
    * @return {Number}
@@ -63,7 +63,7 @@ draw2d.util.ArrayList = Class.extend({
 
 
   /**
-   * @method
+   *
    * checks to see if the Vector has any elements.
    *
    * @return {Boolean} true if the list is empty
@@ -73,7 +73,7 @@ draw2d.util.ArrayList = Class.extend({
   },
 
   /**
-   * @method
+   *
    * return the last element.
    *
    * @return {Object}
@@ -83,7 +83,7 @@ draw2d.util.ArrayList = Class.extend({
   },
 
   /**
-   * @method
+   *
    * Return a reference to the internal javascript native array.
    *
    * @return {Array}
@@ -93,7 +93,7 @@ draw2d.util.ArrayList = Class.extend({
   },
 
   /**
-   * @method
+   *
    * returns the first element
    *
    * @return {Object}
@@ -107,7 +107,7 @@ draw2d.util.ArrayList = Class.extend({
 
 
   /**
-   * @method
+   *
    * returns an element at a specified index
    *
    * @param {Number} i
@@ -118,7 +118,7 @@ draw2d.util.ArrayList = Class.extend({
   },
 
   /**
-   * @method
+   *
    * Adds a element at the end of the Vector.
    *
    * @param {Object} obj the object to add
@@ -130,7 +130,7 @@ draw2d.util.ArrayList = Class.extend({
   },
 
   /**
-   * @method
+   *
    *
    * The method removes items from an array as necessary so that all remaining items pass a
    * provided test. The test is a function that is passed an array item and the index of the
@@ -147,7 +147,7 @@ draw2d.util.ArrayList = Class.extend({
   },
 
   /**
-   * @method
+   *
    *
    * Return ONE element which matches by the given function or <b>null</b>
    * if no element is found.
@@ -170,7 +170,7 @@ draw2d.util.ArrayList = Class.extend({
   },
 
   /**
-   * @method
+   *
    * Translate all items in the array into new items. The array list is modified after this call.
    * You must clone the array before if you want avoid this.
    *
@@ -191,7 +191,7 @@ draw2d.util.ArrayList = Class.extend({
   },
 
   /**
-   * @method
+   *
    * Removes any duplicate elements from the array. The array is modified after this call. You
    * must clone the array before if you want avoid this
    *
@@ -205,7 +205,7 @@ draw2d.util.ArrayList = Class.extend({
 
 
   /**
-   * @method
+   *
    * Add all elements into this array.
    *
    * @param {draw2d.util.ArrayList} list
@@ -225,7 +225,7 @@ draw2d.util.ArrayList = Class.extend({
   },
 
   /**
-   * @method
+   *
    * You can use the Array list as Stack as well. this is the pop method to remove one element
    * at the end of the stack.
    *
@@ -236,7 +236,7 @@ draw2d.util.ArrayList = Class.extend({
   },
 
   /**
-   * @method
+   *
    * Push one element at the top of the stack/array
    *
    * @param path
@@ -246,7 +246,7 @@ draw2d.util.ArrayList = Class.extend({
   },
 
   /**
-   * @method
+   *
    * Remove the element from the list
    *
    * @param {Object} obj the object to remove
@@ -264,7 +264,7 @@ draw2d.util.ArrayList = Class.extend({
 
 
   /**
-   * @method
+   *
    * Inserts an element at a given position. Existing elements will be shifted
    * to the right.
    *
@@ -279,7 +279,7 @@ draw2d.util.ArrayList = Class.extend({
   },
 
   /**
-   * @method
+   *
    * Removes an element at a specific index.
    *
    * @param {Number} index the index of the element to remove
@@ -294,7 +294,7 @@ draw2d.util.ArrayList = Class.extend({
   },
 
   /**
-   * @method
+   *
    * removes all given elements in the ArrayList
    *
    * @param {draw2d.util.ArrayList} elements The elements to remove
@@ -314,7 +314,7 @@ draw2d.util.ArrayList = Class.extend({
   },
 
   /**
-   * @method
+   *
    * Return the zero based index of the given element or -1 if the element
    * not in the list.
    *
@@ -327,7 +327,7 @@ draw2d.util.ArrayList = Class.extend({
   },
 
   /**
-   * @method
+   *
    * returns true if the element is in the Vector, otherwise false.
    *
    * @param {Object} obj the object to check
@@ -340,7 +340,7 @@ draw2d.util.ArrayList = Class.extend({
 
 
   /**
-   * @method
+   *
    * Sorts the collection based on a field name or sort a function. See on http://www.w3schools.com/jsref/jsref_sort.asp
    * if you use a sort function.
    *
@@ -365,7 +365,7 @@ draw2d.util.ArrayList = Class.extend({
   },
 
   /**
-   * @method
+   *
    * Copies the contents of a Vector to another Vector returning the new Vector.
    *
    * @param {Boolean} [deep] call "clone" of each elements and add the clone to the new ArrayList
@@ -390,7 +390,7 @@ draw2d.util.ArrayList = Class.extend({
 
 
   /**
-   * @method
+   *
    * Iterates over the list of elements, yielding each in turn to an iterator
    * function.
    * Each invocation of iterator is called with two arguments: (index, element).
@@ -430,7 +430,7 @@ draw2d.util.ArrayList = Class.extend({
   },
 
   /**
-   * @method
+   *
    * Read all attributes from the serialized properties and transfer them into the shape.
    *
    * @param {Object} memento

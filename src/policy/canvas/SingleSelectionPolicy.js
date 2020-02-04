@@ -7,7 +7,9 @@
  */
 import draw2d from '../../packages'
 
-draw2d.policy.canvas.SingleSelectionPolicy = draw2d.policy.canvas.SelectionPolicy.extend({
+draw2d.policy.canvas.SingleSelectionPolicy = draw2d.policy.canvas.SelectionPolicy.extend(
+  /** @lends draw2d.policy.canvas.SingleSelectionPolicy.prototype */
+  {
 
   NAME: "draw2d.policy.canvas.SingleSelectionPolicy",
 
@@ -50,7 +52,7 @@ draw2d.policy.canvas.SingleSelectionPolicy = draw2d.policy.canvas.SelectionPolic
 
 
   /**
-   * @method
+   * 
    *
    * @param {draw2d.Canvas} canvas
    * @param {Number} x the x-coordinate of the mouse down event
@@ -115,7 +117,7 @@ draw2d.policy.canvas.SingleSelectionPolicy = draw2d.policy.canvas.SelectionPolic
   },
 
   /**
-   * @method
+   * 
    *
    * @param {draw2d.Canvas} canvas
    * @param {Number} dx The x diff between start of dragging and this event
@@ -191,7 +193,7 @@ draw2d.policy.canvas.SingleSelectionPolicy = draw2d.policy.canvas.SelectionPolic
   },
 
   /**
-   * @method
+   * 
    *
    * @param {draw2d.Figure} figure the shape below the mouse or null
    * @param {Number} x the x-coordinate of the mouse down event
@@ -279,7 +281,7 @@ draw2d.policy.canvas.SingleSelectionPolicy = draw2d.policy.canvas.SelectionPolic
   },
 
   /**
-   * @method
+   * 
    * Called by the canvas if the user click on a figure.
    *
    * @param {draw2d.Figure} the figure under the click event. Can be null
@@ -307,7 +309,7 @@ draw2d.policy.canvas.SingleSelectionPolicy = draw2d.policy.canvas.SelectionPolic
   },
 
   /**
-   * @method
+   * 
    * Called by the canvas if the user double click on a figure.
    *
    * @param {draw2d.Figure} the figure under the double click event. Can be null

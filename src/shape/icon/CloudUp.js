@@ -15,14 +15,17 @@
  */
 import draw2d from '../../packages'
 
-draw2d.shape.icon.CloudUp = draw2d.shape.icon.Icon.extend({
+draw2d.shape.icon.CloudUp = draw2d.shape.icon.Icon.extend(
+  /** @lends draw2d.shape.icon.CloudUp.prototype */
+  {
+
   NAME: "draw2d.shape.icon.CloudUp",
 
   /**
    *
-   * @constructs
    * Creates a new icon element which are not assigned to any canvas.
    *
+   * @constructs
    * @param {Object} attr the configuration of the shape
    */
   init: function (attr, setter, getter) {

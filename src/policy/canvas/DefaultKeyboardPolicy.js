@@ -13,7 +13,9 @@
  */
 import draw2d from '../../packages'
 
-draw2d.policy.canvas.DefaultKeyboardPolicy = draw2d.policy.canvas.KeyboardPolicy.extend({
+draw2d.policy.canvas.DefaultKeyboardPolicy = draw2d.policy.canvas.KeyboardPolicy.extend(
+  /** @lends draw2d.policy.canvas.DefaultKeyboardPolicy.prototype */
+  {
 
   NAME: "draw2d.policy.canvas.DefaultKeyboardPolicy",
 
@@ -25,7 +27,7 @@ draw2d.policy.canvas.DefaultKeyboardPolicy = draw2d.policy.canvas.KeyboardPolicy
   },
 
   /**
-   * @method
+   * 
    * Callback if the user press a key.<br>
    * This implementation checks only if the <b>DEL</b> has been pressed and creates an
    * CommandDelete if this happens.

@@ -20,12 +20,15 @@
  */
 import draw2d from '../../packages'
 
-draw2d.policy.figure.ResizeSelectionFeedbackPolicy = draw2d.policy.figure.SelectionFeedbackPolicy.extend({
+draw2d.policy.figure.ResizeSelectionFeedbackPolicy = draw2d.policy.figure.SelectionFeedbackPolicy.extend(
+  /** @lends draw2d.policy.figure.ResizeSelectionFeedbackPolicy.prototype */
+  {
 
   NAME: "draw2d.policy.figure.ResizeSelectionFeedbackPolicy",
   /**
-   * @constructs
    * Creates a new Router object
+   *
+   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)
@@ -33,7 +36,7 @@ draw2d.policy.figure.ResizeSelectionFeedbackPolicy = draw2d.policy.figure.Select
 
 
   /**
-   * @method
+   *
    * Called by the framework of the Policy should show a resize handle for the given shape
    *
    * @param {draw2d.Canvas} canvas the related canvas
@@ -91,7 +94,7 @@ draw2d.policy.figure.ResizeSelectionFeedbackPolicy = draw2d.policy.figure.Select
   },
 
   /**
-   * @method
+   *
    * Callback if the figure has been moved. In this case we must update the position of the
    * resize handles.
    *

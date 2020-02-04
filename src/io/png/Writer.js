@@ -25,7 +25,7 @@ draw2d.io.png.Writer = draw2d.io.Writer.extend({
     },
 
     /**
-     * @method
+     *
      * Export the content to a PNG image. The result can be set as <b>src="...."</b> because
      * the result is encoded as data source url <b>data:image/png;base64....</b>
      * <br>

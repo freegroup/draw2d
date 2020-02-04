@@ -12,13 +12,16 @@
 
 import draw2d from '../../packages'
 
-draw2d.shape.composite.StrongComposite = draw2d.shape.composite.Composite.extend({
+draw2d.shape.composite.StrongComposite = draw2d.shape.composite.Composite.extend(
+  /** @lends draw2d.shape.composite.StrongComposite.prototype */
+  {
+
   NAME: "draw2d.shape.composite.StrongComposite",
 
   /**
-   * @constructs
    * Creates a new strong composite element which are not assigned to any canvas.
    *
+   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {
@@ -28,7 +31,7 @@ draw2d.shape.composite.StrongComposite = draw2d.shape.composite.Composite.extend
   },
 
   /**
-   * @method
+   * 
    * Check to see if a figure is a descendant of another figure.
    * <br>
    * The contains() method returns true if the figure provided by the argument is a descendant of this figure,
@@ -48,7 +51,7 @@ draw2d.shape.composite.StrongComposite = draw2d.shape.composite.Composite.extend
   },
 
   /**
-   * @method
+   * 
    * Assign a figure to the composite.
    *
    * @param {draw2d.Figure} figure
@@ -59,7 +62,7 @@ draw2d.shape.composite.StrongComposite = draw2d.shape.composite.Composite.extend
   },
 
   /**
-   * @method
+   * 
    * Remove the given figure from the group assignment
    *
    * @param {draw2d.Figure} figure the figure to remove
@@ -70,7 +73,7 @@ draw2d.shape.composite.StrongComposite = draw2d.shape.composite.Composite.extend
   },
 
   /**
-   * @method
+   * 
    * Return all assigned figures of the composite
    *
    * @returns {draw2d.util.ArrayList}
@@ -81,7 +84,7 @@ draw2d.shape.composite.StrongComposite = draw2d.shape.composite.Composite.extend
 
 
   /**
-   * @method
+   * 
    * Called if the user drop this element onto the dropTarget. This event is ONLY fired if the
    * shape return "this" in the onDragEnter method.
    *
@@ -98,7 +101,7 @@ draw2d.shape.composite.StrongComposite = draw2d.shape.composite.Composite.extend
   },
 
   /**
-   * @method
+   * 
    * Called if the user dropped an figure onto this element. This event is ONLY fired if the
    * shape return "this" in the onDragEnter method.
    *
@@ -115,7 +118,7 @@ draw2d.shape.composite.StrongComposite = draw2d.shape.composite.Composite.extend
   },
 
   /**
-   * @method
+   * 
    * Moves the element so it is the closest to the viewer’s eyes, on top of other elements. Additional
    * the internal model changed as well.
    *
@@ -142,7 +145,7 @@ draw2d.shape.composite.StrongComposite = draw2d.shape.composite.Composite.extend
   },
 
   /**
-   * @method
+   * 
    * Moves the element to the background. Additional
    * the internal model changed as well.
    *

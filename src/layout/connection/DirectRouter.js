@@ -45,7 +45,9 @@
 import draw2d from '../../packages'
 
 
-draw2d.layout.connection.DirectRouter = draw2d.layout.connection.ConnectionRouter.extend({
+draw2d.layout.connection.DirectRouter = draw2d.layout.connection.ConnectionRouter.extend(
+  /** @lends draw2d.layout.connection.DirectRouter.prototype */
+  {
 
   NAME: "draw2d.layout.connection.DirectRouter",
 
@@ -59,7 +61,7 @@ draw2d.layout.connection.DirectRouter = draw2d.layout.connection.ConnectionRoute
 
 
   /**
-   * @method
+   * 
    * Callback method if the router has been assigned to a connection.
    *
    * @param {draw2d.Connection} connection The assigned connection
@@ -72,7 +74,7 @@ draw2d.layout.connection.DirectRouter = draw2d.layout.connection.ConnectionRoute
 
 
   /**
-   * @method
+   * 
    * Invalidates the given Connection
    */
   invalidate: function () {

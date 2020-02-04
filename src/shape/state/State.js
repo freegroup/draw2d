@@ -28,7 +28,9 @@
  */
 import draw2d from '../../packages'
 
-draw2d.shape.state.State = draw2d.shape.layout.VerticalLayout.extend({
+draw2d.shape.state.State = draw2d.shape.layout.VerticalLayout.extend(
+  /** @lends draw2d.shape.state.State.prototype */
+  {
 
   NAME: "draw2d.shape.state.State",
 
@@ -76,7 +78,7 @@ draw2d.shape.state.State = draw2d.shape.layout.VerticalLayout.extend({
   },
 
   /**
-   * @method
+   *
    * Set the text to show if the state shape
    *
    * @param {String} text
@@ -90,7 +92,7 @@ draw2d.shape.state.State = draw2d.shape.layout.VerticalLayout.extend({
 
 
   /**
-   * @method
+   *
    * Return the label of the shape
    *
    */
@@ -100,7 +102,7 @@ draw2d.shape.state.State = draw2d.shape.layout.VerticalLayout.extend({
 
 
   /**
-   * @method
+   *
    * helper method to create some labels
    *
    * @param {String} txt the label to display

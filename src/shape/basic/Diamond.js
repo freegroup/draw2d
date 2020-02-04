@@ -19,7 +19,10 @@
  */
 import draw2d from '../../packages'
 
-draw2d.shape.basic.Diamond = draw2d.shape.basic.Polygon.extend({
+draw2d.shape.basic.Diamond = draw2d.shape.basic.Polygon.extend(
+  /** @lends draw2d.shape.basic.Diamond.prototype */
+  {
+  
   NAME: "draw2d.shape.basic.Diamond",
 
   /**

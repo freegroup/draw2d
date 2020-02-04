@@ -12,7 +12,9 @@
  */
 import draw2d from '../../packages'
 
-draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditPolicy.extend({
+draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditPolicy.extend(
+  /** @lends draw2d.policy.canvas.SnapToGeometryEditPolicy.prototype */
+  {
 
   NAME: "draw2d.policy.canvas.SnapToGeometryEditPolicy",
 
@@ -20,9 +22,9 @@ draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditP
   FADEOUT_DURATION: 300,
 
   /**
-   * @constructs
    * Creates a new constraint policy for snap to geometry
    *
+   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)
@@ -35,7 +37,7 @@ draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditP
 
 
   /**
-   * @method
+   * 
    *
    * @param {draw2d.Figure} figure the shape below the mouse or null
    * @param {Number} x the x-coordinate of the mouse down event
@@ -51,7 +53,7 @@ draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditP
   },
 
   /**
-   * @method
+   * 
    * Adjust the coordinates to the canvas neighbours
    *
    * @param {draw2d.Canvas} canvas the related canvas
@@ -155,7 +157,7 @@ draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditP
   },
 
   /**
-   * @method
+   * 
    * calculates the snapped position of the rectangle.
    *
    * @param {draw2d.geo.Rectangle} inputBounds

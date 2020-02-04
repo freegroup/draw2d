@@ -16,13 +16,15 @@
 import draw2d from '../../packages'
 
 
-draw2d.layout.anchor.CenterEdgeConnectionAnchor = draw2d.layout.anchor.ConnectionAnchor.extend({
+draw2d.layout.anchor.CenterEdgeConnectionAnchor = draw2d.layout.anchor.ConnectionAnchor.extend(
+  /** @lends draw2d.layout.anchor.CenterEdgeConnectionAnchor.prototype */
+  {
 
   NAME: "draw2d.layout.anchor.CenterEdgeConnectionAnchor",
 
   /**
-   * @constructs
    *
+   * @constructs
    * @param {draw2d.Figure} [owner] the figure to use for the anchor calculation
    */
   init: function (owner) {
@@ -30,7 +32,7 @@ draw2d.layout.anchor.CenterEdgeConnectionAnchor = draw2d.layout.anchor.Connectio
   },
 
   /**
-   * @method
+   * 
    *
    * Returns the location where the Connection should be anchored in
    * absolute coordinates. The anchor may use the given reference
@@ -76,7 +78,7 @@ draw2d.layout.anchor.CenterEdgeConnectionAnchor = draw2d.layout.anchor.Connectio
   },
 
   /**
-   * @method
+   * 
    *
    * Returns the bounds of this Anchor's owner. Subclasses can
    * override this method to adjust the box. Maybe you return the box

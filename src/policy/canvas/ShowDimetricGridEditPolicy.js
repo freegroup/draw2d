@@ -19,8 +19,10 @@
  */
 import draw2d from '../../packages'
 
-draw2d.policy.canvas.ShowDimetricGridEditPolicy = draw2d.policy.canvas.DecorationPolicy.extend({
-
+draw2d.policy.canvas.ShowDimetricGridEditPolicy = draw2d.policy.canvas.DecorationPolicy.extend(
+  /** @lends draw2d.policy.canvas.ShowDimetricGridEditPolicy.prototype */
+  {
+  
   NAME: "draw2d.policy.canvas.ShowDimetricGridEditPolicy",
 
   GRID_COLOR: "#f0f0f0",
@@ -61,7 +63,7 @@ draw2d.policy.canvas.ShowDimetricGridEditPolicy = draw2d.policy.canvas.Decoratio
   },
 
   /**
-   * @method
+   * 
    * Set the grid color
    *
    * @param {draw2d.util.Color|String} color a color object or the CSS string declaration for a color
@@ -73,7 +75,7 @@ draw2d.policy.canvas.ShowDimetricGridEditPolicy = draw2d.policy.canvas.Decoratio
   },
 
   /**
-   * @method
+   * 
    * Set a new grid width/height
    *
    * @param {Number} grid

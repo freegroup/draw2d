@@ -15,8 +15,10 @@
  */
 import draw2d from '../../packages'
 
-draw2d.shape.state.End = draw2d.shape.basic.Circle.extend({
-
+draw2d.shape.state.End = draw2d.shape.basic.Circle.extend(
+  /** @lends draw2d.shape.state.End.prototype */
+  {
+  
   NAME: "draw2d.shape.state.End",
 
   DEFAULT_COLOR: new draw2d.util.Color("#4D90FE"),

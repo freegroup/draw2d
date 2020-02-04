@@ -43,7 +43,7 @@ draw2d.geo.Line = {
 
 
   /**
-   * @method
+   *
    * Returns the projection of the point onto the line.
    *
    * @param {Number} px the x coordinate of the test point

@@ -11,14 +11,16 @@
  */
 import draw2d from '../../packages'
 
-draw2d.policy.figure.RegionEditPolicy = draw2d.policy.figure.DragDropEditPolicy.extend({
-
+draw2d.policy.figure.RegionEditPolicy = draw2d.policy.figure.DragDropEditPolicy.extend(
+  /** @lends draw2d.policy.figure.RegionEditPolicy.prototype */
+  {
+  
   NAME: "draw2d.policy.figure.RegionEditPolicy",
 
   /**
-   * @constructs
    * Creates a new constraint object
    *
+   * @constructs
    * @param {Number|draw2d.geo.Rectangle} x x coordinate or a rectangle as constraint for the assigned figure.
    * @param {Number} y
    * @param {Number} w
@@ -38,7 +40,7 @@ draw2d.policy.figure.RegionEditPolicy = draw2d.policy.figure.DragDropEditPolicy.
   },
 
   /**
-   * @method
+   * 
    * Update the constraint bounding box for the policy.
    *
    * @param {draw2d.geo.Rectangle} boundingBox the constraint rectangle
@@ -51,7 +53,7 @@ draw2d.policy.figure.RegionEditPolicy = draw2d.policy.figure.DragDropEditPolicy.
   },
 
   /**
-   * @method
+   * 
    * Adjust the coordinates to the rectangle/region of this constraint.
    *
    * @param {draw2d.Figure} figure
@@ -73,7 +75,7 @@ draw2d.policy.figure.RegionEditPolicy = draw2d.policy.figure.DragDropEditPolicy.
   },
 
   /**
-   * @method
+   * 
    * Adjust the dimension of the rectangle to fit into the region of the policy
    *
    * @param {draw2d.Figure} figure

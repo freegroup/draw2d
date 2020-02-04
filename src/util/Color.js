@@ -95,7 +95,7 @@ draw2d.util.Color = Class.extend({
 
 
     /**
-     * @method
+     * 
      * Convert the color object into a HTML CSS representation
      * @return {String} the color in rgb(##,##,##) representation
      **/
@@ -109,7 +109,7 @@ draw2d.util.Color = Class.extend({
 
 
     /**
-     * @method
+     * 
      * The red part of the color.
      *
      * @return {Number} the [red] part of the color.
@@ -121,7 +121,7 @@ draw2d.util.Color = Class.extend({
 
 
     /**
-     * @method
+     * 
      * The green part of the color.
      *
      * @return {Number} the [green] part of the color.
@@ -133,7 +133,7 @@ draw2d.util.Color = Class.extend({
 
 
     /**
-     * @method
+     * 
      * The blue part of the color
      *
      * @return {Number} the [blue] part of the color.
@@ -145,7 +145,7 @@ draw2d.util.Color = Class.extend({
 
 
     /**
-     * @method
+     * 
      * The alpha part of the color
      *
      * @return {Number} the [alpha] part of the color.
@@ -156,7 +156,7 @@ draw2d.util.Color = Class.extend({
     },
 
     /**
-     * @method
+     * 
      * Returns the ideal Text Color. Useful for font color selection by a given background color.
      *
      * @return {draw2d.util.Color} The <i>ideal</i> inverse color.
@@ -236,7 +236,7 @@ draw2d.util.Color = Class.extend({
 
 
     /**
-     * @method
+     * 
      * Convert the color object into a HTML CSS representation
      * @return {String} the color in rgb(##,##,##) representation
      **/
@@ -247,7 +247,7 @@ draw2d.util.Color = Class.extend({
 
 
     /**
-     * @method
+     * 
      * Convert the color object into a HTML CSS representation
      * @return {String} the color in #RRGGBB representation
      **/
@@ -269,7 +269,7 @@ draw2d.util.Color = Class.extend({
     },
 
     /**
-     * @method
+     * 
      * Returns a darker color of the given one. The original color is unchanged.
      *
      * @param {Number} fraction  Darkness fraction between [0..1].
@@ -297,7 +297,7 @@ draw2d.util.Color = Class.extend({
 
 
     /**
-     * @method
+     * 
      * Make a color lighter. The original color is unchanged.
      *
      * @param {Number} fraction  lighter fraction between [0..1].
@@ -324,7 +324,7 @@ draw2d.util.Color = Class.extend({
     },
 
     /**
-     * @method
+     * 
      * Return a new color wich is faded to the given color.
      * @param {draw2d.util.Color} color
      * @param {Number} pc the fade percentage in [0..1]
@@ -343,7 +343,7 @@ draw2d.util.Color = Class.extend({
     },
 
 	/**
-	 * @method
+	 * 
 	 * Compares two color objects
 	 *
 	 * @param {draw2d.util.Color} o

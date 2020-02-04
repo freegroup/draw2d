@@ -17,13 +17,15 @@
 import draw2d from '../../packages'
 
 
-draw2d.layout.anchor.FanConnectionAnchor = draw2d.layout.anchor.ConnectionAnchor.extend({
+draw2d.layout.anchor.FanConnectionAnchor = draw2d.layout.anchor.ConnectionAnchor.extend(
+  /** @lends draw2d.layout.anchor.FanConnectionAnchor.prototype */
+  {
 
   NAME: "draw2d.layout.anchor.FanConnectionAnchor",
 
   /**
-   * @constructs
    *
+   * @constructs
    * @param {draw2d.Figure} owner the figure to use for the anchor calculation
    * @param {Number} [separation] the separation or fan distance between the concurrent/conflicting anchors
    */
@@ -39,7 +41,7 @@ draw2d.layout.anchor.FanConnectionAnchor = draw2d.layout.anchor.ConnectionAnchor
   },
 
   /**
-   * @method
+   * 
    *
    * Returns the location where the Connection should be anchored in
    * absolute coordinates. The anchor may use the given reference
@@ -139,7 +141,7 @@ draw2d.layout.anchor.FanConnectionAnchor = draw2d.layout.anchor.ConnectionAnchor
   },
 
   /**
-   * @method
+   * 
    *
    * Returns the reference point for this anchor in absolute coordinates. This might be used
    * by another anchor to determine its own location.

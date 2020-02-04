@@ -13,8 +13,8 @@ import jsonUtil from '../../util/JSONUtil'
 draw2d.shape.diagram.Diagram = draw2d.SetFigure.extend({
 
   /**
-   * @constructs
    *
+   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {
@@ -34,7 +34,7 @@ draw2d.shape.diagram.Diagram = draw2d.SetFigure.extend({
   },
 
   /**
-   * @method
+   * 
    * Set the data for the chart/diagram element
    *
    * @param {Array} data
@@ -56,7 +56,7 @@ draw2d.shape.diagram.Diagram = draw2d.SetFigure.extend({
   },
 
   /**
-   * @method
+   * 
    * Return the data of the diagram
    *
    * @since 5.0.0
@@ -67,7 +67,7 @@ draw2d.shape.diagram.Diagram = draw2d.SetFigure.extend({
 
 
   /**
-   * @method
+   * 
    * Set the dimension of the diagram and reset the cached calculation
    *
    * @since 5.0.0
@@ -81,7 +81,7 @@ draw2d.shape.diagram.Diagram = draw2d.SetFigure.extend({
 
 
   /**
-   * @method
+   * 
    * Return the calculate width of the set. This calculates the bounding box of all elements.
    *
    * @return {Number} the calculated width of the label
@@ -91,7 +91,7 @@ draw2d.shape.diagram.Diagram = draw2d.SetFigure.extend({
   },
 
   /**
-   * @method
+   * 
    * Return the calculated height of the set. This calculates the bounding box of all elements.
    *
    * @return {Number} the calculated height of the label

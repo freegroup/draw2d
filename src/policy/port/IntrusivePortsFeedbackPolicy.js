@@ -8,7 +8,9 @@
 import draw2d from '../../packages'
 import {Tweenable} from "shifty"
 
-draw2d.policy.port.IntrusivePortsFeedbackPolicy = draw2d.policy.port.PortFeedbackPolicy.extend({
+draw2d.policy.port.IntrusivePortsFeedbackPolicy = draw2d.policy.port.PortFeedbackPolicy.extend(
+  /** @lends draw2d.policy.port.IntrusivePortsFeedbackPolicy.prototype */
+  {
 
   NAME: "draw2d.policy.port.IntrusivePortsFeedbackPolicy",
 
@@ -22,7 +24,7 @@ draw2d.policy.port.IntrusivePortsFeedbackPolicy = draw2d.policy.port.PortFeedbac
   },
 
   /**
-   * @method
+   *
    * Called by the framework if the related shape has init a drag&drop
    * operation
    *
@@ -79,7 +81,7 @@ draw2d.policy.port.IntrusivePortsFeedbackPolicy = draw2d.policy.port.PortFeedbac
 
 
   /**
-   * @method
+   *
    * Called by the framework during drag a figure.
    *
    * @param {draw2d.Canvas} canvas The host canvas
@@ -95,7 +97,7 @@ draw2d.policy.port.IntrusivePortsFeedbackPolicy = draw2d.policy.port.PortFeedbac
   },
 
   /**
-   * @method
+   *
    * Called by the framework if the drag drop operation ends.
    *
    * @param {draw2d.Canvas} canvas The host canvas

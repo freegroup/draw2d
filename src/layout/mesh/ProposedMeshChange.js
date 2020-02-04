@@ -10,8 +10,8 @@ import draw2d from '../../packages';
 draw2d.layout.mesh.ProposedMeshChange = Class.extend({
 
 	/**
-	 * @constructs
 	 * Creates change object.
+	 * @constructs
 	 */
     init: function(figure, x, y)
     {
@@ -21,7 +21,7 @@ draw2d.layout.mesh.ProposedMeshChange = Class.extend({
     },
 
     /**
-     * @method
+     *
      * Return the related figure.
      *
      * @return {draw2d.Figure} the figure to the related change proposal
@@ -32,7 +32,7 @@ draw2d.layout.mesh.ProposedMeshChange = Class.extend({
     },
 
     /**
-     * @method
+     *
      * The proposed x-coordinate.
      *
      * @return {Number}
@@ -43,7 +43,7 @@ draw2d.layout.mesh.ProposedMeshChange = Class.extend({
     },
 
     /**
-     * @method
+     *
      * The proposed y-coordinate
      *
      * @return {Number}

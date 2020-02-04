@@ -28,14 +28,16 @@ draw2d.SnapToHelper.NSEW = draw2d.SnapToHelper.NORTH_SOUTH | draw2d.SnapToHelper
  *
  * @extends draw2d.policy.canvas.CanvasPolicy
  */
-draw2d.policy.canvas.SnapToEditPolicy = draw2d.policy.canvas.CanvasPolicy.extend({
+draw2d.policy.canvas.SnapToEditPolicy = draw2d.policy.canvas.CanvasPolicy.extend(
+  /** @lends draw2d.policy.canvas.SnapToEditPolicy.prototype */
+  {
 
   NAME: "draw2d.policy.canvas.SnapToEditPolicy",
 
   /**
-   * @constructs
    * Creates a new constraint policy for snap to grid
    *
+   * @constructs
    */
   init: function (attr, setter, getter) {
     this.lineColor = null
@@ -54,7 +56,7 @@ draw2d.policy.canvas.SnapToEditPolicy = draw2d.policy.canvas.CanvasPolicy.extend
   },
 
   /**
-   * @method
+   *
    * Set the color of the snap line.
    *
    *      // Alternatively you can use the attr method:
@@ -70,7 +72,7 @@ draw2d.policy.canvas.SnapToEditPolicy = draw2d.policy.canvas.CanvasPolicy.extend
   },
 
   /**
-   * @method
+   *
    * Return the current paint color.
    *
    * @return {draw2d.util.Color} The paint color of the line.
@@ -82,7 +84,7 @@ draw2d.policy.canvas.SnapToEditPolicy = draw2d.policy.canvas.CanvasPolicy.extend
 
 
   /**
-   * @method
+   *
    * Adjust the coordinates to the given constraint of the policy.
    *
    * @param {draw2d.Canvas} canvas the related canvas

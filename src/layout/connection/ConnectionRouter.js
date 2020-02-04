@@ -7,19 +7,22 @@
 import draw2d from '../../packages'
 
 
-draw2d.layout.connection.ConnectionRouter = Class.extend({
+draw2d.layout.connection.ConnectionRouter = Class.extend(
+  /** @lends draw2d.layout.connection.ConnectionRouter.prototype */
+  {
+
   NAME: "draw2d.layout.connection.ConnectionRouter",
 
   /**
-   * @constructs
    * Creates a new Router object
+   * @constructs
    */
   init: function () {
   },
 
 
   /**
-   * @method
+   *
    * Routes the Connection.
    *
    * @param {draw2d.Connection} connection The Connection to route
@@ -77,7 +80,7 @@ draw2d.layout.connection.ConnectionRouter = Class.extend({
 
 
   /**
-   * @method
+   *
    * Callback method if the router has been assigned to a connection.
    *
    * @param {draw2d.shape.basic.PolyLine} connection The assigned connection
@@ -88,7 +91,7 @@ draw2d.layout.connection.ConnectionRouter = Class.extend({
   },
 
   /**
-   * @method
+   *
    * Callback method if the router has been removed from the connection.
    *
    * @param {draw2d.shape.basic.PolyLine} connection The related connection
@@ -99,7 +102,7 @@ draw2d.layout.connection.ConnectionRouter = Class.extend({
   },
 
   /**
-   * @method
+   *
    * Callback method for the PolyLine or Connection to check if it possible to remove a vertex from
    * the list. The router can send an veto for this.
    * Per default it is not possible to remove any vertex from the PolyLine exceptional if any interactive
@@ -124,7 +127,7 @@ draw2d.layout.connection.ConnectionRouter = Class.extend({
   },
 
   /**
-   * @method
+   *
    * Tweak or enrich the polyline persistence data with routing information
    *
    * @since 2.10.0
@@ -137,7 +140,7 @@ draw2d.layout.connection.ConnectionRouter = Class.extend({
   },
 
   /**
-   * @method
+   *
    * set the attributes for the polyline with routing information
    *
    * @since 2.10.0
@@ -148,7 +151,7 @@ draw2d.layout.connection.ConnectionRouter = Class.extend({
   },
 
   /**
-   * @method
+   *
    *
    * The draw2d.Connection delegates the drag operation to the router. The router can
    * handle the different constraints of the connection.
@@ -163,7 +166,7 @@ draw2d.layout.connection.ConnectionRouter = Class.extend({
   },
 
   /**
-   * @method
+   *
    * Called by the connection if the vertices set outside.
    * This enforce the router to avoid full autoroute. E.g. InteractiveManhattanRouter
    *

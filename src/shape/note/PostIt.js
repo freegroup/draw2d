@@ -20,13 +20,15 @@
  */
 import draw2d from '../../packages'
 
-draw2d.shape.note.PostIt = draw2d.shape.basic.Label.extend({
+draw2d.shape.note.PostIt = draw2d.shape.basic.Label.extend(
+  /** @lends draw2d.shape.note.PostIt.prototype */
+  {
 
   NAME: "draw2d.shape.note.PostIt",
 
   /**
-   * @constructs
    *
+   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {

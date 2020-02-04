@@ -10,13 +10,16 @@
  */
 import draw2d from '../packages'
 
-draw2d.command.CommandAttr = draw2d.command.Command.extend({
+draw2d.command.CommandAttr = draw2d.command.Command.extend(
+  /** @lends draw2d.command.CommandAttr.prototype */
+  {
+
   NAME: "draw2d.command.CommandAttr",
 
   /**
-   * @constructs
    * Create a new Command objects which provides undo/redo for attributes.
    *
+   * @constructs
    * @param {draw2d.Figure} figure the figure to handle
    * @param {Object} attributes new attributes to set
    */
@@ -35,7 +38,7 @@ draw2d.command.CommandAttr = draw2d.command.Command.extend({
 
 
   /**
-   * @method
+   * 
    * Returns [true] if the command can be execute and the execution of the
    * command modify the model. A CommandMove with [startX,startX] == [endX,endY] should
    * return false. <br>
@@ -49,7 +52,7 @@ draw2d.command.CommandAttr = draw2d.command.Command.extend({
   },
 
   /**
-   * @method
+   * 
    * Execute the command the first time
    *
    **/
@@ -58,7 +61,7 @@ draw2d.command.CommandAttr = draw2d.command.Command.extend({
   },
 
   /**
-   * @method
+   * 
    *
    * Undo the move command
    *
@@ -68,7 +71,7 @@ draw2d.command.CommandAttr = draw2d.command.Command.extend({
   },
 
   /**
-   * @method
+   * 
    *
    * Redo the move command after the user has undo this command
    *

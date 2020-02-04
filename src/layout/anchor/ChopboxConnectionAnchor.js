@@ -15,13 +15,15 @@
 import draw2d from '../../packages'
 
 
-draw2d.layout.anchor.ChopboxConnectionAnchor = draw2d.layout.anchor.ConnectionAnchor.extend({
+draw2d.layout.anchor.ChopboxConnectionAnchor = draw2d.layout.anchor.ConnectionAnchor.extend(
+  /** @lends draw2d.layout.anchor.ChopboxConnectionAnchor.prototype */
+  {
 
   NAME: "draw2d.layout.anchor.ChopboxConnectionAnchor",
 
   /**
-   * @constructs
    *
+   * @constructs
    * @param {draw2d.Figure} owner the figure to use for the anchor calculation
 
    */
@@ -30,7 +32,7 @@ draw2d.layout.anchor.ChopboxConnectionAnchor = draw2d.layout.anchor.ConnectionAn
   },
 
   /**
-   * @method
+   *
    *
    * Returns the location where the Connection should be anchored in
    * absolute coordinates. The anchor may use the given reference
@@ -78,7 +80,7 @@ draw2d.layout.anchor.ChopboxConnectionAnchor = draw2d.layout.anchor.ConnectionAn
   },
 
   /**
-   * @method
+   *
    *
    * Returns the reference point for this anchor in absolute coordinates. This might be used
    * by another anchor to determine its own location.

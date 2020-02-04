@@ -10,7 +10,10 @@
  */
 import draw2d from '../../packages'
 
-draw2d.shape.basic.GhostVertexResizeHandle = draw2d.shape.basic.LineResizeHandle.extend({
+draw2d.shape.basic.GhostVertexResizeHandle = draw2d.shape.basic.LineResizeHandle.extend(
+  /** @lends draw2d.shape.basic.GhostVertexResizeHandle.prototype */
+  {
+  
   NAME: "draw2d.shape.basic.GhostVertexResizeHandle",
 
   init: function (owner, precursorIndex) {
@@ -29,7 +32,7 @@ draw2d.shape.basic.GhostVertexResizeHandle = draw2d.shape.basic.LineResizeHandle
   },
 
   /**
-   * @method
+   *
    * Set the alpha blending of this figure.
    *
    * @param {Number} percent Value between [0..1].
@@ -42,7 +45,7 @@ draw2d.shape.basic.GhostVertexResizeHandle = draw2d.shape.basic.LineResizeHandle
   },
 
   /**
-   * @method
+   *
    * Called when a user clicks on the element
    *
    * @template
@@ -67,7 +70,7 @@ draw2d.shape.basic.GhostVertexResizeHandle = draw2d.shape.basic.LineResizeHandle
   },
 
   /**
-   * @method
+   *
    * Called from the framework during a drag&drop operation
    *
    * @param {Number} dx the x difference between the start of the drag drop operation and now
@@ -81,7 +84,7 @@ draw2d.shape.basic.GhostVertexResizeHandle = draw2d.shape.basic.LineResizeHandle
   },
 
   /**
-   * @method Called after a drag and drop action.<br>
+   *  Called after a drag and drop action.<br>
    *         Sub classes can override this method to implement additional stuff. Don't forget to call the super implementation via <code>this._super();</code>
    *
    * @param {Number} x the x-coordinate of the mouse event
@@ -101,7 +104,7 @@ draw2d.shape.basic.GhostVertexResizeHandle = draw2d.shape.basic.LineResizeHandle
 
 
   /**
-   * @method
+   *
    * Controls the location of the resize handle
    *
    * @template

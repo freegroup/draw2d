@@ -26,7 +26,9 @@
  */
 import draw2d from '../../packages'
 
-draw2d.policy.canvas.GhostMoveSelectionPolicy = draw2d.policy.canvas.SingleSelectionPolicy.extend({
+draw2d.policy.canvas.GhostMoveSelectionPolicy = draw2d.policy.canvas.SingleSelectionPolicy.extend(
+  /** @lends draw2d.policy.canvas.GhostMoveSelectionPolicy.prototype */
+  {
 
   NAME: "draw2d.policy.canvas.GhostMoveSelectionPolicy",
 

@@ -7,7 +7,10 @@
  */
 import draw2d from '../../packages'
 
-draw2d.layout.locator.Locator = Class.extend({
+draw2d.layout.locator.Locator = Class.extend(
+  /** @lends draw2d.layout.locator.Locator.prototype */
+  {
+
   NAME: "draw2d.layout.locator.Locator",
 
   /**
@@ -20,7 +23,7 @@ draw2d.layout.locator.Locator = Class.extend({
 
 
   /**
-   * @method
+   *
    * Callback method if a child is bounded to a parent. This is
    * the perfect moment to prepare the child node with some basic
    * behaviour which are forced by the <code>Locator</code>
@@ -37,7 +40,7 @@ draw2d.layout.locator.Locator = Class.extend({
   },
 
   /**
-   * @method
+   *
    * Callback method if a child is unbounded to the locator.
    *
    * @param {draw2d.Figure} figure
@@ -48,7 +51,7 @@ draw2d.layout.locator.Locator = Class.extend({
 
 
   /**
-   * @method
+   *
    * Controls the location of an I{@link draw2d.Figure}
    *
    * @param {Number} index child index of the figure
@@ -63,7 +66,7 @@ draw2d.layout.locator.Locator = Class.extend({
   },
 
   /**
-   * @method
+   *
    * Return a clone of the locator object
    *
    * @returns

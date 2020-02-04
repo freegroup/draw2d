@@ -8,13 +8,16 @@
  */
 import draw2d from '../../packages'
 
-draw2d.shape.composite.Composite = draw2d.SetFigure.extend({
+draw2d.shape.composite.Composite = draw2d.SetFigure.extend(
+  /** @lends draw2d.shape.composite.Composite.prototype */
+  {
+
   NAME: "draw2d.shape.composite.Composite",
 
   /**
-   * @constructs
    * Creates a new composite element which are not assigned to any canvas.
    *
+   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {
@@ -22,7 +25,7 @@ draw2d.shape.composite.Composite = draw2d.SetFigure.extend({
   },
 
   /**
-   * @method
+   * 
    * Called when a user dbl clicks on the element
    *
    * @template
@@ -32,7 +35,7 @@ draw2d.shape.composite.Composite = draw2d.SetFigure.extend({
   },
 
   /**
-   * @method
+   * 
    * Delegate method to calculate if a figure is selectable. A composite has the right to override the
    * initial selectable flag of the figure.
    *
@@ -46,7 +49,7 @@ draw2d.shape.composite.Composite = draw2d.SetFigure.extend({
   },
 
   /**
-   * @method
+   * 
    * Delegate method to calculate if a figure is draggable. A composite has the right to override the
    * initial draggable flag of the figure.
    *
@@ -61,7 +64,7 @@ draw2d.shape.composite.Composite = draw2d.SetFigure.extend({
 
 
   /**
-   * @method
+   * 
    * Set the canvas element of this figures. This can be used to determine whenever an element
    * is added or removed to the canvas.
    *

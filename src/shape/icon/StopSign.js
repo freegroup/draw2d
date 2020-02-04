@@ -15,14 +15,17 @@
  */
 import draw2d from '../../packages'
 
-draw2d.shape.icon.StopSign = draw2d.shape.icon.Icon.extend({
+draw2d.shape.icon.StopSign = draw2d.shape.icon.Icon.extend(
+  /** @lends draw2d.shape.icon.StopSign.prototype */
+  {
+
   NAME: "draw2d.shape.icon.StopSign",
 
   /**
    *
-   * @constructs
    * Creates a new figure element which are not assigned to any canvas.
    *
+   * @constructs
    * @param {Object} attr the configuration of the shape
    */
   init: function (attr, setter, getter) {

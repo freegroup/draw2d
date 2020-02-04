@@ -12,8 +12,8 @@ draw2d.policy.figure.HBusSelectionFeedbackPolicy = draw2d.policy.figure.BusSelec
 
     NAME : "draw2d.policy.figure.HBusSelectionFeedbackPolicy",
     /**
-     * @constructs
      * Creates a new Router object
+     * @constructs
      */
     init: function( attr, setter, getter)
     {
@@ -21,7 +21,7 @@ draw2d.policy.figure.HBusSelectionFeedbackPolicy = draw2d.policy.figure.BusSelec
     },
 
     /**
-     * @method
+     * 
      * Callback if the figure has been moved
      *
      * @param figure

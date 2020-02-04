@@ -17,13 +17,15 @@
  */
 import draw2d from '../../packages'
 
-draw2d.policy.canvas.DropInterceptorPolicy = draw2d.policy.canvas.CanvasPolicy.extend({
-
+draw2d.policy.canvas.DropInterceptorPolicy = draw2d.policy.canvas.CanvasPolicy.extend(
+  /** @lends draw2d.policy.canvas.DropInterceptorPolicy.prototype */
+  {
+  
   NAME: "draw2d.policy.canvas.DropInterceptorPolicy",
 
   /**
-   * @constructs
    *
+   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)
@@ -31,7 +33,7 @@ draw2d.policy.canvas.DropInterceptorPolicy = draw2d.policy.canvas.CanvasPolicy.e
 
 
   /**
-   * @method
+   * 
    * Called if the user want connect a port with any kind draw2d.Figure.<br>
    * Return a non <b>null</b> value if the interceptor accept the connect event.<br>
    * <br>

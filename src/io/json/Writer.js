@@ -34,7 +34,7 @@ draw2d.io.json.Writer = draw2d.io.Writer.extend({
     },
     
     /**
-     * @method
+     * 
      * Export the content to the implemented data format. Inherit class implements
      * content specific writer.
      * <br>

@@ -10,14 +10,17 @@
  */
 import draw2d from '../packages'
 
-draw2d.command.CommandReconnect = draw2d.command.Command.extend({
+draw2d.command.CommandReconnect = draw2d.command.Command.extend(
+  /** @lends draw2d.command.CommandReconnect.prototype */
+  {
+
   NAME: "draw2d.command.CommandReconnect",
 
 
   /**
-   * @constructs
    * Create a new Command objects which can be execute via the CommandStack.
    *
+   * @constructs
    * @param {draw2d.Connection} conn the related Connection which is currently in the drag&drop operation
    */
   init: function (conn) {
@@ -28,7 +31,7 @@ draw2d.command.CommandReconnect = draw2d.command.Command.extend({
   },
 
   /**
-   * @method
+   *
    * Returns [true] if the command can be execute and the execution of the
    * command modify the model. A CommandMove with [startX,startX] == [endX,endY] should
    * return false. <br>
@@ -42,7 +45,7 @@ draw2d.command.CommandReconnect = draw2d.command.Command.extend({
   },
 
   /**
-   * @method
+   *
    * The new ports to use during the execute of this command.
    *
    * @param {draw2d.Port} source
@@ -74,7 +77,7 @@ draw2d.command.CommandReconnect = draw2d.command.Command.extend({
   },
 
   /**
-   * @method
+   *
    * Execute the command the first time
    *
    **/
@@ -83,7 +86,7 @@ draw2d.command.CommandReconnect = draw2d.command.Command.extend({
   },
 
   /**
-   * @method
+   *
    * Execute the command the first time
    *
    **/
@@ -98,7 +101,7 @@ draw2d.command.CommandReconnect = draw2d.command.Command.extend({
   },
 
   /**
-   * @method
+   *
    * Undo the command
    *
    **/
@@ -112,7 +115,7 @@ draw2d.command.CommandReconnect = draw2d.command.Command.extend({
   },
 
   /**
-   * @method
+   *
    * Redo the command after the user has undo this command
    *
    **/

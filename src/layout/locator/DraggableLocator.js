@@ -17,13 +17,16 @@
  */
 import draw2d from '../../packages'
 
-draw2d.layout.locator.DraggableLocator = draw2d.layout.locator.Locator.extend({
+draw2d.layout.locator.DraggableLocator = draw2d.layout.locator.Locator.extend(
+  /** @lends draw2d.layout.locator.DraggableLocator.prototype */
+  {
+  
   NAME: "draw2d.layout.locator.DraggableLocator",
 
   /**
-   * @constructs
    * Constructs a locator with associated parent.
    *
+   * @constructs
    */
   init: function () {
     this._super()

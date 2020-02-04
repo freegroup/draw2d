@@ -12,7 +12,9 @@
 import draw2d from '../../packages'
 import {Tweenable} from "shifty"
 
-draw2d.policy.canvas.ZoomPolicy = draw2d.policy.canvas.CanvasPolicy.extend({
+draw2d.policy.canvas.ZoomPolicy = draw2d.policy.canvas.CanvasPolicy.extend(
+  /** @lends draw2d.policy.canvas.ZoomPolicy.prototype */
+  {
 
   NAME: "draw2d.policy.canvas.ZoomPolicy",
 
@@ -32,7 +34,7 @@ draw2d.policy.canvas.ZoomPolicy = draw2d.policy.canvas.CanvasPolicy.extend({
     this._super(canvas)
   },
 
-  /** @method
+  /** 
    * Set the new zoom factor for the canvas. The value must be between [0.01..10]
    *
    *      // you can register an eventhandler to listen to the zoom factor of the canvas.

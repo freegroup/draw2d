@@ -20,13 +20,15 @@
  */
 import draw2d from '../../packages'
 
-draw2d.policy.figure.WidthSelectionFeedbackPolicy = draw2d.policy.figure.SelectionFeedbackPolicy.extend({
+draw2d.policy.figure.WidthSelectionFeedbackPolicy = draw2d.policy.figure.SelectionFeedbackPolicy.extend(
+  /** @lends draw2d.policy.figure.BusSelectionFeedbackPolicy.prototype */
+  {
 
   NAME: "draw2d.policy.figure.BusSelectionFeedbackPolicy",
 
   /**
-   * @constructs
    * Creates a new Router object
+   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)
@@ -34,7 +36,7 @@ draw2d.policy.figure.WidthSelectionFeedbackPolicy = draw2d.policy.figure.Selecti
 
 
   /**
-   * @method
+   *
    * Called by the framework of the Policy should show a resize handle for the given shape
    *
    * @param {draw2d.Canvas} canvas the host of the diagram
@@ -61,7 +63,7 @@ draw2d.policy.figure.WidthSelectionFeedbackPolicy = draw2d.policy.figure.Selecti
 
 
   /**
-   * @method
+   *
    * Callback if the figure has been moved
    *
    * @param {draw2d.Canvas} canvas The host canvas

@@ -24,7 +24,10 @@
  */
 import draw2d from '../../packages'
 
-draw2d.layout.locator.CenterLocator = draw2d.layout.locator.Locator.extend({
+draw2d.layout.locator.CenterLocator = draw2d.layout.locator.Locator.extend(
+  /** @lends draw2d.layout.locator.CenterLocator.prototype */
+  {
+
   NAME: "draw2d.layout.locator.CenterLocator",
 
   /**
@@ -38,7 +41,7 @@ draw2d.layout.locator.CenterLocator = draw2d.layout.locator.Locator.extend({
 
 
   /**
-   * @method
+   * 
    * Relocates the given Figure.
    *
    * @param {Number} index child index of the target

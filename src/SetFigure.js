@@ -10,7 +10,9 @@
 import draw2d from 'packages'
 import extend from 'util/extend'
 
-draw2d.SetFigure = draw2d.shape.basic.Rectangle.extend({
+draw2d.SetFigure = draw2d.shape.basic.Rectangle.extend(
+  /** @lends draw2d.SetFigure.prototype */
+  {
 
   NAME: "draw2d.SetFigure",
 
@@ -36,7 +38,7 @@ draw2d.SetFigure = draw2d.shape.basic.Rectangle.extend({
   },
 
   /**
-   * @method
+   * 
    * Set/Reset the canvas for the element.
    *
    * @param {draw2d.Canvas} canvas the canvas to use
@@ -54,7 +56,7 @@ draw2d.SetFigure = draw2d.shape.basic.Rectangle.extend({
 
 
   /**
-   * @method
+   * 
    * Set the css class if the node.
    *
    * @param {String} cssClass the new css class name of the node
@@ -83,7 +85,7 @@ draw2d.SetFigure = draw2d.shape.basic.Rectangle.extend({
 
 
   /**
-   * @method
+   * 
    * propagate all attributes like color, stroke,... to the shape element and
    * repaint them.
    *
@@ -140,7 +142,7 @@ draw2d.SetFigure = draw2d.shape.basic.Rectangle.extend({
   },
 
   /**
-   * @method
+   * 
    * Apply the opacity to all child set elements. Override this if you want to avoid opacity changes.
    * @private
    *
@@ -171,7 +173,7 @@ draw2d.SetFigure = draw2d.shape.basic.Rectangle.extend({
   },
 
   /**
-   * @method
+   * 
    * Moves the element so it is the closest to the viewer’s eyes, on top of other elements. Additional
    * the internal model changed as well.
    *
@@ -267,7 +269,7 @@ draw2d.SetFigure = draw2d.shape.basic.Rectangle.extend({
   },
 
   /**
-   * @method
+   * 
    * Moves the element to the background. Additional
    * the internal model changed as well.
    *
@@ -382,7 +384,7 @@ draw2d.SetFigure = draw2d.shape.basic.Rectangle.extend({
   },
 
   /**
-   * @method
+   * 
    * Override this method to add your own SVG elements. See {@link draw2d.shape.basic.Label} as example.
    *
    * @template

@@ -7,20 +7,22 @@
  */
 import draw2d from '../../packages'
 
-draw2d.policy.canvas.ReadOnlySelectionPolicy = draw2d.policy.canvas.SelectionPolicy.extend({
-
+draw2d.policy.canvas.ReadOnlySelectionPolicy = draw2d.policy.canvas.SelectionPolicy.extend(
+  /** @lends draw2d.policy.canvas.ReadOnlySelectionPolicy.prototype */
+  {
+  
   NAME: "draw2d.policy.canvas.ReadOnlySelectionPolicy",
 
   /**
-   * @constructs
    * Creates a new Router object
+   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)
   },
 
   /**
-   * @method
+   * 
    * Called by the host if the policy has been installed.
    *
    * @param {draw2d.Canvas/draw2d.Canvas} canvas
@@ -33,7 +35,7 @@ draw2d.policy.canvas.ReadOnlySelectionPolicy = draw2d.policy.canvas.SelectionPol
   },
 
   /**
-   * @method
+   * 
    * Called by the host if the policy has been uninstalled.
    *
    * @param {draw2d.Canvas} canvas
@@ -47,7 +49,7 @@ draw2d.policy.canvas.ReadOnlySelectionPolicy = draw2d.policy.canvas.SelectionPol
   },
 
   /**
-   * @method
+   * 
    *
    * @param {draw2d.Canvas} canvas
    * @param {Number} dx The x diff between start of dragging and this event

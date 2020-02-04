@@ -61,7 +61,10 @@
 import draw2d from '../../packages'
 
 
-draw2d.layout.connection.CircuitConnectionRouter = draw2d.layout.connection.ManhattanConnectionRouter.extend({
+draw2d.layout.connection.CircuitConnectionRouter = draw2d.layout.connection.ManhattanConnectionRouter.extend(
+  /** @lends draw2d.layout.connection.CircuitConnectionRouter.prototype */
+  {
+
   NAME: "draw2d.layout.connection.CircuitConnectionRouter",
 
   /**
@@ -81,7 +84,7 @@ draw2d.layout.connection.CircuitConnectionRouter = draw2d.layout.connection.Manh
 
 
   /**
-   * @method
+   * 
    * Callback method if the router has been assigned to a connection.
    *
    * @param {draw2d.Connection} connection The assigned connection
@@ -93,7 +96,7 @@ draw2d.layout.connection.CircuitConnectionRouter = draw2d.layout.connection.Manh
   },
 
   /**
-   * @method
+   * 
    * Callback method if the router has been removed from the connection. In the case of the CircuitRouter
    * all vertex nodes will be removed from the canvas.
    *
@@ -109,7 +112,7 @@ draw2d.layout.connection.CircuitConnectionRouter = draw2d.layout.connection.Manh
   },
 
   /**
-   * @method
+   * 
    * Set the radius of the vertex circle.
    *
    * @param {Number} radius
@@ -127,7 +130,7 @@ draw2d.layout.connection.CircuitConnectionRouter = draw2d.layout.connection.Manh
   },
 
   /**
-   * @method
+   * 
    * Set the radius or span of the bridge. A bridge will be drawn if two connections are crossing and didn't have any
    * common port.
    *

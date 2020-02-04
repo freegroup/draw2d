@@ -29,7 +29,7 @@ draw2d.io.svg.Writer = draw2d.io.Writer.extend({
     },
     
     /**
-     * @method
+     * 
      * Export the content of the canvas into SVG. The SVG document can be loaded with Inkscape or any other SVG Editor.
      * <br>
      * <br>

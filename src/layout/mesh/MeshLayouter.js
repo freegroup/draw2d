@@ -10,14 +10,14 @@ import draw2d from '../../packages';
 draw2d.layout.mesh.MeshLayouter = Class.extend({
 
 	/**
-	 * @constructs
 	 * Creates a new layouter object.
+	 * @constructs
 	 */
     init: function(){
     },
 
     /**
-     * @method
+     * 
      * Return a changes list for an existing mesh/canvas to ensure that the element to insert
      * did have enough space.
      *

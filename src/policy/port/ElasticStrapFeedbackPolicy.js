@@ -11,13 +11,15 @@
  */
 import draw2d from '../../packages'
 
-draw2d.policy.port.ElasticStrapFeedbackPolicy = draw2d.policy.port.PortFeedbackPolicy.extend({
+draw2d.policy.port.ElasticStrapFeedbackPolicy = draw2d.policy.port.PortFeedbackPolicy.extend(
+  /** @lends draw2d.policy.port.ElasticStrapFeedbackPolicy.prototype */
+  {
 
   NAME: "draw2d.policy.port.ElasticStrapFeedbackPolicy",
 
   /**
-   * @constructs
    * Creates a new Router object
+   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)
@@ -25,7 +27,7 @@ draw2d.policy.port.ElasticStrapFeedbackPolicy = draw2d.policy.port.PortFeedbackP
   },
 
   /**
-   * @method
+   *
    * Called by the framework if the related shape has init a drag&drop
    * operation
    *
@@ -47,7 +49,7 @@ draw2d.policy.port.ElasticStrapFeedbackPolicy = draw2d.policy.port.PortFeedbackP
 
 
   /**
-   * @method
+   *
    * Called by the framework during drag a figure.
    *
    * @param {draw2d.Canvas} canvas The host canvas
@@ -62,7 +64,7 @@ draw2d.policy.port.ElasticStrapFeedbackPolicy = draw2d.policy.port.PortFeedbackP
   },
 
   /**
-   * @method
+   *
    * Called by the framework if the drag drop operation ends.
    *
    * @param {draw2d.Canvas} canvas The host canvas

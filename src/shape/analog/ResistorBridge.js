@@ -14,8 +14,10 @@
  */
 import draw2d from '../../packages'
 
-draw2d.shape.analog.ResistorBridge = draw2d.SVGFigure.extend({
-
+draw2d.shape.analog.ResistorBridge = draw2d.SVGFigure.extend(
+  /** @lends draw2d.shape.analog.ResistorBridge.prototype */
+  {
+  
   NAME: "draw2d.shape.analog.ResistorBridge",
 
   // custom locator for the special design of the ResistorBridge Input area
@@ -45,8 +47,8 @@ draw2d.shape.analog.ResistorBridge = draw2d.SVGFigure.extend({
 
 
   /**
-   * @constructs
    * Create a new instance
+   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {

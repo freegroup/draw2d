@@ -4,12 +4,16 @@
  */
 import draw2d from '../packages'
 
-draw2d.command.CommandStackEvent = Class.extend({
+draw2d.command.CommandStackEvent = Class.extend(
+  /** @lends draw2d.command.CommandStackEvent.prototype */
+  {
+
   NAME: "draw2d.command.CommandStackEvent",
 
   /**
-   * @constructs
    * Create a new CommandStack objects which can be execute via the CommandStack.
+   *
+   * @constructs
    * @param {draw2d.command.Command} command the related command
    * @param {Number} details the current state of the command execution
    *
@@ -23,7 +27,7 @@ draw2d.command.CommandStackEvent = Class.extend({
 
 
   /**
-   * @method
+   *
    * Return the corresponding stack of the event.
    *
    * @return {draw2d.command.CommandStack}
@@ -34,7 +38,7 @@ draw2d.command.CommandStackEvent = Class.extend({
 
 
   /**
-   * @method
+   *
    * Returns null or a Command if a command is relevant to the current event.
    *
    * @return {draw2d.command.Command}
@@ -44,7 +48,7 @@ draw2d.command.CommandStackEvent = Class.extend({
   },
 
   /**
-   * @method
+   *
    * Returns an integer identifying the type of event which has occurred.
    * Defined by {@link draw2d.command.CommandStack}.
    *
@@ -56,7 +60,7 @@ draw2d.command.CommandStackEvent = Class.extend({
 
 
   /**
-   * @method
+   *
    * Returns true if this event is fired after the stack having changed.
    *
    * @return {Boolean} true if post-change event
@@ -66,7 +70,7 @@ draw2d.command.CommandStackEvent = Class.extend({
   },
 
   /**
-   * @method
+   *
    * Returns true if this event is fired prior to the stack changing.
    *
    * @return {Boolean} true if pre-change event

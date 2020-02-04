@@ -15,8 +15,10 @@
  */
 import draw2d from '../../packages'
 
-draw2d.shape.node.VerticalBus = draw2d.shape.node.Hub.extend({
-
+draw2d.shape.node.VerticalBus = draw2d.shape.node.Hub.extend(
+  /** @lends draw2d.shape.node.VerticalBus.prototype */
+  {
+  
   NAME: "draw2d.shape.node.VerticalBus",
 
   /**
@@ -33,7 +35,7 @@ draw2d.shape.node.VerticalBus = draw2d.shape.node.Hub.extend({
 
 
   /**
-   * @method
+   * 
    * set the label for the Hub
    *
    * @param {String} labelString

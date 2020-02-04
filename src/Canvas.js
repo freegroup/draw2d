@@ -10,7 +10,10 @@ import draw2d from 'packages'
 
 draw2d.Canvas = Class.extend(
   /** @lends draw2d.Canvas.prototype */
-  {
+
+    /** @lends draw2d.Canvas.prototype */
+    {
+
     NAME: "draw2d.Canvas",
 
     /**
@@ -365,7 +368,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * Call this method if you didn't need the canvas anymore. The method unregister all even handlers
      * and free all resources. The canvas is unusable after this call
      *
@@ -387,7 +390,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * Reset the canvas and delete all model elements.<br>
      * You can now reload another model to the canvas with a {@link draw2d.io.Reader}
      *
@@ -433,7 +436,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * Callback for any kind of image export tools to trigger the canvas to hide all unwanted
      * decorations. The method is called e.g. from the draw2d.io.png.Writer
      *
@@ -445,7 +448,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * callback method for any image export writer to reactivate the decoration
      * of the canvas. e.g. grids, rulers,...
      *
@@ -457,7 +460,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * Calculate all connection intersection of the canvas.
      * Required for "bridging" or "crossing decoration"
      *
@@ -483,7 +486,7 @@ draw2d.Canvas = Class.extend(
 
 
     /**
-     * @method
+     *
      *
      * Install a new selection and edit policy into the canvas
      *
@@ -543,7 +546,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      *
      * UnInstall the selection and edit policy from the canvas.
      *
@@ -593,7 +596,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * Set the new zoom factor for the canvas. The value must be between [0.01..10]
      *
      *      // you can register an eventhandler if the zoom factor did change
@@ -613,7 +616,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * Return the current zoom factor of the canvas.
      *
      * @returns {Number}
@@ -623,7 +626,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * Return the dimension of the drawing area
      *
      * @since 4.4.0
@@ -634,7 +637,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * Tells the canvas to resize. If you do not specific any parameters
      * the canvas will attempt to determine the height and width by the enclosing bounding box
      * of all elements and set the dimension accordingly. If you would like to set the dimension
@@ -675,7 +678,7 @@ draw2d.Canvas = Class.extend(
 
 
     /**
-     * @method
+     *
      * Transforms a document coordinate to canvas coordinate.
      *
      * @param {Number} x the x coordinate relative to the window
@@ -690,7 +693,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * Transforms a canvas coordinate to document coordinate.
      *
      * @param {Number} x the x coordinate in the canvas
@@ -705,7 +708,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * The DOM host of the canvas
      *
      * @returns {HTMLElement}
@@ -716,7 +719,7 @@ draw2d.Canvas = Class.extend(
 
 
     /**
-     * @method
+     *
      * Return a common event object independed if we run on an iPad or desktop.
      *
      * @param event
@@ -737,7 +740,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      *
      * Set the area which are scrolling the canvas. This can be a jquery selector or
      * a jQuery node.
@@ -751,7 +754,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      *
      * return the scrolling area of the canvas. This is jQuery object
      *
@@ -762,7 +765,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * The left scroll position.
      *
      * @return {Number} the left scroll offset of the canvas
@@ -772,7 +775,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * The top scroll position
      *
      * @return {Number} the top scroll offset of the cnavas.
@@ -782,7 +785,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * Set left scroll position.
      *
      * @param {Number} left the left scroll offset of the canvas
@@ -794,7 +797,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * set top scroll position
      *
      * @param {Number} top the top scroll offset of the canvas.
@@ -806,7 +809,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * set the new scroll position of the canvas
      *
      * @param {Number} top the top scroll offset of the canvas.
@@ -821,7 +824,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * The absolute document x offset.
      *
      * @return {Number}
@@ -831,7 +834,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * The absolute document y offset.
      *
      * @return {Number}
@@ -842,7 +845,7 @@ draw2d.Canvas = Class.extend(
 
 
     /**
-     * @method
+     *
      * Return the width of the canvas
      *
      * @return {Number}
@@ -853,7 +856,7 @@ draw2d.Canvas = Class.extend(
 
 
     /**
-     * @method
+     *
      * Return the height of the canvas.
      *
      * @return {Number}
@@ -864,7 +867,7 @@ draw2d.Canvas = Class.extend(
 
 
     /**
-     * @method
+     *
      * Add a figure at the given x/y coordinate. This method fires an event.
      *
      * Example:
@@ -943,7 +946,7 @@ draw2d.Canvas = Class.extend(
 
 
     /**
-     * @method
+     *
      * Remove a figure or connection from the Canvas. This method fires an event
      * which can be catched.
      *
@@ -1004,7 +1007,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * Returns all lines/connections in this workflow/canvas.<br>
      *
      * @return {draw2d.util.ArrayList}
@@ -1014,7 +1017,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * Returns the internal figures.<br>
      *
      * @return {draw2d.util.ArrayList}
@@ -1024,7 +1027,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * Returns the line or connection with the given id.
      *
      * @param {String} id The id of the line.
@@ -1043,7 +1046,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * Returns the figure with the given id.
      *
      * @param {String} id The id of the figure.
@@ -1061,7 +1064,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * Return all intersections draw2d.geo.Point between the given line and all other
      * lines in the canvas.
      *
@@ -1084,7 +1087,7 @@ draw2d.Canvas = Class.extend(
 
 
     /**
-     * @method
+     *
      *  Adjust the coordinate with the installed SnapToHelper.
      *
      * @param  {draw2d.Figure} figure The related figure
@@ -1112,7 +1115,7 @@ draw2d.Canvas = Class.extend(
 
 
     /**
-     * @method
+     *
      * Register a port to the canvas. This is required for other ports to find a valid drop target.
      *
      * @param {draw2d.Port} port The new port which has been added to the Canvas.
@@ -1128,7 +1131,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * Remove a port from the internal cnavas registration. Now other ports can't find the
      * port anymore as drop target. The port itself is still visible.
      *
@@ -1142,7 +1145,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * Return all ports in the canvas
      *
      */
@@ -1151,7 +1154,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * Returns the command stack for the Canvas. Required for undo/redo support.
      *
      * @return {draw2d.command.CommandStack}
@@ -1161,7 +1164,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * Returns the current selected figure in the Canvas.
      *
      * @return {draw2d.Figure}
@@ -1171,7 +1174,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * Returns the current selection.
      *
      * @return {draw2d.Selection}
@@ -1181,7 +1184,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * Set the current selected figure or figures in the canvas.<br>
      * <br>
      * You can hand over a draw2d.util.ArrayList since version 4.8.0 for multiple selection.
@@ -1205,7 +1208,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * Add the current figure to the selection. If a single selection policy is installed in the
      * canvas the selection before is reseted and the figure is the one and only selection.
      *
@@ -1236,7 +1239,7 @@ draw2d.Canvas = Class.extend(
 
 
     /**
-     * @method
+     *
      * Returns the best figure at the location [x,y]. It is a simple hit test. Keep in mind that only visible objects
      * are returned.
      *
@@ -1396,7 +1399,7 @@ draw2d.Canvas = Class.extend(
 
 
     /**
-     * @method
+     *
      * Return the line which match the hands over coordinate
      *
      * @param {Number} x the x-coordinate for the hit test
@@ -1428,7 +1431,7 @@ draw2d.Canvas = Class.extend(
 
 
     /**
-     * @method
+     *
      * Called by the framework during drag&drop operations.<br>
      * Droppable can be setup with:
      * <pre>
@@ -1452,7 +1455,7 @@ draw2d.Canvas = Class.extend(
 
 
     /**
-     * @method
+     *
      * Called if the DragDrop object is moving around.<br>
      * <br>
      * Graphiti use the jQuery draggable/droppable lib. Please inspect
@@ -1469,7 +1472,7 @@ draw2d.Canvas = Class.extend(
 
 
     /**
-     * @method
+     *
      * Called if the DragDrop object leaving the current hover figure.<br>
      * <br>
      * Graphiti use the jQuery draggable/droppable lib. Please inspect
@@ -1484,7 +1487,7 @@ draw2d.Canvas = Class.extend(
 
 
     /**
-     * @method
+     *
      * Called if the user drop the droppedDomNode onto the canvas.<br>
      * <br>
      * Draw2D use the jQuery draggable/droppable lib. Please inspect
@@ -1503,7 +1506,7 @@ draw2d.Canvas = Class.extend(
 
 
     /**
-     * @method
+     *
      * Callback method for the double click event. The x/y coordinates are relative to the top left
      * corner of the canvas.
      *
@@ -1560,7 +1563,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * The user has triggered a right click. Redirect them to a responsible figure.
      *
      * @param {Number} x The x-coordinate of the click
@@ -1621,7 +1624,7 @@ draw2d.Canvas = Class.extend(
 
     // NEW EVENT HANDLING SINCE VERSION 5.0.0
     /**
-     * @method
+     *
      * Execute all handlers and behaviors attached to the canvas for the given event type.
      *
      *
@@ -1649,7 +1652,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * Attach an event handler function for one or more events to the canvas.
      * To remove events bound with .on(), see {@link #off}.
      *
@@ -1693,7 +1696,7 @@ draw2d.Canvas = Class.extend(
     },
 
     /**
-     * @method
+     *
      * The .off() method removes event handlers that were attached with {@link #on}.<br>
      * Calling .off() with no arguments removes all handlers attached to the canvas.<br>
      * <br>

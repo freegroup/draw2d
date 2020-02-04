@@ -11,13 +11,15 @@
  */
 import draw2d from '../../packages'
 
-draw2d.policy.figure.SelectionFeedbackPolicy = draw2d.policy.figure.SelectionPolicy.extend({
+draw2d.policy.figure.SelectionFeedbackPolicy = draw2d.policy.figure.SelectionPolicy.extend(
+  /** @lends draw2d.policy.figure.SelectionFeedbackPolicy.prototype */
+  {
 
   NAME: "draw2d.policy.figure.SelectionFeedbackPolicy",
 
   /**
-   * @constructs
    *
+   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)
@@ -25,7 +27,7 @@ draw2d.policy.figure.SelectionFeedbackPolicy = draw2d.policy.figure.SelectionPol
 
 
   /**
-   * @method
+   * 
    *
    * @param {draw2d.Figure} figure the unselected figure
    */
@@ -37,7 +39,7 @@ draw2d.policy.figure.SelectionFeedbackPolicy = draw2d.policy.figure.SelectionPol
   },
 
   /**
-   * @method
+   * 
    * Called by the host if the policy has been installed.
    *
    * @param {draw2d.Figure} figure
@@ -55,7 +57,7 @@ draw2d.policy.figure.SelectionFeedbackPolicy = draw2d.policy.figure.SelectionPol
 
 
   /**
-   * @method
+   * 
    * Called by the host if the policy has been uninstalled.
    *
    * @param {draw2d.Figure} figure

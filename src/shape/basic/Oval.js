@@ -18,7 +18,10 @@
 import draw2d from '../../packages'
 import extend from '../../util/extend'
 
-draw2d.shape.basic.Oval = draw2d.VectorFigure.extend({
+draw2d.shape.basic.Oval = draw2d.VectorFigure.extend(
+  /** @lends draw2d.shape.basic.Oval.prototype */
+  {
+
   NAME: "draw2d.shape.basic.Oval",
 
   /**
@@ -53,7 +56,7 @@ draw2d.shape.basic.Oval = draw2d.VectorFigure.extend({
 
 
   /**
-   * @method
+   *
    * Get the center of the figure
    *
    */
@@ -65,7 +68,7 @@ draw2d.shape.basic.Oval = draw2d.VectorFigure.extend({
   },
 
   /**
-   * @method
+   *
    * Set the center of the figure.
    *
    * @param {Number|draw2d.geo.Point} x the new x coordinate of the center or a draw2d.geo.Point object with the center
@@ -114,7 +117,7 @@ draw2d.shape.basic.Oval = draw2d.VectorFigure.extend({
   },
 
   /**
-   * @method
+   *
    *
    *   NOTE: Rotation will need to be added to this function
    *

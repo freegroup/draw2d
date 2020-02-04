@@ -29,8 +29,8 @@ draw2d.policy.figure.VerticalEditPolicy = draw2d.policy.figure.DragDropEditPolic
     NAME : "draw2d.policy.figure.VerticalEditPolicy",
 
     /**
-     * @constructs
      * Creates a new constraint object
+     * @constructs
      */
     init: function( attr, setter, getter)
     {
@@ -39,7 +39,7 @@ draw2d.policy.figure.VerticalEditPolicy = draw2d.policy.figure.DragDropEditPolic
 
 
     /**
-     * @method
+     *
      * It is only possible to drag&drop the element in a vertical line
      *
      * @param {draw2d.Figure} figure

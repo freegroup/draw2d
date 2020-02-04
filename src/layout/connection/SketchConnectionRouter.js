@@ -41,7 +41,10 @@
  */
 import draw2d from '../../packages'
 
-draw2d.layout.connection.SketchConnectionRouter = draw2d.layout.connection.MazeConnectionRouter.extend({
+draw2d.layout.connection.SketchConnectionRouter = draw2d.layout.connection.MazeConnectionRouter.extend(
+  /** @lends draw2d.layout.connection.SketchConnectionRouter.prototype */
+  {
+
   NAME: "draw2d.layout.connection.SketchConnectionRouter",
 
 
@@ -60,7 +63,7 @@ draw2d.layout.connection.SketchConnectionRouter = draw2d.layout.connection.MazeC
   },
 
   /**
-   * @method
+   *
    * Callback method if the router has been assigned to a connection.
    *
    * @param {draw2d.Connection} connection The assigned connection

@@ -32,7 +32,10 @@
 import draw2d from '../../packages'
 import extend from '../../util/extend'
 
-draw2d.shape.basic.Rectangle = draw2d.VectorFigure.extend({
+draw2d.shape.basic.Rectangle = draw2d.VectorFigure.extend(
+  /** @lends draw2d.shape.basic.Rectangle.prototype */
+  {
+
   NAME: "draw2d.shape.basic.Rectangle",
 
   /**
@@ -107,7 +110,7 @@ draw2d.shape.basic.Rectangle = draw2d.VectorFigure.extend({
 
 
   /**
-   * @method
+   *
    * Set the line style for dot/dash styling. Possible values are
    * ["", "-", ".", "-.", "-..", ". ", "- ", "--", "- .", "--.", "--.."]
    *
@@ -127,7 +130,7 @@ draw2d.shape.basic.Rectangle = draw2d.VectorFigure.extend({
   },
 
   /**
-   * @method
+   *
    * Get the line style for this object.
    *
    *      // Alternatively you can use the attr method:

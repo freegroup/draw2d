@@ -17,7 +17,10 @@
  */
 import draw2d from '../../packages'
 
-draw2d.layout.locator.SmartDraggableLocator = draw2d.layout.locator.Locator.extend({
+draw2d.layout.locator.SmartDraggableLocator = draw2d.layout.locator.Locator.extend(
+  /** @lends draw2d.layout.locator.SmartDraggableLocator.prototype */
+  {
+
   NAME: "draw2d.layout.locator.SmartDraggableLocator",
 
   /**
@@ -111,7 +114,7 @@ draw2d.layout.locator.SmartDraggableLocator = draw2d.layout.locator.Locator.exte
 
 
   /**
-   * @method
+   * 
    * Controls the location of an I{@link draw2d.Figure}
    *
    * @param {Number} index child index of the figure

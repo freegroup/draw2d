@@ -14,7 +14,9 @@
 import draw2d from '../packages'
 
 
-draw2d.command.CommandType = Class.extend({
+draw2d.command.CommandType = Class.extend(
+  /** @lends draw2d.command.CommandType.prototype */
+  {
 
   NAME: "draw2d.command.CommandType",
 
@@ -29,7 +31,7 @@ draw2d.command.CommandType = Class.extend({
   },
 
   /**
-   * @method
+   * 
    * Return the String representation of the policy
    *
    * @return {String}

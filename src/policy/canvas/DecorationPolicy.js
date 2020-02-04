@@ -8,13 +8,15 @@
  */
 import draw2d from '../../packages'
 
-draw2d.policy.canvas.DecorationPolicy = draw2d.policy.canvas.CanvasPolicy.extend({
+draw2d.policy.canvas.DecorationPolicy = draw2d.policy.canvas.CanvasPolicy.extend(
+  /** @lends draw2d.policy.canvas.DecorationPolicy.prototype */
+  {
 
   NAME: "draw2d.policy.canvas.DecorationPolicy",
 
   /**
-   * @constructs
    *
+   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)

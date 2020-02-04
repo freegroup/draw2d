@@ -15,7 +15,10 @@
  */
 import draw2d from '../../packages'
 
-draw2d.shape.icon.Wrench2 = draw2d.shape.icon.Icon.extend({
+draw2d.shape.icon.Wrench2 = draw2d.shape.icon.Icon.extend(
+  /** @lends draw2d.shape.icon.Wrench2.prototype */
+  {
+
   NAME: "draw2d.shape.icon.Wrench2",
 
   /**

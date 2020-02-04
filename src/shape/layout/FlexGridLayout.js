@@ -84,15 +84,17 @@
 import draw2d from '../../packages'
 import extend from '../../util/extend'
 
-draw2d.shape.layout.FlexGridLayout = draw2d.shape.layout.Layout.extend({
-
+draw2d.shape.layout.FlexGridLayout = draw2d.shape.layout.Layout.extend(
+  /** @lends draw2d.shape.layout.FlexGridLayout.prototype */
+  {
+  
   NAME: "draw2d.shape.layout.FlexGridLayout",
 
 
   /**
-   * @constructs
    * Create a new instance
    *
+   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {

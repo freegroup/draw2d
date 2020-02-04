@@ -15,7 +15,10 @@
  */
 import draw2d from '../../packages'
 
-draw2d.shape.icon.BioHazard = draw2d.shape.icon.Icon.extend({
+draw2d.shape.icon.BioHazard = draw2d.shape.icon.Icon.extend(
+  /** @lends draw2d.shape.icon.BioHazard.prototype */
+  {
+
   NAME: "draw2d.shape.icon.BioHazard",
 
   /**

@@ -13,15 +13,15 @@ draw2d.layout.mesh.ExplodeLayouter = draw2d.layout.mesh.MeshLayouter.extend({
 	MIN_MARGIN : 40,
 	
 	/**
-	 * @constructs
 	 * Creates a new layouter object.
+	 * @constructs
 	 */
     init: function()
 	{
     },
     
     /**
-     * @method
+     *
      * Return a changes list for an existing mesh/canvas to ensure that the element to insert 
      * did have enough space.
      * 
@@ -139,7 +139,7 @@ draw2d.layout.mesh.ExplodeLayouter = draw2d.layout.mesh.MeshLayouter.extend({
     
     
     /**
-     * @method
+     *
      * Determin Octant
 	 *
 	 *    0 | 1 | 2

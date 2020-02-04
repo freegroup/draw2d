@@ -15,7 +15,9 @@
  */
 import draw2d from '../../packages'
 
-draw2d.policy.canvas.ExtendedKeyboardPolicy = draw2d.policy.canvas.KeyboardPolicy.extend({
+draw2d.policy.canvas.ExtendedKeyboardPolicy = draw2d.policy.canvas.KeyboardPolicy.extend(
+  /** @lends draw2d.policy.canvas.ExtendedKeyboardPolicy.prototype */
+  {
 
   NAME: "draw2d.policy.canvas.ExtendedKeyboardPolicy",
 
@@ -27,7 +29,7 @@ draw2d.policy.canvas.ExtendedKeyboardPolicy = draw2d.policy.canvas.KeyboardPolic
   },
 
   /**
-   * @method
+   * 
    * Callback if the user press a key
    *
    * @param {draw2d.Canvas} canvas the related canvas

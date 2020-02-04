@@ -14,8 +14,10 @@
  */
 import draw2d from '../../packages'
 
-draw2d.shape.node.Between = draw2d.shape.basic.Rectangle.extend({
-
+draw2d.shape.node.Between = draw2d.shape.basic.Rectangle.extend(
+  /** @lends draw2d.shape.node.Between.prototype */
+  {
+  
   NAME: "draw2d.shape.node.Between",
 
   DEFAULT_COLOR: new draw2d.util.Color("#4D90FE"),

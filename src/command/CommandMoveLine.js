@@ -10,13 +10,16 @@
  */
 import draw2d from '../packages'
 
-draw2d.command.CommandMoveLine = draw2d.command.Command.extend({
+draw2d.command.CommandMoveLine = draw2d.command.Command.extend(
+  /** @lends draw2d.command.CommandMoveLine.prototype */
+  {
+
   NAME: "draw2d.command.CommandMoveLine",
 
   /**
-   * @constructs
    * Create a new Command objects which can be execute via the CommandStack.
    *
+   * @constructs
    * @param {draw2d.shape.basic.Line} figure the line to move
    */
   init: function (figure) {
@@ -27,7 +30,7 @@ draw2d.command.CommandMoveLine = draw2d.command.Command.extend({
   },
 
   /**
-   * @method
+   *
    * set the offset of the line translation
    *
    * @param {Number} dx

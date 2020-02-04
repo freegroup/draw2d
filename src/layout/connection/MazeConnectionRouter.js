@@ -12,7 +12,10 @@ import draw2d from '../../packages'
 
 let ROUTER_RECTS = null
 
-draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.ConnectionRouter.extend({
+draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.ConnectionRouter.extend(
+  /** @lends draw2d.layout.connection.MazeConnectionRouter.prototype */
+  {
+  
   NAME: "draw2d.layout.connection.MazeConnectionRouter",
 
 
@@ -42,7 +45,7 @@ draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.Connect
 
 
   /**
-   * @method
+   * 
    * Callback method if the router has been assigned to a connection.
    *
    * @param {draw2d.Connection} connection The assigned connection
@@ -70,7 +73,7 @@ draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.Connect
   },
 
   /**
-   * @method
+   * 
    * Internal routing algorithm.
    *      * <p>
    * Possible values:
@@ -241,7 +244,7 @@ draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.Connect
   },
 
   /**
-   * @method
+   * 
    * Generate a grid base no go map required for the path finding algorithm
    *
    * @param conn
@@ -333,7 +336,7 @@ draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.Connect
   },
 
   /**
-   * @method
+   * 
    * move the point in the given direction with the given offset
    *
    * @param {draw2d.geo.Point} pt

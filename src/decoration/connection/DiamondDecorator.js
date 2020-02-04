@@ -45,8 +45,8 @@ draw2d.decoration.connection.DiamondDecorator = draw2d.decoration.connection.Dec
 	NAME : "draw2d.decoration.connection.DiamondDecorator",
 
 	/**
-	 * @constructs
 	 *
+	 * @constructs
 	 * @param {Number} [width] the width of the arrow
 	 * @param {Number} [height] the height of the arrow
 	 */

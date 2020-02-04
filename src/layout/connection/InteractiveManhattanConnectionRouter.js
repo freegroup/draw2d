@@ -51,14 +51,17 @@ import draw2d from '../../packages'
 import extend from '../../util/extend'
 
 
-draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.connection.ManhattanConnectionRouter.extend({
+draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.connection.ManhattanConnectionRouter.extend(
+  /** @lends draw2d.layout.connection.InteractiveManhattanConnectionRouter.prototype */
+  {
+
   NAME: "draw2d.layout.connection.InteractiveManhattanConnectionRouter",
 
 
   /**
-   * @constructs
    * Creates a new Router object.
    *
+   * @constructs
    */
   init: function () {
     this._super()
@@ -98,7 +101,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
   },
 
   /**
-   * @method
+   * 
    * The routing algorithm if the user has changed at least on of the vertices manually.
    * This kind of routing just align the start and end vertices to the new source/target port
    * location.
@@ -392,7 +395,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
   },
 
   /**
-   * @method
+   * 
    *
    * The draw2d.Connection delegates the drag operation to the router. The router can
    * handle the different constraints of the connection and just drag&drop a single segment
@@ -496,7 +499,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
   },
 
   /**
-   * @method
+   * 
    * Called by the connection if the vertices set outside.
    * This enforce the router to avoid full autoroute. E.g. InteractiveManhattanRouter
    *
@@ -511,7 +514,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
   },
 
   /**
-   * @method
+   * 
    * Tweak or enrich the polyline persistence data with routing information
    *
    * @since 2.10.0
@@ -532,7 +535,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
   },
 
   /**
-   * @method
+   * 
    * set the attributes for the polyline with routing information of the interactive manhattan router.
    *
    * @since 4..0.0

@@ -6,7 +6,10 @@
  */
 import draw2d from '../../packages'
 
-draw2d.shape.icon.Icon = draw2d.SetFigure.extend({
+draw2d.shape.icon.Icon = draw2d.SetFigure.extend(
+  /** @lends draw2d.shape.icon.Icon.prototype */
+  {
+
   NAME: "draw2d.shape.icon.Icon",
 
   /**
@@ -23,7 +26,7 @@ draw2d.shape.icon.Icon = draw2d.SetFigure.extend({
   },
 
   /**
-   * @method
+   * 
    * propagate all attributes like color, stroke,... to the shape element
    **/
   repaint: function (attributes) {

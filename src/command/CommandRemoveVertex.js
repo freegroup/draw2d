@@ -10,13 +10,16 @@
  */
 import draw2d from '../packages'
 
-draw2d.command.CommandRemoveVertex = draw2d.command.Command.extend({
+draw2d.command.CommandRemoveVertex = draw2d.command.Command.extend(
+  /** @lends draw2d.command.CommandRemoveVertex.prototype */
+  {
+
   NAME: "draw2d.command.CommandRemoveVertex",
 
   /**
-   * @constructs
    * Create a new Command objects which add a vertex to a PloyLine.
    *
+   * @constructs
    * @param {draw2d.shape.basic.PolyLine} line the related line
    * @param {Number} index the index where to add
    */
@@ -30,7 +33,7 @@ draw2d.command.CommandRemoveVertex = draw2d.command.Command.extend({
 
 
   /**
-   * @method
+   *
    * Returns [true] if the command can be execute and the execution of the
    * command modify the model. A CommandMove with [startX,startX] == [endX,endY] should
    * return false. <br>
@@ -44,7 +47,7 @@ draw2d.command.CommandRemoveVertex = draw2d.command.Command.extend({
   },
 
   /**
-   * @method
+   *
    * Execute the command the first time
    *
    **/
@@ -53,7 +56,7 @@ draw2d.command.CommandRemoveVertex = draw2d.command.Command.extend({
   },
 
   /**
-   * @method
+   *
    *
    * Undo the move command
    *
@@ -63,7 +66,7 @@ draw2d.command.CommandRemoveVertex = draw2d.command.Command.extend({
   },
 
   /**
-   * @method
+   *
    *
    * Redo the move command after the user has undo this command
    *

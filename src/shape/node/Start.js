@@ -15,7 +15,9 @@
  */
 import draw2d from '../../packages'
 
-draw2d.shape.node.Start = draw2d.shape.basic.Rectangle.extend({
+draw2d.shape.node.Start = draw2d.shape.basic.Rectangle.extend(
+  /** @lends draw2d.shape.node.Start.prototype */
+  {
 
   NAME: "draw2d.shape.node.Start",
   DEFAULT_COLOR: new draw2d.util.Color("#4D90FE"),

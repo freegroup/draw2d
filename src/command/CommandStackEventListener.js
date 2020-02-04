@@ -7,19 +7,22 @@
 import draw2d from '../packages'
 
 
-draw2d.command.CommandStackEventListener = Class.extend({
+draw2d.command.CommandStackEventListener = Class.extend(
+  /** @lends draw2d.command.CommandStackEventListener.prototype */
+  {
+
   NAME: "draw2d.command.CommandStackEventListener",
 
   /**
-   * @constructs
    * Creates a new Listener Object
    *
+   * @constructs
    */
   init: function () {
   },
 
   /**
-   * @method
+   *
    * Sent when an event occurs on the command stack. draw2d.command.CommandStackEvent.getDetail()
    * can be used to identify the type of event which has occurred.
    *

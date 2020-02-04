@@ -27,8 +27,10 @@ import draw2d from '../packages';
 
 import r from "lib/jquery.autoresize";
 
-draw2d.ui.LabelInplaceEditor =  draw2d.ui.LabelEditor.extend({
-
+draw2d.ui.LabelInplaceEditor =  draw2d.ui.LabelEditor.extend(
+    /** @lends draw2d.ui.LabelInplaceEditor.prototype */
+    {
+    
     NAME: "draw2d.ui.LabelInplaceEditor",
 
     /**
@@ -48,7 +50,7 @@ draw2d.ui.LabelInplaceEditor =  draw2d.ui.LabelEditor.extend({
     },
 
     /**
-     * @method
+     *
      * Trigger the edit of the label text.
      *
      * @param {draw2d.shape.basic.Label} label the label to edit
@@ -118,7 +120,7 @@ draw2d.ui.LabelInplaceEditor =  draw2d.ui.LabelEditor.extend({
     },
 
     /**
-     * @method
+     *
      * Transfer the data from the editor into the label.<br>
      * Remove the editor.<br>
      *
@@ -139,7 +141,7 @@ draw2d.ui.LabelInplaceEditor =  draw2d.ui.LabelEditor.extend({
     },
 
     /**
-     * @method
+     *
      * Transfer the data from the editor into the label.<br>
      * Remove the editor.<br>
      * @private

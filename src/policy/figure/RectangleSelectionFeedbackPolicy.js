@@ -17,12 +17,15 @@
  */
 import draw2d from '../../packages'
 
-draw2d.policy.figure.RectangleSelectionFeedbackPolicy = draw2d.policy.figure.SelectionFeedbackPolicy.extend({
+draw2d.policy.figure.RectangleSelectionFeedbackPolicy = draw2d.policy.figure.SelectionFeedbackPolicy.extend(
+  /** @lends draw2d.policy.figure.RectangleSelectionFeedbackPolicy.prototype */
+  {
 
   NAME: "draw2d.policy.figure.RectangleSelectionFeedbackPolicy",
   /**
-   * @constructs
    * Creates a selection feedback for a shape.
+   *
+   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)
@@ -114,7 +117,7 @@ draw2d.policy.figure.RectangleSelectionFeedbackPolicy = draw2d.policy.figure.Sel
 
 
   /**
-   * @method
+   * 
    * Callback if the figure has been moved. In this case we must update the position of the
    * resize handles and the "ant" box.
    *

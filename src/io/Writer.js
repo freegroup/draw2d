@@ -19,7 +19,7 @@ draw2d.io.Writer = Class.extend({
     },
 
     /**
-     * @method
+     * 
      * Export the content to the implemented data format. Inherit class implements
      * content specific writer.
      * <br>
@@ -48,7 +48,7 @@ draw2d.io.Writer = Class.extend({
     },
 
     /**
-     * @method
+     * 
      * utility method to format a given XML string.
      *
      * @param xml

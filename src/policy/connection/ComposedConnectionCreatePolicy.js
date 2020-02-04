@@ -17,10 +17,10 @@ draw2d.policy.connection.ComposedConnectionCreatePolicy = draw2d.policy.connecti
     NAME : "draw2d.policy.connection.ComposedConnectionCreatePolicy",
 
     /**
-     * @constructs
      *
      * Creates a new connection create policy instance
      *
+     * @constructs
      * @param {array} policies the policies to use
      */
     init: function( policies )
@@ -90,7 +90,7 @@ draw2d.policy.connection.ComposedConnectionCreatePolicy = draw2d.policy.connecti
     },
 
     /**
-     * @method
+     * 
      * Called if the policy is installed into the canvas.
      *
      * @param {draw2d.Canvas} canvas
@@ -104,7 +104,7 @@ draw2d.policy.connection.ComposedConnectionCreatePolicy = draw2d.policy.connecti
     },
 
     /**
-     * @method
+     * 
      * Called if the policy is deinstalled from the canvas
      *
      * @param {draw2d.Canvas} canvas

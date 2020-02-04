@@ -67,7 +67,10 @@ import extend from 'util/extend'
 
 draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
   /** @lends draw2d.Connection.prototype */
+
+  /** @lends draw2d.Connection.prototype */
   {
+
   NAME: "draw2d.Connection",
 
   /**
@@ -212,7 +215,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
 
 
   /**
-   * @method
+   *
    * Add a child figure to the Connection. The hands over figure doesn't support drag&drop
    * operations. It's only a decorator for the connection.<br>
    * Mainly for labels or other fancy decorations :-)
@@ -233,7 +236,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
 
 
   /**
-   * @method
+   *
    * Set the ConnectionDecorator for this object.
    *
    * @param {draw2d.decoration.connection.Decorator} decorator the new source decorator for the connection
@@ -249,7 +252,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
   },
 
   /**
-   * @method
+   *
    * Get the current source ConnectionDecorator for this object.
    *
    * @returns draw2d.decoration.connection.Decorator
@@ -259,7 +262,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
   },
 
   /**
-   * @method
+   *
    * Set the ConnectionDecorator for this object.
    *
    * @param {draw2d.decoration.connection.Decorator} decorator the new target decorator for the connection
@@ -275,7 +278,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
   },
 
   /**
-   * @method
+   *
    * Get the current target ConnectionDecorator for this object.
    *
    * @returns draw2d.decoration.connection.Decorator
@@ -286,7 +289,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
 
 
   /**
-   * @method
+   *
    * Calculate the path of the polyline.
    *
    * @param {Object} routingHints some helper attributes for the router
@@ -363,7 +366,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
   },
 
   /**
-   * @method
+   *
    * The x-offset related to the canvas.
    * Didn't provided by a connection. Return always '0'. This is required
    * for children position calculation. (e.g. Label decoration)
@@ -376,7 +379,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
 
 
   /**
-   * @method
+   *
    * The y-offset related to the canvas.
    * Didn't provided by a connection. Return always '0'. This is required
    * for children position calculation. (e.g. Label decoration)
@@ -394,7 +397,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
 
 
   /**
-   * @method
+   *
    * Don't call them manually. This will be done by the framework.<br>
    * Will be called if the object are moved via drag and drop.
    * Sub classes can override this method to implement additional stuff. Don't forget to call
@@ -444,7 +447,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
 
 
   /**
-   * @method
+   *
    * Moves the element so it is the closest to the viewer’s eyes, on top of other elements. Additional
    * the internal model changed as well.
    *
@@ -471,7 +474,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
   },
 
   /**
-   * @method
+   *
    * Moves the element to the background. Additional
    * the internal model changed as well.
    *
@@ -496,7 +499,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
 
 
   /**
-   * @method
+   *
    * Return the recalculated position of the start point with the usage of
    * the installed connection anchor locator.
    *
@@ -519,7 +522,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
   },
 
   /**
-   * @method
+   *
    * Return the recalculated position of the start point with the usage of
    * the installed connection anchor locator.
    *
@@ -542,7 +545,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
   },
 
   /**
-   * @method
+   *
    * Set the new source port of this connection. This enforce a repaint of the connection.
    *
    * @param {draw2d.Port} port The new source port of this connection.
@@ -581,7 +584,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
   },
 
   /**
-   * @method
+   *
    * Returns the source port of this connection.
    *
    * @return {draw2d.Port}
@@ -591,7 +594,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
   },
 
   /**
-   * @method
+   *
    * Set the target port of this connection. This enforce a repaint of the connection.
    *
    * @param {draw2d.Port} port The new target port of this connection
@@ -629,7 +632,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
   },
 
   /**
-   * @method
+   *
    * Returns the target port of this connection.
    *
    * @returns {draw2d.Port}
@@ -639,7 +642,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
   },
 
   /**
-   * @method
+   *
    * Method returns true if the connection has at least one common draw2d.Port with the given connection.
    *
    * @param {draw2d.Connection} other
@@ -655,7 +658,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
 
 
   /**
-   * @method
+   *
    * Set the canvas element of this figures.
    *
    * @param {draw2d.Canvas} canvas the new parent of the figure or null
@@ -808,7 +811,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
 
 
   /**
-   * @method
+   *
    * Returns the Command to perform the specified Request or null.
    *
    * @param {draw2d.command.CommandType} request describes the Command being requested
@@ -833,7 +836,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
 
 
   /**
-   * @method
+   *
    * Return an objects with all important attributes for XML or JSON serialization
    *
    * @returns {Object}
@@ -871,7 +874,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
   },
 
   /**
-   * @method
+   *
    * Read all attributes from the serialized properties and transfer them into the shape.
    *
    * @param {Object} memento

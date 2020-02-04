@@ -10,13 +10,16 @@
  */
 import draw2d from '../packages'
 
-draw2d.command.CommandAddVertex = draw2d.command.Command.extend({
+draw2d.command.CommandAddVertex = draw2d.command.Command.extend(
+  /** @lends draw2d.command.CommandAddVertex.prototype */
+  {
+
   NAME: "draw2d.command.CommandAddVertex",
 
   /**
-   * @constructs
    * Create a new Command objects which add a vertex to a PolyLine / Polygon.
    *
+   * @constructs
    * @param {draw2d.shape.basic.PolyLine} line the related line
    * @param {Number} index the index where to add
    * @param {Number} x the x coordinate for the new vertex
@@ -32,7 +35,7 @@ draw2d.command.CommandAddVertex = draw2d.command.Command.extend({
 
 
   /**
-   * @method
+   *
    * Returns [true] if the command can be execute and the execution of the
    * command modify the model. A CommandMove with [startX,startX] == [endX,endY] should
    * return false. <br>
@@ -46,7 +49,7 @@ draw2d.command.CommandAddVertex = draw2d.command.Command.extend({
   },
 
   /**
-   * @method
+   *
    * Execute the command the first time
    *
    **/
@@ -55,7 +58,7 @@ draw2d.command.CommandAddVertex = draw2d.command.Command.extend({
   },
 
   /**
-   * @method
+   *
    *
    * Undo the move command
    *
@@ -65,7 +68,7 @@ draw2d.command.CommandAddVertex = draw2d.command.Command.extend({
   },
 
   /**
-   * @method
+   *
    *
    * Redo the move command after the user has undo this command
    *

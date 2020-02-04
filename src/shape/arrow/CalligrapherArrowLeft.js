@@ -14,7 +14,9 @@
  */
 import draw2d from '../../packages'
 
-draw2d.shape.arrow.CalligrapherArrowLeft = draw2d.SVGFigure.extend({
+draw2d.shape.arrow.CalligrapherArrowLeft = draw2d.SVGFigure.extend(
+  /** @lends draw2d.shape.arrow.CalligrapherArrowLeft.prototype */
+  {
 
   NAME: "draw2d.shape.arrow.CalligrapherArrowLeft",
 
@@ -38,7 +40,7 @@ draw2d.shape.arrow.CalligrapherArrowLeft = draw2d.SVGFigure.extend({
   },
 
   /**
-   * @method
+   *
    * propagate all attributes like color, stroke,... to the shape element
    **/
   repaint: function (attributes) {

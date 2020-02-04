@@ -15,9 +15,9 @@ draw2d.policy.connection.ConnectionCreatePolicy = draw2d.policy.canvas.KeyboardP
     NAME : "draw2d.policy.connection.ConnectionCreatePolicy",
 
     /**
-     * @constructs
      *
      * Creates a new connection create policy instance
+     * @constructs
      */
     init: function(attr, setter, getter)
     {
@@ -26,7 +26,7 @@ draw2d.policy.connection.ConnectionCreatePolicy = draw2d.policy.canvas.KeyboardP
 
 
     /**
-     * @method
+     * 
      * Factory method to create the connection to insert.
      *
      * @return {draw2d.Connection}

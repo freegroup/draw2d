@@ -8,13 +8,15 @@
  */
 import draw2d from '../../packages'
 
-draw2d.policy.line.VertexSelectionFeedbackPolicy = draw2d.policy.line.LineSelectionFeedbackPolicy.extend({
+draw2d.policy.line.VertexSelectionFeedbackPolicy = draw2d.policy.line.LineSelectionFeedbackPolicy.extend(
+  /** @lends draw2d.policy.line.VertexSelectionFeedbackPolicy.prototype */
+  {
 
   NAME: "draw2d.policy.line.VertexSelectionFeedbackPolicy",
 
   /**
-   * @constructs
    *
+   * @constructs
    */
   init: function (attr, setter, getter) {
     this._super(attr, setter, getter)
@@ -22,7 +24,7 @@ draw2d.policy.line.VertexSelectionFeedbackPolicy = draw2d.policy.line.LineSelect
 
 
   /**
-   * @method
+   * 
    *
    * @param {draw2d.Canvas} canvas the related canvas
    * @param {draw2d.Connection} figure the selected figure

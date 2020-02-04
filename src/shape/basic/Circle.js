@@ -18,14 +18,16 @@
 import draw2d from '../../packages'
 import extend from '../../util/extend'
 
-draw2d.shape.basic.Circle = draw2d.shape.basic.Oval.extend({
+draw2d.shape.basic.Circle = draw2d.shape.basic.Oval.extend(
+  /** @lends draw2d.shape.basic.Circle.prototype */
+  {
 
   NAME: "draw2d.shape.basic.Circle",
 
   /**
-   * @constructs
    * Create a new circle figure.
    *
+   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {
@@ -46,7 +48,7 @@ draw2d.shape.basic.Circle = draw2d.shape.basic.Oval.extend({
   },
 
   /**
-   * @method
+   * 
    * Set the diameter of the circle. The center of the circle will be retained.
    *
    * @param {Number} d The new diameter of the circle.
@@ -62,7 +64,7 @@ draw2d.shape.basic.Circle = draw2d.shape.basic.Oval.extend({
   },
 
   /**
-   * @method
+   * 
    * Get the diameter of the circle.
    *
    * @since 4.0.0
@@ -73,7 +75,7 @@ draw2d.shape.basic.Circle = draw2d.shape.basic.Oval.extend({
 
 
   /**
-   * @method
+   * 
    * Set the radius of the circle. The center of the circle will be retained.
    *
    * @param {Number} d The new radius of the circle.

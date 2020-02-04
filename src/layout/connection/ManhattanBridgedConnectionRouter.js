@@ -11,16 +11,19 @@
 import draw2d from '../../packages'
 
 
-draw2d.layout.connection.ManhattanBridgedConnectionRouter = draw2d.layout.connection.ManhattanConnectionRouter.extend({
+draw2d.layout.connection.ManhattanBridgedConnectionRouter = draw2d.layout.connection.ManhattanConnectionRouter.extend(
+  /** @lends draw2d.layout.connection.ManhattanBridgedConnectionRouter.prototype */
+  {
+
   NAME: "draw2d.layout.connection.ManhattanBridgedConnectionRouter",
 
   BRIDGE_HORIZONTAL_LR: " r 0 0 3 -4 7 -4 10 0 13 0 ", // Left to right
   BRIDGE_HORIZONTAL_RL: " r 0 0 -3 -4 -7 -4 -10 0 -13 0 ", // right to left
 
   /**
-   * @constructs
    * Creates a new Router object.
    *
+   * @constructs
    */
   init: function () {
     this._super()
@@ -28,7 +31,7 @@ draw2d.layout.connection.ManhattanBridgedConnectionRouter = draw2d.layout.connec
 
 
   /**
-   * @method
+   * 
    * Callback method if the router has been assigned to a connection.
    *
    * @param {draw2d.Connection} connection The assigned connection

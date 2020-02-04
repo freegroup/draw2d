@@ -60,7 +60,10 @@
 import draw2d from '../../packages'
 
 
-draw2d.layout.connection.FanConnectionRouter = draw2d.layout.connection.DirectRouter.extend({
+draw2d.layout.connection.FanConnectionRouter = draw2d.layout.connection.DirectRouter.extend(
+  /** @lends draw2d.layout.connection.FanConnectionRouter.prototype */
+  {
+
   NAME: "draw2d.layout.connection.FanConnectionRouter",
 
   /**
@@ -73,7 +76,7 @@ draw2d.layout.connection.FanConnectionRouter = draw2d.layout.connection.DirectRo
 
 
   /**
-   * @method
+   * 
    * Callback method if the router has been assigned to a connection.
    *
    * @param {draw2d.Connection} connection The assigned connection
@@ -85,7 +88,7 @@ draw2d.layout.connection.FanConnectionRouter = draw2d.layout.connection.DirectRo
   },
 
   /**
-   * @method
+   * 
    * Layout the hands over connection in a manhattan like layout
    *
    * @param {draw2d.Connection}  conn
@@ -107,7 +110,7 @@ draw2d.layout.connection.FanConnectionRouter = draw2d.layout.connection.DirectRo
   },
 
   /**
-   * @method
+   * 
    * route the connection if connections overlap. Two connections overlap if the combination
    * of source and target anchors are equal.
    *

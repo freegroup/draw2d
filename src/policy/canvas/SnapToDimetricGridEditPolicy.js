@@ -11,7 +11,9 @@
  */
 import draw2d from '../../packages'
 
-draw2d.policy.canvas.SnapToDimetricGridEditPolicy = draw2d.policy.canvas.ShowDimetricGridEditPolicy.extend({
+draw2d.policy.canvas.SnapToDimetricGridEditPolicy = draw2d.policy.canvas.ShowDimetricGridEditPolicy.extend(
+  /** @lends draw2d.policy.canvas.SnapToDimetricGridEditPolicy.prototype */
+  {
 
   NAME: "draw2d.policy.canvas.SnapToDimetricGridEditPolicy",
 
@@ -28,7 +30,7 @@ draw2d.policy.canvas.SnapToDimetricGridEditPolicy = draw2d.policy.canvas.ShowDim
 
 
   /**
-   * @method
+   *
    * Applies a snapping correction to the given result.
    *
    * @param {draw2d.Canvas} canvas the related canvas

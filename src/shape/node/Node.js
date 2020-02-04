@@ -11,14 +11,16 @@
 import draw2d from '../../packages'
 import extend from '../../util/extend'
 
-draw2d.shape.node.Node = draw2d.Figure.extend({
-
+draw2d.shape.node.Node = draw2d.Figure.extend(
+  /** @lends draw2d.shape.node.Node.prototype */
+  {
+  
   NAME: "draw2d.shape.node.Node",
 
   /**
-   * @constructs
    * Creates a new Node element which are not assigned to any canvas.
    *
+   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {
@@ -51,7 +53,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
 
 
   /**
-   * @method
+   *
    * Indicates if the node should read/write the ports via the draw2d.Figure.getPersistenAttributes
    * to the JSON object
    *
@@ -66,7 +68,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Indicates if the figure writes the ports to the JSON structore too.
    * Default is "false"
    *
@@ -133,7 +135,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
 
 
   /**
-   * @method
+   *
    * Return all ports of the node. The results contains
    * all ports of the children too per default. Set <b>recursive</b>
    * to false to retrieve direct assigned ports only.
@@ -166,7 +168,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
 
 
   /**
-   * @method
+   *
    * Return all input ports of the node.
    *
    * @return {draw2d.util.ArrayList}
@@ -178,7 +180,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Return all output ports of the node.
    *
    * @return {draw2d.util.ArrayList}
@@ -191,7 +193,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
 
 
   /**
-   * @method
+   *
    * Clone the figure. <br>
    * You must override and implement the methods <b>getPersistentAttributes</b> and <b>setPersistentAttributes</b> for your custom
    * figures if the have special attributes.
@@ -230,7 +232,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Return the port with the corresponding name.
    *
    *
@@ -242,7 +244,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Return the input port with the corresponding name.
    *
    *
@@ -265,7 +267,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Return the output port with the corresponding name.
    *
    * @param {String/Number} portNameOrIndex The name or the numeric index of the port to return.
@@ -287,7 +289,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Return the input port with the corresponding name.
    *
    *
@@ -310,7 +312,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Add a port to this node at the given position.<br>
    *
    * @param {draw2d.Port} port The new port to add.
@@ -357,7 +359,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Remove all ports of this node
    *
    * @since 5.0.0
@@ -369,7 +371,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
 
 
   /**
-   * @method
+   *
    * Removes a port and all related connections from this node.<br>
    *
    * @param {draw2d.Port} port The port to remove.
@@ -397,7 +399,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Create a standard Port for this element. Inherited class can override this
    * method to create its own type of ports.
    *
@@ -436,7 +438,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Return all connections related to this node.
    *
    * @returns {draw2d.util.ArrayList}
@@ -506,7 +508,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Called if the value of any port has been changed
    *
    * @param {draw2d.Port} relatedPort
@@ -529,7 +531,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    *
    * @private
    */
@@ -549,7 +551,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Returns the Command to perform the specified Request or null.
    *
    * @param {draw2d.command.CommandType} request describes the Command being requested
@@ -571,7 +573,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
 
 
   /**
-   * @method
+   *
    * Return an objects with all important attributes for XML or JSON serialization
    *
    * @returns {Object}
@@ -596,7 +598,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
   },
 
   /**
-   * @method
+   *
    * Read all attributes from the serialized properties and transfer them into the shape.
    *
    * @param {Object} memento

@@ -35,7 +35,7 @@ draw2d.HeadlessCanvas = Class.extend(
     },
 
     /**
-     * @method
+     * 
      * Reset the canvas and delete all model elements.<br>
      * You can now reload another model to the canvas with a {@link draw2d.io.Reader}
      *
@@ -60,7 +60,7 @@ draw2d.HeadlessCanvas = Class.extend(
     },
 
     /**
-     * @method
+     * 
      * Callback for any kind of image export tools to trigger the canvas to hide all unwanted
      * decorations. The method is called e.g. from the draw2d.io.png.Writer
      *
@@ -72,7 +72,7 @@ draw2d.HeadlessCanvas = Class.extend(
     },
 
     /**
-     * @method
+     * 
      * callback method for any image export writer to reactivate the decoration
      * of the canvas. e.g. grids, rulers,...
      *
@@ -86,7 +86,7 @@ draw2d.HeadlessCanvas = Class.extend(
 
 
     /**
-     * @method
+     * 
      * Add a figure at the given x/y coordinate. This method fires an event.
      *
      * Example:
@@ -127,7 +127,7 @@ draw2d.HeadlessCanvas = Class.extend(
     },
 
     /**
-     * @method
+     * 
      * Returns all lines/connections in this workflow/canvas.<br>
      *
      * @protected
@@ -139,7 +139,7 @@ draw2d.HeadlessCanvas = Class.extend(
     },
 
     /**
-     * @method
+     * 
      * Returns the internal figures.<br>
      *
      * @protected
@@ -151,7 +151,7 @@ draw2d.HeadlessCanvas = Class.extend(
     },
 
     /**
-     * @method
+     * 
      * Returns the line or connection with the given id.
      *
      * @param {String} id The id of the line.
@@ -172,7 +172,7 @@ draw2d.HeadlessCanvas = Class.extend(
     },
 
     /**
-     * @method
+     * 
      * Returns the figure with the given id.
      *
      * @param {String} id The id of the figure.
@@ -191,7 +191,7 @@ draw2d.HeadlessCanvas = Class.extend(
     },
 
     /**
-     * @method
+     * 
      * Register a port to the canvas. This is required for other ports to find a valid drop target.
      *
      * @param {draw2d.Port} port The new port which has been added to the Canvas.
@@ -208,7 +208,7 @@ draw2d.HeadlessCanvas = Class.extend(
     },
 
     /**
-     * @method
+     * 
      * Return all ports in the canvas
      *
      */
@@ -218,7 +218,7 @@ draw2d.HeadlessCanvas = Class.extend(
     },
 
     /**
-     * @method
+     * 
      * Returns the command stack for the Canvas. Required for undo/redo support.
      *
      * @return {draw2d.command.CommandStack}
@@ -231,7 +231,7 @@ draw2d.HeadlessCanvas = Class.extend(
 
     // NEW EVENT HANDLING SINCE VERSION 5.0.0
     /**
-     * @method
+     * 
      * Execute all handlers and behaviors attached to the canvas for the given event type.
      *
      *
@@ -260,7 +260,7 @@ draw2d.HeadlessCanvas = Class.extend(
     },
 
     /**
-     * @method
+     * 
      * Attach an event handler function for one or more events to the canvas.
      * To remove events bound with .on(), see {@link #off}.
      *
@@ -305,7 +305,7 @@ draw2d.HeadlessCanvas = Class.extend(
     },
 
     /**
-     * @method
+     * 
      * The .off() method removes event handlers that were attached with {@link #on}.<br>
      * Calling .off() with no arguments removes all handlers attached to the canvas.<br>
      * <br>

@@ -18,14 +18,16 @@
  */
 import draw2d from '../../packages'
 
-draw2d.shape.basic.Text = draw2d.shape.basic.Label.extend({
+draw2d.shape.basic.Text = draw2d.shape.basic.Label.extend(
+  /** @lends draw2d.shape.basic.Text.prototype */
+  {
 
   NAME: "draw2d.shape.basic.Text",
 
   /**
-   * @constructs
    * Creates a new text element.
    *
+   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {
@@ -77,7 +79,7 @@ draw2d.shape.basic.Text = draw2d.shape.basic.Label.extend({
   },
 
   /**
-   * @method
+   *
    * clear the internal cache for width/height precalculation
    * @private
    */
@@ -115,7 +117,7 @@ draw2d.shape.basic.Text = draw2d.shape.basic.Label.extend({
 
 
   /**
-   * @method
+   *
    * calculates the attributes (wrapped text and width, height) with the given parameter
    *
    * @private

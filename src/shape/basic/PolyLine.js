@@ -21,14 +21,16 @@ import draw2d from '../../packages'
 import jsonUtil from '../../util/JSONUtil'
 import extend from '../../util/extend'
 
-draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
+draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
+  /** @lends draw2d.shape.basic.PolyLine.prototype */
+  {
 
   NAME: "draw2d.shape.basic.PolyLine",
 
   /**
-   * @constructs
    * Creates a new figure element which are not assigned to any canvas.
    *
+   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {
@@ -62,7 +64,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
   },
 
   /**
-   * @method
+   * 
    * Sets the corner radius of the edges.
    *
    * @param {Number} radius the corner radius
@@ -89,7 +91,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
   },
 
   /**
-   * @method
+   * 
    * Get the corner radius of the edges.
    *
    * @return {Number}
@@ -101,7 +103,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
 
 
   /**
-   * @method
+   * 
    * Set the start point of the line.
    *
    * @param {Number} x the x coordinate of the start point
@@ -133,7 +135,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
   },
 
   /**
-   * @method
+   * 
    * Set the end point of the line.
    *
    * @param {Number} x the x coordinate of the end point
@@ -165,7 +167,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
   },
 
   /**
-   * @method
+   * 
    * Inserts the draw2d.geo.Point object into the vertex list of the polyline just after the object with the given index.
    *
    * @param {Number|draw2d.geo.Point} x the x coordinate or the draw2d.geo.Point object
@@ -198,7 +200,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
 
 
   /**
-   * @method
+   * 
    * Inserts the draw2d.geo.Point object into the vertex list of the polyline just after the object with the given index.
    *
    * @param {Number} index the insert index
@@ -234,7 +236,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
 
 
   /**
-   * @method
+   * 
    * Remove a vertex from the polyline and return the removed point. The current installed connection router
    * can send an veto for this operation.
    *
@@ -267,7 +269,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
 
 
   /**
-   * @method
+   * 
    * Set the router for this connection.
    *
    * @param {draw2d.layout.connection.ConnectionRouter} [router] the new router for this connection or null if the connection should use the default routing
@@ -297,7 +299,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
   },
 
   /**
-   * @method
+   * 
    * Return the current active router of this connection.
    *
    * @return draw2d.layout.connection.ConnectionRouter
@@ -307,7 +309,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
   },
 
   /**
-   * @method
+   * 
    * Calculate the path of the polyline
    *
    * @param {Object} [routingHints] some helper attributes for the router
@@ -366,7 +368,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
 
 
   /**
-   * @method
+   * 
    * Return all line segments of the polyline.
    *
    * @returns {draw2d.util.ArrayList}
@@ -376,7 +378,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
   },
 
   /**
-   * @method
+   * 
    * used for the router to add the calculated points
    *
    * @protected
@@ -401,7 +403,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
   },
 
   /**
-   * @method
+   * 
    * Called if the drag and drop action begins. You can return [false] if you
    * want avoid that the figure can be move.
    *
@@ -422,7 +424,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
   },
 
   /**
-   * @method
+   * 
    * Returns the length of the polyline.
    *
    * @return {Number}
@@ -449,7 +451,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
 
 
   /**
-   * @method
+   * 
    * Returns the projection of the point on the line.
    *
    * @param {Number} px the x coordinate of the test point
@@ -496,7 +498,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
   },
 
   /**
-   * @method
+   * 
    * Returns the point onto the line which has the relative 'percentage' position onto the line.
    *
    * @param {Number} percentage the relative position between [0..1]
@@ -521,7 +523,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
   },
 
   /**
-   * @method
+   * 
    * get the best segment of the line which is below the given coordinate or null if
    * all segment are not below the coordinate. <br>
    * The 'corona' property of the polyline is considered for this test. This means
@@ -543,7 +545,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
   },
 
   /**
-   * @method
+   * 
    * Checks if the hands over coordinate close to the line. The 'corona' property of the polyline
    * is considered for this test. This means the point isn't direct on the line. Is it only close to the
    * line!

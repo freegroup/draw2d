@@ -59,7 +59,7 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend({
     },
 
     /**
-     * @method
+     * 
      * Sets the corner radius or the edges.
      *
      * @param {Number} radius
@@ -75,7 +75,7 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend({
     },
 
     /**
-     * @method
+     * 
      * Get the corner radius of the edges.
      *
      * @return {Number}
@@ -89,7 +89,7 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend({
 
 
     /**
-     * @method
+     * 
      * Set the line style for this object.
      *
      *      // Alternatively you can use the attr method:
@@ -110,7 +110,7 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend({
     },
 
     /**
-     * @method
+     * 
      * Get the line style for this object.
      *
      *      // Alternatively you can use the attr method:
@@ -124,7 +124,7 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend({
     },
 
     /**
-     * @method
+     * 
      * Highlight the element or remove the highlighting
      *
      * @param {Boolean} flag indicates glow/noGlow
@@ -183,7 +183,7 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend({
 
 
    /**
-    * @method
+    * 
     * Set the new background color of the figure. It is possible to hands over
     * <code>null</code> to set the background transparent.
     *
@@ -205,7 +205,7 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend({
     },
 
    /**
-    * @method
+    * 
     * The current used background color.
     *
     *      // Alternatively you can use the attr method:
@@ -219,7 +219,7 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend({
    },
 
    /**
-    * @method
+    * 
     * Set the stroke to use.
     *
     *      // Alternatively you can use the attr method:
@@ -239,7 +239,7 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend({
    },
 
    /**
-    * @method
+    * 
     * The used line width.
     *
     * @returns {Number}
@@ -250,7 +250,7 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend({
    },
 
    /**
-    * @method
+    * 
     * Set the foreground color of the figure.
     * This method fires a <i>document dirty</i> event.
     *
@@ -271,7 +271,7 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend({
    },
 
    /**
-    * @method
+    * 
     * Get the current used foreground color
     *
     *

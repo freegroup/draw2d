@@ -9,7 +9,9 @@
  */
 import draw2d from '../../packages'
 
-draw2d.policy.figure.DragDropEditPolicy = draw2d.policy.figure.FigureEditPolicy.extend({
+draw2d.policy.figure.DragDropEditPolicy = draw2d.policy.figure.FigureEditPolicy.extend(
+  /** @lends draw2d.policy.figure.DragDropEditPolicy.prototype */
+  {
 
   NAME: "draw2d.policy.figure.DragDropEditPolicy",
 
@@ -25,7 +27,7 @@ draw2d.policy.figure.DragDropEditPolicy = draw2d.policy.figure.FigureEditPolicy.
 
 
   /**
-   * @method
+   * 
    * Called by the host if the policy has been installed.
    *
    * @param {draw2d.Canvas|draw2d.Figure} host
@@ -36,7 +38,7 @@ draw2d.policy.figure.DragDropEditPolicy = draw2d.policy.figure.FigureEditPolicy.
   },
 
   /**
-   * @method
+   * 
    * Called by the host if the policy has been uninstalled.
    *
    * @param {draw2d.Canvas|draw2d.Figure} host
@@ -47,7 +49,7 @@ draw2d.policy.figure.DragDropEditPolicy = draw2d.policy.figure.FigureEditPolicy.
   },
 
   /**
-   * @method
+   * 
    * Called by the framework if the related shape has init a drag&drop
    * operation
    *
@@ -80,7 +82,7 @@ draw2d.policy.figure.DragDropEditPolicy = draw2d.policy.figure.FigureEditPolicy.
   },
 
   /**
-   * @method
+   * 
    * Called by the framework during drag a figure.
    *
    * @param {draw2d.Canvas} canvas The host canvas
@@ -97,7 +99,7 @@ draw2d.policy.figure.DragDropEditPolicy = draw2d.policy.figure.FigureEditPolicy.
   },
 
   /**
-   * @method
+   * 
    * Called by the framework if the drag drop operation ends.
    *
    * @param {draw2d.Canvas} canvas The host canvas
@@ -115,7 +117,7 @@ draw2d.policy.figure.DragDropEditPolicy = draw2d.policy.figure.FigureEditPolicy.
   },
 
   /**
-   * @method
+   * 
    * Adjust the coordinates to the rectangle/region of this constraint.
    *
    * @param {draw2d.Figure} figure
@@ -135,7 +137,7 @@ draw2d.policy.figure.DragDropEditPolicy = draw2d.policy.figure.FigureEditPolicy.
   },
 
   /**
-   * @method
+   * 
    * ensure that the dimension didn't goes outside the given restrictions
    *
    * @param {draw2d.Figure} figure
@@ -148,7 +150,7 @@ draw2d.policy.figure.DragDropEditPolicy = draw2d.policy.figure.FigureEditPolicy.
   },
 
   /**
-   * @method
+   * 
    * Callback if the figure has moved
    *
    * @param {draw2d.Canvas} canvas The host canvas
