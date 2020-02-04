@@ -22,10 +22,10 @@ draw2d.Figure = Class.extend(
   // special attributes that should be get/set via method calls
 
   /**
-   * @constructs
    * Creates a new figure element which is not assigned to any canvas.
    *
    *
+   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {

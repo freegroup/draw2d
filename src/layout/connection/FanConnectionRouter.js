@@ -67,7 +67,9 @@ draw2d.layout.connection.FanConnectionRouter = draw2d.layout.connection.DirectRo
   NAME: "draw2d.layout.connection.FanConnectionRouter",
 
   /**
-   * @constructs Creates a new Router object.
+   * Creates a new Router object.
+   *
+   * @constructs
    */
   init: function () {
     this._super()

@@ -49,9 +49,9 @@ draw2d.layout.connection.SketchConnectionRouter = draw2d.layout.connection.MazeC
 
 
   /**
-   * @constructs
    * Creates a new Router object.
    *
+   * @constructs
    */
   init: function () {
     this._super()

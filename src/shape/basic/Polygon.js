@@ -30,8 +30,8 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend(
   NAME: "draw2d.shape.basic.Polygon",
 
   /**
-   * @constructs
    *
+   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {

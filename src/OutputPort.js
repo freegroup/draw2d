@@ -13,9 +13,9 @@ draw2d.OutputPort = draw2d.Port.extend({
     NAME : "draw2d.OutputPort",
 
     /**
-     * @constructs
      * Create a new OutputPort element
      *
+     * @constructs
      * @param {Object} [attr] the configuration of the shape
      */
     init: function(attr, setter, getter)

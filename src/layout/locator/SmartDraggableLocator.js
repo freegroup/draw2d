@@ -24,9 +24,9 @@ draw2d.layout.locator.SmartDraggableLocator = draw2d.layout.locator.Locator.exte
   NAME: "draw2d.layout.locator.SmartDraggableLocator",
 
   /**
-   * @constructs
    * Constructs a locator with associated parent.
    *
+   * @constructs
    */
   init: function () {
     this._super()

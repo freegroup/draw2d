@@ -47,7 +47,8 @@ draw2d.layout.connection.SplineConnectionRouter = draw2d.layout.connection.Manha
   NAME: "draw2d.layout.connection.SplineConnectionRouter",
 
   /**
-   * @constructs Creates a new Router object
+   * Creates a new Router object
+   * @constructs
    */
   init: function () {
     this._super()

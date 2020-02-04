@@ -35,9 +35,9 @@ draw2d.layout.locator.TopLocator = draw2d.layout.locator.Locator.extend(
   NAME: "draw2d.layout.locator.TopLocator",
 
   /**
-   * @constructs
    * Constructs a ManhattanMidpointLocator with associated Connection c.
    *
+   * @constructs
    */
   init: function () {
     this._super()

@@ -41,10 +41,10 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
   DEFAULT_COLOR: new draw2d.util.Color(0, 0, 0),
 
   /**
-   * @constructs
    * Creates a new figure element which are not assigned to any canvas witht he given start and
    * end coordinate.
    *
+   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {

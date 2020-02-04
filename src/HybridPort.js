@@ -14,9 +14,9 @@ draw2d.HybridPort = draw2d.Port.extend(
     NAME : "draw2d.HybridPort",
 
     /**
-     * @constructs
      * Create a new HybridPort element
      *
+     * @constructs
      * @param {Object} [attr] the configuration of the shape
      */
     init: function(attr, setter, getter)

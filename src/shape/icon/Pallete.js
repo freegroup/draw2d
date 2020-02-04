@@ -23,9 +23,9 @@ draw2d.shape.icon.Pallete = draw2d.shape.icon.Icon.extend(
 
   /**
    *
-   * @constructs
    * Creates a new icon element which are not assigned to any canvas.
    *
+   * @constructs
    * @param {Object} attr the configuration of the shape
    */
   init: function (attr, setter, getter) {

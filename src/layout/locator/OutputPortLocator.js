@@ -17,10 +17,10 @@ draw2d.layout.locator.OutputPortLocator = draw2d.layout.locator.PortLocator.exte
   NAME: "draw2d.layout.locator.OutputPortLocator",
 
   /**
-   * @constructs
    * Default constructor for a Locator which can layout a port in context of a
    * {@link draw2d.shape.node.Node}
    *
+   * @constructs
    */
   init: function () {
     this._super()

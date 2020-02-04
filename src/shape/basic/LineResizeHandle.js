@@ -16,6 +16,10 @@ draw2d.shape.basic.LineResizeHandle = draw2d.shape.basic.Circle.extend(
 
   NAME: "draw2d.shape.basic.LineResizeHandle",
 
+  /**
+   *
+   * @constructs
+   */
   init: function (attr, setter, getter) {
 
     this.zoomCallback = () => {

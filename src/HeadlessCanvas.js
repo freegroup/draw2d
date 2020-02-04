@@ -14,9 +14,9 @@ draw2d.HeadlessCanvas = Class.extend(
     NAME : "draw2d.HeadlessCanvas",
 
     /**
-     * @constructs
      * Create a new canvas with the given HTML DOM references.
      *
+     * @constructs
      * @param {String} canvasId the id of the DOM element to use a parent container
      */
     init: function()

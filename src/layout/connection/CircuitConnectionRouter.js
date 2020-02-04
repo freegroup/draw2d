@@ -68,9 +68,9 @@ draw2d.layout.connection.CircuitConnectionRouter = draw2d.layout.connection.Manh
   NAME: "draw2d.layout.connection.CircuitConnectionRouter",
 
   /**
-   * @constructs
    * Creates a new Router object.
    *
+   * @constructs
    */
   init: function () {
     this._super()

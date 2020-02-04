@@ -17,7 +17,6 @@ draw2d.Canvas = Class.extend(
     NAME: "draw2d.Canvas",
 
     /**
-     * @constructs
      * Create a new canvas with the given HTML DOM references.
      *
      * @param {String} canvasId the id of the DOM element to use a parent container

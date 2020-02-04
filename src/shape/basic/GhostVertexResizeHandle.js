@@ -16,7 +16,12 @@ draw2d.shape.basic.GhostVertexResizeHandle = draw2d.shape.basic.LineResizeHandle
   
   NAME: "draw2d.shape.basic.GhostVertexResizeHandle",
 
-  init: function (owner, precursorIndex) {
+    /**
+     *
+     *
+     * @constructs
+     */
+    init: function (owner, precursorIndex) {
     this.maxOpacity = 0.35
     this.precursorIndex = precursorIndex
 

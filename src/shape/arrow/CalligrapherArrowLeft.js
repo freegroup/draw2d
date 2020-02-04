@@ -17,13 +17,12 @@ import draw2d from '../../packages'
 draw2d.shape.arrow.CalligrapherArrowLeft = draw2d.SVGFigure.extend(
   /** @lends draw2d.shape.arrow.CalligrapherArrowLeft.prototype */
   {
-
   NAME: "draw2d.shape.arrow.CalligrapherArrowLeft",
 
   /**
-   * @constructs
    * Creates a new instance
    *
+   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {

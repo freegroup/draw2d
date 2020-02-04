@@ -21,9 +21,9 @@ import draw2d from '../packages';
 draw2d.util.Color = Class.extend({
 
     /**
-     * @constructs
      * Create a new Color object
      *
+     * @constructs
      * @param {Number|String|draw2d.util.Color|Array} red
      * @param {Number} green
      * @param {Number} blue

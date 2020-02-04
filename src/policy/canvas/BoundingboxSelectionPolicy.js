@@ -14,8 +14,8 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
   NAME: "draw2d.policy.canvas.BoundingboxSelectionPolicy",
 
   /**
-   * @constructs
    * Creates a new selection policy for a canvas.
+   * @constructs
    */
   init: function () {
     this.isInsideMode = (rect1, rect2) => rect1.isInside(rect2)

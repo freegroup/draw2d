@@ -16,6 +16,10 @@ draw2d.shape.basic.LineStartResizeHandle = draw2d.shape.basic.LineResizeHandle.e
 
   NAME: "draw2d.shape.basic.LineStartResizeHandle",
 
+  /**
+   *
+   * @constructs
+   */
   init: function (figure) {
     this._super({owner: figure, index: 0})
   },

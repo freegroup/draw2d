@@ -19,9 +19,9 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
   DEFAULT_BORDER_COLOR: new draw2d.util.Color("#1B1B1B"),
 
   /**
-   * @constructs
    * Creates a new Node element which are not assigned to any canvas.
    *
+   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {
@@ -662,9 +662,9 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
 draw2d.Corona = draw2d.shape.basic.Circle.extend({
 
   /**
-   * @constructs
    * Creates a new Node element which are not assigned to any canvas.
    *
+   * @constructs
    */
   init: function () {
     this._super()

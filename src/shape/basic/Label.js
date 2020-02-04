@@ -42,9 +42,9 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
 
 
   /**
-   * @constructs
    * Creates a new text element.
    *
+   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {

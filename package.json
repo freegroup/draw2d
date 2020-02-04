@@ -42,6 +42,7 @@
     "replace-in-file-webpack-plugin": "^1.0.6",
     "script-loader": "^0.7.2",
     "style-loader": "^0.21.0",
+    "tui-jsdoc-template": "^1.2.2",
     "webpack": "^4.0.0",
     "webpack-cli": "^3.0.8",
     "yargs": "^10.0.3"

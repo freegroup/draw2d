@@ -20,9 +20,9 @@ draw2d.shape.composite.Group = draw2d.shape.composite.StrongComposite.extend(
   NAME: "draw2d.shape.composite.Group",
 
   /**
-   * @constructs
    * Creates a new figure element which are not assigned to any canvas.
    *
+   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {

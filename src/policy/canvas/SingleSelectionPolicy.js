@@ -14,8 +14,8 @@ draw2d.policy.canvas.SingleSelectionPolicy = draw2d.policy.canvas.SelectionPolic
   NAME: "draw2d.policy.canvas.SingleSelectionPolicy",
 
   /**
-   * @constructs
    * Creates a new Router object
+   * @constructs
    */
   init: function () {
     this._super()

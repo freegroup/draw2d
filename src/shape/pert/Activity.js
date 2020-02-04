@@ -28,9 +28,9 @@ draw2d.shape.pert.Activity = draw2d.shape.layout.VerticalLayout.extend(
   NAME: "draw2d.shape.pert.Activity",
 
   /**
-   * @constructs
    * Create a new instance
    *
+   * @constructs
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {
