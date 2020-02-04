@@ -1,7 +1,7 @@
 /**
  * @class draw2d.Selection
  *
- * Represents the current selection in the canvas. The selection element is a pure passive element which
+ * @classdesc Represents the current selection in the canvas. The selection element is a pure passive element which
  * manage/store the selection.
  *
  *
@@ -15,7 +15,7 @@ draw2d.Selection = Class.extend({
   NAME: "draw2d.Selection",
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new figure element which are not assigned to any canvas.
    *
    */

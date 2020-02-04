@@ -42,7 +42,7 @@ draw2d.layout.locator.ManhattanMidpointLocator = draw2d.layout.locator.Connectio
   NAME: "draw2d.layout.locator.ManhattanMidpointLocator",
 
   /**
-   * @constructor
+   * @constructs
    * Constructs a ManhattanMidpointLocator with associated Connection c.
    *
    */

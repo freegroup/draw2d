@@ -18,7 +18,7 @@ draw2d.layout.connection.ManhattanBridgedConnectionRouter = draw2d.layout.connec
   BRIDGE_HORIZONTAL_RL: " r 0 0 -3 -4 -7 -4 -10 0 -13 0 ", // right to left
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new Router object.
    *
    */

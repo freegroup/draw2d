@@ -10,7 +10,7 @@ draw2d.command.CommandGroup = draw2d.command.Command.extend({
   NAME: "draw2d.command.CommandGroup",
 
   /**
-   * @constructor
+   * @constructs
    * Create a group command for the given figure.
    *
    * @param {draw2d.util.ArrayList} figures the figures to group

@@ -16,7 +16,7 @@ draw2d.policy.figure.SelectionFeedbackPolicy = draw2d.policy.figure.SelectionPol
   NAME: "draw2d.policy.figure.SelectionFeedbackPolicy",
 
   /**
-   * @constructor
+   * @constructs
    *
    */
   init: function (attr, setter, getter) {

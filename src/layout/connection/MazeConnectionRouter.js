@@ -17,7 +17,7 @@ draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.Connect
 
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new Router object.
    *
    */

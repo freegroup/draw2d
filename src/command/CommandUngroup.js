@@ -11,7 +11,7 @@ draw2d.command.CommandUngroup = draw2d.command.Command.extend({
   NAME: "draw2d.command.CommandUngroup",
 
   /**
-   * @constructor
+   * @constructs
    * Create a group command for the given figure.
    *
    * @param {draw2d.Canvas} canvas the responsible canvas

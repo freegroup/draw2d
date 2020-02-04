@@ -1,7 +1,7 @@
 /**
  * @class draw2d.HeadlessCanvas
  *
- * Required for Node.js draw2d model read/write operations.
+ * @classdesc Required for Node.js draw2d model read/write operations.
  *
  * @inheritable
  * @author Andreas Herz
@@ -14,7 +14,7 @@ draw2d.HeadlessCanvas = Class.extend(
     NAME : "draw2d.HeadlessCanvas",
 
     /**
-     * @constructor
+     * @constructs
      * Create a new canvas with the given HTML DOM references.
      *
      * @param {String} canvasId the id of the DOM element to use a parent container

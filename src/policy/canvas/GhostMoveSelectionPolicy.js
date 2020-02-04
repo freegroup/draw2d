@@ -31,7 +31,7 @@ draw2d.policy.canvas.GhostMoveSelectionPolicy = draw2d.policy.canvas.SingleSelec
   NAME: "draw2d.policy.canvas.GhostMoveSelectionPolicy",
 
   /**
-   * @constructor
+   * @constructs
    */
   init: function () {
     this.clone = null

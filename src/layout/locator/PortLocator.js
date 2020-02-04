@@ -13,7 +13,7 @@ draw2d.layout.locator.PortLocator = draw2d.layout.locator.Locator.extend({
   NAME: "draw2d.layout.locator.PortLocator",
 
   /**
-   * @constructor
+   * @constructs
    * Default constructor for a Locator which can layout a port in context of a
    *
    */

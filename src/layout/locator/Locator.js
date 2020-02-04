@@ -11,7 +11,7 @@ draw2d.layout.locator.Locator = Class.extend({
   NAME: "draw2d.layout.locator.Locator",
 
   /**
-   * @constructor
+   * @constructs
    * Initial Constructor
    *
    */

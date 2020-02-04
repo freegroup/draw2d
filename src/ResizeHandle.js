@@ -1,6 +1,6 @@
 /**
  * @class draw2d.ResizeHandle
- * The Resizehandles for Figures.
+ * @classdesc The Resizehandles for Figures.
 
  * <pre>
  * Possible Type:
@@ -27,7 +27,7 @@ draw2d.ResizeHandle = draw2d.shape.basic.Rectangle.extend({
   NAME: "draw2d.ResizeHandle",
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new figure element which are not assigned to any canvas.
    *
    * @param {draw2d.Figure} the owner if the resize handle

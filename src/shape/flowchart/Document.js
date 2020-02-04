@@ -23,7 +23,7 @@ draw2d.shape.flowchart.Document = draw2d.VectorFigure.extend({
 
   /**
    *
-   * @constructor
+   * @constructs
    * Creates a new figure element which are not assigned to any canvas.
    *
    * @param {Object} [attr] the configuration of the shape

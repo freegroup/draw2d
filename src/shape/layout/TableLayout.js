@@ -53,7 +53,7 @@ draw2d.shape.layout.TableLayout = draw2d.shape.layout.Layout.extend({
     }
   },
   /**
-   * @constructor
+   * @constructs
    * Create a new instance
    *
    * @param {Object} [attr] the configuration of the shape

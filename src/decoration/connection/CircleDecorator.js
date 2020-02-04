@@ -45,7 +45,7 @@ draw2d.decoration.connection.CircleDecorator = draw2d.decoration.connection.Deco
 	NAME : "draw2d.decoration.connection.CircleDecorator",
 
 	/**
-	 * @constructor
+	 * @constructs
 	 *
 	 * @param {Number} [width] the width of the arrow
 	 * @param {Number} [height] the height of the arrow

@@ -79,7 +79,7 @@ draw2d.layout.connection.RubberbandRouter = draw2d.layout.connection.ConnectionR
   NAME: "draw2d.layout.connection.RubberbandRouter",
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new Router object
    */
   init: function () {

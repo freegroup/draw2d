@@ -23,7 +23,7 @@ draw2d.layout.locator.XYAbsPortLocator = draw2d.layout.locator.PortLocator.exten
   NAME: "draw2d.layout.locator.XYAbsPortLocator",
 
   /**
-   * @constructor
+   * @constructs
    *
    * {@link draw2d.shape.node.Node}
    *

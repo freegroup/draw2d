@@ -30,7 +30,7 @@ draw2d.policy.canvas.ShowDotEditPolicy = draw2d.policy.canvas.DecorationPolicy.e
   DOT_DISTANCE: 20,
 
   /**
-   * @constructor
+   * @constructs
    * show a dot grid in the canvas for decoration.
    *
    * @param {Number} [dotDistance] the distance or grid width between the dots.

@@ -19,7 +19,7 @@ draw2d.command.CommandType = Class.extend({
   NAME: "draw2d.command.CommandType",
 
   /**
-   * @constructor
+   * @constructs
    * Create a new edit policy object
    *
    * @param {String} policy

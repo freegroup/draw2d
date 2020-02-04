@@ -13,7 +13,7 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend({
   NAME: "draw2d.policy.canvas.CanvasPolicy",
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new Router object
    */
   init: function (attr, setter, getter) {

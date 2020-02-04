@@ -17,7 +17,7 @@ draw2d.command.Command = Class.extend({
   NAME: "draw2d.command.Command",
 
   /**
-   * @constructor
+   * @constructs
    * Create a new Command objects which can be execute via the CommandStack.
    *
    * @param {String} label

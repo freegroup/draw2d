@@ -26,7 +26,7 @@ draw2d.shape.pert.Start = draw2d.shape.layout.VerticalLayout.extend({
   NAME: "draw2d.shape.pert.Start",
 
   /**
-   * @constructor
+   * @constructs
    * Create a new instance
    *
    * @param {Object} [attr] the configuration of the shape

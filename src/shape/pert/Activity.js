@@ -26,7 +26,7 @@ draw2d.shape.pert.Activity = draw2d.shape.layout.VerticalLayout.extend({
   NAME: "draw2d.shape.pert.Activity",
 
   /**
-   * @constructor
+   * @constructs
    * Create a new instance
    *
    * @param {Object} [attr] the configuration of the shape

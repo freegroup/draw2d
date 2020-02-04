@@ -20,7 +20,7 @@ draw2d.shape.node.VerticalBus = draw2d.shape.node.Hub.extend({
   NAME: "draw2d.shape.node.VerticalBus",
 
   /**
-   * @constructor
+   * @constructs
    *
    * @param {Object} [attr] the configuration of the shape
    */

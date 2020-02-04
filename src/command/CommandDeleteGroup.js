@@ -12,7 +12,7 @@ draw2d.command.CommandDeleteGroup = draw2d.command.Command.extend({
   NAME: "draw2d.command.CommandDeleteGroup",
 
   /**
-   * @constructor
+   * @constructs
    * Create a delete command for the given figure.
    *
    * @param {draw2d.shape.composite.Group} group

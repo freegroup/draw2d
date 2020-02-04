@@ -50,7 +50,7 @@ draw2d.shape.layout.VerticalLayout = draw2d.shape.layout.Layout.extend({
   NAME: "draw2d.shape.layout.VerticalLayout",
 
   /**
-   * @constructor
+   * @constructs
    * Create a new instance
    *
    * @param {Object} [attr] the configuration of the shape

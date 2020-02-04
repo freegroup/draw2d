@@ -15,7 +15,7 @@ draw2d.util.spline.CubicSpline = draw2d.util.spline.Spline.extend(
     NAME : "draw2d.util.spline.CubicSpline",
 
     /**
-     * @constructor
+     * @constructs
      */
     init: function()
     {

@@ -24,7 +24,7 @@ draw2d.policy.figure.AntSelectionFeedbackPolicy = draw2d.policy.figure.Selection
   NAME: "draw2d.policy.figure.AntSelectionFeedbackPolicy",
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new Router object
    */
   init: function (attr, setter, getter) {

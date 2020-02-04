@@ -1,7 +1,7 @@
 
 /**
  * @class draw2d.SVGFigure
- * Abstract class which can handle plain SVG content. Inherit class must override the method
+ * @classdesc Abstract class which can handle plain SVG content. Inherit class must override the method
  * <code>getSVG()</code>.
  *
  * @author Andreas Herz
@@ -16,7 +16,7 @@ draw2d.SVGFigure = draw2d.SetFigure.extend({
     NAME : "draw2d.SVGFigure",
 
     /**
-     * @constructor
+     * @constructs
      * Creates a new figure element which are not assigned to any canvas.
      *
      * @param {Object} [attr] the configuration of the shape

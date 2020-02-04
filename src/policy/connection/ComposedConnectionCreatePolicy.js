@@ -17,7 +17,7 @@ draw2d.policy.connection.ComposedConnectionCreatePolicy = draw2d.policy.connecti
     NAME : "draw2d.policy.connection.ComposedConnectionCreatePolicy",
 
     /**
-     * @constructor
+     * @constructs
      *
      * Creates a new connection create policy instance
      *

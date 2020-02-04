@@ -25,7 +25,7 @@ draw2d.policy.figure.WidthSelectionFeedbackPolicy = draw2d.policy.figure.Selecti
   NAME: "draw2d.policy.figure.BusSelectionFeedbackPolicy",
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new Router object
    */
   init: function (attr, setter, getter) {

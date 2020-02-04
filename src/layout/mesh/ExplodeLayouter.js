@@ -13,7 +13,7 @@ draw2d.layout.mesh.ExplodeLayouter = draw2d.layout.mesh.MeshLayouter.extend({
 	MIN_MARGIN : 40,
 	
 	/**
-	 * @constructor 
+	 * @constructs
 	 * Creates a new layouter object.
 	 */
     init: function()

@@ -23,7 +23,7 @@ draw2d.shape.basic.Text = draw2d.shape.basic.Label.extend({
   NAME: "draw2d.shape.basic.Text",
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new text element.
    *
    * @param {Object} [attr] the configuration of the shape

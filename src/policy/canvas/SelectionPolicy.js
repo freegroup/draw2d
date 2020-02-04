@@ -12,7 +12,7 @@ draw2d.policy.canvas.SelectionPolicy = draw2d.policy.canvas.CanvasPolicy.extend(
   NAME: "draw2d.policy.canvas.SelectionPolicy",
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new selection policy
    */
   init: function (attr, setter, getter) {

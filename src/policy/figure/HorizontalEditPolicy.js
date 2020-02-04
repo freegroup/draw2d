@@ -29,7 +29,7 @@ draw2d.policy.figure.HorizontalEditPolicy = draw2d.policy.figure.DragDropEditPol
   NAME: "draw2d.policy.figure.HorizontalEditPolicy",
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new constraint object
    *
    */

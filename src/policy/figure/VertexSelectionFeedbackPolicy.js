@@ -14,7 +14,7 @@ draw2d.policy.figure.VertexSelectionFeedbackPolicy = draw2d.policy.figure.Select
   NAME: "draw2d.policy.figure.VertexSelectionFeedbackPolicy",
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new Router object
    */
   init: function (attr, setter, getter) {

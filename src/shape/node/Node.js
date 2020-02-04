@@ -16,7 +16,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend({
   NAME: "draw2d.shape.node.Node",
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new Node element which are not assigned to any canvas.
    *
    * @param {Object} [attr] the configuration of the shape

@@ -20,7 +20,7 @@ draw2d.layout.connection.MuteableManhattanConnectionRouter = draw2d.layout.conne
   RIGHT: new draw2d.geo.Ray(1, 0),
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new Router object.
    *
    */

@@ -27,7 +27,7 @@ draw2d.layout.locator.XYRelPortLocator = draw2d.layout.locator.PortLocator.exten
   NAME: "draw2d.layout.locator.XYRelPortLocator",
 
   /**
-   * @constructor
+   * @constructs
    *
    *
    * @param {Number} xPercentage the x coordinate in percent of the port relative to the left of the parent

@@ -9,7 +9,7 @@ draw2d.command.CommandStack = Class.extend({
 
 
   /**
-   * @constructor
+   * @constructs
    * Create a new CommandStack objects which can be execute via the CommandStack.
    *
    */

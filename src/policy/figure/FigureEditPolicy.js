@@ -16,7 +16,7 @@ draw2d.policy.figure.FigureEditPolicy = draw2d.policy.EditPolicy.extend({
   NAME: "draw2d.policy.figure.FigureEditPolicy",
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new Router object
    */
   init: function (attr, setter, getter) {

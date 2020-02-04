@@ -12,7 +12,7 @@ draw2d.policy.line.LineSelectionFeedbackPolicy = draw2d.policy.figure.SelectionF
   NAME: "draw2d.policy.line.LineSelectionFeedbackPolicy",
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new selection feedback policy for a line or connection
    */
   init: function (attr, setter, getter) {

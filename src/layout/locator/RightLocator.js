@@ -27,7 +27,7 @@ draw2d.layout.locator.RightLocator = draw2d.layout.locator.Locator.extend({
   NAME: "draw2d.layout.locator.RightLocator",
 
   /**
-   * @constructor
+   * @constructs
    * Constructs a locator with associated parent.
    *
    */

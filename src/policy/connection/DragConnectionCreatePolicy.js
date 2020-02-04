@@ -44,7 +44,7 @@ draw2d.policy.connection.DragConnectionCreatePolicy = draw2d.policy.connection.C
     NAME : "draw2d.policy.connection.DragConnectionCreatePolicy",
     
     /**
-     * @constructor
+     * @constructs
      *
      * Creates a new connection create policy instance
      */

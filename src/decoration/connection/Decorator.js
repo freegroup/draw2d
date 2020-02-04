@@ -14,7 +14,7 @@ draw2d.decoration.connection.Decorator = Class.extend({
 	NAME : "draw2d.decoration.connection.Decorator",
 
 	/**
-	 * @constructor
+	 * @constructs
 	 */
 	init: function(width, height) {
 

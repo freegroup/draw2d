@@ -56,7 +56,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
 
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new Router object.
    *
    */

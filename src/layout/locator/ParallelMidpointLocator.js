@@ -16,7 +16,7 @@ draw2d.layout.locator.ParallelMidpointLocator = draw2d.layout.locator.Connection
   NAME: "draw2d.layout.locator.ParallelMidpointLocator",
 
   /**
-   * @constructor
+   * @constructs
    * Constructs a ParallelMidpointLocator with optional padding to the connection.
    *
    * if the parameter <b>distanceFromConnection</b> is less than zero the label is

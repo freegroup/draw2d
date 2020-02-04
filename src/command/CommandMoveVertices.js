@@ -14,7 +14,7 @@ draw2d.command.CommandMoveVertices = draw2d.command.Command.extend({
   NAME: "draw2d.command.CommandMoveVertices",
 
   /**
-   * @constructor
+   * @constructs
    * Create a new Command objects which can be execute via the CommandStack.
    *
    * @param {draw2d.shape.basic.PolyLine} line the related line

@@ -10,7 +10,7 @@ import draw2d from '../../packages';
 draw2d.layout.mesh.MeshLayouter = Class.extend({
 
 	/**
-	 * @constructor
+	 * @constructs
 	 * Creates a new layouter object.
 	 */
     init: function(){

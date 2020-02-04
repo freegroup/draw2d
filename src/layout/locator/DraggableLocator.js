@@ -21,7 +21,7 @@ draw2d.layout.locator.DraggableLocator = draw2d.layout.locator.Locator.extend({
   NAME: "draw2d.layout.locator.DraggableLocator",
 
   /**
-   * @constructor
+   * @constructs
    * Constructs a locator with associated parent.
    *
    */

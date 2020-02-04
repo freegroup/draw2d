@@ -56,7 +56,7 @@ draw2d.layout.connection.ManhattanConnectionRouter = draw2d.layout.connection.Co
   TOGGLE_DIST: 20,
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new Router object.
    *
    */

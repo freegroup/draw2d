@@ -13,7 +13,7 @@ import draw2d from '../packages'
 draw2d.util.ArrayList = Class.extend({
 
   /**
-   * @constructor
+   * @constructs
    * Initializes a new instance of the ArrayList class that is empty and has
    * the default initial capacity.
    *

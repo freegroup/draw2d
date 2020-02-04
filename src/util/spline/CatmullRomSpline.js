@@ -15,7 +15,7 @@ draw2d.util.spline.CatmullRomSpline = draw2d.util.spline.CubicSpline.extend(
     NAME : "draw2d.util.spline.CatmullRomSpline",
 
     /**
-     * @constructor
+     * @constructs
      */
     init: function()
     {

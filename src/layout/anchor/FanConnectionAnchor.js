@@ -22,7 +22,7 @@ draw2d.layout.anchor.FanConnectionAnchor = draw2d.layout.anchor.ConnectionAnchor
   NAME: "draw2d.layout.anchor.FanConnectionAnchor",
 
   /**
-   * @constructor
+   * @constructs
    *
    * @param {draw2d.Figure} owner the figure to use for the anchor calculation
    * @param {Number} [separation] the separation or fan distance between the concurrent/conflicting anchors

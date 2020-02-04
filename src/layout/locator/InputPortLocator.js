@@ -14,7 +14,7 @@ draw2d.layout.locator.InputPortLocator = draw2d.layout.locator.PortLocator.exten
   NAME: "draw2d.layout.locator.InputPortLocator",
 
   /**
-   * @constructor
+   * @constructs
    * Default constructor for a Locator which can layout a port in context of a
    * {@link draw2d.shape.node.Node}
    *

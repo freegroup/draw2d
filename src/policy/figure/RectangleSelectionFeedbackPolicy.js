@@ -21,7 +21,7 @@ draw2d.policy.figure.RectangleSelectionFeedbackPolicy = draw2d.policy.figure.Sel
 
   NAME: "draw2d.policy.figure.RectangleSelectionFeedbackPolicy",
   /**
-   * @constructor
+   * @constructs
    * Creates a selection feedback for a shape.
    */
   init: function (attr, setter, getter) {

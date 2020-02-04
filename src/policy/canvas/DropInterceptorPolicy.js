@@ -22,7 +22,7 @@ draw2d.policy.canvas.DropInterceptorPolicy = draw2d.policy.canvas.CanvasPolicy.e
   NAME: "draw2d.policy.canvas.DropInterceptorPolicy",
 
   /**
-   * @constructor
+   * @constructs
    *
    */
   init: function (attr, setter, getter) {

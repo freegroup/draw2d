@@ -14,7 +14,7 @@ draw2d.command.CommandRotate = draw2d.command.Command.extend({
   NAME: "draw2d.command.CommandRotate",
 
   /**
-   * @constructor
+   * @constructs
    * Create a new resize Command objects which can be execute via the CommandStack.
    *
    * @param {draw2d.Figure} figure the figure to resize

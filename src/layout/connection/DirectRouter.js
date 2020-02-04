@@ -50,7 +50,7 @@ draw2d.layout.connection.DirectRouter = draw2d.layout.connection.ConnectionRoute
   NAME: "draw2d.layout.connection.DirectRouter",
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new Router object
    */
   init: function () {

@@ -28,7 +28,7 @@ draw2d.layout.locator.CenterLocator = draw2d.layout.locator.Locator.extend({
   NAME: "draw2d.layout.locator.CenterLocator",
 
   /**
-   * @constructor
+   * @constructs
    * Constructs a locator with associated parent.
    *
    */

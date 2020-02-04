@@ -17,7 +17,7 @@ draw2d.geo.Ray = draw2d.geo.Point.extend({
     NAME : "draw2d.geo.Ray",
     
     /**
-     * @constructor 
+     * @constructs 
      * Creates a ray object. 
      * 
      * @param {Number} x

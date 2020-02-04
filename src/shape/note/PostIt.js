@@ -25,7 +25,7 @@ draw2d.shape.note.PostIt = draw2d.shape.basic.Label.extend({
   NAME: "draw2d.shape.note.PostIt",
 
   /**
-   * @constructor
+   * @constructs
    *
    * @param {Object} [attr] the configuration of the shape
    */

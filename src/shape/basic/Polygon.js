@@ -28,7 +28,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend({
   NAME: "draw2d.shape.basic.Polygon",
 
   /**
-   * @constructor
+   * @constructs
    *
    * @param {Object} [attr] the configuration of the shape
    */

@@ -1,7 +1,7 @@
 /**
  * @class draw2d.SetFigure
  *
- * A SetFigure is a composition of different SVG elements.
+ * @classdesc A SetFigure is a composition of different SVG elements.
  *
  * @author Andreas Herz
  * @extends draw2d.shape.basic.Rectangle
@@ -15,7 +15,7 @@ draw2d.SetFigure = draw2d.shape.basic.Rectangle.extend({
   NAME: "draw2d.SetFigure",
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new figure element which are not assigned to any canvas.
    *
    * @param {Object} [attr] the configuration of the shape

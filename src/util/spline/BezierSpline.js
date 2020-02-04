@@ -16,7 +16,7 @@ draw2d.util.spline.BezierSpline = draw2d.util.spline.Spline.extend(
     NAME : "draw2d.util.spline.BezierSpline",
 
     /**
-     * @constructor
+     * @constructs
      */
     init: function()
     {

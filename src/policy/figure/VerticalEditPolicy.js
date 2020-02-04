@@ -29,7 +29,7 @@ draw2d.policy.figure.VerticalEditPolicy = draw2d.policy.figure.DragDropEditPolic
     NAME : "draw2d.policy.figure.VerticalEditPolicy",
 
     /**
-     * @constructor
+     * @constructs
      * Creates a new constraint object
      */
     init: function( attr, setter, getter)

@@ -23,7 +23,7 @@ draw2d.shape.basic.Diamond = draw2d.shape.basic.Polygon.extend({
   NAME: "draw2d.shape.basic.Diamond",
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new figure element which are not assigned to any canvas.
    *
    * @param {Object} [attr] the configuration of the shape

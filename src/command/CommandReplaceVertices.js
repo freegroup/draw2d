@@ -14,7 +14,7 @@ draw2d.command.CommandReplaceVertices = draw2d.command.Command.extend({
   NAME: "draw2d.command.CommandReplaceVertices",
 
   /**
-   * @constructor
+   * @constructs
    * Create a new Command objects which add a segment to a PolyLine / Polygon.
    *
    * @param {draw2d.shape.basic.PolyLine} line the related line

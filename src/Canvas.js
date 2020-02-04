@@ -1,19 +1,6 @@
 /**
  * @class draw2d.Canvas
- * Interactive paint area of the draw2d library.
- * <br>
- * <strong>Usage</strong>
- *
- *
- *      $(window).load(function () {
- *
- *          let canvas = new draw2d.Canvas("gfx_holder");
- *
- *          let figure1 = new draw2d.shape.basic.Oval();
- *          let figure2 = new draw2d.shape.basic.Rectangle();
- *          canvas.add(figure1,100,100);
- *          canvas.add(figure2,120,150);
- *      });
+ * @classdesc Interactive paint area of the draw2d library.
  *
  *
  * @inheritable
@@ -22,11 +9,12 @@
 import draw2d from 'packages'
 
 draw2d.Canvas = Class.extend(
+  /** @lends draw2d.Canvas.prototype */
   {
     NAME: "draw2d.Canvas",
 
     /**
-     * @constructor
+     * @constructs
      * Create a new canvas with the given HTML DOM references.
      *
      * @param {String} canvasId the id of the DOM element to use a parent container

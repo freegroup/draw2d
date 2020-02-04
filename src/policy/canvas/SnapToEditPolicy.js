@@ -33,7 +33,7 @@ draw2d.policy.canvas.SnapToEditPolicy = draw2d.policy.canvas.CanvasPolicy.extend
   NAME: "draw2d.policy.canvas.SnapToEditPolicy",
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new constraint policy for snap to grid
    *
    */

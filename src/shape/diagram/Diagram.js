@@ -13,7 +13,7 @@ import jsonUtil from '../../util/JSONUtil'
 draw2d.shape.diagram.Diagram = draw2d.SetFigure.extend({
 
   /**
-   * @constructor
+   * @constructs
    *
    * @param {Object} [attr] the configuration of the shape
    */

@@ -20,7 +20,7 @@ draw2d.shape.icon.Page2 = draw2d.shape.icon.Icon.extend({
 
   /**
    *
-   * @constructor
+   * @constructs
    * Creates a new icon element which are not assigned to any canvas.
    *
    * @param {Object} attr the configuration of the shape

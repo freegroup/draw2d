@@ -11,7 +11,7 @@ draw2d.shape.icon.Icon = draw2d.SetFigure.extend({
 
   /**
    *
-   * @constructor
+   * @constructs
    * Creates a new figure element which are not assigned to any canvas.
    *
    * @param {Object} attr the configuration of the shape

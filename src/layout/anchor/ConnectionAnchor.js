@@ -12,7 +12,7 @@ draw2d.layout.anchor.ConnectionAnchor = Class.extend({
   NAME: "draw2d.layout.anchor.ConnectionAnchor",
 
   /**
-   * @constructor
+   * @constructs
    *
    * @param {draw2d.Figure} owner the figure to use for the anchor calculation
    */

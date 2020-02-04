@@ -19,7 +19,7 @@ draw2d.policy.canvas.SnapToCenterEditPolicy = draw2d.policy.canvas.SnapToEditPol
   FADEOUT_DURATION: 500,
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new constraint policy for snap to geometry
    *
    */

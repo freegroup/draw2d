@@ -1,6 +1,6 @@
 /**
  * @class draw2d.Figure
- * A lightweight graphical object. Figures are rendered to a {@link draw2d.Canvas} object.
+ * @classdesc  A lightweight graphical object. Figures are rendered to a {@link draw2d.Canvas} object.
  *
  * @inheritable
  * @author Andreas Herz
@@ -20,7 +20,7 @@ draw2d.Figure = Class.extend({
   // special attributes that should be get/set via method calls
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new figure element which is not assigned to any canvas.
    *
    *

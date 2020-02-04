@@ -20,7 +20,7 @@ draw2d.shape.icon.Info = draw2d.shape.icon.Icon.extend({
 
   /**
    *
-   * @constructor
+   * @constructs
    * Creates a new figure element which are not assigned to any canvas.
    *
    * @param {Object} attr the configuration of the shape

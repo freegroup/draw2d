@@ -1,7 +1,7 @@
 
 /**
  * @class draw2d.VectorFigure
- * The base class for all vector based figures like {@link draw2d.shape.basic.Rectangle}  or {@link draw2d.shape.basic.Oval}
+ * @classdesc The base class for all vector based figures like {@link draw2d.shape.basic.Rectangle}  or {@link draw2d.shape.basic.Oval}
  * inside a canvas.
  *
  * @inheritable
@@ -17,7 +17,7 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend({
     NAME : "draw2d.VectorFigure",
 
     /**
-     * @constructor
+     * @constructs
      * Creates a new figure element which are not assigned to any canvas.
      *
      * @param {Object} [attr] the configuration of the shape

@@ -30,7 +30,7 @@ draw2d.ui.LabelEditor = Class.extend({
     NAME : "draw2d.ui.LabelEditor",
 
     /**
-     * @constructor
+     * @constructs
      * Create an label editor with a dedicated callback listener
      *
       */

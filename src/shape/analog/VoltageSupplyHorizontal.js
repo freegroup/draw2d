@@ -42,7 +42,7 @@ draw2d.shape.analog.VoltageSupplyHorizontal = draw2d.SVGFigure.extend({
   }),
 
   /**
-   * @constructor
+   * @constructs
    * Create a new instance
    * @param {Object} [attr] the configuration of the shape
    */

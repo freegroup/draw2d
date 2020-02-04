@@ -12,7 +12,7 @@ draw2d.command.CommandAdd = draw2d.command.Command.extend({
   NAME: "draw2d.command.CommandAdd",
 
   /**
-   * @constructor
+   * @constructs
    * Create a add command for the given figure.
    *
    * @param {draw2d.Canvas} canvas the canvas to use

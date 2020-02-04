@@ -14,7 +14,7 @@ draw2d.command.CommandConnect = draw2d.command.Command.extend({
   NAME: "draw2d.command.CommandConnect",
 
   /**
-   * @constructor
+   * @constructs
    * Create a new CommandConnect objects which can be execute via the CommandStack.
    *
    * @param {draw2d.Port} source the source port for the connection to create

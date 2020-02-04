@@ -36,7 +36,7 @@ draw2d.shape.basic.Rectangle = draw2d.VectorFigure.extend({
   NAME: "draw2d.shape.basic.Rectangle",
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new figure element which are not assigned to any canvas.
    *
    * @param {Object} [attr] the configuration of the shape

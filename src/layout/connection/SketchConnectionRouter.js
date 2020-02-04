@@ -46,7 +46,7 @@ draw2d.layout.connection.SketchConnectionRouter = draw2d.layout.connection.MazeC
 
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new Router object.
    *
    */

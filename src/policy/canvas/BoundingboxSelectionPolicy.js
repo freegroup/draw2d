@@ -12,7 +12,7 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
   NAME: "draw2d.policy.canvas.BoundingboxSelectionPolicy",
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new selection policy for a canvas.
    */
   init: function () {

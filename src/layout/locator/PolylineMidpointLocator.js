@@ -15,7 +15,7 @@ draw2d.layout.locator.PolylineMidpointLocator = draw2d.layout.locator.ManhattanM
   NAME: "draw2d.layout.locator.PolylineMidpointLocator",
 
   /**
-   * @constructor
+   * @constructs
    * Constructs a ManhattanMidpointLocator with associated Connection c.
    *
    */

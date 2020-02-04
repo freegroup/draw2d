@@ -14,7 +14,7 @@ draw2d.command.CommandAssignFigure = draw2d.command.Command.extend({
   NAME: "draw2d.command.CommandAssignFigure",
 
   /**
-   * @constructor
+   * @constructs
    * Create a new Command objects which can be execute via the CommandStack.
    *
    * @param {draw2d.Figure} figure the figure to assign

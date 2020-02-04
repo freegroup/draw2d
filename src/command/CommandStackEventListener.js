@@ -11,7 +11,7 @@ draw2d.command.CommandStackEventListener = Class.extend({
   NAME: "draw2d.command.CommandStackEventListener",
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new Listener Object
    *
    */

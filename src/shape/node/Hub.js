@@ -26,7 +26,7 @@ draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend({
   BACKGROUND_COLOR: new Color("#29AA77"),
 
   /**
-   * @constructor
+   * @constructs
    *
    * @param {Object} [attr] the configuration of the shape
    */

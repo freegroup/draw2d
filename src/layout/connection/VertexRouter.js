@@ -52,7 +52,7 @@ draw2d.layout.connection.VertexRouter = draw2d.layout.connection.ConnectionRoute
   NAME: "draw2d.layout.connection.VertexRouter",
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new Router object
    */
   init: function () {

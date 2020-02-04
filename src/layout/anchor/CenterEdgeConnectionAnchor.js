@@ -21,7 +21,7 @@ draw2d.layout.anchor.CenterEdgeConnectionAnchor = draw2d.layout.anchor.Connectio
   NAME: "draw2d.layout.anchor.CenterEdgeConnectionAnchor",
 
   /**
-   * @constructor
+   * @constructs
    *
    * @param {draw2d.Figure} [owner] the figure to use for the anchor calculation
    */

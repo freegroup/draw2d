@@ -33,7 +33,7 @@ draw2d.layout.locator.BottomLocator = draw2d.layout.locator.Locator.extend({
   NAME: "draw2d.layout.locator.BottomLocator",
 
   /**
-   * @constructor
+   * @constructs
    *
    *
    */

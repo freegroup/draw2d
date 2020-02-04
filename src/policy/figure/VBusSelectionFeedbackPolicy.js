@@ -13,7 +13,7 @@ draw2d.policy.figure.VBusSelectionFeedbackPolicy = draw2d.policy.figure.BusSelec
 
     NAME : "draw2d.policy.figure.VBusSelectionFeedbackPolicy",
     /**
-     * @constructor
+     * @constructs
      * Creates a new Router object
      */
     init: function( attr, setter, getter)

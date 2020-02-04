@@ -1,6 +1,6 @@
 /**
  * @class draw2d.HybridPort
- * A HybridPort can work as Input and as Output port in the same way for a {@link draw2d.Connection}.
+ * @classdesc A HybridPort can work as Input and as Output port in the same way for a {@link draw2d.Connection}.
  *
  * @author Andreas Herz
  * @extends draw2d.Port
@@ -8,12 +8,13 @@
 
 import draw2d from 'packages';
 
-draw2d.HybridPort = draw2d.Port.extend({
-
+draw2d.HybridPort = draw2d.Port.extend(
+  /** @lends draw2d.HybridPort.prototype */
+  {
     NAME : "draw2d.HybridPort",
 
     /**
-     * @constructor
+     * @constructs
      * Create a new HybridPort element
      *
      * @param {Object} [attr] the configuration of the shape
@@ -28,7 +29,8 @@ draw2d.HybridPort = draw2d.Port.extend({
     },
 
     /**
-     * @inheritdoc
+     * @param {draw2d.command.CommandType} request The requested operation to perform on the object
+     * @returns {draw2d.command.Command} The matching command to the requested operation.
      */
     createCommand: function(request)
     {

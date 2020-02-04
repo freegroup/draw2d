@@ -16,7 +16,7 @@ draw2d.shape.layout.Layout = draw2d.shape.basic.Rectangle.extend({
   NAME: "draw2d.shape.layout.Layout",
 
   /**
-   * @constructor
+   * @constructs
    * Create a new instance
    *
    * @param {Object} [attr] the configuration of the shape

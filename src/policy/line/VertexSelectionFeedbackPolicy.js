@@ -13,7 +13,7 @@ draw2d.policy.line.VertexSelectionFeedbackPolicy = draw2d.policy.line.LineSelect
   NAME: "draw2d.policy.line.VertexSelectionFeedbackPolicy",
 
   /**
-   * @constructor
+   * @constructs
    *
    */
   init: function (attr, setter, getter) {

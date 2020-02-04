@@ -20,7 +20,7 @@ draw2d.policy.canvas.SnapToGeometryEditPolicy = draw2d.policy.canvas.SnapToEditP
   FADEOUT_DURATION: 300,
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new constraint policy for snap to geometry
    *
    */

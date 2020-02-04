@@ -9,7 +9,7 @@ import draw2d from '../packages';
  *      var id = draw2d.util.UUID.create();
  *
  * @author Andreas Herz
- * @constructor
+ * @constructs
  * @private
  */
 draw2d.util.UUID=function()

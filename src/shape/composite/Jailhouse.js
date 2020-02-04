@@ -17,7 +17,7 @@ draw2d.shape.composite.Jailhouse = draw2d.shape.composite.StrongComposite.extend
   NAME: "draw2d.shape.composite.Jailhouse",
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new figure element which are not assigned to any canvas.
    *
    * @param {Object} [attr] the configuration of the shape

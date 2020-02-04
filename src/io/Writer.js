@@ -12,7 +12,7 @@ import draw2d from '../packages';
 draw2d.io.Writer = Class.extend({
 
     /**
-     * @constructor
+     * @constructs
      * @private
      */
     init: function(){

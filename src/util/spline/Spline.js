@@ -11,7 +11,7 @@ draw2d.util.spline.Spline = Class.extend({
     NAME : "draw2d.util.spline.Spline",
 
     /**
-     * @constructor
+     * @constructs
      */
     init: function()
     {

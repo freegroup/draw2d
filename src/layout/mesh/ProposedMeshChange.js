@@ -10,7 +10,7 @@ import draw2d from '../../packages';
 draw2d.layout.mesh.ProposedMeshChange = Class.extend({
 
 	/**
-	 * @constructor
+	 * @constructs
 	 * Creates change object.
 	 */
     init: function(figure, x, y)

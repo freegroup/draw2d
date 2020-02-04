@@ -45,7 +45,7 @@ draw2d.decoration.connection.BarDecorator = draw2d.decoration.connection.Decorat
 	NAME : "draw2d.decoration.connection.BarDecorator",
 
 	/**
-	 * @constructor
+	 * @constructs
 	 *
 	 * @param {Number} [width] the width of the bar
 	 * @param {Number} [height] the height of the bar

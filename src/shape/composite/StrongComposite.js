@@ -16,7 +16,7 @@ draw2d.shape.composite.StrongComposite = draw2d.shape.composite.Composite.extend
   NAME: "draw2d.shape.composite.StrongComposite",
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new strong composite element which are not assigned to any canvas.
    *
    * @param {Object} [attr] the configuration of the shape

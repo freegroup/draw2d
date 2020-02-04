@@ -26,7 +26,7 @@ draw2d.policy.canvas.ShowChessboardEditPolicy = draw2d.policy.canvas.DecorationP
   GRID_WIDTH: 20,
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new constraint policy for snap to grid
    *
    * @param {Number} grid the grid width of the canvas

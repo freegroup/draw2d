@@ -16,7 +16,7 @@ draw2d.policy.figure.SelectionPolicy = draw2d.policy.figure.DragDropEditPolicy.e
   NAME: "draw2d.policy.figure.SelectionPolicy",
 
   /**
-   * @constructor
+   * @constructs
    *
    */
   init: function (attr, setter, getter) {

@@ -16,7 +16,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend({
     NAME : "draw2d.geo.Rectangle",
     
     /**
-     * @constructor 
+     * @constructs
      * Creates a new Point object with the hands over coordinates.
 	 * <br>
 	 * The constructor consumes almost any kind of rectangel definitions

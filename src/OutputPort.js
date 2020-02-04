@@ -1,6 +1,6 @@
 /**
  * @class draw2d.OutputPort
- * A OutputPort is the start anchor for a {@link draw2d.Connection}.
+ * @classdesc A OutputPort is the start anchor for a {@link draw2d.Connection}.
  *
  * @author Andreas Herz
  * @extends draw2d.Port
@@ -13,7 +13,7 @@ draw2d.OutputPort = draw2d.Port.extend({
     NAME : "draw2d.OutputPort",
 
     /**
-     * @constructor
+     * @constructs
      * Create a new OutputPort element
      *
      * @param {Object} [attr] the configuration of the shape

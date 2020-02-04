@@ -32,7 +32,7 @@ draw2d.ui.LabelInplaceEditor =  draw2d.ui.LabelEditor.extend({
     NAME: "draw2d.ui.LabelInplaceEditor",
 
     /**
-     * @constructor
+     * @constructs
      * @private
      */
     init: function(listener)

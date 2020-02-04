@@ -14,7 +14,7 @@ draw2d.layout.locator.ConnectionLocator = draw2d.layout.locator.Locator.extend({
   NAME: "draw2d.layout.locator.ConnectionLocator",
 
   /**
-   * @constructor
+   * @constructs
    * Default constructor for a Locator which can layout a figure in context of a
    * {@link draw2d.Connector}
    */

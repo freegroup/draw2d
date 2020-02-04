@@ -20,7 +20,7 @@ draw2d.layout.anchor.ShortesPathConnectionAnchor = draw2d.layout.anchor.Connecti
   NAME: "draw2d.layout.anchor.ShortesPathConnectionAnchor",
 
   /**
-   * @constructor
+   * @constructs
    *
    * @param {draw2d.Figure} [owner] the figure to use for the anchor calculation
    */

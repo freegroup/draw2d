@@ -27,7 +27,7 @@ draw2d.shape.composite.Raft = draw2d.shape.composite.WeakComposite.extend({
   NAME: "draw2d.shape.composite.Raft",
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new figure element which are not assigned to any canvas.
    *
    * @param {Object} [attr] the configuration of the shape

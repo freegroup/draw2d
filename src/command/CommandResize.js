@@ -12,7 +12,7 @@ draw2d.command.CommandResize = draw2d.command.Command.extend({
   NAME: "draw2d.command.CommandResize",
 
   /**
-   * @constructor
+   * @constructs
    * Create a new resize Command objects which can be execute via the CommandStack.
    *
    * @param {draw2d.Figure} figure the figure to resize

@@ -1,35 +1,7 @@
 /**
  * @class draw2d.Connection
- * See the example:
  *
- *     @example preview small frame
- *
- *     // create and add two nodes which contains Ports (In and OUT)
- *     //
- *     var start = new draw2d.shape.node.Start();
- *     var end   = new draw2d.shape.node.End();
-
- *     // ...add it to the canvas
- *     canvas.add( start, 50,50);
- *     canvas.add( end, 230,80);
- *
- *     // Create a Connection and connect the Start and End node
- *     //
- *     var c = new draw2d.Connection();
- *
- *     // Set the endpoint decorations for the connection
- *     //
- *     c.setSourceDecorator(new draw2d.decoration.connection.BarDecorator());
- *     c.setTargetDecorator(new draw2d.decoration.connection.DiamondDecorator());
- *     // Connect the endpoints with the start and end port
- *     //
- *     c.setSource(start.getOutputPort(0));
- *     c.setTarget(end.getInputPort(0));
- *
- *     // and finally add the connection to the canvas
- *     canvas.add(c);
- *
- * Connections figures are used to display a line between two points. The Connection interface extends
+ * @classdesc Connections figures are used to display a line between two points. The Connection interface extends
  * {@link draw2d.shape.basic.PolyLine PolyLine}.<br>
  * The source and target endpoints of a connection are each defined using a {@link draw2d.layout.anchor.ConnectionAnchor ConnectionAnchor}.
  * These endpoints, along with any other points on the connection, are set by the connection's  {@link draw2d.layout.connection.ConnectionRouter ConnectionRouter}.
@@ -93,11 +65,13 @@ import draw2d from 'packages'
 import extend from 'util/extend'
 
 
-draw2d.Connection = draw2d.shape.basic.PolyLine.extend({
+draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
+  /** @lends draw2d.Connection.prototype */
+  {
   NAME: "draw2d.Connection",
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new figure element which are not assigned to any canvas.
    *
    * @param {Object} [attr] the configuration of the shape

@@ -13,7 +13,7 @@ draw2d.policy.canvas.DecorationPolicy = draw2d.policy.canvas.CanvasPolicy.extend
   NAME: "draw2d.policy.canvas.DecorationPolicy",
 
   /**
-   * @constructor
+   * @constructs
    *
    */
   init: function (attr, setter, getter) {

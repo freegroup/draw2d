@@ -26,7 +26,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend({
   NAME: "draw2d.shape.basic.PolyLine",
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new figure element which are not assigned to any canvas.
    *
    * @param {Object} [attr] the configuration of the shape

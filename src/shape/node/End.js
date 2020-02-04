@@ -21,7 +21,7 @@ draw2d.shape.node.End = draw2d.shape.basic.Rectangle.extend({
   DEFAULT_COLOR: new draw2d.util.Color("#4D90FE"),
 
   /**
-   * @constructor
+   * @constructs
    *
    * @param {Object} [attr] the configuration of the shape
    */

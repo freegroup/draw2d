@@ -54,7 +54,7 @@ draw2d.shape.layout.HorizontalLayout = draw2d.shape.layout.Layout.extend({
   NAME: "draw2d.shape.layout.HorizontalLayout",
 
   /**
-   * @constructor
+   * @constructs
    * Create a new instance
    *
    * @param {Object} [attr] the configuration of the shape

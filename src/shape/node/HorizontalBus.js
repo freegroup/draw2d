@@ -20,7 +20,7 @@ draw2d.shape.node.HorizontalBus = draw2d.shape.node.Hub.extend({
   NAME: "draw2d.shape.node.HorizontalBus",
 
   /**
-   * @constructor
+   * @constructs
    *
    * @param {Object} [attr] the configuration of the shape
    */

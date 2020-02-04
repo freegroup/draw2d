@@ -23,7 +23,7 @@ draw2d.policy.EditPolicy = Class.extend({
   NAME: "draw2d.policy.EditPolicy",
 
   /**
-   * @constructor
+   * @constructs
    *
    */
   init: function (attr, setter, getter) {

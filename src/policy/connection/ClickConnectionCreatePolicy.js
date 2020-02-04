@@ -52,7 +52,7 @@ draw2d.policy.connection.ClickConnectionCreatePolicy = draw2d.policy.connection.
     NAME : "draw2d.policy.connection.ClickConnectionCreatePolicy",
     
     /**
-     * @constructor
+     * @constructs
      *
      * Creates a new connection create policy instance
      */

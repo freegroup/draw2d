@@ -18,7 +18,7 @@ draw2d.policy.canvas.FadeoutDecorationPolicy = draw2d.policy.canvas.DecorationPo
   DEFAULT_ALPHA_DECREMENT: 0.05,
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new fade out policy. Don't forget to install them into the canvas.
    *
    */

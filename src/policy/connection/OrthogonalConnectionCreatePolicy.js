@@ -49,7 +49,7 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
     NAME : "draw2d.policy.connection.ClickConnectionCreatePolicy",
 
     /**
-     * @constructor
+     * @constructs
      *
      * Creates a new connection create policy instance
      */

@@ -65,7 +65,7 @@ draw2d.layout.connection.CircuitConnectionRouter = draw2d.layout.connection.Manh
   NAME: "draw2d.layout.connection.CircuitConnectionRouter",
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new Router object.
    *
    */

@@ -1,6 +1,6 @@
 /**
  * @class draw2d.Port
- * A port is an object that is used to establish a connection between a node and a {@link draw2d.Connection}. The port can
+ * @classdesc  A port is an object that is used to establish a connection between a node and a {@link draw2d.Connection}. The port can
  * be placed anywhere within a node ( see {@link draw2d.layout.locator.PortLocator} for details)
  *
  *
@@ -16,7 +16,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
   DEFAULT_BORDER_COLOR: new draw2d.util.Color("#1B1B1B"),
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new Node element which are not assigned to any canvas.
    *
    * @param {Object} [attr] the configuration of the shape
@@ -659,7 +659,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend({
 draw2d.Corona = draw2d.shape.basic.Circle.extend({
 
   /**
-   * @constructor
+   * @constructs
    * Creates a new Node element which are not assigned to any canvas.
    *
    */
