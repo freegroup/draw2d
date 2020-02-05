@@ -5,7 +5,7 @@
  *
  * @author Andreas Herz
  */
-import draw2d from '../../packages';
+import draw2d from '../../packages'
 
 draw2d.layout.mesh.ProposedMeshChange = Class.extend(
   /** @lends draw2d.layout.mesh.ProposedMeshChange.prototype */

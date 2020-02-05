@@ -1,3 +1,6 @@
+import draw2d from '../packages'
+
+
 /**
  * @class draw2d.command.CommandResize
  * Resize command for figures. Can be execute/undo/redo via a CommandStack.
@@ -6,8 +9,6 @@
  * @author Andreas Herz
  * @extends draw2d.command.Command
  */
-import draw2d from '../packages'
-
 draw2d.command.CommandResize = draw2d.command.Command.extend(
   /** @lends draw2d.command.CommandResize.prototype */
   {

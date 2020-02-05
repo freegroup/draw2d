@@ -1,11 +1,12 @@
+import draw2d from '../packages'
+
+
 /**
  * @class draw2d.command.CommandStackEventListener
  *
  * Event class which will be fired for every CommandStack operation. Required for CommandStackListener.
  * @author Andreas Herz
  */
-import draw2d from '../packages'
-
 
 draw2d.command.CommandStackEventListener = Class.extend(
   /** @lends draw2d.command.CommandStackEventListener.prototype */

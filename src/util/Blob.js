@@ -1,13 +1,14 @@
+
+
 /* Blob.js
  * A Blob implementation.
  * 2013-12-27
- * 
+ *
  * By Eli Grey, http://eligrey.com
  * By Devin Samarin, https://github.com/eboyjr
  * License: X11/MIT
  *   See LICENSE.md
  */
-
 /*global self, unescape */
 /*jslint bitwise: true, regexp: true, confusion: true, es5: true, vars: true, white: true,
   plusplus: true */

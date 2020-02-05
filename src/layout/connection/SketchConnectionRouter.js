@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.layout.connection.SketchConnectionRouter
  *
@@ -39,8 +42,6 @@
  * @since 2.7.2
  * @extends  draw2d.layout.connection.MazeConnectionRouter
  */
-import draw2d from '../../packages'
-
 draw2d.layout.connection.SketchConnectionRouter = draw2d.layout.connection.MazeConnectionRouter.extend(
   /** @lends draw2d.layout.connection.SketchConnectionRouter.prototype */
   {

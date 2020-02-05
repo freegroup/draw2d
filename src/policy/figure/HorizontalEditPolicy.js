@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.policy.figure.HorizontalEditPolicy
  *
@@ -5,8 +8,6 @@
  *
  *
  * @example
- *
- *
  *       // add some demo figure to the canvas
  *       var circle =new draw2d.shape.basic.Circle({diameter:50, x:10, y:30});
  *       canvas.add(circle);
@@ -21,8 +22,6 @@
  *
  * @extends draw2d.policy.figure.DragDropEditPolicy
  */
-import draw2d from '../../packages'
-
 draw2d.policy.figure.HorizontalEditPolicy = draw2d.policy.figure.DragDropEditPolicy.extend(
   /** @lends draw2d.policy.figure.HorizontalEditPolicy.prototype */
   {

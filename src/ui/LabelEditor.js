@@ -1,3 +1,6 @@
+import draw2d from '../packages'
+
+
 /**
  * @class
  *
@@ -24,8 +27,6 @@
  *
  * @author Andreas Herz
  */
-import draw2d from '../packages';
-
 draw2d.ui.LabelEditor = Class.extend(
     /** @lends draw2d.ui.LabelEditor.prototype */
     {

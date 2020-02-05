@@ -4,7 +4,7 @@
  *
  *  An abstract class defining a general spline object.
  */
-import draw2d from '../../packages';
+import draw2d from '../../packages'
 
 draw2d.util.spline.Spline = Class.extend(
     /** @lends draw2d.util.spline.Spline.prototype */

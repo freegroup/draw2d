@@ -1,3 +1,5 @@
+
+
 /**
  * @class draw2d.util.spline.BezierSpline
  *
@@ -8,8 +10,7 @@
  *
  * @extends draw2d.util.spline.Spline
  */
-
-import draw2d from '../../packages';
+import draw2d from '../../packages'
 
 draw2d.util.spline.BezierSpline = draw2d.util.spline.Spline.extend(
 

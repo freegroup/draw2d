@@ -1,3 +1,5 @@
+
+
 /**
  * @class draw2d.shape.node.Hub
  *
@@ -13,7 +15,6 @@
  *
  * @extends draw2d.shape.basic.Rectangle
  */
-
 import draw2d from '../../packages'
 import Color from '../../util/Color'
 

@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.shape.state.End
  *
@@ -12,8 +15,6 @@
  *
  * @extends draw2d.shape.basic.Circle
  */
-import draw2d from '../../packages'
-
 draw2d.shape.state.End = draw2d.shape.basic.Circle.extend(
   /** @lends draw2d.shape.state.End.prototype */
   {

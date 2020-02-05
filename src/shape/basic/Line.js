@@ -1,3 +1,8 @@
+import draw2d from '../../packages'
+import jsonUtil from '../../util/JSONUtil'
+import extend from '../../util/extend'
+
+
 /**
  * @class draw2d.shape.basic.Line
  * The base class for all visible elements inside a canvas.
@@ -27,10 +32,6 @@
  * @author Andreas Herz
  * @extends draw2d.Figure
  */
-import draw2d from '../../packages'
-import jsonUtil from '../../util/JSONUtil'
-import extend from '../../util/extend'
-
 draw2d.shape.basic.Line = draw2d.Figure.extend(
   /** @lends draw2d.shape.basic.Line.prototype */
   {

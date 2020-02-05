@@ -1,3 +1,6 @@
+import draw2d from '../packages'
+
+
 /**
  * @class draw2d.command.Command
  *
@@ -10,8 +13,6 @@
  * @inheritable
  * @author Andreas Herz
  */
-import draw2d from '../packages'
-
 draw2d.command.Command = Class.extend(
   /** @lends draw2d.command.Command.prototype */
   {

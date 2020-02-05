@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.shape.arrow.CalligrapherArrowLeft
  * Hand drawn arrow to the left.
@@ -11,8 +14,6 @@
  *
  * @extends draw2d.SVGFigure
  */
-import draw2d from '../../packages'
-
 draw2d.shape.arrow.CalligrapherArrowLeft = draw2d.SVGFigure.extend(
   /** @lends draw2d.shape.arrow.CalligrapherArrowLeft.prototype */
   {

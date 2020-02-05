@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.layout.locator.Locator
  *
@@ -5,8 +8,6 @@
  *
  * @author Andreas Herz
  */
-import draw2d from '../../packages'
-
 draw2d.layout.locator.Locator = Class.extend(
   /** @lends draw2d.layout.locator.Locator.prototype */
   {

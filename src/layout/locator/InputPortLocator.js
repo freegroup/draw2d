@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.layout.locator.InputPortLocator
  *
@@ -8,8 +11,6 @@
  * @author Andreas Herz
  * @extend draw2d.layout.locator.PortLocator
  */
-import draw2d from '../../packages'
-
 draw2d.layout.locator.InputPortLocator = draw2d.layout.locator.PortLocator.extend(
   /** @lends draw2d.layout.locator.InputPortLocator.prototype */
   {

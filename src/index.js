@@ -1,10 +1,10 @@
-import draw2d from 'packages';
+import draw2d from 'packages'
 module.exports = draw2d;
 
 
-import raph from 'lib/raphael.exec.js';
-import cl   from 'lib/Class.exec.js';
-import path from 'lib/pathfinding.exec.js';
+import raph from 'lib/raphael.exec.js'
+import cl   from 'lib/Class.exec.js'
+import path from 'lib/pathfinding.exec.js'
 
 
 require('./util/raphael_ext');

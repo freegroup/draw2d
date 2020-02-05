@@ -1,8 +1,12 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.policy.figure.GlowSelectionFeedbackPolicy
  *
  *
  * @example
+ *
  *       circle =new draw2d.shape.basic.Circle();
  *       circle.installEditPolicy(new draw2d.policy.figure.GlowSelectionFeedbackPolicy());
  *       canvas.add(circle,90,50);
@@ -12,8 +16,6 @@
  * @author Andreas Herz
  * @extends draw2d.policy.figure.SelectionFeedbackPolicy
  */
-import draw2d from '../../packages'
-
 draw2d.policy.figure.GlowSelectionFeedbackPolicy = draw2d.policy.figure.SelectionFeedbackPolicy.extend(
   /** @lends draw2d.policy.figure.GlowSelectionFeedbackPolicy.prototype */
   {

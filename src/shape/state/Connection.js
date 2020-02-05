@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.shape.state.Connection
  *
@@ -29,8 +32,6 @@
  *
  * @extends draw2d.Connection
  */
-import draw2d from '../../packages'
-
 draw2d.shape.state.Connection = draw2d.Connection.extend(
   /** @lends draw2d.shape.state.Connection.prototype */
   {

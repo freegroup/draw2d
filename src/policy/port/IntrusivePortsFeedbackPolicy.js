@@ -1,3 +1,7 @@
+import draw2d from '../../packages'
+import {Tweenable} from "shifty"
+
+
 /**
  * @class draw2d.policy.port.IntrusivePortsFeedbackPolicy
  *
@@ -5,9 +9,6 @@
  * @author Andreas Herz
  * @extends draw2d.policy.figure.DragDropEditPolicy
  */
-import draw2d from '../../packages'
-import {Tweenable} from "shifty"
-
 draw2d.policy.port.IntrusivePortsFeedbackPolicy = draw2d.policy.port.PortFeedbackPolicy.extend(
   /** @lends draw2d.policy.port.IntrusivePortsFeedbackPolicy.prototype */
   {

@@ -1,3 +1,6 @@
+import draw2d from '../packages'
+
+
 /**
  * Static util function to determine the minimal distance of point(px,py) on the line(x1,y1,x2,y2)
  *
@@ -12,8 +15,6 @@
  * @param {Number} px x coordinate of the point to test
  * @param {Number} py y coordinate of the point to test
  **/
-import draw2d from '../packages'
-
 
 draw2d.geo.Line = {
 

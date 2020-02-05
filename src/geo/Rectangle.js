@@ -1,3 +1,6 @@
+import draw2d from '../packages'
+
+
 /**
  * @class draw2d.geo.Rectangle
  * 
@@ -8,8 +11,6 @@
  * 
  * @extends draw2d.geo.Point
  */
-import draw2d from '../packages';
-
 
 draw2d.geo.Rectangle = draw2d.geo.Point.extend(
     /** @lends draw2d.geo.Rectangle.prototype */

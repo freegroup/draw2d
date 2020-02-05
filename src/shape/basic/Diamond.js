@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.shape.basic.Diamond
  * A Diamond Figure.
@@ -16,8 +19,6 @@
  * @author Andreas Herz
  * @extends draw2d.VectorFigure
  */
-import draw2d from '../../packages'
-
 draw2d.shape.basic.Diamond = draw2d.shape.basic.Polygon.extend(
   /** @lends draw2d.shape.basic.Diamond.prototype */
   {

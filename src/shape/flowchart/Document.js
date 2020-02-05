@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.shape.flowchart.Document
  *
@@ -15,8 +18,6 @@
  *
  * @extends draw2d.VectorFigure
  */
-import draw2d from '../../packages'
-
 draw2d.shape.flowchart.Document = draw2d.VectorFigure.extend(
   /** @lends draw2d.shape.flowchart.Document.prototype */
   {

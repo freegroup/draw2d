@@ -30,6 +30,7 @@
     "babel-loader": "^7.1.2",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-env": "^1.6.1",
+    "better-docs": "^1.4.7",
     "chai": "^4.1.2",
     "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^0.28.11",

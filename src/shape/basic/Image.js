@@ -1,3 +1,7 @@
+import draw2d from '../../packages'
+import extend from '../../util/extend'
+
+
 /**
  * @class draw2d.shape.basic.Image
  * Simple Image shape.
@@ -6,9 +10,6 @@
  * @author Andreas Herz
  * @extends draw2d.shape.node.Node
  */
-import draw2d from '../../packages'
-import extend from '../../util/extend'
-
 
 draw2d.shape.basic.Image = draw2d.shape.node.Node.extend(
   /** @lends draw2d.shape.basic.Image.prototype */

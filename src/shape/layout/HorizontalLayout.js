@@ -1,3 +1,7 @@
+import draw2d from '../../packages'
+import extend from '../../util/extend'
+
+
 /**
  * @class draw2d.shape.layout.HorizontalLayout
  * The HorizontalLayout class arranges the layout elements in a horizontal sequence,
@@ -46,9 +50,6 @@
  * @extends draw2d.shape.layout.Layout
  * @since 2.5.1
  */
-import draw2d from '../../packages'
-import extend from '../../util/extend'
-
 draw2d.shape.layout.HorizontalLayout = draw2d.shape.layout.Layout.extend(
   /** @lends draw2d.shape.layout.HorizontalLayout.prototype */
   {

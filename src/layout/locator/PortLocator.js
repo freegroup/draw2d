@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.layout.locator.PortLocator
  *
@@ -7,8 +10,6 @@
  * @author Andreas Herz
  * @extend draw2d.layout.locator.Locator
  */
-import draw2d from '../../packages'
-
 draw2d.layout.locator.PortLocator = draw2d.layout.locator.Locator.extend(
   /** @lends draw2d.layout.locator.PortLocator.prototype */
   {

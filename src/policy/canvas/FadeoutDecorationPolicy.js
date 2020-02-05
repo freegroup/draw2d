@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.policy.canvas.FadeoutDecorationPolicy
  *
@@ -8,8 +11,6 @@
  * @author Andreas Herz
  * @extends draw2d.policy.canvas.DecorationPolicy
  */
-import draw2d from '../../packages'
-
 draw2d.policy.canvas.FadeoutDecorationPolicy = draw2d.policy.canvas.DecorationPolicy.extend(
   /** @lends draw2d.policy.canvas.FadeoutDecorationPolicy.prototype */
   {

@@ -1,3 +1,7 @@
+import draw2d from '../../packages'
+import extend from '../../util/extend'
+
+
 /**
  * @class draw2d.shape.layout.StackLayout
  * Using the StackLayout as their layout shape have their children placed on top of one another.
@@ -7,9 +11,6 @@
  * @author Andreas Herz
  * @extends draw2d.shape.layout.Layout
  */
-import draw2d from '../../packages'
-import extend from '../../util/extend'
-
 draw2d.shape.layout.StackLayout = draw2d.shape.layout.Layout.extend(
   /** @lends draw2d.shape.layout.StackLayout.prototype */
   {

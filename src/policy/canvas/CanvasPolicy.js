@@ -1,3 +1,7 @@
+import draw2d from '../../packages'
+import Color from '../../util/Color'
+
+
 /**
  * @class draw2d.policy.canvas.CanvasPolicy
  *
@@ -5,9 +9,6 @@
  * @author Andreas Herz
  * @extends draw2d.policy.EditPolicy
  */
-import draw2d from '../../packages'
-import Color from '../../util/Color'
-
 draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend(
   /** @lends draw2d.policy.canvas.CanvasPolicy.prototype */
   {

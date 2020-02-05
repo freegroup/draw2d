@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.shape.analog.OpAmp
  * Hand drawn arrow which points down left
@@ -12,8 +15,6 @@
  *
  * @extends draw2d.SVGFigure
  */
-import draw2d from '../../packages'
-
 draw2d.shape.analog.OpAmp = draw2d.SVGFigure.extend(
   /** @lends draw2d.shape.analog.OpAmp.prototype */
   {

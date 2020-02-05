@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.layout.connection.CircuitConnectionRouter
  *
@@ -58,8 +61,6 @@
  *
  * @extends  draw2d.layout.connection.ManhattanConnectionRouter
  */
-import draw2d from '../../packages'
-
 
 draw2d.layout.connection.CircuitConnectionRouter = draw2d.layout.connection.ManhattanConnectionRouter.extend(
   /** @lends draw2d.layout.connection.CircuitConnectionRouter.prototype */

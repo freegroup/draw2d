@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.layout.anchor.FanConnectionAnchor
  *
@@ -14,8 +17,6 @@
  * @since 4.6.0
  * @extends draw2d.layout.anchor.ConnectionAnchor
  */
-import draw2d from '../../packages'
-
 
 draw2d.layout.anchor.FanConnectionAnchor = draw2d.layout.anchor.ConnectionAnchor.extend(
   /** @lends draw2d.layout.anchor.FanConnectionAnchor.prototype */

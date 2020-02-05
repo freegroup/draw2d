@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.shape.basic.Text
  * Implements a simple text with word wrapping.<br>The height of the element is automatic calculated. The widht of
@@ -15,8 +18,6 @@
  * @since 4.2.3
  * @extends draw2d.shape.basic.Label
  */
-import draw2d from '../../packages'
-
 draw2d.shape.basic.Text = draw2d.shape.basic.Label.extend(
   /** @lends draw2d.shape.basic.Text.prototype */
   {

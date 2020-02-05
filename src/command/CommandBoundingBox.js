@@ -1,3 +1,6 @@
+import draw2d from '../packages'
+
+
 /**
  * @class draw2d.command.CommandBoundingBox
  * Set the bounding box of a figure with undo/redo support
@@ -6,8 +9,6 @@
  * @author Andreas Herz
  * @extends draw2d.command.Command
  */
-import draw2d from '../packages'
-
 draw2d.command.CommandBoundingBox = draw2d.command.Command.extend(
   /** @lends draw2d.command.CommandResize.prototype */
   {

@@ -1,3 +1,7 @@
+import draw2d from '../../packages'
+import jsonUtil from '../../util/JSONUtil'
+
+
 /**
  * @class draw2d.shape.node.Fulcrum
  *
@@ -12,9 +16,6 @@
  *
  * @extends draw2d.shape.node.Hub
  */
-import draw2d from '../../packages'
-import jsonUtil from '../../util/JSONUtil'
-
 draw2d.shape.node.Fulcrum = draw2d.shape.node.Hub.extend(
   /** @lends draw2d.shape.node.Fulcrum.prototype */
   {

@@ -1,11 +1,12 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.policy.figure.WidthSelectionFeedbackPolicy
  * This selection shows only selection handles for the width. It is only possible to change the width
  * of an shaped. The height stays always the same or is recalculated by the figure itself.
  *
  * @example
- *
- *
  *       // add some demo figure to the canvas
  *       //
  *       let shape =new draw2d.shape.basic.Rectangle({width:50, height:100, x:10, y:30});
@@ -18,8 +19,6 @@
  * @author Andreas Herz
  * @extends draw2d.policy.figure.SelectionFeedbackPolicy
  */
-import draw2d from '../../packages'
-
 draw2d.policy.figure.WidthSelectionFeedbackPolicy = draw2d.policy.figure.SelectionFeedbackPolicy.extend(
   /** @lends draw2d.policy.figure.BusSelectionFeedbackPolicy.prototype */
   {

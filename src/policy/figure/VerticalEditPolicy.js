@@ -6,8 +6,6 @@
  *
  *
  * @example
- *
- *
  *       // add some demo figure to the canvas
  *       var circle =new draw2d.shape.basic.Circle({diameter:50, x:10, y:30});
  *       canvas.add(circle);
@@ -21,7 +19,7 @@
  *
  * @extends draw2d.policy.figure.DragDropEditPolicy
  */
-import draw2d from '../../packages';
+import draw2d from '../../packages'
 
 draw2d.policy.figure.VerticalEditPolicy = draw2d.policy.figure.DragDropEditPolicy.extend(
     /** @lends draw2d.policy.figure.VerticalEditPolicy.prototype */

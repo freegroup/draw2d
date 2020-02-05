@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.policy.canvas.GhostMoveSelectionPolicy
  *
@@ -23,8 +26,6 @@
  * @author Andreas Herz
  * @extends draw2d.policy.canvas.SingleSelectionPolicy
  */
-import draw2d from '../../packages'
-
 draw2d.policy.canvas.GhostMoveSelectionPolicy = draw2d.policy.canvas.SingleSelectionPolicy.extend(
   /** @lends draw2d.policy.canvas.GhostMoveSelectionPolicy.prototype */
   {

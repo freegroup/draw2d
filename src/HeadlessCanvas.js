@@ -1,3 +1,5 @@
+
+
 /**
  * @class draw2d.HeadlessCanvas
  *
@@ -6,8 +8,7 @@
  * @inheritable
  * @author Andreas Herz
  */
-
-import draw2d from 'packages';
+import draw2d from 'packages'
 
 draw2d.HeadlessCanvas = Class.extend(
   /** @lends draw2d.HeadlessCanvas.prototype */

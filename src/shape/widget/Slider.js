@@ -1,3 +1,7 @@
+import draw2d from '../../packages'
+import {Tweenable} from 'shifty'
+
+
 /**
  * @class draw2d.shape.widget.Slider
  *
@@ -8,9 +12,6 @@
  *
  * @extends draw2d.shape.widget.Widget
  */
-import draw2d from '../../packages'
-import {Tweenable} from 'shifty'
-
 draw2d.shape.widget.Slider = draw2d.shape.widget.Widget.extend(
   /** @lends draw2d.shape.widget.Slider.prototype */
   {

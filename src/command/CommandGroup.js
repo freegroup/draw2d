@@ -1,11 +1,12 @@
+import draw2d from '../packages'
+
+
 /**
  * @class draw2d.command.CommandGroup
  * Command to group a given set of figures
  *
  * @extends draw2d.command.Command
  */
-import draw2d from '../packages'
-
 draw2d.command.CommandGroup = draw2d.command.Command.extend(
   /** @lends draw2d.command.CommandGroup.prototype */
   {

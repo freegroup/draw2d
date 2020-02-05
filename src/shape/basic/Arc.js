@@ -1,3 +1,7 @@
+import draw2d from '../../packages'
+import extend from '../../util/extend'
+
+
 /**
  * @class draw2d.shape.basic.Arc
  * Oval figure.
@@ -14,9 +18,6 @@
  * @author Andreas Herz
  * @extends draw2d.VectorFigure
  */
-import draw2d from '../../packages'
-import extend from '../../util/extend'
-
 draw2d.shape.basic.Arc = draw2d.SetFigure.extend(
   /** @lends draw2d.shape.basic.Arc.prototype */
   {

@@ -1,3 +1,7 @@
+import draw2d from '../../packages'
+import extend from '../../util/extend'
+
+
 /**
  * @class draw2d.shape.layout.Layout
  *
@@ -8,9 +12,6 @@
  * @author Andreas Herz
  * @extends draw2d.shape.basic.Rectangle
  */
-import draw2d from '../../packages'
-import extend from '../../util/extend'
-
 draw2d.shape.layout.Layout = draw2d.shape.basic.Rectangle.extend(
   /** @lends draw2d.shape.layout.Layout.prototype */
   {

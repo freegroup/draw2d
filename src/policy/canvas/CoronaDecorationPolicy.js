@@ -1,3 +1,7 @@
+import draw2d from '../../packages'
+import extend from '../../util/extend'
+
+
 /**
  * @class draw2d.policy.canvas.CoronaDecorationPolicy
  * This decorations hides draw2d.Ports which are to far from the current cursor position.
@@ -21,9 +25,6 @@
  * @author Andreas Herz
  * @extends draw2d.policy.canvas.DecorationPolicy
  */
-import draw2d from '../../packages'
-import extend from '../../util/extend'
-
 draw2d.policy.canvas.CoronaDecorationPolicy = draw2d.policy.canvas.DecorationPolicy.extend(
   /** @lends draw2d.policy.canvas.CoronaDecorationPolicy.prototype */
   {

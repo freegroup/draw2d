@@ -1,3 +1,6 @@
+import draw2d from '../packages'
+
+
 /**
  * @class draw2d.command.CommandType
  *
@@ -11,8 +14,6 @@
  *
  * @author Andreas Herz
  */
-import draw2d from '../packages'
-
 
 draw2d.command.CommandType = Class.extend(
   /** @lends draw2d.command.CommandType.prototype */

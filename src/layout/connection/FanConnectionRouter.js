@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.layout.connection.FanConnectionRouter
  *
@@ -56,8 +59,6 @@
  *
  * @extends draw2d.layout.connection.DirectRouter
  */
-import draw2d from '../../packages'
-
 
 draw2d.layout.connection.FanConnectionRouter = draw2d.layout.connection.DirectRouter.extend(
   /** @lends draw2d.layout.connection.FanConnectionRouter.prototype */

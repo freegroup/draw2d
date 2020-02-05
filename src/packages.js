@@ -1,8 +1,9 @@
+
+
 /**
  *
  * @private
- */
-/** @namespace draw2d */
+ *//** @namespace draw2d */
 export default {
   /** @namespace draw2d.geo */
   geo: {},

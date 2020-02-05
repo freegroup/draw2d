@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.layout.connection.ManhattanConnectionRouter
  * Provides a {@link draw2d.Connection} with an orthogonal route between the Connection's source
@@ -43,8 +46,6 @@
  *
  * @extends  draw2d.layout.connection.ConnectionRouter
  */
-import draw2d from '../../packages'
-
 
 draw2d.layout.connection.ManhattanConnectionRouter = draw2d.layout.connection.ConnectionRouter.extend(
   /** @lends draw2d.layout.connection.ManhattanConnectionRouter.prototype */

@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.shape.node.VerticalBus
  *
@@ -12,8 +15,6 @@
  *
  * @extends draw2d.shape.node.Hub
  */
-import draw2d from '../../packages'
-
 draw2d.shape.node.VerticalBus = draw2d.shape.node.Hub.extend(
   /** @lends draw2d.shape.node.VerticalBus.prototype */
   {

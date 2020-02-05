@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.layout.connection.SplineConnectionRouter
  *
@@ -38,8 +41,6 @@
  * @author Andreas Herz
  * @extends draw2d.layout.connection.ManhattanConnectionRouter
  */
-import draw2d from '../../packages'
-
 draw2d.layout.connection.SplineConnectionRouter = draw2d.layout.connection.ManhattanConnectionRouter.extend(
   /** @lends draw2d.layout.connection.SplineConnectionRouter.prototype */
   {

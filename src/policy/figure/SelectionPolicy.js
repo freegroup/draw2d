@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.policy.figure.SelectionFeedbackPolicy
  *
@@ -9,8 +12,6 @@
  * @author Andreas Herz
  * @extends draw2d.policy.figure.DragDropEditPolicy
  */
-import draw2d from '../../packages'
-
 draw2d.policy.figure.SelectionPolicy = draw2d.policy.figure.DragDropEditPolicy.extend(
   /** @lends draw2d.policy.figure.SelectionPolicy.prototype */
   {

@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.policy.canvas.SnapToVerticesEditPolicy
  *
@@ -10,8 +13,6 @@
  *
  * @extends draw2d.policy.canvas.SnapToEditPolicy
  */
-import draw2d from '../../packages'
-
 draw2d.policy.canvas.SnapToVerticesEditPolicy = draw2d.policy.canvas.SnapToEditPolicy.extend(
   /** @lends draw2d.policy.canvas.SnapToVerticesEditPolicy.prototype */
   {

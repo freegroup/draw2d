@@ -1,3 +1,7 @@
+import draw2d from '../packages'
+import extend from '../util/extend'
+
+
 /**
  * @class draw2d.policy.EditPolicy
  *
@@ -15,9 +19,6 @@
  *
  * @author Andreas Herz
  */
-import draw2d from '../packages'
-import extend from '../util/extend'
-
 draw2d.policy.EditPolicy = Class.extend(
   /** @lends draw2d.policy.EditPolicy.prototype */
   {

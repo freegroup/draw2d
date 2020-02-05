@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.shape.composite.Composite
  * Base interface for the compiste shapes
@@ -6,8 +9,6 @@
  * @extends draw2d.shape.basic.Rectangle
  * @since 4.7.2
  */
-import draw2d from '../../packages'
-
 draw2d.shape.composite.Composite = draw2d.SetFigure.extend(
   /** @lends draw2d.shape.composite.Composite.prototype */
   {

@@ -1,3 +1,8 @@
+import draw2d from '../../packages'
+import jsonUtil from '../../util/JSONUtil'
+import extend from '../../util/extend'
+
+
 /**
  * @class draw2d.shape.basic.PolyLine
  *
@@ -17,10 +22,6 @@
  * @author Andreas Herz
  * @extends draw2d.shape.basic.Line
  */
-import draw2d from '../../packages'
-import jsonUtil from '../../util/JSONUtil'
-import extend from '../../util/extend'
-
 draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
   /** @lends draw2d.shape.basic.PolyLine.prototype */
   {

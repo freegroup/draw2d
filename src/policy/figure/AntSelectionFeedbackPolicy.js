@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.policy.figure.AntSelectionFeedbackPolicy
  *
@@ -7,6 +10,7 @@
  *
  *
  * @example
+ *
  *       circle =new draw2d.shape.basic.Circle({diameter:50, x:90, y:50});
  *       circle.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
  *       canvas.add(circle);
@@ -16,8 +20,6 @@
  * @author Andreas Herz
  * @extends draw2d.policy.figure.SelectionFeedbackPolicy
  */
-import draw2d from '../../packages'
-
 draw2d.policy.figure.AntSelectionFeedbackPolicy = draw2d.policy.figure.SelectionFeedbackPolicy.extend(
   /** @lends draw2d.policy.figure.AntSelectionFeedbackPolicy.prototype */
   {

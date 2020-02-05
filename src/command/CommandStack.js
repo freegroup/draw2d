@@ -1,9 +1,10 @@
+import draw2d from '../packages'
+
+
 /**
  * @class draw2d.command.CommandStack
  * Stack for undo/redo operations
  */
-import draw2d from '../packages'
-
 draw2d.command.CommandStack = Class.extend(
   /** @lends draw2d.command.CommandStack.prototype */
   {

@@ -41,7 +41,7 @@
  *
  * @extends draw2d.policy.connection.ConnectionCreatePolicy
  */
-import draw2d from '../../packages';
+import draw2d from '../../packages'
 
 draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connection.ConnectionCreatePolicy.extend(
     /** @lends draw2d.policy.connection.ClickConnectionCreatePolicy.prototype */

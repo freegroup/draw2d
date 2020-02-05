@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.shape.note.PostIt
  *
@@ -17,8 +20,6 @@
  * @author Andreas Herz
  * @extends draw2d.shape.basic.Label
  */
-import draw2d from '../../packages'
-
 draw2d.shape.note.PostIt = draw2d.shape.basic.Label.extend(
   /** @lends draw2d.shape.note.PostIt.prototype */
   {

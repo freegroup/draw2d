@@ -1,11 +1,12 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.shape.icon.Icon
  * @inheritable
  * @author Andreas Herz
  * @extends draw2d.SetFigure
  */
-import draw2d from '../../packages'
-
 draw2d.shape.icon.Icon = draw2d.SetFigure.extend(
   /** @lends draw2d.shape.icon.Icon.prototype */
   {

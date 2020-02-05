@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.shape.icon.Search
 
@@ -12,8 +15,6 @@
  * @author Andreas Herz
  * @extends draw2d.shape.icon.Icon
  */
-import draw2d from '../../packages'
-
 draw2d.shape.icon.Search = draw2d.shape.icon.Icon.extend(
   /** @lends draw2d.shape.icon.Search.prototype */
   {

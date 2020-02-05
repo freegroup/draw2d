@@ -1,3 +1,6 @@
+import draw2d from '../packages'
+
+
 /**
  * @class draw2d.command.CommandReconnect
  *
@@ -8,8 +11,6 @@
  *
  * @extends draw2d.command.Command
  */
-import draw2d from '../packages'
-
 draw2d.command.CommandReconnect = draw2d.command.Command.extend(
   /** @lends draw2d.command.CommandReconnect.prototype */
   {

@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.shape.composite.Group
  *
@@ -11,8 +14,6 @@
  * @extends draw2d.shape.composite.StrongComposite
  * @since 4.8.0
  */
-import draw2d from '../../packages'
-
 draw2d.shape.composite.Group = draw2d.shape.composite.StrongComposite.extend(
   /** @lends draw2d.shape.composite.Group.prototype */
   {

@@ -9,9 +9,9 @@
  * @extends draw2d.shape.node.Node
  */
 
-import draw2d from 'packages';
-import jsonUtil from 'util/JSONUtil';
-import extend from 'util/extend';
+import draw2d from 'packages'
+import jsonUtil from 'util/JSONUtil'
+import extend from 'util/extend'
 
 draw2d.VectorFigure = draw2d.shape.node.Node.extend(
     /** @lends draw2d.VectorFigure.prototype */

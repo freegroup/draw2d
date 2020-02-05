@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.shape.layout.TableLayout
  *
@@ -36,8 +39,6 @@
  * @extends draw2d.shape.layout.Layout
  * @since 5.3.0
  */
-import draw2d from '../../packages'
-
 draw2d.shape.layout.TableLayout = draw2d.shape.layout.Layout.extend(
   /** @lends draw2d.shape.layout.TableLayout.prototype */
   {

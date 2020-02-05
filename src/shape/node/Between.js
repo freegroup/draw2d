@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.shape.node.Between
  * A simple Node which has a  InputPort and OutputPort. Mainly used for demo and examples.
@@ -11,8 +14,6 @@
  *
  * @extends draw2d.shape.basic.Rectangle
  */
-import draw2d from '../../packages'
-
 draw2d.shape.node.Between = draw2d.shape.basic.Rectangle.extend(
   /** @lends draw2d.shape.node.Between.prototype */
   {

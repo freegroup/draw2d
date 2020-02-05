@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.layout.connection.RubberbandRouter
  * Router for direct connections between two ports with a rubber band effect
@@ -71,8 +74,6 @@
  *
  * @extends  draw2d.layout.connection.ConnectionRouter
  */
-import draw2d from '../../packages'
-
 draw2d.layout.connection.RubberbandRouter = draw2d.layout.connection.ConnectionRouter.extend(
   /** @lends draw2d.layout.connection.RubberbandRouter.prototype */
   {

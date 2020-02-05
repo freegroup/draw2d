@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.shape.basic.GhostVertexResizeHandle
  * ResizeHandle for a vertex edit policy. Click of this kind of resize handles
@@ -8,8 +11,6 @@
  * @author Andreas Herz
  * @extends draw2d.shape.basic.LineResizeHandle
  */
-import draw2d from '../../packages'
-
 draw2d.shape.basic.GhostVertexResizeHandle = draw2d.shape.basic.LineResizeHandle.extend(
   /** @lends draw2d.shape.basic.GhostVertexResizeHandle.prototype */
   {

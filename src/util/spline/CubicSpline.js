@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.util.spline.CubicSpline
  *
@@ -8,8 +11,6 @@
  *
  * @extends draw2d.util.spline.Spline
  */
-import draw2d from '../../packages';
-
 draw2d.util.spline.CubicSpline = draw2d.util.spline.Spline.extend(
 
     /** @lends draw2d.util.spline.CubicSpline.prototype */

@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.policy.figure.ResizeSelectionFeedbackPolicy
  *
@@ -17,8 +20,6 @@
  * @extends draw2d.policy.figure.SelectionFeedbackPolicy
  *
  */
-import draw2d from '../../packages'
-
 draw2d.policy.figure.ResizeSelectionFeedbackPolicy = draw2d.policy.figure.SelectionFeedbackPolicy.extend(
   /** @lends draw2d.policy.figure.ResizeSelectionFeedbackPolicy.prototype */
   {

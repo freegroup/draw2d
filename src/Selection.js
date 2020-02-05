@@ -1,3 +1,5 @@
+
+
 /**
  * @class draw2d.Selection
  *
@@ -7,8 +9,7 @@
  *
  * @author Andreas Herz
  */
-
-import draw2d from 'packages';
+import draw2d from 'packages'
 
 draw2d.Selection = Class.extend(
   /** @lends draw2d.Selection.prototype */

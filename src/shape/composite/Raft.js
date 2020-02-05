@@ -1,3 +1,5 @@
+import draw2d from '../../packages'
+
 /**
  * @class draw2d.shape.composite.Raft
  * Raft figures are shapes, which aggregate multiple figures. It works like a real raft. Aboard figures are
@@ -20,8 +22,6 @@
  * @extends draw2d.shape.composite.WeakComposite
  * @since 4.7.0
  */
-import draw2d from '../../packages'
-
 draw2d.shape.composite.Raft = draw2d.shape.composite.WeakComposite.extend(
   /** @lends draw2d.shape.composite.Raft.prototype */
   {

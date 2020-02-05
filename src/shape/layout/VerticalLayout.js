@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.shape.layout.VerticalLayout
  * The VerticalLayout class arranges the layout elements in a vertical sequence,
@@ -43,8 +46,6 @@
  * @author Andreas Herz
  * @extends draw2d.shape.layout.Layout
  */
-import draw2d from '../../packages'
-
 draw2d.shape.layout.VerticalLayout = draw2d.shape.layout.Layout.extend(
   /** @lends draw2d.shape.layout.VerticalLayout.prototype */
   {

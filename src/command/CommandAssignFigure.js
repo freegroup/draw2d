@@ -1,3 +1,6 @@
+import draw2d from '../packages'
+
+
 /**
  * @class draw2d.command.CommandAssignFigure
  *
@@ -8,8 +11,6 @@
  * @extends draw2d.command.Command
  * @since 4.9.0
  */
-import draw2d from '../packages'
-
 draw2d.command.CommandAssignFigure = draw2d.command.Command.extend(
   /** @lends draw2d.command.CommandAssignFigure.prototype */
   {

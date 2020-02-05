@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.policy.canvas.DropInterceptorPolicy
  *
@@ -15,8 +18,6 @@
  * @extends draw2d.policy.canvas.CanvasPolicy
  * @since 5.0.0
  */
-import draw2d from '../../packages'
-
 draw2d.policy.canvas.DropInterceptorPolicy = draw2d.policy.canvas.CanvasPolicy.extend(
   /** @lends draw2d.policy.canvas.DropInterceptorPolicy.prototype */
   {

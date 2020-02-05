@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.layout.anchor.ConnectionAnchor
  *  An object to which a {@link draw2d.Connection} will be anchored.
@@ -5,8 +8,6 @@
  * @inheritable
  * @author Andreas Herz
  */
-import draw2d from '../../packages'
-
 
 draw2d.layout.anchor.ConnectionAnchor = Class.extend(
   /** @lends draw2d.layout.anchor.ConnectionAnchor.prototype */

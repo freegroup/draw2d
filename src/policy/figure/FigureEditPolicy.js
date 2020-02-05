@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.policy.figure.FigureEditPolicy
  *
@@ -9,8 +12,6 @@
  * @extends draw2d.policy.EditPolicy
  * @since 4.4.0
  */
-import draw2d from '../../packages'
-
 draw2d.policy.figure.FigureEditPolicy = draw2d.policy.EditPolicy.extend(
   /** @lends draw2d.policy.figure.FigureEditPolicy.prototype */
   {

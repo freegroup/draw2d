@@ -1,11 +1,12 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.layout.connection.ConnectionRouter
  * Routes a {@link draw2d.Connection}, possibly using a constraint.
  *
  * @author Andreas Herz
  */
-import draw2d from '../../packages'
-
 
 draw2d.layout.connection.ConnectionRouter = Class.extend(
   /** @lends draw2d.layout.connection.ConnectionRouter.prototype */

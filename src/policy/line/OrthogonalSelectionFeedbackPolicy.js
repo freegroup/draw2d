@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.policy.line.OrthogonalSelectionFeedbackPolicy
  *
@@ -6,8 +9,6 @@
  * @author  Andreas Herz
  * @extends draw2d.policy.line.LineSelectionFeedbackPolicy
  */
-import draw2d from '../../packages'
-
 // do not delete them
 import plugin from "lib/jquery.contextmenu"
 import css from 'css/contextmenu.css'

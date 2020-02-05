@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.policy.canvas.SelectionPolicy
  *
@@ -5,8 +8,6 @@
  * @author Andreas Herz
  * @extends draw2d.policy.canvas.CanvasPolicy
  */
-import draw2d from '../../packages'
-
 draw2d.policy.canvas.SelectionPolicy = draw2d.policy.canvas.CanvasPolicy.extend(
   /** @lends draw2d.policy.canvas.SelectionPolicy.prototype */
   {

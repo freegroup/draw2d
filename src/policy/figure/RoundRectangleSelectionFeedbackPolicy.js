@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.policy.figure.RoundRectangleSelectionFeedbackPolicy
  *
@@ -12,8 +15,6 @@
  * @author Andreas Herz
  * @extends draw2d.policy.figure.RectangleSelectionFeedbackPolicy
  */
-import draw2d from '../../packages'
-
 draw2d.policy.figure.RoundRectangleSelectionFeedbackPolicy = draw2d.policy.figure.RectangleSelectionFeedbackPolicy.extend(
   /** @lends draw2d.policy.figure.RoundRectangleSelectionFeedbackPolicy.prototype */
   {

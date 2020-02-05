@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.policy.canvas.SnapToGridEditPolicy
  *
@@ -9,8 +12,6 @@
  *
  * @extends draw2d.policy.canvas.ShowGridEditPolicy
  */
-import draw2d from '../../packages'
-
 draw2d.policy.canvas.SnapToGridEditPolicy = draw2d.policy.canvas.ShowGridEditPolicy.extend(
   /** @lends draw2d.policy.canvas.SnapToGridEditPolicy.prototype */
   {

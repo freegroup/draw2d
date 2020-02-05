@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.layout.connection.DirectRouter
  *
@@ -41,8 +44,6 @@
  *
  * @extends  draw2d.layout.connection.ConnectionRouter
  */
-import draw2d from '../../packages'
-
 
 draw2d.layout.connection.DirectRouter = draw2d.layout.connection.ConnectionRouter.extend(
   /** @lends draw2d.layout.connection.DirectRouter.prototype */

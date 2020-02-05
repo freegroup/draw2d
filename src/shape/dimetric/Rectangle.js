@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.shape.dimetric.Rectangle
  * A Rectangle Figure in a dimetric perspective.
@@ -16,8 +19,6 @@
  * @author Andreas Herz
  * @extends draw2d.shape.basic.Polygon
  */
-import draw2d from '../../packages'
-
 draw2d.shape.dimetric.Rectangle = draw2d.shape.basic.Polygon.extend(
   /** @lends draw2d.shape.dimetric.Rectangle.prototype */
   {

@@ -34,7 +34,7 @@
  *
  * @extends draw2d.io.Reader
  */
-import draw2d from '../../packages';
+import draw2d from '../../packages'
 
 
 draw2d.io.json.Reader = draw2d.io.Reader.extend(

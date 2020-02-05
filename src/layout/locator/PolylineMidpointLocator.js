@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.layout.locator.PolylineMidpointLocator
  *
@@ -9,8 +12,6 @@
  * @author Andreas Herz
  * @extend draw2d.layout.locator.ManhattanMidpointLocator
  */
-import draw2d from '../../packages'
-
 draw2d.layout.locator.PolylineMidpointLocator = draw2d.layout.locator.ManhattanMidpointLocator.extend(
   /** @lends draw2d.layout.locator.PolylineMidpointLocator.prototype */
   {

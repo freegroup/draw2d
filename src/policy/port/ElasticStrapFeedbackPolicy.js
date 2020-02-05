@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.policy.port.ElasticStrapFeedbackPolicy
  *
@@ -9,8 +12,6 @@
  * @author Andreas Herz
  * @extends draw2d.policy.figure.DragDropEditPolicy
  */
-import draw2d from '../../packages'
-
 draw2d.policy.port.ElasticStrapFeedbackPolicy = draw2d.policy.port.PortFeedbackPolicy.extend(
   /** @lends draw2d.policy.port.ElasticStrapFeedbackPolicy.prototype */
   {

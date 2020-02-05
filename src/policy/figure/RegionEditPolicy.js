@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.policy.figure.RegionConstraintPolicy
  *
@@ -9,8 +12,6 @@
  *
  * @extends draw2d.policy.figure.DragDropEditPolicy
  */
-import draw2d from '../../packages'
-
 draw2d.policy.figure.RegionEditPolicy = draw2d.policy.figure.DragDropEditPolicy.extend(
   /** @lends draw2d.policy.figure.RegionEditPolicy.prototype */
   {

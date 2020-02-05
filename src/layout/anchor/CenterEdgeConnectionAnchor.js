@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.layout.anchor.CenterEdgeConnectionAnchor
  *
@@ -13,8 +16,6 @@
  *
  * @extends draw2d.layout.anchor.ConnectionAnchor
  */
-import draw2d from '../../packages'
-
 
 draw2d.layout.anchor.CenterEdgeConnectionAnchor = draw2d.layout.anchor.ConnectionAnchor.extend(
   /** @lends draw2d.layout.anchor.CenterEdgeConnectionAnchor.prototype */

@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.shape.composite.WeakComposite
  * A WeakComposite is a composite figure with loose coupling of the children and the composite.
@@ -11,8 +14,6 @@
  * @extends draw2d.shape.composite.Composite
  * @since 4.8.0
  */
-import draw2d from '../../packages'
-
 draw2d.shape.composite.WeakComposite = draw2d.shape.composite.Composite.extend(
   /** @lends draw2d.shape.composite.WeakComposite.prototype */
   {

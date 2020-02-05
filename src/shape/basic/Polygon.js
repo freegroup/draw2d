@@ -1,3 +1,5 @@
+
+
 /**
  * @class draw2d.shape.basic.Polygon
  * A Polygon figure.
@@ -18,7 +20,6 @@
  * @author Andreas Herz
  * @extends draw2d.VectorFigure
  */
-
 import draw2d from '../../packages'
 import jsonUtil from '../../util/JSONUtil'
 

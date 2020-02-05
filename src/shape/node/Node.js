@@ -1,3 +1,7 @@
+import draw2d from '../../packages'
+import extend from '../../util/extend'
+
+
 /**
  * @class draw2d.shape.node.Node
  *
@@ -8,9 +12,6 @@
  * @author Andreas Herz
  * @extends draw2d.Figure
  */
-import draw2d from '../../packages'
-import extend from '../../util/extend'
-
 draw2d.shape.node.Node = draw2d.Figure.extend(
   /** @lends draw2d.shape.node.Node.prototype */
   {

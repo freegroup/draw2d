@@ -1,3 +1,8 @@
+import draw2d from '../../packages'
+import jsonUtil from '../../util/JSONUtil'
+import extend from '../../util/extend'
+
+
 /**
  * @class draw2d.shape.basic.Label
  * Implements a simple text label.
@@ -13,10 +18,6 @@
  *
  * @extends draw2d.SetFigure
  */
-import draw2d from '../../packages'
-import jsonUtil from '../../util/JSONUtil'
-import extend from '../../util/extend'
-
 draw2d.shape.basic.Label = draw2d.SetFigure.extend(
   /** @lends draw2d.shape.basic.Label.prototype */
   {

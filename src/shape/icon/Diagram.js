@@ -1,3 +1,7 @@
+import draw2d from '../../packages'
+import extend from '../../util/extend'
+
+
 /**
  * @class draw2d.shape.icon.Diagram
 
@@ -12,9 +16,6 @@
  * @author Andreas Herz
  * @extends draw2d.shape.icon.Icon
  */
-import draw2d from '../../packages'
-import extend from '../../util/extend'
-
 draw2d.shape.icon.Diagram = draw2d.shape.icon.Icon.extend(
   /** @lends draw2d.shape.icon.Diagram.prototype */
   {

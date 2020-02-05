@@ -1,3 +1,7 @@
+import draw2d from '../../packages'
+import {Tweenable} from "shifty"
+
+
 /**
  * @class draw2d.policy.canvas.WheelZoomPolicy
  * Zoom support for a canvas. Use the mouse wheel and the shift key to zoom in/out.
@@ -16,9 +20,6 @@
  * @extends draw2d.policy.canvas.CanvasPolicy
  * @since 5.8.0
  */
-import draw2d from '../../packages'
-import {Tweenable} from "shifty"
-
 draw2d.policy.canvas.WheelZoomPolicy = draw2d.policy.canvas.ZoomPolicy.extend(
   /** @lends draw2d.policy.canvas.WheelZoomPolicy.prototype */
   {

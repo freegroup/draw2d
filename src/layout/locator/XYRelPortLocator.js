@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.layout.locator.XYRelPortLocator
  *
@@ -20,8 +23,6 @@
  * @extend draw2d.layout.locator.PortLocator
  * @since 4.0.0
  */
-import draw2d from '../../packages'
-
 draw2d.layout.locator.XYRelPortLocator = draw2d.layout.locator.PortLocator.extend(
   /** @lends draw2d.layout.locator.XYRelPortLocator.prototype */
   {

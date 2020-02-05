@@ -1,3 +1,7 @@
+import draw2d from '../../packages'
+import extend from '../../util/extend'
+
+
 /**
  * @class draw2d.shape.basic.LineResizeHandle
  * Base class for selection handle for connections and normal lines.
@@ -7,9 +11,6 @@
  * @author Andreas Herz
  * @extends draw2d.shape.basic.Circle
  */
-import draw2d from '../../packages'
-import extend from '../../util/extend'
-
 draw2d.shape.basic.LineResizeHandle = draw2d.shape.basic.Circle.extend(
   /** @lends draw2d.shape.basic.LineResizeHandle.prototype */
   {

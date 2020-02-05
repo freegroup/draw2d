@@ -1,3 +1,5 @@
+
+
 /**
  * @class draw2d.ResizeHandle
  * @classdesc The Resizehandles for Figures.
@@ -19,7 +21,6 @@
  * @author Andreas Herz
  * @extends draw2d.shape.basic.Rectangle
  */
-
 import draw2d from 'packages'
 import extend from './util/extend'
 

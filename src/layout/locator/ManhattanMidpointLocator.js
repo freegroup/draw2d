@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.layout.locator.ManhattanMidpointLocator
  *
@@ -35,8 +38,6 @@
  * @author Andreas Herz
  * @extend draw2d.layout.locator.ConnectionLocator
  */
-import draw2d from '../../packages'
-
 draw2d.layout.locator.ManhattanMidpointLocator = draw2d.layout.locator.ConnectionLocator.extend(
   /** @lends draw2d.layout.locator.ManhattanMidpointLocator.prototype */
   {

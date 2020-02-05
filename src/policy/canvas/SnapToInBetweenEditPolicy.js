@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.policy.canvas.SnapToInBetweenEditPolicy
  *
@@ -11,8 +14,6 @@
  * @extends draw2d.policy.canvas.SnapToEditPolicy
  * @since 5.6.4
  */
-import draw2d from '../../packages'
-
 draw2d.policy.canvas.SnapToInBetweenEditPolicy = draw2d.policy.canvas.SnapToEditPolicy.extend(
   /** @lends draw2d.policy.canvas.SnapToInBetweenEditPolicy.prototype */
   {

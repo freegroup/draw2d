@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.policy.canvas.SnapToDimetricGridEditPolicy
  *
@@ -9,8 +12,6 @@
  *
  * @extends draw2d.policy.canvas.ShowDimetricGridEditPolicy
  */
-import draw2d from '../../packages'
-
 draw2d.policy.canvas.SnapToDimetricGridEditPolicy = draw2d.policy.canvas.ShowDimetricGridEditPolicy.extend(
   /** @lends draw2d.policy.canvas.SnapToDimetricGridEditPolicy.prototype */
   {

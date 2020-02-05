@@ -6,7 +6,7 @@
  * @author Andreas Herz
  * @extend draw2d.layout.mesh.MeshLayouter
  */
-import draw2d from '../../packages';
+import draw2d from '../../packages'
 
 draw2d.layout.mesh.ExplodeLayouter = draw2d.layout.mesh.MeshLayouter.extend(
   /** @lends draw2d.layout.mesh.ExplodeLayouter.prototype */

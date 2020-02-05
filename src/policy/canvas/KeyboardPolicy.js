@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.policy.canvas.KeyboardPolicy
  * Default interface for keyboard interaction with the canvas.
@@ -6,8 +9,6 @@
  * @author Andreas Herz
  * @extends draw2d.policy.canvas.CanvasPolicy
  */
-import draw2d from '../../packages'
-
 draw2d.policy.canvas.KeyboardPolicy = draw2d.policy.canvas.CanvasPolicy.extend(
   /** @lends draw2d.policy.canvas.KeyboardPolicy.prototype */
   {

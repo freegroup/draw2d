@@ -8,8 +8,8 @@
  * @extends draw2d.SetFigure
  */
 
-import draw2d from 'packages';
-import extend from 'util/extend';
+import draw2d from 'packages'
+import extend from 'util/extend'
 
 draw2d.SVGFigure = draw2d.SetFigure.extend(
     /** @lends draw2d.SVGFigure.prototype */

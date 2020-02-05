@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.policy.figure.RectangleSelectionFeedbackPolicy
  *
@@ -5,6 +8,7 @@
  *
  *
  * @example
+ *
  *       circle =new draw2d.shape.basic.Circle({diameter:50});
  *       circle.installEditPolicy(new draw2d.policy.RectangleSelectionFeedbackPolicy());
  *       canvas.add(circle,90,50);
@@ -14,8 +18,6 @@
  * @author Andreas Herz
  * @extends draw2d.policy.figure.SelectionFeedbackPolicy
  */
-import draw2d from '../../packages'
-
 draw2d.policy.figure.RectangleSelectionFeedbackPolicy = draw2d.policy.figure.SelectionFeedbackPolicy.extend(
   /** @lends draw2d.policy.figure.RectangleSelectionFeedbackPolicy.prototype */
   {

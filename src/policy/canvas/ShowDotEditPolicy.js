@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.policy.canvas.ShowDotEditPolicy
  *
@@ -17,8 +20,6 @@
  * @extends draw2d.policy.canvas.DecorationPolicy
  * @since 4.0.1
  */
-import draw2d from '../../packages'
-
 
 draw2d.policy.canvas.ShowDotEditPolicy = draw2d.policy.canvas.DecorationPolicy.extend(
   /** @lends draw2d.policy.canvas.ShowDotEditPolicy.prototype */

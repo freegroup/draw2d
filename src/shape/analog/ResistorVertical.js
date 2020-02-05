@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.shape.analog.ResistorVertical
  *
@@ -11,8 +14,6 @@
  *
  * @extends draw2d.SVGFigure
  */
-import draw2d from '../../packages'
-
 draw2d.shape.analog.ResistorVertical = draw2d.SetFigure.extend(
   /** @lends draw2d.shape.analog.ResistorVertical.prototype */
   {

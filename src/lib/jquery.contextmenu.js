@@ -1,3 +1,5 @@
+
+
 /*!
  * jQuery contextMenu - Plugin for simple contextMenu handling
  *
@@ -11,7 +13,6 @@
  *   GPL v3 http://opensource.org/licenses/GPL-3.0
  *
  */
-
 (function($, undefined){
 
     // TODO: -

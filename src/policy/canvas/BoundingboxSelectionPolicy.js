@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.policy.canvas.BoundingboxSelectionPolicy
  *
@@ -5,8 +8,6 @@
  * @author Andreas Herz
  * @extends draw2d.policy.canvas.SelectionPolicy
  */
-import draw2d from '../../packages'
-
 draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSelectionPolicy.extend(
   /** @lends draw2d.policy.canvas.BoundingboxSelectionPolicy.prototype */
   {

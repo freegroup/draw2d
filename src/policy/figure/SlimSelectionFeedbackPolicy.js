@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.policy.figure.SlimSelectionFeedbackPolicy
  * Add only very small resize handles to the figure.
@@ -14,8 +17,6 @@
  * @author Andreas Herz
  * @extends draw2d.policy.figure.RectangleSelectionFeedbackPolicy
  */
-import draw2d from '../../packages'
-
 draw2d.policy.figure.SlimSelectionFeedbackPolicy = draw2d.policy.figure.RectangleSelectionFeedbackPolicy.extend(
   /** @lends draw2d.policy.figure.SlimSelectionFeedbackPolicy.prototype */
   {

@@ -1,8 +1,9 @@
+import draw2d from '../packages'
+
+
 /**
  * @class draw2d.geo.Point Util class for geometrie handling.
  */
-import draw2d from '../packages'
-
 
 draw2d.geo.Point = Class.extend(
   /** @lends draw2d.geo.Point.prototype */

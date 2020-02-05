@@ -1,3 +1,6 @@
+import draw2d from '../../packages'
+
+
 /**
  * @class draw2d.policy.line.VertexSelectionFeedbackPolicy
  *
@@ -6,8 +9,6 @@
  * @author  Andreas Herz
  * @extends draw2d.policy.line.LineSelectionFeedbackPolicy
  */
-import draw2d from '../../packages'
-
 draw2d.policy.line.VertexSelectionFeedbackPolicy = draw2d.policy.line.LineSelectionFeedbackPolicy.extend(
   /** @lends draw2d.policy.line.VertexSelectionFeedbackPolicy.prototype */
   {

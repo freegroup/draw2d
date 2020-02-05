@@ -1,4 +1,4 @@
-import draw2d from '../../packages';
+import draw2d from '../../packages'
 
 /**
  * @class draw2d.decoration.connection.BarDecorator
