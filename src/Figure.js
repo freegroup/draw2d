@@ -6,61 +6,56 @@ import extend from 'util/extend'
 
 /**
  * @class
+ *
+ *
  */
 draw2d.Figure = Class.extend(
-  /** @lends draw2d.Figure.prototype */
+  /**  @lends draw2d.Figure.prototype */
   {
-  
   NAME: "draw2d.Figure",
   MIN_TIMER_INTERVAL: 50, // minimum timer interval in milliseconds
 
-  /**
-   * Creates a new figure element which is not assigned to any canvas.
-   *
-   * @constructs
-   * @param {Object} [attr] the configuration of the shape
-   */
   init: function (attr, setter, getter) {
 
     // @private
     this.setterWhitelist = extend({
-      /** id the unique id of the figure */
+      //  id the unique id of the figu re 
       id: this.setId,
-      /** x the x offset of the figure in relation to the parent figure or canvas */
+      //  x the x offset of the figure in relation to the parent figure or canvas 
       x: this.setX,
-      /** y the y offset of the figure in relation to the parent figure or canvas */
+      //  y the y offset of the figure in relation to the parent figure or canvas 
       y: this.setY,
-      /** width the new width of the figure. Considering the minWidth of the shape */
+      //  width the new width of the figure. Considering the minWidth of the shape 
       width: this.setWidth,
-      /** height the new height of the figure. Considering the minHeight of the shape */
+      //  height the new height of the figure. Considering the minHeight of the shape 
       height: this.setHeight,
-      /** boundingBox set the new bounding box of the shape */
+      //  boundingBox set the new bounding box of the shape 
       boundingBox: this.setBoundingBox,
-      /**  minWidth the new min width of the figure. */
+      //   minWidth the new min width of the figure. 
       minWidth: this.setMinWidth,
-      /**minHeight the new min height of the figure. */
+      // minHeight the new min height of the figure. 
       minHeight: this.setMinHeight,
-      /** cssClass the css class of the shape. can be used to style the shape via CSS3 (SVG only) */
+      //  cssClass the css class of the shape. can be used to style the shape via CSS3 (SVG only) 
       cssClass: this.setCssClass,
-      /** userData additional custom data which can be stored by the shape */
+      //  userData additional custom data which can be stored by the shape 
       userData: this.setUserData,
-      /**draggable drives the dragging behaviour of the shape */
+      // draggable drives the dragging behaviour of the shape 
       draggable: this.setDraggable,
-      /** resizeable drives the resizeable behaviour of the shape */
+      //  resizeable drives the resizeable behaviour of the shape 
       resizeable: this.setResizeable,
-      /** selectable drives the selectable behaviour of the shape */
+      //  selectable drives the selectable behaviour of the shape 
       selectable: this.setSelectable,
-      /** angle the rotation angle of the shape. At the moment only 90 degree increments are possible */
+      //  angle the rotation angle of the shape. At the moment only 90 degree increments are possible 
       angle: this.setRotationAngle,
-      /** alpha the the alpha/opacity of the shape. value must be between [0..1] */
+      //  alpha the the alpha/opacity of the shape. value must be between [0..1] 
       alpha: this.setAlpha,
-      /** opacity the the alpha/opacity of the shape. value must be between [0..1] */
+      //  opacity the the alpha/opacity of the shape. value must be between [0..1] 
       opacity: this.setAlpha,
-      /** glow the glow flag for the shape. The representation of the "glow" depends on the shape */
+      //  glow the glow flag for the shape. The representation of the "glow" depends on the shape 
       glow: this.setGlow,
-      /** visible set the visibility flag of the shape */
+      //  visible set the visibility flag of the shape 
       visible: this.setVisible,
-      /** keepAspectRatio indicate if the shape should keep the aspect ratio during resize */
+      //  keepAspectRatio indicate if the shape should keep the aspect ratio during resize 
       keepAspectRatio: this.setKeepAspectRatio
     }, setter)
 

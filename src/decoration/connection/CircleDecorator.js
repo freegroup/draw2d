@@ -1,9 +1,10 @@
+import draw2d from '../../packages';
+
 /**
- * @class draw2d.decoration.connection.CircleDecorator
+ * @class
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     // create and add two nodes which contains Ports (In and OUT)
  *     //
@@ -33,42 +34,35 @@
  *     // and finally add the connection to the canvas
  *     canvas.add(c);
  *
- * @inheritable
  * @author Andreas Herz
+ * @param {Number} [width] the width of the arrow
+ * @param {Number} [height] the height of the arrow
  * @extend draw2d.decoration.connection.Decorator
  */
-import draw2d from '../../packages';
+draw2d.decoration.connection.CircleDecorator = draw2d.decoration.connection.Decorator.extend(
+  /** @lends draw2d.decoration.connection.CircleDecorator */
+  {
 
+    NAME: "draw2d.decoration.connection.CircleDecorator",
 
-draw2d.decoration.connection.CircleDecorator = draw2d.decoration.connection.Decorator.extend({
-
-	NAME: "draw2d.decoration.connection.CircleDecorator",
-
-	/**
-	 *
-	 * @param {Number} [width] the width of the arrow
-	 * @param {Number} [height] the height of the arrow
-	 */
-    init: function(width, height)
-    {
-        this._super( width, height);
+    init: function (width, height) {
+      this._super(width, height)
     },
 
-	/**
-	 * Draw a filled circle decoration.
+    /**
+     * Draw a filled circle decoration.
      *
-	 * @param {Raphael} paper the raphael paper object for the paint operation
-	 **/
-	paint: function(paper)
-	{
-        var st = paper.set();
+     * @param {Raphael} paper the raphael paper object for the paint operation
+     **/
+    paint: function (paper) {
+      let st = paper.set()
 
-		st.push(paper.circle(0, 0, this.width/2));
-        st.attr({fill:this.backgroundColor.rgba(),stroke:this.color.rgba()});
+      st.push(paper.circle(0, 0, this.width / 2))
+      st.attr({fill: this.backgroundColor.rgba(), stroke: this.color.rgba()})
 
-		return st;
-	}
-});
+      return st
+    }
+  })
 
 
 

@@ -4,9 +4,8 @@
  *
  * An EditPolicy for use with Figures. With this edit policy you can move the shape only in a vertical manner.
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *
  *       // add some demo figure to the canvas

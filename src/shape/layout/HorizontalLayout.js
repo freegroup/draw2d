@@ -10,7 +10,7 @@
  * See the example below with and without gap and border settings
  *
  *
- *     @example preview small frame
+ * @example
  *
  *     // first container without any gap and a border of the parent
  *     // container
@@ -89,7 +89,7 @@ draw2d.shape.layout.HorizontalLayout = draw2d.shape.layout.Layout.extend(
     this._super(
       extend({width: 1, height: 1, gap: 0}, attr),
       extend({
-        /** @attr {Number} gap the gap between the children shapes */
+        // @attr {Number} gap the gap between the children shapes */
         gap: this.setGap
       }, setter),
       extend({

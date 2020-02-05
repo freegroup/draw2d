@@ -5,9 +5,8 @@
  * connection. The midpoint is always in the center of an edge.
  *
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *     //create and add two Node which contains Ports (In and OUT)
  *     let start = new draw2d.shape.node.Start({x:50,y:50});
  *     let end   = new draw2d.shape.node.End({x:230,y:100});

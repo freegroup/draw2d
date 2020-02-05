@@ -3,9 +3,8 @@
  *
  * The start node for a state diagram
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     let figure =  new draw2d.shape.state.Start({color:"#3d3d3d"});
  *

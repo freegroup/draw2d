@@ -1,10 +1,11 @@
 /**
- * @class draw2d.ui.LabelEditor
+ * @class
+ *
  * Base class for all draw2d.shape.basic.Label editors. The default implementation is to open
  * a simple javascript prompt dialog.<br>
  * Use LabelInplaceEditor or your own implementation if you need more comfort.
  *
- *     @example preview small frame
+ * @example
  *
  *     var label =  new draw2d.shape.basic.Label({text:"Double Click on me"});
  *
@@ -31,10 +32,6 @@ draw2d.ui.LabelEditor = Class.extend(
     
     NAME: "draw2d.ui.LabelEditor",
 
-    /**
-     * Create an label editor with a dedicated callback listener
-     *
-     */
     init: function(listener)
     {
         // register some default listener and override this with the handover one

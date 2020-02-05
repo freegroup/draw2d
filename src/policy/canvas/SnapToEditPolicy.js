@@ -46,7 +46,7 @@ draw2d.policy.canvas.SnapToEditPolicy = draw2d.policy.canvas.CanvasPolicy.extend
         lineColor: "#51C1FC"
       }, attr),
       extend({
-        /** @attr {draw2d.util.Color} color the line color of the snapTo lines */
+        // @attr {draw2d.util.Color} color the line color of the snapTo lines */
         lineColor: this.setLineColor
       }, setter),
       extend({

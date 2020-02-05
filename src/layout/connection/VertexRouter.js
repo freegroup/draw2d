@@ -3,9 +3,8 @@
  *
  * A Router with unlimited vertices.
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     // Override the default connection type. This is used during drag&drop operations of ports.
  *     //

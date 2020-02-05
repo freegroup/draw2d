@@ -4,9 +4,8 @@
  * Connection designed for a state diagram with arrow decoration at the
  * target of the connection and a label
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     // create and add two nodes which contains Ports (In and OUT)
  *     //

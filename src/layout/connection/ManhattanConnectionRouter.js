@@ -3,9 +3,8 @@
  * Provides a {@link draw2d.Connection} with an orthogonal route between the Connection's source
  * and target anchors.
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     // Override the default connection type. This is used during drag&drop operations of ports.
  *     //

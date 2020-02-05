@@ -1,3 +1,5 @@
+import draw2d from '../packages';
+
 /**
  * @class
  * Util class to handle colors in the draw2d enviroment.
@@ -15,19 +17,15 @@
  *      // (best in meaning of contrast and readability)
  *      var fontColor = color.getIdealTextColor();
  *
+ * @param {Number|String|draw2d.util.Color|Array} red
+ * @param {Number} green
+ * @param {Number} blue
+ * @param {Number} [alpha]
  */
-import draw2d from '../packages';
+draw2d.util.Color = Class.extend(
+  /** @lends draw2d.util.Color */
+  {
 
-draw2d.util.Color = Class.extend({
-
-    /**
-     * Create a new Color object
-     *
-     * @param {Number|String|draw2d.util.Color|Array} red
-     * @param {Number} green
-     * @param {Number} blue
-     * @param {Number} [alpha]
-     */
     init: function(red, green, blue, alpha) {
 
       this.hashString = null;

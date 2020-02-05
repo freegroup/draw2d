@@ -39,15 +39,15 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend(
 
         this._super( attr,
             extend({
-                /** @attr {String} dasharray the line pattern see {@link draw2d.shape.basic.Line#setDashArray} for more information*/
+                // @attr {String} dasharray the line pattern see {@link draw2d.shape.basic.Line#setDashArray} for more information*/
                 dasharray : this.setDashArray,
-                /** @attr {Number} radius the radius to render the line edges */
+                // @attr {Number} radius the radius to render the line edges */
                 radius : this.setRadius,
-                /** @attr {String|draw2d.util.Color} bgColor the background color of the shape */
+                // @attr {String|draw2d.util.Color} bgColor the background color of the shape */
                 bgColor: this.setBackgroundColor,
-                /** @attr {String|draw2d.util.Color} color the main color of the shape */
+                // @attr {String|draw2d.util.Color} color the main color of the shape */
                 color  : this.setColor,
-                /** @attr {Number} stroke the stroke width */
+                // @attr {Number} stroke the stroke width */
                 stroke : this.setStroke
             }, setter),
             extend({

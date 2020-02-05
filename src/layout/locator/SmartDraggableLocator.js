@@ -5,9 +5,8 @@
  * possible to move a child node via drag&drop.
  *
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *
  *

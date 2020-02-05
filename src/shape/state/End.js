@@ -3,9 +3,8 @@
  *
  * The end node for a state diagram
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *     let end   = new draw2d.shape.state.End();
 
  *     // ...add it to the canvas

@@ -3,9 +3,8 @@
  * Route the connection in an Manhattan style and add resize handles to all vertex for interactive alignment of the
  * routing.
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     let createConnection=function(){
  *        // return my special kind of connection

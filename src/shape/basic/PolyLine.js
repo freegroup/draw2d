@@ -4,7 +4,7 @@
  * A PolyLine is a line with more than 2 points.
  *
  *
- *     @example preview small frame
+ * @example
  *
  *     let line = new draw2d.shape.basic.PolyLine();
  *     line.setVertices([{x:10,y:10},{x:80,y:70},{x:100,y:110}]);
@@ -50,9 +50,9 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
           router: new draw2d.layout.connection.VertexRouter()
         }, attr),
       extend({}, {
-        /** @attr {draw2d.layout.connection.ConnectionRouter} the router to use to layout the polyline */
+        // @attr {draw2d.layout.connection.ConnectionRouter} the router to use to layout the polyline */
         router: this.setRouter,
-        /** @attr {Number} radius the radius to render the line edges */
+        // @attr {Number} radius the radius to render the line edges */
         radius: this.setRadius
       }, setter),
       extend({}, {

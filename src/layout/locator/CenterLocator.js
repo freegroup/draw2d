@@ -4,9 +4,8 @@
  * A CenterLocator is used to place figures in the center of a parent shape.
  *
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *
  *     // create a basic figure and add a Label/child via API call

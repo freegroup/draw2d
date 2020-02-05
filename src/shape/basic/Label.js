@@ -2,9 +2,8 @@
  * @class draw2d.shape.basic.Label
  * Implements a simple text label.
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     let shape =  new draw2d.shape.basic.Label({text:"This is a simple label", x:40, y:10});
  *
@@ -75,23 +74,23 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
     this._super(
       extend({stroke: 1, width: 1, height: 1, resizeable: false}, attr),
       extend({
-        /** @attr {String} text the text to show */
+        // @attr {String} text the text to show */
         text: this.setText,
-        /** @attr {String} set the editor to use see {@link draw2d.ui.LabelEditor} */
+        // @attr {String} set the editor to use see {@link draw2d.ui.LabelEditor} */
         editor: this.installEditor,
-        /** @attr {Number} outlineStroke the line width of the text to draw. Fill color and outline of the text can be different. */
+        // @attr {Number} outlineStroke the line width of the text to draw. Fill color and outline of the text can be different. */
         outlineStroke: this.setOutlineStroke,
-        /** @attr {String|draw2d.util.Color} outlineColor the outline color of the text */
+        // @attr {String|draw2d.util.Color} outlineColor the outline color of the text */
         outlineColor: this.setOutlineColor,
-        /** @attr {String} fontFamily the font to use*/
+        // @attr {String} fontFamily the font to use*/
         fontFamily: this.setFontFamily,
-        /** @attr {Number} fontSize the font size to use */
+        // @attr {Number} fontSize the font size to use */
         fontSize: this.setFontSize,
-        /** @attr {String|draw2d.util.Color} fontColor the font color */
+        // @attr {String|draw2d.util.Color} fontColor the font color */
         fontColor: this.setFontColor,
-        /** @attr {Number} padding the padding in pixel around the text */
+        // @attr {Number} padding the padding in pixel around the text */
         padding: this.setPadding,
-        /** @attr {Boolean} bold indicator if bold text should be used*/
+        // @attr {Boolean} bold indicator if bold text should be used*/
         bold: this.setBold
       }, setter),
       extend({

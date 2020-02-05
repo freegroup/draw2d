@@ -3,7 +3,7 @@
  *
  * A ManhattanConnectionRouter with an spline interpolation between the bend points.
  *
- *     @example preview small frame
+ * @example
  *
  *     let createConnection=function(){
  *        let con = new draw2d.Connection();

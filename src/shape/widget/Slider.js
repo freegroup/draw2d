@@ -1,8 +1,7 @@
 /**
  * @class draw2d.shape.widget.Slider
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     let slider = new draw2d.shape.widget.Slider({width:120, height:20});
  *     canvas.add( slider,100,60);
@@ -41,9 +40,9 @@ draw2d.shape.widget.Slider = draw2d.shape.widget.Widget.extend(
         value: 50
       }, attr),
       extend({
-        /** @attr {Number} padding the padding in pixel around the text */
+        // @attr {Number} padding the padding in pixel around the text */
         padding: this.setPadding,
-        /** @attr {Number} value the new value of the slider. values must be in range of [0..100] */
+        // @attr {Number} value the new value of the slider. values must be in range of [0..100] */
         value: this.setValue
       }, setter),
       extend({

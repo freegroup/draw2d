@@ -2,9 +2,8 @@
  * @class draw2d.shape.basic.Diamond
  * A Diamond Figure.
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     let d1 =  new draw2d.shape.basic.Diamond({x:10,y:10});
  *     let d2 =  new draw2d.shape.basic.Diamond({x:100,y:10, bgColor:"#f0f000", alpha:0.7, width:100, height:60});

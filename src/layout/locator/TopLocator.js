@@ -4,9 +4,8 @@
  * A TopLocator  is used to place figures at the top/center of a parent shape.
  *
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *
  *     // create a basic figure and add a Label/child via API call

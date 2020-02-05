@@ -333,19 +333,19 @@ draw2d.command.CommandStack = Class.extend(
 })
 
 
-/** Constant indicating notification prior to executing a command (value is 1).*/
+//  Constant indicating notification prior to executing a command (value is 1).
 draw2d.command.CommandStack.PRE_EXECUTE = 1
-/** Constant indicating notification prior to redoing a command (value is 2).*/
+//  Constant indicating notification prior to redoing a command (value is 2).
 draw2d.command.CommandStack.PRE_REDO = 2
-/** Constant indicating notification prior to undoing a command (value is 4).*/
+//  Constant indicating notification prior to undoing a command (value is 4).
 draw2d.command.CommandStack.PRE_UNDO = 4
-/**  Constant indicating notification after a command has been executed (value is 8).*/
+//   Constant indicating notification after a command has been executed (value is 8).
 draw2d.command.CommandStack.POST_EXECUTE = 8
-/** Constant indicating notification after a command has been redone (value is 16).*/
+//  Constant indicating notification after a command has been redone (value is 16).
 draw2d.command.CommandStack.POST_REDO = 16
-/** Constant indicating notification after a command has been undone (value is 32).*/
+//  Constant indicating notification after a command has been undone (value is 32).
 draw2d.command.CommandStack.POST_UNDO = 32
-/** Constant indicating notification after the stack has been (re)init (value is 64).*/
+//  Constant indicating notification after the stack has been (re)init (value is 64).
 draw2d.command.CommandStack.POST_INIT = 64
 
 draw2d.command.CommandStack.POST_MASK = draw2d.command.CommandStack.POST_EXECUTE | draw2d.command.CommandStack.POST_UNDO | draw2d.command.CommandStack.POST_REDO

@@ -2,9 +2,8 @@
  * @class draw2d.policy.canvas.WheelZoomPolicy
  * Zoom support for a canvas. Use the mouse wheel and the shift key to zoom in/out.
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     canvas.installEditPolicy(new draw2d.policy.canvas.WheelZoomPolicy());
  *     let shape =  new draw2d.shape.basic.Text({text:"Use the mouse wheel + SHIFT to zoom"});

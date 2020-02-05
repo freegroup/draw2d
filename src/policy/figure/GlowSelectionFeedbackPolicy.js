@@ -1,9 +1,8 @@
 /**
  * @class draw2d.policy.figure.GlowSelectionFeedbackPolicy
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *       circle =new draw2d.shape.basic.Circle();
  *       circle.installEditPolicy(new draw2d.policy.figure.GlowSelectionFeedbackPolicy());
  *       canvas.add(circle,90,50);

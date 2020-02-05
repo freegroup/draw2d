@@ -3,9 +3,8 @@
  *
  * Simple Post-it like figure with text. Can be used for annotations or documentation.
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     let shape =  new draw2d.shape.note.PostIt({
  *        text:"This is a simple sticky note",

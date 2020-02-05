@@ -20,9 +20,8 @@
  * <br>
  * <br>
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     // Override the default connection creation.
  *     //

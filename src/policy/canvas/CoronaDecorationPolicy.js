@@ -4,9 +4,8 @@
  * This makes the canvas more clean if you have a lot of nodes on it.<br>
  * You didn't see a bunch of ports.
  *
- * See the example:
  *
- *       @example preview small frame
+ * @example
  *
  *       // install the policy to the canvas
  *

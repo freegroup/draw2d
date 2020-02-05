@@ -3,7 +3,7 @@
  *
  * Provide a router which routes the connection in a hand drawn manner.
  *
- *     @example preview small frame
+ * @example
  *
  *     let createConnection=function(){
  *        let con = new draw2d.Connection();

@@ -1,9 +1,8 @@
 /**
  * @class draw2d.shape.icon.Temp
 
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     let icon =  new draw2d.shape.icon.Temp();
  *     icon.setDimension(150,100);

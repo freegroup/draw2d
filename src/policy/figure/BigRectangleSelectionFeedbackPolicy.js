@@ -1,9 +1,8 @@
 /**
  * @class draw2d.policy.figure.BigRectangleSelectionFeedbackPolicy
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *       circle =new draw2d.shape.basic.Circle();
  *       circle.installEditPolicy(new draw2d.policy.figure.BigRectangleSelectionFeedbackPolicy());
  *       canvas.add(circle,90,50);

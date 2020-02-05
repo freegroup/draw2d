@@ -1,9 +1,10 @@
+import draw2d from '../../packages';
+
 /**
  * @class draw2d.decoration.connection.BarDecorator
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     // create and add two nodes which contains Ports (In and OUT)
  *     //
@@ -33,22 +34,17 @@
  *     // and finally add the connection to the canvas
  *     canvas.add(c);
  *
- * @inheritable
  * @author Andreas Herz
+ * @param {Number} [width] the width of the bar
+ * @param {Number} [height] the height of the bar
  * @extend draw2d.decoration.connection.Decorator
  */
-import draw2d from '../../packages';
-
-
-draw2d.decoration.connection.BarDecorator = draw2d.decoration.connection.Decorator.extend({
+draw2d.decoration.connection.BarDecorator = draw2d.decoration.connection.Decorator.extend(
+  /** @lends draw2d.decoration.connection.BarDecorator */
+  {
 
 	NAME: "draw2d.decoration.connection.BarDecorator",
 
-	/**
-	 *
-	 * @param {Number} [width] the width of the bar
-	 * @param {Number} [height] the height of the bar
-	 */
 	init: function(width, height)
 	{
         this._super( width, height);

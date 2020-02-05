@@ -7,9 +7,8 @@
  * The shapes are updated after the drag&drop operation.
  *
  *
- * See the example:
  *
- *       @example preview small frame
+ * @example
  *
  *       // install the policy to the canvas
  *       canvas.installEditPolicy(new draw2d.policy.canvas.GhostMoveSelectionPolicy());

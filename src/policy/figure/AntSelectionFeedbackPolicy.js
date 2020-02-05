@@ -5,9 +5,8 @@
  * Selection is indicated via rectangular handle that outlines the figure with a 1-pixel black
  * dotted line.
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *       circle =new draw2d.shape.basic.Circle({diameter:50, x:90, y:50});
  *       circle.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
  *       canvas.add(circle);

@@ -5,7 +5,6 @@ import extend from '../../util/extend'
  * @class
  * A Rectangle Figure.
  *
- * See the example:
  *
  * @example
  *
@@ -30,6 +29,9 @@ import extend from '../../util/extend'
  *     canvas.setCurrentSelection(rect2);
  *
  * @author Andreas Herz
+ * @param {Object} [attr] the configuration of the shape
+ * @param {Object} [setter] add or replace setter methods
+ * @param {Object} [getter] add or replace getter methods
  * @extends draw2d.VectorFigure
  */
 draw2d.shape.basic.Rectangle = draw2d.VectorFigure.extend(
@@ -38,20 +40,15 @@ draw2d.shape.basic.Rectangle = draw2d.VectorFigure.extend(
 
   NAME: "draw2d.shape.basic.Rectangle",
 
-  /**
-   * Creates a new figure element which are not assigned to any canvas.
-   * @constructor
-   * @param {Object} [attr] the configuration of the shape
-   */
   init: function (attr, setter, getter) {
     this.dasharray = null
 
     this._super(
       extend({bgColor: "#a0a0a0", color: "#1B1B1B"}, attr),
       extend({}, {
-        /** @attr {String} dash The dot/dash pattern for the line style. Valid values: ["", "-", ".", "-.", "-..", ". ", "- ", "--", "- .", "--.", "--.."]*/
+        // @attr {String} dash The dot/dash pattern for the line style. Valid values: ["", "-", ".", "-.", "-..", ". ", "- ", "--", "- .", "--.", "--.."]*/
         dash: this.setDashArray,
-        /** @attr {String} dasharray The dot/dash pattern for the line style. Valid values: ["", "-", ".", "-.", "-..", ". ", "- ", "--", "- .", "--.", "--.."]*/
+        // @attr {String} dasharray The dot/dash pattern for the line style. Valid values: ["", "-", ".", "-.", "-..", ". ", "- ", "--", "- .", "--.", "--.."]*/
         dasharray: this.setDashArray
       }, setter),
       extend({}, {

@@ -4,9 +4,8 @@
  * Selection feedback policy without "marching ant lines" or any other rectangle highlight. Just
  * some resize handles at each corner of the shape.
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *       circle =new draw2d.shape.basic.Circle();
  *       circle.installEditPolicy(new draw2d.policy.ResizeSelectionFeedbackPolicy());
  *       canvas.add(circle,90,50);

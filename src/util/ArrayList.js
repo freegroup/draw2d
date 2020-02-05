@@ -10,13 +10,10 @@ import draw2d from '../packages'
  * and it is resized dynamically. This can be very convenient, but it's slower than making
  * an array of objects when using many elements.
  */
-draw2d.util.ArrayList = Class.extend({
+draw2d.util.ArrayList = Class.extend(
+  /** @lends draw2d.util.ArrayList */
+  {
 
-  /**
-   * Initializes a new instance of the ArrayList class that is empty and has
-   * the default initial capacity.
-   *
-   */
   init: function (a) {
     if (Array.isArray(a)) {
       this.data = a

@@ -7,9 +7,8 @@
  *
  * Double click on the Task name or the top middle number to change the value.
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     canvas.add( new draw2d.shape.pert.Start(),10,10);
  *     canvas.add( new draw2d.shape.pert.Activity(),80,130);

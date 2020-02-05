@@ -2,9 +2,8 @@
  * @class draw2d.layout.connection.RubberbandRouter
  * Router for direct connections between two ports with a rubber band effect
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     let RubberConnection= draw2d.Connection.extend({
  *         NAME: "RubberConnection",

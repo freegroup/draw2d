@@ -2,9 +2,8 @@
  * @class draw2d.shape.node.Between
  * A simple Node which has a  InputPort and OutputPort. Mainly used for demo and examples.
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     let figure =  new draw2d.shape.node.Between({color: "#3d3d3d"});
  *

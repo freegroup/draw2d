@@ -1,9 +1,9 @@
 /**
- * @class draw2d.ui.LabelInplaceEditor
+ * @class
  *
  * Inplace editor for draw2d.shape.base.Label
  *
- *     @example preview small frame
+ * @example
  *
  *     var label =  new draw2d.shape.basic.Label({text:"Double Click on me"});
  *
@@ -33,9 +33,6 @@ draw2d.ui.LabelInplaceEditor =  draw2d.ui.LabelEditor.extend(
     
     NAME: "draw2d.ui.LabelInplaceEditor",
 
-    /**
-     * @private
-     */
     init: function(listener)
     {
         this._super();

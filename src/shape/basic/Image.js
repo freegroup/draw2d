@@ -24,7 +24,7 @@ draw2d.shape.basic.Image = draw2d.shape.node.Node.extend(
   init: function (attr, setter, getter) {
     this._super(attr,
       extend({
-        /** @attr {String} path the image path (absolute or relative) of the shape */
+        // @attr {String} path the image path (absolute or relative) of the shape */
         path: this.setPath
       }, setter),
       extend({

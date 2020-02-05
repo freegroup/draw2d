@@ -2,9 +2,8 @@
  * @class draw2d.shape.arrow.CalligrapherArrowDownLeft
  * Hand drawn arrow which points down left
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     let figure =  new draw2d.shape.arrow.CalligrapherArrowDownLeft({x:10,y:10, color:"#3d3d3d"});
  *

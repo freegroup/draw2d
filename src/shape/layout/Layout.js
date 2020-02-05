@@ -28,7 +28,7 @@ draw2d.shape.layout.Layout = draw2d.shape.basic.Rectangle.extend(
 
     this._super(extend({bgColor: null, radius: 0, stroke: 0}, attr),
       extend({
-        /** @attr {Number} padding the padding in pixel around the text */
+        // @attr {Number} padding the padding in pixel around the text */
         padding: this.setPadding
       }, setter),
       extend({

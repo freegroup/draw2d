@@ -1,8 +1,10 @@
+import draw2d from '../../packages';
+
+
 /**
- * @class draw2d.decoration.connection.DiamondDecorator
- * See the example:
+ * @class
  *
- *     @example preview small frame
+ * @example
  *
  *     // create and add two nodes which contains Ports (In and OUT)
  *     //
@@ -33,22 +35,18 @@
  *     canvas.add(c);
  *
  *
- * @inheritable
  * @author Andreas Herz
+ * @param {Number} [width] the width of the arrow
+ * @param {Number} [height] the height of the arrow
  * @extend draw2d.decoration.connection.Decorator
  */
-import draw2d from '../../packages';
 
-
-draw2d.decoration.connection.DiamondDecorator = draw2d.decoration.connection.Decorator.extend({
+draw2d.decoration.connection.DiamondDecorator = draw2d.decoration.connection.Decorator.extend(
+  /** @lends draw2d.decoration.connection.DiamondDecorator */
+  {
 
 	NAME: "draw2d.decoration.connection.DiamondDecorator",
 
-	/**
-	 *
-	 * @param {Number} [width] the width of the arrow
-	 * @param {Number} [height] the height of the arrow
-	 */
 	init: function(width, height)
 	{
         this._super( width, height);

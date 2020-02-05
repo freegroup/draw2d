@@ -3,9 +3,8 @@
  *
  * Typical flowchart <b>Document</b> shape
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     let figure = new draw2d.shape.flowchart.Document({
  *        x:100,

@@ -1,11 +1,13 @@
+import draw2d from '../../packages'
+import extend from '../../util/extend'
+
 /**
  * @class draw2d.shape.diagram.Pie
  *
  * Small data pie chart.
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     let pie = new draw2d.shape.diagram.Pie({
  *        diameter:80,
@@ -16,29 +18,26 @@
  *
  *     canvas.add( pie);
  *
+ * @param {Object} [attr] the configuration of the shape
  * @extends draw2d.shape.diagram.Diagram
  */
-import draw2d from '../../packages'
-import extend from '../../util/extend'
+draw2d.shape.diagram.Pie = draw2d.shape.diagram.Diagram.extend(
+  /** @lends draw2d.shape.diagram.Pie */
+  {
 
-draw2d.shape.diagram.Pie = draw2d.shape.diagram.Diagram.extend({
-
+  NAME: "draw2d.shape.diagram.Pie",
   COLORS: ['#00A8F0', '#b9dd69', '#f3546a', '#4DA74D', '#9440ED'],
   TWO_PI: Math.PI * 2,
 
-  /**
-   *
-   * @param {Object} [attr] the configuration of the shape
-   */
   init: function (attr, setter, getter) {
 
 
     this._super(
       extend({stroke: 0}, attr),
       extend({
-        /** @attr {Number} diameter the diameter of the pie chart */
+        // @attr {Number} diameter the diameter of the pie chart */
         diameter: this.setDiameter,
-        /** @attr {Number} radius the radius of the pie chart */
+        // @attr {Number} radius the radius of the pie chart */
         radius: this.setRadius
       }, setter),
       extend({

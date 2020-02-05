@@ -3,9 +3,8 @@
  *
  * A horizontal bus shape with a special kind of port handling. The hole figure is a hybrid port.
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     canvas.add( new draw2d.shape.node.Fulcrum(),50,10);
  *     canvas.add( new draw2d.shape.node.Fulcrum(),80,100);

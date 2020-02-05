@@ -3,9 +3,8 @@
  * Add only very small resize handles to the figure.
  *
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *       circle =new draw2d.shape.basic.Circle();
  *       circle.installEditPolicy(new draw2d.policy.SlimSelectionFeedbackPolicy());
  *       canvas.add(circle,90,50);

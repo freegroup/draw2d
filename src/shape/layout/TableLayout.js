@@ -8,7 +8,7 @@
  * See the example below with and without padding or alignment settings
  *
  *
- *     @example preview small frame
+ * @example
  *
  *         let label1 =  new draw2d.shape.basic.Label({text:"[0,1] with long long long long label", fontColor:"#00AF00"});
  *         let label2 =  new draw2d.shape.basic.Label({text:"[1,1] padding:10", fontColor:"#00AF00"});
@@ -134,7 +134,7 @@ draw2d.shape.layout.TableLayout = draw2d.shape.layout.Layout.extend(
     this._super(
       extend({stroke: 1, resizeable: false}, attr),
       extend({
-        /** @attr {Number} padding the padding in pixel around the text */
+        // @attr {Number} padding the padding in pixel around the text */
         padding: this.setPadding
       }, setter),
       extend({

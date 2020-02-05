@@ -5,6 +5,7 @@
  *
  *
  * @author Andreas Herz
+ * @param {Object} [attr] the configuration of the shape
  * @extends draw2d.shape.basic.Circle
  */
 
@@ -18,11 +19,6 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
 
   DEFAULT_BORDER_COLOR: new draw2d.util.Color("#1B1B1B"),
 
-  /**
-   * Creates a new Node element which are not assigned to any canvas.
-   *
-   * @param {Object} [attr] the configuration of the shape
-   */
   init: function (attr, setter, getter) {
     this.locator = null
     this.lighterBgColor = null
@@ -658,12 +654,10 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
  *
  * @extend draw2d.shape.basic.Circle
  */
-draw2d.Corona = draw2d.shape.basic.Circle.extend({
+draw2d.Corona = draw2d.shape.basic.Circle.extend(
+  /** @lends draw2d.shape.basic.Circle.prototype */
+  {
 
-  /**
-   * Creates a new Node element which are not assigned to any canvas.
-   *
-   */
   init: function () {
     this._super()
     this.setAlpha(0.3)

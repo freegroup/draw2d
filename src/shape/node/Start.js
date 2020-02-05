@@ -3,9 +3,8 @@
  *
  * A generic Node which has an OutputPort. Mainly used for demo and examples.
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     let figure =  new draw2d.shape.node.Start({color: "#3d3d3d"});
  *

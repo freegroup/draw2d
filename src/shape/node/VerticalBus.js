@@ -3,9 +3,8 @@
  *
  * A horizontal bus shape with a special kind of port handling. The hole figure is a hybrid port.
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     let figure =  new draw2d.shape.node.VerticalBus({width:40, height:300, text:"Vertical Bus"});
  *

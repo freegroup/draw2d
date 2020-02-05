@@ -3,9 +3,8 @@
  *
  * Automatic router that spreads its  {@link draw2d.Connection Connections} in a fan-like fashion upon collision.
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     let createConnection=function(){
  *        // return my special kind of connection

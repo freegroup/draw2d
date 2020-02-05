@@ -1,11 +1,12 @@
+import draw2d from '../../packages'
+import extend from '../../util/extend'
 /**
- * @class draw2d.shape.diagram.Sparkline
+ * @class
  *
  * Small data line diagram.
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     let testData = [];
  *     for(let i=0;i<100;i++) {
@@ -22,17 +23,15 @@
  *
  *     canvas.add( sparkline);
  *
+ * @param {Object} [attr] the configuration of the shape
  * @extends draw2d.shape.diagram.Diagram
  */
-import draw2d from '../../packages'
-import extend from '../../util/extend'
+draw2d.shape.diagram.Sparkline = draw2d.shape.diagram.Diagram.extend(
+  /** @lends draw2d.shape.diagram.Sparkline */
+  {
 
-draw2d.shape.diagram.Sparkline = draw2d.shape.diagram.Diagram.extend({
+  NAME : "draw2d.shape.diagram.Sparkline",
 
-  /**
-   *
-   * @param {Object} [attr] the configuration of the shape
-   */
   init: function (attr, setter, getter) {
     this.min = 0
     this.max = 10

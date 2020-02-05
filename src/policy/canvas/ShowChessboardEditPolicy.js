@@ -3,9 +3,8 @@
  *
  * Just to paint a grid in the background.
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     canvas.installEditPolicy(new draw2d.policy.canvas.ShowChessboardEditPolicy());
  *     var shape =  new draw2d.shape.basic.Text({text:"This is a simple text in a canvas with chessboard background."});

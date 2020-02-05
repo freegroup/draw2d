@@ -1,9 +1,8 @@
 /**
  * @class draw2d.shape.analog.VoltageSupplyHorizontal
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     let figure =  new draw2d.shape.analog.VoltageSupplyHorizontal({x:10, y:10});
  *

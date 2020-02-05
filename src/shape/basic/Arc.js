@@ -3,9 +3,8 @@
  * Oval figure.
  *
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     let arc =  new draw2d.shape.basic.Arc({diameter:150, x:50, y:10, startAngle:0, endAngle:45});
  *

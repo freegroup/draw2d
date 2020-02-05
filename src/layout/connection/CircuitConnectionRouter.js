@@ -10,7 +10,7 @@
  *
  * <br>
  *
- *     @example preview small frame
+ * @example
  *
  *     let createConnection=function(){
  *        let con = new draw2d.Connection();

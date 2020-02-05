@@ -4,9 +4,8 @@
  * the element is changeable by the user and respect the minWidth constraint.
  * <br>
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     let shape =  new draw2d.shape.basic.Text({text:"This is a simple text with some loooooong word in."});
  *

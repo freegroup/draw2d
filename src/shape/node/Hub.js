@@ -4,9 +4,8 @@
  * A hub is a shape with a special kind of port handling. The hole figure is a hybrid port. You can drag&drop a Port directly on
  * the figure.
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *
  *     canvas.add(new draw2d.shape.node.Start({x:50, y:50}));
@@ -39,7 +38,7 @@ draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend(
       extend({
         // deprecated
         label: this.setLabel,
-        /** @attr {String} text the text to display in the center of the hub */
+        // @attr {String} text the text to display in the center of the hub */
         text: this.setLabel
       }, setter),
       extend({

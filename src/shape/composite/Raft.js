@@ -3,9 +3,8 @@
  * Raft figures are shapes, which aggregate multiple figures. It works like a real raft. Aboard figures are
  * moved if the raft figures moves.
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     let rect1 =  new draw2d.shape.composite.Raft({width:200, height:100});
  *     let rect2 =  new draw2d.shape.basic.Rectangle({width:50, height:50});

@@ -2,9 +2,8 @@
  * @class draw2d.shape.basic.Line
  * The base class for all visible elements inside a canvas.
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     // Create the line and modify the start/end after inserting them into
  *     // the canvas
@@ -73,31 +72,31 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
         selectable: true
       }, attr),
       extend({}, {
-        /** @attr {Number} start the  coordinates of the start point */
+        // @attr {Number} start the  coordinates of the start point */
         start: this.setStartPosition,
-        /** @attr {Number} startX the x coordinate of the start point */
+        // @attr {Number} startX the x coordinate of the start point */
         startX: this.setStartX,
-        /** @attr {Number} startY the y coordinate of the start point */
+        // @attr {Number} startY the y coordinate of the start point */
         startY: this.setStartY,
-        /** @attr {Number} end the coordinates of the end point */
+        // @attr {Number} end the coordinates of the end point */
         end: this.setEndPosition,
-        /** @attr {Number} endX the x coordinate of the end */
+        // @attr {Number} endX the x coordinate of the end */
         endX: this.setEndX,
-        /** @attr {Number} endY the y coordinate of the end */
+        // @attr {Number} endY the y coordinate of the end */
         endY: this.setEndY,
-        /** @attr {Number} vertices the x coordinate of the start point */
+        // @attr {Number} vertices the x coordinate of the start point */
         vertices: this.setVertices,
-        /** @attr {String | draw2d.util.Color} outlineColor the outline color of the line */
+        // @attr {String | draw2d.util.Color} outlineColor the outline color of the line */
         outlineColor: this.setOutlineColor,
-        /** @attr {Number} outlineStroke the line width of the outline */
+        // @attr {Number} outlineStroke the line width of the outline */
         outlineStroke: this.setOutlineStroke,
-        /** @attr {String|draw2d.util.Color} color the color of the line */
+        // @attr {String|draw2d.util.Color} color the color of the line */
         color: this.setColor,
-        /** @attr {Number} stroke the line width of the color */
+        // @attr {Number} stroke the line width of the color */
         stroke: this.setStroke,
-        /** @attr {String} dasharray the line pattern see {@link draw2d.shape.basic.Line#setDashArray} for more information*/
+        // @attr {String} dasharray the line pattern see {@link draw2d.shape.basic.Line#setDashArray} for more information*/
         dasharray: this.setDashArray,
-        /** @attr {Boolean} glow the glow flag for the shape. The representation of the "glow" depends on the shape */
+        // @attr {Boolean} glow the glow flag for the shape. The representation of the "glow" depends on the shape */
         glow: this.setGlow
       }, setter),
 

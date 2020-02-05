@@ -1,9 +1,8 @@
 /**
  * @class draw2d.shape.icon.Question2
 
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     let icon =  new draw2d.shape.icon.Question2();
  *     icon.setDimension(150,100);

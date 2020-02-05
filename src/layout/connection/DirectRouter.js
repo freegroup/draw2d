@@ -4,9 +4,8 @@
  * Router for direct connections between two ports. Beeline
  * <br>
  * <br>
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     let createConnection=function(){
  *        let con = new draw2d.Connection();

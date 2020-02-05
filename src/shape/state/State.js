@@ -3,7 +3,7 @@
  *
  * a state shape for a state diagram
  *
- *     @example preview small frame
+ * @example
  *     // create and add two nodes which contains Ports (In and OUT)
  *     //
  *     let start = new draw2d.shape.state.Start();

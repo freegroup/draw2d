@@ -2,9 +2,8 @@
  * @class draw2d.shape.analog.OpAmp
  * Hand drawn arrow which points down left
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     let figure =  new draw2d.shape.analog.OpAmp({x:10, y:10});
  *

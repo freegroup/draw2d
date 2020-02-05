@@ -4,9 +4,8 @@
  * A RightLocator is used to place figures to the right of a parent shape.
  *
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *
  *     // create a basic figure and add a Label/child via API call

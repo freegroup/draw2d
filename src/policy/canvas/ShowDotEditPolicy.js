@@ -3,9 +3,8 @@
  *
  * Paint a dotted pattern in the background of the canvas.
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     canvas.installEditPolicy(new draw2d.policy.canvas.ShowDotEditPolicy());
  *     var shape =  new draw2d.shape.basic.Text({text:"This is a simple text in a canvas with dotted background."});

@@ -3,9 +3,8 @@
  *
  * A SelectionFeedbackPolicy with resize handles (rectangles) on each side and corner of the shape
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *       circle =new draw2d.shape.basic.Circle({diameter:50});
  *       circle.installEditPolicy(new draw2d.policy.RectangleSelectionFeedbackPolicy());
  *       canvas.add(circle,90,50);

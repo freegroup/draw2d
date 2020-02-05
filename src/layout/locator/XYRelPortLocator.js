@@ -7,9 +7,8 @@
  * <br>
  * Resize the shape in the example to see what happens. The port top position is always 20% of the shape height.
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     let figure =  new draw2d.shape.basic.Rectangle({x:130,y:30,width:100,height:60});
  *     figure.createPort("input", new draw2d.layout.locator.XYRelPortLocator(0,20));

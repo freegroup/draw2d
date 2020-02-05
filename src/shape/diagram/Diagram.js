@@ -1,21 +1,19 @@
+import draw2d from '../../packages'
+import extend from '../../util/extend'
+import jsonUtil from '../../util/JSONUtil'
+
 /**
  * @class draw2d.shape.diagram.Diagram
  *
  * Base class for all diagrams.
  *
+ * @param {Object} [attr] the configuration of the shape
  * @extends draw2d.SetFigure
  */
+draw2d.shape.diagram.Diagram = draw2d.SetFigure.extend(
+  /** @lends draw2d.shape.diagram.Diagram */
+  {
 
-import draw2d from '../../packages'
-import extend from '../../util/extend'
-import jsonUtil from '../../util/JSONUtil'
-
-draw2d.shape.diagram.Diagram = draw2d.SetFigure.extend({
-
-  /**
-   *
-   * @param {Object} [attr] the configuration of the shape
-   */
   init: function (attr, setter, getter) {
     this.data = []
     this.cache = {}
@@ -23,7 +21,7 @@ draw2d.shape.diagram.Diagram = draw2d.SetFigure.extend({
     this._super(
       extend({data: [], bgColor: "#8dabf2", stroke: 1, color: "#f0f0f0", radius: 2, resizeable: true}, attr),
       extend({}, {
-        /** @attr {Array} data the data to display in the diagram */
+        // @attr {Array} data the data to display in the diagram */
         data: this.setData
       }, setter),
       extend({}, {

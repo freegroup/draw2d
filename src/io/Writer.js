@@ -1,19 +1,17 @@
+import draw2d from '../packages';
 
 /**
- * @class draw2d.io.Writer
+ * @class
+ *
  * Serialize the canvas to an external format. This is only a template/interface class.
  * Inherit classes must implement the export format.
  *
  * @author Andreas Herz
  */
-import draw2d from '../packages';
+draw2d.io.Writer = Class.extend(
+  /** @lends draw2d.io.Writer */
 
-
-draw2d.io.Writer = Class.extend({
-
-    /**
-     * @private
-     */
+  {
     init: function(){
     },
 

@@ -38,7 +38,7 @@
  *
  * Example Implementation of a shape:
  *
- *     @example preview small frame
+ * @example
  *     let PredefinedProcess = draw2d.shape.layout.FlexGridLayout.extend({
  *
  *

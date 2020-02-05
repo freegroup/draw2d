@@ -3,7 +3,7 @@
  * This selection shows only selection handles for the width. It is only possible to change the width
  * of an shaped. The height stays always the same or is recalculated by the figure itself.
  *
- *     @example preview small frame
+ * @example
  *
  *
  *       // add some demo figure to the canvas

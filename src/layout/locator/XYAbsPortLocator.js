@@ -4,9 +4,8 @@
  * Create a locator for fixed x/y coordinate position. The port in the example below is
  * always 20px below of the top border.
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     var figure =  new draw2d.shape.basic.Rectangle({x:130,y:30,width:100,height:60});
  *     figure.createPort("input", new draw2d.layout.locator.XYAbsPortLocator(0,20));

@@ -1,7 +1,8 @@
+import draw2d from '../../packages';
 
 
 /**
- * @class draw2d.io.json.Writer
+ * @class
  * Serialize the canvas document into a JSON object which can be read from the corresponding
  * {@link draw2d.io.json.Reader}.
  * 
@@ -23,10 +24,10 @@
  * @author Andreas Herz
  * @extends draw2d.io.Writer
  */
-import draw2d from '../../packages';
 
-
-draw2d.io.json.Writer = draw2d.io.Writer.extend({
+draw2d.io.json.Writer = draw2d.io.Writer.extend(
+  /** @lends draw2d.io.json.Writer */
+  {
     
     init: function()
     {

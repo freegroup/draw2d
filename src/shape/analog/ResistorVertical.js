@@ -1,9 +1,8 @@
 /**
  * @class draw2d.shape.analog.ResistorVertical
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     let figure =  new draw2d.shape.analog.ResistorVertical({x:10, y:10});
  *

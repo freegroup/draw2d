@@ -1,9 +1,8 @@
 /**
  * @class draw2d.shape.icon.ArrowAlt
 
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     let icon =  new draw2d.shape.icon.ArrowAlt();
  *     icon.setDimension(150,100);

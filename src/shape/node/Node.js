@@ -42,7 +42,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
     this._super(
       extend({width: 50, height: 50}, attr),
       extend({
-        /** @attr {Number} indicate whenever you want persists the ports too */
+        // @attr {Number} indicate whenever you want persists the ports too */
         persistPorts: this.setPersistPorts
       }, setter),
       extend({

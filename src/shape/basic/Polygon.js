@@ -2,9 +2,8 @@
  * @class draw2d.shape.basic.Polygon
  * A Polygon figure.
  *
- * See the example:
  *
- *     @example preview small frame
+ * @example
  *
  *     let p1 =  new draw2d.shape.basic.Polygon({width:100, height:100});
  *     let p2 =  new draw2d.shape.basic.Polygon({width:100, height:60});
