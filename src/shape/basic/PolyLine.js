@@ -377,14 +377,14 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
     return this.lineSegments
   },
 
-  /**
-   * 
-   * used for the router to add the calculated points
-   *
-   * @protected
-   *
-   **/
-  addPoint: function (/*:draw2d.geo.Point*/ p, y) {
+
+    /**
+     * used for the router to add the calculated points
+     *
+     * @param p
+     * @param y
+     */
+  addPoint: function ( p, y) {
     if (typeof y !== "undefined") {
       p = new draw2d.geo.Point(p, y)
     }
