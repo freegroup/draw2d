@@ -1,4 +1,5 @@
 /* eslint-disable indent, no-nested-ternary, space-infix-ops */
+
 /**
     @overview Builds a tree-like JSON string from the doclet data.
     @version 0.0.3
@@ -25,14 +26,13 @@ function graft(parentNode, childNodes, parentLongname) {
             if (!parentNode.namespaces) {
                 parentNode.namespaces = [];
             }
-
             thisNamespace = {
                 'name': element.name,
+                'namespace': parentNode.name?(parentNode.namespace?parentNode.namespace+".":"")+parentNode.name:"",
                 'description': element.description || '',
                 'access': element.access || '',
                 'virtual': Boolean(element.virtual)
             };
-
             parentNode.namespaces.push(thisNamespace);
 
             graft(thisNamespace, childNodes, element.longname);
@@ -157,6 +157,7 @@ function graft(parentNode, childNodes, parentLongname) {
 
             thisClass = {
                 'name': element.name,
+                'namespace': parentNode.name?(parentNode.namespace?parentNode.namespace+".":"")+parentNode.name:"",
                 'description': element.classdesc || '',
                 'extends': element.augments || [],
                 'access': element.access || '',
@@ -197,10 +198,108 @@ function graft(parentNode, childNodes, parentLongname) {
     });
 }
 
-function dumpNamespace(namespace, spaces){
-  console.log(spaces+namespace.name)
-  if(namespace.namespaces){
-    namespace.namespaces.forEach( n => dumpNamespace(n, spaces+"   "))
+
+function writeRouter(namespaces){
+  const fs = require('fs');
+  const stream = fs.createWriteStream("./src/router/index.js");
+
+  stream.write('import Vue from \'vue\'\n')
+  stream.write('import VueRouter from \'vue-router\'\n\n')
+  stream.write('Vue.use(VueRouter)\n\n')
+
+  stream.write('const routes = [\n')
+  namespaces.forEach((namespace, idx, array) => {
+    let last = (idx === array.length - 1)
+    let path = `/${namespace.name.toLowerCase()}`
+    let component = path.replace('/','').split("/").join("_")
+    // write children
+    if(namespace.namespaces) {
+      namespace.namespaces.forEach( (n, idx, array) => dumpRoutes(n, stream, '  ', 0, (idx === array.length - 1), path))
+    }
+    stream.write('  {\n')
+    stream.write(`    path: '${path}',\n`)
+    stream.write(`    props: { className: '${namespace.name}' },\n`)
+    stream.write(`    name: '${namespace.name}',\n`)
+    stream.write(`    component: () => import(/* webpackChunkName: "${component}" */ '../views/package.vue')\n`)
+    if(!last){
+      stream.write('  },\n')
+    }
+    else{
+      stream.write('  }\n')
+    }
+  })
+
+  stream.write(']\n\n')
+
+  stream.write('const tree = [\n')
+  namespaces.forEach((namespace) => {
+    let path = `/${namespace.name.toLowerCase()}`
+    stream.write('  {\n')
+    stream.write(`    data: { path: '${path}' },\n`)
+    // write children
+    if(namespace.namespaces) {
+      stream.write(`    text: '${namespace.name}',\n`)
+      stream.write('    children: [\n')
+      namespace.namespaces.forEach( (n, idx, array) => dumpTree(n, stream, '      ', (idx === array.length - 1), path))
+      stream.write('    ]\n')
+    }
+    else{
+      stream.write(`    text: '${namespace.name}'\n`)
+    }
+    stream.write('  }\n')
+  })
+
+  stream.write(']\n\n')
+
+  stream.write('const router = new VueRouter({\n')
+  stream.write('  mode: \'history\',\n')
+  stream.write('  tree,\n')
+  stream.write('  routes\n')
+  stream.write('})\n')
+  stream.write('\n')
+  stream.write('export default router\n')
+
+  stream.end()
+}
+
+function dumpTree(namespace, stream, ident, isLastElement, path){
+  path = path +'/'+namespace.name.toLowerCase()
+  stream.write(ident+'{\n')
+  stream.write(ident+`  data: { path: '${path}' },\n`)
+  if(namespace.namespaces) {
+    stream.write(ident+`  text: '${namespace.name}',\n`)
+    stream.write(ident+'  children: [\n')
+    namespace.namespaces.forEach( (n, idx, array) => {
+      dumpTree(n, stream, '    ' + ident, (idx === array.length - 1), path)
+    })
+    stream.write(ident+'  ]\n')
+  }
+  else{
+    stream.write(ident+`  text: '${namespace.name}'\n`)
+  }
+
+  if(isLastElement){
+    stream.write(ident+'}\n')
+  }
+  else{
+    stream.write(ident+'},\n')
+  }
+}
+
+function dumpRoutes(namespace, stream, ident, level, isLastElement, path){
+  path = path +'/'+namespace.name.toLowerCase()
+  let component = path.replace('/','').split("/").join("_")
+  stream.write(ident+'{\n')
+  stream.write(ident+`  path: '${path}',\n`)
+  stream.write(ident+`  name: '${namespace.name}',\n`)
+  stream.write(ident+`  props: { className: '${namespace.name}' },\n`)
+  stream.write(ident+`  component: () => import(/* webpackChunkName: "${component}" */ '../views/package.vue')\n`)
+  stream.write(ident+'},\n')
+  // write children
+  if(namespace.namespaces) {
+    namespace.namespaces.forEach( (n, idx, array) => {
+      dumpRoutes(n, stream, ident, level+1, (idx === array.length - 1), path)
+    })
   }
 }
 
@@ -216,22 +315,13 @@ exports.publish = (data, {destination, query}) => {
     docs = data().get(); // <-- an array of Doclet objects
 
     graft(root, docs);
-    if (destination === 'console') {
-        if (query && query.format === 'xml') {
-            console.log( xml.parse('jsdoc', root) );
-        }
-        else {
-            console.log( require('jsdoc/util/dumper').dump(root) );
-        }
-    }
-    else {
-      const fs = require('fs');
-      const stream = fs.createWriteStream("./out/classes.json");
-      stream.once('open', function(fd) {
-        stream.write(require('jsdoc/util/dumper').dump(root));
-        stream.end();
-      }, () => {});
+    const fs = require('fs');
+    const stream = fs.createWriteStream("./src/draw2d-classes.js");
+    stream.once('open', function(fd) {
+      stream.write('export const draw2dClasses = ')
+      stream.write(require('jsdoc/util/dumper').dump(root));
+      stream.end();
+    }, () => {});
 
-      root.namespaces.forEach(n => dumpNamespace(n, " "))
-    }
+    writeRouter(root.namespaces)
 };

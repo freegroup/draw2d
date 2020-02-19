@@ -31,6 +31,7 @@
     <Navigation v-model="drawer"  />
 
     <v-content>
+      <router-view/>
     </v-content>
     <v-footer app>
       <span>&copy; 2019</span>
