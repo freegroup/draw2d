@@ -1,0 +1,251 @@
+{
+  "name": "CommandStack",
+  "namespace": "draw2d.command",
+  "description": "<p>draw2d.command.CommandStack\nStack for undo/redo operations</p>",
+  "extends": [],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "CommandStack",
+    "description": "",
+    "parameters": [],
+    "examples": []
+  },
+  "functions": [
+    {
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Create a new CommandStack objects which can be execute via the CommandStack.</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "setUndoLimit",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Set the maximal undo stack size. Entries will be remove if the max. stack\nsize has been reached.</p>",
+      "parameters": [
+        {
+          "name": "count",
+          "type": "Number",
+          "description": "<p>The maximal undo stack size.</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "markSaveLocation",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Remove the undo / redo history. This is useful if the user has been save the\ndocument.</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "execute",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Executes the specified Command if possible. Prior to executing the command, a\ndraw2d.command.CommandStackEvent for {@link #PRE_EXECUTE} will be fired to event listeners.\nSimilarly, after attempting to execute the command, an event for {@link #POST_EXECUTE}\nwill be fired.</p>",
+      "parameters": [
+        {
+          "name": "command",
+          "type": "draw2d.command.Command",
+          "description": "<p>The command to execute.</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "startTransaction",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Opens a transaction for further multiple commands. If you execute a command all\n{@ #execute} calls will be ignored until you commit the current transaction.</p>",
+      "parameters": [
+        {
+          "name": "commandLabel",
+          "type": "String",
+          "description": "<p>the label to show for the undo/redo operation</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "isInTransaction",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Returns true if the Command Stack has an open transaction.</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "commitTransaction",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Commit the running transaction. All commands between the start/end of a transaction\ncan be undo/redo in a single step.</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "undo",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Undo on command from the stack and store them on the redo command stack.</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "redo",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Redo a command after the user has undo a command</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "getRedoLabel",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Return the label of the next REDO command.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "String",
+        "description": ""
+      }
+    },
+    {
+      "name": "getUndoLabel",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Return the label of the next UNDO command.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "String",
+        "description": ""
+      }
+    },
+    {
+      "name": "canRedo",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Indicates whenever a REDO is possible.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "",
+        "description": "<p>boolean <code>true</code> if it is appropriate to call {@link #redo()}.</p>"
+      }
+    },
+    {
+      "name": "canUndo",
+      "access": "",
+      "virtual": false,
+      "description": "<p>indicator whenever a undo is possible.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "Boolean",
+        "description": "<p><code>true</code> if {@link #undo()} can be called</p>"
+      }
+    },
+    {
+      "name": "addEventListener",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Adds a listener to the command stack, which will be notified whenever a command has been processed on the stack.</p>",
+      "parameters": [
+        {
+          "name": "listener",
+          "type": [
+            "draw2d.command.CommandStackEventListener",
+            "function"
+          ],
+          "description": "<p>the listener to add.</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "on",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Adds a listener to the command stack, which will be notified whenever a command has been processed on the stack.</p>",
+      "parameters": [
+        {
+          "name": "event",
+          "type": "",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "func",
+          "type": "",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "removeEventListener",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Removes a listener from the command stack.</p>",
+      "parameters": [
+        {
+          "name": "listener",
+          "type": "draw2d.command.CommandStackEventListener",
+          "description": "<p>the listener to remove.</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "notifyListeners",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Notifies command stack event listeners that the command stack has changed to the\nspecified state.</p>",
+      "parameters": [
+        {
+          "name": "command",
+          "type": "draw2d.command.Command",
+          "description": "<p>the command</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "state",
+          "type": "Number",
+          "description": "<p>the current stack state</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    }
+  ]
+}

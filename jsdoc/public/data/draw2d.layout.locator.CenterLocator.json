@@ -1,0 +1,52 @@
+{
+  "name": "CenterLocator",
+  "namespace": "draw2d.layout.locator",
+  "description": "<p>draw2d.layout.locator.CenterLocator</p>\n<p>A CenterLocator is used to place figures in the center of a parent shape.</p>",
+  "extends": [],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "CenterLocator",
+    "description": "",
+    "parameters": [],
+    "examples": [
+      "// create a basic figure and add a Label/child via API call\n    //\n    let circle = new draw2d.shape.basic.Circle({diameter:120});\n    circle.setStroke(3);\n    circle.setColor(\"#A63343\");\n    circle.setBackgroundColor(\"#E65159\");\n    circle.add(new draw2d.shape.basic.Label({text:\"Center Label\"}), new draw2d.layout.locator.CenterLocator());\n    canvas.add( circle, 100,50);"
+    ]
+  },
+  "functions": [
+    {
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Constructs a locator with associated parent.</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "relocate",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Relocates the given Figure.</p>",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "Number",
+          "description": "<p>child index of the target</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "target",
+          "type": "draw2d.Figure",
+          "description": "<p>The figure to relocate</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    }
+  ]
+}

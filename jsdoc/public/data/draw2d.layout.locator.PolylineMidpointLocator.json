@@ -1,0 +1,50 @@
+{
+  "name": "PolylineMidpointLocator",
+  "namespace": "draw2d.layout.locator",
+  "description": "<p>draw2d.layout.locator.PolylineMidpointLocator</p>\n<p>A PolylineMidpointLocator is used to place figures at the midpoint of a routed\nconnection. <br>\nIf the connection did have an odd count of points the figure is located in the center vertex of the polyline.<br>\nOn an even count of junction point, the figure will be center on the middle segment of the ploy line.</p>",
+  "extends": [],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "PolylineMidpointLocator",
+    "description": "",
+    "parameters": [],
+    "examples": []
+  },
+  "functions": [
+    {
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Constructs a ManhattanMidpointLocator with associated Connection c.</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "relocate",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Relocates the given Figure.</p>",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "Number",
+          "description": "<p>child index of the target</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "target",
+          "type": "draw2d.Figure",
+          "description": "<p>The figure to relocate</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    }
+  ]
+}

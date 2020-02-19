@@ -1,0 +1,195 @@
+{
+  "name": "Selection",
+  "namespace": "draw2d",
+  "description": "<p>Represents the current selection in the canvas. The selection element is a pure passive element which\nmanage/store the selection.</p>",
+  "extends": [],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "Selection",
+    "description": "",
+    "parameters": [],
+    "examples": []
+  },
+  "functions": [
+    {
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Creates a new figure element which are not assigned to any canvas.</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "clear",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Reset the current selection</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "getPrimary",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Return the primary selection. This can only one figure at once.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.Figure",
+        "description": "<p>the primary selected figure</p>"
+      }
+    },
+    {
+      "name": "setPrimary",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Set the primary selection.</p>",
+      "parameters": [
+        {
+          "name": "figure",
+          "type": "draw2d.Figure",
+          "description": "<p>The new primary selection</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "remove",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Remove the given figure from the selection (primary,all)</p>",
+      "parameters": [
+        {
+          "name": "figure",
+          "type": "draw2d.Figure",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "add",
+      "access": "private",
+      "virtual": false,
+      "description": "<p>Add a figure to the selection. No events are fired or update the selection handle. This method just\nadd the figure to the internal management data structure.</p>",
+      "parameters": [
+        {
+          "name": "figure",
+          "type": "",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "contains",
+      "access": "",
+      "virtual": false,
+      "description": "<p>return true if the given figure part of the selection.</p>",
+      "parameters": [
+        {
+          "name": "figure",
+          "type": "draw2d.Figure",
+          "description": "<p>The figure to check</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "checkDescendant",
+          "type": "Boolean",
+          "description": "<p>Check if the figure provided by the argument is a descendant of the selection whether it is a direct child or nested more deeply.</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "Boolean",
+        "description": ""
+      }
+    },
+    {
+      "name": "getSize",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Return the size of the selection</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "getAll",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Return the complete selection - including the primary selection.</p>",
+      "parameters": [
+        {
+          "name": "expand",
+          "type": "Boolean",
+          "description": "<p>expand all StrongComposite and WeakComposite to get all figures. Didn't expand any SetFigures or LayoutFigures</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.util.ArrayList",
+        "description": ""
+      }
+    },
+    {
+      "name": "each",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Iterates over the current selection with <b>func</b> as callback handler.</p>",
+      "parameters": [
+        {
+          "name": "func",
+          "type": "function",
+          "description": "<p>the callback function to call for each element</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "func.i",
+          "type": "Number",
+          "description": "<p>index of the element in iteration</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "func.value",
+          "type": "Object",
+          "description": "<p>value of the element in iteration.</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "reverse",
+          "type": "Boolean",
+          "description": "<p>optional parameter. Iterate the collection reverse if it set to <b>true</b></p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    }
+  ]
+}

@@ -1,0 +1,509 @@
+{
+  "name": "ArrayList",
+  "namespace": "draw2d.util",
+  "description": "<p>draw2d.util.ArrayList</p>\n<p><Disclaimer> Writing my own class for arrays was one of my worst ideas...</p>\n<p>An ArrayList stores a variable number of objects. This is similar to making an array of\nobjects, but with an ArrayList, items can be easily added and removed from the ArrayList\nand it is resized dynamically. This can be very convenient, but it's slower than making\nan array of objects when using many elements.</p>",
+  "extends": [],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "ArrayList",
+    "description": "",
+    "parameters": [],
+    "examples": []
+  },
+  "functions": [
+    {
+      "name": "clear",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Clears the array</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "reverse",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Reverses the order of the elements in the ArrayList. The array will be modified!</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "getSize",
+      "access": "",
+      "virtual": false,
+      "description": "<p>The size/count of the stored objects.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": ""
+      }
+    },
+    {
+      "name": "isEmpty",
+      "access": "",
+      "virtual": false,
+      "description": "<p>checks to see if the Vector has any elements.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "Boolean",
+        "description": "<p>true if the list is empty</p>"
+      }
+    },
+    {
+      "name": "last",
+      "access": "",
+      "virtual": false,
+      "description": "<p>return the last element.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "Object",
+        "description": ""
+      }
+    },
+    {
+      "name": "asArray",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Return a reference to the internal javascript native array.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "Array",
+        "description": ""
+      }
+    },
+    {
+      "name": "first",
+      "access": "",
+      "virtual": false,
+      "description": "<p>returns the first element</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "Object",
+        "description": ""
+      }
+    },
+    {
+      "name": "get",
+      "access": "",
+      "virtual": false,
+      "description": "<p>returns an element at a specified index</p>",
+      "parameters": [
+        {
+          "name": "i",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "Object",
+        "description": ""
+      }
+    },
+    {
+      "name": "add",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Adds a element at the end of the Vector.</p>",
+      "parameters": [
+        {
+          "name": "obj",
+          "type": "Object",
+          "description": "<p>the object to add</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "grep",
+      "access": "",
+      "virtual": false,
+      "description": "<p>The method removes items from an array as necessary so that all remaining items pass a\nprovided test. The test is a function that is passed an array item and the index of the\nitem within the array. Only if the test returns true will the item stay in the array.</p>",
+      "parameters": [
+        {
+          "name": "func",
+          "type": "function",
+          "description": "<p>the filter function(element,index)</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "func.value",
+          "type": "Object",
+          "description": "<p>value of the element in iteration.</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "find",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Return ONE element which matches by the given function or <b>null</b>\nif no element is found.</p>\n<pre><code>var r1= figures.find(function(figure){\n              return figure.id===123456\n        });</code></pre>",
+      "parameters": [
+        {
+          "name": "func",
+          "type": "function",
+          "description": "<p>the filter function</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "func.value",
+          "type": "Object",
+          "description": "<p>value of the element in iteration.</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "func.index",
+          "type": "Object",
+          "description": "<p>index of the element in collection.</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "map",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Translate all items in the array into new items. The array list is modified after this call.\nYou must clone the array before if you want avoid this.</p>\n<pre><code>var labels = this.commands.clone().map(function(e){\n     return e.getLabel();\n});</code></pre>",
+      "parameters": [
+        {
+          "name": "func",
+          "type": "function",
+          "description": "<p>The function to process each item against. The first argument to the function is the value; the second argument is the index or key of the array or object property.</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "func.value",
+          "type": "Object",
+          "description": "<p>value of the element in iteration.</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "func.i",
+          "type": "Number",
+          "description": "<p>index of the element in iteration</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "unique",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Removes any duplicate elements from the array. The array is modified after this call. You\nmust clone the array before if you want avoid this</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "addAll",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Add all elements into this array.</p>",
+      "parameters": [
+        {
+          "name": "list",
+          "type": "draw2d.util.ArrayList",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "avoidDuplicates",
+          "type": "Boolean",
+          "description": "<p>checks whenever the new elements exists before insert if the parameter is to [true]</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "pop",
+      "access": "",
+      "virtual": false,
+      "description": "<p>You can use the Array list as Stack as well. this is the pop method to remove one element\nat the end of the stack.</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "push",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Push one element at the top of the stack/array</p>",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "remove",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Remove the element from the list</p>",
+      "parameters": [
+        {
+          "name": "obj",
+          "type": "Object",
+          "description": "<p>the object to remove</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "Object",
+        "description": "<p>the removed object or null</p>"
+      }
+    },
+    {
+      "name": "insertElementAt",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Inserts an element at a given position. Existing elements will be shifted\nto the right.</p>",
+      "parameters": [
+        {
+          "name": "obj",
+          "type": "Object",
+          "description": "<p>the object to insert.</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "index",
+          "type": "Number",
+          "description": "<p>the insert position.</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "removeElementAt",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Removes an element at a specific index.</p>",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "Number",
+          "description": "<p>the index of the element to remove</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "Object",
+        "description": "<p>the removed object</p>"
+      }
+    },
+    {
+      "name": "removeAll",
+      "access": "",
+      "virtual": false,
+      "description": "<p>removes all given elements in the ArrayList</p>",
+      "parameters": [
+        {
+          "name": "elements",
+          "type": "draw2d.util.ArrayList",
+          "description": "<p>The elements to remove</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "indexOf",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Return the zero based index of the given element or -1 if the element\nnot in the list.</p>",
+      "parameters": [
+        {
+          "name": "obj",
+          "type": "Object",
+          "description": "<p>the element to check</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": "<p>the index of the element or -1</p>"
+      }
+    },
+    {
+      "name": "contains",
+      "access": "",
+      "virtual": false,
+      "description": "<p>returns true if the element is in the Vector, otherwise false.</p>",
+      "parameters": [
+        {
+          "name": "obj",
+          "type": "Object",
+          "description": "<p>the object to check</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "Boolean",
+        "description": ""
+      }
+    },
+    {
+      "name": "sort",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Sorts the collection based on a field name or sort a function. See on http://www.w3schools.com/jsref/jsref_sort.asp\nif you use a sort function.</p>",
+      "parameters": [
+        {
+          "name": "f",
+          "type": [
+            "String",
+            "function"
+          ],
+          "description": "<p>the field name for the sorting or a sort function</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.util.ArrayList",
+        "description": "<p>self</p>"
+      }
+    },
+    {
+      "name": "clone",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Copies the contents of a Vector to another Vector returning the new Vector.</p>",
+      "parameters": [
+        {
+          "name": "deep",
+          "type": "Boolean",
+          "description": "<p>call &quot;clone&quot; of each elements and add the clone to the new ArrayList</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.util.ArrayList",
+        "description": "<p>the new ArrayList</p>"
+      }
+    },
+    {
+      "name": "each",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Iterates over the list of elements, yielding each in turn to an iterator\nfunction.\nEach invocation of iterator is called with two arguments: (index, element).</p>",
+      "parameters": [
+        {
+          "name": "func",
+          "type": "function",
+          "description": "<p>the callback function to call for each element</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "func.i",
+          "type": "Number",
+          "description": "<p>index of the element in iteration</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "func.value",
+          "type": "Object",
+          "description": "<p>value of the element in iteration.</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "reverse",
+          "type": "Boolean",
+          "description": "<p>optional parameter. Iterate the collection reverse if it set to <b>true</b></p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "setPersistentAttributes",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Read all attributes from the serialized properties and transfer them into the shape.</p>",
+      "parameters": [
+        {
+          "name": "memento",
+          "type": "Object",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    }
+  ]
+}

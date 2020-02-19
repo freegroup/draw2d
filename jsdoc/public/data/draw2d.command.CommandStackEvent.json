@@ -1,0 +1,102 @@
+{
+  "name": "CommandStackEvent",
+  "namespace": "draw2d.command",
+  "description": "<p>draw2d.command.CommandStackEvent\nEvent class which will be fired for every CommandStack operation. Required for CommandStackListener.</p>",
+  "extends": [],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "CommandStackEvent",
+    "description": "",
+    "parameters": [],
+    "examples": []
+  },
+  "functions": [
+    {
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Create a new CommandStack objects which can be execute via the CommandStack.</p>",
+      "parameters": [
+        {
+          "name": "command",
+          "type": "draw2d.command.Command",
+          "description": "<p>the related command</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "details",
+          "type": "Number",
+          "description": "<p>the current state of the command execution</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "getStack",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Return the corresponding stack of the event.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.command.CommandStack",
+        "description": ""
+      }
+    },
+    {
+      "name": "getCommand",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Returns null or a Command if a command is relevant to the current event.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.command.Command",
+        "description": ""
+      }
+    },
+    {
+      "name": "getDetails",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Returns an integer identifying the type of event which has occurred.\nDefined by {@link draw2d.command.CommandStack}.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": ""
+      }
+    },
+    {
+      "name": "isPostChangeEvent",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Returns true if this event is fired after the stack having changed.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "Boolean",
+        "description": "<p>true if post-change event</p>"
+      }
+    },
+    {
+      "name": "isPreChangeEvent",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Returns true if this event is fired prior to the stack changing.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "Boolean",
+        "description": "<p>true if pre-change event</p>"
+      }
+    }
+  ]
+}

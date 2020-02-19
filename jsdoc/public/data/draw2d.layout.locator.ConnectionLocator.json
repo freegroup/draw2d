@@ -1,0 +1,25 @@
+{
+  "name": "ConnectionLocator",
+  "namespace": "draw2d.layout.locator",
+  "description": "<p>draw2d.layout.locator.ConnectionLocator</p>\n<p>Repositions a Figure attached to a Connection when the\nConnection is moved. Provides for alignment at the start\n(source), middle, or end (target) of the Connection.</p>",
+  "extends": [],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "ConnectionLocator",
+    "description": "",
+    "parameters": [],
+    "examples": []
+  },
+  "functions": [
+    {
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Default constructor for a Locator which can layout a figure in context of a\n{@link draw2d.Connector}</p>",
+      "parameters": [],
+      "examples": []
+    }
+  ]
+}

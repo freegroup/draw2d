@@ -1,0 +1,90 @@
+{
+  "name": "Command",
+  "namespace": "draw2d.command",
+  "description": "<p>draw2d.command.Command</p>\n<p>Commands are passed around throughout editing. They are used to encapsulate and combine\nchanges to the application's model. An application has a single command stack. Commands must\nbe executed using the command stack rather than directly calling execute.\n<br>\nThis is requried for a deneric support for the undo/redo concept within draw2d.<br></p>",
+  "extends": [],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "Command",
+    "description": "",
+    "parameters": [],
+    "examples": []
+  },
+  "functions": [
+    {
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Create a new Command objects which can be execute via the CommandStack.</p>",
+      "parameters": [
+        {
+          "name": "label",
+          "type": "String",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "getLabel",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "String",
+        "description": "<p>the label for this command</p>"
+      }
+    },
+    {
+      "name": "canExecute",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should\nreturn false. The execution of this Command doesn't modify the model.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "Boolean",
+        "description": "<p>return try if the command modify the model or make any relevant changes</p>"
+      }
+    },
+    {
+      "name": "execute",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Execute the command the first time.\nSup-classes must implement this method.</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "cancel",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Will be called if the user cancel the operation.</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "undo",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Undo the command.\nSup-classes must implement this method.</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "redo",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Redo the command after the user has undo this command.\nSup-classes must implement this method.</p>",
+      "parameters": [],
+      "examples": []
+    }
+  ]
+}

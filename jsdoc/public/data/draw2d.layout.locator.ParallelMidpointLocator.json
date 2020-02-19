@@ -1,0 +1,59 @@
+{
+  "name": "ParallelMidpointLocator",
+  "namespace": "draw2d.layout.locator",
+  "description": "<p>draw2d.layout.locator.ParallelMidpointLocator</p>\n<p>A ParallelMidpointLocator that is used to place label at the midpoint of a  routed\nconnection. The midpoint is always in the center of an edge.\nThe label is aligned to the connection angle at the calculated conection segment.</p>",
+  "extends": [],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "ParallelMidpointLocator",
+    "description": "",
+    "parameters": [],
+    "examples": []
+  },
+  "functions": [
+    {
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Constructs a ParallelMidpointLocator with optional padding to the connection.</p>\n<p>if the parameter <b>distanceFromConnection</b> is less than zero the label is\nplaced above of the connection. Else the label is below the connection.</p>",
+      "parameters": [
+        {
+          "name": "distanceFromConnection",
+          "type": "Number",
+          "description": "<p>the distance of the label to the connection.</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "relocate",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Relocates the given Figure always in the center of an edge.</p>",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "Number",
+          "description": "<p>child index of the target</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "target",
+          "type": "draw2d.Figure",
+          "description": "<p>The figure to relocate</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    }
+  ]
+}

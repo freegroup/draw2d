@@ -1,0 +1,315 @@
+{
+  "name": "Rectangle",
+  "namespace": "draw2d.shape.dimetric",
+  "description": "<p>draw2d.shape.dimetric.Rectangle\nA Rectangle Figure in a dimetric perspective.</p>",
+  "extends": [
+    "draw2d.shape.basic.Polygon"
+  ],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "Rectangle",
+    "description": "",
+    "parameters": [],
+    "examples": [
+      "let d1 =  new draw2d.shape.dimetric.Rectangle({x:10,y:10});\n    let d2 =  new draw2d.shape.dimetric.Rectangle({x:100,y:10, bgColor:\"#f0f000\", alpha:0.7, width:100, height:60});\n\n    canvas.add(d1);\n    canvas.add(d2);\n\n    canvas.setCurrentSelection(d2);"
+    ]
+  },
+  "functions": [
+    {
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Creates a new figure element which are not assigned to any canvas.</p>",
+      "parameters": [
+        {
+          "name": "attr",
+          "type": "Object",
+          "description": "<p>the configuration of the shape</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "setRadius",
+      "access": "",
+      "virtual": false,
+      "description": "",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "createShapeElement",
+      "access": "",
+      "virtual": false,
+      "description": "",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "calculatePath",
+      "access": "",
+      "virtual": false,
+      "description": "<p>calculate the path of the polygon</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "repaint",
+      "access": "",
+      "virtual": false,
+      "description": "",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "translate",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Translate the figure with the given x/y offset. This method modifies all\nvertices and the bounding box.</p>",
+      "parameters": [
+        {
+          "name": "dx",
+          "type": "Number",
+          "description": "<p>The new x translate offset</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "dy",
+          "type": "Number",
+          "description": "<p>The new y translate offset</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "setPosition",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Change the position of the polygon. This method updates all vertices.</p>",
+      "parameters": [
+        {
+          "name": "x",
+          "type": [
+            "Number",
+            "draw2d.geo.Point"
+          ],
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "y",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "setDimension",
+      "access": "",
+      "virtual": false,
+      "description": "",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "getVertices",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Return all vertices of the polygon.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.util.ArrayList",
+        "description": ""
+      }
+    },
+    {
+      "name": "getVertex",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Return the Vertex with the given index.</p>",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "Number",
+          "description": "<p>the index of the vertex to return</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "setVertex",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Update the vertex at the given index. The method call didn't have any effect\nif the vertex didn't exists.</p>",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "x",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "y",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "addVertex",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Append a new vertex to the polygon.</p>",
+      "parameters": [
+        {
+          "name": "x",
+          "type": [
+            "Number",
+            "draw2d.geo.Point"
+          ],
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "y",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "insertVertexAt",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Insert a new vertex at the given index. All vertices will be shifted to\nfree the requested index.</p>",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "x",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "y",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "removeVertexAt",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Remove a vertex from the polygon and return the removed point.</p>",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.geo.Point",
+        "description": "<p>the removed vertex</p>"
+      }
+    },
+    {
+      "name": "setRotationAngle",
+      "access": "",
+      "virtual": false,
+      "description": "",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "updateBoundingBox",
+      "access": "private",
+      "virtual": false,
+      "description": "<p>Calculate the bounding box of the shape and store them in an internal\nvariable for fast access.</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "createCommand",
+      "access": "",
+      "virtual": false,
+      "description": "",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "getPersistentAttributes",
+      "access": "",
+      "virtual": false,
+      "description": "",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "setPersistentAttributes",
+      "access": "",
+      "virtual": false,
+      "description": "",
+      "parameters": [],
+      "examples": []
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "name": "XYAbsPortLocator",
+  "namespace": "draw2d.layout.locator",
+  "description": "<p>draw2d.layout.locator.XYAbsPortLocator</p>\n<p>Create a locator for fixed x/y coordinate position. The port in the example below is\nalways 20px below of the top border.</p>",
+  "extends": [],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "XYAbsPortLocator",
+    "description": "",
+    "parameters": [],
+    "examples": [
+      "var figure =  new draw2d.shape.basic.Rectangle({x:130,y:30,width:100,height:60});\n    figure.createPort(\"input\", new draw2d.layout.locator.XYAbsPortLocator(0,20));\n\n    canvas.add(figure);"
+    ]
+  },
+  "functions": [
+    {
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "description": "<p>{@link draw2d.shape.node.Node}</p>",
+      "parameters": [
+        {
+          "name": "x",
+          "type": "Number",
+          "description": "<p>the x coordinate of the port relative to the left of the parent</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "y",
+          "type": "Number",
+          "description": "<p>the y coordinate of the port relative to the top of the parent</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "relocate",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Controls the location of an {@link draw2d.Figure}</p>",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "Number",
+          "description": "<p>child index of the figure</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "figure",
+          "type": "draw2d.Figure",
+          "description": "<p>the figure to control</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    }
+  ]
+}

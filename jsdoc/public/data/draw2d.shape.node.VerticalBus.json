@@ -1,0 +1,145 @@
+{
+  "name": "VerticalBus",
+  "namespace": "draw2d.shape.node",
+  "description": "<p>draw2d.shape.node.VerticalBus</p>\n<p>A horizontal bus shape with a special kind of port handling. The hole figure is a hybrid port.</p>",
+  "extends": [
+    "draw2d.shape.node.Hub"
+  ],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "VerticalBus",
+    "description": "",
+    "parameters": [],
+    "examples": [
+      "let figure =  new draw2d.shape.node.VerticalBus({width:40, height:300, text:\"Vertical Bus\"});\n\n    canvas.add(figure,50,10);"
+    ]
+  },
+  "functions": [
+    {
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "description": "",
+      "parameters": [
+        {
+          "name": "attr",
+          "type": "Object",
+          "description": "<p>the configuration of the shape</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "setLabel",
+      "access": "",
+      "virtual": false,
+      "description": "<p>set the label for the Hub</p>",
+      "parameters": [
+        {
+          "name": "labelString",
+          "type": "String",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "getMinHeight",
+      "access": "",
+      "virtual": false,
+      "description": "",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "getMinWidth",
+      "access": "",
+      "virtual": false,
+      "description": "",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "delegateTarget",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Called by the framework during drag&amp;drop operations if the user drag a figure over this figure</p>",
+      "parameters": [
+        {
+          "name": "draggedFigure",
+          "type": "draw2d.Figure",
+          "description": "<p>The figure which is currently dragging</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.Figure",
+        "description": "<p>the figure which should receive the drop event or null if the element didn't want a drop event</p>"
+      }
+    },
+    {
+      "name": "getMinWidth",
+      "access": "",
+      "virtual": false,
+      "description": "<p>This value is relevant for the interactive resize of the figure.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": "<p>Returns the min. width of this object.</p>"
+      }
+    },
+    {
+      "name": "repaint",
+      "access": "private",
+      "virtual": false,
+      "description": "",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "setConnectionDirStrategy",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Set the strategy for the connection direction calculation.<br>\n<br></p>\n<ul>\n<li>0 - Use the best/shortest direction (UP/RIGHT/DOWN/LEFT) for the connection routing (default)</li>\n<li>1 - Use UP/DOWN for the connection direction</li>\n<li>2 - Use LEFT/RIGHT</li>\n</ul>",
+      "parameters": [
+        {
+          "name": "strategy",
+          "type": "Number",
+          "description": "<p>the connection routing strategy to use</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "getPersistentAttributes",
+      "access": "",
+      "virtual": false,
+      "description": "",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "setPersistentAttributes",
+      "access": "",
+      "virtual": false,
+      "description": "",
+      "parameters": [],
+      "examples": []
+    }
+  ]
+}

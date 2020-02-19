@@ -1,0 +1,45 @@
+{
+  "name": "ui",
+  "namespace": "draw2d",
+  "description": "",
+  "access": "",
+  "virtual": false,
+  "classes": [
+    {
+      "name": "LabelEditor",
+      "namespace": "draw2d.ui",
+      "description": "<p>Base class for all draw2d.shape.basic.Label editors. The default implementation is to open\na simple javascript prompt dialog.<br>\nUse LabelInplaceEditor or your own implementation if you need more comfort.</p>",
+      "extends": [],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "LabelEditor",
+        "description": "",
+        "parameters": [],
+        "examples": [
+          "var label =  new draw2d.shape.basic.Label({text:\"Double Click on me\"});\n\n    label.installEditor(new draw2d.ui.LabelEditor({\n       // called after the value has been set to the LabelFigure\n       onCommit: $.proxy(function(value){\n           alert(\"new value set to:\"+value);\n       },this),\n       // called if the user abort the operation\n       onCancel: function(){\n       }\n    }));\n\n    canvas.add(label,50,10);"
+        ]
+      },
+      "functions": [
+        {
+          "name": "start",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Trigger the edit of the label text.</p>",
+          "parameters": [
+            {
+              "name": "label",
+              "type": "draw2d.shape.basic.Label",
+              "description": "<p>the label to edit</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    }
+  ]
+}

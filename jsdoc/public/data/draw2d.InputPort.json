@@ -1,0 +1,42 @@
+{
+  "name": "InputPort",
+  "namespace": "draw2d",
+  "description": "<p>A InputPort is the start anchor for a {@link draw2d.Connection}.</p>",
+  "extends": [],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "InputPort",
+    "description": "",
+    "parameters": [],
+    "examples": []
+  },
+  "functions": [
+    {
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Create a new InputPort element</p>",
+      "parameters": [
+        {
+          "name": "attr",
+          "type": "Object",
+          "description": "<p>the configuration of the shape</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "createCommand",
+      "access": "",
+      "virtual": false,
+      "description": "",
+      "parameters": [],
+      "examples": []
+    }
+  ]
+}

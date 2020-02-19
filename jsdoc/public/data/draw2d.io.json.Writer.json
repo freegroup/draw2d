@@ -1,0 +1,60 @@
+{
+  "name": "Writer",
+  "namespace": "draw2d.io.json",
+  "description": "<p>Serialize the canvas document into a JSON object which can be read from the corresponding\n{@link draw2d.io.json.Reader}.</p>\n<pre><code> // Create a JSON writer and convert it into a JSON-String representation.\n //\n var writer = new draw2d.io.json.Writer();\n writer.marshal(canvas, function(json){\n    // convert the json object into string representation\n    var jsonTxt = JSON.stringify(json,null,2);\n \n    // insert the json string into a DIV for preview or post\n    // it via ajax to the server....\n    $(&quot;#json&quot;).text(jsonTxt);\n \n });</code></pre>",
+  "extends": [
+    "draw2d.io.Writer"
+  ],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "Writer",
+    "description": "",
+    "parameters": [],
+    "examples": []
+  },
+  "functions": [
+    {
+      "name": "marshal",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Export the content to the implemented data format. Inherit class implements\ncontent specific writer.\n<br>\n<br></p>\n<p>Method signature has been changed from version 2.10.1 to version 3.0.0.<br>\nThe parameter <b>resultCallback</b> is required and new. The method calls\nthe callback instead of return the result.</p>",
+      "parameters": [
+        {
+          "name": "canvas",
+          "type": "draw2d.Canvas",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "resultCallback",
+          "type": "function",
+          "description": "<p>the method to call on success. The first argument is the result object, the second the base64 representation of the file content</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "resultCallback.json",
+          "type": "Object",
+          "description": "<p>the canvas document as JSON object</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "resultCallback.base64",
+          "type": "String",
+          "description": "<p>the canvas document as base encoded JSON</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    }
+  ]
+}

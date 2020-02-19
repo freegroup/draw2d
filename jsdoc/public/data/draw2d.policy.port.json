@@ -1,0 +1,1202 @@
+{
+  "name": "port",
+  "namespace": "draw2d.policy",
+  "description": "",
+  "access": "",
+  "virtual": false,
+  "classes": [
+    {
+      "name": "ElasticStrapFeedbackPolicy",
+      "namespace": "draw2d.policy.port",
+      "description": "<p>draw2d.policy.port.ElasticStrapFeedbackPolicy</p>\n<p>A draw2d.policy.SelectionFeedbackPolicy that is sensitive to the canvas selection. Subclasses will typically\ndecorate the {@link draw2d.Figure figure} with things like selection handles and/or focus feedback.\n<br>\nIf you want to change the handle visibility for a figure, then you should use SelectionFeedbackPolicy to do that.</p>",
+      "extends": [
+        "draw2d.policy.figure.DragDropEditPolicy"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "ElasticStrapFeedbackPolicy",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Creates a new Router object</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "onDragStart",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Called by the framework if the related shape has init a drag&amp;drop\noperation</p>",
+          "parameters": [
+            {
+              "name": "canvas",
+              "type": "draw2d.Canvas",
+              "description": "<p>The host canvas</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "<p>The related figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "x",
+              "type": "Number",
+              "description": "<p>the x-coordinate of the mouse up event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "y",
+              "type": "Number",
+              "description": "<p>the y-coordinate of the mouse up event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "shiftKey",
+              "type": "Boolean",
+              "description": "<p>true if the shift key has been pressed during this event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "ctrlKey",
+              "type": "Boolean",
+              "description": "<p>true if the ctrl key has been pressed during the event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onDrag",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Called by the framework during drag a figure.</p>",
+          "parameters": [
+            {
+              "name": "canvas",
+              "type": "draw2d.Canvas",
+              "description": "<p>The host canvas</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "<p>The related figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onDragEnd",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Called by the framework if the drag drop operation ends.</p>",
+          "parameters": [
+            {
+              "name": "canvas",
+              "type": "draw2d.Canvas",
+              "description": "<p>The host canvas</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "<p>The related figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "x",
+              "type": "Number",
+              "description": "<p>the x-coordinate of the mouse event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "y",
+              "type": "Number",
+              "description": "<p>the y-coordinate of the mouse event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "shiftKey",
+              "type": "Boolean",
+              "description": "<p>true if the shift key has been pressed during this event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "ctrlKey",
+              "type": "Boolean",
+              "description": "<p>true if the ctrl key has been pressed during the event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onInstall",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Called by the host if the policy has been installed.</p>",
+          "parameters": [
+            {
+              "name": "host",
+              "type": [
+                "draw2d.Canvas",
+                "draw2d.Figure"
+              ],
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onUninstall",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Called by the host if the policy has been uninstalled.</p>",
+          "parameters": [
+            {
+              "name": "host",
+              "type": [
+                "draw2d.Canvas",
+                "draw2d.Figure"
+              ],
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "adjustPosition",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Adjust the coordinates to the rectangle/region of this constraint.</p>",
+          "parameters": [
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "x",
+              "type": [
+                "Number",
+                "draw2d.geo.Point"
+              ],
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "y",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "draw2d.geo.Point",
+            "description": "<p>the constraint position of the figure</p>"
+          }
+        },
+        {
+          "name": "adjustDimension",
+          "access": "",
+          "virtual": false,
+          "description": "<p>ensure that the dimension didn't goes outside the given restrictions</p>",
+          "parameters": [
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "w",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "h",
+              "type": "number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "draw2d.geo.Rectangle",
+            "description": "<p>the constraint position of the figure</p>"
+          }
+        },
+        {
+          "name": "moved",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback if the figure has moved</p>",
+          "parameters": [
+            {
+              "name": "canvas",
+              "type": "draw2d.Canvas",
+              "description": "<p>The host canvas</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "<p>The related figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onRightMouseDown",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Called if the user press the right mouse on the figure.<br>\nYou can either override the &quot;onContextMenu&quot; method of the figure or install an editor policy and override this method.\nBooth is valid and possible.</p>",
+          "parameters": [
+            {
+              "name": "figure",
+              "type": [
+                "draw2d.Figure",
+                "draw2d.shape.basic.Line"
+              ],
+              "description": "<p>the figure below the mouse</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "x",
+              "type": "Number",
+              "description": "<p>the x-coordinate of the mouse down event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "y",
+              "type": "Number",
+              "description": "<p>the y-coordinate of the mouse down event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "shiftKey",
+              "type": "Boolean",
+              "description": "<p>true if the shift key has been pressed during this event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "ctrlKey",
+              "type": "Boolean",
+              "description": "<p>true if the ctrl key has been pressed during the event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "attr",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
+          "parameters": [
+            {
+              "name": "name",
+              "type": "String/Object",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "value",
+              "type": "Object",
+              "description": "",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "IntrusivePortsFeedbackPolicy",
+      "namespace": "draw2d.policy.port",
+      "description": "",
+      "extends": [
+        "draw2d.policy.figure.DragDropEditPolicy"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "IntrusivePortsFeedbackPolicy",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "onDragStart",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Called by the framework if the related shape has init a drag&amp;drop\noperation</p>",
+          "parameters": [
+            {
+              "name": "canvas",
+              "type": "draw2d.Canvas",
+              "description": "<p>The host canvas</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "<p>The related figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "x",
+              "type": "Number",
+              "description": "<p>the x-coordinate of the mouse up event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "y",
+              "type": "Number",
+              "description": "<p>the y-coordinate of the mouse up event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "shiftKey",
+              "type": "Boolean",
+              "description": "<p>true if the shift key has been pressed during this event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "ctrlKey",
+              "type": "Boolean",
+              "description": "<p>true if the ctrl key has been pressed during the event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onDrag",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Called by the framework during drag a figure.</p>",
+          "parameters": [
+            {
+              "name": "canvas",
+              "type": "draw2d.Canvas",
+              "description": "<p>The host canvas</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "<p>The related figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onDragEnd",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Called by the framework if the drag drop operation ends.</p>",
+          "parameters": [
+            {
+              "name": "canvas",
+              "type": "draw2d.Canvas",
+              "description": "<p>The host canvas</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "<p>The related figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onInstall",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Called by the host if the policy has been installed.</p>",
+          "parameters": [
+            {
+              "name": "host",
+              "type": [
+                "draw2d.Canvas",
+                "draw2d.Figure"
+              ],
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onUninstall",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Called by the host if the policy has been uninstalled.</p>",
+          "parameters": [
+            {
+              "name": "host",
+              "type": [
+                "draw2d.Canvas",
+                "draw2d.Figure"
+              ],
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "adjustPosition",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Adjust the coordinates to the rectangle/region of this constraint.</p>",
+          "parameters": [
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "x",
+              "type": [
+                "Number",
+                "draw2d.geo.Point"
+              ],
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "y",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "draw2d.geo.Point",
+            "description": "<p>the constraint position of the figure</p>"
+          }
+        },
+        {
+          "name": "adjustDimension",
+          "access": "",
+          "virtual": false,
+          "description": "<p>ensure that the dimension didn't goes outside the given restrictions</p>",
+          "parameters": [
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "w",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "h",
+              "type": "number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "draw2d.geo.Rectangle",
+            "description": "<p>the constraint position of the figure</p>"
+          }
+        },
+        {
+          "name": "moved",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback if the figure has moved</p>",
+          "parameters": [
+            {
+              "name": "canvas",
+              "type": "draw2d.Canvas",
+              "description": "<p>The host canvas</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "<p>The related figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onRightMouseDown",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Called if the user press the right mouse on the figure.<br>\nYou can either override the &quot;onContextMenu&quot; method of the figure or install an editor policy and override this method.\nBooth is valid and possible.</p>",
+          "parameters": [
+            {
+              "name": "figure",
+              "type": [
+                "draw2d.Figure",
+                "draw2d.shape.basic.Line"
+              ],
+              "description": "<p>the figure below the mouse</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "x",
+              "type": "Number",
+              "description": "<p>the x-coordinate of the mouse down event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "y",
+              "type": "Number",
+              "description": "<p>the y-coordinate of the mouse down event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "shiftKey",
+              "type": "Boolean",
+              "description": "<p>true if the shift key has been pressed during this event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "ctrlKey",
+              "type": "Boolean",
+              "description": "<p>true if the ctrl key has been pressed during the event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "attr",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
+          "parameters": [
+            {
+              "name": "name",
+              "type": "String/Object",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "value",
+              "type": "Object",
+              "description": "",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "PortFeedbackPolicy",
+      "namespace": "draw2d.policy.port",
+      "description": "<p>draw2d.policy.port.PortFeedbackPolicy</p>\n<p>Base class for all port feedback policies. Used for grow, highlight or\nother decorations during drag&amp;drop and connecting of ports.</p>",
+      "extends": [
+        "draw2d.policy.figure.DragDropEditPolicy"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "PortFeedbackPolicy",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "onHoverEnter",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Called if the dragged port hove another port</p>",
+          "parameters": [
+            {
+              "name": "canvas",
+              "type": "draw2d.Canvas",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "draggedFigure",
+              "type": "draw2d.Port",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "hoverFigure",
+              "type": "draw2d.Figure",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onHoverLeave",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Fired if the dragged figures leaves the hover figure</p>",
+          "parameters": [
+            {
+              "name": "canvas",
+              "type": "draw2d.Canvas",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "draggedFigure",
+              "type": "draw2d.Port",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "hoverFigure",
+              "type": "draw2d.Figure",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onInstall",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Called by the host if the policy has been installed.</p>",
+          "parameters": [
+            {
+              "name": "host",
+              "type": [
+                "draw2d.Canvas",
+                "draw2d.Figure"
+              ],
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onUninstall",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Called by the host if the policy has been uninstalled.</p>",
+          "parameters": [
+            {
+              "name": "host",
+              "type": [
+                "draw2d.Canvas",
+                "draw2d.Figure"
+              ],
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onDragStart",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Called by the framework if the related shape has init a drag&amp;drop\noperation</p>\n<p>The Policy can send a veto to prevent the DragDrop operation</p>",
+          "parameters": [
+            {
+              "name": "canvas",
+              "type": "draw2d.Canvas",
+              "description": "<p>The host canvas</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "<p>The related figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "x",
+              "type": "Number",
+              "description": "<p>the x-coordinate of the mouse up event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "y",
+              "type": "Number",
+              "description": "<p>the y-coordinate of the mouse up event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "shiftKey",
+              "type": "Boolean",
+              "description": "<p>true if the shift key has been pressed during this event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "ctrlKey",
+              "type": "Boolean",
+              "description": "<p>true if the ctrl key has been pressed during the event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": "<p>return <b>false</b> to send a veto to the drag operation</p>"
+          }
+        },
+        {
+          "name": "onDrag",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Called by the framework during drag a figure.</p>",
+          "parameters": [
+            {
+              "name": "canvas",
+              "type": "draw2d.Canvas",
+              "description": "<p>The host canvas</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "<p>The related figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onDragEnd",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Called by the framework if the drag drop operation ends.</p>",
+          "parameters": [
+            {
+              "name": "canvas",
+              "type": "draw2d.Canvas",
+              "description": "<p>The host canvas</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "<p>The related figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "x",
+              "type": "Number",
+              "description": "<p>the x-coordinate of the mouse up event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "y",
+              "type": "Number",
+              "description": "<p>the y-coordinate of the mouse up event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "shiftKey",
+              "type": "Boolean",
+              "description": "<p>true if the shift key has been pressed during this event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "ctrlKey",
+              "type": "Boolean",
+              "description": "<p>true if the ctrl key has been pressed during the event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "adjustPosition",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Adjust the coordinates to the rectangle/region of this constraint.</p>",
+          "parameters": [
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "x",
+              "type": [
+                "Number",
+                "draw2d.geo.Point"
+              ],
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "y",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "draw2d.geo.Point",
+            "description": "<p>the constraint position of the figure</p>"
+          }
+        },
+        {
+          "name": "adjustDimension",
+          "access": "",
+          "virtual": false,
+          "description": "<p>ensure that the dimension didn't goes outside the given restrictions</p>",
+          "parameters": [
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "w",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "h",
+              "type": "number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "draw2d.geo.Rectangle",
+            "description": "<p>the constraint position of the figure</p>"
+          }
+        },
+        {
+          "name": "moved",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback if the figure has moved</p>",
+          "parameters": [
+            {
+              "name": "canvas",
+              "type": "draw2d.Canvas",
+              "description": "<p>The host canvas</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "<p>The related figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onRightMouseDown",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Called if the user press the right mouse on the figure.<br>\nYou can either override the &quot;onContextMenu&quot; method of the figure or install an editor policy and override this method.\nBooth is valid and possible.</p>",
+          "parameters": [
+            {
+              "name": "figure",
+              "type": [
+                "draw2d.Figure",
+                "draw2d.shape.basic.Line"
+              ],
+              "description": "<p>the figure below the mouse</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "x",
+              "type": "Number",
+              "description": "<p>the x-coordinate of the mouse down event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "y",
+              "type": "Number",
+              "description": "<p>the y-coordinate of the mouse down event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "shiftKey",
+              "type": "Boolean",
+              "description": "<p>true if the shift key has been pressed during this event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "ctrlKey",
+              "type": "Boolean",
+              "description": "<p>true if the ctrl key has been pressed during the event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "attr",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
+          "parameters": [
+            {
+              "name": "name",
+              "type": "String/Object",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "value",
+              "type": "Object",
+              "description": "",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    }
+  ]
+}

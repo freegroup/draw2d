@@ -1,0 +1,666 @@
+{
+  "name": "BoundingboxSelectionPolicy",
+  "namespace": "draw2d.policy.canvas",
+  "description": "",
+  "extends": [
+    "draw2d.policy.canvas.SelectionPolicy"
+  ],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "BoundingboxSelectionPolicy",
+    "description": "",
+    "parameters": [],
+    "examples": []
+  },
+  "functions": [
+    {
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Creates a new selection policy for a canvas.</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "select",
+      "access": "",
+      "virtual": false,
+      "description": "",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "setDecisionMode",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Set the selection handling mode to <b>intersection</b> or to <b>isInside</b>.</p>\n<ul>\n  <li>true = intersection, shapes must only touch the selection bounding box </li>\n  <li>false = isInside, shapes must complete inside the selection bounding box (default)</li>\n</ul>",
+      "parameters": [
+        {
+          "name": "useIntersectionMode",
+          "type": "Boolean",
+          "description": "<p>set true if the selection handle should use the alternative selection approach</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "onMouseDown",
+      "access": "",
+      "virtual": false,
+      "description": "",
+      "parameters": [
+        {
+          "name": "canvas",
+          "type": "draw2d.Canvas",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "x",
+          "type": "Number",
+          "description": "<p>the x-coordinate of the mouse down event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "y",
+          "type": "Number",
+          "description": "<p>the y-coordinate of the mouse down event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "shiftKey",
+          "type": "Boolean",
+          "description": "<p>true if the shift key has been pressed during this event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "ctrlKey",
+          "type": "Boolean",
+          "description": "<p>true if the ctrl key has been pressed during the event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "onMouseDrag",
+      "access": "",
+      "virtual": false,
+      "description": "",
+      "parameters": [
+        {
+          "name": "canvas",
+          "type": "draw2d.Canvas",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "dx",
+          "type": "Number",
+          "description": "<p>The x diff between start of dragging and this event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "dy",
+          "type": "Number",
+          "description": "<p>The y diff between start of dragging and this event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "dx2",
+          "type": "Number",
+          "description": "<p>The x diff since the last call of this dragging operation</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "dy2",
+          "type": "Number",
+          "description": "<p>The y diff since the last call of this dragging operation</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "shiftKey",
+          "type": "Boolean",
+          "description": "<p>true if the shift key has been pressed during this event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "ctrlKey",
+          "type": "Boolean",
+          "description": "<p>true if the ctrl key has been pressed during the event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "onMouseUp",
+      "access": "",
+      "virtual": false,
+      "description": "",
+      "parameters": [
+        {
+          "name": "canvas",
+          "type": "draw2d.Canvas",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "x",
+          "type": "Number",
+          "description": "<p>the x-coordinate of the mouse down event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "y",
+          "type": "Number",
+          "description": "<p>the y-coordinate of the mouse down event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "shiftKey",
+          "type": "Boolean",
+          "description": "<p>true if the shift key has been pressed during this event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "ctrlKey",
+          "type": "Boolean",
+          "description": "<p>true if the ctrl key has been pressed during the event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "select",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Selects the given figure within the canvas. The policy must unselect already selected\nfigures or show any decorations.</p>",
+      "parameters": [
+        {
+          "name": "canvas",
+          "type": "draw2d.Canvas",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "figure",
+          "type": "draw2d.Figure",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "unselect",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Unselect the given figure in the canvas and remove all resize handles</p>",
+      "parameters": [
+        {
+          "name": "canvas",
+          "type": "draw2d.Canvas",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "figure",
+          "type": "draw2d.Figure",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "onInstall",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Called if the policy is installed into the canvas.</p>",
+      "parameters": [
+        {
+          "name": "canvas",
+          "type": "draw2d.Canvas",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "onUninstall",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Called if the policy is deinstalled from the canvas</p>",
+      "parameters": [
+        {
+          "name": "canvas",
+          "type": "draw2d.Canvas",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "onClick",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Called by the canvas if the user click on a figure.</p>",
+      "parameters": [
+        {
+          "name": "the",
+          "type": "draw2d.Figure",
+          "description": "<p>figure under the click event. Can be null</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "mouseX",
+          "type": "Number",
+          "description": "<p>the x coordinate of the mouse during the click event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "mouseY",
+          "type": "Number",
+          "description": "<p>the y coordinate of the mouse during the click event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "shiftKey",
+          "type": "Boolean",
+          "description": "<p>true if the shift key has been pressed during this event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "ctrlKey",
+          "type": "Boolean",
+          "description": "<p>true if the ctrl key has been pressed during the event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "onMouseMove",
+      "access": "",
+      "virtual": false,
+      "description": "",
+      "parameters": [
+        {
+          "name": "canvas",
+          "type": "draw2d.Canvas",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "x",
+          "type": "Number",
+          "description": "<p>the x-coordinate of the mouse event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "y",
+          "type": "Number",
+          "description": "<p>the y-coordinate of the mouse event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "shiftKey",
+          "type": "Boolean",
+          "description": "<p>true if the shift key has been pressed during this event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "ctrlKey",
+          "type": "Boolean",
+          "description": "<p>true if the ctrl key has been pressed during the event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "onDoubleClick",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Called by the canvas if the user double click on a figure.</p>",
+      "parameters": [
+        {
+          "name": "the",
+          "type": "draw2d.Figure",
+          "description": "<p>figure under the double click event. Can be null</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "mouseX",
+          "type": "Number",
+          "description": "<p>the x coordinate of the mouse during the click event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "mouseY",
+          "type": "Number",
+          "description": "<p>the y coordinate of the mouse during the click event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "shiftKey",
+          "type": "Boolean",
+          "description": "<p>true if the shift key has been pressed during this event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "ctrlKey",
+          "type": "Boolean",
+          "description": "<p>true if the ctrl key has been pressed during the event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "onRightMouseDown",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Called if the user press the right mouse in the canvas.</p>",
+      "parameters": [
+        {
+          "name": "figure",
+          "type": [
+            "draw2d.Figure",
+            "draw2d.shape.basic.Line"
+          ],
+          "description": "<p>the figure below the mouse</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "x",
+          "type": "Number",
+          "description": "<p>the x-coordinate of the mouse down event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "y",
+          "type": "Number",
+          "description": "<p>the y-coordinate of the mouse down event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "shiftKey",
+          "type": "Boolean",
+          "description": "<p>true if the shift key has been pressed during this event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "ctrlKey",
+          "type": "Boolean",
+          "description": "<p>true if the ctrl key has been pressed during the event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "onMouseWheel",
+      "access": "",
+      "virtual": false,
+      "description": "<p>called if the user uses the mouse wheel.</p>",
+      "parameters": [
+        {
+          "name": "wheelDelta",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "x",
+          "type": "Number",
+          "description": "<p>the x coordinate of the event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "y",
+          "type": "Number",
+          "description": "<p>the y coordinate of the event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "shiftKey",
+          "type": "",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "ctrlKey",
+          "type": "",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "Boolean",
+        "description": "<p>return <b>false</b> to preven tthe default event operation (e.g. scrolling)</p>"
+      }
+    },
+    {
+      "name": "snap",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Adjust the coordinates to the given constraint.</p>",
+      "parameters": [
+        {
+          "name": "canvas",
+          "type": "draw2d.Canvas",
+          "description": "<p>the related canvas</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "figure",
+          "type": "draw2d.Figure",
+          "description": "<p>the figure to snap</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "modifiedPos",
+          "type": "draw2d.geo.Point",
+          "description": "<p>the already modified position of the figure (e.g. from an another Policy)</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "originalPos",
+          "type": "draw2d.geo.Point",
+          "description": "<p>the original requested position of the figure</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.geo.Point",
+        "description": "<p>the constraint position of the figure</p>"
+      }
+    },
+    {
+      "name": "createMonochromGif",
+      "access": "private",
+      "virtual": false,
+      "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
+      "parameters": [
+        {
+          "name": "w",
+          "type": "",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "h",
+          "type": "",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "d",
+          "type": "",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "color",
+          "type": "",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "String",
+        "description": ""
+      }
+    },
+    {
+      "name": "attr",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "String/Object",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "value",
+          "type": "Object",
+          "description": "",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    }
+  ]
+}

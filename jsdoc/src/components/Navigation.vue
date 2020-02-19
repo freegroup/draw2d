@@ -58,12 +58,11 @@
     transform: rotate(-45deg) translateY(-50%) translateX(0);
     transition: transform .25s;
     transform-origin: center;
-    border: 1px solid white !important;
+    border: 1px solid black !important;
     border-left: 0 !important;
     border-top: 0 !important;
   }
   .tree-anchor{
-    color:white !important;
     flex-grow: 2;
     outline: 0;
     display: flex;

@@ -1,0 +1,3723 @@
+{
+  "name": "connection",
+  "namespace": "draw2d.layout",
+  "description": "",
+  "access": "",
+  "virtual": false,
+  "classes": [
+    {
+      "name": "CircuitConnectionRouter",
+      "namespace": "draw2d.layout.connection",
+      "description": "<p>draw2d.layout.connection.CircuitConnectionRouter</p>\n<p>Provides a {@link draw2d.Connection} with an orthogonal route between the Connection's source\nand target anchors.\n<br>\nAdditional a <b>bridge</b> is added to each connection which didn't have a common source or target\nport.<br>\nA <b>dot</b> is added at the crossing if the two connections have a common spurce or target port.</p>\n<br>",
+      "extends": [
+        "draw2d.layout.connection.ManhattanConnectionRouter"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "CircuitConnectionRouter",
+        "description": "",
+        "parameters": [],
+        "examples": [
+          "let createConnection=function(){\n       let con = new draw2d.Connection();\n       con.setRouter(new draw2d.layout.connection.CircuitConnectionRouter());\n       return con;\n    };\n\n    // install a custom connection create policy\n    //\n    canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({\n           createConnection: createConnection\n    }));\n\n    // create and add two nodes which contains Ports (In and OUT)\n    //\n    let f1 = new draw2d.shape.analog.OpAmp({x:10, y:10});\n    let f2 = new draw2d.shape.analog.ResistorVertical({angle:90, height:20, x:300, y:150});\n    let f3 = new draw2d.shape.analog.ResistorVertical({x:250, y:70});\n    let f4 = new draw2d.shape.analog.ResistorVertical({x:10, y:90});\n\n    // ...add it to the canvas\n    //\n    canvas.add( f1);\n    canvas.add( f2);\n    canvas.add( f3);\n    canvas.add( f4);\n\n    // first Connection\n    //\n    let c = createConnection();\n    c.setSource(f1.getOutputPort(0));\n    c.setTarget(f2.getHybridPort(0));\n    canvas.add(c);\n\n    // second Connection between the other resistors\n    //\n    c = createConnection();\n    c.setSource(f3.getHybridPort(1));\n    c.setTarget(f4.getHybridPort(0));\n    canvas.add(c);"
+        ]
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Creates a new Router object.</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "onInstall",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method if the router has been assigned to a connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.Connection",
+              "description": "<p>The assigned connection</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onUninstall",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method if the router has been removed from the connection. In the case of the CircuitRouter\nall vertex nodes will be removed from the canvas.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.Connection",
+              "description": "<p>The related connection</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "setVertexRadius",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Set the radius of the vertex circle.</p>",
+          "parameters": [
+            {
+              "name": "radius",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "setJunctionRadius",
+          "access": "private",
+          "virtual": false,
+          "description": "<p>deprecated</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "setBridgeRadius",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Set the radius or span of the bridge. A bridge will be drawn if two connections are crossing and didn't have any\ncommon port.</p>",
+          "parameters": [
+            {
+              "name": "radius",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "route",
+          "access": "",
+          "virtual": false,
+          "description": "",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "route",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Routes the Connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.Connection",
+              "description": "<p>The Connection to route</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "routingHints",
+              "type": "Object",
+              "description": "<p>some helper attributes for the router</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.startMoved",
+              "type": "Boolean",
+              "description": "<p>is true if just the start location has moved</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.endMoved",
+              "type": "Boolean",
+              "description": "<p>is true if the destination location has changed</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.oldVertices",
+              "type": "draw2d.util.ArrayList",
+              "description": "<p>the vertices before the reroute has been triggered</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "_route",
+          "access": "private",
+          "virtual": false,
+          "description": "<p>Internal routing algorithm.</p>",
+          "parameters": [
+            {
+              "name": "conn",
+              "type": "draw2d.Connection",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "fromPt",
+              "type": "draw2d.geo.Point",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "fromDir",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "toPt",
+              "type": "draw2d.geo.Point",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "toDir",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canRemoveVertexAt",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method for the PolyLine or Connection to check if it possible to remove a vertex from\nthe list. The router can send an veto for this.\nPer default it is not possible to remove any vertex from the PolyLine exceptional if any interactive\nrouter is installed.</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canRemoveSegmentAt",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method for the PolyLine or Connection to verify that a segment is deletable.</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "getPersistentAttributes",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Tweak or enrich the polyline persistence data with routing information</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.PolyLine",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "memento",
+              "type": "Object",
+              "description": "<p>The memento data of the polyline</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": ""
+          }
+        },
+        {
+          "name": "setPersistentAttributes",
+          "access": "",
+          "virtual": false,
+          "description": "<p>set the attributes for the polyline with routing information</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.Line",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "memento",
+              "type": "Object",
+              "description": "<p>the JSON data to read</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onDrag",
+          "access": "",
+          "virtual": false,
+          "description": "<p>The draw2d.Connection delegates the drag operation to the router. The router can\nhandle the different constraints of the connection.</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.Line",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dx",
+              "type": "Number",
+              "description": "<p>the x difference between the start of the drag drop operation and now</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dy",
+              "type": "Number",
+              "description": "<p>the y difference between the start of the drag drop operation and now</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dx2",
+              "type": "Number",
+              "description": "<p>The x diff since the last call of this dragging operation</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dy2",
+              "type": "Number",
+              "description": "<p>The y diff since the last call of this dragging operation</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "verticesSet",
+          "access": "protected",
+          "virtual": false,
+          "description": "<p>Called by the connection if the vertices set outside.\nThis enforce the router to avoid full autoroute. E.g. InteractiveManhattanRouter</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.Line",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "ConnectionRouter",
+      "namespace": "draw2d.layout.connection",
+      "description": "<p>draw2d.layout.connection.ConnectionRouter\nRoutes a {@link draw2d.Connection}, possibly using a constraint.</p>",
+      "extends": [],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "ConnectionRouter",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Creates a new Router object</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "route",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Routes the Connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.Connection",
+              "description": "<p>The Connection to route</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "routingHints",
+              "type": "Object",
+              "description": "<p>some helper attributes for the router</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.startMoved",
+              "type": "Boolean",
+              "description": "<p>is true if just the start location has moved</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.endMoved",
+              "type": "Boolean",
+              "description": "<p>is true if the destination location has changed</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.oldVertices",
+              "type": "draw2d.util.ArrayList",
+              "description": "<p>the vertices before the reroute has been triggered</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onInstall",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method if the router has been assigned to a connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.shape.basic.PolyLine",
+              "description": "<p>The assigned connection</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onUninstall",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method if the router has been removed from the connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.shape.basic.PolyLine",
+              "description": "<p>The related connection</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canRemoveVertexAt",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method for the PolyLine or Connection to check if it possible to remove a vertex from\nthe list. The router can send an veto for this.\nPer default it is not possible to remove any vertex from the PolyLine exceptional if any interactive\nrouter is installed.</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canRemoveSegmentAt",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method for the PolyLine or Connection to verify that a segment is deletable.</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "getPersistentAttributes",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Tweak or enrich the polyline persistence data with routing information</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.PolyLine",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "memento",
+              "type": "Object",
+              "description": "<p>The memento data of the polyline</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": ""
+          }
+        },
+        {
+          "name": "setPersistentAttributes",
+          "access": "",
+          "virtual": false,
+          "description": "<p>set the attributes for the polyline with routing information</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.Line",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "memento",
+              "type": "Object",
+              "description": "<p>the JSON data to read</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onDrag",
+          "access": "",
+          "virtual": false,
+          "description": "<p>The draw2d.Connection delegates the drag operation to the router. The router can\nhandle the different constraints of the connection.</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.Line",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dx",
+              "type": "Number",
+              "description": "<p>the x difference between the start of the drag drop operation and now</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dy",
+              "type": "Number",
+              "description": "<p>the y difference between the start of the drag drop operation and now</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dx2",
+              "type": "Number",
+              "description": "<p>The x diff since the last call of this dragging operation</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dy2",
+              "type": "Number",
+              "description": "<p>The y diff since the last call of this dragging operation</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "verticesSet",
+          "access": "protected",
+          "virtual": false,
+          "description": "<p>Called by the connection if the vertices set outside.\nThis enforce the router to avoid full autoroute. E.g. InteractiveManhattanRouter</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.Line",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "DirectRouter",
+      "namespace": "draw2d.layout.connection",
+      "description": "<p>draw2d.layout.connection.DirectRouter</p>\n<p>Router for direct connections between two ports. Beeline\n<br>\n<br></p>",
+      "extends": [
+        "draw2d.layout.connection.ConnectionRouter"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "DirectRouter",
+        "description": "",
+        "parameters": [],
+        "examples": [
+          "let createConnection=function(){\n       let con = new draw2d.Connection();\n       con.setRouter(new draw2d.layout.connection.DirectRouter());\n       return con;\n    };\n\n    // install a custom connection create policy\n    //\n    canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({\n           createConnection: createConnection\n    }));\n\n    // create and add two nodes which contains Ports (In and OUT)\n    //\n    let start = new draw2d.shape.node.Start();\n    let end   = new draw2d.shape.node.End();\n    // ...add it to the canvas\n    canvas.add( start, 50,50);\n    canvas.add( end, 230,80);\n\n    // first Connection\n    //\n    let c = createConnection();\n    c.setSource(start.getOutputPort(0));\n    c.setTarget(end.getInputPort(0));\n    canvas.add(c);"
+        ]
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Creates a new Router object</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "onInstall",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method if the router has been assigned to a connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.Connection",
+              "description": "<p>The assigned connection</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "invalidate",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Invalidates the given Connection</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "route",
+          "access": "",
+          "virtual": false,
+          "description": "",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "route",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Routes the Connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.Connection",
+              "description": "<p>The Connection to route</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "routingHints",
+              "type": "Object",
+              "description": "<p>some helper attributes for the router</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.startMoved",
+              "type": "Boolean",
+              "description": "<p>is true if just the start location has moved</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.endMoved",
+              "type": "Boolean",
+              "description": "<p>is true if the destination location has changed</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.oldVertices",
+              "type": "draw2d.util.ArrayList",
+              "description": "<p>the vertices before the reroute has been triggered</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onUninstall",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method if the router has been removed from the connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.shape.basic.PolyLine",
+              "description": "<p>The related connection</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canRemoveVertexAt",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method for the PolyLine or Connection to check if it possible to remove a vertex from\nthe list. The router can send an veto for this.\nPer default it is not possible to remove any vertex from the PolyLine exceptional if any interactive\nrouter is installed.</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canRemoveSegmentAt",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method for the PolyLine or Connection to verify that a segment is deletable.</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "getPersistentAttributes",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Tweak or enrich the polyline persistence data with routing information</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.PolyLine",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "memento",
+              "type": "Object",
+              "description": "<p>The memento data of the polyline</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": ""
+          }
+        },
+        {
+          "name": "setPersistentAttributes",
+          "access": "",
+          "virtual": false,
+          "description": "<p>set the attributes for the polyline with routing information</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.Line",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "memento",
+              "type": "Object",
+              "description": "<p>the JSON data to read</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onDrag",
+          "access": "",
+          "virtual": false,
+          "description": "<p>The draw2d.Connection delegates the drag operation to the router. The router can\nhandle the different constraints of the connection.</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.Line",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dx",
+              "type": "Number",
+              "description": "<p>the x difference between the start of the drag drop operation and now</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dy",
+              "type": "Number",
+              "description": "<p>the y difference between the start of the drag drop operation and now</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dx2",
+              "type": "Number",
+              "description": "<p>The x diff since the last call of this dragging operation</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dy2",
+              "type": "Number",
+              "description": "<p>The y diff since the last call of this dragging operation</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "verticesSet",
+          "access": "protected",
+          "virtual": false,
+          "description": "<p>Called by the connection if the vertices set outside.\nThis enforce the router to avoid full autoroute. E.g. InteractiveManhattanRouter</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.Line",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "FanConnectionRouter",
+      "namespace": "draw2d.layout.connection",
+      "description": "<p>draw2d.layout.connection.FanConnectionRouter</p>\n<p>Automatic router that spreads its  {@link draw2d.Connection Connections} in a fan-like fashion upon collision.</p>",
+      "extends": [
+        "draw2d.layout.connection.DirectRouter"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "FanConnectionRouter",
+        "description": "",
+        "parameters": [],
+        "examples": [
+          "let createConnection=function(){\n       // return my special kind of connection\n       let con = new draw2d.Connection({\n         radius: 14,\n         router: new draw2d.layout.connection.FanConnectionRouter()\n       });\n       return con;\n    };\n\n    // install a custom connection create policy\n    //\n    canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({\n           createConnection: createConnection\n    }));\n\n    // create and add two nodes which contains Ports (In and OUT)\n    //\n    let start = new draw2d.shape.node.Start();\n    let end   = new draw2d.shape.node.End();\n    // ...add it to the canvas\n    canvas.add( start, 50,50);\n    canvas.add( end, 230,80);\n\n    // first Connection\n    //\n    let c = createConnection();\n    c.setSource(start.getOutputPort(0));\n    c.setTarget(end.getInputPort(0));\n    canvas.add(c);\n\n    // second Connection\n    //\n    c = createConnection();\n    c.setSource(start.getOutputPort(0));\n    c.setTarget(end.getInputPort(0));\n    canvas.add(c);\n\n    // third Connection\n    //\n    c = createConnection();\n    c.setSource(start.getOutputPort(0));\n    c.setTarget(end.getInputPort(0));\n    canvas.add(c);"
+        ]
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Creates a new Router object.</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "onInstall",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method if the router has been assigned to a connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.Connection",
+              "description": "<p>The assigned connection</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "route",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Layout the hands over connection in a manhattan like layout</p>",
+          "parameters": [
+            {
+              "name": "conn",
+              "type": "draw2d.Connection",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "oldVertices",
+              "type": "draw2d.util.ArrayList",
+              "description": "<p>old/existing vertices of the Connection</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "routingHints",
+              "type": "Object",
+              "description": "<p>some helper attributes for the router</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.startMoved",
+              "type": "Boolean",
+              "description": "<p>is true if just the start location has moved</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.destMoved",
+              "type": "Boolean",
+              "description": "<p>is true if the destination location has changed</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "routeCollision",
+          "access": "",
+          "virtual": false,
+          "description": "<p>route the connection if connections overlap. Two connections overlap if the combination\nof source and target anchors are equal.</p>",
+          "parameters": [
+            {
+              "name": "conn",
+              "type": "draw2d.Connection",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "invalidate",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Invalidates the given Connection</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "onUninstall",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method if the router has been removed from the connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.shape.basic.PolyLine",
+              "description": "<p>The related connection</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canRemoveVertexAt",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method for the PolyLine or Connection to check if it possible to remove a vertex from\nthe list. The router can send an veto for this.\nPer default it is not possible to remove any vertex from the PolyLine exceptional if any interactive\nrouter is installed.</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canRemoveSegmentAt",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method for the PolyLine or Connection to verify that a segment is deletable.</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "getPersistentAttributes",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Tweak or enrich the polyline persistence data with routing information</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.PolyLine",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "memento",
+              "type": "Object",
+              "description": "<p>The memento data of the polyline</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": ""
+          }
+        },
+        {
+          "name": "setPersistentAttributes",
+          "access": "",
+          "virtual": false,
+          "description": "<p>set the attributes for the polyline with routing information</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.Line",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "memento",
+              "type": "Object",
+              "description": "<p>the JSON data to read</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onDrag",
+          "access": "",
+          "virtual": false,
+          "description": "<p>The draw2d.Connection delegates the drag operation to the router. The router can\nhandle the different constraints of the connection.</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.Line",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dx",
+              "type": "Number",
+              "description": "<p>the x difference between the start of the drag drop operation and now</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dy",
+              "type": "Number",
+              "description": "<p>the y difference between the start of the drag drop operation and now</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dx2",
+              "type": "Number",
+              "description": "<p>The x diff since the last call of this dragging operation</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dy2",
+              "type": "Number",
+              "description": "<p>The y diff since the last call of this dragging operation</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "verticesSet",
+          "access": "protected",
+          "virtual": false,
+          "description": "<p>Called by the connection if the vertices set outside.\nThis enforce the router to avoid full autoroute. E.g. InteractiveManhattanRouter</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.Line",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "InteractiveManhattanConnectionRouter",
+      "namespace": "draw2d.layout.connection",
+      "description": "<p>draw2d.layout.connection.InteractiveManhattanConnectionRouter\nRoute the connection in an Manhattan style and add resize handles to all vertex for interactive alignment of the\nrouting.</p>",
+      "extends": [
+        "draw2d.layout.connection.ManhattanConnectionRouter"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "InteractiveManhattanConnectionRouter",
+        "description": "",
+        "parameters": [],
+        "examples": [
+          "let createConnection=function(){\n       // return my special kind of connection\n       let con = new draw2d.Connection({\n         radius: 4,\n         router: new draw2d.layout.connection.InteractiveManhattanConnectionRouter()\n       });\n       return con;\n    };\n\n    // install a custom connection create policy\n    //\n    canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({\n           createConnection: createConnection\n    }));\n\n    // create and add two nodes which contains Ports (In and OUT)\n    //\n    let start = new draw2d.shape.node.Start();\n    let end   = new draw2d.shape.node.End();\n    // ...add it to the canvas\n    canvas.add( start, 50,50);\n    canvas.add( end, 230,80);\n\n    // first Connection\n    //\n    let c = createConnection();\n    c.setSource(start.getOutputPort(0));\n    c.setTarget(end.getInputPort(0));\n    canvas.add(c);\n\n    // select the connection to show the selection handles\n    //\n    c.select();"
+        ]
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Creates a new Router object.</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "route",
+          "access": "",
+          "virtual": false,
+          "description": "",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "halfRoute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>The routing algorithm if the user has changed at least on of the vertices manually.\nThis kind of routing just align the start and end vertices to the new source/target port\nlocation.\nThe vertices between keep untouched. Modification of this vertices are done by the\ndraw2d.policy.line.OrthogonalSelectionFeedbackPolicy</p>",
+          "parameters": [
+            {
+              "name": "conn",
+              "type": "draw2d.Connection",
+              "description": "<p>the connection to route</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "routingHints",
+              "type": "Object",
+              "description": "<p>some helper attributes for the router</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.startMoved",
+              "type": "Boolean",
+              "description": "<p>is true if just the start location has moved</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.endMoved",
+              "type": "Boolean",
+              "description": "<p>is true if the destination location has changed</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canRemoveSegmentAt",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method for the PolyLine or Connection to verify that a segment is deletable.</p>",
+          "parameters": [
+            {
+              "name": "conn",
+              "type": "draw2d.Connection",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "onDrag",
+          "access": "",
+          "virtual": false,
+          "description": "<p>The draw2d.Connection delegates the drag operation to the router. The router can\nhandle the different constraints of the connection and just drag&amp;drop a single segment\ninstead of the complete connection.</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.Line",
+              "description": "<p>the related line to handle</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dx",
+              "type": "Number",
+              "description": "<p>the x difference between the start of the drag drop operation and now</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dy",
+              "type": "Number",
+              "description": "<p>the y difference between the start of the drag drop operation and now</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dx2",
+              "type": "Number",
+              "description": "<p>The x diff since the last call of this dragging operation</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dy2",
+              "type": "Number",
+              "description": "<p>The y diff since the last call of this dragging operation</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "verticesSet",
+          "access": "protected",
+          "virtual": false,
+          "description": "<p>Called by the connection if the vertices set outside.\nThis enforce the router to avoid full autoroute. E.g. InteractiveManhattanRouter</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "getPersistentAttributes",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Tweak or enrich the polyline persistence data with routing information</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.PolyLine",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "memento",
+              "type": "Object",
+              "description": "<p>The memento data of the polyline</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": ""
+          }
+        },
+        {
+          "name": "setPersistentAttributes",
+          "access": "",
+          "virtual": false,
+          "description": "<p>set the attributes for the polyline with routing information of the interactive manhattan router.</p>",
+          "parameters": [
+            {
+              "name": "memento",
+              "type": "Object",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onInstall",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method if the router has been assigned to a connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.Connection",
+              "description": "<p>The assigned connection</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "route",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Routes the Connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.Connection",
+              "description": "<p>The Connection to route</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "routingHints",
+              "type": "Object",
+              "description": "<p>some helper attributes for the router</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.startMoved",
+              "type": "Boolean",
+              "description": "<p>is true if just the start location has moved</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.endMoved",
+              "type": "Boolean",
+              "description": "<p>is true if the destination location has changed</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.oldVertices",
+              "type": "draw2d.util.ArrayList",
+              "description": "<p>the vertices before the reroute has been triggered</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "_route",
+          "access": "private",
+          "virtual": false,
+          "description": "<p>Internal routing algorithm.</p>",
+          "parameters": [
+            {
+              "name": "conn",
+              "type": "draw2d.Connection",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "fromPt",
+              "type": "draw2d.geo.Point",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "fromDir",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "toPt",
+              "type": "draw2d.geo.Point",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "toDir",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onUninstall",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method if the router has been removed from the connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.shape.basic.PolyLine",
+              "description": "<p>The related connection</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canRemoveVertexAt",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method for the PolyLine or Connection to check if it possible to remove a vertex from\nthe list. The router can send an veto for this.\nPer default it is not possible to remove any vertex from the PolyLine exceptional if any interactive\nrouter is installed.</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "ManhattanBridgedConnectionRouter",
+      "namespace": "draw2d.layout.connection",
+      "description": "<p>draw2d.layout.connection.ManhattanBridgedConnectionRouter\nProvides a {@link draw2d.Connection} with an orthogonal route between the Connection's source\nand target anchors.</p>",
+      "extends": [
+        "draw2d.layout.connection.ManhattanConnectionRouter"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "ManhattanBridgedConnectionRouter",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Creates a new Router object.</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "onInstall",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method if the router has been assigned to a connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.Connection",
+              "description": "<p>The assigned connection</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "route",
+          "access": "",
+          "virtual": false,
+          "description": "",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "route",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Routes the Connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.Connection",
+              "description": "<p>The Connection to route</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "routingHints",
+              "type": "Object",
+              "description": "<p>some helper attributes for the router</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.startMoved",
+              "type": "Boolean",
+              "description": "<p>is true if just the start location has moved</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.endMoved",
+              "type": "Boolean",
+              "description": "<p>is true if the destination location has changed</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.oldVertices",
+              "type": "draw2d.util.ArrayList",
+              "description": "<p>the vertices before the reroute has been triggered</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "_route",
+          "access": "private",
+          "virtual": false,
+          "description": "<p>Internal routing algorithm.</p>",
+          "parameters": [
+            {
+              "name": "conn",
+              "type": "draw2d.Connection",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "fromPt",
+              "type": "draw2d.geo.Point",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "fromDir",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "toPt",
+              "type": "draw2d.geo.Point",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "toDir",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onUninstall",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method if the router has been removed from the connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.shape.basic.PolyLine",
+              "description": "<p>The related connection</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canRemoveVertexAt",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method for the PolyLine or Connection to check if it possible to remove a vertex from\nthe list. The router can send an veto for this.\nPer default it is not possible to remove any vertex from the PolyLine exceptional if any interactive\nrouter is installed.</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canRemoveSegmentAt",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method for the PolyLine or Connection to verify that a segment is deletable.</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "getPersistentAttributes",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Tweak or enrich the polyline persistence data with routing information</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.PolyLine",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "memento",
+              "type": "Object",
+              "description": "<p>The memento data of the polyline</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": ""
+          }
+        },
+        {
+          "name": "setPersistentAttributes",
+          "access": "",
+          "virtual": false,
+          "description": "<p>set the attributes for the polyline with routing information</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.Line",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "memento",
+              "type": "Object",
+              "description": "<p>the JSON data to read</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onDrag",
+          "access": "",
+          "virtual": false,
+          "description": "<p>The draw2d.Connection delegates the drag operation to the router. The router can\nhandle the different constraints of the connection.</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.Line",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dx",
+              "type": "Number",
+              "description": "<p>the x difference between the start of the drag drop operation and now</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dy",
+              "type": "Number",
+              "description": "<p>the y difference between the start of the drag drop operation and now</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dx2",
+              "type": "Number",
+              "description": "<p>The x diff since the last call of this dragging operation</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dy2",
+              "type": "Number",
+              "description": "<p>The y diff since the last call of this dragging operation</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "verticesSet",
+          "access": "protected",
+          "virtual": false,
+          "description": "<p>Called by the connection if the vertices set outside.\nThis enforce the router to avoid full autoroute. E.g. InteractiveManhattanRouter</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.Line",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "ManhattanConnectionRouter",
+      "namespace": "draw2d.layout.connection",
+      "description": "<p>draw2d.layout.connection.ManhattanConnectionRouter\nProvides a {@link draw2d.Connection} with an orthogonal route between the Connection's source\nand target anchors.</p>",
+      "extends": [
+        "draw2d.layout.connection.ConnectionRouter"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "ManhattanConnectionRouter",
+        "description": "",
+        "parameters": [],
+        "examples": [
+          "// Override the default connection type. This is used during drag&drop operations of ports.\n    //\n    let createConnection=function(sourcePort, targetPort){\n       // return my special kind of connection\n       let con = new draw2d.Connection();\n       con.setRouter(new draw2d.layout.connection.ManhattanConnectionRouter());\n       return con;\n    };\n\n    // Install a special policy into the canvas to use my own implementation of connection\n    // if we drag&drop a port\n    //\n    canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({\n          createConnection: createConnection\n    }));\n\n    // create and add two nodes which contains Ports (In and OUT)\n    //\n    let start = new draw2d.shape.node.Start();\n    let end   = new draw2d.shape.node.End();\n    // ...add it to the canvas\n    canvas.add( start, 50,50);\n    canvas.add( end, 230,80);\n\n    // first Connection\n    //\n    let c = createConnection();\n    c.setSource(start.getOutputPort(0));\n    c.setTarget(end.getInputPort(0));\n    canvas.add(c);"
+        ]
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Creates a new Router object.</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "onInstall",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method if the router has been assigned to a connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.Connection",
+              "description": "<p>The assigned connection</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "route",
+          "access": "",
+          "virtual": false,
+          "description": "",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "_route",
+          "access": "private",
+          "virtual": false,
+          "description": "<p>Internal routing algorithm.</p>",
+          "parameters": [
+            {
+              "name": "conn",
+              "type": "draw2d.Connection",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "fromPt",
+              "type": "draw2d.geo.Point",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "fromDir",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "toPt",
+              "type": "draw2d.geo.Point",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "toDir",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "route",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Routes the Connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.Connection",
+              "description": "<p>The Connection to route</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "routingHints",
+              "type": "Object",
+              "description": "<p>some helper attributes for the router</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.startMoved",
+              "type": "Boolean",
+              "description": "<p>is true if just the start location has moved</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.endMoved",
+              "type": "Boolean",
+              "description": "<p>is true if the destination location has changed</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.oldVertices",
+              "type": "draw2d.util.ArrayList",
+              "description": "<p>the vertices before the reroute has been triggered</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onUninstall",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method if the router has been removed from the connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.shape.basic.PolyLine",
+              "description": "<p>The related connection</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canRemoveVertexAt",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method for the PolyLine or Connection to check if it possible to remove a vertex from\nthe list. The router can send an veto for this.\nPer default it is not possible to remove any vertex from the PolyLine exceptional if any interactive\nrouter is installed.</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canRemoveSegmentAt",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method for the PolyLine or Connection to verify that a segment is deletable.</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "getPersistentAttributes",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Tweak or enrich the polyline persistence data with routing information</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.PolyLine",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "memento",
+              "type": "Object",
+              "description": "<p>The memento data of the polyline</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": ""
+          }
+        },
+        {
+          "name": "setPersistentAttributes",
+          "access": "",
+          "virtual": false,
+          "description": "<p>set the attributes for the polyline with routing information</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.Line",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "memento",
+              "type": "Object",
+              "description": "<p>the JSON data to read</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onDrag",
+          "access": "",
+          "virtual": false,
+          "description": "<p>The draw2d.Connection delegates the drag operation to the router. The router can\nhandle the different constraints of the connection.</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.Line",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dx",
+              "type": "Number",
+              "description": "<p>the x difference between the start of the drag drop operation and now</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dy",
+              "type": "Number",
+              "description": "<p>the y difference between the start of the drag drop operation and now</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dx2",
+              "type": "Number",
+              "description": "<p>The x diff since the last call of this dragging operation</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dy2",
+              "type": "Number",
+              "description": "<p>The y diff since the last call of this dragging operation</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "verticesSet",
+          "access": "protected",
+          "virtual": false,
+          "description": "<p>Called by the connection if the vertices set outside.\nThis enforce the router to avoid full autoroute. E.g. InteractiveManhattanRouter</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.Line",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "MuteableManhattanConnectionRouter",
+      "namespace": "draw2d.layout.connection",
+      "description": "<p>draw2d.layout.connection.MuteableManhattanConnectionRouter</p>\n<p>JUST FOR RESEARCH AT THE MOMENT!!!!!!</p>",
+      "extends": [
+        "draw2d.layout.connection.ManhattanConnectionRouter"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "MuteableManhattanConnectionRouter",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Creates a new Router object.</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "route",
+          "access": "",
+          "virtual": false,
+          "description": "",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "getColumnNear",
+          "access": "private",
+          "virtual": false,
+          "description": "",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.Connection",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "r",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "n",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "x",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "getEndDirection",
+          "access": "",
+          "virtual": false,
+          "description": "<li>up -&gt; 0</li>\n  <li>right -&gt; 1</li>\n  <li>down -&gt; 2</li>\n  <li>left -&gt; 3</li>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "getStartDirection",
+          "access": "",
+          "virtual": false,
+          "description": "<li>up -&gt; 0</li>\n  <li>right -&gt; 1</li>\n  <li>down -&gt; 2</li>\n  <li>left -&gt; 3</li>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "getDirection",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns the direction the point <i>p</i> is in relation to the given rectangle.\nPossible values are LEFT (-1,0), RIGHT (1,0), UP (0,-1) and DOWN (0,1).</p>",
+          "parameters": [
+            {
+              "name": "r",
+              "type": "",
+              "description": "<p>the rectangle</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "p",
+              "type": "",
+              "description": "<p>the point</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "",
+            "description": "<p>the direction from <i>r</i> to <i>p</i></p>"
+          }
+        },
+        {
+          "name": "onInstall",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method if the router has been assigned to a connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.Connection",
+              "description": "<p>The assigned connection</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "route",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Routes the Connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.Connection",
+              "description": "<p>The Connection to route</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "routingHints",
+              "type": "Object",
+              "description": "<p>some helper attributes for the router</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.startMoved",
+              "type": "Boolean",
+              "description": "<p>is true if just the start location has moved</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.endMoved",
+              "type": "Boolean",
+              "description": "<p>is true if the destination location has changed</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.oldVertices",
+              "type": "draw2d.util.ArrayList",
+              "description": "<p>the vertices before the reroute has been triggered</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "_route",
+          "access": "private",
+          "virtual": false,
+          "description": "<p>Internal routing algorithm.</p>",
+          "parameters": [
+            {
+              "name": "conn",
+              "type": "draw2d.Connection",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "fromPt",
+              "type": "draw2d.geo.Point",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "fromDir",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "toPt",
+              "type": "draw2d.geo.Point",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "toDir",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onUninstall",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method if the router has been removed from the connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.shape.basic.PolyLine",
+              "description": "<p>The related connection</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canRemoveVertexAt",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method for the PolyLine or Connection to check if it possible to remove a vertex from\nthe list. The router can send an veto for this.\nPer default it is not possible to remove any vertex from the PolyLine exceptional if any interactive\nrouter is installed.</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canRemoveSegmentAt",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method for the PolyLine or Connection to verify that a segment is deletable.</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "getPersistentAttributes",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Tweak or enrich the polyline persistence data with routing information</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.PolyLine",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "memento",
+              "type": "Object",
+              "description": "<p>The memento data of the polyline</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": ""
+          }
+        },
+        {
+          "name": "setPersistentAttributes",
+          "access": "",
+          "virtual": false,
+          "description": "<p>set the attributes for the polyline with routing information</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.Line",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "memento",
+              "type": "Object",
+              "description": "<p>the JSON data to read</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onDrag",
+          "access": "",
+          "virtual": false,
+          "description": "<p>The draw2d.Connection delegates the drag operation to the router. The router can\nhandle the different constraints of the connection.</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.Line",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dx",
+              "type": "Number",
+              "description": "<p>the x difference between the start of the drag drop operation and now</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dy",
+              "type": "Number",
+              "description": "<p>the y difference between the start of the drag drop operation and now</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dx2",
+              "type": "Number",
+              "description": "<p>The x diff since the last call of this dragging operation</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dy2",
+              "type": "Number",
+              "description": "<p>The y diff since the last call of this dragging operation</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "verticesSet",
+          "access": "protected",
+          "virtual": false,
+          "description": "<p>Called by the connection if the vertices set outside.\nThis enforce the router to avoid full autoroute. E.g. InteractiveManhattanRouter</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.Line",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "RubberbandRouter",
+      "namespace": "draw2d.layout.connection",
+      "description": "<p>draw2d.layout.connection.RubberbandRouter\nRouter for direct connections between two ports with a rubber band effect</p>",
+      "extends": [
+        "draw2d.layout.connection.ConnectionRouter"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "RubberbandRouter",
+        "description": "",
+        "parameters": [],
+        "examples": [
+          "let RubberConnection= draw2d.Connection.extend({\n        NAME: \"RubberConnection\",\n\n        init:function(attr, setter, getter)\n        {\n          this._super(extend({\n              color: \"#33691e\",\n              stroke:1,\n              outlineStroke:0,\n              outlineColor:null\n          },attr),\n          setter,\n          getter);\n\n\n          this.setRouter(new draw2d.layout.connection.RubberbandRouter());\n        },\n\n        repaint:function(attributes)\n        {\n            if (this.repaintBlocked===true || this.shape === null){\n                return;\n            }\n            attributes= attributes || {};\n            // enrich the rendering with a \"fill\" attribute\n            if(typeof attributes.fill === \"undefined\"){\n            \t   attributes.fill = \"#aed581\";\n            }\n            this._super(attributes);\n       }\n    });\n\n    let createConnection=function(){\n       let con = new RubberConnection();\n       return con;\n    };\n\n    // install a custom connection create policy\n    //\n    canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({\n           createConnection: createConnection\n    }));\n\n\n    // create and add two nodes which contains Ports (In and OUT)\n    //\n    let start = new draw2d.shape.node.Start();\n    let end   = new draw2d.shape.node.End();\n    // ...add it to the canvas\n    canvas.add( start, 50,50);\n    canvas.add( end, 230,80);\n\n    // first Connection\n    //\n    let c = createConnection();\n    c.setSource(start.getOutputPort(0));\n    c.setTarget(end.getInputPort(0));\n    canvas.add(c);"
+        ]
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Creates a new Router object</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "onInstall",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method if the router has been assigned to a connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.Connection",
+              "description": "<p>The assigned connection</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "invalidate",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Invalidates the given Connection</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "route",
+          "access": "",
+          "virtual": false,
+          "description": "",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "route",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Routes the Connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.Connection",
+              "description": "<p>The Connection to route</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "routingHints",
+              "type": "Object",
+              "description": "<p>some helper attributes for the router</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.startMoved",
+              "type": "Boolean",
+              "description": "<p>is true if just the start location has moved</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.endMoved",
+              "type": "Boolean",
+              "description": "<p>is true if the destination location has changed</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.oldVertices",
+              "type": "draw2d.util.ArrayList",
+              "description": "<p>the vertices before the reroute has been triggered</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onUninstall",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method if the router has been removed from the connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.shape.basic.PolyLine",
+              "description": "<p>The related connection</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canRemoveVertexAt",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method for the PolyLine or Connection to check if it possible to remove a vertex from\nthe list. The router can send an veto for this.\nPer default it is not possible to remove any vertex from the PolyLine exceptional if any interactive\nrouter is installed.</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canRemoveSegmentAt",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method for the PolyLine or Connection to verify that a segment is deletable.</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "getPersistentAttributes",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Tweak or enrich the polyline persistence data with routing information</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.PolyLine",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "memento",
+              "type": "Object",
+              "description": "<p>The memento data of the polyline</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": ""
+          }
+        },
+        {
+          "name": "setPersistentAttributes",
+          "access": "",
+          "virtual": false,
+          "description": "<p>set the attributes for the polyline with routing information</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.Line",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "memento",
+              "type": "Object",
+              "description": "<p>the JSON data to read</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onDrag",
+          "access": "",
+          "virtual": false,
+          "description": "<p>The draw2d.Connection delegates the drag operation to the router. The router can\nhandle the different constraints of the connection.</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.Line",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dx",
+              "type": "Number",
+              "description": "<p>the x difference between the start of the drag drop operation and now</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dy",
+              "type": "Number",
+              "description": "<p>the y difference between the start of the drag drop operation and now</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dx2",
+              "type": "Number",
+              "description": "<p>The x diff since the last call of this dragging operation</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dy2",
+              "type": "Number",
+              "description": "<p>The y diff since the last call of this dragging operation</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "verticesSet",
+          "access": "protected",
+          "virtual": false,
+          "description": "<p>Called by the connection if the vertices set outside.\nThis enforce the router to avoid full autoroute. E.g. InteractiveManhattanRouter</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.Line",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "SketchConnectionRouter",
+      "namespace": "draw2d.layout.connection",
+      "description": "<p>draw2d.layout.connection.SketchConnectionRouter</p>\n<p>Provide a router which routes the connection in a hand drawn manner.</p>",
+      "extends": [
+        "draw2d.layout.connection.MazeConnectionRouter"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "SketchConnectionRouter",
+        "description": "",
+        "parameters": [],
+        "examples": [
+          "let createConnection=function(){\n       let con = new draw2d.Connection();\n       con.setRouter(new draw2d.layout.connection.SketchConnectionRouter());\n       return con;\n    };\n\n    // install a custom connection create policy\n    //\n    canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({\n           createConnection: createConnection\n    }));\n\n    // create and add two nodes which contains Ports (In and OUT)\n    //\n    let f1 = new draw2d.shape.analog.OpAmp({x:10, y:10});\n    let f2 = new draw2d.shape.analog.ResistorVertical({angle:90, height:20, x:300, y:150});\n\n    // ...add it to the canvas\n    //\n    canvas.add( f1);\n    canvas.add( f2);\n\n    // first Connection\n    //\n    let c = createConnection();\n    c.setSource(f1.getOutputPort(0));\n    c.setTarget(f2.getHybridPort(0));\n    canvas.add(c);"
+        ]
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Creates a new Router object.</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "onInstall",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method if the router has been assigned to a connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.Connection",
+              "description": "<p>The assigned connection</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "route",
+          "access": "",
+          "virtual": false,
+          "description": "",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "_route",
+          "access": "private",
+          "virtual": false,
+          "description": "<p>Internal routing algorithm.\n* <p>\nPossible values:</p>\n<ul>\n  <li>up -&gt; 0</li>\n  <li>right -&gt; 1</li>\n  <li>down -&gt; 2</li>\n  <li>left -&gt; 3</li>\n</ul>\n<p>",
+          "parameters": [
+            {
+              "name": "conn",
+              "type": "draw2d.Connection",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "fromPt",
+              "type": "draw2d.geo.Point",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "fromDir",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "toPt",
+              "type": "draw2d.geo.Point",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "toDir",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "generateNoGoGrid",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Generate a grid base no go map required for the path finding algorithm</p>",
+          "parameters": [
+            {
+              "name": "conn",
+              "type": "",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "PF.Grid",
+            "description": ""
+          }
+        },
+        {
+          "name": "getAdjustedPoint",
+          "access": "",
+          "virtual": false,
+          "description": "<p>move the point in the given direction with the given offset</p>",
+          "parameters": [
+            {
+              "name": "pt",
+              "type": "draw2d.geo.Point",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "direction",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "adjustment",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "draw2d.geo.Point",
+            "description": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "SplineConnectionRouter",
+      "namespace": "draw2d.layout.connection",
+      "description": "<p>draw2d.layout.connection.SplineConnectionRouter</p>\n<p>A ManhattanConnectionRouter with an spline interpolation between the bend points.</p>",
+      "extends": [
+        "draw2d.layout.connection.ManhattanConnectionRouter"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "SplineConnectionRouter",
+        "description": "",
+        "parameters": [],
+        "examples": [
+          "let createConnection=function(){\n       let con = new draw2d.Connection();\n       con.setRouter(new draw2d.layout.connection.SplineConnectionRouter());\n       return con;\n    };\n\n    // install a custom connection create policy\n    //\n    canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({\n           createConnection: createConnection\n    }));\n\n    // create and add two nodes which contains Ports (In and OUT)\n    //\n    let f1 = new draw2d.shape.analog.OpAmp({x:10, y:10});\n    let f2 = new draw2d.shape.analog.ResistorVertical({angle:90, height:20, x:300, y:150});\n\n    // ...add it to the canvas\n    //\n    canvas.add( f1);\n    canvas.add( f2);\n\n    // first Connection\n    //\n    let c = createConnection();\n    c.setSource(f1.getOutputPort(0));\n    c.setTarget(f2.getHybridPort(0));\n    canvas.add(c);"
+        ]
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Creates a new Router object</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "onInstall",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method if the router has been assigned to a connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.Connection",
+              "description": "<p>The assigned connection</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "route",
+          "access": "",
+          "virtual": false,
+          "description": "",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "route",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Routes the Connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.Connection",
+              "description": "<p>The Connection to route</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "routingHints",
+              "type": "Object",
+              "description": "<p>some helper attributes for the router</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.startMoved",
+              "type": "Boolean",
+              "description": "<p>is true if just the start location has moved</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.endMoved",
+              "type": "Boolean",
+              "description": "<p>is true if the destination location has changed</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.oldVertices",
+              "type": "draw2d.util.ArrayList",
+              "description": "<p>the vertices before the reroute has been triggered</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "_route",
+          "access": "private",
+          "virtual": false,
+          "description": "<p>Internal routing algorithm.</p>",
+          "parameters": [
+            {
+              "name": "conn",
+              "type": "draw2d.Connection",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "fromPt",
+              "type": "draw2d.geo.Point",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "fromDir",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "toPt",
+              "type": "draw2d.geo.Point",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "toDir",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onUninstall",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method if the router has been removed from the connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.shape.basic.PolyLine",
+              "description": "<p>The related connection</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canRemoveVertexAt",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method for the PolyLine or Connection to check if it possible to remove a vertex from\nthe list. The router can send an veto for this.\nPer default it is not possible to remove any vertex from the PolyLine exceptional if any interactive\nrouter is installed.</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canRemoveSegmentAt",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method for the PolyLine or Connection to verify that a segment is deletable.</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "getPersistentAttributes",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Tweak or enrich the polyline persistence data with routing information</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.PolyLine",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "memento",
+              "type": "Object",
+              "description": "<p>The memento data of the polyline</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": ""
+          }
+        },
+        {
+          "name": "setPersistentAttributes",
+          "access": "",
+          "virtual": false,
+          "description": "<p>set the attributes for the polyline with routing information</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.Line",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "memento",
+              "type": "Object",
+              "description": "<p>the JSON data to read</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onDrag",
+          "access": "",
+          "virtual": false,
+          "description": "<p>The draw2d.Connection delegates the drag operation to the router. The router can\nhandle the different constraints of the connection.</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.Line",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dx",
+              "type": "Number",
+              "description": "<p>the x difference between the start of the drag drop operation and now</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dy",
+              "type": "Number",
+              "description": "<p>the y difference between the start of the drag drop operation and now</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dx2",
+              "type": "Number",
+              "description": "<p>The x diff since the last call of this dragging operation</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dy2",
+              "type": "Number",
+              "description": "<p>The y diff since the last call of this dragging operation</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "verticesSet",
+          "access": "protected",
+          "virtual": false,
+          "description": "<p>Called by the connection if the vertices set outside.\nThis enforce the router to avoid full autoroute. E.g. InteractiveManhattanRouter</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.Line",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "VertexRouter",
+      "namespace": "draw2d.layout.connection",
+      "description": "<p>draw2d.layout.connection.VertexRouter</p>\n<p>A Router with unlimited vertices.</p>",
+      "extends": [
+        "draw2d.layout.connection.ConnectionRouter"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "VertexRouter",
+        "description": "",
+        "parameters": [],
+        "examples": [
+          "// Override the default connection type. This is used during drag&drop operations of ports.\n    //\n    let createConnection=function(){\n       // return my special kind of connection\n       let con = new draw2d.Connection();\n       con.setRouter(new draw2d.layout.connection.VertexRouter());\n       return con;\n    };\n\n    // Install a special policy into the canvas to use my own implementation of connection\n    // if we drag&drop a port\n    //\n    canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({\n          createConnection: createConnection\n    }));\n\n    // create and add two nodes which contains Ports (In and OUT)\n    //\n    let start = new draw2d.shape.node.Start();\n    let end   = new draw2d.shape.node.End();\n    // ...add it to the canvas\n    canvas.add( start, 50,50);\n    canvas.add( end, 230,80);\n\n    // first Connection\n    //\n    let c = createConnection();\n    c.setSource(start.getOutputPort(0));\n    c.setTarget(end.getInputPort(0));\n    canvas.add(c);"
+        ]
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Creates a new Router object</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "onInstall",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method if the router has been assigned to a connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.Connection",
+              "description": "<p>The assigned connection</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "invalidate",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Invalidates the given Connection</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "route",
+          "access": "",
+          "virtual": false,
+          "description": "",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "canRemoveVertexAt",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method for the PolyLine or Connection to check if it possible to remove a vertex from\nthe list. The router can send an veto for this.\nPer default it is not possible to remove any vertex from the PolyLine exceptional if any interactive\nrouter is installed.</p>",
+          "parameters": [
+            {
+              "name": "conn",
+              "type": "draw2d.Connection",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canRemoveSegmentAt",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method for the PolyLine or Connection to verify that a segment is deletable.</p>",
+          "parameters": [
+            {
+              "name": "conn",
+              "type": "draw2d.Connection",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "getPersistentAttributes",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Tweak or enrich the polyline persistence data with routing information</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.PolyLine",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "memento",
+              "type": "Object",
+              "description": "<p>The memento data of the polyline</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": ""
+          }
+        },
+        {
+          "name": "setPersistentAttributes",
+          "access": "",
+          "virtual": false,
+          "description": "<p>set the attributes for the polyline with routing information</p>",
+          "parameters": [
+            {
+              "name": "memento",
+              "type": "Object",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onDrag",
+          "access": "",
+          "virtual": false,
+          "description": "<p>The draw2d.Connection delegates the drag operation to the router. The router can\nhandle the different constraints of the connection and just drag&amp;drop a single segment\ninstead of the complete connection.</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.Line",
+              "description": "<p>the related line to handle</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dx",
+              "type": "Number",
+              "description": "<p>the x difference between the start of the drag drop operation and now</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dy",
+              "type": "Number",
+              "description": "<p>the y difference between the start of the drag drop operation and now</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dx2",
+              "type": "Number",
+              "description": "<p>The x diff since the last call of this dragging operation</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dy2",
+              "type": "Number",
+              "description": "<p>The y diff since the last call of this dragging operation</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "route",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Routes the Connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.Connection",
+              "description": "<p>The Connection to route</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "routingHints",
+              "type": "Object",
+              "description": "<p>some helper attributes for the router</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.startMoved",
+              "type": "Boolean",
+              "description": "<p>is true if just the start location has moved</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.endMoved",
+              "type": "Boolean",
+              "description": "<p>is true if the destination location has changed</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "routingHints.oldVertices",
+              "type": "draw2d.util.ArrayList",
+              "description": "<p>the vertices before the reroute has been triggered</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "onUninstall",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method if the router has been removed from the connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.shape.basic.PolyLine",
+              "description": "<p>The related connection</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "verticesSet",
+          "access": "protected",
+          "virtual": false,
+          "description": "<p>Called by the connection if the vertices set outside.\nThis enforce the router to avoid full autoroute. E.g. InteractiveManhattanRouter</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.Line",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    }
+  ]
+}

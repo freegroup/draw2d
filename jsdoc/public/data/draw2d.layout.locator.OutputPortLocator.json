@@ -1,0 +1,50 @@
+{
+  "name": "OutputPortLocator",
+  "namespace": "draw2d.layout.locator",
+  "description": "<p>draw2d.layout.locator.OutputPortLocator</p>\n<p>Repositions a Figure attached to a Connection when the\nConnection is moved. Provides for alignment at the start\n(source), middle, or end (target) of the Connection.</p>",
+  "extends": [],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "OutputPortLocator",
+    "description": "",
+    "parameters": [],
+    "examples": []
+  },
+  "functions": [
+    {
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Default constructor for a Locator which can layout a port in context of a\n{@link draw2d.shape.node.Node}</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "relocate",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Controls the location of an I{@link draw2d.Figure}</p>",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "Number",
+          "description": "<p>child index of the figure</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "figure",
+          "type": "draw2d.Figure",
+          "description": "<p>the figure to control</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    }
+  ]
+}

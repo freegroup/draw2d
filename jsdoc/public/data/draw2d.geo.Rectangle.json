@@ -1,0 +1,918 @@
+{
+  "name": "Rectangle",
+  "namespace": "draw2d.geo",
+  "description": "<p>draw2d.geo.Rectangle</p>\n<p>Util class for geometrie handling.</p>",
+  "extends": [
+    "draw2d.geo.Point"
+  ],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "Rectangle",
+    "description": "",
+    "parameters": [],
+    "examples": []
+  },
+  "functions": [
+    {
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Creates a new Point object with the hands over coordinates.\n<br>\nThe constructor consumes almost any kind of rectangel definitions\nlike:\nvar rect0 = new draw2d.geo.Rectangle({x:0,y:0,width:20,height:20});\nvar rect1 = new draw2d.geo.Rectangle({x:0,y:0,w:20,h:20});\nvar rect2 = new draw2d.geo.Rectangle($(&quot;#divid&quot;)[0].getBoundingClientRect());\nvar rect3 = new draw2d.geo.Rectangle(rect1);</p>\n<p>The rectangle class is usefull for any kind of intersection, hitTest, contains,...calculation\nor to set the bounding box of any shape.</p>",
+      "parameters": [
+        {
+          "name": "x",
+          "type": [
+            "Number",
+            "draw2d.geo.Rectangle"
+          ],
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "y",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "w",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "h",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "adjustBoundary",
+      "access": "private",
+      "virtual": false,
+      "description": "",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "resize",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Resizes this Rectangle by the values supplied as input and returns this for\nconvenience. This Rectangle's width will become this.width + dw. This\nRectangle's height will become this.height + dh.\n<br>\nThe method return the object itself. This allows you to do command chaining, where\nyou can perform multiple methods on the same elements.</p>",
+      "parameters": [
+        {
+          "name": "dw",
+          "type": "Number",
+          "description": "<p>Amount by which width is to be resized</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "dh",
+          "type": "Number",
+          "description": "<p>Amount by which height is to be resized</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.geo.Rectangle",
+        "description": "<p>The method return the object itself</p>"
+      }
+    },
+    {
+      "name": "scale",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Adds the specified padding to the rectangle's bounds. This Rectangle's width\nwill become this.width + dw. The Rectangle's height will become this.height + dh.\nThe top left corner moves -dw/2, -dh/2\n<br>\nThe method return the object itself. This allows you to do command chaining, where\nyou can perform multiple methods on the same elements.</p>",
+      "parameters": [
+        {
+          "name": "dw",
+          "type": "Number",
+          "description": "<p>Amount by which width is to be resized</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "dh",
+          "type": "Number",
+          "description": "<p>Amount by which height is to be resized</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "translate",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Translate the rectangle with the given x/y coordiante.</p>",
+      "parameters": [
+        {
+          "name": "x",
+          "type": [
+            "draw2d.geo.Point",
+            "Number"
+          ],
+          "description": "<p>the x translation or the complete point to translate</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "y",
+          "type": "Number",
+          "description": "<p>the y translation. Required if x is a simple number instead of a draw2d.geo.Point</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "translated",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Returns a copy of the translated rectangle</p>",
+      "parameters": [
+        {
+          "name": "x",
+          "type": [
+            "draw2d.geo.Point",
+            "Number"
+          ],
+          "description": "<p>the x translation or the complete point to translate</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "y",
+          "type": "Number",
+          "description": "<p>the y translation. Required if x is a simple number instead of a draw2d.geo.Point</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.geo.Rectangle",
+        "description": "<p>The new translated rectangle.</p>"
+      }
+    },
+    {
+      "name": "setBounds",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Sets the parameters of this Rectangle from the Rectangle passed in and\nreturns this for convenience.<br>\n<br>\nThe method return the object itself. This allows you to do command chaining, where\nyou can perform multiple methods on the same elements.</p>",
+      "parameters": [
+        {
+          "name": "Rectangle",
+          "type": "draw2d.geo.Rectangle",
+          "description": "<p>providing the bounding values</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.geo.Rectangle",
+        "description": "<p>The method return the object itself</p>"
+      }
+    },
+    {
+      "name": "isEmpty",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Returns <code>true</code> if this Rectangle's width or height is less than or\nequal to 0.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "Boolean",
+        "description": ""
+      }
+    },
+    {
+      "name": "getWidth",
+      "access": "",
+      "virtual": false,
+      "description": "<p>The width of the dimension element.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": ""
+      }
+    },
+    {
+      "name": "setWidth",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Set the new width of the rectangle.</p>",
+      "parameters": [
+        {
+          "name": "w",
+          "type": "Number",
+          "description": "<p>the new width of the rectangle</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "getHeight",
+      "access": "",
+      "virtual": false,
+      "description": "<p>The height of the dimension element.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": ""
+      }
+    },
+    {
+      "name": "setHeight",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Set the new height of the rectangle.</p>",
+      "parameters": [
+        {
+          "name": "h",
+          "type": "Number",
+          "description": "<p>the new height of the rectangle</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "getLeft",
+      "access": "",
+      "virtual": false,
+      "description": "<p>The x coordinate of the left corner.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": ""
+      }
+    },
+    {
+      "name": "getRight",
+      "access": "",
+      "virtual": false,
+      "description": "<p>The x coordinate of the right corner.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": ""
+      }
+    },
+    {
+      "name": "getTop",
+      "access": "",
+      "virtual": false,
+      "description": "<p>The y coordinate of the top.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": ""
+      }
+    },
+    {
+      "name": "getBottom",
+      "access": "",
+      "virtual": false,
+      "description": "<p>The y coordinate of the bottom.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": ""
+      }
+    },
+    {
+      "name": "getTopLeft",
+      "access": "",
+      "virtual": false,
+      "description": "<p>The top left corner of the dimension object.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.geo.Point",
+        "description": "<p>a new point objects which holds the coordinates</p>"
+      }
+    },
+    {
+      "name": "getTopCenter",
+      "access": "",
+      "virtual": false,
+      "description": "<p>The top center coordinate of the dimension object.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.geo.Point",
+        "description": "<p>a new point objects which holds the coordinates</p>"
+      }
+    },
+    {
+      "name": "getTopRight",
+      "access": "",
+      "virtual": false,
+      "description": "<p>The top right corner of the dimension object.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.geo.Point",
+        "description": "<p>a new point objects which holds the coordinates</p>"
+      }
+    },
+    {
+      "name": "getCenterLeft",
+      "access": "",
+      "virtual": false,
+      "description": "<p>The center left  of the dimension object.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.geo.Point",
+        "description": "<p>a new point objects which holds the coordinates</p>"
+      }
+    },
+    {
+      "name": "getBottomLeft",
+      "access": "",
+      "virtual": false,
+      "description": "<p>The bottom left corner of the dimension object.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.geo.Point",
+        "description": "<p>a new point objects which holds the coordinates</p>"
+      }
+    },
+    {
+      "name": "getBottomCenter",
+      "access": "",
+      "virtual": false,
+      "description": "<p>The bottom center coordinate of the dimension object.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.geo.Point",
+        "description": "<p>a new point objects which holds the coordinates</p>"
+      }
+    },
+    {
+      "name": "getCenter",
+      "access": "",
+      "virtual": false,
+      "description": "<p>The center of the dimension object</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.geo.Point",
+        "description": "<p>a new point which holds the center of the object</p>"
+      }
+    },
+    {
+      "name": "getBottomRight",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Bottom right corner of the object</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.geo.Point",
+        "description": "<p>a new point which holds the bottom right corner</p>"
+      }
+    },
+    {
+      "name": "getVertices",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Return all points of the rectangle as array. Starting at topLeft and the\nclockwise.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.util.ArrayList",
+        "description": "<p>the points starting at top/left and the clockwise</p>"
+      }
+    },
+    {
+      "name": "moveInside",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Return a new rectangle which fits into this rectangle. <b>ONLY</b> the x/y coordinates\nwill be changed. Not the dimension of the given rectangle.</p>",
+      "parameters": [
+        {
+          "name": "rect",
+          "type": "draw2d.geo.Rectangle",
+          "description": "<p>the rectangle to adjust</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "",
+        "description": "<p>the new shifted rectangle</p>"
+      }
+    },
+    {
+      "name": "getDistance",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Return the minimum distance of this rectangle to the given {@link draw2d.geo.Point} or\n{link draw2d.geo.Rectangle}.</p>",
+      "parameters": [
+        {
+          "name": "pointOrRectangle",
+          "type": [
+            "draw2d.geo.Point",
+            "draw2d.geo.Rectangle"
+          ],
+          "description": "<p>the reference point/rectangle for the distance calculation</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "determineOctant",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Determin the octant of r2 in relation to this rectangle.</p>\n<pre>\n\n   0 | 1 | 2\n   __|___|__\n   7 | 8 | 3\n   __|___|__\n   6 | 5 | 4\n</pre>",
+      "parameters": [
+        {
+          "name": "r2",
+          "type": "draw2d.geo.Rectangle",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "getDirection",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Returns the direction the point <i>p</i> is in relation to the given rectangle.\nUtil method for inherit router implementations.</p>\n<p>\nPossible values:\n<ul>\n  <li>up -&gt; 0</li>\n  <li>right -&gt; 1</li>\n  <li>down -&gt; 2</li>\n  <li>left -&gt; 3</li>\n</ul>\n<p>",
+      "parameters": [
+        {
+          "name": "other",
+          "type": "draw2d.geo.Point",
+          "description": "<p>the point in relation to the given rectangle</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": "<p>the direction from <i>r</i> to <i>p</i></p>"
+      }
+    },
+    {
+      "name": "equals",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Compares two rectangle objects</p>",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "draw2d.geo.Rectangle",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "Boolean",
+        "description": ""
+      }
+    },
+    {
+      "name": "hitTest",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Detect whenever the hands over coordinate is inside the rectangle.</p>",
+      "parameters": [
+        {
+          "name": "iX",
+          "type": "Number/draw2d.geo.Point",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "iY",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "Boolean",
+        "description": ""
+      }
+    },
+    {
+      "name": "isInside",
+      "access": "",
+      "virtual": false,
+      "description": "<p>return true if this rectangle inside the hand over rectangle</p>",
+      "parameters": [
+        {
+          "name": "rect",
+          "type": "draw2d.geo.Rectangle",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "Boolean",
+        "description": ""
+      }
+    },
+    {
+      "name": "contains",
+      "access": "",
+      "virtual": false,
+      "description": "<p>return true if this rectangle contains the hand over rectangle.</p>",
+      "parameters": [
+        {
+          "name": "rect",
+          "type": "draw2d.geo.Rectangle",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "Boolean",
+        "description": ""
+      }
+    },
+    {
+      "name": "intersects",
+      "access": "",
+      "virtual": false,
+      "description": "<p>checks whenever the rectangles has an intersection.</p>",
+      "parameters": [
+        {
+          "name": "rect",
+          "type": "draw2d.geo.Rectangle",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "Boolean",
+        "description": ""
+      }
+    },
+    {
+      "name": "merge",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Merge this rectangle with the given one.</p>",
+      "parameters": [
+        {
+          "name": "rect",
+          "type": "draw2d.geo.Rectangle",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "intersectionWithLine",
+      "access": "",
+      "virtual": false,
+      "description": "<p>returns the intersection points with the given line if any exists</p>",
+      "parameters": [
+        {
+          "name": "start",
+          "type": "draw2d.geo.Point",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "end",
+          "type": "draw2d.geo.Point",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "clone",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Returns a copy of this rectangle</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.geo.Rectangle",
+        "description": ""
+      }
+    },
+    {
+      "name": "toJSON",
+      "access": "",
+      "virtual": false,
+      "description": "<p>converts the rectangle to JSON representation. required for the draw2d.io.Writer</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "Object",
+        "description": ""
+      }
+    },
+    {
+      "name": "setBoundary",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Set the boundary of the rectangle. If set, the rectangle is always inside\nthe boundary. A setX or setY will always be adjusted.</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "getX",
+      "access": "",
+      "virtual": false,
+      "description": "<p>The X value of the point</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": ""
+      }
+    },
+    {
+      "name": "getY",
+      "access": "",
+      "virtual": false,
+      "description": "<p>The y value of the point</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": ""
+      }
+    },
+    {
+      "name": "setX",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Set the new X value of the point</p>",
+      "parameters": [
+        {
+          "name": "x",
+          "type": "Number",
+          "description": "<p>the new value</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "setY",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Set the new Y value of the point</p>",
+      "parameters": [
+        {
+          "name": "y",
+          "type": "Number",
+          "description": "<p>the new value</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "setPosition",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Set the new x/y coordinates of this point</p>",
+      "parameters": [
+        {
+          "name": "x",
+          "type": [
+            "Number",
+            "draw2d.geo.Point"
+          ],
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "y",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "getPosition",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Calculates the relative position of the specified Point to this Point.</p>",
+      "parameters": [
+        {
+          "name": "p",
+          "type": "draw2d.geo.Point",
+          "description": "<p>The reference Point</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": "<p>NORTH, SOUTH, EAST, or WEST, as defined in {@link draw2d.geo.PositionConstants}</p>"
+      }
+    },
+    {
+      "name": "distance",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Return the distance between this point and the hands over.</p>",
+      "parameters": [
+        {
+          "name": "other",
+          "type": "draw2d.geo.Point",
+          "description": "<p>the point to use</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": ""
+      }
+    },
+    {
+      "name": "length",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Return the th of the vector from [0,0]</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": ""
+      }
+    },
+    {
+      "name": "scaled",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Return a new Point scaled with the x/y values of the hands over point.</p>",
+      "parameters": [
+        {
+          "name": "factor",
+          "type": "Number",
+          "description": "<p>the factor to scaled the new point.</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.geo.Point",
+        "description": "<p>The new translated point.</p>"
+      }
+    },
+    {
+      "name": "getPersistentAttributes",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Return an objects with all important attributes for XML or JSON serialization</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "Object",
+        "description": ""
+      }
+    },
+    {
+      "name": "setPersistentAttributes",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Read all attributes from the serialized properties and transfer them into the shape.</p>",
+      "parameters": [
+        {
+          "name": "memento",
+          "type": "Object",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "subtract",
+      "access": "",
+      "virtual": false,
+      "description": "<p>substract the given point and return the new point.</p>",
+      "parameters": [
+        {
+          "name": "that",
+          "type": "",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.geo.Point",
+        "description": ""
+      }
+    }
+  ],
+  "properties": [
+    {
+      "name": "DIRECTION_UP",
+      "access": "",
+      "virtual": false,
+      "description": "<p>ENUM for Direction</p>",
+      "type": ""
+    }
+  ]
+}

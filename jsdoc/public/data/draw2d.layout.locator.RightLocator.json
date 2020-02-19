@@ -1,0 +1,52 @@
+{
+  "name": "RightLocator",
+  "namespace": "draw2d.layout.locator",
+  "description": "<p>draw2d.layout.locator.RightLocator</p>\n<p>A RightLocator is used to place figures to the right of a parent shape.</p>",
+  "extends": [],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "RightLocator",
+    "description": "",
+    "parameters": [],
+    "examples": [
+      "// create a basic figure and add a Label/child via API call\n    //\n    var end = new draw2d.shape.node.End();\n    end.add(new draw2d.shape.basic.Label({text:\"Right Label\"}), new draw2d.layout.locator.RightLocator({\n         margin: 10 // distance to the parent shape\n    }));\n    canvas.add( end, 50,50);"
+    ]
+  },
+  "functions": [
+    {
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Constructs a locator with associated parent.</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "relocate",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Relocates the given Figure.</p>",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "Number",
+          "description": "<p>child index of the target</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "target",
+          "type": "draw2d.Figure",
+          "description": "<p>The figure to relocate</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    }
+  ]
+}

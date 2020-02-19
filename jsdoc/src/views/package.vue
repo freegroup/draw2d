@@ -1,22 +1,46 @@
 <template>
   <div>
     <h2>Package: <b>{{ $attrs.className }}</b></h2>
+
+    <ul id="example-1">
+      <li v-for="item in clazz.classes" :key="item.name">
+        <router-link :to="'/'+item.namespace.split('.').join('/')+'/'+item.name.toLowerCase()">{{item.name}}</router-link>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 
 export default {
-  props: {
-    name: {
-      type: String,
-      default: 'Vue!'
+  data () {
+    return {
+      loading: false,
+      clazz: []
     }
   },
-  data: () => {
-    return {
+  created () {
+    this.fetchData()
+  },
+  watch: {
+    // call again the method if the route changes
+    '$route': 'fetchData'
+  },
+  methods: {
+    fetchData () {
+      console.log(this.$attrs.className)
+      this.loading = true
+      axios.get('/data/' + this.$attrs.className + '.json')
+        .then(response => {
+          this.loading = false
+          this.clazz = response.data
+        })
+        .catch(error => {
+          this.loading = false
+          console.log(error)
+        })
     }
   }
-
 }
 </script>

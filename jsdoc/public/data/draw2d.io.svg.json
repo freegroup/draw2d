@@ -1,0 +1,69 @@
+{
+  "name": "svg",
+  "namespace": "draw2d.io",
+  "description": "",
+  "access": "",
+  "virtual": false,
+  "classes": [
+    {
+      "name": "Writer",
+      "namespace": "draw2d.io.svg",
+      "description": "<p>draw2d.io.svg.Writer</p>\n<p>Serialize the canvas document into a SVG document.</p>\n<pre><code> // Create a SVG writer and convert the canvas into a SVG document.\n //\n var writer = new draw2d.io.svg.Writer();\n writer.marshal(canvas, function(svg){\n     // insert the svg string into a DIV for preview or post\n     // it via ajax to the server....\n     $(&quot;#svg&quot;).text(svg);\n });</code></pre>",
+      "extends": [
+        "draw2d.io.Writer"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "Writer",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "marshal",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Export the content of the canvas into SVG. The SVG document can be loaded with Inkscape or any other SVG Editor.\n<br>\n<br></p>\n<p>Method signature has been changed from version 2.10.1 to version 3.0.0.<br>\nThe parameter <b>resultCallback</b> is required and new. The method calls\nthe callback instead of return the result.</p>",
+          "parameters": [
+            {
+              "name": "canvas",
+              "type": "draw2d.Canvas",
+              "description": "<p>the canvas to marshal</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "callback",
+              "type": "function",
+              "description": "<p>the method to call on success. The first argument is the SVG document</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "callback.svg",
+              "type": "String",
+              "description": "<p>the SVG document</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "callback.base64",
+              "type": "String",
+              "description": "<p>the SVG document encoded in base64</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    }
+  ]
+}

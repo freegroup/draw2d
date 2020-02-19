@@ -1,0 +1,56 @@
+{
+  "name": "CubicSpline",
+  "namespace": "draw2d.util.spline",
+  "description": "<p>draw2d.util.spline.CubicSpline</p>\n<p>A cubic spline object.</p>",
+  "extends": [
+    "draw2d.util.spline.Spline"
+  ],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "CubicSpline",
+    "description": "",
+    "parameters": [],
+    "examples": []
+  },
+  "functions": [
+    {
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "description": "",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "generate",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Create a spline based on the given control points.\nThe generated curve starts in the first control point and ends\nin the last control point.</p>",
+      "parameters": [
+        {
+          "name": "controlPoints",
+          "type": "Array",
+          "description": "<p>Control points of spline (x0,y0,z0,x1,y1,z1,...).</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "parts",
+          "type": "Number",
+          "description": "<p>Number of parts to divide each leg into.</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "Array",
+        "description": "<p>the new generated array with new draw2d.geo.Point</p>"
+      }
+    }
+  ]
+}

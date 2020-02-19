@@ -1,0 +1,92 @@
+{
+  "name": "CommandDelete",
+  "namespace": "draw2d.command",
+  "description": "<p>draw2d.command.CommandDelete\nCommand to remove a figure with CommandStack support.</p>",
+  "extends": [
+    "draw2d.command.Command"
+  ],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "CommandDelete",
+    "description": "",
+    "parameters": [],
+    "examples": []
+  },
+  "functions": [
+    {
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Create a delete command for the given figure.</p>",
+      "parameters": [
+        {
+          "name": "figure",
+          "type": "draw2d.Figure",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "canExecute",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should\nreturn false. The execution of this Command doesn't modify the model.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "Boolean",
+        "description": "<p>return try if the command modify the model or make any relevant changes</p>"
+      }
+    },
+    {
+      "name": "execute",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Execute the command the first time</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "undo",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Undo the command</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "redo",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Redo the command after the user has undo this command</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "getLabel",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "String",
+        "description": "<p>the label for this command</p>"
+      }
+    },
+    {
+      "name": "cancel",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Will be called if the user cancel the operation.</p>",
+      "parameters": [],
+      "examples": []
+    }
+  ]
+}

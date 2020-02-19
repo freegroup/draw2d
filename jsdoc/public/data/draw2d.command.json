@@ -1,0 +1,2923 @@
+{
+  "name": "command",
+  "namespace": "draw2d",
+  "description": "",
+  "access": "",
+  "virtual": false,
+  "classes": [
+    {
+      "name": "Command",
+      "namespace": "draw2d.command",
+      "description": "<p>draw2d.command.Command</p>\n<p>Commands are passed around throughout editing. They are used to encapsulate and combine\nchanges to the application's model. An application has a single command stack. Commands must\nbe executed using the command stack rather than directly calling execute.\n<br>\nThis is requried for a deneric support for the undo/redo concept within draw2d.<br></p>",
+      "extends": [],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "Command",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Create a new Command objects which can be execute via the CommandStack.</p>",
+          "parameters": [
+            {
+              "name": "label",
+              "type": "String",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "getLabel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "String",
+            "description": "<p>the label for this command</p>"
+          }
+        },
+        {
+          "name": "canExecute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should\nreturn false. The execution of this Command doesn't modify the model.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": "<p>return try if the command modify the model or make any relevant changes</p>"
+          }
+        },
+        {
+          "name": "execute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Execute the command the first time.\nSup-classes must implement this method.</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "cancel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Will be called if the user cancel the operation.</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "undo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Undo the command.\nSup-classes must implement this method.</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "redo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Redo the command after the user has undo this command.\nSup-classes must implement this method.</p>",
+          "parameters": [],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "CommandAdd",
+      "namespace": "draw2d.command",
+      "description": "<p>draw2d.command.CommandAdd</p>\n<p>Command to add a figure with CommandStack support.</p>",
+      "extends": [
+        "draw2d.command.Command"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "CommandAdd",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Create a add command for the given figure.</p>",
+          "parameters": [
+            {
+              "name": "canvas",
+              "type": "draw2d.Canvas",
+              "description": "<p>the canvas to use</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "<p>the figure to add</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "x",
+              "type": [
+                "Number",
+                "draw2d.geo.Point"
+              ],
+              "description": "<p>the x-coordinate or a complete point where to place the figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "y",
+              "type": "Number",
+              "description": "<p>the y-coordinate if x is a number and not a complete point</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canExecute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should\nreturn false. The execution of this Command doesn't modify the model.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": "<p>return try if the command modify the model or make any relevant changes</p>"
+          }
+        },
+        {
+          "name": "execute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Execute the command the first time</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "redo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Redo the command after the user has undo this command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "undo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Undo the command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "getLabel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "String",
+            "description": "<p>the label for this command</p>"
+          }
+        },
+        {
+          "name": "cancel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Will be called if the user cancel the operation.</p>",
+          "parameters": [],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "CommandAddVertex",
+      "namespace": "draw2d.command",
+      "description": "<p>draw2d.command.CommandAddVertex</p>\n<p>Add a vertex to a polyline or polygon</p>",
+      "extends": [
+        "draw2d.command.Command"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "CommandAddVertex",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Create a new Command objects which add a vertex to a PolyLine / Polygon.</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.PolyLine",
+              "description": "<p>the related line</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "<p>the index where to add</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "x",
+              "type": "Number",
+              "description": "<p>the x coordinate for the new vertex</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "y",
+              "type": "Number",
+              "description": "<p>the y coordinate for the new vertex</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canExecute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "execute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Execute the command the first time</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "undo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Undo the move command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "redo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Redo the move command after the user has undo this command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "getLabel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "String",
+            "description": "<p>the label for this command</p>"
+          }
+        },
+        {
+          "name": "cancel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Will be called if the user cancel the operation.</p>",
+          "parameters": [],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "CommandAssignFigure",
+      "namespace": "draw2d.command",
+      "description": "<p>draw2d.command.CommandAssignFigure</p>\n<p>Assign a figure to a compiste</p>",
+      "extends": [
+        "draw2d.command.Command"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "CommandAssignFigure",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Create a new Command objects which can be execute via the CommandStack.</p>",
+          "parameters": [
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "<p>the figure to assign</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "composite",
+              "type": "draw2d.Figure",
+              "description": "<p>the composite where the figure should assign</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canExecute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "execute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Execute the command the first time</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "undo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Undo the move command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "redo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Redo the move command after the user has undo this command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "getLabel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "String",
+            "description": "<p>the label for this command</p>"
+          }
+        },
+        {
+          "name": "cancel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Will be called if the user cancel the operation.</p>",
+          "parameters": [],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "CommandAttr",
+      "namespace": "draw2d.command",
+      "description": "<p>draw2d.command.CommandAttr</p>\n<p>Command to change attributes of a shape with undo/redo support</p>",
+      "extends": [
+        "draw2d.command.Command"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "CommandAttr",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Create a new Command objects which provides undo/redo for attributes.</p>",
+          "parameters": [
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "<p>the figure to handle</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "attributes",
+              "type": "Object",
+              "description": "<p>new attributes to set</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canExecute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "execute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Execute the command the first time</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "undo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Undo the move command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "redo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Redo the move command after the user has undo this command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "getLabel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "String",
+            "description": "<p>the label for this command</p>"
+          }
+        },
+        {
+          "name": "cancel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Will be called if the user cancel the operation.</p>",
+          "parameters": [],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "CommandBoundingBox",
+      "namespace": "draw2d.command",
+      "description": "<p>draw2d.command.CommandBoundingBox\nSet the bounding box of a figure with undo/redo support</p>",
+      "extends": [
+        "draw2d.command.Command"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "CommandBoundingBox",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Create a new Command objects which can be execute via the CommandStack.</p>",
+          "parameters": [
+            {
+              "name": "label",
+              "type": "String",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "getLabel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "String",
+            "description": "<p>the label for this command</p>"
+          }
+        },
+        {
+          "name": "canExecute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should\nreturn false. The execution of this Command doesn't modify the model.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": "<p>return try if the command modify the model or make any relevant changes</p>"
+          }
+        },
+        {
+          "name": "execute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Execute the command the first time.\nSup-classes must implement this method.</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "cancel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Will be called if the user cancel the operation.</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "undo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Undo the command.\nSup-classes must implement this method.</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "redo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Redo the command after the user has undo this command.\nSup-classes must implement this method.</p>",
+          "parameters": [],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "CommandCollection",
+      "namespace": "draw2d.command",
+      "description": "<p>draw2d.command.CommandCollection</p>\n<p>A CommandCollection works as a single command. You can add more than one\nCommand to this CommandCollection and execute/undo them onto the CommandStack as a\nsingle Command.</p>",
+      "extends": [
+        "draw2d.command.Command"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "CommandCollection",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Create a new CommandConnect objects which can be execute via the CommandStack.</p>",
+          "parameters": [
+            {
+              "name": "commandLabel",
+              "type": "String",
+              "description": "<p>the label to show on the command stack for the undo/redo operation</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "getLabel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns a label of the Command. e.g. &quot;move figure&quot;.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "String",
+            "description": "<p>the label for this command</p>"
+          }
+        },
+        {
+          "name": "add",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Add a command to the collection.</p>",
+          "parameters": [
+            {
+              "name": "command",
+              "type": "draw2d.command.Command",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canExecute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should\nreturn false. The execution of this Command doesn't modify the model.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "execute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Execute the command the first time</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "redo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Redo the command after the user has undo this command.</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "undo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Undo the command.</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "cancel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Will be called if the user cancel the operation.</p>",
+          "parameters": [],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "CommandConnect",
+      "namespace": "draw2d.command",
+      "description": "<p>draw2d.command.CommandConnect</p>\n<p>Connects two ports with a connection.</p>",
+      "extends": [
+        "draw2d.command.Command"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "CommandConnect",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Create a new CommandConnect objects which can be execute via the CommandStack.</p>",
+          "parameters": [
+            {
+              "name": "source",
+              "type": "draw2d.Port",
+              "description": "<p>the source port for the connection to create</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "target",
+              "type": "draw2d.Port",
+              "description": "<p>the target port for the connection to create</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dropTarget",
+              "type": "draw2d.Port",
+              "description": "<p>the port who has initiate the connection creation. mainly the drop target</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "setConnection",
+          "access": "",
+          "virtual": false,
+          "description": "<p>set the connection to use. called by the ConnectionCreatePolicy</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "getConnection",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns the fresh created connection if available. Used in the\nClickConnectionCreatePolicy to customize the router and vertices.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": [
+              "null",
+              "draw2d.Connection"
+            ],
+            "description": ""
+          }
+        },
+        {
+          "name": "execute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Execute the command the first time</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "redo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Redo the command after the user has undo this command.</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "undo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Undo the command.</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "getLabel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "String",
+            "description": "<p>the label for this command</p>"
+          }
+        },
+        {
+          "name": "canExecute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should\nreturn false. The execution of this Command doesn't modify the model.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": "<p>return try if the command modify the model or make any relevant changes</p>"
+          }
+        },
+        {
+          "name": "cancel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Will be called if the user cancel the operation.</p>",
+          "parameters": [],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "CommandDelete",
+      "namespace": "draw2d.command",
+      "description": "<p>draw2d.command.CommandDelete\nCommand to remove a figure with CommandStack support.</p>",
+      "extends": [
+        "draw2d.command.Command"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "CommandDelete",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Create a delete command for the given figure.</p>",
+          "parameters": [
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canExecute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should\nreturn false. The execution of this Command doesn't modify the model.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": "<p>return try if the command modify the model or make any relevant changes</p>"
+          }
+        },
+        {
+          "name": "execute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Execute the command the first time</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "undo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Undo the command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "redo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Redo the command after the user has undo this command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "getLabel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "String",
+            "description": "<p>the label for this command</p>"
+          }
+        },
+        {
+          "name": "cancel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Will be called if the user cancel the operation.</p>",
+          "parameters": [],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "CommandDeleteGroup",
+      "namespace": "draw2d.command",
+      "description": "<p>draw2d.command.CommandDeleteGroup</p>\n<p>Command to remove a group with all related children.</p>",
+      "extends": [
+        "draw2d.command.Command"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "CommandDeleteGroup",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Create a delete command for the given figure.</p>",
+          "parameters": [
+            {
+              "name": "group",
+              "type": "draw2d.shape.composite.Group",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canExecute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should\nreturn false. The execution of this Command doesn't modify the model.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": "<p>return try if the command modify the model or make any relevant changes</p>"
+          }
+        },
+        {
+          "name": "execute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Execute the command the first time</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "undo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Undo the command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "redo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Redo the command after the user has undo this command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "getLabel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "String",
+            "description": "<p>the label for this command</p>"
+          }
+        },
+        {
+          "name": "cancel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Will be called if the user cancel the operation.</p>",
+          "parameters": [],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "CommandGroup",
+      "namespace": "draw2d.command",
+      "description": "<p>draw2d.command.CommandGroup\nCommand to group a given set of figures</p>",
+      "extends": [
+        "draw2d.command.Command"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "CommandGroup",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Create a group command for the given figure.</p>",
+          "parameters": [
+            {
+              "name": "figures",
+              "type": "draw2d.util.ArrayList",
+              "description": "<p>the figures to group</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canExecute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should\nreturn false. The execution of this Command doesn't modify the model.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": "<p>return try if the command modify the model or make any relevant changes</p>"
+          }
+        },
+        {
+          "name": "execute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Execute the command the first time</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "undo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Undo the command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "redo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Redo the command after the user has undo this command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "getLabel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "String",
+            "description": "<p>the label for this command</p>"
+          }
+        },
+        {
+          "name": "cancel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Will be called if the user cancel the operation.</p>",
+          "parameters": [],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "CommandMove",
+      "namespace": "draw2d.command",
+      "description": "<p>draw2d.command.CommandMove</p>\n<p>Command for the movement of figures.</p>",
+      "extends": [
+        "draw2d.command.Command"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "CommandMove",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Create a new Command objects which can be execute via the CommandStack.</p>",
+          "parameters": [
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "<p>the figure to move</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "x",
+              "type": "Number",
+              "description": "<p>the current x position</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "y",
+              "type": "Number",
+              "description": "<p>the current y position</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "setStartPosition",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Set the initial position of the element</p>",
+          "parameters": [
+            {
+              "name": "x",
+              "type": "Number",
+              "description": "<p>the new initial x position</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "y",
+              "type": "Number",
+              "description": "<p>the new initial y position</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "setPosition",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Set the target/final position of the figure move command.</p>",
+          "parameters": [
+            {
+              "name": "x",
+              "type": "Number",
+              "description": "<p>the new x position</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "y",
+              "type": "Number",
+              "description": "<p>the new y position</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canExecute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "execute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Execute the command the first time</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "undo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Undo the move command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "redo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Redo the move command after the user has undo this command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "getLabel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "String",
+            "description": "<p>the label for this command</p>"
+          }
+        },
+        {
+          "name": "cancel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Will be called if the user cancel the operation.</p>",
+          "parameters": [],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "CommandMoveConnection",
+      "namespace": "draw2d.command",
+      "description": "<p>draw2d.command.CommandMoveConnection</p>\n<p>Command for the movement of figures.</p>",
+      "extends": [
+        "draw2d.command.Command"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "CommandMoveConnection",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Create a new Command objects which can be execute via the CommandStack.</p>",
+          "parameters": [
+            {
+              "name": "figure",
+              "type": "draw2d.Connection",
+              "description": "<p>the connection to move</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "setTranslation",
+          "access": "",
+          "virtual": false,
+          "description": "<p>set the offset of the line translation</p>",
+          "parameters": [
+            {
+              "name": "dx",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dy",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canExecute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "execute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Execute the command the first time</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "undo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Undo the command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "redo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Redo the command after the user has undo this command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "getLabel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "String",
+            "description": "<p>the label for this command</p>"
+          }
+        },
+        {
+          "name": "cancel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Will be called if the user cancel the operation.</p>",
+          "parameters": [],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "CommandMoveLine",
+      "namespace": "draw2d.command",
+      "description": "<p>draw2d.command.CommandMoveLine</p>\n<p>Command for the movement of figures.</p>",
+      "extends": [
+        "draw2d.command.Command"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "CommandMoveLine",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Create a new Command objects which can be execute via the CommandStack.</p>",
+          "parameters": [
+            {
+              "name": "figure",
+              "type": "draw2d.shape.basic.Line",
+              "description": "<p>the line to move</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "setTranslation",
+          "access": "",
+          "virtual": false,
+          "description": "<p>set the offset of the line translation</p>",
+          "parameters": [
+            {
+              "name": "dx",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dy",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canExecute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "execute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Execute the command the first time</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "undo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Undo the command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "redo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Redo the command after the user has undo this command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "getLabel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "String",
+            "description": "<p>the label for this command</p>"
+          }
+        },
+        {
+          "name": "cancel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Will be called if the user cancel the operation.</p>",
+          "parameters": [],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "CommandMoveVertex",
+      "namespace": "draw2d.command",
+      "description": "<p>draw2d.command.CommandMoveVertex</p>\n<p>Command for the vertex movement of a polyline/polygon.</p>",
+      "extends": [
+        "draw2d.command.Command"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "CommandMoveVertex",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Create a new Command objects which can be execute via the CommandStack.</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.PolyLine",
+              "description": "<p>the related line</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "setIndex",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Set the index of the vertex of the polyline/polygon to modify.</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "<p>the related index of the vertex</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canExecute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "execute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Execute the command the first time</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "undo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Undo the move command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "redo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Redo the move command after the user has undo this command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "getLabel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "String",
+            "description": "<p>the label for this command</p>"
+          }
+        },
+        {
+          "name": "cancel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Will be called if the user cancel the operation.</p>",
+          "parameters": [],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "CommandMoveVertices",
+      "namespace": "draw2d.command",
+      "description": "<p>draw2d.command.CommandMoveVertices</p>\n<p>Command for the vertices movement of a polyline/polygon.</p>",
+      "extends": [
+        "draw2d.command.Command"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "CommandMoveVertices",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Create a new Command objects which can be execute via the CommandStack.</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.PolyLine",
+              "description": "<p>the related line</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canExecute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "execute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Execute the command the first time</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "undo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Undo the move command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "redo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Redo the move command after the user has undo this command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "getLabel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "String",
+            "description": "<p>the label for this command</p>"
+          }
+        },
+        {
+          "name": "cancel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Will be called if the user cancel the operation.</p>",
+          "parameters": [],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "CommandReconnect",
+      "namespace": "draw2d.command",
+      "description": "<p>draw2d.command.CommandReconnect</p>\n<p>Reconnects two ports. This command is used during the DragDrop operation of a draw2d.Connection.</p>",
+      "extends": [
+        "draw2d.command.Command"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "CommandReconnect",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Create a new Command objects which can be execute via the CommandStack.</p>",
+          "parameters": [
+            {
+              "name": "conn",
+              "type": "draw2d.Connection",
+              "description": "<p>the related Connection which is currently in the drag&amp;drop operation</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canExecute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "setNewPorts",
+          "access": "",
+          "virtual": false,
+          "description": "<p>The new ports to use during the execute of this command.</p>",
+          "parameters": [
+            {
+              "name": "source",
+              "type": "draw2d.Port",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "target",
+              "type": "draw2d.Port",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "updatePosition",
+          "access": "",
+          "virtual": false,
+          "description": "<p>compatibily method to the CommandMoveVertex to handle Line and Connections\ntransparent in the ResizeHandles</p>",
+          "parameters": [
+            {
+              "name": "x",
+              "type": "",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "y",
+              "type": "",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "execute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Execute the command the first time</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "cancel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Execute the command the first time</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "undo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Undo the command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "redo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Redo the command after the user has undo this command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "getLabel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "String",
+            "description": "<p>the label for this command</p>"
+          }
+        }
+      ]
+    },
+    {
+      "name": "CommandRemoveVertex",
+      "namespace": "draw2d.command",
+      "description": "<p>draw2d.command.CommandRemoveVertex</p>\n<p>Remove a vertex from a polyline or polygon</p>",
+      "extends": [
+        "draw2d.command.Command"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "CommandRemoveVertex",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Create a new Command objects which add a vertex to a PloyLine.</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.PolyLine",
+              "description": "<p>the related line</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "<p>the index where to add</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canExecute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "execute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Execute the command the first time</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "undo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Undo the move command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "redo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Redo the move command after the user has undo this command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "getLabel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "String",
+            "description": "<p>the label for this command</p>"
+          }
+        },
+        {
+          "name": "cancel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Will be called if the user cancel the operation.</p>",
+          "parameters": [],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "CommandReplaceVertices",
+      "namespace": "draw2d.command",
+      "description": "<p>draw2d.command.CommandReplaceVertices</p>\n<p>Replace the vertices of a polyline.</p>",
+      "extends": [
+        "draw2d.command.Command"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "CommandReplaceVertices",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Create a new Command objects which add a segment to a PolyLine / Polygon.</p>",
+          "parameters": [
+            {
+              "name": "line",
+              "type": "draw2d.shape.basic.PolyLine",
+              "description": "<p>the related line</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "originalVertices",
+              "type": "draw2d.util.ArrayList",
+              "description": "<p>the original vertices of the polyline</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "newVertices",
+              "type": "draw2d.util.ArrayList",
+              "description": "<p>the new vertices of the polyline</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canExecute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "execute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Execute the command the first time</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "undo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Undo the move command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "redo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Redo the move command after the user has undo this command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "getLabel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "String",
+            "description": "<p>the label for this command</p>"
+          }
+        },
+        {
+          "name": "cancel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Will be called if the user cancel the operation.</p>",
+          "parameters": [],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "CommandResize",
+      "namespace": "draw2d.command",
+      "description": "<p>draw2d.command.CommandResize\nResize command for figures. Can be execute/undo/redo via a CommandStack.</p>",
+      "extends": [
+        "draw2d.command.Command"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "CommandResize",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Create a new resize Command objects which can be execute via the CommandStack.</p>",
+          "parameters": [
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "<p>the figure to resize</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "boundingBox",
+              "type": "draw2d.geo.Rectangle",
+              "description": "<p>the new bounding box of the figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canExecute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "execute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Execute the command the first time</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "undo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Undo the command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "redo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Redo the command after the user has undo this command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Create a new resize Command objects which can be execute via the CommandStack.</p>",
+          "parameters": [
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "<p>the figure to resize</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "width",
+              "type": "Number",
+              "description": "<p>the current width</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "height",
+              "type": "Number",
+              "description": "<p>the current height</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "setDimension",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Set the new dimension of the element.</p>",
+          "parameters": [
+            {
+              "name": "width",
+              "type": "Number",
+              "description": "<p>the new width.</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "height",
+              "type": "Number",
+              "description": "<p>the new height of the element.</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canExecute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "execute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Execute the command the first time</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "undo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Undo the command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "redo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Redo the command after the user has undo this command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "getLabel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "String",
+            "description": "<p>the label for this command</p>"
+          }
+        },
+        {
+          "name": "cancel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Will be called if the user cancel the operation.</p>",
+          "parameters": [],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "CommandRotate",
+      "namespace": "draw2d.command",
+      "description": "<p>draw2d.command.CommandRotate</p>\n<p>Set the rotation angle of the given figure</p>",
+      "extends": [
+        "draw2d.command.Command"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "CommandRotate",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Create a new resize Command objects which can be execute via the CommandStack.</p>",
+          "parameters": [
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "<p>the figure to resize</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "angle",
+              "type": "Number",
+              "description": "<p>the angle to rotate</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canExecute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "execute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Execute the command the first time</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "undo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Undo the command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "redo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Redo the command after the user has undo this command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "getLabel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "String",
+            "description": "<p>the label for this command</p>"
+          }
+        },
+        {
+          "name": "cancel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Will be called if the user cancel the operation.</p>",
+          "parameters": [],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "CommandStack",
+      "namespace": "draw2d.command",
+      "description": "<p>draw2d.command.CommandStack\nStack for undo/redo operations</p>",
+      "extends": [],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "CommandStack",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Create a new CommandStack objects which can be execute via the CommandStack.</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "setUndoLimit",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Set the maximal undo stack size. Entries will be remove if the max. stack\nsize has been reached.</p>",
+          "parameters": [
+            {
+              "name": "count",
+              "type": "Number",
+              "description": "<p>The maximal undo stack size.</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "markSaveLocation",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Remove the undo / redo history. This is useful if the user has been save the\ndocument.</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "execute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Executes the specified Command if possible. Prior to executing the command, a\ndraw2d.command.CommandStackEvent for {@link #PRE_EXECUTE} will be fired to event listeners.\nSimilarly, after attempting to execute the command, an event for {@link #POST_EXECUTE}\nwill be fired.</p>",
+          "parameters": [
+            {
+              "name": "command",
+              "type": "draw2d.command.Command",
+              "description": "<p>The command to execute.</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "startTransaction",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Opens a transaction for further multiple commands. If you execute a command all\n{@ #execute} calls will be ignored until you commit the current transaction.</p>",
+          "parameters": [
+            {
+              "name": "commandLabel",
+              "type": "String",
+              "description": "<p>the label to show for the undo/redo operation</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "isInTransaction",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns true if the Command Stack has an open transaction.</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "commitTransaction",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Commit the running transaction. All commands between the start/end of a transaction\ncan be undo/redo in a single step.</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "undo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Undo on command from the stack and store them on the redo command stack.</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "redo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Redo a command after the user has undo a command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "getRedoLabel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Return the label of the next REDO command.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "String",
+            "description": ""
+          }
+        },
+        {
+          "name": "getUndoLabel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Return the label of the next UNDO command.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "String",
+            "description": ""
+          }
+        },
+        {
+          "name": "canRedo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Indicates whenever a REDO is possible.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "",
+            "description": "<p>boolean <code>true</code> if it is appropriate to call {@link #redo()}.</p>"
+          }
+        },
+        {
+          "name": "canUndo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>indicator whenever a undo is possible.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": "<p><code>true</code> if {@link #undo()} can be called</p>"
+          }
+        },
+        {
+          "name": "addEventListener",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Adds a listener to the command stack, which will be notified whenever a command has been processed on the stack.</p>",
+          "parameters": [
+            {
+              "name": "listener",
+              "type": [
+                "draw2d.command.CommandStackEventListener",
+                "function"
+              ],
+              "description": "<p>the listener to add.</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "on",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Adds a listener to the command stack, which will be notified whenever a command has been processed on the stack.</p>",
+          "parameters": [
+            {
+              "name": "event",
+              "type": "",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "func",
+              "type": "",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "removeEventListener",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Removes a listener from the command stack.</p>",
+          "parameters": [
+            {
+              "name": "listener",
+              "type": "draw2d.command.CommandStackEventListener",
+              "description": "<p>the listener to remove.</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "notifyListeners",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Notifies command stack event listeners that the command stack has changed to the\nspecified state.</p>",
+          "parameters": [
+            {
+              "name": "command",
+              "type": "draw2d.command.Command",
+              "description": "<p>the command</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "state",
+              "type": "Number",
+              "description": "<p>the current stack state</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "CommandStackEvent",
+      "namespace": "draw2d.command",
+      "description": "<p>draw2d.command.CommandStackEvent\nEvent class which will be fired for every CommandStack operation. Required for CommandStackListener.</p>",
+      "extends": [],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "CommandStackEvent",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Create a new CommandStack objects which can be execute via the CommandStack.</p>",
+          "parameters": [
+            {
+              "name": "command",
+              "type": "draw2d.command.Command",
+              "description": "<p>the related command</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "details",
+              "type": "Number",
+              "description": "<p>the current state of the command execution</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "getStack",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Return the corresponding stack of the event.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "draw2d.command.CommandStack",
+            "description": ""
+          }
+        },
+        {
+          "name": "getCommand",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns null or a Command if a command is relevant to the current event.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "draw2d.command.Command",
+            "description": ""
+          }
+        },
+        {
+          "name": "getDetails",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns an integer identifying the type of event which has occurred.\nDefined by {@link draw2d.command.CommandStack}.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "Number",
+            "description": ""
+          }
+        },
+        {
+          "name": "isPostChangeEvent",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns true if this event is fired after the stack having changed.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": "<p>true if post-change event</p>"
+          }
+        },
+        {
+          "name": "isPreChangeEvent",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns true if this event is fired prior to the stack changing.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": "<p>true if pre-change event</p>"
+          }
+        }
+      ]
+    },
+    {
+      "name": "CommandStackEventListener",
+      "namespace": "draw2d.command",
+      "description": "<p>draw2d.command.CommandStackEventListener</p>\n<p>Event class which will be fired for every CommandStack operation. Required for CommandStackListener.</p>",
+      "extends": [],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "CommandStackEventListener",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Creates a new Listener Object</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "stackChanged",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Sent when an event occurs on the command stack. draw2d.command.CommandStackEvent.getDetail()\ncan be used to identify the type of event which has occurred.</p>",
+          "parameters": [
+            {
+              "name": "event",
+              "type": "draw2d.command.CommandStackEvent",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "CommandType",
+      "namespace": "draw2d.command",
+      "description": "<p>draw2d.command.CommandType</p>\n<p>EditPolicies should determine an Figures editing capabilities.\nIt is possible to implement an Figure such that it handles all editing\nresponsibility.<br>\nHowever, it is much more flexible and object-oriented to use\nEditPolicies. Using policies, you can pick and choose the editing behavior for\nan Figure without being bound to its class hierarchy. Code reuse is increased,\nand code management is easier.</p>",
+      "extends": [],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "CommandType",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Create a new edit policy object</p>",
+          "parameters": [
+            {
+              "name": "policy",
+              "type": "String",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "getPolicy",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Return the String representation of the policy</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "String",
+            "description": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "CommandUngroup",
+      "namespace": "draw2d.command",
+      "description": "<p>draw2d.command.CommandUngroup\nCommand to ungroup a given group figures</p>",
+      "extends": [
+        "draw2d.command.Command"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "CommandUngroup",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Create a group command for the given figure.</p>",
+          "parameters": [
+            {
+              "name": "canvas",
+              "type": "draw2d.Canvas",
+              "description": "<p>the responsible canvas</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "group",
+              "type": [
+                "draw2d.util.ArrayList",
+                "draw2d.Selection"
+              ],
+              "description": "<p>the figures to group</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "canExecute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should\nreturn false. The execution of this Command doesn't modify the model.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": "<p>return try if the command modify the model or make any relevant changes</p>"
+          }
+        },
+        {
+          "name": "execute",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Execute the command the first time</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "undo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Undo the command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "redo",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Redo the command after the user has undo this command</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "getLabel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "String",
+            "description": "<p>the label for this command</p>"
+          }
+        },
+        {
+          "name": "cancel",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Will be called if the user cancel the operation.</p>",
+          "parameters": [],
+          "examples": []
+        }
+      ]
+    }
+  ]
+}

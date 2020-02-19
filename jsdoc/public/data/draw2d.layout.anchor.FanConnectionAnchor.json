@@ -1,0 +1,135 @@
+{
+  "name": "FanConnectionAnchor",
+  "namespace": "draw2d.layout.anchor",
+  "description": "<p>draw2d.layout.anchor.FanConnectionAnchor</p>\n<p>The FanConnectionAnchor's location is found by calculating the intersection of a\nline drawn from the center point of its owner's box (the parent of the\nconnection port) to a reference point on that box.\nAdditional the anchor resolves conflicts by spread the anchor if more than one\nconnection has the same reference point. <br>\nIn a case of a DirectRouter parallel connections are the result.</p>",
+  "extends": [
+    "draw2d.layout.anchor.ConnectionAnchor"
+  ],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "FanConnectionAnchor",
+    "description": "",
+    "parameters": [],
+    "examples": []
+  },
+  "functions": [
+    {
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "description": "",
+      "parameters": [
+        {
+          "name": "owner",
+          "type": "draw2d.Figure",
+          "description": "<p>the figure to use for the anchor calculation</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "separation",
+          "type": "Number",
+          "description": "<p>the separation or fan distance between the concurrent/conflicting anchors</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "getLocation",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Returns the location where the Connection should be anchored in\nabsolute coordinates. The anchor may use the given reference\nPoint to calculate this location.</p>",
+      "parameters": [
+        {
+          "name": "reference",
+          "type": "draw2d.geo.Point",
+          "description": "<p>The reference Point in absolute coordinates</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "inquiringConnection",
+          "type": "draw2d.Connection",
+          "description": "<p>the connection who ask for the location.</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.geo.Point",
+        "description": "<p>The anchor's location</p>"
+      }
+    },
+    {
+      "name": "getBox",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Returns the bounds of this Anchor's owner. Subclasses can\noverride this method to adjust the box. Maybe you return the box\nof the port parent (the parent figure)</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.geo.Rectangle",
+        "description": "<p>The bounds of this Anchor's owner</p>"
+      }
+    },
+    {
+      "name": "getReferencePoint",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Returns the reference point for this anchor in absolute coordinates. This might be used\nby another anchor to determine its own location.</p>",
+      "parameters": [
+        {
+          "name": "inquiringConnection",
+          "type": "draw2d.Connection",
+          "description": "<p>the connection who ask for the location.</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.geo.Point",
+        "description": "<p>The bounds of this Anchor's owner</p>"
+      }
+    },
+    {
+      "name": "getOwner",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Returns the Figure that contains this ConnectionAnchor.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.Figure",
+        "description": "<p>The Figure that contains this ConnectionAnchor</p>"
+      }
+    },
+    {
+      "name": "setOwner",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Set the owner of the Anchor.</p>",
+      "parameters": [
+        {
+          "name": "owner",
+          "type": "draw2d.Figure",
+          "description": "<p>the new owner of the anchor locator</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    }
+  ]
+}

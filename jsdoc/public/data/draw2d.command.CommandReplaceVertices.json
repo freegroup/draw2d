@@ -1,0 +1,108 @@
+{
+  "name": "CommandReplaceVertices",
+  "namespace": "draw2d.command",
+  "description": "<p>draw2d.command.CommandReplaceVertices</p>\n<p>Replace the vertices of a polyline.</p>",
+  "extends": [
+    "draw2d.command.Command"
+  ],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "CommandReplaceVertices",
+    "description": "",
+    "parameters": [],
+    "examples": []
+  },
+  "functions": [
+    {
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Create a new Command objects which add a segment to a PolyLine / Polygon.</p>",
+      "parameters": [
+        {
+          "name": "line",
+          "type": "draw2d.shape.basic.PolyLine",
+          "description": "<p>the related line</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "originalVertices",
+          "type": "draw2d.util.ArrayList",
+          "description": "<p>the original vertices of the polyline</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "newVertices",
+          "type": "draw2d.util.ArrayList",
+          "description": "<p>the new vertices of the polyline</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "canExecute",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "Boolean",
+        "description": ""
+      }
+    },
+    {
+      "name": "execute",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Execute the command the first time</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "undo",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Undo the move command</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "redo",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Redo the move command after the user has undo this command</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "getLabel",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "String",
+        "description": "<p>the label for this command</p>"
+      }
+    },
+    {
+      "name": "cancel",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Will be called if the user cancel the operation.</p>",
+      "parameters": [],
+      "examples": []
+    }
+  ]
+}

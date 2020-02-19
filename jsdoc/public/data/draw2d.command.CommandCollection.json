@@ -1,0 +1,109 @@
+{
+  "name": "CommandCollection",
+  "namespace": "draw2d.command",
+  "description": "<p>draw2d.command.CommandCollection</p>\n<p>A CommandCollection works as a single command. You can add more than one\nCommand to this CommandCollection and execute/undo them onto the CommandStack as a\nsingle Command.</p>",
+  "extends": [
+    "draw2d.command.Command"
+  ],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "CommandCollection",
+    "description": "",
+    "parameters": [],
+    "examples": []
+  },
+  "functions": [
+    {
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Create a new CommandConnect objects which can be execute via the CommandStack.</p>",
+      "parameters": [
+        {
+          "name": "commandLabel",
+          "type": "String",
+          "description": "<p>the label to show on the command stack for the undo/redo operation</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "getLabel",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Returns a label of the Command. e.g. &quot;move figure&quot;.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "String",
+        "description": "<p>the label for this command</p>"
+      }
+    },
+    {
+      "name": "add",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Add a command to the collection.</p>",
+      "parameters": [
+        {
+          "name": "command",
+          "type": "draw2d.command.Command",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "canExecute",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should\nreturn false. The execution of this Command doesn't modify the model.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "Boolean",
+        "description": ""
+      }
+    },
+    {
+      "name": "execute",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Execute the command the first time</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "redo",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Redo the command after the user has undo this command.</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "undo",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Undo the command.</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "cancel",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Will be called if the user cancel the operation.</p>",
+      "parameters": [],
+      "examples": []
+    }
+  ]
+}

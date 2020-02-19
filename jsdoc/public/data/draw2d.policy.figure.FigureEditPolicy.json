@@ -1,0 +1,144 @@
+{
+  "name": "FigureEditPolicy",
+  "namespace": "draw2d.policy.figure",
+  "description": "<p>draw2d.policy.figure.FigureEditPolicy</p>\n<p>Called by the framework if the user edit the position of a figure with a drag drop operation.\nSub class like SelectionEditPolicy or RegionEditPolicy can adjust the position of the figure\nor the selections handles.</p>",
+  "extends": [
+    "draw2d.policy.EditPolicy"
+  ],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "FigureEditPolicy",
+    "description": "",
+    "parameters": [],
+    "examples": []
+  },
+  "functions": [
+    {
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Creates a new Router object</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "onRightMouseDown",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Called if the user press the right mouse on the figure.<br>\nYou can either override the &quot;onContextMenu&quot; method of the figure or install an editor policy and override this method.\nBooth is valid and possible.</p>",
+      "parameters": [
+        {
+          "name": "figure",
+          "type": [
+            "draw2d.Figure",
+            "draw2d.shape.basic.Line"
+          ],
+          "description": "<p>the figure below the mouse</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "x",
+          "type": "Number",
+          "description": "<p>the x-coordinate of the mouse down event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "y",
+          "type": "Number",
+          "description": "<p>the y-coordinate of the mouse down event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "shiftKey",
+          "type": "Boolean",
+          "description": "<p>true if the shift key has been pressed during this event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "ctrlKey",
+          "type": "Boolean",
+          "description": "<p>true if the ctrl key has been pressed during the event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "attr",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "String/Object",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "value",
+          "type": "Object",
+          "description": "",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "onInstall",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Called by the host if the policy has been installed.</p>",
+      "parameters": [
+        {
+          "name": "host",
+          "type": [
+            "draw2d.Canvas",
+            "draw2d.Figure"
+          ],
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "onUninstall",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Called by the host if the policy has been uninstalled.</p>",
+      "parameters": [
+        {
+          "name": "host",
+          "type": [
+            "draw2d.Canvas",
+            "draw2d.Figure"
+          ],
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    }
+  ]
+}

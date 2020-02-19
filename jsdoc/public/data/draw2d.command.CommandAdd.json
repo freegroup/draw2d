@@ -1,0 +1,119 @@
+{
+  "name": "CommandAdd",
+  "namespace": "draw2d.command",
+  "description": "<p>draw2d.command.CommandAdd</p>\n<p>Command to add a figure with CommandStack support.</p>",
+  "extends": [
+    "draw2d.command.Command"
+  ],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "CommandAdd",
+    "description": "",
+    "parameters": [],
+    "examples": []
+  },
+  "functions": [
+    {
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Create a add command for the given figure.</p>",
+      "parameters": [
+        {
+          "name": "canvas",
+          "type": "draw2d.Canvas",
+          "description": "<p>the canvas to use</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "figure",
+          "type": "draw2d.Figure",
+          "description": "<p>the figure to add</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "x",
+          "type": [
+            "Number",
+            "draw2d.geo.Point"
+          ],
+          "description": "<p>the x-coordinate or a complete point where to place the figure</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "y",
+          "type": "Number",
+          "description": "<p>the y-coordinate if x is a number and not a complete point</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "canExecute",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should\nreturn false. The execution of this Command doesn't modify the model.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "Boolean",
+        "description": "<p>return try if the command modify the model or make any relevant changes</p>"
+      }
+    },
+    {
+      "name": "execute",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Execute the command the first time</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "redo",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Redo the command after the user has undo this command</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "undo",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Undo the command</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "getLabel",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "String",
+        "description": "<p>the label for this command</p>"
+      }
+    },
+    {
+      "name": "cancel",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Will be called if the user cancel the operation.</p>",
+      "parameters": [],
+      "examples": []
+    }
+  ]
+}

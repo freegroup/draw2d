@@ -1,0 +1,161 @@
+{
+  "name": "SketchConnectionRouter",
+  "namespace": "draw2d.layout.connection",
+  "description": "<p>draw2d.layout.connection.SketchConnectionRouter</p>\n<p>Provide a router which routes the connection in a hand drawn manner.</p>",
+  "extends": [
+    "draw2d.layout.connection.MazeConnectionRouter"
+  ],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "SketchConnectionRouter",
+    "description": "",
+    "parameters": [],
+    "examples": [
+      "let createConnection=function(){\n       let con = new draw2d.Connection();\n       con.setRouter(new draw2d.layout.connection.SketchConnectionRouter());\n       return con;\n    };\n\n    // install a custom connection create policy\n    //\n    canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({\n           createConnection: createConnection\n    }));\n\n    // create and add two nodes which contains Ports (In and OUT)\n    //\n    let f1 = new draw2d.shape.analog.OpAmp({x:10, y:10});\n    let f2 = new draw2d.shape.analog.ResistorVertical({angle:90, height:20, x:300, y:150});\n\n    // ...add it to the canvas\n    //\n    canvas.add( f1);\n    canvas.add( f2);\n\n    // first Connection\n    //\n    let c = createConnection();\n    c.setSource(f1.getOutputPort(0));\n    c.setTarget(f2.getHybridPort(0));\n    canvas.add(c);"
+    ]
+  },
+  "functions": [
+    {
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Creates a new Router object.</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "onInstall",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Callback method if the router has been assigned to a connection.</p>",
+      "parameters": [
+        {
+          "name": "connection",
+          "type": "draw2d.Connection",
+          "description": "<p>The assigned connection</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "route",
+      "access": "",
+      "virtual": false,
+      "description": "",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "_route",
+      "access": "private",
+      "virtual": false,
+      "description": "<p>Internal routing algorithm.\n* <p>\nPossible values:</p>\n<ul>\n  <li>up -&gt; 0</li>\n  <li>right -&gt; 1</li>\n  <li>down -&gt; 2</li>\n  <li>left -&gt; 3</li>\n</ul>\n<p>",
+      "parameters": [
+        {
+          "name": "conn",
+          "type": "draw2d.Connection",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "fromPt",
+          "type": "draw2d.geo.Point",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "fromDir",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "toPt",
+          "type": "draw2d.geo.Point",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "toDir",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "generateNoGoGrid",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Generate a grid base no go map required for the path finding algorithm</p>",
+      "parameters": [
+        {
+          "name": "conn",
+          "type": "",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "PF.Grid",
+        "description": ""
+      }
+    },
+    {
+      "name": "getAdjustedPoint",
+      "access": "",
+      "virtual": false,
+      "description": "<p>move the point in the given direction with the given offset</p>",
+      "parameters": [
+        {
+          "name": "pt",
+          "type": "draw2d.geo.Point",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "direction",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "adjustment",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.geo.Point",
+        "description": ""
+      }
+    }
+  ]
+}

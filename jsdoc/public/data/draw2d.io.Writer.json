@@ -1,0 +1,67 @@
+{
+  "name": "Writer",
+  "namespace": "draw2d.io",
+  "description": "<p>Serialize the canvas to an external format. This is only a template/interface class.\nInherit classes must implement the export format.</p>",
+  "extends": [],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "Writer",
+    "description": "",
+    "parameters": [],
+    "examples": []
+  },
+  "functions": [
+    {
+      "name": "marshal",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Export the content to the implemented data format. Inherit class implements\ncontent specific writer.\n<br>\n<br></p>\n<p>Method signature has been changed from version 2.10.1 to version 3.0.0.<br>\nThe parameter <b>resultCallback</b> is required and new. The method calls\nthe callback instead of return the result.</p>",
+      "parameters": [
+        {
+          "name": "canvas",
+          "type": "draw2d.Canvas",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "resultCallback",
+          "type": "function",
+          "description": "<p>the method to call on success. The first argument is the result object, the second the base64 content of a corresponding file</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "Object",
+        "description": ""
+      }
+    },
+    {
+      "name": "formatXml",
+      "access": "",
+      "virtual": false,
+      "description": "<p>utility method to format a given XML string.</p>",
+      "parameters": [
+        {
+          "name": "xml",
+          "type": "",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "String",
+        "description": ""
+      }
+    }
+  ]
+}

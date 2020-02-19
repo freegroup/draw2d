@@ -1,0 +1,42 @@
+{
+  "name": "CommandStackEventListener",
+  "namespace": "draw2d.command",
+  "description": "<p>draw2d.command.CommandStackEventListener</p>\n<p>Event class which will be fired for every CommandStack operation. Required for CommandStackListener.</p>",
+  "extends": [],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "CommandStackEventListener",
+    "description": "",
+    "parameters": [],
+    "examples": []
+  },
+  "functions": [
+    {
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Creates a new Listener Object</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "stackChanged",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Sent when an event occurs on the command stack. draw2d.command.CommandStackEvent.getDetail()\ncan be used to identify the type of event which has occurred.</p>",
+      "parameters": [
+        {
+          "name": "event",
+          "type": "draw2d.command.CommandStackEvent",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    }
+  ]
+}

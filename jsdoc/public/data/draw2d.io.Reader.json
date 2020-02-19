@@ -1,0 +1,46 @@
+{
+  "name": "Reader",
+  "namespace": "draw2d.io",
+  "description": "<p>Template class for general import of a document into the canvas.</p>",
+  "extends": [],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "Reader",
+    "description": "",
+    "parameters": [],
+    "examples": []
+  },
+  "functions": [
+    {
+      "name": "unmarshal",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Restore the canvas from a given String.</p>",
+      "parameters": [
+        {
+          "name": "canvas",
+          "type": "draw2d.Canvas",
+          "description": "<p>the canvas to restore</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "document",
+          "type": "Object",
+          "description": "<p>the document to read</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.util.ArrayList",
+        "description": "<p>the added elements</p>"
+      }
+    }
+  ]
+}

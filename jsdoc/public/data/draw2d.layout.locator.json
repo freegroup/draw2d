@@ -1,0 +1,910 @@
+{
+  "name": "locator",
+  "namespace": "draw2d.layout",
+  "description": "",
+  "access": "",
+  "virtual": false,
+  "classes": [
+    {
+      "name": "BottomLocator",
+      "namespace": "draw2d.layout.locator",
+      "description": "<p>draw2d.layout.locator.BottomLocator</p>\n<p>A bottomLocator is used to place figures at the bottom of a parent shape.</p>",
+      "extends": [],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "BottomLocator",
+        "description": "",
+        "parameters": [],
+        "examples": [
+          "// create a basic figure and add a Label/child via API call\n    //\n    var circle = new draw2d.shape.basic.Circle({\n        x:100,\n        y:50,\n        diameter:100,\n        stroke: 3,\n        color:\"#A63343\",\n        bgColor:\"#E65159\"\n    });\n\n    circle.add(new draw2d.shape.basic.Label({text:\"Bottom Label\"}), new draw2d.layout.locator.BottomLocator());\n    canvas.add( circle);"
+        ]
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "relocate",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Relocates the given Figure.</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "<p>child index of the target</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "target",
+              "type": "draw2d.Figure",
+              "description": "<p>The figure to relocate</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "CenterLocator",
+      "namespace": "draw2d.layout.locator",
+      "description": "<p>draw2d.layout.locator.CenterLocator</p>\n<p>A CenterLocator is used to place figures in the center of a parent shape.</p>",
+      "extends": [],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "CenterLocator",
+        "description": "",
+        "parameters": [],
+        "examples": [
+          "// create a basic figure and add a Label/child via API call\n    //\n    let circle = new draw2d.shape.basic.Circle({diameter:120});\n    circle.setStroke(3);\n    circle.setColor(\"#A63343\");\n    circle.setBackgroundColor(\"#E65159\");\n    circle.add(new draw2d.shape.basic.Label({text:\"Center Label\"}), new draw2d.layout.locator.CenterLocator());\n    canvas.add( circle, 100,50);"
+        ]
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Constructs a locator with associated parent.</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "relocate",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Relocates the given Figure.</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "<p>child index of the target</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "target",
+              "type": "draw2d.Figure",
+              "description": "<p>The figure to relocate</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "ConnectionLocator",
+      "namespace": "draw2d.layout.locator",
+      "description": "<p>draw2d.layout.locator.ConnectionLocator</p>\n<p>Repositions a Figure attached to a Connection when the\nConnection is moved. Provides for alignment at the start\n(source), middle, or end (target) of the Connection.</p>",
+      "extends": [],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "ConnectionLocator",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Default constructor for a Locator which can layout a figure in context of a\n{@link draw2d.Connector}</p>",
+          "parameters": [],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "DraggableLocator",
+      "namespace": "draw2d.layout.locator",
+      "description": "<p>draw2d.layout.locator.DraggableLocator</p>\n<p>A DraggableLocator is used to place figures relative to the parent top left corner. It is\npossible to move a child node via drag&amp;drop.</p>",
+      "extends": [],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "DraggableLocator",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Constructs a locator with associated parent.</p>",
+          "parameters": [],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "InputPortLocator",
+      "namespace": "draw2d.layout.locator",
+      "description": "<p>draw2d.layout.locator.InputPortLocator</p>\n<p>Repositions a Figure attached to a Connection when the\nConnection is moved. Provides for alignment at the start\n(source), middle, or end (target) of the Connection.</p>",
+      "extends": [],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "InputPortLocator",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Default constructor for a Locator which can layout a port in context of a\n{@link draw2d.shape.node.Node}</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "relocate",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Controls the location of an {@link draw2d.Figure}</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "<p>port index of the figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "<p>the figure to control</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "LeftLocator",
+      "namespace": "draw2d.layout.locator",
+      "description": "<p>draw2d.layout.locator.LeftLocator</p>\n<p>A LeftLocator is used to place figures to the left of a parent shape.</p>",
+      "extends": [],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "LeftLocator",
+        "description": "",
+        "parameters": [],
+        "examples": [
+          "// create a basic figure and add a Label/child via API call\n    //\n    let start = new draw2d.shape.node.Start();\n    start.add(new draw2d.shape.basic.Label({text:\"Left Label\"}), new draw2d.layout.locator.LeftLocator({\n     margin:10  // distance to the parent shape\n    }));\n    canvas.add( start, 100,50);"
+        ]
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Constructs a locator with associated parent.</p>",
+          "parameters": [
+            {
+              "name": "attr",
+              "type": "",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "relocate",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Relocates the given Figure.</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "<p>child index of the target</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "target",
+              "type": "draw2d.Figure",
+              "description": "<p>The figure to relocate</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "Locator",
+      "namespace": "draw2d.layout.locator",
+      "description": "<p>draw2d.layout.locator.Locator</p>\n<p>Controls the location of an IFigure.</p>",
+      "extends": [],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "Locator",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Initial Constructor</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "bind",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method if a child is bounded to a parent. This is\nthe perfect moment to prepare the child node with some basic\nbehaviour which are forced by the <code>Locator</code></p>",
+          "parameters": [
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "child",
+              "type": "draw2d.Figure",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "unbind",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Callback method if a child is unbounded to the locator.</p>",
+          "parameters": [
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "child",
+              "type": "draw2d.Figure",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "relocate",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Controls the location of an I{@link draw2d.Figure}</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "<p>child index of the figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "<p>the figure to control</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "clone",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Return a clone of the locator object</p>",
+          "parameters": [],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "ManhattanMidpointLocator",
+      "namespace": "draw2d.layout.locator",
+      "description": "<p>draw2d.layout.locator.ManhattanMidpointLocator</p>\n<p>A ManhattanMidpointLocator that is used to place figures at the midpoint of a Manhatten routed\nconnection. The midpoint is always in the center of an edge.</p>",
+      "extends": [],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "ManhattanMidpointLocator",
+        "description": "",
+        "parameters": [],
+        "examples": [
+          "//create and add two Node which contains Ports (In and OUT)\n    let start = new draw2d.shape.node.Start({x:50,y:50});\n    let end   = new draw2d.shape.node.End({x:230,y:100});\n\n    canvas.add( start);\n    canvas.add( end);\n\n    // Create a Connection and connect he Start and End node\n    //\n    let c = new draw2d.Connection();\n    c.setSource(start.getOutputPort(0));\n    c.setTarget(end.getInputPort(0));\n    canvas.add(c);\n\n    // create a label which should attach to the connection\n    //\n    let label = new draw2d.shape.basic.Label({text:\"I'm a Label\"});\n    label.setColor(\"#0d0d0d\");\n    label.setFontColor(\"#0d0d0d\");\n    label.setBackgroundColor(\"#f0f0f0\");\n\n    // add the decoration to the connection with a ManhattanMidpointLocator.\n    //\n    c.add(label, new draw2d.layout.locator.ManhattanMidpointLocator());"
+        ]
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Constructs a ManhattanMidpointLocator with associated Connection c.</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "relocate",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Relocates the given Figure always in the center of an edge.</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "<p>child index of the target</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "target",
+              "type": "draw2d.Figure",
+              "description": "<p>The figure to relocate</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "OutputPortLocator",
+      "namespace": "draw2d.layout.locator",
+      "description": "<p>draw2d.layout.locator.OutputPortLocator</p>\n<p>Repositions a Figure attached to a Connection when the\nConnection is moved. Provides for alignment at the start\n(source), middle, or end (target) of the Connection.</p>",
+      "extends": [],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "OutputPortLocator",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Default constructor for a Locator which can layout a port in context of a\n{@link draw2d.shape.node.Node}</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "relocate",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Controls the location of an I{@link draw2d.Figure}</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "<p>child index of the figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "<p>the figure to control</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "ParallelMidpointLocator",
+      "namespace": "draw2d.layout.locator",
+      "description": "<p>draw2d.layout.locator.ParallelMidpointLocator</p>\n<p>A ParallelMidpointLocator that is used to place label at the midpoint of a  routed\nconnection. The midpoint is always in the center of an edge.\nThe label is aligned to the connection angle at the calculated conection segment.</p>",
+      "extends": [],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "ParallelMidpointLocator",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Constructs a ParallelMidpointLocator with optional padding to the connection.</p>\n<p>if the parameter <b>distanceFromConnection</b> is less than zero the label is\nplaced above of the connection. Else the label is below the connection.</p>",
+          "parameters": [
+            {
+              "name": "distanceFromConnection",
+              "type": "Number",
+              "description": "<p>the distance of the label to the connection.</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "relocate",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Relocates the given Figure always in the center of an edge.</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "<p>child index of the target</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "target",
+              "type": "draw2d.Figure",
+              "description": "<p>The figure to relocate</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "PolylineMidpointLocator",
+      "namespace": "draw2d.layout.locator",
+      "description": "<p>draw2d.layout.locator.PolylineMidpointLocator</p>\n<p>A PolylineMidpointLocator is used to place figures at the midpoint of a routed\nconnection. <br>\nIf the connection did have an odd count of points the figure is located in the center vertex of the polyline.<br>\nOn an even count of junction point, the figure will be center on the middle segment of the ploy line.</p>",
+      "extends": [],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "PolylineMidpointLocator",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Constructs a ManhattanMidpointLocator with associated Connection c.</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "relocate",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Relocates the given Figure.</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "<p>child index of the target</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "target",
+              "type": "draw2d.Figure",
+              "description": "<p>The figure to relocate</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "PortLocator",
+      "namespace": "draw2d.layout.locator",
+      "description": "<p>draw2d.layout.locator.PortLocator</p>\n<p>The port locator calculates the position of an port. All ports MUST have a locator\nif you add them as child to a node.</p>",
+      "extends": [],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "PortLocator",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Default constructor for a Locator which can layout a port in context of a</p>",
+          "parameters": [],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "RightLocator",
+      "namespace": "draw2d.layout.locator",
+      "description": "<p>draw2d.layout.locator.RightLocator</p>\n<p>A RightLocator is used to place figures to the right of a parent shape.</p>",
+      "extends": [],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "RightLocator",
+        "description": "",
+        "parameters": [],
+        "examples": [
+          "// create a basic figure and add a Label/child via API call\n    //\n    var end = new draw2d.shape.node.End();\n    end.add(new draw2d.shape.basic.Label({text:\"Right Label\"}), new draw2d.layout.locator.RightLocator({\n         margin: 10 // distance to the parent shape\n    }));\n    canvas.add( end, 50,50);"
+        ]
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Constructs a locator with associated parent.</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "relocate",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Relocates the given Figure.</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "<p>child index of the target</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "target",
+              "type": "draw2d.Figure",
+              "description": "<p>The figure to relocate</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "SmartDraggableLocator",
+      "namespace": "draw2d.layout.locator",
+      "description": "<p>draw2d.layout.locator.DraggableLocator</p>\n<p>A DraggableLocator is used to place figures relative to the parent nearest corner. It is\npossible to move a child node via drag&amp;drop.</p>",
+      "extends": [],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "SmartDraggableLocator",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Constructs a locator with associated parent.</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "relocate",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Controls the location of an I{@link draw2d.Figure}</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "<p>child index of the figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "<p>the figure to control</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "TopLocator",
+      "namespace": "draw2d.layout.locator",
+      "description": "<p>draw2d.layout.locator.TopLocator</p>\n<p>A TopLocator  is used to place figures at the top/center of a parent shape.</p>",
+      "extends": [],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "TopLocator",
+        "description": "",
+        "parameters": [],
+        "examples": [
+          "// create a basic figure and add a Label/child via API call\n    //\n    let circle = new draw2d.shape.basic.Circle({\n        x:100,\n        y:70,\n        diameter:80,\n        stroke: 3,\n        color:\"#A63343\",\n        bgColor:\"#E65159\"\n    });\n\n    circle.add(new draw2d.shape.basic.Label({text:\"Top Label\"}), new draw2d.layout.locator.TopLocator());\n    canvas.add( circle);"
+        ]
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Constructs a ManhattanMidpointLocator with associated Connection c.</p>",
+          "parameters": [],
+          "examples": []
+        },
+        {
+          "name": "relocate",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Relocates the given Figure.</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "<p>child index of the target</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "target",
+              "type": "draw2d.Figure",
+              "description": "<p>The figure to relocate</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "XYAbsPortLocator",
+      "namespace": "draw2d.layout.locator",
+      "description": "<p>draw2d.layout.locator.XYAbsPortLocator</p>\n<p>Create a locator for fixed x/y coordinate position. The port in the example below is\nalways 20px below of the top border.</p>",
+      "extends": [],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "XYAbsPortLocator",
+        "description": "",
+        "parameters": [],
+        "examples": [
+          "var figure =  new draw2d.shape.basic.Rectangle({x:130,y:30,width:100,height:60});\n    figure.createPort(\"input\", new draw2d.layout.locator.XYAbsPortLocator(0,20));\n\n    canvas.add(figure);"
+        ]
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "<p>{@link draw2d.shape.node.Node}</p>",
+          "parameters": [
+            {
+              "name": "x",
+              "type": "Number",
+              "description": "<p>the x coordinate of the port relative to the left of the parent</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "y",
+              "type": "Number",
+              "description": "<p>the y coordinate of the port relative to the top of the parent</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "relocate",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Controls the location of an {@link draw2d.Figure}</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "<p>child index of the figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "<p>the figure to control</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "name": "XYRelPortLocator",
+      "namespace": "draw2d.layout.locator",
+      "description": "<p>draw2d.layout.locator.XYRelPortLocator</p>\n<p>Create a locator for a relative x/y coordinate position. The coordinates are named in percentage [0..100%]\nrelative to the top/left corner of the parent node.<br>\n<br>\n<br>\nResize the shape in the example to see what happens. The port top position is always 20% of the shape height.</p>",
+      "extends": [],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "XYRelPortLocator",
+        "description": "",
+        "parameters": [],
+        "examples": [
+          "let figure =  new draw2d.shape.basic.Rectangle({x:130,y:30,width:100,height:60});\n    figure.createPort(\"input\", new draw2d.layout.locator.XYRelPortLocator(0,20));\n\n    canvas.add(figure);"
+        ]
+      },
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "description": "",
+          "parameters": [
+            {
+              "name": "xPercentage",
+              "type": "Number",
+              "description": "<p>the x coordinate in percent of the port relative to the left of the parent</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "yPercentage",
+              "type": "Number",
+              "description": "<p>the y coordinate in percent of the port relative to the top of the parent</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        },
+        {
+          "name": "relocate",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Controls the location of an I{@link draw2d.Figure}</p>",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "<p>child index of the figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "<p>the figure to control</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    }
+  ]
+}

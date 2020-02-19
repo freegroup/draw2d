@@ -1,0 +1,77 @@
+{
+  "name": "png",
+  "namespace": "draw2d.io",
+  "description": "",
+  "access": "",
+  "virtual": false,
+  "classes": [
+    {
+      "name": "Writer",
+      "namespace": "draw2d.io.png",
+      "description": "<p>Convert the canvas document into a PNG Image.</p>\n<pre><code>// example how to create a PNG image and set an\n// image src attribute.\n//\nvar writer = new draw2d.io.png.Writer();\nwriter.marshal(canvas, function(png){\n    $(&quot;#preview&quot;).attr(&quot;src&quot;,png);\n});</code></pre>",
+      "extends": [
+        "draw2d.io.Writer"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "Writer",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "marshal",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Export the content to a PNG image. The result can be set as <b>src=&quot;....&quot;</b> because\nthe result is encoded as data source url <b>data:image/png;base64....</b>\n<br>\n<br></p>\n<p>Method signature has been changed from version 2.10.1 to version 3.0.0.<br>\nThe parameter <b>resultCallback</b> is required and new. The method calls\nthe callback instead of return the result.</p>",
+          "parameters": [
+            {
+              "name": "canvas",
+              "type": "draw2d.Canvas",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "resultCallback",
+              "type": "function",
+              "description": "<p>the method to call on success. The first argument is the dataUrl, the second is the base64 formated png image</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "resultCallback.img",
+              "type": "String",
+              "description": "<p>The image as data source url <b>data:image/png;base64....</b></p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "resultCallback.base64",
+              "type": "String",
+              "description": "<p>the image encoded in base64</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "cropBoundingBox",
+              "type": "draw2d.geo.Rectangle",
+              "description": "<p>optional cropping/clipping bounding box</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": []
+        }
+      ]
+    }
+  ]
+}

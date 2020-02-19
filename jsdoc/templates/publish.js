@@ -212,14 +212,15 @@ function writeRouter(namespaces){
     let last = (idx === array.length - 1)
     let path = `/${namespace.name.toLowerCase()}`
     let component = path.replace('/','').split("/").join("_")
-    // write children
     if(namespace.namespaces) {
-      namespace.namespaces.forEach( (n, idx, array) => dumpRoutes(n, stream, '  ', 0, (idx === array.length - 1), path))
+      namespace.namespaces.forEach( (n, idx, array) => dumpRoutes(n, stream, '  ', (idx === array.length - 1), path, 'package'))
+    }
+    if(namespace.classes){
+      namespace.classes.forEach( (clz, idx, array) => dumpRoutes(clz, stream, '  ', (idx === array.length - 1), path, 'clazz'))
     }
     stream.write('  {\n')
     stream.write(`    path: '${path}',\n`)
     stream.write(`    props: { className: '${namespace.name}' },\n`)
-    stream.write(`    name: '${namespace.name}',\n`)
     stream.write(`    component: () => import(/* webpackChunkName: "${component}" */ '../views/package.vue')\n`)
     if(!last){
       stream.write('  },\n')
@@ -236,7 +237,6 @@ function writeRouter(namespaces){
     let path = `/${namespace.name.toLowerCase()}`
     stream.write('  {\n')
     stream.write(`    data: { path: '${path}' },\n`)
-    // write children
     if(namespace.namespaces) {
       stream.write(`    text: '${namespace.name}',\n`)
       stream.write('    children: [\n')
@@ -286,20 +286,64 @@ function dumpTree(namespace, stream, ident, isLastElement, path){
   }
 }
 
-function dumpRoutes(namespace, stream, ident, level, isLastElement, path){
+function dumpRoutes(namespace, stream, ident, isLastElement, path, template){
   path = path +'/'+namespace.name.toLowerCase()
   let component = path.replace('/','').split("/").join("_")
   stream.write(ident+'{\n')
   stream.write(ident+`  path: '${path}',\n`)
-  stream.write(ident+`  name: '${namespace.name}',\n`)
-  stream.write(ident+`  props: { className: '${namespace.name}' },\n`)
-  stream.write(ident+`  component: () => import(/* webpackChunkName: "${component}" */ '../views/package.vue')\n`)
+  stream.write(ident+`  props: { className: '${namespace.namespace}.${namespace.name}' },\n`)
+  stream.write(ident+`  component: () => import(/* webpackChunkName: "${component}" */ '../views/${template}.vue')\n`)
   stream.write(ident+'},\n')
-  // write children
   if(namespace.namespaces) {
     namespace.namespaces.forEach( (n, idx, array) => {
-      dumpRoutes(n, stream, ident, level+1, (idx === array.length - 1), path)
+      dumpRoutes(n, stream, ident, (idx === array.length - 1), path, 'package')
     })
+  }
+  if(namespace.classes) {
+    namespace.classes.forEach( (n, idx, array) => {
+      dumpRoutes(n, stream, ident, (idx === array.length - 1), path, 'clazz')
+    })
+  }
+}
+
+function dumpClasses(data){
+  const fs = require('fs');
+  if(data.classes) {
+    data.classes.forEach(clazz => {
+      let pathName = './public/data/' + clazz.namespace+"."+clazz.name + '.json'
+      if( clazz.namespace.length==0){
+        pathName = './public/data/' + clazz.name + '.json'
+      }
+      const stream = fs.createWriteStream(pathName);
+      stream.once('open', function(fd) {
+        stream.write(JSON.stringify(clazz, undefined, 2))
+        stream.end();
+      }, () => {});
+    })
+  }
+  if(data.namespaces) {
+    data.namespaces.forEach(dumpClasses)
+  }
+}
+
+function dumpNamespaces(data){
+  const fs = require('fs');
+  if(data.namespaces) {
+    data.namespaces.forEach(ns => {
+      let pathName = './public/data/' + ns.namespace+"."+ns.name + '.json'
+      if( ns.namespace.length==0){
+        pathName = './public/data/' + ns.name + '.json'
+      }
+      const stream = fs.createWriteStream(pathName);
+      stream.once('open', function(fd) {
+        let nss = ns.namespaces
+        delete ns.namespaces
+        stream.write(JSON.stringify(ns, undefined, 2))
+        stream.end();
+        ns.namespaces = nss
+      }, () => {});
+    })
+    data.namespaces.forEach(dumpNamespaces)
   }
 }
 
@@ -315,13 +359,8 @@ exports.publish = (data, {destination, query}) => {
     docs = data().get(); // <-- an array of Doclet objects
 
     graft(root, docs);
-    const fs = require('fs');
-    const stream = fs.createWriteStream("./src/draw2d-classes.js");
-    stream.once('open', function(fd) {
-      stream.write('export const draw2dClasses = ')
-      stream.write(require('jsdoc/util/dumper').dump(root));
-      stream.end();
-    }, () => {});
 
     writeRouter(root.namespaces)
+    dumpClasses(root)
+    dumpNamespaces(root)
 };

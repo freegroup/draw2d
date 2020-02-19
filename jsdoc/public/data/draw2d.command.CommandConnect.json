@@ -1,0 +1,131 @@
+{
+  "name": "CommandConnect",
+  "namespace": "draw2d.command",
+  "description": "<p>draw2d.command.CommandConnect</p>\n<p>Connects two ports with a connection.</p>",
+  "extends": [
+    "draw2d.command.Command"
+  ],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "CommandConnect",
+    "description": "",
+    "parameters": [],
+    "examples": []
+  },
+  "functions": [
+    {
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Create a new CommandConnect objects which can be execute via the CommandStack.</p>",
+      "parameters": [
+        {
+          "name": "source",
+          "type": "draw2d.Port",
+          "description": "<p>the source port for the connection to create</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "target",
+          "type": "draw2d.Port",
+          "description": "<p>the target port for the connection to create</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "dropTarget",
+          "type": "draw2d.Port",
+          "description": "<p>the port who has initiate the connection creation. mainly the drop target</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "setConnection",
+      "access": "",
+      "virtual": false,
+      "description": "<p>set the connection to use. called by the ConnectionCreatePolicy</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "getConnection",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Returns the fresh created connection if available. Used in the\nClickConnectionCreatePolicy to customize the router and vertices.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": [
+          "null",
+          "draw2d.Connection"
+        ],
+        "description": ""
+      }
+    },
+    {
+      "name": "execute",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Execute the command the first time</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "redo",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Redo the command after the user has undo this command.</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "undo",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Undo the command.</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "getLabel",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "String",
+        "description": "<p>the label for this command</p>"
+      }
+    },
+    {
+      "name": "canExecute",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should\nreturn false. The execution of this Command doesn't modify the model.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "Boolean",
+        "description": "<p>return try if the command modify the model or make any relevant changes</p>"
+      }
+    },
+    {
+      "name": "cancel",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Will be called if the user cancel the operation.</p>",
+      "parameters": [],
+      "examples": []
+    }
+  ]
+}

@@ -1,0 +1,280 @@
+{
+  "name": "HeadlessCanvas",
+  "namespace": "draw2d",
+  "description": "<p>Required for Node.js draw2d model read/write operations.</p>",
+  "extends": [],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "HeadlessCanvas",
+    "description": "",
+    "parameters": [],
+    "examples": []
+  },
+  "functions": [
+    {
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Create a new canvas with the given HTML DOM references.</p>",
+      "parameters": [
+        {
+          "name": "canvasId",
+          "type": "String",
+          "description": "<p>the id of the DOM element to use a parent container</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "clear",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Reset the canvas and delete all model elements.<br>\nYou can now reload another model to the canvas with a {@link draw2d.io.Reader}</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "hideDecoration",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Callback for any kind of image export tools to trigger the canvas to hide all unwanted\ndecorations. The method is called e.g. from the draw2d.io.png.Writer</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "showDecoration",
+      "access": "",
+      "virtual": false,
+      "description": "<p>callback method for any image export writer to reactivate the decoration\nof the canvas. e.g. grids, rulers,...</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "add",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Add a figure at the given x/y coordinate. This method fires an event.</p>\n<p>Example:</p>\n<pre><code> canvas.on(&quot;figure:add&quot;, function(emitter, event){\n    alert(&quot;figure added:&quot;);\n });\n\n // or more general if you want catch all figure related events\n //\n canvas.on(&quot;figure&quot;, function(emitter, event){\n    // use event.figure.getCanvas()===null to determine if the\n    // figure part of the canvas\n\n    alert(&quot;figure added or removed:&quot;);\n });</code></pre>",
+      "parameters": [
+        {
+          "name": "figure",
+          "type": "draw2d.Figure",
+          "description": "<p>The figure to add.</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "x",
+          "type": "Number/draw2d.geo.Point",
+          "description": "<p>The new x coordinate of the figure or the x/y coordinate if it is an draw2d.geo.Point</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "y",
+          "type": "Number",
+          "description": "<p>The y position.</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "getLines",
+      "access": "protected",
+      "virtual": false,
+      "description": "<p>Returns all lines/connections in this workflow/canvas.<br></p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.util.ArrayList",
+        "description": ""
+      }
+    },
+    {
+      "name": "getFigures",
+      "access": "protected",
+      "virtual": false,
+      "description": "<p>Returns the internal figures.<br></p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.util.ArrayList",
+        "description": ""
+      }
+    },
+    {
+      "name": "getLine",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Returns the line or connection with the given id.</p>",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "String",
+          "description": "<p>The id of the line.</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.shape.basic.Line",
+        "description": ""
+      }
+    },
+    {
+      "name": "getFigure",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Returns the figure with the given id.</p>",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "String",
+          "description": "<p>The id of the figure.</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.Figure",
+        "description": ""
+      }
+    },
+    {
+      "name": "registerPort",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Register a port to the canvas. This is required for other ports to find a valid drop target.</p>",
+      "parameters": [
+        {
+          "name": "port",
+          "type": "draw2d.Port",
+          "description": "<p>The new port which has been added to the Canvas.</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "getAllPorts",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Return all ports in the canvas</p>",
+      "parameters": [],
+      "examples": []
+    },
+    {
+      "name": "getCommandStack",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Returns the command stack for the Canvas. Required for undo/redo support.</p>",
+      "parameters": [],
+      "examples": [],
+      "returns": {
+        "type": "draw2d.command.CommandStack",
+        "description": ""
+      }
+    },
+    {
+      "name": "fireEvent",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Execute all handlers and behaviors attached to the canvas for the given event type.</p>",
+      "parameters": [
+        {
+          "name": "event",
+          "type": "String",
+          "description": "<p>the event to trigger</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "args",
+          "type": "Object",
+          "description": "<p>optional parameters for the triggered event callback</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "on",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Attach an event handler function for one or more events to the canvas.\nTo remove events bound with .on(), see {@link #off}.</p>\n<p>possible events are:<br></p>\n<ul>\n  <li>reset</li>\n  <li>select</li>\n</ul>\n<p>Example:</p>\n<pre><code> canvas.on(&quot;clear&quot;, function(emitter, event){\n    alert(&quot;canvas.clear() called.&quot;);\n });\n\n canvas.on(&quot;select&quot;, function(emitter,event){\n     if(event.figure!==null){\n         alert(&quot;figure selected&quot;);\n     }\n     else{\n         alert(&quot;selection cleared&quot;);\n     }\n });</code></pre>",
+      "parameters": [
+        {
+          "name": "event",
+          "type": "String",
+          "description": "<p>One or more space-separated event types</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "callback",
+          "type": "function",
+          "description": "<p>A function to execute when the event is triggered.</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "callback.emitter",
+          "type": "draw2d.Canvas",
+          "description": "<p>the emitter of the event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "callback.obj",
+          "type": "Object",
+          "description": "<p>optional event related data</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "off",
+      "access": "",
+      "virtual": false,
+      "description": "<p>The .off() method removes event handlers that were attached with {@link #on}.<br>\nCalling .off() with no arguments removes all handlers attached to the canvas.<br>\n<br>\nIf a simple event name such as &quot;reset&quot; is provided, all events of that type are removed from the canvas.</p>",
+      "parameters": [
+        {
+          "name": "eventOrFunction",
+          "type": [
+            "String",
+            "function"
+          ],
+          "description": "<p>the event name of the registerd function</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    }
+  ]
+}

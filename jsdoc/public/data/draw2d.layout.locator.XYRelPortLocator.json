@@ -1,0 +1,69 @@
+{
+  "name": "XYRelPortLocator",
+  "namespace": "draw2d.layout.locator",
+  "description": "<p>draw2d.layout.locator.XYRelPortLocator</p>\n<p>Create a locator for a relative x/y coordinate position. The coordinates are named in percentage [0..100%]\nrelative to the top/left corner of the parent node.<br>\n<br>\n<br>\nResize the shape in the example to see what happens. The port top position is always 20% of the shape height.</p>",
+  "extends": [],
+  "access": "",
+  "virtual": false,
+  "fires": "",
+  "constructor": {
+    "name": "XYRelPortLocator",
+    "description": "",
+    "parameters": [],
+    "examples": [
+      "let figure =  new draw2d.shape.basic.Rectangle({x:130,y:30,width:100,height:60});\n    figure.createPort(\"input\", new draw2d.layout.locator.XYRelPortLocator(0,20));\n\n    canvas.add(figure);"
+    ]
+  },
+  "functions": [
+    {
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "description": "",
+      "parameters": [
+        {
+          "name": "xPercentage",
+          "type": "Number",
+          "description": "<p>the x coordinate in percent of the port relative to the left of the parent</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "yPercentage",
+          "type": "Number",
+          "description": "<p>the y coordinate in percent of the port relative to the top of the parent</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    },
+    {
+      "name": "relocate",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Controls the location of an I{@link draw2d.Figure}</p>",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "Number",
+          "description": "<p>child index of the figure</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "figure",
+          "type": "draw2d.Figure",
+          "description": "<p>the figure to control</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": []
+    }
+  ]
+}
