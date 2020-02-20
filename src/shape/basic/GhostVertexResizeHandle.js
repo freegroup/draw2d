@@ -2,12 +2,11 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.shape.basic.GhostVertexResizeHandle
+ * @class
  * ResizeHandle for a vertex edit policy. Click of this kind of resize handles
  * adds a new vertex to the polyline or polygon.
  *
  *
- * @inheritable
  * @author Andreas Herz
  * @extends draw2d.shape.basic.LineResizeHandle
  */

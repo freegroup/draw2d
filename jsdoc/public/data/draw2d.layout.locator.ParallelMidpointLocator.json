@@ -1,7 +1,7 @@
 {
   "name": "ParallelMidpointLocator",
   "namespace": "draw2d.layout.locator",
-  "description": "<p>draw2d.layout.locator.ParallelMidpointLocator</p>\n<p>A ParallelMidpointLocator that is used to place label at the midpoint of a  routed\nconnection. The midpoint is always in the center of an edge.\nThe label is aligned to the connection angle at the calculated conection segment.</p>",
+  "description": "<p>A ParallelMidpointLocator that is used to place label at the midpoint of a  routed\nconnection. The midpoint is always in the center of an edge.\nThe label is aligned to the connection angle at the calculated conection segment.</p>",
   "extends": [],
   "access": "",
   "virtual": false,

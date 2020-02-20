@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.layout.connection.ConnectionRouter
+ * @class
  * Routes a {@link draw2d.Connection}, possibly using a constraint.
  *
  * @author Andreas Herz

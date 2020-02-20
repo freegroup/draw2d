@@ -1,7 +1,7 @@
 {
   "name": "CommandAssignFigure",
   "namespace": "draw2d.command",
-  "description": "<p>draw2d.command.CommandAssignFigure</p>\n<p>Assign a figure to a compiste</p>",
+  "description": "<p>Assign a figure to a compiste</p>",
   "extends": [
     "draw2d.command.Command"
   ],

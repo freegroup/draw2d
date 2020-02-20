@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.layout.locator.ParallelMidpointLocator
+ * @class
  *
  * A ParallelMidpointLocator that is used to place label at the midpoint of a  routed
  * connection. The midpoint is always in the center of an edge.

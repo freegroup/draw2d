@@ -1,7 +1,7 @@
 {
   "name": "DropInterceptorPolicy",
   "namespace": "draw2d.policy.canvas",
-  "description": "<p>draw2d.policy.canvas.DropInterceptorPolicy</p>\n<p>Drop interceptors are basically event handlers from which you can return a value\nthat tells draw2d to abort what it is that it was doing.<br>\n<br>\nInterceptors can be registered via the registerEditPolicy method on the draw2d canvas just like any other\nedit policies.<br>\n<br>\nThe <b>delegateTarget</b> method is responsible for all drop event especially to all connection and port handling.</p>",
+  "description": "<p>Drop interceptors are basically event handlers from which you can return a value\nthat tells draw2d to abort what it is that it was doing.<br>\n<br>\nInterceptors can be registered via the registerEditPolicy method on the draw2d canvas just like any other\nedit policies.<br>\n<br>\nThe <b>delegateTarget</b> method is responsible for all drop event especially to all connection and port handling.</p>",
   "extends": [
     "draw2d.policy.canvas.CanvasPolicy"
   ],

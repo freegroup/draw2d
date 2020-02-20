@@ -4,11 +4,17 @@
   "description": "",
   "access": "",
   "virtual": false,
+  "namespaces": [
+    {
+      "name": "spline",
+      "namespace": "draw2d.util"
+    }
+  ],
   "classes": [
     {
       "name": "ArrayList",
       "namespace": "draw2d.util",
-      "description": "<p>draw2d.util.ArrayList</p>\n<p><Disclaimer> Writing my own class for arrays was one of my worst ideas...</p>\n<p>An ArrayList stores a variable number of objects. This is similar to making an array of\nobjects, but with an ArrayList, items can be easily added and removed from the ArrayList\nand it is resized dynamically. This can be very convenient, but it's slower than making\nan array of objects when using many elements.</p>",
+      "description": "<p><Disclaimer> Writing my own class for arrays was one of my worst ideas...</p>\n<p>An ArrayList stores a variable number of objects. This is similar to making an array of\nobjects, but with an ArrayList, items can be easily added and removed from the ArrayList\nand it is resized dynamically. This can be very convenient, but it's slower than making\nan array of objects when using many elements.</p>",
       "extends": [],
       "access": "",
       "virtual": false,
@@ -569,7 +575,7 @@
     {
       "name": "Color",
       "namespace": "draw2d.util",
-      "description": "<p>Util class to handle colors in the draw2d enviroment.</p>\n<pre><code>// Create a new Color with RGB values\nvar color = new draw2d.util.Color(127,0,0);\n\n// of from a hex string\nvar color2 = new draw2d.util.Color(&quot;#f00000&quot;);\n\n// Create a little bit darker color\nvar darkerColor = color.darker(0.2); // 20% darker\n\n// create a optimal text color if 'color' the background color\n// (best in meaning of contrast and readability)\nvar fontColor = color.getIdealTextColor();</code></pre>",
+      "description": "<p>Util class to handle colors in the draw2d enviroment.</p>",
       "extends": [],
       "access": "",
       "virtual": false,
@@ -616,7 +622,9 @@
             "nullable": ""
           }
         ],
-        "examples": []
+        "examples": [
+          "// Create a new Color with RGB values\n    var color = new draw2d.util.Color(127,0,0);\n\n    // of from a hex string\n    var color2 = new draw2d.util.Color(\"#f00000\");\n\n    // Create a little bit darker color\n    var darkerColor = color.darker(0.2); // 20% darker\n\n    // create a optimal text color if 'color' the background color\n    // (best in meaning of contrast and readability)\n    var fontColor = color.getIdealTextColor();"
+        ]
       },
       "functions": [
         {
@@ -875,16 +883,18 @@
     {
       "name": "UUID",
       "namespace": "draw2d.util",
-      "description": "<p>draw2d.util.UUID\nGenerates a (pseudo) UUID's</p>\n<pre><code>// a UUID in the format\n// xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (8-4-4-4-12)\nvar id = draw2d.util.UUID.create();</code></pre>",
+      "description": "<p>Generates a (pseudo) UUID's</p>",
       "extends": [],
-      "access": "private",
+      "access": "",
       "virtual": false,
       "fires": "",
       "constructor": {
         "name": "UUID",
         "description": "",
         "parameters": [],
-        "examples": []
+        "examples": [
+          "// a UUID in the format\n    // xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (8-4-4-4-12)\n    var id = draw2d.util.UUID.create();"
+        ]
       },
       "functions": [
         {

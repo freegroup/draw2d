@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.shape.state.Connection
+ * @class
  *
  * Connection designed for a state diagram with arrow decoration at the
  * target of the connection and a label

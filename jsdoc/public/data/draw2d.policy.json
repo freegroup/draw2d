@@ -4,11 +4,33 @@
   "description": "",
   "access": "",
   "virtual": false,
+  "namespaces": [
+    {
+      "name": "canvas",
+      "namespace": "draw2d.policy"
+    },
+    {
+      "name": "connection",
+      "namespace": "draw2d.policy"
+    },
+    {
+      "name": "line",
+      "namespace": "draw2d.policy"
+    },
+    {
+      "name": "port",
+      "namespace": "draw2d.policy"
+    },
+    {
+      "name": "figure",
+      "namespace": "draw2d.policy"
+    }
+  ],
   "classes": [
     {
       "name": "EditPolicy",
       "namespace": "draw2d.policy",
-      "description": "<p>draw2d.policy.EditPolicy</p>\n<p>A plugable contribution implementing a portion of an behavior.</p>\n<p>EditPolicies should determine an Canvas or figure editing capabilities. It is possible to implement\nan figure such that it handles all editing responsibility. However, it is much more flexible\nand object-oriented to use EditPolicies. Using policies, you can pick and choose the editing\nbehavior for an figure/canvas without being bound to its class hierarchy. Code management is easier.</p>\n<p>This interface is not intended to be implemented by clients. Clients should inherit from {@link draw2d.policy.figure.SelectionFeedbackPolicy}\nor {@link draw2d.policy.canvas.SelectionPolicy}.</p>",
+      "description": "<p>A plugable contribution implementing a portion of an behavior.</p>\n<p>EditPolicies should determine an Canvas or figure editing capabilities. It is possible to implement\nan figure such that it handles all editing responsibility. However, it is much more flexible\nand object-oriented to use EditPolicies. Using policies, you can pick and choose the editing\nbehavior for an figure/canvas without being bound to its class hierarchy. Code management is easier.</p>\n<p>This interface is not intended to be implemented by clients. Clients should inherit from {@link draw2d.policy.figure.SelectionFeedbackPolicy}\nor {@link draw2d.policy.canvas.SelectionPolicy}.</p>",
       "extends": [],
       "access": "",
       "virtual": false,

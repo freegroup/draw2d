@@ -1,7 +1,7 @@
 {
   "name": "End",
   "namespace": "draw2d.shape.node",
-  "description": "<p>draw2d.shape.node.End\nA simple Node which has a InputPort. Mainly used for demo and examples.</p>",
+  "description": "<p>A simple Node which has a InputPort. Mainly used for demo and examples.</p>",
   "extends": [
     "draw2d.shape.basic.Rectangle"
   ],

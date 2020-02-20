@@ -3,8 +3,10 @@ const canvg = require('canvg-browser')
 
 /**
  * @class
- * Convert the canvas document into a PNG Image.
  *
+ * Converts the canvas document into a PNG Image.
+ *
+ * @example
  *    // example how to create a PNG image and set an
  *    // image src attribute.
  *    //

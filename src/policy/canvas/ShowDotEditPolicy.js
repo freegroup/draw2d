@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.policy.canvas.ShowDotEditPolicy
+ * @class
  *
  * Paint a dotted pattern in the background of the canvas.
  *

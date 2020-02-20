@@ -38,7 +38,7 @@
       }
     ],
     "examples": [
-      "let shape =  new draw2d.shape.basic.Circle({x:40,y:10, stroke:3, color:\"#3d3d3d\", bgColor:\"#3dff3d\"});\n\ncanvas.add(shape);"
+      "let shape =  new draw2d.shape.basic.Circle({x:40,y:10, stroke:3, color:\"#3d3d3d\", bgColor:\"#3dff3d\"});\n\n   canvas.add(shape);"
     ]
   },
   "functions": [

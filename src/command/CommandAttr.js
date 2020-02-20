@@ -2,7 +2,7 @@ import draw2d from '../packages'
 
 
 /**
- * @class draw2d.command.CommandAttr
+ * @class
  *
  *Command to change attributes of a shape with undo/redo support
  *

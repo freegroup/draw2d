@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.layout.locator.PolylineMidpointLocator
+ * @class
  *
  * A PolylineMidpointLocator is used to place figures at the midpoint of a routed
  * connection. <br>

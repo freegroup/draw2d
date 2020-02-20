@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.policy.figure.RegionConstraintPolicy
+ * @class
  *
  * An EditPolicy for use with Figures. The constraint for RegionEditPolicy is a Rectangle. It is
  * not possible to move the related figure outside this constrained area.

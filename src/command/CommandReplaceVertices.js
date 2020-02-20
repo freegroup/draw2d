@@ -2,7 +2,7 @@ import draw2d from '../packages'
 
 
 /**
- * @class draw2d.command.CommandReplaceVertices
+ * @class
  *
  * Replace the vertices of a polyline.
  *

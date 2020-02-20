@@ -1,7 +1,7 @@
 {
   "name": "ROUTER_RECTS",
   "namespace": "",
-  "description": "<p>draw2d.layout.connection.MazeConnectionRouter\n<b>BETA VERSION. Not for production!!!<br></b></p>",
+  "description": "<p><b>BETA VERSION. Not for production!!!<br></b></p>",
   "extends": [
     "draw2d.layout.connection.ConnectionRouter"
   ],

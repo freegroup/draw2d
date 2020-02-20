@@ -1,7 +1,7 @@
 {
   "name": "XYRelPortLocator",
   "namespace": "draw2d.layout.locator",
-  "description": "<p>draw2d.layout.locator.XYRelPortLocator</p>\n<p>Create a locator for a relative x/y coordinate position. The coordinates are named in percentage [0..100%]\nrelative to the top/left corner of the parent node.<br>\n<br>\n<br>\nResize the shape in the example to see what happens. The port top position is always 20% of the shape height.</p>",
+  "description": "<p>Create a locator for a relative x/y coordinate position. The coordinates are named in percentage [0..100%]\nrelative to the top/left corner of the parent node.<br>\n<br>\n<br>\nResize the shape in the example to see what happens. The port top position is always 20% of the shape height.</p>",
   "extends": [],
   "access": "",
   "virtual": false,

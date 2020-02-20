@@ -1,7 +1,7 @@
 {
   "name": "DirectRouter",
   "namespace": "draw2d.layout.connection",
-  "description": "<p>draw2d.layout.connection.DirectRouter</p>\n<p>Router for direct connections between two ports. Beeline\n<br>\n<br></p>",
+  "description": "<p>Router for direct connections between two ports. Beeline\n<br>\n<br></p>",
   "extends": [
     "draw2d.layout.connection.ConnectionRouter"
   ],

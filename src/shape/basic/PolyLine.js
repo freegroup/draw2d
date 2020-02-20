@@ -4,7 +4,7 @@ import extend from '../../util/extend'
 
 
 /**
- * @class draw2d.shape.basic.PolyLine
+ * @class
  *
  * A PolyLine is a line with more than 2 points.
  *
@@ -18,7 +18,6 @@ import extend from '../../util/extend'
  *
  *    canvas.setCurrentSelection(line);
  *
- * @inheritable
  * @author Andreas Herz
  * @extends draw2d.shape.basic.Line
  */

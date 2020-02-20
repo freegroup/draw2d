@@ -3,7 +3,7 @@ import extend from '../util/extend'
 
 
 /**
- * @class draw2d.policy.EditPolicy
+ * @class
  *
  * A plugable contribution implementing a portion of an behavior.
  *

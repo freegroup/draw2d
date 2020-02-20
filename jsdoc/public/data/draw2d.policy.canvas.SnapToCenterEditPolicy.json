@@ -1,7 +1,7 @@
 {
   "name": "SnapToCenterEditPolicy",
   "namespace": "draw2d.policy.canvas",
-  "description": "<p>draw2d.policy.canvas.SnapToCenterEditPolicy</p>\n<p>Snapping is based on the existing children of a container. When snapping a shape,\nthe center of the bounding box will snap to the center of other figures of the given canvas.</p>",
+  "description": "<p>Snapping is based on the existing children of a container. When snapping a shape,\nthe center of the bounding box will snap to the center of other figures of the given canvas.</p>",
   "extends": [
     "draw2d.policy.canvas.SnapToEditPolicy"
   ],

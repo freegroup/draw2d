@@ -2,7 +2,7 @@ import draw2d from '../packages'
 
 
 /**
- * @class draw2d.command.CommandBoundingBox
+ * @class
  * Set the bounding box of a figure with undo/redo support
  *
  * @inheritable

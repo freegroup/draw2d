@@ -1,7 +1,7 @@
 {
   "name": "RegionEditPolicy",
   "namespace": "draw2d.policy.figure",
-  "description": "<p>draw2d.policy.figure.RegionConstraintPolicy</p>\n<p>An EditPolicy for use with Figures. The constraint for RegionEditPolicy is a Rectangle. It is\nnot possible to move the related figure outside this constrained area.</p>",
+  "description": "<p>An EditPolicy for use with Figures. The constraint for RegionEditPolicy is a Rectangle. It is\nnot possible to move the related figure outside this constrained area.</p>",
   "extends": [
     "draw2d.policy.figure.DragDropEditPolicy"
   ],

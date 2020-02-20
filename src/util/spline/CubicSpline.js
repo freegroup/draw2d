@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.util.spline.CubicSpline
+ * @class
  *
  * A cubic spline object.
  *

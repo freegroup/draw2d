@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.policy.port.ElasticStrapFeedbackPolicy
+ * @class
  *
  * A draw2d.policy.SelectionFeedbackPolicy that is sensitive to the canvas selection. Subclasses will typically
  * decorate the {@link draw2d.Figure figure} with things like selection handles and/or focus feedback.

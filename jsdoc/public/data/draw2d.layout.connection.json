@@ -8,7 +8,7 @@
     {
       "name": "CircuitConnectionRouter",
       "namespace": "draw2d.layout.connection",
-      "description": "<p>draw2d.layout.connection.CircuitConnectionRouter</p>\n<p>Provides a {@link draw2d.Connection} with an orthogonal route between the Connection's source\nand target anchors.\n<br>\nAdditional a <b>bridge</b> is added to each connection which didn't have a common source or target\nport.<br>\nA <b>dot</b> is added at the crossing if the two connections have a common spurce or target port.</p>\n<br>",
+      "description": "<p>Provides a {@link draw2d.Connection} with an orthogonal route between the Connection's source\nand target anchors.\n<br>\nAdditional a <b>bridge</b> is added to each connection which didn't have a common source or target\nport.<br>\nA <b>dot</b> is added at the crossing if the two connections have a common spurce or target port.</p>\n<br>",
       "extends": [
         "draw2d.layout.connection.ManhattanConnectionRouter"
       ],
@@ -407,7 +407,7 @@
     {
       "name": "ConnectionRouter",
       "namespace": "draw2d.layout.connection",
-      "description": "<p>draw2d.layout.connection.ConnectionRouter\nRoutes a {@link draw2d.Connection}, possibly using a constraint.</p>",
+      "description": "<p>Routes a {@link draw2d.Connection}, possibly using a constraint.</p>",
       "extends": [],
       "access": "",
       "virtual": false,
@@ -693,7 +693,7 @@
     {
       "name": "DirectRouter",
       "namespace": "draw2d.layout.connection",
-      "description": "<p>draw2d.layout.connection.DirectRouter</p>\n<p>Router for direct connections between two ports. Beeline\n<br>\n<br></p>",
+      "description": "<p>Router for direct connections between two ports. Beeline\n<br>\n<br></p>",
       "extends": [
         "draw2d.layout.connection.ConnectionRouter"
       ],
@@ -1003,7 +1003,7 @@
     {
       "name": "FanConnectionRouter",
       "namespace": "draw2d.layout.connection",
-      "description": "<p>draw2d.layout.connection.FanConnectionRouter</p>\n<p>Automatic router that spreads its  {@link draw2d.Connection Connections} in a fan-like fashion upon collision.</p>",
+      "description": "<p>Automatic router that spreads its  {@link draw2d.Connection Connections} in a fan-like fashion upon collision.</p>",
       "extends": [
         "draw2d.layout.connection.DirectRouter"
       ],
@@ -1330,7 +1330,7 @@
     {
       "name": "InteractiveManhattanConnectionRouter",
       "namespace": "draw2d.layout.connection",
-      "description": "<p>draw2d.layout.connection.InteractiveManhattanConnectionRouter\nRoute the connection in an Manhattan style and add resize handles to all vertex for interactive alignment of the\nrouting.</p>",
+      "description": "<p>Route the connection in an Manhattan style and add resize handles to all vertex for interactive alignment of the\nrouting.</p>",
       "extends": [
         "draw2d.layout.connection.ManhattanConnectionRouter"
       ],
@@ -1715,7 +1715,7 @@
     {
       "name": "ManhattanBridgedConnectionRouter",
       "namespace": "draw2d.layout.connection",
-      "description": "<p>draw2d.layout.connection.ManhattanBridgedConnectionRouter\nProvides a {@link draw2d.Connection} with an orthogonal route between the Connection's source\nand target anchors.</p>",
+      "description": "<p>Provides a {@link draw2d.Connection} with an orthogonal route between the Connection's source\nand target anchors.</p>",
       "extends": [
         "draw2d.layout.connection.ManhattanConnectionRouter"
       ],
@@ -2064,7 +2064,7 @@
     {
       "name": "ManhattanConnectionRouter",
       "namespace": "draw2d.layout.connection",
-      "description": "<p>draw2d.layout.connection.ManhattanConnectionRouter\nProvides a {@link draw2d.Connection} with an orthogonal route between the Connection's source\nand target anchors.</p>",
+      "description": "<p>Provides a {@link draw2d.Connection} with an orthogonal route between the Connection's source\nand target anchors.</p>",
       "extends": [
         "draw2d.layout.connection.ConnectionRouter"
       ],
@@ -2415,7 +2415,7 @@
     {
       "name": "MuteableManhattanConnectionRouter",
       "namespace": "draw2d.layout.connection",
-      "description": "<p>draw2d.layout.connection.MuteableManhattanConnectionRouter</p>\n<p>JUST FOR RESEARCH AT THE MOMENT!!!!!!</p>",
+      "description": "<p>JUST FOR RESEARCH AT THE MOMENT!!!!!!</p>",
       "extends": [
         "draw2d.layout.connection.ManhattanConnectionRouter"
       ],
@@ -2858,7 +2858,7 @@
     {
       "name": "RubberbandRouter",
       "namespace": "draw2d.layout.connection",
-      "description": "<p>draw2d.layout.connection.RubberbandRouter\nRouter for direct connections between two ports with a rubber band effect</p>",
+      "description": "<p>Router for direct connections between two ports with a rubber band effect</p>",
       "extends": [
         "draw2d.layout.connection.ConnectionRouter"
       ],
@@ -3168,7 +3168,7 @@
     {
       "name": "SketchConnectionRouter",
       "namespace": "draw2d.layout.connection",
-      "description": "<p>draw2d.layout.connection.SketchConnectionRouter</p>\n<p>Provide a router which routes the connection in a hand drawn manner.</p>",
+      "description": "<p>Provide a router which routes the connection in a hand drawn manner.</p>",
       "extends": [
         "draw2d.layout.connection.MazeConnectionRouter"
       ],
@@ -3341,7 +3341,7 @@
     {
       "name": "SplineConnectionRouter",
       "namespace": "draw2d.layout.connection",
-      "description": "<p>draw2d.layout.connection.SplineConnectionRouter</p>\n<p>A ManhattanConnectionRouter with an spline interpolation between the bend points.</p>",
+      "description": "<p>A ManhattanConnectionRouter with an spline interpolation between the bend points.</p>",
       "extends": [
         "draw2d.layout.connection.ManhattanConnectionRouter"
       ],
@@ -3692,7 +3692,7 @@
     {
       "name": "VertexRouter",
       "namespace": "draw2d.layout.connection",
-      "description": "<p>draw2d.layout.connection.VertexRouter</p>\n<p>A Router with unlimited vertices.</p>",
+      "description": "<p>A Router with unlimited vertices.</p>",
       "extends": [
         "draw2d.layout.connection.ConnectionRouter"
       ],
@@ -4007,5 +4007,6 @@
         }
       ]
     }
-  ]
+  ],
+  "namespaces": []
 }

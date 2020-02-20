@@ -3,7 +3,7 @@ import extend from '../../util/extend'
 
 
 /**
- * @class draw2d.policy.canvas.CoronaDecorationPolicy
+ * @class
  * This decorations hides draw2d.Ports which are to far from the current cursor position.
  * This makes the canvas more clean if you have a lot of nodes on it.<br>
  * You didn't see a bunch of ports.

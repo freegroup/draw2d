@@ -1,14 +1,14 @@
+import draw2d from 'packages'
 
 
 /**
  * @class
  *
- * @classdesc Required for Node.js draw2d model read/write operations.
+ * Required for Node.js draw2d model read/write operations.
  *
  * @inheritable
  * @author Andreas Herz
  */
-import draw2d from 'packages'
 
 draw2d.HeadlessCanvas = Class.extend(
   /** @lends draw2d.HeadlessCanvas.prototype */

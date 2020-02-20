@@ -2,7 +2,7 @@ import draw2d from '../packages'
 
 
 /**
- * @class draw2d.command.CommandUngroup
+ * @class
  * Command to ungroup a given group figures
  *
  * @extends draw2d.command.Command

@@ -8,7 +8,7 @@
     {
       "name": "Document",
       "namespace": "draw2d.shape.flowchart",
-      "description": "<p>draw2d.shape.flowchart.Document</p>\n<p>Typical flowchart <b>Document</b> shape</p>",
+      "description": "<p>Typical flowchart <b>Document</b> shape</p>",
       "extends": [
         "draw2d.VectorFigure"
       ],
@@ -2692,5 +2692,6 @@
         }
       ]
     }
-  ]
+  ],
+  "namespaces": []
 }

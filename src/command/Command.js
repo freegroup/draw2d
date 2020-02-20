@@ -2,7 +2,7 @@ import draw2d from '../packages'
 
 
 /**
- * @class draw2d.command.Command
+ * @class
  *
  * Commands are passed around throughout editing. They are used to encapsulate and combine
  * changes to the application's model. An application has a single command stack. Commands must

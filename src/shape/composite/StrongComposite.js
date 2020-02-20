@@ -1,7 +1,8 @@
+import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.shape.composite.StrongComposite
+ * @class
  * A StrongComposite is a composite figure with strong assignment of the children and the composite.
  * The child knows everything about the assigned composite and receives events about assignment to a
  * composite.
@@ -11,8 +12,6 @@
  * @extends draw2d.shape.composite.Composite
  * @since 4.8.0
  */
-import draw2d from '../../packages'
-
 draw2d.shape.composite.StrongComposite = draw2d.shape.composite.Composite.extend(
   /** @lends draw2d.shape.composite.StrongComposite.prototype */
   {

@@ -9,9 +9,9 @@ import extend from '../../util/extend'
  *
  * @example
  *
- * let shape =  new draw2d.shape.basic.Circle({x:40,y:10, stroke:3, color:"#3d3d3d", bgColor:"#3dff3d"});
+ *    let shape =  new draw2d.shape.basic.Circle({x:40,y:10, stroke:3, color:"#3d3d3d", bgColor:"#3dff3d"});
  *
- * canvas.add(shape);
+ *    canvas.add(shape);
  *
  *
  * @author Andreas Herz

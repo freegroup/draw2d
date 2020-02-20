@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.layout.connection.DirectRouter
+ * @class
  *
  * Router for direct connections between two ports. Beeline
  * <br>

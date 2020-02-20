@@ -1,6 +1,6 @@
 
 /**
- * @class draw2d.policy.figure.HBusSelectionFeedbackPolicy
+ * @class
  *
  *
  * @author Andreas Herz

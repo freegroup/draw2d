@@ -1,6 +1,6 @@
 
 /**
- * @class draw2d.layout.mesh.ExplodeLayouter
+ * @class
  * Routes a {@link draw2d.Connection}, possibly using a constraint.
  *
  * @author Andreas Herz

@@ -2,7 +2,7 @@ import draw2d from '../packages'
 
 
 /**
- * @class draw2d.geo.Rectangle
+ * @class
  * 
  * Util class for geometrie handling.
  * 

@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.shape.arrow.CalligrapherArrowDownLeft
+ * @class
  * Hand drawn arrow which points down left
  *
  *

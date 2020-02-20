@@ -1,7 +1,7 @@
 {
   "name": "Connection",
   "namespace": "draw2d.shape.state",
-  "description": "<p>draw2d.shape.state.Connection</p>\n<p>Connection designed for a state diagram with arrow decoration at the\ntarget of the connection and a label</p>",
+  "description": "<p>Connection designed for a state diagram with arrow decoration at the\ntarget of the connection and a label</p>",
   "extends": [
     "draw2d.Connection"
   ],

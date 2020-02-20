@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.shape.icon.Icon
+ * @class
  * @inheritable
  * @author Andreas Herz
  * @extends draw2d.SetFigure

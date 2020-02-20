@@ -1,15 +1,15 @@
 import draw2d from '../packages'
 
 /**
- * @class draw2d.util.UUID
+ * @class
  * Generates a (pseudo) UUID's
  *
+ * @example
  *     // a UUID in the format
  *     // xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (8-4-4-4-12)
  *     var id = draw2d.util.UUID.create();
  *
  * @author Andreas Herz
- * @private
  */
 draw2d.util.UUID = {
   /**

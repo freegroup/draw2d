@@ -1,7 +1,7 @@
 import draw2d from '../packages'
 
 /**
- * @class draw2d.util.ArrayList
+ * @class
  *
  * <Disclaimer> Writing my own class for arrays was one of my worst ideas...
  *

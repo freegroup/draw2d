@@ -1,7 +1,7 @@
 
 
 /**
- * @class draw2d.geo.Ray
+ * @class
  * A ray is a line starting in [0,0,] with some additional
  * helper functions required for some router.
  * 

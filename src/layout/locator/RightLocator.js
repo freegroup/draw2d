@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.layout.locator.RightLocator
+ * @class
  *
  * A RightLocator is used to place figures to the right of a parent shape.
  *

@@ -1,7 +1,7 @@
 {
   "name": "SelectionFeedbackPolicy",
   "namespace": "draw2d.policy.figure",
-  "description": "<p>draw2d.policy.figure.SelectionFeedbackPolicy</p>\n<p>A {@link  draw2d.policy.SelectionFeedbackPolicy} that is sensitive to the canvas selection. Subclasses will typically\ndecorate the {@link draw2d.Figure figure} with things like selection handles and/or focus feedback.\n<br>\nIf you want to change the handle visibility for a figure, then you should use SelectionFeedbackPolicy to do that.</p>",
+  "description": "<p>A {@link  draw2d.policy.SelectionFeedbackPolicy} that is sensitive to the canvas selection. Subclasses will typically\ndecorate the {@link draw2d.Figure figure} with things like selection handles and/or focus feedback.\n<br>\nIf you want to change the handle visibility for a figure, then you should use SelectionFeedbackPolicy to do that.</p>",
   "extends": [
     "draw2d.policy.figure.DragDropEditPolicy"
   ],

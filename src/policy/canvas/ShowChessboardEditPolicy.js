@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.policy.canvas.ShowChessboardEditPolicy
+ * @class
  *
  * Just to paint a grid in the background.
  *

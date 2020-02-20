@@ -1,7 +1,7 @@
 {
   "name": "WidthSelectionFeedbackPolicy",
   "namespace": "draw2d.policy.figure",
-  "description": "<p>draw2d.policy.figure.WidthSelectionFeedbackPolicy\nThis selection shows only selection handles for the width. It is only possible to change the width\nof an shaped. The height stays always the same or is recalculated by the figure itself.</p>",
+  "description": "<p>This selection shows only selection handles for the width. It is only possible to change the width\nof an shaped. The height stays always the same or is recalculated by the figure itself.</p>",
   "extends": [
     "draw2d.policy.figure.SelectionFeedbackPolicy"
   ],

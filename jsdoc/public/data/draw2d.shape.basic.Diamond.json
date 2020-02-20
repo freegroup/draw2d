@@ -1,7 +1,7 @@
 {
   "name": "Diamond",
   "namespace": "draw2d.shape.basic",
-  "description": "<p>draw2d.shape.basic.Diamond\nA Diamond Figure.</p>",
+  "description": "<p>A Diamond Figure.</p>",
   "extends": [
     "draw2d.VectorFigure"
   ],

@@ -8,7 +8,7 @@
     {
       "name": "CatmullRomSpline",
       "namespace": "draw2d.util.spline",
-      "description": "<p>draw2d.util.spline.CatmullRomSpline</p>\n<p>A catmull-rom spline object.</p>",
+      "description": "<p>A catmull-rom spline object.</p>",
       "extends": [
         "draw2d.util.spline.CubicSpline"
       ],
@@ -68,7 +68,7 @@
     {
       "name": "CubicSpline",
       "namespace": "draw2d.util.spline",
-      "description": "<p>draw2d.util.spline.CubicSpline</p>\n<p>A cubic spline object.</p>",
+      "description": "<p>A cubic spline object.</p>",
       "extends": [
         "draw2d.util.spline.Spline"
       ],
@@ -125,5 +125,6 @@
         }
       ]
     }
-  ]
+  ],
+  "namespaces": []
 }

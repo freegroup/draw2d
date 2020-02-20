@@ -3,7 +3,7 @@ import Color from '../../util/Color'
 
 
 /**
- * @class draw2d.policy.canvas.CanvasPolicy
+ * @class
  *
  *
  * @author Andreas Herz

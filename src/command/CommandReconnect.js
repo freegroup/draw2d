@@ -2,7 +2,7 @@ import draw2d from '../packages'
 
 
 /**
- * @class draw2d.command.CommandReconnect
+ * @class
  *
  * Reconnects two ports. This command is used during the DragDrop operation of a draw2d.Connection.
  *

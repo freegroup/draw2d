@@ -1,16 +1,14 @@
 
+import draw2d from 'packages'
+import extend from 'util/extend'
+
 /**
- * @class draw2d.SVGFigure
- * @classdesc Abstract class which can handle plain SVG content. Inherit class must override the method
- * <code>getSVG()</code>.
+ * @class
+ * Abstract class which can handle plain SVG content.
  *
  * @author Andreas Herz
  * @extends draw2d.SetFigure
  */
-
-import draw2d from 'packages'
-import extend from 'util/extend'
-
 draw2d.SVGFigure = draw2d.SetFigure.extend(
     /** @lends draw2d.SVGFigure.prototype */
     {
@@ -58,7 +56,6 @@ draw2d.SVGFigure = draw2d.SetFigure.extend(
     /**
      * 
      * Returns the current used SVG as string
-     *
      * @returns {String}
      */
     getSVG: function()
@@ -82,11 +79,11 @@ draw2d.SVGFigure = draw2d.SetFigure.extend(
         // SVG has changed. Update the rendering
         //
         if(this.canvas !==null && this.svgNodes !==null){
-            var newSVGNodes = this.createSet();
+            let newSVGNodes = this.createSet();
             if(!isNaN(parseFloat(duration))) {
                 newSVGNodes.hide();
                 newSVGNodes.insertAfter(this.svgNodes);
-                var oldSVG = this.svgNodes;
+                let oldSVG = this.svgNodes;
                 this.svgNodes = newSVGNodes;
                 this.applyTransformation();
                 oldSVG.forEach(function ( shape) {
@@ -103,7 +100,6 @@ draw2d.SVGFigure = draw2d.SetFigure.extend(
                 this.svgNodes.remove();
                 this.svgNodes = newSVGNodes;
                 this.applyTransformation();
-//                this.repaint();
             }
         }
 
@@ -120,7 +116,7 @@ draw2d.SVGFigure = draw2d.SetFigure.extend(
     importSVG : function (canvas, rawSVG)
     {
 
-      var set = canvas.paper.set();
+      let set = canvas.paper.set();
 
       try {
         if (typeof rawSVG === 'undefined'){
@@ -129,7 +125,7 @@ draw2d.SVGFigure = draw2d.SetFigure.extend(
 
         // Override the dimension from the JSON if the SVG contains any
         //
-        var svgDOM= $(rawSVG);
+        let svgDOM= $(rawSVG);
 
         // set the dimension of the element if the JSON import didn't provide
         // a dimension already
@@ -141,18 +137,18 @@ draw2d.SVGFigure = draw2d.SetFigure.extend(
             delete this._dimensionReadFromJSON;
         }
 
-        var findStyle = new RegExp('([a-z0-9\-]+) ?: ?([^ ;]+)[ ;]?','gi');
+        let findStyle = new RegExp('([a-z0-9\-]+) ?: ?([^ ;]+)[ ;]?','gi');
 
         svgDOM.children().each(function(i,element){
           //element = $(element);
-          var shape=null;
-          var style=null;
-          var attr = { };
-          var node = element.tagName;
+          let shape=null;
+          let style=null;
+          let attr = { };
+          let node = element.tagName;
 
           // remove the namespace of the node if existing. This can happen in IE8
           //
-          var index = node.indexOf(":");
+          let index = node.indexOf(":");
           if(index != -1)
               node = node.substr(index+1);
 
@@ -221,7 +217,7 @@ draw2d.SVGFigure = draw2d.SetFigure.extend(
               shape = canvas.paper.path(attr.d);
              break;
             case 'polyline':
-              var path = attr.points;
+              let path = attr.points;
               attr.d = "M "+path.replace(" "," L");
               shape = canvas.paper.path(attr.d);
               break;
@@ -234,7 +230,7 @@ draw2d.SVGFigure = draw2d.SetFigure.extend(
             case 'tspan':
             case 'text':
                 if(element.childNodes.length>0){
-                    var child = element.firstChild;
+                    let child = element.firstChild;
                     do {
                        switch(child.nodeType){
                             case 2://ATTRIBUTE_NODE
@@ -254,8 +250,8 @@ draw2d.SVGFigure = draw2d.SetFigure.extend(
                             	break;
                             case 1://ELEMENT_NODE
                         }
-                        var subShape = canvas.paper.text(0,0,$(child).text());
-                        var subAttr ={"x":parseFloat(child.attributes.x.value), "y":parseFloat(child.attributes.y.value)};
+                        let subShape = canvas.paper.text(0,0,$(child).text());
+                        let subAttr ={"x":parseFloat(child.attributes.x.value), "y":parseFloat(child.attributes.y.value)};
                         subAttr["text-anchor"] = "start";
                         if(typeof child.attributes["text-anchor"]!=="undefined"){
                             subAttr["text-anchor"] = child.attributes["text-anchor"].value;

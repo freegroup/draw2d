@@ -1,7 +1,7 @@
 {
   "name": "CommandGroup",
   "namespace": "draw2d.command",
-  "description": "<p>draw2d.command.CommandGroup\nCommand to group a given set of figures</p>",
+  "description": "<p>Command to group a given set of figures</p>",
   "extends": [
     "draw2d.command.Command"
   ],

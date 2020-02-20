@@ -1,7 +1,7 @@
 {
   "name": "ConnectionRouter",
   "namespace": "draw2d.layout.connection",
-  "description": "<p>draw2d.layout.connection.ConnectionRouter\nRoutes a {@link draw2d.Connection}, possibly using a constraint.</p>",
+  "description": "<p>Routes a {@link draw2d.Connection}, possibly using a constraint.</p>",
   "extends": [],
   "access": "",
   "virtual": false,

@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.layout.locator.ConnectionLocator
+ * @class
  *
  * Repositions a Figure attached to a Connection when the
  * Connection is moved. Provides for alignment at the start

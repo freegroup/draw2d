@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.layout.connection.ManhattanBridgedConnectionRouter
+ * @class
  * Provides a {@link draw2d.Connection} with an orthogonal route between the Connection's source
  * and target anchors.
  *

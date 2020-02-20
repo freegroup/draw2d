@@ -124,5 +124,19 @@
         }
       ]
     }
+  ],
+  "namespaces": [
+    {
+      "name": "json",
+      "namespace": "draw2d.io"
+    },
+    {
+      "name": "png",
+      "namespace": "draw2d.io"
+    },
+    {
+      "name": "svg",
+      "namespace": "draw2d.io"
+    }
   ]
 }

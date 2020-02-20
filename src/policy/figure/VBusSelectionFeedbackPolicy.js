@@ -1,6 +1,6 @@
 
 /**
- * @class draw2d.policy.figure.VBusSelectionFeedbackPolicy
+ * @class
  *
  * Selection feedback policy for vertical bus figures.
  *

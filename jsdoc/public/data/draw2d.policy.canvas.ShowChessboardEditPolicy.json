@@ -1,7 +1,7 @@
 {
   "name": "ShowChessboardEditPolicy",
   "namespace": "draw2d.policy.canvas",
-  "description": "<p>draw2d.policy.canvas.ShowChessboardEditPolicy</p>\n<p>Just to paint a grid in the background.</p>",
+  "description": "<p>Just to paint a grid in the background.</p>",
   "extends": [
     "draw2d.policy.canvas.DecorationPolicy"
   ],

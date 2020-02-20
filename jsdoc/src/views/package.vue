@@ -1,12 +1,23 @@
 <template>
   <div>
     <h2>Package: <b>{{ $attrs.className }}</b></h2>
+    <div v-if="clazz.namespaces.length > 0 ">
+      <h3>Namespaces</h3>
+      <ul id="example-1">
+        <li v-for="item in clazz.namespaces" :key="item.name">
+          <router-link :to="'/'+item.namespace.split('.').join('/')+'/'+item.name.toLowerCase()">{{item.name}}</router-link>
+        </li>
+      </ul>
+    </div>
 
-    <ul id="example-1">
-      <li v-for="item in clazz.classes" :key="item.name">
-        <router-link :to="'/'+item.namespace.split('.').join('/')+'/'+item.name.toLowerCase()">{{item.name}}</router-link>
-      </li>
-    </ul>
+    <div v-if="clazz.classes.length > 0 ">
+      <h3>Classes</h3>
+      <ul id="example-2">
+        <li v-for="item in clazz.classes" :key="item.name">
+          <router-link :to="'/'+item.namespace.split('.').join('/')+'/'+item.name.toLowerCase()">{{item.name}}</router-link>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -17,7 +28,10 @@ export default {
   data () {
     return {
       loading: false,
-      clazz: []
+      clazz: {
+        namespaces: [],
+        classes: []
+      }
     }
   },
   created () {
@@ -35,6 +49,7 @@ export default {
         .then(response => {
           this.loading = false
           this.clazz = response.data
+          console.log(this.clazz)
         })
         .catch(error => {
           this.loading = false

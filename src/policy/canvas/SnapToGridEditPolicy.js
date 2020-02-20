@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.policy.canvas.SnapToGridEditPolicy
+ * @class
  *
  * A helper used to perform snapping to a grid, which is specified on the canvas via the various
  * properties defined in this class.

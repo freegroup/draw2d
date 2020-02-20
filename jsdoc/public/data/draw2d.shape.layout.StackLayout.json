@@ -1,7 +1,7 @@
 {
   "name": "StackLayout",
   "namespace": "draw2d.shape.layout",
-  "description": "<p>draw2d.shape.layout.StackLayout\nUsing the StackLayout as their layout shape have their children placed on top of one another.\nOrder of placement is determined by the order in which the children were added, first child\nadded placed on the bottom. Only one child is visible at once.</p>",
+  "description": "<p>Using the StackLayout as their layout shape have their children placed on top of one another.\nOrder of placement is determined by the order in which the children were added, first child\nadded placed on the bottom. Only one child is visible at once.</p>",
   "extends": [
     "draw2d.shape.layout.Layout"
   ],

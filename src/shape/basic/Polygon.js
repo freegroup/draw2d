@@ -1,7 +1,9 @@
+import draw2d from '../../packages'
+import jsonUtil from '../../util/JSONUtil'
 
 
 /**
- * @class draw2d.shape.basic.Polygon
+ * @class
  * A Polygon figure.
  *
  *
@@ -20,9 +22,6 @@
  * @author Andreas Herz
  * @extends draw2d.VectorFigure
  */
-import draw2d from '../../packages'
-import jsonUtil from '../../util/JSONUtil'
-
 draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend(
   /** @lends draw2d.shape.basic.Polygon.prototype */
   {

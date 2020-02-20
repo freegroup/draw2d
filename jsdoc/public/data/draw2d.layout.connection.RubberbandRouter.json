@@ -1,7 +1,7 @@
 {
   "name": "RubberbandRouter",
   "namespace": "draw2d.layout.connection",
-  "description": "<p>draw2d.layout.connection.RubberbandRouter\nRouter for direct connections between two ports with a rubber band effect</p>",
+  "description": "<p>Router for direct connections between two ports with a rubber band effect</p>",
   "extends": [
     "draw2d.layout.connection.ConnectionRouter"
   ],

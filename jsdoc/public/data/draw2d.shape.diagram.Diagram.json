@@ -1,7 +1,7 @@
 {
   "name": "Diagram",
   "namespace": "draw2d.shape.diagram",
-  "description": "<p>draw2d.shape.diagram.Diagram</p>\n<p>Base class for all diagrams.</p>",
+  "description": "<p>Base class for all diagrams.</p>",
   "extends": [
     "draw2d.SetFigure"
   ],

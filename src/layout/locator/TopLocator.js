@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.layout.locator.TopLocator
+ * @class
  *
  * A TopLocator  is used to place figures at the top/center of a parent shape.
  *

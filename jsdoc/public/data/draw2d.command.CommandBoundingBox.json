@@ -1,7 +1,7 @@
 {
   "name": "CommandBoundingBox",
   "namespace": "draw2d.command",
-  "description": "<p>draw2d.command.CommandBoundingBox\nSet the bounding box of a figure with undo/redo support</p>",
+  "description": "<p>Set the bounding box of a figure with undo/redo support</p>",
   "extends": [
     "draw2d.command.Command"
   ],

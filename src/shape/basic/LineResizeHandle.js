@@ -3,7 +3,7 @@ import extend from '../../util/extend'
 
 
 /**
- * @class draw2d.shape.basic.LineResizeHandle
+ * @class
  * Base class for selection handle for connections and normal lines.
  *
  *

@@ -2,17 +2,15 @@ import draw2d from 'packages'
 
 
 /**
- * @constructor draw2d.Canvas
- * @classdesc Interactive paint area of the draw2d library.
+ * @class
+ * Interactive paint area of the draw2d library.
  *
  *
  * @inheritable
  * @author Andreas Herz
  */
 draw2d.Canvas = Class.extend(
-  /** @lends draw2d.Canvas.prototype */
-
-    /** @lends draw2d.Canvas.prototype */
+   /** @lends draw2d.Canvas.prototype */
     {
 
     NAME: "draw2d.Canvas",

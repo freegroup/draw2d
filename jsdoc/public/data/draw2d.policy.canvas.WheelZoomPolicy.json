@@ -1,7 +1,7 @@
 {
   "name": "WheelZoomPolicy",
   "namespace": "draw2d.policy.canvas",
-  "description": "<p>draw2d.policy.canvas.WheelZoomPolicy\nZoom support for a canvas. Use the mouse wheel and the shift key to zoom in/out.</p>",
+  "description": "<p>Zoom support for a canvas. Use the mouse wheel and the shift key to zoom in/out.</p>",
   "extends": [
     "draw2d.policy.canvas.CanvasPolicy"
   ],

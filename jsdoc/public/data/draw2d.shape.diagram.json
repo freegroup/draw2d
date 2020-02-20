@@ -8,7 +8,7 @@
     {
       "name": "Diagram",
       "namespace": "draw2d.shape.diagram",
-      "description": "<p>draw2d.shape.diagram.Diagram</p>\n<p>Base class for all diagrams.</p>",
+      "description": "<p>Base class for all diagrams.</p>",
       "extends": [
         "draw2d.SetFigure"
       ],
@@ -2788,7 +2788,7 @@
     {
       "name": "Pie",
       "namespace": "draw2d.shape.diagram",
-      "description": "<p>draw2d.shape.diagram.Pie</p>\n<p>Small data pie chart.</p>",
+      "description": "<p>Small data pie chart.</p>",
       "extends": [
         "draw2d.shape.diagram.Diagram"
       ],
@@ -8335,5 +8335,6 @@
         }
       ]
     }
-  ]
+  ],
+  "namespaces": []
 }

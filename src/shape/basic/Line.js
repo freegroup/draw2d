@@ -4,7 +4,7 @@ import extend from '../../util/extend'
 
 
 /**
- * @class draw2d.shape.basic.Line
+ * @class
  * The base class for all visible elements inside a canvas.
  *
  *
@@ -28,7 +28,6 @@ import extend from '../../util/extend'
  *     });
  *    canvas.add(line2);
  *
- * @inheritable
  * @author Andreas Herz
  * @extends draw2d.Figure
  */

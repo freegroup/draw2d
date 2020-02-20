@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.shape.icon.Page2
+ * @class
 
  *
  * @example

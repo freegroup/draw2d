@@ -3,7 +3,7 @@ import extend from '../../util/extend'
 
 
 /**
- * @class draw2d.shape.icon.Diagram
+ * @class
 
  *
  * @example

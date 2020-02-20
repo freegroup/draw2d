@@ -1,7 +1,7 @@
 {
   "name": "ManhattanMidpointLocator",
   "namespace": "draw2d.layout.locator",
-  "description": "<p>draw2d.layout.locator.ManhattanMidpointLocator</p>\n<p>A ManhattanMidpointLocator that is used to place figures at the midpoint of a Manhatten routed\nconnection. The midpoint is always in the center of an edge.</p>",
+  "description": "<p>A ManhattanMidpointLocator that is used to place figures at the midpoint of a Manhatten routed\nconnection. The midpoint is always in the center of an edge.</p>",
   "extends": [
     "draw2d.layout.locator.ConnectionLocator"
   ],

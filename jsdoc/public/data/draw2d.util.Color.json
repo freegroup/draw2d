@@ -1,7 +1,7 @@
 {
   "name": "Color",
   "namespace": "draw2d.util",
-  "description": "<p>Util class to handle colors in the draw2d enviroment.</p>\n<pre><code>// Create a new Color with RGB values\nvar color = new draw2d.util.Color(127,0,0);\n\n// of from a hex string\nvar color2 = new draw2d.util.Color(&quot;#f00000&quot;);\n\n// Create a little bit darker color\nvar darkerColor = color.darker(0.2); // 20% darker\n\n// create a optimal text color if 'color' the background color\n// (best in meaning of contrast and readability)\nvar fontColor = color.getIdealTextColor();</code></pre>",
+  "description": "<p>Util class to handle colors in the draw2d enviroment.</p>",
   "extends": [],
   "access": "",
   "virtual": false,
@@ -48,7 +48,9 @@
         "nullable": ""
       }
     ],
-    "examples": []
+    "examples": [
+      "// Create a new Color with RGB values\n    var color = new draw2d.util.Color(127,0,0);\n\n    // of from a hex string\n    var color2 = new draw2d.util.Color(\"#f00000\");\n\n    // Create a little bit darker color\n    var darkerColor = color.darker(0.2); // 20% darker\n\n    // create a optimal text color if 'color' the background color\n    // (best in meaning of contrast and readability)\n    var fontColor = color.getIdealTextColor();"
+    ]
   },
   "functions": [
     {

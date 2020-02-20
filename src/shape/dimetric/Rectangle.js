@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.shape.dimetric.Rectangle
+ * @class
  * A Rectangle Figure in a dimetric perspective.
  *
  *

@@ -2,7 +2,7 @@ import draw2d from '../packages'
 
 
 /**
- * @class draw2d.command.CommandCollection
+ * @class
  *
  * A CommandCollection works as a single command. You can add more than one
  * Command to this CommandCollection and execute/undo them onto the CommandStack as a

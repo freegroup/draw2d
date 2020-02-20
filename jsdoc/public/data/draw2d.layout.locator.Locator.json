@@ -1,7 +1,7 @@
 {
   "name": "Locator",
   "namespace": "draw2d.layout.locator",
-  "description": "<p>draw2d.layout.locator.Locator</p>\n<p>Controls the location of an IFigure.</p>",
+  "description": "<p>Controls the location of an IFigure.</p>",
   "extends": [],
   "access": "",
   "virtual": false,

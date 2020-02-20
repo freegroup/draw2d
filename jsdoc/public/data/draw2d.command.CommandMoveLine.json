@@ -1,7 +1,7 @@
 {
   "name": "CommandMoveLine",
   "namespace": "draw2d.command",
-  "description": "<p>draw2d.command.CommandMoveLine</p>\n<p>Command for the movement of figures.</p>",
+  "description": "<p>Command for the movement of figures.</p>",
   "extends": [
     "draw2d.command.Command"
   ],

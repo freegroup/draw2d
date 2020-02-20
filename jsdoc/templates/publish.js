@@ -339,7 +339,12 @@ function dumpNamespaces(data){
       const stream = fs.createWriteStream(pathName);
       stream.once('open', function(fd) {
         let nss = ns.namespaces
-        delete ns.namespaces
+        if(ns.namespaces) {
+          ns.namespaces = ns.namespaces.map(n => { return { name: n.name, namespace: n.namespace} })
+        }
+        else{
+          ns.namespaces = []
+        }
         stream.write(JSON.stringify(ns, undefined, 2))
         stream.end();
         ns.namespaces = nss

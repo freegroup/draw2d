@@ -1,7 +1,7 @@
 {
   "name": "SnapToEditPolicy",
   "namespace": "draw2d.policy.canvas",
-  "description": "<p>draw2d.policy.canvas.SnapToEditPolicy</p>\n<p>A helper used by Tools for snapping certain mouse interactions.</p>",
+  "description": "<p>A helper used by Tools for snapping certain mouse interactions.</p>",
   "extends": [
     "draw2d.policy.canvas.CanvasPolicy"
   ],

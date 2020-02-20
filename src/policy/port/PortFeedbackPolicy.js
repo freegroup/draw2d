@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.policy.port.PortFeedbackPolicy
+ * @class
  *
  * Base class for all port feedback policies. Used for grow, highlight or
  * other decorations during drag&drop and connecting of ports.

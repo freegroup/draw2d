@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.policy.line.OrthogonalSelectionFeedbackPolicy
+ * @class
  *
  * Feedback and edit policy for the InteractiveManhattanRouter.
  *

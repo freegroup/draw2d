@@ -1,14 +1,12 @@
-
+import draw2d from 'packages'
 
 /**
- * @class draw2d.HybridPort
- * @classdesc A HybridPort can work as Input and as Output port in the same way for a {@link draw2d.Connection}.
+ * @class
+ * A HybridPort can work as Input and as Output port in the same way for a {@link draw2d.Connection}.
  *
  * @author Andreas Herz
  * @extends draw2d.Port
  */
-import draw2d from 'packages'
-
 draw2d.HybridPort = draw2d.Port.extend(
     /** @lends draw2d.HybridPort.prototype */
     {

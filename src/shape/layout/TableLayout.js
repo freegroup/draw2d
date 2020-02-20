@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.shape.layout.TableLayout
+ * @class
  *
  * The TableLayout class arranges the children in a row/column order. Each cell can be styled
  * with valign, align and padding.

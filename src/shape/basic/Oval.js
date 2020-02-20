@@ -3,10 +3,8 @@ import extend from '../../util/extend'
 
 
 /**
- * @class draw2d.shape.basic.Oval
+ * @class
  * Oval figure.
- *
- *
  *
  * @example
  *
@@ -14,7 +12,6 @@ import extend from '../../util/extend'
  *
  *    canvas.add(oval);
  *
- * @inheritable
  * @author Andreas Herz
  * @extends draw2d.VectorFigure
  */

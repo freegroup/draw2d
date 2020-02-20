@@ -450,7 +450,7 @@
     {
       "name": "VertexSelectionFeedbackPolicy",
       "namespace": "draw2d.policy.line",
-      "description": "<p>draw2d.policy.line.VertexSelectionFeedbackPolicy</p>\n<p>Feedback and edit policy for the VertexRouter.</p>",
+      "description": "<p>Feedback and edit policy for the VertexRouter.</p>",
       "extends": [
         "draw2d.policy.line.LineSelectionFeedbackPolicy"
       ],
@@ -889,5 +889,6 @@
         }
       ]
     }
-  ]
+  ],
+  "namespaces": []
 }

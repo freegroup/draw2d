@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.layout.locator.ManhattanMidpointLocator
+ * @class
  *
  * A ManhattanMidpointLocator that is used to place figures at the midpoint of a Manhatten routed
  * connection. The midpoint is always in the center of an edge.

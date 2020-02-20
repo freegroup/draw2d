@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.shape.widget.Widget
+ * @class
  * Base class for all diagrams.
  *
  * @extends draw2d.SetFigure

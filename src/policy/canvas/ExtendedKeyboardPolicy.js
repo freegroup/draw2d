@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.policy.canvas.ExtendedKeyboardPolicy
+ * @class
  * Extended keyboard policy to <b>delete</b> and <b>group</b> figures in the canvas.
  * <br>
  * Keyboard commands

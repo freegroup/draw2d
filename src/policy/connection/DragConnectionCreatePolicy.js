@@ -1,6 +1,6 @@
 
 /**
- * @class draw2d.policy.connection.DragConnectionCreatePolicy
+ * @class
  *
  * The DragConnectionCreatePolicy is the default configuration for connection creation.
  * You must drag a port and drop them onto another port to create connection.

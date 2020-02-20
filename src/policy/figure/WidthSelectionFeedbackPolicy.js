@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.policy.figure.WidthSelectionFeedbackPolicy
+ * @class
  * This selection shows only selection handles for the width. It is only possible to change the width
  * of an shaped. The height stays always the same or is recalculated by the figure itself.
  *

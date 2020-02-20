@@ -1,7 +1,7 @@
 {
   "name": "CommandCollection",
   "namespace": "draw2d.command",
-  "description": "<p>draw2d.command.CommandCollection</p>\n<p>A CommandCollection works as a single command. You can add more than one\nCommand to this CommandCollection and execute/undo them onto the CommandStack as a\nsingle Command.</p>",
+  "description": "<p>A CommandCollection works as a single command. You can add more than one\nCommand to this CommandCollection and execute/undo them onto the CommandStack as a\nsingle Command.</p>",
   "extends": [
     "draw2d.command.Command"
   ],

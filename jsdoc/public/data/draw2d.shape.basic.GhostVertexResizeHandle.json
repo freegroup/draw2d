@@ -1,7 +1,7 @@
 {
   "name": "GhostVertexResizeHandle",
   "namespace": "draw2d.shape.basic",
-  "description": "<p>draw2d.shape.basic.GhostVertexResizeHandle\nResizeHandle for a vertex edit policy. Click of this kind of resize handles\nadds a new vertex to the polyline or polygon.</p>",
+  "description": "<p>ResizeHandle for a vertex edit policy. Click of this kind of resize handles\nadds a new vertex to the polyline or polygon.</p>",
   "extends": [
     "draw2d.shape.basic.LineResizeHandle"
   ],

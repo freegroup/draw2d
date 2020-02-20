@@ -1329,7 +1329,7 @@
     {
       "name": "CoronaDecorationPolicy",
       "namespace": "draw2d.policy.canvas",
-      "description": "<p>draw2d.policy.canvas.CoronaDecorationPolicy\nThis decorations hides draw2d.Ports which are to far from the current cursor position.\nThis makes the canvas more clean if you have a lot of nodes on it.<br>\nYou didn't see a bunch of ports.</p>",
+      "description": "<p>This decorations hides draw2d.Ports which are to far from the current cursor position.\nThis makes the canvas more clean if you have a lot of nodes on it.<br>\nYou didn't see a bunch of ports.</p>",
       "extends": [
         "draw2d.policy.canvas.DecorationPolicy"
       ],
@@ -2035,7 +2035,7 @@
     {
       "name": "DecorationPolicy",
       "namespace": "draw2d.policy.canvas",
-      "description": "<p>draw2d.policy.canvas.DecorationPolicy\nThe base class for any canvas decoration like grid, chessboard, graph paper or\nother.</p>",
+      "description": "<p>The base class for any canvas decoration like grid, chessboard, graph paper or\nother.</p>",
       "extends": [
         "draw2d.policy.canvas.CanvasPolicy"
       ],
@@ -2654,7 +2654,7 @@
     {
       "name": "DefaultKeyboardPolicy",
       "namespace": "draw2d.policy.canvas",
-      "description": "<p>draw2d.policy.canvas.DefaultKeyboardPolicy\nStandard keyboard policy. This is the standard installed keyboard policy.\n<br>\n<br>\nKeyboard commands</p>\n<ul>\n   <li>DEL    - delete selection</li>\n</ul>",
+      "description": "<p>Standard keyboard policy. This is the standard installed keyboard policy.\n<br>\n<br>\nKeyboard commands</p>\n<ul>\n   <li>DEL    - delete selection</li>\n</ul>",
       "extends": [
         "draw2d.policy.canvas.KeyboardPolicy"
       ],
@@ -3359,7 +3359,7 @@
     {
       "name": "DropInterceptorPolicy",
       "namespace": "draw2d.policy.canvas",
-      "description": "<p>draw2d.policy.canvas.DropInterceptorPolicy</p>\n<p>Drop interceptors are basically event handlers from which you can return a value\nthat tells draw2d to abort what it is that it was doing.<br>\n<br>\nInterceptors can be registered via the registerEditPolicy method on the draw2d canvas just like any other\nedit policies.<br>\n<br>\nThe <b>delegateTarget</b> method is responsible for all drop event especially to all connection and port handling.</p>",
+      "description": "<p>Drop interceptors are basically event handlers from which you can return a value\nthat tells draw2d to abort what it is that it was doing.<br>\n<br>\nInterceptors can be registered via the registerEditPolicy method on the draw2d canvas just like any other\nedit policies.<br>\n<br>\nThe <b>delegateTarget</b> method is responsible for all drop event especially to all connection and port handling.</p>",
       "extends": [
         "draw2d.policy.canvas.CanvasPolicy"
       ],
@@ -4009,7 +4009,7 @@
     {
       "name": "ExtendedKeyboardPolicy",
       "namespace": "draw2d.policy.canvas",
-      "description": "<p>draw2d.policy.canvas.ExtendedKeyboardPolicy\nExtended keyboard policy to <b>delete</b> and <b>group</b> figures in the canvas.\n<br>\nKeyboard commands</p>\n<ul>\n   <li>DEL    - delete selection</li>\n   <li>Ctrl+G - group/ungroup selection</li>\n   <li>Ctrl+B - send current selection in the background (toBack)</li>\n   <li>Ctrl+F - send current selection in the foreground (toFront)</li>\n</ul>",
+      "description": "<p>Extended keyboard policy to <b>delete</b> and <b>group</b> figures in the canvas.\n<br>\nKeyboard commands</p>\n<ul>\n   <li>DEL    - delete selection</li>\n   <li>Ctrl+G - group/ungroup selection</li>\n   <li>Ctrl+B - send current selection in the background (toBack)</li>\n   <li>Ctrl+F - send current selection in the foreground (toFront)</li>\n</ul>",
       "extends": [
         "draw2d.policy.canvas.KeyboardPolicy"
       ],
@@ -4714,7 +4714,7 @@
     {
       "name": "FadeoutDecorationPolicy",
       "namespace": "draw2d.policy.canvas",
-      "description": "<p>draw2d.policy.canvas.FadeoutDecorationPolicy</p>\n<p>Install this edit policy in a canvas if you want fadeout all decorations like ports, resize handles\nif the user didn't move the mouse. This is good for a clean representation of your diagram.</p>",
+      "description": "<p>Install this edit policy in a canvas if you want fadeout all decorations like ports, resize handles\nif the user didn't move the mouse. This is good for a clean representation of your diagram.</p>",
       "extends": [
         "draw2d.policy.canvas.DecorationPolicy"
       ],
@@ -5363,7 +5363,7 @@
     {
       "name": "GhostMoveSelectionPolicy",
       "namespace": "draw2d.policy.canvas",
-      "description": "<p>draw2d.policy.canvas.GhostMoveSelectionPolicy</p>\n<p>A drag&amp;Drop feedback handler for the canvas. The policy didn't move the\nshapes in real time rather it shows a ghost rectangle as feedback. <br>\n<br>\nThe shapes are updated after the drag&amp;drop operation.</p>",
+      "description": "<p>A drag&amp;Drop feedback handler for the canvas. The policy didn't move the\nshapes in real time rather it shows a ghost rectangle as feedback. <br>\n<br>\nThe shapes are updated after the drag&amp;drop operation.</p>",
       "extends": [
         "draw2d.policy.canvas.SingleSelectionPolicy"
       ],
@@ -6058,7 +6058,7 @@
     {
       "name": "KeyboardPolicy",
       "namespace": "draw2d.policy.canvas",
-      "description": "<p>draw2d.policy.canvas.KeyboardPolicy\nDefault interface for keyboard interaction with the canvas.</p>",
+      "description": "<p>Default interface for keyboard interaction with the canvas.</p>",
       "extends": [
         "draw2d.policy.canvas.CanvasPolicy"
       ],
@@ -8782,7 +8782,7 @@
     {
       "name": "ShowChessboardEditPolicy",
       "namespace": "draw2d.policy.canvas",
-      "description": "<p>draw2d.policy.canvas.ShowChessboardEditPolicy</p>\n<p>Just to paint a grid in the background.</p>",
+      "description": "<p>Just to paint a grid in the background.</p>",
       "extends": [
         "draw2d.policy.canvas.DecorationPolicy"
       ],
@@ -9422,7 +9422,7 @@
     {
       "name": "ShowDimetricGridEditPolicy",
       "namespace": "draw2d.policy.canvas",
-      "description": "<p>draw2d.policy.canvas.ShowDimetricGridEditPolicy</p>\n<p>A canvas decoration which paints a dimetric in the background.\n<br>\n<br></p>",
+      "description": "<p>A canvas decoration which paints a dimetric in the background.\n<br>\n<br></p>",
       "extends": [
         "draw2d.policy.canvas.DecorationPolicy"
       ],
@@ -10093,7 +10093,7 @@
     {
       "name": "ShowDotEditPolicy",
       "namespace": "draw2d.policy.canvas",
-      "description": "<p>draw2d.policy.canvas.ShowDotEditPolicy</p>\n<p>Paint a dotted pattern in the background of the canvas.</p>",
+      "description": "<p>Paint a dotted pattern in the background of the canvas.</p>",
       "extends": [
         "draw2d.policy.canvas.DecorationPolicy"
       ],
@@ -10742,7 +10742,7 @@
     {
       "name": "ShowGridEditPolicy",
       "namespace": "draw2d.policy.canvas",
-      "description": "<p>draw2d.policy.canvas.ShowGridEditPolicy</p>\n<p>A cavas decoration which paints a grid in the background.\n<br>\n<br></p>",
+      "description": "<p>A cavas decoration which paints a grid in the background.\n<br>\n<br></p>",
       "extends": [
         "draw2d.policy.canvas.DecorationPolicy"
       ],
@@ -12096,7 +12096,7 @@
     {
       "name": "SnapToCenterEditPolicy",
       "namespace": "draw2d.policy.canvas",
-      "description": "<p>draw2d.policy.canvas.SnapToCenterEditPolicy</p>\n<p>Snapping is based on the existing children of a container. When snapping a shape,\nthe center of the bounding box will snap to the center of other figures of the given canvas.</p>",
+      "description": "<p>Snapping is based on the existing children of a container. When snapping a shape,\nthe center of the bounding box will snap to the center of other figures of the given canvas.</p>",
       "extends": [
         "draw2d.policy.canvas.SnapToEditPolicy"
       ],
@@ -12789,7 +12789,7 @@
     {
       "name": "SnapToDimetricGridEditPolicy",
       "namespace": "draw2d.policy.canvas",
-      "description": "<p>draw2d.policy.canvas.SnapToDimetricGridEditPolicy</p>\n<p>A helper used to perform snapping to a grid, which is specified on the canvas via the various\nproperties defined in this class.</p>",
+      "description": "<p>A helper used to perform snapping to a grid, which is specified on the canvas via the various\nproperties defined in this class.</p>",
       "extends": [
         "draw2d.policy.canvas.ShowDimetricGridEditPolicy"
       ],
@@ -13454,7 +13454,7 @@
     {
       "name": "SnapToEditPolicy",
       "namespace": "draw2d.policy.canvas",
-      "description": "<p>draw2d.policy.canvas.SnapToEditPolicy</p>\n<p>A helper used by Tools for snapping certain mouse interactions.</p>",
+      "description": "<p>A helper used by Tools for snapping certain mouse interactions.</p>",
       "extends": [
         "draw2d.policy.canvas.CanvasPolicy"
       ],
@@ -14105,7 +14105,7 @@
     {
       "name": "SnapToGeometryEditPolicy",
       "namespace": "draw2d.policy.canvas",
-      "description": "<p>draw2d.policy.canvas.SnapToGeometryEditPolicy</p>\n<p>Snapping is based on the existing children of a container. When snapping a shape,\nthe edges of the bounding box will snap to edges of other rectangles generated\nfrom the children of the given canvas.</p>",
+      "description": "<p>Snapping is based on the existing children of a container. When snapping a shape,\nthe edges of the bounding box will snap to edges of other rectangles generated\nfrom the children of the given canvas.</p>",
       "extends": [
         "draw2d.policy.canvas.SnapToEditPolicy"
       ],
@@ -14783,7 +14783,7 @@
     {
       "name": "SnapToGridEditPolicy",
       "namespace": "draw2d.policy.canvas",
-      "description": "<p>draw2d.policy.canvas.SnapToGridEditPolicy</p>\n<p>A helper used to perform snapping to a grid, which is specified on the canvas via the various\nproperties defined in this class.</p>",
+      "description": "<p>A helper used to perform snapping to a grid, which is specified on the canvas via the various\nproperties defined in this class.</p>",
       "extends": [
         "draw2d.policy.canvas.ShowGridEditPolicy"
       ],
@@ -15448,7 +15448,7 @@
     {
       "name": "SnapToInBetweenEditPolicy",
       "namespace": "draw2d.policy.canvas",
-      "description": "<p>draw2d.policy.canvas.SnapToInBetweenEditPolicy</p>\n<p>Snapping is based on the existing children of a container. When snapping a shape,\nthe edges of the bounding box will snap to edges of other rectangles generated\nfrom the children of the given canvas.</p>",
+      "description": "<p>Snapping is based on the existing children of a container. When snapping a shape,\nthe edges of the bounding box will snap to edges of other rectangles generated\nfrom the children of the given canvas.</p>",
       "extends": [
         "draw2d.policy.canvas.SnapToEditPolicy"
       ],
@@ -16122,7 +16122,7 @@
     {
       "name": "SnapToVerticesEditPolicy",
       "namespace": "draw2d.policy.canvas",
-      "description": "<p>draw2d.policy.canvas.SnapToVerticesEditPolicy</p>\n<p>Snapping is based on the existing children of a container. When snapping a shape,\nthe edges of the bounding box will snap to edges of other rectangles generated\nfrom the children of the given canvas.</p>",
+      "description": "<p>Snapping is based on the existing children of a container. When snapping a shape,\nthe edges of the bounding box will snap to edges of other rectangles generated\nfrom the children of the given canvas.</p>",
       "extends": [
         "draw2d.policy.canvas.SnapToEditPolicy"
       ],
@@ -16777,7 +16777,7 @@
     {
       "name": "WheelZoomPolicy",
       "namespace": "draw2d.policy.canvas",
-      "description": "<p>draw2d.policy.canvas.WheelZoomPolicy\nZoom support for a canvas. Use the mouse wheel and the shift key to zoom in/out.</p>",
+      "description": "<p>Zoom support for a canvas. Use the mouse wheel and the shift key to zoom in/out.</p>",
       "extends": [
         "draw2d.policy.canvas.CanvasPolicy"
       ],
@@ -17452,7 +17452,7 @@
     {
       "name": "ZoomPolicy",
       "namespace": "draw2d.policy.canvas",
-      "description": "<p>draw2d.policy.canvas.ZoomPolicy\nGeneric zoom policy installable into a canvas object.\nThis is the legacy implementation of the very first zooming in\nDraw2D. You can use this implementation if you want backward compatible.</p>",
+      "description": "<p>Generic zoom policy installable into a canvas object.\nThis is the legacy implementation of the very first zooming in\nDraw2D. You can use this implementation if you want backward compatible.</p>",
       "extends": [
         "draw2d.policy.canvas.CanvasPolicy"
       ],
@@ -18095,5 +18095,6 @@
         }
       ]
     }
-  ]
+  ],
+  "namespaces": []
 }

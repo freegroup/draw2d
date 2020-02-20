@@ -1,7 +1,7 @@
 {
   "name": "TableLayout",
   "namespace": "draw2d.shape.layout",
-  "description": "<p>draw2d.shape.layout.TableLayout</p>\n<p>The TableLayout class arranges the children in a row/column order. Each cell can be styled\nwith valign, align and padding.</p>\n<p>See the example below with and without padding or alignment settings</p>",
+  "description": "<p>The TableLayout class arranges the children in a row/column order. Each cell can be styled\nwith valign, align and padding.</p>\n<p>See the example below with and without padding or alignment settings</p>",
   "extends": [
     "draw2d.shape.layout.Layout"
   ],

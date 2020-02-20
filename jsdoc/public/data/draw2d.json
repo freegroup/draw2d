@@ -16122,7 +16122,7 @@
     {
       "name": "Corona",
       "namespace": "draw2d",
-      "description": "<p>draw2d.Corona\nGlow effect for ports. Just for internal use.</p>",
+      "description": "<p>Glow effect for ports. Just for internal use.</p>",
       "extends": [],
       "access": "",
       "virtual": false,
@@ -18939,7 +18939,7 @@
     {
       "name": "SVGFigure",
       "namespace": "draw2d",
-      "description": "<p>Abstract class which can handle plain SVG content. Inherit class must override the method\n<code>getSVG()</code>.</p>",
+      "description": "<p>Abstract class which can handle plain SVG content.</p>",
       "extends": [
         "draw2d.SetFigure"
       ],
@@ -27300,6 +27300,48 @@
           "examples": []
         }
       ]
+    }
+  ],
+  "namespaces": [
+    {
+      "name": "geo",
+      "namespace": "draw2d"
+    },
+    {
+      "name": "io",
+      "namespace": "draw2d"
+    },
+    {
+      "name": "storage",
+      "namespace": "draw2d"
+    },
+    {
+      "name": "util",
+      "namespace": "draw2d"
+    },
+    {
+      "name": "policy",
+      "namespace": "draw2d"
+    },
+    {
+      "name": "shape",
+      "namespace": "draw2d"
+    },
+    {
+      "name": "command",
+      "namespace": "draw2d"
+    },
+    {
+      "name": "decoration",
+      "namespace": "draw2d"
+    },
+    {
+      "name": "layout",
+      "namespace": "draw2d"
+    },
+    {
+      "name": "ui",
+      "namespace": "draw2d"
     }
   ]
 }

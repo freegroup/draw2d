@@ -1,7 +1,7 @@
 {
   "name": "GhostMoveSelectionPolicy",
   "namespace": "draw2d.policy.canvas",
-  "description": "<p>draw2d.policy.canvas.GhostMoveSelectionPolicy</p>\n<p>A drag&amp;Drop feedback handler for the canvas. The policy didn't move the\nshapes in real time rather it shows a ghost rectangle as feedback. <br>\n<br>\nThe shapes are updated after the drag&amp;drop operation.</p>",
+  "description": "<p>A drag&amp;Drop feedback handler for the canvas. The policy didn't move the\nshapes in real time rather it shows a ghost rectangle as feedback. <br>\n<br>\nThe shapes are updated after the drag&amp;drop operation.</p>",
   "extends": [
     "draw2d.policy.canvas.SingleSelectionPolicy"
   ],

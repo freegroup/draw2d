@@ -1,6 +1,6 @@
 
 /**
- * @class draw2d.layout.mesh.ProposedMeshChange
+ * @class
  * Change proposal for grid/mesh layout changes.
  *
  * @author Andreas Herz

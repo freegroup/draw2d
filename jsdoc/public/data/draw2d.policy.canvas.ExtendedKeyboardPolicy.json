@@ -1,7 +1,7 @@
 {
   "name": "ExtendedKeyboardPolicy",
   "namespace": "draw2d.policy.canvas",
-  "description": "<p>draw2d.policy.canvas.ExtendedKeyboardPolicy\nExtended keyboard policy to <b>delete</b> and <b>group</b> figures in the canvas.\n<br>\nKeyboard commands</p>\n<ul>\n   <li>DEL    - delete selection</li>\n   <li>Ctrl+G - group/ungroup selection</li>\n   <li>Ctrl+B - send current selection in the background (toBack)</li>\n   <li>Ctrl+F - send current selection in the foreground (toFront)</li>\n</ul>",
+  "description": "<p>Extended keyboard policy to <b>delete</b> and <b>group</b> figures in the canvas.\n<br>\nKeyboard commands</p>\n<ul>\n   <li>DEL    - delete selection</li>\n   <li>Ctrl+G - group/ungroup selection</li>\n   <li>Ctrl+B - send current selection in the background (toBack)</li>\n   <li>Ctrl+F - send current selection in the foreground (toFront)</li>\n</ul>",
   "extends": [
     "draw2d.policy.canvas.KeyboardPolicy"
   ],

@@ -3,7 +3,7 @@ import extend from '../../util/extend'
 
 
 /**
- * @class draw2d.shape.layout.StackLayout
+ * @class
  * Using the StackLayout as their layout shape have their children placed on top of one another.
  * Order of placement is determined by the order in which the children were added, first child
  * added placed on the bottom. Only one child is visible at once.

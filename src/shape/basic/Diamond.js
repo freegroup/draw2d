@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.shape.basic.Diamond
+ * @class
  * A Diamond Figure.
  *
  *

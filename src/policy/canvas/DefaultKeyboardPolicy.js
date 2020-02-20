@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.policy.canvas.DefaultKeyboardPolicy
+ * @class
  * Standard keyboard policy. This is the standard installed keyboard policy.
  * <br>
  * <br>

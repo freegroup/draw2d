@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.shape.state.End
+ * @class
  *
  * The end node for a state diagram
  *

@@ -1,7 +1,7 @@
 {
   "name": "ShowDimetricGridEditPolicy",
   "namespace": "draw2d.policy.canvas",
-  "description": "<p>draw2d.policy.canvas.ShowDimetricGridEditPolicy</p>\n<p>A canvas decoration which paints a dimetric in the background.\n<br>\n<br></p>",
+  "description": "<p>A canvas decoration which paints a dimetric in the background.\n<br>\n<br></p>",
   "extends": [
     "draw2d.policy.canvas.DecorationPolicy"
   ],

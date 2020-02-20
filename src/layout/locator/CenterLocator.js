@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.layout.locator.CenterLocator
+ * @class
  *
  * A CenterLocator is used to place figures in the center of a parent shape.
  *

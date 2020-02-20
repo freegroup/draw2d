@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 import extend from '../../util/extend'
 
 /**
- * @class draw2d.shape.diagram.Pie
+ * @class
  *
  * Small data pie chart.
  *

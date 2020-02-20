@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.policy.figure.HorizontalEditPolicy
+ * @class
  *
  * An EditPolicy for use with Figures. With this edit policy you can move the shape only in a horizontal manner.
  *

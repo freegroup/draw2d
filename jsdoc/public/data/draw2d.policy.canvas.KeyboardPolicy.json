@@ -1,7 +1,7 @@
 {
   "name": "KeyboardPolicy",
   "namespace": "draw2d.policy.canvas",
-  "description": "<p>draw2d.policy.canvas.KeyboardPolicy\nDefault interface for keyboard interaction with the canvas.</p>",
+  "description": "<p>Default interface for keyboard interaction with the canvas.</p>",
   "extends": [
     "draw2d.policy.canvas.CanvasPolicy"
   ],

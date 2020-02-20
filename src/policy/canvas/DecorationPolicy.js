@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.policy.canvas.DecorationPolicy
+ * @class
  * The base class for any canvas decoration like grid, chessboard, graph paper or
  * other.
  *

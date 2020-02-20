@@ -1,7 +1,7 @@
 {
   "name": "CircuitConnectionRouter",
   "namespace": "draw2d.layout.connection",
-  "description": "<p>draw2d.layout.connection.CircuitConnectionRouter</p>\n<p>Provides a {@link draw2d.Connection} with an orthogonal route between the Connection's source\nand target anchors.\n<br>\nAdditional a <b>bridge</b> is added to each connection which didn't have a common source or target\nport.<br>\nA <b>dot</b> is added at the crossing if the two connections have a common spurce or target port.</p>\n<br>",
+  "description": "<p>Provides a {@link draw2d.Connection} with an orthogonal route between the Connection's source\nand target anchors.\n<br>\nAdditional a <b>bridge</b> is added to each connection which didn't have a common source or target\nport.<br>\nA <b>dot</b> is added at the crossing if the two connections have a common spurce or target port.</p>\n<br>",
   "extends": [
     "draw2d.layout.connection.ManhattanConnectionRouter"
   ],

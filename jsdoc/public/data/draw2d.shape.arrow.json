@@ -8,7 +8,7 @@
     {
       "name": "CalligrapherArrowDownLeft",
       "namespace": "draw2d.shape.arrow",
-      "description": "<p>draw2d.shape.arrow.CalligrapherArrowDownLeft\nHand drawn arrow which points down left</p>",
+      "description": "<p>Hand drawn arrow which points down left</p>",
       "extends": [
         "draw2d.SVGFigure"
       ],
@@ -2750,7 +2750,7 @@
     {
       "name": "CalligrapherArrowLeft",
       "namespace": "draw2d.shape.arrow",
-      "description": "<p>draw2d.shape.arrow.CalligrapherArrowLeft\nHand drawn arrow to the left.</p>",
+      "description": "<p>Hand drawn arrow to the left.</p>",
       "extends": [
         "draw2d.SVGFigure"
       ],
@@ -5489,5 +5489,6 @@
         }
       ]
     }
-  ]
+  ],
+  "namespaces": []
 }

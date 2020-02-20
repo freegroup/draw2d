@@ -3,7 +3,7 @@ import extend from '../../util/extend'
 
 
 /**
- * @class draw2d.shape.layout.Layout
+ * @class
  *
  * A base class for positioning child figures and determining the ideal size for
  * a figure with children.

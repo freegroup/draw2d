@@ -1,6 +1,6 @@
 
 /**
- * @class draw2d.layout.mesh.MeshLayouter
+ * @class
  * Layouter for a mesh or grid.
  *
  * @author Andreas Herz

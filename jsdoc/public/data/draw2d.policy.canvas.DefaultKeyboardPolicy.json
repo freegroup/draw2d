@@ -1,7 +1,7 @@
 {
   "name": "DefaultKeyboardPolicy",
   "namespace": "draw2d.policy.canvas",
-  "description": "<p>draw2d.policy.canvas.DefaultKeyboardPolicy\nStandard keyboard policy. This is the standard installed keyboard policy.\n<br>\n<br>\nKeyboard commands</p>\n<ul>\n   <li>DEL    - delete selection</li>\n</ul>",
+  "description": "<p>Standard keyboard policy. This is the standard installed keyboard policy.\n<br>\n<br>\nKeyboard commands</p>\n<ul>\n   <li>DEL    - delete selection</li>\n</ul>",
   "extends": [
     "draw2d.policy.canvas.KeyboardPolicy"
   ],

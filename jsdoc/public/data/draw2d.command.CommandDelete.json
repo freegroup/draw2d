@@ -1,7 +1,7 @@
 {
   "name": "CommandDelete",
   "namespace": "draw2d.command",
-  "description": "<p>draw2d.command.CommandDelete\nCommand to remove a figure with CommandStack support.</p>",
+  "description": "<p>Command to remove a figure with CommandStack support.</p>",
   "extends": [
     "draw2d.command.Command"
   ],

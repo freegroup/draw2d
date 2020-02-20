@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.policy.figure.VertexSelectionFeedbackPolicy
+ * @class
  *
  * Called by the framework if the user edit the position of a figure with a drag drop operation.
  * Sub class like SelectionEditPolicy or RegionEditPolicy cam adjust th e position of the figure or the selections handles.

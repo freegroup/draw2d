@@ -1,6 +1,6 @@
 
 /**
- * @class draw2d.geo.PositionConstants
+ * @class
  * Static values for point orientation.
  * 
  */

@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.policy.canvas.SnapToCenterEditPolicy
+ * @class
  *
  * Snapping is based on the existing children of a container. When snapping a shape,
  * the center of the bounding box will snap to the center of other figures of the given canvas.

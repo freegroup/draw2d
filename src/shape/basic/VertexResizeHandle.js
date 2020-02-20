@@ -2,12 +2,11 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.shape.basic.VertexResizeHandle
+ * @class
  *
  * Selection handle for polyline vertices.
  *
  *
- * @inheritable
  * @author Andreas Herz
  * @extends draw2d.ResizeHandle
  */

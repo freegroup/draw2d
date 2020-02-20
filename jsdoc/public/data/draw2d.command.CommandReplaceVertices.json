@@ -1,7 +1,7 @@
 {
   "name": "CommandReplaceVertices",
   "namespace": "draw2d.command",
-  "description": "<p>draw2d.command.CommandReplaceVertices</p>\n<p>Replace the vertices of a polyline.</p>",
+  "description": "<p>Replace the vertices of a polyline.</p>",
   "extends": [
     "draw2d.command.Command"
   ],

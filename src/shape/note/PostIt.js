@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.shape.note.PostIt
+ * @class
  *
  * Simple Post-it like figure with text. Can be used for annotations or documentation.
  *

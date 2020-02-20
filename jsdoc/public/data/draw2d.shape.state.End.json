@@ -1,7 +1,7 @@
 {
   "name": "End",
   "namespace": "draw2d.shape.state",
-  "description": "<p>draw2d.shape.state.End</p>\n<p>The end node for a state diagram</p>",
+  "description": "<p>The end node for a state diagram</p>",
   "extends": [
     "draw2d.shape.basic.Circle"
   ],

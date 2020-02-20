@@ -1,7 +1,7 @@
 {
   "name": "CommandReconnect",
   "namespace": "draw2d.command",
-  "description": "<p>draw2d.command.CommandReconnect</p>\n<p>Reconnects two ports. This command is used during the DragDrop operation of a draw2d.Connection.</p>",
+  "description": "<p>Reconnects two ports. This command is used during the DragDrop operation of a draw2d.Connection.</p>",
   "extends": [
     "draw2d.command.Command"
   ],

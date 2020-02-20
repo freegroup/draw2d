@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.layout.connection.SplineConnectionRouter
+ * @class
  *
  * A ManhattanConnectionRouter with an spline interpolation between the bend points.
  *

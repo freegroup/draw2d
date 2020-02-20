@@ -2,7 +2,7 @@ import draw2d from '../packages'
 
 
 /**
- * @class draw2d.command.CommandRemoveVertex
+ * @class
  *
  * Remove a vertex from a polyline or polygon
  *

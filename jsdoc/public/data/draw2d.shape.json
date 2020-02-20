@@ -3,5 +3,63 @@
   "namespace": "draw2d",
   "description": "",
   "access": "",
-  "virtual": false
+  "virtual": false,
+  "namespaces": [
+    {
+      "name": "basic",
+      "namespace": "draw2d.shape"
+    },
+    {
+      "name": "dimetric",
+      "namespace": "draw2d.shape"
+    },
+    {
+      "name": "composite",
+      "namespace": "draw2d.shape"
+    },
+    {
+      "name": "arrow",
+      "namespace": "draw2d.shape"
+    },
+    {
+      "name": "node",
+      "namespace": "draw2d.shape"
+    },
+    {
+      "name": "note",
+      "namespace": "draw2d.shape"
+    },
+    {
+      "name": "diagram",
+      "namespace": "draw2d.shape"
+    },
+    {
+      "name": "flowchart",
+      "namespace": "draw2d.shape"
+    },
+    {
+      "name": "analog",
+      "namespace": "draw2d.shape"
+    },
+    {
+      "name": "icon",
+      "namespace": "draw2d.shape"
+    },
+    {
+      "name": "layout",
+      "namespace": "draw2d.shape"
+    },
+    {
+      "name": "pert",
+      "namespace": "draw2d.shape"
+    },
+    {
+      "name": "state",
+      "namespace": "draw2d.shape"
+    },
+    {
+      "name": "widget",
+      "namespace": "draw2d.shape"
+    }
+  ]
 }

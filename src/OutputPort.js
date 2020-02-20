@@ -1,14 +1,13 @@
+import draw2d from 'packages'
 
 
 /**
- * @class draw2d.OutputPort
- * @classdesc A OutputPort is the start anchor for a {@link draw2d.Connection}.
+ * @class
+ * A OutputPort is the start anchor for a {@link draw2d.Connection}.
  *
  * @author Andreas Herz
  * @extends draw2d.Port
  */
-import draw2d from 'packages'
-
 draw2d.OutputPort = draw2d.Port.extend(
   /** @lends draw2d.OutputPort.prototype */
     {

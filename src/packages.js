@@ -10,7 +10,8 @@ export default {
 
   /** @namespace draw2d.io */
   io: {
-    /** @namespace draw2d.io.json */
+    /** @namespace draw2d.io.json
+     * */
     json: {},
     /** @namespace draw2d.io.png */
     png: {},
@@ -47,7 +48,7 @@ export default {
     basic: {},
     /** @namespace draw2d.shape.dimetric */
     dimetric: {},
-    /** @namespace draw2d.shape.composition */
+    /** @namespace draw2d.shape.composite */
     composite: {},
     /** @namespace draw2d.shape.arrow */
     arrow: {},
@@ -84,7 +85,9 @@ export default {
 
   /** @namespace draw2d.layout */
   layout: {
-    /** @namespace draw2d.layout.connection */
+    /** @namespace draw2d.layout.connection
+     *  @memberof draw2d.layout
+     * */
     connection: {},
     /** @namespace draw2d.layout.anchor */
     anchor: {},

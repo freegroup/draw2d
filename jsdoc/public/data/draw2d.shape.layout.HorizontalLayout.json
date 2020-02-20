@@ -1,7 +1,7 @@
 {
   "name": "HorizontalLayout",
   "namespace": "draw2d.shape.layout",
-  "description": "<p>draw2d.shape.layout.HorizontalLayout\nThe HorizontalLayout class arranges the layout elements in a horizontal sequence,\nleft to right, with optional gaps between the elements.</p>\n<p>During the execution of the setDimension() method, the minimum width of the container is calculated\nby accumulating the minimum sizes of the elements, including stroke, gaps and padding.</p>\n<p>See the example below with and without gap and border settings</p>",
+  "description": "<p>The HorizontalLayout class arranges the layout elements in a horizontal sequence,\nleft to right, with optional gaps between the elements.</p>\n<p>During the execution of the setDimension() method, the minimum width of the container is calculated\nby accumulating the minimum sizes of the elements, including stroke, gaps and padding.</p>\n<p>See the example below with and without gap and border settings</p>",
   "extends": [
     "draw2d.shape.layout.Layout"
   ],

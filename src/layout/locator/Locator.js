@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.layout.locator.Locator
+ * @class
  *
  * Controls the location of an IFigure.
  *

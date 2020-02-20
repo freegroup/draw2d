@@ -3,7 +3,7 @@ import {Tweenable} from "shifty"
 
 
 /**
- * @class draw2d.policy.port.IntrusivePortsFeedbackPolicy
+ * @class
  *
  *
  * @author Andreas Herz

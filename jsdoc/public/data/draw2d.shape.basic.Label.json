@@ -1,7 +1,7 @@
 {
   "name": "Label",
   "namespace": "draw2d.shape.basic",
-  "description": "<p>draw2d.shape.basic.Label\nImplements a simple text label.</p>",
+  "description": "<p>Implements a simple text label.</p>",
   "extends": [
     "draw2d.SetFigure"
   ],

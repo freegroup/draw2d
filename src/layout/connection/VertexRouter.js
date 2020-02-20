@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.layout.connection.VertexRouter
+ * @class
  *
  * A Router with unlimited vertices.
  *

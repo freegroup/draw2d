@@ -1,7 +1,7 @@
 {
   "name": "FigureEditPolicy",
   "namespace": "draw2d.policy.figure",
-  "description": "<p>draw2d.policy.figure.FigureEditPolicy</p>\n<p>Called by the framework if the user edit the position of a figure with a drag drop operation.\nSub class like SelectionEditPolicy or RegionEditPolicy can adjust the position of the figure\nor the selections handles.</p>",
+  "description": "<p>Called by the framework if the user edit the position of a figure with a drag drop operation.\nSub class like SelectionEditPolicy or RegionEditPolicy can adjust the position of the figure\nor the selections handles.</p>",
   "extends": [
     "draw2d.policy.EditPolicy"
   ],

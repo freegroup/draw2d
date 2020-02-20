@@ -1,7 +1,7 @@
 {
   "name": "CommandResize",
   "namespace": "draw2d.command",
-  "description": "<p>draw2d.command.CommandResize\nResize command for figures. Can be execute/undo/redo via a CommandStack.</p>",
+  "description": "<p>Resize command for figures. Can be execute/undo/redo via a CommandStack.</p>",
   "extends": [
     "draw2d.command.Command"
   ],

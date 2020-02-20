@@ -1,7 +1,7 @@
 {
   "name": "Rectangle",
   "namespace": "draw2d.geo",
-  "description": "<p>draw2d.geo.Rectangle</p>\n<p>Util class for geometrie handling.</p>",
+  "description": "<p>Util class for geometrie handling.</p>",
   "extends": [
     "draw2d.geo.Point"
   ],

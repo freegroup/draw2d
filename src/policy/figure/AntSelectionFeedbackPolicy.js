@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.policy.figure.AntSelectionFeedbackPolicy
+ * @class
  *
  * Provide support for selecting and positioning a non-resizable figure.
  * Selection is indicated via rectangular handle that outlines the figure with a 1-pixel black

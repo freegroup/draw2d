@@ -1,8 +1,9 @@
+import draw2d from 'packages'
 
 
 /**
- * @class draw2d.Port
- * @classdesc  A port is an object that is used to establish a connection between a node and a {@link draw2d.Connection}. The port can
+ * @class
+ *  A port is an object that is used to establish a connection between a node and a {@link draw2d.Connection}. The port can
  * be placed anywhere within a node ( see {@link draw2d.layout.locator.PortLocator} for details)
  *
  *
@@ -10,7 +11,6 @@
  * @param {Object} [attr] the configuration of the shape
  * @extends draw2d.shape.basic.Circle
  */
-import draw2d from 'packages'
 
 draw2d.Port = draw2d.shape.basic.Circle.extend(
   /** @lends draw2d.Port.prototype */
@@ -650,7 +650,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
 
 
 /**
- * @class draw2d.Corona
+ * @class
  * Glow effect for ports. Just for internal use.
  *
  * @extend draw2d.shape.basic.Circle

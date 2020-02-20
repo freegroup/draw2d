@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.layout.connection.FanConnectionRouter
+ * @class
  *
  * Automatic router that spreads its  {@link draw2d.Connection Connections} in a fan-like fashion upon collision.
  *

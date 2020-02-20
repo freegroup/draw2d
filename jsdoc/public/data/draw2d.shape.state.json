@@ -8,7 +8,7 @@
     {
       "name": "Connection",
       "namespace": "draw2d.shape.state",
-      "description": "<p>draw2d.shape.state.Connection</p>\n<p>Connection designed for a state diagram with arrow decoration at the\ntarget of the connection and a label</p>",
+      "description": "<p>Connection designed for a state diagram with arrow decoration at the\ntarget of the connection and a label</p>",
       "extends": [
         "draw2d.Connection"
       ],
@@ -3295,7 +3295,7 @@
     {
       "name": "End",
       "namespace": "draw2d.shape.state",
-      "description": "<p>draw2d.shape.state.End</p>\n<p>The end node for a state diagram</p>",
+      "description": "<p>The end node for a state diagram</p>",
       "extends": [
         "draw2d.shape.basic.Circle"
       ],
@@ -6051,7 +6051,7 @@
     {
       "name": "Start",
       "namespace": "draw2d.shape.state",
-      "description": "<p>draw2d.shape.state.Start</p>\n<p>The start node for a state diagram</p>",
+      "description": "<p>The start node for a state diagram</p>",
       "extends": [
         "draw2d.shape.basic.Rectangle"
       ],
@@ -8718,7 +8718,7 @@
     {
       "name": "State",
       "namespace": "draw2d.shape.state",
-      "description": "<p>draw2d.shape.state.State</p>\n<p>a state shape for a state diagram</p>",
+      "description": "<p>a state shape for a state diagram</p>",
       "extends": [
         "draw2d.shape.layout.VerticalLayout"
       ],
@@ -11505,5 +11505,6 @@
         }
       ]
     }
-  ]
+  ],
+  "namespaces": []
 }

@@ -1,7 +1,7 @@
 {
   "name": "HorizontalEditPolicy",
   "namespace": "draw2d.policy.figure",
-  "description": "<p>draw2d.policy.figure.HorizontalEditPolicy</p>\n<p>An EditPolicy for use with Figures. With this edit policy you can move the shape only in a horizontal manner.</p>",
+  "description": "<p>An EditPolicy for use with Figures. With this edit policy you can move the shape only in a horizontal manner.</p>",
   "extends": [
     "draw2d.policy.figure.DragDropEditPolicy"
   ],

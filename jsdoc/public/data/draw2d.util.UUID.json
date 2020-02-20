@@ -1,16 +1,18 @@
 {
   "name": "UUID",
   "namespace": "draw2d.util",
-  "description": "<p>draw2d.util.UUID\nGenerates a (pseudo) UUID's</p>\n<pre><code>// a UUID in the format\n// xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (8-4-4-4-12)\nvar id = draw2d.util.UUID.create();</code></pre>",
+  "description": "<p>Generates a (pseudo) UUID's</p>",
   "extends": [],
-  "access": "private",
+  "access": "",
   "virtual": false,
   "fires": "",
   "constructor": {
     "name": "UUID",
     "description": "",
     "parameters": [],
-    "examples": []
+    "examples": [
+      "// a UUID in the format\n    // xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (8-4-4-4-12)\n    var id = draw2d.util.UUID.create();"
+    ]
   },
   "functions": [
     {

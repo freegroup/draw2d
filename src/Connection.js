@@ -1,7 +1,10 @@
+import draw2d from 'packages'
+import extend from 'util/extend'
+
 /**
- * @class draw2d.Connection
+ * @class
  *
- * @classdesc Connections figures are used to display a line between two points. The Connection interface extends
+ * Connections figures are used to display a line between two points. The Connection interface extends
  * {@link draw2d.shape.basic.PolyLine PolyLine}.<br>
  * The source and target endpoints of a connection are each defined using a {@link draw2d.layout.anchor.ConnectionAnchor ConnectionAnchor}.
  * These endpoints, along with any other points on the connection, are set by the connection's  {@link draw2d.layout.connection.ConnectionRouter ConnectionRouter}.
@@ -60,10 +63,6 @@
  * @author Andreas Herz
  * @extends draw2d.shape.basic.PolyLine
  */
-
-import draw2d from 'packages'
-import extend from 'util/extend'
-
 
 draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
   /** @lends draw2d.Connection.prototype */

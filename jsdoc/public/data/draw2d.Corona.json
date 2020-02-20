@@ -1,7 +1,7 @@
 {
   "name": "Corona",
   "namespace": "draw2d",
-  "description": "<p>draw2d.Corona\nGlow effect for ports. Just for internal use.</p>",
+  "description": "<p>Glow effect for ports. Just for internal use.</p>",
   "extends": [],
   "access": "",
   "virtual": false,

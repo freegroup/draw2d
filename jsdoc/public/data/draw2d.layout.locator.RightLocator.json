@@ -1,7 +1,7 @@
 {
   "name": "RightLocator",
   "namespace": "draw2d.layout.locator",
-  "description": "<p>draw2d.layout.locator.RightLocator</p>\n<p>A RightLocator is used to place figures to the right of a parent shape.</p>",
+  "description": "<p>A RightLocator is used to place figures to the right of a parent shape.</p>",
   "extends": [],
   "access": "",
   "virtual": false,

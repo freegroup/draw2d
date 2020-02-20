@@ -2,7 +2,7 @@ import draw2d from '../packages'
 
 
 /**
- * @class draw2d.command.CommandType
+ * @class
  *
  * EditPolicies should determine an Figures editing capabilities.
  * It is possible to implement an Figure such that it handles all editing

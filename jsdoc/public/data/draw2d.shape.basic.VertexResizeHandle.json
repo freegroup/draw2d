@@ -1,7 +1,7 @@
 {
   "name": "VertexResizeHandle",
   "namespace": "draw2d.shape.basic",
-  "description": "<p>draw2d.shape.basic.VertexResizeHandle</p>\n<p>Selection handle for polyline vertices.</p>",
+  "description": "<p>Selection handle for polyline vertices.</p>",
   "extends": [
     "draw2d.ResizeHandle"
   ],

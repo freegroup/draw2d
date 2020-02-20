@@ -1,6 +1,6 @@
 
 /**
- * @class draw2d.policy.figure.VerticalEditPolicy
+ * @class
  *
  * An EditPolicy for use with Figures. With this edit policy you can move the shape only in a vertical manner.
  *

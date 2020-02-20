@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.policy.canvas.DropInterceptorPolicy
+ * @class
  *
  * Drop interceptors are basically event handlers from which you can return a value
  * that tells draw2d to abort what it is that it was doing.<br>

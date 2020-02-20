@@ -1,7 +1,7 @@
 {
   "name": "FanConnectionRouter",
   "namespace": "draw2d.layout.connection",
-  "description": "<p>draw2d.layout.connection.FanConnectionRouter</p>\n<p>Automatic router that spreads its  {@link draw2d.Connection Connections} in a fan-like fashion upon collision.</p>",
+  "description": "<p>Automatic router that spreads its  {@link draw2d.Connection Connections} in a fan-like fashion upon collision.</p>",
   "extends": [
     "draw2d.layout.connection.DirectRouter"
   ],

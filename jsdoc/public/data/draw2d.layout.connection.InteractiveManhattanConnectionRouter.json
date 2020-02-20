@@ -1,7 +1,7 @@
 {
   "name": "InteractiveManhattanConnectionRouter",
   "namespace": "draw2d.layout.connection",
-  "description": "<p>draw2d.layout.connection.InteractiveManhattanConnectionRouter\nRoute the connection in an Manhattan style and add resize handles to all vertex for interactive alignment of the\nrouting.</p>",
+  "description": "<p>Route the connection in an Manhattan style and add resize handles to all vertex for interactive alignment of the\nrouting.</p>",
   "extends": [
     "draw2d.layout.connection.ManhattanConnectionRouter"
   ],

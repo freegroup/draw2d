@@ -3,5 +3,6 @@
   "namespace": "draw2d.layout",
   "description": "",
   "access": "",
-  "virtual": false
+  "virtual": false,
+  "namespaces": []
 }

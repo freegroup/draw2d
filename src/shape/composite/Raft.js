@@ -1,7 +1,7 @@
 import draw2d from '../../packages'
 
 /**
- * @class draw2d.shape.composite.Raft
+ * @class
  * Raft figures are shapes, which aggregate multiple figures. It works like a real raft. Aboard figures are
  * moved if the raft figures moves.
  *

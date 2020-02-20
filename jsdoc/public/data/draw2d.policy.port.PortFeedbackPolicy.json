@@ -1,7 +1,7 @@
 {
   "name": "PortFeedbackPolicy",
   "namespace": "draw2d.policy.port",
-  "description": "<p>draw2d.policy.port.PortFeedbackPolicy</p>\n<p>Base class for all port feedback policies. Used for grow, highlight or\nother decorations during drag&amp;drop and connecting of ports.</p>",
+  "description": "<p>Base class for all port feedback policies. Used for grow, highlight or\nother decorations during drag&amp;drop and connecting of ports.</p>",
   "extends": [
     "draw2d.policy.figure.DragDropEditPolicy"
   ],

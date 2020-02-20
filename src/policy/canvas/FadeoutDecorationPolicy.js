@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.policy.canvas.FadeoutDecorationPolicy
+ * @class
  *
  * Install this edit policy in a canvas if you want fadeout all decorations like ports, resize handles
  * if the user didn't move the mouse. This is good for a clean representation of your diagram.

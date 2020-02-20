@@ -1,4 +1,5 @@
 import draw2d from '../packages'
+import r from "lib/jquery.autoresize"
 
 
 /**
@@ -25,9 +26,6 @@ import draw2d from '../packages'
  * @author Andreas Herz
  * @extends draw2d.ui.LabelEditor
 */
-
-import r from "lib/jquery.autoresize"
-
 draw2d.ui.LabelInplaceEditor =  draw2d.ui.LabelEditor.extend(
     /** @lends draw2d.ui.LabelInplaceEditor.prototype */
     {

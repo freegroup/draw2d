@@ -1,6 +1,6 @@
 
 /**
- * @class draw2d.io.json.Reader
+ * @class
  * Read a JSON data and import them into the canvas. The JSON must be generated with the
  * {@link draw2d.io.json.Writer}.
  *

@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.policy.canvas.ReadOnlySelectionPolicy
+ * @class
  *
  *
  * @author Andreas Herz

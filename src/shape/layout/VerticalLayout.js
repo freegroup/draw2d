@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.shape.layout.VerticalLayout
+ * @class
  * The VerticalLayout class arranges the layout elements in a vertical sequence,
  * left to right, with optional gaps between the elements.
  *

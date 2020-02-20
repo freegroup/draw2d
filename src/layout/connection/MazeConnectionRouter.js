@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.layout.connection.MazeConnectionRouter
+ * @class
  * <b>BETA VERSION. Not for production!!!<br></b>
  *
  * @inheritable

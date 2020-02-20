@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.util.spline.CatmullRomSpline
+ * @class
  *
  * A catmull-rom spline object.
  *

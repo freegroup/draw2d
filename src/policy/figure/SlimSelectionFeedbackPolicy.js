@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.policy.figure.SlimSelectionFeedbackPolicy
+ * @class
  * Add only very small resize handles to the figure.
  *
  *

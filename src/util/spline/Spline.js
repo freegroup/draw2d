@@ -1,6 +1,6 @@
 
 /**
- * @class draw2d.util.spline.Spline
+ * @class
  *
  *  An abstract class defining a general spline object.
  */

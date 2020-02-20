@@ -1,7 +1,7 @@
 {
   "name": "ResizeSelectionFeedbackPolicy",
   "namespace": "draw2d.policy.figure",
-  "description": "<p>draw2d.policy.figure.ResizeSelectionFeedbackPolicy</p>\n<p>Selection feedback policy without &quot;marching ant lines&quot; or any other rectangle highlight. Just\nsome resize handles at each corner of the shape.</p>",
+  "description": "<p>Selection feedback policy without &quot;marching ant lines&quot; or any other rectangle highlight. Just\nsome resize handles at each corner of the shape.</p>",
   "extends": [
     "draw2d.policy.figure.SelectionFeedbackPolicy"
   ],

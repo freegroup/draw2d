@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.layout.locator.BottomLocator
+ * @class
  *
  * A bottomLocator is used to place figures at the bottom of a parent shape.
  *

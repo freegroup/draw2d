@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.shape.composite.Jailhouse
+ * @class
  *
  * A Jailhouse is a figure that acts as a container for other figures. A Jailhouse
  * is a StrongComposite node that controls a set of child figures. Child nodes can't

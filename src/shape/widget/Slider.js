@@ -3,7 +3,7 @@ import {Tweenable} from 'shifty'
 
 
 /**
- * @class draw2d.shape.widget.Slider
+ * @class
  *
  * @example
  *

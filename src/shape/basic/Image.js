@@ -3,14 +3,13 @@ import extend from '../../util/extend'
 
 
 /**
- * @class draw2d.shape.basic.Image
+ * @class
  * Simple Image shape.
  *
  * @inheritable
  * @author Andreas Herz
  * @extends draw2d.shape.node.Node
  */
-
 draw2d.shape.basic.Image = draw2d.shape.node.Node.extend(
   /** @lends draw2d.shape.basic.Image.prototype */
   {

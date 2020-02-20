@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.layout.connection.RubberbandRouter
+ * @class
  * Router for direct connections between two ports with a rubber band effect
  *
  *

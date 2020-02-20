@@ -325,11 +325,6 @@ const routes = [
     component: () => import(/* webpackChunkName: "draw2d_policy_figure_glowselectionfeedbackpolicy" */ '../views/clazz.vue')
   },
   {
-    path: '/draw2d/policy/figure/hbusselectionfeedbackpolicy',
-    props: { className: 'draw2d.policy.figure.HBusSelectionFeedbackPolicy' },
-    component: () => import(/* webpackChunkName: "draw2d_policy_figure_hbusselectionfeedbackpolicy" */ '../views/clazz.vue')
-  },
-  {
     path: '/draw2d/policy/figure/horizontaleditpolicy',
     props: { className: 'draw2d.policy.figure.HorizontalEditPolicy' },
     component: () => import(/* webpackChunkName: "draw2d_policy_figure_horizontaleditpolicy" */ '../views/clazz.vue')
@@ -455,6 +450,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "draw2d_shape_basic_polyline" */ '../views/clazz.vue')
   },
   {
+    path: '/draw2d/shape/basic/polygon',
+    props: { className: 'draw2d.shape.basic.Polygon' },
+    component: () => import(/* webpackChunkName: "draw2d_shape_basic_polygon" */ '../views/clazz.vue')
+  },
+  {
     path: '/draw2d/shape/basic/rectangle',
     props: { className: 'draw2d.shape.basic.Rectangle' },
     component: () => import(/* webpackChunkName: "draw2d_shape_basic_rectangle" */ '../views/clazz.vue')
@@ -480,9 +480,39 @@ const routes = [
     component: () => import(/* webpackChunkName: "draw2d_shape_dimetric_rectangle" */ '../views/clazz.vue')
   },
   {
-    path: '/draw2d/shape/composition',
-    props: { className: 'draw2d.shape.composition' },
-    component: () => import(/* webpackChunkName: "draw2d_shape_composition" */ '../views/package.vue')
+    path: '/draw2d/shape/composite',
+    props: { className: 'draw2d.shape.composite' },
+    component: () => import(/* webpackChunkName: "draw2d_shape_composite" */ '../views/package.vue')
+  },
+  {
+    path: '/draw2d/shape/composite/composite',
+    props: { className: 'draw2d.shape.composite.Composite' },
+    component: () => import(/* webpackChunkName: "draw2d_shape_composite_composite" */ '../views/clazz.vue')
+  },
+  {
+    path: '/draw2d/shape/composite/group',
+    props: { className: 'draw2d.shape.composite.Group' },
+    component: () => import(/* webpackChunkName: "draw2d_shape_composite_group" */ '../views/clazz.vue')
+  },
+  {
+    path: '/draw2d/shape/composite/jailhouse',
+    props: { className: 'draw2d.shape.composite.Jailhouse' },
+    component: () => import(/* webpackChunkName: "draw2d_shape_composite_jailhouse" */ '../views/clazz.vue')
+  },
+  {
+    path: '/draw2d/shape/composite/raft',
+    props: { className: 'draw2d.shape.composite.Raft' },
+    component: () => import(/* webpackChunkName: "draw2d_shape_composite_raft" */ '../views/clazz.vue')
+  },
+  {
+    path: '/draw2d/shape/composite/strongcomposite',
+    props: { className: 'draw2d.shape.composite.StrongComposite' },
+    component: () => import(/* webpackChunkName: "draw2d_shape_composite_strongcomposite" */ '../views/clazz.vue')
+  },
+  {
+    path: '/draw2d/shape/composite/weakcomposite',
+    props: { className: 'draw2d.shape.composite.WeakComposite' },
+    component: () => import(/* webpackChunkName: "draw2d_shape_composite_weakcomposite" */ '../views/clazz.vue')
   },
   {
     path: '/draw2d/shape/arrow',
@@ -523,6 +553,11 @@ const routes = [
     path: '/draw2d/shape/node/horizontalbus',
     props: { className: 'draw2d.shape.node.HorizontalBus' },
     component: () => import(/* webpackChunkName: "draw2d_shape_node_horizontalbus" */ '../views/clazz.vue')
+  },
+  {
+    path: '/draw2d/shape/node/hub',
+    props: { className: 'draw2d.shape.node.Hub' },
+    component: () => import(/* webpackChunkName: "draw2d_shape_node_hub" */ '../views/clazz.vue')
   },
   {
     path: '/draw2d/shape/node/node',
@@ -1745,6 +1780,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "draw2d_shape_layout" */ '../views/package.vue')
   },
   {
+    path: '/draw2d/shape/layout/flexgridlayout',
+    props: { className: 'draw2d.shape.layout.FlexGridLayout' },
+    component: () => import(/* webpackChunkName: "draw2d_shape_layout_flexgridlayout" */ '../views/clazz.vue')
+  },
+  {
     path: '/draw2d/shape/layout/horizontallayout',
     props: { className: 'draw2d.shape.layout.HorizontalLayout' },
     component: () => import(/* webpackChunkName: "draw2d_shape_layout_horizontallayout" */ '../views/clazz.vue')
@@ -2200,6 +2240,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "draw2d_ui_labeleditor" */ '../views/clazz.vue')
   },
   {
+    path: '/draw2d/ui/labelinplaceeditor',
+    props: { className: 'draw2d.ui.LabelInplaceEditor' },
+    component: () => import(/* webpackChunkName: "draw2d_ui_labelinplaceeditor" */ '../views/clazz.vue')
+  },
+  {
     path: '/draw2d/canvas',
     props: { className: 'draw2d.Canvas' },
     component: () => import(/* webpackChunkName: "draw2d_canvas" */ '../views/clazz.vue')
@@ -2356,8 +2401,8 @@ const tree = [
             text: 'dimetric'
           },
           {
-            data: { path: '/draw2d/shape/composition' },
-            text: 'composition'
+            data: { path: '/draw2d/shape/composite' },
+            text: 'composite'
           },
           {
             data: { path: '/draw2d/shape/arrow' },

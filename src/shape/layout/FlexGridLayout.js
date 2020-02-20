@@ -1,5 +1,8 @@
+import draw2d from '../../packages'
+import extend from '../../util/extend'
+
 /**
- * @class draw2d.shape.layout.FlexGridLayout
+ * @class
  *
  * FlexGridLayout is a powerful, flexible and precise layout manager that aligns components vertically and
  * horizontally in a dynamic rectangular grid of cells, with each component occupying in one or more cell.
@@ -81,9 +84,6 @@
  * @extends draw2d.shape.layout.Layout
  * @since 2.5.1
  */
-import draw2d from '../../packages'
-import extend from '../../util/extend'
-
 draw2d.shape.layout.FlexGridLayout = draw2d.shape.layout.Layout.extend(
   /** @lends draw2d.shape.layout.FlexGridLayout.prototype */
   {

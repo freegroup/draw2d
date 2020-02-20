@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.layout.locator.XYRelPortLocator
+ * @class
  *
  * Create a locator for a relative x/y coordinate position. The coordinates are named in percentage [0..100%]
  * relative to the top/left corner of the parent node.<br>

@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.policy.figure.RectangleSelectionFeedbackPolicy
+ * @class
  *
  * A SelectionFeedbackPolicy with resize handles (rectangles) on each side and corner of the shape
  *

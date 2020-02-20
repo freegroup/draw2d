@@ -1,7 +1,7 @@
 {
   "name": "CenterLocator",
   "namespace": "draw2d.layout.locator",
-  "description": "<p>draw2d.layout.locator.CenterLocator</p>\n<p>A CenterLocator is used to place figures in the center of a parent shape.</p>",
+  "description": "<p>A CenterLocator is used to place figures in the center of a parent shape.</p>",
   "extends": [],
   "access": "",
   "virtual": false,

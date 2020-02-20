@@ -1,7 +1,7 @@
 {
   "name": "CoronaDecorationPolicy",
   "namespace": "draw2d.policy.canvas",
-  "description": "<p>draw2d.policy.canvas.CoronaDecorationPolicy\nThis decorations hides draw2d.Ports which are to far from the current cursor position.\nThis makes the canvas more clean if you have a lot of nodes on it.<br>\nYou didn't see a bunch of ports.</p>",
+  "description": "<p>This decorations hides draw2d.Ports which are to far from the current cursor position.\nThis makes the canvas more clean if you have a lot of nodes on it.<br>\nYou didn't see a bunch of ports.</p>",
   "extends": [
     "draw2d.policy.canvas.DecorationPolicy"
   ],

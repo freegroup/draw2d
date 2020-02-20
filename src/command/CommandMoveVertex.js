@@ -2,7 +2,7 @@ import draw2d from '../packages'
 
 
 /**
- * @class draw2d.command.CommandMoveVertex
+ * @class
  *
  * Command for the vertex movement of a polyline/polygon.
  *

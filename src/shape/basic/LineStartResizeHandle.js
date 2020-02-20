@@ -2,12 +2,9 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.shape.basic.LineStartResizeHandle
+ * @class
  * Selection handle for connections and normal lines.
  *
- * TODO: Split the LineEndResizeHandle to ConnectionEndResizeHandle and LineEndResizeHandle!!!!
- *
- * @inheritable
  * @author Andreas Herz
  * @extends draw2d.shape.basic.LineResizeHandle
  */

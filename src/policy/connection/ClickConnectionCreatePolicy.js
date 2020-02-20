@@ -1,6 +1,6 @@
 
 /**
- * @class draw2d.policy.connection.ClickConnectionCreatePolicy
+ * @class
  *
  * The ClickConnectionCreatePolicy can be installed into the canvas to override the
  * default connection crate behaviour. Normally you can create connections by drag&drop a port.

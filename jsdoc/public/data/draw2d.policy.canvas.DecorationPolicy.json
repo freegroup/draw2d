@@ -1,7 +1,7 @@
 {
   "name": "DecorationPolicy",
   "namespace": "draw2d.policy.canvas",
-  "description": "<p>draw2d.policy.canvas.DecorationPolicy\nThe base class for any canvas decoration like grid, chessboard, graph paper or\nother.</p>",
+  "description": "<p>The base class for any canvas decoration like grid, chessboard, graph paper or\nother.</p>",
   "extends": [
     "draw2d.policy.canvas.CanvasPolicy"
   ],

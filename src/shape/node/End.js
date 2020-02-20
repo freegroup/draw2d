@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.shape.node.End
+ * @class
  * A simple Node which has a InputPort. Mainly used for demo and examples.
  *
  *

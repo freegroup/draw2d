@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.layout.locator.LeftLocator
+ * @class
  *
  * A LeftLocator is used to place figures to the left of a parent shape.
  *

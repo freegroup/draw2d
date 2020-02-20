@@ -1,4 +1,3 @@
-
 import draw2d from 'packages'
 import jsonUtil from 'util/JSONUtil'
 import UUID from 'util/UUID'

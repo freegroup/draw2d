@@ -1,7 +1,7 @@
 {
   "name": "ArrayList",
   "namespace": "draw2d.util",
-  "description": "<p>draw2d.util.ArrayList</p>\n<p><Disclaimer> Writing my own class for arrays was one of my worst ideas...</p>\n<p>An ArrayList stores a variable number of objects. This is similar to making an array of\nobjects, but with an ArrayList, items can be easily added and removed from the ArrayList\nand it is resized dynamically. This can be very convenient, but it's slower than making\nan array of objects when using many elements.</p>",
+  "description": "<p><Disclaimer> Writing my own class for arrays was one of my worst ideas...</p>\n<p>An ArrayList stores a variable number of objects. This is similar to making an array of\nobjects, but with an ArrayList, items can be easily added and removed from the ArrayList\nand it is resized dynamically. This can be very convenient, but it's slower than making\nan array of objects when using many elements.</p>",
   "extends": [],
   "access": "",
   "virtual": false,

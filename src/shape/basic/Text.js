@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.shape.basic.Text
+ * @class
  * Implements a simple text with word wrapping.<br>The height of the element is automatic calculated. The widht of
  * the element is changeable by the user and respect the minWidth constraint.
  * <br>

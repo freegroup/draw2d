@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.shape.node.HorizontalBus
+ * @class
  *
  * A horizontal bus shape with a special kind of port handling. The hole figure is a hybrid port.
  *

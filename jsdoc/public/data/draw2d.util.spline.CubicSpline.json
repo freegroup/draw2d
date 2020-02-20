@@ -1,7 +1,7 @@
 {
   "name": "CubicSpline",
   "namespace": "draw2d.util.spline",
-  "description": "<p>draw2d.util.spline.CubicSpline</p>\n<p>A cubic spline object.</p>",
+  "description": "<p>A cubic spline object.</p>",
   "extends": [
     "draw2d.util.spline.Spline"
   ],

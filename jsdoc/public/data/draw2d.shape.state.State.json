@@ -1,7 +1,7 @@
 {
   "name": "State",
   "namespace": "draw2d.shape.state",
-  "description": "<p>draw2d.shape.state.State</p>\n<p>a state shape for a state diagram</p>",
+  "description": "<p>a state shape for a state diagram</p>",
   "extends": [
     "draw2d.shape.layout.VerticalLayout"
   ],

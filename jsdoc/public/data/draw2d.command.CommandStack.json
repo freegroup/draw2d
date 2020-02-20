@@ -1,7 +1,7 @@
 {
   "name": "CommandStack",
   "namespace": "draw2d.command",
-  "description": "<p>draw2d.command.CommandStack\nStack for undo/redo operations</p>",
+  "description": "<p>Stack for undo/redo operations</p>",
   "extends": [],
   "access": "",
   "virtual": false,

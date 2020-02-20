@@ -3,7 +3,7 @@ import jsonUtil from '../../util/JSONUtil'
 
 
 /**
- * @class draw2d.shape.node.Fulcrum
+ * @class
  *
  * A horizontal bus shape with a special kind of port handling. The hole figure is a hybrid port.
  *

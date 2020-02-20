@@ -1,7 +1,7 @@
 {
   "name": "CommandRotate",
   "namespace": "draw2d.command",
-  "description": "<p>draw2d.command.CommandRotate</p>\n<p>Set the rotation angle of the given figure</p>",
+  "description": "<p>Set the rotation angle of the given figure</p>",
   "extends": [
     "draw2d.command.Command"
   ],

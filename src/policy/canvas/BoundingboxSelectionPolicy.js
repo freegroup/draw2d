@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.policy.canvas.BoundingboxSelectionPolicy
+ * @class
  *
  *
  * @author Andreas Herz

@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.policy.canvas.ShowGridEditPolicy
+ * @class
  *
  * A cavas decoration which paints a grid in the background.
  * <br>

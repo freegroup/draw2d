@@ -1,7 +1,7 @@
 {
   "name": "CommandRemoveVertex",
   "namespace": "draw2d.command",
-  "description": "<p>draw2d.command.CommandRemoveVertex</p>\n<p>Remove a vertex from a polyline or polygon</p>",
+  "description": "<p>Remove a vertex from a polyline or polygon</p>",
   "extends": [
     "draw2d.command.Command"
   ],

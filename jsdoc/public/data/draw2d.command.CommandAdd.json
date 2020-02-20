@@ -1,7 +1,7 @@
 {
   "name": "CommandAdd",
   "namespace": "draw2d.command",
-  "description": "<p>draw2d.command.CommandAdd</p>\n<p>Command to add a figure with CommandStack support.</p>",
+  "description": "<p>Command to add a figure with CommandStack support.</p>",
   "extends": [
     "draw2d.command.Command"
   ],

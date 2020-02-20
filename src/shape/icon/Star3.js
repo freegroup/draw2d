@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.shape.icon.Star3
+ * @class
 
  *
  * @example

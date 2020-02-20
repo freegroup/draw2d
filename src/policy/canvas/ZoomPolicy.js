@@ -3,7 +3,7 @@ import {Tweenable} from "shifty"
 
 
 /**
- * @class draw2d.policy.canvas.ZoomPolicy
+ * @class
  * Generic zoom policy installable into a canvas object.
  * This is the legacy implementation of the very first zooming in
  * Draw2D. You can use this implementation if you want backward compatible.

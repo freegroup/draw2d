@@ -1,7 +1,7 @@
 {
   "name": "PortLocator",
   "namespace": "draw2d.layout.locator",
-  "description": "<p>draw2d.layout.locator.PortLocator</p>\n<p>The port locator calculates the position of an port. All ports MUST have a locator\nif you add them as child to a node.</p>",
+  "description": "<p>The port locator calculates the position of an port. All ports MUST have a locator\nif you add them as child to a node.</p>",
   "extends": [],
   "access": "",
   "virtual": false,

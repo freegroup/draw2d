@@ -1,7 +1,7 @@
 {
   "name": "CommandConnect",
   "namespace": "draw2d.command",
-  "description": "<p>draw2d.command.CommandConnect</p>\n<p>Connects two ports with a connection.</p>",
+  "description": "<p>Connects two ports with a connection.</p>",
   "extends": [
     "draw2d.command.Command"
   ],

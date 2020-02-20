@@ -2,7 +2,7 @@ import draw2d from '../packages'
 
 
 /**
- * @class draw2d.geo.Point Util class for geometrie handling.
+ * @class Util class for geometrie handling.
  */
 
 draw2d.geo.Point = Class.extend(

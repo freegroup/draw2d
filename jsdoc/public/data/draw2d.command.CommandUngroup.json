@@ -1,7 +1,7 @@
 {
   "name": "CommandUngroup",
   "namespace": "draw2d.command",
-  "description": "<p>draw2d.command.CommandUngroup\nCommand to ungroup a given group figures</p>",
+  "description": "<p>Command to ungroup a given group figures</p>",
   "extends": [
     "draw2d.command.Command"
   ],

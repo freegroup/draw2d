@@ -1,7 +1,7 @@
 {
   "name": "ManhattanConnectionRouter",
   "namespace": "draw2d.layout.connection",
-  "description": "<p>draw2d.layout.connection.ManhattanConnectionRouter\nProvides a {@link draw2d.Connection} with an orthogonal route between the Connection's source\nand target anchors.</p>",
+  "description": "<p>Provides a {@link draw2d.Connection} with an orthogonal route between the Connection's source\nand target anchors.</p>",
   "extends": [
     "draw2d.layout.connection.ConnectionRouter"
   ],

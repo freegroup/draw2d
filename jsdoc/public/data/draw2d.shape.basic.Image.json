@@ -1,7 +1,7 @@
 {
   "name": "Image",
   "namespace": "draw2d.shape.basic",
-  "description": "<p>draw2d.shape.basic.Image\nSimple Image shape.</p>",
+  "description": "<p>Simple Image shape.</p>",
   "extends": [
     "draw2d.shape.node.Node"
   ],

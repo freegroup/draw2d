@@ -4,7 +4,7 @@ import extend from '../../util/extend'
 
 
 /**
- * @class draw2d.shape.basic.Label
+ * @class
  * Implements a simple text label.
  *
  *
@@ -15,7 +15,6 @@ import extend from '../../util/extend'
  *    canvas.add(shape);
  *
  * @author Andreas Herz
- *
  * @extends draw2d.SetFigure
  */
 draw2d.shape.basic.Label = draw2d.SetFigure.extend(

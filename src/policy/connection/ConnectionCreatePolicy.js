@@ -1,6 +1,6 @@
 
 /**
- * @class draw2d.policy.connection.ConnectionCreatePolicy
+ * @class
  * Base class for connection creation by user interaction.
  *
  *

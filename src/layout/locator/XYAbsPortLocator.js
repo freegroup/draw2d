@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.layout.locator.XYAbsPortLocator
+ * @class
  *
  * Create a locator for fixed x/y coordinate position. The port in the example below is
  * always 20px below of the top border.

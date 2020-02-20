@@ -1,7 +1,7 @@
 {
   "name": "SnapToGridEditPolicy",
   "namespace": "draw2d.policy.canvas",
-  "description": "<p>draw2d.policy.canvas.SnapToGridEditPolicy</p>\n<p>A helper used to perform snapping to a grid, which is specified on the canvas via the various\nproperties defined in this class.</p>",
+  "description": "<p>A helper used to perform snapping to a grid, which is specified on the canvas via the various\nproperties defined in this class.</p>",
   "extends": [
     "draw2d.policy.canvas.ShowGridEditPolicy"
   ],

@@ -3,7 +3,7 @@ import extend from '../../util/extend'
 
 
 /**
- * @class draw2d.shape.basic.Arc
+ * @class
  * Oval figure.
  *
  *

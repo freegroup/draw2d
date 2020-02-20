@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.shape.state.Start
+ * @class
  *
  * The start node for a state diagram
  *

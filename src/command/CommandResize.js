@@ -2,7 +2,7 @@ import draw2d from '../packages'
 
 
 /**
- * @class draw2d.command.CommandResize
+ * @class
  * Resize command for figures. Can be execute/undo/redo via a CommandStack.
  *
  * @inheritable

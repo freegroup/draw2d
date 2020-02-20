@@ -1,7 +1,7 @@
 {
   "name": "CommandDeleteGroup",
   "namespace": "draw2d.command",
-  "description": "<p>draw2d.command.CommandDeleteGroup</p>\n<p>Command to remove a group with all related children.</p>",
+  "description": "<p>Command to remove a group with all related children.</p>",
   "extends": [
     "draw2d.command.Command"
   ],

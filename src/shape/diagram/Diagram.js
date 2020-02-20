@@ -3,7 +3,7 @@ import extend from '../../util/extend'
 import jsonUtil from '../../util/JSONUtil'
 
 /**
- * @class draw2d.shape.diagram.Diagram
+ * @class
  *
  * Base class for all diagrams.
  *

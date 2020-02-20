@@ -3,7 +3,7 @@ import {Tweenable} from "shifty"
 
 
 /**
- * @class draw2d.policy.canvas.WheelZoomPolicy
+ * @class
  * Zoom support for a canvas. Use the mouse wheel and the shift key to zoom in/out.
  *
  *

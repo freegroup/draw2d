@@ -1,7 +1,7 @@
 {
   "name": "Start",
   "namespace": "draw2d.shape.state",
-  "description": "<p>draw2d.shape.state.Start</p>\n<p>The start node for a state diagram</p>",
+  "description": "<p>The start node for a state diagram</p>",
   "extends": [
     "draw2d.shape.basic.Rectangle"
   ],

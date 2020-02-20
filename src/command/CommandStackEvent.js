@@ -2,7 +2,7 @@ import draw2d from '../packages'
 
 
 /**
- * @class draw2d.command.CommandStackEvent
+ * @class
  * Event class which will be fired for every CommandStack operation. Required for CommandStackListener.
  */
 draw2d.command.CommandStackEvent = Class.extend(

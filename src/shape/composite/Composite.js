@@ -2,8 +2,8 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.shape.composite.Composite
- * Base interface for the compiste shapes
+ * @class
+ * Base interface for the composite shapes
  *
  * @author Andreas Herz
  * @extends draw2d.shape.basic.Rectangle

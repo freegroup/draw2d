@@ -2,7 +2,7 @@ import draw2d from '../packages'
 
 
 /**
- * @class draw2d.command.CommandDeleteGroup
+ * @class
  *
  * Command to remove a group with all related children.
  *

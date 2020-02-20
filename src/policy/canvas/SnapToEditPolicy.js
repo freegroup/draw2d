@@ -19,7 +19,7 @@ draw2d.SnapToHelper.EAST_WEST = draw2d.SnapToHelper.EAST | draw2d.SnapToHelper.W
 draw2d.SnapToHelper.NSEW = draw2d.SnapToHelper.NORTH_SOUTH | draw2d.SnapToHelper.EAST_WEST
 
 /**
- * @class draw2d.policy.canvas.SnapToEditPolicy
+ * @class
  *
  * A helper used by Tools for snapping certain mouse interactions.
  *

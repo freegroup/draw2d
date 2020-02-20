@@ -2,7 +2,7 @@ import draw2d from '../packages'
 
 
 /**
- * @class draw2d.command.CommandMoveLine
+ * @class
  *
  * Command for the movement of figures.
  *

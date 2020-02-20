@@ -8,7 +8,7 @@
     {
       "name": "Command",
       "namespace": "draw2d.command",
-      "description": "<p>draw2d.command.Command</p>\n<p>Commands are passed around throughout editing. They are used to encapsulate and combine\nchanges to the application's model. An application has a single command stack. Commands must\nbe executed using the command stack rather than directly calling execute.\n<br>\nThis is requried for a deneric support for the undo/redo concept within draw2d.<br></p>",
+      "description": "<p>Commands are passed around throughout editing. They are used to encapsulate and combine\nchanges to the application's model. An application has a single command stack. Commands must\nbe executed using the command stack rather than directly calling execute.\n<br>\nThis is requried for a deneric support for the undo/redo concept within draw2d.<br></p>",
       "extends": [],
       "access": "",
       "virtual": false,
@@ -112,7 +112,7 @@
     {
       "name": "CommandAdd",
       "namespace": "draw2d.command",
-      "description": "<p>draw2d.command.CommandAdd</p>\n<p>Command to add a figure with CommandStack support.</p>",
+      "description": "<p>Command to add a figure with CommandStack support.</p>",
       "extends": [
         "draw2d.command.Command"
       ],
@@ -245,7 +245,7 @@
     {
       "name": "CommandAddVertex",
       "namespace": "draw2d.command",
-      "description": "<p>draw2d.command.CommandAddVertex</p>\n<p>Add a vertex to a polyline or polygon</p>",
+      "description": "<p>Add a vertex to a polyline or polygon</p>",
       "extends": [
         "draw2d.command.Command"
       ],
@@ -375,7 +375,7 @@
     {
       "name": "CommandAssignFigure",
       "namespace": "draw2d.command",
-      "description": "<p>draw2d.command.CommandAssignFigure</p>\n<p>Assign a figure to a compiste</p>",
+      "description": "<p>Assign a figure to a compiste</p>",
       "extends": [
         "draw2d.command.Command"
       ],
@@ -489,7 +489,7 @@
     {
       "name": "CommandAttr",
       "namespace": "draw2d.command",
-      "description": "<p>draw2d.command.CommandAttr</p>\n<p>Command to change attributes of a shape with undo/redo support</p>",
+      "description": "<p>Command to change attributes of a shape with undo/redo support</p>",
       "extends": [
         "draw2d.command.Command"
       ],
@@ -603,7 +603,7 @@
     {
       "name": "CommandBoundingBox",
       "namespace": "draw2d.command",
-      "description": "<p>draw2d.command.CommandBoundingBox\nSet the bounding box of a figure with undo/redo support</p>",
+      "description": "<p>Set the bounding box of a figure with undo/redo support</p>",
       "extends": [
         "draw2d.command.Command"
       ],
@@ -709,7 +709,7 @@
     {
       "name": "CommandCollection",
       "namespace": "draw2d.command",
-      "description": "<p>draw2d.command.CommandCollection</p>\n<p>A CommandCollection works as a single command. You can add more than one\nCommand to this CommandCollection and execute/undo them onto the CommandStack as a\nsingle Command.</p>",
+      "description": "<p>A CommandCollection works as a single command. You can add more than one\nCommand to this CommandCollection and execute/undo them onto the CommandStack as a\nsingle Command.</p>",
       "extends": [
         "draw2d.command.Command"
       ],
@@ -834,7 +834,7 @@
     {
       "name": "CommandConnect",
       "namespace": "draw2d.command",
-      "description": "<p>draw2d.command.CommandConnect</p>\n<p>Connects two ports with a connection.</p>",
+      "description": "<p>Connects two ports with a connection.</p>",
       "extends": [
         "draw2d.command.Command"
       ],
@@ -983,7 +983,7 @@
     {
       "name": "CommandDelete",
       "namespace": "draw2d.command",
-      "description": "<p>draw2d.command.CommandDelete\nCommand to remove a figure with CommandStack support.</p>",
+      "description": "<p>Command to remove a figure with CommandStack support.</p>",
       "extends": [
         "draw2d.command.Command"
       ],
@@ -1089,7 +1089,7 @@
     {
       "name": "CommandDeleteGroup",
       "namespace": "draw2d.command",
-      "description": "<p>draw2d.command.CommandDeleteGroup</p>\n<p>Command to remove a group with all related children.</p>",
+      "description": "<p>Command to remove a group with all related children.</p>",
       "extends": [
         "draw2d.command.Command"
       ],
@@ -1195,7 +1195,7 @@
     {
       "name": "CommandGroup",
       "namespace": "draw2d.command",
-      "description": "<p>draw2d.command.CommandGroup\nCommand to group a given set of figures</p>",
+      "description": "<p>Command to group a given set of figures</p>",
       "extends": [
         "draw2d.command.Command"
       ],
@@ -1301,7 +1301,7 @@
     {
       "name": "CommandMove",
       "namespace": "draw2d.command",
-      "description": "<p>draw2d.command.CommandMove</p>\n<p>Command for the movement of figures.</p>",
+      "description": "<p>Command for the movement of figures.</p>",
       "extends": [
         "draw2d.command.Command"
       ],
@@ -1477,7 +1477,7 @@
     {
       "name": "CommandMoveConnection",
       "namespace": "draw2d.command",
-      "description": "<p>draw2d.command.CommandMoveConnection</p>\n<p>Command for the movement of figures.</p>",
+      "description": "<p>Command for the movement of figures.</p>",
       "extends": [
         "draw2d.command.Command"
       ],
@@ -1610,7 +1610,7 @@
     {
       "name": "CommandMoveLine",
       "namespace": "draw2d.command",
-      "description": "<p>draw2d.command.CommandMoveLine</p>\n<p>Command for the movement of figures.</p>",
+      "description": "<p>Command for the movement of figures.</p>",
       "extends": [
         "draw2d.command.Command"
       ],
@@ -1743,7 +1743,7 @@
     {
       "name": "CommandMoveVertex",
       "namespace": "draw2d.command",
-      "description": "<p>draw2d.command.CommandMoveVertex</p>\n<p>Command for the vertex movement of a polyline/polygon.</p>",
+      "description": "<p>Command for the vertex movement of a polyline/polygon.</p>",
       "extends": [
         "draw2d.command.Command"
       ],
@@ -1868,7 +1868,7 @@
     {
       "name": "CommandMoveVertices",
       "namespace": "draw2d.command",
-      "description": "<p>draw2d.command.CommandMoveVertices</p>\n<p>Command for the vertices movement of a polyline/polygon.</p>",
+      "description": "<p>Command for the vertices movement of a polyline/polygon.</p>",
       "extends": [
         "draw2d.command.Command"
       ],
@@ -1974,7 +1974,7 @@
     {
       "name": "CommandReconnect",
       "namespace": "draw2d.command",
-      "description": "<p>draw2d.command.CommandReconnect</p>\n<p>Reconnects two ports. This command is used during the DragDrop operation of a draw2d.Connection.</p>",
+      "description": "<p>Reconnects two ports. This command is used during the DragDrop operation of a draw2d.Connection.</p>",
       "extends": [
         "draw2d.command.Command"
       ],
@@ -2134,7 +2134,7 @@
     {
       "name": "CommandRemoveVertex",
       "namespace": "draw2d.command",
-      "description": "<p>draw2d.command.CommandRemoveVertex</p>\n<p>Remove a vertex from a polyline or polygon</p>",
+      "description": "<p>Remove a vertex from a polyline or polygon</p>",
       "extends": [
         "draw2d.command.Command"
       ],
@@ -2248,7 +2248,7 @@
     {
       "name": "CommandReplaceVertices",
       "namespace": "draw2d.command",
-      "description": "<p>draw2d.command.CommandReplaceVertices</p>\n<p>Replace the vertices of a polyline.</p>",
+      "description": "<p>Replace the vertices of a polyline.</p>",
       "extends": [
         "draw2d.command.Command"
       ],
@@ -2370,7 +2370,7 @@
     {
       "name": "CommandResize",
       "namespace": "draw2d.command",
-      "description": "<p>draw2d.command.CommandResize\nResize command for figures. Can be execute/undo/redo via a CommandStack.</p>",
+      "description": "<p>Resize command for figures. Can be execute/undo/redo via a CommandStack.</p>",
       "extends": [
         "draw2d.command.Command"
       ],
@@ -2590,7 +2590,7 @@
     {
       "name": "CommandRotate",
       "namespace": "draw2d.command",
-      "description": "<p>draw2d.command.CommandRotate</p>\n<p>Set the rotation angle of the given figure</p>",
+      "description": "<p>Set the rotation angle of the given figure</p>",
       "extends": [
         "draw2d.command.Command"
       ],
@@ -2704,7 +2704,7 @@
     {
       "name": "CommandStack",
       "namespace": "draw2d.command",
-      "description": "<p>draw2d.command.CommandStack\nStack for undo/redo operations</p>",
+      "description": "<p>Stack for undo/redo operations</p>",
       "extends": [],
       "access": "",
       "virtual": false,
@@ -2989,7 +2989,7 @@
     {
       "name": "CommandStackEvent",
       "namespace": "draw2d.command",
-      "description": "<p>draw2d.command.CommandStackEvent\nEvent class which will be fired for every CommandStack operation. Required for CommandStackListener.</p>",
+      "description": "<p>Event class which will be fired for every CommandStack operation. Required for CommandStackListener.</p>",
       "extends": [],
       "access": "",
       "virtual": false,
@@ -3103,7 +3103,7 @@
     {
       "name": "CommandStackEventListener",
       "namespace": "draw2d.command",
-      "description": "<p>draw2d.command.CommandStackEventListener</p>\n<p>Event class which will be fired for every CommandStack operation. Required for CommandStackListener.</p>",
+      "description": "<p>Event class which will be fired for every CommandStack operation. Required for CommandStackListener.</p>",
       "extends": [],
       "access": "",
       "virtual": false,
@@ -3149,7 +3149,7 @@
     {
       "name": "CommandType",
       "namespace": "draw2d.command",
-      "description": "<p>draw2d.command.CommandType</p>\n<p>EditPolicies should determine an Figures editing capabilities.\nIt is possible to implement an Figure such that it handles all editing\nresponsibility.<br>\nHowever, it is much more flexible and object-oriented to use\nEditPolicies. Using policies, you can pick and choose the editing behavior for\nan Figure without being bound to its class hierarchy. Code reuse is increased,\nand code management is easier.</p>",
+      "description": "<p>EditPolicies should determine an Figures editing capabilities.\nIt is possible to implement an Figure such that it handles all editing\nresponsibility.<br>\nHowever, it is much more flexible and object-oriented to use\nEditPolicies. Using policies, you can pick and choose the editing behavior for\nan Figure without being bound to its class hierarchy. Code reuse is increased,\nand code management is easier.</p>",
       "extends": [],
       "access": "",
       "virtual": false,
@@ -3199,7 +3199,7 @@
     {
       "name": "CommandUngroup",
       "namespace": "draw2d.command",
-      "description": "<p>draw2d.command.CommandUngroup\nCommand to ungroup a given group figures</p>",
+      "description": "<p>Command to ungroup a given group figures</p>",
       "extends": [
         "draw2d.command.Command"
       ],
@@ -3313,5 +3313,6 @@
         }
       ]
     }
-  ]
+  ],
+  "namespaces": []
 }

@@ -2,7 +2,7 @@ import draw2d from '../packages'
 
 
 /**
- * @class draw2d.command.CommandAssignFigure
+ * @class
  *
  * Assign a figure to a compiste
  *

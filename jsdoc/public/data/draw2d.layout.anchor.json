@@ -8,7 +8,7 @@
     {
       "name": "CenterEdgeConnectionAnchor",
       "namespace": "draw2d.layout.anchor",
-      "description": "<p>draw2d.layout.anchor.CenterEdgeConnectionAnchor</p>\n<p>The CenterEdgeConnectionAnchor's location is found by calculating the intersection of a\nline drawn from the center point of its owner's box (the parent of the\nconnection port) to a reference point on that box. A Connection using the\nChopBoxAnchor will be oriented such that they point to their port owner's\ncenter.</p>",
+      "description": "<p>The CenterEdgeConnectionAnchor's location is found by calculating the intersection of a\nline drawn from the center point of its owner's box (the parent of the\nconnection port) to a reference point on that box. A Connection using the\nChopBoxAnchor will be oriented such that they point to their port owner's\ncenter.</p>",
       "extends": [
         "draw2d.layout.anchor.ConnectionAnchor"
       ],
@@ -147,7 +147,7 @@
     {
       "name": "ChopboxConnectionAnchor",
       "namespace": "draw2d.layout.anchor",
-      "description": "<p>draw2d.layout.anchor.ChopboxConnectionAnchor</p>\n<p>The ChopboxAnchor's location is found by calculating the intersection of a\nline drawn from the center point of its owner's box (the parent of the\nconnection port) to a reference point on that box. A Connection using the\nChopBoxAnchor will be oriented such that they point to their port owner's\ncenter.</p>",
+      "description": "<p>The ChopboxAnchor's location is found by calculating the intersection of a\nline drawn from the center point of its owner's box (the parent of the\nconnection port) to a reference point on that box. A Connection using the\nChopBoxAnchor will be oriented such that they point to their port owner's\ncenter.</p>",
       "extends": [
         "draw2d.layout.anchor.ConnectionAnchor"
       ],
@@ -286,7 +286,7 @@
     {
       "name": "ConnectionAnchor",
       "namespace": "draw2d.layout.anchor",
-      "description": "<p>draw2d.layout.anchor.ConnectionAnchor\nAn object to which a {@link draw2d.Connection} will be anchored.</p>",
+      "description": "<p>An object to which a {@link draw2d.Connection} will be anchored.</p>",
       "extends": [],
       "access": "",
       "virtual": false,
@@ -423,7 +423,7 @@
     {
       "name": "FanConnectionAnchor",
       "namespace": "draw2d.layout.anchor",
-      "description": "<p>draw2d.layout.anchor.FanConnectionAnchor</p>\n<p>The FanConnectionAnchor's location is found by calculating the intersection of a\nline drawn from the center point of its owner's box (the parent of the\nconnection port) to a reference point on that box.\nAdditional the anchor resolves conflicts by spread the anchor if more than one\nconnection has the same reference point. <br>\nIn a case of a DirectRouter parallel connections are the result.</p>",
+      "description": "<p>The FanConnectionAnchor's location is found by calculating the intersection of a\nline drawn from the center point of its owner's box (the parent of the\nconnection port) to a reference point on that box.\nAdditional the anchor resolves conflicts by spread the anchor if more than one\nconnection has the same reference point. <br>\nIn a case of a DirectRouter parallel connections are the result.</p>",
       "extends": [
         "draw2d.layout.anchor.ConnectionAnchor"
       ],
@@ -570,7 +570,7 @@
     {
       "name": "ShortesPathConnectionAnchor",
       "namespace": "draw2d.layout.anchor",
-      "description": "<p>draw2d.layout.anchor.ShortesPathConnectionAnchor</p>\n<p>The ChopboxAnchor's location is found by calculating the intersection of a\nline drawn from the center point of its owner's box (the parent of the\nconnection port) to a reference point on that box. A Connection using the\nChopBoxAnchor will be oriented such that they point to their port owner's\ncenter.</p>",
+      "description": "<p>The ChopboxAnchor's location is found by calculating the intersection of a\nline drawn from the center point of its owner's box (the parent of the\nconnection port) to a reference point on that box. A Connection using the\nChopBoxAnchor will be oriented such that they point to their port owner's\ncenter.</p>",
       "extends": [
         "draw2d.layout.anchor.ConnectionAnchor"
       ],
@@ -706,5 +706,6 @@
         }
       ]
     }
-  ]
+  ],
+  "namespaces": []
 }

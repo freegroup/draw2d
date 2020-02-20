@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.layout.anchor.ShortesPathConnectionAnchor
+ * @class
  *
  * The ChopboxAnchor's location is found by calculating the intersection of a
  * line drawn from the center point of its owner's box (the parent of the

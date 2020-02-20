@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.policy.canvas.KeyboardPolicy
+ * @class
  * Default interface for keyboard interaction with the canvas.
  *
  *

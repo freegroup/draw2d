@@ -1,7 +1,7 @@
 import draw2d from '../../packages'
 
 /**
- * @class draw2d.io.svg.Writer
+ * @class
  *
  * Serialize the canvas document into a SVG document.
  *

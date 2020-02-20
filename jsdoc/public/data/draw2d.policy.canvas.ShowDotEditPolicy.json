@@ -1,7 +1,7 @@
 {
   "name": "ShowDotEditPolicy",
   "namespace": "draw2d.policy.canvas",
-  "description": "<p>draw2d.policy.canvas.ShowDotEditPolicy</p>\n<p>Paint a dotted pattern in the background of the canvas.</p>",
+  "description": "<p>Paint a dotted pattern in the background of the canvas.</p>",
   "extends": [
     "draw2d.policy.canvas.DecorationPolicy"
   ],

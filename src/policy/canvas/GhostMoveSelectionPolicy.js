@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.policy.canvas.GhostMoveSelectionPolicy
+ * @class
  *
  * A drag&Drop feedback handler for the canvas. The policy didn't move the
  * shapes in real time rather it shows a ghost rectangle as feedback. <br>

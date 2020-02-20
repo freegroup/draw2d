@@ -2,7 +2,7 @@ import draw2d from '../packages'
 
 
 /**
- * @class draw2d.command.CommandDelete
+ * @class
  * Command to remove a figure with CommandStack support.
  *
  * @extends draw2d.command.Command

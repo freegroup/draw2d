@@ -1,7 +1,7 @@
 {
   "name": "CommandMoveVertices",
   "namespace": "draw2d.command",
-  "description": "<p>draw2d.command.CommandMoveVertices</p>\n<p>Command for the vertices movement of a polyline/polygon.</p>",
+  "description": "<p>Command for the vertices movement of a polyline/polygon.</p>",
   "extends": [
     "draw2d.command.Command"
   ],

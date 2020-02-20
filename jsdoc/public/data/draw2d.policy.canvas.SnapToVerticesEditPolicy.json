@@ -1,7 +1,7 @@
 {
   "name": "SnapToVerticesEditPolicy",
   "namespace": "draw2d.policy.canvas",
-  "description": "<p>draw2d.policy.canvas.SnapToVerticesEditPolicy</p>\n<p>Snapping is based on the existing children of a container. When snapping a shape,\nthe edges of the bounding box will snap to edges of other rectangles generated\nfrom the children of the given canvas.</p>",
+  "description": "<p>Snapping is based on the existing children of a container. When snapping a shape,\nthe edges of the bounding box will snap to edges of other rectangles generated\nfrom the children of the given canvas.</p>",
   "extends": [
     "draw2d.policy.canvas.SnapToEditPolicy"
   ],

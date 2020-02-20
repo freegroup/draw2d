@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.policy.canvas.ShowDimetricGridEditPolicy
+ * @class
  *
  * A canvas decoration which paints a dimetric in the background.
  * <br>

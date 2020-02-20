@@ -3,7 +3,7 @@ import extend from '../../util/extend'
 
 
 /**
- * @class draw2d.layout.connection.InteractiveManhattanConnectionRouter
+ * @class
  * Route the connection in an Manhattan style and add resize handles to all vertex for interactive alignment of the
  * routing.
  *

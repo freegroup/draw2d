@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.shape.composite.WeakComposite
+ * @class
  * A WeakComposite is a composite figure with loose coupling of the children and the composite.
  * The child didn't know anything about the assigned composite nor did they receive any events
  * about assignment to a composite.

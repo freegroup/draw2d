@@ -1,7 +1,7 @@
 {
   "name": "PolyLine",
   "namespace": "draw2d.shape.basic",
-  "description": "<p>draw2d.shape.basic.PolyLine</p>\n<p>A PolyLine is a line with more than 2 points.</p>",
+  "description": "<p>A PolyLine is a line with more than 2 points.</p>",
   "extends": [
     "draw2d.shape.basic.Line"
   ],

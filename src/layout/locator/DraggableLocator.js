@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.layout.locator.DraggableLocator
+ * @class
  *
  * A DraggableLocator is used to place figures relative to the parent top left corner. It is
  * possible to move a child node via drag&drop.

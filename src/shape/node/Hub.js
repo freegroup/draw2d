@@ -1,7 +1,9 @@
+import draw2d from '../../packages'
+import Color from '../../util/Color'
 
 
 /**
- * @class draw2d.shape.node.Hub
+ * @class
  *
  * A hub is a shape with a special kind of port handling. The hole figure is a hybrid port. You can drag&drop a Port directly on
  * the figure.
@@ -15,9 +17,6 @@
  *
  * @extends draw2d.shape.basic.Rectangle
  */
-import draw2d from '../../packages'
-import Color from '../../util/Color'
-
 draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend(
   /** @lends draw2d.shape.node.Hub.prototype */
   {

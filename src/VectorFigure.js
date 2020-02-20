@@ -1,18 +1,16 @@
+import draw2d from 'packages'
+import jsonUtil from 'util/JSONUtil'
+import extend from 'util/extend'
 
 /**
- * @class draw2d.VectorFigure
- * @classdesc The base class for all vector based figures like {@link draw2d.shape.basic.Rectangle}  or {@link draw2d.shape.basic.Oval}
+ * @class
+ * The base class for all vector based figures like {@link draw2d.shape.basic.Rectangle}  or {@link draw2d.shape.basic.Oval}
  * inside a canvas.
  *
  * @inheritable
  * @author Andreas Herz
  * @extends draw2d.shape.node.Node
  */
-
-import draw2d from 'packages'
-import jsonUtil from 'util/JSONUtil'
-import extend from 'util/extend'
-
 draw2d.VectorFigure = draw2d.shape.node.Node.extend(
     /** @lends draw2d.VectorFigure.prototype */
     {

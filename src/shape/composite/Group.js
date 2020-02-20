@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.shape.composite.Group
+ * @class
  *
  * A group is a figure that acts as a transparent container for other figures. A group
  * is a StrongComposite node that controls a set of child figures. The bounding rectangle of

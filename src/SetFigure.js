@@ -1,16 +1,15 @@
+import draw2d from 'packages'
+import extend from 'util/extend'
 
 
 /**
- * @class draw2d.SetFigure
+ * @class
  *
- * @classdesc A SetFigure is a composition of different SVG elements.
+ * A SetFigure is a composition of different SVG elements.
  *
  * @author Andreas Herz
  * @extends draw2d.shape.basic.Rectangle
  */
-import draw2d from 'packages'
-import extend from 'util/extend'
-
 draw2d.SetFigure = draw2d.shape.basic.Rectangle.extend(
   /** @lends draw2d.SetFigure.prototype */
   {

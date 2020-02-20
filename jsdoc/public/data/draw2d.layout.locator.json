@@ -8,7 +8,7 @@
     {
       "name": "BottomLocator",
       "namespace": "draw2d.layout.locator",
-      "description": "<p>draw2d.layout.locator.BottomLocator</p>\n<p>A bottomLocator is used to place figures at the bottom of a parent shape.</p>",
+      "description": "<p>A bottomLocator is used to place figures at the bottom of a parent shape.</p>",
       "extends": [],
       "access": "",
       "virtual": false,
@@ -64,7 +64,7 @@
     {
       "name": "CenterLocator",
       "namespace": "draw2d.layout.locator",
-      "description": "<p>draw2d.layout.locator.CenterLocator</p>\n<p>A CenterLocator is used to place figures in the center of a parent shape.</p>",
+      "description": "<p>A CenterLocator is used to place figures in the center of a parent shape.</p>",
       "extends": [],
       "access": "",
       "virtual": false,
@@ -120,7 +120,7 @@
     {
       "name": "ConnectionLocator",
       "namespace": "draw2d.layout.locator",
-      "description": "<p>draw2d.layout.locator.ConnectionLocator</p>\n<p>Repositions a Figure attached to a Connection when the\nConnection is moved. Provides for alignment at the start\n(source), middle, or end (target) of the Connection.</p>",
+      "description": "<p>Repositions a Figure attached to a Connection when the\nConnection is moved. Provides for alignment at the start\n(source), middle, or end (target) of the Connection.</p>",
       "extends": [],
       "access": "",
       "virtual": false,
@@ -147,7 +147,7 @@
     {
       "name": "DraggableLocator",
       "namespace": "draw2d.layout.locator",
-      "description": "<p>draw2d.layout.locator.DraggableLocator</p>\n<p>A DraggableLocator is used to place figures relative to the parent top left corner. It is\npossible to move a child node via drag&amp;drop.</p>",
+      "description": "<p>A DraggableLocator is used to place figures relative to the parent top left corner. It is\npossible to move a child node via drag&amp;drop.</p>",
       "extends": [],
       "access": "",
       "virtual": false,
@@ -174,7 +174,7 @@
     {
       "name": "InputPortLocator",
       "namespace": "draw2d.layout.locator",
-      "description": "<p>draw2d.layout.locator.InputPortLocator</p>\n<p>Repositions a Figure attached to a Connection when the\nConnection is moved. Provides for alignment at the start\n(source), middle, or end (target) of the Connection.</p>",
+      "description": "<p>Repositions a Figure attached to a Connection when the\nConnection is moved. Provides for alignment at the start\n(source), middle, or end (target) of the Connection.</p>",
       "extends": [],
       "access": "",
       "virtual": false,
@@ -228,7 +228,7 @@
     {
       "name": "LeftLocator",
       "namespace": "draw2d.layout.locator",
-      "description": "<p>draw2d.layout.locator.LeftLocator</p>\n<p>A LeftLocator is used to place figures to the left of a parent shape.</p>",
+      "description": "<p>A LeftLocator is used to place figures to the left of a parent shape.</p>",
       "extends": [],
       "access": "",
       "virtual": false,
@@ -293,7 +293,7 @@
     {
       "name": "Locator",
       "namespace": "draw2d.layout.locator",
-      "description": "<p>draw2d.layout.locator.Locator</p>\n<p>Controls the location of an IFigure.</p>",
+      "description": "<p>Controls the location of an IFigure.</p>",
       "extends": [],
       "access": "",
       "virtual": false,
@@ -411,7 +411,7 @@
     {
       "name": "ManhattanMidpointLocator",
       "namespace": "draw2d.layout.locator",
-      "description": "<p>draw2d.layout.locator.ManhattanMidpointLocator</p>\n<p>A ManhattanMidpointLocator that is used to place figures at the midpoint of a Manhatten routed\nconnection. The midpoint is always in the center of an edge.</p>",
+      "description": "<p>A ManhattanMidpointLocator that is used to place figures at the midpoint of a Manhatten routed\nconnection. The midpoint is always in the center of an edge.</p>",
       "extends": [
         "draw2d.layout.locator.ConnectionLocator"
       ],
@@ -469,7 +469,7 @@
     {
       "name": "OutputPortLocator",
       "namespace": "draw2d.layout.locator",
-      "description": "<p>draw2d.layout.locator.OutputPortLocator</p>\n<p>Repositions a Figure attached to a Connection when the\nConnection is moved. Provides for alignment at the start\n(source), middle, or end (target) of the Connection.</p>",
+      "description": "<p>Repositions a Figure attached to a Connection when the\nConnection is moved. Provides for alignment at the start\n(source), middle, or end (target) of the Connection.</p>",
       "extends": [],
       "access": "",
       "virtual": false,
@@ -523,7 +523,7 @@
     {
       "name": "ParallelMidpointLocator",
       "namespace": "draw2d.layout.locator",
-      "description": "<p>draw2d.layout.locator.ParallelMidpointLocator</p>\n<p>A ParallelMidpointLocator that is used to place label at the midpoint of a  routed\nconnection. The midpoint is always in the center of an edge.\nThe label is aligned to the connection angle at the calculated conection segment.</p>",
+      "description": "<p>A ParallelMidpointLocator that is used to place label at the midpoint of a  routed\nconnection. The midpoint is always in the center of an edge.\nThe label is aligned to the connection angle at the calculated conection segment.</p>",
       "extends": [],
       "access": "",
       "virtual": false,
@@ -586,7 +586,7 @@
     {
       "name": "PolylineMidpointLocator",
       "namespace": "draw2d.layout.locator",
-      "description": "<p>draw2d.layout.locator.PolylineMidpointLocator</p>\n<p>A PolylineMidpointLocator is used to place figures at the midpoint of a routed\nconnection. <br>\nIf the connection did have an odd count of points the figure is located in the center vertex of the polyline.<br>\nOn an even count of junction point, the figure will be center on the middle segment of the ploy line.</p>",
+      "description": "<p>A PolylineMidpointLocator is used to place figures at the midpoint of a routed\nconnection. <br>\nIf the connection did have an odd count of points the figure is located in the center vertex of the polyline.<br>\nOn an even count of junction point, the figure will be center on the middle segment of the ploy line.</p>",
       "extends": [],
       "access": "",
       "virtual": false,
@@ -640,7 +640,7 @@
     {
       "name": "PortLocator",
       "namespace": "draw2d.layout.locator",
-      "description": "<p>draw2d.layout.locator.PortLocator</p>\n<p>The port locator calculates the position of an port. All ports MUST have a locator\nif you add them as child to a node.</p>",
+      "description": "<p>The port locator calculates the position of an port. All ports MUST have a locator\nif you add them as child to a node.</p>",
       "extends": [],
       "access": "",
       "virtual": false,
@@ -667,7 +667,7 @@
     {
       "name": "RightLocator",
       "namespace": "draw2d.layout.locator",
-      "description": "<p>draw2d.layout.locator.RightLocator</p>\n<p>A RightLocator is used to place figures to the right of a parent shape.</p>",
+      "description": "<p>A RightLocator is used to place figures to the right of a parent shape.</p>",
       "extends": [],
       "access": "",
       "virtual": false,
@@ -723,7 +723,7 @@
     {
       "name": "SmartDraggableLocator",
       "namespace": "draw2d.layout.locator",
-      "description": "<p>draw2d.layout.locator.DraggableLocator</p>\n<p>A DraggableLocator is used to place figures relative to the parent nearest corner. It is\npossible to move a child node via drag&amp;drop.</p>",
+      "description": "<p>A DraggableLocator is used to place figures relative to the parent nearest corner. It is\npossible to move a child node via drag&amp;drop.</p>",
       "extends": [],
       "access": "",
       "virtual": false,
@@ -777,7 +777,7 @@
     {
       "name": "TopLocator",
       "namespace": "draw2d.layout.locator",
-      "description": "<p>draw2d.layout.locator.TopLocator</p>\n<p>A TopLocator  is used to place figures at the top/center of a parent shape.</p>",
+      "description": "<p>A TopLocator  is used to place figures at the top/center of a parent shape.</p>",
       "extends": [],
       "access": "",
       "virtual": false,
@@ -833,7 +833,7 @@
     {
       "name": "XYAbsPortLocator",
       "namespace": "draw2d.layout.locator",
-      "description": "<p>draw2d.layout.locator.XYAbsPortLocator</p>\n<p>Create a locator for fixed x/y coordinate position. The port in the example below is\nalways 20px below of the top border.</p>",
+      "description": "<p>Create a locator for fixed x/y coordinate position. The port in the example below is\nalways 20px below of the top border.</p>",
       "extends": [],
       "access": "",
       "virtual": false,
@@ -906,7 +906,7 @@
     {
       "name": "XYRelPortLocator",
       "namespace": "draw2d.layout.locator",
-      "description": "<p>draw2d.layout.locator.XYRelPortLocator</p>\n<p>Create a locator for a relative x/y coordinate position. The coordinates are named in percentage [0..100%]\nrelative to the top/left corner of the parent node.<br>\n<br>\n<br>\nResize the shape in the example to see what happens. The port top position is always 20% of the shape height.</p>",
+      "description": "<p>Create a locator for a relative x/y coordinate position. The coordinates are named in percentage [0..100%]\nrelative to the top/left corner of the parent node.<br>\n<br>\n<br>\nResize the shape in the example to see what happens. The port top position is always 20% of the shape height.</p>",
       "extends": [],
       "access": "",
       "virtual": false,
@@ -976,5 +976,6 @@
         }
       ]
     }
-  ]
+  ],
+  "namespaces": []
 }

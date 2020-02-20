@@ -2,7 +2,7 @@ import draw2d from '../packages'
 
 
 /**
- * @class draw2d.command.CommandConnect
+ * @class
  *
  * Connects two ports with a connection.
  *

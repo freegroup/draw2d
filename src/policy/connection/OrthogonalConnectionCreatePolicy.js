@@ -1,6 +1,6 @@
 
 /**
- * @class draw2d.policy.connection.OrthogonalConnectionCreatePolicy
+ * @class
  *
  * The OrthogonalConnectionCreatePolicy can be installed into the canvas to override the
  * default connection crate behaviour. Normaly you can create connections by drag&drop a port.

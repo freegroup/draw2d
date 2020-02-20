@@ -1,7 +1,7 @@
 {
   "name": "LineEndResizeHandle",
   "namespace": "draw2d.shape.basic",
-  "description": "<p>draw2d.shape.basic.LineEndResizeHandle</p>\n<p>Selection handle for connections and normal lines.</p>",
+  "description": "<p>Selection handle for connections and normal lines.</p>",
   "extends": [
     "draw2d.shape.basic.LineResizeHandle"
   ],

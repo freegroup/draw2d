@@ -1,7 +1,7 @@
 {
   "name": "RectangleSelectionFeedbackPolicy",
   "namespace": "draw2d.policy.figure",
-  "description": "<p>draw2d.policy.figure.RectangleSelectionFeedbackPolicy</p>\n<p>A SelectionFeedbackPolicy with resize handles (rectangles) on each side and corner of the shape</p>",
+  "description": "<p>A SelectionFeedbackPolicy with resize handles (rectangles) on each side and corner of the shape</p>",
   "extends": [
     "draw2d.policy.figure.SelectionFeedbackPolicy"
   ],

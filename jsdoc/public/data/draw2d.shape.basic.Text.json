@@ -1,7 +1,7 @@
 {
   "name": "Text",
   "namespace": "draw2d.shape.basic",
-  "description": "<p>draw2d.shape.basic.Text\nImplements a simple text with word wrapping.<br>The height of the element is automatic calculated. The widht of\nthe element is changeable by the user and respect the minWidth constraint.\n<br></p>",
+  "description": "<p>Implements a simple text with word wrapping.<br>The height of the element is automatic calculated. The widht of\nthe element is changeable by the user and respect the minWidth constraint.\n<br></p>",
   "extends": [
     "draw2d.shape.basic.Label"
   ],

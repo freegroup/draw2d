@@ -2,7 +2,7 @@ import draw2d from '../packages'
 
 
 /**
- * @class draw2d.command.CommandStack
+ * @class
  * Stack for undo/redo operations
  */
 draw2d.command.CommandStack = Class.extend(

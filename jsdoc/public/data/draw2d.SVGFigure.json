@@ -1,7 +1,7 @@
 {
   "name": "SVGFigure",
   "namespace": "draw2d",
-  "description": "<p>Abstract class which can handle plain SVG content. Inherit class must override the method\n<code>getSVG()</code>.</p>",
+  "description": "<p>Abstract class which can handle plain SVG content.</p>",
   "extends": [
     "draw2d.SetFigure"
   ],

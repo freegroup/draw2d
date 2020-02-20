@@ -2792,7 +2792,7 @@
     {
       "name": "Widget",
       "namespace": "draw2d.shape.widget",
-      "description": "<p>draw2d.shape.widget.Widget\nBase class for all diagrams.</p>",
+      "description": "<p>Base class for all diagrams.</p>",
       "extends": [
         "draw2d.SetFigure"
       ],
@@ -5474,5 +5474,6 @@
         }
       ]
     }
-  ]
+  ],
+  "namespaces": []
 }

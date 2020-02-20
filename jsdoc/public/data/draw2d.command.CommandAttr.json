@@ -1,7 +1,7 @@
 {
   "name": "CommandAttr",
   "namespace": "draw2d.command",
-  "description": "<p>draw2d.command.CommandAttr</p>\n<p>Command to change attributes of a shape with undo/redo support</p>",
+  "description": "<p>Command to change attributes of a shape with undo/redo support</p>",
   "extends": [
     "draw2d.command.Command"
   ],

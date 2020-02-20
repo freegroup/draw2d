@@ -4,6 +4,7 @@
     <div class="page">
       <h2>{{ $attrs.className }}</h2>
             <span v-html="clazz.description"></span>
+
             <div v-for="(example, index) in clazz.constructor.examples" :key="'example'+index"
               class="codepen"
               data-height="350"

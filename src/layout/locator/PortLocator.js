@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.layout.locator.PortLocator
+ * @class
  *
  * The port locator calculates the position of an port. All ports MUST have a locator
  * if you add them as child to a node.

@@ -8,7 +8,7 @@
     {
       "name": "PostIt",
       "namespace": "draw2d.shape.note",
-      "description": "<p>draw2d.shape.note.PostIt</p>\n<p>Simple Post-it like figure with text. Can be used for annotations or documentation.</p>",
+      "description": "<p>Simple Post-it like figure with text. Can be used for annotations or documentation.</p>",
       "extends": [
         "draw2d.shape.basic.Label"
       ],
@@ -2983,5 +2983,6 @@
         }
       ]
     }
-  ]
+  ],
+  "namespaces": []
 }

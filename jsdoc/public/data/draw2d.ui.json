@@ -42,6 +42,67 @@
           "examples": []
         }
       ]
+    },
+    {
+      "name": "LabelInplaceEditor",
+      "namespace": "draw2d.ui",
+      "description": "<p>Inplace editor for draw2d.shape.base.Label</p>",
+      "extends": [
+        "draw2d.ui.LabelEditor"
+      ],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "LabelInplaceEditor",
+        "description": "",
+        "parameters": [],
+        "examples": [
+          "var label =  new draw2d.shape.basic.Label({text:\"Double Click on me\"});\n\n   label.installEditor(new draw2d.ui.LabelInplaceEditor({\n      // called after the value has been set to the LabelFigure\n      onCommit: $.proxy(function(value){\n          alert(\"new value set to:\"+value);\n      },this),\n      // called if the user abort the operation\n      onCancel: function(){\n      }\n   }));\n\n   canvas.add(label,50,10);"
+        ]
+      },
+      "functions": [
+        {
+          "name": "start",
+          "access": "",
+          "virtual": false,
+          "description": "<p>Trigger the edit of the label text.</p>",
+          "parameters": [
+            {
+              "name": "label",
+              "type": "draw2d.shape.basic.Label",
+              "description": "<p>the label to edit</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": false,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "commit",
+          "access": "private",
+          "virtual": false,
+          "description": "<p>Transfer the data from the editor into the label.<br>\nRemove the editor.<br></p>",
+          "parameters": [],
+          "inherited": false,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "cancel",
+          "access": "private",
+          "virtual": false,
+          "description": "<p>Transfer the data from the editor into the label.<br>\nRemove the editor.<br></p>",
+          "parameters": [],
+          "inherited": false,
+          "since": "",
+          "examples": []
+        }
+      ]
     }
-  ]
+  ],
+  "namespaces": []
 }

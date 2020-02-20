@@ -1,7 +1,7 @@
 {
   "name": "ZoomPolicy",
   "namespace": "draw2d.policy.canvas",
-  "description": "<p>draw2d.policy.canvas.ZoomPolicy\nGeneric zoom policy installable into a canvas object.\nThis is the legacy implementation of the very first zooming in\nDraw2D. You can use this implementation if you want backward compatible.</p>",
+  "description": "<p>Generic zoom policy installable into a canvas object.\nThis is the legacy implementation of the very first zooming in\nDraw2D. You can use this implementation if you want backward compatible.</p>",
   "extends": [
     "draw2d.policy.canvas.CanvasPolicy"
   ],

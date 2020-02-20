@@ -1,7 +1,7 @@
 {
   "name": "CommandAddVertex",
   "namespace": "draw2d.command",
-  "description": "<p>draw2d.command.CommandAddVertex</p>\n<p>Add a vertex to a polyline or polygon</p>",
+  "description": "<p>Add a vertex to a polyline or polygon</p>",
   "extends": [
     "draw2d.command.Command"
   ],

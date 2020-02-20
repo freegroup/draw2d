@@ -2,7 +2,7 @@ import draw2d from '../packages'
 
 
 /**
- * @class draw2d.command.CommandAddVertex
+ * @class
  *
  * Add a vertex to a polyline or polygon
  *

@@ -1,7 +1,7 @@
 {
   "name": "Arc",
   "namespace": "draw2d.shape.basic",
-  "description": "<p>draw2d.shape.basic.Arc\nOval figure.</p>",
+  "description": "<p>Oval figure.</p>",
   "extends": [
     "draw2d.VectorFigure"
   ],

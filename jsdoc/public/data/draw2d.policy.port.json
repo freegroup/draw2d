@@ -8,7 +8,7 @@
     {
       "name": "ElasticStrapFeedbackPolicy",
       "namespace": "draw2d.policy.port",
-      "description": "<p>draw2d.policy.port.ElasticStrapFeedbackPolicy</p>\n<p>A draw2d.policy.SelectionFeedbackPolicy that is sensitive to the canvas selection. Subclasses will typically\ndecorate the {@link draw2d.Figure figure} with things like selection handles and/or focus feedback.\n<br>\nIf you want to change the handle visibility for a figure, then you should use SelectionFeedbackPolicy to do that.</p>",
+      "description": "<p>A draw2d.policy.SelectionFeedbackPolicy that is sensitive to the canvas selection. Subclasses will typically\ndecorate the {@link draw2d.Figure figure} with things like selection handles and/or focus feedback.\n<br>\nIf you want to change the handle visibility for a figure, then you should use SelectionFeedbackPolicy to do that.</p>",
       "extends": [
         "draw2d.policy.figure.DragDropEditPolicy"
       ],
@@ -790,7 +790,7 @@
     {
       "name": "PortFeedbackPolicy",
       "namespace": "draw2d.policy.port",
-      "description": "<p>draw2d.policy.port.PortFeedbackPolicy</p>\n<p>Base class for all port feedback policies. Used for grow, highlight or\nother decorations during drag&amp;drop and connecting of ports.</p>",
+      "description": "<p>Base class for all port feedback policies. Used for grow, highlight or\nother decorations during drag&amp;drop and connecting of ports.</p>",
       "extends": [
         "draw2d.policy.figure.DragDropEditPolicy"
       ],
@@ -1268,5 +1268,6 @@
         }
       ]
     }
-  ]
+  ],
+  "namespaces": []
 }

@@ -1,7 +1,7 @@
 {
   "name": "Pie",
   "namespace": "draw2d.shape.diagram",
-  "description": "<p>draw2d.shape.diagram.Pie</p>\n<p>Small data pie chart.</p>",
+  "description": "<p>Small data pie chart.</p>",
   "extends": [
     "draw2d.shape.diagram.Diagram"
   ],

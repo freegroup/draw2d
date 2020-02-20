@@ -1,6 +1,6 @@
 
 /**
- * @class draw2d.policy.connection.ComposedConnectionCreatePolicy
+ * @class
  * A composed connection create policy. Use this to install more than one
  * ConnectionCreatePolicy into the canvas. Normally it is not allowed to install
  * more than one policy from the same type.

@@ -1,7 +1,7 @@
 {
   "name": "CommandStackEvent",
   "namespace": "draw2d.command",
-  "description": "<p>draw2d.command.CommandStackEvent\nEvent class which will be fired for every CommandStack operation. Required for CommandStackListener.</p>",
+  "description": "<p>Event class which will be fired for every CommandStack operation. Required for CommandStackListener.</p>",
   "extends": [],
   "access": "",
   "virtual": false,

@@ -1,7 +1,7 @@
 {
   "name": "OpAmp",
   "namespace": "draw2d.shape.analog",
-  "description": "<p>draw2d.shape.analog.OpAmp\nHand drawn arrow which points down left</p>",
+  "description": "<p>Hand drawn arrow which points down left</p>",
   "extends": [
     "draw2d.SVGFigure"
   ],

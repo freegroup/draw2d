@@ -1,7 +1,7 @@
 {
   "name": "ShortesPathConnectionAnchor",
   "namespace": "draw2d.layout.anchor",
-  "description": "<p>draw2d.layout.anchor.ShortesPathConnectionAnchor</p>\n<p>The ChopboxAnchor's location is found by calculating the intersection of a\nline drawn from the center point of its owner's box (the parent of the\nconnection port) to a reference point on that box. A Connection using the\nChopBoxAnchor will be oriented such that they point to their port owner's\ncenter.</p>",
+  "description": "<p>The ChopboxAnchor's location is found by calculating the intersection of a\nline drawn from the center point of its owner's box (the parent of the\nconnection port) to a reference point on that box. A Connection using the\nChopBoxAnchor will be oriented such that they point to their port owner's\ncenter.</p>",
   "extends": [
     "draw2d.layout.anchor.ConnectionAnchor"
   ],

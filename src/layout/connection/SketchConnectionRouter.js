@@ -2,7 +2,7 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.layout.connection.SketchConnectionRouter
+ * @class
  *
  * Provide a router which routes the connection in a hand drawn manner.
  *

@@ -3,7 +3,7 @@ import extend from '../../util/extend'
 
 
 /**
- * @class draw2d.shape.node.Node
+ * @class
  *
  * A Node is the base class for all figures which can have {@link draw2d.Port}s. A {@link draw2d.Port} is the
  * anchor for a {@link draw2d.Connection} line.<br><br>A {@link draw2d.Port} is a green dot which can

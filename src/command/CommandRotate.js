@@ -2,7 +2,7 @@ import draw2d from '../packages'
 
 
 /**
- * @class draw2d.command.CommandRotate
+ * @class
  *
  * Set the rotation angle of the given figure
  *

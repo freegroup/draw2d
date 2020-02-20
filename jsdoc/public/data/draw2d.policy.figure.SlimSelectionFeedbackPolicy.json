@@ -1,7 +1,7 @@
 {
   "name": "SlimSelectionFeedbackPolicy",
   "namespace": "draw2d.policy.figure",
-  "description": "<p>draw2d.policy.figure.SlimSelectionFeedbackPolicy\nAdd only very small resize handles to the figure.</p>",
+  "description": "<p>Add only very small resize handles to the figure.</p>",
   "extends": [
     "draw2d.policy.figure.RectangleSelectionFeedbackPolicy"
   ],

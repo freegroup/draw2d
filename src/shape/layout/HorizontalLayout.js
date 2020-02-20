@@ -3,7 +3,7 @@ import extend from '../../util/extend'
 
 
 /**
- * @class draw2d.shape.layout.HorizontalLayout
+ * @class
  * The HorizontalLayout class arranges the layout elements in a horizontal sequence,
  * left to right, with optional gaps between the elements.
  *

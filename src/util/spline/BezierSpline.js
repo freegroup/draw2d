@@ -1,7 +1,7 @@
 
 
 /**
- * @class draw2d.util.spline.BezierSpline
+ * @class
  *
  * A bezier spline object.
  *

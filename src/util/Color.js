@@ -4,6 +4,7 @@ import draw2d from '../packages'
  * @class
  * Util class to handle colors in the draw2d enviroment.
  *
+ * @example
  *     // Create a new Color with RGB values
  *     var color = new draw2d.util.Color(127,0,0);
  *

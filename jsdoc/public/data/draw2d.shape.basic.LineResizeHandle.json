@@ -1,7 +1,7 @@
 {
   "name": "LineResizeHandle",
   "namespace": "draw2d.shape.basic",
-  "description": "<p>draw2d.shape.basic.LineResizeHandle\nBase class for selection handle for connections and normal lines.</p>",
+  "description": "<p>Base class for selection handle for connections and normal lines.</p>",
   "extends": [
     "draw2d.shape.basic.Circle"
   ],
