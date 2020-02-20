@@ -49,6 +49,8 @@ export default {
         .then(response => {
           this.loading = false
           this.clazz = response.data
+          this.clazz.classes = this.clazz.classes || []
+          this.clazz.namespaces = this.clazz.namespaces || []
           console.log(this.clazz)
         })
         .catch(error => {
