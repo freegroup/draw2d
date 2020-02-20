@@ -35,6 +35,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -43,6 +45,8 @@
           "virtual": false,
           "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -55,6 +59,8 @@
           "virtual": false,
           "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should\nreturn false. The execution of this Command doesn't modify the model.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -67,6 +73,8 @@
           "virtual": false,
           "description": "<p>Execute the command the first time.\nSup-classes must implement this method.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -75,6 +83,8 @@
           "virtual": false,
           "description": "<p>Will be called if the user cancel the operation.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -83,6 +93,8 @@
           "virtual": false,
           "description": "<p>Undo the command.\nSup-classes must implement this method.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -91,6 +103,8 @@
           "virtual": false,
           "description": "<p>Redo the command after the user has undo this command.\nSup-classes must implement this method.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         }
       ]
@@ -154,6 +168,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -162,6 +178,8 @@
           "virtual": false,
           "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should\nreturn false. The execution of this Command doesn't modify the model.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -174,6 +192,8 @@
           "virtual": false,
           "description": "<p>Execute the command the first time</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -182,6 +202,8 @@
           "virtual": false,
           "description": "<p>Redo the command after the user has undo this command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -190,6 +212,8 @@
           "virtual": false,
           "description": "<p>Undo the command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -198,6 +222,8 @@
           "virtual": false,
           "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -210,6 +236,8 @@
           "virtual": false,
           "description": "<p>Will be called if the user cancel the operation.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]
@@ -270,6 +298,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -278,6 +308,8 @@
           "virtual": false,
           "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -290,6 +322,8 @@
           "virtual": false,
           "description": "<p>Execute the command the first time</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -298,6 +332,8 @@
           "virtual": false,
           "description": "<p>Undo the move command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -306,6 +342,8 @@
           "virtual": false,
           "description": "<p>Redo the move command after the user has undo this command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -314,6 +352,8 @@
           "virtual": false,
           "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -326,6 +366,8 @@
           "virtual": false,
           "description": "<p>Will be called if the user cancel the operation.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]
@@ -370,6 +412,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -378,6 +422,8 @@
           "virtual": false,
           "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -390,6 +436,8 @@
           "virtual": false,
           "description": "<p>Execute the command the first time</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -398,6 +446,8 @@
           "virtual": false,
           "description": "<p>Undo the move command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -406,6 +456,8 @@
           "virtual": false,
           "description": "<p>Redo the move command after the user has undo this command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -414,6 +466,8 @@
           "virtual": false,
           "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -426,6 +480,8 @@
           "virtual": false,
           "description": "<p>Will be called if the user cancel the operation.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]
@@ -470,6 +526,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -478,6 +536,8 @@
           "virtual": false,
           "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -490,6 +550,8 @@
           "virtual": false,
           "description": "<p>Execute the command the first time</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -498,6 +560,8 @@
           "virtual": false,
           "description": "<p>Undo the move command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -506,6 +570,8 @@
           "virtual": false,
           "description": "<p>Redo the move command after the user has undo this command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -514,6 +580,8 @@
           "virtual": false,
           "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -526,6 +594,8 @@
           "virtual": false,
           "description": "<p>Will be called if the user cancel the operation.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]
@@ -562,6 +632,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -570,6 +642,8 @@
           "virtual": false,
           "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -582,6 +656,8 @@
           "virtual": false,
           "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should\nreturn false. The execution of this Command doesn't modify the model.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -594,6 +670,8 @@
           "virtual": false,
           "description": "<p>Execute the command the first time.\nSup-classes must implement this method.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -602,6 +680,8 @@
           "virtual": false,
           "description": "<p>Will be called if the user cancel the operation.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -610,6 +690,8 @@
           "virtual": false,
           "description": "<p>Undo the command.\nSup-classes must implement this method.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -618,6 +700,8 @@
           "virtual": false,
           "description": "<p>Redo the command after the user has undo this command.\nSup-classes must implement this method.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]
@@ -654,6 +738,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -662,6 +748,8 @@
           "virtual": false,
           "description": "<p>Returns a label of the Command. e.g. &quot;move figure&quot;.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -683,6 +771,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -691,6 +781,8 @@
           "virtual": false,
           "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should\nreturn false. The execution of this Command doesn't modify the model.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -703,6 +795,8 @@
           "virtual": false,
           "description": "<p>Execute the command the first time</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -711,6 +805,8 @@
           "virtual": false,
           "description": "<p>Redo the command after the user has undo this command.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -719,6 +815,8 @@
           "virtual": false,
           "description": "<p>Undo the command.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -727,6 +825,8 @@
           "virtual": false,
           "description": "<p>Will be called if the user cancel the operation.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]
@@ -779,6 +879,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -787,6 +889,8 @@
           "virtual": false,
           "description": "<p>set the connection to use. called by the ConnectionCreatePolicy</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -795,6 +899,8 @@
           "virtual": false,
           "description": "<p>Returns the fresh created connection if available. Used in the\nClickConnectionCreatePolicy to customize the router and vertices.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "6.1.0",
           "examples": [],
           "returns": {
             "type": [
@@ -810,6 +916,8 @@
           "virtual": false,
           "description": "<p>Execute the command the first time</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -818,6 +926,8 @@
           "virtual": false,
           "description": "<p>Redo the command after the user has undo this command.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -826,6 +936,8 @@
           "virtual": false,
           "description": "<p>Undo the command.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -834,6 +946,8 @@
           "virtual": false,
           "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -846,6 +960,8 @@
           "virtual": false,
           "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should\nreturn false. The execution of this Command doesn't modify the model.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -858,6 +974,8 @@
           "virtual": false,
           "description": "<p>Will be called if the user cancel the operation.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]
@@ -894,6 +1012,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -902,6 +1022,8 @@
           "virtual": false,
           "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should\nreturn false. The execution of this Command doesn't modify the model.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -914,6 +1036,8 @@
           "virtual": false,
           "description": "<p>Execute the command the first time</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -922,6 +1046,8 @@
           "virtual": false,
           "description": "<p>Undo the command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -930,6 +1056,8 @@
           "virtual": false,
           "description": "<p>Redo the command after the user has undo this command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -938,6 +1066,8 @@
           "virtual": false,
           "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -950,6 +1080,8 @@
           "virtual": false,
           "description": "<p>Will be called if the user cancel the operation.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]
@@ -986,6 +1118,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -994,6 +1128,8 @@
           "virtual": false,
           "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should\nreturn false. The execution of this Command doesn't modify the model.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -1006,6 +1142,8 @@
           "virtual": false,
           "description": "<p>Execute the command the first time</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1014,6 +1152,8 @@
           "virtual": false,
           "description": "<p>Undo the command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1022,6 +1162,8 @@
           "virtual": false,
           "description": "<p>Redo the command after the user has undo this command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1030,6 +1172,8 @@
           "virtual": false,
           "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -1042,6 +1186,8 @@
           "virtual": false,
           "description": "<p>Will be called if the user cancel the operation.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]
@@ -1078,6 +1224,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1086,6 +1234,8 @@
           "virtual": false,
           "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should\nreturn false. The execution of this Command doesn't modify the model.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -1098,6 +1248,8 @@
           "virtual": false,
           "description": "<p>Execute the command the first time</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1106,6 +1258,8 @@
           "virtual": false,
           "description": "<p>Undo the command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1114,6 +1268,8 @@
           "virtual": false,
           "description": "<p>Redo the command after the user has undo this command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1122,6 +1278,8 @@
           "virtual": false,
           "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -1134,6 +1292,8 @@
           "virtual": false,
           "description": "<p>Will be called if the user cancel the operation.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]
@@ -1186,6 +1346,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1211,6 +1373,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1236,6 +1400,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1244,6 +1410,8 @@
           "virtual": false,
           "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -1256,6 +1424,8 @@
           "virtual": false,
           "description": "<p>Execute the command the first time</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1264,6 +1434,8 @@
           "virtual": false,
           "description": "<p>Undo the move command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1272,6 +1444,8 @@
           "virtual": false,
           "description": "<p>Redo the move command after the user has undo this command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1280,6 +1454,8 @@
           "virtual": false,
           "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -1292,6 +1468,8 @@
           "virtual": false,
           "description": "<p>Will be called if the user cancel the operation.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]
@@ -1328,6 +1506,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1353,6 +1533,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1361,6 +1543,8 @@
           "virtual": false,
           "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -1373,6 +1557,8 @@
           "virtual": false,
           "description": "<p>Execute the command the first time</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1381,6 +1567,8 @@
           "virtual": false,
           "description": "<p>Undo the command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1389,6 +1577,8 @@
           "virtual": false,
           "description": "<p>Redo the command after the user has undo this command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1397,6 +1587,8 @@
           "virtual": false,
           "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -1409,6 +1601,8 @@
           "virtual": false,
           "description": "<p>Will be called if the user cancel the operation.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]
@@ -1445,6 +1639,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1470,6 +1666,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1478,6 +1676,8 @@
           "virtual": false,
           "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -1490,6 +1690,8 @@
           "virtual": false,
           "description": "<p>Execute the command the first time</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1498,6 +1700,8 @@
           "virtual": false,
           "description": "<p>Undo the command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1506,6 +1710,8 @@
           "virtual": false,
           "description": "<p>Redo the command after the user has undo this command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1514,6 +1720,8 @@
           "virtual": false,
           "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -1526,6 +1734,8 @@
           "virtual": false,
           "description": "<p>Will be called if the user cancel the operation.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]
@@ -1562,6 +1772,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1579,6 +1791,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1587,6 +1801,8 @@
           "virtual": false,
           "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -1599,6 +1815,8 @@
           "virtual": false,
           "description": "<p>Execute the command the first time</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1607,6 +1825,8 @@
           "virtual": false,
           "description": "<p>Undo the move command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1615,6 +1835,8 @@
           "virtual": false,
           "description": "<p>Redo the move command after the user has undo this command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1623,6 +1845,8 @@
           "virtual": false,
           "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -1635,6 +1859,8 @@
           "virtual": false,
           "description": "<p>Will be called if the user cancel the operation.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]
@@ -1671,6 +1897,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1679,6 +1907,8 @@
           "virtual": false,
           "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -1691,6 +1921,8 @@
           "virtual": false,
           "description": "<p>Execute the command the first time</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1699,6 +1931,8 @@
           "virtual": false,
           "description": "<p>Undo the move command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1707,6 +1941,8 @@
           "virtual": false,
           "description": "<p>Redo the move command after the user has undo this command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1715,6 +1951,8 @@
           "virtual": false,
           "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -1727,6 +1965,8 @@
           "virtual": false,
           "description": "<p>Will be called if the user cancel the operation.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]
@@ -1763,6 +2003,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1771,6 +2013,8 @@
           "virtual": false,
           "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -1800,6 +2044,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1825,6 +2071,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1833,6 +2081,8 @@
           "virtual": false,
           "description": "<p>Execute the command the first time</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1841,6 +2091,8 @@
           "virtual": false,
           "description": "<p>Execute the command the first time</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1849,6 +2101,8 @@
           "virtual": false,
           "description": "<p>Undo the command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1857,6 +2111,8 @@
           "virtual": false,
           "description": "<p>Redo the command after the user has undo this command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1865,6 +2121,8 @@
           "virtual": false,
           "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -1913,6 +2171,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1921,6 +2181,8 @@
           "virtual": false,
           "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -1933,6 +2195,8 @@
           "virtual": false,
           "description": "<p>Execute the command the first time</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1941,6 +2205,8 @@
           "virtual": false,
           "description": "<p>Undo the move command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1949,6 +2215,8 @@
           "virtual": false,
           "description": "<p>Redo the move command after the user has undo this command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1957,6 +2225,8 @@
           "virtual": false,
           "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -1969,6 +2239,8 @@
           "virtual": false,
           "description": "<p>Will be called if the user cancel the operation.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]
@@ -2021,6 +2293,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2029,6 +2303,8 @@
           "virtual": false,
           "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -2041,6 +2317,8 @@
           "virtual": false,
           "description": "<p>Execute the command the first time</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2049,6 +2327,8 @@
           "virtual": false,
           "description": "<p>Undo the move command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2057,6 +2337,8 @@
           "virtual": false,
           "description": "<p>Redo the move command after the user has undo this command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2065,6 +2347,8 @@
           "virtual": false,
           "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -2077,6 +2361,8 @@
           "virtual": false,
           "description": "<p>Will be called if the user cancel the operation.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]
@@ -2121,6 +2407,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2129,6 +2417,8 @@
           "virtual": false,
           "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -2141,6 +2431,8 @@
           "virtual": false,
           "description": "<p>Execute the command the first time</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2149,6 +2441,8 @@
           "virtual": false,
           "description": "<p>Undo the command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2157,6 +2451,8 @@
           "virtual": false,
           "description": "<p>Redo the command after the user has undo this command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2190,6 +2486,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2215,6 +2513,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2223,6 +2523,8 @@
           "virtual": false,
           "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -2235,6 +2537,8 @@
           "virtual": false,
           "description": "<p>Execute the command the first time</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2243,6 +2547,8 @@
           "virtual": false,
           "description": "<p>Undo the command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2251,6 +2557,8 @@
           "virtual": false,
           "description": "<p>Redo the command after the user has undo this command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2259,6 +2567,8 @@
           "virtual": false,
           "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -2271,6 +2581,8 @@
           "virtual": false,
           "description": "<p>Will be called if the user cancel the operation.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]
@@ -2315,6 +2627,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2323,6 +2637,8 @@
           "virtual": false,
           "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -2335,6 +2651,8 @@
           "virtual": false,
           "description": "<p>Execute the command the first time</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2343,6 +2661,8 @@
           "virtual": false,
           "description": "<p>Undo the command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2351,6 +2671,8 @@
           "virtual": false,
           "description": "<p>Redo the command after the user has undo this command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2359,6 +2681,8 @@
           "virtual": false,
           "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -2371,6 +2695,8 @@
           "virtual": false,
           "description": "<p>Will be called if the user cancel the operation.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]
@@ -2396,6 +2722,8 @@
           "virtual": false,
           "description": "<p>Create a new CommandStack objects which can be execute via the CommandStack.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2413,6 +2741,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2421,6 +2751,8 @@
           "virtual": false,
           "description": "<p>Remove the undo / redo history. This is useful if the user has been save the\ndocument.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2438,6 +2770,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2455,6 +2789,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "4.0.0",
           "examples": []
         },
         {
@@ -2463,6 +2799,8 @@
           "virtual": false,
           "description": "<p>Returns true if the Command Stack has an open transaction.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2471,6 +2809,8 @@
           "virtual": false,
           "description": "<p>Commit the running transaction. All commands between the start/end of a transaction\ncan be undo/redo in a single step.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "4.0.0",
           "examples": []
         },
         {
@@ -2479,6 +2819,8 @@
           "virtual": false,
           "description": "<p>Undo on command from the stack and store them on the redo command stack.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2487,6 +2829,8 @@
           "virtual": false,
           "description": "<p>Redo a command after the user has undo a command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2495,6 +2839,8 @@
           "virtual": false,
           "description": "<p>Return the label of the next REDO command.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -2507,6 +2853,8 @@
           "virtual": false,
           "description": "<p>Return the label of the next UNDO command.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -2519,6 +2867,8 @@
           "virtual": false,
           "description": "<p>Indicates whenever a REDO is possible.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "",
@@ -2531,6 +2881,8 @@
           "virtual": false,
           "description": "<p>indicator whenever a undo is possible.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -2555,6 +2907,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2580,6 +2934,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2597,6 +2953,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2622,6 +2980,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         }
       ]
@@ -2664,6 +3024,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2672,6 +3034,8 @@
           "virtual": false,
           "description": "<p>Return the corresponding stack of the event.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.command.CommandStack",
@@ -2684,6 +3048,8 @@
           "virtual": false,
           "description": "<p>Returns null or a Command if a command is relevant to the current event.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.command.Command",
@@ -2696,6 +3062,8 @@
           "virtual": false,
           "description": "<p>Returns an integer identifying the type of event which has occurred.\nDefined by {@link draw2d.command.CommandStack}.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Number",
@@ -2708,6 +3076,8 @@
           "virtual": false,
           "description": "<p>Returns true if this event is fired after the stack having changed.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -2720,6 +3090,8 @@
           "virtual": false,
           "description": "<p>Returns true if this event is fired prior to the stack changing.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -2749,6 +3121,8 @@
           "virtual": false,
           "description": "<p>Creates a new Listener Object</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2766,6 +3140,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         }
       ]
@@ -2800,6 +3176,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2808,6 +3186,8 @@
           "virtual": false,
           "description": "<p>Return the String representation of the policy</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -2859,6 +3239,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2867,6 +3249,8 @@
           "virtual": false,
           "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should\nreturn false. The execution of this Command doesn't modify the model.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -2879,6 +3263,8 @@
           "virtual": false,
           "description": "<p>Execute the command the first time</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2887,6 +3273,8 @@
           "virtual": false,
           "description": "<p>Undo the command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2895,6 +3283,8 @@
           "virtual": false,
           "description": "<p>Redo the command after the user has undo this command</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2903,6 +3293,8 @@
           "virtual": false,
           "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -2915,6 +3307,8 @@
           "virtual": false,
           "description": "<p>Will be called if the user cancel the operation.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]

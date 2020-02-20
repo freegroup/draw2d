@@ -11,7 +11,7 @@
     "description": "",
     "parameters": [],
     "examples": [
-      "// create a basic figure and add a Label/child via API call\n    //\n    let circle = new draw2d.shape.basic.Circle({diameter:120});\n    circle.setStroke(3);\n    circle.setColor(\"#A63343\");\n    circle.setBackgroundColor(\"#E65159\");\n    circle.add(new draw2d.shape.basic.Label({text:\"Center Label\"}), new draw2d.layout.locator.CenterLocator());\n    canvas.add( circle, 100,50);"
+      "// create a basic figure and add a Label/child via API call\n   //\n   let circle = new draw2d.shape.basic.Circle({diameter:120});\n   circle.setStroke(3);\n   circle.setColor(\"#A63343\");\n   circle.setBackgroundColor(\"#E65159\");\n   circle.add(new draw2d.shape.basic.Label({text:\"Center Label\"}), new draw2d.layout.locator.CenterLocator());\n   canvas.add( circle, 100,50);"
     ]
   },
   "functions": [
@@ -21,6 +21,8 @@
       "virtual": false,
       "description": "<p>Constructs a locator with associated parent.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -46,6 +48,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     }
   ]

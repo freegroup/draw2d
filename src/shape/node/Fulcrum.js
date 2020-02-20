@@ -10,9 +10,9 @@ import jsonUtil from '../../util/JSONUtil'
  *
  * @example
  *
- *     canvas.add( new draw2d.shape.node.Fulcrum(),50,10);
- *     canvas.add( new draw2d.shape.node.Fulcrum(),80,100);
- *     canvas.add( new draw2d.shape.node.Fulcrum(),150,50);
+ *    canvas.add( new draw2d.shape.node.Fulcrum(),50,10);
+ *    canvas.add( new draw2d.shape.node.Fulcrum(),80,100);
+ *    canvas.add( new draw2d.shape.node.Fulcrum(),150,50);
  *
  * @extends draw2d.shape.node.Hub
  */

@@ -28,7 +28,7 @@
       }
     ],
     "examples": [
-      "// create and add two nodes which contains Ports (In and OUT)\n    //\n    var start = new draw2d.shape.node.Start();\n    var end   = new draw2d.shape.node.End();\n    // ...add it to the canvas\n    canvas.add( start, 50,50);\n    canvas.add( end, 230,80);\n\n    // Create a Connection and connect the Start and End node\n    //\n    var c = new draw2d.Connection();\n\n    // toggle from ManhattenRouter to DirectRouter to show the rotation of decorations\n    c.setRouter(new draw2d.layout.connection.DirectRouter());\n\n    // Set the endpoint decorations for the connection\n    //\n    c.setSourceDecorator(new draw2d.decoration.connection.BarDecorator());\n    c.setTargetDecorator(new draw2d.decoration.connection.BarDecorator());\n    // Connect the endpoints with the start and end port\n    //\n    c.setSource(start.getOutputPort(0));\n    c.setTarget(end.getInputPort(0));\n\n    // and finally add the connection to the canvas\n    canvas.add(c);"
+      "// create and add two nodes which contains Ports (In and OUT)\n   //\n   var start = new draw2d.shape.node.Start();\n   var end   = new draw2d.shape.node.End();\n   // ...add it to the canvas\n   canvas.add( start, 50,50);\n   canvas.add( end, 230,80);\n\n   // Create a Connection and connect the Start and End node\n   //\n   var c = new draw2d.Connection();\n\n   // toggle from ManhattenRouter to DirectRouter to show the rotation of decorations\n   c.setRouter(new draw2d.layout.connection.DirectRouter());\n\n   // Set the endpoint decorations for the connection\n   //\n   c.setSourceDecorator(new draw2d.decoration.connection.BarDecorator());\n   c.setTargetDecorator(new draw2d.decoration.connection.BarDecorator());\n   // Connect the endpoints with the start and end port\n   //\n   c.setSource(start.getOutputPort(0));\n   c.setTarget(end.getInputPort(0));\n\n   // and finally add the connection to the canvas\n   canvas.add(c);"
     ]
   },
   "functions": [
@@ -47,6 +47,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     }
   ]

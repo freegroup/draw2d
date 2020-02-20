@@ -4,9 +4,9 @@ import draw2d from '../packages'
  * @class draw2d.util.UUID
  * Generates a (pseudo) UUID's
  *
- *      // a UUID in the format
- *      // xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (8-4-4-4-12)
- *      var id = draw2d.util.UUID.create();
+ *     // a UUID in the format
+ *     // xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (8-4-4-4-12)
+ *     var id = draw2d.util.UUID.create();
  *
  * @author Andreas Herz
  * @private

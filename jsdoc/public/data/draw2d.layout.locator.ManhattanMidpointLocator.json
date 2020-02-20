@@ -2,7 +2,9 @@
   "name": "ManhattanMidpointLocator",
   "namespace": "draw2d.layout.locator",
   "description": "<p>draw2d.layout.locator.ManhattanMidpointLocator</p>\n<p>A ManhattanMidpointLocator that is used to place figures at the midpoint of a Manhatten routed\nconnection. The midpoint is always in the center of an edge.</p>",
-  "extends": [],
+  "extends": [
+    "draw2d.layout.locator.ConnectionLocator"
+  ],
   "access": "",
   "virtual": false,
   "fires": "",
@@ -11,7 +13,7 @@
     "description": "",
     "parameters": [],
     "examples": [
-      "//create and add two Node which contains Ports (In and OUT)\n    let start = new draw2d.shape.node.Start({x:50,y:50});\n    let end   = new draw2d.shape.node.End({x:230,y:100});\n\n    canvas.add( start);\n    canvas.add( end);\n\n    // Create a Connection and connect he Start and End node\n    //\n    let c = new draw2d.Connection();\n    c.setSource(start.getOutputPort(0));\n    c.setTarget(end.getInputPort(0));\n    canvas.add(c);\n\n    // create a label which should attach to the connection\n    //\n    let label = new draw2d.shape.basic.Label({text:\"I'm a Label\"});\n    label.setColor(\"#0d0d0d\");\n    label.setFontColor(\"#0d0d0d\");\n    label.setBackgroundColor(\"#f0f0f0\");\n\n    // add the decoration to the connection with a ManhattanMidpointLocator.\n    //\n    c.add(label, new draw2d.layout.locator.ManhattanMidpointLocator());"
+      "// create and add two Node which contains Ports (In and OUT)\n   let start = new draw2d.shape.node.Start({x:50,y:50});\n   let end   = new draw2d.shape.node.End({x:230,y:100});\n\n   canvas.add( start);\n   canvas.add( end);\n\n   // Create a Connection and connect the Start and End node\n   //\n   let c = new draw2d.Connection();\n   c.setSource(start.getOutputPort(0));\n   c.setTarget(end.getInputPort(0));\n   canvas.add(c);\n\n   // create a label which should attach to the connection\n   //\n   let label = new draw2d.shape.basic.Label({text:\"I'm a Label\"});\n   label.setColor(\"#0d0d0d\");\n   label.setFontColor(\"#0d0d0d\");\n   label.setBackgroundColor(\"#f0f0f0\");\n\n   // add the decoration to the connection with a ManhattanMidpointLocator.\n   //\n   c.add(label, new draw2d.layout.locator.ManhattanMidpointLocator());"
     ]
   },
   "functions": [
@@ -21,6 +23,8 @@
       "virtual": false,
       "description": "<p>Constructs a ManhattanMidpointLocator with associated Connection c.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -46,6 +50,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     }
   ]

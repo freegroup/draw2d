@@ -13,10 +13,10 @@ import draw2d from '../../packages'
  *
  * @example
  *
- *     let figure =  new draw2d.shape.basic.Rectangle({x:130,y:30,width:100,height:60});
- *     figure.createPort("input", new draw2d.layout.locator.XYRelPortLocator(0,20));
+ *    let figure =  new draw2d.shape.basic.Rectangle({x:130,y:30,width:100,height:60});
+ *    figure.createPort("input", new draw2d.layout.locator.XYRelPortLocator(0,20));
  *
- *     canvas.add(figure);
+ *    canvas.add(figure);
  *
  *
  * @author Andreas Herz

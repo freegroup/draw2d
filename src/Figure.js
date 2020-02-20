@@ -182,71 +182,71 @@ draw2d.Figure = Class.extend(
    * When value is given, sets the attribute to that value.
    * Multiple attributes can be set by passing an object with name-value pairs.
    *
-   *     let figure = new draw2d.shape.basic.Rectangle();
-   *     figure.attr('x');      //=> read value
-   *     figure.attr('x', 30);  //=> set value
+   *    let figure = new draw2d.shape.basic.Rectangle();
+   *    figure.attr('x');      //=> read value
+   *    figure.attr('x', 30);  //=> set value
    *
-   *     // multiple attributes:
-   *     figure.attr({
-   *       x: 30,
-   *       y: 40,
-   *       width : 200,
-   *       height: 50,
-   *       cssClass: "red_border_figure"
-   *     });
+   *    // multiple attributes:
+   *    figure.attr({
+   *      x: 30,
+   *      y: 40,
+   *      width : 200,
+   *      height: 50,
+   *      cssClass: "red_border_figure"
+   *    });
    *
-   *     // it is possible to override any method of the figure as well
-   *     // Instead of inheritance you can just override the callback methods
-   *     // like
-   *     //
-   *     figure.attr({
-   *        onClick : function(){
-   *            alert("click");
-   *        }
-   *     });
+   *    // it is possible to override any method of the figure as well
+   *    // Instead of inheritance you can just override the callback methods
+   *    // like
+   *    //
+   *    figure.attr({
+   *       onClick : function(){
+   *           alert("click");
+   *       }
+   *    });
    *
-   *     // or you can pass the attr values in the constructor
-   *     //
-   *     let clickFigure = new draw2d.shape.basic.Rectangle({
-   *        onClick : function(){
-   *            alert("click");
-   *        }
-   *     });
+   *    // or you can pass the attr values in the constructor
+   *    //
+   *    let clickFigure = new draw2d.shape.basic.Rectangle({
+   *       onClick : function(){
+   *           alert("click");
+   *       }
+   *    });
    *
    *
    * Additional you can set the user defined values (userData) with this method
    * using the dot-notation. User defined values are always part of the exported
    * JSON data.
    *
-   *     // setting multiple attributes:
-   *     figure.attr({
-   *       "userData.my.property.x": 30,
-   *       "userData.my.property.y": 40
-   *     });
+   *    // setting multiple attributes:
+   *    figure.attr({
+   *      "userData.my.property.x": 30,
+   *      "userData.my.property.y": 40
+   *    });
    *
    * Also set using array notation is possible for the userData:
    *
-   *     // dot notation and array brackets:
-   *     figure.attr({
-   *       "userData.my.names[0]": "John",
-   *       "userData.my.names[1]": "Doe"
-   *     });
+   *    // dot notation and array brackets:
+   *    figure.attr({
+   *      "userData.my.names[0]": "John",
+   *      "userData.my.names[1]": "Doe"
+   *    });
    *
    *
    * The Object returned should be the equivalent structured object:
    *
-   *     let obj = figure.getUserData();
+   *    let obj = figure.getUserData();
    *
    * That is, where obj is equivalent to:
    *
-   *     let obj = {
-   *         my:{
-   *             property:{
-   *                 x: 30,
-   *                 y: 40
-   *            },
-   *            names:  ["John", "Doe"]
-   *        }
+   *    let obj = {
+   *        my:{
+   *            property:{
+   *                x: 30,
+   *                y: 40
+   *           },
+   *           names:  ["John", "Doe"]
+   *       }
    *    };
    *
    *
@@ -468,10 +468,10 @@ draw2d.Figure = Class.extend(
    * Allows a user to attach (or remove) data to an element, without needing to create a custom figure or shape.
    * The data must be a valid JSON object.
    *
-   *      // Alternatively you can use the attr method:
-   *      figure.attr({
-   *        userData: object
-   *      });
+   *     // Alternatively you can use the attr method:
+   *     figure.attr({
+   *       userData: object
+   *     });
    *
    * @since 2.7.2
    * @param {Object} object
@@ -508,10 +508,10 @@ draw2d.Figure = Class.extend(
    * 
    * Set the id of this element.
    *
-   *     // Alternatively you can use the attr method:
-   *     figure.attr({
-   *       id: newId
-   *     });
+   *    // Alternatively you can use the attr method:
+   *    figure.attr({
+   *      id: newId
+   *    });
    *
    * @param {String} newId the new id for this figure
    */
@@ -537,10 +537,10 @@ draw2d.Figure = Class.extend(
    * 
    * Set the css class of the node.
    *
-   *      // Alternatively you can use the attr method:
-   *      figure.attr({
-   *        "cssClass": "red_border_figure"
-   *      });
+   *     // Alternatively you can use the attr method:
+   *     figure.attr({
+   *       "cssClass": "red_border_figure"
+   *     });
    *
    * @param {String} cssClass the new css class name of the node
    * @since 2.9.0
@@ -741,10 +741,10 @@ draw2d.Figure = Class.extend(
    * Callback method for the internal timer handling<br>
    * Inherit classes must override this method if they want use the timer feature.
    *
-   *      // Alternatively you can register for this event with
-   *      figure.on("timer", function(emitter){
-   *          alert("timer fired");
-   *      });
+   *     // Alternatively you can register for this event with
+   *     figure.on("timer", function(emitter){
+   *         alert("timer fired");
+   *     });
    *
    * @template
    */
@@ -928,10 +928,10 @@ draw2d.Figure = Class.extend(
    * Mainly for labels or other decorations
    *
    *
-   *     let start = new draw2d.shape.node.Start({x:80, y:150});
-   *     start.add(new draw2d.shape.basic.Label({text:"Test Label"}), new draw2d.layout.locator.TopLocator());
+   *    let start = new draw2d.shape.node.Start({x:80, y:150});
+   *    start.add(new draw2d.shape.basic.Label({text:"Test Label"}), new draw2d.layout.locator.TopLocator());
    *
-   *     canvas.add( start);
+   *    canvas.add( start);
    *
    * 
    * @param {draw2d.Figure} child the figure to add as decoration to the connection.
@@ -1177,10 +1177,10 @@ draw2d.Figure = Class.extend(
    * 
    * Highlight the element or remove the highlighting
    *
-   *      // Alternatively you can use the attr method:
-   *      figure.attr({
-   *        glow: flag
-   *      });
+   *     // Alternatively you can use the attr method:
+   *     figure.attr({
+   *       glow: flag
+   *     });
    *
    * @param {Boolean} flag indicates glow/noGlow
    * @template
@@ -1334,10 +1334,10 @@ draw2d.Figure = Class.extend(
    * case we send a "panning" event - mouseDown + mouseMove. This is very useful for
    * UI-Widget like slider, spinner,...
    *
-   *      // You can alternatively register an event handler with:
-   *      figure.on("panning", function(emitter, eventData){
-   *          alert("panning of the figure called");
-   *      });
+   *     // You can alternatively register an event handler with:
+   *     figure.on("panning", function(emitter, eventData){
+   *         alert("panning of the figure called");
+   *     });
    *
    * @param {Number} dx the x difference between the mouse down operation and now
    * @param {Number} dy the y difference between the mouse down operation and now
@@ -1355,10 +1355,10 @@ draw2d.Figure = Class.extend(
    * Called by the framework if the panning event of the figures ends. This happens
    * after the mous up event if the panning is active.
    *
-   *      // You can alternatively register an event handler with:
-   *      figure.on("panningEnd", function(emitter){
-   *          alert("panning of the figure called");
-   *      });
+   *     // You can alternatively register an event handler with:
+   *     figure.on("panningEnd", function(emitter){
+   *         alert("panning of the figure called");
+   *     });
    *
    */
   onPanningEnd: function () {
@@ -1509,11 +1509,11 @@ draw2d.Figure = Class.extend(
    * 
    * Called when a user dbl clicks on the element
    *
-   *      // Alternatively you can register an event with:
-   *      //
-   *      figure.on("dblclick", function(emitter, event){
-   *          alert("user dbl click on the figure");
-   *      });
+   *     // Alternatively you can register an event with:
+   *     //
+   *     figure.on("dblclick", function(emitter, event){
+   *         alert("user dbl click on the figure");
+   *     });
    *
    * @template
    */
@@ -1525,10 +1525,10 @@ draw2d.Figure = Class.extend(
    * 
    * Called when a user clicks on the element.
    *
-   *      // You can alternatively register an event handler with:
-   *      figure.on("click", function(emitter, event){
-   *          alert("user click on the figure");
-   *      });
+   *     // You can alternatively register an event handler with:
+   *     figure.on("click", function(emitter, event){
+   *         alert("user click on the figure");
+   *     });
    *
    * @template
    * @deprecated
@@ -1542,10 +1542,10 @@ draw2d.Figure = Class.extend(
    * The strategy to show the context menu depends on the platform. Either looong press or
    * right click with the mouse.
    *
-   *      // Alternatively you register for this event with:
-   *      figure.on("contextmenu", function(emitter, event){
-   *          alert("user press the right mouse button for a context menu");
-   *      });
+   *     // Alternatively you register for this event with:
+   *     figure.on("contextmenu", function(emitter, event){
+   *         alert("user press the right mouse button for a context menu");
+   *     });
    *
    * @param {Number} x the x-coordinate to show the menu
    * @param {Number} y the y-coordinate to show the menu
@@ -1559,15 +1559,15 @@ draw2d.Figure = Class.extend(
    * 
    * Set the alpha blending of this figure.
    *
-   *      // Alternatively you can use the attr method:
-   *      figure.attr({
-   *        "alpha": percent
-   *      });
+   *     // Alternatively you can use the attr method:
+   *     figure.attr({
+   *       "alpha": percent
+   *     });
    *
-   *      // ...or:
-   *      figure.attr({
-   *        "opacity": percent
-   *      });
+   *     // ...or:
+   *     figure.attr({
+   *       "opacity": percent
+   *     });
    *
    * @param {Number} percent value between [0..1].
    **/
@@ -1601,10 +1601,10 @@ draw2d.Figure = Class.extend(
    * Set the rotation angle in degree [0..356]<br>
    * <b>Only steps of 90 degree is working well</b>
    * <br>
-   *      // Alternatively you can use the attr method:
-   *      figure.attr({
-   *        angle: angle
-   *      });
+   *     // Alternatively you can use the attr method:
+   *     figure.attr({
+   *       angle: angle
+   *     });
    *
    * @param {Number} angle the rotation angle in degree
    */
@@ -1644,10 +1644,10 @@ draw2d.Figure = Class.extend(
    * Show/hide the element. The element didn't receive any mouse events (click, dblclick) if you hide the
    * figure.
    *
-   *      // Alternatively you can use the attr method:
-   *      figure.attr({
-   *        visible: flag
-   *      });
+   *     // Alternatively you can use the attr method:
+   *     figure.attr({
+   *       visible: flag
+   *     });
    *
    * @param {Boolean} flag
    * @param {Number} [duration] the optional number for the fadeIn /fadeOut of the figure
@@ -1978,11 +1978,11 @@ draw2d.Figure = Class.extend(
    * 
    * Set the position of the object.
    *
-   *      // Alternatively you can use the attr method:
-   *      figure.attr({
-   *        x: x,
-   *        y: y
-   *      });
+   *     // Alternatively you can use the attr method:
+   *     figure.attr({
+   *       x: x,
+   *       y: y
+   *     });
    *
    * @param {Number|draw2d.geo.Point} x The new x coordinate of the figure or the x/y coordinate if it is an draw2d.geo.Point
    * @param {Number} [y] The new y coordinate of the figure
@@ -2062,11 +2062,11 @@ draw2d.Figure = Class.extend(
    * 
    * Set the new width and height of the figure.
    *
-   *      // Alternatively you can use the attr method:
-   *      figure.attr({
-   *         width:  w,
-   *         height: h
-   *      });
+   *     // Alternatively you can use the attr method:
+   *     figure.attr({
+   *        width:  w,
+   *        height: h
+   *     });
    *
    * @param {Number} w The new width of the figure
    * @param {Number} h The new height of the figure
@@ -2140,18 +2140,18 @@ draw2d.Figure = Class.extend(
    * 
    * Set the bounding box of the figure
    *
-   *      // Alternatively you can use the attr method:
-   *      figure.attr({
-   *        width: w,
-   *        height: h,
-   *        x: x,
-   *        y: y
-   *      });
+   *     // Alternatively you can use the attr method:
+   *     figure.attr({
+   *       width: w,
+   *       height: h,
+   *       x: x,
+   *       y: y
+   *     });
    *
-   *      // or
-   *      figure.attr({
-   *        boundingBox: {x:1, y:100, width:30, height:30}
-   *      });
+   *     // or
+   *     figure.attr({
+   *       boundingBox: {x:1, y:100, width:30, height:30}
+   *     });
    *
    * @param {draw2d.geo.Rectangle} rect
    * @since 4.8.0
@@ -2240,10 +2240,10 @@ draw2d.Figure = Class.extend(
    * You can change the resizeable behaviour of this object. Hands over [false] and
    * the figure has no resizehandles if you select them with the mouse.<br>
    *
-   *      // Alternatively you can use the attr method:
-   *      figure.attr({
-   *        resizeable: flag
-   *      });
+   *     // Alternatively you can use the attr method:
+   *     figure.attr({
+   *       resizeable: flag
+   *     });
    *
    * @param {Boolean} flag The resizeable flag.
    **/

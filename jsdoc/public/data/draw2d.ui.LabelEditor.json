@@ -11,7 +11,7 @@
     "description": "",
     "parameters": [],
     "examples": [
-      "var label =  new draw2d.shape.basic.Label({text:\"Double Click on me\"});\n\n    label.installEditor(new draw2d.ui.LabelEditor({\n       // called after the value has been set to the LabelFigure\n       onCommit: $.proxy(function(value){\n           alert(\"new value set to:\"+value);\n       },this),\n       // called if the user abort the operation\n       onCancel: function(){\n       }\n    }));\n\n    canvas.add(label,50,10);"
+      "var label =  new draw2d.shape.basic.Label({text:\"Double Click on me\"});\n\n   label.installEditor(new draw2d.ui.LabelEditor({\n      // called after the value has been set to the LabelFigure\n      onCommit: $.proxy(function(value){\n          alert(\"new value set to:\"+value);\n      },this),\n      // called if the user abort the operation\n      onCancel: function(){\n      }\n   }));\n\n   canvas.add(label,50,10);"
     ]
   },
   "functions": [
@@ -30,6 +30,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     }
   ]

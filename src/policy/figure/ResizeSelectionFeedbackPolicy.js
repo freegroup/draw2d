@@ -9,11 +9,11 @@ import draw2d from '../../packages'
  *
  *
  * @example
- *       circle =new draw2d.shape.basic.Circle();
- *       circle.installEditPolicy(new draw2d.policy.ResizeSelectionFeedbackPolicy());
- *       canvas.add(circle,90,50);
+ *      circle =new draw2d.shape.basic.Circle();
+ *      circle.installEditPolicy(new draw2d.policy.ResizeSelectionFeedbackPolicy());
+ *      canvas.add(circle,90,50);
  *
- *       canvas.add(new draw2d.shape.basic.Label({text:"Click on the circle to see the selection feedback"}),20,10);
+ *      canvas.add(new draw2d.shape.basic.Label({text:"Click on the circle to see the selection feedback"}),20,10);
  *
  * @author Andreas Herz
  * @since 4.0.0

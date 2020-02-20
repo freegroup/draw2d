@@ -2,16 +2,16 @@ import draw2d from '../../packages'
 
 
 /**
- * @class draw2d.shape.node.Start
+ * @class
  *
- * A generic Node which has an OutputPort. Mainly used for demo and examples.
+ * A generic Node which has an OutputPort. Mainly used for demos and examples.
  *
  *
  * @example
  *
- *     let figure =  new draw2d.shape.node.Start({color: "#3d3d3d"});
+ *    let figure =  new draw2d.shape.node.Start({color: "#3d3d3d"});
  *
- *     canvas.add(figure,50,10);
+ *    canvas.add(figure,50,10);
  *
  * @extends draw2d.shape.basic.Rectangle
  */

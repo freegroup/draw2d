@@ -16,34 +16,34 @@ import extend from '../../util/extend'
  *
  * @example
  *
- *     // first container without any gap and a border of the parent
- *     // container
- *     let label1 =  new draw2d.shape.basic.Label({text:"Label 1"});
- *     let label2 =  new draw2d.shape.basic.Label({text:"Label 2"});
- *     let label3 =  new draw2d.shape.basic.Label({text:"Label 3"});
+ *    // first container without any gap and a border of the parent
+ *    // container
+ *    let label1 =  new draw2d.shape.basic.Label({text:"Label 1"});
+ *    let label2 =  new draw2d.shape.basic.Label({text:"Label 2"});
+ *    let label3 =  new draw2d.shape.basic.Label({text:"Label 3"});
  *
- *     let container1 = new draw2d.shape.layout.HorizontalLayout();
+ *    let container1 = new draw2d.shape.layout.HorizontalLayout();
  *
- *     container1.add(label1);
- *     container1.add(label2);
- *     container1.add(label3);
- *     container1.setGap(10);
- *     container1.setStroke(2);
- *     canvas.add(container1,50,10);
+ *    container1.add(label1);
+ *    container1.add(label2);
+ *    container1.add(label3);
+ *    container1.setGap(10);
+ *    container1.setStroke(2);
+ *    canvas.add(container1,50,10);
  *
- *     // second container without any gab or border
- *     //
- *     let label11 =  new draw2d.shape.basic.Label({text:"Label 1"});
- *     let label12 =  new draw2d.shape.basic.Label({text:"Label 2"});
- *     let label13 =  new draw2d.shape.basic.Label({text:"Label 3"});
+ *    // second container without any gab or border
+ *    //
+ *    let label11 =  new draw2d.shape.basic.Label({text:"Label 1"});
+ *    let label12 =  new draw2d.shape.basic.Label({text:"Label 2"});
+ *    let label13 =  new draw2d.shape.basic.Label({text:"Label 3"});
  *
- *     let container2 = new draw2d.shape.layout.HorizontalLayout();
+ *    let container2 = new draw2d.shape.layout.HorizontalLayout();
  *
- *     container2.add(label11);
- *     container2.add(label12);
- *     container2.add(label13);
+ *    container2.add(label11);
+ *    container2.add(label12);
+ *    container2.add(label13);
  *
- *     canvas.add(container2,50,90);
+ *    canvas.add(container2,50,90);
  *
  *
  * @author Andreas Herz

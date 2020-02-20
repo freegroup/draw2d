@@ -13,15 +13,15 @@ import draw2d from '../../packages'
  *
  * @example
  *
- *       // install the policy to the canvas
- *       canvas.installEditPolicy(new draw2d.policy.canvas.GhostMoveSelectionPolicy());
+ *      // install the policy to the canvas
+ *      canvas.installEditPolicy(new draw2d.policy.canvas.GhostMoveSelectionPolicy());
  *
- *       // add some demo figure to the canvas
- *       canvas.add(new draw2d.shape.basic.Circle({diameter: 50, x: 10,  y: 30}));
- *       canvas.add(new draw2d.shape.basic.Circle({diameter: 30, x: 90,  y: 50}));
- *       canvas.add(new draw2d.shape.basic.Circle({diameter: 60, x: 110, y: 30}));
+ *      // add some demo figure to the canvas
+ *      canvas.add(new draw2d.shape.basic.Circle({diameter: 50, x: 10,  y: 30}));
+ *      canvas.add(new draw2d.shape.basic.Circle({diameter: 30, x: 90,  y: 50}));
+ *      canvas.add(new draw2d.shape.basic.Circle({diameter: 60, x: 110, y: 30}));
  *
- *       canvas.add(new draw2d.shape.basic.Label({text:"move the circle to see the drag&drop feedback"}),5,5);
+ *      canvas.add(new draw2d.shape.basic.Label({text:"move the circle to see the drag&drop feedback"}),5,5);
  *
  * @author Andreas Herz
  * @extends draw2d.policy.canvas.SingleSelectionPolicy

@@ -28,6 +28,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -53,6 +55,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Array",
@@ -84,6 +88,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -109,6 +115,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Array",

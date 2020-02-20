@@ -9,37 +9,37 @@ import draw2d from '../../packages'
  *
  * @example
  *
- *     // Override the default connection type. This is used during drag&drop operations of ports.
- *     //
- *     let createConnection=function(){
- *        // return my special kind of connection
- *        let con = new draw2d.Connection();
- *        con.setRouter(new draw2d.layout.connection.VertexRouter());
- *        return con;
- *     };
+ *    // Override the default connection type. This is used during drag&drop operations of ports.
+ *    //
+ *    let createConnection=function(){
+ *       // return my special kind of connection
+ *       let con = new draw2d.Connection();
+ *       con.setRouter(new draw2d.layout.connection.VertexRouter());
+ *       return con;
+ *    };
  *
- *     // Install a special policy into the canvas to use my own implementation of connection
- *     // if we drag&drop a port
- *     //
- *     canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({
- *           createConnection: createConnection
- *     }));
+ *    // Install a special policy into the canvas to use my own implementation of connection
+ *    // if we drag&drop a port
+ *    //
+ *    canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({
+ *          createConnection: createConnection
+ *    }));
  *
- *     // create and add two nodes which contains Ports (In and OUT)
- *     //
- *     let start = new draw2d.shape.node.Start();
- *     let end   = new draw2d.shape.node.End();
+ *    // create and add two nodes which contains Ports (In and OUT)
+ *    //
+ *    let start = new draw2d.shape.node.Start();
+ *    let end   = new draw2d.shape.node.End();
 
- *     // ...add it to the canvas
- *     canvas.add( start, 50,50);
- *     canvas.add( end, 230,80);
+ *    // ...add it to the canvas
+ *    canvas.add( start, 50,50);
+ *    canvas.add( end, 230,80);
  *
- *     // first Connection
- *     //
- *     let c = createConnection();
- *     c.setSource(start.getOutputPort(0));
- *     c.setTarget(end.getInputPort(0));
- *     canvas.add(c);
+ *    // first Connection
+ *    //
+ *    let c = createConnection();
+ *    c.setSource(start.getOutputPort(0));
+ *    c.setTarget(end.getInputPort(0));
+ *    canvas.add(c);
  *
  *
  * @inheritable

@@ -239,7 +239,7 @@ draw2d.shape.basic.LineResizeHandle = draw2d.shape.basic.Circle.extend(
 
   /**
    *  Called after a drag and drop action.<br>
-   *         Sub classes can override this method to implement additional stuff. Don't forget to call the super implementation via <code>this._super();</code>
+   *        Sub classes can override this method to implement additional stuff. Don't forget to call the super implementation via <code>this._super();</code>
    *
    * @param {Number} x the x-coordinate of the mouse event
    * @param {Number} y the y-coordinate of the mouse event

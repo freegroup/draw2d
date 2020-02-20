@@ -11,7 +11,7 @@
     "description": "",
     "parameters": [],
     "examples": [
-      "// create a basic figure and add a Label/child via API call\n    //\n    let start = new draw2d.shape.node.Start();\n    start.add(new draw2d.shape.basic.Label({text:\"Left Label\"}), new draw2d.layout.locator.LeftLocator({\n     margin:10  // distance to the parent shape\n    }));\n    canvas.add( start, 100,50);"
+      "// create a basic figure and add a Label/child via API call\n   //\n   let start = new draw2d.shape.node.Start();\n   start.add(new draw2d.shape.basic.Label({text:\"Left Label\"}), new draw2d.layout.locator.LeftLocator({\n    margin:10  // distance to the parent shape\n   }));\n   canvas.add( start, 100,50);"
     ]
   },
   "functions": [
@@ -30,6 +30,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -55,6 +57,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     }
   ]

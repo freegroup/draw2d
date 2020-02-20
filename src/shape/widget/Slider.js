@@ -7,8 +7,8 @@ import {Tweenable} from 'shifty'
  *
  * @example
  *
- *     let slider = new draw2d.shape.widget.Slider({width:120, height:20});
- *     canvas.add( slider,100,60);
+ *    let slider = new draw2d.shape.widget.Slider({width:120, height:20});
+ *    canvas.add( slider,100,60);
  *
  * @extends draw2d.shape.widget.Widget
  */
@@ -87,17 +87,17 @@ draw2d.shape.widget.Slider = draw2d.shape.widget.Widget.extend(
    * 
    * Set the padding of the element
    *
-   *      // Alternatively you can use the attr method:
-   *      //
-   *      // set the padding for top,left,bottom,right in one call
-   *      figure.attr({
-   *        padding: 3
-   *      });
+   *     // Alternatively you can use the attr method:
+   *     //
+   *     // set the padding for top,left,bottom,right in one call
+   *     figure.attr({
+   *       padding: 3
+   *     });
    *
-   *      // update the padding left and top
-   *      figure.attr({
-   *        padding: {left:3, top:30}
-   *      });
+   *     // update the padding left and top
+   *     figure.attr({
+   *       padding: {left:3, top:30}
+   *     });
    *
    * @param {Number|Object} padding The new padding
    * @since 5.6.0

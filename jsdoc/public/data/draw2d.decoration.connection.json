@@ -35,7 +35,7 @@
           }
         ],
         "examples": [
-          "// create and add two nodes which contains Ports (In and OUT)\n    //\n    var start = new draw2d.shape.node.Start();\n    var end   = new draw2d.shape.node.End();\n    // ...add it to the canvas\n    canvas.add( start, 50,50);\n    canvas.add( end, 230,80);\n\n    // Create a Connection and connect the Start and End node\n    //\n    var c = new draw2d.Connection();\n\n    // toggle from ManhattenRouter to DirectRouter to show the rotation of decorations\n    c.setRouter(new draw2d.layout.connection.DirectRouter());\n\n    // Set the endpoint decorations for the connection\n    //\n    c.setSourceDecorator(new draw2d.decoration.connection.ArrowDecorator());\n    c.setTargetDecorator(new draw2d.decoration.connection.ArrowDecorator());\n    // Connect the endpoints with the start and end port\n    //\n    c.setSource(start.getOutputPort(0));\n    c.setTarget(end.getInputPort(0));\n\n    // and finally add the connection to the canvas\n    canvas.add(c);"
+          "// create and add two nodes which contains Ports (In and OUT)\n   //\n   var start = new draw2d.shape.node.Start();\n   var end   = new draw2d.shape.node.End();\n   // ...add it to the canvas\n   canvas.add( start, 50,50);\n   canvas.add( end, 230,80);\n\n   // Create a Connection and connect the Start and End node\n   //\n   var c = new draw2d.Connection();\n\n   // toggle from ManhattenRouter to DirectRouter to show the rotation of decorations\n   c.setRouter(new draw2d.layout.connection.DirectRouter());\n\n   // Set the endpoint decorations for the connection\n   //\n   c.setSourceDecorator(new draw2d.decoration.connection.ArrowDecorator());\n   c.setTargetDecorator(new draw2d.decoration.connection.ArrowDecorator());\n   // Connect the endpoints with the start and end port\n   //\n   c.setSource(start.getOutputPort(0));\n   c.setTarget(end.getInputPort(0));\n\n   // and finally add the connection to the canvas\n   canvas.add(c);"
         ]
       },
       "functions": [
@@ -43,7 +43,7 @@
           "name": "paint",
           "access": "",
           "virtual": false,
-          "description": "<p>Draw a filled arrow decoration.\nIt's not your work to rotate the arrow. The draw2d do this job for you.</p>\n<pre>\n                       ---+ [length , width/2]\n                -------   |\n[3,0]   --------          |\n    +---                  |==========================\n        --------          |\n                -------   |\n                       ---+ [lenght ,-width/2]\n\n</pre>",
+          "description": "<p>Draw a filled arrow decoration.\nIt's not your work to rotate the arrow. The draw2d do this job for you.</p>\n<pre>\n                      ---+ [length , width/2]\n               -------   |\n[3,0]   --------          |\n   +---                  |==========================\n       --------          |\n               -------   |\n                      ---+ [lenght ,-width/2]\n\n</pre>",
           "parameters": [
             {
               "name": "paper",
@@ -54,6 +54,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         }
       ]
@@ -88,7 +90,7 @@
           }
         ],
         "examples": [
-          "// create and add two nodes which contains Ports (In and OUT)\n    //\n    var start = new draw2d.shape.node.Start();\n    var end   = new draw2d.shape.node.End();\n    // ...add it to the canvas\n    canvas.add( start, 50,50);\n    canvas.add( end, 230,80);\n\n    // Create a Connection and connect the Start and End node\n    //\n    var c = new draw2d.Connection();\n\n    // toggle from ManhattenRouter to DirectRouter to show the rotation of decorations\n    c.setRouter(new draw2d.layout.connection.DirectRouter());\n\n    // Set the endpoint decorations for the connection\n    //\n    c.setSourceDecorator(new draw2d.decoration.connection.BarDecorator());\n    c.setTargetDecorator(new draw2d.decoration.connection.BarDecorator());\n    // Connect the endpoints with the start and end port\n    //\n    c.setSource(start.getOutputPort(0));\n    c.setTarget(end.getInputPort(0));\n\n    // and finally add the connection to the canvas\n    canvas.add(c);"
+          "// create and add two nodes which contains Ports (In and OUT)\n   //\n   var start = new draw2d.shape.node.Start();\n   var end   = new draw2d.shape.node.End();\n   // ...add it to the canvas\n   canvas.add( start, 50,50);\n   canvas.add( end, 230,80);\n\n   // Create a Connection and connect the Start and End node\n   //\n   var c = new draw2d.Connection();\n\n   // toggle from ManhattenRouter to DirectRouter to show the rotation of decorations\n   c.setRouter(new draw2d.layout.connection.DirectRouter());\n\n   // Set the endpoint decorations for the connection\n   //\n   c.setSourceDecorator(new draw2d.decoration.connection.BarDecorator());\n   c.setTargetDecorator(new draw2d.decoration.connection.BarDecorator());\n   // Connect the endpoints with the start and end port\n   //\n   c.setSource(start.getOutputPort(0));\n   c.setTarget(end.getInputPort(0));\n\n   // and finally add the connection to the canvas\n   canvas.add(c);"
         ]
       },
       "functions": [
@@ -107,6 +109,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         }
       ]
@@ -141,7 +145,7 @@
           }
         ],
         "examples": [
-          "// create and add two nodes which contains Ports (In and OUT)\n    //\n    var start = new draw2d.shape.node.Start();\n    var end   = new draw2d.shape.node.End();\n    // ...add it to the canvas\n    canvas.add( start, 50,50);\n    canvas.add( end, 230,80);\n\n    // Create a Connection and connect the Start and End node\n    //\n    var c = new draw2d.Connection();\n\n    // toggle from ManhattenRouter to DirectRouter to show the rotation of decorations\n    c.setRouter(new draw2d.layout.connection.DirectRouter());\n\n    // Set the endpoint decorations for the connection\n    //\n    c.setSourceDecorator(new draw2d.decoration.connection.CircleDecorator());\n    c.setTargetDecorator(new draw2d.decoration.connection.CircleDecorator());\n    // Connect the endpoints with the start and end port\n    //\n    c.setSource(start.getOutputPort(0));\n    c.setTarget(end.getInputPort(0));\n\n    // and finally add the connection to the canvas\n    canvas.add(c);"
+          "// create and add two nodes which contains Ports (In and OUT)\n   //\n   var start = new draw2d.shape.node.Start();\n   var end   = new draw2d.shape.node.End();\n   // ...add it to the canvas\n   canvas.add( start, 50,50);\n   canvas.add( end, 230,80);\n\n   // Create a Connection and connect the Start and End node\n   //\n   var c = new draw2d.Connection();\n\n   // toggle from ManhattenRouter to DirectRouter to show the rotation of decorations\n   c.setRouter(new draw2d.layout.connection.DirectRouter());\n\n   // Set the endpoint decorations for the connection\n   //\n   c.setSourceDecorator(new draw2d.decoration.connection.CircleDecorator());\n   c.setTargetDecorator(new draw2d.decoration.connection.CircleDecorator());\n   // Connect the endpoints with the start and end port\n   //\n   c.setSource(start.getOutputPort(0));\n   c.setTarget(end.getInputPort(0));\n\n   // and finally add the connection to the canvas\n   canvas.add(c);"
         ]
       },
       "functions": [
@@ -160,6 +164,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         }
       ]
@@ -183,7 +189,7 @@
           "name": "paint",
           "access": "",
           "virtual": false,
-          "description": "<p>Paint the decoration for a connector. The Connector starts always in\n[0,0] and ends in [x,0].\nIt is not necessary to consider any rotation of the connection. This will be done by the\nframework.</p>\n<pre>\n               | -Y\n               |\n               |\n --------------+-----------------------------&gt; +X\n               |\n               |\n               |\n               V +Y\n\n\n</pre>\n<p>See in ArrowConnectionDecorator for example implementation.</p>",
+          "description": "<p>Paint the decoration for a connector. The Connector starts always in\n[0,0] and ends in [x,0].\nIt is not necessary to consider any rotation of the connection. This will be done by the\nframework.</p>\n<pre>\n              | -Y\n              |\n              |\n --------------+-----------------------------&gt; +X\n              |\n              |\n              |\n              V +Y\n\n\n</pre>\n<p>See in ArrowConnectionDecorator for example implementation.</p>",
           "parameters": [
             {
               "name": "paper",
@@ -194,6 +200,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -214,6 +222,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -234,6 +244,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -259,6 +271,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         }
       ]
@@ -293,7 +307,7 @@
           }
         ],
         "examples": [
-          "// create and add two nodes which contains Ports (In and OUT)\n    //\n    var start = new draw2d.shape.node.Start();\n    var end   = new draw2d.shape.node.End();\n    // ...add it to the canvas\n    canvas.add( start, 50,50);\n    canvas.add( end, 230,80);\n\n    // Create a Connection and connect the Start and End node\n    //\n    var c = new draw2d.Connection();\n\n    // toggle from ManhattenRouter to DirectRouter to show the rotation of decorations\n    c.setRouter(new draw2d.layout.connection.DirectRouter());\n\n    // Set the endpoint decorations for the connection\n    //\n    c.setSourceDecorator(new draw2d.decoration.connection.DiamondDecorator());\n    c.setTargetDecorator(new draw2d.decoration.connection.DiamondDecorator());\n    // Connect the endpoints with the start and end port\n    //\n    c.setSource(start.getOutputPort(0));\n    c.setTarget(end.getInputPort(0));\n\n    // and finally add the connection to the canvas\n    canvas.add(c);"
+          "// create and add two nodes which contains Ports (In and OUT)\n   //\n   var start = new draw2d.shape.node.Start();\n   var end   = new draw2d.shape.node.End();\n   // ...add it to the canvas\n   canvas.add( start, 50,50);\n   canvas.add( end, 230,80);\n\n   // Create a Connection and connect the Start and End node\n   //\n   var c = new draw2d.Connection();\n\n   // toggle from ManhattenRouter to DirectRouter to show the rotation of decorations\n   c.setRouter(new draw2d.layout.connection.DirectRouter());\n\n   // Set the endpoint decorations for the connection\n   //\n   c.setSourceDecorator(new draw2d.decoration.connection.DiamondDecorator());\n   c.setTargetDecorator(new draw2d.decoration.connection.DiamondDecorator());\n   // Connect the endpoints with the start and end port\n   //\n   c.setSource(start.getOutputPort(0));\n   c.setTarget(end.getInputPort(0));\n\n   // and finally add the connection to the canvas\n   canvas.add(c);"
         ]
       },
       "functions": [
@@ -312,6 +326,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         }
       ]

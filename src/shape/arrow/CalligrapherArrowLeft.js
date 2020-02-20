@@ -8,9 +8,9 @@ import draw2d from '../../packages'
  *
  * @example
  *
- *     let figure =  new draw2d.shape.arrow.CalligrapherArrowLeft({x:10, y:10, color:"#3d3d3d"});
+ *    let figure =  new draw2d.shape.arrow.CalligrapherArrowLeft({x:10, y:10, color:"#3d3d3d"});
  *
- *     canvas.add(figure);
+ *    canvas.add(figure);
  *
  * @extends draw2d.SVGFigure
  */

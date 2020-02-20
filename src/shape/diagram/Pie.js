@@ -9,14 +9,14 @@ import extend from '../../util/extend'
  *
  * @example
  *
- *     let pie = new draw2d.shape.diagram.Pie({
- *        diameter:80,
- *        data:[30,60,122,4],
- *        x:100,
- *        y:60
- *     });
+ *    let pie = new draw2d.shape.diagram.Pie({
+ *       diameter:80,
+ *       data:[30,60,122,4],
+ *       x:100,
+ *       y:60
+ *    });
  *
- *     canvas.add( pie);
+ *    canvas.add( pie);
  *
  * @param {Object} [attr] the configuration of the shape
  * @extends draw2d.shape.diagram.Diagram

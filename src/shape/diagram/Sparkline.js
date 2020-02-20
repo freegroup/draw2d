@@ -8,20 +8,20 @@ import extend from '../../util/extend'
  *
  * @example
  *
- *     let testData = [];
- *     for(let i=0;i<100;i++) {
- *       testData.push(Math.floor(Math.random() * 100));
- *     }
+ *    let testData = [];
+ *    for(let i=0;i<100;i++) {
+ *      testData.push(Math.floor(Math.random() * 100));
+ *    }
  *
- *     let sparkline = new draw2d.shape.diagram.Sparkline({
- *     	data: testData,
- *      width:150,
- *      height:50,
- *      x:100,
- *      y:60
- *     });
+ *    let sparkline = new draw2d.shape.diagram.Sparkline({
+ *    	data: testData,
+ *     width:150,
+ *     height:50,
+ *     x:100,
+ *     y:60
+ *    });
  *
- *     canvas.add( sparkline);
+ *    canvas.add( sparkline);
  *
  * @param {Object} [attr] the configuration of the shape
  * @extends draw2d.shape.diagram.Diagram

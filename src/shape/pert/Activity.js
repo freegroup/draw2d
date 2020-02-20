@@ -13,9 +13,9 @@ import draw2d from '../../packages'
  *
  * @example
  *
- *     canvas.add( new draw2d.shape.pert.Start(),10,10);
- *     canvas.add( new draw2d.shape.pert.Activity(),80,130);
- *     canvas.add( new draw2d.shape.pert.Activity(),180,50);
+ *    canvas.add( new draw2d.shape.pert.Start(),10,10);
+ *    canvas.add( new draw2d.shape.pert.Activity(),80,130);
+ *    canvas.add( new draw2d.shape.pert.Activity(),180,50);
  *
  * [1] http://en.wikipedia.org/wiki/Program_Evaluation_and_Review_Technique
  *

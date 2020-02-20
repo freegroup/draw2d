@@ -13,7 +13,7 @@
     "description": "",
     "parameters": [],
     "examples": [
-      "canvas.installEditPolicy(new draw2d.policy.canvas.ShowDotEditPolicy());\n    var shape =  new draw2d.shape.basic.Text({text:\"This is a simple text in a canvas with dotted background.\"});\n\n    canvas.add(shape,40,10);"
+      "canvas.installEditPolicy(new draw2d.policy.canvas.ShowDotEditPolicy());\n   var shape =  new draw2d.shape.basic.Text({text:\"This is a simple text in a canvas with dotted background.\"});\n\n   canvas.add(shape,40,10);"
     ]
   },
   "functions": [
@@ -51,6 +51,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -68,6 +70,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -85,6 +89,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -134,6 +140,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "3.0.0",
       "examples": []
     },
     {
@@ -183,6 +191,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -232,6 +242,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "4.1.0",
       "examples": []
     },
     {
@@ -281,6 +293,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -346,6 +360,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -395,6 +411,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -447,6 +465,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "4.4.0",
       "examples": []
     },
     {
@@ -496,6 +516,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "5.8.0",
       "examples": [],
       "returns": {
         "type": "Boolean",
@@ -541,6 +563,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.geo.Point",
@@ -586,6 +610,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "String",
@@ -615,6 +641,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "5.3.2",
       "examples": []
     }
   ]

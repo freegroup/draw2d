@@ -7,14 +7,14 @@ import draw2d from '../../packages'
  * of an shaped. The height stays always the same or is recalculated by the figure itself.
  *
  * @example
- *       // add some demo figure to the canvas
- *       //
- *       let shape =new draw2d.shape.basic.Rectangle({width:50, height:100, x:10, y:30});
- *       canvas.add(shape);
+ *      // add some demo figure to the canvas
+ *      //
+ *      let shape =new draw2d.shape.basic.Rectangle({width:50, height:100, x:10, y:30});
+ *      canvas.add(shape);
  *
- *       // At this point you can only change the width of the shape
- *       //
- *       shape.installEditPolicy(new draw2d.policy.figure.WidthSelectionFeedbackPolicy());
+ *      // At this point you can only change the width of the shape
+ *      //
+ *      shape.installEditPolicy(new draw2d.policy.figure.WidthSelectionFeedbackPolicy());
  *
  * @author Andreas Herz
  * @extends draw2d.policy.figure.SelectionFeedbackPolicy

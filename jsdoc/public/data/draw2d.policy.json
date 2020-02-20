@@ -26,6 +26,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -51,6 +53,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "5.3.2",
           "examples": []
         },
         {
@@ -71,6 +75,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -91,6 +97,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         }
       ]

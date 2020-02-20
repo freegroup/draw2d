@@ -11,16 +11,16 @@ import extend from '../../util/extend'
  *
  * @example
  *
- *       // install the policy to the canvas
+ *      // install the policy to the canvas
  *
- *       // add some demo figure to the canvas
- *       canvas.add(new draw2d.shape.node.Start({x: 10,  y: 30}));
- *       canvas.add(new draw2d.shape.node.End({x: 90,  y: 90}));
- *       canvas.add(new draw2d.shape.node.Between({ x: 310, y: 30}));
+ *      // add some demo figure to the canvas
+ *      canvas.add(new draw2d.shape.node.Start({x: 10,  y: 30}));
+ *      canvas.add(new draw2d.shape.node.End({x: 90,  y: 90}));
+ *      canvas.add(new draw2d.shape.node.Between({ x: 310, y: 30}));
  *
- *       canvas.add(new draw2d.shape.basic.Label({text:"move the mouse and you see that ports are hidden if the mouse far from it"}),5,5);
+ *      canvas.add(new draw2d.shape.basic.Label({text:"move the mouse and you see that ports are hidden if the mouse far from it"}),5,5);
  *
- *       canvas.installEditPolicy(new draw2d.policy.canvas.CoronaDecorationPolicy());
+ *      canvas.installEditPolicy(new draw2d.policy.canvas.CoronaDecorationPolicy());
  *
  * @author Andreas Herz
  * @extends draw2d.policy.canvas.DecorationPolicy

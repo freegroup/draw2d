@@ -18,7 +18,7 @@
         "description": "",
         "parameters": [],
         "examples": [
-          "// create a basic figure and add a Label/child via API call\n    //\n    var circle = new draw2d.shape.basic.Circle({\n        x:100,\n        y:50,\n        diameter:100,\n        stroke: 3,\n        color:\"#A63343\",\n        bgColor:\"#E65159\"\n    });\n\n    circle.add(new draw2d.shape.basic.Label({text:\"Bottom Label\"}), new draw2d.layout.locator.BottomLocator());\n    canvas.add( circle);"
+          "// create a basic figure and add a Label/child via API call\n   //\n   var circle = new draw2d.shape.basic.Circle({\n       x:100,\n       y:50,\n       diameter:100,\n       stroke: 3,\n       color:\"#A63343\",\n       bgColor:\"#E65159\"\n   });\n\n   circle.add(new draw2d.shape.basic.Label({text:\"Bottom Label\"}), new draw2d.layout.locator.BottomLocator());\n   canvas.add( circle);"
         ]
       },
       "functions": [
@@ -28,6 +28,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -53,6 +55,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         }
       ]
@@ -70,7 +74,7 @@
         "description": "",
         "parameters": [],
         "examples": [
-          "// create a basic figure and add a Label/child via API call\n    //\n    let circle = new draw2d.shape.basic.Circle({diameter:120});\n    circle.setStroke(3);\n    circle.setColor(\"#A63343\");\n    circle.setBackgroundColor(\"#E65159\");\n    circle.add(new draw2d.shape.basic.Label({text:\"Center Label\"}), new draw2d.layout.locator.CenterLocator());\n    canvas.add( circle, 100,50);"
+          "// create a basic figure and add a Label/child via API call\n   //\n   let circle = new draw2d.shape.basic.Circle({diameter:120});\n   circle.setStroke(3);\n   circle.setColor(\"#A63343\");\n   circle.setBackgroundColor(\"#E65159\");\n   circle.add(new draw2d.shape.basic.Label({text:\"Center Label\"}), new draw2d.layout.locator.CenterLocator());\n   canvas.add( circle, 100,50);"
         ]
       },
       "functions": [
@@ -80,6 +84,8 @@
           "virtual": false,
           "description": "<p>Constructs a locator with associated parent.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -105,6 +111,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         }
       ]
@@ -130,6 +138,8 @@
           "virtual": false,
           "description": "<p>Default constructor for a Locator which can layout a figure in context of a\n{@link draw2d.Connector}</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         }
       ]
@@ -155,6 +165,8 @@
           "virtual": false,
           "description": "<p>Constructs a locator with associated parent.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         }
       ]
@@ -180,6 +192,8 @@
           "virtual": false,
           "description": "<p>Default constructor for a Locator which can layout a port in context of a\n{@link draw2d.shape.node.Node}</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -205,6 +219,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         }
       ]
@@ -222,7 +238,7 @@
         "description": "",
         "parameters": [],
         "examples": [
-          "// create a basic figure and add a Label/child via API call\n    //\n    let start = new draw2d.shape.node.Start();\n    start.add(new draw2d.shape.basic.Label({text:\"Left Label\"}), new draw2d.layout.locator.LeftLocator({\n     margin:10  // distance to the parent shape\n    }));\n    canvas.add( start, 100,50);"
+          "// create a basic figure and add a Label/child via API call\n   //\n   let start = new draw2d.shape.node.Start();\n   start.add(new draw2d.shape.basic.Label({text:\"Left Label\"}), new draw2d.layout.locator.LeftLocator({\n    margin:10  // distance to the parent shape\n   }));\n   canvas.add( start, 100,50);"
         ]
       },
       "functions": [
@@ -241,6 +257,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -266,6 +284,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         }
       ]
@@ -291,6 +311,8 @@
           "virtual": false,
           "description": "<p>Initial Constructor</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -316,6 +338,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -341,6 +365,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -366,6 +392,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -374,6 +402,8 @@
           "virtual": false,
           "description": "<p>Return a clone of the locator object</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         }
       ]
@@ -382,7 +412,9 @@
       "name": "ManhattanMidpointLocator",
       "namespace": "draw2d.layout.locator",
       "description": "<p>draw2d.layout.locator.ManhattanMidpointLocator</p>\n<p>A ManhattanMidpointLocator that is used to place figures at the midpoint of a Manhatten routed\nconnection. The midpoint is always in the center of an edge.</p>",
-      "extends": [],
+      "extends": [
+        "draw2d.layout.locator.ConnectionLocator"
+      ],
       "access": "",
       "virtual": false,
       "fires": "",
@@ -391,7 +423,7 @@
         "description": "",
         "parameters": [],
         "examples": [
-          "//create and add two Node which contains Ports (In and OUT)\n    let start = new draw2d.shape.node.Start({x:50,y:50});\n    let end   = new draw2d.shape.node.End({x:230,y:100});\n\n    canvas.add( start);\n    canvas.add( end);\n\n    // Create a Connection and connect he Start and End node\n    //\n    let c = new draw2d.Connection();\n    c.setSource(start.getOutputPort(0));\n    c.setTarget(end.getInputPort(0));\n    canvas.add(c);\n\n    // create a label which should attach to the connection\n    //\n    let label = new draw2d.shape.basic.Label({text:\"I'm a Label\"});\n    label.setColor(\"#0d0d0d\");\n    label.setFontColor(\"#0d0d0d\");\n    label.setBackgroundColor(\"#f0f0f0\");\n\n    // add the decoration to the connection with a ManhattanMidpointLocator.\n    //\n    c.add(label, new draw2d.layout.locator.ManhattanMidpointLocator());"
+          "// create and add two Node which contains Ports (In and OUT)\n   let start = new draw2d.shape.node.Start({x:50,y:50});\n   let end   = new draw2d.shape.node.End({x:230,y:100});\n\n   canvas.add( start);\n   canvas.add( end);\n\n   // Create a Connection and connect the Start and End node\n   //\n   let c = new draw2d.Connection();\n   c.setSource(start.getOutputPort(0));\n   c.setTarget(end.getInputPort(0));\n   canvas.add(c);\n\n   // create a label which should attach to the connection\n   //\n   let label = new draw2d.shape.basic.Label({text:\"I'm a Label\"});\n   label.setColor(\"#0d0d0d\");\n   label.setFontColor(\"#0d0d0d\");\n   label.setBackgroundColor(\"#f0f0f0\");\n\n   // add the decoration to the connection with a ManhattanMidpointLocator.\n   //\n   c.add(label, new draw2d.layout.locator.ManhattanMidpointLocator());"
         ]
       },
       "functions": [
@@ -401,6 +433,8 @@
           "virtual": false,
           "description": "<p>Constructs a ManhattanMidpointLocator with associated Connection c.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -426,6 +460,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         }
       ]
@@ -451,6 +487,8 @@
           "virtual": false,
           "description": "<p>Default constructor for a Locator which can layout a port in context of a\n{@link draw2d.shape.node.Node}</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -476,6 +514,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         }
       ]
@@ -510,6 +550,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -535,6 +577,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         }
       ]
@@ -560,6 +604,8 @@
           "virtual": false,
           "description": "<p>Constructs a ManhattanMidpointLocator with associated Connection c.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -585,6 +631,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         }
       ]
@@ -610,6 +658,8 @@
           "virtual": false,
           "description": "<p>Default constructor for a Locator which can layout a port in context of a</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         }
       ]
@@ -627,7 +677,7 @@
         "description": "",
         "parameters": [],
         "examples": [
-          "// create a basic figure and add a Label/child via API call\n    //\n    var end = new draw2d.shape.node.End();\n    end.add(new draw2d.shape.basic.Label({text:\"Right Label\"}), new draw2d.layout.locator.RightLocator({\n         margin: 10 // distance to the parent shape\n    }));\n    canvas.add( end, 50,50);"
+          "// create a basic figure and add a Label/child via API call\n   //\n   var end = new draw2d.shape.node.End();\n   end.add(new draw2d.shape.basic.Label({text:\"Right Label\"}), new draw2d.layout.locator.RightLocator({\n        margin: 10 // distance to the parent shape\n   }));\n   canvas.add( end, 50,50);"
         ]
       },
       "functions": [
@@ -637,6 +687,8 @@
           "virtual": false,
           "description": "<p>Constructs a locator with associated parent.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -662,6 +714,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         }
       ]
@@ -687,6 +741,8 @@
           "virtual": false,
           "description": "<p>Constructs a locator with associated parent.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -712,6 +768,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         }
       ]
@@ -729,7 +787,7 @@
         "description": "",
         "parameters": [],
         "examples": [
-          "// create a basic figure and add a Label/child via API call\n    //\n    let circle = new draw2d.shape.basic.Circle({\n        x:100,\n        y:70,\n        diameter:80,\n        stroke: 3,\n        color:\"#A63343\",\n        bgColor:\"#E65159\"\n    });\n\n    circle.add(new draw2d.shape.basic.Label({text:\"Top Label\"}), new draw2d.layout.locator.TopLocator());\n    canvas.add( circle);"
+          "// create a basic figure and add a Label/child via API call\n   //\n   let circle = new draw2d.shape.basic.Circle({\n       x:100,\n       y:70,\n       diameter:80,\n       stroke: 3,\n       color:\"#A63343\",\n       bgColor:\"#E65159\"\n   });\n\n   circle.add(new draw2d.shape.basic.Label({text:\"Top Label\"}), new draw2d.layout.locator.TopLocator());\n   canvas.add( circle);"
         ]
       },
       "functions": [
@@ -739,6 +797,8 @@
           "virtual": false,
           "description": "<p>Constructs a ManhattanMidpointLocator with associated Connection c.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -764,6 +824,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         }
       ]
@@ -781,7 +843,7 @@
         "description": "",
         "parameters": [],
         "examples": [
-          "var figure =  new draw2d.shape.basic.Rectangle({x:130,y:30,width:100,height:60});\n    figure.createPort(\"input\", new draw2d.layout.locator.XYAbsPortLocator(0,20));\n\n    canvas.add(figure);"
+          "var figure =  new draw2d.shape.basic.Rectangle({x:130,y:30,width:100,height:60});\n   figure.createPort(\"input\", new draw2d.layout.locator.XYAbsPortLocator(0,20));\n\n   canvas.add(figure);"
         ]
       },
       "functions": [
@@ -808,6 +870,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -833,6 +897,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         }
       ]
@@ -850,7 +916,7 @@
         "description": "",
         "parameters": [],
         "examples": [
-          "let figure =  new draw2d.shape.basic.Rectangle({x:130,y:30,width:100,height:60});\n    figure.createPort(\"input\", new draw2d.layout.locator.XYRelPortLocator(0,20));\n\n    canvas.add(figure);"
+          "let figure =  new draw2d.shape.basic.Rectangle({x:130,y:30,width:100,height:60});\n   figure.createPort(\"input\", new draw2d.layout.locator.XYRelPortLocator(0,20));\n\n   canvas.add(figure);"
         ]
       },
       "functions": [
@@ -877,6 +943,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -902,6 +970,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         }
       ]

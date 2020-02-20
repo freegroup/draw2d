@@ -8,19 +8,19 @@ import draw2d from '../packages'
  *
  * @example
  *
- *     var label =  new draw2d.shape.basic.Label({text:"Double Click on me"});
+ *    var label =  new draw2d.shape.basic.Label({text:"Double Click on me"});
  *
- *     label.installEditor(new draw2d.ui.LabelInplaceEditor({
- *        // called after the value has been set to the LabelFigure
- *        onCommit: $.proxy(function(value){
- *            alert("new value set to:"+value);
- *        },this),
- *        // called if the user abort the operation
- *        onCancel: function(){
- *        }
- *     }));
+ *    label.installEditor(new draw2d.ui.LabelInplaceEditor({
+ *       // called after the value has been set to the LabelFigure
+ *       onCommit: $.proxy(function(value){
+ *           alert("new value set to:"+value);
+ *       },this),
+ *       // called if the user abort the operation
+ *       onCancel: function(){
+ *       }
+ *    }));
  *
- *     canvas.add(label,50,10);
+ *    canvas.add(label,50,10);
  *
  * @author Andreas Herz
  * @extends draw2d.ui.LabelEditor

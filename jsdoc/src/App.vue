@@ -20,22 +20,25 @@
           width="100"
         />
       </div>
-
       <v-spacer></v-spacer>
-
       <v-btn  href="https://github.com/vuetifyjs/vuetify/releases/latest" target="_blank" text >
         <span class="mr-2">Latest lll Release</span>
         <v-icon>open-in-new</v-icon>
       </v-btn>
     </v-app-bar>
+
     <Navigation v-model="drawer"  />
 
     <v-content>
-      <router-view/>
+     <v-container fluid>
+       <router-view></router-view>
+     </v-container>
     </v-content>
+
     <v-footer app>
       <span>&copy; 2019</span>
     </v-footer>
+
   </v-app>
 </template>
 

@@ -9,10 +9,10 @@ import {Tweenable} from "shifty"
  *
  * @example
  *
- *     canvas.installEditPolicy(new draw2d.policy.canvas.WheelZoomPolicy());
- *     let shape =  new draw2d.shape.basic.Text({text:"Use the mouse wheel + SHIFT to zoom"});
+ *    canvas.installEditPolicy(new draw2d.policy.canvas.WheelZoomPolicy());
+ *    let shape =  new draw2d.shape.basic.Text({text:"Use the mouse wheel + SHIFT to zoom"});
  *
- *     canvas.add(shape,40,10);
+ *    canvas.add(shape,40,10);
  *
  *
  *

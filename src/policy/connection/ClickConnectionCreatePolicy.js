@@ -24,19 +24,19 @@
  *
  * @example
  *
- *     // Override the default connection creation.
- *     //
- *     canvas.installEditPolicy( new draw2d.policy.connection.ClickConnectionCreatePolicy());
+ *    // Override the default connection creation.
+ *    //
+ *    canvas.installEditPolicy( new draw2d.policy.connection.ClickConnectionCreatePolicy());
  *
- *     // create and add two Node which contains Ports (In and OUT)
- *     //
- *     var start = new draw2d.shape.node.Start({x:50, y:50});
- *     var endNode   = new draw2d.shape.node.End({x:200, y:70});
+ *    // create and add two Node which contains Ports (In and OUT)
+ *    //
+ *    var start = new draw2d.shape.node.Start({x:50, y:50});
+ *    var endNode   = new draw2d.shape.node.End({x:200, y:70});
  *
- *     // add the two nodes to the canvas
- *     //
- *     canvas.add( start);
- *     canvas.add( endNode);
+ *    // add the two nodes to the canvas
+ *    //
+ *    canvas.add( start);
+ *    canvas.add( endNode);
  *
  *
  * @author Andreas Herz

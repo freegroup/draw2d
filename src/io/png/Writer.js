@@ -5,13 +5,13 @@ const canvg = require('canvg-browser')
  * @class
  * Convert the canvas document into a PNG Image.
  *
- *     // example how to create a PNG image and set an
- *     // image src attribute.
- *     //
- *     var writer = new draw2d.io.png.Writer();
- *     writer.marshal(canvas, function(png){
- *         $("#preview").attr("src",png);
- *     });
+ *    // example how to create a PNG image and set an
+ *    // image src attribute.
+ *    //
+ *    var writer = new draw2d.io.png.Writer();
+ *    writer.marshal(canvas, function(png){
+ *        $("#preview").attr("src",png);
+ *    });
  *
  * @author Andreas Herz
  * @extends draw2d.io.Writer

@@ -148,9 +148,9 @@ draw2d.util.ArrayList = Class.extend(
    * Return ONE element which matches by the given function or <b>null</b>
    * if no element is found.
    *
-   *     var r1= figures.find(function(figure){
-   *                   return figure.id===123456
-   *             });
+   *    var r1= figures.find(function(figure){
+   *                  return figure.id===123456
+   *            });
    *
    * @param {Function} func the filter function
    * @param {Object} func.value value of the element in iteration.
@@ -170,9 +170,9 @@ draw2d.util.ArrayList = Class.extend(
    * Translate all items in the array into new items. The array list is modified after this call.
    * You must clone the array before if you want avoid this.
    *
-   *     var labels = this.commands.clone().map(function(e){
-   *          return e.getLabel();
-   *     });
+   *    var labels = this.commands.clone().map(function(e){
+   *         return e.getLabel();
+   *    });
    *
    * @param {Function} func The function to process each item against. The first argument to the function is the value; the second argument is the index or key of the array or object property.
    * @param {Object} func.value value of the element in iteration.

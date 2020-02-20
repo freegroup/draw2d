@@ -19,6 +19,8 @@
       "virtual": false,
       "description": "<p>Clears the array</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "6.1.0",
       "examples": []
     },
     {
@@ -27,6 +29,8 @@
       "virtual": false,
       "description": "<p>Reverses the order of the elements in the ArrayList. The array will be modified!</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -35,6 +39,8 @@
       "virtual": false,
       "description": "<p>The size/count of the stored objects.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -47,6 +53,8 @@
       "virtual": false,
       "description": "<p>checks to see if the Vector has any elements.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Boolean",
@@ -59,6 +67,8 @@
       "virtual": false,
       "description": "<p>return the last element.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Object",
@@ -71,6 +81,8 @@
       "virtual": false,
       "description": "<p>Return a reference to the internal javascript native array.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Array",
@@ -83,6 +95,8 @@
       "virtual": false,
       "description": "<p>returns the first element</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Object",
@@ -104,6 +118,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Object",
@@ -125,6 +141,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -150,13 +168,15 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "2.0.0",
       "examples": []
     },
     {
       "name": "find",
       "access": "",
       "virtual": false,
-      "description": "<p>Return ONE element which matches by the given function or <b>null</b>\nif no element is found.</p>\n<pre><code>var r1= figures.find(function(figure){\n              return figure.id===123456\n        });</code></pre>",
+      "description": "<p>Return ONE element which matches by the given function or <b>null</b>\nif no element is found.</p>\n<p>var r1= figures.find(function(figure){\nreturn figure.id===123456\n});</p>",
       "parameters": [
         {
           "name": "func",
@@ -183,13 +203,15 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "2.0.0",
       "examples": []
     },
     {
       "name": "map",
       "access": "",
       "virtual": false,
-      "description": "<p>Translate all items in the array into new items. The array list is modified after this call.\nYou must clone the array before if you want avoid this.</p>\n<pre><code>var labels = this.commands.clone().map(function(e){\n     return e.getLabel();\n});</code></pre>",
+      "description": "<p>Translate all items in the array into new items. The array list is modified after this call.\nYou must clone the array before if you want avoid this.</p>\n<p>var labels = this.commands.clone().map(function(e){\nreturn e.getLabel();\n});</p>",
       "parameters": [
         {
           "name": "func",
@@ -216,6 +238,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "4.0.0",
       "examples": []
     },
     {
@@ -224,6 +248,8 @@
       "virtual": false,
       "description": "<p>Removes any duplicate elements from the array. The array is modified after this call. You\nmust clone the array before if you want avoid this</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "4.0.0",
       "examples": []
     },
     {
@@ -249,6 +275,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -257,6 +285,8 @@
       "virtual": false,
       "description": "<p>You can use the Array list as Stack as well. this is the pop method to remove one element\nat the end of the stack.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -274,6 +304,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -291,6 +323,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Object",
@@ -320,6 +354,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -337,6 +373,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Object",
@@ -358,6 +396,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -375,6 +415,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -396,6 +438,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Boolean",
@@ -420,6 +464,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.util.ArrayList",
@@ -441,6 +487,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.util.ArrayList",
@@ -486,6 +534,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -503,6 +553,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     }
   ]

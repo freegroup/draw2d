@@ -28,6 +28,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -36,6 +38,8 @@
       "virtual": false,
       "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "String",
@@ -48,6 +52,8 @@
       "virtual": false,
       "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should\nreturn false. The execution of this Command doesn't modify the model.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Boolean",
@@ -60,6 +66,8 @@
       "virtual": false,
       "description": "<p>Execute the command the first time.\nSup-classes must implement this method.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -68,6 +76,8 @@
       "virtual": false,
       "description": "<p>Will be called if the user cancel the operation.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -76,6 +86,8 @@
       "virtual": false,
       "description": "<p>Undo the command.\nSup-classes must implement this method.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -84,6 +96,8 @@
       "virtual": false,
       "description": "<p>Redo the command after the user has undo this command.\nSup-classes must implement this method.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     }
   ]

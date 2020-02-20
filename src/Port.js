@@ -462,10 +462,10 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
    * 
    * Callback method if a new connection has created with this port
    *
-   *      // Alternatively you register for this event with:
-   *      port.on("connect", function(emitterPort, connection){
-   *          alert("port connected");
-   *      });
+   *     // Alternatively you register for this event with:
+   *     port.on("connect", function(emitterPort, connection){
+   *         alert("port connected");
+   *     });
    *
    * @param {draw2d.Connection} connection The connection which has been created
    * @since 2.5.1
@@ -479,10 +479,10 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
    * 
    * Callback method if a new connection has created with this port
    *
-   *      // Alternatively you register for this event with:
-   *      port.on("connect", function(emitterPort, connection){
-   *          alert("port disconnected");
-   *      });
+   *     // Alternatively you register for this event with:
+   *     port.on("connect", function(emitterPort, connection){
+   *         alert("port disconnected");
+   *     });
    *
    * @param {draw2d.Connection} connection The connection which has been deleted
    * @since 2.5.1

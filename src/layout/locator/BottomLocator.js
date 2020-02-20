@@ -10,19 +10,19 @@ import draw2d from '../../packages'
  *
  * @example
  *
- *     // create a basic figure and add a Label/child via API call
- *     //
- *     var circle = new draw2d.shape.basic.Circle({
- *         x:100,
- *         y:50,
- *         diameter:100,
- *         stroke: 3,
- *         color:"#A63343",
- *         bgColor:"#E65159"
- *     });
+ *    // create a basic figure and add a Label/child via API call
+ *    //
+ *    var circle = new draw2d.shape.basic.Circle({
+ *        x:100,
+ *        y:50,
+ *        diameter:100,
+ *        stroke: 3,
+ *        color:"#A63343",
+ *        bgColor:"#E65159"
+ *    });
  *
- *     circle.add(new draw2d.shape.basic.Label({text:"Bottom Label"}), new draw2d.layout.locator.BottomLocator());
- *     canvas.add( circle);
+ *    circle.add(new draw2d.shape.basic.Label({text:"Bottom Label"}), new draw2d.layout.locator.BottomLocator());
+ *    canvas.add( circle);
  *
  *
  * @author Andreas Herz

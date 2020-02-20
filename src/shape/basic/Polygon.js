@@ -7,15 +7,15 @@
  *
  * @example
  *
- *     let p1 =  new draw2d.shape.basic.Polygon({width:100, height:100});
- *     let p2 =  new draw2d.shape.basic.Polygon({width:100, height:60});
+ *    let p1 =  new draw2d.shape.basic.Polygon({width:100, height:100});
+ *    let p2 =  new draw2d.shape.basic.Polygon({width:100, height:60});
  *
- *     canvas.add(p1,10,10);
- *     canvas.add(p2,100,10);
+ *    canvas.add(p1,10,10);
+ *    canvas.add(p2,100,10);
  *
- *     p2.attr({color:"#f0f000", alpha:0.7});
+ *    p2.attr({color:"#f0f000", alpha:0.7});
  *
- *     canvas.setCurrentSelection(p2);
+ *    canvas.setCurrentSelection(p2);
  *
  * @author Andreas Herz
  * @extends draw2d.VectorFigure

@@ -13,7 +13,7 @@
     "description": "",
     "parameters": [],
     "examples": [
-      "// add some demo figure to the canvas\n      var circle =new draw2d.shape.basic.Circle({diameter:50, x:10, y:30});\n      canvas.add(circle);\n\n      // add the edit policy to the shape. At this point you can move the shape only\n      // horizontal\n      circle.installEditPolicy(new draw2d.policy.figure.HorizontalEditPolicy());"
+      "// add some demo figure to the canvas\n     var circle =new draw2d.shape.basic.Circle({diameter:50, x:10, y:30});\n     canvas.add(circle);\n\n     // add the edit policy to the shape. At this point you can move the shape only\n     // horizontal\n     circle.installEditPolicy(new draw2d.policy.figure.HorizontalEditPolicy());"
     ]
   },
   "functions": [
@@ -23,6 +23,8 @@
       "virtual": false,
       "description": "<p>Creates a new constraint object</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -59,6 +61,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.geo.Point",
@@ -83,6 +87,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -103,6 +109,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -160,6 +168,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Boolean",
@@ -189,6 +199,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -246,6 +258,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -279,6 +293,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.geo.Rectangle",
@@ -308,6 +324,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -360,6 +378,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "4.4.0",
       "examples": []
     },
     {
@@ -385,6 +405,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "5.3.2",
       "examples": []
     }
   ]

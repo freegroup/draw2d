@@ -28,6 +28,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -36,6 +38,8 @@
       "virtual": false,
       "description": "",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     }
   ]

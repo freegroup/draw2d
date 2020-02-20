@@ -8,10 +8,10 @@ import draw2d from '../../packages'
  *
  *
  * @example
- *     let end   = new draw2d.shape.state.End();
+ *    let end   = new draw2d.shape.state.End();
 
- *     // ...add it to the canvas
- *     canvas.add( end, 230,80);
+ *    // ...add it to the canvas
+ *    canvas.add( end, 230,80);
  *
  * @extends draw2d.shape.basic.Circle
  */

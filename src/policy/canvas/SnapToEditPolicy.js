@@ -58,10 +58,10 @@ draw2d.policy.canvas.SnapToEditPolicy = draw2d.policy.canvas.CanvasPolicy.extend
    *
    * Set the color of the snap line.
    *
-   *      // Alternatively you can use the attr method:
-   *      policy.attr({
-   *        lineColor: color
-   *      });
+   *     // Alternatively you can use the attr method:
+   *     policy.attr({
+   *       lineColor: color
+   *     });
    *
    * @param {draw2d.util.Color|String} color The new color of the line.
    **/

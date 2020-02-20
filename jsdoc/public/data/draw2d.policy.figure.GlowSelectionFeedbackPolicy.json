@@ -13,7 +13,7 @@
     "description": "",
     "parameters": [],
     "examples": [
-      "circle =new draw2d.shape.basic.Circle();\n      circle.installEditPolicy(new draw2d.policy.figure.GlowSelectionFeedbackPolicy());\n      canvas.add(circle,90,50);\n\n      canvas.add(new draw2d.shape.basic.Label(\"Click on the circle to see the selection feedback\"),20,10);"
+      "circle =new draw2d.shape.basic.Circle();\n     circle.installEditPolicy(new draw2d.policy.figure.GlowSelectionFeedbackPolicy());\n     canvas.add(circle,90,50);\n\n     canvas.add(new draw2d.shape.basic.Label(\"Click on the circle to see the selection feedback\"),20,10);"
     ]
   },
   "functions": [
@@ -23,6 +23,8 @@
       "virtual": false,
       "description": "<p>Creates a new Router object</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -40,6 +42,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -57,6 +61,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -74,6 +80,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -91,6 +99,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -148,6 +158,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Boolean",
@@ -177,6 +189,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -234,6 +248,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -270,6 +286,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.geo.Point",
@@ -307,6 +325,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.geo.Rectangle",
@@ -336,6 +356,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -388,6 +410,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "4.4.0",
       "examples": []
     },
     {
@@ -413,6 +437,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "5.3.2",
       "examples": []
     }
   ]

@@ -88,17 +88,17 @@ draw2d.shape.layout.Layout = draw2d.shape.basic.Rectangle.extend(
    * 
    * Set the padding of the element
    *
-   *      // Alternatively you can use the attr method:
-   *      //
-   *      // set the padding for top,left,bottom,right in one call
-   *      figure.attr({
-   *        padding: 3
-   *      });
+   *     // Alternatively you can use the attr method:
+   *     //
+   *     // set the padding for top,left,bottom,right in one call
+   *     figure.attr({
+   *       padding: 3
+   *     });
    *
-   *      // update the padding left and top
-   *      figure.attr({
-   *        padding: {left:3, top:30}
-   *      });
+   *     // update the padding left and top
+   *     figure.attr({
+   *       padding: {left:3, top:30}
+   *     });
    *
    * @param {Number|Object} padding The new padding
    * @since 4.3.3

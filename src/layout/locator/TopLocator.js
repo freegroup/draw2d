@@ -10,19 +10,19 @@ import draw2d from '../../packages'
  *
  * @example
  *
- *     // create a basic figure and add a Label/child via API call
- *     //
- *     let circle = new draw2d.shape.basic.Circle({
- *         x:100,
- *         y:70,
- *         diameter:80,
- *         stroke: 3,
- *         color:"#A63343",
- *         bgColor:"#E65159"
- *     });
+ *    // create a basic figure and add a Label/child via API call
+ *    //
+ *    let circle = new draw2d.shape.basic.Circle({
+ *        x:100,
+ *        y:70,
+ *        diameter:80,
+ *        stroke: 3,
+ *        color:"#A63343",
+ *        bgColor:"#E65159"
+ *    });
  *
- *     circle.add(new draw2d.shape.basic.Label({text:"Top Label"}), new draw2d.layout.locator.TopLocator());
- *     canvas.add( circle);
+ *    circle.add(new draw2d.shape.basic.Label({text:"Top Label"}), new draw2d.layout.locator.TopLocator());
+ *    canvas.add( circle);
  *
  * @author Andreas Herz
  * @extend draw2d.layout.locator.Locator

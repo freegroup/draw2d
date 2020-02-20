@@ -10,10 +10,10 @@ import draw2d from '../../packages'
  *
  * @example
  *
- *     canvas.installEditPolicy(new draw2d.policy.canvas.ShowDimetricGridEditPolicy());
- *     let shape =  new draw2d.shape.basic.Text({text:"This is a simple text in a canvas with grid background."});
+ *    canvas.installEditPolicy(new draw2d.policy.canvas.ShowDimetricGridEditPolicy());
+ *    let shape =  new draw2d.shape.basic.Text({text:"This is a simple text in a canvas with grid background."});
  *
- *     canvas.add(shape,40,10);
+ *    canvas.add(shape,40,10);
  *
  * @author Andreas Herz
  *

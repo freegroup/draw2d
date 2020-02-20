@@ -19,6 +19,8 @@
       "virtual": false,
       "description": "<p>Creates a new figure element which are not assigned to any canvas.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -27,6 +29,8 @@
       "virtual": false,
       "description": "<p>Reset the current selection</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -35,6 +39,8 @@
       "virtual": false,
       "description": "<p>Return the primary selection. This can only one figure at once.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.Figure",
@@ -56,6 +62,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -73,6 +81,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -90,6 +100,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -115,6 +127,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "2.2.0",
       "examples": [],
       "returns": {
         "type": "Boolean",
@@ -127,6 +141,8 @@
       "virtual": false,
       "description": "<p>Return the size of the selection</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "4.8.0",
       "examples": []
     },
     {
@@ -144,6 +160,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.util.ArrayList",
@@ -189,6 +207,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     }
   ]

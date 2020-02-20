@@ -1,7 +1,7 @@
 
 
 /**
- * @class draw2d.HeadlessCanvas
+ * @class
  *
  * @classdesc Required for Node.js draw2d model read/write operations.
  *
@@ -95,18 +95,18 @@ draw2d.HeadlessCanvas = Class.extend(
      *
      * Example:
      *
-     *      canvas.on("figure:add", function(emitter, event){
-     *         alert("figure added:");
-     *      });
+     *     canvas.on("figure:add", function(emitter, event){
+     *        alert("figure added:");
+     *     });
      *
-     *      // or more general if you want catch all figure related events
-     *      //
-     *      canvas.on("figure", function(emitter, event){
-     *         // use event.figure.getCanvas()===null to determine if the
-     *         // figure part of the canvas
+     *     // or more general if you want catch all figure related events
+     *     //
+     *     canvas.on("figure", function(emitter, event){
+     *        // use event.figure.getCanvas()===null to determine if the
+     *        // figure part of the canvas
      *
-     *         alert("figure added or removed:");
-     *      });
+     *        alert("figure added or removed:");
+     *     });
      *
      * @param {draw2d.Figure} figure The figure to add.
      * @param {Number/draw2d.geo.Point} [x] The new x coordinate of the figure or the x/y coordinate if it is an draw2d.geo.Point
@@ -276,18 +276,18 @@ draw2d.HeadlessCanvas = Class.extend(
      *
      * Example:
      *
-     *      canvas.on("clear", function(emitter, event){
-     *         alert("canvas.clear() called.");
-     *      });
+     *     canvas.on("clear", function(emitter, event){
+     *        alert("canvas.clear() called.");
+     *     });
      *
-     *      canvas.on("select", function(emitter,event){
-     *          if(event.figure!==null){
-     *              alert("figure selected");
-     *          }
-     *          else{
-     *              alert("selection cleared");
-     *          }
-     *      });
+     *     canvas.on("select", function(emitter,event){
+     *         if(event.figure!==null){
+     *             alert("figure selected");
+     *         }
+     *         else{
+     *             alert("selection cleared");
+     *         }
+     *     });
      *
      * @param {String}   event One or more space-separated event types
      * @param {Function} callback A function to execute when the event is triggered.

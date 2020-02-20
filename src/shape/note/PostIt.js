@@ -9,13 +9,13 @@ import draw2d from '../../packages'
  *
  * @example
  *
- *     let shape =  new draw2d.shape.note.PostIt({
- *        text:"This is a simple sticky note",
- *        color:"#000000",
- *        padding:20
- *     });
+ *    let shape =  new draw2d.shape.note.PostIt({
+ *       text:"This is a simple sticky note",
+ *       color:"#000000",
+ *       padding:20
+ *    });
  *
- *     canvas.add(shape,40,10);
+ *    canvas.add(shape,40,10);
  *
  * @author Andreas Herz
  * @extends draw2d.shape.basic.Label

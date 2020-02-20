@@ -13,26 +13,26 @@ import draw2d from '../../packages'
  *
  * @example
  *
- *         let label1 =  new draw2d.shape.basic.Label({text:"[0,1] with long long long long label", fontColor:"#00AF00"});
- *         let label2 =  new draw2d.shape.basic.Label({text:"[1,1] padding:10", fontColor:"#00AF00"});
- *         let label3 =  new draw2d.shape.basic.Label({text:"[2,1] align:right", fontColor:"#00AF00"});
- *         let label4 =  new draw2d.shape.basic.Label({text:"[3,1] resize:true",resizeable:true, fontColor:"#00AF00"});
+ *        let label1 =  new draw2d.shape.basic.Label({text:"[0,1] with long long long long label", fontColor:"#00AF00"});
+ *        let label2 =  new draw2d.shape.basic.Label({text:"[1,1] padding:10", fontColor:"#00AF00"});
+ *        let label3 =  new draw2d.shape.basic.Label({text:"[2,1] align:right", fontColor:"#00AF00"});
+ *        let label4 =  new draw2d.shape.basic.Label({text:"[3,1] resize:true",resizeable:true, fontColor:"#00AF00"});
  *
- *         let container = new draw2d.shape.layout.TableLayout();
+ *        let container = new draw2d.shape.layout.TableLayout();
  *
- *         container.addRow("[0,0]", label1 ,"[0,2] align:center");
- *         container.addRow("[1,0] valign:bottom", label2,"[1,2] long long long label");
- *         container.addRow("[2,0]", label3,"[2,2]");
- *         container.addRow("[3,0]", label4,"[3,2]");
+ *        container.addRow("[0,0]", label1 ,"[0,2] align:center");
+ *        container.addRow("[1,0] valign:bottom", label2,"[1,2] long long long label");
+ *        container.addRow("[2,0]", label3,"[2,2]");
+ *        container.addRow("[3,0]", label4,"[3,2]");
  *
- *         container.setPadding(0);
- *         container.setCellPadding(1,1, 10);
+ *        container.setPadding(0);
+ *        container.setCellPadding(1,1, 10);
  *
- *         container.setCellAlign(0,2, "center");
- *         container.setCellAlign(2,1, "right");
+ *        container.setCellAlign(0,2, "center");
+ *        container.setCellAlign(2,1, "right");
  *
- *         container.setCellVerticalAlign(1, 0, "bottom");
- *         canvas.add(container,10,10);
+ *        container.setCellVerticalAlign(1, 0, "bottom");
+ *        canvas.add(container,10,10);
  *
  *
  * @author Andreas Herz
@@ -190,17 +190,17 @@ draw2d.shape.layout.TableLayout = draw2d.shape.layout.Layout.extend(
    * 
    * Set the padding of the outer grid.
    *
-   *      // Alternatively you can use the attr method:
-   *      //
-   *      // set the padding for top,left,bottom,right in one call
-   *      figure.attr({
-   *        padding: 3
-   *      });
+   *     // Alternatively you can use the attr method:
+   *     //
+   *     // set the padding for top,left,bottom,right in one call
+   *     figure.attr({
+   *       padding: 3
+   *     });
    *
-   *      // update the padding left and top
-   *      figure.attr({
-   *        padding: {left:3, top:30}
-   *      });
+   *     // update the padding left and top
+   *     figure.attr({
+   *       padding: {left:3, top:30}
+   *     });
    *
    * @param {Number|Object} padding The new padding
    **/

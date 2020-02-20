@@ -9,9 +9,9 @@ import draw2d from '../../packages'
  *
  * @example
  *
- *     let figure =  new draw2d.shape.state.Start({color:"#3d3d3d"});
+ *    let figure =  new draw2d.shape.state.Start({color:"#3d3d3d"});
  *
- *     canvas.add(figure,50,10);
+ *    canvas.add(figure,50,10);
  *
  * @extends draw2d.shape.basic.Rectangle
  */

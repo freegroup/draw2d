@@ -23,10 +23,10 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend(
      * <br>
      * The constructor consumes almost any kind of rectangel definitions
      * like:
-     *       var rect0 = new draw2d.geo.Rectangle({x:0,y:0,width:20,height:20});
-     *       var rect1 = new draw2d.geo.Rectangle({x:0,y:0,w:20,h:20});
-     *       var rect2 = new draw2d.geo.Rectangle($("#divid")[0].getBoundingClientRect());
-     *       var rect3 = new draw2d.geo.Rectangle(rect1);
+     *      var rect0 = new draw2d.geo.Rectangle({x:0,y:0,width:20,height:20});
+     *      var rect1 = new draw2d.geo.Rectangle({x:0,y:0,w:20,h:20});
+     *      var rect2 = new draw2d.geo.Rectangle($("#divid")[0].getBoundingClientRect());
+     *      var rect3 = new draw2d.geo.Rectangle(rect1);
      *
      * The rectangle class is usefull for any kind of intersection, hitTest, contains,...calculation
      * or to set the bounding box of any shape.

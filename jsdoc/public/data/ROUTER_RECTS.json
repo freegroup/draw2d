@@ -21,6 +21,8 @@
       "virtual": false,
       "description": "<p>Creates a new Router object</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -70,6 +72,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -87,6 +91,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "2.7.2",
       "examples": []
     },
     {
@@ -104,6 +110,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "2.7.2",
       "examples": []
     },
     {
@@ -121,6 +129,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "4.2.3",
       "examples": []
     },
     {
@@ -138,6 +148,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "4.2.3",
       "examples": [],
       "returns": {
         "type": "Boolean",
@@ -167,6 +179,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "2.10.0",
       "examples": [],
       "returns": {
         "type": "Object",
@@ -196,6 +210,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "2.10.0",
       "examples": []
     },
     {
@@ -245,6 +261,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -262,6 +280,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     }
   ]

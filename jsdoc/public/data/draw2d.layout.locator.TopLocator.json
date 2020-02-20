@@ -11,7 +11,7 @@
     "description": "",
     "parameters": [],
     "examples": [
-      "// create a basic figure and add a Label/child via API call\n    //\n    let circle = new draw2d.shape.basic.Circle({\n        x:100,\n        y:70,\n        diameter:80,\n        stroke: 3,\n        color:\"#A63343\",\n        bgColor:\"#E65159\"\n    });\n\n    circle.add(new draw2d.shape.basic.Label({text:\"Top Label\"}), new draw2d.layout.locator.TopLocator());\n    canvas.add( circle);"
+      "// create a basic figure and add a Label/child via API call\n   //\n   let circle = new draw2d.shape.basic.Circle({\n       x:100,\n       y:70,\n       diameter:80,\n       stroke: 3,\n       color:\"#A63343\",\n       bgColor:\"#E65159\"\n   });\n\n   circle.add(new draw2d.shape.basic.Label({text:\"Top Label\"}), new draw2d.layout.locator.TopLocator());\n   canvas.add( circle);"
     ]
   },
   "functions": [
@@ -21,6 +21,8 @@
       "virtual": false,
       "description": "<p>Constructs a ManhattanMidpointLocator with associated Connection c.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -46,6 +48,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     }
   ]

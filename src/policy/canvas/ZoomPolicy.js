@@ -37,11 +37,11 @@ draw2d.policy.canvas.ZoomPolicy = draw2d.policy.canvas.CanvasPolicy.extend(
   /** 
    * Set the new zoom factor for the canvas. The value must be between [0.01..10]
    *
-   *      // you can register an eventhandler to listen to the zoom factor of the canvas.
-   *     //
-   *      canvas.on("zoom", function(emitterFigure, zoomData){
-   *          alert("canvas zoomed to:"+zoomData.factor);
-   *      });
+   *     // you can register an eventhandler to listen to the zoom factor of the canvas.
+   *    //
+   *     canvas.on("zoom", function(emitterFigure, zoomData){
+   *         alert("canvas zoomed to:"+zoomData.factor);
+   *     });
    *
    * @param {Number} zoomFactor new zoom factor.
    * @param {Boolean} [animated] set it to true for smooth zoom in/out

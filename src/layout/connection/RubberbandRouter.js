@@ -8,65 +8,65 @@ import draw2d from '../../packages'
  *
  * @example
  *
- *     let RubberConnection= draw2d.Connection.extend({
- *         NAME: "RubberConnection",
+ *    let RubberConnection= draw2d.Connection.extend({
+ *        NAME: "RubberConnection",
  *
- *         init:function(attr, setter, getter)
- *         {
- *           this._super(extend({
- *               color: "#33691e",
- *               stroke:1,
- *               outlineStroke:0,
- *               outlineColor:null
- *           },attr),
- *           setter,
- *           getter);
- *
- *
- *           this.setRouter(new draw2d.layout.connection.RubberbandRouter());
- *         },
- *
- *         repaint:function(attributes)
- *         {
- *             if (this.repaintBlocked===true || this.shape === null){
- *                 return;
- *             }
- *             attributes= attributes || {};
- *             // enrich the rendering with a "fill" attribute
- *             if(typeof attributes.fill === "undefined"){
- *             	   attributes.fill = "#aed581";
- *             }
- *             this._super(attributes);
- *        }
- *     });
- *
- *     let createConnection=function(){
- *        let con = new RubberConnection();
- *        return con;
- *     };
- *
- *     // install a custom connection create policy
- *     //
- *     canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({
- *            createConnection: createConnection
- *     }));
+ *        init:function(attr, setter, getter)
+ *        {
+ *          this._super(extend({
+ *              color: "#33691e",
+ *              stroke:1,
+ *              outlineStroke:0,
+ *              outlineColor:null
+ *          },attr),
+ *          setter,
+ *          getter);
  *
  *
- *     // create and add two nodes which contains Ports (In and OUT)
- *     //
- *     let start = new draw2d.shape.node.Start();
- *     let end   = new draw2d.shape.node.End();
+ *          this.setRouter(new draw2d.layout.connection.RubberbandRouter());
+ *        },
+ *
+ *        repaint:function(attributes)
+ *        {
+ *            if (this.repaintBlocked===true || this.shape === null){
+ *                return;
+ *            }
+ *            attributes= attributes || {};
+ *            // enrich the rendering with a "fill" attribute
+ *            if(typeof attributes.fill === "undefined"){
+ *            	   attributes.fill = "#aed581";
+ *            }
+ *            this._super(attributes);
+ *       }
+ *    });
+ *
+ *    let createConnection=function(){
+ *       let con = new RubberConnection();
+ *       return con;
+ *    };
+ *
+ *    // install a custom connection create policy
+ *    //
+ *    canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({
+ *           createConnection: createConnection
+ *    }));
+ *
+ *
+ *    // create and add two nodes which contains Ports (In and OUT)
+ *    //
+ *    let start = new draw2d.shape.node.Start();
+ *    let end   = new draw2d.shape.node.End();
 
- *     // ...add it to the canvas
- *     canvas.add( start, 50,50);
- *     canvas.add( end, 230,80);
+ *    // ...add it to the canvas
+ *    canvas.add( start, 50,50);
+ *    canvas.add( end, 230,80);
  *
- *     // first Connection
- *     //
- *     let c = createConnection();
- *     c.setSource(start.getOutputPort(0));
- *     c.setTarget(end.getInputPort(0));
- *     canvas.add(c);
+ *    // first Connection
+ *    //
+ *    let c = createConnection();
+ *    c.setSource(start.getOutputPort(0));
+ *    c.setTarget(end.getInputPort(0));
+ *    canvas.add(c);
  *
  *
  * @inheritable

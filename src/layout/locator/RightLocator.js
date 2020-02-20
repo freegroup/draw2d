@@ -11,13 +11,13 @@ import draw2d from '../../packages'
  * @example
  *
  *
- *     // create a basic figure and add a Label/child via API call
- *     //
- *     var end = new draw2d.shape.node.End();
- *     end.add(new draw2d.shape.basic.Label({text:"Right Label"}), new draw2d.layout.locator.RightLocator({
- *          margin: 10 // distance to the parent shape
- *     }));
- *     canvas.add( end, 50,50);
+ *    // create a basic figure and add a Label/child via API call
+ *    //
+ *    var end = new draw2d.shape.node.End();
+ *    end.add(new draw2d.shape.basic.Label({text:"Right Label"}), new draw2d.layout.locator.RightLocator({
+ *         margin: 10 // distance to the parent shape
+ *    }));
+ *    canvas.add( end, 50,50);
  *
  *
  * @author Andreas Herz

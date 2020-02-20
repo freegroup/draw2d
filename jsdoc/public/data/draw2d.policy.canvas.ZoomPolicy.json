@@ -21,13 +21,15 @@
       "virtual": false,
       "description": "",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
       "name": "setZoom",
       "access": "",
       "virtual": false,
-      "description": "<p>Set the new zoom factor for the canvas. The value must be between [0.01..10]</p>\n<pre><code> // you can register an eventhandler to listen to the zoom factor of the canvas.\n//\n canvas.on(&quot;zoom&quot;, function(emitterFigure, zoomData){\n     alert(&quot;canvas zoomed to:&quot;+zoomData.factor);\n });</code></pre>",
+      "description": "<p>Set the new zoom factor for the canvas. The value must be between [0.01..10]</p>\n<pre><code>// you can register an eventhandler to listen to the zoom factor of the canvas.\n</code></pre>\n<p>//\ncanvas.on(&quot;zoom&quot;, function(emitterFigure, zoomData){\nalert(&quot;canvas zoomed to:&quot;+zoomData.factor);\n});</p>",
       "parameters": [
         {
           "name": "zoomFactor",
@@ -46,6 +48,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -63,6 +67,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -80,6 +86,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -129,6 +137,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "3.0.0",
       "examples": []
     },
     {
@@ -178,6 +188,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -227,6 +239,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "4.1.0",
       "examples": []
     },
     {
@@ -276,6 +290,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -341,6 +357,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -390,6 +408,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -442,6 +462,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "4.4.0",
       "examples": []
     },
     {
@@ -491,6 +513,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "5.8.0",
       "examples": [],
       "returns": {
         "type": "Boolean",
@@ -536,6 +560,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.geo.Point",
@@ -581,6 +607,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "String",
@@ -610,6 +638,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "5.3.2",
       "examples": []
     }
   ]

@@ -7,9 +7,9 @@ import draw2d from '../../packages'
  *
  * @example
  *
- *     let icon =  new draw2d.shape.icon.Folder();
+ *    let icon =  new draw2d.shape.icon.Folder();
  *
- *     canvas.add(icon,50,10);
+ *    canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz

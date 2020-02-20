@@ -10,8 +10,8 @@
  * @example
  *
  *
- *     canvas.add(new draw2d.shape.node.Start({x:50, y:50}));
- *     canvas.add(new draw2d.shape.node.Hub({x:150, y:50}));
+ *    canvas.add(new draw2d.shape.node.Start({x:50, y:50}));
+ *    canvas.add(new draw2d.shape.node.Hub({x:150, y:50}));
  *
  * @extends draw2d.shape.basic.Rectangle
  */
@@ -136,10 +136,10 @@ draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend(
    * 
    * Set the label for the Hub
    *
-   *      // Alternatively you can use the attr method:
-   *      figure.attr({
-   *        text: label
-   *      });
+   *     // Alternatively you can use the attr method:
+   *     figure.attr({
+   *       text: label
+   *     });
    *
    *
    * @param {String} label

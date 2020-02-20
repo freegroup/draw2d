@@ -94,10 +94,10 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend(
      * 
      * Set the line style for this object.
      *
-     *      // Alternatively you can use the attr method:
-     *      figure.attr({
-    *        dash: dashPattern
-    *      });
+     *     // Alternatively you can use the attr method:
+     *     figure.attr({
+    *       dash: dashPattern
+    *     });
      *
      * @param {String} dash can be one of this ["", "-", ".", "-.", "-..", ". ", "- ", "--", "- .", "--.", "--.."]
      */
@@ -115,8 +115,8 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend(
      * 
      * Get the line style for this object.
      *
-     *      // Alternatively you can use the attr method:
-     *      figure.attr("dash");
+     *     // Alternatively you can use the attr method:
+     *     figure.attr("dash");
      *
      * @since 5.1.0
      */
@@ -189,10 +189,10 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend(
     * Set the new background color of the figure. It is possible to hands over
     * <code>null</code> to set the background transparent.
     *
-    *      // Alternatively you can use the attr method:
-    *      figure.attr({
-    *        "bgColor": "#f0f0f0"
-    *      });
+    *     // Alternatively you can use the attr method:
+    *     figure.attr({
+    *       "bgColor": "#f0f0f0"
+    *     });
     *
     * @param {String|draw2d.util.Color} color The new background color of the figure
     **/
@@ -210,8 +210,8 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend(
     * 
     * The current used background color.
     *
-    *      // Alternatively you can use the attr method:
-    *      var color =figure.attr("bgColor");
+    *     // Alternatively you can use the attr method:
+    *     var color =figure.attr("bgColor");
     *
     * @return {draw2d.util.Color}
     */
@@ -224,10 +224,10 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend(
     * 
     * Set the stroke to use.
     *
-    *      // Alternatively you can use the attr method:
-    *      figure.attr({
-    *        "stroke": 2
-    *      });
+    *     // Alternatively you can use the attr method:
+    *     figure.attr({
+    *       "stroke": 2
+    *     });
     *
     * @param {Number} w The new line width of the figure
     **/
@@ -256,10 +256,10 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend(
     * Set the foreground color of the figure.
     * This method fires a <i>document dirty</i> event.
     *
-    *      // Alternatively you can use the attr method:
-    *      figure.attr({
-    *        "color": "#f3f3f3"
-    *      });
+    *     // Alternatively you can use the attr method:
+    *     figure.attr({
+    *       "color": "#f3f3f3"
+    *     });
     *
     * @param {String|draw2d.util.Color} color The new color of the line.
     **/

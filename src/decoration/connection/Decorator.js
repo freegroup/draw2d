@@ -40,14 +40,14 @@ draw2d.decoration.connection.Decorator = Class.extend(
      * framework.
      *
      * <pre>
-     *                | -Y
-     *                |
-     *                |
+     *               | -Y
+     *               |
+     *               |
      *  --------------+-----------------------------&gt; +X
-     *                |
-     *                |
-     *                |
-     *                V +Y
+     *               |
+     *               |
+     *               |
+     *               V +Y
      *
      *
      * </pre>

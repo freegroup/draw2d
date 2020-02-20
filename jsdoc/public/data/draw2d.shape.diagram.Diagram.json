@@ -39,6 +39,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -47,6 +49,8 @@
       "virtual": false,
       "description": "<p>Return the data of the diagram</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "5.0.0",
       "examples": []
     },
     {
@@ -55,6 +59,8 @@
       "virtual": false,
       "description": "<p>Set the dimension of the diagram and reset the cached calculation</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "5.0.0",
       "examples": []
     },
     {
@@ -63,6 +69,8 @@
       "virtual": false,
       "description": "<p>Return the calculate width of the set. This calculates the bounding box of all elements.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -75,6 +83,8 @@
       "virtual": false,
       "description": "<p>Return the calculated height of the set. This calculates the bounding box of all elements.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -96,6 +106,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -113,6 +125,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -130,6 +144,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -147,6 +163,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "2.9.0",
       "examples": []
     },
     {
@@ -155,13 +173,15 @@
       "virtual": false,
       "description": "<p>propagate all attributes like color, stroke,... to the shape element and\nrepaint them.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
       "name": "setVisible",
       "access": "",
       "virtual": false,
-      "description": "<p>Show/hide the element. The element didn't receive any mouse events (click, dblclick) if you hide the\nfigure.</p>\n<pre><code> // Alternatively you can use the attr method:\n figure.attr({\n   visible: flag\n });</code></pre>",
+      "description": "<p>Show/hide the element. The element didn't receive any mouse events (click, dblclick) if you hide the\nfigure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  visible: flag\n});</code></pre>",
       "parameters": [
         {
           "name": "flag",
@@ -180,6 +200,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "1.1.0",
       "examples": []
     },
     {
@@ -188,6 +210,8 @@
       "virtual": false,
       "description": "<p>Apply the opacity to all child set elements. Override this if you want to avoid opacity changes.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -196,6 +220,8 @@
       "virtual": false,
       "description": "",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -213,6 +239,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "3.0.0",
       "examples": []
     },
     {
@@ -230,6 +258,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "4.7.2",
       "examples": []
     },
     {
@@ -238,6 +268,8 @@
       "virtual": false,
       "description": "<p>Get the top level shape element. May the figure has a set of SVG elements. In this case this\nmethod must return the top level node.<br>\nThis method is used for the toFront/toBack method to order the nodes in the correct way.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "5.0.0",
       "examples": []
     },
     {
@@ -246,6 +278,8 @@
       "virtual": false,
       "description": "",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -254,13 +288,15 @@
       "virtual": false,
       "description": "<p>Override this method to add your own SVG elements. See {@link draw2d.shape.basic.Label} as example.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
       "name": "setDashArray",
       "access": "",
       "virtual": false,
-      "description": "<p>Set the line style for dot/dash styling. Possible values are\n[&quot;&quot;, &quot;-&quot;, &quot;.&quot;, &quot;-.&quot;, &quot;-..&quot;, &quot;. &quot;, &quot;- &quot;, &quot;--&quot;, &quot;- .&quot;, &quot;--.&quot;, &quot;--..&quot;]</p>\n<pre><code> // Alternatively you can use the attr method:\n figure.attr({\n   dash: pattern\n });</code></pre>",
+      "description": "<p>Set the line style for dot/dash styling. Possible values are\n[&quot;&quot;, &quot;-&quot;, &quot;.&quot;, &quot;-.&quot;, &quot;-..&quot;, &quot;. &quot;, &quot;- &quot;, &quot;--&quot;, &quot;- .&quot;, &quot;--.&quot;, &quot;--..&quot;]</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  dash: pattern\n});</code></pre>",
       "parameters": [
         {
           "name": "pattern",
@@ -271,14 +307,18 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
       "name": "getDashArray",
       "access": "",
       "virtual": false,
-      "description": "<p>Get the line style for this object.</p>\n<pre><code> // Alternatively you can use the attr method:\n figure.attr(&quot;dash&quot;);</code></pre>",
+      "description": "<p>Get the line style for this object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr(&quot;dash&quot;);</code></pre>",
       "parameters": [],
+      "inherited": true,
+      "since": "5.1.0",
       "examples": []
     },
     {
@@ -287,6 +327,8 @@
       "virtual": false,
       "description": "<p>Return an objects with all important attributes for XML or JSON serialization</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Object",
@@ -308,6 +350,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -325,6 +369,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "4.2.1",
       "examples": []
     },
     {
@@ -333,6 +379,8 @@
       "virtual": false,
       "description": "<p>Get the corner radius of the edges.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "4.2.1",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -354,13 +402,15 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
       "name": "setBackgroundColor",
       "access": "",
       "virtual": false,
-      "description": "<p>Set the new background color of the figure. It is possible to hands over\n<code>null</code> to set the background transparent.</p>\n<pre><code> // Alternatively you can use the attr method:\n figure.attr({\n   &quot;bgColor&quot;: &quot;#f0f0f0&quot;\n });</code></pre>",
+      "description": "<p>Set the new background color of the figure. It is possible to hands over\n<code>null</code> to set the background transparent.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;bgColor&quot;: &quot;#f0f0f0&quot;\n});</code></pre>",
       "parameters": [
         {
           "name": "color",
@@ -374,14 +424,18 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
       "name": "getBackgroundColor",
       "access": "",
       "virtual": false,
-      "description": "<p>The current used background color.</p>\n<pre><code> // Alternatively you can use the attr method:\n var color =figure.attr(&quot;bgColor&quot;);</code></pre>",
+      "description": "<p>The current used background color.</p>\n<pre><code>// Alternatively you can use the attr method:\nvar color =figure.attr(&quot;bgColor&quot;);</code></pre>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.util.Color",
@@ -392,7 +446,7 @@
       "name": "setStroke",
       "access": "",
       "virtual": false,
-      "description": "<p>Set the stroke to use.</p>\n<pre><code> // Alternatively you can use the attr method:\n figure.attr({\n   &quot;stroke&quot;: 2\n });</code></pre>",
+      "description": "<p>Set the stroke to use.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;stroke&quot;: 2\n});</code></pre>",
       "parameters": [
         {
           "name": "w",
@@ -403,6 +457,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -411,6 +467,8 @@
       "virtual": false,
       "description": "<p>The used line width.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -421,7 +479,7 @@
       "name": "setColor",
       "access": "",
       "virtual": false,
-      "description": "<p>Set the foreground color of the figure.\nThis method fires a <i>document dirty</i> event.</p>\n<pre><code> // Alternatively you can use the attr method:\n figure.attr({\n   &quot;color&quot;: &quot;#f3f3f3&quot;\n });</code></pre>",
+      "description": "<p>Set the foreground color of the figure.\nThis method fires a <i>document dirty</i> event.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;color&quot;: &quot;#f3f3f3&quot;\n});</code></pre>",
       "parameters": [
         {
           "name": "color",
@@ -435,6 +493,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -443,6 +503,8 @@
       "virtual": false,
       "description": "<p>Get the current used foreground color</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.util.Color",
@@ -464,6 +526,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "5.0.4",
       "examples": []
     },
     {
@@ -472,6 +536,8 @@
       "virtual": false,
       "description": "<p>Indicates if the figure writes the ports to the JSON structore too.\nDefault is &quot;false&quot;</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Boolean",
@@ -493,6 +559,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.util.ArrayList",
@@ -505,6 +573,8 @@
       "virtual": false,
       "description": "<p>Return all input ports of the node.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.util.ArrayList",
@@ -517,6 +587,8 @@
       "virtual": false,
       "description": "<p>Return all output ports of the node.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.util.ArrayList",
@@ -554,6 +626,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "4.1.0",
       "examples": []
     },
     {
@@ -571,6 +645,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.Port",
@@ -592,6 +668,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.InputPort",
@@ -613,6 +691,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.OutputPort",
@@ -634,6 +714,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.InputPort",
@@ -663,6 +745,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -671,6 +755,8 @@
       "virtual": false,
       "description": "<p>Remove all ports of this node</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "5.0.0",
       "examples": []
     },
     {
@@ -688,6 +774,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -713,6 +801,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -721,6 +811,8 @@
       "virtual": false,
       "description": "<p>Return all connections related to this node.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.util.ArrayList",
@@ -742,13 +834,15 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
       "name": "setDimension",
       "access": "",
       "virtual": false,
-      "description": "<p>Set the new width and height of the figure.</p>\n<pre><code> // Alternatively you can use the attr method:\n figure.attr({\n    width:  w,\n    height: h\n });</code></pre>",
+      "description": "<p>Set the new width and height of the figure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n   width:  w,\n   height: h\n});</code></pre>",
       "parameters": [
         {
           "name": "w",
@@ -767,6 +861,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -784,6 +880,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -792,6 +890,8 @@
       "virtual": false,
       "description": "",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -809,6 +909,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.command.Command",
@@ -819,7 +921,7 @@
       "name": "attr",
       "access": "",
       "virtual": false,
-      "description": "<p>Read or set shape attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>\n<pre><code>let figure = new draw2d.shape.basic.Rectangle();\nfigure.attr('x');      //=&gt; read value\nfigure.attr('x', 30);  //=&gt; set value\n\n// multiple attributes:\nfigure.attr({\n  x: 30,\n  y: 40,\n  width : 200,\n  height: 50,\n  cssClass: &quot;red_border_figure&quot;\n});\n\n// it is possible to override any method of the figure as well\n// Instead of inheritance you can just override the callback methods\n// like\n//\nfigure.attr({\n   onClick : function(){\n       alert(&quot;click&quot;);\n   }\n});\n\n// or you can pass the attr values in the constructor\n//\nlet clickFigure = new draw2d.shape.basic.Rectangle({\n   onClick : function(){\n       alert(&quot;click&quot;);\n   }\n});\n</code></pre>\n<p>Additional you can set the user defined values (userData) with this method\nusing the dot-notation. User defined values are always part of the exported\nJSON data.</p>\n<pre><code>// setting multiple attributes:\nfigure.attr({\n  &quot;userData.my.property.x&quot;: 30,\n  &quot;userData.my.property.y&quot;: 40\n});\n</code></pre>\n<p>Also set using array notation is possible for the userData:</p>\n<pre><code>// dot notation and array brackets:\nfigure.attr({\n  &quot;userData.my.names[0]&quot;: &quot;John&quot;,\n  &quot;userData.my.names[1]&quot;: &quot;Doe&quot;\n});\n</code></pre>\n<p>The Object returned should be the equivalent structured object:</p>\n<pre><code>let obj = figure.getUserData();\n</code></pre>\n<p>That is, where obj is equivalent to:</p>\n<pre><code>let obj = {\n    my:{\n        property:{\n            x: 30,\n            y: 40\n       },\n       names:  [&quot;John&quot;, &quot;Doe&quot;]\n   }\n</code></pre>\n<p>};</p>",
+      "description": "<p>Read or set shape attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>\n<p>let figure = new draw2d.shape.basic.Rectangle();\nfigure.attr('x');      //=&gt; read value\nfigure.attr('x', 30);  //=&gt; set value</p>\n<p>// multiple attributes:\nfigure.attr({\nx: 30,\ny: 40,\nwidth : 200,\nheight: 50,\ncssClass: &quot;red_border_figure&quot;\n});</p>\n<p>// it is possible to override any method of the figure as well\n// Instead of inheritance you can just override the callback methods\n// like\n//\nfigure.attr({\nonClick : function(){\nalert(&quot;click&quot;);\n}\n});</p>\n<p>// or you can pass the attr values in the constructor\n//\nlet clickFigure = new draw2d.shape.basic.Rectangle({\nonClick : function(){\nalert(&quot;click&quot;);\n}\n});</p>\n<p>Additional you can set the user defined values (userData) with this method\nusing the dot-notation. User defined values are always part of the exported\nJSON data.</p>\n<p>// setting multiple attributes:\nfigure.attr({\n&quot;userData.my.property.x&quot;: 30,\n&quot;userData.my.property.y&quot;: 40\n});</p>\n<p>Also set using array notation is possible for the userData:</p>\n<p>// dot notation and array brackets:\nfigure.attr({\n&quot;userData.my.names[0]&quot;: &quot;John&quot;,\n&quot;userData.my.names[1]&quot;: &quot;Doe&quot;\n});</p>\n<p>The Object returned should be the equivalent structured object:</p>\n<p>let obj = figure.getUserData();</p>\n<p>That is, where obj is equivalent to:</p>\n<p>let obj = {\nmy:{\nproperty:{\nx: 30,\ny: 40\n},\nnames:  [&quot;John&quot;, &quot;Doe&quot;]\n}\n};</p>",
       "parameters": [
         {
           "name": "name",
@@ -838,6 +940,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "5.0.1",
       "examples": []
     },
     {
@@ -846,6 +950,8 @@
       "virtual": false,
       "description": "<p>Return a copy of the object, filtered to only have values for the whitelisted keys.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -863,6 +969,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -871,6 +979,8 @@
       "virtual": false,
       "description": "<p>Unselect the figure and propagete this event to all edit policies.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -888,6 +998,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -896,6 +1008,8 @@
       "virtual": false,
       "description": "",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "function",
@@ -908,6 +1022,8 @@
       "virtual": false,
       "description": "<p>Returns true if the figure part of the current canvas selection.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "5.5.6",
       "examples": [],
       "returns": {
         "type": "Boolean",
@@ -918,7 +1034,7 @@
       "name": "setUserData",
       "access": "",
       "virtual": false,
-      "description": "<p>Allows a user to attach (or remove) data to an element, without needing to create a custom figure or shape.\nThe data must be a valid JSON object.</p>\n<pre><code> // Alternatively you can use the attr method:\n figure.attr({\n   userData: object\n });</code></pre>",
+      "description": "<p>Allows a user to attach (or remove) data to an element, without needing to create a custom figure or shape.\nThe data must be a valid JSON object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  userData: object\n});</code></pre>",
       "parameters": [
         {
           "name": "object",
@@ -929,6 +1045,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "2.7.2",
       "examples": []
     },
     {
@@ -937,6 +1055,8 @@
       "virtual": false,
       "description": "<p>Returns any user data set previously on the given figure by setUserData.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "2.7.2",
       "examples": [],
       "returns": {
         "type": "Object",
@@ -949,6 +1069,8 @@
       "virtual": false,
       "description": "<p>Return the UUID of this element.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "String",
@@ -959,7 +1081,7 @@
       "name": "setId",
       "access": "",
       "virtual": false,
-      "description": "<p>Set the id of this element.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  id: newId\n});</code></pre>",
+      "description": "<p>Set the id of this element.</p>\n<p>// Alternatively you can use the attr method:\nfigure.attr({\nid: newId\n});</p>",
       "parameters": [
         {
           "name": "newId",
@@ -970,6 +1092,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -978,6 +1102,8 @@
       "virtual": false,
       "description": "<p>Return the css styling class name of the element.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "String",
@@ -999,6 +1125,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "2.9.0",
       "examples": []
     },
     {
@@ -1016,6 +1144,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "2.9.0",
       "examples": []
     },
     {
@@ -1033,6 +1163,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -1050,6 +1182,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -1058,6 +1192,8 @@
       "virtual": false,
       "description": "<p>Return the current assigned canvas container.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.Canvas",
@@ -1079,6 +1215,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -1087,14 +1225,18 @@
       "virtual": false,
       "description": "<p>Stop the internal timer.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
       "name": "onTimer",
       "access": "",
       "virtual": false,
-      "description": "<p>Callback method for the internal timer handling<br>\nInherit classes must override this method if they want use the timer feature.</p>\n<pre><code> // Alternatively you can register for this event with\n figure.on(&quot;timer&quot;, function(emitter){\n     alert(&quot;timer fired&quot;);\n });</code></pre>",
+      "description": "<p>Callback method for the internal timer handling<br>\nInherit classes must override this method if they want use the timer feature.</p>\n<pre><code>// Alternatively you can register for this event with\nfigure.on(&quot;timer&quot;, function(emitter){\n    alert(&quot;timer fired&quot;);\n});</code></pre>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -1112,6 +1254,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -1129,13 +1273,15 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "4.81",
       "examples": []
     },
     {
       "name": "add",
       "access": "",
       "virtual": false,
-      "description": "<p>Add a child figure to the figure. The hands over figure doesn't support drag&amp;drop\noperations. It's only a decorator for the connection.<br>\nMainly for labels or other decorations</p>\n<pre><code>let start = new draw2d.shape.node.Start({x:80, y:150});\nstart.add(new draw2d.shape.basic.Label({text:&quot;Test Label&quot;}), new draw2d.layout.locator.TopLocator());\n\ncanvas.add( start);</code></pre>",
+      "description": "<p>Add a child figure to the figure. The hands over figure doesn't support drag&amp;drop\noperations. It's only a decorator for the connection.<br>\nMainly for labels or other decorations</p>\n<p>let start = new draw2d.shape.node.Start({x:80, y:150});\nstart.add(new draw2d.shape.basic.Label({text:&quot;Test Label&quot;}), new draw2d.layout.locator.TopLocator());</p>\n<p>canvas.add( start);</p>",
       "parameters": [
         {
           "name": "child",
@@ -1162,6 +1308,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -1179,6 +1327,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "5.0.0",
       "examples": [],
       "returns": {
         "type": "Object",
@@ -1191,6 +1341,8 @@
       "virtual": false,
       "description": "<p>Return all children/decorations of this shape which has been added with\ndraw2d.Figure.add</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.util.ArrayList",
@@ -1203,6 +1355,8 @@
       "virtual": false,
       "description": "<p>Remove all children/decorations of this shape</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -1211,6 +1365,8 @@
       "virtual": false,
       "description": "<p>return the current SVG shape element or create it on demand.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -1219,6 +1375,8 @@
       "virtual": false,
       "description": "<p>Allow dragging only when the cursor is over a specific part of the figure.\n<br>\nOverride this method to specify the bounding box of an element or a draw2d.util.ArrayList\nof draw2d.geo.Rectangle of bounding boxes used to drag the figure. The returned coordinates\nare absolute coordinates to the canvas.\n<br>\n<br>\nDefault implementation returns <b>null</b> to indicate to use the complete figures as\ndrag handle.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "5.6.0",
       "examples": [],
       "returns": {
         "type": [
@@ -1267,6 +1425,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Boolean",
@@ -1328,13 +1488,15 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
       "name": "onPanning",
       "access": "",
       "virtual": false,
-      "description": "<p>Called by the framework if the figure returns false for the drag operation. In this\ncase we send a &quot;panning&quot; event - mouseDown + mouseMove. This is very useful for\nUI-Widget like slider, spinner,...</p>\n<pre><code> // You can alternatively register an event handler with:\n figure.on(&quot;panning&quot;, function(emitter, eventData){\n     alert(&quot;panning of the figure called&quot;);\n });</code></pre>",
+      "description": "<p>Called by the framework if the figure returns false for the drag operation. In this\ncase we send a &quot;panning&quot; event - mouseDown + mouseMove. This is very useful for\nUI-Widget like slider, spinner,...</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panning&quot;, function(emitter, eventData){\n    alert(&quot;panning of the figure called&quot;);\n});</code></pre>",
       "parameters": [
         {
           "name": "dx",
@@ -1385,14 +1547,18 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
       "name": "onPanningEnd",
       "access": "",
       "virtual": false,
-      "description": "<p>Called by the framework if the panning event of the figures ends. This happens\nafter the mous up event if the panning is active.</p>\n<pre><code> // You can alternatively register an event handler with:\n figure.on(&quot;panningEnd&quot;, function(emitter){\n     alert(&quot;panning of the figure called&quot;);\n });</code></pre>",
+      "description": "<p>Called by the framework if the panning event of the figures ends. This happens\nafter the mous up event if the panning is active.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panningEnd&quot;, function(emitter){\n    alert(&quot;panning of the figure called&quot;);\n});</code></pre>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -1434,6 +1600,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -1451,6 +1619,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "6.1.0",
       "examples": [],
       "returns": {
         "type": "draw2d.Figure",
@@ -1472,6 +1642,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -1489,6 +1661,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -1538,6 +1712,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -1587,6 +1763,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "4.8.0",
       "examples": []
     },
     {
@@ -1595,6 +1773,8 @@
       "virtual": false,
       "description": "<p>Callback method for the mouse enter event. Usefull for mouse hover-effects.\nOverride this method for your own effects. Don't call them manually.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -1603,29 +1783,35 @@
       "virtual": false,
       "description": "<p>Callback method for the mouse leave event. Useful for mouse hover-effects.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
       "name": "onDoubleClick",
       "access": "",
       "virtual": false,
-      "description": "<p>Called when a user dbl clicks on the element</p>\n<pre><code> // Alternatively you can register an event with:\n //\n figure.on(&quot;dblclick&quot;, function(emitter, event){\n     alert(&quot;user dbl click on the figure&quot;);\n });</code></pre>",
+      "description": "<p>Called when a user dbl clicks on the element</p>\n<pre><code>// Alternatively you can register an event with:\n//\nfigure.on(&quot;dblclick&quot;, function(emitter, event){\n    alert(&quot;user dbl click on the figure&quot;);\n});</code></pre>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
       "name": "onClick",
       "access": "",
       "virtual": false,
-      "description": "<p>Called when a user clicks on the element.</p>\n<pre><code> // You can alternatively register an event handler with:\n figure.on(&quot;click&quot;, function(emitter, event){\n     alert(&quot;user click on the figure&quot;);\n });</code></pre>",
+      "description": "<p>Called when a user clicks on the element.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;click&quot;, function(emitter, event){\n    alert(&quot;user click on the figure&quot;);\n});</code></pre>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
       "name": "onContextMenu",
       "access": "",
       "virtual": false,
-      "description": "<p>called by the framework if the figure should show the context menu.<br>\nThe strategy to show the context menu depends on the platform. Either looong press or\nright click with the mouse.</p>\n<pre><code> // Alternatively you register for this event with:\n figure.on(&quot;contextmenu&quot;, function(emitter, event){\n     alert(&quot;user press the right mouse button for a context menu&quot;);\n });</code></pre>",
+      "description": "<p>called by the framework if the figure should show the context menu.<br>\nThe strategy to show the context menu depends on the platform. Either looong press or\nright click with the mouse.</p>\n<pre><code>// Alternatively you register for this event with:\nfigure.on(&quot;contextmenu&quot;, function(emitter, event){\n    alert(&quot;user press the right mouse button for a context menu&quot;);\n});</code></pre>",
       "parameters": [
         {
           "name": "x",
@@ -1644,13 +1830,15 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "1.1.0",
       "examples": []
     },
     {
       "name": "setAlpha",
       "access": "",
       "virtual": false,
-      "description": "<p>Set the alpha blending of this figure.</p>\n<pre><code> // Alternatively you can use the attr method:\n figure.attr({\n   &quot;alpha&quot;: percent\n });\n\n // ...or:\n figure.attr({\n   &quot;opacity&quot;: percent\n });</code></pre>",
+      "description": "<p>Set the alpha blending of this figure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;alpha&quot;: percent\n});\n\n// ...or:\nfigure.attr({\n  &quot;opacity&quot;: percent\n});</code></pre>",
       "parameters": [
         {
           "name": "percent",
@@ -1661,6 +1849,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -1669,6 +1859,8 @@
       "virtual": false,
       "description": "<p>Return the alpha blending of the figure</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -1681,6 +1873,8 @@
       "virtual": false,
       "description": "<p>return the rotation angle of the figure in degree of [0..356].</p>\n<br>\n<b>NOTE: this method is pre alpha and not for production. Only steps of 90 degree is working well</b>\n<br>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -1693,6 +1887,8 @@
       "virtual": false,
       "description": "<p>Return true if the figure visible.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "1.1.0",
       "examples": [],
       "returns": {
         "type": "Boolean",
@@ -1714,6 +1910,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "4.1.0",
       "examples": []
     },
     {
@@ -1722,6 +1920,8 @@
       "virtual": false,
       "description": "<p>Return the flag if the shape keep the aspect ratio.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "4.1.0",
       "examples": []
     },
     {
@@ -1730,6 +1930,8 @@
       "virtual": false,
       "description": "<p>Return the current z-index of the element. Currently this is an expensive method. The index will be calculated\nall the time. Caching is not implemented at the moment.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -1751,6 +1953,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -1759,6 +1963,8 @@
       "virtual": false,
       "description": "<p>Returns true if the figure can snap to any helper like a grid, guide, geometrie\nor something else.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Boolean",
@@ -1771,6 +1977,8 @@
       "virtual": false,
       "description": "",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.geo.Point",
@@ -1792,6 +2000,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -1809,6 +2019,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "5.1.0",
       "examples": []
     },
     {
@@ -1817,6 +2029,8 @@
       "virtual": false,
       "description": "<p>The current width of the figure.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -1834,6 +2048,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "5.1.0",
       "examples": []
     },
     {
@@ -1842,6 +2058,8 @@
       "virtual": false,
       "description": "<p>The current height of the figure.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -1854,6 +2072,8 @@
       "virtual": false,
       "description": "<p>This value is relevant for the interactive resize of the figure.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -1875,6 +2095,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -1883,6 +2105,8 @@
       "virtual": false,
       "description": "<p>This value is relevant for the interactive resize of the figure.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -1904,6 +2128,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -1921,6 +2147,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "5.0.8",
       "examples": []
     },
     {
@@ -1929,6 +2157,8 @@
       "virtual": false,
       "description": "<p>The x-offset related to the parent figure or canvas.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -1950,6 +2180,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "5.0.8",
       "examples": []
     },
     {
@@ -1958,6 +2190,8 @@
       "virtual": false,
       "description": "<p>The y-offset related to the parent figure or canvas.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -1970,6 +2204,8 @@
       "virtual": false,
       "description": "<p>The x-offset related to the canvas.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -1982,6 +2218,8 @@
       "virtual": false,
       "description": "<p>The y-offset related to the canvas.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -1994,6 +2232,8 @@
       "virtual": false,
       "description": "<p>Returns the absolute y-position of the port.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -2002,6 +2242,8 @@
       "virtual": false,
       "description": "<p>Returns the absolute y-position of the port.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.geo.Rectangle",
@@ -2012,7 +2254,7 @@
       "name": "setPosition",
       "access": "",
       "virtual": false,
-      "description": "<p>Set the position of the object.</p>\n<pre><code> // Alternatively you can use the attr method:\n figure.attr({\n   x: x,\n   y: y\n });</code></pre>",
+      "description": "<p>Set the position of the object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  x: x,\n  y: y\n});</code></pre>",
       "parameters": [
         {
           "name": "x",
@@ -2034,6 +2276,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -2042,6 +2286,8 @@
       "virtual": false,
       "description": "<p>Get the current position of the figure</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "2.0.0",
       "examples": [],
       "returns": {
         "type": "draw2d.geo.Point",
@@ -2071,13 +2317,15 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
       "name": "setBoundingBox",
       "access": "",
       "virtual": false,
-      "description": "<p>Set the bounding box of the figure</p>\n<pre><code> // Alternatively you can use the attr method:\n figure.attr({\n   width: w,\n   height: h,\n   x: x,\n   y: y\n });\n\n // or\n figure.attr({\n   boundingBox: {x:1, y:100, width:30, height:30}\n });</code></pre>",
+      "description": "<p>Set the bounding box of the figure</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  width: w,\n  height: h,\n  x: x,\n  y: y\n});\n\n// or\nfigure.attr({\n  boundingBox: {x:1, y:100, width:30, height:30}\n});</code></pre>",
       "parameters": [
         {
           "name": "rect",
@@ -2088,6 +2336,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "4.8.0",
       "examples": []
     },
     {
@@ -2096,6 +2346,8 @@
       "virtual": false,
       "description": "<p>Returns the bounding box of the figure in absolute position to the canvas.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.geo.Rectangle",
@@ -2133,6 +2385,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Boolean",
@@ -2154,6 +2408,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -2162,6 +2418,8 @@
       "virtual": false,
       "description": "<p>Get the Drag drop enable flag</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Boolean",
@@ -2174,6 +2432,8 @@
       "virtual": false,
       "description": "<p>Returns the true if the figure can be resized.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Boolean",
@@ -2184,7 +2444,7 @@
       "name": "setResizeable",
       "access": "",
       "virtual": false,
-      "description": "<p>You can change the resizeable behaviour of this object. Hands over [false] and\nthe figure has no resizehandles if you select them with the mouse.<br></p>\n<pre><code> // Alternatively you can use the attr method:\n figure.attr({\n   resizeable: flag\n });</code></pre>",
+      "description": "<p>You can change the resizeable behaviour of this object. Hands over [false] and\nthe figure has no resizehandles if you select them with the mouse.<br></p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  resizeable: flag\n});</code></pre>",
       "parameters": [
         {
           "name": "flag",
@@ -2195,6 +2455,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -2203,6 +2465,8 @@
       "virtual": false,
       "description": "<p>Indicates whenever the element is selectable by user interaction or API.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Boolean",
@@ -2224,6 +2488,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -2232,6 +2498,8 @@
       "virtual": false,
       "description": "<p>Return true if the object doesn't care about the aspect ratio.\nYou can change the height and width independent.<br></p>\n<p>Replaced with &quot;getKeepAspectRatio&quot;</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Boolean",
@@ -2244,6 +2512,8 @@
       "virtual": false,
       "description": "<p>Return false if you avoid that the user can delete your figure.\nSub class can override this method.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Boolean",
@@ -2265,6 +2535,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -2282,6 +2554,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -2290,6 +2564,8 @@
       "virtual": false,
       "description": "<p>Get the parent of this figure.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.Figure",
@@ -2311,6 +2587,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "5.5.4",
       "examples": []
     },
     {
@@ -2319,6 +2597,8 @@
       "virtual": false,
       "description": "<p>Get the top most parent of this figure. This can be an layout figure or parent container</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "5.0.6",
       "examples": [],
       "returns": {
         "type": "draw2d.Figure",
@@ -2340,6 +2620,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "4.8.0",
       "examples": []
     },
     {
@@ -2348,6 +2630,8 @@
       "virtual": false,
       "description": "<p>Get the assigned composite of this figure.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "4.8.0",
       "examples": [],
       "returns": {
         "type": "draw2d.shape.composite.StrongComposite",
@@ -2377,6 +2661,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "5.0.0",
       "examples": []
     },
     {
@@ -2426,6 +2712,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "5.0.0",
       "examples": []
     },
     {
@@ -2446,6 +2734,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "5.0.0",
       "examples": []
     },
     {
@@ -2482,6 +2772,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     }
   ]

@@ -21,6 +21,8 @@
       "virtual": false,
       "description": "<p>Creates a new Router object.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -29,6 +31,8 @@
       "virtual": false,
       "description": "",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -70,6 +74,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -78,6 +84,8 @@
       "virtual": false,
       "description": "<li>up -&gt; 0</li>\n  <li>right -&gt; 1</li>\n  <li>down -&gt; 2</li>\n  <li>left -&gt; 3</li>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -86,6 +94,8 @@
       "virtual": false,
       "description": "<li>up -&gt; 0</li>\n  <li>right -&gt; 1</li>\n  <li>down -&gt; 2</li>\n  <li>left -&gt; 3</li>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -111,6 +121,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "",
@@ -132,6 +144,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "2.7.2",
       "examples": []
     },
     {
@@ -181,6 +195,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -230,6 +246,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -247,6 +265,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "2.7.2",
       "examples": []
     },
     {
@@ -264,6 +284,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "4.2.3",
       "examples": []
     },
     {
@@ -281,6 +303,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "4.2.3",
       "examples": [],
       "returns": {
         "type": "Boolean",
@@ -310,6 +334,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "2.10.0",
       "examples": [],
       "returns": {
         "type": "Object",
@@ -339,6 +365,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "2.10.0",
       "examples": []
     },
     {
@@ -388,6 +416,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -405,6 +435,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     }
   ]

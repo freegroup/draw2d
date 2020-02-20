@@ -1,16 +1,10 @@
 <template>
   <v-navigation-drawer v-model="value" app clipped  >
-    <nav>
-      <router-link to="/">Home</router-link>
-      <router-link to="/draw2d">Login</router-link>
-      <router-link to="/draw2d_geo">About</router-link>
-    </nav>
     <tree :data="routes" :options="treeOptions" :filter="treeFilter" v-model="selectedNode">
       <div slot-scope="{ node }">
-        <router-link :to="node.data.path" exact>{{ node.text }}</router-link>
+        <v-icon>folder</v-icon><router-link :to="node.data.path" exact>{{ node.text }}</router-link>
       </div>
     </tree>
-
   </v-navigation-drawer>
 </template>
 <style>

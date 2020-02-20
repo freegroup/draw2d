@@ -10,9 +10,9 @@ import extend from '../../util/extend'
  *
  * @example
  *
- *     let shape =  new draw2d.shape.basic.Label({text:"This is a simple label", x:40, y:10});
+ *    let shape =  new draw2d.shape.basic.Label({text:"This is a simple label", x:40, y:10});
  *
- *     canvas.add(shape);
+ *    canvas.add(shape);
  *
  * @author Andreas Herz
  *
@@ -365,17 +365,17 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
    *
    * Set the padding of the element
    *
-   *      // Alternatively you can use the attr method:
-   *      //
-   *      // set the padding for top,left,bottom,right in one call
-   *      figure.attr({
-   *        padding: 3
-   *      });
+   *     // Alternatively you can use the attr method:
+   *     //
+   *     // set the padding for top,left,bottom,right in one call
+   *     figure.attr({
+   *       padding: 3
+   *     });
    *
-   *      // update the padding left and top
-   *      figure.attr({
-   *        padding: {left:3, top:30}
-   *      });
+   *     // update the padding left and top
+   *     figure.attr({
+   *       padding: {left:3, top:30}
+   *     });
    *
    * @param {Number|Object} padding The new padding
    **/

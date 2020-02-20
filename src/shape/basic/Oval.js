@@ -10,9 +10,9 @@ import extend from '../../util/extend'
  *
  * @example
  *
- *     let oval =  new draw2d.shape.basic.Oval({width:150, height:100, x:50, y:10});
+ *    let oval =  new draw2d.shape.basic.Oval({width:150, height:100, x:50, y:10});
  *
- *     canvas.add(oval);
+ *    canvas.add(oval);
  *
  * @inheritable
  * @author Andreas Herz

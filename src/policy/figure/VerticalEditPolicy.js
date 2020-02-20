@@ -6,13 +6,13 @@
  *
  *
  * @example
- *       // add some demo figure to the canvas
- *       var circle =new draw2d.shape.basic.Circle({diameter:50, x:10, y:30});
- *       canvas.add(circle);
+ *      // add some demo figure to the canvas
+ *      var circle =new draw2d.shape.basic.Circle({diameter:50, x:10, y:30});
+ *      canvas.add(circle);
  *
- *       // add the edit policy to the shape. At this point you can move the shape only
- *       // horizontal
- *       circle.installEditPolicy(new draw2d.policy.figure.VerticalEditPolicy());
+ *      // add the edit policy to the shape. At this point you can move the shape only
+ *      // horizontal
+ *      circle.installEditPolicy(new draw2d.policy.figure.VerticalEditPolicy());
  *
  *
  * @author Andreas Herz

@@ -28,6 +28,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -36,6 +38,8 @@
       "virtual": false,
       "description": "<p>Call this method if you didn't need the canvas anymore. The method unregister all even handlers\nand free all resources. The canvas is unusable after this call</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -44,6 +48,8 @@
       "virtual": false,
       "description": "<p>Reset the canvas and delete all model elements.<br>\nYou can now reload another model to the canvas with a {@link draw2d.io.Reader}</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "1.1.0",
       "examples": []
     },
     {
@@ -52,6 +58,8 @@
       "virtual": false,
       "description": "<p>Callback for any kind of image export tools to trigger the canvas to hide all unwanted\ndecorations. The method is called e.g. from the draw2d.io.png.Writer</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "4.0.0",
       "examples": []
     },
     {
@@ -60,6 +68,8 @@
       "virtual": false,
       "description": "<p>callback method for any image export writer to reactivate the decoration\nof the canvas. e.g. grids, rulers,...</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "4.0.0",
       "examples": []
     },
     {
@@ -68,6 +78,8 @@
       "virtual": false,
       "description": "<p>Calculate all connection intersection of the canvas.\nRequired for &quot;bridging&quot; or &quot;crossing decoration&quot;</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -85,6 +97,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "2.2.0",
       "examples": []
     },
     {
@@ -105,13 +119,15 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "2.2.0",
       "examples": []
     },
     {
       "name": "setZoom",
       "access": "",
       "virtual": false,
-      "description": "<p>Set the new zoom factor for the canvas. The value must be between [0.01..10]</p>\n<pre><code> // you can register an eventhandler if the zoom factor did change\n canvas.on(&quot;zoom&quot;, function(emitterFigure, zoomData){\n     alert(&quot;canvas zoomed to:&quot;+zoomData.factor);\n });</code></pre>",
+      "description": "<p>Set the new zoom factor for the canvas. The value must be between [0.01..10]</p>\n<pre><code>// you can register an eventhandler if the zoom factor did change\ncanvas.on(&quot;zoom&quot;, function(emitterFigure, zoomData){\n    alert(&quot;canvas zoomed to:&quot;+zoomData.factor);\n});</code></pre>",
       "parameters": [
         {
           "name": "zoomFactor",
@@ -130,6 +146,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -138,6 +156,8 @@
       "virtual": false,
       "description": "<p>Return the current zoom factor of the canvas.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -150,6 +170,8 @@
       "virtual": false,
       "description": "<p>Return the dimension of the drawing area</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "4.4.0",
       "examples": [],
       "returns": {
         "type": "draw2d.geo.Rectangle",
@@ -171,6 +193,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "4.4.0",
       "examples": []
     },
     {
@@ -196,6 +220,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.geo.Point",
@@ -225,6 +251,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.geo.Point",
@@ -237,6 +265,8 @@
       "virtual": false,
       "description": "<p>The DOM host of the canvas</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "HTMLElement",
@@ -258,6 +288,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -275,6 +307,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -283,6 +317,8 @@
       "virtual": false,
       "description": "<p>return the scrolling area of the canvas. This is jQuery object</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "JQuery",
@@ -295,6 +331,8 @@
       "virtual": false,
       "description": "<p>The left scroll position.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -307,6 +345,8 @@
       "virtual": false,
       "description": "<p>The top scroll position</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -328,6 +368,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -345,6 +387,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -370,6 +414,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "5.8.0",
       "examples": []
     },
     {
@@ -378,6 +424,8 @@
       "virtual": false,
       "description": "<p>The absolute document x offset.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -390,6 +438,8 @@
       "virtual": false,
       "description": "<p>The absolute document y offset.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -402,6 +452,8 @@
       "virtual": false,
       "description": "<p>Return the width of the canvas</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -414,6 +466,8 @@
       "virtual": false,
       "description": "<p>Return the height of the canvas.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -424,7 +478,7 @@
       "name": "add",
       "access": "",
       "virtual": false,
-      "description": "<p>Add a figure at the given x/y coordinate. This method fires an event.</p>\n<p>Example:</p>\n<pre><code> canvas.on(&quot;figure:add&quot;, function(emitter, event){\n    alert(&quot;figure added:&quot;);\n });\n\n // or more general if you want catch all figure related events\n //\n canvas.on(&quot;figure&quot;, function(emitter, event){\n    // use event.figure.getCanvas()===null to determine if the\n    // figure part of the canvas\n\n    alert(&quot;figure added or removed:&quot;);\n });</code></pre>",
+      "description": "<p>Add a figure at the given x/y coordinate. This method fires an event.</p>\n<p>Example:</p>\n<pre><code>canvas.on(&quot;figure:add&quot;, function(emitter, event){\n   alert(&quot;figure added:&quot;);\n});\n\n// or more general if you want catch all figure related events\n//\ncanvas.on(&quot;figure&quot;, function(emitter, event){\n   // use event.figure.getCanvas()===null to determine if the\n   // figure part of the canvas\n\n   alert(&quot;figure added or removed:&quot;);\n});</code></pre>",
       "parameters": [
         {
           "name": "figure",
@@ -451,13 +505,15 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
       "name": "remove",
       "access": "",
       "virtual": false,
-      "description": "<p>Remove a figure or connection from the Canvas. This method fires an event\nwhich can be catched.</p>\n<p>Example:</p>\n<pre><code> canvas.on(&quot;figure:remove&quot;, function(emitter, event){\n    alert(&quot;figure removed:&quot;);\n });\n\n // or more general if you want catch all figure related events\n //\n canvas.on(&quot;figure&quot;, function(emitter, event){\n    // use event.figure.getCanvas()===null to determine if the\n    // figure part of the canvas\n\n    alert(&quot;figure added or removed:&quot;);\n });</code></pre>",
+      "description": "<p>Remove a figure or connection from the Canvas. This method fires an event\nwhich can be catched.</p>\n<p>Example:</p>\n<pre><code>canvas.on(&quot;figure:remove&quot;, function(emitter, event){\n   alert(&quot;figure removed:&quot;);\n});\n\n// or more general if you want catch all figure related events\n//\ncanvas.on(&quot;figure&quot;, function(emitter, event){\n   // use event.figure.getCanvas()===null to determine if the\n   // figure part of the canvas\n\n   alert(&quot;figure added or removed:&quot;);\n});</code></pre>",
       "parameters": [
         {
           "name": "figure",
@@ -468,6 +524,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -476,6 +534,8 @@
       "virtual": false,
       "description": "<p>Returns all lines/connections in this workflow/canvas.<br></p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.util.ArrayList",
@@ -488,6 +548,8 @@
       "virtual": false,
       "description": "<p>Returns the internal figures.<br></p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.util.ArrayList",
@@ -509,6 +571,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.shape.basic.Line",
@@ -530,6 +594,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.Figure",
@@ -551,6 +617,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.util.ArrayList",
@@ -580,6 +648,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.geo.Point",
@@ -601,6 +671,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -618,6 +690,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -626,6 +700,8 @@
       "virtual": false,
       "description": "<p>Return all ports in the canvas</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -634,6 +710,8 @@
       "virtual": false,
       "description": "<p>Returns the command stack for the Canvas. Required for undo/redo support.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.command.CommandStack",
@@ -646,6 +724,8 @@
       "virtual": false,
       "description": "<p>Returns the current selected figure in the Canvas.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.Figure",
@@ -658,6 +738,8 @@
       "virtual": false,
       "description": "<p>Returns the current selection.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.Selection",
@@ -682,6 +764,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -702,6 +786,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "4.6.0",
       "examples": []
     },
     {
@@ -751,6 +837,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.Figure",
@@ -788,6 +876,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.shape.basic.Line",
@@ -798,7 +888,7 @@
       "name": "onDragEnter",
       "access": "",
       "virtual": false,
-      "description": "<p>Called by the framework during drag&amp;drop operations.<br>\nDroppable can be setup with:</p>\n<pre>\n    $(\".draw2d_droppable\").draggable({\n         appendTo:\"#container\",\n         stack:\"#container\",\n         zIndex: 27000,\n         helper:\"clone\",\n         start: function(e, ui){$(ui.helper).addClass(\"shadow\");}\n    });\n</pre>\n<p>Graphiti use the jQuery draggable/droppable lib. Please inspect\nhttp://jqueryui.com/demos/droppable/ for further information.</p>",
+      "description": "<p>Called by the framework during drag&amp;drop operations.<br>\nDroppable can be setup with:</p>\n<pre>\n   $(\".draw2d_droppable\").draggable({\n        appendTo:\"#container\",\n        stack:\"#container\",\n        zIndex: 27000,\n        helper:\"clone\",\n        start: function(e, ui){$(ui.helper).addClass(\"shadow\");}\n   });\n</pre>\n<p>Graphiti use the jQuery draggable/droppable lib. Please inspect\nhttp://jqueryui.com/demos/droppable/ for further information.</p>",
       "parameters": [
         {
           "name": "draggedDomNode",
@@ -809,6 +899,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -842,6 +934,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -859,6 +953,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -908,6 +1004,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -916,6 +1014,8 @@
       "virtual": false,
       "description": "<p>Callback method for the double click event. The x/y coordinates are relative to the top left\ncorner of the canvas.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -957,6 +1057,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -998,6 +1100,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "1.1.0",
       "examples": []
     },
     {
@@ -1047,6 +1151,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -1072,13 +1178,15 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "5.0.0",
       "examples": []
     },
     {
       "name": "on",
       "access": "",
       "virtual": false,
-      "description": "<p>Attach an event handler function for one or more events to the canvas.\nTo remove events bound with .on(), see {@link #off}.</p>\n<p>possible events are:<br></p>\n<ul>\n  <li>reset</li>\n  <li>select</li>\n</ul>\n<p>Example:</p>\n<pre><code> canvas.on(&quot;clear&quot;, function(emitter, event){\n    alert(&quot;canvas.clear() called.&quot;);\n });\n\n canvas.on(&quot;select&quot;, function(emitter,event){\n     if(event.figure!==null){\n         alert(&quot;figure selected&quot;);\n     }\n     else{\n         alert(&quot;selection cleared&quot;);\n     }\n });</code></pre>",
+      "description": "<p>Attach an event handler function for one or more events to the canvas.\nTo remove events bound with .on(), see {@link #off}.</p>\n<p>possible events are:<br></p>\n<ul>\n  <li>reset</li>\n  <li>select</li>\n</ul>\n<p>Example:</p>\n<pre><code>canvas.on(&quot;clear&quot;, function(emitter, event){\n   alert(&quot;canvas.clear() called.&quot;);\n});\n\ncanvas.on(&quot;select&quot;, function(emitter,event){\n    if(event.figure!==null){\n        alert(&quot;figure selected&quot;);\n    }\n    else{\n        alert(&quot;selection cleared&quot;);\n    }\n});</code></pre>",
       "parameters": [
         {
           "name": "event",
@@ -1113,6 +1221,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "5.0.0",
       "examples": []
     },
     {
@@ -1133,6 +1243,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "5.0.0",
       "examples": []
     }
   ]

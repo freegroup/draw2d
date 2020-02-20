@@ -11,7 +11,7 @@
     "description": "",
     "parameters": [],
     "examples": [
-      "// create a basic figure and add a Label/child via API call\n    //\n    var circle = new draw2d.shape.basic.Circle({\n        x:100,\n        y:50,\n        diameter:100,\n        stroke: 3,\n        color:\"#A63343\",\n        bgColor:\"#E65159\"\n    });\n\n    circle.add(new draw2d.shape.basic.Label({text:\"Bottom Label\"}), new draw2d.layout.locator.BottomLocator());\n    canvas.add( circle);"
+      "// create a basic figure and add a Label/child via API call\n   //\n   var circle = new draw2d.shape.basic.Circle({\n       x:100,\n       y:50,\n       diameter:100,\n       stroke: 3,\n       color:\"#A63343\",\n       bgColor:\"#E65159\"\n   });\n\n   circle.add(new draw2d.shape.basic.Label({text:\"Bottom Label\"}), new draw2d.layout.locator.BottomLocator());\n   canvas.add( circle);"
     ]
   },
   "functions": [
@@ -21,6 +21,8 @@
       "virtual": false,
       "description": "",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -46,6 +48,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     }
   ]

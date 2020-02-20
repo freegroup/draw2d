@@ -8,34 +8,34 @@ import draw2d from '../../packages'
  *
  * @example
  *
- *     let createConnection=function(){
- *        let con = new draw2d.Connection();
- *        con.setRouter(new draw2d.layout.connection.SketchConnectionRouter());
- *        return con;
- *     };
+ *    let createConnection=function(){
+ *       let con = new draw2d.Connection();
+ *       con.setRouter(new draw2d.layout.connection.SketchConnectionRouter());
+ *       return con;
+ *    };
  *
- *     // install a custom connection create policy
- *     //
- *     canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({
- *            createConnection: createConnection
- *     }));
+ *    // install a custom connection create policy
+ *    //
+ *    canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({
+ *           createConnection: createConnection
+ *    }));
  *
- *     // create and add two nodes which contains Ports (In and OUT)
- *     //
- *     let f1 = new draw2d.shape.analog.OpAmp({x:10, y:10});
- *     let f2 = new draw2d.shape.analog.ResistorVertical({angle:90, height:20, x:300, y:150});
+ *    // create and add two nodes which contains Ports (In and OUT)
+ *    //
+ *    let f1 = new draw2d.shape.analog.OpAmp({x:10, y:10});
+ *    let f2 = new draw2d.shape.analog.ResistorVertical({angle:90, height:20, x:300, y:150});
  *
- *     // ...add it to the canvas
- *     //
- *     canvas.add( f1);
- *     canvas.add( f2);
+ *    // ...add it to the canvas
+ *    //
+ *    canvas.add( f1);
+ *    canvas.add( f2);
  *
- *     // first Connection
- *     //
- *     let c = createConnection();
- *     c.setSource(f1.getOutputPort(0));
- *     c.setTarget(f2.getHybridPort(0));
- *     canvas.add(c);
+ *    // first Connection
+ *    //
+ *    let c = createConnection();
+ *    c.setSource(f1.getOutputPort(0));
+ *    c.setTarget(f2.getHybridPort(0));
+ *    canvas.add(c);
  *
  * @inheritable
  * @author Andreas Herz

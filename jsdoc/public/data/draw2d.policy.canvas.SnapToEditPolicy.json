@@ -21,13 +21,15 @@
       "virtual": false,
       "description": "<p>Creates a new constraint policy for snap to grid</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
       "name": "setLineColor",
       "access": "",
       "virtual": false,
-      "description": "<p>Set the color of the snap line.</p>\n<pre><code> // Alternatively you can use the attr method:\n policy.attr({\n   lineColor: color\n });</code></pre>",
+      "description": "<p>Set the color of the snap line.</p>\n<pre><code>// Alternatively you can use the attr method:\npolicy.attr({\n  lineColor: color\n});</code></pre>",
       "parameters": [
         {
           "name": "color",
@@ -41,6 +43,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -49,6 +53,8 @@
       "virtual": false,
       "description": "<p>Return the current paint color.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "5.6.1",
       "examples": [],
       "returns": {
         "type": "draw2d.util.Color",
@@ -94,6 +100,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -111,6 +119,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -128,6 +138,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -177,6 +189,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "3.0.0",
       "examples": []
     },
     {
@@ -226,6 +240,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -275,6 +291,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "4.1.0",
       "examples": []
     },
     {
@@ -324,6 +342,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -389,6 +409,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -438,6 +460,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -490,6 +514,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "4.4.0",
       "examples": []
     },
     {
@@ -539,6 +565,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "5.8.0",
       "examples": [],
       "returns": {
         "type": "Boolean",
@@ -584,6 +612,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "String",
@@ -613,6 +643,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "5.3.2",
       "examples": []
     }
   ]

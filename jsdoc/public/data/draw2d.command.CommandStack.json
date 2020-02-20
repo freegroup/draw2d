@@ -19,6 +19,8 @@
       "virtual": false,
       "description": "<p>Create a new CommandStack objects which can be execute via the CommandStack.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -36,6 +38,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -44,6 +48,8 @@
       "virtual": false,
       "description": "<p>Remove the undo / redo history. This is useful if the user has been save the\ndocument.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -61,6 +67,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -78,6 +86,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "4.0.0",
       "examples": []
     },
     {
@@ -86,6 +96,8 @@
       "virtual": false,
       "description": "<p>Returns true if the Command Stack has an open transaction.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -94,6 +106,8 @@
       "virtual": false,
       "description": "<p>Commit the running transaction. All commands between the start/end of a transaction\ncan be undo/redo in a single step.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "4.0.0",
       "examples": []
     },
     {
@@ -102,6 +116,8 @@
       "virtual": false,
       "description": "<p>Undo on command from the stack and store them on the redo command stack.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -110,6 +126,8 @@
       "virtual": false,
       "description": "<p>Redo a command after the user has undo a command</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -118,6 +136,8 @@
       "virtual": false,
       "description": "<p>Return the label of the next REDO command.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "String",
@@ -130,6 +150,8 @@
       "virtual": false,
       "description": "<p>Return the label of the next UNDO command.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "String",
@@ -142,6 +164,8 @@
       "virtual": false,
       "description": "<p>Indicates whenever a REDO is possible.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "",
@@ -154,6 +178,8 @@
       "virtual": false,
       "description": "<p>indicator whenever a undo is possible.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Boolean",
@@ -178,6 +204,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -203,6 +231,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -220,6 +250,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -245,6 +277,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     }
   ]

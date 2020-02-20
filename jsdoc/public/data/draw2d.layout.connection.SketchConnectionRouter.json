@@ -13,7 +13,7 @@
     "description": "",
     "parameters": [],
     "examples": [
-      "let createConnection=function(){\n       let con = new draw2d.Connection();\n       con.setRouter(new draw2d.layout.connection.SketchConnectionRouter());\n       return con;\n    };\n\n    // install a custom connection create policy\n    //\n    canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({\n           createConnection: createConnection\n    }));\n\n    // create and add two nodes which contains Ports (In and OUT)\n    //\n    let f1 = new draw2d.shape.analog.OpAmp({x:10, y:10});\n    let f2 = new draw2d.shape.analog.ResistorVertical({angle:90, height:20, x:300, y:150});\n\n    // ...add it to the canvas\n    //\n    canvas.add( f1);\n    canvas.add( f2);\n\n    // first Connection\n    //\n    let c = createConnection();\n    c.setSource(f1.getOutputPort(0));\n    c.setTarget(f2.getHybridPort(0));\n    canvas.add(c);"
+      "let createConnection=function(){\n      let con = new draw2d.Connection();\n      con.setRouter(new draw2d.layout.connection.SketchConnectionRouter());\n      return con;\n   };\n\n   // install a custom connection create policy\n   //\n   canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({\n          createConnection: createConnection\n   }));\n\n   // create and add two nodes which contains Ports (In and OUT)\n   //\n   let f1 = new draw2d.shape.analog.OpAmp({x:10, y:10});\n   let f2 = new draw2d.shape.analog.ResistorVertical({angle:90, height:20, x:300, y:150});\n\n   // ...add it to the canvas\n   //\n   canvas.add( f1);\n   canvas.add( f2);\n\n   // first Connection\n   //\n   let c = createConnection();\n   c.setSource(f1.getOutputPort(0));\n   c.setTarget(f2.getHybridPort(0));\n   canvas.add(c);"
     ]
   },
   "functions": [
@@ -23,6 +23,8 @@
       "virtual": false,
       "description": "<p>Creates a new Router object.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -40,6 +42,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "2.7.2",
       "examples": []
     },
     {
@@ -48,6 +52,8 @@
       "virtual": false,
       "description": "",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -97,6 +103,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -114,6 +122,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "PF.Grid",
@@ -151,6 +161,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.geo.Point",

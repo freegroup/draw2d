@@ -599,10 +599,10 @@ draw2d.Canvas = Class.extend(
      *
      * Set the new zoom factor for the canvas. The value must be between [0.01..10]
      *
-     *      // you can register an eventhandler if the zoom factor did change
-     *      canvas.on("zoom", function(emitterFigure, zoomData){
-     *          alert("canvas zoomed to:"+zoomData.factor);
-     *      });
+     *     // you can register an eventhandler if the zoom factor did change
+     *     canvas.on("zoom", function(emitterFigure, zoomData){
+     *         alert("canvas zoomed to:"+zoomData.factor);
+     *     });
      *
      * @param {Number} zoomFactor new zoom factor.
      * @param {Boolean} [animated] set it to true for smooth zoom in/out
@@ -872,18 +872,18 @@ draw2d.Canvas = Class.extend(
      *
      * Example:
      *
-     *      canvas.on("figure:add", function(emitter, event){
-     *         alert("figure added:");
-     *      });
+     *     canvas.on("figure:add", function(emitter, event){
+     *        alert("figure added:");
+     *     });
      *
-     *      // or more general if you want catch all figure related events
-     *      //
-     *      canvas.on("figure", function(emitter, event){
-     *         // use event.figure.getCanvas()===null to determine if the
-     *         // figure part of the canvas
+     *     // or more general if you want catch all figure related events
+     *     //
+     *     canvas.on("figure", function(emitter, event){
+     *        // use event.figure.getCanvas()===null to determine if the
+     *        // figure part of the canvas
      *
-     *         alert("figure added or removed:");
-     *      });
+     *        alert("figure added or removed:");
+     *     });
      *
      * @param {draw2d.Figure} figure The figure to add.
      * @param {Number/draw2d.geo.Point} [x] The new x coordinate of the figure or the x/y coordinate if it is an draw2d.geo.Point
@@ -952,18 +952,18 @@ draw2d.Canvas = Class.extend(
      *
      * Example:
      *
-     *      canvas.on("figure:remove", function(emitter, event){
-     *         alert("figure removed:");
-     *      });
+     *     canvas.on("figure:remove", function(emitter, event){
+     *        alert("figure removed:");
+     *     });
      *
-     *      // or more general if you want catch all figure related events
-     *      //
-     *      canvas.on("figure", function(emitter, event){
-     *         // use event.figure.getCanvas()===null to determine if the
-     *         // figure part of the canvas
+     *     // or more general if you want catch all figure related events
+     *     //
+     *     canvas.on("figure", function(emitter, event){
+     *        // use event.figure.getCanvas()===null to determine if the
+     *        // figure part of the canvas
      *
-     *         alert("figure added or removed:");
-     *      });
+     *        alert("figure added or removed:");
+     *     });
      *
      *
      * @param {draw2d.Figure} figure The figure to remove
@@ -1435,13 +1435,13 @@ draw2d.Canvas = Class.extend(
      * Called by the framework during drag&drop operations.<br>
      * Droppable can be setup with:
      * <pre>
-     *     $(".draw2d_droppable").draggable({
-     *          appendTo:"#container",
-     *          stack:"#container",
-     *          zIndex: 27000,
-     *          helper:"clone",
-     *          start: function(e, ui){$(ui.helper).addClass("shadow");}
-     *     });
+     *    $(".draw2d_droppable").draggable({
+     *         appendTo:"#container",
+     *         stack:"#container",
+     *         zIndex: 27000,
+     *         helper:"clone",
+     *         start: function(e, ui){$(ui.helper).addClass("shadow");}
+     *    });
      * </pre>
      * Graphiti use the jQuery draggable/droppable lib. Please inspect
      * http://jqueryui.com/demos/droppable/ for further information.
@@ -1664,18 +1664,18 @@ draw2d.Canvas = Class.extend(
      *
      * Example:
      *
-     *      canvas.on("clear", function(emitter, event){
-     *         alert("canvas.clear() called.");
-     *      });
+     *     canvas.on("clear", function(emitter, event){
+     *        alert("canvas.clear() called.");
+     *     });
      *
-     *      canvas.on("select", function(emitter,event){
-     *          if(event.figure!==null){
-     *              alert("figure selected");
-     *          }
-     *          else{
-     *              alert("selection cleared");
-     *          }
-     *      });
+     *     canvas.on("select", function(emitter,event){
+     *         if(event.figure!==null){
+     *             alert("figure selected");
+     *         }
+     *         else{
+     *             alert("selection cleared");
+     *         }
+     *     });
      *
      * @param {String}   event One or more space-separated event types
      * @param {Function} callback A function to execute when the event is triggered.

@@ -13,7 +13,7 @@
     "description": "",
     "parameters": [],
     "examples": [
-      "canvas.add( new draw2d.shape.node.Fulcrum(),50,10);\n    canvas.add( new draw2d.shape.node.Fulcrum(),80,100);\n    canvas.add( new draw2d.shape.node.Fulcrum(),150,50);"
+      "canvas.add( new draw2d.shape.node.Fulcrum(),50,10);\n   canvas.add( new draw2d.shape.node.Fulcrum(),80,100);\n   canvas.add( new draw2d.shape.node.Fulcrum(),150,50);"
     ]
   },
   "functions": [
@@ -32,6 +32,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -40,6 +42,8 @@
       "virtual": false,
       "description": "",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -57,6 +61,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.Figure",
@@ -69,6 +75,8 @@
       "virtual": false,
       "description": "<p>This value is relevant for the interactive resize of the figure.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -81,13 +89,15 @@
       "virtual": false,
       "description": "",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
       "name": "setLabel",
       "access": "",
       "virtual": false,
-      "description": "<p>Set the label for the Hub</p>\n<pre><code> // Alternatively you can use the attr method:\n figure.attr({\n   text: label\n });</code></pre>",
+      "description": "<p>Set the label for the Hub</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  text: label\n});</code></pre>",
       "parameters": [
         {
           "name": "label",
@@ -98,6 +108,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "3.0.4",
       "examples": []
     },
     {
@@ -115,6 +127,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "2.4.3",
       "examples": []
     },
     {
@@ -123,6 +137,8 @@
       "virtual": false,
       "description": "",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -131,6 +147,8 @@
       "virtual": false,
       "description": "",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": []
     }
   ]

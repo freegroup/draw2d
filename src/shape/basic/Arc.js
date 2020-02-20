@@ -10,9 +10,9 @@ import extend from '../../util/extend'
  *
  * @example
  *
- *     let arc =  new draw2d.shape.basic.Arc({diameter:150, x:50, y:10, startAngle:0, endAngle:45});
+ *    let arc =  new draw2d.shape.basic.Arc({diameter:150, x:50, y:10, startAngle:0, endAngle:45});
  *
- *     canvas.add(arc);
+ *    canvas.add(arc);
  *
  * @inheritable
  * @author Andreas Herz

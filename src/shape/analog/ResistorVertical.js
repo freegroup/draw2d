@@ -7,9 +7,9 @@ import draw2d from '../../packages'
  *
  * @example
  *
- *     let figure =  new draw2d.shape.analog.ResistorVertical({x:10, y:10});
+ *    let figure =  new draw2d.shape.analog.ResistorVertical({x:10, y:10});
  *
- *     canvas.add(figure);
+ *    canvas.add(figure);
  *
  *
  * @extends draw2d.SVGFigure

@@ -30,6 +30,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -47,6 +49,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -55,6 +59,8 @@
       "virtual": false,
       "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Boolean",
@@ -67,6 +73,8 @@
       "virtual": false,
       "description": "<p>Execute the command the first time</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -75,6 +83,8 @@
       "virtual": false,
       "description": "<p>Undo the move command</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -83,6 +93,8 @@
       "virtual": false,
       "description": "<p>Redo the move command after the user has undo this command</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -91,6 +103,8 @@
       "virtual": false,
       "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "String",
@@ -103,6 +117,8 @@
       "virtual": false,
       "description": "<p>Will be called if the user cancel the operation.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": []
     }
   ]

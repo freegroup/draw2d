@@ -10,24 +10,24 @@ import draw2d from '../../packages'
  *
  * @example
  *
- *     // create and add two nodes which contains Ports (In and OUT)
- *     //
- *     let start = new draw2d.shape.state.Start();
- *     let end   = new draw2d.shape.state.End();
+ *    // create and add two nodes which contains Ports (In and OUT)
+ *    //
+ *    let start = new draw2d.shape.state.Start();
+ *    let end   = new draw2d.shape.state.End();
 
- *     // ...add it to the canvas
- *     canvas.add( start, 50,50);
- *     canvas.add( end, 230,180);
+ *    // ...add it to the canvas
+ *    canvas.add( start, 50,50);
+ *    canvas.add( end, 230,180);
  *
- *     // Create a Connection and connect the Start and End node
- *     //
- *     let c = new draw2d.shape.state.Connection({
- *     	 source : start.getOutputPort(0),
- *       target : end.getInputPort(0)
- *     });
+ *    // Create a Connection and connect the Start and End node
+ *    //
+ *    let c = new draw2d.shape.state.Connection({
+ *    	 source : start.getOutputPort(0),
+ *      target : end.getInputPort(0)
+ *    });
  *
- *     // and finally add the connection to the canvas
- *     canvas.add(c);
+ *    // and finally add the connection to the canvas
+ *    canvas.add(c);
  *
  *
  * @extends draw2d.Connection

@@ -9,9 +9,9 @@ import draw2d from '../../packages'
  *
  * @example
  *
- *     let figure =  new draw2d.shape.node.HorizontalBus({width:300, height:20, text:"Horizontal Bus"});
+ *    let figure =  new draw2d.shape.node.HorizontalBus({width:300, height:20, text:"Horizontal Bus"});
  *
- *     canvas.add(figure,50,10);
+ *    canvas.add(figure,50,10);
  *
  * @extends draw2d.shape.node.Hub
  */

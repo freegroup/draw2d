@@ -1,7 +1,7 @@
 {
   "name": "Writer",
   "namespace": "draw2d.io.png",
-  "description": "<p>Convert the canvas document into a PNG Image.</p>\n<pre><code>// example how to create a PNG image and set an\n// image src attribute.\n//\nvar writer = new draw2d.io.png.Writer();\nwriter.marshal(canvas, function(png){\n    $(&quot;#preview&quot;).attr(&quot;src&quot;,png);\n});</code></pre>",
+  "description": "<p>Convert the canvas document into a PNG Image.</p>\n<p>// example how to create a PNG image and set an\n// image src attribute.\n//\nvar writer = new draw2d.io.png.Writer();\nwriter.marshal(canvas, function(png){\n$(&quot;#preview&quot;).attr(&quot;src&quot;,png);\n});</p>",
   "extends": [
     "draw2d.io.Writer"
   ],
@@ -62,6 +62,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     }
   ]

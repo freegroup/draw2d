@@ -10,33 +10,34 @@ import draw2d from '../../packages'
  *
  *
  * @example
- *     //create and add two Node which contains Ports (In and OUT)
- *     let start = new draw2d.shape.node.Start({x:50,y:50});
- *     let end   = new draw2d.shape.node.End({x:230,y:100});
  *
- *     canvas.add( start);
- *     canvas.add( end);
+ *    // create and add two Node which contains Ports (In and OUT)
+ *    let start = new draw2d.shape.node.Start({x:50,y:50});
+ *    let end   = new draw2d.shape.node.End({x:230,y:100});
  *
- *     // Create a Connection and connect he Start and End node
- *     //
- *     let c = new draw2d.Connection();
- *     c.setSource(start.getOutputPort(0));
- *     c.setTarget(end.getInputPort(0));
- *     canvas.add(c);
+ *    canvas.add( start);
+ *    canvas.add( end);
  *
- *     // create a label which should attach to the connection
- *     //
- *     let label = new draw2d.shape.basic.Label({text:"I'm a Label"});
- *     label.setColor("#0d0d0d");
- *     label.setFontColor("#0d0d0d");
- *     label.setBackgroundColor("#f0f0f0");
+ *    // Create a Connection and connect the Start and End node
+ *    //
+ *    let c = new draw2d.Connection();
+ *    c.setSource(start.getOutputPort(0));
+ *    c.setTarget(end.getInputPort(0));
+ *    canvas.add(c);
  *
- *     // add the decoration to the connection with a ManhattanMidpointLocator.
- *     //
- *     c.add(label, new draw2d.layout.locator.ManhattanMidpointLocator());
+ *    // create a label which should attach to the connection
+ *    //
+ *    let label = new draw2d.shape.basic.Label({text:"I'm a Label"});
+ *    label.setColor("#0d0d0d");
+ *    label.setFontColor("#0d0d0d");
+ *    label.setBackgroundColor("#f0f0f0");
+ *
+ *    // add the decoration to the connection with a ManhattanMidpointLocator.
+ *    //
+ *    c.add(label, new draw2d.layout.locator.ManhattanMidpointLocator());
  *
  * @author Andreas Herz
- * @extend draw2d.layout.locator.ConnectionLocator
+ * @extends draw2d.layout.locator.ConnectionLocator
  */
 draw2d.layout.locator.ManhattanMidpointLocator = draw2d.layout.locator.ConnectionLocator.extend(
   /** @lends draw2d.layout.locator.ManhattanMidpointLocator.prototype */

@@ -37,6 +37,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -62,6 +64,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -74,6 +78,8 @@
           "virtual": false,
           "description": "<p>Returns the bounds of this Anchor's owner. Subclasses can\noverride this method to adjust the box. Maybe you return the box\nof the port parent (the parent figure)</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Rectangle",
@@ -95,6 +101,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -107,6 +115,8 @@
           "virtual": false,
           "description": "<p>Returns the Figure that contains this ConnectionAnchor.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.Figure",
@@ -128,6 +138,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]
@@ -164,6 +176,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -189,6 +203,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -201,6 +217,8 @@
           "virtual": false,
           "description": "<p>Returns the bounds of this Anchor's owner. Subclasses can\noverride this method to adjust the box. Maybe you return the box\nof the port parent (the parent figure)</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Rectangle",
@@ -222,6 +240,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -234,6 +254,8 @@
           "virtual": false,
           "description": "<p>Returns the Figure that contains this ConnectionAnchor.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.Figure",
@@ -255,6 +277,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]
@@ -289,6 +313,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -314,6 +340,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -326,6 +354,8 @@
           "virtual": false,
           "description": "<p>Returns the Figure that contains this ConnectionAnchor.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.Figure",
@@ -347,6 +377,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -355,6 +387,8 @@
           "virtual": false,
           "description": "<p>Returns the bounds of this Anchor's owner.  Subclasses can override this method\nto adjust the box. Maybe you return the box of the port parent (the parent figure)</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Rectangle",
@@ -376,6 +410,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -424,6 +460,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -449,6 +487,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -461,6 +501,8 @@
           "virtual": false,
           "description": "<p>Returns the bounds of this Anchor's owner. Subclasses can\noverride this method to adjust the box. Maybe you return the box\nof the port parent (the parent figure)</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Rectangle",
@@ -482,6 +524,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -494,6 +538,8 @@
           "virtual": false,
           "description": "<p>Returns the Figure that contains this ConnectionAnchor.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.Figure",
@@ -515,6 +561,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]
@@ -551,6 +599,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -576,6 +626,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -588,6 +640,8 @@
           "virtual": false,
           "description": "<p>Returns the bounds of this Anchor's owner. Subclasses can\noverride this method to adjust the box. Maybe you return the box\nof the port parent (the parent figure)</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Rectangle",
@@ -609,6 +663,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -621,6 +677,8 @@
           "virtual": false,
           "description": "<p>Returns the Figure that contains this ConnectionAnchor.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.Figure",
@@ -642,6 +700,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]

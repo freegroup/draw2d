@@ -64,6 +64,8 @@ function graft(parentNode, childNodes, parentLongname) {
                 'virtual': Boolean(element.virtual),
                 'description': element.description || '',
                 'parameters': [],
+                'inherited': Boolean(element.inherited),
+                'since': element.since || '',
                 'examples': []
             };
 

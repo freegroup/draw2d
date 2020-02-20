@@ -111,7 +111,7 @@ draw2d.util.Base64 = {
        *
        * @param {String} input to decode (length not required to be a multiple of 4).
        * @param {boolean=} opt_webSafe True if we should use the
-       *     alternative alphabet.
+       *    alternative alphabet.
        * @return {Array} bytes representing the decoded value.
        */
       decode: function(input, opt_webSafe) {
@@ -163,7 +163,7 @@ draw2d.util.Base64 = {
      * range 0-255.
      * @param {string} str String value to arrify.
      * @return {!Array.<number>} Array of numbers corresponding to the
-     *     UCS character codes of each character in str.
+     *    UCS character codes of each character in str.
      */
     stringToByteArray: function(str) {
       var output = [], p = 0;

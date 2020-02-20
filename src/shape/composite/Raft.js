@@ -8,15 +8,15 @@ import draw2d from '../../packages'
  *
  * @example
  *
- *     let rect1 =  new draw2d.shape.composite.Raft({width:200, height:100});
- *     let rect2 =  new draw2d.shape.basic.Rectangle({width:50, height:50});
+ *    let rect1 =  new draw2d.shape.composite.Raft({width:200, height:100});
+ *    let rect2 =  new draw2d.shape.basic.Rectangle({width:50, height:50});
  *
- *     canvas.add(rect1,10,10);
- *     canvas.add(rect2,20,20);
+ *    canvas.add(rect1,10,10);
+ *    canvas.add(rect2,20,20);
  *
- *     rect2.attr({bgColor:"#f0f000", width:50, height:50, radius:10});
+ *    rect2.attr({bgColor:"#f0f000", width:50, height:50, radius:10});
  *
- *     canvas.setCurrentSelection(rect1);
+ *    canvas.setCurrentSelection(rect1);
  *
  * @author Andreas Herz
  * @extends draw2d.shape.composite.WeakComposite

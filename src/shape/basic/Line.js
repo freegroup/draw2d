@@ -10,23 +10,23 @@ import extend from '../../util/extend'
  *
  * @example
  *
- *     // Create the line and modify the start/end after inserting them into
- *     // the canvas
- *     let line1 =  new draw2d.shape.basic.Line({startX:30, startY:30, endX:100, endY:80});
+ *    // Create the line and modify the start/end after inserting them into
+ *    // the canvas
+ *    let line1 =  new draw2d.shape.basic.Line({startX:30, startY:30, endX:100, endY:80});
  *
- *     canvas.add(line1);
+ *    canvas.add(line1);
  *
- *     // Create the line with a given start/end coordinate in the constructor
- *     //
- *     let line2 = new draw2d.shape.basic.Line({
- *           startX:20,
- *           startY:80,
- *           endX:200,
- *           endY:150,
- *           stroke:3,
- *           color:"#1d1dff"
- *      });
- *     canvas.add(line2);
+ *    // Create the line with a given start/end coordinate in the constructor
+ *    //
+ *    let line2 = new draw2d.shape.basic.Line({
+ *          startX:20,
+ *          startY:80,
+ *          endX:200,
+ *          endY:150,
+ *          stroke:3,
+ *          color:"#1d1dff"
+ *     });
+ *    canvas.add(line2);
  *
  * @inheritable
  * @author Andreas Herz
@@ -123,10 +123,10 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
    *
    * Set the outline color of the line.
    *
-   *      // Alternatively you can use the attr method:
-   *      figure.attr({
-   *        outlineColor: color
-   *      });
+   *     // Alternatively you can use the attr method:
+   *     figure.attr({
+   *       outlineColor: color
+   *     });
    *
    * @param {draw2d.util.Color/String} color The new color of the line.
    * @since 4.2.1
@@ -154,10 +154,10 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
    *
    * Set the outline stroke of the line to use.
    *
-   *      // Alternatively you can use the attr method:
-   *      figure.attr({
-   *        outlineStroke: w
-   *      });
+   *     // Alternatively you can use the attr method:
+   *     figure.attr({
+   *       outlineStroke: w
+   *     });
    *
    * @param {Number} w The new outline width of the line
    * @since 4.2.1
@@ -277,10 +277,10 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
    *
    * Called when a user clicks on the element.
    *
-   *      // Alternatively you can register for this event with
-   *      figure.on("click", function(emitterFigure){
-   *          alert("clicked");
-   *      });
+   *     // Alternatively you can register for this event with
+   *     figure.on("click", function(emitterFigure){
+   *         alert("clicked");
+   *     });
    *
    * @template
    * @since 4.0.0
@@ -292,10 +292,10 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
    *
    * Set the line style for this object.
    *
-   *      // Alternatively you can use the attr method:
-   *      figure.attr({
-   *        dasharray: dashPattern
-   *      });
+   *     // Alternatively you can use the attr method:
+   *     figure.attr({
+   *       dasharray: dashPattern
+   *     });
    *
    * @param {String} dashPattern Can be one of this ["", "-", ".", "-.", "-..", ". ", "- ", "--", "- .", "--.", "--.."]
    */
@@ -312,8 +312,8 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
    *
    * Get the line style for this object.
    *
-   *      // Alternatively you can use the attr method:
-   *      figure.attr("dasharray");
+   *     // Alternatively you can use the attr method:
+   *     figure.attr("dasharray");
    *
    * @since 5.1.0
    */
@@ -427,10 +427,10 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
    *
    * Highlight the element or remove the highlighting
    *
-   *      // Alternatively you can use the attr method:
-   *      figure.attr({
-   *        glow: flag
-   *      });
+   *     // Alternatively you can use the attr method:
+   *     figure.attr({
+   *       glow: flag
+   *     });
    *
    * @param {Boolean} flag indicates glow/noGlow
    * @template
@@ -472,10 +472,10 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
    * Set the line width. This enforce a repaint of the line.
    * This method fires a <i>document dirty</i> event.
    *
-   *      // Alternatively you can use the attr method:
-   *      figure.attr({
-   *        stroke: w
-   *      });
+   *     // Alternatively you can use the attr method:
+   *     figure.attr({
+   *       stroke: w
+   *     });
    *
    * @param {Number} w The new line width of the figure.
    **/
@@ -505,10 +505,10 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
    * Set the color of the line.
    * This method fires a <i>document dirty</i> event.
    *
-   *      // Alternatively you can use the attr method:
-   *      figure.attr({
-   *        color: color
-   *      });
+   *     // Alternatively you can use the attr method:
+   *     figure.attr({
+   *       color: color
+   *     });
    *
    * @param {draw2d.util.Color|String} color The new color of the line.
    **/
@@ -587,11 +587,11 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
    * Set the start point of the line.
    * This method fires a <i>document dirty</i> event.
    *
-   *      // Alternatively you can use the attr method:
-   *      figure.attr({
-   *        startX: x,
-   *        startY: y
-   *      });
+   *     // Alternatively you can use the attr method:
+   *     figure.attr({
+   *       startX: x,
+   *       startY: y
+   *     });
    *
    * @param {Number|draw2d.geo.Point} x the x coordinate of the start point
    * @param {Number} [y] the y coordinate of the start point
@@ -641,16 +641,16 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
    * Set the end point of the line.
    * This method fires a <i>document dirty</i> event.
    *
-   *      // Alternatively you can use the attr method:
-   *      figure.attr({
-   *        endX: 3,
-   *        endY: 10
-   *      });
+   *     // Alternatively you can use the attr method:
+   *     figure.attr({
+   *       endX: 3,
+   *       endY: 10
+   *     });
    *
-   *      // or
-   *      figure.attr({
-   *        end: {x:3, y:10}
-   *      });
+   *     // or
+   *     figure.attr({
+   *       end: {x:3, y:10}
+   *     });
    * @param {Number|draw2d.geo.Point} x the x coordinate or a draw2d.geo.Point of the end point
    * @param {Number} [y] the y coordinate of the end point
    **/
@@ -928,18 +928,18 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
    * Returns the angle of the line in degree.
    *
    * <pre>
-   *                                 270°
-   *                               |
-   *                               |
-   *                               |
-   *                               |
+   *                                270°
+   *                              |
+   *                              |
+   *                              |
+   *                              |
    * 180° -------------------------+------------------------> +X
-   *                               |                        0°
-   *                               |
-   *                               |
-   *                               |
-   *                               V +Y
-   *                              90°
+   *                              |                        0°
+   *                              |
+   *                              |
+   *                              |
+   *                              V +Y
+   *                             90°
    * </pre>
    * @return {Number}
    **/

@@ -20,7 +20,7 @@
         "description": "",
         "parameters": [],
         "examples": [
-          "let createConnection=function(){\n       let con = new draw2d.Connection();\n       con.setRouter(new draw2d.layout.connection.CircuitConnectionRouter());\n       return con;\n    };\n\n    // install a custom connection create policy\n    //\n    canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({\n           createConnection: createConnection\n    }));\n\n    // create and add two nodes which contains Ports (In and OUT)\n    //\n    let f1 = new draw2d.shape.analog.OpAmp({x:10, y:10});\n    let f2 = new draw2d.shape.analog.ResistorVertical({angle:90, height:20, x:300, y:150});\n    let f3 = new draw2d.shape.analog.ResistorVertical({x:250, y:70});\n    let f4 = new draw2d.shape.analog.ResistorVertical({x:10, y:90});\n\n    // ...add it to the canvas\n    //\n    canvas.add( f1);\n    canvas.add( f2);\n    canvas.add( f3);\n    canvas.add( f4);\n\n    // first Connection\n    //\n    let c = createConnection();\n    c.setSource(f1.getOutputPort(0));\n    c.setTarget(f2.getHybridPort(0));\n    canvas.add(c);\n\n    // second Connection between the other resistors\n    //\n    c = createConnection();\n    c.setSource(f3.getHybridPort(1));\n    c.setTarget(f4.getHybridPort(0));\n    canvas.add(c);"
+          "let createConnection=function(){\n      let con = new draw2d.Connection();\n      con.setRouter(new draw2d.layout.connection.CircuitConnectionRouter());\n      return con;\n   };\n\n   // install a custom connection create policy\n   //\n   canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({\n          createConnection: createConnection\n   }));\n\n   // create and add two nodes which contains Ports (In and OUT)\n   //\n   let f1 = new draw2d.shape.analog.OpAmp({x:10, y:10});\n   let f2 = new draw2d.shape.analog.ResistorVertical({angle:90, height:20, x:300, y:150});\n   let f3 = new draw2d.shape.analog.ResistorVertical({x:250, y:70});\n   let f4 = new draw2d.shape.analog.ResistorVertical({x:10, y:90});\n\n   // ...add it to the canvas\n   //\n   canvas.add( f1);\n   canvas.add( f2);\n   canvas.add( f3);\n   canvas.add( f4);\n\n   // first Connection\n   //\n   let c = createConnection();\n   c.setSource(f1.getOutputPort(0));\n   c.setTarget(f2.getHybridPort(0));\n   canvas.add(c);\n\n   // second Connection between the other resistors\n   //\n   c = createConnection();\n   c.setSource(f3.getHybridPort(1));\n   c.setTarget(f4.getHybridPort(0));\n   canvas.add(c);"
         ]
       },
       "functions": [
@@ -30,6 +30,8 @@
           "virtual": false,
           "description": "<p>Creates a new Router object.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -47,6 +49,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "2.7.2",
           "examples": []
         },
         {
@@ -64,6 +68,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "2.7.2",
           "examples": []
         },
         {
@@ -81,6 +87,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -89,6 +97,8 @@
           "virtual": false,
           "description": "<p>deprecated</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -106,6 +116,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -114,6 +126,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -163,6 +177,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -212,6 +228,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -229,6 +247,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.2.3",
           "examples": []
         },
         {
@@ -246,6 +266,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.2.3",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -275,6 +297,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "2.10.0",
           "examples": [],
           "returns": {
             "type": "Object",
@@ -304,6 +328,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "2.10.0",
           "examples": []
         },
         {
@@ -353,6 +379,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -370,6 +398,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]
@@ -395,6 +425,8 @@
           "virtual": false,
           "description": "<p>Creates a new Router object</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -444,6 +476,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -461,6 +495,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "2.7.2",
           "examples": []
         },
         {
@@ -478,6 +514,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "2.7.2",
           "examples": []
         },
         {
@@ -495,6 +533,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "4.2.3",
           "examples": []
         },
         {
@@ -512,6 +552,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "4.2.3",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -541,6 +583,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "2.10.0",
           "examples": [],
           "returns": {
             "type": "Object",
@@ -570,6 +614,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "2.10.0",
           "examples": []
         },
         {
@@ -619,6 +665,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -636,6 +684,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         }
       ]
@@ -655,7 +705,7 @@
         "description": "",
         "parameters": [],
         "examples": [
-          "let createConnection=function(){\n       let con = new draw2d.Connection();\n       con.setRouter(new draw2d.layout.connection.DirectRouter());\n       return con;\n    };\n\n    // install a custom connection create policy\n    //\n    canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({\n           createConnection: createConnection\n    }));\n\n    // create and add two nodes which contains Ports (In and OUT)\n    //\n    let start = new draw2d.shape.node.Start();\n    let end   = new draw2d.shape.node.End();\n    // ...add it to the canvas\n    canvas.add( start, 50,50);\n    canvas.add( end, 230,80);\n\n    // first Connection\n    //\n    let c = createConnection();\n    c.setSource(start.getOutputPort(0));\n    c.setTarget(end.getInputPort(0));\n    canvas.add(c);"
+          "let createConnection=function(){\n      let con = new draw2d.Connection();\n      con.setRouter(new draw2d.layout.connection.DirectRouter());\n      return con;\n   };\n\n   // install a custom connection create policy\n   //\n   canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({\n          createConnection: createConnection\n   }));\n\n   // create and add two nodes which contains Ports (In and OUT)\n   //\n   let start = new draw2d.shape.node.Start();\n   let end   = new draw2d.shape.node.End();\n   // ...add it to the canvas\n   canvas.add( start, 50,50);\n   canvas.add( end, 230,80);\n\n   // first Connection\n   //\n   let c = createConnection();\n   c.setSource(start.getOutputPort(0));\n   c.setTarget(end.getInputPort(0));\n   canvas.add(c);"
         ]
       },
       "functions": [
@@ -665,6 +715,8 @@
           "virtual": false,
           "description": "<p>Creates a new Router object</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -682,6 +734,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "2.7.2",
           "examples": []
         },
         {
@@ -690,6 +744,8 @@
           "virtual": false,
           "description": "<p>Invalidates the given Connection</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -698,6 +754,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -747,6 +805,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -764,6 +824,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "2.7.2",
           "examples": []
         },
         {
@@ -781,6 +843,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.2.3",
           "examples": []
         },
         {
@@ -798,6 +862,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.2.3",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -827,6 +893,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "2.10.0",
           "examples": [],
           "returns": {
             "type": "Object",
@@ -856,6 +924,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "2.10.0",
           "examples": []
         },
         {
@@ -905,6 +975,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -922,6 +994,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]
@@ -941,7 +1015,7 @@
         "description": "",
         "parameters": [],
         "examples": [
-          "let createConnection=function(){\n       // return my special kind of connection\n       let con = new draw2d.Connection({\n         radius: 14,\n         router: new draw2d.layout.connection.FanConnectionRouter()\n       });\n       return con;\n    };\n\n    // install a custom connection create policy\n    //\n    canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({\n           createConnection: createConnection\n    }));\n\n    // create and add two nodes which contains Ports (In and OUT)\n    //\n    let start = new draw2d.shape.node.Start();\n    let end   = new draw2d.shape.node.End();\n    // ...add it to the canvas\n    canvas.add( start, 50,50);\n    canvas.add( end, 230,80);\n\n    // first Connection\n    //\n    let c = createConnection();\n    c.setSource(start.getOutputPort(0));\n    c.setTarget(end.getInputPort(0));\n    canvas.add(c);\n\n    // second Connection\n    //\n    c = createConnection();\n    c.setSource(start.getOutputPort(0));\n    c.setTarget(end.getInputPort(0));\n    canvas.add(c);\n\n    // third Connection\n    //\n    c = createConnection();\n    c.setSource(start.getOutputPort(0));\n    c.setTarget(end.getInputPort(0));\n    canvas.add(c);"
+          "let createConnection=function(){\n      // return my special kind of connection\n      let con = new draw2d.Connection({\n        radius: 14,\n        router: new draw2d.layout.connection.FanConnectionRouter()\n      });\n      return con;\n   };\n\n   // install a custom connection create policy\n   //\n   canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({\n          createConnection: createConnection\n   }));\n\n   // create and add two nodes which contains Ports (In and OUT)\n   //\n   let start = new draw2d.shape.node.Start();\n   let end   = new draw2d.shape.node.End();\n   // ...add it to the canvas\n   canvas.add( start, 50,50);\n   canvas.add( end, 230,80);\n\n   // first Connection\n   //\n   let c = createConnection();\n   c.setSource(start.getOutputPort(0));\n   c.setTarget(end.getInputPort(0));\n   canvas.add(c);\n\n   // second Connection\n   //\n   c = createConnection();\n   c.setSource(start.getOutputPort(0));\n   c.setTarget(end.getInputPort(0));\n   canvas.add(c);\n\n   // third Connection\n   //\n   c = createConnection();\n   c.setSource(start.getOutputPort(0));\n   c.setTarget(end.getInputPort(0));\n   canvas.add(c);"
         ]
       },
       "functions": [
@@ -951,6 +1025,8 @@
           "virtual": false,
           "description": "<p>Creates a new Router object.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -968,6 +1044,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "2.7.2",
           "examples": []
         },
         {
@@ -1017,6 +1095,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1042,6 +1122,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1050,6 +1132,8 @@
           "virtual": false,
           "description": "<p>Invalidates the given Connection</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -1067,6 +1151,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "2.7.2",
           "examples": []
         },
         {
@@ -1084,6 +1170,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.2.3",
           "examples": []
         },
         {
@@ -1101,6 +1189,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.2.3",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -1130,6 +1220,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "2.10.0",
           "examples": [],
           "returns": {
             "type": "Object",
@@ -1159,6 +1251,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "2.10.0",
           "examples": []
         },
         {
@@ -1208,6 +1302,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -1225,6 +1321,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]
@@ -1244,7 +1342,7 @@
         "description": "",
         "parameters": [],
         "examples": [
-          "let createConnection=function(){\n       // return my special kind of connection\n       let con = new draw2d.Connection({\n         radius: 4,\n         router: new draw2d.layout.connection.InteractiveManhattanConnectionRouter()\n       });\n       return con;\n    };\n\n    // install a custom connection create policy\n    //\n    canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({\n           createConnection: createConnection\n    }));\n\n    // create and add two nodes which contains Ports (In and OUT)\n    //\n    let start = new draw2d.shape.node.Start();\n    let end   = new draw2d.shape.node.End();\n    // ...add it to the canvas\n    canvas.add( start, 50,50);\n    canvas.add( end, 230,80);\n\n    // first Connection\n    //\n    let c = createConnection();\n    c.setSource(start.getOutputPort(0));\n    c.setTarget(end.getInputPort(0));\n    canvas.add(c);\n\n    // select the connection to show the selection handles\n    //\n    c.select();"
+          "let createConnection=function(){\n      // return my special kind of connection\n      let con = new draw2d.Connection({\n        radius: 4,\n        router: new draw2d.layout.connection.InteractiveManhattanConnectionRouter()\n      });\n      return con;\n   };\n\n   // install a custom connection create policy\n   //\n   canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({\n          createConnection: createConnection\n   }));\n\n   // create and add two nodes which contains Ports (In and OUT)\n   //\n   let start = new draw2d.shape.node.Start();\n   let end   = new draw2d.shape.node.End();\n   // ...add it to the canvas\n   canvas.add( start, 50,50);\n   canvas.add( end, 230,80);\n\n   // first Connection\n   //\n   let c = createConnection();\n   c.setSource(start.getOutputPort(0));\n   c.setTarget(end.getInputPort(0));\n   canvas.add(c);\n\n   // select the connection to show the selection handles\n   //\n   c.select();"
         ]
       },
       "functions": [
@@ -1254,6 +1352,8 @@
           "virtual": false,
           "description": "<p>Creates a new Router object.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1262,6 +1362,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1303,6 +1405,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1328,6 +1432,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "4.2.3",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -1381,6 +1487,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "6.1.0",
           "examples": []
         },
         {
@@ -1389,6 +1497,8 @@
           "virtual": false,
           "description": "<p>Called by the connection if the vertices set outside.\nThis enforce the router to avoid full autoroute. E.g. InteractiveManhattanRouter</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1414,6 +1524,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "2.10.0",
           "examples": [],
           "returns": {
             "type": "Object",
@@ -1435,6 +1547,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "4..0.0",
           "examples": []
         },
         {
@@ -1452,6 +1566,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "2.7.2",
           "examples": []
         },
         {
@@ -1501,6 +1617,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -1550,6 +1668,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -1567,6 +1687,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "2.7.2",
           "examples": []
         },
         {
@@ -1584,6 +1706,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.2.3",
           "examples": []
         }
       ]
@@ -1611,6 +1735,8 @@
           "virtual": false,
           "description": "<p>Creates a new Router object.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1628,6 +1754,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "2.7.2",
           "examples": []
         },
         {
@@ -1636,6 +1764,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1685,6 +1815,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -1734,6 +1866,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -1751,6 +1885,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "2.7.2",
           "examples": []
         },
         {
@@ -1768,6 +1904,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.2.3",
           "examples": []
         },
         {
@@ -1785,6 +1923,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.2.3",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -1814,6 +1954,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "2.10.0",
           "examples": [],
           "returns": {
             "type": "Object",
@@ -1843,6 +1985,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "2.10.0",
           "examples": []
         },
         {
@@ -1892,6 +2036,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -1909,6 +2055,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]
@@ -1928,7 +2076,7 @@
         "description": "",
         "parameters": [],
         "examples": [
-          "// Override the default connection type. This is used during drag&drop operations of ports.\n    //\n    let createConnection=function(sourcePort, targetPort){\n       // return my special kind of connection\n       let con = new draw2d.Connection();\n       con.setRouter(new draw2d.layout.connection.ManhattanConnectionRouter());\n       return con;\n    };\n\n    // Install a special policy into the canvas to use my own implementation of connection\n    // if we drag&drop a port\n    //\n    canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({\n          createConnection: createConnection\n    }));\n\n    // create and add two nodes which contains Ports (In and OUT)\n    //\n    let start = new draw2d.shape.node.Start();\n    let end   = new draw2d.shape.node.End();\n    // ...add it to the canvas\n    canvas.add( start, 50,50);\n    canvas.add( end, 230,80);\n\n    // first Connection\n    //\n    let c = createConnection();\n    c.setSource(start.getOutputPort(0));\n    c.setTarget(end.getInputPort(0));\n    canvas.add(c);"
+          "// Override the default connection type. This is used during drag&drop operations of ports.\n   //\n   let createConnection=function(sourcePort, targetPort){\n      // return my special kind of connection\n      let con = new draw2d.Connection();\n      con.setRouter(new draw2d.layout.connection.ManhattanConnectionRouter());\n      return con;\n   };\n\n   // Install a special policy into the canvas to use my own implementation of connection\n   // if we drag&drop a port\n   //\n   canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({\n         createConnection: createConnection\n   }));\n\n   // create and add two nodes which contains Ports (In and OUT)\n   //\n   let start = new draw2d.shape.node.Start();\n   let end   = new draw2d.shape.node.End();\n   // ...add it to the canvas\n   canvas.add( start, 50,50);\n   canvas.add( end, 230,80);\n\n   // first Connection\n   //\n   let c = createConnection();\n   c.setSource(start.getOutputPort(0));\n   c.setTarget(end.getInputPort(0));\n   canvas.add(c);"
         ]
       },
       "functions": [
@@ -1938,6 +2086,8 @@
           "virtual": false,
           "description": "<p>Creates a new Router object.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1955,6 +2105,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "2.7.2",
           "examples": []
         },
         {
@@ -1963,6 +2115,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2012,6 +2166,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2061,6 +2217,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -2078,6 +2236,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "2.7.2",
           "examples": []
         },
         {
@@ -2095,6 +2255,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.2.3",
           "examples": []
         },
         {
@@ -2112,6 +2274,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.2.3",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -2141,6 +2305,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "2.10.0",
           "examples": [],
           "returns": {
             "type": "Object",
@@ -2170,6 +2336,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "2.10.0",
           "examples": []
         },
         {
@@ -2219,6 +2387,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -2236,6 +2406,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]
@@ -2263,6 +2435,8 @@
           "virtual": false,
           "description": "<p>Creates a new Router object.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2271,6 +2445,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2312,6 +2488,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2320,6 +2498,8 @@
           "virtual": false,
           "description": "<li>up -&gt; 0</li>\n  <li>right -&gt; 1</li>\n  <li>down -&gt; 2</li>\n  <li>left -&gt; 3</li>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2328,6 +2508,8 @@
           "virtual": false,
           "description": "<li>up -&gt; 0</li>\n  <li>right -&gt; 1</li>\n  <li>down -&gt; 2</li>\n  <li>left -&gt; 3</li>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2353,6 +2535,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "",
@@ -2374,6 +2558,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "2.7.2",
           "examples": []
         },
         {
@@ -2423,6 +2609,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -2472,6 +2660,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -2489,6 +2679,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "2.7.2",
           "examples": []
         },
         {
@@ -2506,6 +2698,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.2.3",
           "examples": []
         },
         {
@@ -2523,6 +2717,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.2.3",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -2552,6 +2748,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "2.10.0",
           "examples": [],
           "returns": {
             "type": "Object",
@@ -2581,6 +2779,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "2.10.0",
           "examples": []
         },
         {
@@ -2630,6 +2830,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -2647,6 +2849,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]
@@ -2666,7 +2870,7 @@
         "description": "",
         "parameters": [],
         "examples": [
-          "let RubberConnection= draw2d.Connection.extend({\n        NAME: \"RubberConnection\",\n\n        init:function(attr, setter, getter)\n        {\n          this._super(extend({\n              color: \"#33691e\",\n              stroke:1,\n              outlineStroke:0,\n              outlineColor:null\n          },attr),\n          setter,\n          getter);\n\n\n          this.setRouter(new draw2d.layout.connection.RubberbandRouter());\n        },\n\n        repaint:function(attributes)\n        {\n            if (this.repaintBlocked===true || this.shape === null){\n                return;\n            }\n            attributes= attributes || {};\n            // enrich the rendering with a \"fill\" attribute\n            if(typeof attributes.fill === \"undefined\"){\n            \t   attributes.fill = \"#aed581\";\n            }\n            this._super(attributes);\n       }\n    });\n\n    let createConnection=function(){\n       let con = new RubberConnection();\n       return con;\n    };\n\n    // install a custom connection create policy\n    //\n    canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({\n           createConnection: createConnection\n    }));\n\n\n    // create and add two nodes which contains Ports (In and OUT)\n    //\n    let start = new draw2d.shape.node.Start();\n    let end   = new draw2d.shape.node.End();\n    // ...add it to the canvas\n    canvas.add( start, 50,50);\n    canvas.add( end, 230,80);\n\n    // first Connection\n    //\n    let c = createConnection();\n    c.setSource(start.getOutputPort(0));\n    c.setTarget(end.getInputPort(0));\n    canvas.add(c);"
+          "let RubberConnection= draw2d.Connection.extend({\n       NAME: \"RubberConnection\",\n\n       init:function(attr, setter, getter)\n       {\n         this._super(extend({\n             color: \"#33691e\",\n             stroke:1,\n             outlineStroke:0,\n             outlineColor:null\n         },attr),\n         setter,\n         getter);\n\n\n         this.setRouter(new draw2d.layout.connection.RubberbandRouter());\n       },\n\n       repaint:function(attributes)\n       {\n           if (this.repaintBlocked===true || this.shape === null){\n               return;\n           }\n           attributes= attributes || {};\n           // enrich the rendering with a \"fill\" attribute\n           if(typeof attributes.fill === \"undefined\"){\n           \t   attributes.fill = \"#aed581\";\n           }\n           this._super(attributes);\n      }\n   });\n\n   let createConnection=function(){\n      let con = new RubberConnection();\n      return con;\n   };\n\n   // install a custom connection create policy\n   //\n   canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({\n          createConnection: createConnection\n   }));\n\n\n   // create and add two nodes which contains Ports (In and OUT)\n   //\n   let start = new draw2d.shape.node.Start();\n   let end   = new draw2d.shape.node.End();\n   // ...add it to the canvas\n   canvas.add( start, 50,50);\n   canvas.add( end, 230,80);\n\n   // first Connection\n   //\n   let c = createConnection();\n   c.setSource(start.getOutputPort(0));\n   c.setTarget(end.getInputPort(0));\n   canvas.add(c);"
         ]
       },
       "functions": [
@@ -2676,6 +2880,8 @@
           "virtual": false,
           "description": "<p>Creates a new Router object</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2693,6 +2899,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "2.7.2",
           "examples": []
         },
         {
@@ -2701,6 +2909,8 @@
           "virtual": false,
           "description": "<p>Invalidates the given Connection</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2709,6 +2919,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2758,6 +2970,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -2775,6 +2989,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "2.7.2",
           "examples": []
         },
         {
@@ -2792,6 +3008,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.2.3",
           "examples": []
         },
         {
@@ -2809,6 +3027,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.2.3",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -2838,6 +3058,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "2.10.0",
           "examples": [],
           "returns": {
             "type": "Object",
@@ -2867,6 +3089,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "2.10.0",
           "examples": []
         },
         {
@@ -2916,6 +3140,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -2933,6 +3159,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]
@@ -2952,7 +3180,7 @@
         "description": "",
         "parameters": [],
         "examples": [
-          "let createConnection=function(){\n       let con = new draw2d.Connection();\n       con.setRouter(new draw2d.layout.connection.SketchConnectionRouter());\n       return con;\n    };\n\n    // install a custom connection create policy\n    //\n    canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({\n           createConnection: createConnection\n    }));\n\n    // create and add two nodes which contains Ports (In and OUT)\n    //\n    let f1 = new draw2d.shape.analog.OpAmp({x:10, y:10});\n    let f2 = new draw2d.shape.analog.ResistorVertical({angle:90, height:20, x:300, y:150});\n\n    // ...add it to the canvas\n    //\n    canvas.add( f1);\n    canvas.add( f2);\n\n    // first Connection\n    //\n    let c = createConnection();\n    c.setSource(f1.getOutputPort(0));\n    c.setTarget(f2.getHybridPort(0));\n    canvas.add(c);"
+          "let createConnection=function(){\n      let con = new draw2d.Connection();\n      con.setRouter(new draw2d.layout.connection.SketchConnectionRouter());\n      return con;\n   };\n\n   // install a custom connection create policy\n   //\n   canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({\n          createConnection: createConnection\n   }));\n\n   // create and add two nodes which contains Ports (In and OUT)\n   //\n   let f1 = new draw2d.shape.analog.OpAmp({x:10, y:10});\n   let f2 = new draw2d.shape.analog.ResistorVertical({angle:90, height:20, x:300, y:150});\n\n   // ...add it to the canvas\n   //\n   canvas.add( f1);\n   canvas.add( f2);\n\n   // first Connection\n   //\n   let c = createConnection();\n   c.setSource(f1.getOutputPort(0));\n   c.setTarget(f2.getHybridPort(0));\n   canvas.add(c);"
         ]
       },
       "functions": [
@@ -2962,6 +3190,8 @@
           "virtual": false,
           "description": "<p>Creates a new Router object.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2979,6 +3209,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "2.7.2",
           "examples": []
         },
         {
@@ -2987,6 +3219,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -3036,6 +3270,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -3053,6 +3289,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "PF.Grid",
@@ -3090,6 +3328,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -3113,7 +3353,7 @@
         "description": "",
         "parameters": [],
         "examples": [
-          "let createConnection=function(){\n       let con = new draw2d.Connection();\n       con.setRouter(new draw2d.layout.connection.SplineConnectionRouter());\n       return con;\n    };\n\n    // install a custom connection create policy\n    //\n    canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({\n           createConnection: createConnection\n    }));\n\n    // create and add two nodes which contains Ports (In and OUT)\n    //\n    let f1 = new draw2d.shape.analog.OpAmp({x:10, y:10});\n    let f2 = new draw2d.shape.analog.ResistorVertical({angle:90, height:20, x:300, y:150});\n\n    // ...add it to the canvas\n    //\n    canvas.add( f1);\n    canvas.add( f2);\n\n    // first Connection\n    //\n    let c = createConnection();\n    c.setSource(f1.getOutputPort(0));\n    c.setTarget(f2.getHybridPort(0));\n    canvas.add(c);"
+          "let createConnection=function(){\n      let con = new draw2d.Connection();\n      con.setRouter(new draw2d.layout.connection.SplineConnectionRouter());\n      return con;\n   };\n\n   // install a custom connection create policy\n   //\n   canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({\n          createConnection: createConnection\n   }));\n\n   // create and add two nodes which contains Ports (In and OUT)\n   //\n   let f1 = new draw2d.shape.analog.OpAmp({x:10, y:10});\n   let f2 = new draw2d.shape.analog.ResistorVertical({angle:90, height:20, x:300, y:150});\n\n   // ...add it to the canvas\n   //\n   canvas.add( f1);\n   canvas.add( f2);\n\n   // first Connection\n   //\n   let c = createConnection();\n   c.setSource(f1.getOutputPort(0));\n   c.setTarget(f2.getHybridPort(0));\n   canvas.add(c);"
         ]
       },
       "functions": [
@@ -3123,6 +3363,8 @@
           "virtual": false,
           "description": "<p>Creates a new Router object</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -3140,6 +3382,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "2.7.2",
           "examples": []
         },
         {
@@ -3148,6 +3392,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -3197,6 +3443,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -3246,6 +3494,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -3263,6 +3513,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "2.7.2",
           "examples": []
         },
         {
@@ -3280,6 +3532,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.2.3",
           "examples": []
         },
         {
@@ -3297,6 +3551,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.2.3",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -3326,6 +3582,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "2.10.0",
           "examples": [],
           "returns": {
             "type": "Object",
@@ -3355,6 +3613,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "2.10.0",
           "examples": []
         },
         {
@@ -3404,6 +3664,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -3421,6 +3683,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]
@@ -3440,7 +3704,7 @@
         "description": "",
         "parameters": [],
         "examples": [
-          "// Override the default connection type. This is used during drag&drop operations of ports.\n    //\n    let createConnection=function(){\n       // return my special kind of connection\n       let con = new draw2d.Connection();\n       con.setRouter(new draw2d.layout.connection.VertexRouter());\n       return con;\n    };\n\n    // Install a special policy into the canvas to use my own implementation of connection\n    // if we drag&drop a port\n    //\n    canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({\n          createConnection: createConnection\n    }));\n\n    // create and add two nodes which contains Ports (In and OUT)\n    //\n    let start = new draw2d.shape.node.Start();\n    let end   = new draw2d.shape.node.End();\n    // ...add it to the canvas\n    canvas.add( start, 50,50);\n    canvas.add( end, 230,80);\n\n    // first Connection\n    //\n    let c = createConnection();\n    c.setSource(start.getOutputPort(0));\n    c.setTarget(end.getInputPort(0));\n    canvas.add(c);"
+          "// Override the default connection type. This is used during drag&drop operations of ports.\n   //\n   let createConnection=function(){\n      // return my special kind of connection\n      let con = new draw2d.Connection();\n      con.setRouter(new draw2d.layout.connection.VertexRouter());\n      return con;\n   };\n\n   // Install a special policy into the canvas to use my own implementation of connection\n   // if we drag&drop a port\n   //\n   canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({\n         createConnection: createConnection\n   }));\n\n   // create and add two nodes which contains Ports (In and OUT)\n   //\n   let start = new draw2d.shape.node.Start();\n   let end   = new draw2d.shape.node.End();\n   // ...add it to the canvas\n   canvas.add( start, 50,50);\n   canvas.add( end, 230,80);\n\n   // first Connection\n   //\n   let c = createConnection();\n   c.setSource(start.getOutputPort(0));\n   c.setTarget(end.getInputPort(0));\n   canvas.add(c);"
         ]
       },
       "functions": [
@@ -3450,6 +3714,8 @@
           "virtual": false,
           "description": "<p>Creates a new Router object</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -3467,6 +3733,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "2.7.2",
           "examples": []
         },
         {
@@ -3475,6 +3743,8 @@
           "virtual": false,
           "description": "<p>Invalidates the given Connection</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -3483,6 +3753,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -3508,6 +3780,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "4.2.3",
           "examples": []
         },
         {
@@ -3533,6 +3807,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "4.2.3",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -3562,6 +3838,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "2.10.0",
           "examples": [],
           "returns": {
             "type": "Object",
@@ -3583,6 +3861,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "2.10.0",
           "examples": []
         },
         {
@@ -3632,6 +3912,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "6.1.0",
           "examples": []
         },
         {
@@ -3681,6 +3963,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -3698,6 +3982,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "2.7.2",
           "examples": []
         },
         {
@@ -3715,6 +4001,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         }
       ]

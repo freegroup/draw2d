@@ -36,6 +36,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -44,6 +46,8 @@
       "virtual": false,
       "description": "<p>Return the corresponding stack of the event.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.command.CommandStack",
@@ -56,6 +60,8 @@
       "virtual": false,
       "description": "<p>Returns null or a Command if a command is relevant to the current event.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.command.Command",
@@ -68,6 +74,8 @@
       "virtual": false,
       "description": "<p>Returns an integer identifying the type of event which has occurred.\nDefined by {@link draw2d.command.CommandStack}.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -80,6 +88,8 @@
       "virtual": false,
       "description": "<p>Returns true if this event is fired after the stack having changed.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Boolean",
@@ -92,6 +102,8 @@
       "virtual": false,
       "description": "<p>Returns true if this event is fired prior to the stack changing.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Boolean",

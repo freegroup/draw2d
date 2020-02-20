@@ -28,6 +28,8 @@
           "virtual": false,
           "description": "<p>Creates a new selection policy for a canvas.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -36,6 +38,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -53,6 +57,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "4.9.0",
           "examples": []
         },
         {
@@ -102,6 +108,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -167,6 +175,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -216,6 +226,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -241,6 +253,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -266,6 +280,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -283,6 +299,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -300,6 +318,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -349,6 +369,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "3.0.0",
           "examples": []
         },
         {
@@ -398,6 +420,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -447,6 +471,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.1.0",
           "examples": []
         },
         {
@@ -499,6 +525,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.4.0",
           "examples": []
         },
         {
@@ -548,6 +576,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.8.0",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -593,6 +623,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -638,6 +670,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -667,6 +701,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.3.2",
           "examples": []
         }
       ]
@@ -694,6 +730,8 @@
           "virtual": false,
           "description": "<p>Creates a new Router object</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -711,6 +749,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -728,6 +768,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -777,6 +819,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "3.0.0",
           "examples": []
         },
         {
@@ -826,6 +870,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -875,6 +921,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "4.1.0",
           "examples": []
         },
         {
@@ -924,6 +972,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -989,6 +1039,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1038,6 +1090,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1090,6 +1144,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "4.4.0",
           "examples": []
         },
         {
@@ -1139,6 +1195,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "5.8.0",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -1184,6 +1242,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -1229,6 +1289,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -1258,6 +1320,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.3.2",
           "examples": []
         }
       ]
@@ -1277,7 +1341,7 @@
         "description": "",
         "parameters": [],
         "examples": [
-          "// install the policy to the canvas\n\n      // add some demo figure to the canvas\n      canvas.add(new draw2d.shape.node.Start({x: 10,  y: 30}));\n      canvas.add(new draw2d.shape.node.End({x: 90,  y: 90}));\n      canvas.add(new draw2d.shape.node.Between({ x: 310, y: 30}));\n\n      canvas.add(new draw2d.shape.basic.Label({text:\"move the mouse and you see that ports are hidden if the mouse far from it\"}),5,5);\n\n      canvas.installEditPolicy(new draw2d.policy.canvas.CoronaDecorationPolicy());"
+          "// install the policy to the canvas\n\n     // add some demo figure to the canvas\n     canvas.add(new draw2d.shape.node.Start({x: 10,  y: 30}));\n     canvas.add(new draw2d.shape.node.End({x: 90,  y: 90}));\n     canvas.add(new draw2d.shape.node.Between({ x: 310, y: 30}));\n\n     canvas.add(new draw2d.shape.basic.Label({text:\"move the mouse and you see that ports are hidden if the mouse far from it\"}),5,5);\n\n     canvas.installEditPolicy(new draw2d.policy.canvas.CoronaDecorationPolicy());"
         ]
       },
       "functions": [
@@ -1287,6 +1351,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1295,6 +1361,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1303,6 +1371,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1311,6 +1381,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1319,6 +1391,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1327,6 +1401,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1360,6 +1436,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1377,6 +1455,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -1394,6 +1474,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -1443,6 +1525,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "3.0.0",
           "examples": []
         },
         {
@@ -1492,6 +1576,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -1541,6 +1627,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.1.0",
           "examples": []
         },
         {
@@ -1590,6 +1678,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -1655,6 +1745,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -1704,6 +1796,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -1756,6 +1850,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.4.0",
           "examples": []
         },
         {
@@ -1805,6 +1901,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.8.0",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -1850,6 +1948,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -1895,6 +1995,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -1924,6 +2026,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.3.2",
           "examples": []
         }
       ]
@@ -1951,6 +2055,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -1968,6 +2074,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -1985,6 +2093,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -2034,6 +2144,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "3.0.0",
           "examples": []
         },
         {
@@ -2083,6 +2195,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -2132,6 +2246,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.1.0",
           "examples": []
         },
         {
@@ -2181,6 +2297,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -2246,6 +2364,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -2295,6 +2415,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -2347,6 +2469,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.4.0",
           "examples": []
         },
         {
@@ -2396,6 +2520,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.8.0",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -2441,6 +2567,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -2486,6 +2614,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -2515,6 +2645,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.3.2",
           "examples": []
         }
       ]
@@ -2542,6 +2674,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2583,6 +2717,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -2624,6 +2760,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -2641,6 +2779,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -2658,6 +2798,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -2707,6 +2849,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "3.0.0",
           "examples": []
         },
         {
@@ -2756,6 +2900,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -2805,6 +2951,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.1.0",
           "examples": []
         },
         {
@@ -2854,6 +3002,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -2919,6 +3069,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -2968,6 +3120,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -3020,6 +3174,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.4.0",
           "examples": []
         },
         {
@@ -3069,6 +3225,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.8.0",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -3114,6 +3272,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -3159,6 +3319,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -3188,6 +3350,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.3.2",
           "examples": []
         }
       ]
@@ -3215,6 +3379,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -3240,6 +3406,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.Figure",
@@ -3261,6 +3429,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -3278,6 +3448,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -3327,6 +3499,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "3.0.0",
           "examples": []
         },
         {
@@ -3376,6 +3550,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -3425,6 +3601,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.1.0",
           "examples": []
         },
         {
@@ -3474,6 +3652,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -3539,6 +3719,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -3588,6 +3770,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -3640,6 +3824,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.4.0",
           "examples": []
         },
         {
@@ -3689,6 +3875,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.8.0",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -3734,6 +3922,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -3779,6 +3969,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -3808,6 +4000,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.3.2",
           "examples": []
         }
       ]
@@ -3835,6 +4029,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -3876,6 +4072,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -3917,6 +4115,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -3934,6 +4134,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -3951,6 +4153,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -4000,6 +4204,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "3.0.0",
           "examples": []
         },
         {
@@ -4049,6 +4255,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -4098,6 +4306,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.1.0",
           "examples": []
         },
         {
@@ -4147,6 +4357,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -4212,6 +4424,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -4261,6 +4475,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -4313,6 +4529,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.4.0",
           "examples": []
         },
         {
@@ -4362,6 +4580,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.8.0",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -4407,6 +4627,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -4452,6 +4674,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -4481,6 +4705,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.3.2",
           "examples": []
         }
       ]
@@ -4508,6 +4734,8 @@
           "virtual": false,
           "description": "<p>Creates a new fade out policy. Don't forget to install them into the canvas.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -4516,6 +4744,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -4524,6 +4754,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -4532,6 +4764,8 @@
           "virtual": false,
           "description": "<p>Timerfucntion to show/hide the related ports</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -4581,6 +4815,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -4630,6 +4866,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -4695,6 +4933,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -4744,6 +4984,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -4761,6 +5003,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -4778,6 +5022,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -4827,6 +5073,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "3.0.0",
           "examples": []
         },
         {
@@ -4876,6 +5124,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.1.0",
           "examples": []
         },
         {
@@ -4928,6 +5178,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.4.0",
           "examples": []
         },
         {
@@ -4977,6 +5229,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.8.0",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -5022,6 +5276,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -5067,6 +5323,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -5096,6 +5354,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.3.2",
           "examples": []
         }
       ]
@@ -5115,7 +5375,7 @@
         "description": "",
         "parameters": [],
         "examples": [
-          "// install the policy to the canvas\n      canvas.installEditPolicy(new draw2d.policy.canvas.GhostMoveSelectionPolicy());\n\n      // add some demo figure to the canvas\n      canvas.add(new draw2d.shape.basic.Circle({diameter: 50, x: 10,  y: 30}));\n      canvas.add(new draw2d.shape.basic.Circle({diameter: 30, x: 90,  y: 50}));\n      canvas.add(new draw2d.shape.basic.Circle({diameter: 60, x: 110, y: 30}));\n\n      canvas.add(new draw2d.shape.basic.Label({text:\"move the circle to see the drag&drop feedback\"}),5,5);"
+          "// install the policy to the canvas\n     canvas.installEditPolicy(new draw2d.policy.canvas.GhostMoveSelectionPolicy());\n\n     // add some demo figure to the canvas\n     canvas.add(new draw2d.shape.basic.Circle({diameter: 50, x: 10,  y: 30}));\n     canvas.add(new draw2d.shape.basic.Circle({diameter: 30, x: 90,  y: 50}));\n     canvas.add(new draw2d.shape.basic.Circle({diameter: 60, x: 110, y: 30}));\n\n     canvas.add(new draw2d.shape.basic.Label({text:\"move the circle to see the drag&drop feedback\"}),5,5);"
         ]
       },
       "functions": [
@@ -5125,6 +5385,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -5133,6 +5395,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -5141,6 +5405,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -5166,6 +5432,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -5215,6 +5483,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -5280,6 +5550,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -5329,6 +5601,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -5378,6 +5652,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "3.0.0",
           "examples": []
         },
         {
@@ -5427,6 +5703,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.1.0",
           "examples": []
         },
         {
@@ -5452,6 +5730,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -5469,6 +5749,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -5486,6 +5768,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -5535,6 +5819,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -5587,6 +5873,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.4.0",
           "examples": []
         },
         {
@@ -5636,6 +5924,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.8.0",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -5681,6 +5971,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -5726,6 +6018,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -5755,6 +6049,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.3.2",
           "examples": []
         }
       ]
@@ -5782,6 +6078,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -5823,6 +6121,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -5864,6 +6164,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -5881,6 +6183,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -5898,6 +6202,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -5947,6 +6253,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "3.0.0",
           "examples": []
         },
         {
@@ -5996,6 +6304,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -6045,6 +6355,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.1.0",
           "examples": []
         },
         {
@@ -6094,6 +6406,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -6159,6 +6473,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -6208,6 +6524,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -6260,6 +6578,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.4.0",
           "examples": []
         },
         {
@@ -6309,6 +6629,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.8.0",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -6354,6 +6676,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -6399,6 +6723,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -6428,6 +6754,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.3.2",
           "examples": []
         }
       ]
@@ -6455,6 +6783,8 @@
           "virtual": false,
           "description": "<p>Creates a new Router object</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -6520,6 +6850,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -6545,6 +6877,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -6594,6 +6928,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -6643,6 +6979,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -6692,6 +7030,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "3.0.0",
           "examples": []
         },
         {
@@ -6741,6 +7081,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.1.0",
           "examples": []
         },
         {
@@ -6766,6 +7108,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -6783,6 +7127,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -6800,6 +7146,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -6849,6 +7197,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -6901,6 +7251,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.4.0",
           "examples": []
         },
         {
@@ -6950,6 +7302,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.8.0",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -6995,6 +7349,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -7040,6 +7396,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -7069,6 +7427,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.3.2",
           "examples": []
         }
       ]
@@ -7096,6 +7456,8 @@
           "virtual": false,
           "description": "<p>Creates a new Router object</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -7113,6 +7475,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -7130,6 +7494,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -7195,6 +7561,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -7220,6 +7588,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -7245,6 +7615,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -7294,6 +7666,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "3.0.0",
           "examples": []
         },
         {
@@ -7343,6 +7717,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -7392,6 +7768,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.1.0",
           "examples": []
         },
         {
@@ -7441,6 +7819,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -7490,6 +7870,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -7542,6 +7924,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.4.0",
           "examples": []
         },
         {
@@ -7591,6 +7975,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.8.0",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -7636,6 +8022,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -7681,6 +8069,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -7710,6 +8100,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.3.2",
           "examples": []
         }
       ]
@@ -7737,6 +8129,8 @@
           "virtual": false,
           "description": "<p>Creates a new selection policy</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -7762,6 +8156,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -7787,6 +8183,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -7804,6 +8202,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -7821,6 +8221,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -7870,6 +8272,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "3.0.0",
           "examples": []
         },
         {
@@ -7919,6 +8323,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -7968,6 +8374,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.1.0",
           "examples": []
         },
         {
@@ -8017,6 +8425,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -8082,6 +8492,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -8131,6 +8543,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -8183,6 +8597,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.4.0",
           "examples": []
         },
         {
@@ -8232,6 +8648,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.8.0",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -8277,6 +8695,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -8322,6 +8742,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -8351,6 +8773,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.3.2",
           "examples": []
         }
       ]
@@ -8370,7 +8794,7 @@
         "description": "",
         "parameters": [],
         "examples": [
-          "canvas.installEditPolicy(new draw2d.policy.canvas.ShowChessboardEditPolicy());\n    var shape =  new draw2d.shape.basic.Text({text:\"This is a simple text in a canvas with chessboard background.\"});\n\n    canvas.add(shape,40,10);"
+          "canvas.installEditPolicy(new draw2d.policy.canvas.ShowChessboardEditPolicy());\n   var shape =  new draw2d.shape.basic.Text({text:\"This is a simple text in a canvas with chessboard background.\"});\n\n   canvas.add(shape,40,10);"
         ]
       },
       "functions": [
@@ -8389,6 +8813,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -8397,6 +8823,8 @@
           "virtual": false,
           "description": "<p>paint the grid into the canvas</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "2.3.0",
           "examples": []
         },
         {
@@ -8414,6 +8842,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -8431,6 +8861,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -8480,6 +8912,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "3.0.0",
           "examples": []
         },
         {
@@ -8529,6 +8963,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -8578,6 +9014,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.1.0",
           "examples": []
         },
         {
@@ -8627,6 +9065,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -8692,6 +9132,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -8741,6 +9183,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -8793,6 +9237,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.4.0",
           "examples": []
         },
         {
@@ -8842,6 +9288,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.8.0",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -8887,6 +9335,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -8932,6 +9382,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -8961,6 +9413,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.3.2",
           "examples": []
         }
       ]
@@ -8980,7 +9434,7 @@
         "description": "",
         "parameters": [],
         "examples": [
-          "canvas.installEditPolicy(new draw2d.policy.canvas.ShowDimetricGridEditPolicy());\n    let shape =  new draw2d.shape.basic.Text({text:\"This is a simple text in a canvas with grid background.\"});\n\n    canvas.add(shape,40,10);"
+          "canvas.installEditPolicy(new draw2d.policy.canvas.ShowDimetricGridEditPolicy());\n   let shape =  new draw2d.shape.basic.Text({text:\"This is a simple text in a canvas with grid background.\"});\n\n   canvas.add(shape,40,10);"
         ]
       },
       "functions": [
@@ -8999,6 +9453,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -9019,6 +9475,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "5.0.3",
           "examples": []
         },
         {
@@ -9036,6 +9494,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "5.0.3",
           "examples": []
         },
         {
@@ -9053,6 +9513,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -9070,6 +9532,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -9119,6 +9583,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "3.0.0",
           "examples": []
         },
         {
@@ -9168,6 +9634,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -9217,6 +9685,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.1.0",
           "examples": []
         },
         {
@@ -9266,6 +9736,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -9331,6 +9803,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -9380,6 +9854,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -9432,6 +9908,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.4.0",
           "examples": []
         },
         {
@@ -9481,6 +9959,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.8.0",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -9526,6 +10006,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -9571,6 +10053,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -9600,6 +10084,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.3.2",
           "examples": []
         }
       ]
@@ -9619,7 +10105,7 @@
         "description": "",
         "parameters": [],
         "examples": [
-          "canvas.installEditPolicy(new draw2d.policy.canvas.ShowDotEditPolicy());\n    var shape =  new draw2d.shape.basic.Text({text:\"This is a simple text in a canvas with dotted background.\"});\n\n    canvas.add(shape,40,10);"
+          "canvas.installEditPolicy(new draw2d.policy.canvas.ShowDotEditPolicy());\n   var shape =  new draw2d.shape.basic.Text({text:\"This is a simple text in a canvas with dotted background.\"});\n\n   canvas.add(shape,40,10);"
         ]
       },
       "functions": [
@@ -9657,6 +10143,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -9674,6 +10162,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -9691,6 +10181,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -9740,6 +10232,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "3.0.0",
           "examples": []
         },
         {
@@ -9789,6 +10283,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -9838,6 +10334,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.1.0",
           "examples": []
         },
         {
@@ -9887,6 +10385,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -9952,6 +10452,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -10001,6 +10503,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -10053,6 +10557,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.4.0",
           "examples": []
         },
         {
@@ -10102,6 +10608,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.8.0",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -10147,6 +10655,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -10192,6 +10702,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -10221,6 +10733,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.3.2",
           "examples": []
         }
       ]
@@ -10240,7 +10754,7 @@
         "description": "",
         "parameters": [],
         "examples": [
-          "canvas.installEditPolicy(new draw2d.policy.canvas.ShowGridEditPolicy());\n    var shape =  new draw2d.shape.basic.Text({text:\"This is a simple text in a canvas with grid background.\"});\n\n    canvas.add(shape,40,10);"
+          "canvas.installEditPolicy(new draw2d.policy.canvas.ShowGridEditPolicy());\n   var shape =  new draw2d.shape.basic.Text({text:\"This is a simple text in a canvas with grid background.\"});\n\n   canvas.add(shape,40,10);"
         ]
       },
       "functions": [
@@ -10259,6 +10773,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -10279,6 +10795,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "5.0.3",
           "examples": []
         },
         {
@@ -10296,6 +10814,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "5.0.3",
           "examples": []
         },
         {
@@ -10313,6 +10833,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -10330,6 +10852,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -10379,6 +10903,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "3.0.0",
           "examples": []
         },
         {
@@ -10428,6 +10954,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -10477,6 +11005,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.1.0",
           "examples": []
         },
         {
@@ -10526,6 +11056,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -10591,6 +11123,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -10640,6 +11174,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -10692,6 +11228,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.4.0",
           "examples": []
         },
         {
@@ -10741,6 +11279,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.8.0",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -10786,6 +11326,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -10831,6 +11373,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -10860,6 +11404,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.3.2",
           "examples": []
         }
       ]
@@ -10887,6 +11433,8 @@
           "virtual": false,
           "description": "<p>Creates a new Router object</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -10895,6 +11443,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -10944,6 +11494,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -11009,6 +11561,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -11058,6 +11612,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -11107,6 +11663,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "3.0.0",
           "examples": []
         },
         {
@@ -11156,6 +11714,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "4.1.0",
           "examples": []
         },
         {
@@ -11181,6 +11741,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -11206,6 +11768,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -11223,6 +11787,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -11240,6 +11806,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -11289,6 +11857,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -11341,6 +11911,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.4.0",
           "examples": []
         },
         {
@@ -11390,6 +11962,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.8.0",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -11435,6 +12009,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -11480,6 +12056,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -11509,6 +12087,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.3.2",
           "examples": []
         }
       ]
@@ -11536,6 +12116,8 @@
           "virtual": false,
           "description": "<p>Creates a new constraint policy for snap to geometry</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -11585,6 +12167,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -11626,6 +12210,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -11647,6 +12233,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -11664,13 +12252,15 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
           "name": "setLineColor",
           "access": "",
           "virtual": false,
-          "description": "<p>Set the color of the snap line.</p>\n<pre><code> // Alternatively you can use the attr method:\n policy.attr({\n   lineColor: color\n });</code></pre>",
+          "description": "<p>Set the color of the snap line.</p>\n<pre><code>// Alternatively you can use the attr method:\npolicy.attr({\n  lineColor: color\n});</code></pre>",
           "parameters": [
             {
               "name": "color",
@@ -11684,6 +12274,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -11692,6 +12284,8 @@
           "virtual": false,
           "description": "<p>Return the current paint color.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "5.6.1",
           "examples": [],
           "returns": {
             "type": "draw2d.util.Color",
@@ -11713,6 +12307,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -11730,6 +12326,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -11779,6 +12377,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "3.0.0",
           "examples": []
         },
         {
@@ -11828,6 +12428,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -11877,6 +12479,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.1.0",
           "examples": []
         },
         {
@@ -11926,6 +12530,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -11991,6 +12597,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -12043,6 +12651,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.4.0",
           "examples": []
         },
         {
@@ -12092,6 +12702,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.8.0",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -12137,6 +12749,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -12166,6 +12780,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.3.2",
           "examples": []
         }
       ]
@@ -12202,6 +12818,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -12243,6 +12861,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "2.3.0",
           "examples": []
         },
         {
@@ -12263,6 +12883,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.0.3",
           "examples": []
         },
         {
@@ -12280,6 +12902,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.0.3",
           "examples": []
         },
         {
@@ -12297,6 +12921,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -12314,6 +12940,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -12363,6 +12991,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "3.0.0",
           "examples": []
         },
         {
@@ -12412,6 +13042,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -12461,6 +13093,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.1.0",
           "examples": []
         },
         {
@@ -12510,6 +13144,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -12575,6 +13211,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -12624,6 +13262,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -12676,6 +13316,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.4.0",
           "examples": []
         },
         {
@@ -12725,6 +13367,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.8.0",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -12770,6 +13414,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -12799,6 +13445,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.3.2",
           "examples": []
         }
       ]
@@ -12826,13 +13474,15 @@
           "virtual": false,
           "description": "<p>Creates a new constraint policy for snap to grid</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
           "name": "setLineColor",
           "access": "",
           "virtual": false,
-          "description": "<p>Set the color of the snap line.</p>\n<pre><code> // Alternatively you can use the attr method:\n policy.attr({\n   lineColor: color\n });</code></pre>",
+          "description": "<p>Set the color of the snap line.</p>\n<pre><code>// Alternatively you can use the attr method:\npolicy.attr({\n  lineColor: color\n});</code></pre>",
           "parameters": [
             {
               "name": "color",
@@ -12846,6 +13496,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -12854,6 +13506,8 @@
           "virtual": false,
           "description": "<p>Return the current paint color.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "5.6.1",
           "examples": [],
           "returns": {
             "type": "draw2d.util.Color",
@@ -12899,6 +13553,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -12916,6 +13572,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -12933,6 +13591,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -12982,6 +13642,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "3.0.0",
           "examples": []
         },
         {
@@ -13031,6 +13693,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -13080,6 +13744,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.1.0",
           "examples": []
         },
         {
@@ -13129,6 +13795,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -13194,6 +13862,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -13243,6 +13913,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -13295,6 +13967,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.4.0",
           "examples": []
         },
         {
@@ -13344,6 +14018,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.8.0",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -13389,6 +14065,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -13418,6 +14096,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.3.2",
           "examples": []
         }
       ]
@@ -13445,6 +14125,8 @@
           "virtual": false,
           "description": "<p>Creates a new constraint policy for snap to geometry</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -13494,6 +14176,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -13535,6 +14219,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -13556,6 +14242,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Object",
@@ -13566,7 +14254,7 @@
           "name": "setLineColor",
           "access": "",
           "virtual": false,
-          "description": "<p>Set the color of the snap line.</p>\n<pre><code> // Alternatively you can use the attr method:\n policy.attr({\n   lineColor: color\n });</code></pre>",
+          "description": "<p>Set the color of the snap line.</p>\n<pre><code>// Alternatively you can use the attr method:\npolicy.attr({\n  lineColor: color\n});</code></pre>",
           "parameters": [
             {
               "name": "color",
@@ -13580,6 +14268,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -13588,6 +14278,8 @@
           "virtual": false,
           "description": "<p>Return the current paint color.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "5.6.1",
           "examples": [],
           "returns": {
             "type": "draw2d.util.Color",
@@ -13609,6 +14301,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -13626,6 +14320,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -13675,6 +14371,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "3.0.0",
           "examples": []
         },
         {
@@ -13724,6 +14422,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -13773,6 +14473,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.1.0",
           "examples": []
         },
         {
@@ -13822,6 +14524,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -13887,6 +14591,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -13939,6 +14645,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.4.0",
           "examples": []
         },
         {
@@ -13988,6 +14696,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.8.0",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -14033,6 +14743,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -14062,6 +14774,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.3.2",
           "examples": []
         }
       ]
@@ -14098,6 +14812,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -14139,6 +14855,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "2.3.0",
           "examples": []
         },
         {
@@ -14159,6 +14877,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.0.3",
           "examples": []
         },
         {
@@ -14176,6 +14896,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.0.3",
           "examples": []
         },
         {
@@ -14193,6 +14915,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -14210,6 +14934,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -14259,6 +14985,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "3.0.0",
           "examples": []
         },
         {
@@ -14308,6 +15036,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -14357,6 +15087,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.1.0",
           "examples": []
         },
         {
@@ -14406,6 +15138,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -14471,6 +15205,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -14520,6 +15256,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -14572,6 +15310,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.4.0",
           "examples": []
         },
         {
@@ -14621,6 +15361,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.8.0",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -14666,6 +15408,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -14695,6 +15439,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.3.2",
           "examples": []
         }
       ]
@@ -14722,6 +15468,8 @@
           "virtual": false,
           "description": "<p>Creates a new constraint policy for snap to geometry</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -14771,6 +15519,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -14812,6 +15562,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -14833,13 +15585,15 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
           "name": "setLineColor",
           "access": "",
           "virtual": false,
-          "description": "<p>Set the color of the snap line.</p>\n<pre><code> // Alternatively you can use the attr method:\n policy.attr({\n   lineColor: color\n });</code></pre>",
+          "description": "<p>Set the color of the snap line.</p>\n<pre><code>// Alternatively you can use the attr method:\npolicy.attr({\n  lineColor: color\n});</code></pre>",
           "parameters": [
             {
               "name": "color",
@@ -14853,6 +15607,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -14861,6 +15617,8 @@
           "virtual": false,
           "description": "<p>Return the current paint color.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "5.6.1",
           "examples": [],
           "returns": {
             "type": "draw2d.util.Color",
@@ -14882,6 +15640,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -14899,6 +15659,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -14948,6 +15710,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "3.0.0",
           "examples": []
         },
         {
@@ -14997,6 +15761,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -15046,6 +15812,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.1.0",
           "examples": []
         },
         {
@@ -15095,6 +15863,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -15160,6 +15930,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -15212,6 +15984,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.4.0",
           "examples": []
         },
         {
@@ -15261,6 +16035,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.8.0",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -15306,6 +16082,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -15335,6 +16113,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.3.2",
           "examples": []
         }
       ]
@@ -15362,6 +16142,8 @@
           "virtual": false,
           "description": "<p>Creates a new constraint policy for snap to geometry</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -15411,6 +16193,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -15452,6 +16236,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -15462,7 +16248,7 @@
           "name": "setLineColor",
           "access": "",
           "virtual": false,
-          "description": "<p>Set the color of the snap line.</p>\n<pre><code> // Alternatively you can use the attr method:\n policy.attr({\n   lineColor: color\n });</code></pre>",
+          "description": "<p>Set the color of the snap line.</p>\n<pre><code>// Alternatively you can use the attr method:\npolicy.attr({\n  lineColor: color\n});</code></pre>",
           "parameters": [
             {
               "name": "color",
@@ -15476,6 +16262,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -15484,6 +16272,8 @@
           "virtual": false,
           "description": "<p>Return the current paint color.</p>",
           "parameters": [],
+          "inherited": true,
+          "since": "5.6.1",
           "examples": [],
           "returns": {
             "type": "draw2d.util.Color",
@@ -15505,6 +16295,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -15522,6 +16314,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -15571,6 +16365,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "3.0.0",
           "examples": []
         },
         {
@@ -15620,6 +16416,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -15669,6 +16467,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.1.0",
           "examples": []
         },
         {
@@ -15718,6 +16518,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -15783,6 +16585,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -15835,6 +16639,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.4.0",
           "examples": []
         },
         {
@@ -15884,6 +16690,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.8.0",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -15929,6 +16737,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -15958,6 +16768,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.3.2",
           "examples": []
         }
       ]
@@ -15977,7 +16789,7 @@
         "description": "",
         "parameters": [],
         "examples": [
-          "canvas.installEditPolicy(new draw2d.policy.canvas.WheelZoomPolicy());\n    let shape =  new draw2d.shape.basic.Text({text:\"Use the mouse wheel + SHIFT to zoom\"});\n\n    canvas.add(shape,40,10);"
+          "canvas.installEditPolicy(new draw2d.policy.canvas.WheelZoomPolicy());\n   let shape =  new draw2d.shape.basic.Text({text:\"Use the mouse wheel + SHIFT to zoom\"});\n\n   canvas.add(shape,40,10);"
         ]
       },
       "functions": [
@@ -15987,6 +16799,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -16036,6 +16850,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "5.8.0",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -16065,6 +16881,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -16090,6 +16908,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -16107,6 +16927,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -16124,6 +16946,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -16173,6 +16997,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "3.0.0",
           "examples": []
         },
         {
@@ -16222,6 +17048,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -16271,6 +17099,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.1.0",
           "examples": []
         },
         {
@@ -16320,6 +17150,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -16385,6 +17217,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -16434,6 +17268,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -16486,6 +17322,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.4.0",
           "examples": []
         },
         {
@@ -16527,6 +17365,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -16572,6 +17412,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -16601,6 +17443,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.3.2",
           "examples": []
         }
       ]
@@ -16628,13 +17472,15 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
           "name": "setZoom",
           "access": "",
           "virtual": false,
-          "description": "<p>Set the new zoom factor for the canvas. The value must be between [0.01..10]</p>\n<pre><code> // you can register an eventhandler to listen to the zoom factor of the canvas.\n//\n canvas.on(&quot;zoom&quot;, function(emitterFigure, zoomData){\n     alert(&quot;canvas zoomed to:&quot;+zoomData.factor);\n });</code></pre>",
+          "description": "<p>Set the new zoom factor for the canvas. The value must be between [0.01..10]</p>\n<pre><code>// you can register an eventhandler to listen to the zoom factor of the canvas.\n</code></pre>\n<p>//\ncanvas.on(&quot;zoom&quot;, function(emitterFigure, zoomData){\nalert(&quot;canvas zoomed to:&quot;+zoomData.factor);\n});</p>",
           "parameters": [
             {
               "name": "zoomFactor",
@@ -16653,6 +17499,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -16670,6 +17518,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -16687,6 +17537,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -16736,6 +17588,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "3.0.0",
           "examples": []
         },
         {
@@ -16785,6 +17639,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -16834,6 +17690,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.1.0",
           "examples": []
         },
         {
@@ -16883,6 +17741,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -16948,6 +17808,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -16997,6 +17859,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": []
         },
         {
@@ -17049,6 +17913,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "4.4.0",
           "examples": []
         },
         {
@@ -17098,6 +17964,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.8.0",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -17143,6 +18011,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.geo.Point",
@@ -17188,6 +18058,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -17217,6 +18089,8 @@
               "nullable": ""
             }
           ],
+          "inherited": true,
+          "since": "5.3.2",
           "examples": []
         }
       ]

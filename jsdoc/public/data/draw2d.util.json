@@ -26,6 +26,8 @@
           "virtual": false,
           "description": "<p>Clears the array</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "6.1.0",
           "examples": []
         },
         {
@@ -34,6 +36,8 @@
           "virtual": false,
           "description": "<p>Reverses the order of the elements in the ArrayList. The array will be modified!</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -42,6 +46,8 @@
           "virtual": false,
           "description": "<p>The size/count of the stored objects.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Number",
@@ -54,6 +60,8 @@
           "virtual": false,
           "description": "<p>checks to see if the Vector has any elements.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -66,6 +74,8 @@
           "virtual": false,
           "description": "<p>return the last element.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Object",
@@ -78,6 +88,8 @@
           "virtual": false,
           "description": "<p>Return a reference to the internal javascript native array.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Array",
@@ -90,6 +102,8 @@
           "virtual": false,
           "description": "<p>returns the first element</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Object",
@@ -111,6 +125,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Object",
@@ -132,6 +148,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -157,13 +175,15 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "2.0.0",
           "examples": []
         },
         {
           "name": "find",
           "access": "",
           "virtual": false,
-          "description": "<p>Return ONE element which matches by the given function or <b>null</b>\nif no element is found.</p>\n<pre><code>var r1= figures.find(function(figure){\n              return figure.id===123456\n        });</code></pre>",
+          "description": "<p>Return ONE element which matches by the given function or <b>null</b>\nif no element is found.</p>\n<p>var r1= figures.find(function(figure){\nreturn figure.id===123456\n});</p>",
           "parameters": [
             {
               "name": "func",
@@ -190,13 +210,15 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "2.0.0",
           "examples": []
         },
         {
           "name": "map",
           "access": "",
           "virtual": false,
-          "description": "<p>Translate all items in the array into new items. The array list is modified after this call.\nYou must clone the array before if you want avoid this.</p>\n<pre><code>var labels = this.commands.clone().map(function(e){\n     return e.getLabel();\n});</code></pre>",
+          "description": "<p>Translate all items in the array into new items. The array list is modified after this call.\nYou must clone the array before if you want avoid this.</p>\n<p>var labels = this.commands.clone().map(function(e){\nreturn e.getLabel();\n});</p>",
           "parameters": [
             {
               "name": "func",
@@ -223,6 +245,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "4.0.0",
           "examples": []
         },
         {
@@ -231,6 +255,8 @@
           "virtual": false,
           "description": "<p>Removes any duplicate elements from the array. The array is modified after this call. You\nmust clone the array before if you want avoid this</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "4.0.0",
           "examples": []
         },
         {
@@ -256,6 +282,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -264,6 +292,8 @@
           "virtual": false,
           "description": "<p>You can use the Array list as Stack as well. this is the pop method to remove one element\nat the end of the stack.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -281,6 +311,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -298,6 +330,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Object",
@@ -327,6 +361,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -344,6 +380,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Object",
@@ -365,6 +403,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -382,6 +422,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Number",
@@ -403,6 +445,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -427,6 +471,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.util.ArrayList",
@@ -448,6 +494,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.util.ArrayList",
@@ -493,6 +541,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -510,6 +560,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         }
       ]
@@ -517,7 +569,7 @@
     {
       "name": "Color",
       "namespace": "draw2d.util",
-      "description": "<p>Util class to handle colors in the draw2d enviroment.</p>\n<pre><code> // Create a new Color with RGB values\n var color = new draw2d.util.Color(127,0,0);\n\n // of from a hex string\n var color2 = new draw2d.util.Color(&quot;#f00000&quot;);\n\n // Create a little bit darker color\n var darkerColor = color.darker(0.2); // 20% darker\n\n // create a optimal text color if 'color' the background color\n // (best in meaning of contrast and readability)\n var fontColor = color.getIdealTextColor();</code></pre>",
+      "description": "<p>Util class to handle colors in the draw2d enviroment.</p>\n<pre><code>// Create a new Color with RGB values\nvar color = new draw2d.util.Color(127,0,0);\n\n// of from a hex string\nvar color2 = new draw2d.util.Color(&quot;#f00000&quot;);\n\n// Create a little bit darker color\nvar darkerColor = color.darker(0.2); // 20% darker\n\n// create a optimal text color if 'color' the background color\n// (best in meaning of contrast and readability)\nvar fontColor = color.getIdealTextColor();</code></pre>",
       "extends": [],
       "access": "",
       "virtual": false,
@@ -573,6 +625,8 @@
           "virtual": false,
           "description": "<p>Convert the color object into a HTML CSS representation</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -585,6 +639,8 @@
           "virtual": false,
           "description": "<p>The red part of the color.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Number",
@@ -597,6 +653,8 @@
           "virtual": false,
           "description": "<p>The green part of the color.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Number",
@@ -609,6 +667,8 @@
           "virtual": false,
           "description": "<p>The blue part of the color</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Number",
@@ -621,6 +681,8 @@
           "virtual": false,
           "description": "<p>The alpha part of the color</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Number",
@@ -633,6 +695,8 @@
           "virtual": false,
           "description": "<p>Returns the ideal Text Color. Useful for font color selection by a given background color.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.util.Color",
@@ -654,6 +718,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "*",
@@ -666,6 +732,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -674,6 +742,8 @@
           "virtual": false,
           "description": "<p>Convert the color object into a HTML CSS representation</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -686,6 +756,8 @@
           "virtual": false,
           "description": "<p>Convert the color object into a HTML CSS representation</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",
@@ -698,6 +770,8 @@
           "virtual": false,
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -715,6 +789,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": []
         },
         {
@@ -732,6 +808,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.util.Color",
@@ -761,6 +839,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "2.1.0",
           "examples": [],
           "returns": {
             "type": "draw2d.util.Color",
@@ -782,6 +862,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "Boolean",
@@ -793,7 +875,7 @@
     {
       "name": "UUID",
       "namespace": "draw2d.util",
-      "description": "<p>draw2d.util.UUID\nGenerates a (pseudo) UUID's</p>\n<pre><code> // a UUID in the format\n // xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (8-4-4-4-12)\n var id = draw2d.util.UUID.create();</code></pre>",
+      "description": "<p>draw2d.util.UUID\nGenerates a (pseudo) UUID's</p>\n<pre><code>// a UUID in the format\n// xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (8-4-4-4-12)\nvar id = draw2d.util.UUID.create();</code></pre>",
       "extends": [],
       "access": "private",
       "virtual": false,
@@ -811,6 +893,8 @@
           "virtual": false,
           "description": "<p>Generates a unique id.<br>\nBut just for the correctness: <strong>this is no Global Unique Identifier</strong>, it is just a random generator\nwith the output that looks like a GUID. <br>\nBut may be also useful.</p>",
           "parameters": [],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",

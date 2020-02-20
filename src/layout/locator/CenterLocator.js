@@ -11,14 +11,14 @@ import draw2d from '../../packages'
  * @example
  *
  *
- *     // create a basic figure and add a Label/child via API call
- *     //
- *     let circle = new draw2d.shape.basic.Circle({diameter:120});
- *     circle.setStroke(3);
- *     circle.setColor("#A63343");
- *     circle.setBackgroundColor("#E65159");
- *     circle.add(new draw2d.shape.basic.Label({text:"Center Label"}), new draw2d.layout.locator.CenterLocator());
- *     canvas.add( circle, 100,50);
+ *    // create a basic figure and add a Label/child via API call
+ *    //
+ *    let circle = new draw2d.shape.basic.Circle({diameter:120});
+ *    circle.setStroke(3);
+ *    circle.setColor("#A63343");
+ *    circle.setBackgroundColor("#E65159");
+ *    circle.add(new draw2d.shape.basic.Label({text:"Center Label"}), new draw2d.layout.locator.CenterLocator());
+ *    canvas.add( circle, 100,50);
  *
  *
  * @author Andreas Herz

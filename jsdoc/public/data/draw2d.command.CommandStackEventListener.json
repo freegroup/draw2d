@@ -19,6 +19,8 @@
       "virtual": false,
       "description": "<p>Creates a new Listener Object</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -36,6 +38,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     }
   ]

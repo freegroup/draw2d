@@ -11,12 +11,12 @@ import extend from '../../util/extend'
  *
  * @example
  *
- *     let line = new draw2d.shape.basic.PolyLine();
- *     line.setVertices([{x:10,y:10},{x:80,y:70},{x:100,y:110}]);
- *     canvas.add(line);
+ *    let line = new draw2d.shape.basic.PolyLine();
+ *    line.setVertices([{x:10,y:10},{x:80,y:70},{x:100,y:110}]);
+ *    canvas.add(line);
  *
  *
- *     canvas.setCurrentSelection(line);
+ *    canvas.setCurrentSelection(line);
  *
  * @inheritable
  * @author Andreas Herz

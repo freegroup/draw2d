@@ -19,6 +19,8 @@
       "virtual": false,
       "description": "<p>Initial Constructor</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -44,6 +46,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -69,6 +73,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -94,6 +100,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -102,6 +110,8 @@
       "virtual": false,
       "description": "<p>Return a clone of the locator object</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     }
   ]

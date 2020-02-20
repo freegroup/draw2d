@@ -9,12 +9,12 @@ import draw2d from '../../packages'
  *
  * @example
  *
- *     let figure = new draw2d.shape.flowchart.Document({
- *        x:100,
- *        y:60
- *     });
+ *    let figure = new draw2d.shape.flowchart.Document({
+ *       x:100,
+ *       y:60
+ *    });
  *
- *     canvas.add( figure);
+ *    canvas.add( figure);
  *
  * @extends draw2d.VectorFigure
  */

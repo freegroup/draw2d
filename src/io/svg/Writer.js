@@ -5,14 +5,14 @@ import draw2d from '../../packages'
  *
  * Serialize the canvas document into a SVG document.
  *
- *      // Create a SVG writer and convert the canvas into a SVG document.
- *      //
- *      var writer = new draw2d.io.svg.Writer();
- *      writer.marshal(canvas, function(svg){
- *          // insert the svg string into a DIV for preview or post
- *          // it via ajax to the server....
- *          $("#svg").text(svg);
- *      });
+ *     // Create a SVG writer and convert the canvas into a SVG document.
+ *     //
+ *     var writer = new draw2d.io.svg.Writer();
+ *     writer.marshal(canvas, function(svg){
+ *         // insert the svg string into a DIV for preview or post
+ *         // it via ajax to the server....
+ *         $("#svg").text(svg);
+ *     });
  *
  *
  *

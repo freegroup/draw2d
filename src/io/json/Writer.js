@@ -6,19 +6,19 @@ import draw2d from '../../packages'
  * Serialize the canvas document into a JSON object which can be read from the corresponding
  * {@link draw2d.io.json.Reader}.
  * 
- *      // Create a JSON writer and convert it into a JSON-String representation.
- *      //
- *      var writer = new draw2d.io.json.Writer();
- *      writer.marshal(canvas, function(json){
- *         // convert the json object into string representation
- *         var jsonTxt = JSON.stringify(json,null,2);
- *      
- *         // insert the json string into a DIV for preview or post
- *         // it via ajax to the server....
- *         $("#json").text(jsonTxt);
- *      
- *      });
- *      
+ *     // Create a JSON writer and convert it into a JSON-String representation.
+ *     //
+ *     var writer = new draw2d.io.json.Writer();
+ *     writer.marshal(canvas, function(json){
+ *        // convert the json object into string representation
+ *        var jsonTxt = JSON.stringify(json,null,2);
+ *     
+ *        // insert the json string into a DIV for preview or post
+ *        // it via ajax to the server....
+ *        $("#json").text(jsonTxt);
+ *     
+ *     });
+ *     
  *
  * 
  * @author Andreas Herz

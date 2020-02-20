@@ -4,18 +4,18 @@ import draw2d from '../packages'
  * @class
  * Util class to handle colors in the draw2d enviroment.
  *
- *      // Create a new Color with RGB values
- *      var color = new draw2d.util.Color(127,0,0);
+ *     // Create a new Color with RGB values
+ *     var color = new draw2d.util.Color(127,0,0);
  *
- *      // of from a hex string
- *      var color2 = new draw2d.util.Color("#f00000");
+ *     // of from a hex string
+ *     var color2 = new draw2d.util.Color("#f00000");
  *
- *      // Create a little bit darker color
- *      var darkerColor = color.darker(0.2); // 20% darker
+ *     // Create a little bit darker color
+ *     var darkerColor = color.darker(0.2); // 20% darker
  *
- *      // create a optimal text color if 'color' the background color
- *      // (best in meaning of contrast and readability)
- *      var fontColor = color.getIdealTextColor();
+ *     // create a optimal text color if 'color' the background color
+ *     // (best in meaning of contrast and readability)
+ *     var fontColor = color.getIdealTextColor();
  *
  * @param {Number|String|draw2d.util.Color|Array} red
  * @param {Number} green

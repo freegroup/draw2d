@@ -75,7 +75,7 @@ draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.Connect
   /**
    * 
    * Internal routing algorithm.
-   *      * <p>
+   *     * <p>
    * Possible values:
    * <ul>
    *   <li>up -&gt; 0</li>

@@ -57,6 +57,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -65,6 +67,8 @@
       "virtual": false,
       "description": "",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -90,6 +94,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.geo.Rectangle",
@@ -119,6 +125,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -147,6 +155,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "5.6.0",
       "examples": []
     },
     {
@@ -175,6 +185,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "5.6.0",
       "examples": [],
       "returns": {
         "type": "draw2d.geo.Rectangle",
@@ -196,6 +208,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.geo.Rectangle",
@@ -208,6 +222,8 @@
       "virtual": false,
       "description": "<p>Returns <code>true</code> if this Rectangle's width or height is less than or\nequal to 0.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Boolean",
@@ -220,6 +236,8 @@
       "virtual": false,
       "description": "<p>The width of the dimension element.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -241,6 +259,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -249,6 +269,8 @@
       "virtual": false,
       "description": "<p>The height of the dimension element.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -270,6 +292,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -278,6 +302,8 @@
       "virtual": false,
       "description": "<p>The x coordinate of the left corner.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -290,6 +316,8 @@
       "virtual": false,
       "description": "<p>The x coordinate of the right corner.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -302,6 +330,8 @@
       "virtual": false,
       "description": "<p>The y coordinate of the top.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -314,6 +344,8 @@
       "virtual": false,
       "description": "<p>The y coordinate of the bottom.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -326,6 +358,8 @@
       "virtual": false,
       "description": "<p>The top left corner of the dimension object.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.geo.Point",
@@ -338,6 +372,8 @@
       "virtual": false,
       "description": "<p>The top center coordinate of the dimension object.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.geo.Point",
@@ -350,6 +386,8 @@
       "virtual": false,
       "description": "<p>The top right corner of the dimension object.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.geo.Point",
@@ -362,6 +400,8 @@
       "virtual": false,
       "description": "<p>The center left  of the dimension object.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.geo.Point",
@@ -374,6 +414,8 @@
       "virtual": false,
       "description": "<p>The bottom left corner of the dimension object.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.geo.Point",
@@ -386,6 +428,8 @@
       "virtual": false,
       "description": "<p>The bottom center coordinate of the dimension object.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.geo.Point",
@@ -398,6 +442,8 @@
       "virtual": false,
       "description": "<p>The center of the dimension object</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.geo.Point",
@@ -410,6 +456,8 @@
       "virtual": false,
       "description": "<p>Bottom right corner of the object</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.geo.Point",
@@ -422,6 +470,8 @@
       "virtual": false,
       "description": "<p>Return all points of the rectangle as array. Starting at topLeft and the\nclockwise.</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.util.ArrayList",
@@ -443,6 +493,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "",
@@ -467,6 +519,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -484,6 +538,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -501,6 +557,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -522,6 +580,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Boolean",
@@ -551,6 +611,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Boolean",
@@ -572,6 +634,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Boolean",
@@ -593,6 +657,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "4.7.2",
       "examples": [],
       "returns": {
         "type": "Boolean",
@@ -614,6 +680,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Boolean",
@@ -635,6 +703,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "4.8.0",
       "examples": []
     },
     {
@@ -660,6 +730,8 @@
           "nullable": ""
         }
       ],
+      "inherited": false,
+      "since": "",
       "examples": []
     },
     {
@@ -668,6 +740,8 @@
       "virtual": false,
       "description": "<p>Returns a copy of this rectangle</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "5.6.0",
       "examples": [],
       "returns": {
         "type": "draw2d.geo.Rectangle",
@@ -680,6 +754,8 @@
       "virtual": false,
       "description": "<p>converts the rectangle to JSON representation. required for the draw2d.io.Writer</p>",
       "parameters": [],
+      "inherited": false,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Object",
@@ -692,6 +768,8 @@
       "virtual": false,
       "description": "<p>Set the boundary of the rectangle. If set, the rectangle is always inside\nthe boundary. A setX or setY will always be adjusted.</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -700,6 +778,8 @@
       "virtual": false,
       "description": "<p>The X value of the point</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "0.1",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -712,6 +792,8 @@
       "virtual": false,
       "description": "<p>The y value of the point</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -733,6 +815,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -750,6 +834,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -778,6 +864,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -795,6 +883,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -816,6 +906,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -828,6 +920,8 @@
       "virtual": false,
       "description": "<p>Return the th of the vector from [0,0]</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "2.10.0",
       "examples": [],
       "returns": {
         "type": "Number",
@@ -849,6 +943,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.geo.Point",
@@ -861,6 +957,8 @@
       "virtual": false,
       "description": "<p>Return an objects with all important attributes for XML or JSON serialization</p>",
       "parameters": [],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "Object",
@@ -882,6 +980,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -899,6 +999,8 @@
           "nullable": ""
         }
       ],
+      "inherited": true,
+      "since": "",
       "examples": [],
       "returns": {
         "type": "draw2d.geo.Point",

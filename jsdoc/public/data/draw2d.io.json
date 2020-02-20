@@ -43,6 +43,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "draw2d.util.ArrayList",
@@ -89,6 +91,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "2.10.1",
           "examples": [],
           "returns": {
             "type": "Object",
@@ -110,6 +114,8 @@
               "nullable": ""
             }
           ],
+          "inherited": false,
+          "since": "",
           "examples": [],
           "returns": {
             "type": "String",

@@ -10,9 +10,9 @@ import draw2d from '../../packages'
  *
  * @example
  *
- *     let shape =  new draw2d.shape.basic.Text({text:"This is a simple text with some loooooong word in."});
+ *    let shape =  new draw2d.shape.basic.Text({text:"This is a simple text with some loooooong word in."});
  *
- *     canvas.add(shape,40,10);
+ *    canvas.add(shape,40,10);
  *
  * @author Andreas Herz
  * @since 4.2.3

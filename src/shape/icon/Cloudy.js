@@ -7,9 +7,9 @@ import draw2d from '../../packages'
  *
  * @example
  *
- *     let icon =  new draw2d.shape.icon.Cloudy();
+ *    let icon =  new draw2d.shape.icon.Cloudy();
  *
- *     canvas.add(icon,50,10);
+ *    canvas.add(icon,50,10);
  *
  * @inheritable
  * @author Andreas Herz
