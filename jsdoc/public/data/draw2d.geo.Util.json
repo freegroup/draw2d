@@ -1,0 +1,59 @@
+{
+  "name": "Util",
+  "namespace": "draw2d.geo",
+  "description": "<p>Geometric utils functions used in ray, point and some routers.</p>",
+  "extends": [],
+  "access": "",
+  "virtual": false,
+  "functions": [
+    {
+      "name": "insetPoint",
+      "access": "",
+      "virtual": false,
+      "description": "",
+      "parameters": [
+        {
+          "name": "start",
+          "type": "draw2d.geo.Point",
+          "description": "<p>start point of a line</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "end",
+          "type": "draw2d.geo.Point",
+          "description": "<p>end point of a line</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "distanceFromStart",
+          "type": "Number",
+          "description": "<p>distance from the start point to extrapolate a new point</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": false,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": [
+          "Object",
+          "*"
+        ],
+        "description": "<p>a new point with the distance <em>distanceFromStart</em> from the start point</p>"
+      }
+    }
+  ],
+  "fires": "",
+  "constructor": {
+    "name": "Util",
+    "description": "",
+    "parameters": [],
+    "examples": []
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "PositionConstants",
+  "namespace": "draw2d.geo",
+  "description": "<p>Static values for point orientation.</p>",
+  "extends": [],
+  "access": "",
+  "virtual": false,
+  "functions": [],
+  "fires": "",
+  "constructor": {
+    "name": "PositionConstants",
+    "description": "",
+    "parameters": [],
+    "examples": []
+  }
+}
