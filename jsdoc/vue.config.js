@@ -1,5 +1,5 @@
 module.exports = {
-  publicPath: '.',
+  publicPath: 'https://freegroup.github.io/draw2d/',
   'transpileDependencies': [
     'vuetify'
   ]
