@@ -28,7 +28,7 @@ draw2d.shape.basic.LineEndResizeHandle = draw2d.shape.basic.LineResizeHandle.ext
    *
    * Return the Port assigned to this ResizeHandle if the line is an instance of draw2d.Connection
    *
-   * @return {draw2d.Port}
+   * @returns {draw2d.Port}
    */
   getRelatedPort: function () {
     if (this.owner instanceof draw2d.Connection) {
@@ -61,7 +61,7 @@ draw2d.shape.basic.LineEndResizeHandle = draw2d.shape.basic.LineResizeHandle.ext
    * @param {Number} dy the y difference between the start of the drag drop operation and now
    * @param {Number} dx2 The x diff since the last call of this dragging operation
    * @param {Number} dy2 The y diff since the last call of this dragging operation
-   * @return {Boolean}
+   * @returns {Boolean}
    * @private
    **/
   onDrag: function (dx, dy, dx2, dy2) {

@@ -40,7 +40,7 @@ draw2d.layout.anchor.ShortesPathConnectionAnchor = draw2d.layout.anchor.Connecti
    * @param {draw2d.geo.Point} ref The reference Point in absolute coordinates
    * @param {draw2d.Connection} inquiringConnection the connection who ask for the location.
    *
-   * @return {draw2d.geo.Point} The anchor's location
+   * @returns {draw2d.geo.Point} The anchor's location
    */
   getLocation: function (ref, inquiringConnection) {
     let r = this.getOwner().getParent().getBoundingBox()
@@ -90,7 +90,7 @@ draw2d.layout.anchor.ShortesPathConnectionAnchor = draw2d.layout.anchor.Connecti
    * override this method to adjust the box. Maybe you return the box
    * of the port parent (the parent figure)
    *
-   * @return {draw2d.geo.Rectangle} The bounds of this Anchor's owner
+   * @returns {draw2d.geo.Rectangle} The bounds of this Anchor's owner
    */
   getBox: function () {
     return this.getOwner().getParent().getBoundingBox()
@@ -105,7 +105,7 @@ draw2d.layout.anchor.ShortesPathConnectionAnchor = draw2d.layout.anchor.Connecti
    *
    * @param {draw2d.Connection} inquiringConnection the connection who ask for the location.
    *
-   * @return {draw2d.geo.Point} The bounds of this Anchor's owner
+   * @returns {draw2d.geo.Point} The bounds of this Anchor's owner
    */
   getReferencePoint: function (inquiringConnection) {
     return this.getBox().getCenter()

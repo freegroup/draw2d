@@ -368,7 +368,7 @@ draw2d.Canvas = Class.extend(
     /**
      *
      * Call this method if you didn't need the canvas anymore. The method unregister all even handlers
-     * and free all resources. The canvas is unusable after this call
+     * and frees all resources. The canvas is unusable after this call
      *
      * @since. 4.7.4
      */
@@ -393,6 +393,7 @@ draw2d.Canvas = Class.extend(
      * You can now reload another model to the canvas with a {@link draw2d.io.Reader}
      *
      * @since 1.1.0
+     * @returns {this}
      */
     clear: function () {
       // notice all listener that the canvas will be cleared
@@ -439,10 +440,9 @@ draw2d.Canvas = Class.extend(
      * decorations. The method is called e.g. from the draw2d.io.png.Writer
      *
      * @since 4.0.0
-     * @template
+     * @@interface
      */
     hideDecoration: function () {
-
     },
 
     /**
@@ -756,7 +756,7 @@ draw2d.Canvas = Class.extend(
      *
      * return the scrolling area of the canvas. This is jQuery object
      *
-     * @return {JQuery}
+     * @returns {JQuery}
      **/
     getScrollArea: function () {
       return this.scrollArea
@@ -766,7 +766,7 @@ draw2d.Canvas = Class.extend(
      *
      * The left scroll position.
      *
-     * @return {Number} the left scroll offset of the canvas
+     * @returns {Number} the left scroll offset of the canvas
      **/
     getScrollLeft: function () {
       return this.getScrollArea().scrollLeft()
@@ -776,7 +776,7 @@ draw2d.Canvas = Class.extend(
      *
      * The top scroll position
      *
-     * @return {Number} the top scroll offset of the cnavas.
+     * @returns {Number} the top scroll offset of the cnavas.
      **/
     getScrollTop: function () {
       return this.getScrollArea().scrollTop()
@@ -825,7 +825,7 @@ draw2d.Canvas = Class.extend(
      *
      * The absolute document x offset.
      *
-     * @return {Number}
+     * @returns {Number}
      **/
     getAbsoluteX: function () {
       return this.html.offset().left
@@ -835,7 +835,7 @@ draw2d.Canvas = Class.extend(
      *
      * The absolute document y offset.
      *
-     * @return {Number}
+     * @returns {Number}
      **/
     getAbsoluteY: function () {
       return this.html.offset().top
@@ -846,7 +846,7 @@ draw2d.Canvas = Class.extend(
      *
      * Return the width of the canvas
      *
-     * @return {Number}
+     * @returns {Number}
      **/
     getWidth: function () {
       return this.html.width()
@@ -857,7 +857,7 @@ draw2d.Canvas = Class.extend(
      *
      * Return the height of the canvas.
      *
-     * @return {Number}
+     * @returns {Number}
      **/
     getHeight: function () {
       return this.html.height()
@@ -1008,7 +1008,7 @@ draw2d.Canvas = Class.extend(
      *
      * Returns all lines/connections in this workflow/canvas.<br>
      *
-     * @return {draw2d.util.ArrayList}
+     * @returns {draw2d.util.ArrayList}
      **/
     getLines: function () {
       return this.lines
@@ -1018,7 +1018,7 @@ draw2d.Canvas = Class.extend(
      *
      * Returns the internal figures.<br>
      *
-     * @return {draw2d.util.ArrayList}
+     * @returns {draw2d.util.ArrayList}
      **/
     getFigures: function () {
       return this.figures
@@ -1030,7 +1030,7 @@ draw2d.Canvas = Class.extend(
      *
      * @param {String} id The id of the line.
      *
-     * @return {draw2d.shape.basic.Line}
+     * @returns {draw2d.shape.basic.Line}
      **/
     getLine: function (id) {
       let count = this.lines.getSize()
@@ -1048,7 +1048,7 @@ draw2d.Canvas = Class.extend(
      * Returns the figure with the given id.
      *
      * @param {String} id The id of the figure.
-     * @return {draw2d.Figure}
+     * @returns {draw2d.Figure}
      **/
     getFigure: function (id) {
       let figure = null
@@ -1067,7 +1067,7 @@ draw2d.Canvas = Class.extend(
      * lines in the canvas.
      *
      * @param {draw2d.shape.basic.Line} line the line for the intersection test
-     * @return {draw2d.util.ArrayList}
+     * @returns {draw2d.util.ArrayList}
      */
     getIntersection: function (line) {
       let result = new draw2d.util.ArrayList()
@@ -1091,7 +1091,7 @@ draw2d.Canvas = Class.extend(
      * @param  {draw2d.Figure} figure The related figure
      * @param  {draw2d.geo.Point} pos The position to adjust
      *
-     * @return {draw2d.geo.Point} the adjusted position
+     * @returns {draw2d.geo.Point} the adjusted position
      * @private
      **/
     snapToHelper: function (figure, pos) {
@@ -1135,6 +1135,7 @@ draw2d.Canvas = Class.extend(
      *
      * @param {draw2d.Port} port The port to unregister as potential drop target
      * @private
+     * @returns {this}
      **/
     unregisterPort: function (port) {
       this.commonPorts.remove(port)
@@ -1146,6 +1147,7 @@ draw2d.Canvas = Class.extend(
      *
      * Return all ports in the canvas
      *
+     * @returns {draw2d.util.ArrayList} all ports from all figures
      */
     getAllPorts: function () {
       return this.commonPorts
@@ -1155,7 +1157,7 @@ draw2d.Canvas = Class.extend(
      *
      * Returns the command stack for the Canvas. Required for undo/redo support.
      *
-     * @return {draw2d.command.CommandStack}
+     * @returns {draw2d.command.CommandStack}
      **/
     getCommandStack: function () {
       return this.commandStack
@@ -1165,7 +1167,7 @@ draw2d.Canvas = Class.extend(
      *
      * Returns the current selected figure in the Canvas.
      *
-     * @return {draw2d.Figure}
+     * @returns {draw2d.Figure}
      **/
     getPrimarySelection: function () {
       return this.selection.getPrimary()
@@ -1175,7 +1177,7 @@ draw2d.Canvas = Class.extend(
      *
      * Returns the current selection.
      *
-     * @return {draw2d.Selection}
+     * @returns {draw2d.Selection}
      **/
     getSelection: function () {
       return this.selection
@@ -1188,6 +1190,7 @@ draw2d.Canvas = Class.extend(
      * You can hand over a draw2d.util.ArrayList since version 4.8.0 for multiple selection.
      *
      * @param {draw2d.Figure| draw2d.util.ArrayList} object The figure or list of figures to select.
+     * @returns {this}
      **/
     setCurrentSelection: function (object) {
       // deselect the current selected figures
@@ -1210,8 +1213,9 @@ draw2d.Canvas = Class.extend(
      * Add the current figure to the selection. If a single selection policy is installed in the
      * canvas the selection before is reseted and the figure is the one and only selection.
      *
-     * @param {draw2d.Figure| draw2d.util.ArrayList} object The figure(s) to add to the selection
+     * @param {draw2d.Figure | draw2d.util.ArrayList} object The figure(s) to add to the selection
      * @since 4.6.0
+     * @returns {this}
      **/
     addSelection: function (object) {
       let _this = this
@@ -1232,7 +1236,6 @@ draw2d.Canvas = Class.extend(
       }
 
       return this
-
     },
 
 
@@ -1405,7 +1408,7 @@ draw2d.Canvas = Class.extend(
      * @param {draw2d.shape.basic.Line} [lineToIgnore] a possible line which should be ignored for the hit test
      *
      * @private
-     * @return {draw2d.shape.basic.Line}
+     * @returns {draw2d.shape.basic.Line}
      **/
     getBestLine: function (x, y, lineToIgnore) {
       if (!Array.isArray(lineToIgnore)) {

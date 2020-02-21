@@ -124,7 +124,7 @@ draw2d.shape.basic.LineResizeHandle = draw2d.shape.basic.Circle.extend(
    * Return the port below the ResizeHandle.
    *
    * @template
-   * @return {draw2d.Port}
+   * @returns {draw2d.Port}
    */
   getRelatedPort: function () {
     return null
@@ -136,7 +136,7 @@ draw2d.shape.basic.LineResizeHandle = draw2d.shape.basic.Circle.extend(
    * Return the port of the other side of the related connection.
    *
    * @template
-   * @return {draw2d.Port}
+   * @returns {draw2d.Port}
    */
   getOppositePort: function () {
     return null
@@ -205,7 +205,7 @@ draw2d.shape.basic.LineResizeHandle = draw2d.shape.basic.Circle.extend(
    * @param {Number} dy the y difference between the start of the drag drop operation and now
    * @param {Number} dx2 The x diff since the last call of this dragging operation
    * @param {Number} dy2 The y diff since the last call of this dragging operation
-   * @return {Boolean}
+   * @returns {Boolean}
    * @private
    **/
   onDrag: function (dx, dy, dx2, dy2) {
@@ -246,7 +246,7 @@ draw2d.shape.basic.LineResizeHandle = draw2d.shape.basic.Circle.extend(
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
    * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
    *
-   * @return {Boolean}
+   * @returns {Boolean}
    */
   onDragEnd: function (x, y, shiftKey, ctrlKey) {
     if (!this.isDraggable()) {
@@ -314,7 +314,7 @@ draw2d.shape.basic.LineResizeHandle = draw2d.shape.basic.Circle.extend(
    * corresponding object is an Connection. A Connection is always bounded to
    * Port. In this case it makes no sense to use a Grid or Geometry for snapping.
    *
-   * @return {Boolean} return false if the corresponding object didn't support snapTo
+   * @returns {Boolean} return false if the corresponding object didn't support snapTo
    **/
   supportsSnapToHelper: function () {
     if (this.owner instanceof draw2d.Connection) {

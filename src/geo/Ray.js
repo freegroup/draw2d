@@ -1,3 +1,4 @@
+import draw2d from '../packages'
 
 
 /**
@@ -9,9 +10,6 @@
  * @extends draw2d.geo.Point
  * @author Andreas Herz
  */
-import draw2d from '../packages'
-
-
 draw2d.geo.Ray = draw2d.geo.Point.extend(
     /** @lends draw2d.geo.Ray.prototype */
     {

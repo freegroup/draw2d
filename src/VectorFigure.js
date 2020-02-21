@@ -78,7 +78,7 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend(
      * 
      * Get the corner radius of the edges.
      *
-     * @return {Number}
+     * @returns {Number}
      * @since 4.2.1
      */
     getRadius: function()
@@ -211,7 +211,7 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend(
     *     // Alternatively you can use the attr method:
     *     var color =figure.attr("bgColor");
     *
-    * @return {draw2d.util.Color}
+    * @returns {draw2d.util.Color}
     */
    getBackgroundColor: function()
    {

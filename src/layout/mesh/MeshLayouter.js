@@ -27,7 +27,7 @@ draw2d.layout.mesh.MeshLayouter = Class.extend(
      * @param {draw2d.Figure} figure The figure to add to the exising canvas
      *
      *
-     * @return {draw2d.util.ArrayList} a list of changes to apply if the user want to insert he figure.
+     * @returns {draw2d.util.ArrayList} a list of changes to apply if the user want to insert he figure.
      */
     add: function( canvas, figure)
     {

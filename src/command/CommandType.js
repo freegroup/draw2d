@@ -34,7 +34,7 @@ draw2d.command.CommandType = Class.extend(
    * 
    * Return the String representation of the policy
    *
-   * @return {String}
+   * @returns {String}
    **/
   getPolicy: function () {
     return this.policy

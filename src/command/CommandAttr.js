@@ -44,7 +44,7 @@ draw2d.command.CommandAttr = draw2d.command.Command.extend(
    * return false. <br>
    * the execution of the Command doesn't modify the model.
    *
-   * @return {Boolean}
+   * @returns {Boolean}
    **/
   canExecute: function () {
     // return false if we doesn't modify the model => NOP Command

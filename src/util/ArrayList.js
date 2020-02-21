@@ -51,7 +51,7 @@ draw2d.util.ArrayList = Class.extend(
    *
    * The size/count of the stored objects.
    *
-   * @return {Number}
+   * @returns {Number}
    */
   getSize: function () {
     return this.data.length
@@ -62,7 +62,7 @@ draw2d.util.ArrayList = Class.extend(
    *
    * checks to see if the Vector has any elements.
    *
-   * @return {Boolean} true if the list is empty
+   * @returns {Boolean} true if the list is empty
    **/
   isEmpty: function () {
     return this.getSize() === 0
@@ -72,7 +72,7 @@ draw2d.util.ArrayList = Class.extend(
    *
    * return the last element.
    *
-   * @return {Object}
+   * @returns {Object}
    */
   last: function () {
     return this.data[this.data.length - 1]
@@ -82,7 +82,7 @@ draw2d.util.ArrayList = Class.extend(
    *
    * Return a reference to the internal javascript native array.
    *
-   * @return {Array}
+   * @returns {Array}
    */
   asArray: function () {
     return this.data
@@ -92,7 +92,7 @@ draw2d.util.ArrayList = Class.extend(
    *
    * returns the first element
    *
-   * @return {Object}
+   * @returns {Object}
    */
   first: function () {
     if (this.data.length > 0) {
@@ -107,7 +107,7 @@ draw2d.util.ArrayList = Class.extend(
    * returns an element at a specified index
    *
    * @param {Number} i
-   * @return {Object}
+   * @returns {Object}
    */
   get: function (i) {
     return this.data[i]
@@ -247,7 +247,7 @@ draw2d.util.ArrayList = Class.extend(
    *
    * @param {Object} obj the object to remove
    *
-   * @return {Object} the removed object or null
+   * @returns {Object} the removed object or null
    */
   remove: function (obj) {
     let index = this.indexOf(obj)
@@ -279,7 +279,7 @@ draw2d.util.ArrayList = Class.extend(
    * Removes an element at a specific index.
    *
    * @param {Number} index the index of the element to remove
-   * @return {Object} the removed object
+   * @returns {Object} the removed object
    */
   removeElementAt: function (index) {
     let element = this.data[index]
@@ -316,7 +316,7 @@ draw2d.util.ArrayList = Class.extend(
    *
    * @param {Object} obj the element to check
    *
-   * @return {Number} the index of the element or -1
+   * @returns {Number} the index of the element or -1
    */
   indexOf: function (obj) {
     return this.data.indexOf(obj)
@@ -328,7 +328,7 @@ draw2d.util.ArrayList = Class.extend(
    *
    * @param {Object} obj the object to check
    *
-   * @return {Boolean}
+   * @returns {Boolean}
    */
   contains: function (obj) {
     return this.indexOf(obj) !== -1
@@ -342,7 +342,7 @@ draw2d.util.ArrayList = Class.extend(
    *
    * @param {String|Function} f the field name for the sorting or a sort function
    *
-   * @return {draw2d.util.ArrayList} self
+   * @returns {draw2d.util.ArrayList} self
    */
   sort: function (f) {
     if (typeof f === "function") {

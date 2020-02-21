@@ -100,7 +100,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
    * 
    * return the maximal possible connections (in+out) for this port.
    *
-   * @return {Number}
+   * @returns {Number}
    */
   getMaxFanOut: function () {
     return this.maxFanOut
@@ -154,7 +154,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
    *
    * @param {draw2d.Port} peerPort the counterpart port
    *
-   * @return {Number} the direction.
+   * @returns {Number} the direction.
    */
   getConnectionDirection: function (peerPort) {
     // return the calculated connection direction if the port didn't have set any
@@ -317,7 +317,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
    * 
    * Returns a {@link draw2d.util.ArrayList} of {@link draw2d.Connection}s of all related connections to this port.
    *
-   * @return {draw2d.util.ArrayList}
+   * @returns {draw2d.util.ArrayList}
    **/
   getConnections: function () {
     return this.connections
@@ -345,7 +345,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
    * Returns the corona width of the Port. The corona width will be used during the
    * drag&drop of a port.
    *
-   * @return {Number}
+   * @returns {Number}
    **/
   getCoronaWidth: function () {
     return this.coronaWidth
@@ -372,7 +372,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
    * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
    *
-   * @return {Boolean}
+   * @returns {Boolean}
    * @private
    **/
   onDragStart: function (x, y, shiftKey, ctrlKey) {
@@ -497,7 +497,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
    * 
    * Return the name of this port.
    *
-   * @return {String}
+   * @returns {String}
    **/
   getName: function () {
     return this.name
@@ -523,7 +523,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
    * @param {Number} iX
    * @param {Number} iY
    * @param {Number} [corona]
-   * @return {Boolean}
+   * @returns {Boolean}
    */
   hitTest: function (iX, iY, corona) {
     var x = this.getAbsoluteX() - this.coronaWidth - this.getWidth() / 2
@@ -653,6 +653,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
  * @class
  * Glow effect for ports. Just for internal use.
  *
+ * @private
  * @extend draw2d.shape.basic.Circle
  */
 draw2d.Corona = draw2d.shape.basic.Circle.extend(

@@ -164,6 +164,7 @@ function graft(parentNode, childNodes, parentLongname) {
                 'extends': element.augments || [],
                 'access': element.access || '',
                 'virtual': Boolean(element.virtual),
+                'functions': [],
                 'fires': element.fires || '',
                 'constructor': {
                     'name': element.name,

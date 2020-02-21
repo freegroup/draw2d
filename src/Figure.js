@@ -5,7 +5,7 @@ import extend from 'util/extend'
 
 /**
  * @class
- *
+ * Base class for all draw2d shapes-
  *
  */
 draw2d.Figure = Class.extend(
@@ -14,6 +14,13 @@ draw2d.Figure = Class.extend(
   NAME: "draw2d.Figure",
   MIN_TIMER_INTERVAL: 50, // minimum timer interval in milliseconds
 
+  /**
+   * Creates a new Figure object
+   *
+   * @param attr
+   * @param setter
+   * @param getter
+   */
   init: function (attr, setter, getter) {
 
     // @private
@@ -452,7 +459,7 @@ draw2d.Figure = Class.extend(
    *
    * @since 5.5.6
    *
-   * @return {Boolean}
+   * @returns {Boolean}
    */
   isSelected: function () {
     if (this.canvas !== null) {
@@ -496,7 +503,7 @@ draw2d.Figure = Class.extend(
    * 
    * Return the UUID of this element.
    *
-   * @return {String}
+   * @returns {String}
    */
   getId: function () {
     return this.id
@@ -526,7 +533,7 @@ draw2d.Figure = Class.extend(
    * Return the css styling class name of the element.
    *
    *
-   * @return {String}
+   * @returns {String}
    */
   getCssClass: function () {
     return this.cssClass
@@ -694,7 +701,7 @@ draw2d.Figure = Class.extend(
    * 
    * Return the current assigned canvas container.
    *
-   * @return {draw2d.Canvas}
+   * @returns {draw2d.Canvas}
    */
   getCanvas: function () {
     return this.canvas
@@ -976,9 +983,9 @@ draw2d.Figure = Class.extend(
    *
    * @param {draw2d.Figure} child the figure to remove.
    *
-   * @return {Object} the removed tupple of figure/locator or null if the child isn't found
-   * @return {draw2d.Figure} return.figure The removed figure
-   * @return {draw2d.shape.layout.Layout} return.locator The used locator of the figure
+   * @returns {Object} the removed tupple of figure/locator or null if the child isn't found
+   * @returns {draw2d.Figure} return.figure The removed figure
+   * @returns {draw2d.shape.layout.Layout} return.locator The used locator of the figure
    *
    * @since 5.0.0
    **/
@@ -1221,7 +1228,7 @@ draw2d.Figure = Class.extend(
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
    * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
    *
-   * @return {Boolean} true if the figure accepts dragging
+   * @returns {Boolean} true if the figure accepts dragging
    **/
   onDragStart: function (x, y, shiftKey, ctrlKey) {
     this.isInDragDrop = false
@@ -1411,7 +1418,7 @@ draw2d.Figure = Class.extend(
    *
    * @param {draw2d.Figure} draggedFigure The figure which is currently dragging
    *
-   * @return {draw2d.Figure} the figure which should receive the drop event or null if the element didn't want a drop event
+   * @returns {draw2d.Figure} the figure which should receive the drop event or null if the element didn't want a drop event
    * @since 6.1.0
    * @private
    **/
@@ -1588,7 +1595,7 @@ draw2d.Figure = Class.extend(
    * 
    * Return the alpha blending of the figure
    *
-   * @return {Number} the current alpha blending
+   * @returns {Number} the current alpha blending
    */
   getAlpha: function () {
     return this.alpha
@@ -1675,7 +1682,7 @@ draw2d.Figure = Class.extend(
    * 
    * Return true if the figure visible.
    *
-   * @return {Boolean}
+   * @returns {Boolean}
    * @since 1.1.0
    */
   isVisible: function () {
@@ -1711,7 +1718,7 @@ draw2d.Figure = Class.extend(
    * Return the current z-index of the element. Currently this is an expensive method. The index will be calculated
    * all the time. Caching is not implemented at the moment.
    *
-   * @return {Number}
+   * @returns {Number}
    */
   getZOrder: function () {
     if (this.shape === null) {
@@ -1745,7 +1752,7 @@ draw2d.Figure = Class.extend(
    * Returns true if the figure can snap to any helper like a grid, guide, geometrie
    * or something else.
    *
-   * @return {Boolean}
+   * @returns {Boolean}
    **/
   getCanSnapToHelper: function () {
     return this.canSnapToHelper
@@ -1753,7 +1760,7 @@ draw2d.Figure = Class.extend(
 
   /**
    *
-   * @return {draw2d.geo.Point}
+   * @returns {draw2d.geo.Point}
    **/
   getSnapToGridAnchor: function () {
     return this.snapToGridAnchor
@@ -1813,7 +1820,7 @@ draw2d.Figure = Class.extend(
    * 
    * The current height of the figure.
    *
-   * @return {Number}
+   * @returns {Number}
    **/
   getHeight: function () {
     return this.height
@@ -1824,7 +1831,7 @@ draw2d.Figure = Class.extend(
    * 
    * This value is relevant for the interactive resize of the figure.
    *
-   * @return {Number} Returns the min. width of this object.
+   * @returns {Number} Returns the min. width of this object.
    */
   getMinWidth: function () {
     return this.minWidth
@@ -1850,7 +1857,7 @@ draw2d.Figure = Class.extend(
    * 
    * This value is relevant for the interactive resize of the figure.
    *
-   * @return {Number} Returns the min. height of this object.
+   * @returns {Number} Returns the min. height of this object.
    */
   getMinHeight: function () {
     return this.minHeight
@@ -1891,7 +1898,7 @@ draw2d.Figure = Class.extend(
    * 
    * The x-offset related to the parent figure or canvas.
    *
-   * @return {Number} the x-offset to the parent figure
+   * @returns {Number} the x-offset to the parent figure
    **/
   getX: function () {
     return this.x
@@ -1916,7 +1923,7 @@ draw2d.Figure = Class.extend(
    * 
    * The y-offset related to the parent figure or canvas.
    *
-   * @return {Number} The y-offset to the parent figure.
+   * @returns {Number} The y-offset to the parent figure.
    **/
   getY: function () {
     return this.y
@@ -1927,7 +1934,7 @@ draw2d.Figure = Class.extend(
    * 
    * The x-offset related to the canvas.
    *
-   * @return {Number} the x-offset to the canvas
+   * @returns {Number} the x-offset to the canvas
    **/
   getAbsoluteX: function () {
     if (!this.parent) {
@@ -1942,7 +1949,7 @@ draw2d.Figure = Class.extend(
    * 
    * The y-offset related to the canvas.
    *
-   * @return {Number} The y-offset to the canvas.
+   * @returns {Number} The y-offset to the canvas.
    **/
   getAbsoluteY: function () {
     if (!this.parent) {
@@ -1966,7 +1973,7 @@ draw2d.Figure = Class.extend(
    * 
    * Returns the absolute y-position of the port.
    *
-   * @return {draw2d.geo.Rectangle}
+   * @returns {draw2d.geo.Rectangle}
    **/
   getAbsoluteBounds: function () {
     return new draw2d.geo.Rectangle(this.getAbsoluteX(), this.getAbsoluteY(), this.getWidth(), this.getHeight())
@@ -2036,7 +2043,7 @@ draw2d.Figure = Class.extend(
    * 
    * Get the current position of the figure
    *
-   * @return {draw2d.geo.Point}
+   * @returns {draw2d.geo.Point}
    * @since 2.0.0
    */
   getPosition: function () {
@@ -2171,7 +2178,7 @@ draw2d.Figure = Class.extend(
    * 
    * Returns the bounding box of the figure in absolute position to the canvas.
    *
-   * @return {draw2d.geo.Rectangle}
+   * @returns {draw2d.geo.Rectangle}
    **/
   getBoundingBox: function () {
     return new draw2d.geo.Rectangle(this.getAbsoluteX(), this.getAbsoluteY(), this.getWidth(), this.getHeight())
@@ -2212,7 +2219,7 @@ draw2d.Figure = Class.extend(
    * 
    * Get the Drag drop enable flag
    *
-   * @return {Boolean} The new drag drop indicator
+   * @returns {Boolean} The new drag drop indicator
    **/
   isDraggable: function () {
     // delegate to the composite if given
@@ -2228,7 +2235,7 @@ draw2d.Figure = Class.extend(
    * 
    * Returns the true if the figure can be resized.
    *
-   * @return {Boolean}
+   * @returns {Boolean}
    **/
   isResizeable: function () {
     return this.resizeable
@@ -2257,7 +2264,7 @@ draw2d.Figure = Class.extend(
    * 
    * Indicates whenever the element is selectable by user interaction or API.
    *
-   * @return {Boolean}
+   * @returns {Boolean}
    **/
   isSelectable: function () {
     // delegate to the composite if given
@@ -2289,7 +2296,7 @@ draw2d.Figure = Class.extend(
    * You can change the height and width independent.<br>
    *
    * Replaced with "getKeepAspectRatio"
-   * @return {Boolean}
+   * @returns {Boolean}
    * @deprecated
    */
   isStrechable: function () {
@@ -2301,7 +2308,7 @@ draw2d.Figure = Class.extend(
    * Return false if you avoid that the user can delete your figure.
    * Sub class can override this method.
    *
-   * @return {Boolean}
+   * @returns {Boolean}
    **/
   isDeleteable: function () {
     return this.deleteable
@@ -2347,7 +2354,7 @@ draw2d.Figure = Class.extend(
    * 
    * Get the parent of this figure.
    *
-   * @return {draw2d.Figure}
+   * @returns {draw2d.Figure}
    **/
   getParent: function () {
     return this.parent
@@ -2381,7 +2388,7 @@ draw2d.Figure = Class.extend(
    * 
    * Get the top most parent of this figure. This can be an layout figure or parent container
    *
-   * @return {draw2d.Figure}
+   * @returns {draw2d.Figure}
    * @since 5.0.6
    **/
   getRoot: function () {
@@ -2413,7 +2420,7 @@ draw2d.Figure = Class.extend(
    * 
    * Get the assigned composite of this figure.
    *
-   * @return {draw2d.shape.composite.StrongComposite}
+   * @returns {draw2d.shape.composite.StrongComposite}
    * @since 4.8.0
    **/
   getComposite: function () {
@@ -2595,7 +2602,7 @@ draw2d.Figure = Class.extend(
    * Returns the Command to perform the specified Request or null.
    *
    * @param {draw2d.command.CommandType} request describes the Command being requested
-   * @return {draw2d.command.Command} null or a Command
+   * @returns {draw2d.command.Command} null or a Command
    * @private
    **/
   createCommand: function (request) {

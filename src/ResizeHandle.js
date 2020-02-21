@@ -242,7 +242,7 @@ draw2d.ResizeHandle = draw2d.shape.basic.Rectangle.extend(
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
    * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
    *
-   * @return {Boolean} true whenever the drag drop operation is allowed.
+   * @returns {Boolean} true whenever the drag drop operation is allowed.
    **/
   onDragStart: function (x, y, shiftKey, ctrlKey) {
     // This happens if the selected figure has set the "nonResizeable" flag
@@ -578,7 +578,7 @@ draw2d.ResizeHandle = draw2d.shape.basic.Rectangle.extend(
    * return true if the element can be used in combination with the
    * SnapToHelper feature.
    *
-   * @return {Boolean}
+   * @returns {Boolean}
    **/
   supportsSnapToHelper: function () {
     return true

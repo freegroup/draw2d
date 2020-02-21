@@ -67,7 +67,7 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
        * @param {Number} dx2 The x diff since the last call of this dragging operation
        * @param {Number} dy2 The y diff since the last call of this dragging operation
        *
-       * @return {Boolean}
+       * @returns {Boolean}
        **/
       onDrag: function (dx, dy, dx2, dy2) {
         if (this.command == null) {
@@ -345,7 +345,7 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
        * @param {Boolean} shiftKey true if the shift key has been pressed during this event
        * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
        *
-       * @return {Boolean}
+       * @returns {Boolean}
        */
       onDragEnd: function (x, y, shiftKey, ctrlKey) {
         let stack = this.getCanvas().getCommandStack()

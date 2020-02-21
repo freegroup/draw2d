@@ -190,7 +190,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
    * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
    *
-   * @return {Boolean} true if the figure accepts dragging
+   * @returns {Boolean} true if the figure accepts dragging
    **/
   onDragStart: function (x, y, shiftKey, ctrlKey, isFaked) {
     let result = this._super(x, y, shiftKey, ctrlKey)
@@ -523,7 +523,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
    *
    * Return the current paint color.
    *
-   * @return {draw2d.util.Color} The paint color of the line.
+   * @returns {draw2d.util.Color} The paint color of the line.
    **/
   getColor: function () {
     return this.lineColor
@@ -682,7 +682,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
   /**
    *
    * Return the x coordinate of the start.
-   * @return {Number}
+   * @returns {Number}
    **/
   getStartX: function () {
     return this.start.x
@@ -692,7 +692,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
    *
    * Return the y coordinate of the start.
    *
-   * @return {Number}
+   * @returns {Number}
    **/
   getStartY: function () {
     return this.start.y
@@ -702,7 +702,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
    *
    * Return the start point.
    *
-   * @return {draw2d.geo.Point}
+   * @returns {draw2d.geo.Point}
    **/
   getStartPosition: function () {
     return this.start.clone()
@@ -717,7 +717,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
    *
    * Return the x coordinate of the end point
    *
-   * @return {Number}
+   * @returns {Number}
    **/
   getEndX: function () {
     return this.end.x
@@ -727,7 +727,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
    *
    * Return the y coordinate of the end point.
    *
-   * @return {Number}
+   * @returns {Number}
    **/
   getEndY: function () {
     return this.end.y
@@ -737,7 +737,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
    *
    * Return the end point.
    *
-   * @return {draw2d.geo.Point}
+   * @returns {draw2d.geo.Point}
    **/
   getEndPosition: function () {
     return this.end.clone()
@@ -751,7 +751,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
    *
    * The x-offset related to the parent figure or canvas.
    *
-   * @return {Number} the x-offset to the parent figure
+   * @returns {Number} the x-offset to the parent figure
    **/
   getX: function () {
     return this.getBoundingBox().x
@@ -762,7 +762,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
    *
    * The x-offset related to the parent figure or canvas.
    *
-   * @return {Number} the x-offset to the parent figure
+   * @returns {Number} the x-offset to the parent figure
    **/
   getY: function () {
     return this.getBoundingBox().y
@@ -831,7 +831,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
    *
    * Returns the vertices of the connection
    *
-   * @return {draw2d.util.ArrayList} an draw2d.util.ArrayList of type draw2d.Point
+   * @returns {draw2d.util.ArrayList} an draw2d.util.ArrayList of type draw2d.Point
    **/
   getVertices: function () {
     return this.vertices
@@ -916,7 +916,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
    *
    * Returns the length of the line.
    *
-   * @return {Number}
+   * @returns {Number}
    **/
   getLength: function () {
     return Math.sqrt((this.start.x - this.end.x) * (this.start.x - this.end.x) + (this.start.y - this.end.y) * (this.start.y - this.end.y))
@@ -940,7 +940,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
    *                              V +Y
    *                             90°
    * </pre>
-   * @return {Number}
+   * @returns {Number}
    **/
   getAngle: function () {
     let length = this.getLength()
@@ -968,7 +968,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
    * operation or it can't operate the command.
    *
    * @param {draw2d.command.CommandType} request describes the Command being requested
-   * @return {draw2d.command.Command} null or a Command
+   * @returns {draw2d.command.Command} null or a Command
    * @private
    **/
   createCommand: function (request) {
@@ -1010,7 +1010,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
    *
    * @param {Number} px the x coordinate of the test point
    * @param {Number} py the y coordinate of the test point
-   * @return {Boolean}
+   * @returns {Boolean}
    **/
   hitTest: function (px, py) {
     return draw2d.shape.basic.Line.hit(this.corona + this.stroke, this.start.x, this.start.y, this.end.x, this.end.y, px, py)
@@ -1022,7 +1022,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
    *
    * @param {Number} px the x coordinate of the test point
    * @param {Number} py the y coordinate of the test point
-   * @return {draw2d.geo.Point}
+   * @returns {draw2d.geo.Point}
    **/
   pointProjection: function (px, py) {
     let pt = new draw2d.geo.Point(px, py)
@@ -1200,7 +1200,7 @@ draw2d.shape.basic.Line.intersection = function (a1, a2, b1, b2) {
  * Static util function to determine is a point(px,py) on the line(x1,y1,x2,y2)
  * A simple hit test.
  *
- * @return {Boolean}
+ * @returns {Boolean}
  * @static
  * @private
  * @param {Number} coronaWidth the accepted corona for the hit test

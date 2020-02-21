@@ -25,7 +25,7 @@ draw2d.shape.basic.LineStartResizeHandle = draw2d.shape.basic.LineResizeHandle.e
    * 
    * Return the Port below the ResizeHandle
    *
-   * @return {draw2d.Port}
+   * @returns {draw2d.Port}
    */
   getRelatedPort: function () {
     if (this.owner instanceof draw2d.Connection)
@@ -55,7 +55,7 @@ draw2d.shape.basic.LineStartResizeHandle = draw2d.shape.basic.LineResizeHandle.e
    * @param {Number} dy the y difference between the start of the drag drop operation and now
    * @param {Number} dx2 The x diff since the last call of this dragging operation
    * @param {Number} dy2 The y diff since the last call of this dragging operation
-   * @return {Boolean}
+   * @returns {Boolean}
    **/
   onDrag: function (dx, dy, dx2, dy2) {
     this._super(dx, dy, dx2, dy2)

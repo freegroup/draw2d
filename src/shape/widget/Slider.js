@@ -147,7 +147,7 @@ draw2d.shape.widget.Slider = draw2d.shape.widget.Widget.extend(
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
    * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
    *
-   * @return {Boolean} true if the figure accepts dragging
+   * @returns {Boolean} true if the figure accepts dragging
    **/
   onDragStart: function (x, y, shiftKey, ctrlKey) {
     // check if the use has been clicked on the thumb.

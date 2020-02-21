@@ -32,7 +32,7 @@ draw2d.layout.mesh.ExplodeLayouter = draw2d.layout.mesh.MeshLayouter.extend(
      * @param {Number} y requested y-position for the figure
      * 
      * 
-     * @return {draw2d.util.ArrayList} a list of changes to apply if the user want to insert he figure.
+     * @returns {draw2d.util.ArrayList} a list of changes to apply if the user want to insert he figure.
      */
     add: function( canvas, figureToAdd)
     {

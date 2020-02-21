@@ -15,9 +15,24 @@ const routes = [
     component: () => import(/* webpackChunkName: "draw2d_geo_point" */ '../views/clazz.vue')
   },
   {
+    path: '/draw2d/geo/positionconstants',
+    props: { className: 'draw2d.geo.PositionConstants' },
+    component: () => import(/* webpackChunkName: "draw2d_geo_positionconstants" */ '../views/clazz.vue')
+  },
+  {
+    path: '/draw2d/geo/ray',
+    props: { className: 'draw2d.geo.Ray' },
+    component: () => import(/* webpackChunkName: "draw2d_geo_ray" */ '../views/clazz.vue')
+  },
+  {
     path: '/draw2d/geo/rectangle',
     props: { className: 'draw2d.geo.Rectangle' },
     component: () => import(/* webpackChunkName: "draw2d_geo_rectangle" */ '../views/clazz.vue')
+  },
+  {
+    path: '/draw2d/geo/util',
+    props: { className: 'draw2d.geo.Util' },
+    component: () => import(/* webpackChunkName: "draw2d_geo_util" */ '../views/clazz.vue')
   },
   {
     path: '/draw2d/io',

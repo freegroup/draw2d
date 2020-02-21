@@ -26,7 +26,7 @@ draw2d.layout.mesh.ProposedMeshChange = Class.extend(
      *
      * Return the related figure.
      *
-     * @return {draw2d.Figure} the figure to the related change proposal
+     * @returns {draw2d.Figure} the figure to the related change proposal
      */
     getFigure: function( )
     {
@@ -37,7 +37,7 @@ draw2d.layout.mesh.ProposedMeshChange = Class.extend(
      *
      * The proposed x-coordinate.
      *
-     * @return {Number}
+     * @returns {Number}
      */
     getX: function()
     {
@@ -48,7 +48,7 @@ draw2d.layout.mesh.ProposedMeshChange = Class.extend(
      *
      * The proposed y-coordinate
      *
-     * @return {Number}
+     * @returns {Number}
      */
     getY: function()
     {

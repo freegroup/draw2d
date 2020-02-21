@@ -93,7 +93,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
    * 
    * Get the corner radius of the edges.
    *
-   * @return {Number}
+   * @returns {Number}
    * @since 4.2.1
    */
   getRadius: function () {
@@ -301,7 +301,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
    * 
    * Return the current active router of this connection.
    *
-   * @return draw2d.layout.connection.ConnectionRouter
+   * @returns draw2d.layout.connection.ConnectionRouter
    **/
   getRouter: function () {
     return this.router
@@ -411,7 +411,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
    * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
    *
-   * @return {Boolean} true if the figure accepts dragging
+   * @returns {Boolean} true if the figure accepts dragging
    **/
   onDragStart: function (x, y, shiftKey, ctrlKey, isFaked) {
     let result = this._super(x, y, shiftKey, ctrlKey, isFaked)
@@ -426,7 +426,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
    * 
    * Returns the length of the polyline.
    *
-   * @return {Number}
+   * @returns {Number}
    * @since 6.1.43
    **/
   getLength: function () {
@@ -455,7 +455,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
    *
    * @param {Number} px the x coordinate of the test point
    * @param {Number} py the y coordinate of the test point
-   * @return {draw2d.geo.Point}
+   * @returns {draw2d.geo.Point}
    **/
   pointProjection: function (px, py) {
     let result = null,
@@ -530,7 +530,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
    *
    * @param {Number} px the x coordinate of the test point
    * @param {Number} py the y coordinate of the test point
-   * @return {Object}
+   * @returns {Object}
    * @since 4.4.0
    **/
   hitSegment: function (px, py) {
@@ -551,7 +551,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
    *
    * @param {Number} px the x coordinate of the test point
    * @param {Number} py the y coordinate of the test point
-   * @return {Boolean}
+   * @returns {Boolean}
    **/
   hitTest: function (px, py) {
     return this.hitSegment(px, py) !== null

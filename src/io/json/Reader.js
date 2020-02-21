@@ -142,7 +142,7 @@ draw2d.io.json.Reader = draw2d.io.Reader.extend(
      * Factory method to create an instance of the given element type.
      *
      * @param {String} type
-     * @return {draw2d.Figure}
+     * @returns {draw2d.Figure}
      */
     createFigureFromType:function(type)
     {
@@ -154,7 +154,7 @@ draw2d.io.json.Reader = draw2d.io.Reader.extend(
      * Factory method to create an instance of the given element.
      *
      * @param {Object} element
-     * @return {draw2d.Figure}
+     * @returns {draw2d.Figure}
      */
     createFigureFromElement: function createFigureFromElement(element)
     {

@@ -161,7 +161,7 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend(
    * @since 5.8.0
    * @template
    *
-   * @return {Boolean} return <b>false</b> to preven tthe default event operation (e.g. scrolling)
+   * @returns {Boolean} return <b>false</b> to preven tthe default event operation (e.g. scrolling)
    */
   onMouseWheel: function (wheelDelta, x, y, shiftKey, ctrlKey) {
     // return "false" to prevent the default event operation

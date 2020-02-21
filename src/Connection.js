@@ -367,7 +367,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
    * Didn't provided by a connection. Return always '0'. This is required
    * for children position calculation. (e.g. Label decoration)
    *
-   * @return {Number} the x-offset to the parent figure
+   * @returns {Number} the x-offset to the parent figure
    **/
   getAbsoluteX: function () {
     return 0
@@ -380,7 +380,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
    * Didn't provided by a connection. Return always '0'. This is required
    * for children position calculation. (e.g. Label decoration)
    *
-   * @return {Number} The y-offset to the parent figure.
+   * @returns {Number} The y-offset to the parent figure.
    **/
   getAbsoluteY: function () {
     return 0
@@ -499,7 +499,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
    * Return the recalculated position of the start point with the usage of
    * the installed connection anchor locator.
    *
-   * @return {draw2d.geo.Point}
+   * @returns {draw2d.geo.Point}
    * @deprecated
    **/
   getStartPoint: function (refPoint) {
@@ -522,7 +522,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
    * Return the recalculated position of the start point with the usage of
    * the installed connection anchor locator.
    *
-   * @return {draw2d.geo.Point}
+   * @returns {draw2d.geo.Point}
    * @deprecated
    **/
   getEndPoint: function (refPoint) {
@@ -583,7 +583,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
    *
    * Returns the source port of this connection.
    *
-   * @return {draw2d.Port}
+   * @returns {draw2d.Port}
    **/
   getSource: function () {
     return this.sourcePort
@@ -812,7 +812,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
    *
    * @param {draw2d.command.CommandType} request describes the Command being requested
    *
-   * @return {draw2d.command.Command} null or a Command
+   * @returns {draw2d.command.Command} null or a Command
    **/
   createCommand: function (request) {
     if (request.getPolicy() === draw2d.command.CommandType.MOVE) {

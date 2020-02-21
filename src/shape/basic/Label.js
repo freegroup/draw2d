@@ -496,7 +496,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
    *
    * This value is relevant for the interactive resize of the figure.
    *
-   * @return {Number} Returns the min. width of this object.
+   * @returns {Number} Returns the min. width of this object.
    */
   getMinWidth: function () {
     if (this.shape === null) {
@@ -517,7 +517,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
    *
    * This value is relevant for the interactive resize of the figure.
    *
-   * @return {Number} Returns the min. width of this object.
+   * @returns {Number} Returns the min. width of this object.
    */
   getMinHeight: function () {
     if (this.shape === null) {
@@ -538,7 +538,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
    *
    * Return the calculate width of the set. This calculates the bounding box of all elements.
    *
-   * @return {Number} the calculated width of the label
+   * @returns {Number} the calculated width of the label
    **/
   getWidth: function () {
     if (this.shape === null) {
@@ -562,7 +562,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
    *
    * Return the calculated height of the set. This calculates the bounding box of all elements.
    *
-   * @return {Number} the calculated height of the label
+   * @returns {Number} the calculated height of the label
    */
   getHeight: function () {
     if (this.shape === null) {

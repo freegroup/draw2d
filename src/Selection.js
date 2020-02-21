@@ -41,7 +41,7 @@ draw2d.Selection = Class.extend(
    * 
    * Return the primary selection. This can only one figure at once.
    *
-   * @return {draw2d.Figure} the primary selected figure
+   * @returns {draw2d.Figure} the primary selected figure
    */
   getPrimary: function () {
     return this.primary;
@@ -100,7 +100,7 @@ draw2d.Selection = Class.extend(
    * @param {Boolean} [checkDescendant] Check if the figure provided by the argument is a descendant of the selection whether it is a direct child or nested more deeply.
    *
    * @since 2.2.0
-   * @return {Boolean}
+   * @returns {Boolean}
    */
   contains: function (figure, checkDescendant) {
     if (checkDescendant) {
@@ -130,7 +130,7 @@ draw2d.Selection = Class.extend(
    * Return the complete selection - including the primary selection.
    *
    * @param {Boolean} [expand] expand all StrongComposite and WeakComposite to get all figures. Didn't expand any SetFigures or LayoutFigures
-   * @return {draw2d.util.ArrayList}
+   * @returns {draw2d.util.ArrayList}
    *
    */
   getAll: function (expand) {

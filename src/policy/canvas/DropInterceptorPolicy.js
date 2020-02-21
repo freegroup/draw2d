@@ -45,7 +45,7 @@ draw2d.policy.canvas.DropInterceptorPolicy = draw2d.policy.canvas.CanvasPolicy.e
    * @param {draw2d.Figure} connectInquirer the figure who wants connect
    * @param {draw2d.Figure} connectIntent the potential connect target
    *
-   * @return {draw2d.Figure} the calculated connect intent or <b>null</b> if the interceptor uses the veto right
+   * @returns {draw2d.Figure} the calculated connect intent or <b>null</b> if the interceptor uses the veto right
    */
   delegateTarget: function (connectInquirer, connectIntent) {
     // a composite accept any kind of figures exceptional ports

@@ -1,12 +1,10 @@
+import draw2d from '../packages'
 
 /**
  * @class
  * Static values for point orientation.
  * 
  */
-import draw2d from '../packages'
-
-
 draw2d.geo.PositionConstants = {
   NORTH:  1,
   SOUTH:  4,

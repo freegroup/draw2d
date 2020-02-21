@@ -62,7 +62,7 @@ draw2d.policy.figure.DragDropEditPolicy = draw2d.policy.figure.FigureEditPolicy.
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
    * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
    *
-   * @return {Boolean} return <b>false</b> to send a veto to the drag operation
+   * @returns {Boolean} return <b>false</b> to send a veto to the drag operation
    */
   onDragStart: function (canvas, figure, x, y, shiftKey, ctrlKey) {
     figure.shape.attr({cursor: "move"})

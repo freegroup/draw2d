@@ -74,7 +74,7 @@ draw2d.policy.canvas.SnapToEditPolicy = draw2d.policy.canvas.CanvasPolicy.extend
    *
    * Return the current paint color.
    *
-   * @return {draw2d.util.Color} The paint color of the line.
+   * @returns {draw2d.util.Color} The paint color of the line.
    * @since 5.6.1
    **/
   getLineColor: function () {

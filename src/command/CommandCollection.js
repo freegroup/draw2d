@@ -34,7 +34,7 @@ draw2d.command.CommandCollection = draw2d.command.Command.extend(
    *
    * Returns a label of the Command. e.g. "move figure".
    *
-   * @return {String} the label for this command
+   * @returns {String} the label for this command
    **/
   getLabel: function () {
     //return the label of the one and only command
@@ -76,7 +76,7 @@ draw2d.command.CommandCollection = draw2d.command.Command.extend(
    * command modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should
    * return false. The execution of this Command doesn't modify the model.
    *
-   * @return {Boolean}
+   * @returns {Boolean}
    **/
   canExecute: function () {
     // We ask all cmd's if they make any changes.

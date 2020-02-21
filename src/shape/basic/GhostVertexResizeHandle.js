@@ -81,7 +81,7 @@ draw2d.shape.basic.GhostVertexResizeHandle = draw2d.shape.basic.LineResizeHandle
    * @param {Number} dy the y difference between the start of the drag drop operation and now
    * @param {Number} dx2 The x diff since the last call of this dragging operation
    * @param {Number} dy2 The y diff since the last call of this dragging operation
-   * @return {Boolean}
+   * @returns {Boolean}
    **/
   onDrag: function (dx, dy, dx2, dy2) {
     return true
@@ -96,7 +96,7 @@ draw2d.shape.basic.GhostVertexResizeHandle = draw2d.shape.basic.LineResizeHandle
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
    * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
    *
-   * @return {Boolean}
+   * @returns {Boolean}
    */
   onDragEnd: function (x, y, shiftKey, ctrlKey) {
     // fire an event

@@ -81,7 +81,7 @@ draw2d.shape.diagram.Diagram = draw2d.SetFigure.extend(
    * 
    * Return the calculate width of the set. This calculates the bounding box of all elements.
    *
-   * @return {Number} the calculated width of the label
+   * @returns {Number} the calculated width of the label
    **/
   getWidth: function () {
     return this.width
@@ -91,7 +91,7 @@ draw2d.shape.diagram.Diagram = draw2d.SetFigure.extend(
    * 
    * Return the calculated height of the set. This calculates the bounding box of all elements.
    *
-   * @return {Number} the calculated height of the label
+   * @returns {Number} the calculated height of the label
    */
   getHeight: function () {
     return this.height

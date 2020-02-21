@@ -51,7 +51,7 @@ draw2d.shape.composite.Raft = draw2d.shape.composite.WeakComposite.extend(
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
    * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
    *
-   * @return {Boolean} true if the figure accepts dragging
+   * @returns {Boolean} true if the figure accepts dragging
    **/
   onDragStart: function (x, y, shiftKey, ctrlKey) {
     this._super(x, y, shiftKey, ctrlKey)

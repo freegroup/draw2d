@@ -201,7 +201,7 @@ draw2d.command.CommandStack = Class.extend(
    *
    * Return the label of the next REDO command.
    *
-   * @return {String}
+   * @returns {String}
    **/
   getRedoLabel: function () {
     if (this.redostack.length === 0)
@@ -220,7 +220,7 @@ draw2d.command.CommandStack = Class.extend(
    *
    * Return the label of the next UNDO command.
    *
-   * @return {String}
+   * @returns {String}
    **/
   getUndoLabel: function () {
     if (this.undostack.length === 0)
@@ -239,7 +239,7 @@ draw2d.command.CommandStack = Class.extend(
    *
    * Indicates whenever a REDO is possible.
    *
-   * @return boolean <code>true</code> if it is appropriate to call {@link #redo()}.
+   * @returns boolean <code>true</code> if it is appropriate to call {@link #redo()}.
    */
   canRedo: function () {
     return this.redostack.length > 0
@@ -249,7 +249,7 @@ draw2d.command.CommandStack = Class.extend(
    *
    * indicator whenever a undo is possible.
    *
-   * @return {Boolean} <code>true</code> if {@link #undo()} can be called
+   * @returns {Boolean} <code>true</code> if {@link #undo()} can be called
    **/
   canUndo: function () {
     return this.undostack.length > 0

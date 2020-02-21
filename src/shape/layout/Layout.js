@@ -155,7 +155,7 @@ draw2d.shape.layout.Layout = draw2d.shape.basic.Rectangle.extend(
    * Returns the Command to perform the specified Request or null.
    *
    * @param {draw2d.command.CommandType} request describes the Command being requested
-   * @return {draw2d.command.Command} null or a Command
+   * @returns {draw2d.command.Command} null or a Command
    * @private
    **/
   createCommand: function (request) {

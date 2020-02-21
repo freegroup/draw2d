@@ -1,0 +1,450 @@
+{
+  "name": "Ray",
+  "namespace": "draw2d.geo",
+  "description": "<p>A ray is a line starting in [0,0,] with some additional\nhelper functions required for some router.</p>",
+  "extends": [
+    "draw2d.geo.Point"
+  ],
+  "access": "",
+  "virtual": false,
+  "functions": [
+    {
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Creates a ray object.</p>",
+      "parameters": [
+        {
+          "name": "x",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "y",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": false,
+      "since": "",
+      "examples": []
+    },
+    {
+      "name": "setBoundary",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Ensure the boundary of the rectangle. If set, the rectangle keeps always inside\nthe boundary. It is like a virtual fence.</p>",
+      "parameters": [],
+      "inherited": true,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
+    },
+    {
+      "name": "adjustBoundary",
+      "access": "private",
+      "virtual": false,
+      "description": "",
+      "parameters": [],
+      "inherited": true,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
+    },
+    {
+      "name": "translate",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Moves this Rectangle horizontally by dx and vertically by dy, then returns\nthis Rectangle for convenience.<br>\n<br>\nThe method return the object itself. This allows you to do command chaining, where\nyou can perform multiple methods on the same elements.</p>",
+      "parameters": [
+        {
+          "name": "dx",
+          "type": "Number",
+          "description": "<p>Shift along X axis</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "dy",
+          "type": "Number",
+          "description": "<p>Shift along Y axis</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
+    },
+    {
+      "name": "getX",
+      "access": "",
+      "virtual": false,
+      "description": "<p>The X value of the point</p>",
+      "parameters": [],
+      "inherited": true,
+      "since": "0.1",
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": "<p>The x coordinate of the top left corner</p>"
+      }
+    },
+    {
+      "name": "getY",
+      "access": "",
+      "virtual": false,
+      "description": "<p>The y value of the point</p>",
+      "parameters": [],
+      "inherited": true,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": "<p>The y coordinate of the top left corner</p>"
+      }
+    },
+    {
+      "name": "setX",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Set the new X value of the point</p>",
+      "parameters": [
+        {
+          "name": "x",
+          "type": "Number",
+          "description": "<p>the new x coordinate of the rect</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
+    },
+    {
+      "name": "setY",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Set the new Y value of the point</p>",
+      "parameters": [
+        {
+          "name": "y",
+          "type": "Number",
+          "description": "<p>the new y coordinate of the rect</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
+    },
+    {
+      "name": "setPosition",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Set the new x/y coordinates of this point</p>",
+      "parameters": [
+        {
+          "name": "x",
+          "type": [
+            "Number",
+            "draw2d.geo.Point"
+          ],
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "y",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
+    },
+    {
+      "name": "getPosition",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Calculates the relative position of the specified Point to this Point.</p>",
+      "parameters": [
+        {
+          "name": "p",
+          "type": "draw2d.geo.Point",
+          "description": "<p>The reference Point</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": "<p>NORTH, SOUTH, EAST, or WEST, as defined in {@link draw2d.geo.PositionConstants}</p>"
+      }
+    },
+    {
+      "name": "equals",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Compares two points and return [true] if x and y are equals.</p>",
+      "parameters": [
+        {
+          "name": "p",
+          "type": "draw2d.geo.Point",
+          "description": "<p>the point to compare with</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "Boolean",
+        "description": "<p>True if the given p[x,y] has an exact match with the point</p>"
+      }
+    },
+    {
+      "name": "distance",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Return the distance between this point and the hands over.</p>",
+      "parameters": [
+        {
+          "name": "other",
+          "type": "draw2d.geo.Point",
+          "description": "<p>the point to use</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": "<p>The distance to the given point</p>"
+      }
+    },
+    {
+      "name": "length",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Return the length of the vector measured from [0,0]</p>",
+      "parameters": [],
+      "inherited": true,
+      "since": "2.10.0",
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": "<p>The length of the vector [0,0][x,y]</p>"
+      }
+    },
+    {
+      "name": "translated",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Return a new Point translated with the x/y values of the hands over point.</p>",
+      "parameters": [
+        {
+          "name": "x",
+          "type": [
+            "draw2d.geo.Point",
+            "Number"
+          ],
+          "description": "<p>the x translation or the complete point to translate</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "y",
+          "type": "Number",
+          "description": "<p>the y translation. Required if x is a simple number instead of a draw2d.geo.Point</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "draw2d.geo.Point",
+        "description": "<p>A instance of a translated point.</p>"
+      }
+    },
+    {
+      "name": "scale",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Scales this point with the handover factor</p>",
+      "parameters": [
+        {
+          "name": "factor",
+          "type": "Number",
+          "description": "<p>the factor to scaled the point.</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
+    },
+    {
+      "name": "scaled",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Return a <strong>new</strong> Point scaled with the givben factor</p>",
+      "parameters": [
+        {
+          "name": "factor",
+          "type": "Number",
+          "description": "<p>the factor to scaled the new point.</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "draw2d.geo.Point",
+        "description": "<p>The new translated point.</p>"
+      }
+    },
+    {
+      "name": "getPersistentAttributes",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Return an objects with all important attributes for XML or JSON serialization</p>",
+      "parameters": [],
+      "inherited": true,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "Object",
+        "description": ""
+      }
+    },
+    {
+      "name": "setPersistentAttributes",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Read all attributes from the serialized properties and transfer them into the shape.</p>",
+      "parameters": [
+        {
+          "name": "memento",
+          "type": "Object",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
+    },
+    {
+      "name": "subtract",
+      "access": "",
+      "virtual": false,
+      "description": "<p>substract the given point and return the <strong>new</strong> point.</p>",
+      "parameters": [
+        {
+          "name": "that",
+          "type": "",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "draw2d.geo.Point",
+        "description": ""
+      }
+    },
+    {
+      "name": "clone",
+      "access": "",
+      "virtual": false,
+      "description": "<p>Return a cloned point</p>",
+      "parameters": [],
+      "inherited": true,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "draw2d.geo.Point",
+        "description": ""
+      }
+    }
+  ],
+  "fires": "",
+  "constructor": {
+    "name": "Ray",
+    "description": "",
+    "parameters": [],
+    "examples": []
+  }
+}

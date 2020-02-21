@@ -301,7 +301,7 @@ draw2d.layout.connection.MuteableManhattanConnectionRouter = draw2d.layout.conne
    *
    * @param r the rectangle
    * @param p the point
-   * @return the direction from <i>r</i> to <i>p</i>
+   * @returns the direction from <i>r</i> to <i>p</i>
    */
   getDirection: function (r, p) {
     let i = Math.abs(r.y - p.y)

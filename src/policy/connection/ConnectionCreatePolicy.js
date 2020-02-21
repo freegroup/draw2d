@@ -30,7 +30,7 @@ draw2d.policy.connection.ConnectionCreatePolicy = draw2d.policy.canvas.KeyboardP
      * 
      * Factory method to create the connection to insert.
      *
-     * @return {draw2d.Connection}
+     * @returns {draw2d.Connection}
      * @template
      */
     createConnection:function()

@@ -31,7 +31,7 @@ draw2d.layout.anchor.ConnectionAnchor = Class.extend(
    * @param {draw2d.geo.Point} reference the opposite reference point
    * @param {draw2d.Connection} inquiringConnection the connection who ask for the location.
    *
-   * @return {draw2d.geo.Point}
+   * @returns {draw2d.geo.Point}
    */
   getLocation: function (reference, inquiringConnection) {
     // return the center of the owner/port.
@@ -42,7 +42,7 @@ draw2d.layout.anchor.ConnectionAnchor = Class.extend(
    * 
    * Returns the Figure that contains this ConnectionAnchor.
    *
-   * @return {draw2d.Figure} The Figure that contains this ConnectionAnchor
+   * @returns {draw2d.Figure} The Figure that contains this ConnectionAnchor
    */
   getOwner: function () {
     return this.owner
@@ -66,7 +66,7 @@ draw2d.layout.anchor.ConnectionAnchor = Class.extend(
    * Returns the bounds of this Anchor's owner.  Subclasses can override this method
    * to adjust the box. Maybe you return the box of the port parent (the parent figure)
    *
-   * @return {draw2d.geo.Rectangle} The bounds of this Anchor's owner
+   * @returns {draw2d.geo.Rectangle} The bounds of this Anchor's owner
    */
   getBox: function () {
     return this.getOwner().getAbsoluteBounds()
@@ -79,7 +79,7 @@ draw2d.layout.anchor.ConnectionAnchor = Class.extend(
    *
    * @param {draw2d.Connection} [inquiringConnection] the connection who ask for the location.
    *
-   * @return {draw2d.geo.Point} The reference Point
+   * @returns {draw2d.geo.Point} The reference Point
    */
   getReferencePoint: function (inquiringConnection) {
     return this.getOwner().getAbsolutePosition()

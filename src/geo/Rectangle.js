@@ -11,7 +11,6 @@ import draw2d from '../packages'
  * 
  * @extends draw2d.geo.Point
  */
-
 draw2d.geo.Rectangle = draw2d.geo.Point.extend(
     /** @lends draw2d.geo.Rectangle.prototype */
     {
@@ -94,7 +93,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend(
 	 * @param {Number} dw  Amount by which width is to be resized
 	 * @param {Number} dh  Amount by which height is to be resized
 	 * 
-	 * @return  {draw2d.geo.Rectangle} The method return the object itself
+	 * @returns  {draw2d.geo.Rectangle} The method return the object itself
 	 **/
 	resize: function(dw,  dh)
 	{
@@ -158,7 +157,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend(
 	 * @param {draw2d.geo.Point|Number} x the x translation or the complete point to translate
 	 * @param {Number} [y] the y translation. Required if x is a simple number instead of a draw2d.geo.Point
      *
-	 * @return {draw2d.geo.Rectangle} The new translated rectangle.
+	 * @returns {draw2d.geo.Rectangle} The new translated rectangle.
 	 *
 	 * @since 5.6.0
 	 */
@@ -178,7 +177,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend(
 	 *
 	 * @param {draw2d.geo.Rectangle} Rectangle providing the bounding values
 	 * 
-	 * @return  {draw2d.geo.Rectangle} The method return the object itself
+	 * @returns  {draw2d.geo.Rectangle} The method return the object itself
 	 */
 	setBounds: function( rect)
 	{
@@ -195,7 +194,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend(
 	 * Returns <code>true</code> if this Rectangle's width or height is less than or
 	 * equal to 0.
 	 * 
-	 * @return {Boolean}
+	 * @returns {Boolean}
 	 */
 	isEmpty: function()
 	{
@@ -206,7 +205,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend(
 	 * 
 	 * The width of the dimension element.
 	 * 
-	 * @return {Number}
+	 * @returns {Number}
 	 **/
 	getWidth: function()
 	{
@@ -231,7 +230,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend(
 	 * 
 	 * The height of the dimension element.
 	 * 
-	 * @return {Number}
+	 * @returns {Number}
 	 **/
 	getHeight: function()
 	{
@@ -256,7 +255,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend(
      * 
      * The x coordinate of the left corner.
      * 
-     * @return {Number}
+     * @returns {Number}
      **/
     getLeft: function()
     {
@@ -267,7 +266,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend(
 	 * 
 	 * The x coordinate of the right corner.
 	 * 
-	 * @return {Number}
+	 * @returns {Number}
 	 **/
 	getRight: function()
 	{
@@ -300,7 +299,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend(
 	 * 
 	 * The top left corner of the dimension object.
 	 * 
-	 * @return {draw2d.geo.Point} a new point objects which holds the coordinates
+	 * @returns {draw2d.geo.Point} a new point objects which holds the coordinates
 	 **/
 	getTopLeft: function()
 	{
@@ -311,7 +310,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend(
      * 
      * The top center coordinate of the dimension object.
      * 
-     * @return {draw2d.geo.Point} a new point objects which holds the coordinates
+     * @returns {draw2d.geo.Point} a new point objects which holds the coordinates
      **/
     getTopCenter: function()
     {
@@ -322,7 +321,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend(
 	 * 
 	 * The top right corner of the dimension object.
 	 * 
-	 * @return {draw2d.geo.Point} a new point objects which holds the coordinates
+	 * @returns {draw2d.geo.Point} a new point objects which holds the coordinates
 	 **/
 	getTopRight: function()
 	{
@@ -333,7 +332,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend(
 	 * 
 	 * The center left  of the dimension object.
 	 *
-	 * @return {draw2d.geo.Point} a new point objects which holds the coordinates
+	 * @returns {draw2d.geo.Point} a new point objects which holds the coordinates
 	 **/
 	getCenterLeft: function()
 	{
@@ -344,7 +343,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend(
 	 * 
 	 * The bottom left corner of the dimension object.
 	 * 
-	 * @return {draw2d.geo.Point} a new point objects which holds the coordinates
+	 * @returns {draw2d.geo.Point} a new point objects which holds the coordinates
 	 **/
 	getBottomLeft: function()
 	{
@@ -355,7 +354,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend(
      * 
      * The bottom center coordinate of the dimension object.
      * 
-     * @return {draw2d.geo.Point} a new point objects which holds the coordinates
+     * @returns {draw2d.geo.Point} a new point objects which holds the coordinates
      **/
     getBottomCenter: function()
     {
@@ -366,7 +365,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend(
 	 * 
 	 * The center of the dimension object
 	 * 
-	 * @return {draw2d.geo.Point} a new point which holds the center of the object
+	 * @returns {draw2d.geo.Point} a new point which holds the center of the object
 	 **/
 	getCenter: function()
 	{
@@ -378,7 +377,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend(
 	 * 
 	 * Bottom right corner of the object
 	 * 
-	 * @return {draw2d.geo.Point} a new point which holds the bottom right corner
+	 * @returns {draw2d.geo.Point} a new point which holds the bottom right corner
 	 **/
 	getBottomRight: function()
 	{
@@ -390,7 +389,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend(
 	 * Return all points of the rectangle as array. Starting at topLeft and the
 	 * clockwise.
 	 * 
-	 * @return {draw2d.util.ArrayList} the points starting at top/left and the clockwise
+	 * @returns {draw2d.util.ArrayList} the points starting at top/left and the clockwise
 	 */
 	getVertices: function()
 	{
@@ -412,7 +411,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend(
 	 * will be changed. Not the dimension of the given rectangle.
 	 * 
 	 * @param {draw2d.geo.Rectangle} rect the rectangle to adjust
-	 * @return the new shifted rectangle
+	 * @returns the new shifted rectangle
 	 */
 	moveInside: function(rect)
     {
@@ -630,7 +629,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend(
      * 
      * @param {draw2d.geo.Point} other the point in relation to the given rectangle
      * 
-     * @return {Number} the direction from <i>r</i> to <i>p</i>
+     * @returns {Number} the direction from <i>r</i> to <i>p</i>
      */
     getDirection: function(other)
     {
@@ -680,7 +679,7 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend(
 	 * 
 	 * @param {draw2d.geo.Rectangle} o
      *
-	 * @return {Boolean}
+	 * @returns {Boolean}
 	 **/
 	equals: function( o)
 	{

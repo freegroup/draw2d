@@ -135,7 +135,7 @@ draw2d.HeadlessCanvas = Class.extend(
      * Returns all lines/connections in this workflow/canvas.<br>
      *
      * @protected
-     * @return {draw2d.util.ArrayList}
+     * @returns {draw2d.util.ArrayList}
      **/
     getLines: function()
     {
@@ -147,7 +147,7 @@ draw2d.HeadlessCanvas = Class.extend(
      * Returns the internal figures.<br>
      *
      * @protected
-     * @return {draw2d.util.ArrayList}
+     * @returns {draw2d.util.ArrayList}
      **/
     getFigures: function()
     {
@@ -160,7 +160,7 @@ draw2d.HeadlessCanvas = Class.extend(
      *
      * @param {String} id The id of the line.
      *
-     * @return {draw2d.shape.basic.Line}
+     * @returns {draw2d.shape.basic.Line}
      **/
     getLine: function( id)
     {
@@ -180,7 +180,7 @@ draw2d.HeadlessCanvas = Class.extend(
      * Returns the figure with the given id.
      *
      * @param {String} id The id of the figure.
-     * @return {draw2d.Figure}
+     * @returns {draw2d.Figure}
      **/
     getFigure: function( id)
     {
@@ -225,7 +225,7 @@ draw2d.HeadlessCanvas = Class.extend(
      * 
      * Returns the command stack for the Canvas. Required for undo/redo support.
      *
-     * @return {draw2d.command.CommandStack}
+     * @returns {draw2d.command.CommandStack}
      **/
     getCommandStack: function()
     {

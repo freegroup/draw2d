@@ -83,7 +83,7 @@ draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend(
    *
    * @param {draw2d.Figure} draggedFigure The figure which is currently dragging
    *
-   * @return {draw2d.Figure} the figure which should receive the drop event or null if the element didn't want a drop event
+   * @returns {draw2d.Figure} the figure which should receive the drop event or null if the element didn't want a drop event
    **/
   delegateTarget: function (draggedFigure) {
     // redirect the dragEnter handling to the hybrid port
@@ -96,7 +96,7 @@ draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend(
    * 
    * This value is relevant for the interactive resize of the figure.
    *
-   * @return {Number} Returns the min. width of this object.
+   * @returns {Number} Returns the min. width of this object.
    */
   getMinWidth: function () {
     if (this.label !== null) {

@@ -141,7 +141,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
    * to false to retrieve direct assigned ports only.
    *
    * @param {Boolean} [recursive] indicates if the method should return children ports too. Default is <b>true</b>
-   * @return  {draw2d.util.ArrayList}
+   * @returns  {draw2d.util.ArrayList}
    **/
   getPorts: function (recursive) {
 
@@ -171,7 +171,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
    *
    * Return all input ports of the node.
    *
-   * @return {draw2d.util.ArrayList}
+   * @returns {draw2d.util.ArrayList}
    **/
   getInputPorts: function () {
     return this.inputPorts
@@ -183,7 +183,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
    *
    * Return all output ports of the node.
    *
-   * @return {draw2d.util.ArrayList}
+   * @returns {draw2d.util.ArrayList}
    **/
   getOutputPorts: function () {
     return this.outputPorts
@@ -237,7 +237,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
    *
    *
    * @param {String} portName The name of the port to return.
-   * @return {draw2d.Port} Returns the port with the hands over name or null.
+   * @returns {draw2d.Port} Returns the port with the hands over name or null.
    **/
   getPort: function (portName) {
     return this.getPorts().find(e => e.getName() === portName)
@@ -249,7 +249,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
    *
    *
    * @param {String/Number} portNameOrIndex The name or numeric index of the port to return.
-   * @return {draw2d.InputPort} Returns the port with the hands over name or null.
+   * @returns {draw2d.InputPort} Returns the port with the hands over name or null.
    **/
   getInputPort: function (portNameOrIndex) {
     if (typeof portNameOrIndex === "number") {
@@ -271,7 +271,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
    * Return the output port with the corresponding name.
    *
    * @param {String/Number} portNameOrIndex The name or the numeric index of the port to return.
-   * @return {draw2d.OutputPort} Returns the port with the hands over name or null.
+   * @returns {draw2d.OutputPort} Returns the port with the hands over name or null.
    **/
   getOutputPort: function (portNameOrIndex) {
     if (typeof portNameOrIndex === "number") {
@@ -294,7 +294,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
    *
    *
    * @param {String/Number} portNameOrIndex The name or numeric index of the port to return.
-   * @return {draw2d.InputPort} Returns the port with the hands over name or null.
+   * @returns {draw2d.InputPort} Returns the port with the hands over name or null.
    **/
   getHybridPort: function (portNameOrIndex) {
     if (typeof portNameOrIndex === "number") {
@@ -555,7 +555,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
    * Returns the Command to perform the specified Request or null.
    *
    * @param {draw2d.command.CommandType} request describes the Command being requested
-   * @return {draw2d.command.Command} null or a Command
+   * @returns {draw2d.command.Command} null or a Command
    * @private
    **/
   createCommand: function (request) {
