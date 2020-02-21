@@ -255,7 +255,7 @@ function writeRouter(namespaces){
   stream.write(']\n\n')
 
   stream.write('const router = new VueRouter({\n')
-  stream.write('  mode: \'history\',\n')
+  stream.write('  mode: \'hash\',\n')
   stream.write('  tree,\n')
   stream.write('  routes\n')
   stream.write('})\n')
