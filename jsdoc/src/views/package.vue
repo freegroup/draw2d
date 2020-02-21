@@ -61,7 +61,7 @@ export default {
   methods: {
     fetchData () {
       this.loading = true
-      axios.get('<%= BASE_URL %>/data/' + this.$attrs.className + '.json')
+      axios.get('./data/' + this.$attrs.className + '.json')
         .then(response => {
           this.loading = false
           this.clazz = response.data

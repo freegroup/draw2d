@@ -2510,7 +2510,7 @@ const tree = [
 ]
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: 'hash',
   tree,
   routes
 })
