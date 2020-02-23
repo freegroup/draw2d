@@ -1,7 +1,7 @@
 {
   "name": "Rectangle",
   "namespace": "draw2d.geo",
-  "description": "<p>Util class for geometrie handling.</p>",
+  "description": "<p>Represents a Rectangle(x, y, width, height).</p>",
   "extends": [
     "draw2d.geo.Point"
   ],
@@ -12,7 +12,8 @@
       "name": "init",
       "access": "",
       "virtual": false,
-      "description": "<p>Creates a new Point object with the hands over coordinates.\n<br>\nThe constructor consumes almost any kind of rectangel definitions\nlike:\nvar rect0 = new draw2d.geo.Rectangle({x:0,y:0,width:20,height:20});\nvar rect1 = new draw2d.geo.Rectangle({x:0,y:0,w:20,h:20});\nvar rect2 = new draw2d.geo.Rectangle($(&quot;#divid&quot;)[0].getBoundingClientRect());\nvar rect3 = new draw2d.geo.Rectangle(rect1);</p>\n<p>The rectangle class is usefull for any kind of intersection, hitTest, contains,...calculation\nor to set the bounding box of any shape.</p>",
+      "deprecated": "",
+      "description": "<p>Creates a new Point object with the hands over coordinates.\n<br>\nThe constructor consumes almost any kind of rectangel definitions\nlike:\nlet rect0 = new draw2d.geo.Rectangle({x:0,y:0,width:20,height:20});\nlet rect1 = new draw2d.geo.Rectangle({x:0,y:0,w:20,h:20});\nlet rect2 = new draw2d.geo.Rectangle($(&quot;#divid&quot;)[0].getBoundingClientRect());\nlet rect3 = new draw2d.geo.Rectangle(rect1);</p>\n<p>The rectangle class is usefull for any kind of intersection, hitTest, contains,...calculation\nor to set the bounding box of any shape.</p>",
       "parameters": [
         {
           "name": "x",
@@ -58,6 +59,7 @@
       "name": "adjustBoundary",
       "access": "private",
       "virtual": false,
+      "deprecated": "",
       "description": "",
       "parameters": [],
       "inherited": false,
@@ -68,6 +70,7 @@
       "name": "resize",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Resizes this Rectangle by the values supplied as input and returns this for\nconvenience. This Rectangle's width will become this.width + dw. This\nRectangle's height will become this.height + dh.\n<br>\nThe method return the object itself. This allows you to do command chaining, where\nyou can perform multiple methods on the same elements.</p>",
       "parameters": [
         {
@@ -91,15 +94,16 @@
       "since": "",
       "examples": [],
       "returns": {
-        "type": "draw2d.geo.Rectangle",
-        "description": "<p>The method return the object itself</p>"
+        "type": "this",
+        "description": ""
       }
     },
     {
       "name": "scale",
       "access": "",
       "virtual": false,
-      "description": "<p>Adds the specified padding to the rectangle's bounds. This Rectangle's width\nwill become this.width + dw. The Rectangle's height will become this.height + dh.\nThe top left corner moves -dw/2, -dh/2\n<br>\nThe method return the object itself. This allows you to do command chaining, where\nyou can perform multiple methods on the same elements.</p>",
+      "deprecated": "",
+      "description": "<p>Adds the specified padding to the rectangle's bounds. This Rectangle's width\nwill become this.width + dw. The Rectangle's height will become this.height + dh.\nThe top left corner moves -dw/2, -dh/2</p>",
       "parameters": [
         {
           "name": "dw",
@@ -120,12 +124,17 @@
       ],
       "inherited": false,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "translate",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Translate the rectangle with the given x/y coordiante.</p>",
       "parameters": [
         {
@@ -150,12 +159,17 @@
       ],
       "inherited": false,
       "since": "5.6.0",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "translated",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns a copy of the translated rectangle</p>",
       "parameters": [
         {
@@ -190,6 +204,7 @@
       "name": "setBounds",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Sets the parameters of this Rectangle from the Rectangle passed in and\nreturns this for convenience.<br>\n<br>\nThe method return the object itself. This allows you to do command chaining, where\nyou can perform multiple methods on the same elements.</p>",
       "parameters": [
         {
@@ -205,14 +220,15 @@
       "since": "",
       "examples": [],
       "returns": {
-        "type": "draw2d.geo.Rectangle",
-        "description": "<p>The method return the object itself</p>"
+        "type": "this",
+        "description": ""
       }
     },
     {
       "name": "isEmpty",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns <code>true</code> if this Rectangle's width or height is less than or\nequal to 0.</p>",
       "parameters": [],
       "inherited": false,
@@ -227,6 +243,7 @@
       "name": "getWidth",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The width of the dimension element.</p>",
       "parameters": [],
       "inherited": false,
@@ -241,6 +258,7 @@
       "name": "setWidth",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the new width of the rectangle.</p>",
       "parameters": [
         {
@@ -254,12 +272,17 @@
       ],
       "inherited": false,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "getHeight",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The height of the dimension element.</p>",
       "parameters": [],
       "inherited": false,
@@ -274,6 +297,7 @@
       "name": "setHeight",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the new height of the rectangle.</p>",
       "parameters": [
         {
@@ -287,12 +311,17 @@
       ],
       "inherited": false,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "getLeft",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The x coordinate of the left corner.</p>",
       "parameters": [],
       "inherited": false,
@@ -307,6 +336,7 @@
       "name": "getRight",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The x coordinate of the right corner.</p>",
       "parameters": [],
       "inherited": false,
@@ -321,6 +351,7 @@
       "name": "getTop",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The y coordinate of the top.</p>",
       "parameters": [],
       "inherited": false,
@@ -335,6 +366,7 @@
       "name": "getBottom",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The y coordinate of the bottom.</p>",
       "parameters": [],
       "inherited": false,
@@ -349,6 +381,7 @@
       "name": "getTopLeft",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The top left corner of the dimension object.</p>",
       "parameters": [],
       "inherited": false,
@@ -363,6 +396,7 @@
       "name": "getTopCenter",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The top center coordinate of the dimension object.</p>",
       "parameters": [],
       "inherited": false,
@@ -377,6 +411,7 @@
       "name": "getTopRight",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The top right corner of the dimension object.</p>",
       "parameters": [],
       "inherited": false,
@@ -391,6 +426,7 @@
       "name": "getCenterLeft",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The center left  of the dimension object.</p>",
       "parameters": [],
       "inherited": false,
@@ -405,6 +441,7 @@
       "name": "getBottomLeft",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The bottom left corner of the dimension object.</p>",
       "parameters": [],
       "inherited": false,
@@ -419,6 +456,7 @@
       "name": "getBottomCenter",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The bottom center coordinate of the dimension object.</p>",
       "parameters": [],
       "inherited": false,
@@ -433,6 +471,7 @@
       "name": "getCenter",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The center of the dimension object</p>",
       "parameters": [],
       "inherited": false,
@@ -447,6 +486,7 @@
       "name": "getBottomRight",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Bottom right corner of the object</p>",
       "parameters": [],
       "inherited": false,
@@ -461,6 +501,7 @@
       "name": "getVertices",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return all points of the rectangle as array. Starting at topLeft and the\nclockwise.</p>",
       "parameters": [],
       "inherited": false,
@@ -475,6 +516,7 @@
       "name": "moveInside",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return a new rectangle which fits into this rectangle. <b>ONLY</b> the x/y coordinates\nwill be changed. Not the dimension of the given rectangle.</p>",
       "parameters": [
         {
@@ -498,6 +540,7 @@
       "name": "getDistance",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return the minimum distance of this rectangle to the given {@link draw2d.geo.Point} or\n{link draw2d.geo.Rectangle}.</p>",
       "parameters": [
         {
@@ -520,6 +563,7 @@
       "name": "determineOctant",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Determin the octant of r2 in relation to this rectangle.</p>\n<pre>\n\n   0 | 1 | 2\n   __|___|__\n   7 | 8 | 3\n   __|___|__\n   6 | 5 | 4\n</pre>",
       "parameters": [
         {
@@ -539,6 +583,7 @@
       "name": "getDirection",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns the direction the point <i>p</i> is in relation to the given rectangle.\nUtil method for inherit router implementations.</p>\n<p>\nPossible values:\n<ul>\n  <li>up -&gt; 0</li>\n  <li>right -&gt; 1</li>\n  <li>down -&gt; 2</li>\n  <li>left -&gt; 3</li>\n</ul>\n<p>",
       "parameters": [
         {
@@ -562,6 +607,7 @@
       "name": "equals",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Compares two rectangle objects</p>",
       "parameters": [
         {
@@ -585,6 +631,7 @@
       "name": "hitTest",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Detect whenever the hands over coordinate is inside the rectangle.</p>",
       "parameters": [
         {
@@ -616,6 +663,7 @@
       "name": "isInside",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>return true if this rectangle inside the hand over rectangle</p>",
       "parameters": [
         {
@@ -639,6 +687,7 @@
       "name": "contains",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>return true if this rectangle contains the hand over rectangle.</p>",
       "parameters": [
         {
@@ -662,6 +711,7 @@
       "name": "intersects",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>checks whenever the rectangles has an intersection.</p>",
       "parameters": [
         {
@@ -685,6 +735,7 @@
       "name": "merge",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Merge this rectangle with the given one.</p>",
       "parameters": [
         {
@@ -698,12 +749,17 @@
       ],
       "inherited": false,
       "since": "4.8.0",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "intersectionWithLine",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>returns the intersection points with the given line if any exists</p>",
       "parameters": [
         {
@@ -731,6 +787,7 @@
       "name": "clone",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns a copy of this rectangle</p>",
       "parameters": [],
       "inherited": false,
@@ -745,6 +802,7 @@
       "name": "toJSON",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>converts the rectangle to JSON representation. required for the draw2d.io.Writer</p>",
       "parameters": [],
       "inherited": false,
@@ -759,6 +817,7 @@
       "name": "setBoundary",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Ensure the boundary of the rectangle. If set, the rectangle keeps always inside\nthe boundary. It is like a virtual fence.</p>",
       "parameters": [],
       "inherited": true,
@@ -773,6 +832,7 @@
       "name": "getX",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The X value of the point</p>",
       "parameters": [],
       "inherited": true,
@@ -787,6 +847,7 @@
       "name": "getY",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The y value of the point</p>",
       "parameters": [],
       "inherited": true,
@@ -801,6 +862,7 @@
       "name": "setX",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the new X value of the point</p>",
       "parameters": [
         {
@@ -824,6 +886,7 @@
       "name": "setY",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the new Y value of the point</p>",
       "parameters": [
         {
@@ -847,6 +910,7 @@
       "name": "setPosition",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the new x/y coordinates of this point</p>",
       "parameters": [
         {
@@ -881,6 +945,7 @@
       "name": "getPosition",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Calculates the relative position of the specified Point to this Point.</p>",
       "parameters": [
         {
@@ -904,6 +969,7 @@
       "name": "distance",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return the distance between this point and the hands over.</p>",
       "parameters": [
         {
@@ -927,6 +993,7 @@
       "name": "length",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return the length of the vector measured from [0,0]</p>",
       "parameters": [],
       "inherited": true,
@@ -941,6 +1008,7 @@
       "name": "scaled",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return a <strong>new</strong> Point scaled with the givben factor</p>",
       "parameters": [
         {
@@ -964,6 +1032,7 @@
       "name": "getPersistentAttributes",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return an objects with all important attributes for XML or JSON serialization</p>",
       "parameters": [],
       "inherited": true,
@@ -978,6 +1047,7 @@
       "name": "setPersistentAttributes",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Read all attributes from the serialized properties and transfer them into the shape.</p>",
       "parameters": [
         {
@@ -1001,6 +1071,7 @@
       "name": "subtract",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>substract the given point and return the <strong>new</strong> point.</p>",
       "parameters": [
         {

@@ -1,58 +1,57 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" clipped-left >
+    <v-app-bar app color="primary"
+               clipped-left
+               height="20"
+               elevate-on-scroll
+               shrink-on-scroll
+               fade-img-on-scroll>
       <div class="d-flex align-center">
-        <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
         <v-img
           alt="Vuetify Logo"
           class="shrink mr-2"
           contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+          src="./assets/logo.svg"
           transition="scale-transition"
           width="40"
         />
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
+        <v-toolbar-title>Draw2D JavaScript graph and diagramming lib</v-toolbar-title>
       </div>
       <v-spacer></v-spacer>
       <v-btn  href="https://github.com/vuetifyjs/vuetify/releases/latest" target="_blank" text >
-        <span class="mr-2">Latest lll Release</span>
+        <span class="mr-2">Latest Release</span>
         <v-icon>open-in-new</v-icon>
       </v-btn>
+
+        <template v-slot:extension>
+          <v-tabs
+            dense
+            background-color="transparent"
+            color="basil"
+            grow
+          >
+            <v-tab to="/api">API</v-tab>
+            <v-tab to="/example">Examples</v-tab>
+          </v-tabs>
+        </template>
+
     </v-app-bar>
 
-    <Navigation v-model="drawer"  />
-
-    <v-content>
-     <v-container fluid>
-       <router-view></router-view>
-     </v-container>
-    </v-content>
-
-    <v-footer app>
-      <span>&copy; 2019</span>
-    </v-footer>
+    <router-view></router-view>
 
   </v-app>
 </template>
 
 <script>
-import Navigation from './components/Navigation'
 
 export default {
   name: 'App',
 
-  components: {
-    Navigation
-  },
   data: () => ({
-    drawer: true
+
+    items: [
+      'Appetizers', 'Entrees', 'Deserts', 'Cocktails'
+    ]
   })
 }
 </script>

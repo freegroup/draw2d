@@ -10,6 +10,7 @@
       "name": "paint",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Draw a filled diamond decoration.</p>\n<p>It's not your work to rotate the arrow. The draw2d do this job for you.</p>",
       "parameters": [
         {

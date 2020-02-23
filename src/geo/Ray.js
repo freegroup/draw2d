@@ -3,8 +3,7 @@ import draw2d from '../packages'
 
 /**
  * @class
- * A ray is a line starting in [0,0,] with some additional
- * helper functions required for some router.
+ * Represents a vector within 2-dimensional Euclidean space.
  * 
  * @inheritable
  * @extends draw2d.geo.Point

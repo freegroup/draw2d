@@ -3,7 +3,13 @@ import draw2d from '../packages'
 
 /**
  * @class
- * Stack for undo/redo operations
+ *
+ * An implementation of a command stack. A stack manages the executing, undoing, and redoing of Commands. Executed
+ * commands are pushed onto a a stack for undoing later. Commands which are undone are pushed onto a redo stack.
+ * Whenever a new command is executed, the redo stack is flushed.
+ *
+ * You can retrieve the current used CommandStack just by calling <code>canvas.getCommandStack()</code>
+ *
  */
 draw2d.command.CommandStack = Class.extend(
   /** @lends draw2d.command.CommandStack.prototype */
@@ -31,7 +37,7 @@ draw2d.command.CommandStack = Class.extend(
    * size has been reached.
    *
    * @param {Number} count The maximal undo stack size.
-   *
+   * @returns {this}
    **/
   setUndoLimit: function (count) {
     this.maxundo = count
@@ -44,6 +50,7 @@ draw2d.command.CommandStack = Class.extend(
    * Remove the undo / redo history. This is useful if the user has been save the
    * document.
    *
+   * @returns {this}
    **/
   markSaveLocation: function () {
     this.undostack = []
@@ -64,7 +71,7 @@ draw2d.command.CommandStack = Class.extend(
    * will be fired.
    *
    * @param {draw2d.command.Command} command The command to execute.
-   *
+   * @returns {this}
    **/
   execute: function (command) {
     if (typeof command === "undefined")
@@ -72,19 +79,19 @@ draw2d.command.CommandStack = Class.extend(
 
     // nothing to do
     if (command === null)
-      return //silently
+      return this//silently
 
     // return if the command can't execute or it doesn't change the model
     // => Empty command
     if (command.canExecute() === false)
-      return
+      return this
 
     // A command stack transaction is open.
     // The execution will be postpone until the transaction will commit
     //
     if (this.transactionCommand !== null) {
       this.transactionCommand.add(command)
-      return
+      return this
     }
 
     this.notifyListeners(command, draw2d.command.CommandStack.PRE_EXECUTE, "PRE_EXECUTE")
@@ -113,7 +120,7 @@ draw2d.command.CommandStack = Class.extend(
    * {@ #execute} calls will be ignored until you commit the current transaction.
    *
    * @param {String} [commandLabel] the label to show for the undo/redo operation
-   *
+   * @returns {this}
    * @since 4.0.0
    */
   startTransaction: function (commandLabel) {
@@ -130,8 +137,11 @@ draw2d.command.CommandStack = Class.extend(
   /**
    *
    * Returns true if the Command Stack has an open transaction.
+   * You can start or stop a transaction with `startTransaction`and `commitTransaction`.
    *
+   * A transaction is one undo/redo operation.
    *
+   * @returns {Boolean}
    */
   isInTransaction: function () {
     return this.transactionCommand !== null
@@ -143,10 +153,11 @@ draw2d.command.CommandStack = Class.extend(
    * can be undo/redo in a single step.
    *
    * @since 4.0.0
+   * @returns {this}
    */
   commitTransaction: function () {
     if (this.transactionCommand === null) {
-      return//silently
+      return this//silently
     }
 
     let cmd = this.transactionCommand
@@ -165,7 +176,7 @@ draw2d.command.CommandStack = Class.extend(
   /**
    *
    * Undo on command from the stack and store them on the redo command stack.
-   *
+   * @returns {this}
    **/
   undo: function () {
     let command = this.undostack.pop()
@@ -183,6 +194,7 @@ draw2d.command.CommandStack = Class.extend(
    *
    * Redo a command after the user has undo a command
    *
+   * @returns {this}
    **/
   redo: function () {
     let command = this.redostack.pop()
@@ -239,7 +251,7 @@ draw2d.command.CommandStack = Class.extend(
    *
    * Indicates whenever a REDO is possible.
    *
-   * @returns boolean <code>true</code> if it is appropriate to call {@link #redo()}.
+   * @returns {Boolean} <code>true</code> if it is appropriate to call {@link #redo()}.
    */
   canRedo: function () {
     return this.redostack.length > 0
@@ -260,14 +272,17 @@ draw2d.command.CommandStack = Class.extend(
    * Adds a listener to the command stack, which will be notified whenever a command has been processed on the stack.
    * @deprecated use on/off to register events
    * @param {draw2d.command.CommandStackEventListener|Function} listener the listener to add.
+   * @returns {this}
    */
   addEventListener: function (listener) {
     return this.on("change", listener)
   },
   /**
    * Adds a listener to the command stack, which will be notified whenever a command has been processed on the stack.
+   *
    * @param event
    * @param func
+   * @returns {this}
    */
   on: function (event, listener) {
     if (event !== "change")
@@ -293,12 +308,21 @@ draw2d.command.CommandStack = Class.extend(
    *
    * Removes a listener from the command stack.
    *
+   * @deprecated use on/off to register events
    * @param {draw2d.command.CommandStackEventListener} listener the listener to remove.
+   * @returns {this}
    */
   removeEventListener: function (listener) {
     this.off(listener)
+
+    return this
   },
 
+    /**
+     *
+      * @param listener
+     * @returns {this}
+     */
   off: function (listener) {
     this.eventListeners.grep(entry => (entry === listener || entry.stackChanged === listener))
     /*
@@ -321,7 +345,7 @@ draw2d.command.CommandStack = Class.extend(
    *
    * @param {draw2d.command.Command} command the command
    * @param {Number} state the current stack state
-   *
+   * @private
    **/
   notifyListeners: function (command, state, action) {
     let event = new draw2d.command.CommandStackEvent(this, command, state, action)

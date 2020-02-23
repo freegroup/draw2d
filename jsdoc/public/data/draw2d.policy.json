@@ -1,7 +1,7 @@
 {
   "name": "policy",
   "namespace": "draw2d",
-  "description": "",
+  "description": "<p>This package contains EditPolicy implementations for all used elements. A <em>EditPolicy</em>\nis a pluggable contribution implementing a portion of an element behavior. Editpolicies contribute to the\noverall editing behavior of an EditPart.</p>\n<p>Editing behavior is defined as one or more of the following:</p>\n<ul>\n<li>Selection handling</li>\n<li>Routing</li>\n<li>Feedback management</li>\n<li>Delegation and Forwarding of commands</li>\n<li>Drag&amp;Drop behaviour</li>\n</ul>",
   "access": "",
   "virtual": false,
   "namespaces": [
@@ -39,6 +39,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [],
           "inherited": false,
@@ -49,6 +50,7 @@
           "name": "attr",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
           "parameters": [
             {
@@ -76,6 +78,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the host if the policy has been installed.</p>",
           "parameters": [
             {
@@ -98,6 +101,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the host if the policy has been uninstalled.</p>",
           "parameters": [
             {

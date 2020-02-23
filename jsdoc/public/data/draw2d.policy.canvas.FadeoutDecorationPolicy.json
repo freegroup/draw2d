@@ -12,6 +12,7 @@
       "name": "init",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Creates a new fade out policy. Don't forget to install them into the canvas.</p>",
       "parameters": [],
       "inherited": false,
@@ -22,6 +23,7 @@
       "name": "onInstall",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "",
       "parameters": [],
       "inherited": false,
@@ -32,6 +34,7 @@
       "name": "onUninstall",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "",
       "parameters": [],
       "inherited": false,
@@ -42,6 +45,7 @@
       "name": "onTimer",
       "access": "private",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Timerfucntion to show/hide the related ports</p>",
       "parameters": [],
       "inherited": false,
@@ -52,6 +56,7 @@
       "name": "onMouseDown",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "",
       "parameters": [
         {
@@ -103,6 +108,7 @@
       "name": "onMouseMove",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "",
       "parameters": [
         {
@@ -154,6 +160,7 @@
       "name": "onMouseDrag",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "",
       "parameters": [
         {
@@ -221,6 +228,7 @@
       "name": "onMouseUp",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "",
       "parameters": [
         {
@@ -272,6 +280,7 @@
       "name": "onInstall",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Called if the policy is installed into the canvas.</p>",
       "parameters": [
         {
@@ -291,6 +300,7 @@
       "name": "onUninstall",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Called if the policy is deinstalled from the canvas</p>",
       "parameters": [
         {
@@ -310,6 +320,7 @@
       "name": "onClick",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Called by the canvas if the user click on a figure.</p>",
       "parameters": [
         {
@@ -361,6 +372,7 @@
       "name": "onDoubleClick",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Called by the canvas if the user double click on a figure.</p>",
       "parameters": [
         {
@@ -412,6 +424,7 @@
       "name": "onRightMouseDown",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Called if the user press the right mouse in the canvas.</p>",
       "parameters": [
         {
@@ -466,6 +479,7 @@
       "name": "onMouseWheel",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>called if the user uses the mouse wheel.</p>",
       "parameters": [
         {
@@ -521,6 +535,7 @@
       "name": "snap",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Adjust the coordinates to the given constraint.</p>",
       "parameters": [
         {
@@ -568,6 +583,7 @@
       "name": "createMonochromGif",
       "access": "private",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
       "parameters": [
         {
@@ -615,6 +631,7 @@
       "name": "attr",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
       "parameters": [
         {

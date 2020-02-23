@@ -12,6 +12,7 @@
       "name": "init",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "",
       "parameters": [],
       "inherited": false,
@@ -22,6 +23,7 @@
       "name": "generate",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Create a spline based on the given control points.\nThe generated curve starts in the first control point and ends\nin the last control point.</p>",
       "parameters": [
         {

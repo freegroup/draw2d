@@ -47,6 +47,11 @@ canvas.setScrollArea(window);
                      <v-chip class="ma-2" color="green" text-color="white" x-small>chainable</v-chip>
                   </template>
                 </template>
+                <template v-if="func.deprecated.length>0">
+                   <v-chip class="ma-2" color="red" text-color="white" x-small>deprecated</v-chip>
+                   <span v-html="func.deprecated"></span>
+                </template>
+
               </span>
             </v-expansion-panel-header>
             <v-expansion-panel-content>
@@ -236,7 +241,7 @@ export default {
     items () {
       if (this.clazz.namespace) {
         let segments = this.clazz.namespace.split('.')
-        let path = ''
+        let path = '#/api'
         segments = segments.map(s => {
           path = path + '/' + s
           return { text: s, disabled: false, href: path }

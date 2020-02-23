@@ -12,6 +12,7 @@
       "name": "init",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Constructs a ManhattanMidpointLocator with associated Connection c.</p>",
       "parameters": [],
       "inherited": false,
@@ -22,6 +23,7 @@
       "name": "relocate",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Relocates the given Figure always in the center of an edge.</p>",
       "parameters": [
         {

@@ -12,5 +12,14 @@
     "description": "",
     "parameters": [],
     "examples": []
-  }
+  },
+  "properties": [
+    {
+      "name": "NORTH",
+      "access": "",
+      "virtual": false,
+      "description": "",
+      "type": ""
+    }
+  ]
 }

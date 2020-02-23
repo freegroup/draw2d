@@ -62,6 +62,7 @@ function graft(parentNode, childNodes, parentLongname) {
                 'name': element.name,
                 'access': element.access || '',
                 'virtual': Boolean(element.virtual),
+                'deprecated': element.deprecated || '',
                 'description': element.description || '',
                 'parameters': [],
                 'inherited': Boolean(element.inherited),
@@ -211,33 +212,39 @@ function writeRouter(namespaces){
   stream.write('Vue.use(VueRouter)\n\n')
 
   stream.write('const routes = [\n')
+  stream.write('  {\n')
+  stream.write('    path: \'/api\',\n')
+  stream.write('    component: () => import(/* webpackChunkName: "api" */ \'../views/api.vue\'),\n')
+  stream.write('    children: [\n')
   namespaces.forEach((namespace, idx, array) => {
     let last = (idx === array.length - 1)
-    let path = `/${namespace.name.toLowerCase()}`
+    let path = `/api/${namespace.name.toLowerCase()}`
     let component = path.replace('/','').split("/").join("_")
     if(namespace.namespaces) {
-      namespace.namespaces.forEach( (n, idx, array) => dumpRoutes(n, stream, '  ', (idx === array.length - 1), path, 'package'))
+      namespace.namespaces.forEach( (n, idx, array) => dumpRoutes(n, stream, '      ', (idx === array.length - 1), path, 'package'))
     }
     if(namespace.classes){
-      namespace.classes.forEach( (clz, idx, array) => dumpRoutes(clz, stream, '  ', (idx === array.length - 1), path, 'clazz'))
+      namespace.classes.forEach( (clz, idx, array) => dumpRoutes(clz, stream, '      ', (idx === array.length - 1), path, 'clazz'))
     }
-    stream.write('  {\n')
-    stream.write(`    path: '${path}',\n`)
-    stream.write(`    props: { className: '${namespace.name}' },\n`)
-    stream.write(`    component: () => import(/* webpackChunkName: "${component}" */ '../views/package.vue')\n`)
+    stream.write('      {\n')
+    stream.write(`        path: '${path}',\n`)
+    stream.write(`        props: { className: '${namespace.name}' },\n`)
+    stream.write(`        component: () => import(/* webpackChunkName: "${component}" */ '../views/package.vue')\n`)
     if(!last){
-      stream.write('  },\n')
+      stream.write('      },\n')
     }
     else{
-      stream.write('  }\n')
+      stream.write('      }\n')
     }
   })
 
+  stream.write('    ]\n')
+  stream.write('  }\n')
   stream.write(']\n\n')
 
   stream.write('const tree = [\n')
   namespaces.forEach((namespace) => {
-    let path = `/${namespace.name.toLowerCase()}`
+    let path = `/api/${namespace.name.toLowerCase()}`
     stream.write('  {\n')
     stream.write(`    data: { path: '${path}' },\n`)
     if(namespace.namespaces) {

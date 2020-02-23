@@ -3,10 +3,9 @@ import draw2d from 'packages'
 
 /**
  * @class
- * Interactive paint area of the draw2d library.
+ * A scrolling Canvas that contains Figures. Call `add(draw2d.Figure)` to add shapes to the Viewport.
  *
  *
- * @inheritable
  * @author Andreas Herz
  */
 draw2d.Canvas = Class.extend(

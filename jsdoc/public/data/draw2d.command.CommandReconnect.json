@@ -12,6 +12,7 @@
       "name": "init",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Create a new Command objects which can be execute via the CommandStack.</p>",
       "parameters": [
         {
@@ -31,6 +32,7 @@
       "name": "canExecute",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
       "parameters": [],
       "inherited": false,
@@ -45,6 +47,7 @@
       "name": "setNewPorts",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The new ports to use during the execute of this command.</p>",
       "parameters": [
         {
@@ -72,6 +75,7 @@
       "name": "updatePosition",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>compatibily method to the CommandMoveVertex to handle Line and Connections\ntransparent in the ResizeHandles</p>",
       "parameters": [
         {
@@ -99,6 +103,7 @@
       "name": "execute",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Execute the command the first time</p>",
       "parameters": [],
       "inherited": false,
@@ -109,6 +114,7 @@
       "name": "cancel",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Execute the command the first time</p>",
       "parameters": [],
       "inherited": false,
@@ -119,6 +125,7 @@
       "name": "undo",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Undo the command</p>",
       "parameters": [],
       "inherited": false,
@@ -129,6 +136,7 @@
       "name": "redo",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Redo the command after the user has undo this command</p>",
       "parameters": [],
       "inherited": false,
@@ -139,6 +147,7 @@
       "name": "getLabel",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
       "parameters": [],
       "inherited": true,

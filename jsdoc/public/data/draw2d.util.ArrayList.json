@@ -10,6 +10,7 @@
       "name": "clear",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Clears the array</p>",
       "parameters": [],
       "inherited": false,
@@ -20,6 +21,7 @@
       "name": "reverse",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Reverses the order of the elements in the ArrayList. The array will be modified!</p>",
       "parameters": [],
       "inherited": false,
@@ -30,6 +32,7 @@
       "name": "getSize",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The size/count of the stored objects.</p>",
       "parameters": [],
       "inherited": false,
@@ -44,6 +47,7 @@
       "name": "isEmpty",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>checks to see if the Vector has any elements.</p>",
       "parameters": [],
       "inherited": false,
@@ -58,6 +62,7 @@
       "name": "last",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>return the last element.</p>",
       "parameters": [],
       "inherited": false,
@@ -72,6 +77,7 @@
       "name": "asArray",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return a reference to the internal javascript native array.</p>",
       "parameters": [],
       "inherited": false,
@@ -86,6 +92,7 @@
       "name": "first",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>returns the first element</p>",
       "parameters": [],
       "inherited": false,
@@ -100,6 +107,7 @@
       "name": "get",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>returns an element at a specified index</p>",
       "parameters": [
         {
@@ -123,6 +131,7 @@
       "name": "add",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Adds a element at the end of the Vector.</p>",
       "parameters": [
         {
@@ -142,6 +151,7 @@
       "name": "grep",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The method removes items from an array as necessary so that all remaining items pass a\nprovided test. The test is a function that is passed an array item and the index of the\nitem within the array. Only if the test returns true will the item stay in the array.</p>",
       "parameters": [
         {
@@ -169,6 +179,7 @@
       "name": "find",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return ONE element which matches by the given function or <b>null</b>\nif no element is found.</p>\n<p>var r1= figures.find(function(figure){\nreturn figure.id===123456\n});</p>",
       "parameters": [
         {
@@ -204,6 +215,7 @@
       "name": "map",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Translate all items in the array into new items. The array list is modified after this call.\nYou must clone the array before if you want avoid this.</p>\n<p>var labels = this.commands.clone().map(function(e){\nreturn e.getLabel();\n});</p>",
       "parameters": [
         {
@@ -239,6 +251,7 @@
       "name": "unique",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Removes any duplicate elements from the array. The array is modified after this call. You\nmust clone the array before if you want avoid this</p>",
       "parameters": [],
       "inherited": false,
@@ -249,6 +262,7 @@
       "name": "addAll",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Add all elements into this array.</p>",
       "parameters": [
         {
@@ -276,6 +290,7 @@
       "name": "pop",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>You can use the Array list as Stack as well. this is the pop method to remove one element\nat the end of the stack.</p>",
       "parameters": [],
       "inherited": false,
@@ -286,6 +301,7 @@
       "name": "push",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Push one element at the top of the stack/array</p>",
       "parameters": [
         {
@@ -305,6 +321,7 @@
       "name": "remove",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Remove the element from the list</p>",
       "parameters": [
         {
@@ -328,6 +345,7 @@
       "name": "insertElementAt",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Inserts an element at a given position. Existing elements will be shifted\nto the right.</p>",
       "parameters": [
         {
@@ -355,6 +373,7 @@
       "name": "removeElementAt",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Removes an element at a specific index.</p>",
       "parameters": [
         {
@@ -378,6 +397,7 @@
       "name": "removeAll",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>removes all given elements in the ArrayList</p>",
       "parameters": [
         {
@@ -397,6 +417,7 @@
       "name": "indexOf",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return the zero based index of the given element or -1 if the element\nnot in the list.</p>",
       "parameters": [
         {
@@ -420,6 +441,7 @@
       "name": "contains",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>returns true if the element is in the Vector, otherwise false.</p>",
       "parameters": [
         {
@@ -443,6 +465,7 @@
       "name": "sort",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Sorts the collection based on a field name or sort a function. See on http://www.w3schools.com/jsref/jsref_sort.asp\nif you use a sort function.</p>",
       "parameters": [
         {
@@ -469,6 +492,7 @@
       "name": "clone",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Copies the contents of a Vector to another Vector returning the new Vector.</p>",
       "parameters": [
         {
@@ -492,6 +516,7 @@
       "name": "each",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Iterates over the list of elements, yielding each in turn to an iterator\nfunction.\nEach invocation of iterator is called with two arguments: (index, element).</p>",
       "parameters": [
         {
@@ -535,6 +560,7 @@
       "name": "setPersistentAttributes",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Read all attributes from the serialized properties and transfer them into the shape.</p>",
       "parameters": [
         {

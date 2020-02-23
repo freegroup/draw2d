@@ -10,6 +10,7 @@
       "name": "init",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Creates a new Listener Object</p>",
       "parameters": [],
       "inherited": false,
@@ -20,6 +21,7 @@
       "name": "stackChanged",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Sent when an event occurs on the command stack. draw2d.command.CommandStackEvent.getDetail()\ncan be used to identify the type of event which has occurred.</p>",
       "parameters": [
         {

@@ -1,13 +1,25 @@
 <template>
-  <v-navigation-drawer v-model="value" app clipped  >
-    <tree :data="routes" :options="treeOptions" :filter="treeFilter" v-model="selectedNode">
+  <v-navigation-drawer app clipped  >
+    <input type="text" placeholder="Type to filter..." v-model="treeFilter" class="filter-field">
+    <tree
+      :data="routes"
+      :options="treeOptions"
+      :filter="treeFilter"
+      v-model="selectedNode">
       <div slot-scope="{ node }">
-        <v-icon>folder</v-icon><router-link :to="node.data.path" exact>{{ node.text }}</router-link>
+        <router-link class="node-text" :to="node.data.path" exact>{{ node.text }}</router-link>
       </div>
     </tree>
   </v-navigation-drawer>
 </template>
 <style>
+
+  .filter-field {
+    display: block;
+    width: 100%;
+    padding: 3px;
+    border: 1px solid #e8e8e8;
+  }
   .tree-root {
     padding: 1px;
     box-sizing: border-box;
@@ -56,15 +68,22 @@
     border-left: 0 !important;
     border-top: 0 !important;
   }
-  .tree-anchor{
+  .tree-anchor {
     flex-grow: 2;
     outline: 0;
     display: flex;
     text-decoration: none;
     vertical-align: top;
-    margin-left:0  !important;
+    margin-left: 0 !important;
     padding: 0 !important;
     user-select: none;
+  }
+
+  .node-text{
+    color: #2196f3 !important;
+    font-size: 14px !important;
+    padding-left: 5px !important;
+    text-decoration: none  !important;
   }
 
 </style>
@@ -72,7 +91,6 @@
 <script>
 export default {
   props: [
-    'value'
   ],
   name: 'home',
   computed: {

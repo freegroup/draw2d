@@ -10,6 +10,7 @@
       "name": "init",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Create a new edit policy object</p>",
       "parameters": [
         {
@@ -29,6 +30,7 @@
       "name": "getPolicy",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return the String representation of the policy</p>",
       "parameters": [],
       "inherited": false,

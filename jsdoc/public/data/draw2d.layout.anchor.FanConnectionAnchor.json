@@ -12,6 +12,7 @@
       "name": "init",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "",
       "parameters": [
         {
@@ -39,6 +40,7 @@
       "name": "getLocation",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns the location where the Connection should be anchored in\nabsolute coordinates. The anchor may use the given reference\nPoint to calculate this location.</p>",
       "parameters": [
         {
@@ -70,6 +72,7 @@
       "name": "getBox",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns the bounds of this Anchor's owner. Subclasses can\noverride this method to adjust the box. Maybe you return the box\nof the port parent (the parent figure)</p>",
       "parameters": [],
       "inherited": false,
@@ -84,6 +87,7 @@
       "name": "getReferencePoint",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns the reference point for this anchor in absolute coordinates. This might be used\nby another anchor to determine its own location.</p>",
       "parameters": [
         {
@@ -107,6 +111,7 @@
       "name": "getOwner",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns the Figure that contains this ConnectionAnchor.</p>",
       "parameters": [],
       "inherited": true,
@@ -121,6 +126,7 @@
       "name": "setOwner",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the owner of the Anchor.</p>",
       "parameters": [
         {

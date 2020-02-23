@@ -9,7 +9,6 @@ import draw2d from '../../packages'
  *    //
  *    var start = new draw2d.shape.node.Start();
  *    var end   = new draw2d.shape.node.End();
-
  *    // ...add it to the canvas
  *    canvas.add( start, 50,50);
  *    canvas.add( end, 230,80);
@@ -25,6 +24,7 @@ import draw2d from '../../packages'
  *    //
  *    c.setSourceDecorator(new draw2d.decoration.connection.ArrowDecorator());
  *    c.setTargetDecorator(new draw2d.decoration.connection.ArrowDecorator());
+ *
  *    // Connect the endpoints with the start and end port
  *    //
  *    c.setSource(start.getOutputPort(0));

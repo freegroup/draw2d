@@ -10,6 +10,7 @@
       "name": "init",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Constructs a ParallelMidpointLocator with optional padding to the connection.</p>\n<p>if the parameter <b>distanceFromConnection</b> is less than zero the label is\nplaced above of the connection. Else the label is below the connection.</p>",
       "parameters": [
         {
@@ -29,6 +30,7 @@
       "name": "relocate",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Relocates the given Figure always in the center of an edge.</p>",
       "parameters": [
         {

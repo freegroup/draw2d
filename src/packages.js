@@ -3,9 +3,15 @@
 /**
  *
  * @private
- *//** @namespace draw2d */
+ */
+/**
+ * Primary package containing general interfaces and implementation classes.
+ * @namespace draw2d */
 export default {
-  /** @namespace draw2d.geo */
+  /**
+   * Types representing or manipulating geometric values, such as Points, Rectangles, etc.
+   * @namespace draw2d.geo
+   * */
   geo: {},
 
   /** @namespace draw2d.io */
@@ -19,18 +25,32 @@ export default {
     svg: {}
   },
 
-  /** @namespace draw2d.storage */
-  storage: {},
-
   /** @namespace draw2d.util */
   util: {
     /** @namespace draw2d.util.spline */
     spline: {}
   },
 
-  /** @namespace draw2d.policy */
+  /**
+   * This package contains EditPolicy implementations for all used elements. A *EditPolicy*
+   * is a pluggable contribution implementing a portion of an element behavior. Editpolicies contribute to the
+   * overall editing behavior of an EditPart.
+   *
+   * Editing behavior is defined as one or more of the following:
+   *  - Selection handling
+   *  - Routing
+   *  - Feedback management
+   *  - Delegation and Forwarding of commands
+   *  - Drag&Drop behaviour
+   *
+   * @namespace draw2d.policy
+   * */
   policy: {
-    /** @namespace draw2d.policy.canvas */
+    /**
+     * Editpolicies for selection handling, highlighting, background rendering, snapTo behaviour.
+     *
+     * @namespace draw2d.policy.canvas
+     * */
     canvas: {},
     /** @namespace draw2d.policy.connection */
     connection: {},

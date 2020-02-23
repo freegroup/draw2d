@@ -117,7 +117,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
    *
    * Creates the shape object for a text node.
    *
-   * @template
+   * @private
    **/
   createSet: function () {
     return this.canvas.paper.text(0, 0, this.text)
@@ -128,6 +128,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
    * Set the canvas element of this figures.
    *
    * @param {draw2d.Canvas} canvas the new parent of the figure or null
+   * @private
    */
   setCanvas: function (canvas) {
     this.clearCache()
@@ -140,7 +141,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
    * Trigger the repaint of the element and transport all style properties to the visual representation.<br>
    * Called by the framework.
    *
-   * @template
+   * @private
    **/
   repaint: function (attributes) {
     if (this.repaintBlocked === true || this.shape === null || (this.parent && this.parent.repaintBlocked === true)) {
@@ -171,7 +172,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
 
   /**
    *
-   * @protected
+   * @private
    */
   calculateTextAttr: function () {
     let lattr = {
@@ -190,6 +191,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
 
   /**
    * @private
+   * @returns {this}
    */
   applyTransformation: function () {
     let ts = "R" + this.rotationAngle
@@ -210,6 +212,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
    *
    * Set the new font size in [pt].
    *
+   * @returns {this}
    * @param {Number} size The new font size in <code>pt</code>
    **/
   setFontSize: function (size) {
@@ -252,6 +255,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
    *
    * @param {Boolean} bold The bold flag for the label
    * @since 2.4.1
+   * @returns {this}
    **/
   setBold: function (bold) {
     this.clearCache()
@@ -290,6 +294,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
    *
    * @param {draw2d.util.Color/String} color The new color of the line.
    * @since 4.2.1
+   * @returns {this}
    **/
   setOutlineColor: function (color) {
     this.outlineColor = new draw2d.util.Color(color)
@@ -301,7 +306,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
 
   /**
    *
-   * The outlien color of the text
+   * The outline color of the text
    *
    * @returns {draw2d.util.Color}
    * @since 4.2.1
@@ -316,6 +321,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
    *
    * @param {Number} w The new line width of the figure
    * @since 4.2.1
+   * @returns {this}
    **/
   setOutlineStroke: function (w) {
     this.outlineStroke = w
@@ -341,6 +347,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
    * Set the color of the font.
    *
    * @param {draw2d.util.Color|String} color The new color of the line.
+   * @returns {this}
    **/
   setFontColor: function (color) {
     this.fontColor = new draw2d.util.Color(color)
@@ -377,6 +384,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
    *     });
    *
    * @param {Number|Object} padding The new padding
+   * @returns {this}
    **/
   setPadding: function (padding) {
     this.clearCache()
@@ -434,6 +442,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
    * </ul>
    *
    * @param {String} font The font to use
+   * @returns {this}
    **/
   setFontFamily: function (font) {
     this.clearCache()
@@ -467,6 +476,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
    *
    * A Label did have "autosize". Do nothing at all.
    *
+   * @returns {this}
    **/
   setDimension: function (w, h) {
     this.clearCache()
@@ -621,6 +631,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
    * Set the text for the label. Use \n for multiline text.
    *
    * @param {String} text The new text for the label.
+   * @returns {this}
    **/
   setText: function (text) {
     this.clearCache()
@@ -647,6 +658,13 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
   },
 
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @returns {Boolean}
+     * @private
+     */
   hitTest: function (x, y) {
     // apply a simple bounding box test if the label isn'T rotated
     //
@@ -710,10 +728,11 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
 
   /**
    *
-   * Read all attributes from the serialized properties and transfer them into the shape.
+   * Apply all attributes from the serialized properties to the shape.
+   * Used during JSON serialisation.
    *
    * @param {Object} memento
-   * @returns
+   * @returns {this}
    */
   setPersistentAttributes: function (memento) {
     this._super(memento)
@@ -739,6 +758,8 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
     if (typeof memento.editor === "string") {
       this.installEditor(eval("new " + memento.editor + "()"))
     }
+
+    return this
   }
 
 })

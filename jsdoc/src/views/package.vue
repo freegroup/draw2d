@@ -3,11 +3,12 @@
     <v-breadcrumbs :items="items"></v-breadcrumbs>
     <div class="page">
       <h2>{{ $attrs.className }}</h2>
+      <span v-html="clazz.description"></span>
       <div v-if="clazz.namespaces.length > 0 ">
         <h3>Namespaces</h3>
         <ul class="namespaces">
           <li v-for="item in clazz.namespaces" :key="item.name">
-            <router-link :to="'/'+item.namespace.split('.').join('/')+'/'+item.name.toLowerCase()">{{item.name}}</router-link>
+            <router-link :to="'/api/'+item.namespace.split('.').join('/')+'/'+item.name.toLowerCase()">{{item.name}}</router-link>
           </li>
         </ul>
       </div>
@@ -16,7 +17,7 @@
         <h3>Classes</h3>
         <ul class="classes">
           <li v-for="item in clazz.classes" :key="item.name">
-            <router-link :to="'/'+item.namespace.split('.').join('/')+'/'+item.name.toLowerCase()">{{item.name}}</router-link>
+            <router-link :to="'/api/'+item.namespace.split('.').join('/')+'/'+item.name.toLowerCase()">{{item.name}}</router-link>
           </li>
         </ul>
       </div>
@@ -48,7 +49,7 @@ export default {
     items () {
       if (this.clazz.namespace) {
         let segments = this.clazz.namespace.split('.')
-        let path = ''
+        let path = '#/api'
         segments = segments.map(s => {
           path = path + '/' + s
           return { text: s, disabled: false, href: path }

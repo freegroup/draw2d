@@ -2,7 +2,9 @@ import draw2d from '../packages'
 
 
 /**
- * @class Util class for geometry handling.
+ * Represents a point (x, y) in 2-dimensional space.
+ *
+ * @class
  */
 
 draw2d.geo.Point = Class.extend(

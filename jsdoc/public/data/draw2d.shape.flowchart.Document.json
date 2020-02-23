@@ -12,6 +12,7 @@
       "name": "init",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Creates a new figure element which are not assigned to any canvas.</p>",
       "parameters": [
         {
@@ -31,6 +32,7 @@
       "name": "createShapeElement",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "",
       "parameters": [],
       "inherited": false,
@@ -41,6 +43,7 @@
       "name": "repaint",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "",
       "parameters": [],
       "inherited": false,
@@ -51,6 +54,7 @@
       "name": "setRadius",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Sets the corner radius or the edges.</p>",
       "parameters": [
         {
@@ -70,6 +74,7 @@
       "name": "getRadius",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Get the corner radius of the edges.</p>",
       "parameters": [],
       "inherited": true,
@@ -84,6 +89,7 @@
       "name": "setDashArray",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the line style for this object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  dash: dashPattern\n});</code></pre>",
       "parameters": [
         {
@@ -103,6 +109,7 @@
       "name": "getDashArray",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Get the line style for this object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr(&quot;dash&quot;);</code></pre>",
       "parameters": [],
       "inherited": true,
@@ -113,6 +120,7 @@
       "name": "setGlow",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Highlight the element or remove the highlighting</p>",
       "parameters": [
         {
@@ -132,6 +140,7 @@
       "name": "repaint",
       "access": "private",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>propagate all attributes like color, stroke,... to the shape element</p>",
       "parameters": [
         {
@@ -151,6 +160,7 @@
       "name": "setBackgroundColor",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the new background color of the figure. It is possible to hands over\n<code>null</code> to set the background transparent.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;bgColor&quot;: &quot;#f0f0f0&quot;\n});</code></pre>",
       "parameters": [
         {
@@ -173,6 +183,7 @@
       "name": "getBackgroundColor",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The current used background color.</p>\n<pre><code>// Alternatively you can use the attr method:\nvar color =figure.attr(&quot;bgColor&quot;);</code></pre>",
       "parameters": [],
       "inherited": true,
@@ -187,6 +198,7 @@
       "name": "setStroke",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the stroke to use.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;stroke&quot;: 2\n});</code></pre>",
       "parameters": [
         {
@@ -206,6 +218,7 @@
       "name": "getStroke",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The used line width.</p>",
       "parameters": [],
       "inherited": true,
@@ -220,6 +233,7 @@
       "name": "setColor",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the foreground color of the figure.\nThis method fires a <i>document dirty</i> event.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;color&quot;: &quot;#f3f3f3&quot;\n});</code></pre>",
       "parameters": [
         {
@@ -242,6 +256,7 @@
       "name": "getColor",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Get the current used foreground color</p>",
       "parameters": [],
       "inherited": true,
@@ -256,6 +271,7 @@
       "name": "getPersistentAttributes",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return an objects with all important attributes for XML or JSON serialization</p>",
       "parameters": [],
       "inherited": true,
@@ -270,6 +286,7 @@
       "name": "setPersistentAttributes",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Read all attributes from the serialized properties and transfer them into the shape.</p>",
       "parameters": [
         {
@@ -289,6 +306,7 @@
       "name": "setPersistPorts",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Indicates if the node should read/write the ports via the draw2d.Figure.getPersistenAttributes\nto the JSON object</p>",
       "parameters": [
         {
@@ -308,6 +326,7 @@
       "name": "getPersistPorts",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Indicates if the figure writes the ports to the JSON structore too.\nDefault is &quot;false&quot;</p>",
       "parameters": [],
       "inherited": true,
@@ -322,6 +341,7 @@
       "name": "toFront",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Moves the element so it is the closest to the viewer’s eyes, on top of other elements. Additional\nthe internal model changed as well.</p>\n<p>Optional: Inserts current object in front of the given one.</p>",
       "parameters": [
         {
@@ -341,6 +361,7 @@
       "name": "toBack",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Moves the element to the background. Additional\nthe internal model changed as well.</p>",
       "parameters": [],
       "inherited": true,
@@ -351,6 +372,7 @@
       "name": "setVisible",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Show/hide the element. The element didn't receive any mouse events (click, dblclick) if you hide the\nfigure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  visible: flag\n});</code></pre>",
       "parameters": [
         {
@@ -378,6 +400,7 @@
       "name": "getPorts",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return all ports of the node. The results contains\nall ports of the children too per default. Set <b>recursive</b>\nto false to retrieve direct assigned ports only.</p>",
       "parameters": [
         {
@@ -401,6 +424,7 @@
       "name": "getInputPorts",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return all input ports of the node.</p>",
       "parameters": [],
       "inherited": true,
@@ -415,6 +439,7 @@
       "name": "getOutputPorts",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return all output ports of the node.</p>",
       "parameters": [],
       "inherited": true,
@@ -429,6 +454,7 @@
       "name": "clone",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Clone the figure. <br>\nYou must override and implement the methods <b>getPersistentAttributes</b> and <b>setPersistentAttributes</b> for your custom\nfigures if the have special attributes.</p>\n<p>The clone() method performs a deep copy of the object, meaning that it copies the children, ports and decorations\nper default. You can control the clone procedure with the 'cloneMetaData'.</p>",
       "parameters": [
         {
@@ -464,6 +490,7 @@
       "name": "getPort",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return the port with the corresponding name.</p>",
       "parameters": [
         {
@@ -487,6 +514,7 @@
       "name": "getInputPort",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return the input port with the corresponding name.</p>",
       "parameters": [
         {
@@ -510,6 +538,7 @@
       "name": "getOutputPort",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return the output port with the corresponding name.</p>",
       "parameters": [
         {
@@ -533,6 +562,7 @@
       "name": "getHybridPort",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return the input port with the corresponding name.</p>",
       "parameters": [
         {
@@ -556,6 +586,7 @@
       "name": "addPort",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Add a port to this node at the given position.<br></p>",
       "parameters": [
         {
@@ -583,6 +614,7 @@
       "name": "resetPorts",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Remove all ports of this node</p>",
       "parameters": [],
       "inherited": true,
@@ -593,6 +625,7 @@
       "name": "removePort",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Removes a port and all related connections from this node.<br></p>",
       "parameters": [
         {
@@ -612,6 +645,7 @@
       "name": "createPort",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Create a standard Port for this element. Inherited class can override this\nmethod to create its own type of ports.</p>",
       "parameters": [
         {
@@ -639,6 +673,7 @@
       "name": "getConnections",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return all connections related to this node.</p>",
       "parameters": [],
       "inherited": true,
@@ -653,6 +688,7 @@
       "name": "setCanvas",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the canvas element of this figures. This can be used to determine whenever an element\nis added or removed to the canvas.</p>",
       "parameters": [
         {
@@ -672,6 +708,7 @@
       "name": "setRotationAngle",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the rotation angle in degree [0..356]<br>\n<b>Only steps of 90 degree is working well</b>\n<br>\n// Alternatively you can use the attr method:\nfigure.attr({\nangle: angle\n});</p>",
       "parameters": [
         {
@@ -691,6 +728,7 @@
       "name": "setDimension",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the new width and height of the figure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n   width:  w,\n   height: h\n});</code></pre>",
       "parameters": [
         {
@@ -718,6 +756,7 @@
       "name": "onPortValueChanged",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Called if the value of any port has been changed</p>",
       "parameters": [
         {
@@ -737,6 +776,7 @@
       "name": "layoutPorts",
       "access": "private",
       "virtual": false,
+      "deprecated": "",
       "description": "",
       "parameters": [],
       "inherited": true,
@@ -747,6 +787,7 @@
       "name": "createCommand",
       "access": "private",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns the Command to perform the specified Request or null.</p>",
       "parameters": [
         {
@@ -770,6 +811,7 @@
       "name": "attr",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Read or set shape attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>\n<p>let figure = new draw2d.shape.basic.Rectangle();\nfigure.attr('x');      //=&gt; read value\nfigure.attr('x', 30);  //=&gt; set value</p>\n<p>// multiple attributes:\nfigure.attr({\nx: 30,\ny: 40,\nwidth : 200,\nheight: 50,\ncssClass: &quot;red_border_figure&quot;\n});</p>\n<p>// it is possible to override any method of the figure as well\n// Instead of inheritance you can just override the callback methods\n// like\n//\nfigure.attr({\nonClick : function(){\nalert(&quot;click&quot;);\n}\n});</p>\n<p>// or you can pass the attr values in the constructor\n//\nlet clickFigure = new draw2d.shape.basic.Rectangle({\nonClick : function(){\nalert(&quot;click&quot;);\n}\n});</p>\n<p>Additional you can set the user defined values (userData) with this method\nusing the dot-notation. User defined values are always part of the exported\nJSON data.</p>\n<p>// setting multiple attributes:\nfigure.attr({\n&quot;userData.my.property.x&quot;: 30,\n&quot;userData.my.property.y&quot;: 40\n});</p>\n<p>Also set using array notation is possible for the userData:</p>\n<p>// dot notation and array brackets:\nfigure.attr({\n&quot;userData.my.names[0]&quot;: &quot;John&quot;,\n&quot;userData.my.names[1]&quot;: &quot;Doe&quot;\n});</p>\n<p>The Object returned should be the equivalent structured object:</p>\n<p>let obj = figure.getUserData();</p>\n<p>That is, where obj is equivalent to:</p>\n<p>let obj = {\nmy:{\nproperty:{\nx: 30,\ny: 40\n},\nnames:  [&quot;John&quot;, &quot;Doe&quot;]\n}\n};</p>",
       "parameters": [
         {
@@ -797,6 +839,7 @@
       "name": "pick",
       "access": "",
       "virtual": false,
+      "deprecated": true,
       "description": "<p>Return a copy of the object, filtered to only have values for the whitelisted keys.</p>",
       "parameters": [],
       "inherited": true,
@@ -807,6 +850,7 @@
       "name": "select",
       "access": "private",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Add the figure to the current selection and propagate this to all edit policies.</p>",
       "parameters": [
         {
@@ -826,6 +870,7 @@
       "name": "unselect",
       "access": "private",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Unselect the figure and propagete this event to all edit policies.</p>",
       "parameters": [],
       "inherited": true,
@@ -836,6 +881,7 @@
       "name": "setSelectionAdapter",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns a function which returns the the figure which must handle the selection handling.</p>",
       "parameters": [
         {
@@ -855,6 +901,7 @@
       "name": "getSelectionAdapter",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "",
       "parameters": [],
       "inherited": true,
@@ -869,6 +916,7 @@
       "name": "isSelected",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns true if the figure part of the current canvas selection.</p>",
       "parameters": [],
       "inherited": true,
@@ -883,6 +931,7 @@
       "name": "setUserData",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Allows a user to attach (or remove) data to an element, without needing to create a custom figure or shape.\nThe data must be a valid JSON object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  userData: object\n});</code></pre>",
       "parameters": [
         {
@@ -902,6 +951,7 @@
       "name": "getUserData",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns any user data set previously on the given figure by setUserData.</p>",
       "parameters": [],
       "inherited": true,
@@ -916,6 +966,7 @@
       "name": "getId",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return the UUID of this element.</p>",
       "parameters": [],
       "inherited": true,
@@ -930,6 +981,7 @@
       "name": "setId",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the id of this element.</p>\n<p>// Alternatively you can use the attr method:\nfigure.attr({\nid: newId\n});</p>",
       "parameters": [
         {
@@ -949,6 +1001,7 @@
       "name": "getCssClass",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return the css styling class name of the element.</p>",
       "parameters": [],
       "inherited": true,
@@ -963,6 +1016,7 @@
       "name": "setCssClass",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the css class of the node.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;cssClass&quot;: &quot;red_border_figure&quot;\n});</code></pre>",
       "parameters": [
         {
@@ -982,6 +1036,7 @@
       "name": "hasCssClass",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The method will return true if the class is assigned to the element, even if other classes also are.</p>",
       "parameters": [
         {
@@ -1001,6 +1056,7 @@
       "name": "addCssClass",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Add a CSS class to the figure.<br>\nIt's important to note that this method does not replace a class. It simply adds the class,\nappending it to any which may already be assigned to the elements.</p>",
       "parameters": [
         {
@@ -1020,6 +1076,7 @@
       "name": "removeCssClass",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Remove the given css class name from the figure</p>",
       "parameters": [
         {
@@ -1039,6 +1096,7 @@
       "name": "toggleCssClass",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Add or remove the given css class name from the figure</p>",
       "parameters": [
         {
@@ -1058,6 +1116,7 @@
       "name": "getCanvas",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return the current assigned canvas container.</p>",
       "parameters": [],
       "inherited": true,
@@ -1072,6 +1131,7 @@
       "name": "startTimer",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Start a timer which calls the onTimer method in the given interval.</p>",
       "parameters": [
         {
@@ -1091,6 +1151,7 @@
       "name": "stopTimer",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Stop the internal timer.</p>",
       "parameters": [],
       "inherited": true,
@@ -1101,6 +1162,7 @@
       "name": "onTimer",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Callback method for the internal timer handling<br>\nInherit classes must override this method if they want use the timer feature.</p>\n<pre><code>// Alternatively you can register for this event with\nfigure.on(&quot;timer&quot;, function(emitter){\n    alert(&quot;timer fired&quot;);\n});</code></pre>",
       "parameters": [],
       "inherited": true,
@@ -1111,6 +1173,7 @@
       "name": "installEditPolicy",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Install a new edit policy to the figure. Each editpolicy is able to focus on a single editing\ntask or group of related tasks. This also allows editing behavior to be selectively reused across\ndifferent figure implementations. Also, behavior can change dynamically, such as when the layouts\nor routing methods change.</p>\n<p>Example for limited DragDrop behavior can be a draw2d.layout.constraint.RegionConstriantPolicy.</p>",
       "parameters": [
         {
@@ -1130,6 +1193,7 @@
       "name": "uninstallEditPolicy",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>UnInstall the edit policy from the figure. Either the instance itself if found\nor all kind of the given edit policies.</p>",
       "parameters": [
         {
@@ -1149,6 +1213,7 @@
       "name": "add",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Add a child figure to the figure. The hands over figure doesn't support drag&amp;drop\noperations. It's only a decorator for the connection.<br>\nMainly for labels or other decorations</p>\n<p>let start = new draw2d.shape.node.Start({x:80, y:150});\nstart.add(new draw2d.shape.basic.Label({text:&quot;Test Label&quot;}), new draw2d.layout.locator.TopLocator());</p>\n<p>canvas.add( start);</p>",
       "parameters": [
         {
@@ -1184,6 +1249,7 @@
       "name": "remove",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Remove the child figure from this figure and the canvas</p>",
       "parameters": [
         {
@@ -1207,6 +1273,7 @@
       "name": "getChildren",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return all children/decorations of this shape which has been added with\ndraw2d.Figure.add</p>",
       "parameters": [],
       "inherited": true,
@@ -1221,6 +1288,7 @@
       "name": "resetChildren",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Remove all children/decorations of this shape</p>",
       "parameters": [],
       "inherited": true,
@@ -1231,6 +1299,7 @@
       "name": "getShapeElement",
       "access": "protected",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>return the current SVG shape element or create it on demand.</p>",
       "parameters": [],
       "inherited": true,
@@ -1241,6 +1310,7 @@
       "name": "getTopLevelShapeElement",
       "access": "private",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Get the top level shape element. May the figure has a set of SVG elements. In this case this\nmethod must return the top level node.<br>\nThis method is used for the toFront/toBack method to order the nodes in the correct way.</p>",
       "parameters": [],
       "inherited": true,
@@ -1251,6 +1321,7 @@
       "name": "createShapeElement",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Inherited classes must override this method to implement it's own draw functionality.</p>",
       "parameters": [],
       "inherited": true,
@@ -1261,6 +1332,7 @@
       "name": "applyTransformation",
       "access": "private",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>apply a transformation to the shape like rotation, translate,..</p>",
       "parameters": [],
       "inherited": true,
@@ -1271,6 +1343,7 @@
       "name": "getHandleBBox",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Allow dragging only when the cursor is over a specific part of the figure.\n<br>\nOverride this method to specify the bounding box of an element or a draw2d.util.ArrayList\nof draw2d.geo.Rectangle of bounding boxes used to drag the figure. The returned coordinates\nare absolute coordinates to the canvas.\n<br>\n<br>\nDefault implementation returns <b>null</b> to indicate to use the complete figures as\ndrag handle.</p>",
       "parameters": [],
       "inherited": true,
@@ -1288,6 +1361,7 @@
       "name": "onDragStart",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Called if the drag and drop action begins. You can return [false] if you\nwant avoid that the figure can be move.</p>",
       "parameters": [
         {
@@ -1335,6 +1409,7 @@
       "name": "onDrag",
       "access": "private",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Don't call them manually. This will be done by the framework.<br>\nWill be called if the object are moved via drag and drop.\nSub classes can override this method to implement additional stuff. Don't forget to call\nthe super implementation via <code>this._super(dx, dy, dx2, dy2);</code></p>",
       "parameters": [
         {
@@ -1394,6 +1469,7 @@
       "name": "onPanning",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Called by the framework if the figure returns false for the drag operation. In this\ncase we send a &quot;panning&quot; event - mouseDown + mouseMove. This is very useful for\nUI-Widget like slider, spinner,...</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panning&quot;, function(emitter, eventData){\n    alert(&quot;panning of the figure called&quot;);\n});</code></pre>",
       "parameters": [
         {
@@ -1453,6 +1529,7 @@
       "name": "onPanningEnd",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Called by the framework if the panning event of the figures ends. This happens\nafter the mous up event if the panning is active.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panningEnd&quot;, function(emitter){\n    alert(&quot;panning of the figure called&quot;);\n});</code></pre>",
       "parameters": [],
       "inherited": true,
@@ -1463,6 +1540,7 @@
       "name": "onDragEnd",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Will be called after a drag and drop action.<br>\nSub classes can override this method to implement additional stuff. Don't forget to call\nthe super implementation via <code>this._super();</code></p>",
       "parameters": [
         {
@@ -1506,6 +1584,7 @@
       "name": "delegateTarget",
       "access": "private",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Called by the framework during drag&amp;drop operations if the user drag a figure over this figure</p>",
       "parameters": [
         {
@@ -1529,6 +1608,7 @@
       "name": "onDragEnter",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Called by the framework during drag&amp;drop operations if the user drag a figure over this figure</p>",
       "parameters": [
         {
@@ -1548,6 +1628,7 @@
       "name": "onDragLeave",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Called if the DragDrop object leaving the current hover figure.</p>",
       "parameters": [
         {
@@ -1567,6 +1648,7 @@
       "name": "onDrop",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Called if the user drop this element onto the dropTarget. This event is ONLY fired if the\nshape return &quot;this&quot; in the {@link draw2d.Figure#onDragEnter} method.</p>",
       "parameters": [
         {
@@ -1618,6 +1700,7 @@
       "name": "onCatch",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Called if the user dropped an figure onto this element. This event is ONLY fired if the\nin the canvas installed {@link draw2d.policy.canvas.DropInterceptorPolicy} allow this.</p>",
       "parameters": [
         {
@@ -1669,6 +1752,7 @@
       "name": "onMouseEnter",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Callback method for the mouse enter event. Usefull for mouse hover-effects.\nOverride this method for your own effects. Don't call them manually.</p>",
       "parameters": [],
       "inherited": true,
@@ -1679,6 +1763,7 @@
       "name": "onMouseLeave",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Callback method for the mouse leave event. Useful for mouse hover-effects.</p>",
       "parameters": [],
       "inherited": true,
@@ -1689,6 +1774,7 @@
       "name": "onDoubleClick",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Called when a user dbl clicks on the element</p>\n<pre><code>// Alternatively you can register an event with:\n//\nfigure.on(&quot;dblclick&quot;, function(emitter, event){\n    alert(&quot;user dbl click on the figure&quot;);\n});</code></pre>",
       "parameters": [],
       "inherited": true,
@@ -1699,6 +1785,7 @@
       "name": "onClick",
       "access": "",
       "virtual": false,
+      "deprecated": true,
       "description": "<p>Called when a user clicks on the element.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;click&quot;, function(emitter, event){\n    alert(&quot;user click on the figure&quot;);\n});</code></pre>",
       "parameters": [],
       "inherited": true,
@@ -1709,6 +1796,7 @@
       "name": "onContextMenu",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>called by the framework if the figure should show the context menu.<br>\nThe strategy to show the context menu depends on the platform. Either looong press or\nright click with the mouse.</p>\n<pre><code>// Alternatively you register for this event with:\nfigure.on(&quot;contextmenu&quot;, function(emitter, event){\n    alert(&quot;user press the right mouse button for a context menu&quot;);\n});</code></pre>",
       "parameters": [
         {
@@ -1736,6 +1824,7 @@
       "name": "setAlpha",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the alpha blending of this figure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;alpha&quot;: percent\n});\n\n// ...or:\nfigure.attr({\n  &quot;opacity&quot;: percent\n});</code></pre>",
       "parameters": [
         {
@@ -1755,6 +1844,7 @@
       "name": "getAlpha",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return the alpha blending of the figure</p>",
       "parameters": [],
       "inherited": true,
@@ -1769,6 +1859,7 @@
       "name": "getRotationAngle",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>return the rotation angle of the figure in degree of [0..356].</p>\n<br>\n<b>NOTE: this method is pre alpha and not for production. Only steps of 90 degree is working well</b>\n<br>",
       "parameters": [],
       "inherited": true,
@@ -1783,6 +1874,7 @@
       "name": "isVisible",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return true if the figure visible.</p>",
       "parameters": [],
       "inherited": true,
@@ -1797,6 +1889,7 @@
       "name": "setKeepAspectRatio",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Guarantee, that the figure width/height will not be distorted. Applicable before calling setDimension().\nIt is false by default.</p>",
       "parameters": [
         {
@@ -1816,6 +1909,7 @@
       "name": "getKeepAspectRatio",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return the flag if the shape keep the aspect ratio.</p>",
       "parameters": [],
       "inherited": true,
@@ -1826,6 +1920,7 @@
       "name": "getZOrder",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return the current z-index of the element. Currently this is an expensive method. The index will be calculated\nall the time. Caching is not implemented at the moment.</p>",
       "parameters": [],
       "inherited": true,
@@ -1840,6 +1935,7 @@
       "name": "setCanSnapToHelper",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the flag if this object can snap to grid or geometry.\nA window of dialog should set this flag to false.</p>",
       "parameters": [
         {
@@ -1859,6 +1955,7 @@
       "name": "getCanSnapToHelper",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns true if the figure can snap to any helper like a grid, guide, geometrie\nor something else.</p>",
       "parameters": [],
       "inherited": true,
@@ -1873,6 +1970,7 @@
       "name": "getSnapToGridAnchor",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "",
       "parameters": [],
       "inherited": true,
@@ -1887,6 +1985,7 @@
       "name": "setSnapToGridAnchor",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the hot spot for all snapTo### operations.</p>",
       "parameters": [
         {
@@ -1906,6 +2005,7 @@
       "name": "setWidth",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the width of the figure and consider the minWidth attribute</p>",
       "parameters": [
         {
@@ -1925,6 +2025,7 @@
       "name": "getWidth",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The current width of the figure.</p>",
       "parameters": [],
       "inherited": true,
@@ -1935,6 +2036,7 @@
       "name": "setHeight",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the heigth of the figure and consider the minWidth attribute</p>",
       "parameters": [
         {
@@ -1954,6 +2056,7 @@
       "name": "getHeight",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The current height of the figure.</p>",
       "parameters": [],
       "inherited": true,
@@ -1968,6 +2071,7 @@
       "name": "getMinWidth",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>This value is relevant for the interactive resize of the figure.</p>",
       "parameters": [],
       "inherited": true,
@@ -1982,6 +2086,7 @@
       "name": "setMinWidth",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the minimum width of this figure</p>",
       "parameters": [
         {
@@ -2001,6 +2106,7 @@
       "name": "getMinHeight",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>This value is relevant for the interactive resize of the figure.</p>",
       "parameters": [],
       "inherited": true,
@@ -2015,6 +2121,7 @@
       "name": "setMinHeight",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the minimum height of the figure.</p>",
       "parameters": [
         {
@@ -2034,6 +2141,7 @@
       "name": "setX",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>the the x-offset related to the parent figure or canvas</p>",
       "parameters": [
         {
@@ -2053,6 +2161,7 @@
       "name": "getX",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The x-offset related to the parent figure or canvas.</p>",
       "parameters": [],
       "inherited": true,
@@ -2067,6 +2176,7 @@
       "name": "setY",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>the the y-offset related to the parent figure or canvas</p>",
       "parameters": [
         {
@@ -2086,6 +2196,7 @@
       "name": "getY",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The y-offset related to the parent figure or canvas.</p>",
       "parameters": [],
       "inherited": true,
@@ -2100,6 +2211,7 @@
       "name": "getAbsoluteX",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The x-offset related to the canvas.</p>",
       "parameters": [],
       "inherited": true,
@@ -2114,6 +2226,7 @@
       "name": "getAbsoluteY",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The y-offset related to the canvas.</p>",
       "parameters": [],
       "inherited": true,
@@ -2128,6 +2241,7 @@
       "name": "getAbsolutePosition",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns the absolute y-position of the port.</p>",
       "parameters": [],
       "inherited": true,
@@ -2138,6 +2252,7 @@
       "name": "getAbsoluteBounds",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns the absolute y-position of the port.</p>",
       "parameters": [],
       "inherited": true,
@@ -2152,6 +2267,7 @@
       "name": "setPosition",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the position of the object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  x: x,\n  y: y\n});</code></pre>",
       "parameters": [
         {
@@ -2182,6 +2298,7 @@
       "name": "getPosition",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Get the current position of the figure</p>",
       "parameters": [],
       "inherited": true,
@@ -2196,6 +2313,7 @@
       "name": "translate",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Translate the figure with the given x/y offset.</p>",
       "parameters": [
         {
@@ -2223,6 +2341,7 @@
       "name": "setBoundingBox",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the bounding box of the figure</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  width: w,\n  height: h,\n  x: x,\n  y: y\n});\n\n// or\nfigure.attr({\n  boundingBox: {x:1, y:100, width:30, height:30}\n});</code></pre>",
       "parameters": [
         {
@@ -2242,6 +2361,7 @@
       "name": "getBoundingBox",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns the bounding box of the figure in absolute position to the canvas.</p>",
       "parameters": [],
       "inherited": true,
@@ -2256,6 +2376,7 @@
       "name": "hitTest",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Detect whenever the hands over coordinate is inside the figure.\nThe default implementation is a simple bounding box test.</p>",
       "parameters": [
         {
@@ -2295,6 +2416,7 @@
       "name": "setDraggable",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Switch on/off the drag drop behaviour of this object</p>",
       "parameters": [
         {
@@ -2314,6 +2436,7 @@
       "name": "isDraggable",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Get the Drag drop enable flag</p>",
       "parameters": [],
       "inherited": true,
@@ -2328,6 +2451,7 @@
       "name": "isResizeable",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns the true if the figure can be resized.</p>",
       "parameters": [],
       "inherited": true,
@@ -2342,6 +2466,7 @@
       "name": "setResizeable",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>You can change the resizeable behaviour of this object. Hands over [false] and\nthe figure has no resizehandles if you select them with the mouse.<br></p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  resizeable: flag\n});</code></pre>",
       "parameters": [
         {
@@ -2361,6 +2486,7 @@
       "name": "isSelectable",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Indicates whenever the element is selectable by user interaction or API.</p>",
       "parameters": [],
       "inherited": true,
@@ -2375,6 +2501,7 @@
       "name": "setSelectable",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>You can change the selectable behavior of this object. Hands over [false] and\nthe figure has no selection handles if you try to select them with the mouse.<br></p>",
       "parameters": [
         {
@@ -2394,6 +2521,7 @@
       "name": "isStrechable",
       "access": "",
       "virtual": false,
+      "deprecated": true,
       "description": "<p>Return true if the object doesn't care about the aspect ratio.\nYou can change the height and width independent.<br></p>\n<p>Replaced with &quot;getKeepAspectRatio&quot;</p>",
       "parameters": [],
       "inherited": true,
@@ -2408,6 +2536,7 @@
       "name": "isDeleteable",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return false if you avoid that the user can delete your figure.\nSub class can override this method.</p>",
       "parameters": [],
       "inherited": true,
@@ -2422,6 +2551,7 @@
       "name": "setDeleteable",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the flag if the shape is deleteable.</p>",
       "parameters": [
         {
@@ -2441,6 +2571,7 @@
       "name": "setParent",
       "access": "private",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the parent of this figure.\nDon't call them manually.</p>",
       "parameters": [
         {
@@ -2460,6 +2591,7 @@
       "name": "getParent",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Get the parent of this figure.</p>",
       "parameters": [],
       "inherited": true,
@@ -2474,6 +2606,7 @@
       "name": "contains",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Check to see if a figure is a descendant of another figure.\n<br>\nThe contains() method returns true if the figure provided by the argument is a descendant of this figure,\nwhether it is a direct child or nested more deeply. Otherwise, it returns false.</p>",
       "parameters": [
         {
@@ -2493,6 +2626,7 @@
       "name": "getRoot",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Get the top most parent of this figure. This can be an layout figure or parent container</p>",
       "parameters": [],
       "inherited": true,
@@ -2507,6 +2641,7 @@
       "name": "setComposite",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the assigned composite of this figure.</p>",
       "parameters": [
         {
@@ -2526,6 +2661,7 @@
       "name": "getComposite",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Get the assigned composite of this figure.</p>",
       "parameters": [],
       "inherited": true,
@@ -2540,6 +2676,7 @@
       "name": "fireEvent",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Execute all handlers and behaviors attached to the figure for the given event type.</p>",
       "parameters": [
         {
@@ -2567,6 +2704,7 @@
       "name": "on",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Attach an event handler function for one or more events to the figure.\nTo remove events bound with .on(), see {@link #off}.</p>\n<p>possible events are:<br></p>\n<ul>\n  <li>click</li>\n  <li>dblclick</li>\n  <li>move</li>\n  <li>resize</li>\n  <li>timer</li>\n  <li>contextmenu</li>\n  <li>show</li>\n  <li>hide</li>\n  <li>added</li>\n  <li>removed</li>\n  <li>change:[attr]</li>\n</ul>",
       "parameters": [
         {
@@ -2618,6 +2756,7 @@
       "name": "off",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The .off() method removes event handlers that were attached with {@link #on}.<br>\nCalling .off() with no arguments removes all handlers attached to the elements.<br>\n<br>\nIf a simple event name such as &quot;move&quot; is provided, all events of that type are removed from the figure.</p>",
       "parameters": [
         {
@@ -2640,6 +2779,7 @@
       "name": "getBestChild",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns the best figure at the location [x,y]. It is a simple hit test. Keep in mind that only visible objects\nare returned.</p>",
       "parameters": [
         {

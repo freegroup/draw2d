@@ -10,6 +10,7 @@
       "name": "init",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Constructs a locator with associated parent.</p>",
       "parameters": [
         {
@@ -29,6 +30,7 @@
       "name": "relocate",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Relocates the given Figure.</p>",
       "parameters": [
         {
