@@ -12,6 +12,7 @@
       "name": "init",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Create a new Command objects which can be execute via the CommandStack.</p>",
       "parameters": [
         {
@@ -31,6 +32,7 @@
       "name": "setIndex",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the index of the vertex of the polyline/polygon to modify.</p>",
       "parameters": [
         {
@@ -50,6 +52,7 @@
       "name": "canExecute",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modify the model. A CommandMove with [startX,startX] == [endX,endY] should\nreturn false. <br>\nthe execution of the Command doesn't modify the model.</p>",
       "parameters": [],
       "inherited": false,
@@ -64,6 +67,7 @@
       "name": "execute",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Execute the command the first time</p>",
       "parameters": [],
       "inherited": false,
@@ -74,6 +78,7 @@
       "name": "undo",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Undo the move command</p>",
       "parameters": [],
       "inherited": false,
@@ -84,6 +89,7 @@
       "name": "redo",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Redo the move command after the user has undo this command</p>",
       "parameters": [],
       "inherited": false,
@@ -94,6 +100,7 @@
       "name": "getLabel",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns a label of the Command. e.g. <code>move figure</code>.</p>",
       "parameters": [],
       "inherited": true,
@@ -108,6 +115,7 @@
       "name": "cancel",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Will be called if the user cancel the operation.</p>",
       "parameters": [],
       "inherited": true,

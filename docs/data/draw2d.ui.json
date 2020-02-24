@@ -17,6 +17,7 @@
           "name": "start",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Trigger the edit of the label text.</p>",
           "parameters": [
             {
@@ -57,6 +58,7 @@
           "name": "start",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Trigger the edit of the label text.</p>",
           "parameters": [
             {
@@ -76,6 +78,7 @@
           "name": "commit",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Transfer the data from the editor into the label.<br>\nRemove the editor.<br></p>",
           "parameters": [],
           "inherited": false,
@@ -86,6 +89,7 @@
           "name": "cancel",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Transfer the data from the editor into the label.<br>\nRemove the editor.<br></p>",
           "parameters": [],
           "inherited": false,

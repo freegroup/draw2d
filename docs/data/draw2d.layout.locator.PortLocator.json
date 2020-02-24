@@ -10,6 +10,7 @@
       "name": "init",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Default constructor for a Locator which can layout a port in context of a</p>",
       "parameters": [],
       "inherited": false,

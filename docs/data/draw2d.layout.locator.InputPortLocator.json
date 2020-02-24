@@ -10,6 +10,7 @@
       "name": "init",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Default constructor for a Locator which can layout a port in context of a\n{@link draw2d.shape.node.Node}</p>",
       "parameters": [],
       "inherited": false,
@@ -20,6 +21,7 @@
       "name": "relocate",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Controls the location of an {@link draw2d.Figure}</p>",
       "parameters": [
         {

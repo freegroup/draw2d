@@ -10,6 +10,7 @@
       "name": "paint",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Draw a bar decoration.</p>",
       "parameters": [
         {

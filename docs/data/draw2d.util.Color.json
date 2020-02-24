@@ -10,6 +10,7 @@
       "name": "getHTMLStyle",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Convert the color object into a HTML CSS representation</p>",
       "parameters": [],
       "inherited": false,
@@ -24,6 +25,7 @@
       "name": "getRed",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The red part of the color.</p>",
       "parameters": [],
       "inherited": false,
@@ -38,6 +40,7 @@
       "name": "getGreen",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The green part of the color.</p>",
       "parameters": [],
       "inherited": false,
@@ -52,6 +55,7 @@
       "name": "getBlue",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The blue part of the color</p>",
       "parameters": [],
       "inherited": false,
@@ -66,6 +70,7 @@
       "name": "getAlpha",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The alpha part of the color</p>",
       "parameters": [],
       "inherited": false,
@@ -80,6 +85,7 @@
       "name": "getIdealTextColor",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns the ideal Text Color. Useful for font color selection by a given background color.</p>",
       "parameters": [],
       "inherited": false,
@@ -94,6 +100,7 @@
       "name": "hex2rgb",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>return array of [r,g,b,a] from any valid color. if failed returns [0,0,0,1]</p>",
       "parameters": [
         {
@@ -117,6 +124,7 @@
       "name": "hex",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "",
       "parameters": [],
       "inherited": false,
@@ -127,6 +135,7 @@
       "name": "rgba",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Convert the color object into a HTML CSS representation</p>",
       "parameters": [],
       "inherited": false,
@@ -141,6 +150,7 @@
       "name": "hash",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Convert the color object into a HTML CSS representation</p>",
       "parameters": [],
       "inherited": false,
@@ -155,6 +165,7 @@
       "name": "int2hex",
       "access": "private",
       "virtual": false,
+      "deprecated": "",
       "description": "",
       "parameters": [],
       "inherited": false,
@@ -165,6 +176,7 @@
       "name": "darker",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns a darker color of the given one. The original color is unchanged.</p>",
       "parameters": [
         {
@@ -184,6 +196,7 @@
       "name": "lighter",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Make a color lighter. The original color is unchanged.</p>",
       "parameters": [
         {
@@ -207,6 +220,7 @@
       "name": "fadeTo",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return a new color wich is faded to the given color.</p>",
       "parameters": [
         {
@@ -238,6 +252,7 @@
       "name": "equals",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Compares two color objects</p>",
       "parameters": [
         {

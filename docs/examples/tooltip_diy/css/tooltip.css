@@ -1,0 +1,35 @@
+/* CSS from the cool website: http://cssarrowplease.com/ */
+
+.tooltip {
+	position: absolute;
+	background: #88b7d5;
+	border: 2px solid #c2e1f5;
+	padding:10px;
+	border-radius:6px;
+}
+
+.tooltip:after,.tooltip:before {
+	bottom: 100%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.tooltip:after {
+	border-color: rgba(136, 183, 213, 0);
+	border-bottom-color: #88b7d5;
+	border-width: 4px;
+	left: 50%;
+	margin-left: -4px;
+}
+
+.tooltip:before {
+	border-color: rgba(194, 225, 245, 0);
+	border-bottom-color: #c2e1f5;
+	border-width: 8px;
+	left: 50%;
+	margin-left: -8px;
+}

@@ -1,0 +1,43 @@
+﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<title></title>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <link type="text/css" rel="stylesheet" href="./css/example.css" />
+
+  <script src="./lib/jquery.js"></script>
+  <script src="./lib/jquery-ui.js"></script>
+
+  <script src="../draw2d.js"></script>
+
+	<script src="CustomFigure.js"></script>
+
+<script type="text/javascript">
+
+document.addEventListener("DOMContentLoaded",function () {
+
+
+     var canvas = new draw2d.Canvas("gfx_holder");
+
+    canvas.add( new CustomFigure({x:100, y:100}));
+    canvas.add( new CustomFigure({x:400, y:150}));
+
+     /////////////////////////////////////////////////////////////////////
+     // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
+     /////////////////////////////////////////////////////////////////////
+     var msg = new draw2d.shape.note.PostIt({text:"Connect the shapes by dragging the ports.\nThe ports are hidden if they are connected and visible if you disconnect again."});
+     canvas.add(msg, 20,20);
+});
+</script>
+
+</head>
+
+<body>
+<div onselectstart="javascript:/*IE8 hack*/return false"  id="gfx_holder" style="width:3000px; height:3000px;">
+</div>
+
+
+</body>
+</html>

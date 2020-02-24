@@ -10,6 +10,7 @@
       "name": "unmarshal",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Restore the canvas from a given String.</p>",
       "parameters": [
         {

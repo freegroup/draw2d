@@ -17,6 +17,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [],
           "inherited": false,
@@ -27,6 +28,7 @@
           "name": "relocate",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Relocates the given Figure.</p>",
           "parameters": [
             {
@@ -73,6 +75,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Constructs a locator with associated parent.</p>",
           "parameters": [],
           "inherited": false,
@@ -83,6 +86,7 @@
           "name": "relocate",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Relocates the given Figure.</p>",
           "parameters": [
             {
@@ -129,6 +133,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Default constructor for a Locator which can layout a figure in context of a\n{@link draw2d.Connector}</p>",
           "parameters": [],
           "inherited": false,
@@ -156,6 +161,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Constructs a locator with associated parent.</p>",
           "parameters": [],
           "inherited": false,
@@ -183,6 +189,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Default constructor for a Locator which can layout a port in context of a\n{@link draw2d.shape.node.Node}</p>",
           "parameters": [],
           "inherited": false,
@@ -193,6 +200,7 @@
           "name": "relocate",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Controls the location of an {@link draw2d.Figure}</p>",
           "parameters": [
             {
@@ -237,6 +245,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Constructs a locator with associated parent.</p>",
           "parameters": [
             {
@@ -256,6 +265,7 @@
           "name": "relocate",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Relocates the given Figure.</p>",
           "parameters": [
             {
@@ -302,6 +312,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Initial Constructor</p>",
           "parameters": [],
           "inherited": false,
@@ -312,6 +323,7 @@
           "name": "bind",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Callback method if a child is bounded to a parent. This is\nthe perfect moment to prepare the child node with some basic\nbehaviour which are forced by the <code>Locator</code></p>",
           "parameters": [
             {
@@ -339,6 +351,7 @@
           "name": "unbind",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Callback method if a child is unbounded to the locator.</p>",
           "parameters": [
             {
@@ -366,6 +379,7 @@
           "name": "relocate",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Controls the location of an I{@link draw2d.Figure}</p>",
           "parameters": [
             {
@@ -393,6 +407,7 @@
           "name": "clone",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Return a clone of the locator object</p>",
           "parameters": [],
           "inherited": false,
@@ -422,6 +437,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Constructs a ManhattanMidpointLocator with associated Connection c.</p>",
           "parameters": [],
           "inherited": false,
@@ -432,6 +448,7 @@
           "name": "relocate",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Relocates the given Figure always in the center of an edge.</p>",
           "parameters": [
             {
@@ -478,6 +495,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Default constructor for a Locator which can layout a port in context of a\n{@link draw2d.shape.node.Node}</p>",
           "parameters": [],
           "inherited": false,
@@ -488,6 +506,7 @@
           "name": "relocate",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Controls the location of an I{@link draw2d.Figure}</p>",
           "parameters": [
             {
@@ -532,6 +551,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Constructs a ParallelMidpointLocator with optional padding to the connection.</p>\n<p>if the parameter <b>distanceFromConnection</b> is less than zero the label is\nplaced above of the connection. Else the label is below the connection.</p>",
           "parameters": [
             {
@@ -551,6 +571,7 @@
           "name": "relocate",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Relocates the given Figure always in the center of an edge.</p>",
           "parameters": [
             {
@@ -595,6 +616,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Constructs a ManhattanMidpointLocator with associated Connection c.</p>",
           "parameters": [],
           "inherited": false,
@@ -605,6 +627,7 @@
           "name": "relocate",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Relocates the given Figure.</p>",
           "parameters": [
             {
@@ -649,6 +672,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Default constructor for a Locator which can layout a port in context of a</p>",
           "parameters": [],
           "inherited": false,
@@ -676,6 +700,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Constructs a locator with associated parent.</p>",
           "parameters": [],
           "inherited": false,
@@ -686,6 +711,7 @@
           "name": "relocate",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Relocates the given Figure.</p>",
           "parameters": [
             {
@@ -732,6 +758,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Constructs a locator with associated parent.</p>",
           "parameters": [],
           "inherited": false,
@@ -742,6 +769,7 @@
           "name": "relocate",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Controls the location of an I{@link draw2d.Figure}</p>",
           "parameters": [
             {
@@ -786,6 +814,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Constructs a ManhattanMidpointLocator with associated Connection c.</p>",
           "parameters": [],
           "inherited": false,
@@ -796,6 +825,7 @@
           "name": "relocate",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Relocates the given Figure.</p>",
           "parameters": [
             {
@@ -842,6 +872,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>{@link draw2d.shape.node.Node}</p>",
           "parameters": [
             {
@@ -869,6 +900,7 @@
           "name": "relocate",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Controls the location of an {@link draw2d.Figure}</p>",
           "parameters": [
             {
@@ -915,6 +947,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -942,6 +975,7 @@
           "name": "relocate",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Controls the location of an I{@link draw2d.Figure}</p>",
           "parameters": [
             {

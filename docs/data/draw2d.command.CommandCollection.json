@@ -12,6 +12,7 @@
       "name": "init",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Create a new CommandConnect objects which can be execute via the CommandStack.</p>",
       "parameters": [
         {
@@ -31,6 +32,7 @@
       "name": "getLabel",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns a label of the Command. e.g. &quot;move figure&quot;.</p>",
       "parameters": [],
       "inherited": false,
@@ -45,6 +47,7 @@
       "name": "add",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Add a command to the collection.</p>",
       "parameters": [
         {
@@ -64,6 +67,7 @@
       "name": "canExecute",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns [true] if the command can be execute and the execution of the\ncommand modifies the model. e.g.: a CommandMove with [startX,startX] == [endX,endY] should\nreturn false. The execution of this Command doesn't modify the model.</p>",
       "parameters": [],
       "inherited": false,
@@ -78,6 +82,7 @@
       "name": "execute",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Execute the command the first time</p>",
       "parameters": [],
       "inherited": false,
@@ -88,6 +93,7 @@
       "name": "redo",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Redo the command after the user has undo this command.</p>",
       "parameters": [],
       "inherited": false,
@@ -98,6 +104,7 @@
       "name": "undo",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Undo the command.</p>",
       "parameters": [],
       "inherited": false,
@@ -108,6 +115,7 @@
       "name": "cancel",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Will be called if the user cancel the operation.</p>",
       "parameters": [],
       "inherited": true,

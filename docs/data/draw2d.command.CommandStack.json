@@ -1,7 +1,7 @@
 {
   "name": "CommandStack",
   "namespace": "draw2d.command",
-  "description": "<p>Stack for undo/redo operations</p>",
+  "description": "<p>An implementation of a command stack. A stack manages the executing, undoing, and redoing of Commands. Executed\ncommands are pushed onto a a stack for undoing later. Commands which are undone are pushed onto a redo stack.\nWhenever a new command is executed, the redo stack is flushed.</p>\n<p>You can retrieve the current used CommandStack just by calling <code>canvas.getCommandStack()</code></p>",
   "extends": [],
   "access": "",
   "virtual": false,
@@ -10,6 +10,7 @@
       "name": "init",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Create a new CommandStack objects which can be execute via the CommandStack.</p>",
       "parameters": [],
       "inherited": false,
@@ -20,6 +21,7 @@
       "name": "setUndoLimit",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the maximal undo stack size. Entries will be remove if the max. stack\nsize has been reached.</p>",
       "parameters": [
         {
@@ -33,22 +35,32 @@
       ],
       "inherited": false,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "markSaveLocation",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Remove the undo / redo history. This is useful if the user has been save the\ndocument.</p>",
       "parameters": [],
       "inherited": false,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "execute",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Executes the specified Command if possible. Prior to executing the command, a\ndraw2d.command.CommandStackEvent for {@link #PRE_EXECUTE} will be fired to event listeners.\nSimilarly, after attempting to execute the command, an event for {@link #POST_EXECUTE}\nwill be fired.</p>",
       "parameters": [
         {
@@ -62,12 +74,17 @@
       ],
       "inherited": false,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "startTransaction",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Opens a transaction for further multiple commands. If you execute a command all\n{@ #execute} calls will be ignored until you commit the current transaction.</p>",
       "parameters": [
         {
@@ -81,52 +98,77 @@
       ],
       "inherited": false,
       "since": "4.0.0",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "isInTransaction",
       "access": "",
       "virtual": false,
-      "description": "<p>Returns true if the Command Stack has an open transaction.</p>",
+      "deprecated": "",
+      "description": "<p>Returns true if the Command Stack has an open transaction.\nYou can start or stop a transaction with <code>startTransaction</code>and <code>commitTransaction</code>.</p>\n<p>A transaction is one undo/redo operation.</p>",
       "parameters": [],
       "inherited": false,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "Boolean",
+        "description": ""
+      }
     },
     {
       "name": "commitTransaction",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Commit the running transaction. All commands between the start/end of a transaction\ncan be undo/redo in a single step.</p>",
       "parameters": [],
       "inherited": false,
       "since": "4.0.0",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "undo",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Undo on command from the stack and store them on the redo command stack.</p>",
       "parameters": [],
       "inherited": false,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "redo",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Redo a command after the user has undo a command</p>",
       "parameters": [],
       "inherited": false,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "getRedoLabel",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return the label of the next REDO command.</p>",
       "parameters": [],
       "inherited": false,
@@ -141,6 +183,7 @@
       "name": "getUndoLabel",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return the label of the next UNDO command.</p>",
       "parameters": [],
       "inherited": false,
@@ -155,20 +198,22 @@
       "name": "canRedo",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Indicates whenever a REDO is possible.</p>",
       "parameters": [],
       "inherited": false,
       "since": "",
       "examples": [],
       "returns": {
-        "type": "",
-        "description": "<p>boolean <code>true</code> if it is appropriate to call {@link #redo()}.</p>"
+        "type": "Boolean",
+        "description": "<p><code>true</code> if it is appropriate to call {@link #redo()}.</p>"
       }
     },
     {
       "name": "canUndo",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>indicator whenever a undo is possible.</p>",
       "parameters": [],
       "inherited": false,
@@ -183,6 +228,7 @@
       "name": "addEventListener",
       "access": "",
       "virtual": false,
+      "deprecated": "use on/off to register events",
       "description": "<p>Adds a listener to the command stack, which will be notified whenever a command has been processed on the stack.</p>",
       "parameters": [
         {
@@ -199,12 +245,17 @@
       ],
       "inherited": false,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "on",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Adds a listener to the command stack, which will be notified whenever a command has been processed on the stack.</p>",
       "parameters": [
         {
@@ -226,12 +277,17 @@
       ],
       "inherited": false,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "removeEventListener",
       "access": "",
       "virtual": false,
+      "deprecated": "use on/off to register events",
       "description": "<p>Removes a listener from the command stack.</p>",
       "parameters": [
         {
@@ -245,12 +301,41 @@
       ],
       "inherited": false,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
+    },
+    {
+      "name": "off",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "",
+      "parameters": [
+        {
+          "name": "listener",
+          "type": "",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": false,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "notifyListeners",
-      "access": "",
+      "access": "private",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Notifies command stack event listeners that the command stack has changed to the\nspecified state.</p>",
       "parameters": [
         {

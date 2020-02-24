@@ -12,6 +12,7 @@
       "name": "init",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Creates a new Router object.</p>",
       "parameters": [],
       "inherited": false,
@@ -22,6 +23,7 @@
       "name": "route",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "",
       "parameters": [],
       "inherited": false,
@@ -32,6 +34,7 @@
       "name": "halfRoute",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The routing algorithm if the user has changed at least on of the vertices manually.\nThis kind of routing just align the start and end vertices to the new source/target port\nlocation.\nThe vertices between keep untouched. Modification of this vertices are done by the\ndraw2d.policy.line.OrthogonalSelectionFeedbackPolicy</p>",
       "parameters": [
         {
@@ -75,6 +78,7 @@
       "name": "canRemoveSegmentAt",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Callback method for the PolyLine or Connection to verify that a segment is deletable.</p>",
       "parameters": [
         {
@@ -106,6 +110,7 @@
       "name": "onDrag",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The draw2d.Connection delegates the drag operation to the router. The router can\nhandle the different constraints of the connection and just drag&amp;drop a single segment\ninstead of the complete connection.</p>",
       "parameters": [
         {
@@ -157,6 +162,7 @@
       "name": "verticesSet",
       "access": "protected",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Called by the connection if the vertices set outside.\nThis enforce the router to avoid full autoroute. E.g. InteractiveManhattanRouter</p>",
       "parameters": [],
       "inherited": false,
@@ -167,6 +173,7 @@
       "name": "getPersistentAttributes",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Tweak or enrich the polyline persistence data with routing information</p>",
       "parameters": [
         {
@@ -198,6 +205,7 @@
       "name": "setPersistentAttributes",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>set the attributes for the polyline with routing information of the interactive manhattan router.</p>",
       "parameters": [
         {
@@ -217,6 +225,7 @@
       "name": "onInstall",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Callback method if the router has been assigned to a connection.</p>",
       "parameters": [
         {
@@ -236,6 +245,7 @@
       "name": "route",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Routes the Connection.</p>",
       "parameters": [
         {
@@ -287,6 +297,7 @@
       "name": "_route",
       "access": "private",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Internal routing algorithm.</p>",
       "parameters": [
         {
@@ -338,6 +349,7 @@
       "name": "onUninstall",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Callback method if the router has been removed from the connection.</p>",
       "parameters": [
         {
@@ -357,6 +369,7 @@
       "name": "canRemoveVertexAt",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Callback method for the PolyLine or Connection to check if it possible to remove a vertex from\nthe list. The router can send an veto for this.\nPer default it is not possible to remove any vertex from the PolyLine exceptional if any interactive\nrouter is installed.</p>",
       "parameters": [
         {

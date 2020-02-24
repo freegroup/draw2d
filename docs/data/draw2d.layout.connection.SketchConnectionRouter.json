@@ -12,6 +12,7 @@
       "name": "init",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Creates a new Router object.</p>",
       "parameters": [],
       "inherited": false,
@@ -22,6 +23,7 @@
       "name": "onInstall",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Callback method if the router has been assigned to a connection.</p>",
       "parameters": [
         {
@@ -41,6 +43,7 @@
       "name": "route",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "",
       "parameters": [],
       "inherited": true,
@@ -51,6 +54,7 @@
       "name": "_route",
       "access": "private",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Internal routing algorithm.\n* <p>\nPossible values:</p>\n<ul>\n  <li>up -&gt; 0</li>\n  <li>right -&gt; 1</li>\n  <li>down -&gt; 2</li>\n  <li>left -&gt; 3</li>\n</ul>\n<p>",
       "parameters": [
         {
@@ -102,6 +106,7 @@
       "name": "generateNoGoGrid",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Generate a grid base no go map required for the path finding algorithm</p>",
       "parameters": [
         {
@@ -125,6 +130,7 @@
       "name": "getAdjustedPoint",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>move the point in the given direction with the given offset</p>",
       "parameters": [
         {

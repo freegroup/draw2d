@@ -1,0 +1,106 @@
+﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<title></title>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <link type="text/css" rel="stylesheet" href="./css/example.css" />
+
+  <script src="./lib/jquery.js"></script>
+  <script src="./lib/jquery-ui.js"></script>
+
+  <script src="../draw2d.js"></script>
+
+  <script src="BetweenFigure.js"></script>
+  <script src="MyInterceptorPolicy.js"></script>
+
+<script type="text/javascript">
+
+var createConnection=function(sourcePort, targetPort){
+
+    var conn= new draw2d.Connection({
+        router:new draw2d.layout.connection.InteractiveManhattanConnectionRouter(),
+        stroke:2,
+        color:"#00a8f0",
+        radius:20,
+        outlineColor:"#30ff30",
+        source:sourcePort,
+        target:targetPort
+    });
+
+    // since version 3.5.6
+    //
+    conn.on("dragEnter", function(emitter, event){
+      conn.attr({
+        outlineStroke:2
+      });
+    });
+    conn.on("dragLeave", function(emitter, event){
+      conn.attr({
+        outlineStroke:0
+      });
+    });
+
+    return conn;
+
+};
+
+var canvas = null;
+document.addEventListener("DOMContentLoaded",function () {
+
+       // Everything is loaded - core and application. Now can create the
+       // application
+       //
+
+	    canvas = new draw2d.Canvas("gfx_holder");
+
+      // Install a special policy into the canvas to use my own implementation of connection
+      // if we drag&drop a port
+      //
+      canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({
+        createConnection: createConnection
+      }));
+
+      // This is the key!! The interceptor allows that a figure is droppable to a
+      // connection
+      //
+      canvas.installEditPolicy(new MyInterceptorPolicy());
+
+	  // Create two standard nodes for "start" and "end" and link
+	  // this figures with a standard Connector
+	  //
+	  var start  = new draw2d.shape.node.Start({x:130,y:130,width:60,height:60});
+	  var end    = new draw2d.shape.node.End({x:450,y:250});
+
+	  canvas.add(start);
+	  canvas.add(end);
+
+	  // Add a connection via API calls between Start and Stop
+	  //
+	  var connection =createConnection(start.getOutputPort(0),end.getInputPort(0));
+	  canvas.add(connection);
+
+	  // Add my implemention of a "Between" figure for the smart insert feature
+	  // inspect the "Between.onDrop" method for more details
+	  //
+	  canvas.add( new BetweenFigure({x:250,y:340}));
+
+	 /////////////////////////////////////////////////////////////////////
+	 // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
+	 /////////////////////////////////////////////////////////////////////
+	 var msg = new draw2d.shape.note.PostIt({text:"Drag&Drop the orange box onto the connector.\nThe orange box will be injected into the Connection.\n \nSmart - right?"});
+	 canvas.add(msg, 20,20);
+});
+
+</script>
+
+</head>
+
+<body>
+<div  onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:1500px; height:1500px; ">
+</div>
+
+
+</body>
+</html>

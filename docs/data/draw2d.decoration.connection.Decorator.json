@@ -10,6 +10,7 @@
       "name": "paint",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Paint the decoration for a connector. The Connector starts always in\n[0,0] and ends in [x,0].\nIt is not necessary to consider any rotation of the connection. This will be done by the\nframework.</p>\n<pre>\n              | -Y\n              |\n              |\n --------------+-----------------------------&gt; +X\n              |\n              |\n              |\n              V +Y\n\n\n</pre>\n<p>See in ArrowConnectionDecorator for example implementation.</p>",
       "parameters": [
         {
@@ -29,6 +30,7 @@
       "name": "setColor",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the stroke color for the decoration</p>",
       "parameters": [
         {
@@ -51,6 +53,7 @@
       "name": "setBackgroundColor",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the background color for the decoration</p>",
       "parameters": [
         {
@@ -73,6 +76,7 @@
       "name": "setDimension",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Change the dimension of the decoration shape</p>",
       "parameters": [
         {

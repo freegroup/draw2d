@@ -1,7 +1,7 @@
 {
   "name": "Canvas",
   "namespace": "draw2d",
-  "description": "<p>Interactive paint area of the draw2d library.</p>",
+  "description": "<p>A scrolling Canvas that contains Figures. Call <code>add(draw2d.Figure)</code> to add shapes to the Viewport.</p>",
   "extends": [],
   "access": "",
   "virtual": false,
@@ -10,6 +10,7 @@
       "name": "init",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Create a new canvas with the given HTML DOM references.</p>",
       "parameters": [
         {
@@ -29,6 +30,7 @@
       "name": "destroy",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Call this method if you didn't need the canvas anymore. The method unregister all even handlers\nand frees all resources. The canvas is unusable after this call</p>",
       "parameters": [],
       "inherited": false,
@@ -39,6 +41,7 @@
       "name": "clear",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Reset the canvas and delete all model elements.<br>\nYou can now reload another model to the canvas with a {@link draw2d.io.Reader}</p>",
       "parameters": [],
       "inherited": false,
@@ -53,6 +56,7 @@
       "name": "hideDecoration",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Callback for any kind of image export tools to trigger the canvas to hide all unwanted\ndecorations. The method is called e.g. from the draw2d.io.png.Writer</p>",
       "parameters": [],
       "inherited": false,
@@ -63,6 +67,7 @@
       "name": "showDecoration",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>callback method for any image export writer to reactivate the decoration\nof the canvas. e.g. grids, rulers,...</p>",
       "parameters": [],
       "inherited": false,
@@ -73,6 +78,7 @@
       "name": "calculateConnectionIntersection",
       "access": "private",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Calculate all connection intersection of the canvas.\nRequired for &quot;bridging&quot; or &quot;crossing decoration&quot;</p>",
       "parameters": [],
       "inherited": false,
@@ -83,6 +89,7 @@
       "name": "installEditPolicy",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Install a new selection and edit policy into the canvas</p>",
       "parameters": [
         {
@@ -102,6 +109,7 @@
       "name": "uninstallEditPolicy",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>UnInstall the selection and edit policy from the canvas.</p>",
       "parameters": [
         {
@@ -124,6 +132,7 @@
       "name": "setZoom",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the new zoom factor for the canvas. The value must be between [0.01..10]</p>\n<pre><code>// you can register an eventhandler if the zoom factor did change\ncanvas.on(&quot;zoom&quot;, function(emitterFigure, zoomData){\n    alert(&quot;canvas zoomed to:&quot;+zoomData.factor);\n});</code></pre>",
       "parameters": [
         {
@@ -151,6 +160,7 @@
       "name": "getZoom",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return the current zoom factor of the canvas.</p>",
       "parameters": [],
       "inherited": false,
@@ -165,6 +175,7 @@
       "name": "getDimension",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return the dimension of the drawing area</p>",
       "parameters": [],
       "inherited": false,
@@ -179,6 +190,7 @@
       "name": "setDimension",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Tells the canvas to resize. If you do not specific any parameters\nthe canvas will attempt to determine the height and width by the enclosing bounding box\nof all elements and set the dimension accordingly. If you would like to set the dimension\nexplicitly pass in an draw2d.geo.Rectangle or an object with <b>height</b> and <b>width</b> properties.</p>",
       "parameters": [
         {
@@ -198,6 +210,7 @@
       "name": "fromDocumentToCanvasCoordinate",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Transforms a document coordinate to canvas coordinate.</p>",
       "parameters": [
         {
@@ -229,6 +242,7 @@
       "name": "fromCanvasToDocumentCoordinate",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Transforms a canvas coordinate to document coordinate.</p>",
       "parameters": [
         {
@@ -260,6 +274,7 @@
       "name": "getHtmlContainer",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The DOM host of the canvas</p>",
       "parameters": [],
       "inherited": false,
@@ -274,6 +289,7 @@
       "name": "_getEvent",
       "access": "private",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return a common event object independed if we run on an iPad or desktop.</p>",
       "parameters": [
         {
@@ -293,6 +309,7 @@
       "name": "setScrollArea",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the area which are scrolling the canvas. This can be a jquery selector or\na jQuery node.</p>",
       "parameters": [
         {
@@ -312,6 +329,7 @@
       "name": "getScrollArea",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>return the scrolling area of the canvas. This is jQuery object</p>",
       "parameters": [],
       "inherited": false,
@@ -326,6 +344,7 @@
       "name": "getScrollLeft",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The left scroll position.</p>",
       "parameters": [],
       "inherited": false,
@@ -340,6 +359,7 @@
       "name": "getScrollTop",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The top scroll position</p>",
       "parameters": [],
       "inherited": false,
@@ -354,6 +374,7 @@
       "name": "setScrollLeft",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set left scroll position.</p>",
       "parameters": [
         {
@@ -373,6 +394,7 @@
       "name": "setScrollTop",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>set top scroll position</p>",
       "parameters": [
         {
@@ -392,6 +414,7 @@
       "name": "scrollTo",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>set the new scroll position of the canvas</p>",
       "parameters": [
         {
@@ -419,6 +442,7 @@
       "name": "getAbsoluteX",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The absolute document x offset.</p>",
       "parameters": [],
       "inherited": false,
@@ -433,6 +457,7 @@
       "name": "getAbsoluteY",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The absolute document y offset.</p>",
       "parameters": [],
       "inherited": false,
@@ -447,6 +472,7 @@
       "name": "getWidth",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return the width of the canvas</p>",
       "parameters": [],
       "inherited": false,
@@ -461,6 +487,7 @@
       "name": "getHeight",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return the height of the canvas.</p>",
       "parameters": [],
       "inherited": false,
@@ -475,6 +502,7 @@
       "name": "add",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Add a figure at the given x/y coordinate. This method fires an event.</p>\n<p>Example:</p>\n<pre><code>canvas.on(&quot;figure:add&quot;, function(emitter, event){\n   alert(&quot;figure added:&quot;);\n});\n\n// or more general if you want catch all figure related events\n//\ncanvas.on(&quot;figure&quot;, function(emitter, event){\n   // use event.figure.getCanvas()===null to determine if the\n   // figure part of the canvas\n\n   alert(&quot;figure added or removed:&quot;);\n});</code></pre>",
       "parameters": [
         {
@@ -510,6 +538,7 @@
       "name": "remove",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Remove a figure or connection from the Canvas. This method fires an event\nwhich can be catched.</p>\n<p>Example:</p>\n<pre><code>canvas.on(&quot;figure:remove&quot;, function(emitter, event){\n   alert(&quot;figure removed:&quot;);\n});\n\n// or more general if you want catch all figure related events\n//\ncanvas.on(&quot;figure&quot;, function(emitter, event){\n   // use event.figure.getCanvas()===null to determine if the\n   // figure part of the canvas\n\n   alert(&quot;figure added or removed:&quot;);\n});</code></pre>",
       "parameters": [
         {
@@ -529,6 +558,7 @@
       "name": "getLines",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns all lines/connections in this workflow/canvas.<br></p>",
       "parameters": [],
       "inherited": false,
@@ -543,6 +573,7 @@
       "name": "getFigures",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns the internal figures.<br></p>",
       "parameters": [],
       "inherited": false,
@@ -557,6 +588,7 @@
       "name": "getLine",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns the line or connection with the given id.</p>",
       "parameters": [
         {
@@ -580,6 +612,7 @@
       "name": "getFigure",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns the figure with the given id.</p>",
       "parameters": [
         {
@@ -603,6 +636,7 @@
       "name": "getIntersection",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return all intersections draw2d.geo.Point between the given line and all other\nlines in the canvas.</p>",
       "parameters": [
         {
@@ -626,6 +660,7 @@
       "name": "snapToHelper",
       "access": "private",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Adjust the coordinate with the installed SnapToHelper.</p>",
       "parameters": [
         {
@@ -657,6 +692,7 @@
       "name": "registerPort",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Register a port to the canvas. This is required for other ports to find a valid drop target.</p>",
       "parameters": [
         {
@@ -676,6 +712,7 @@
       "name": "unregisterPort",
       "access": "private",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Remove a port from the internal cnavas registration. Now other ports can't find the\nport anymore as drop target. The port itself is still visible.</p>",
       "parameters": [
         {
@@ -699,6 +736,7 @@
       "name": "getAllPorts",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return all ports in the canvas</p>",
       "parameters": [],
       "inherited": false,
@@ -713,6 +751,7 @@
       "name": "getCommandStack",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns the command stack for the Canvas. Required for undo/redo support.</p>",
       "parameters": [],
       "inherited": false,
@@ -727,6 +766,7 @@
       "name": "getPrimarySelection",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns the current selected figure in the Canvas.</p>",
       "parameters": [],
       "inherited": false,
@@ -741,6 +781,7 @@
       "name": "getSelection",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns the current selection.</p>",
       "parameters": [],
       "inherited": false,
@@ -755,6 +796,7 @@
       "name": "setCurrentSelection",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the current selected figure or figures in the canvas.<br>\n<br>\nYou can hand over a draw2d.util.ArrayList since version 4.8.0 for multiple selection.</p>",
       "parameters": [
         {
@@ -781,6 +823,7 @@
       "name": "addSelection",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Add the current figure to the selection. If a single selection policy is installed in the\ncanvas the selection before is reseted and the figure is the one and only selection.</p>",
       "parameters": [
         {
@@ -807,6 +850,7 @@
       "name": "getBestFigure",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Returns the best figure at the location [x,y]. It is a simple hit test. Keep in mind that only visible objects\nare returned.</p>",
       "parameters": [
         {
@@ -862,6 +906,7 @@
       "name": "getBestLine",
       "access": "private",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return the line which match the hands over coordinate</p>",
       "parameters": [
         {
@@ -901,6 +946,7 @@
       "name": "onDragEnter",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Called by the framework during drag&amp;drop operations.<br>\nDroppable can be setup with:</p>\n<pre>\n   $(\".draw2d_droppable\").draggable({\n        appendTo:\"#container\",\n        stack:\"#container\",\n        zIndex: 27000,\n        helper:\"clone\",\n        start: function(e, ui){$(ui.helper).addClass(\"shadow\");}\n   });\n</pre>\n<p>Graphiti use the jQuery draggable/droppable lib. Please inspect\nhttp://jqueryui.com/demos/droppable/ for further information.</p>",
       "parameters": [
         {
@@ -920,6 +966,7 @@
       "name": "onDrag",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Called if the DragDrop object is moving around.<br>\n<br>\nGraphiti use the jQuery draggable/droppable lib. Please inspect\nhttp://jqueryui.com/demos/droppable/ for further information.</p>",
       "parameters": [
         {
@@ -955,6 +1002,7 @@
       "name": "onDragLeave",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Called if the DragDrop object leaving the current hover figure.<br>\n<br>\nGraphiti use the jQuery draggable/droppable lib. Please inspect\nhttp://jqueryui.com/demos/droppable/ for further information.</p>",
       "parameters": [
         {
@@ -974,6 +1022,7 @@
       "name": "onDrop",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Called if the user drop the droppedDomNode onto the canvas.<br>\n<br>\nDraw2D use the jQuery draggable/droppable lib. Please inspect\nhttp://jqueryui.com/demos/droppable/ for further information.</p>",
       "parameters": [
         {
@@ -1025,6 +1074,7 @@
       "name": "onDoubleClick",
       "access": "private",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Callback method for the double click event. The x/y coordinates are relative to the top left\ncorner of the canvas.</p>",
       "parameters": [],
       "inherited": false,
@@ -1035,6 +1085,7 @@
       "name": "onClick",
       "access": "private",
       "virtual": false,
+      "deprecated": "",
       "description": "",
       "parameters": [
         {
@@ -1078,6 +1129,7 @@
       "name": "onRightMouseDown",
       "access": "private",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The user has triggered a right click. Redirect them to a responsible figure.</p>",
       "parameters": [
         {
@@ -1121,6 +1173,7 @@
       "name": "onMouseWheel",
       "access": "private",
       "virtual": false,
+      "deprecated": "",
       "description": "",
       "parameters": [
         {
@@ -1172,6 +1225,7 @@
       "name": "fireEvent",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Execute all handlers and behaviors attached to the canvas for the given event type.</p>",
       "parameters": [
         {
@@ -1199,6 +1253,7 @@
       "name": "on",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Attach an event handler function for one or more events to the canvas.\nTo remove events bound with .on(), see {@link #off}.</p>\n<p>possible events are:<br></p>\n<ul>\n  <li>reset</li>\n  <li>select</li>\n</ul>\n<p>Example:</p>\n<pre><code>canvas.on(&quot;clear&quot;, function(emitter, event){\n   alert(&quot;canvas.clear() called.&quot;);\n});\n\ncanvas.on(&quot;select&quot;, function(emitter,event){\n    if(event.figure!==null){\n        alert(&quot;figure selected&quot;);\n    }\n    else{\n        alert(&quot;selection cleared&quot;);\n    }\n});</code></pre>",
       "parameters": [
         {
@@ -1242,6 +1297,7 @@
       "name": "off",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The .off() method removes event handlers that were attached with {@link #on}.<br>\nCalling .off() with no arguments removes all handlers attached to the canvas.<br>\n<br>\nIf a simple event name such as &quot;reset&quot; is provided, all events of that type are removed from the canvas.</p>",
       "parameters": [
         {

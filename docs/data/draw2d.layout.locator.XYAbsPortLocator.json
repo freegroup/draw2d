@@ -10,6 +10,7 @@
       "name": "init",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>{@link draw2d.shape.node.Node}</p>",
       "parameters": [
         {
@@ -37,6 +38,7 @@
       "name": "relocate",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Controls the location of an {@link draw2d.Figure}</p>",
       "parameters": [
         {

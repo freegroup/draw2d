@@ -10,6 +10,7 @@
       "name": "init",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Initial Constructor</p>",
       "parameters": [],
       "inherited": false,
@@ -20,6 +21,7 @@
       "name": "bind",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Callback method if a child is bounded to a parent. This is\nthe perfect moment to prepare the child node with some basic\nbehaviour which are forced by the <code>Locator</code></p>",
       "parameters": [
         {
@@ -47,6 +49,7 @@
       "name": "unbind",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Callback method if a child is unbounded to the locator.</p>",
       "parameters": [
         {
@@ -74,6 +77,7 @@
       "name": "relocate",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Controls the location of an I{@link draw2d.Figure}</p>",
       "parameters": [
         {
@@ -101,6 +105,7 @@
       "name": "clone",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return a clone of the locator object</p>",
       "parameters": [],
       "inherited": false,

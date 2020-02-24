@@ -1,0 +1,11 @@
+body{
+  background: transparent url(background.png);
+  margin:0;
+}
+
+.overlayMenu{
+ position:absolute;
+ cursor:pointer;
+ font-size:30px;
+ color:red;
+}

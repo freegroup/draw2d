@@ -10,6 +10,7 @@
       "name": "init",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Default constructor for a Locator which can layout a figure in context of a\n{@link draw2d.Connector}</p>",
       "parameters": [],
       "inherited": false,

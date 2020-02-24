@@ -19,6 +19,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Creates a new selection feedback policy for a line or connection</p>",
           "parameters": [],
           "inherited": false,
@@ -29,6 +30,7 @@
           "name": "onSelect",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the framework of the Policy should show a resize handle for the given shape</p>",
           "parameters": [
             {
@@ -64,6 +66,7 @@
           "name": "moved",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Callback method if the figure has been moved.</p>",
           "parameters": [],
           "inherited": false,
@@ -74,6 +77,7 @@
           "name": "onUnselect",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -93,6 +97,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the host if the policy has been installed.</p>",
           "parameters": [
             {
@@ -112,6 +117,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the host if the policy has been uninstalled.</p>",
           "parameters": [
             {
@@ -131,6 +137,7 @@
           "name": "onDragStart",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the framework if the related shape has init a drag&amp;drop\noperation</p>\n<p>The Policy can send a veto to prevent the DragDrop operation</p>",
           "parameters": [
             {
@@ -194,6 +201,7 @@
           "name": "onDrag",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the framework during drag a figure.</p>",
           "parameters": [
             {
@@ -221,6 +229,7 @@
           "name": "onDragEnd",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the framework if the drag drop operation ends.</p>",
           "parameters": [
             {
@@ -280,6 +289,7 @@
           "name": "adjustPosition",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Adjust the coordinates to the rectangle/region of this constraint.</p>",
           "parameters": [
             {
@@ -322,6 +332,7 @@
           "name": "adjustDimension",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>ensure that the dimension didn't goes outside the given restrictions</p>",
           "parameters": [
             {
@@ -361,6 +372,7 @@
           "name": "onRightMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the user press the right mouse on the figure.<br>\nYou can either override the &quot;onContextMenu&quot; method of the figure or install an editor policy and override this method.\nBooth is valid and possible.</p>",
           "parameters": [
             {
@@ -415,6 +427,7 @@
           "name": "attr",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
           "parameters": [
             {
@@ -461,6 +474,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [],
           "inherited": false,
@@ -471,6 +485,7 @@
           "name": "onSelect",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -506,6 +521,7 @@
           "name": "moved",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Callback method if the figure has been moved.</p>",
           "parameters": [],
           "inherited": true,
@@ -516,6 +532,7 @@
           "name": "onUnselect",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -535,6 +552,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the host if the policy has been installed.</p>",
           "parameters": [
             {
@@ -554,6 +572,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the host if the policy has been uninstalled.</p>",
           "parameters": [
             {
@@ -573,6 +592,7 @@
           "name": "onDragStart",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the framework if the related shape has init a drag&amp;drop\noperation</p>\n<p>The Policy can send a veto to prevent the DragDrop operation</p>",
           "parameters": [
             {
@@ -636,6 +656,7 @@
           "name": "onDrag",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the framework during drag a figure.</p>",
           "parameters": [
             {
@@ -663,6 +684,7 @@
           "name": "onDragEnd",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the framework if the drag drop operation ends.</p>",
           "parameters": [
             {
@@ -722,6 +744,7 @@
           "name": "adjustPosition",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Adjust the coordinates to the rectangle/region of this constraint.</p>",
           "parameters": [
             {
@@ -764,6 +787,7 @@
           "name": "adjustDimension",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>ensure that the dimension didn't goes outside the given restrictions</p>",
           "parameters": [
             {
@@ -803,6 +827,7 @@
           "name": "onRightMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the user press the right mouse on the figure.<br>\nYou can either override the &quot;onContextMenu&quot; method of the figure or install an editor policy and override this method.\nBooth is valid and possible.</p>",
           "parameters": [
             {
@@ -857,6 +882,7 @@
           "name": "attr",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
           "parameters": [
             {

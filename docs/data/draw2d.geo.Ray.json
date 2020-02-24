@@ -1,7 +1,7 @@
 {
   "name": "Ray",
   "namespace": "draw2d.geo",
-  "description": "<p>A ray is a line starting in [0,0,] with some additional\nhelper functions required for some router.</p>",
+  "description": "<p>Represents a vector within 2-dimensional Euclidean space.</p>",
   "extends": [
     "draw2d.geo.Point"
   ],
@@ -12,6 +12,7 @@
       "name": "init",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Creates a ray object.</p>",
       "parameters": [
         {
@@ -39,6 +40,7 @@
       "name": "setBoundary",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Ensure the boundary of the rectangle. If set, the rectangle keeps always inside\nthe boundary. It is like a virtual fence.</p>",
       "parameters": [],
       "inherited": true,
@@ -53,6 +55,7 @@
       "name": "adjustBoundary",
       "access": "private",
       "virtual": false,
+      "deprecated": "",
       "description": "",
       "parameters": [],
       "inherited": true,
@@ -67,6 +70,7 @@
       "name": "translate",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Moves this Rectangle horizontally by dx and vertically by dy, then returns\nthis Rectangle for convenience.<br>\n<br>\nThe method return the object itself. This allows you to do command chaining, where\nyou can perform multiple methods on the same elements.</p>",
       "parameters": [
         {
@@ -98,6 +102,7 @@
       "name": "getX",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The X value of the point</p>",
       "parameters": [],
       "inherited": true,
@@ -112,6 +117,7 @@
       "name": "getY",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>The y value of the point</p>",
       "parameters": [],
       "inherited": true,
@@ -126,6 +132,7 @@
       "name": "setX",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the new X value of the point</p>",
       "parameters": [
         {
@@ -149,6 +156,7 @@
       "name": "setY",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the new Y value of the point</p>",
       "parameters": [
         {
@@ -172,6 +180,7 @@
       "name": "setPosition",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Set the new x/y coordinates of this point</p>",
       "parameters": [
         {
@@ -206,6 +215,7 @@
       "name": "getPosition",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Calculates the relative position of the specified Point to this Point.</p>",
       "parameters": [
         {
@@ -229,6 +239,7 @@
       "name": "equals",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Compares two points and return [true] if x and y are equals.</p>",
       "parameters": [
         {
@@ -252,6 +263,7 @@
       "name": "distance",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return the distance between this point and the hands over.</p>",
       "parameters": [
         {
@@ -275,6 +287,7 @@
       "name": "length",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return the length of the vector measured from [0,0]</p>",
       "parameters": [],
       "inherited": true,
@@ -289,6 +302,7 @@
       "name": "translated",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return a new Point translated with the x/y values of the hands over point.</p>",
       "parameters": [
         {
@@ -323,6 +337,7 @@
       "name": "scale",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Scales this point with the handover factor</p>",
       "parameters": [
         {
@@ -346,6 +361,7 @@
       "name": "scaled",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return a <strong>new</strong> Point scaled with the givben factor</p>",
       "parameters": [
         {
@@ -369,6 +385,7 @@
       "name": "getPersistentAttributes",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return an objects with all important attributes for XML or JSON serialization</p>",
       "parameters": [],
       "inherited": true,
@@ -383,6 +400,7 @@
       "name": "setPersistentAttributes",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Read all attributes from the serialized properties and transfer them into the shape.</p>",
       "parameters": [
         {
@@ -406,6 +424,7 @@
       "name": "subtract",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>substract the given point and return the <strong>new</strong> point.</p>",
       "parameters": [
         {
@@ -429,6 +448,7 @@
       "name": "clone",
       "access": "",
       "virtual": false,
+      "deprecated": "",
       "description": "<p>Return a cloned point</p>",
       "parameters": [],
       "inherited": true,

@@ -17,6 +17,7 @@
           "name": "unmarshal",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Restore the canvas from a given String.</p>",
           "parameters": [
             {
@@ -65,6 +66,7 @@
           "name": "marshal",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Export the content to the implemented data format. Inherit class implements\ncontent specific writer.\n<br>\n<br></p>\n<p>Method signature has been changed from version 2.10.1 to version 3.0.0.<br>\nThe parameter <b>resultCallback</b> is required and new. The method calls\nthe callback instead of return the result.</p>",
           "parameters": [
             {
@@ -96,6 +98,7 @@
           "name": "formatXml",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>utility method to format a given XML string.</p>",
           "parameters": [
             {

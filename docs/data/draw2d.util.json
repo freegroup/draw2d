@@ -23,6 +23,7 @@
           "name": "clear",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Clears the array</p>",
           "parameters": [],
           "inherited": false,
@@ -33,6 +34,7 @@
           "name": "reverse",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Reverses the order of the elements in the ArrayList. The array will be modified!</p>",
           "parameters": [],
           "inherited": false,
@@ -43,6 +45,7 @@
           "name": "getSize",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>The size/count of the stored objects.</p>",
           "parameters": [],
           "inherited": false,
@@ -57,6 +60,7 @@
           "name": "isEmpty",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>checks to see if the Vector has any elements.</p>",
           "parameters": [],
           "inherited": false,
@@ -71,6 +75,7 @@
           "name": "last",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>return the last element.</p>",
           "parameters": [],
           "inherited": false,
@@ -85,6 +90,7 @@
           "name": "asArray",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Return a reference to the internal javascript native array.</p>",
           "parameters": [],
           "inherited": false,
@@ -99,6 +105,7 @@
           "name": "first",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>returns the first element</p>",
           "parameters": [],
           "inherited": false,
@@ -113,6 +120,7 @@
           "name": "get",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>returns an element at a specified index</p>",
           "parameters": [
             {
@@ -136,6 +144,7 @@
           "name": "add",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Adds a element at the end of the Vector.</p>",
           "parameters": [
             {
@@ -155,6 +164,7 @@
           "name": "grep",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>The method removes items from an array as necessary so that all remaining items pass a\nprovided test. The test is a function that is passed an array item and the index of the\nitem within the array. Only if the test returns true will the item stay in the array.</p>",
           "parameters": [
             {
@@ -182,6 +192,7 @@
           "name": "find",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Return ONE element which matches by the given function or <b>null</b>\nif no element is found.</p>\n<p>var r1= figures.find(function(figure){\nreturn figure.id===123456\n});</p>",
           "parameters": [
             {
@@ -217,6 +228,7 @@
           "name": "map",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Translate all items in the array into new items. The array list is modified after this call.\nYou must clone the array before if you want avoid this.</p>\n<p>var labels = this.commands.clone().map(function(e){\nreturn e.getLabel();\n});</p>",
           "parameters": [
             {
@@ -252,6 +264,7 @@
           "name": "unique",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Removes any duplicate elements from the array. The array is modified after this call. You\nmust clone the array before if you want avoid this</p>",
           "parameters": [],
           "inherited": false,
@@ -262,6 +275,7 @@
           "name": "addAll",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Add all elements into this array.</p>",
           "parameters": [
             {
@@ -289,6 +303,7 @@
           "name": "pop",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>You can use the Array list as Stack as well. this is the pop method to remove one element\nat the end of the stack.</p>",
           "parameters": [],
           "inherited": false,
@@ -299,6 +314,7 @@
           "name": "push",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Push one element at the top of the stack/array</p>",
           "parameters": [
             {
@@ -318,6 +334,7 @@
           "name": "remove",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Remove the element from the list</p>",
           "parameters": [
             {
@@ -341,6 +358,7 @@
           "name": "insertElementAt",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Inserts an element at a given position. Existing elements will be shifted\nto the right.</p>",
           "parameters": [
             {
@@ -368,6 +386,7 @@
           "name": "removeElementAt",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Removes an element at a specific index.</p>",
           "parameters": [
             {
@@ -391,6 +410,7 @@
           "name": "removeAll",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>removes all given elements in the ArrayList</p>",
           "parameters": [
             {
@@ -410,6 +430,7 @@
           "name": "indexOf",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Return the zero based index of the given element or -1 if the element\nnot in the list.</p>",
           "parameters": [
             {
@@ -433,6 +454,7 @@
           "name": "contains",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>returns true if the element is in the Vector, otherwise false.</p>",
           "parameters": [
             {
@@ -456,6 +478,7 @@
           "name": "sort",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Sorts the collection based on a field name or sort a function. See on http://www.w3schools.com/jsref/jsref_sort.asp\nif you use a sort function.</p>",
           "parameters": [
             {
@@ -482,6 +505,7 @@
           "name": "clone",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Copies the contents of a Vector to another Vector returning the new Vector.</p>",
           "parameters": [
             {
@@ -505,6 +529,7 @@
           "name": "each",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Iterates over the list of elements, yielding each in turn to an iterator\nfunction.\nEach invocation of iterator is called with two arguments: (index, element).</p>",
           "parameters": [
             {
@@ -548,6 +573,7 @@
           "name": "setPersistentAttributes",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Read all attributes from the serialized properties and transfer them into the shape.</p>",
           "parameters": [
             {
@@ -584,6 +610,7 @@
           "name": "getHTMLStyle",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Convert the color object into a HTML CSS representation</p>",
           "parameters": [],
           "inherited": false,
@@ -598,6 +625,7 @@
           "name": "getRed",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>The red part of the color.</p>",
           "parameters": [],
           "inherited": false,
@@ -612,6 +640,7 @@
           "name": "getGreen",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>The green part of the color.</p>",
           "parameters": [],
           "inherited": false,
@@ -626,6 +655,7 @@
           "name": "getBlue",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>The blue part of the color</p>",
           "parameters": [],
           "inherited": false,
@@ -640,6 +670,7 @@
           "name": "getAlpha",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>The alpha part of the color</p>",
           "parameters": [],
           "inherited": false,
@@ -654,6 +685,7 @@
           "name": "getIdealTextColor",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Returns the ideal Text Color. Useful for font color selection by a given background color.</p>",
           "parameters": [],
           "inherited": false,
@@ -668,6 +700,7 @@
           "name": "hex2rgb",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>return array of [r,g,b,a] from any valid color. if failed returns [0,0,0,1]</p>",
           "parameters": [
             {
@@ -691,6 +724,7 @@
           "name": "hex",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [],
           "inherited": false,
@@ -701,6 +735,7 @@
           "name": "rgba",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Convert the color object into a HTML CSS representation</p>",
           "parameters": [],
           "inherited": false,
@@ -715,6 +750,7 @@
           "name": "hash",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Convert the color object into a HTML CSS representation</p>",
           "parameters": [],
           "inherited": false,
@@ -729,6 +765,7 @@
           "name": "int2hex",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [],
           "inherited": false,
@@ -739,6 +776,7 @@
           "name": "darker",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Returns a darker color of the given one. The original color is unchanged.</p>",
           "parameters": [
             {
@@ -758,6 +796,7 @@
           "name": "lighter",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Make a color lighter. The original color is unchanged.</p>",
           "parameters": [
             {
@@ -781,6 +820,7 @@
           "name": "fadeTo",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Return a new color wich is faded to the given color.</p>",
           "parameters": [
             {
@@ -812,6 +852,7 @@
           "name": "equals",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Compares two color objects</p>",
           "parameters": [
             {
@@ -892,6 +933,7 @@
           "name": "create",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Generates a unique id.<br>\nBut just for the correctness: <strong>this is no Global Unique Identifier</strong>, it is just a random generator\nwith the output that looks like a GUID. <br>\nBut may be also useful.</p>",
           "parameters": [],
           "inherited": false,

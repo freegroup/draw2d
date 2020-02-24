@@ -1,7 +1,7 @@
 {
   "name": "canvas",
   "namespace": "draw2d.policy",
-  "description": "",
+  "description": "<p>Editpolicies for selection handling, highlighting, background rendering, snapTo behaviour.</p>",
   "access": "",
   "virtual": false,
   "classes": [
@@ -19,6 +19,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Creates a new selection policy for a canvas.</p>",
           "parameters": [],
           "inherited": false,
@@ -29,6 +30,7 @@
           "name": "select",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [],
           "inherited": false,
@@ -39,6 +41,7 @@
           "name": "setDecisionMode",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Set the selection handling mode to <b>intersection</b> or to <b>isInside</b>.</p>\n<ul>\n  <li>true = intersection, shapes must only touch the selection bounding box </li>\n  <li>false = isInside, shapes must complete inside the selection bounding box (default)</li>\n</ul>",
           "parameters": [
             {
@@ -58,6 +61,7 @@
           "name": "onMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -109,6 +113,7 @@
           "name": "onMouseDrag",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -176,6 +181,7 @@
           "name": "onMouseUp",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -227,6 +233,7 @@
           "name": "select",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Selects the given figure within the canvas. The policy must unselect already selected\nfigures or show any decorations.</p>",
           "parameters": [
             {
@@ -254,6 +261,7 @@
           "name": "unselect",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Unselect the given figure in the canvas and remove all resize handles</p>",
           "parameters": [
             {
@@ -281,6 +289,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is installed into the canvas.</p>",
           "parameters": [
             {
@@ -300,6 +309,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is deinstalled from the canvas</p>",
           "parameters": [
             {
@@ -319,6 +329,7 @@
           "name": "onClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user click on a figure.</p>",
           "parameters": [
             {
@@ -370,6 +381,7 @@
           "name": "onMouseMove",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -421,6 +433,7 @@
           "name": "onDoubleClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user double click on a figure.</p>",
           "parameters": [
             {
@@ -472,6 +485,7 @@
           "name": "onRightMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the user press the right mouse in the canvas.</p>",
           "parameters": [
             {
@@ -526,6 +540,7 @@
           "name": "onMouseWheel",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>called if the user uses the mouse wheel.</p>",
           "parameters": [
             {
@@ -581,6 +596,7 @@
           "name": "snap",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Adjust the coordinates to the given constraint.</p>",
           "parameters": [
             {
@@ -628,6 +644,7 @@
           "name": "createMonochromGif",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
@@ -675,6 +692,7 @@
           "name": "attr",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
           "parameters": [
             {
@@ -721,6 +739,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Creates a new Router object</p>",
           "parameters": [],
           "inherited": false,
@@ -731,6 +750,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is installed into the canvas.</p>",
           "parameters": [
             {
@@ -750,6 +770,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is deinstalled from the canvas</p>",
           "parameters": [
             {
@@ -769,6 +790,7 @@
           "name": "onClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user click on a figure.</p>",
           "parameters": [
             {
@@ -820,6 +842,7 @@
           "name": "onMouseMove",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -871,6 +894,7 @@
           "name": "onDoubleClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user double click on a figure.</p>",
           "parameters": [
             {
@@ -922,6 +946,7 @@
           "name": "onMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -973,6 +998,7 @@
           "name": "onMouseDrag",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -1040,6 +1066,7 @@
           "name": "onMouseUp",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -1091,6 +1118,7 @@
           "name": "onRightMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the user press the right mouse in the canvas.</p>",
           "parameters": [
             {
@@ -1145,6 +1173,7 @@
           "name": "onMouseWheel",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>called if the user uses the mouse wheel.</p>",
           "parameters": [
             {
@@ -1200,6 +1229,7 @@
           "name": "snap",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Adjust the coordinates to the given constraint.</p>",
           "parameters": [
             {
@@ -1247,6 +1277,7 @@
           "name": "createMonochromGif",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
@@ -1294,6 +1325,7 @@
           "name": "attr",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
           "parameters": [
             {
@@ -1340,6 +1372,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [],
           "inherited": false,
@@ -1350,6 +1383,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [],
           "inherited": false,
@@ -1360,6 +1394,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [],
           "inherited": false,
@@ -1370,6 +1405,7 @@
           "name": "onMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [],
           "inherited": false,
@@ -1380,6 +1416,7 @@
           "name": "onMouseMove",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [],
           "inherited": false,
@@ -1390,6 +1427,7 @@
           "name": "onMouseDrag",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [],
           "inherited": false,
@@ -1400,6 +1438,7 @@
           "name": "updatePorts",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Update all ports with the new calculated opacity in relation to the distance to the current\nmouse position</p>",
           "parameters": [
             {
@@ -1435,6 +1474,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is installed into the canvas.</p>",
           "parameters": [
             {
@@ -1454,6 +1494,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is deinstalled from the canvas</p>",
           "parameters": [
             {
@@ -1473,6 +1514,7 @@
           "name": "onClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user click on a figure.</p>",
           "parameters": [
             {
@@ -1524,6 +1566,7 @@
           "name": "onMouseMove",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -1575,6 +1618,7 @@
           "name": "onDoubleClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user double click on a figure.</p>",
           "parameters": [
             {
@@ -1626,6 +1670,7 @@
           "name": "onMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -1677,6 +1722,7 @@
           "name": "onMouseDrag",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -1744,6 +1790,7 @@
           "name": "onMouseUp",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -1795,6 +1842,7 @@
           "name": "onRightMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the user press the right mouse in the canvas.</p>",
           "parameters": [
             {
@@ -1849,6 +1897,7 @@
           "name": "onMouseWheel",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>called if the user uses the mouse wheel.</p>",
           "parameters": [
             {
@@ -1904,6 +1953,7 @@
           "name": "snap",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Adjust the coordinates to the given constraint.</p>",
           "parameters": [
             {
@@ -1951,6 +2001,7 @@
           "name": "createMonochromGif",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
@@ -1998,6 +2049,7 @@
           "name": "attr",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
           "parameters": [
             {
@@ -2046,6 +2098,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [],
           "inherited": false,
@@ -2056,6 +2109,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is installed into the canvas.</p>",
           "parameters": [
             {
@@ -2075,6 +2129,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is deinstalled from the canvas</p>",
           "parameters": [
             {
@@ -2094,6 +2149,7 @@
           "name": "onClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user click on a figure.</p>",
           "parameters": [
             {
@@ -2145,6 +2201,7 @@
           "name": "onMouseMove",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -2196,6 +2253,7 @@
           "name": "onDoubleClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user double click on a figure.</p>",
           "parameters": [
             {
@@ -2247,6 +2305,7 @@
           "name": "onMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -2298,6 +2357,7 @@
           "name": "onMouseDrag",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -2365,6 +2425,7 @@
           "name": "onMouseUp",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -2416,6 +2477,7 @@
           "name": "onRightMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the user press the right mouse in the canvas.</p>",
           "parameters": [
             {
@@ -2470,6 +2532,7 @@
           "name": "onMouseWheel",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>called if the user uses the mouse wheel.</p>",
           "parameters": [
             {
@@ -2525,6 +2588,7 @@
           "name": "snap",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Adjust the coordinates to the given constraint.</p>",
           "parameters": [
             {
@@ -2572,6 +2636,7 @@
           "name": "createMonochromGif",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
@@ -2619,6 +2684,7 @@
           "name": "attr",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
           "parameters": [
             {
@@ -2665,6 +2731,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [],
           "inherited": false,
@@ -2675,6 +2742,7 @@
           "name": "onKeyDown",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Callback if the user press a key.<br>\nThis implementation checks only if the <b>DEL</b> has been pressed and creates an\nCommandDelete if this happens.</p>",
           "parameters": [
             {
@@ -2718,6 +2786,7 @@
           "name": "onKeyUp",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Callback if the user release a key</p>",
           "parameters": [
             {
@@ -2761,6 +2830,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is installed into the canvas.</p>",
           "parameters": [
             {
@@ -2780,6 +2850,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is deinstalled from the canvas</p>",
           "parameters": [
             {
@@ -2799,6 +2870,7 @@
           "name": "onClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user click on a figure.</p>",
           "parameters": [
             {
@@ -2850,6 +2922,7 @@
           "name": "onMouseMove",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -2901,6 +2974,7 @@
           "name": "onDoubleClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user double click on a figure.</p>",
           "parameters": [
             {
@@ -2952,6 +3026,7 @@
           "name": "onMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -3003,6 +3078,7 @@
           "name": "onMouseDrag",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -3070,6 +3146,7 @@
           "name": "onMouseUp",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -3121,6 +3198,7 @@
           "name": "onRightMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the user press the right mouse in the canvas.</p>",
           "parameters": [
             {
@@ -3175,6 +3253,7 @@
           "name": "onMouseWheel",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>called if the user uses the mouse wheel.</p>",
           "parameters": [
             {
@@ -3230,6 +3309,7 @@
           "name": "snap",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Adjust the coordinates to the given constraint.</p>",
           "parameters": [
             {
@@ -3277,6 +3357,7 @@
           "name": "createMonochromGif",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
@@ -3324,6 +3405,7 @@
           "name": "attr",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
           "parameters": [
             {
@@ -3370,6 +3452,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [],
           "inherited": false,
@@ -3380,6 +3463,7 @@
           "name": "delegateTarget",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the user want connect a port with any kind draw2d.Figure.<br>\nReturn a non <b>null</b> value if the interceptor accept the connect event.<br>\n<br>\nIt is possible to delegate the drop event to another figure if the policy\nreturns another figure. This is usefull if a figure want to accept a port\ndrop event and delegates this drop event to another port.<br></p>",
           "parameters": [
             {
@@ -3411,6 +3495,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is installed into the canvas.</p>",
           "parameters": [
             {
@@ -3430,6 +3515,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is deinstalled from the canvas</p>",
           "parameters": [
             {
@@ -3449,6 +3535,7 @@
           "name": "onClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user click on a figure.</p>",
           "parameters": [
             {
@@ -3500,6 +3587,7 @@
           "name": "onMouseMove",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -3551,6 +3639,7 @@
           "name": "onDoubleClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user double click on a figure.</p>",
           "parameters": [
             {
@@ -3602,6 +3691,7 @@
           "name": "onMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -3653,6 +3743,7 @@
           "name": "onMouseDrag",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -3720,6 +3811,7 @@
           "name": "onMouseUp",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -3771,6 +3863,7 @@
           "name": "onRightMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the user press the right mouse in the canvas.</p>",
           "parameters": [
             {
@@ -3825,6 +3918,7 @@
           "name": "onMouseWheel",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>called if the user uses the mouse wheel.</p>",
           "parameters": [
             {
@@ -3880,6 +3974,7 @@
           "name": "snap",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Adjust the coordinates to the given constraint.</p>",
           "parameters": [
             {
@@ -3927,6 +4022,7 @@
           "name": "createMonochromGif",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
@@ -3974,6 +4070,7 @@
           "name": "attr",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
           "parameters": [
             {
@@ -4020,6 +4117,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [],
           "inherited": false,
@@ -4030,6 +4128,7 @@
           "name": "onKeyDown",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Callback if the user press a key</p>",
           "parameters": [
             {
@@ -4073,6 +4172,7 @@
           "name": "onKeyUp",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Callback if the user release a key</p>",
           "parameters": [
             {
@@ -4116,6 +4216,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is installed into the canvas.</p>",
           "parameters": [
             {
@@ -4135,6 +4236,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is deinstalled from the canvas</p>",
           "parameters": [
             {
@@ -4154,6 +4256,7 @@
           "name": "onClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user click on a figure.</p>",
           "parameters": [
             {
@@ -4205,6 +4308,7 @@
           "name": "onMouseMove",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -4256,6 +4360,7 @@
           "name": "onDoubleClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user double click on a figure.</p>",
           "parameters": [
             {
@@ -4307,6 +4412,7 @@
           "name": "onMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -4358,6 +4464,7 @@
           "name": "onMouseDrag",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -4425,6 +4532,7 @@
           "name": "onMouseUp",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -4476,6 +4584,7 @@
           "name": "onRightMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the user press the right mouse in the canvas.</p>",
           "parameters": [
             {
@@ -4530,6 +4639,7 @@
           "name": "onMouseWheel",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>called if the user uses the mouse wheel.</p>",
           "parameters": [
             {
@@ -4585,6 +4695,7 @@
           "name": "snap",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Adjust the coordinates to the given constraint.</p>",
           "parameters": [
             {
@@ -4632,6 +4743,7 @@
           "name": "createMonochromGif",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
@@ -4679,6 +4791,7 @@
           "name": "attr",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
           "parameters": [
             {
@@ -4725,6 +4838,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Creates a new fade out policy. Don't forget to install them into the canvas.</p>",
           "parameters": [],
           "inherited": false,
@@ -4735,6 +4849,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [],
           "inherited": false,
@@ -4745,6 +4860,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [],
           "inherited": false,
@@ -4755,6 +4871,7 @@
           "name": "onTimer",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Timerfucntion to show/hide the related ports</p>",
           "parameters": [],
           "inherited": false,
@@ -4765,6 +4882,7 @@
           "name": "onMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -4816,6 +4934,7 @@
           "name": "onMouseMove",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -4867,6 +4986,7 @@
           "name": "onMouseDrag",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -4934,6 +5054,7 @@
           "name": "onMouseUp",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -4985,6 +5106,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is installed into the canvas.</p>",
           "parameters": [
             {
@@ -5004,6 +5126,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is deinstalled from the canvas</p>",
           "parameters": [
             {
@@ -5023,6 +5146,7 @@
           "name": "onClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user click on a figure.</p>",
           "parameters": [
             {
@@ -5074,6 +5198,7 @@
           "name": "onDoubleClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user double click on a figure.</p>",
           "parameters": [
             {
@@ -5125,6 +5250,7 @@
           "name": "onRightMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the user press the right mouse in the canvas.</p>",
           "parameters": [
             {
@@ -5179,6 +5305,7 @@
           "name": "onMouseWheel",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>called if the user uses the mouse wheel.</p>",
           "parameters": [
             {
@@ -5234,6 +5361,7 @@
           "name": "snap",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Adjust the coordinates to the given constraint.</p>",
           "parameters": [
             {
@@ -5281,6 +5409,7 @@
           "name": "createMonochromGif",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
@@ -5328,6 +5457,7 @@
           "name": "attr",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
           "parameters": [
             {
@@ -5374,6 +5504,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [],
           "inherited": false,
@@ -5384,6 +5515,7 @@
           "name": "onMouseDrag",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [],
           "inherited": false,
@@ -5394,6 +5526,7 @@
           "name": "onMouseUp",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [],
           "inherited": false,
@@ -5404,6 +5537,7 @@
           "name": "select",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Selects the given figure within the canvas. The policy must unselect already selected\nfigures or show any decorations.</p>",
           "parameters": [
             {
@@ -5431,6 +5565,7 @@
           "name": "onMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -5482,6 +5617,7 @@
           "name": "onMouseDrag",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -5549,6 +5685,7 @@
           "name": "onMouseUp",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -5600,6 +5737,7 @@
           "name": "onClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user click on a figure.</p>",
           "parameters": [
             {
@@ -5651,6 +5789,7 @@
           "name": "onDoubleClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user double click on a figure.</p>",
           "parameters": [
             {
@@ -5702,6 +5841,7 @@
           "name": "unselect",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Unselect the given figure in the canvas and remove all resize handles</p>",
           "parameters": [
             {
@@ -5729,6 +5869,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is installed into the canvas.</p>",
           "parameters": [
             {
@@ -5748,6 +5889,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is deinstalled from the canvas</p>",
           "parameters": [
             {
@@ -5767,6 +5909,7 @@
           "name": "onMouseMove",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -5818,6 +5961,7 @@
           "name": "onRightMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the user press the right mouse in the canvas.</p>",
           "parameters": [
             {
@@ -5872,6 +6016,7 @@
           "name": "onMouseWheel",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>called if the user uses the mouse wheel.</p>",
           "parameters": [
             {
@@ -5927,6 +6072,7 @@
           "name": "snap",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Adjust the coordinates to the given constraint.</p>",
           "parameters": [
             {
@@ -5974,6 +6120,7 @@
           "name": "createMonochromGif",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
@@ -6021,6 +6168,7 @@
           "name": "attr",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
           "parameters": [
             {
@@ -6069,6 +6217,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [],
           "inherited": false,
@@ -6079,6 +6228,7 @@
           "name": "onKeyUp",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Callback if the user release a key</p>",
           "parameters": [
             {
@@ -6122,6 +6272,7 @@
           "name": "onKeyDown",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Callback if the user press a key down</p>",
           "parameters": [
             {
@@ -6165,6 +6316,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is installed into the canvas.</p>",
           "parameters": [
             {
@@ -6184,6 +6336,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is deinstalled from the canvas</p>",
           "parameters": [
             {
@@ -6203,6 +6356,7 @@
           "name": "onClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user click on a figure.</p>",
           "parameters": [
             {
@@ -6254,6 +6408,7 @@
           "name": "onMouseMove",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -6305,6 +6460,7 @@
           "name": "onDoubleClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user double click on a figure.</p>",
           "parameters": [
             {
@@ -6356,6 +6512,7 @@
           "name": "onMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -6407,6 +6564,7 @@
           "name": "onMouseDrag",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -6474,6 +6632,7 @@
           "name": "onMouseUp",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -6525,6 +6684,7 @@
           "name": "onRightMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the user press the right mouse in the canvas.</p>",
           "parameters": [
             {
@@ -6579,6 +6739,7 @@
           "name": "onMouseWheel",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>called if the user uses the mouse wheel.</p>",
           "parameters": [
             {
@@ -6634,6 +6795,7 @@
           "name": "snap",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Adjust the coordinates to the given constraint.</p>",
           "parameters": [
             {
@@ -6681,6 +6843,7 @@
           "name": "createMonochromGif",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
@@ -6728,6 +6891,7 @@
           "name": "attr",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
           "parameters": [
             {
@@ -6774,6 +6938,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Creates a new Router object</p>",
           "parameters": [],
           "inherited": false,
@@ -6784,6 +6949,7 @@
           "name": "onMouseDrag",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -6851,6 +7017,7 @@
           "name": "select",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Selects the given figure within the canvas. The policy must unselect already selected\nfigures or show any decorations.</p>",
           "parameters": [
             {
@@ -6878,6 +7045,7 @@
           "name": "onMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -6929,6 +7097,7 @@
           "name": "onMouseUp",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -6980,6 +7149,7 @@
           "name": "onClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user click on a figure.</p>",
           "parameters": [
             {
@@ -7031,6 +7201,7 @@
           "name": "onDoubleClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user double click on a figure.</p>",
           "parameters": [
             {
@@ -7082,6 +7253,7 @@
           "name": "unselect",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Unselect the given figure in the canvas and remove all resize handles</p>",
           "parameters": [
             {
@@ -7109,6 +7281,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is installed into the canvas.</p>",
           "parameters": [
             {
@@ -7128,6 +7301,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is deinstalled from the canvas</p>",
           "parameters": [
             {
@@ -7147,6 +7321,7 @@
           "name": "onMouseMove",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -7198,6 +7373,7 @@
           "name": "onRightMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the user press the right mouse in the canvas.</p>",
           "parameters": [
             {
@@ -7252,6 +7428,7 @@
           "name": "onMouseWheel",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>called if the user uses the mouse wheel.</p>",
           "parameters": [
             {
@@ -7307,6 +7484,7 @@
           "name": "snap",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Adjust the coordinates to the given constraint.</p>",
           "parameters": [
             {
@@ -7354,6 +7532,7 @@
           "name": "createMonochromGif",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
@@ -7401,6 +7580,7 @@
           "name": "attr",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
           "parameters": [
             {
@@ -7447,6 +7627,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Creates a new Router object</p>",
           "parameters": [],
           "inherited": false,
@@ -7457,6 +7638,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the host if the policy has been installed.</p>",
           "parameters": [
             {
@@ -7476,6 +7658,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the host if the policy has been uninstalled.</p>",
           "parameters": [
             {
@@ -7495,6 +7678,7 @@
           "name": "onMouseDrag",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -7562,6 +7746,7 @@
           "name": "select",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Selects the given figure within the canvas. The policy must unselect already selected\nfigures or show any decorations.</p>",
           "parameters": [
             {
@@ -7589,6 +7774,7 @@
           "name": "unselect",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Unselect the given figure in the canvas and remove all resize handles</p>",
           "parameters": [
             {
@@ -7616,6 +7802,7 @@
           "name": "onClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user click on a figure.</p>",
           "parameters": [
             {
@@ -7667,6 +7854,7 @@
           "name": "onMouseMove",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -7718,6 +7906,7 @@
           "name": "onDoubleClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user double click on a figure.</p>",
           "parameters": [
             {
@@ -7769,6 +7958,7 @@
           "name": "onMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -7820,6 +8010,7 @@
           "name": "onMouseUp",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -7871,6 +8062,7 @@
           "name": "onRightMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the user press the right mouse in the canvas.</p>",
           "parameters": [
             {
@@ -7925,6 +8117,7 @@
           "name": "onMouseWheel",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>called if the user uses the mouse wheel.</p>",
           "parameters": [
             {
@@ -7980,6 +8173,7 @@
           "name": "snap",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Adjust the coordinates to the given constraint.</p>",
           "parameters": [
             {
@@ -8027,6 +8221,7 @@
           "name": "createMonochromGif",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
@@ -8074,6 +8269,7 @@
           "name": "attr",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
           "parameters": [
             {
@@ -8120,6 +8316,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Creates a new selection policy</p>",
           "parameters": [],
           "inherited": false,
@@ -8130,6 +8327,7 @@
           "name": "select",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Selects the given figure within the canvas. The policy must unselect already selected\nfigures or show any decorations.</p>",
           "parameters": [
             {
@@ -8157,6 +8355,7 @@
           "name": "unselect",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Unselect the given figure in the canvas and remove all resize handles</p>",
           "parameters": [
             {
@@ -8184,6 +8383,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is installed into the canvas.</p>",
           "parameters": [
             {
@@ -8203,6 +8403,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is deinstalled from the canvas</p>",
           "parameters": [
             {
@@ -8222,6 +8423,7 @@
           "name": "onClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user click on a figure.</p>",
           "parameters": [
             {
@@ -8273,6 +8475,7 @@
           "name": "onMouseMove",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -8324,6 +8527,7 @@
           "name": "onDoubleClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user double click on a figure.</p>",
           "parameters": [
             {
@@ -8375,6 +8579,7 @@
           "name": "onMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -8426,6 +8631,7 @@
           "name": "onMouseDrag",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -8493,6 +8699,7 @@
           "name": "onMouseUp",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -8544,6 +8751,7 @@
           "name": "onRightMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the user press the right mouse in the canvas.</p>",
           "parameters": [
             {
@@ -8598,6 +8806,7 @@
           "name": "onMouseWheel",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>called if the user uses the mouse wheel.</p>",
           "parameters": [
             {
@@ -8653,6 +8862,7 @@
           "name": "snap",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Adjust the coordinates to the given constraint.</p>",
           "parameters": [
             {
@@ -8700,6 +8910,7 @@
           "name": "createMonochromGif",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
@@ -8747,6 +8958,7 @@
           "name": "attr",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
           "parameters": [
             {
@@ -8793,6 +9005,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Creates a new constraint policy for snap to grid</p>",
           "parameters": [
             {
@@ -8812,6 +9025,7 @@
           "name": "showGrid",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>paint the grid into the canvas</p>",
           "parameters": [],
           "inherited": false,
@@ -8822,6 +9036,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is installed into the canvas.</p>",
           "parameters": [
             {
@@ -8841,6 +9056,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is deinstalled from the canvas</p>",
           "parameters": [
             {
@@ -8860,6 +9076,7 @@
           "name": "onClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user click on a figure.</p>",
           "parameters": [
             {
@@ -8911,6 +9128,7 @@
           "name": "onMouseMove",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -8962,6 +9180,7 @@
           "name": "onDoubleClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user double click on a figure.</p>",
           "parameters": [
             {
@@ -9013,6 +9232,7 @@
           "name": "onMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -9064,6 +9284,7 @@
           "name": "onMouseDrag",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -9131,6 +9352,7 @@
           "name": "onMouseUp",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -9182,6 +9404,7 @@
           "name": "onRightMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the user press the right mouse in the canvas.</p>",
           "parameters": [
             {
@@ -9236,6 +9459,7 @@
           "name": "onMouseWheel",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>called if the user uses the mouse wheel.</p>",
           "parameters": [
             {
@@ -9291,6 +9515,7 @@
           "name": "snap",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Adjust the coordinates to the given constraint.</p>",
           "parameters": [
             {
@@ -9338,6 +9563,7 @@
           "name": "createMonochromGif",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
@@ -9385,6 +9611,7 @@
           "name": "attr",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
           "parameters": [
             {
@@ -9433,6 +9660,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Creates a new constraint policy for snap to grid</p>",
           "parameters": [
             {
@@ -9452,6 +9680,7 @@
           "name": "setGridColor",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Set the grid color</p>",
           "parameters": [
             {
@@ -9474,6 +9703,7 @@
           "name": "setGrid",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Set a new grid width/height</p>",
           "parameters": [
             {
@@ -9493,6 +9723,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is installed into the canvas.</p>",
           "parameters": [
             {
@@ -9512,6 +9743,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is deinstalled from the canvas</p>",
           "parameters": [
             {
@@ -9531,6 +9763,7 @@
           "name": "onClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user click on a figure.</p>",
           "parameters": [
             {
@@ -9582,6 +9815,7 @@
           "name": "onMouseMove",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -9633,6 +9867,7 @@
           "name": "onDoubleClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user double click on a figure.</p>",
           "parameters": [
             {
@@ -9684,6 +9919,7 @@
           "name": "onMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -9735,6 +9971,7 @@
           "name": "onMouseDrag",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -9802,6 +10039,7 @@
           "name": "onMouseUp",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -9853,6 +10091,7 @@
           "name": "onRightMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the user press the right mouse in the canvas.</p>",
           "parameters": [
             {
@@ -9907,6 +10146,7 @@
           "name": "onMouseWheel",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>called if the user uses the mouse wheel.</p>",
           "parameters": [
             {
@@ -9962,6 +10202,7 @@
           "name": "snap",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Adjust the coordinates to the given constraint.</p>",
           "parameters": [
             {
@@ -10009,6 +10250,7 @@
           "name": "createMonochromGif",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
@@ -10056,6 +10298,7 @@
           "name": "attr",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
           "parameters": [
             {
@@ -10104,6 +10347,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>show a dot grid in the canvas for decoration.</p>",
           "parameters": [
             {
@@ -10142,6 +10386,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is installed into the canvas.</p>",
           "parameters": [
             {
@@ -10161,6 +10406,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is deinstalled from the canvas</p>",
           "parameters": [
             {
@@ -10180,6 +10426,7 @@
           "name": "onClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user click on a figure.</p>",
           "parameters": [
             {
@@ -10231,6 +10478,7 @@
           "name": "onMouseMove",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -10282,6 +10530,7 @@
           "name": "onDoubleClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user double click on a figure.</p>",
           "parameters": [
             {
@@ -10333,6 +10582,7 @@
           "name": "onMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -10384,6 +10634,7 @@
           "name": "onMouseDrag",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -10451,6 +10702,7 @@
           "name": "onMouseUp",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -10502,6 +10754,7 @@
           "name": "onRightMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the user press the right mouse in the canvas.</p>",
           "parameters": [
             {
@@ -10556,6 +10809,7 @@
           "name": "onMouseWheel",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>called if the user uses the mouse wheel.</p>",
           "parameters": [
             {
@@ -10611,6 +10865,7 @@
           "name": "snap",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Adjust the coordinates to the given constraint.</p>",
           "parameters": [
             {
@@ -10658,6 +10913,7 @@
           "name": "createMonochromGif",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
@@ -10705,6 +10961,7 @@
           "name": "attr",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
           "parameters": [
             {
@@ -10753,6 +11010,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Creates a new constraint policy for snap to grid</p>",
           "parameters": [
             {
@@ -10772,6 +11030,7 @@
           "name": "setGridColor",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Set the grid color</p>",
           "parameters": [
             {
@@ -10794,6 +11053,7 @@
           "name": "setGrid",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Set a new grid width/height</p>",
           "parameters": [
             {
@@ -10813,6 +11073,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is installed into the canvas.</p>",
           "parameters": [
             {
@@ -10832,6 +11093,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is deinstalled from the canvas</p>",
           "parameters": [
             {
@@ -10851,6 +11113,7 @@
           "name": "onClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user click on a figure.</p>",
           "parameters": [
             {
@@ -10902,6 +11165,7 @@
           "name": "onMouseMove",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -10953,6 +11217,7 @@
           "name": "onDoubleClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user double click on a figure.</p>",
           "parameters": [
             {
@@ -11004,6 +11269,7 @@
           "name": "onMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -11055,6 +11321,7 @@
           "name": "onMouseDrag",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -11122,6 +11389,7 @@
           "name": "onMouseUp",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -11173,6 +11441,7 @@
           "name": "onRightMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the user press the right mouse in the canvas.</p>",
           "parameters": [
             {
@@ -11227,6 +11496,7 @@
           "name": "onMouseWheel",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>called if the user uses the mouse wheel.</p>",
           "parameters": [
             {
@@ -11282,6 +11552,7 @@
           "name": "snap",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Adjust the coordinates to the given constraint.</p>",
           "parameters": [
             {
@@ -11329,6 +11600,7 @@
           "name": "createMonochromGif",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
@@ -11376,6 +11648,7 @@
           "name": "attr",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
           "parameters": [
             {
@@ -11424,6 +11697,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Creates a new Router object</p>",
           "parameters": [],
           "inherited": false,
@@ -11434,6 +11708,7 @@
           "name": "select",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [],
           "inherited": false,
@@ -11444,6 +11719,7 @@
           "name": "onMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -11495,6 +11771,7 @@
           "name": "onMouseDrag",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -11562,6 +11839,7 @@
           "name": "onMouseUp",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -11613,6 +11891,7 @@
           "name": "onClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user click on a figure.</p>",
           "parameters": [
             {
@@ -11664,6 +11943,7 @@
           "name": "onDoubleClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user double click on a figure.</p>",
           "parameters": [
             {
@@ -11715,6 +11995,7 @@
           "name": "select",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Selects the given figure within the canvas. The policy must unselect already selected\nfigures or show any decorations.</p>",
           "parameters": [
             {
@@ -11742,6 +12023,7 @@
           "name": "unselect",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Unselect the given figure in the canvas and remove all resize handles</p>",
           "parameters": [
             {
@@ -11769,6 +12051,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is installed into the canvas.</p>",
           "parameters": [
             {
@@ -11788,6 +12071,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is deinstalled from the canvas</p>",
           "parameters": [
             {
@@ -11807,6 +12091,7 @@
           "name": "onMouseMove",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -11858,6 +12143,7 @@
           "name": "onRightMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the user press the right mouse in the canvas.</p>",
           "parameters": [
             {
@@ -11912,6 +12198,7 @@
           "name": "onMouseWheel",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>called if the user uses the mouse wheel.</p>",
           "parameters": [
             {
@@ -11967,6 +12254,7 @@
           "name": "snap",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Adjust the coordinates to the given constraint.</p>",
           "parameters": [
             {
@@ -12014,6 +12302,7 @@
           "name": "createMonochromGif",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
@@ -12061,6 +12350,7 @@
           "name": "attr",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
           "parameters": [
             {
@@ -12107,6 +12397,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Creates a new constraint policy for snap to geometry</p>",
           "parameters": [],
           "inherited": false,
@@ -12117,6 +12408,7 @@
           "name": "onMouseUp",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -12168,6 +12460,7 @@
           "name": "snap",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Adjust the coordinates to the canvas neighbours</p>",
           "parameters": [
             {
@@ -12215,6 +12508,7 @@
           "name": "hideHorizontalGuides",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Hide the horizontal snapping guides</p>",
           "parameters": [
             {
@@ -12234,6 +12528,7 @@
           "name": "hideVerticalGuides",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Hide the horizontal snapüing guides</p>",
           "parameters": [
             {
@@ -12253,6 +12548,7 @@
           "name": "setLineColor",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Set the color of the snap line.</p>\n<pre><code>// Alternatively you can use the attr method:\npolicy.attr({\n  lineColor: color\n});</code></pre>",
           "parameters": [
             {
@@ -12275,6 +12571,7 @@
           "name": "getLineColor",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Return the current paint color.</p>",
           "parameters": [],
           "inherited": true,
@@ -12289,6 +12586,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is installed into the canvas.</p>",
           "parameters": [
             {
@@ -12308,6 +12606,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is deinstalled from the canvas</p>",
           "parameters": [
             {
@@ -12327,6 +12626,7 @@
           "name": "onClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user click on a figure.</p>",
           "parameters": [
             {
@@ -12378,6 +12678,7 @@
           "name": "onMouseMove",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -12429,6 +12730,7 @@
           "name": "onDoubleClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user double click on a figure.</p>",
           "parameters": [
             {
@@ -12480,6 +12782,7 @@
           "name": "onMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -12531,6 +12834,7 @@
           "name": "onMouseDrag",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -12598,6 +12902,7 @@
           "name": "onRightMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the user press the right mouse in the canvas.</p>",
           "parameters": [
             {
@@ -12652,6 +12957,7 @@
           "name": "onMouseWheel",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>called if the user uses the mouse wheel.</p>",
           "parameters": [
             {
@@ -12707,6 +13013,7 @@
           "name": "createMonochromGif",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
@@ -12754,6 +13061,7 @@
           "name": "attr",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
           "parameters": [
             {
@@ -12800,6 +13108,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Creates a new constraint policy for snap to grid</p>",
           "parameters": [
             {
@@ -12819,6 +13128,7 @@
           "name": "snap",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Applies a snapping correction to the given result.</p>",
           "parameters": [
             {
@@ -12862,6 +13172,7 @@
           "name": "setGridColor",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Set the grid color</p>",
           "parameters": [
             {
@@ -12884,6 +13195,7 @@
           "name": "setGrid",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Set a new grid width/height</p>",
           "parameters": [
             {
@@ -12903,6 +13215,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is installed into the canvas.</p>",
           "parameters": [
             {
@@ -12922,6 +13235,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is deinstalled from the canvas</p>",
           "parameters": [
             {
@@ -12941,6 +13255,7 @@
           "name": "onClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user click on a figure.</p>",
           "parameters": [
             {
@@ -12992,6 +13307,7 @@
           "name": "onMouseMove",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -13043,6 +13359,7 @@
           "name": "onDoubleClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user double click on a figure.</p>",
           "parameters": [
             {
@@ -13094,6 +13411,7 @@
           "name": "onMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -13145,6 +13463,7 @@
           "name": "onMouseDrag",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -13212,6 +13531,7 @@
           "name": "onMouseUp",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -13263,6 +13583,7 @@
           "name": "onRightMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the user press the right mouse in the canvas.</p>",
           "parameters": [
             {
@@ -13317,6 +13638,7 @@
           "name": "onMouseWheel",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>called if the user uses the mouse wheel.</p>",
           "parameters": [
             {
@@ -13372,6 +13694,7 @@
           "name": "createMonochromGif",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
@@ -13419,6 +13742,7 @@
           "name": "attr",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
           "parameters": [
             {
@@ -13465,6 +13789,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Creates a new constraint policy for snap to grid</p>",
           "parameters": [],
           "inherited": false,
@@ -13475,6 +13800,7 @@
           "name": "setLineColor",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Set the color of the snap line.</p>\n<pre><code>// Alternatively you can use the attr method:\npolicy.attr({\n  lineColor: color\n});</code></pre>",
           "parameters": [
             {
@@ -13497,6 +13823,7 @@
           "name": "getLineColor",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Return the current paint color.</p>",
           "parameters": [],
           "inherited": false,
@@ -13511,6 +13838,7 @@
           "name": "snap",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Adjust the coordinates to the given constraint of the policy.</p>",
           "parameters": [
             {
@@ -13554,6 +13882,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is installed into the canvas.</p>",
           "parameters": [
             {
@@ -13573,6 +13902,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is deinstalled from the canvas</p>",
           "parameters": [
             {
@@ -13592,6 +13922,7 @@
           "name": "onClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user click on a figure.</p>",
           "parameters": [
             {
@@ -13643,6 +13974,7 @@
           "name": "onMouseMove",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -13694,6 +14026,7 @@
           "name": "onDoubleClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user double click on a figure.</p>",
           "parameters": [
             {
@@ -13745,6 +14078,7 @@
           "name": "onMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -13796,6 +14130,7 @@
           "name": "onMouseDrag",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -13863,6 +14198,7 @@
           "name": "onMouseUp",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -13914,6 +14250,7 @@
           "name": "onRightMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the user press the right mouse in the canvas.</p>",
           "parameters": [
             {
@@ -13968,6 +14305,7 @@
           "name": "onMouseWheel",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>called if the user uses the mouse wheel.</p>",
           "parameters": [
             {
@@ -14023,6 +14361,7 @@
           "name": "createMonochromGif",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
@@ -14070,6 +14409,7 @@
           "name": "attr",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
           "parameters": [
             {
@@ -14116,6 +14456,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Creates a new constraint policy for snap to geometry</p>",
           "parameters": [],
           "inherited": false,
@@ -14126,6 +14467,7 @@
           "name": "onMouseUp",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -14177,6 +14519,7 @@
           "name": "snap",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Adjust the coordinates to the canvas neighbours</p>",
           "parameters": [
             {
@@ -14224,6 +14567,7 @@
           "name": "snapRectangle",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>calculates the snapped position of the rectangle.</p>",
           "parameters": [
             {
@@ -14247,6 +14591,7 @@
           "name": "setLineColor",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Set the color of the snap line.</p>\n<pre><code>// Alternatively you can use the attr method:\npolicy.attr({\n  lineColor: color\n});</code></pre>",
           "parameters": [
             {
@@ -14269,6 +14614,7 @@
           "name": "getLineColor",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Return the current paint color.</p>",
           "parameters": [],
           "inherited": true,
@@ -14283,6 +14629,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is installed into the canvas.</p>",
           "parameters": [
             {
@@ -14302,6 +14649,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is deinstalled from the canvas</p>",
           "parameters": [
             {
@@ -14321,6 +14669,7 @@
           "name": "onClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user click on a figure.</p>",
           "parameters": [
             {
@@ -14372,6 +14721,7 @@
           "name": "onMouseMove",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -14423,6 +14773,7 @@
           "name": "onDoubleClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user double click on a figure.</p>",
           "parameters": [
             {
@@ -14474,6 +14825,7 @@
           "name": "onMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -14525,6 +14877,7 @@
           "name": "onMouseDrag",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -14592,6 +14945,7 @@
           "name": "onRightMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the user press the right mouse in the canvas.</p>",
           "parameters": [
             {
@@ -14646,6 +15000,7 @@
           "name": "onMouseWheel",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>called if the user uses the mouse wheel.</p>",
           "parameters": [
             {
@@ -14701,6 +15056,7 @@
           "name": "createMonochromGif",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
@@ -14748,6 +15104,7 @@
           "name": "attr",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
           "parameters": [
             {
@@ -14794,6 +15151,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Creates a new constraint policy for snap to grid</p>",
           "parameters": [
             {
@@ -14813,6 +15171,7 @@
           "name": "snap",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Applies a snapping correction to the given result.</p>",
           "parameters": [
             {
@@ -14856,6 +15215,7 @@
           "name": "setGridColor",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Set the grid color</p>",
           "parameters": [
             {
@@ -14878,6 +15238,7 @@
           "name": "setGrid",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Set a new grid width/height</p>",
           "parameters": [
             {
@@ -14897,6 +15258,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is installed into the canvas.</p>",
           "parameters": [
             {
@@ -14916,6 +15278,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is deinstalled from the canvas</p>",
           "parameters": [
             {
@@ -14935,6 +15298,7 @@
           "name": "onClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user click on a figure.</p>",
           "parameters": [
             {
@@ -14986,6 +15350,7 @@
           "name": "onMouseMove",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -15037,6 +15402,7 @@
           "name": "onDoubleClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user double click on a figure.</p>",
           "parameters": [
             {
@@ -15088,6 +15454,7 @@
           "name": "onMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -15139,6 +15506,7 @@
           "name": "onMouseDrag",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -15206,6 +15574,7 @@
           "name": "onMouseUp",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -15257,6 +15626,7 @@
           "name": "onRightMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the user press the right mouse in the canvas.</p>",
           "parameters": [
             {
@@ -15311,6 +15681,7 @@
           "name": "onMouseWheel",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>called if the user uses the mouse wheel.</p>",
           "parameters": [
             {
@@ -15366,6 +15737,7 @@
           "name": "createMonochromGif",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
@@ -15413,6 +15785,7 @@
           "name": "attr",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
           "parameters": [
             {
@@ -15459,6 +15832,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Creates a new constraint policy for snap to geometry</p>",
           "parameters": [],
           "inherited": false,
@@ -15469,6 +15843,7 @@
           "name": "onMouseUp",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -15520,6 +15895,7 @@
           "name": "snap",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Adjust the coordinates to the canvas neighbours</p>",
           "parameters": [
             {
@@ -15567,6 +15943,7 @@
           "name": "hideHorizontalGuides",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Hide the horizontal snaping guides</p>",
           "parameters": [
             {
@@ -15586,6 +15963,7 @@
           "name": "setLineColor",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Set the color of the snap line.</p>\n<pre><code>// Alternatively you can use the attr method:\npolicy.attr({\n  lineColor: color\n});</code></pre>",
           "parameters": [
             {
@@ -15608,6 +15986,7 @@
           "name": "getLineColor",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Return the current paint color.</p>",
           "parameters": [],
           "inherited": true,
@@ -15622,6 +16001,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is installed into the canvas.</p>",
           "parameters": [
             {
@@ -15641,6 +16021,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is deinstalled from the canvas</p>",
           "parameters": [
             {
@@ -15660,6 +16041,7 @@
           "name": "onClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user click on a figure.</p>",
           "parameters": [
             {
@@ -15711,6 +16093,7 @@
           "name": "onMouseMove",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -15762,6 +16145,7 @@
           "name": "onDoubleClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user double click on a figure.</p>",
           "parameters": [
             {
@@ -15813,6 +16197,7 @@
           "name": "onMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -15864,6 +16249,7 @@
           "name": "onMouseDrag",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -15931,6 +16317,7 @@
           "name": "onRightMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the user press the right mouse in the canvas.</p>",
           "parameters": [
             {
@@ -15985,6 +16372,7 @@
           "name": "onMouseWheel",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>called if the user uses the mouse wheel.</p>",
           "parameters": [
             {
@@ -16040,6 +16428,7 @@
           "name": "createMonochromGif",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
@@ -16087,6 +16476,7 @@
           "name": "attr",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
           "parameters": [
             {
@@ -16133,6 +16523,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Creates a new constraint policy for snap to geometry</p>",
           "parameters": [],
           "inherited": false,
@@ -16143,6 +16534,7 @@
           "name": "onMouseUp",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -16194,6 +16586,7 @@
           "name": "snap",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Adjust the coordinates to the canvas neighbours</p>",
           "parameters": [
             {
@@ -16241,6 +16634,7 @@
           "name": "setLineColor",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Set the color of the snap line.</p>\n<pre><code>// Alternatively you can use the attr method:\npolicy.attr({\n  lineColor: color\n});</code></pre>",
           "parameters": [
             {
@@ -16263,6 +16657,7 @@
           "name": "getLineColor",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Return the current paint color.</p>",
           "parameters": [],
           "inherited": true,
@@ -16277,6 +16672,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is installed into the canvas.</p>",
           "parameters": [
             {
@@ -16296,6 +16692,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is deinstalled from the canvas</p>",
           "parameters": [
             {
@@ -16315,6 +16712,7 @@
           "name": "onClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user click on a figure.</p>",
           "parameters": [
             {
@@ -16366,6 +16764,7 @@
           "name": "onMouseMove",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -16417,6 +16816,7 @@
           "name": "onDoubleClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user double click on a figure.</p>",
           "parameters": [
             {
@@ -16468,6 +16868,7 @@
           "name": "onMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -16519,6 +16920,7 @@
           "name": "onMouseDrag",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -16586,6 +16988,7 @@
           "name": "onRightMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the user press the right mouse in the canvas.</p>",
           "parameters": [
             {
@@ -16640,6 +17043,7 @@
           "name": "onMouseWheel",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>called if the user uses the mouse wheel.</p>",
           "parameters": [
             {
@@ -16695,6 +17099,7 @@
           "name": "createMonochromGif",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
@@ -16742,6 +17147,7 @@
           "name": "attr",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
           "parameters": [
             {
@@ -16788,6 +17194,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [],
           "inherited": false,
@@ -16798,6 +17205,7 @@
           "name": "onMouseWheel",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>called if the user uses the mouse wheel.</p>",
           "parameters": [
             {
@@ -16853,6 +17261,7 @@
           "name": "setZoom",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Set the new zoom level of the canvas.</p>",
           "parameters": [
             {
@@ -16880,6 +17289,7 @@
           "name": "_zoom",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -16907,6 +17317,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is installed into the canvas.</p>",
           "parameters": [
             {
@@ -16926,6 +17337,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is deinstalled from the canvas</p>",
           "parameters": [
             {
@@ -16945,6 +17357,7 @@
           "name": "onClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user click on a figure.</p>",
           "parameters": [
             {
@@ -16996,6 +17409,7 @@
           "name": "onMouseMove",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -17047,6 +17461,7 @@
           "name": "onDoubleClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user double click on a figure.</p>",
           "parameters": [
             {
@@ -17098,6 +17513,7 @@
           "name": "onMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -17149,6 +17565,7 @@
           "name": "onMouseDrag",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -17216,6 +17633,7 @@
           "name": "onMouseUp",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -17267,6 +17685,7 @@
           "name": "onRightMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the user press the right mouse in the canvas.</p>",
           "parameters": [
             {
@@ -17321,6 +17740,7 @@
           "name": "snap",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Adjust the coordinates to the given constraint.</p>",
           "parameters": [
             {
@@ -17368,6 +17788,7 @@
           "name": "createMonochromGif",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
@@ -17415,6 +17836,7 @@
           "name": "attr",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
           "parameters": [
             {
@@ -17463,6 +17885,7 @@
           "name": "init",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [],
           "inherited": false,
@@ -17473,6 +17896,7 @@
           "name": "setZoom",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Set the new zoom factor for the canvas. The value must be between [0.01..10]</p>\n<pre><code>// you can register an eventhandler to listen to the zoom factor of the canvas.\n</code></pre>\n<p>//\ncanvas.on(&quot;zoom&quot;, function(emitterFigure, zoomData){\nalert(&quot;canvas zoomed to:&quot;+zoomData.factor);\n});</p>",
           "parameters": [
             {
@@ -17500,6 +17924,7 @@
           "name": "onInstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is installed into the canvas.</p>",
           "parameters": [
             {
@@ -17519,6 +17944,7 @@
           "name": "onUninstall",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the policy is deinstalled from the canvas</p>",
           "parameters": [
             {
@@ -17538,6 +17964,7 @@
           "name": "onClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user click on a figure.</p>",
           "parameters": [
             {
@@ -17589,6 +18016,7 @@
           "name": "onMouseMove",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -17640,6 +18068,7 @@
           "name": "onDoubleClick",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called by the canvas if the user double click on a figure.</p>",
           "parameters": [
             {
@@ -17691,6 +18120,7 @@
           "name": "onMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -17742,6 +18172,7 @@
           "name": "onMouseDrag",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -17809,6 +18240,7 @@
           "name": "onMouseUp",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "",
           "parameters": [
             {
@@ -17860,6 +18292,7 @@
           "name": "onRightMouseDown",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Called if the user press the right mouse in the canvas.</p>",
           "parameters": [
             {
@@ -17914,6 +18347,7 @@
           "name": "onMouseWheel",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>called if the user uses the mouse wheel.</p>",
           "parameters": [
             {
@@ -17969,6 +18403,7 @@
           "name": "snap",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Adjust the coordinates to the given constraint.</p>",
           "parameters": [
             {
@@ -18016,6 +18451,7 @@
           "name": "createMonochromGif",
           "access": "private",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
@@ -18063,6 +18499,7 @@
           "name": "attr",
           "access": "",
           "virtual": false,
+          "deprecated": "",
           "description": "<p>Read or set object attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
           "parameters": [
             {
