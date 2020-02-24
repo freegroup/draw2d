@@ -2342,93 +2342,417 @@ const routes = [
       {
         path: '/examples/section0',
         props: { index: 0 },
-        component: () => import(/* webpackChunkName: "example_section0" */ '../views/example_section.vue'),
-        children: [
-        ]
+        component: () => import(/* webpackChunkName: "example_section0" */ '../views/example_section.vue')
       },
       {
         path: '/examples/section1',
         props: { index: 1 },
-        component: () => import(/* webpackChunkName: "example_section1" */ '../views/example_section.vue'),
-        children: [
-        ]
+        component: () => import(/* webpackChunkName: "example_section1" */ '../views/example_section.vue')
       },
       {
         path: '/examples/section2',
         props: { index: 2 },
-        component: () => import(/* webpackChunkName: "example_section2" */ '../views/example_section.vue'),
-        children: [
-        ]
+        component: () => import(/* webpackChunkName: "example_section2" */ '../views/example_section.vue')
       },
       {
         path: '/examples/section3',
         props: { index: 3 },
-        component: () => import(/* webpackChunkName: "example_section3" */ '../views/example_section.vue'),
-        children: [
-        ]
+        component: () => import(/* webpackChunkName: "example_section3" */ '../views/example_section.vue')
       },
       {
         path: '/examples/section4',
         props: { index: 4 },
-        component: () => import(/* webpackChunkName: "example_section4" */ '../views/example_section.vue'),
-        children: [
-        ]
+        component: () => import(/* webpackChunkName: "example_section4" */ '../views/example_section.vue')
       },
       {
         path: '/examples/section5',
         props: { index: 5 },
-        component: () => import(/* webpackChunkName: "example_section5" */ '../views/example_section.vue'),
-        children: [
-        ]
+        component: () => import(/* webpackChunkName: "example_section5" */ '../views/example_section.vue')
       },
       {
         path: '/examples/section6',
         props: { index: 6 },
-        component: () => import(/* webpackChunkName: "example_section6" */ '../views/example_section.vue'),
-        children: [
-        ]
+        component: () => import(/* webpackChunkName: "example_section6" */ '../views/example_section.vue')
       },
       {
         path: '/examples/section7',
         props: { index: 7 },
-        component: () => import(/* webpackChunkName: "example_section7" */ '../views/example_section.vue'),
-        children: [
-        ]
+        component: () => import(/* webpackChunkName: "example_section7" */ '../views/example_section.vue')
       },
       {
         path: '/examples/section8',
         props: { index: 8 },
-        component: () => import(/* webpackChunkName: "example_section8" */ '../views/example_section.vue'),
-        children: [
-        ]
+        component: () => import(/* webpackChunkName: "example_section8" */ '../views/example_section.vue')
       },
       {
         path: '/examples/section9',
         props: { index: 9 },
-        component: () => import(/* webpackChunkName: "example_section9" */ '../views/example_section.vue'),
-        children: [
-        ]
+        component: () => import(/* webpackChunkName: "example_section9" */ '../views/example_section.vue')
       },
       {
         path: '/examples/section10',
         props: { index: 10 },
-        component: () => import(/* webpackChunkName: "example_section10" */ '../views/example_section.vue'),
-        children: [
-        ]
+        component: () => import(/* webpackChunkName: "example_section10" */ '../views/example_section.vue')
       },
       {
         path: '/examples/section11',
         props: { index: 11 },
-        component: () => import(/* webpackChunkName: "example_section11" */ '../views/example_section.vue'),
-        children: [
-        ]
+        component: () => import(/* webpackChunkName: "example_section11" */ '../views/example_section.vue')
       },
       {
-        path: '/examples/section12',
-        props: { index: 12 },
-        component: () => import(/* webpackChunkName: "example_section12" */ '../views/example_section.vue'),
-        children: [
-        ]
+        path: '/examples/galerie_shape_basic',
+        props: { section: 0, example: 0 },
+        component: () => import(/* webpackChunkName: "example_galerie_shape_basic" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/galerie_shape_diagram',
+        props: { section: 0, example: 1 },
+        component: () => import(/* webpackChunkName: "example_galerie_shape_diagram" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/galerie_shape_analog',
+        props: { section: 0, example: 2 },
+        component: () => import(/* webpackChunkName: "example_galerie_shape_analog" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/galerie_shape_widget',
+        props: { section: 0, example: 3 },
+        component: () => import(/* webpackChunkName: "example_galerie_shape_widget" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/galerie_shape_icon',
+        props: { section: 0, example: 4 },
+        component: () => import(/* webpackChunkName: "example_galerie_shape_icon" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/galerie_shape_node',
+        props: { section: 0, example: 5 },
+        component: () => import(/* webpackChunkName: "example_galerie_shape_node" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/composite_raft',
+        props: { section: 1, example: 0 },
+        component: () => import(/* webpackChunkName: "example_composite_raft" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/composite_group',
+        props: { section: 1, example: 1 },
+        component: () => import(/* webpackChunkName: "example_composite_group" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/composite_jailhouse',
+        props: { section: 1, example: 2 },
+        component: () => import(/* webpackChunkName: "example_composite_jailhouse" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/shape_custom_simple',
+        props: { section: 2, example: 0 },
+        component: () => import(/* webpackChunkName: "example_shape_custom_simple" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/shape_timer',
+        props: { section: 2, example: 1 },
+        component: () => import(/* webpackChunkName: "example_shape_timer" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/shape_anim_circle',
+        props: { section: 2, example: 2 },
+        component: () => import(/* webpackChunkName: "example_shape_anim_circle" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/figure_locator',
+        props: { section: 2, example: 3 },
+        component: () => import(/* webpackChunkName: "example_figure_locator" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/connection_with_contextmenu',
+        props: { section: 2, example: 4 },
+        component: () => import(/* webpackChunkName: "example_connection_with_contextmenu" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/policy_selectionmenu',
+        props: { section: 2, example: 5 },
+        component: () => import(/* webpackChunkName: "example_policy_selectionmenu" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/shape_db',
+        props: { section: 2, example: 6 },
+        component: () => import(/* webpackChunkName: "example_shape_db" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/shape_collapsible',
+        props: { section: 2, example: 7 },
+        component: () => import(/* webpackChunkName: "example_shape_collapsible" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/shape_zoom_stack',
+        props: { section: 2, example: 8 },
+        component: () => import(/* webpackChunkName: "example_shape_zoom_stack" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/shape_zoom_svg',
+        props: { section: 2, example: 9 },
+        component: () => import(/* webpackChunkName: "example_shape_zoom_svg" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/shape_tablelayout',
+        props: { section: 2, example: 10 },
+        component: () => import(/* webpackChunkName: "example_shape_tablelayout" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/interaction_dblclick_figure',
+        props: { section: 3, example: 0 },
+        component: () => import(/* webpackChunkName: "example_interaction_dblclick_figure" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/interaction_dblclick_policy',
+        props: { section: 3, example: 1 },
+        component: () => import(/* webpackChunkName: "example_interaction_dblclick_policy" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/interaction_labeledit_inplace',
+        props: { section: 3, example: 2 },
+        component: () => import(/* webpackChunkName: "example_interaction_labeledit_inplace" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/interaction_click',
+        props: { section: 3, example: 3 },
+        component: () => import(/* webpackChunkName: "example_interaction_click" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/interaction_slider',
+        props: { section: 3, example: 4 },
+        component: () => import(/* webpackChunkName: "example_interaction_slider" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/interaction_pie',
+        props: { section: 3, example: 5 },
+        component: () => import(/* webpackChunkName: "example_interaction_pie" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/connection_labeledit_dialog',
+        props: { section: 3, example: 6 },
+        component: () => import(/* webpackChunkName: "example_connection_labeledit_dialog" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/connection_labeledit_inplace',
+        props: { section: 3, example: 7 },
+        component: () => import(/* webpackChunkName: "example_connection_labeledit_inplace" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/interaction_toFront',
+        props: { section: 3, example: 8 },
+        component: () => import(/* webpackChunkName: "example_interaction_toFront" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/interaction_draggable_decoration',
+        props: { section: 3, example: 9 },
+        component: () => import(/* webpackChunkName: "example_interaction_draggable_decoration" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/resizehandle_replace_global',
+        props: { section: 4, example: 0 },
+        component: () => import(/* webpackChunkName: "example_resizehandle_replace_global" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/resizehandle_styled_css',
+        props: { section: 4, example: 1 },
+        component: () => import(/* webpackChunkName: "example_resizehandle_styled_css" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/port_locator',
+        props: { section: 5, example: 0 },
+        component: () => import(/* webpackChunkName: "example_port_locator" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/port_serialize',
+        props: { section: 5, example: 1 },
+        component: () => import(/* webpackChunkName: "example_port_serialize" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/port_decoration',
+        props: { section: 5, example: 2 },
+        component: () => import(/* webpackChunkName: "example_port_decoration" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/port_hide',
+        props: { section: 5, example: 3 },
+        component: () => import(/* webpackChunkName: "example_port_hide" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/buildin_commandstack',
+        props: { section: 6, example: 0 },
+        component: () => import(/* webpackChunkName: "example_buildin_commandstack" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/buildin_zoom',
+        props: { section: 6, example: 1 },
+        component: () => import(/* webpackChunkName: "example_buildin_zoom" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/buildin_bridge',
+        props: { section: 6, example: 2 },
+        component: () => import(/* webpackChunkName: "example_buildin_bridge" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/buildin_event',
+        props: { section: 6, example: 3 },
+        component: () => import(/* webpackChunkName: "example_buildin_event" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/tooltip_diy',
+        props: { section: 7, example: 0 },
+        component: () => import(/* webpackChunkName: "example_tooltip_diy" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/databinding_watchjs',
+        props: { section: 8, example: 0 },
+        component: () => import(/* webpackChunkName: "example_databinding_watchjs" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/databinding_backbone',
+        props: { section: 8, example: 1 },
+        component: () => import(/* webpackChunkName: "example_databinding_backbone" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/databinding_backbone_modelbinder',
+        props: { section: 8, example: 2 },
+        component: () => import(/* webpackChunkName: "example_databinding_backbone_modelbinder" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/databinding_js',
+        props: { section: 8, example: 3 },
+        component: () => import(/* webpackChunkName: "example_databinding_js" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/databinding_rivets',
+        props: { section: 8, example: 4 },
+        component: () => import(/* webpackChunkName: "example_databinding_rivets" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/policy_canvas_decoration',
+        props: { section: 9, example: 0 },
+        component: () => import(/* webpackChunkName: "example_policy_canvas_decoration" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/policy_selection_handling',
+        props: { section: 9, example: 1 },
+        component: () => import(/* webpackChunkName: "example_policy_selection_handling" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/policy_selection_feedback',
+        props: { section: 9, example: 2 },
+        component: () => import(/* webpackChunkName: "example_policy_selection_feedback" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/policy_snap_to',
+        props: { section: 9, example: 3 },
+        component: () => import(/* webpackChunkName: "example_policy_snap_to" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/policy_figure_constraint',
+        props: { section: 9, example: 4 },
+        component: () => import(/* webpackChunkName: "example_policy_figure_constraint" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/policy_drag_copy',
+        props: { section: 9, example: 5 },
+        component: () => import(/* webpackChunkName: "example_policy_drag_copy" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/io_json_basic',
+        props: { section: 10, example: 0 },
+        component: () => import(/* webpackChunkName: "example_io_json_basic" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/io_json_extend',
+        props: { section: 10, example: 1 },
+        component: () => import(/* webpackChunkName: "example_io_json_extend" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/io_json_connections',
+        props: { section: 10, example: 2 },
+        component: () => import(/* webpackChunkName: "example_io_json_connections" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/io_json_dyn_labels',
+        props: { section: 10, example: 3 },
+        component: () => import(/* webpackChunkName: "example_io_json_dyn_labels" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/io_svg_basic',
+        props: { section: 10, example: 4 },
+        component: () => import(/* webpackChunkName: "example_io_svg_basic" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/io_json_multi_document',
+        props: { section: 10, example: 5 },
+        component: () => import(/* webpackChunkName: "example_io_json_multi_document" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/io_png_overview',
+        props: { section: 10, example: 6 },
+        component: () => import(/* webpackChunkName: "example_io_png_overview" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/io_png_crop',
+        props: { section: 10, example: 7 },
+        component: () => import(/* webpackChunkName: "example_io_png_crop" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/connection_drop',
+        props: { section: 11, example: 0 },
+        component: () => import(/* webpackChunkName: "example_connection_drop" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/connection_vertex',
+        props: { section: 11, example: 1 },
+        component: () => import(/* webpackChunkName: "example_connection_vertex" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/connection_locator',
+        props: { section: 11, example: 2 },
+        component: () => import(/* webpackChunkName: "example_connection_locator" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/connection_decoration',
+        props: { section: 11, example: 3 },
+        component: () => import(/* webpackChunkName: "example_connection_decoration" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/connection_with_contextmenu',
+        props: { section: 11, example: 4 },
+        component: () => import(/* webpackChunkName: "example_connection_with_contextmenu" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/connection_router',
+        props: { section: 11, example: 5 },
+        component: () => import(/* webpackChunkName: "example_connection_router" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/connection_rubberband',
+        props: { section: 11, example: 6 },
+        component: () => import(/* webpackChunkName: "example_connection_rubberband" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/connection_segment_handling',
+        props: { section: 11, example: 7 },
+        component: () => import(/* webpackChunkName: "example_connection_segment_handling" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/buildin_bridge',
+        props: { section: 11, example: 8 },
+        component: () => import(/* webpackChunkName: "example_buildin_bridge" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/connection_anchor_chopbox',
+        props: { section: 11, example: 9 },
+        component: () => import(/* webpackChunkName: "example_connection_anchor_chopbox" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/connection_anchor_fan',
+        props: { section: 11, example: 10 },
+        component: () => import(/* webpackChunkName: "example_connection_anchor_fan" */ '../views/example.vue')
       }
     ]
   }
@@ -2605,25 +2929,6 @@ const tree = [
 
 const examples = [
   {
-    'text': 'Basic Examples',
-    'children': [
-      {
-        'name': 'shape',
-        'text': 'Simple Shapes',
-        'description': 'How to insert simple shapes via API calls',
-        'url': 'shape/index.html',
-        'icon': 'shape/icon.png',
-        'status': 'normal',
-        'data': {
-          'path': '/examples/section0/shape'
-        }
-      }
-    ],
-    'data': {
-      'path': '/examples/section0'
-    }
-  },
-  {
     'text': 'Basic Figures',
     'children': [
       {
@@ -2634,7 +2939,7 @@ const examples = [
         'icon': 'galerie_shape_basic/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section1/galerie_shape_basic'
+          'path': '/examples/galerie_shape_basic'
         }
       },
       {
@@ -2645,7 +2950,7 @@ const examples = [
         'icon': 'galerie_shape_diagram/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section1/galerie_shape_diagram'
+          'path': '/examples/galerie_shape_diagram'
         }
       },
       {
@@ -2656,7 +2961,7 @@ const examples = [
         'icon': 'galerie_shape_analog/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section1/galerie_shape_analog'
+          'path': '/examples/galerie_shape_analog'
         }
       },
       {
@@ -2667,7 +2972,7 @@ const examples = [
         'icon': 'galerie_shape_widget/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section1/galerie_shape_widget'
+          'path': '/examples/galerie_shape_widget'
         }
       },
       {
@@ -2678,7 +2983,7 @@ const examples = [
         'icon': 'galerie_shape_icon/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section1/galerie_shape_icon'
+          'path': '/examples/galerie_shape_icon'
         }
       },
       {
@@ -2689,12 +2994,12 @@ const examples = [
         'icon': 'galerie_shape_node/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section1/galerie_shape_node'
+          'path': '/examples/galerie_shape_node'
         }
       }
     ],
     'data': {
-      'path': '/examples/section1'
+      'path': '/examples/section0'
     }
   },
   {
@@ -2708,7 +3013,7 @@ const examples = [
         'icon': 'composite_raft/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section2/composite_raft'
+          'path': '/examples/composite_raft'
         }
       },
       {
@@ -2719,7 +3024,7 @@ const examples = [
         'icon': 'composite_group/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section2/composite_group'
+          'path': '/examples/composite_group'
         }
       },
       {
@@ -2730,12 +3035,12 @@ const examples = [
         'icon': 'composite_jailhouse/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section2/composite_jailhouse'
+          'path': '/examples/composite_jailhouse'
         }
       }
     ],
     'data': {
-      'path': '/examples/section2'
+      'path': '/examples/section1'
     }
   },
   {
@@ -2749,7 +3054,7 @@ const examples = [
         'icon': 'shape_custom_simple/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section3/shape_custom_simple'
+          'path': '/examples/shape_custom_simple'
         }
       },
       {
@@ -2760,7 +3065,7 @@ const examples = [
         'icon': 'shape_timer/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section3/shape_timer'
+          'path': '/examples/shape_timer'
         }
       },
       {
@@ -2771,7 +3076,7 @@ const examples = [
         'icon': 'shape_anim_circle/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section3/shape_anim_circle'
+          'path': '/examples/shape_anim_circle'
         }
       },
       {
@@ -2782,7 +3087,7 @@ const examples = [
         'icon': 'figure_locator/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section3/figure_locator'
+          'path': '/examples/figure_locator'
         }
       },
       {
@@ -2793,7 +3098,7 @@ const examples = [
         'icon': 'connection_with_contextmenu/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section3/connection_with_contextmenu'
+          'path': '/examples/connection_with_contextmenu'
         }
       },
       {
@@ -2804,7 +3109,7 @@ const examples = [
         'icon': 'policy_selectionmenu/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section3/policy_selectionmenu'
+          'path': '/examples/policy_selectionmenu'
         }
       },
       {
@@ -2815,7 +3120,7 @@ const examples = [
         'icon': 'shape_db/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section3/shape_db'
+          'path': '/examples/shape_db'
         }
       },
       {
@@ -2826,7 +3131,7 @@ const examples = [
         'icon': 'shape_collapsible/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section3/shape_collapsible'
+          'path': '/examples/shape_collapsible'
         }
       },
       {
@@ -2837,7 +3142,7 @@ const examples = [
         'icon': 'shape_zoom_stack/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section3/shape_zoom_stack'
+          'path': '/examples/shape_zoom_stack'
         }
       },
       {
@@ -2848,7 +3153,7 @@ const examples = [
         'icon': 'shape_zoom_svg/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section3/shape_zoom_svg'
+          'path': '/examples/shape_zoom_svg'
         }
       },
       {
@@ -2859,12 +3164,12 @@ const examples = [
         'icon': 'shape_tablelayout/icon.png',
         'status': 'updated',
         'data': {
-          'path': '/examples/section3/shape_tablelayout'
+          'path': '/examples/shape_tablelayout'
         }
       }
     ],
     'data': {
-      'path': '/examples/section3'
+      'path': '/examples/section2'
     }
   },
   {
@@ -2878,7 +3183,7 @@ const examples = [
         'icon': 'interaction_dblclick_figure/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section4/interaction_dblclick_figure'
+          'path': '/examples/interaction_dblclick_figure'
         }
       },
       {
@@ -2889,7 +3194,7 @@ const examples = [
         'icon': 'interaction_dblclick_policy/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section4/interaction_dblclick_policy'
+          'path': '/examples/interaction_dblclick_policy'
         }
       },
       {
@@ -2900,7 +3205,7 @@ const examples = [
         'icon': 'interaction_labeledit_inplace/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section4/interaction_labeledit_inplace'
+          'path': '/examples/interaction_labeledit_inplace'
         }
       },
       {
@@ -2911,7 +3216,7 @@ const examples = [
         'icon': 'interaction_click/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section4/interaction_click'
+          'path': '/examples/interaction_click'
         }
       },
       {
@@ -2922,7 +3227,7 @@ const examples = [
         'icon': 'interaction_slider/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section4/interaction_slider'
+          'path': '/examples/interaction_slider'
         }
       },
       {
@@ -2933,7 +3238,7 @@ const examples = [
         'icon': 'interaction_pie/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section4/interaction_pie'
+          'path': '/examples/interaction_pie'
         }
       },
       {
@@ -2944,7 +3249,7 @@ const examples = [
         'icon': 'connection_labeledit_dialog/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section4/connection_labeledit_dialog'
+          'path': '/examples/connection_labeledit_dialog'
         }
       },
       {
@@ -2955,7 +3260,7 @@ const examples = [
         'icon': 'connection_labeledit_inplace/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section4/connection_labeledit_inplace'
+          'path': '/examples/connection_labeledit_inplace'
         }
       },
       {
@@ -2966,7 +3271,7 @@ const examples = [
         'icon': 'interaction_toFront/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section4/interaction_toFront'
+          'path': '/examples/interaction_toFront'
         }
       },
       {
@@ -2977,12 +3282,12 @@ const examples = [
         'icon': 'interaction_draggable_decoration/icon.png',
         'status': 'updated',
         'data': {
-          'path': '/examples/section4/interaction_draggable_decoration'
+          'path': '/examples/interaction_draggable_decoration'
         }
       }
     ],
     'data': {
-      'path': '/examples/section4'
+      'path': '/examples/section3'
     }
   },
   {
@@ -2996,7 +3301,7 @@ const examples = [
         'icon': 'resizehandle_replace_global/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section5/resizehandle_replace_global'
+          'path': '/examples/resizehandle_replace_global'
         }
       },
       {
@@ -3007,12 +3312,12 @@ const examples = [
         'icon': 'resizehandle_styled_css/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section5/resizehandle_styled_css'
+          'path': '/examples/resizehandle_styled_css'
         }
       }
     ],
     'data': {
-      'path': '/examples/section5'
+      'path': '/examples/section4'
     }
   },
   {
@@ -3026,7 +3331,7 @@ const examples = [
         'icon': 'port_locator/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section6/port_locator'
+          'path': '/examples/port_locator'
         }
       },
       {
@@ -3037,7 +3342,7 @@ const examples = [
         'icon': 'port_serialize/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section6/port_serialize'
+          'path': '/examples/port_serialize'
         }
       },
       {
@@ -3048,7 +3353,7 @@ const examples = [
         'icon': 'port_decoration/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section6/port_decoration'
+          'path': '/examples/port_decoration'
         }
       },
       {
@@ -3059,12 +3364,12 @@ const examples = [
         'icon': 'port_hide/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section6/port_hide'
+          'path': '/examples/port_hide'
         }
       }
     ],
     'data': {
-      'path': '/examples/section6'
+      'path': '/examples/section5'
     }
   },
   {
@@ -3078,7 +3383,7 @@ const examples = [
         'icon': 'buildin_commandstack/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section7/buildin_commandstack'
+          'path': '/examples/buildin_commandstack'
         }
       },
       {
@@ -3089,7 +3394,7 @@ const examples = [
         'icon': 'buildin_zoom/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section7/buildin_zoom'
+          'path': '/examples/buildin_zoom'
         }
       },
       {
@@ -3100,7 +3405,7 @@ const examples = [
         'icon': 'buildin_bridge/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section7/buildin_bridge'
+          'path': '/examples/buildin_bridge'
         }
       },
       {
@@ -3111,12 +3416,12 @@ const examples = [
         'icon': 'buildin_event/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section7/buildin_event'
+          'path': '/examples/buildin_event'
         }
       }
     ],
     'data': {
-      'path': '/examples/section7'
+      'path': '/examples/section6'
     }
   },
   {
@@ -3130,12 +3435,12 @@ const examples = [
         'icon': 'tooltip_diy/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section8/tooltip_diy'
+          'path': '/examples/tooltip_diy'
         }
       }
     ],
     'data': {
-      'path': '/examples/section8'
+      'path': '/examples/section7'
     }
   },
   {
@@ -3149,7 +3454,7 @@ const examples = [
         'icon': 'databinding_watchjs/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section9/databinding_watchjs'
+          'path': '/examples/databinding_watchjs'
         }
       },
       {
@@ -3160,7 +3465,7 @@ const examples = [
         'icon': 'databinding_backbone/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section9/databinding_backbone'
+          'path': '/examples/databinding_backbone'
         }
       },
       {
@@ -3171,7 +3476,7 @@ const examples = [
         'icon': 'databinding_backbone_modelbinder/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section9/databinding_backbone_modelbinder'
+          'path': '/examples/databinding_backbone_modelbinder'
         }
       },
       {
@@ -3182,7 +3487,7 @@ const examples = [
         'icon': 'databinding_js/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section9/databinding_js'
+          'path': '/examples/databinding_js'
         }
       },
       {
@@ -3193,12 +3498,12 @@ const examples = [
         'icon': 'databinding_rivets/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section9/databinding_rivets'
+          'path': '/examples/databinding_rivets'
         }
       }
     ],
     'data': {
-      'path': '/examples/section9'
+      'path': '/examples/section8'
     }
   },
   {
@@ -3212,7 +3517,7 @@ const examples = [
         'icon': 'policy_canvas_decoration/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section10/policy_canvas_decoration'
+          'path': '/examples/policy_canvas_decoration'
         }
       },
       {
@@ -3223,7 +3528,7 @@ const examples = [
         'icon': 'policy_selection_handling/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section10/policy_selection_handling'
+          'path': '/examples/policy_selection_handling'
         }
       },
       {
@@ -3234,7 +3539,7 @@ const examples = [
         'icon': 'policy_selection_feedback/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section10/policy_selection_feedback'
+          'path': '/examples/policy_selection_feedback'
         }
       },
       {
@@ -3245,7 +3550,7 @@ const examples = [
         'icon': 'policy_snap_to/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section10/policy_snap_to'
+          'path': '/examples/policy_snap_to'
         }
       },
       {
@@ -3256,7 +3561,7 @@ const examples = [
         'icon': 'policy_figure_constraint/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section10/policy_figure_constraint'
+          'path': '/examples/policy_figure_constraint'
         }
       },
       {
@@ -3267,12 +3572,12 @@ const examples = [
         'icon': 'policy_drag_copy/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section10/policy_drag_copy'
+          'path': '/examples/policy_drag_copy'
         }
       }
     ],
     'data': {
-      'path': '/examples/section10'
+      'path': '/examples/section9'
     }
   },
   {
@@ -3286,7 +3591,7 @@ const examples = [
         'icon': 'io_json_basic/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section11/io_json_basic'
+          'path': '/examples/io_json_basic'
         }
       },
       {
@@ -3297,7 +3602,7 @@ const examples = [
         'icon': 'io_json_extend/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section11/io_json_extend'
+          'path': '/examples/io_json_extend'
         }
       },
       {
@@ -3308,7 +3613,7 @@ const examples = [
         'icon': 'io_json_connections/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section11/io_json_connections'
+          'path': '/examples/io_json_connections'
         }
       },
       {
@@ -3319,7 +3624,7 @@ const examples = [
         'icon': 'io_json_dyn_labels/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section11/io_json_dyn_labels'
+          'path': '/examples/io_json_dyn_labels'
         }
       },
       {
@@ -3330,7 +3635,7 @@ const examples = [
         'icon': 'io_svg_basic/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section11/io_svg_basic'
+          'path': '/examples/io_svg_basic'
         }
       },
       {
@@ -3341,7 +3646,7 @@ const examples = [
         'icon': 'io_json_multi_document/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section11/io_json_multi_document'
+          'path': '/examples/io_json_multi_document'
         }
       },
       {
@@ -3352,7 +3657,7 @@ const examples = [
         'icon': 'io_png_overview/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section11/io_png_overview'
+          'path': '/examples/io_png_overview'
         }
       },
       {
@@ -3363,12 +3668,12 @@ const examples = [
         'icon': 'io_png_crop/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section11/io_png_crop'
+          'path': '/examples/io_png_crop'
         }
       }
     ],
     'data': {
-      'path': '/examples/section11'
+      'path': '/examples/section10'
     }
   },
   {
@@ -3382,7 +3687,7 @@ const examples = [
         'icon': 'connection_drop/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section12/connection_drop'
+          'path': '/examples/connection_drop'
         }
       },
       {
@@ -3393,7 +3698,7 @@ const examples = [
         'icon': 'connection_vertex/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section12/connection_vertex'
+          'path': '/examples/connection_vertex'
         }
       },
       {
@@ -3404,7 +3709,7 @@ const examples = [
         'icon': 'connection_locator/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section12/connection_locator'
+          'path': '/examples/connection_locator'
         }
       },
       {
@@ -3415,7 +3720,7 @@ const examples = [
         'icon': 'connection_decoration/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section12/connection_decoration'
+          'path': '/examples/connection_decoration'
         }
       },
       {
@@ -3426,7 +3731,7 @@ const examples = [
         'icon': 'connection_with_contextmenu/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section12/connection_with_contextmenu'
+          'path': '/examples/connection_with_contextmenu'
         }
       },
       {
@@ -3437,7 +3742,7 @@ const examples = [
         'icon': 'connection_router/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section12/connection_router'
+          'path': '/examples/connection_router'
         }
       },
       {
@@ -3448,7 +3753,7 @@ const examples = [
         'icon': 'connection_rubberband/icon.png',
         'status': 'updated',
         'data': {
-          'path': '/examples/section12/connection_rubberband'
+          'path': '/examples/connection_rubberband'
         }
       },
       {
@@ -3459,7 +3764,7 @@ const examples = [
         'icon': 'connection_segment_handling/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section12/connection_segment_handling'
+          'path': '/examples/connection_segment_handling'
         }
       },
       {
@@ -3470,7 +3775,7 @@ const examples = [
         'icon': 'buildin_bridge/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section12/buildin_bridge'
+          'path': '/examples/buildin_bridge'
         }
       },
       {
@@ -3481,7 +3786,7 @@ const examples = [
         'icon': 'connection_anchor_chopbox/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section12/connection_anchor_chopbox'
+          'path': '/examples/connection_anchor_chopbox'
         }
       },
       {
@@ -3492,12 +3797,12 @@ const examples = [
         'icon': 'connection_anchor_fan/icon.png',
         'status': 'normal',
         'data': {
-          'path': '/examples/section12/connection_anchor_fan'
+          'path': '/examples/connection_anchor_fan'
         }
       }
     ],
     'data': {
-      'path': '/examples/section12'
+      'path': '/examples/section11'
     }
   }
 ]

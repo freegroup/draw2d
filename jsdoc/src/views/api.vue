@@ -1,17 +1,7 @@
 <template>
-  <div class="about">
-
+  <div>
     <Navigation/>
-
-    <v-content>
-      <v-container fluid>
-        <router-view></router-view>
-      </v-container>
-    </v-content>
-
-    <v-footer app>
-      <span>&copy; 2019</span>
-    </v-footer>
+    <router-view></router-view>
   </div>
 </template>
 

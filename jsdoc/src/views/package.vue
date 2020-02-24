@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="ma-2" style="min-height: 100vw">
     <v-breadcrumbs :items="items"></v-breadcrumbs>
     <div class="page">
       <h2>{{ $attrs.className }}</h2>

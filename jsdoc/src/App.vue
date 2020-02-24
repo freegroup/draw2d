@@ -1,6 +1,7 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary"
+    <v-app-bar app
+               color="primary"
                clipped-left
                height="20"
                elevate-on-scroll
@@ -33,11 +34,18 @@
             <v-tab to="/examples">Examples</v-tab>
           </v-tabs>
         </template>
-
     </v-app-bar>
 
-    <router-view></router-view>
+    <!-- Sizes your content based upon application components -->
+    <v-content>
+      <!-- Provides the application the proper gutter -->
+      <v-container fluid ma-0 pa-0  fill-height>
+        <router-view>
+        </router-view>
+      </v-container>
+    </v-content>
 
+    <v-footer app></v-footer>
   </v-app>
 </template>
 

@@ -1,23 +1,42 @@
 <template>
-  <div class="examples">
-        Section: {{section.text}}
+  <div class="ma-2" style="min-height: 100vw;">
+   <div class="headline">
+      {{section.text}}
+   </div>
+    <v-layout row wrap>
+        <v-card
+          class="ma-4"
+          v-for="example in section.children"
+          :key="example.name"
+          max-width="350"
+          elevation="2"
+          :to="example.data.path"
+          hover
+          light
+        >
+          <v-card-subtitle>
+            {{example.text}}
+          </v-card-subtitle>
+          <div class="d-flex flex-no-wrap justify-space-between">
+            <div>
+             <v-card-text v-text="example.description"></v-card-text>
+            </div>
+            <v-avatar
+              class="ma-3"
+              size="125"
+              tile
+            >
+              <v-img
+                :src="'./examples/'+example.name+'/icon.png'"
+                width="120"
+                height="90"
+                class="preview"
+                ></v-img>
+            </v-avatar>
+          </div>
+        </v-card>
 
-    <v-card
-      class="d-flex flex-wrap"
-      color="grey lighten-2"
-      flat
-      tile
-    >
-      <v-card
-        v-for="example in section.children"
-        :key="example.name"
-        class="pa-2"
-        outlined
-        tile
-      >
-        {{example.name}}
-      </v-card>
-    </v-card>
+    </v-layout>
   </div>
 </template>
 
@@ -53,3 +72,9 @@ export default {
   }
 }
 </script>
+<style>
+
+.preview{
+  border: 1px solid #80808030;
+}
+</style>

@@ -1,18 +1,5 @@
 [
   {
-    "text": "Basic Examples",
-    "children": [
-      {
-        "name": "shape",
-        "text": "Simple Shapes",
-        "description": "How to insert simple shapes via API calls",
-        "url": "shape/index.html",
-        "icon": "shape/icon.png",
-        "status": "normal"
-      }
-    ]
-  },
-  {
     "text": "Basic Figures",
     "children": [
       {

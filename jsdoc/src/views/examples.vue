@@ -1,18 +1,7 @@
 <template>
-  <div class="examples">
-
+  <div style="min-height: 100%; min-width:100%;">
     <Navigation/>
-
-    <v-content>
-      <v-container fluid>
-        Examples
-        <router-view></router-view>
-      </v-container>
-    </v-content>
-
-    <v-footer app>
-      <span>&copy; 2019</span>
-    </v-footer>
+    <router-view></router-view>
   </div>
 </template>
 

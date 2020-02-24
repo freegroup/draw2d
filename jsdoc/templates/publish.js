@@ -252,21 +252,28 @@ function writeRouter(namespaces){
     stream.write('      {\n')
     stream.write(`        path: '/examples/section${idx}',\n`)
     stream.write(`        props: { index: ${idx} },\n`)
-    stream.write(`        component: () => import(/* webpackChunkName: "example_section${idx}" */ '../views/example_section.vue'),\n`)
-    stream.write('        children: [\n')
-    section.children.forEach( (example, idx2, array2) => {
-      example.data = {path: '/examples/section'+idx+'/'+example.name }
-    })
-    stream.write('        ]\n')
-    if (!(idx === array.length - 1)) {
-      stream.write('      },\n')
-    }
-    else {
-      stream.write('      }\n')
-    }
+    stream.write(`        component: () => import(/* webpackChunkName: "example_section${idx}" */ '../views/example_section.vue')\n`)
+    stream.write('      },\n')
   })
+  examples.forEach( (section, idx, array) => {
+    section.children.forEach( (example, idx2, array2) => {
+      example.data = {path: '/examples/'+example.name }
+      stream.write('      {\n')
+      stream.write(`        path: '${example.data.path}',\n`)
+      stream.write(`        props: { section: ${idx}, example: ${idx2} },\n`)
+      stream.write(`        component: () => import(/* webpackChunkName: "example_${example.name}" */ '../views/example.vue')\n`)
+      if ((idx === array.length - 1) && (idx2 === array2.length - 1)) {
+        stream.write('      }\n')
+      }
+      else {
+        stream.write('      },\n')
+      }
+    })
+  })
+
   stream.write('    ]\n')
-  stream.write('  }\n') // end #example s
+  stream.write('  }\n') // end #examples
+
   stream.write(']\n\n')
 
   stream.write('const tree = [\n')
@@ -409,4 +416,12 @@ exports.publish = (data, {destination, query}) => {
     writeRouter(root.namespaces)
     dumpClasses(root)
     dumpNamespaces(root)
+
+    const ncp = require('ncp').ncp;
+    ncp('../examples', './public/examples', function (err) {
+      if (err) {
+        return console.error(err);
+      }
+      console.log('done!');
+    });
 };
