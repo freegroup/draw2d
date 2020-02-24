@@ -1,0 +1,55 @@
+﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<title></title>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <link type="text/css" rel="stylesheet" href="./css/example.css" />
+
+  <script src="./lib/jquery.js"></script>
+  <script src="./lib/jquery-ui.js"></script>
+
+  <script src="../draw2d.js"></script>
+
+  <script src="SelectionMenuPolicy.js"></script>
+  <script src="CustomFigure.js"></script>
+
+<script type="text/javascript">
+
+var textFigure = null;
+var canvas = null;
+document.addEventListener("DOMContentLoaded",function () {
+
+    // create the canvas for the user interaction
+    //
+    canvas = new draw2d.Canvas("gfx_holder");
+
+    // create and add two nodes which contains Ports (In and OUT)
+    //
+     let start = new CustomFigure();
+     let end   = new CustomFigure();
+
+     // ...add it to the canvas
+     canvas.add( start, 50,250);
+     canvas.add( end, 630,250);
+
+
+     /////////////////////////////////////////////////////////////////////
+     // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
+     /////////////////////////////////////////////////////////////////////
+     var msg = new draw2d.shape.note.PostIt({text:"Show a figure flyout menu if an element is selected.\nSelect an shape and press the 'delete' icon."});
+     canvas.add(msg, 20,20);
+});
+
+
+</script>
+
+</head>
+
+<body>
+<div  onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:3000px; height:3000px;">
+</div>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<title></title>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <link type="text/css" rel="stylesheet" href="./css/example.css" />
+
+  <script src="./lib/jquery.js"></script>
+  <script src="./lib/jquery-ui.js"></script>
+
+  <script src="../draw2d.js"></script>
+
+	<script src="LabeledEnd.js"></script>
+
+<script type="text/javascript">
+
+// the document to load....in this case a simple JSON Object
+// You can create the canvas content via "native" API calls or with a
+// JSON, XML,...document.
+//
+var jsonDocument =
+    [
+
+      {
+        "type": "example.LabeledEnd",
+        "id": "ebfb35bb-5767-8155-c804-14bda7759dc2",
+        "x": 72,
+        "y": 165,
+        "width": 50,
+        "height": 50,
+        "radius": 2,
+        "labels": [  // Custom attribute.
+                     // See LabeledEnd.js setPersistendAttributes/getPersistendAttributes for more information
+                   {
+                     "id": "2d6ec69b-cd3c-f36b-7384-fdb2325e9081",
+                     "type": "draw2d.shape.basic.Label",
+                     "text": "My bottom Label",
+                     "bold" : true,
+                     "fontSize":14,
+                     "locator": "draw2d.layout.locator.BottomLocator"
+                   },
+                   {
+                       "id": "2d6ec69b-cd3c-f36b-7384-fdb2325e9081",
+                       "type": "draw2d.shape.basic.Label",
+                       "text": "My top Label",
+                       "fontSize":9,
+                       "locator": "draw2d.layout.locator.TopLocator"
+                  }
+                 ]
+      }
+    ];
+
+document.addEventListener("DOMContentLoaded",function () {
+
+    draw2d.shape.basic.Label.inject( {
+        clearCache:function() {
+                this.portRelayoutRequired=true;
+                this.cachedMinWidth  = null;
+                this.cachedMinHeight = null;
+                this.cachedWidth=null;
+                this.cachedHeight=null;
+                this.lastAppliedTextAttributes= {};
+                return this;
+            }
+      });
+
+	  // create the canvas for the user interaction
+	  //
+	  var canvas = new draw2d.Canvas("gfx_holder");
+
+	  // unmarshal the JSON document into the canvas
+	  // (load)
+	  var reader = new draw2d.io.json.Reader();
+	  reader.unmarshal(canvas, jsonDocument);
+
+	  // display the JSON text in the preview DIV
+	  //
+	  displayJSON(canvas);
+
+	  // add an event listener to the Canvas for change notifications.
+	  // We just dump the current canvas document as simple text into
+	  // the DIV
+	  //
+	  canvas.getCommandStack().addEventListener(function(e){
+	      if(e.isPostChangeEvent()){
+	          displayJSON(canvas);
+	      }
+	  });
+
+	  // add an information PostIt to the canvas
+	  var msg = new draw2d.shape.note.PostIt({text:"Purpose of this example: How to import/export your own \nattributes, in this case a label, via  JSON.\n \nInspect LabeledEnd.js for further details."});
+	  canvas.add(msg, 20,20);
+});
+
+function displayJSON(canvas){
+    var writer = new draw2d.io.json.Writer();
+    writer.marshal(canvas,function(json){
+        $("#json").text(JSON.stringify(json, null, 2));
+    });
+}
+
+</script>
+
+</head>
+
+<body>
+<div  onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:3000px; height:3000px;">
+</div>
+
+<pre id="json" style="overflow:auto;position:absolute; top:10px; right:10px; width:350; height:500;background:white;border:1px solid gray">
+</pre>
+</body>
+</html>
