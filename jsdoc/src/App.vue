@@ -25,13 +25,12 @@
 
         <template v-slot:extension>
           <v-tabs
-            dense
-            background-color="transparent"
-            color="basil"
-            grow
+            light
+            color="white"
+            background-color="#e91e63"
           >
             <v-tab to="/api">API</v-tab>
-            <v-tab to="/example">Examples</v-tab>
+            <v-tab to="/examples">Examples</v-tab>
           </v-tabs>
         </template>
 
@@ -55,3 +54,9 @@ export default {
   })
 }
 </script>
+
+<style>
+.v-toolbar__title {
+  color:white !important;
+}
+</style>

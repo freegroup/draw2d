@@ -204,8 +204,12 @@ function graft(parentNode, childNodes, parentLongname) {
 
 
 function writeRouter(namespaces){
-  const fs = require('fs');
-  const stream = fs.createWriteStream("./src/router/index.js");
+  const fs = require('fs')
+
+  let contents = fs.readFileSync('../examples/examples.json')
+  let examples = JSON.parse(contents)
+
+  const stream = fs.createWriteStream("./src/router/index.js")
 
   stream.write('import Vue from \'vue\'\n')
   stream.write('import VueRouter from \'vue-router\'\n\n')
@@ -237,9 +241,32 @@ function writeRouter(namespaces){
       stream.write('      }\n')
     }
   })
-
   stream.write('    ]\n')
-  stream.write('  }\n')
+  stream.write('  },\n') // end #api
+  stream.write('  {\n')
+  stream.write('    path: \'/examples\',\n')
+  stream.write('    component: () => import(/* webpackChunkName: "examples" */ \'../views/examples.vue\'),\n')
+  stream.write('    children: [\n')
+  examples.forEach( (section, idx, array) => {
+    section.data = {path: '/examples/section'+idx }
+    stream.write('      {\n')
+    stream.write(`        path: '/examples/section${idx}',\n`)
+    stream.write(`        props: { index: ${idx} },\n`)
+    stream.write(`        component: () => import(/* webpackChunkName: "example_section${idx}" */ '../views/example_section.vue'),\n`)
+    stream.write('        children: [\n')
+    section.children.forEach( (example, idx2, array2) => {
+      example.data = {path: '/examples/section'+idx+'/'+example.name }
+    })
+    stream.write('        ]\n')
+    if (!(idx === array.length - 1)) {
+      stream.write('      },\n')
+    }
+    else {
+      stream.write('      }\n')
+    }
+  })
+  stream.write('    ]\n')
+  stream.write('  }\n') // end #example s
   stream.write(']\n\n')
 
   stream.write('const tree = [\n')
@@ -258,11 +285,15 @@ function writeRouter(namespaces){
     }
     stream.write('  }\n')
   })
-
   stream.write(']\n\n')
+
+  stream.write('const examples = ');
+  stream.write(JSON.stringify(examples, undefined, 2).replace(/\'/g,"\\'").replace(/\"/g,"'"))
+  stream.write('\n\n')
 
   stream.write('const router = new VueRouter({\n')
   stream.write('  mode: \'hash\',\n')
+  stream.write('  examples,\n')
   stream.write('  tree,\n')
   stream.write('  routes\n')
   stream.write('})\n')

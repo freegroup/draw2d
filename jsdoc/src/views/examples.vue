@@ -1,10 +1,11 @@
 <template>
-  <div class="about">
+  <div class="examples">
 
     <Navigation/>
 
     <v-content>
       <v-container fluid>
+        Examples
         <router-view></router-view>
       </v-container>
     </v-content>
@@ -16,10 +17,10 @@
 </template>
 
 <script>
-import Navigation from '@/components/ApiNavigation.vue'
+import Navigation from '@/components/ExamplesNavigation.vue'
 
 export default {
-  name: 'Api',
+  name: 'Examples',
 
   components: {
     Navigation

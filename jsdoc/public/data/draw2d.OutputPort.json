@@ -57,7 +57,11 @@
       ],
       "inherited": true,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "getMaxFanOut",
@@ -92,7 +96,11 @@
       ],
       "inherited": true,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "getConnectionDirection",
@@ -136,7 +144,11 @@
       ],
       "inherited": true,
       "since": "5.2.1",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "setLocator",
@@ -156,7 +168,11 @@
       ],
       "inherited": true,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "getLocator",
@@ -190,7 +206,11 @@
       ],
       "inherited": true,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "setValue",
@@ -210,7 +230,11 @@
       ],
       "inherited": true,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "getValue",
@@ -232,17 +256,8 @@
       "access": "private",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>propagate all attributes like color, stroke,... to the shape element</p>",
-      "parameters": [
-        {
-          "name": "attributes",
-          "type": "Object",
-          "description": "<p>the style attributes for the SVG shape</p>",
-          "default": "",
-          "optional": true,
-          "nullable": ""
-        }
-      ],
+      "description": "",
+      "parameters": [],
       "inherited": true,
       "since": "",
       "examples": []
@@ -289,17 +304,8 @@
       "access": "private",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>Set the parent of this figure.\nDon't call them manually.</p>",
-      "parameters": [
-        {
-          "name": "parent",
-          "type": "draw2d.Figure",
-          "description": "<p>The new parent of this figure</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        }
-      ],
+      "description": "",
+      "parameters": [],
       "inherited": true,
       "since": "",
       "examples": []
@@ -337,7 +343,11 @@
       ],
       "inherited": true,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "onDragStart",
@@ -616,7 +626,11 @@
       ],
       "inherited": true,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "hitTest",
@@ -676,7 +690,11 @@
       ],
       "inherited": true,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "createCommand",
@@ -704,7 +722,7 @@
     },
     {
       "name": "fireEvent",
-      "access": "",
+      "access": "private",
       "virtual": false,
       "deprecated": "",
       "description": "<p>Called from the figure itself when any position changes happens. All listener\nwill be informed.\n<br>\nDON'T fire this event if the Port is during a Drag&amp;Drop operation. This can happen\nif we try to connect two ports</p>",
@@ -742,7 +760,11 @@
       ],
       "inherited": true,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "setAlpha",

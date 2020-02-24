@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer app clipped  >
+  <v-navigation-drawer app clipped  permanent>
     <input type="text" placeholder="Type to filter..." v-model="treeFilter" class="filter-field">
     <tree
       :data="routes"
@@ -95,7 +95,7 @@ export default {
   name: 'home',
   computed: {
     routes () {
-      return this.$router.options.tree
+      return this.$router.options.examples
     }
   },
   data: () => {

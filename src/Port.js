@@ -36,7 +36,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
       getter)
 
 
-    // status var for user interaction
+    // status let for user interaction
     //
     this.ox = this.x
     this.oy = this.y
@@ -88,6 +88,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
    * connection are bounded already.
    *
    * @param {Number} count the maximal number of connection related to this port
+   * @returns {this}
    */
   setMaxFanOut: function (count) {
     this.maxFanOut = Math.max(1, count)
@@ -112,6 +113,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
    * of an connection. just visible representation.
    *
    * @param {draw2d.layout.anchor.ConnectionAnchor} [anchor] the new source anchor for the connection or "null" to use the default anchor.
+   * @returns {this}
    **/
   setConnectionAnchor: function (anchor) {
     // set some good defaults.
@@ -184,6 +186,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
    *
    * @since 5.2.1
    * @param {Number} direction the preferred connection direction.
+   * @returns {this}
    */
   setConnectionDirection: function (direction) {
     this.preferredConnectionDirection = direction
@@ -200,6 +203,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
    * port in relation to the parent node.
    *
    * @param {draw2d.layout.locator.Locator} locator
+   * @returns {this}
    */
   setLocator: function (locator) {
     this.locator = locator
@@ -225,6 +229,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
    * <code>null</code> to set the background transparent.
    *
    * @param {draw2d.util.Color|String} color The new background color of the figure
+   * @returns {this}
    **/
   setBackgroundColor: function (color) {
     this._super(color)
@@ -238,6 +243,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
    * Set a value for the port. This is useful for interactive/dynamic diagrams like circuits, simulator,...
    *
    * @param {Object} value the new value for the port
+   * @returns {this}
    */
   setValue: function (value) {
 
@@ -265,7 +271,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
   },
 
   /**
-   * @inheritdoc
+   * @private
    */
   repaint: function (attributes) {
     if (this.repaintBlocked === true || this.shape === null) {
@@ -325,7 +331,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
 
 
   /**
-   * @inheritdoc
+   * @private
    */
   setParent: function (parent) {
     if (this.parent !== null) {
@@ -359,9 +365,12 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
    * a connection. It is not neccessary to drop exactly on the port.
    *
    * @param {Number} width The new corona width of the port
+   * @returns {this}
    **/
   setCoronaWidth: function (width) {
     this.coronaWidth = width
+    
+    return this
   },
 
   /**
@@ -382,14 +391,14 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
       return false
     }
 
-    var _this = this
+    let _this = this
 
 //        this.getShapeElement().insertAfter(this.parent.getShapeElement());
     // don't call the super method. This creates a command and this is not necessary for a port
     this.ox = this.x
     this.oy = this.y
 
-    var canStartDrag = true
+    let canStartDrag = true
 
     // notify all installed policies
     //
@@ -510,9 +519,12 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
    *
    *
    * @param {String} name The new name of this port.
+   * @returns {this}
    **/
   setName: function (name) {
     this.name = name
+
+    return this
   },
 
 
@@ -520,16 +532,17 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
    * 
    * Hit test for ports. This method respect the corona diameter of the port for the hit test.
    * The corona width can be set with {@link draw2d.Port#setCoronaWidth}
+   *
    * @param {Number} iX
    * @param {Number} iY
    * @param {Number} [corona]
    * @returns {Boolean}
    */
   hitTest: function (iX, iY, corona) {
-    var x = this.getAbsoluteX() - this.coronaWidth - this.getWidth() / 2
-    var y = this.getAbsoluteY() - this.coronaWidth - this.getHeight() / 2
-    var iX2 = x + this.getWidth() + (this.coronaWidth * 2)
-    var iY2 = y + this.getHeight() + (this.coronaWidth * 2)
+    let x = this.getAbsoluteX() - this.coronaWidth - this.getWidth() / 2
+    let y = this.getAbsoluteY() - this.coronaWidth - this.getHeight() / 2
+    let iX2 = x + this.getWidth() + (this.coronaWidth * 2)
+    let iY2 = y + this.getHeight() + (this.coronaWidth * 2)
 
     return (iX >= x && iX <= iX2 && iY >= y && iY <= iY2)
   },
@@ -539,6 +552,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
    * Highlight this port
    *
    * @param {Boolean} flag indicator if the figure should glow.
+   * @returns {this}
    */
   setGlow: function (flag) {
     if (flag === true && this.corona === null) {
@@ -584,6 +598,8 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
    * <br>
    * DON'T fire this event if the Port is during a Drag&Drop operation. This can happen
    * if we try to connect two ports
+   *
+   * @private
    **/
   fireEvent: function (event, args) {
     if (this.isInDragDrop === true && event !== "drag") {
@@ -600,7 +616,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
    * @return
    */
   getPersistentAttributes: function () {
-    var memento = this._super()
+    let memento = this._super()
 
     memento.maxFanOut = this.maxFanOut
     memento.name = this.name
@@ -623,6 +639,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
    * Read all attributes from the serialized properties and transfer them into the shape.
    *
    * @param {Object} memento
+   * @returns {this}
    */
   setPersistentAttributes: function (memento) {
     this._super(memento)
