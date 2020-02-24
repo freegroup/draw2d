@@ -112,7 +112,7 @@ draw2d.policy.canvas.WheelZoomPolicy = draw2d.policy.canvas.ZoomPolicy.extend(
     let scrollTop = this.canvas.getScrollTop()
     let scrollLeft = this.canvas.getScrollLeft()
     let scrollWidth = this.canvas.getScrollArea().width()
-    let scrollHeight = this.canvas.getScrollArea().width()
+    let scrollHeight = this.canvas.getScrollArea().height()
     let centerY = scrollTop + (scrollHeight / 2) * this.canvas.zoomFactor
     let centerX = scrollLeft + (scrollWidth / 2) * this.canvas.zoomFactor
 
