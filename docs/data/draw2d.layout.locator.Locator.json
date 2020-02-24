@@ -43,7 +43,11 @@
       ],
       "inherited": false,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "unbind",
@@ -71,11 +75,15 @@
       ],
       "inherited": false,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "relocate",
-      "access": "",
+      "access": "private",
       "virtual": false,
       "deprecated": "",
       "description": "<p>Controls the location of an I{@link draw2d.Figure}</p>",
@@ -110,7 +118,11 @@
       "parameters": [],
       "inherited": false,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "draw2d.layout.locator.Locator",
+        "description": ""
+      }
     }
   ],
   "fires": "",

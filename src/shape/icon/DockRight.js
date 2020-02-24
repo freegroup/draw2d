@@ -33,7 +33,7 @@ draw2d.shape.icon.DockRight = draw2d.shape.icon.Icon.extend(
 
   /**
    * @private
-   * @returns
+   * @returns {Object} the raphaelJS path object
    */
   createSet: function () {
     return this.canvas.paper.path("M3.083,7.333v16.334h24.833V7.333H3.083z M19.333,20.668H6.083V10.332h13.25V20.668z")

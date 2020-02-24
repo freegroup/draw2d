@@ -41,7 +41,7 @@ draw2d.shape.composite.Composite = draw2d.SetFigure.extend(
    *
    * @param {draw2d.Figure} figure the figure to test
    * @param {Boolean} selectable the initial selectable flag of the figure
-   * @returns
+   * @returns {Boolean} returns `selectable`. A figure in a composite is per default selectable if the figure itself allows it.
    *
    */
   isMemberSelectable: function (figure, selectable) {
@@ -55,7 +55,7 @@ draw2d.shape.composite.Composite = draw2d.SetFigure.extend(
    *
    * @param {draw2d.Figure} figure the figure to test
    * @param {Boolean} draggable the initial draggable flag of the figure
-   * @returns
+   * @returns {Boolean} returns `draggable`. A figure in a composite is per default draggable if the figure itself allows it.
    *
    */
   isMemberDraggable: function (figure, draggable) {
@@ -69,6 +69,7 @@ draw2d.shape.composite.Composite = draw2d.SetFigure.extend(
    * is added or removed to the canvas.
    *
    * @param {draw2d.Canvas} canvas the new parent of the figure or null
+   * @returns {this}
    */
   setCanvas: function (canvas) {
     this._super(canvas)
@@ -78,6 +79,8 @@ draw2d.shape.composite.Composite = draw2d.SetFigure.extend(
     if (canvas !== null) {
       this.toBack()
     }
+
+    return this
   }
 
 })

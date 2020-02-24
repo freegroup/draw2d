@@ -562,7 +562,11 @@
       ],
       "inherited": false,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "setRadius",
@@ -1677,7 +1681,11 @@
       ],
       "inherited": true,
       "since": "5.0.1",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "Object",
+        "description": "<p>either the requested attribute if this method used as getter or <code>this</code> if the method uses as setter</p>"
+      }
     },
     {
       "name": "pick",

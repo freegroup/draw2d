@@ -720,7 +720,7 @@ draw2d.Canvas = Class.extend(
      * Return a common event object independed if we run on an iPad or desktop.
      *
      * @param event
-     * @return
+     * @returns {DOMEventObject}
      * @private
      */
     _getEvent: function (event) {

@@ -33,7 +33,7 @@ draw2d.shape.icon.ArrowRight2 = draw2d.shape.icon.Icon.extend(
 
   /**
    * @private
-   * @returns
+   * @returns {Object} the raphaelJS path object
    */
   createSet: function () {
     return this.canvas.paper.path("M10.129,22.186 16.316,15.999 10.129,9.812 13.665,6.276 23.389,15.999 13.665,25.725z")

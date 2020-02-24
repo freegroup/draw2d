@@ -33,7 +33,7 @@ draw2d.shape.icon.Icons = draw2d.shape.icon.Icon.extend(
 
   /**
    * @private
-   * @returns
+   * @returns {Object} the raphaelJS path object
    */
   createSet: function () {
     return this.canvas.paper.path("M4.083,14H14V4.083H4.083V14zM17,4.083V14h9.917V4.083H17zM17,26.917h9.917v-9.918H17V26.917zM4.083,26.917H14v-9.918H4.083V26.917z")

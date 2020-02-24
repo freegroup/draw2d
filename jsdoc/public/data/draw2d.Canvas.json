@@ -303,7 +303,11 @@
       ],
       "inherited": false,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "DOMEventObject",
+        "description": ""
+      }
     },
     {
       "name": "setScrollArea",

@@ -133,9 +133,7 @@ draw2d.shape.composite.Jailhouse = draw2d.shape.composite.StrongComposite.extend
    * 
    * Return the minWidth of the jailhouse. The minWidth is calculated by care the assigned figures.
    *
-   *
-   * @private
-   * @returns
+   * @returns {Number} the minimum width for the figure
    */
   getMinWidth: function () {
     let width = 0
@@ -147,9 +145,7 @@ draw2d.shape.composite.Jailhouse = draw2d.shape.composite.StrongComposite.extend
 
   /**
    * 
-   *
-   * @private
-   * @returns
+   * @returns {Number} the minimum height of the figure
    */
   getMinHeight: function () {
     let height = 0

@@ -22,8 +22,7 @@ draw2d.shape.basic.LineStartResizeHandle = draw2d.shape.basic.LineResizeHandle.e
   },
 
   /**
-   * 
-   * Return the Port below the ResizeHandle
+   * Returns the Port below the ResizeHandle
    *
    * @returns {draw2d.Port}
    */
@@ -35,10 +34,9 @@ draw2d.shape.basic.LineStartResizeHandle = draw2d.shape.basic.LineResizeHandle.e
   },
 
   /**
-   * 
-   * Return the Port on the opposite side of the ResizeHandle
+   * Returns the Port on the opposite side of the ResizeHandle
    *
-   * @returns
+   * @returns {draw2d.Port}
    */
   getOppositePort: function () {
     if (this.owner instanceof draw2d.Connection)

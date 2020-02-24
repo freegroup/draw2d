@@ -874,7 +874,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
    * Read all attributes from the serialized properties and transfer them into the shape.
    *
    * @param {Object} memento
-   * @returns
+   * @returns {this}
    */
   setPersistentAttributes: function (memento) {
     this._super(memento)
@@ -890,6 +890,8 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
     if (typeof memento.source.decoration !== "undefined" && memento.source.decoration != null) {
       this.setSourceDecorator(eval("new " + memento.source.decoration))
     }
+
+    return this
 
   }
 })

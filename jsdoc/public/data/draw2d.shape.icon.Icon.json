@@ -266,7 +266,11 @@
       ],
       "inherited": true,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "setRadius",
@@ -692,7 +696,11 @@
       "parameters": [],
       "inherited": true,
       "since": "5.0.0",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "removePort",
@@ -712,7 +720,11 @@
       ],
       "inherited": true,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "createPort",
@@ -762,48 +774,30 @@
       "access": "",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>Set the rotation angle in degree [0..356]<br>\n<b>Only steps of 90 degree is working well</b>\n<br>\n// Alternatively you can use the attr method:\nfigure.attr({\nangle: angle\n});</p>",
-      "parameters": [
-        {
-          "name": "angle",
-          "type": "Number",
-          "description": "<p>the rotation angle in degree</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        }
-      ],
+      "description": "",
+      "parameters": [],
       "inherited": true,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "setDimension",
       "access": "",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>Set the new width and height of the figure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n   width:  w,\n   height: h\n});</code></pre>",
-      "parameters": [
-        {
-          "name": "w",
-          "type": "Number",
-          "description": "<p>The new width of the figure</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        },
-        {
-          "name": "h",
-          "type": "Number",
-          "description": "<p>The new height of the figure</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        }
-      ],
+      "description": "",
+      "parameters": [],
       "inherited": true,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "onPortValueChanged",
@@ -834,7 +828,11 @@
       "parameters": [],
       "inherited": true,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "createCommand",
@@ -886,7 +884,11 @@
       ],
       "inherited": true,
       "since": "5.0.1",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "Object",
+        "description": "<p>either the requested attribute if this method used as getter or <code>this</code> if the method uses as setter</p>"
+      }
     },
     {
       "name": "pick",

@@ -261,7 +261,7 @@ draw2d.Figure = Class.extend(
    * @param {Object} [value]
    * @since 5.0.1
    * @experimental
-   * @returns
+   * @returns {Object} either the requested attribute if this method used as getter or `this` if the method uses as setter
    **/
   attr: function (name, value) {
     let _this = this
@@ -2682,7 +2682,7 @@ draw2d.Figure = Class.extend(
    * 
    * Return an objects with all important attributes for XML or JSON serialization
    *
-   * @return
+   * @return {Object} all attributes of the figure required for the persistency
    */
   getPersistentAttributes: function () {
     // force deep copy of userData to avoid side effects in the clone method.

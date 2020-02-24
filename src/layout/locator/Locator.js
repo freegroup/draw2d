@@ -30,6 +30,7 @@ draw2d.layout.locator.Locator = Class.extend(
    *
    * @param {draw2d.Figure} figure
    * @param {draw2d.Figure} child
+   * @returns {this}
    */
   bind: function (figure, child) {
     // default behaviour of an Locator. The child isn't draggable and
@@ -37,6 +38,8 @@ draw2d.layout.locator.Locator = Class.extend(
     //
     child.setDraggable(false)
     child.setSelectable(false)
+
+    return this
   },
 
   /**
@@ -45,8 +48,11 @@ draw2d.layout.locator.Locator = Class.extend(
    *
    * @param {draw2d.Figure} figure
    * @param {draw2d.Figure} child
+   * @returns {this}
    */
   unbind: function (figure, child) {
+
+    return this
   },
 
 
@@ -57,7 +63,7 @@ draw2d.layout.locator.Locator = Class.extend(
    * @param {Number} index child index of the figure
    * @param {draw2d.Figure} figure the figure to control
    *
-   * @template
+   * @private
    **/
   relocate: function (index, figure) {
     // just repaint the child to update the SVG related to the new location
@@ -69,7 +75,7 @@ draw2d.layout.locator.Locator = Class.extend(
    *
    * Return a clone of the locator object
    *
-   * @returns
+   * @returns {draw2d.layout.locator.Locator}
    */
   clone: function () {
     return eval("new " + this.NAME + "()")

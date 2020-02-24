@@ -1119,7 +1119,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
    * Read all attributes from the serialized properties and transfer them into the shape.
    *
    * @param {Object} memento
-   * @returns
+   * @returns {this}
    */
   setPersistentAttributes: function (memento) {
     this._super(memento)
@@ -1156,6 +1156,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
       this.setVertices(memento.vertex)
     }
 
+    return this
   }
 })
 

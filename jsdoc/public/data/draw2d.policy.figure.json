@@ -486,7 +486,11 @@
           ],
           "inherited": true,
           "since": "5.3.2",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": ""
+          }
         }
       ],
       "fires": "",
@@ -924,7 +928,11 @@
           ],
           "inherited": true,
           "since": "5.3.2",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": ""
+          }
         }
       ],
       "fires": "",
@@ -1449,7 +1457,11 @@
           ],
           "inherited": true,
           "since": "5.3.2",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": ""
+          }
         }
       ],
       "fires": "",
@@ -1871,7 +1883,11 @@
           ],
           "inherited": true,
           "since": "5.3.2",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": ""
+          }
         }
       ],
       "fires": "",
@@ -1984,7 +2000,11 @@
           ],
           "inherited": true,
           "since": "5.3.2",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": ""
+          }
         },
         {
           "name": "onInstall",
@@ -2486,7 +2506,11 @@
           ],
           "inherited": true,
           "since": "5.3.2",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": ""
+          }
         }
       ],
       "fires": "",
@@ -2910,7 +2934,11 @@
           ],
           "inherited": true,
           "since": "5.3.2",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": ""
+          }
         }
       ],
       "fires": "",
@@ -3351,7 +3379,11 @@
           ],
           "inherited": true,
           "since": "5.3.2",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": ""
+          }
         }
       ],
       "fires": "",
@@ -3827,7 +3859,11 @@
           ],
           "inherited": true,
           "since": "5.3.2",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": ""
+          }
         }
       ],
       "fires": "",
@@ -4299,7 +4335,11 @@
           ],
           "inherited": true,
           "since": "5.3.2",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": ""
+          }
         }
       ],
       "fires": "",
@@ -4740,7 +4780,11 @@
           ],
           "inherited": true,
           "since": "5.3.2",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": ""
+          }
         }
       ],
       "fires": "",
@@ -5178,7 +5222,11 @@
           ],
           "inherited": true,
           "since": "5.3.2",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": ""
+          }
         }
       ],
       "fires": "",
@@ -5648,7 +5696,11 @@
           ],
           "inherited": true,
           "since": "5.3.2",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": ""
+          }
         }
       ],
       "fires": "",
@@ -6087,7 +6139,11 @@
           ],
           "inherited": true,
           "since": "5.3.2",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": ""
+          }
         }
       ],
       "fires": "",
@@ -6561,7 +6617,11 @@
           ],
           "inherited": true,
           "since": "5.3.2",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": ""
+          }
         }
       ],
       "fires": "",
@@ -6997,7 +7057,11 @@
           ],
           "inherited": true,
           "since": "5.3.2",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": ""
+          }
         }
       ],
       "fires": "",

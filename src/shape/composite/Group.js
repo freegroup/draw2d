@@ -42,8 +42,7 @@ draw2d.shape.composite.Group = draw2d.shape.composite.StrongComposite.extend(
    *
    * @param {draw2d.Figure} figure the figure to test
    * @param {Boolean} selectable the initial selectable flag of the figure
-   * @returns
-   *
+   * @returns {Boolean} returns false because it is not possible toselect single figures in the group
    */
   isMemberSelectable: function (figure, selectable) {
     return false
@@ -58,7 +57,7 @@ draw2d.shape.composite.Group = draw2d.shape.composite.StrongComposite.extend(
    *
    * @param {draw2d.Figure} figure the figure to test
    * @param {Boolean} draggable the initial draggable flag of the figure
-   * @returns
+   * @returns {Boolean} returns always false because it is not possible to drag&drop single figures in a group
    *
    */
   isMemberDraggable: function (figure, draggable) {
@@ -71,6 +70,7 @@ draw2d.shape.composite.Group = draw2d.shape.composite.StrongComposite.extend(
    *
    * @param {Number/draw2d.geo.Point} x The new x coordinate of the figure
    * @param {Number} [y] The new y coordinate of the figure
+   * @returns {this}
    **/
   setPosition: function (x, y) {
     let oldX = this.x
@@ -102,6 +102,7 @@ draw2d.shape.composite.Group = draw2d.shape.composite.StrongComposite.extend(
    * figure bounding box.
    *
    * @param {draw2d.Figure} figure
+   * @returns {this}
    */
   assignFigure: function (figure) {
     if (!this.assignedFigures.contains(figure)) {
@@ -130,7 +131,7 @@ draw2d.shape.composite.Group = draw2d.shape.composite.StrongComposite.extend(
    * Remove the given figure from the group assignment
    *
    * @param {draw2d.Figure} figure the figure to remove
-   *
+   * @returns {this}
    */
   unassignFigure: function (figure) {
     if (this.assignedFigures.contains(figure)) {

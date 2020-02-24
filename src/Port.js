@@ -613,7 +613,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
    * 
    * Return an objects with all important attributes for XML or JSON serialization
    *
-   * @return
+   * @return {Object} all attributes required for the persistency
    */
   getPersistentAttributes: function () {
     let memento = this._super()

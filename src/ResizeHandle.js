@@ -95,7 +95,7 @@ draw2d.ResizeHandle = draw2d.shape.basic.Rectangle.extend(
    *
    * The edge of the rectangle for the snapTo mechanism.
    *
-   * @return
+   * @return {draw2d.SnapToHelper} enum of the direction (NORTH, NORTH_WEST, EAST,...)
    */
   getSnapToDirection: function () {
     switch (this.type) {
@@ -223,7 +223,7 @@ draw2d.ResizeHandle = draw2d.shape.basic.Rectangle.extend(
    * to the type of resize handle. north, south,west,..
    *
    * @param flag
-   * @returns
+   * @returns {this}
    */
   setDraggable: function (flag) {
     this._super(flag)

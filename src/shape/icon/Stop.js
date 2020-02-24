@@ -33,7 +33,7 @@ draw2d.shape.icon.Stop = draw2d.shape.icon.Icon.extend(
 
   /**
    * @private
-   * @returns
+   * @returns {Object} the raphaelJS path object
    */
   createSet: function () {
     return this.canvas.paper.path("M5.5,5.5h20v20h-20z")

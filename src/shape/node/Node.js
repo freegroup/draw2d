@@ -363,6 +363,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
    * Remove all ports of this node
    *
    * @since 5.0.0
+   * @returns {this}
    */
   resetPorts: function () {
     this.getPorts().each((i, port) => this.removePort(port))
@@ -375,6 +376,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
    * Removes a port and all related connections from this node.<br>
    *
    * @param {draw2d.Port} port The port to remove.
+   * @returns {this}
    **/
   removePort: function (port) {
     this.portRelayoutRequired = true
@@ -460,7 +462,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
 
 
   /**
-   * @inheritdoc
+   * @returns {this}
    */
   setCanvas: function (canvas) {
     let oldCanvas = this.canvas
@@ -486,7 +488,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
   },
 
   /**
-   * @inheritdoc
+   * @returns {this}
    */
   setRotationAngle: function (angle) {
     this.portRelayoutRequired = true
@@ -498,7 +500,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
   },
 
   /**
-   * @inheritdoc
+   * @returns {this}
    */
   setDimension: function (w, h) {
     this.portRelayoutRequired = true
@@ -515,29 +517,32 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
    * @template
    */
   onPortValueChanged: function (relatedPort) {
-
   },
 
   /**
-   * @inheritdoc
+   * @private
+   * @return {this}
    */
   repaint: function (attributes) {
     if (this.repaintBlocked === true || this.shape === null) {
-      return
+      return this
     }
 
     this._super(attributes)
     this.layoutPorts()
+
+    return this
   },
 
   /**
    *
    *
    * @private
+   * @returns {this}
    */
   layoutPorts: function () {
     if (this.portRelayoutRequired === false) {
-      return//silently
+      return this//silently
     }
     this.portRelayoutRequired = false
 
@@ -602,7 +607,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
    * Read all attributes from the serialized properties and transfer them into the shape.
    *
    * @param {Object} memento
-   * @returns
+   * @returns {this}
    */
   setPersistentAttributes: function (memento) {
     this._super(memento)

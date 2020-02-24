@@ -28,7 +28,11 @@
           "parameters": [],
           "inherited": false,
           "since": "6.1.0",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "reverse",
@@ -39,7 +43,11 @@
           "parameters": [],
           "inherited": false,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "getSize",
@@ -158,7 +166,11 @@
           ],
           "inherited": false,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "grep",
@@ -186,7 +198,11 @@
           ],
           "inherited": false,
           "since": "2.0.0",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "find",
@@ -258,7 +274,11 @@
           ],
           "inherited": false,
           "since": "4.0.0",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "unique",
@@ -269,7 +289,11 @@
           "parameters": [],
           "inherited": false,
           "since": "4.0.0",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "addAll",
@@ -297,7 +321,11 @@
           ],
           "inherited": false,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "pop",
@@ -308,7 +336,11 @@
           "parameters": [],
           "inherited": false,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": "<p>the remove object</p>"
+          }
         },
         {
           "name": "push",
@@ -318,9 +350,9 @@
           "description": "<p>Push one element at the top of the stack/array</p>",
           "parameters": [
             {
-              "name": "path",
-              "type": "",
-              "description": "",
+              "name": "value",
+              "type": "Object",
+              "description": "<p>The object to add</p>",
               "default": "",
               "optional": "",
               "nullable": ""
@@ -328,7 +360,11 @@
           ],
           "inherited": false,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "remove",
@@ -380,7 +416,11 @@
           ],
           "inherited": false,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "removeElementAt",
@@ -424,7 +464,11 @@
           ],
           "inherited": false,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "indexOf",
@@ -497,8 +541,8 @@
           "since": "",
           "examples": [],
           "returns": {
-            "type": "draw2d.util.ArrayList",
-            "description": "<p>self</p>"
+            "type": "this",
+            "description": ""
           }
         },
         {
@@ -567,7 +611,58 @@
           ],
           "inherited": false,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
+        },
+        {
+          "name": "overwriteElementAt",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>overwrites the element with an object at the specific index.</p>",
+          "parameters": [
+            {
+              "name": "obj",
+              "type": "Object",
+              "description": "<p>The object to add</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "<p>the index where the object should places.</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": false,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
+        },
+        {
+          "name": "getPersistentAttributes",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "",
+          "parameters": [],
+          "inherited": false,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": "<p>the attributes which are required for persistence</p>"
+          }
         },
         {
           "name": "setPersistentAttributes",
@@ -587,7 +682,11 @@
           ],
           "inherited": false,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         }
       ],
       "fires": "",

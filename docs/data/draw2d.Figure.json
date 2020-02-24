@@ -68,7 +68,11 @@
       ],
       "inherited": false,
       "since": "5.0.1",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "Object",
+        "description": "<p>either the requested attribute if this method used as getter or <code>this</code> if the method uses as setter</p>"
+      }
     },
     {
       "name": "pick",
@@ -2277,7 +2281,11 @@
       "parameters": [],
       "inherited": false,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "Object",
+        "description": "<p>all attributes of the figure required for the persistency</p>"
+      }
     },
     {
       "name": "setPersistentAttributes",

@@ -46,7 +46,7 @@ draw2d.policy.EditPolicy = Class.extend(
    * @param {String/Object} name
    * @param {Object} [value]
    * @since 5.3.2
-   * @returns
+   * @returns {Object}
    **/
   attr: function (name, value) {
     // call of attr as setter method with {name1:val1, name2:val2 }  argument list
