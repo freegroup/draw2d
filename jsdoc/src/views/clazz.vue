@@ -1,5 +1,5 @@
 <template>
-  <div class="ma-2" >
+  <div class="ma-2" style="min-height: 100vw">
     <v-breadcrumbs :items="items"></v-breadcrumbs>
     <div class="page">
       <h2>{{ $attrs.className }}  <v-chip v-if="clazz.access === 'private'" class="ma-2" color="red" text-color="white" x-small>private</v-chip></h2>
