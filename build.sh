@@ -9,5 +9,5 @@ npm run build
 
 # delete old docu
 cd ..
-rm -r ./docs/*
+rm -r ./docs/
 cp -r ./jsdoc/dist/ ./docs

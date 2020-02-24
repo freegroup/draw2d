@@ -1,6 +1,9 @@
 <template>
   <div  style="min-height: 100%;min-width:100%">
-    <iframe :src="'examples/'+example.url" width="100%" height="100%" style="min-height: 100%;min-width:100%;;position:absolute">
+    <div style="position:absolute">
+      <v-icon>arrow_forward</v-icon><a target="_examples" :href="'https://github.com/freegroup/draw2d/tree/master/examples/'+example.url.replace('index.html','')"> Source on Github</a>
+    </div>
+    <iframe :src="'examples/'+example.url" width="100%" height="100%" style="margin-top:40px;height: calc(100% - 40px); min-width:100%;;position:absolute">
     </iframe>
   </div>
 </template>

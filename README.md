@@ -20,6 +20,7 @@ yarn dev
 
 ## publish new version
 ``` 
+yarn build
 npm version patch
 npm publish
 ```

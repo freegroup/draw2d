@@ -55,10 +55,6 @@ export default {
   name: 'App',
 
   data: () => ({
-
-    items: [
-      'Appetizers', 'Entrees', 'Deserts', 'Cocktails'
-    ]
   })
 }
 </script>
