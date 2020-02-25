@@ -12,14 +12,14 @@ let plugins = [], outputFile;
 
 outputFile = libraryName + '.js';
 
-
+let outputPath = process.env.DIR || '/dist'
 const config = {
   entry: __dirname + '/src/index.js',
   devtool: 'source-map',
   mode: 'development',
   output: {
     libraryTarget: 'umd', // make the bundle export
-    path: __dirname + '/dist',
+    path: __dirname + outputPath,
     filename: outputFile,
     library: 'draw2d'
   },

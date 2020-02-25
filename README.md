@@ -15,7 +15,7 @@ https://freegroup.github.io/draw2d/index.html
 ## Local Development
 ``` 
 npm install
-yarn dev
+DIR=/examples yarn dev
 ```
 
 ## publish new version

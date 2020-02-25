@@ -35,7 +35,6 @@ import draw2d from '../../packages'
 draw2d.shape.state.Connection = draw2d.Connection.extend(
   /** @lends draw2d.shape.state.Connection.prototype */
   {
-
   NAME: "draw2d.shape.state.Connection",
 
   DEFAULT_COLOR: new draw2d.util.Color("#4D90FE"),

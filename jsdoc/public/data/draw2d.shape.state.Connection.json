@@ -168,7 +168,11 @@
       ],
       "inherited": true,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "getSourceDecorator",
@@ -203,7 +207,11 @@
       ],
       "inherited": true,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "getTargetDecorator",

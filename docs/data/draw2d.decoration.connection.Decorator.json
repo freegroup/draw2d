@@ -1,21 +1,41 @@
 {
   "name": "Decorator",
   "namespace": "draw2d.decoration.connection",
-  "description": "",
+  "description": "<p>Base class for any kind of Connection end/start decorations like arrows, bullets, circles, bars,...</p>",
   "extends": [],
   "access": "",
   "virtual": false,
   "functions": [
     {
       "name": "paint",
-      "access": "",
+      "access": "private",
       "virtual": false,
       "deprecated": "",
       "description": "<p>Paint the decoration for a connector. The Connector starts always in\n[0,0] and ends in [x,0].\nIt is not necessary to consider any rotation of the connection. This will be done by the\nframework.</p>\n<pre>\n              | -Y\n              |\n              |\n --------------+-----------------------------&gt; +X\n              |\n              |\n              |\n              V +Y\n\n\n</pre>\n<p>See in ArrowConnectionDecorator for example implementation.</p>",
       "parameters": [
         {
           "name": "paper",
-          "type": "Raphael",
+          "type": "RaphaelPaper",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": false,
+      "since": "",
+      "examples": []
+    },
+    {
+      "name": "setParent",
+      "access": "private",
+      "virtual": false,
+      "deprecated": "",
+      "description": "",
+      "parameters": [
+        {
+          "name": "parent",
+          "type": "draw2d.Connection",
           "description": "",
           "default": "",
           "optional": "",
@@ -47,7 +67,26 @@
       ],
       "inherited": false,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
+    },
+    {
+      "name": "getColor",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Get the line color of the decoration</p>",
+      "parameters": [],
+      "inherited": false,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "drawd.util.Color",
+        "description": "<p>the current line color of null if the Decoration should use the color of the host connection</p>"
+      }
     },
     {
       "name": "setBackgroundColor",
@@ -70,7 +109,26 @@
       ],
       "inherited": false,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
+    },
+    {
+      "name": "getBackgroundColor",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Returns the fill color</p>",
+      "parameters": [],
+      "inherited": false,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "draw2d.util.Color",
+        "description": ""
+      }
     },
     {
       "name": "setDimension",
@@ -98,7 +156,11 @@
       ],
       "inherited": false,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     }
   ],
   "fires": "",

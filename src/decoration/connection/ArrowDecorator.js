@@ -1,4 +1,5 @@
 import draw2d from '../../packages'
+
 /**
  * @class
  *
@@ -45,41 +46,40 @@ draw2d.decoration.connection.ArrowDecorator = draw2d.decoration.connection.Decor
   /** @lends draw2d.decoration.connection.ArrowDecorator */
   {
 
-	NAME: "draw2d.decoration.connection.ArrowDecorator",
+    NAME: "draw2d.decoration.connection.ArrowDecorator",
 
-    init: function(width, height)
-    {
-        this._super( width, height);
+    init: function (width, height) {
+      this._super(width, height)
     },
 
-	/**
-	 * Draw a filled arrow decoration.
-	 * It's not your work to rotate the arrow. The draw2d do this job for you.
-	 *
-	 * <pre>
-	 *                       ---+ [length , width/2]
-	 *                -------   |
-	 * [3,0]   --------          |
-	 *    +---                  |==========================
-	 *        --------          |
-	 *                -------   |
-	 *                       ---+ [lenght ,-width/2]
-	 *
-	 *</pre>
-	 * @param {Raphael} paper the raphael paper object for the paint operation
-	 **/
-	paint: function(paper)
-	{
-		var st = paper.set();
+    /**
+     * Draw a filled arrow decoration.
+     * It's not your work to rotate the arrow. The draw2d do this job for you.
+     *
+     * <pre>
+     *                       ---+ [length , width/2]
+     *                -------   |
+     * [3,0]   --------          |
+     *    +---                  |==========================
+     *        --------          |
+     *                -------   |
+     *                       ---+ [lenght ,-width/2]
+     *
+     *</pre>
+     * @param {Raphael} paper the raphael paper object for the paint operation
+     * @return {this}
+     **/
+    paint: function (paper) {
+      let st = paper.set()
 
-		st.push(paper.path(["M0 0" ,
-		                    "L", this.width, " ", -this.height/2,
-		                    "L", this.width, " ",  this.height/2,
-		                    "L0 0"].join("")));
+      st.push(paper.path(["M0 0",
+        "L", this.width, " ", -this.height / 2,
+        "L", this.width, " ", this.height / 2,
+        "L0 0"].join("")))
 
-	    st.attr({fill:this.backgroundColor.rgba(),stroke:this.color.rgba()});
+      st.attr({fill: this.backgroundColor.rgba()})
 
-	    return st;
-	}
-});
+      return st
+    }
+  })
 

@@ -45,36 +45,34 @@ draw2d.decoration.connection.DiamondDecorator = draw2d.decoration.connection.Dec
   /** @lends draw2d.decoration.connection.DiamondDecorator */
   {
 
-	NAME: "draw2d.decoration.connection.DiamondDecorator",
+    NAME: "draw2d.decoration.connection.DiamondDecorator",
 
-	init: function(width, height)
-	{
-        this._super( width, height);
-	},
+    init: function (width, height) {
+      this._super(width, height)
+    },
 
-	/**
-	 * Draw a filled diamond decoration.
-	 *
-	 * It's not your work to rotate the arrow. The draw2d do this job for you.
-	 *
-	 * @param {Raphael} paper the raphael paper object for the paint operation
-	 **/
-	paint: function(paper)
-	{
-		var st = paper.set();
+    /**
+     * Draw a filled diamond decoration.
+     *
+     * It's not your work to rotate the arrow. The draw2d do this job for you.
+     *
+     * @param {Raphael} paper the raphael paper object for the paint operation
+     * @private
+     **/
+    paint: function (paper) {
+      let st = paper.set()
 
-		st.push(
-	        paper.path(["M", this.width/2," " , -this.height/2,  // Go to the top center..
-	                    "L", this.width  , " ", 0,               // ...draw line to the right middle
-	                    "L", this.width/2, " ", this.height/2,   // ...bottom center...
-	                    "L", 0           , " ", 0,               // ...left middle...
-	                    "L", this.width/2, " ", -this.height/2,  // and close the path
-	                    "Z"].join(""))
-		);
+      st.push(
+        paper.path(["M", this.width / 2, " ", -this.height / 2,  // Go to the top center..
+          "L", this.width, " ", 0,               // ...draw line to the right middle
+          "L", this.width / 2, " ", this.height / 2,   // ...bottom center...
+          "L", 0, " ", 0,               // ...left middle...
+          "L", this.width / 2, " ", -this.height / 2,  // and close the path
+          "Z"].join(""))
+      )
 
-		st.attr({fill:this.backgroundColor.rgba(),stroke:this.color.rgba()});
-		return st;
-	}
-
-});
+      st.attr({fill: this.backgroundColor.rgba()})
+      return st
+    }
+  });
 

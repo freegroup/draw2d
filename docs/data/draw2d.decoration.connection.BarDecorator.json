@@ -8,7 +8,7 @@
   "functions": [
     {
       "name": "paint",
-      "access": "",
+      "access": "private",
       "virtual": false,
       "deprecated": "",
       "description": "<p>Draw a bar decoration.</p>",

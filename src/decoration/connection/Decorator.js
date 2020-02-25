@@ -3,9 +3,8 @@ import Color from '../../util/Color'
 
 /**
  * @class
+ * Base class for any kind of Connection end/start decorations like arrows, bullets, circles, bars,...
  *
- *
- * @inheritable
  * @author Andreas Herz
  */
 draw2d.decoration.connection.Decorator = Class.extend(
@@ -27,8 +26,8 @@ draw2d.decoration.connection.Decorator = Class.extend(
       } else {
         this.height = height
       }
-
-      this.color = new Color(0, 0, 0)
+      this.parent = null
+      this.color = null // null => use the color of the connection
       this.backgroundColor = new Color(250, 250, 250)
     },
 
@@ -53,7 +52,8 @@ draw2d.decoration.connection.Decorator = Class.extend(
      * </pre>
      *
      * See in ArrowConnectionDecorator for example implementation.
-     * @param {Raphael} paper
+     * @param {RaphaelPaper} paper
+     * @private
      */
     paint: function (paper) {
       // do nothing per default
@@ -61,14 +61,35 @@ draw2d.decoration.connection.Decorator = Class.extend(
 
     /**
      *
+     * @param {draw2d.Connection} parent
+     * @private
+     */
+    setParent: function(parent){
+      this.parent = parent
+    },
+
+    /**
+     *
      * Set the stroke color for the decoration
      *
      * @param {draw2d.util.Color|String} c
+     * @returns {this}
      */
     setColor: function (c) {
       this.color = new Color(c);
-
+      if(this.parent!==null){
+        this.parent.repaint()
+      }
       return this
+    },
+
+    /**
+     * Get the line color of the decoration
+     *
+     * @returns {drawd.util.Color} the current line color of null if the Decoration should use the color of the host connection
+     */
+    getColor: function(){
+      return this.color
     },
 
     /**
@@ -76,11 +97,24 @@ draw2d.decoration.connection.Decorator = Class.extend(
      * Set the background color for the decoration
      *
      * @param {draw2d.util.Color|String} c
+     * @returns {this}
      */
     setBackgroundColor: function (c) {
       this.backgroundColor = new Color(c)
+      if(this.parent!==null){
+        this.parent.repaint()
+      }
 
       return this
+    },
+
+    /**
+     * Returns the fill color
+     *
+     * @returns {draw2d.util.Color}
+     */
+    getBackgroundColor: function(){
+      return this.backgroundColor
     },
 
     /**
@@ -89,6 +123,7 @@ draw2d.decoration.connection.Decorator = Class.extend(
      *
      * @param {Number} width  The new width of the decoration
      * @param {Number} height The new height of the decoration
+     * @returns {this}
      **/
     setDimension: function (width, height) {
       this.width = width

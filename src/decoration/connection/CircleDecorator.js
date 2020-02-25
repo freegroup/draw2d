@@ -53,12 +53,13 @@ draw2d.decoration.connection.CircleDecorator = draw2d.decoration.connection.Deco
      * Draw a filled circle decoration.
      *
      * @param {Raphael} paper the raphael paper object for the paint operation
+     * @private
      **/
     paint: function (paper) {
       let st = paper.set()
 
       st.push(paper.circle(0, 0, this.width / 2))
-      st.attr({fill: this.backgroundColor.rgba(), stroke: this.color.rgba()})
+      st.attr({fill: this.backgroundColor.rgba()})
 
       return st
     }

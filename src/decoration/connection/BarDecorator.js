@@ -43,32 +43,28 @@ draw2d.decoration.connection.BarDecorator = draw2d.decoration.connection.Decorat
   /** @lends draw2d.decoration.connection.BarDecorator */
   {
 
-	NAME: "draw2d.decoration.connection.BarDecorator",
+    NAME: "draw2d.decoration.connection.BarDecorator",
 
-	init: function(width, height)
-	{
-        this._super( width, height);
-	},
+    init: function (width, height) {
+      this._super(width, height)
+    },
 
-	/**
-	 *
-	 * Draw a bar decoration.
-	 *
-	 *
-	 * @param {Raphael} paper the raphael paper object for the paint operation
-	 **/
-	paint: function(paper)
-	{
-		var st = paper.set();
-		var path = ["M", this.width/2," " , -this.height/2];  // Go to the top center..
-		path.push(  "L", this.width/2, " ", this.height/2);   // ...bottom center...
+    /**
+     *
+     * Draw a bar decoration.
+     *
+     *
+     * @param {Raphael} paper the raphael paper object for the paint operation
+     * @private
+     **/
+    paint: function (paper) {
+      let st = paper.set();
+      let path = ["M", this.width / 2, " ", -this.height / 2]  // Go to the top center..
+      path.push("L", this.width / 2, " ", this.height / 2)   // ...bottom center...
 
-		st.push(
-	        paper.path(path.join(""))
-		);
-		st.attr({fill:this.backgroundColor.rgba(),stroke:this.color.rgba()});
-		return st;
-	}
-
-});
+      st.push(paper.path(path.join("")))
+      st.attr({fill: this.backgroundColor.rgba()})
+      return st
+    }
+  })
 

@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded",function () {
 		 // Add another source/target/connection combination with
 		 // another connection router
 		 // create and add two nodes which contains Ports (In and OUT)
-	     //
+     //
 		 start = new draw2d.shape.node.Start({x:50, y:450});
 		 end   = new draw2d.shape.node.End({x:430, y:350});
 		 canvas.add( start);
@@ -57,11 +57,13 @@ document.addEventListener("DOMContentLoaded",function () {
 
 		 c = new draw2d.Connection({
 		     router:new draw2d.layout.connection.DirectRouter(),
-             sourceDecorator: new draw2d.decoration.connection.BarDecorator(),
-             targetDecorator: new draw2d.decoration.connection.DiamondDecorator(),
-             source: start.getOutputPort(0),
-             target:end.getInputPort(0)
+         sourceDecorator: new draw2d.decoration.connection.BarDecorator(),
+         targetDecorator: new draw2d.decoration.connection.DiamondDecorator(),
+         source: start.getOutputPort(0),
+         target:end.getInputPort(0)
 		 });
+		 // override the color of the target decorator
+		 c.getTargetDecorator().setColor('#FF0000')
 		 canvas.add(c);
 
 		 /////////////////////////////////////////////////////////////////////

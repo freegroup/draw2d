@@ -1457,7 +1457,11 @@
           ],
           "inherited": false,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "getSourceDecorator",
@@ -1492,7 +1496,11 @@
           ],
           "inherited": false,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "getTargetDecorator",
