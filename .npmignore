@@ -8,3 +8,10 @@
 package-lock.json
 webpack.config.js
 yarn.lock
+out
+jsdoc
+examples
+src
+docs
+yarn-error.log
+build.sh
