@@ -28,8 +28,11 @@ draw2d.Canvas = Class.extend(
       this.html = $("#" + canvasId)
       this.html.css({"cursor": "default"})
       if (!isNaN(parseFloat(width)) && !isNaN(parseFloat(height))) {
-        this.initialWidth = width
-        this.initialHeight = height
+        this.initialWidth = parseInt(width)
+        this.initialHeight = parseInt(height)
+        this.html
+          .height(this.initialHeight)
+          .width(this.initialWidth)
       }
       else {
         this.initialWidth = this.getWidth()
@@ -743,6 +746,7 @@ draw2d.Canvas = Class.extend(
      * a jQuery node.
      *
      * @param {String/HTMLElement} elementSelector
+     * @returns {this}
      **/
     setScrollArea: function (elementSelector) {
       this.scrollArea = $(elementSelector)
@@ -755,7 +759,7 @@ draw2d.Canvas = Class.extend(
      *
      * return the scrolling area of the canvas. This is jQuery object
      *
-     * @returns {JQuery}
+     * @returns {JQueryElement}
      **/
     getScrollArea: function () {
       return this.scrollArea
