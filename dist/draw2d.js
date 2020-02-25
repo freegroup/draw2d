@@ -6753,8 +6753,9 @@ _packages2.default.Canvas = Class.extend(
     this.html = $("#" + canvasId);
     this.html.css({ "cursor": "default" });
     if (!isNaN(parseFloat(width)) && !isNaN(parseFloat(height))) {
-      this.initialWidth = width;
-      this.initialHeight = height;
+      this.initialWidth = parseInt(width);
+      this.initialHeight = parseInt(height);
+      this.html.height(this.initialHeight).width(this.initialWidth);
     } else {
       this.initialWidth = this.getWidth();
       this.initialHeight = this.getHeight();
@@ -7446,6 +7447,7 @@ _packages2.default.Canvas = Class.extend(
    * a jQuery node.
    *
    * @param {String/HTMLElement} elementSelector
+   * @returns {this}
    **/
   setScrollArea: function setScrollArea(elementSelector) {
     this.scrollArea = $(elementSelector);
@@ -7458,7 +7460,7 @@ _packages2.default.Canvas = Class.extend(
    *
    * return the scrolling area of the canvas. This is jQuery object
    *
-   * @returns {JQuery}
+   * @returns {JQueryElement}
    **/
   getScrollArea: function getScrollArea() {
     return this.scrollArea;
@@ -33637,7 +33639,7 @@ _packages2.default.policy.canvas.WheelZoomPolicy = _packages2.default.policy.can
     var scrollTop = this.canvas.getScrollTop();
     var scrollLeft = this.canvas.getScrollLeft();
     var scrollWidth = this.canvas.getScrollArea().width();
-    var scrollHeight = this.canvas.getScrollArea().width();
+    var scrollHeight = this.canvas.getScrollArea().height();
     var centerY = scrollTop + scrollHeight / 2 * this.canvas.zoomFactor;
     var centerX = scrollLeft + scrollWidth / 2 * this.canvas.zoomFactor;
 

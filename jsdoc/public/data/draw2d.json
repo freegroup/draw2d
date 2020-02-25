@@ -334,7 +334,11 @@
           ],
           "inherited": false,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "getScrollArea",
@@ -347,7 +351,7 @@
           "since": "",
           "examples": [],
           "returns": {
-            "type": "JQuery",
+            "type": "JQueryElement",
             "description": ""
           }
         },

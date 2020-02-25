@@ -11,3 +11,6 @@ npm run build
 cd ..
 rm -r ./docs/
 cp -r ./jsdoc/dist/ ./docs
+
+# build the dist folder
+yarn build
