@@ -217,6 +217,10 @@ function writeRouter(namespaces){
 
   stream.write('const routes = [\n')
   stream.write('  {\n')
+  stream.write('    path: \'/\',\n')
+  stream.write('    component: () => import(/* webpackChunkName: "home" */ \'../views/api.vue\')\n')
+  stream.write('  },\n')
+  stream.write('  {\n')
   stream.write('    path: \'/api\',\n')
   stream.write('    component: () => import(/* webpackChunkName: "api" */ \'../views/api.vue\'),\n')
   stream.write('    children: [\n')

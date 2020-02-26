@@ -5,6 +5,10 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    path: '/',
+    component: () => import(/* webpackChunkName: "home" */ '../views/api.vue')
+  },
+  {
     path: '/api',
     component: () => import(/* webpackChunkName: "api" */ '../views/api.vue'),
     children: [
