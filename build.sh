@@ -13,4 +13,5 @@ rm -r ./docs/
 cp -r ./jsdoc/dist/ ./docs
 
 # build the dist folder
+cp ./dist/draw2d.js ./jsdoc/public/
 yarn build
