@@ -49,6 +49,11 @@ const routes = [
         component: () => import(/* webpackChunkName: "api_draw2d_io_json" */ '../views/package.vue')
       },
       {
+        path: '/api/draw2d/io/json/reader',
+        props: { className: 'draw2d.io.json.Reader' },
+        component: () => import(/* webpackChunkName: "api_draw2d_io_json_reader" */ '../views/clazz.vue')
+      },
+      {
         path: '/api/draw2d/io/json/writer',
         props: { className: 'draw2d.io.json.Writer' },
         component: () => import(/* webpackChunkName: "api_draw2d_io_json_writer" */ '../views/clazz.vue')

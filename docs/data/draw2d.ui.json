@@ -14,6 +14,26 @@
       "virtual": false,
       "functions": [
         {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "",
+          "parameters": [
+            {
+              "name": "attr",
+              "type": "Object",
+              "description": "<p>callback handler and configuration. <strong>{ onCommit:function(){}}, onCancel: function(){}, onStart: function(){}, text:'My Dialog Title' }</strong></p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": false,
+          "since": "",
+          "examples": []
+        },
+        {
           "name": "start",
           "access": "",
           "virtual": false,
@@ -40,7 +60,7 @@
         "description": "",
         "parameters": [],
         "examples": [
-          "var label =  new draw2d.shape.basic.Label({text:\"Double Click on me\"});\n\n   label.installEditor(new draw2d.ui.LabelEditor({\n      // called after the value has been set to the LabelFigure\n      onCommit: $.proxy(function(value){\n          alert(\"new value set to:\"+value);\n      },this),\n      // called if the user abort the operation\n      onCancel: function(){\n      }\n   }));\n\n   canvas.add(label,50,10);"
+          "let label =  new draw2d.shape.basic.Label({text:\"Double Click on me\"});\n\n   label.installEditor(new draw2d.ui.LabelEditor({\n      // called after the value has been set to the LabelFigure\n      onCommit: $.proxy(function(value){\n          alert(\"new value set to:\"+value);\n      },this),\n      // called if the user abort the operation\n      onCancel: function(){\n      }\n   }));\n\n   canvas.add(label,50,10);"
         ]
       }
     },
@@ -93,6 +113,26 @@
           "description": "<p>Transfer the data from the editor into the label.<br>\nRemove the editor.<br></p>",
           "parameters": [],
           "inherited": false,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "",
+          "parameters": [
+            {
+              "name": "attr",
+              "type": "Object",
+              "description": "<p>callback handler and configuration. <strong>{ onCommit:function(){}}, onCancel: function(){}, onStart: function(){}, text:'My Dialog Title' }</strong></p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
           "since": "",
           "examples": []
         }

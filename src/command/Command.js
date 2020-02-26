@@ -8,7 +8,7 @@ import draw2d from '../packages'
  * changes to the application's model. An application has a single command stack. Commands must
  * be executed using the command stack rather than directly calling execute.
  * <br>
- * This is requried for a deneric support for the undo/redo concept within draw2d.<br>
+ * This is required for a generic support for the undo/redo concept within draw2d.<br>
  *
  * @inheritable
  * @author Andreas Herz

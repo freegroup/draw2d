@@ -19,7 +19,6 @@ import draw2d from '../../packages'
  * @author Andreas Herz
  * @extends draw2d.io.Writer
  */
-
 draw2d.io.svg.Writer = draw2d.io.Writer.extend(
   /** @lends draw2d.io.svg.Writer */
   {

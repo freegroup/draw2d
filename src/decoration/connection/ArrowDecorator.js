@@ -40,12 +40,9 @@ import draw2d from '../../packages'
  * @param {Number} [height] the height of the arrow
  * @extend draw2d.decoration.connection.Decorator
  */
-
-
 draw2d.decoration.connection.ArrowDecorator = draw2d.decoration.connection.Decorator.extend(
   /** @lends draw2d.decoration.connection.ArrowDecorator */
   {
-
     NAME: "draw2d.decoration.connection.ArrowDecorator",
 
     init: function (width, height) {
@@ -53,21 +50,23 @@ draw2d.decoration.connection.ArrowDecorator = draw2d.decoration.connection.Decor
     },
 
     /**
-     * Draw a filled arrow decoration.
-     * It's not your work to rotate the arrow. The draw2d do this job for you.
+     * Draws a filled arrow decoration.
      *
-     * <pre>
+     *
+     * ```
      *                       ---+ [length , width/2]
      *                -------   |
-     * [3,0]   --------          |
+     * [0,0]  --------          |
      *    +---                  |==========================
      *        --------          |
      *                -------   |
-     *                       ---+ [lenght ,-width/2]
+     *                       ---+ [length ,-width/2]
      *
-     *</pre>
-     * @param {Raphael} paper the raphael paper object for the paint operation
-     * @return {this}
+     * ```
+     *
+     * @param {RaphaelPaper} paper the raphael paper object for the paint operation
+     * @returns {RaphaelPath}
+     * @private
      **/
     paint: function (paper) {
       let st = paper.set()

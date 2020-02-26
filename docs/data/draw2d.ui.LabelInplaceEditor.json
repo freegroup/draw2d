@@ -49,6 +49,26 @@
       "inherited": false,
       "since": "",
       "examples": []
+    },
+    {
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "",
+      "parameters": [
+        {
+          "name": "attr",
+          "type": "Object",
+          "description": "<p>callback handler and configuration. <strong>{ onCommit:function(){}}, onCancel: function(){}, onStart: function(){}, text:'My Dialog Title' }</strong></p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "",
+      "examples": []
     }
   ],
   "fires": "",

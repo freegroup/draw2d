@@ -25,23 +25,25 @@ import r from "lib/jquery.autoresize"
  *
  * @author Andreas Herz
  * @extends draw2d.ui.LabelEditor
-*/
-draw2d.ui.LabelInplaceEditor =  draw2d.ui.LabelEditor.extend(
-    /** @lends draw2d.ui.LabelInplaceEditor.prototype */
-    {
-    
+ */
+draw2d.ui.LabelInplaceEditor = draw2d.ui.LabelEditor.extend(
+  /** @lends draw2d.ui.LabelInplaceEditor.prototype */
+  {
+
     NAME: "draw2d.ui.LabelInplaceEditor",
 
-    init: function(listener)
-    {
-        this._super();
+    init: function (listener) {
+      this._super();
 
-        // register some default listener and override this with the handover one
-        this.listener = extend({
-          onCommit: function(){},
-          onCancel: function(){},
-          onStart: function(){}
-          },listener);
+      // register some default listener and override this with the handover one
+      this.listener = extend({
+        onCommit: function () {
+        },
+        onCancel: function () {
+        },
+        onStart: function () {
+        }
+      }, listener);
     },
 
     /**
@@ -50,68 +52,73 @@ draw2d.ui.LabelInplaceEditor =  draw2d.ui.LabelEditor.extend(
      *
      * @param {draw2d.shape.basic.Label} label the label to edit
      */
-    start: function( label)
-    {
-        this.label = label;
+    start: function (label) {
+      this.label = label;
 
-        this.commitCallback = this.commit.bind(this);
+      this.commitCallback = this.commit.bind(this);
 
-        // commit the editor if the user clicks anywhere in the document
-        //
-        $("body").bind("click",this.commitCallback);
+      // commit the editor if the user clicks anywhere in the document
+      //
+      $("body").bind("click", this.commitCallback);
 
-        // append the input field to the document and register
-        // the ENTER and ESC key to commit /cancel the operation
-        //
-        this.html = $('<input id="inplaceeditor">');
-        this.html.val(label.getText());
-        this.html.hide();
+      // append the input field to the document and register
+      // the ENTER and ESC key to commit /cancel the operation
+      //
+      this.html = $('<input id="inplaceeditor">');
+      this.html.val(label.getText());
+      this.html.hide();
 
-        $("body").append(this.html);
+      $("body").append(this.html);
 
-        this.html.autoResize();
+      this.html.autoResize();
 
-        this.html.bind("keyup",function(e){
-            switch (e.which) {
-            case 13:
-                 this.commit();
-                 break;
-            case 27:
-                this.cancel();
-                 break;
-           }
-         }.bind(this));
-
-         this.html.bind("blur",this.commitCallback);
-
-         // avoid commit of the operation if we click inside the editor
-         //
-         this.html.bind("click",function(e){
-             e.stopPropagation();
-             e.preventDefault();
-         });
-
-        // Position the INPUT and init the autoresize of the element
-        //
-        var canvas = this.label.getCanvas();
-        var bb = this.label.getBoundingBox();
-
-        bb.setPosition(canvas.fromCanvasToDocumentCoordinate(bb.x,bb.y));
-
-        // remove the scroll from the body if we add the canvas directly into the body
-        var scrollDiv = canvas.getScrollArea();
-        if(scrollDiv.is($("body"))){
-           bb.translate(canvas.getScrollLeft(), canvas.getScrollTop());
+      this.html.bind("keyup", function (e) {
+        switch (e.which) {
+          case 13:
+            this.commit();
+            break;
+          case 27:
+            this.cancel();
+            break;
         }
+      }.bind(this));
 
-        bb.translate(-1,-1);
-        bb.resize(2,2);
+      this.html.bind("blur", this.commitCallback);
 
-        this.html.css({position:"absolute","top": bb.y, "left":bb.x, "min-width":bb.w*(1/canvas.getZoom()), "height":Math.max(25,bb.h*(1/canvas.getZoom()))});
-        this.html.fadeIn(()=>{
-            this.html.focus();
-            this.listener.onStart()
-        });
+      // avoid commit of the operation if we click inside the editor
+      //
+      this.html.bind("click", function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+      });
+
+      // Position the INPUT and init the autoresize of the element
+      //
+      var canvas = this.label.getCanvas();
+      var bb = this.label.getBoundingBox();
+
+      bb.setPosition(canvas.fromCanvasToDocumentCoordinate(bb.x, bb.y));
+
+      // remove the scroll from the body if we add the canvas directly into the body
+      var scrollDiv = canvas.getScrollArea();
+      if (scrollDiv.is($("body"))) {
+        bb.translate(canvas.getScrollLeft(), canvas.getScrollTop());
+      }
+
+      bb.translate(-1, -1);
+      bb.resize(2, 2);
+
+      this.html.css({
+        position: "absolute",
+        "top": bb.y,
+        "left": bb.x,
+        "min-width": bb.w * (1 / canvas.getZoom()),
+        "height": Math.max(25, bb.h * (1 / canvas.getZoom()))
+      });
+      this.html.fadeIn(() => {
+        this.html.focus();
+        this.listener.onStart()
+      });
     },
 
     /**
@@ -121,18 +128,17 @@ draw2d.ui.LabelInplaceEditor =  draw2d.ui.LabelEditor.extend(
      *
      * @private
      */
-    commit: function()
-    {
-        this.html.unbind("blur",this.commitCallback);
-        $("body").unbind("click",this.commitCallback);
-        var label = this.html.val();
-        var cmd =new draw2d.command.CommandAttr(this.label, {text:label});
-        this.label.getCanvas().getCommandStack().execute(cmd);
-        this.html.fadeOut(()=>{
-            this.html.remove();
-            this.html = null;
-            this.listener.onCommit(this.label.getText());
-        });
+    commit: function () {
+      this.html.unbind("blur", this.commitCallback);
+      $("body").unbind("click", this.commitCallback);
+      var label = this.html.val();
+      var cmd = new draw2d.command.CommandAttr(this.label, {text: label});
+      this.label.getCanvas().getCommandStack().execute(cmd);
+      this.html.fadeOut(() => {
+        this.html.remove();
+        this.html = null;
+        this.listener.onCommit(this.label.getText());
+      });
     },
 
     /**
@@ -141,16 +147,15 @@ draw2d.ui.LabelInplaceEditor =  draw2d.ui.LabelEditor.extend(
      * Remove the editor.<br>
      * @private
      */
-    cancel: function()
-    {
-        this.html.unbind("blur",this.commitCallback);
-        $("body").unbind("click",this.commitCallback);
-        this.html.fadeOut(()=>{
-            this.html.remove();
-            this.html = null;
-            this.listener.onCancel();
-        });
+    cancel: function () {
+      this.html.unbind("blur", this.commitCallback);
+      $("body").unbind("click", this.commitCallback);
+      this.html.fadeOut(() => {
+        this.html.remove();
+        this.html = null;
+        this.listener.onCancel();
+      });
 
     }
-});
+  });
 

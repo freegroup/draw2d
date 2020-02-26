@@ -669,12 +669,16 @@
       "name": "getEndPoint",
       "access": "",
       "virtual": false,
-      "deprecated": true,
+      "deprecated": "use `getEndPosition`",
       "description": "",
       "parameters": [],
       "inherited": false,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "draw2d.geo.Point",
+        "description": ""
+      }
     },
     {
       "name": "getX",

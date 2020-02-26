@@ -6,6 +6,106 @@
   "virtual": false,
   "classes": [
     {
+      "name": "Reader",
+      "namespace": "draw2d.io.json",
+      "description": "<p>Read a JSON data and import them into the canvas. The JSON must be generated with the\n{@link draw2d.io.json.Writer}.</p>",
+      "extends": [
+        "draw2d.io.Reader"
+      ],
+      "access": "",
+      "virtual": false,
+      "functions": [
+        {
+          "name": "unmarshal",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Restore the canvas from a given JSON object.</p>",
+          "parameters": [
+            {
+              "name": "canvas",
+              "type": "draw2d.Canvas",
+              "description": "<p>the canvas to restore</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "json",
+              "type": [
+                "Object",
+                "String"
+              ],
+              "description": "<p>the json object to load.</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": false,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "createFigureFromType",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Factory method to create an instance of the given element type.</p>",
+          "parameters": [
+            {
+              "name": "type",
+              "type": "String",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": false,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.Figure",
+            "description": ""
+          }
+        },
+        {
+          "name": "createFigureFromElement",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Factory method to create an instance of the given element.</p>",
+          "parameters": [
+            {
+              "name": "element",
+              "type": "Object",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": false,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.Figure",
+            "description": ""
+          }
+        }
+      ],
+      "fires": "",
+      "constructor": {
+        "name": "Reader",
+        "description": "",
+        "parameters": [],
+        "examples": [
+          "// Load a standard draw2d JSON object into the canvas\n    //\n    let jsonDocument =\n        [\n         {\n            \"type\": \"draw2d.shape.basic.Oval\",\n            \"id\": \"5b4c74 b0-96d1-1aa3-7eca-bbeaed5fffd7\",\n            \"x\": 237,\n            \"y\": 236,\n            \"width\": 93,\n            \"height\": 38\n          },\n          {\n            \"type\": \"draw2d.shape.basic.Rectangle\",\n            \"id\": \"354fa3b9-a834-0221-2009-abc2d6bd852a\",\n            \"x\": 225,\n            \"y\": 97,\n            \"width\": 201,\n            \"height\": 82,\n            \"radius\": 2\n          }\n        ];\n    // unmarshal the JSON document into the canvas\n    // (load)\n    let reader = new draw2d.io.json.Reader();\n    reader.unmarshal(canvas, jsonDocument);"
+        ]
+      }
+    },
+    {
       "name": "Writer",
       "namespace": "draw2d.io.json",
       "description": "<p>Serialize the canvas document into a JSON object which can be read from the corresponding\n{@link draw2d.io.json.Reader}.</p>\n<pre><code>// Create a JSON writer and convert it into a JSON-String representation.\n//\nvar writer = new draw2d.io.json.Writer();\nwriter.marshal(canvas, function(json){\n   // convert the json object into string representation\n   var jsonTxt = JSON.stringify(json,null,2);\n\n   // insert the json string into a DIV for preview or post\n   // it via ajax to the server....\n   $(&quot;#json&quot;).text(jsonTxt);\n\n});</code></pre>",

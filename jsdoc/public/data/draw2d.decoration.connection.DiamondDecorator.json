@@ -15,7 +15,7 @@
       "parameters": [
         {
           "name": "paper",
-          "type": "Raphael",
+          "type": "RaphaelPaper",
           "description": "<p>the raphael paper object for the paint operation</p>",
           "default": "",
           "optional": "",
@@ -24,7 +24,11 @@
       ],
       "inherited": false,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "RaphaelPath",
+        "description": ""
+      }
     }
   ],
   "fires": "",

@@ -56,7 +56,8 @@ draw2d.decoration.connection.DiamondDecorator = draw2d.decoration.connection.Dec
      *
      * It's not your work to rotate the arrow. The draw2d do this job for you.
      *
-     * @param {Raphael} paper the raphael paper object for the paint operation
+     * @param {RaphaelPaper} paper the raphael paper object for the paint operation
+     * @returns {RaphaelPath}
      * @private
      **/
     paint: function (paper) {

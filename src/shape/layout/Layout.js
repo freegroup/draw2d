@@ -37,17 +37,16 @@ draw2d.shape.layout.Layout = draw2d.shape.basic.Rectangle.extend(
       }, getter))
 
 
-    let _this = this
-    this.resizeListener = function (figure) {
+    this.resizeListener =  figure => {
       // propagate the event to the parent or other listener if existing
       //
-      if (_this.getParent() instanceof draw2d.shape.layout.Layout) {
-        _this.fireEvent("resize")
+      if (this.getParent() instanceof draw2d.shape.layout.Layout) {
+        this.fireEvent("resize")
       }
       // or we are the parent and must consume it self
       else {
-        _this.setDimension(1, 1)
-        _this.fireEvent("resize")
+        this.setDimension(1, 1)
+        this.fireEvent("resize")
       }
     }
 
@@ -125,6 +124,7 @@ draw2d.shape.layout.Layout = draw2d.shape.basic.Rectangle.extend(
    * Get the padding of the element.
    *
    * @since 4.3.3
+   * @returns {this}
    **/
   getPadding: function () {
     return this.padding
@@ -132,6 +132,7 @@ draw2d.shape.layout.Layout = draw2d.shape.basic.Rectangle.extend(
 
   /**
    * @inheritdoc
+   * @returns {this}
    */
   setVisible: function (flag) {
     // propagate the visibility to all children too.

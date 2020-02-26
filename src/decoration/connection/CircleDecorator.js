@@ -52,7 +52,8 @@ draw2d.decoration.connection.CircleDecorator = draw2d.decoration.connection.Deco
     /**
      * Draw a filled circle decoration.
      *
-     * @param {Raphael} paper the raphael paper object for the paint operation
+     * @param {RaphaelPaper} paper the raphael paper object for the paint operation
+     * @returns {RaphaelPath}
      * @private
      **/
     paint: function (paper) {

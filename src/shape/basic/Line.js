@@ -742,7 +742,10 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
   getEndPosition: function () {
     return this.end.clone()
   },
-  /** @deprecated **/
+  /**
+   * @deprecated use `getEndPosition`
+   * @returns {draw2d.geo.Point}
+   **/
   getEndPoint: function () {
     return this.getEndPosition()
   },

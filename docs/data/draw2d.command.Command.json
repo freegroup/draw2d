@@ -1,7 +1,7 @@
 {
   "name": "Command",
   "namespace": "draw2d.command",
-  "description": "<p>Commands are passed around throughout editing. They are used to encapsulate and combine\nchanges to the application's model. An application has a single command stack. Commands must\nbe executed using the command stack rather than directly calling execute.\n<br>\nThis is requried for a deneric support for the undo/redo concept within draw2d.<br></p>",
+  "description": "<p>Commands are passed around throughout editing. They are used to encapsulate and combine\nchanges to the application's model. An application has a single command stack. Commands must\nbe executed using the command stack rather than directly calling execute.\n<br>\nThis is required for a generic support for the undo/redo concept within draw2d.<br></p>",
   "extends": [],
   "access": "",
   "virtual": false,

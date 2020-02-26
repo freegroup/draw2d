@@ -418,7 +418,11 @@
       ],
       "inherited": true,
       "since": "4.0.0",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "getDiameter",
@@ -429,7 +433,11 @@
       "parameters": [],
       "inherited": true,
       "since": "4.0.0",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": "<p>the diameter of the circle</p>"
+      }
     },
     {
       "name": "setRadius",
@@ -439,7 +447,7 @@
       "description": "<p>Set the radius of the circle. The center of the circle will be retained.</p>",
       "parameters": [
         {
-          "name": "d",
+          "name": "r",
           "type": "Number",
           "description": "<p>The new radius of the circle.</p>",
           "default": "",
@@ -449,7 +457,26 @@
       ],
       "inherited": true,
       "since": "4.0.0",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
+    },
+    {
+      "name": "getRadius",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Get the radius of the circle</p>",
+      "parameters": [],
+      "inherited": true,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": "<p>the radius of the circle</p>"
+      }
     },
     {
       "name": "getPersistentAttributes",
@@ -518,21 +545,6 @@
       "inherited": true,
       "since": "",
       "examples": []
-    },
-    {
-      "name": "getRadius",
-      "access": "",
-      "virtual": false,
-      "deprecated": "",
-      "description": "<p>Get the corner radius of the edges.</p>",
-      "parameters": [],
-      "inherited": true,
-      "since": "4.2.1",
-      "examples": [],
-      "returns": {
-        "type": "Number",
-        "description": ""
-      }
     },
     {
       "name": "setDashArray",

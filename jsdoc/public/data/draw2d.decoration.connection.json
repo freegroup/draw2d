@@ -15,14 +15,14 @@
       "functions": [
         {
           "name": "paint",
-          "access": "",
+          "access": "private",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Draw a filled arrow decoration.\nIt's not your work to rotate the arrow. The draw2d do this job for you.</p>\n<pre>\n                      ---+ [length , width/2]\n               -------   |\n[3,0]   --------          |\n   +---                  |==========================\n       --------          |\n               -------   |\n                      ---+ [lenght ,-width/2]\n\n</pre>",
+          "description": "<p>Draws a filled arrow decoration.</p>\n<pre class=\"prettyprint source\"><code>                      ---+ [length , width/2]\n               -------   |\n[0,0]  --------          |\n   +---                  |==========================\n       --------          |\n               -------   |\n                      ---+ [length ,-width/2]\n\n</code></pre>",
           "parameters": [
             {
               "name": "paper",
-              "type": "Raphael",
+              "type": "RaphaelPaper",
               "description": "<p>the raphael paper object for the paint operation</p>",
               "default": "",
               "optional": "",
@@ -33,7 +33,7 @@
           "since": "",
           "examples": [],
           "returns": {
-            "type": "this",
+            "type": "RaphaelPath",
             "description": ""
           }
         }
@@ -78,11 +78,11 @@
           "access": "private",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Draw a bar decoration.</p>",
+          "description": "<p>Draw a bar decoration.</p>\n<pre class=\"prettyprint source\"><code>\n              | [length , width/2]\n              |\n[0,0]         |                          (Connection)\n   +==========|==========================\n              |\n              |\n              | [length ,-width/2]\n\n</code></pre>",
           "parameters": [
             {
               "name": "paper",
-              "type": "Raphael",
+              "type": "RaphaelPaper",
               "description": "<p>the raphael paper object for the paint operation</p>",
               "default": "",
               "optional": "",
@@ -91,7 +91,11 @@
           ],
           "inherited": false,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "RaphaelPath",
+            "description": ""
+          }
         }
       ],
       "fires": "",
@@ -138,7 +142,7 @@
           "parameters": [
             {
               "name": "paper",
-              "type": "Raphael",
+              "type": "RaphaelPaper",
               "description": "<p>the raphael paper object for the paint operation</p>",
               "default": "",
               "optional": "",
@@ -147,7 +151,11 @@
           ],
           "inherited": false,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "RaphaelPath",
+            "description": ""
+          }
         }
       ],
       "fires": "",
@@ -367,7 +375,7 @@
           "parameters": [
             {
               "name": "paper",
-              "type": "Raphael",
+              "type": "RaphaelPaper",
               "description": "<p>the raphael paper object for the paint operation</p>",
               "default": "",
               "optional": "",
@@ -376,7 +384,11 @@
           ],
           "inherited": false,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "RaphaelPath",
+            "description": ""
+          }
         }
       ],
       "fires": "",

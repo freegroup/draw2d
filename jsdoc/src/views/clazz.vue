@@ -26,6 +26,43 @@ canvas.setScrollArea(window);
             </div>
 
       <v-divider v-if="clazz.constructor.examples.length === 0"></v-divider>
+      <template  v-if="initFunction">
+        <h3>Constructor</h3>
+        <v-expansion-panels focusable multiple>
+          <v-expansion-panel>
+          <v-expansion-panel-header>
+            <span>
+              <span class="function">new {{clazz.namespace}}.{{clazz.name}}</span> (
+              <span class="arguments" v-for="(param, index) in initFunction.parameters" :key="param.name">
+                  <template>{{param.name}}</template><template v-if="index+1 < initFunction.parameters.length">, </template>
+              </span>
+              )
+            </span>
+          </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <h4>Arguments</h4>
+              <v-simple-table :dense="true" dark>
+                <template v-slot:default>
+                  <thead>
+                  <tr>
+                    <th class="text-left">Name</th>
+                    <th class="text-left">Type</th>
+                    <th class="text-left">Description</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr v-for="param in initFunction.parameters" :key="initFunction.name+param.name">
+                    <td>{{ param.name }}</td>
+                    <td>{{ param.type }}</td>
+                    <td v-html="param.description"></td>
+                  </tr>
+                  </tbody>
+                </template>
+              </v-simple-table>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
+      </template>
 
       <template v-if="publicFunctions.length>0">
         <h3>Public Methods</h3>
@@ -48,8 +85,10 @@ canvas.setScrollArea(window);
                   </template>
                 </template>
                 <template v-if="func.deprecated.length>0">
-                   <v-chip class="ma-2" color="red" text-color="white" x-small>deprecated</v-chip>
-                   <span v-html="func.deprecated"></span>
+                  <span class="text--disabled">
+                    <v-chip class="ma-2" color="red" text-color="white" x-small>deprecated</v-chip>
+                    <span v-html="func.deprecated"></span>
+                  </span>
                 </template>
 
               </span>
@@ -212,8 +251,15 @@ export default {
     '$route': 'fetchData'
   },
   computed: {
+    initFunction () {
+      let f = this.clazz.functions.filter(func => func.name === 'init')
+      if (f.length > 0) {
+        return f[0]
+      }
+      return null
+    },
     publicFunctions () {
-      let f = this.clazz.functions.filter(func => func.inherited === false && func.access !== 'private')
+      let f = this.clazz.functions.filter(func => func.inherited === false && func.name !== 'init' && func.access !== 'private')
       f.sort(function (a, b) {
         if (a.name === 'init') {
           return -1
@@ -228,12 +274,6 @@ export default {
     privateFunctions () {
       let f = this.clazz.functions.filter(func => func.inherited === false && func.access === 'private')
       f.sort(function (a, b) {
-        if (a.name === 'init') {
-          return -1
-        }
-        if (b.name === 'init') {
-          return 1
-        }
         return a.name.localeCompare(b.name)
       })
       return f

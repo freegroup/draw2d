@@ -297,7 +297,11 @@
           "parameters": [],
           "inherited": true,
           "since": "4.3.3",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "setVisible",
@@ -3214,7 +3218,11 @@
           "parameters": [],
           "inherited": true,
           "since": "4.3.3",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "setVisible",

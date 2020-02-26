@@ -3523,6 +3523,42 @@
           "examples": []
         },
         {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "",
+          "parameters": [
+            {
+              "name": "attr",
+              "type": "Object",
+              "description": "<p>the configuration of the shape</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "setter",
+              "type": "Object",
+              "description": "<p>add or replace setter methods</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "getter",
+              "type": "Object",
+              "description": "<p>add or replace getter methods</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
           "name": "setDiameter",
           "access": "",
           "virtual": false,
@@ -3540,7 +3576,11 @@
           ],
           "inherited": true,
           "since": "4.0.0",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "getDiameter",
@@ -3551,7 +3591,11 @@
           "parameters": [],
           "inherited": true,
           "since": "4.0.0",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "Number",
+            "description": "<p>the diameter of the circle</p>"
+          }
         },
         {
           "name": "setRadius",
@@ -3561,7 +3605,7 @@
           "description": "<p>Set the radius of the circle. The center of the circle will be retained.</p>",
           "parameters": [
             {
-              "name": "d",
+              "name": "r",
               "type": "Number",
               "description": "<p>The new radius of the circle.</p>",
               "default": "",
@@ -3571,7 +3615,26 @@
           ],
           "inherited": true,
           "since": "4.0.0",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
+        },
+        {
+          "name": "getRadius",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Get the radius of the circle</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Number",
+            "description": "<p>the radius of the circle</p>"
+          }
         },
         {
           "name": "getPersistentAttributes",
@@ -3587,26 +3650,6 @@
             "type": "Object",
             "description": ""
           }
-        },
-        {
-          "name": "init",
-          "access": "",
-          "virtual": false,
-          "deprecated": "",
-          "description": "<p>Creates a new figure element which are not assigned to any canvas.</p>",
-          "parameters": [
-            {
-              "name": "attr",
-              "type": "Object",
-              "description": "<p>the configuration of the shape</p>",
-              "default": "",
-              "optional": true,
-              "nullable": ""
-            }
-          ],
-          "inherited": true,
-          "since": "",
-          "examples": []
         },
         {
           "name": "createShapeElement",
@@ -3686,21 +3729,6 @@
           "inherited": true,
           "since": "",
           "examples": []
-        },
-        {
-          "name": "getRadius",
-          "access": "",
-          "virtual": false,
-          "deprecated": "",
-          "description": "<p>Get the corner radius of the edges.</p>",
-          "parameters": [],
-          "inherited": true,
-          "since": "4.2.1",
-          "examples": [],
-          "returns": {
-            "type": "Number",
-            "description": ""
-          }
         },
         {
           "name": "setDashArray",
@@ -9473,7 +9501,11 @@
           "parameters": [],
           "inherited": true,
           "since": "4.3.3",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "setVisible",

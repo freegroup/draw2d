@@ -50,11 +50,22 @@ draw2d.decoration.connection.BarDecorator = draw2d.decoration.connection.Decorat
     },
 
     /**
-     *
      * Draw a bar decoration.
      *
+     * ```
      *
-     * @param {Raphael} paper the raphael paper object for the paint operation
+     *               | [length , width/2]
+     *               |
+     * [0,0]         |                          (Connection)
+     *    +==========|==========================
+     *               |
+     *               |
+     *               | [length ,-width/2]
+     *
+     * ```
+     *
+     * @param {RaphaelPaper} paper the raphael paper object for the paint operation
+     * @returns {RaphaelPath}
      * @private
      **/
     paint: function (paper) {

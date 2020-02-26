@@ -15,9 +15,6 @@ import extend from '../../util/extend'
  *
  *
  * @author Andreas Herz
- * @param {Object} [attr] the configuration of the shape
- * @param {Object} [setter] add or replace setter methods
- * @param {Object} [getter] add or replace getter methods
  * @extends draw2d.shape.basic.Oval
  */
 draw2d.shape.basic.Circle = draw2d.shape.basic.Oval.extend(
@@ -26,6 +23,12 @@ draw2d.shape.basic.Circle = draw2d.shape.basic.Oval.extend(
 
     NAME: "draw2d.shape.basic.Circle",
 
+    /**
+     *
+     * @param {Object} [attr] the configuration of the shape
+     * @param {Object} [setter] add or replace setter methods
+     * @param {Object} [getter] add or replace getter methods
+     **/
     init: function (attr, setter, getter) {
       this._super(
         attr,
@@ -49,6 +52,7 @@ draw2d.shape.basic.Circle = draw2d.shape.basic.Oval.extend(
      *
      * @param {Number} d The new diameter of the circle.
      * @since 4.0.0
+     * @returns {this}
      **/
     setDiameter: function (d) {
       let center = this.getCenter()
@@ -64,6 +68,7 @@ draw2d.shape.basic.Circle = draw2d.shape.basic.Oval.extend(
      * Get the diameter of the circle.
      *
      * @since 4.0.0
+     * @returns {Number} the diameter of the circle
      **/
     getDiameter: function () {
       return this.getWidth()
@@ -74,8 +79,9 @@ draw2d.shape.basic.Circle = draw2d.shape.basic.Oval.extend(
      *
      * Set the radius of the circle. The center of the circle will be retained.
      *
-     * @param {Number} d The new radius of the circle.
+     * @param {Number} r The new radius of the circle.
      * @since 4.0.0
+     * @returns {this}
      **/
     setRadius: function (r) {
       this.setDiameter(r * 2)
@@ -85,7 +91,17 @@ draw2d.shape.basic.Circle = draw2d.shape.basic.Oval.extend(
     },
 
     /**
+     * Get the radius of the circle
+     *
+     * @returns {Number} the radius of the circle
+     */
+    getRadius: function(){
+      return this.getWidth/2
+    },
+
+    /**
      * @inheritdoc
+     * @returns {Object}
      */
     getPersistentAttributes: function () {
       let memento = this._super()
@@ -95,5 +111,4 @@ draw2d.shape.basic.Circle = draw2d.shape.basic.Oval.extend(
 
       return memento
     }
-
   })

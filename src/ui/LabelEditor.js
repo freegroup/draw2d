@@ -10,7 +10,7 @@ import draw2d from '../packages'
  *
  * @example
  *
- *    var label =  new draw2d.shape.basic.Label({text:"Double Click on me"});
+ *    let label =  new draw2d.shape.basic.Label({text:"Double Click on me"});
  *
  *    label.installEditor(new draw2d.ui.LabelEditor({
  *       // called after the value has been set to the LabelFigure
@@ -28,42 +28,44 @@ import draw2d from '../packages'
  * @author Andreas Herz
  */
 draw2d.ui.LabelEditor = Class.extend(
-    /** @lends draw2d.ui.LabelEditor.prototype */
-    {
-    
+  /** @lends draw2d.ui.LabelEditor.prototype */
+  {
     NAME: "draw2d.ui.LabelEditor",
 
-    init: function(listener)
-    {
-        // register some default listener and override this with the handover one
-        this.configuration = extend({
-            onCommit: function(){},
-            onCancel: function(){},
-            onStart: function(){},
-            text:"Value"
+    /**
+     *
+     * @param {Object} attr callback handler and configuration. **{ onCommit:function(){}}, onCancel: function(){}, onStart: function(){}, text:'My Dialog Title' }**
+     */
+    init: function (attr) {
+      // register some default listener and override this with the handover one
+      this.configuration = extend({
+          onCommit: function () {
           },
-          listener);
-     },
+          onCancel: function () {
+          },
+          onStart: function () {
+          },
+          text: "Value"
+        },
+        attr)
+    },
 
     /**
-     * 
+     *
      * Trigger the edit of the label text.
      *
      * @param {draw2d.shape.basic.Label} label the label to edit
      */
-    start: function( label)
-    {
-        this.configuration.onStart()
-        var newText = prompt(this.configuration.text, label.getText());
-        if(newText){
-            var cmd =new draw2d.command.CommandAttr(label, {text:newText});
-            label.getCanvas().getCommandStack().execute(cmd);
+    start: function (label) {
+      this.configuration.onStart()
+      let newText = prompt(this.configuration.text, label.getText())
+      if (newText) {
+        let cmd = new draw2d.command.CommandAttr(label, {text: newText})
+        label.getCanvas().getCommandStack().execute(cmd)
 
-            this.configuration.onCommit(label.getText());
-        }
-        else{
-            this.configuration.onCancel();
-        }
+        this.configuration.onCommit(label.getText())
+      } else {
+        this.configuration.onCancel()
+      }
     }
-
-});
+  })
