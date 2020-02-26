@@ -645,7 +645,7 @@
           "access": "private",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
+          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: let pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: let my_gif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_gif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
               "name": "w",
@@ -1282,7 +1282,7 @@
           "access": "private",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
+          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: let pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: let my_gif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_gif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
               "name": "w",
@@ -2010,7 +2010,7 @@
           "access": "private",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
+          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: let pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: let my_gif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_gif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
               "name": "w",
@@ -2649,7 +2649,7 @@
           "access": "private",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
+          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: let pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: let my_gif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_gif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
               "name": "w",
@@ -3374,7 +3374,7 @@
           "access": "private",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
+          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: let pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: let my_gif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_gif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
               "name": "w",
@@ -4043,7 +4043,7 @@
           "access": "private",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
+          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: let pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: let my_gif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_gif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
               "name": "w",
@@ -4768,7 +4768,7 @@
           "access": "private",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
+          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: let pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: let my_gif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_gif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
               "name": "w",
@@ -5438,7 +5438,7 @@
           "access": "private",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
+          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: let pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: let my_gif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_gif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
               "name": "w",
@@ -6153,7 +6153,7 @@
           "access": "private",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
+          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: let pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: let my_gif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_gif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
               "name": "w",
@@ -6880,7 +6880,7 @@
           "access": "private",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
+          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: let pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: let my_gif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_gif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
               "name": "w",
@@ -7573,7 +7573,7 @@
           "access": "private",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
+          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: let pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: let my_gif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_gif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
               "name": "w",
@@ -8266,7 +8266,7 @@
           "access": "private",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
+          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: let pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: let my_gif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_gif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
               "name": "w",
@@ -8959,7 +8959,7 @@
           "access": "private",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
+          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: let pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: let my_gif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_gif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
               "name": "w",
@@ -9616,7 +9616,7 @@
           "access": "private",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
+          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: let pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: let my_gif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_gif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
               "name": "w",
@@ -10307,7 +10307,7 @@
           "access": "private",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
+          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: let pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: let my_gif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_gif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
               "name": "w",
@@ -10974,7 +10974,7 @@
           "access": "private",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
+          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: let pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: let my_gif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_gif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
               "name": "w",
@@ -11056,7 +11056,7 @@
         "description": "",
         "parameters": [],
         "examples": [
-          "canvas.installEditPolicy(new draw2d.policy.canvas.ShowDotEditPolicy());\n   var shape =  new draw2d.shape.basic.Text({text:\"This is a simple text in a canvas with dotted background.\"});\n\n   canvas.add(shape,40,10);"
+          "canvas.installEditPolicy(new draw2d.policy.canvas.ShowDotEditPolicy());\n   let shape =  new draw2d.shape.basic.Text({text:\"This is a simple text in a canvas with dotted background.\"});\n\n   canvas.add(shape,40,10);"
         ]
       }
     },
@@ -11665,7 +11665,7 @@
           "access": "private",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
+          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: let pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: let my_gif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_gif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
               "name": "w",
@@ -12371,7 +12371,7 @@
           "access": "private",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
+          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: let pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: let my_gif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_gif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
               "name": "w",
@@ -13086,7 +13086,7 @@
           "access": "private",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
+          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: let pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: let my_gif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_gif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
               "name": "w",
@@ -13771,7 +13771,7 @@
           "access": "private",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
+          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: let pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: let my_gif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_gif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
               "name": "w",
@@ -14442,7 +14442,7 @@
           "access": "private",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
+          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: let pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: let my_gif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_gif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
               "name": "w",
@@ -15141,7 +15141,7 @@
           "access": "private",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
+          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: let pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: let my_gif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_gif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
               "name": "w",
@@ -15826,7 +15826,7 @@
           "access": "private",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
+          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: let pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: let my_gif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_gif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
               "name": "w",
@@ -16521,7 +16521,7 @@
           "access": "private",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
+          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: let pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: let my_gif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_gif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
               "name": "w",
@@ -17196,7 +17196,7 @@
           "access": "private",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
+          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: let pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: let my_gif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_gif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
               "name": "w",
@@ -17889,7 +17889,7 @@
           "access": "private",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
+          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: let pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: let my_gif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_gif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
               "name": "w",
@@ -18556,7 +18556,7 @@
           "access": "private",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: var my_glif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_glif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
+          "description": "<p>Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: let pixels = new Array(W<em>H);.\nThen, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y</em>W] = 1;.\nFinally, create the image: let my_gif = createGif(W, H, pixels, color);\n&quot;0&quot; pixels are transparent.\nThe <b>color</b> defines the foreground color.</p>\n<p>Now, you can specify this image as the SRC attribute of an IMG tag: document.write(&quot;&lt;IMG SRC=&quot;&quot; + my_gif + &quot;&quot;&gt;&quot;);\nor for the canvas as background-image css attribute.</p>",
           "parameters": [
             {
               "name": "w",

@@ -15222,7 +15222,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * changes to the application's model. An application has a single command stack. Commands must
  * be executed using the command stack rather than directly calling execute.
  * <br>
- * This is requried for a deneric support for the undo/redo concept within draw2d.<br>
+ * This is required for a generic support for the undo/redo concept within draw2d.<br>
  *
  * @inheritable
  * @author Andreas Herz
@@ -18279,11 +18279,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @param {Number} [height] the height of the arrow
  * @extend draw2d.decoration.connection.Decorator
  */
-
 _packages2.default.decoration.connection.ArrowDecorator = _packages2.default.decoration.connection.Decorator.extend(
 /** @lends draw2d.decoration.connection.ArrowDecorator */
 {
-
   NAME: "draw2d.decoration.connection.ArrowDecorator",
 
   init: function init(width, height) {
@@ -18291,21 +18289,23 @@ _packages2.default.decoration.connection.ArrowDecorator = _packages2.default.dec
   },
 
   /**
-   * Draw a filled arrow decoration.
-   * It's not your work to rotate the arrow. The draw2d do this job for you.
+   * Draws a filled arrow decoration.
    *
-   * <pre>
+   *
+   * ```
    *                       ---+ [length , width/2]
    *                -------   |
-   * [3,0]   --------          |
+   * [0,0]  --------          |
    *    +---                  |==========================
    *        --------          |
    *                -------   |
-   *                       ---+ [lenght ,-width/2]
+   *                       ---+ [length ,-width/2]
    *
-   *</pre>
-   * @param {Raphael} paper the raphael paper object for the paint operation
-   * @return {this}
+   * ```
+   *
+   * @param {RaphaelPaper} paper the raphael paper object for the paint operation
+   * @returns {RaphaelPath}
+   * @private
    **/
   paint: function paint(paper) {
     var st = paper.set();
@@ -18386,11 +18386,22 @@ _packages2.default.decoration.connection.BarDecorator = _packages2.default.decor
   },
 
   /**
-   *
    * Draw a bar decoration.
    *
+   * ```
    *
-   * @param {Raphael} paper the raphael paper object for the paint operation
+   *               | [length , width/2]
+   *               |
+   * [0,0]         |                          (Connection)
+   *    +==========|==========================
+   *               |
+   *               |
+   *               | [length ,-width/2]
+   *
+   * ```
+   *
+   * @param {RaphaelPaper} paper the raphael paper object for the paint operation
+   * @returns {RaphaelPath}
    * @private
    **/
   paint: function paint(paper) {
@@ -18474,7 +18485,8 @@ _packages2.default.decoration.connection.CircleDecorator = _packages2.default.de
   /**
    * Draw a filled circle decoration.
    *
-   * @param {Raphael} paper the raphael paper object for the paint operation
+   * @param {RaphaelPaper} paper the raphael paper object for the paint operation
+   * @returns {RaphaelPath}
    * @private
    **/
   paint: function paint(paper) {
@@ -18714,7 +18726,8 @@ _packages2.default.decoration.connection.DiamondDecorator = _packages2.default.d
    *
    * It's not your work to rotate the arrow. The draw2d do this job for you.
    *
-   * @param {Raphael} paper the raphael paper object for the paint operation
+   * @param {RaphaelPaper} paper the raphael paper object for the paint operation
+   * @returns {RaphaelPath}
    * @private
    **/
   paint: function paint(paper) {
@@ -20779,138 +20792,19 @@ var _packages2 = _interopRequireDefault(_packages);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_packages2.default.io.json.Reader = _packages2.default.io.Reader.extend(
-/** @lends draw2d.io.json.Reader.prototype */
-{
-
-    NAME: "draw2d.io.json.Reader",
-
-    init: function init() {
-        this._super();
-    },
-
-    /**
-     * 
-     *
-     * Restore the canvas from a given JSON object.
-     *
-     * @param {draw2d.Canvas} canvas the canvas to restore
-     * @param {Object} document the json object to load.
-     */
-    unmarshal: function unmarshal(canvas, json) {
-        var _this2 = this;
-
-        var _this = this;
-        var result = new _packages2.default.util.ArrayList();
-
-        if (typeof json === "string") {
-            json = JSON.parse(json);
-        }
-
-        var node = null;
-        json.forEach(function (element) {
-            try {
-                var o = _this.createFigureFromElement(element) || _this.createFigureFromType(element.type);
-                var source = null;
-                var target = null;
-                for (var i in element) {
-                    var val = element[i];
-                    if (i === "source") {
-                        node = canvas.getFigure(val.node);
-                        if (node === null) {
-                            throw "Source figure with id '" + val.node + "' not found";
-                        }
-                        source = node.getPort(val.port);
-                        if (source === null) {
-                            throw "Unable to find source port '" + val.port + "' at figure '" + val.node + "' to unmarschal '" + element.type + "'";
-                        }
-                    } else if (i === "target") {
-                        node = canvas.getFigure(val.node);
-                        if (node === null) {
-                            throw "Target figure with id '" + val.node + "' not found";
-                        }
-                        target = node.getPort(val.port);
-                        if (target === null) {
-                            throw "Unable to find target port '" + val.port + "' at figure '" + val.node + "' to unmarschal '" + element.type + "'";
-                        }
-                    }
-                }
-                if (source !== null && target !== null) {
-                    // don't change the order or the source/target set.
-                    // TARGET must always be the second one because some applications needs the "source"
-                    // port in the "connect" event of the target.
-                    o.setSource(source);
-                    o.setTarget(target);
-                }
-                o.setPersistentAttributes(element);
-                canvas.add(o);
-                result.add(o);
-            } catch (exc) {
-                debug.error(element, "Unable to instantiate figure type '" + element.type + "' with id '" + element.id + "' during unmarshal by " + _this2.NAME + ". Skipping figure..");
-                debug.error(exc);
-                debug.warn(element);
-            }
-        });
-
-        // restore group assignment
-        //
-        json.forEach(function (element) {
-            if (typeof element.composite !== "undefined") {
-                var figure = canvas.getFigure(element.id);
-                if (figure === null) {
-                    figure = canvas.getLine(element.id);
-                }
-                var group = canvas.getFigure(element.composite);
-                group.assignFigure(figure);
-            }
-        });
-
-        // recalculate all crossings and repaint the connections with
-        // possible crossing decoration
-        canvas.calculateConnectionIntersection();
-        canvas.getLines().each(function (i, line) {
-            line.svgPathString = null;
-            line.repaint();
-        });
-        canvas.linesToRepaintAfterDragDrop = canvas.getLines().clone();
-
-        canvas.showDecoration();
-
-        return result;
-    },
-
-    /**
-     * 
-     * Factory method to create an instance of the given element type.
-     *
-     * @param {String} type
-     * @returns {draw2d.Figure}
-     */
-    createFigureFromType: function createFigureFromType(type) {
-        return eval("new " + type + "()");
-    },
-
-    /**
-     * 
-     * Factory method to create an instance of the given element.
-     *
-     * @param {Object} element
-     * @returns {draw2d.Figure}
-     */
-    createFigureFromElement: function createFigureFromElement(element) {
-        return null;
-    }
-});
 /**
  * @class
+ *
  * Read a JSON data and import them into the canvas. The JSON must be generated with the
  * {@link draw2d.io.json.Writer}.
  *
+ * @example
+ *
  *     // Load a standard draw2d JSON object into the canvas
  *     //
- *     var jsonDocument =
+ *     let jsonDocument =
  *         [
-  *          {
+ *          {
  *             "type": "draw2d.shape.basic.Oval",
  *             "id": "5b4c74 b0-96d1-1aa3-7eca-bbeaed5fffd7",
  *             "x": 237,
@@ -20930,12 +20824,133 @@ _packages2.default.io.json.Reader = _packages2.default.io.Reader.extend(
  *         ];
  *     // unmarshal the JSON document into the canvas
  *     // (load)
- *     var reader = new draw2d.io.json.Reader();
+ *     let reader = new draw2d.io.json.Reader();
  *     reader.unmarshal(canvas, jsonDocument);
  *
  *
+ * @author Andreas Herz
  * @extends draw2d.io.Reader
  */
+_packages2.default.io.json.Reader = _packages2.default.io.Reader.extend(
+/** @lends draw2d.io.json.Reader.prototype */
+{
+  NAME: "draw2d.io.json.Reader",
+
+  init: function init() {
+    this._super();
+  },
+
+  /**
+   *
+   *
+   * Restore the canvas from a given JSON object.
+   *
+   * @param {draw2d.Canvas} canvas the canvas to restore
+   * @param {Object|String} json the json object to load.
+   */
+  unmarshal: function unmarshal(canvas, json) {
+    var _this = this;
+
+    var result = new _packages2.default.util.ArrayList();
+
+    if (typeof json === "string") {
+      json = JSON.parse(json);
+    }
+
+    var node = null;
+    json.forEach(function (element) {
+      try {
+        var o = _this.createFigureFromElement(element) || _this.createFigureFromType(element.type);
+        var source = null;
+        var target = null;
+        for (var i in element) {
+          var val = element[i];
+          if (i === "source") {
+            node = canvas.getFigure(val.node);
+            if (node === null) {
+              throw "Source figure with id '" + val.node + "' not found";
+            }
+            source = node.getPort(val.port);
+            if (source === null) {
+              throw "Unable to find source port '" + val.port + "' at figure '" + val.node + "' to unmarschal '" + element.type + "'";
+            }
+          } else if (i === "target") {
+            node = canvas.getFigure(val.node);
+            if (node === null) {
+              throw "Target figure with id '" + val.node + "' not found";
+            }
+            target = node.getPort(val.port);
+            if (target === null) {
+              throw "Unable to find target port '" + val.port + "' at figure '" + val.node + "' to unmarschal '" + element.type + "'";
+            }
+          }
+        }
+        if (source !== null && target !== null) {
+          // don't change the order or the source/target set.
+          // TARGET must always be the second one because some applications needs the "source"
+          // port in the "connect" event of the target.
+          o.setSource(source);
+          o.setTarget(target);
+        }
+        o.setPersistentAttributes(element);
+        canvas.add(o);
+        result.add(o);
+      } catch (exc) {
+        debug.error(element, "Unable to instantiate figure type '" + element.type + "' with id '" + element.id + "' during unmarshal by " + _this.NAME + ". Skipping figure..");
+        debug.error(exc);
+        debug.warn(element);
+      }
+    });
+
+    // restore group assignment
+    //
+    json.forEach(function (element) {
+      if (typeof element.composite !== "undefined") {
+        var figure = canvas.getFigure(element.id);
+        if (figure === null) {
+          figure = canvas.getLine(element.id);
+        }
+        var group = canvas.getFigure(element.composite);
+        group.assignFigure(figure);
+      }
+    });
+
+    // recalculate all crossings and repaint the connections with
+    // possible crossing decoration
+    canvas.calculateConnectionIntersection();
+    canvas.getLines().each(function (i, line) {
+      line.svgPathString = null;
+      line.repaint();
+    });
+    canvas.linesToRepaintAfterDragDrop = canvas.getLines().clone();
+
+    canvas.showDecoration();
+
+    return result;
+  },
+
+  /**
+   *
+   * Factory method to create an instance of the given element type.
+   *
+   * @param {String} type
+   * @returns {draw2d.Figure}
+   */
+  createFigureFromType: function createFigureFromType(type) {
+    return eval("new " + type + "()");
+  },
+
+  /**
+   *
+   * Factory method to create an instance of the given element.
+   *
+   * @param {Object} element
+   * @returns {draw2d.Figure}
+   */
+  createFigureFromElement: function createFigureFromElement(element) {
+    return null;
+  }
+});
 
 /***/ }),
 
@@ -20959,7 +20974,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @class
  * Serialize the canvas document into a JSON object which can be read from the corresponding
  * {@link draw2d.io.json.Reader}.
- * 
+ *
  *     // Create a JSON writer and convert it into a JSON-String representation.
  *     //
  *     var writer = new draw2d.io.json.Writer();
@@ -20972,9 +20987,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  *        $("#json").text(jsonTxt);
  *     
  *     });
- *     
  *
- * 
+ *
+ *
  * @author Andreas Herz
  * @extends draw2d.io.Writer
  */
@@ -20983,47 +20998,47 @@ _packages2.default.io.json.Writer = _packages2.default.io.Writer.extend(
 /** @lends draw2d.io.json.Writer */
 {
 
-    init: function init() {
-        this._super();
-    },
+  init: function init() {
+    this._super();
+  },
 
-    /**
-     * 
-     * Export the content to the implemented data format. Inherit class implements
-     * content specific writer.
-     * <br>
-     * <br>
-     * 
-     * Method signature has been changed from version 2.10.1 to version 3.0.0.<br>
-     * The parameter <b>resultCallback</b> is required and new. The method calls
-     * the callback instead of return the result.
-     * 
-     * @param {draw2d.Canvas} canvas
-     * @param {Function} resultCallback the method to call on success. The first argument is the result object, the second the base64 representation of the file content
-     * @param {Object} resultCallback.json  the canvas document as JSON object
-     * @param {String} resultCallback.base64  the canvas document as base encoded JSON
-     */
-    marshal: function marshal(canvas, resultCallback) {
-        // I change the API signature from version 2.10.1 to 3.0.0. Throw an exception
-        // if any application not care about this changes.
-        if (typeof resultCallback !== "function") {
-            throw "Writer.marshal method signature has been change from version 2.10.1 to version 3.0.0. Please consult the API documentation about this issue.";
-        }
-
-        var result = [];
-
-        canvas.getFigures().each(function (i, figure) {
-            result.push(figure.getPersistentAttributes());
-        });
-
-        canvas.getLines().each(function (i, element) {
-            result.push(element.getPersistentAttributes());
-        });
-
-        var base64Content = _packages2.default.util.Base64.encode(JSON.stringify(result, null, 2));
-
-        resultCallback(result, base64Content);
+  /**
+   *
+   * Export the content to the implemented data format. Inherit class implements
+   * content specific writer.
+   * <br>
+   * <br>
+   *
+   * Method signature has been changed from version 2.10.1 to version 3.0.0.<br>
+   * The parameter <b>resultCallback</b> is required and new. The method calls
+   * the callback instead of return the result.
+   *
+   * @param {draw2d.Canvas} canvas
+   * @param {Function} resultCallback the method to call on success. The first argument is the result object, the second the base64 representation of the file content
+   * @param {Object} resultCallback.json  the canvas document as JSON object
+   * @param {String} resultCallback.base64  the canvas document as base encoded JSON
+   */
+  marshal: function marshal(canvas, resultCallback) {
+    // I change the API signature from version 2.10.1 to 3.0.0. Throw an exception
+    // if any application not care about this changes.
+    if (typeof resultCallback !== "function") {
+      throw "Writer.marshal method signature has been change from version 2.10.1 to version 3.0.0. Please consult the API documentation about this issue.";
     }
+
+    var result = [];
+
+    canvas.getFigures().each(function (i, figure) {
+      result.push(figure.getPersistentAttributes());
+    });
+
+    canvas.getLines().each(function (i, element) {
+      result.push(element.getPersistentAttributes());
+    });
+
+    var base64Content = _packages2.default.util.Base64.encode(JSON.stringify(result, null, 2));
+
+    resultCallback(result, base64Content);
+  }
 });
 
 /***/ }),
@@ -21214,7 +21229,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @author Andreas Herz
  * @extends draw2d.io.Writer
  */
-
 _packages2.default.io.svg.Writer = _packages2.default.io.Writer.extend(
 /** @lends draw2d.io.svg.Writer */
 {
@@ -29748,13 +29762,13 @@ _packages2.default.policy.canvas.CanvasPolicy = _packages2.default.policy.EditPo
 
   /**
    *
-   * Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W*H);.
+   * Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: let pixels = new Array(W*H);.
    * Then, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y*W] = 1;.
-   * Finally, create the image: var my_glif = createGif(W, H, pixels, color);
+   * Finally, create the image: let my_gif = createGif(W, H, pixels, color);
    * "0" pixels are transparent.
    * The <b>color</b> defines the foreground color.
    *
-   * Now, you can specify this image as the SRC attribute of an IMG tag: document.write("<IMG SRC=\"" + my_glif + "\">");
+   * Now, you can specify this image as the SRC attribute of an IMG tag: document.write("<IMG SRC=\"" + my_gif + "\">");
    * or for the canvas as background-image css attribute.
    *
    *
@@ -29770,19 +29784,19 @@ _packages2.default.policy.canvas.CanvasPolicy = _packages2.default.policy.EditPo
     color = new _Color2.default(color);
     var r = String.fromCharCode(w % 256) + String.fromCharCode(w / 256) + String.fromCharCode(h % 256) + String.fromCharCode(h / 256);
 
-    var gif = "GIF89a" + r + "\xf0\0\0\xff\xff\xff" + String.fromCharCode(color.red) + String.fromCharCode(color.green) + String.fromCharCode(color.blue) + '!\xF9\x04\x01\0\0\0,\0\0\0\0' + r + '\0\x02';
+    var gif = 'GIF89a' + r + '\xf0\0\0\xff\xff\xff' + String.fromCharCode(color.red) + String.fromCharCode(color.green) + String.fromCharCode(color.blue) + '!\xF9\x04\x01\0\0\0,\0\0\0\0' + r + '\0\x02';
 
-    // help method to generate uncompressed in memory GIF data structur without the usage of a canvas or any other
+    // help method to generate uncompressed in memory GIF data structure without the usage of a canvas or any other
     // heavy weight stuff.
     var b = {
       bit: 1,
       byte_: 0,
-      data: "",
+      data: '',
 
       writeBit: function writeBit(b) {
         if (b) this.byte_ |= this.bit;
         this.bit <<= 1;
-        if (this.bit == 256) {
+        if (this.bit === 256) {
           this.bit = 1;
           this.data += String.fromCharCode(this.byte_);
           this.byte_ = 0;
@@ -29792,7 +29806,7 @@ _packages2.default.policy.canvas.CanvasPolicy = _packages2.default.policy.EditPo
       get: function get() {
         var result = "";
         var data = this.data;
-        if (this.bit != 1) {
+        if (this.bit !== 1) {
           data += String.fromCharCode(this.byte_);
         }
         for (var i = 0; i < data.length + 1; i += 255) {
@@ -29815,9 +29829,9 @@ _packages2.default.policy.canvas.CanvasPolicy = _packages2.default.policy.EditPo
         b.writeBit(1);
       }
     }
-    gif += b.get() + ";";
+    gif += b.get() + ';';
 
-    return "data:image/gif;base64," + _packages2.default.util.Base64.encode(gif);
+    return 'data:image/gif;base64,' + _packages2.default.util.Base64.encode(gif);
   }
 
 });
@@ -31307,7 +31321,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @example
  *
  *    canvas.installEditPolicy(new draw2d.policy.canvas.ShowDotEditPolicy());
- *    var shape =  new draw2d.shape.basic.Text({text:"This is a simple text in a canvas with dotted background."});
+ *    let shape =  new draw2d.shape.basic.Text({text:"This is a simple text in a canvas with dotted background."});
  *
  *    canvas.add(shape,40,10);
  *
@@ -31341,25 +31355,26 @@ _packages2.default.policy.canvas.ShowDotEditPolicy = _packages2.default.policy.c
     this.dotDistance = dotDistance ? dotDistance : this.DOT_DISTANCE;
     this.dotRadius = dotRadius ? dotRadius : this.DOT_RADIUS;
     this.dotColor = new _packages2.default.util.Color(dotColor ? dotColor : this.DOT_COLOR);
-
-    // generate the background pattern with an data URL GIF image. This is much faster than draw
-    // the pattern via the canvas and the raphael.circle method
-    //
-    var mypixels = Array(this.dotDistance * this.dotDistance);
-    // set the pixel at the coordinate [0,0] as opaque.
-    mypixels[0] = 1;
-    this.imageDataURL = this.createMonochromGif(this.dotDistance, this.dotDistance, mypixels, this.dotColor);
   },
 
   onInstall: function onInstall(canvas) {
     this._super(canvas);
-    this.oldBg = this.canvas.html.css("background-image");
-    $(canvas.paper.canvas).css({ "background-image": "url('" + this.imageDataURL + "')" });
+    var bgColor = "#FFFFFF";
+    var dotColor = this.dotColor.rgba();
+
+    var background = "linear-gradient(90deg, " + bgColor + " " + (this.dotDistance - this.dotRadius) + "px, transparent 1%) center, linear-gradient(" + bgColor + " " + (this.dotDistance - this.dotRadius) + "px, transparent 1%) center, " + dotColor;
+    var backgroundSize = this.dotDistance + "px " + this.dotDistance + "px";
+
+    this.oldBg = this.canvas.html.css("background");
+    $(canvas.paper.canvas).css({
+      "background": background,
+      "background-size": backgroundSize
+    });
   },
 
   onUninstall: function onUninstall(canvas) {
     this._super(canvas);
-    $(canvas.paper.canvas).css({ "background-image": this.oldBg });
+    $(canvas.paper.canvas).css({ "background": this.oldBg });
   }
 
 });
@@ -39307,9 +39322,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  *
  *
  * @author Andreas Herz
- * @param {Object} [attr] the configuration of the shape
- * @param {Object} [setter] add or replace setter methods
- * @param {Object} [getter] add or replace getter methods
  * @extends draw2d.shape.basic.Oval
  */
 _packages2.default.shape.basic.Circle = _packages2.default.shape.basic.Oval.extend(
@@ -39318,6 +39330,12 @@ _packages2.default.shape.basic.Circle = _packages2.default.shape.basic.Oval.exte
 
   NAME: "draw2d.shape.basic.Circle",
 
+  /**
+   *
+   * @param {Object} [attr] the configuration of the shape
+   * @param {Object} [setter] add or replace setter methods
+   * @param {Object} [getter] add or replace getter methods
+   **/
   init: function init(attr, setter, getter) {
     this._super(attr, (0, _extend2.default)({
       // @attr {Number} diameter the diameter of the circle */
@@ -39338,6 +39356,7 @@ _packages2.default.shape.basic.Circle = _packages2.default.shape.basic.Oval.exte
    *
    * @param {Number} d The new diameter of the circle.
    * @since 4.0.0
+   * @returns {this}
    **/
   setDiameter: function setDiameter(d) {
     var center = this.getCenter();
@@ -39353,6 +39372,7 @@ _packages2.default.shape.basic.Circle = _packages2.default.shape.basic.Oval.exte
    * Get the diameter of the circle.
    *
    * @since 4.0.0
+   * @returns {Number} the diameter of the circle
    **/
   getDiameter: function getDiameter() {
     return this.getWidth();
@@ -39362,8 +39382,9 @@ _packages2.default.shape.basic.Circle = _packages2.default.shape.basic.Oval.exte
    *
    * Set the radius of the circle. The center of the circle will be retained.
    *
-   * @param {Number} d The new radius of the circle.
+   * @param {Number} r The new radius of the circle.
    * @since 4.0.0
+   * @returns {this}
    **/
   setRadius: function setRadius(r) {
     this.setDiameter(r * 2);
@@ -39373,7 +39394,17 @@ _packages2.default.shape.basic.Circle = _packages2.default.shape.basic.Oval.exte
   },
 
   /**
+   * Get the radius of the circle
+   *
+   * @returns {Number} the radius of the circle
+   */
+  getRadius: function getRadius() {
+    return this.getWidth / 2;
+  },
+
+  /**
    * @inheritdoc
+   * @returns {Object}
    */
   getPersistentAttributes: function getPersistentAttributes() {
     var memento = this._super();
@@ -39383,7 +39414,6 @@ _packages2.default.shape.basic.Circle = _packages2.default.shape.basic.Oval.exte
 
     return memento;
   }
-
 });
 
 /***/ }),
@@ -41242,7 +41272,10 @@ _packages2.default.shape.basic.Line = _packages2.default.Figure.extend(
   getEndPosition: function getEndPosition() {
     return this.end.clone();
   },
-  /** @deprecated **/
+  /**
+   * @deprecated use `getEndPosition`
+   * @returns {draw2d.geo.Point}
+   **/
   getEndPoint: function getEndPoint() {
     return this.getEndPosition();
   },
@@ -59028,6 +59061,8 @@ _packages2.default.shape.layout.Layout = _packages2.default.shape.basic.Rectangl
    * @param {Object} [attr] the configuration of the shape
    */
   init: function init(attr, setter, getter) {
+    var _this = this;
+
     // @since 4.3.3
     this.padding = { top: 0, right: 0, bottom: 0, left: 0 };
 
@@ -59038,7 +59073,6 @@ _packages2.default.shape.layout.Layout = _packages2.default.shape.basic.Rectangl
       padding: this.getPadding
     }, getter));
 
-    var _this = this;
     this.resizeListener = function (figure) {
       // propagate the event to the parent or other listener if existing
       //
@@ -59122,6 +59156,7 @@ _packages2.default.shape.layout.Layout = _packages2.default.shape.basic.Rectangl
    * Get the padding of the element.
    *
    * @since 4.3.3
+   * @returns {this}
    **/
   getPadding: function getPadding() {
     return this.padding;
@@ -59129,6 +59164,7 @@ _packages2.default.shape.layout.Layout = _packages2.default.shape.basic.Rectangl
 
   /**
    * @inheritdoc
+   * @returns {this}
    */
   setVisible: function setVisible(flag) {
     // propagate the visibility to all children too.
@@ -62710,7 +62746,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  *
  * @example
  *
- *    var label =  new draw2d.shape.basic.Label({text:"Double Click on me"});
+ *    let label =  new draw2d.shape.basic.Label({text:"Double Click on me"});
  *
  *    label.installEditor(new draw2d.ui.LabelEditor({
  *       // called after the value has been set to the LabelFigure
@@ -62730,38 +62766,40 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 _packages2.default.ui.LabelEditor = Class.extend(
 /** @lends draw2d.ui.LabelEditor.prototype */
 {
+  NAME: "draw2d.ui.LabelEditor",
 
-    NAME: "draw2d.ui.LabelEditor",
+  /**
+   *
+   * @param {Object} attr callback handler and configuration. **{ onCommit:function(){}}, onCancel: function(){}, onStart: function(){}, text:'My Dialog Title' }**
+   */
+  init: function init(attr) {
+    // register some default listener and override this with the handover one
+    this.configuration = extend({
+      onCommit: function onCommit() {},
+      onCancel: function onCancel() {},
+      onStart: function onStart() {},
+      text: "Value"
+    }, attr);
+  },
 
-    init: function init(listener) {
-        // register some default listener and override this with the handover one
-        this.configuration = extend({
-            onCommit: function onCommit() {},
-            onCancel: function onCancel() {},
-            onStart: function onStart() {},
-            text: "Value"
-        }, listener);
-    },
+  /**
+   *
+   * Trigger the edit of the label text.
+   *
+   * @param {draw2d.shape.basic.Label} label the label to edit
+   */
+  start: function start(label) {
+    this.configuration.onStart();
+    var newText = prompt(this.configuration.text, label.getText());
+    if (newText) {
+      var cmd = new _packages2.default.command.CommandAttr(label, { text: newText });
+      label.getCanvas().getCommandStack().execute(cmd);
 
-    /**
-     * 
-     * Trigger the edit of the label text.
-     *
-     * @param {draw2d.shape.basic.Label} label the label to edit
-     */
-    start: function start(label) {
-        this.configuration.onStart();
-        var newText = prompt(this.configuration.text, label.getText());
-        if (newText) {
-            var cmd = new _packages2.default.command.CommandAttr(label, { text: newText });
-            label.getCanvas().getCommandStack().execute(cmd);
-
-            this.configuration.onCommit(label.getText());
-        } else {
-            this.configuration.onCancel();
-        }
+      this.configuration.onCommit(label.getText());
+    } else {
+      this.configuration.onCancel();
     }
-
+  }
 });
 
 /***/ }),
@@ -62809,134 +62847,140 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  *
  * @author Andreas Herz
  * @extends draw2d.ui.LabelEditor
-*/
+ */
 _packages2.default.ui.LabelInplaceEditor = _packages2.default.ui.LabelEditor.extend(
 /** @lends draw2d.ui.LabelInplaceEditor.prototype */
 {
 
-    NAME: "draw2d.ui.LabelInplaceEditor",
+  NAME: "draw2d.ui.LabelInplaceEditor",
 
-    init: function init(listener) {
-        this._super();
+  init: function init(listener) {
+    this._super();
 
-        // register some default listener and override this with the handover one
-        this.listener = extend({
-            onCommit: function onCommit() {},
-            onCancel: function onCancel() {},
-            onStart: function onStart() {}
-        }, listener);
-    },
+    // register some default listener and override this with the handover one
+    this.listener = extend({
+      onCommit: function onCommit() {},
+      onCancel: function onCancel() {},
+      onStart: function onStart() {}
+    }, listener);
+  },
 
-    /**
-     *
-     * Trigger the edit of the label text.
-     *
-     * @param {draw2d.shape.basic.Label} label the label to edit
-     */
-    start: function start(label) {
-        var _this = this;
+  /**
+   *
+   * Trigger the edit of the label text.
+   *
+   * @param {draw2d.shape.basic.Label} label the label to edit
+   */
+  start: function start(label) {
+    var _this = this;
 
-        this.label = label;
+    this.label = label;
 
-        this.commitCallback = this.commit.bind(this);
+    this.commitCallback = this.commit.bind(this);
 
-        // commit the editor if the user clicks anywhere in the document
-        //
-        $("body").bind("click", this.commitCallback);
+    // commit the editor if the user clicks anywhere in the document
+    //
+    $("body").bind("click", this.commitCallback);
 
-        // append the input field to the document and register
-        // the ENTER and ESC key to commit /cancel the operation
-        //
-        this.html = $('<input id="inplaceeditor">');
-        this.html.val(label.getText());
-        this.html.hide();
+    // append the input field to the document and register
+    // the ENTER and ESC key to commit /cancel the operation
+    //
+    this.html = $('<input id="inplaceeditor">');
+    this.html.val(label.getText());
+    this.html.hide();
 
-        $("body").append(this.html);
+    $("body").append(this.html);
 
-        this.html.autoResize();
+    this.html.autoResize();
 
-        this.html.bind("keyup", function (e) {
-            switch (e.which) {
-                case 13:
-                    this.commit();
-                    break;
-                case 27:
-                    this.cancel();
-                    break;
-            }
-        }.bind(this));
+    this.html.bind("keyup", function (e) {
+      switch (e.which) {
+        case 13:
+          this.commit();
+          break;
+        case 27:
+          this.cancel();
+          break;
+      }
+    }.bind(this));
 
-        this.html.bind("blur", this.commitCallback);
+    this.html.bind("blur", this.commitCallback);
 
-        // avoid commit of the operation if we click inside the editor
-        //
-        this.html.bind("click", function (e) {
-            e.stopPropagation();
-            e.preventDefault();
-        });
+    // avoid commit of the operation if we click inside the editor
+    //
+    this.html.bind("click", function (e) {
+      e.stopPropagation();
+      e.preventDefault();
+    });
 
-        // Position the INPUT and init the autoresize of the element
-        //
-        var canvas = this.label.getCanvas();
-        var bb = this.label.getBoundingBox();
+    // Position the INPUT and init the autoresize of the element
+    //
+    var canvas = this.label.getCanvas();
+    var bb = this.label.getBoundingBox();
 
-        bb.setPosition(canvas.fromCanvasToDocumentCoordinate(bb.x, bb.y));
+    bb.setPosition(canvas.fromCanvasToDocumentCoordinate(bb.x, bb.y));
 
-        // remove the scroll from the body if we add the canvas directly into the body
-        var scrollDiv = canvas.getScrollArea();
-        if (scrollDiv.is($("body"))) {
-            bb.translate(canvas.getScrollLeft(), canvas.getScrollTop());
-        }
-
-        bb.translate(-1, -1);
-        bb.resize(2, 2);
-
-        this.html.css({ position: "absolute", "top": bb.y, "left": bb.x, "min-width": bb.w * (1 / canvas.getZoom()), "height": Math.max(25, bb.h * (1 / canvas.getZoom())) });
-        this.html.fadeIn(function () {
-            _this.html.focus();
-            _this.listener.onStart();
-        });
-    },
-
-    /**
-     *
-     * Transfer the data from the editor into the label.<br>
-     * Remove the editor.<br>
-     *
-     * @private
-     */
-    commit: function commit() {
-        var _this2 = this;
-
-        this.html.unbind("blur", this.commitCallback);
-        $("body").unbind("click", this.commitCallback);
-        var label = this.html.val();
-        var cmd = new _packages2.default.command.CommandAttr(this.label, { text: label });
-        this.label.getCanvas().getCommandStack().execute(cmd);
-        this.html.fadeOut(function () {
-            _this2.html.remove();
-            _this2.html = null;
-            _this2.listener.onCommit(_this2.label.getText());
-        });
-    },
-
-    /**
-     *
-     * Transfer the data from the editor into the label.<br>
-     * Remove the editor.<br>
-     * @private
-     */
-    cancel: function cancel() {
-        var _this3 = this;
-
-        this.html.unbind("blur", this.commitCallback);
-        $("body").unbind("click", this.commitCallback);
-        this.html.fadeOut(function () {
-            _this3.html.remove();
-            _this3.html = null;
-            _this3.listener.onCancel();
-        });
+    // remove the scroll from the body if we add the canvas directly into the body
+    var scrollDiv = canvas.getScrollArea();
+    if (scrollDiv.is($("body"))) {
+      bb.translate(canvas.getScrollLeft(), canvas.getScrollTop());
     }
+
+    bb.translate(-1, -1);
+    bb.resize(2, 2);
+
+    this.html.css({
+      position: "absolute",
+      "top": bb.y,
+      "left": bb.x,
+      "min-width": bb.w * (1 / canvas.getZoom()),
+      "height": Math.max(25, bb.h * (1 / canvas.getZoom()))
+    });
+    this.html.fadeIn(function () {
+      _this.html.focus();
+      _this.listener.onStart();
+    });
+  },
+
+  /**
+   *
+   * Transfer the data from the editor into the label.<br>
+   * Remove the editor.<br>
+   *
+   * @private
+   */
+  commit: function commit() {
+    var _this2 = this;
+
+    this.html.unbind("blur", this.commitCallback);
+    $("body").unbind("click", this.commitCallback);
+    var label = this.html.val();
+    var cmd = new _packages2.default.command.CommandAttr(this.label, { text: label });
+    this.label.getCanvas().getCommandStack().execute(cmd);
+    this.html.fadeOut(function () {
+      _this2.html.remove();
+      _this2.html = null;
+      _this2.listener.onCommit(_this2.label.getText());
+    });
+  },
+
+  /**
+   *
+   * Transfer the data from the editor into the label.<br>
+   * Remove the editor.<br>
+   * @private
+   */
+  cancel: function cancel() {
+    var _this3 = this;
+
+    this.html.unbind("blur", this.commitCallback);
+    $("body").unbind("click", this.commitCallback);
+    this.html.fadeOut(function () {
+      _this3.html.remove();
+      _this3.html = null;
+      _this3.listener.onCancel();
+    });
+  }
 });
 
 /***/ }),

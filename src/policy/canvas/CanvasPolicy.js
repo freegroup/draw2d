@@ -186,13 +186,13 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend(
 
   /**
    *
-   * Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: var pixels = new Array(W*H);.
+   * Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: let pixels = new Array(W*H);.
    * Then, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y*W] = 1;.
-   * Finally, create the image: var my_glif = createGif(W, H, pixels, color);
+   * Finally, create the image: let my_gif = createGif(W, H, pixels, color);
    * "0" pixels are transparent.
    * The <b>color</b> defines the foreground color.
    *
-   * Now, you can specify this image as the SRC attribute of an IMG tag: document.write("<IMG SRC=\"" + my_glif + "\">");
+   * Now, you can specify this image as the SRC attribute of an IMG tag: document.write("<IMG SRC=\"" + my_gif + "\">");
    * or for the canvas as background-image css attribute.
    *
    *
@@ -206,21 +206,21 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend(
    */
   createMonochromGif: function (w, h, d, color) {
     color = new Color(color)
-    var r = String.fromCharCode(w % 256) + String.fromCharCode(w / 256) + String.fromCharCode(h % 256) + String.fromCharCode(h / 256)
+    let r = String.fromCharCode(w % 256) + String.fromCharCode(w / 256) + String.fromCharCode(h % 256) + String.fromCharCode(h / 256)
 
-    var gif = "GIF89a" + r + "\xf0\0\0\xff\xff\xff" + String.fromCharCode(color.red) + String.fromCharCode(color.green) + String.fromCharCode(color.blue) + "\x21\xf9\u{4}\u{1}\0\0\0,\0\0\0\0" + r + "\0\u{2}"
+    let gif = 'GIF89a' + r + '\xf0\0\0\xff\xff\xff' + String.fromCharCode(color.red) + String.fromCharCode(color.green) + String.fromCharCode(color.blue) + '\x21\xf9\u{4}\u{1}\0\0\0,\0\0\0\0' + r + '\0\u{2}'
 
-    // help method to generate uncompressed in memory GIF data structur without the usage of a canvas or any other
+    // help method to generate uncompressed in memory GIF data structure without the usage of a canvas or any other
     // heavy weight stuff.
-    var b = {
+    let b = {
       bit: 1,
       byte_: 0,
-      data: "",
+      data: '',
 
       writeBit: function (b) {
         if (b) this.byte_ |= this.bit
         this.bit <<= 1
-        if (this.bit == 256) {
+        if (this.bit === 256) {
           this.bit = 1
           this.data += String.fromCharCode(this.byte_)
           this.byte_ = 0
@@ -230,10 +230,10 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend(
       get: function () {
         let result = ""
         let data = this.data
-        if (this.bit != 1) {
+        if (this.bit !== 1) {
           data += String.fromCharCode(this.byte_)
         }
-        for (var i = 0; i < data.length + 1; i += 255) {
+        for (let i = 0; i < data.length + 1; i += 255) {
           let chunklen = data.length - i
           if (chunklen < 0) chunklen = 0
           if (chunklen > 255) chunklen = 255
@@ -253,9 +253,9 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend(
         b.writeBit(1)
       }
     }
-    gif += b.get() + ";"
+    gif += b.get() + ';'
 
-    return "data:image/gif;base64," + draw2d.util.Base64.encode(gif)
+    return 'data:image/gif;base64,' + draw2d.util.Base64.encode(gif)
   }
 
 })
