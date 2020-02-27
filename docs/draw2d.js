@@ -7311,7 +7311,7 @@ _packages2.default.Canvas = Class.extend(
    *
    *     // you can register an eventhandler if the zoom factor did change
    *     canvas.on("zoom", function(emitterFigure, zoomData){
-   *         alert("canvas zoomed to:"+zoomData.factor);
+   *         alert("canvas zoomed to:"+zoomData.value);
    *     });
    *
    * @param {Number} zoomFactor new zoom factor.
@@ -31112,24 +31112,41 @@ _packages2.default.policy.canvas.ShowChessboardEditPolicy = _packages2.default.p
   },
 
   onInstall: function onInstall(canvas) {
-    this._super(canvas);
-    var gridColor = this.GRID_COLOR;
+    var _this = this;
 
-    var background = "linear-gradient(45deg, " + gridColor + " 25%, transparent 25%, transparent 75%, " + gridColor + " 75%, " + gridColor + " 100%),\n" + ("linear-gradient(45deg, " + gridColor + " 25%, transparent 25%, transparent 75%, " + gridColor + " 75%, " + gridColor + " 100%)");
-    var backgroundSize = this.grid * 2 + "px " + this.grid * 2 + "px";
-    var backgroundPosition = "0 0, " + this.grid + "px " + this.grid + "px";
+    this._super(canvas);
 
     this.oldBg = this.canvas.html.css("background");
-    $(canvas.paper.canvas).css({
-      "background": background,
-      "background-size": backgroundSize,
-      "background-position": backgroundPosition
-    });
+    this.setGrid(1 / canvas.getZoom());
+    this.onZoomCallback = function (emitterFigure, zoomData) {
+      _this.setGrid(1 / zoomData.value);
+    };
+    canvas.on("zoom", this.onZoomCallback);
   },
 
   onUninstall: function onUninstall(canvas) {
     this._super(canvas);
     $(canvas.paper.canvas).css({ "background": this.oldBg });
+    canvas.off(this.onZoomCallback);
+  },
+
+  /**
+   * Activate the gri d and set the CSS properties for the SVG canvas
+   * @private
+   */
+  setGrid: function setGrid(zoom) {
+
+    var gridColor = this.GRID_COLOR;
+
+    var background = "linear-gradient(45deg, " + gridColor + " 25%, transparent 25%, transparent 75%, " + gridColor + " 75%, " + gridColor + " 100%),\n" + ("linear-gradient(45deg, " + gridColor + " 25%, transparent 25%, transparent 75%, " + gridColor + " 75%, " + gridColor + " 100%)");
+    var backgroundSize = this.grid * 2 * zoom + "px " + this.grid * 2 * zoom + "px";
+    var backgroundPosition = "0 0, " + this.grid * zoom + "px " + this.grid * zoom + "px";
+
+    $(this.canvas.paper.canvas).css({
+      "background": background,
+      "background-size": backgroundSize,
+      "background-position": backgroundPosition
+    });
   }
 });
 
@@ -31335,25 +31352,36 @@ _packages2.default.policy.canvas.ShowDotEditPolicy = _packages2.default.policy.c
   },
 
   onInstall: function onInstall(canvas) {
-    this._super(canvas);
-    var bgColor = "#FFFFFF";
-    var dotColor = this.dotColor.rgba();
+    var _this = this;
 
-    var background = "linear-gradient(90deg, " + bgColor + " " + (this.dotDistance - this.dotRadius) + "px, transparent 1%) center, linear-gradient(" + bgColor + " " + (this.dotDistance - this.dotRadius) + "px, transparent 1%) center, " + dotColor;
-    var backgroundSize = this.dotDistance + "px " + this.dotDistance + "px";
+    this._super(canvas);
 
     this.oldBg = this.canvas.html.css("background");
-    $(canvas.paper.canvas).css({
-      "background": background,
-      "background-size": backgroundSize
-    });
+    this.setGrid(1 / canvas.getZoom());
+    this.onZoomCallback = function (emitterFigure, zoomData) {
+      _this.setGrid(1 / zoomData.value);
+    };
+    canvas.on("zoom", this.onZoomCallback);
   },
 
   onUninstall: function onUninstall(canvas) {
     this._super(canvas);
     $(canvas.paper.canvas).css({ "background": this.oldBg });
-  }
+    canvas.off(this.onZoomCallback);
+  },
 
+  setGrid: function setGrid(zoom) {
+    var bgColor = "#FFFFFF";
+    var dotColor = this.dotColor.rgba();
+
+    var background = "linear-gradient(90deg, " + bgColor + " " + (this.dotDistance - this.dotRadius) * zoom + "px, transparent 1%) center, linear-gradient(" + bgColor + " " + (this.dotDistance - this.dotRadius) * zoom + "px, transparent 1%) center, " + dotColor;
+    var backgroundSize = this.dotDistance * zoom + "px " + this.dotDistance * zoom + "px";
+
+    $(this.canvas.paper.canvas).css({
+      "background": background,
+      "background-size": backgroundSize
+    });
+  }
 });
 
 /***/ }),
