@@ -601,7 +601,7 @@ draw2d.Canvas = Class.extend(
      *
      *     // you can register an eventhandler if the zoom factor did change
      *     canvas.on("zoom", function(emitterFigure, zoomData){
-     *         alert("canvas zoomed to:"+zoomData.factor);
+     *         alert("canvas zoomed to:"+zoomData.value);
      *     });
      *
      * @param {Number} zoomFactor new zoom factor.

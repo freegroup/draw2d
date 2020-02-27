@@ -140,7 +140,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the new zoom factor for the canvas. The value must be between [0.01..10]</p>\n<pre><code>// you can register an eventhandler if the zoom factor did change\ncanvas.on(&quot;zoom&quot;, function(emitterFigure, zoomData){\n    alert(&quot;canvas zoomed to:&quot;+zoomData.factor);\n});</code></pre>",
+          "description": "<p>Set the new zoom factor for the canvas. The value must be between [0.01..10]</p>\n<pre><code>// you can register an eventhandler if the zoom factor did change\ncanvas.on(&quot;zoom&quot;, function(emitterFigure, zoomData){\n    alert(&quot;canvas zoomed to:&quot;+zoomData.value);\n});</code></pre>",
           "parameters": [
             {
               "name": "zoomFactor",

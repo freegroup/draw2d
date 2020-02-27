@@ -4,13 +4,13 @@ import draw2d from '../../packages'
 /**
  * @class
  *
- * Just to paint a grid in the background.
+ * Just to paint a grid in the background of a canvas.
  *
  *
  * @example
  *
  *    canvas.installEditPolicy(new draw2d.policy.canvas.ShowChessboardEditPolicy());
- *    var shape =  new draw2d.shape.basic.Text({text:"This is a simple text in a canvas with chessboard background."});
+ *    let shape =  new draw2d.shape.basic.Text({text:"This is a simple text in a canvas with chessboard background."});
  *
  *    canvas.add(shape,40,10);
  *
@@ -21,67 +21,61 @@ import draw2d from '../../packages'
 draw2d.policy.canvas.ShowChessboardEditPolicy = draw2d.policy.canvas.DecorationPolicy.extend(
   /** @lends draw2d.policy.canvas.ShowChessboardEditPolicy.prototype */
   {
-  
-  NAME: "draw2d.policy.canvas.ShowChessboardEditPolicy",
+    NAME: "draw2d.policy.canvas.ShowChessboardEditPolicy",
 
-  GRID_COLOR: "#e0e0e0",
-  GRID_WIDTH: 20,
+    GRID_COLOR: "#e0e0e0",
+    GRID_WIDTH: 20,
 
-  /**
-   * Creates a new constraint policy for snap to grid
-   *
-   * @param {Number} grid the grid width of the canvas
-   */
-  init: function (grid) {
-    this._super()
-    this.cells = null
-    if (grid) {
-      this.grid = grid
-    }
-    else {
-      this.grid = this.GRID_WIDTH
-    }
-  },
-
-  onInstall: function (canvas) {
-    this._super(canvas)
-    this.showGrid()
-  },
-
-  onUninstall: function (canvas) {
-    this.cells.remove()
-    this._super(canvas)
-  },
-
-  /**
-   *
-   * paint the grid into the canvas
-   *
-   * @private
-   * @since 2.3.0
-   */
-  showGrid: function () {
-    // vertical lines
-    var w = this.canvas.initialWidth
-    var h = this.canvas.initialHeight
-    this.cells = this.canvas.paper.set()
-
-    var even = false
-    var xEven = even
-    for (var x = 0; x < w; x += this.grid) {
-      for (var y = 0; y < h; y += this.grid) {
-        if (even) {
-          var crect = this.canvas.paper.rect(x, y, this.grid, this.grid)
-          crect.attr({fill: this.GRID_COLOR, "stroke-width": 0})
-          this.cells.push(crect)
-        }
-        even = !even
+    /**
+     * Creates a new constraint policy for snap to grid
+     *
+     * @param {Number} grid the grid width of the canvas
+     */
+    init: function (grid) {
+      this._super()
+      if (grid) {
+        this.grid = grid
+      } else {
+        this.grid = this.GRID_WIDTH
       }
-      xEven = !xEven
-      even = xEven
+    },
+
+
+    onInstall: function (canvas) {
+      this._super(canvas)
+
+      this.oldBg = this.canvas.html.css("background")
+      this.setGrid(1/canvas.getZoom())
+      this.onZoomCallback =(emitterFigure, zoomData) => {
+        this.setGrid(1/zoomData.value)
+      }
+      canvas.on("zoom", this.onZoomCallback)
+    },
+
+    onUninstall: function (canvas) {
+      this._super(canvas)
+      $(canvas.paper.canvas).css({"background": this.oldBg})
+      canvas.off(this.onZoomCallback)
+    },
+
+    /**
+     * Activate the grid and set the CSS properties for the SVG canvas
+     * @private
+     */
+    setGrid: function(zoom){
+
+      let gridColor = this.GRID_COLOR
+
+      let background =
+        `linear-gradient(45deg, ${gridColor} 25%, transparent 25%, transparent 75%, ${gridColor} 75%, ${gridColor} 100%),\n` +
+        `linear-gradient(45deg, ${gridColor} 25%, transparent 25%, transparent 75%, ${gridColor} 75%, ${gridColor} 100%)`
+      let backgroundSize = `${(this.grid*2*zoom)}px ${(this.grid*2*zoom)}px`
+      let backgroundPosition = `0 0, ${(this.grid*zoom)}px ${(this.grid*zoom)}px`
+
+      $(this.canvas.paper.canvas).css({
+        "background": background,
+        "background-size": backgroundSize,
+        "background-position": backgroundPosition
+      })
     }
-
-    this.cells.toBack()
-  }
-
-})
+  })

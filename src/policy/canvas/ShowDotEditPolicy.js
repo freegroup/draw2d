@@ -46,24 +46,34 @@ draw2d.policy.canvas.ShowDotEditPolicy = draw2d.policy.canvas.DecorationPolicy.e
     this.dotColor = new draw2d.util.Color(dotColor ? dotColor : this.DOT_COLOR)
   },
 
+
   onInstall: function (canvas) {
     this._super(canvas)
-    let bgColor = "#FFFFFF"
-    let dotColor = this.dotColor.rgba()
-
-    let background = `linear-gradient(90deg, ${bgColor} ${this.dotDistance - this.dotRadius}px, transparent 1%) center, linear-gradient(${bgColor} ${this.dotDistance - this.dotRadius}px, transparent 1%) center, ${dotColor}`
-    let backgroundSize = `${this.dotDistance}px ${this.dotDistance}px`
 
     this.oldBg = this.canvas.html.css("background")
-    $(canvas.paper.canvas).css({
-      "background": background,
-      "background-size": backgroundSize
-    })
+    this.setGrid(1/canvas.getZoom())
+    this.onZoomCallback =(emitterFigure, zoomData) => {
+      this.setGrid(1/zoomData.value)
+    }
+    canvas.on("zoom", this.onZoomCallback)
   },
 
   onUninstall: function (canvas) {
     this._super(canvas)
     $(canvas.paper.canvas).css({"background": this.oldBg})
-  }
+    canvas.off(this.onZoomCallback)
+  },
 
+  setGrid: function (zoom) {
+    let bgColor = "#FFFFFF"
+    let dotColor = this.dotColor.rgba()
+
+    let background = `linear-gradient(90deg, ${bgColor} ${(this.dotDistance - this.dotRadius)*zoom}px, transparent 1%) center, linear-gradient(${bgColor} ${(this.dotDistance - this.dotRadius)*zoom}px, transparent 1%) center, ${dotColor}`
+    let backgroundSize = `${this.dotDistance*zoom}px ${this.dotDistance*zoom}px`
+
+    $(this.canvas.paper.canvas).css({
+      "background": background,
+      "background-size": backgroundSize
+    })
+  }
 })

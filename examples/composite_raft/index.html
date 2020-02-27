@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded",function () {
     //
     canvas = new draw2d.Canvas("gfx_holder");
     canvas.installEditPolicy(new draw2d.policy.canvas.FadeoutDecorationPolicy());
-  canvas.installEditPolicy(new draw2d.policy.canvas.ShowDotEditPolicy());
+    canvas.installEditPolicy(new draw2d.policy.canvas.ShowDotEditPolicy());
 
     canvas.add(new draw2d.shape.basic.Oval({width:80,height:30, x:50, y:50}));
 
@@ -38,8 +38,8 @@ document.addEventListener("DOMContentLoaded",function () {
 
 
     // display the SVG into the preview DIV
-	//
-	displayJSON(canvas);
+	  //
+	  displayJSON(canvas);
 
 
 	  // add an event listener to the Canvas for change notifications.

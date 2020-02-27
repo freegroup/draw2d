@@ -1,7 +1,7 @@
 {
   "name": "ShowChessboardEditPolicy",
   "namespace": "draw2d.policy.canvas",
-  "description": "<p>Just to paint a grid in the background.</p>",
+  "description": "<p>Just to paint a grid in the background of a canvas.</p>",
   "extends": [
     "draw2d.policy.canvas.DecorationPolicy"
   ],
@@ -29,14 +29,14 @@
       "examples": []
     },
     {
-      "name": "showGrid",
+      "name": "setGrid",
       "access": "private",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>paint the grid into the canvas</p>",
+      "description": "<p>Activate the grid and set the CSS properties for the SVG canvas</p>",
       "parameters": [],
       "inherited": false,
-      "since": "2.3.0",
+      "since": "",
       "examples": []
     },
     {
@@ -653,7 +653,7 @@
     "description": "",
     "parameters": [],
     "examples": [
-      "canvas.installEditPolicy(new draw2d.policy.canvas.ShowChessboardEditPolicy());\n   var shape =  new draw2d.shape.basic.Text({text:\"This is a simple text in a canvas with chessboard background.\"});\n\n   canvas.add(shape,40,10);"
+      "canvas.installEditPolicy(new draw2d.policy.canvas.ShowChessboardEditPolicy());\n   let shape =  new draw2d.shape.basic.Text({text:\"This is a simple text in a canvas with chessboard background.\"});\n\n   canvas.add(shape,40,10);"
     ]
   }
 }

@@ -7311,7 +7311,7 @@ _packages2.default.Canvas = Class.extend(
    *
    *     // you can register an eventhandler if the zoom factor did change
    *     canvas.on("zoom", function(emitterFigure, zoomData){
-   *         alert("canvas zoomed to:"+zoomData.factor);
+   *         alert("canvas zoomed to:"+zoomData.value);
    *     });
    *
    * @param {Number} zoomFactor new zoom factor.
@@ -31075,13 +31075,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /**
  * @class
  *
- * Just to paint a grid in the background.
+ * Just to paint a grid in the background of a canvas.
  *
  *
  * @example
  *
  *    canvas.installEditPolicy(new draw2d.policy.canvas.ShowChessboardEditPolicy());
- *    var shape =  new draw2d.shape.basic.Text({text:"This is a simple text in a canvas with chessboard background."});
+ *    let shape =  new draw2d.shape.basic.Text({text:"This is a simple text in a canvas with chessboard background."});
  *
  *    canvas.add(shape,40,10);
  *
@@ -31092,7 +31092,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 _packages2.default.policy.canvas.ShowChessboardEditPolicy = _packages2.default.policy.canvas.DecorationPolicy.extend(
 /** @lends draw2d.policy.canvas.ShowChessboardEditPolicy.prototype */
 {
-
   NAME: "draw2d.policy.canvas.ShowChessboardEditPolicy",
 
   GRID_COLOR: "#e0e0e0",
@@ -31105,7 +31104,6 @@ _packages2.default.policy.canvas.ShowChessboardEditPolicy = _packages2.default.p
    */
   init: function init(grid) {
     this._super();
-    this.cells = null;
     if (grid) {
       this.grid = grid;
     } else {
@@ -31114,46 +31112,42 @@ _packages2.default.policy.canvas.ShowChessboardEditPolicy = _packages2.default.p
   },
 
   onInstall: function onInstall(canvas) {
+    var _this = this;
+
     this._super(canvas);
-    this.showGrid();
+
+    this.oldBg = this.canvas.html.css("background");
+    this.setGrid(1 / canvas.getZoom());
+    this.onZoomCallback = function (emitterFigure, zoomData) {
+      _this.setGrid(1 / zoomData.value);
+    };
+    canvas.on("zoom", this.onZoomCallback);
   },
 
   onUninstall: function onUninstall(canvas) {
-    this.cells.remove();
     this._super(canvas);
+    $(canvas.paper.canvas).css({ "background": this.oldBg });
+    canvas.off(this.onZoomCallback);
   },
 
   /**
-   *
-   * paint the grid into the canvas
-   *
+   * Activate the gri d and set the CSS properties for the SVG canvas
    * @private
-   * @since 2.3.0
    */
-  showGrid: function showGrid() {
-    // vertical lines
-    var w = this.canvas.initialWidth;
-    var h = this.canvas.initialHeight;
-    this.cells = this.canvas.paper.set();
+  setGrid: function setGrid(zoom) {
 
-    var even = false;
-    var xEven = even;
-    for (var x = 0; x < w; x += this.grid) {
-      for (var y = 0; y < h; y += this.grid) {
-        if (even) {
-          var crect = this.canvas.paper.rect(x, y, this.grid, this.grid);
-          crect.attr({ fill: this.GRID_COLOR, "stroke-width": 0 });
-          this.cells.push(crect);
-        }
-        even = !even;
-      }
-      xEven = !xEven;
-      even = xEven;
-    }
+    var gridColor = this.GRID_COLOR;
 
-    this.cells.toBack();
+    var background = "linear-gradient(45deg, " + gridColor + " 25%, transparent 25%, transparent 75%, " + gridColor + " 75%, " + gridColor + " 100%),\n" + ("linear-gradient(45deg, " + gridColor + " 25%, transparent 25%, transparent 75%, " + gridColor + " 75%, " + gridColor + " 100%)");
+    var backgroundSize = this.grid * 2 * zoom + "px " + this.grid * 2 * zoom + "px";
+    var backgroundPosition = "0 0, " + this.grid * zoom + "px " + this.grid * zoom + "px";
+
+    $(this.canvas.paper.canvas).css({
+      "background": background,
+      "background-size": backgroundSize,
+      "background-position": backgroundPosition
+    });
   }
-
 });
 
 /***/ }),
@@ -31358,25 +31352,36 @@ _packages2.default.policy.canvas.ShowDotEditPolicy = _packages2.default.policy.c
   },
 
   onInstall: function onInstall(canvas) {
-    this._super(canvas);
-    var bgColor = "#FFFFFF";
-    var dotColor = this.dotColor.rgba();
+    var _this = this;
 
-    var background = "linear-gradient(90deg, " + bgColor + " " + (this.dotDistance - this.dotRadius) + "px, transparent 1%) center, linear-gradient(" + bgColor + " " + (this.dotDistance - this.dotRadius) + "px, transparent 1%) center, " + dotColor;
-    var backgroundSize = this.dotDistance + "px " + this.dotDistance + "px";
+    this._super(canvas);
 
     this.oldBg = this.canvas.html.css("background");
-    $(canvas.paper.canvas).css({
-      "background": background,
-      "background-size": backgroundSize
-    });
+    this.setGrid(1 / canvas.getZoom());
+    this.onZoomCallback = function (emitterFigure, zoomData) {
+      _this.setGrid(1 / zoomData.value);
+    };
+    canvas.on("zoom", this.onZoomCallback);
   },
 
   onUninstall: function onUninstall(canvas) {
     this._super(canvas);
     $(canvas.paper.canvas).css({ "background": this.oldBg });
-  }
+    canvas.off(this.onZoomCallback);
+  },
 
+  setGrid: function setGrid(zoom) {
+    var bgColor = "#FFFFFF";
+    var dotColor = this.dotColor.rgba();
+
+    var background = "linear-gradient(90deg, " + bgColor + " " + (this.dotDistance - this.dotRadius) * zoom + "px, transparent 1%) center, linear-gradient(" + bgColor + " " + (this.dotDistance - this.dotRadius) * zoom + "px, transparent 1%) center, " + dotColor;
+    var backgroundSize = this.dotDistance * zoom + "px " + this.dotDistance * zoom + "px";
+
+    $(this.canvas.paper.canvas).css({
+      "background": background,
+      "background-size": backgroundSize
+    });
+  }
 });
 
 /***/ }),
