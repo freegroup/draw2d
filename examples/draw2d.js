@@ -31131,7 +31131,7 @@ _packages2.default.policy.canvas.ShowChessboardEditPolicy = _packages2.default.p
   },
 
   /**
-   * Activate the gri d and set the CSS properties for the SVG canvas
+   * Activate the grid and set the CSS properties for the SVG canvas
    * @private
    */
   setGrid: function setGrid(zoom) {
