@@ -7030,9 +7030,9 @@ _packages2.default.Canvas = Class.extend(
       var pos = _this.fromDocumentToCanvasCoordinate(event.originalEvent.clientX, event.originalEvent.clientY);
 
       var delta = 0;
-      if (e.type == 'mousewheel') {
+      if (e.type === 'mousewheel') {
         delta = e.originalEvent.wheelDelta * -1;
-      } else if (e.type == 'DOMMouseScroll') {
+      } else if (e.type === 'DOMMouseScroll') {
         delta = 40 * e.originalEvent.detail;
       }
 
@@ -7493,7 +7493,7 @@ _packages2.default.Canvas = Class.extend(
    * @param {Number} left the left scroll offset of the canvas
    **/
   setScrollLeft: function setScrollLeft(left) {
-    this.getScrollArea().scrollLeft();
+    this.getScrollArea().scrollLeft(left);
 
     return this;
   },
@@ -7505,7 +7505,7 @@ _packages2.default.Canvas = Class.extend(
    * @param {Number} top the top scroll offset of the canvas.
    **/
   setScrollTop: function setScrollTop(top) {
-    this.getScrollArea().scrollTop();
+    this.getScrollArea().scrollTop(top);
 
     return this;
   },
@@ -7665,6 +7665,8 @@ _packages2.default.Canvas = Class.extend(
    * @param {draw2d.Figure} figure The figure to remove
    **/
   remove: function remove(figure) {
+    var _this4 = this;
+
     // don't fire events of calll callbacks if the fire isn'T part of this canvas
     //
     if (figure.getCanvas() !== this) {
@@ -7673,11 +7675,10 @@ _packages2.default.Canvas = Class.extend(
 
     // remove the figure from a selection handler as well and cleanup the
     // selection feedback
-    var _this = this;
     if (this.getSelection().contains(figure)) {
       this.editPolicy.each(function (i, policy) {
         if (typeof policy.unselect === "function") {
-          policy.unselect(_this, figure);
+          policy.unselect(_this4, figure);
         }
       });
     }
@@ -7771,7 +7772,7 @@ _packages2.default.Canvas = Class.extend(
 
     this.lineIntersections.each(function (i, entry) {
       if (entry.line === line) {
-        entry.intersection.each(function (i, p) {
+        entry.intersection.each(function (j, p) {
           result.add({ x: p.x, y: p.y, justTouching: p.justTouching, other: entry.other });
         });
       }
@@ -7791,17 +7792,20 @@ _packages2.default.Canvas = Class.extend(
    * @private
    **/
   snapToHelper: function snapToHelper(figure, pos) {
-    // disable snapToPos if we have sleect more than one element
+    var _this5 = this;
+
+    // disable snapToPos if we have select more than one element
     // which are currently in Drag&Drop operation
     //
     if (this.getSelection().getSize() > 1) {
       return pos;
     }
 
-    var _this = this;
     var orig = pos.clone();
     this.editPolicy.each(function (i, policy) {
-      pos = policy.snap(_this, figure, pos, orig);
+      if (policy instanceof _packages2.default.policy.canvas.SnapToEditPolicy) {
+        pos = policy.snap(_this5, figure, pos, orig);
+      }
     });
 
     return pos;
@@ -7888,15 +7892,15 @@ _packages2.default.Canvas = Class.extend(
    * @returns {this}
    **/
   setCurrentSelection: function setCurrentSelection(object) {
-    var _this4 = this;
+    var _this6 = this;
 
     // deselect the current selected figures
     //
     // clone the array (getAll) before iterate and modify the initial array
     this.selection.getAll().each(function (i, e) {
-      _this4.editPolicy.each(function (i, policy) {
+      _this6.editPolicy.each(function (i, policy) {
         if (typeof policy.unselect === "function") {
-          policy.unselect(_this4, e);
+          policy.unselect(_this6, e);
         }
       });
     });
@@ -8122,7 +8126,7 @@ _packages2.default.Canvas = Class.extend(
    *         start: function(e, ui){$(ui.helper).addClass("shadow");}
    *    });
    * </pre>
-   * Graphiti use the jQuery draggable/droppable lib. Please inspect
+   * Draw2D use the jQuery draggable/droppable lib. Please inspect
    * http://jqueryui.com/demos/droppable/ for further information.
    *
    * @param {HTMLElement} draggedDomNode The DOM element which is currently dragging
@@ -8135,7 +8139,7 @@ _packages2.default.Canvas = Class.extend(
    *
    * Called if the DragDrop object is moving around.<br>
    * <br>
-   * Graphiti use the jQuery draggable/droppable lib. Please inspect
+   * Draw2D use the jQuery draggable/droppable lib. Please inspect
    * http://jqueryui.com/demos/droppable/ for further information.
    *
    * @param {HTMLElement} draggedDomNode The dragged DOM element.
@@ -10691,7 +10695,9 @@ _packages2.default.Figure = Class.extend(
   onDrag: function onDrag(dx, dy, dx2, dy2, shiftKey, ctrlKey) {
     var _this5 = this;
 
-    // apply all EditPolicy for DragDrop Operations
+    // apply all EditPolicy for DragDrop Operations. This is something like
+    // an policy that forces that an object can only move vertical, horizontal or in a given
+    // rectangle.
     //
     this.editPolicy.each(function (i, e) {
       if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
@@ -10702,7 +10708,6 @@ _packages2.default.Figure = Class.extend(
         }
       }
     });
-
     var newPos = new _packages2.default.geo.Point(this.ox + dx, this.oy + dy);
 
     // Adjust the new location if the object can snap to a helper
@@ -10714,7 +10719,7 @@ _packages2.default.Figure = Class.extend(
 
     this.setPosition(newPos);
 
-    // notify all installed policies
+    // notify all installed policies that the object has moved.
     //
     this.editPolicy.each(function (i, e) {
       if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
@@ -10722,7 +10727,7 @@ _packages2.default.Figure = Class.extend(
       }
     });
 
-    // fire an event
+    // notify all installed listener that th object has moved
     // @since 5.3.3
     this.fireEvent("drag", { dx: dx, dy: dy, dx2: dx2, dy2: dy2, shiftKey: shiftKey, ctrlKey: ctrlKey });
   },
@@ -10772,7 +10777,6 @@ _packages2.default.Figure = Class.extend(
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
    * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
    *
-   * @template
    **/
   onDragEnd: function onDragEnd(x, y, shiftKey, ctrlKey) {
     var _this6 = this;
@@ -12654,6 +12658,10 @@ var _packages = __webpack_require__(/*! packages */ "./src/packages.js");
 
 var _packages2 = _interopRequireDefault(_packages);
 
+var _extend = __webpack_require__(/*! ./util/extend */ "./src/util/extend.js");
+
+var _extend2 = _interopRequireDefault(_extend);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
@@ -12682,15 +12690,19 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
     this.lighterBgColor = null;
     this.name = null;
 
-    this._super(extend({
+    this._super((0, _extend2.default)({
       bgColor: "#4f6870",
       stroke: 1,
       diameter: 10,
       color: "#1B1B1B",
       selectable: false
-    }, attr), setter, getter);
+    }, attr), (0, _extend2.default)({
+      semanticGroup: this.setSemanticGroup
+    }, setter), (0, _extend2.default)({
+      semanticGroup: this.getSemanticGroup
+    }, getter));
 
-    // status let for user interaction
+    // status vars for user interaction
     //
     this.ox = this.x;
     this.oy = this.y;
@@ -12717,6 +12729,10 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
     this.value = null;
     this.maxFanOut = Number.MAX_SAFE_INTEGER;
 
+    // semantic group. Only ports in the same semantic group can be connected
+    //
+    this.semanticGroup = "global";
+
     this.setCanSnapToHelper(false);
 
     // uninstall all default selection policies. This is not required for Ports
@@ -12725,7 +12741,7 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
     });
 
     this.installEditPolicy(new _packages2.default.policy.port.IntrusivePortsFeedbackPolicy());
-    //    this.installEditPolicy(new draw2d.policy.port.ElasticStrapFeedbackPolicy());
+    // this.installEditPolicy(new draw2d.policy.port.ElasticStrapFeedbackPolicy());
 
     // a port handles the selection handling always by its own regardless if
     // the port is part of an composite, node, group or whatever.
@@ -12762,6 +12778,36 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
    */
   getMaxFanOut: function getMaxFanOut() {
     return this.maxFanOut;
+  },
+
+  /**
+   *
+   * Set the semantic group of this port. Only ports in the same semantic group
+   * can be connected.
+   *
+   * The default for all ports is "global"
+   *
+   * @param {String} group the semantic group of this port
+   * @returns {this}
+   */
+  setSemanticGroup: function setSemanticGroup(group) {
+    this.semanticGroup = group;
+    this.fireEvent("change:semanticGroup", { value: this.semanticGroup });
+
+    return this;
+  },
+
+  /**
+   *
+   * Get the semantic group of this port. Only ports in the same semantic group
+   * can be connected.
+   *
+   * The default for all ports is "global"
+   *
+   * @returns {String}
+   */
+  getSemanticGroup: function getSemanticGroup() {
+    return this.semanticGroup;
   },
 
   /**
@@ -13256,6 +13302,7 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
 
     memento.maxFanOut = this.maxFanOut;
     memento.name = this.name;
+    memento.semanticGroup = this.semanticGroup;
 
     // defined by the locator. Don't persist
     //
@@ -13292,8 +13339,13 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
         this.maxFanOut = Math.max(1, parseInt(memento.maxFanOut));
       }
     }
+
     if (typeof memento.name !== "undefined") {
       this.setName(memento.name);
+    }
+
+    if (typeof memento.semanticGroup !== "undefined") {
+      this.setSemanticGroup(memento.semanticGroup);
     }
 
     return this;
@@ -29632,22 +29684,6 @@ _packages2.default.policy.canvas.CanvasPolicy = _packages2.default.policy.EditPo
 
   /**
    *
-   * Called by the canvas if the user click on a figure.
-   *
-   * @param {draw2d.Figure} the figure under the click event. Can be null
-   * @param {Number} mouseX the x coordinate of the mouse during the click event
-   * @param {Number} mouseY the y coordinate of the mouse during the click event
-   * @param {Boolean} shiftKey true if the shift key has been pressed during this event
-   * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
-   *
-   * @since 3.0.0
-   *
-   * @template
-   */
-  onClick: function onClick(figure, mouseX, mouseY, shiftKey, ctrlKey) {},
-
-  /**
-   *
    *
    * @param {draw2d.Canvas} canvas
    * @param {Number} x the x-coordinate of the mouse event
@@ -29657,22 +29693,6 @@ _packages2.default.policy.canvas.CanvasPolicy = _packages2.default.policy.EditPo
    * @template
    */
   onMouseMove: function onMouseMove(canvas, x, y, shiftKey, ctrlKey) {},
-
-  /**
-   *
-   * Called by the canvas if the user double click on a figure.
-   *
-   * @param {draw2d.Figure} the figure under the double click event. Can be null
-   * @param {Number} mouseX the x coordinate of the mouse during the click event
-   * @param {Number} mouseY the y coordinate of the mouse during the click event
-   * @param {Boolean} shiftKey true if the shift key has been pressed during this event
-   * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
-   *
-   * @since 4.1.0
-   *
-   * @template
-   */
-  onDoubleClick: function onDoubleClick(figure, mouseX, mouseY, shiftKey, ctrlKey) {},
 
   /**
    *
@@ -29695,21 +29715,19 @@ _packages2.default.policy.canvas.CanvasPolicy = _packages2.default.policy.EditPo
    * @param {Number} dy2 The y diff since the last call of this dragging operation
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
    * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
-   * @template
    */
   onMouseDrag: function onMouseDrag(canvas, dx, dy, dx2, dy2, shiftKey, ctrlKey) {},
 
   /**
    *
    *
-   * @param {draw2d.Figure} figure the shape below the mouse or null
+   * @param {draw2d.Canvas} canvas the shape below the mouse or null
    * @param {Number} x the x-coordinate of the mouse down event
    * @param {Number} y the y-coordinate of the mouse down event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
    * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
-   * @template
    */
-  onMouseUp: function onMouseUp(figure, x, y, shiftKey, ctrlKey) {},
+  onMouseUp: function onMouseUp(canvas, x, y, shiftKey, ctrlKey) {},
 
   /**
    *
@@ -29720,10 +29738,41 @@ _packages2.default.policy.canvas.CanvasPolicy = _packages2.default.policy.EditPo
    * @param {Number} y the y-coordinate of the mouse down event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
    * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
-   * @template
    * @since 4.4.0
    */
   onRightMouseDown: function onRightMouseDown(figure, x, y, shiftKey, ctrlKey) {},
+
+  /**
+   *
+   * Called by the canvas if the user click on a figure.
+   *
+   * @param {draw2d.Figure} figure the figure under the click event. Can be null
+   * @param {Number} mouseX the x coordinate of the mouse during the click event
+   * @param {Number} mouseY the y coordinate of the mouse during the click event
+   * @param {Boolean} shiftKey true if the shift key has been pressed during this event
+   * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
+   *
+   * @since 3.0.0
+   *
+   * @template
+   */
+  onClick: function onClick(figure, mouseX, mouseY, shiftKey, ctrlKey) {},
+
+  /**
+   *
+   * Called by the canvas if the user double click on a figure.
+   *
+   * @param {draw2d.Figure} figure the figure under the double click event. Can be null
+   * @param {Number} mouseX the x coordinate of the mouse during the click event
+   * @param {Number} mouseY the y coordinate of the mouse during the click event
+   * @param {Boolean} shiftKey true if the shift key has been pressed during this event
+   * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
+   *
+   * @since 4.1.0
+   *
+   * @template
+   */
+  onDoubleClick: function onDoubleClick(figure, mouseX, mouseY, shiftKey, ctrlKey) {},
 
   /**
    *
@@ -29743,21 +29792,6 @@ _packages2.default.policy.canvas.CanvasPolicy = _packages2.default.policy.EditPo
   onMouseWheel: function onMouseWheel(wheelDelta, x, y, shiftKey, ctrlKey) {
     // return "false" to prevent the default event operation
     return true;
-  },
-
-  /**
-   *
-   * Adjust the coordinates to the given constraint.
-   *
-   * @param {draw2d.Canvas} canvas the related canvas
-   * @param {draw2d.Figure} figure the figure to snap
-   * @param {draw2d.geo.Point} modifiedPos the already modified position of the figure (e.g. from an another Policy)
-   * @param {draw2d.geo.Point} originalPos the original requested position of the figure
-   *
-   * @returns {draw2d.geo.Point} the constraint position of the figure
-   */
-  snap: function snap(canvas, figure, modifiedPos, originalPos) {
-    return modifiedPos;
   },
 
   /**
@@ -30200,7 +30234,7 @@ _packages2.default.policy.canvas.DropInterceptorPolicy = _packages2.default.poli
    * Return a non <b>null</b> value if the interceptor accept the connect event.<br>
    * <br>
    * It is possible to delegate the drop event to another figure if the policy
-   * returns another figure. This is usefull if a figure want to accept a port
+   * returns another figure. This is useful if a figure want to accept a port
    * drop event and delegates this drop event to another port.<br>
    *
    *
@@ -30214,6 +30248,14 @@ _packages2.default.policy.canvas.DropInterceptorPolicy = _packages2.default.poli
     //
     if (!(connectInquirer instanceof _packages2.default.Port) && connectIntent instanceof _packages2.default.shape.composite.StrongComposite) {
       return connectIntent;
+    }
+
+    // Ports accepts only Ports from the same semanticGroup as DropTarget
+    //
+    if (connectIntent instanceof _packages2.default.Port && connectInquirer instanceof _packages2.default.Port) {
+      if (connectIntent.getSemanticGroup() !== connectInquirer.getSemanticGroup()) {
+        return null;
+      }
     }
 
     // Ports accepts only Ports as DropTarget
@@ -31412,7 +31454,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @example
  *
  *    canvas.installEditPolicy(new draw2d.policy.canvas.ShowGridEditPolicy());
- *    var shape =  new draw2d.shape.basic.Text({text:"This is a simple text in a canvas with grid background."});
+ *    let shape =  new draw2d.shape.basic.Text({text:"This is a simple text in a canvas with grid background."});
  *
  *    canvas.add(shape,40,10);
  *
@@ -31490,7 +31532,7 @@ _packages2.default.policy.canvas.ShowGridEditPolicy = _packages2.default.policy.
 
       var r = this.canvas.paper;
       var d = this.grid,
-          i;
+          i = void 0;
       var w = r.width;
       var h = r.height;
       var props = { stroke: this.color.rgba() };
@@ -31579,7 +31621,7 @@ _packages2.default.policy.canvas.SingleSelectionPolicy = _packages2.default.poli
   },
 
   /**
-   * 
+   *
    *
    * @param {draw2d.Canvas} canvas
    * @param {Number} x the x-coordinate of the mouse down event
@@ -31643,7 +31685,7 @@ _packages2.default.policy.canvas.SingleSelectionPolicy = _packages2.default.poli
   },
 
   /**
-   * 
+   *
    *
    * @param {draw2d.Canvas} canvas
    * @param {Number} dx The x diff between start of dragging and this event
@@ -31655,9 +31697,11 @@ _packages2.default.policy.canvas.SingleSelectionPolicy = _packages2.default.poli
    * @template
    */
   onMouseDrag: function onMouseDrag(canvas, dx, dy, dx2, dy2, shiftKey, ctrlKey) {
+
     this.mouseMovedDuringMouseDown = true;
     if (this.mouseDraggingElement !== null) {
-      // Can be a ResizeHandle or a normal Figure
+
+      // mouseDraggingElement be a ResizeHandle...in this case it is not part of the selection
       //
       var sel = canvas.getSelection();
       if (!sel.contains(this.mouseDraggingElement)) {
@@ -31717,9 +31761,9 @@ _packages2.default.policy.canvas.SingleSelectionPolicy = _packages2.default.poli
   },
 
   /**
-   * 
    *
-   * @param {draw2d.Figure} figure the shape below the mouse or null
+   *
+   * @param {draw2d.Canvas} canvas the related Canvas
    * @param {Number} x the x-coordinate of the mouse down event
    * @param {Number} y the y-coordinate of the mouse down event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -31803,10 +31847,10 @@ _packages2.default.policy.canvas.SingleSelectionPolicy = _packages2.default.poli
   },
 
   /**
-   * 
+   *
    * Called by the canvas if the user click on a figure.
    *
-   * @param {draw2d.Figure} the figure under the click event. Can be null
+   * @param {draw2d.Figure} figure the figure under the click event. Can be null
    * @param {Number} mouseX the x coordinate of the mouse during the click event
    * @param {Number} mouseY the y coordinate of the mouse during the click event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -31831,10 +31875,10 @@ _packages2.default.policy.canvas.SingleSelectionPolicy = _packages2.default.poli
   },
 
   /**
-   * 
+   *
    * Called by the canvas if the user double click on a figure.
    *
-   * @param {draw2d.Figure} the figure under the double click event. Can be null
+   * @param {draw2d.Figure} figure the figure under the double click event. Can be null
    * @param {Number} mouseX the x coordinate of the mouse during the click event
    * @param {Number} mouseY the y coordinate of the mouse during the click event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -32813,7 +32857,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  *
  * @extends draw2d.policy.canvas.ShowGridEditPolicy
  */
-_packages2.default.policy.canvas.SnapToGridEditPolicy = _packages2.default.policy.canvas.ShowGridEditPolicy.extend(
+_packages2.default.policy.canvas.SnapToGridEditPolicy = _packages2.default.policy.canvas.SnapToEditPolicy.extend(
 /** @lends draw2d.policy.canvas.SnapToGridEditPolicy.prototype */
 {
 
@@ -32824,20 +32868,48 @@ _packages2.default.policy.canvas.SnapToGridEditPolicy = _packages2.default.polic
    *
    * @param {Number} grid the grid width of the canvas
    */
-  init: function init(grid) {
-    this._super(grid);
+  init: function init(grid, showGrid) {
+    this._super();
+    this.grid = grid || 20;
+
+    // Default Value for "showGrid=true"
+    if (typeof showGrid === "undefined" || showGrid === true) {
+      this.renderer = new _packages2.default.policy.canvas.ShowGridEditPolicy(this.grid);
+    }
+  },
+
+  onInstall: function onInstall(canvas) {
+    this._super(canvas);
+    if (this.renderer) this.renderer.onInstall(canvas);
+  },
+
+  onUninstall: function onUninstall(canvas) {
+    this._super(canvas);
+    if (this.renderer) this.renderer.onUninstall(canvas);
   },
 
   /**
    *
-   * Applies a snapping correction to the given result.
+   * Set a new grid width/height
    *
-   * @param {draw2d.Canvas} canvas the related canvas
-   * @param {draw2d.Figure} figure the figure to snap
-   * @param {draw2d.geo.Point} modifiedPos the already modified position of the figure (e.g. from an another Policy)
-   * @param {draw2d.geo.Point} originalPos the original requested position of the figure
-   * @since 2.3.0
+   * @param {Number} grid
+   * @since 5.0.3
    */
+  setGrid: function setGrid(grid) {
+    this.grid = grid;
+    if (this.renderer) this.renderer.setGrid(grid);
+  },
+
+  /**
+  *
+  * Applies a snapping correction to the given result.
+  *
+  * @param {draw2d.Canvas} canvas the related canvas
+  * @param {draw2d.Figure} figure the figure to snap
+  * @param {draw2d.geo.Point} modifiedPos the already modified position of the figure (e.g. from an another Policy)
+  * @param {draw2d.geo.Point} originalPos the original requested position of the figure
+  * @since 2.3.0
+  */
   snap: function snap(canvas, figure, modifiedPos, originalPos) {
     // do nothing for lines
     if (figure instanceof _packages2.default.shape.basic.Line) {
@@ -35969,7 +36041,7 @@ _packages2.default.policy.figure.DragDropEditPolicy = _packages2.default.policy.
   },
 
   /**
-   * 
+   *
    * Called by the host if the policy has been installed.
    *
    * @param {draw2d.Canvas|draw2d.Figure} host
@@ -35980,7 +36052,7 @@ _packages2.default.policy.figure.DragDropEditPolicy = _packages2.default.policy.
   },
 
   /**
-   * 
+   *
    * Called by the host if the policy has been uninstalled.
    *
    * @param {draw2d.Canvas|draw2d.Figure} host
@@ -35991,7 +36063,7 @@ _packages2.default.policy.figure.DragDropEditPolicy = _packages2.default.policy.
   },
 
   /**
-   * 
+   *
    * Called by the framework if the related shape has init a drag&drop
    * operation
    *
@@ -36024,7 +36096,7 @@ _packages2.default.policy.figure.DragDropEditPolicy = _packages2.default.policy.
   },
 
   /**
-   * 
+   *
    * Called by the framework during drag a figure.
    *
    * @param {draw2d.Canvas} canvas The host canvas
@@ -36041,7 +36113,7 @@ _packages2.default.policy.figure.DragDropEditPolicy = _packages2.default.policy.
   },
 
   /**
-   * 
+   *
    * Called by the framework if the drag drop operation ends.
    *
    * @param {draw2d.Canvas} canvas The host canvas
@@ -36059,7 +36131,7 @@ _packages2.default.policy.figure.DragDropEditPolicy = _packages2.default.policy.
   },
 
   /**
-   * 
+   *
    * Adjust the coordinates to the rectangle/region of this constraint.
    *
    * @param {draw2d.Figure} figure
@@ -36079,7 +36151,7 @@ _packages2.default.policy.figure.DragDropEditPolicy = _packages2.default.policy.
   },
 
   /**
-   * 
+   *
    * ensure that the dimension didn't goes outside the given restrictions
    *
    * @param {draw2d.Figure} figure
@@ -36092,7 +36164,7 @@ _packages2.default.policy.figure.DragDropEditPolicy = _packages2.default.policy.
   },
 
   /**
-   * 
+   *
    * Callback if the figure has moved
    *
    * @param {draw2d.Canvas} canvas The host canvas
@@ -36350,7 +36422,7 @@ _packages2.default.policy.figure.HorizontalEditPolicy = _packages2.default.polic
   },
 
   /**
-   * 
+   *
    * It is only possible to drag&drop the element in a horizontal line
    *
    * @param figure
@@ -36630,6 +36702,7 @@ _packages2.default.policy.figure.RegionEditPolicy = _packages2.default.policy.fi
    *
    * @param {draw2d.geo.Rectangle} boundingBox the constraint rectangle
    * @since 4.8.2
+   * @returns {this}
    */
   setBoundingBox: function setBoundingBox(boundingBox) {
     this.constRect = boundingBox;
@@ -36665,8 +36738,7 @@ _packages2.default.policy.figure.RegionEditPolicy = _packages2.default.policy.fi
    * @param {draw2d.Figure} figure
    * @param {Number} w
    * @param {Number} h
-   *
-   * @private
+   * @returns {draw2d.geo.Rectangle} the constraint position of the figure
    */
   adjustDimension: function adjustDimension(figure, w, h) {
     var diffW = figure.getAbsoluteX() + w - this.constRect.getRight();
@@ -36679,7 +36751,7 @@ _packages2.default.policy.figure.RegionEditPolicy = _packages2.default.policy.fi
       h = h - diffH;
     }
 
-    return { w: w, h: h };
+    return new _packages2.default.geo.Rectangle(0, 0, w, h);
   }
 });
 
@@ -38373,7 +38445,8 @@ _packages2.default.policy.port.ElasticStrapFeedbackPolicy = _packages2.default.p
    * @param {Number} y the y-coordinate of the mouse up event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
    * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
-   * @template
+   *
+   * @returns {Boolean} return <b>false</b> to send a veto to the drag operation
    */
   onDragStart: function onDragStart(canvas, figure, x, y, shiftKey, ctrlKey) {
     this.connectionLine = new _packages2.default.shape.basic.Line();
@@ -38381,6 +38454,8 @@ _packages2.default.policy.port.ElasticStrapFeedbackPolicy = _packages2.default.p
     this.connectionLine.getShapeElement();
 
     this.onDrag(canvas, figure);
+
+    return true;
   },
 
   /**
@@ -38408,7 +38483,6 @@ _packages2.default.policy.port.ElasticStrapFeedbackPolicy = _packages2.default.p
    * @param {Number} y the y-coordinate of the mouse event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
    * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
-   * @template
    */
   onDragEnd: function onDragEnd(canvas, figure, x, y, shiftKey, ctrlKey) {
     this.connectionLine.setCanvas(null);
@@ -38490,11 +38564,14 @@ _packages2.default.policy.port.IntrusivePortsFeedbackPolicy = _packages2.default
       start = element.__beforeInflate;
     });
 
-    // animate the resize of the ports
+    // filter all candidates for the DropEvent
     //
     allPorts.grep(function (p) {
-      return p.NAME != figure.NAME && p.parent !== figure.parent || p instanceof _packages2.default.HybridPort || figure instanceof _packages2.default.HybridPort;
+      return p.NAME !== figure.NAME && p.parent !== figure.parent && p.getSemanticGroup() === figure.getSemanticGroup() || p instanceof _packages2.default.HybridPort || figure instanceof _packages2.default.HybridPort;
     });
+
+    // Animate the ports for a visual feedback
+    //
     this.tweenable = new _shifty.Tweenable();
     this.tweenable.tween({
       from: { 'size': start / 2 },
@@ -38545,7 +38622,10 @@ _packages2.default.policy.port.IntrusivePortsFeedbackPolicy = _packages2.default
    *
    * @param {draw2d.Canvas} canvas The host canvas
    * @param {draw2d.Figure} figure The related figure
-   * @template
+   * @param {Number} x the x-coordinate of the mouse event
+   * @param {Number} y the y-coordinate of the mouse event
+   * @param {Boolean} shiftKey true if the shift key has been pressed during this event
+   * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
    */
   onDragEnd: function onDragEnd(canvas, figure, x, y, shiftKey, ctrlKey) {
     if (this.tweenable) {
@@ -38553,7 +38633,15 @@ _packages2.default.policy.port.IntrusivePortsFeedbackPolicy = _packages2.default
       this.tweenable.dispose();
       this.tweenable = null;
     }
-    canvas.getAllPorts().each(function (i, element) {
+
+    var allPorts = canvas.getAllPorts().clone();
+    // filter all candidates for the DropEvent
+    //
+    allPorts.grep(function (p) {
+      return p.__beforeInflate;
+    });
+
+    allPorts.each(function (i, element) {
       // IMPORTANT shortcut to avoid rendering errors!!
       // performance shortcut to avoid a lot of events and recalculate/routing of all related connections
       // for each setDimension call. Additional the connection is following a port during Drag&Drop operation
@@ -38565,13 +38653,13 @@ _packages2.default.policy.port.IntrusivePortsFeedbackPolicy = _packages2.default
     this.connectionLine = null;
   },
 
-  onHoverEnter: function onHoverEnter(canvas, draggedFigure, hoverFiger) {
+  onHoverEnter: function onHoverEnter(canvas, draggedFigure, hoverFigure) {
     this.connectionLine.setGlow(true);
-    hoverFiger.setGlow(true);
+    hoverFigure.setGlow(true);
   },
 
-  onHoverLeave: function onHoverLeave(canvas, draggedFigure, hoverFiger) {
-    hoverFiger.setGlow(false);
+  onHoverLeave: function onHoverLeave(canvas, draggedFigure, hoverFigure) {
+    hoverFigure.setGlow(false);
     if (this.connectionLine === null) {
       debugger;
     }
@@ -44368,7 +44456,7 @@ _packages2.default.shape.composite.Composite = _packages2.default.SetFigure.exte
   },
 
   /**
-   * 
+   *
    * Called when a user dbl clicks on the element
    *
    * @template
@@ -44378,7 +44466,7 @@ _packages2.default.shape.composite.Composite = _packages2.default.SetFigure.exte
   },
 
   /**
-   * 
+   *
    * Delegate method to calculate if a figure is selectable. A composite has the right to override the
    * initial selectable flag of the figure.
    *
@@ -44392,7 +44480,7 @@ _packages2.default.shape.composite.Composite = _packages2.default.SetFigure.exte
   },
 
   /**
-   * 
+   *
    * Delegate method to calculate if a figure is draggable. A composite has the right to override the
    * initial draggable flag of the figure.
    *
@@ -44406,7 +44494,7 @@ _packages2.default.shape.composite.Composite = _packages2.default.SetFigure.exte
   },
 
   /**
-   * 
+   *
    * Set the canvas element of this figures. This can be used to determine whenever an element
    * is added or removed to the canvas.
    *
@@ -44472,14 +44560,14 @@ _packages2.default.shape.composite.Group = _packages2.default.shape.composite.St
   init: function init(attr, setter, getter) {
     this._super(extend({ bgColor: null, color: null, resizeable: false }, attr), setter, getter);
 
-    // used during figure assignment/unassignment. The Group resizes during figure assignment
+    // used during figure assignment/unassignment. The Group is resizing during figure assignment
     // and we want avoid that already assigned figures are moving during this resize.
     //
     this.stickFigures = false;
   },
 
   /**
-   * 
+   *
    * Delegate method to calculate if a figure is selectable. A composite has the right to override the
    * initial selectable flag of the figure.
    *
@@ -44492,7 +44580,7 @@ _packages2.default.shape.composite.Group = _packages2.default.shape.composite.St
   },
 
   /**
-   * 
+   *
    * Delegate method to calculate if a figure is draggable. A composite has the right to override the
    * initial draggable flag of the figure.
    * <br>
@@ -44508,7 +44596,7 @@ _packages2.default.shape.composite.Group = _packages2.default.shape.composite.St
   },
 
   /**
-   * 
+   *
    * Set the position of the object.
    *
    * @param {Number/draw2d.geo.Point} x The new x coordinate of the figure
@@ -44538,7 +44626,7 @@ _packages2.default.shape.composite.Group = _packages2.default.shape.composite.St
   },
 
   /**
-   * 
+   *
    * Assign a figure to the given group.
    * The bounding box of the group is recalculated and the union of the current bounding box with the
    * figure bounding box.
@@ -44568,7 +44656,7 @@ _packages2.default.shape.composite.Group = _packages2.default.shape.composite.St
   },
 
   /**
-   * 
+   *
    * Remove the given figure from the group assignment
    *
    * @param {draw2d.Figure} figure the figure to remove

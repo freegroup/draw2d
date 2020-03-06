@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded",function () {
     //
     canvas = new draw2d.Canvas("gfx_holder");
     canvas.installEditPolicy(new draw2d.policy.canvas.FadeoutDecorationPolicy());
+    canvas.installEditPolicy(new draw2d.policy.canvas.SnapToGridEditPolicy())
 
     label = new draw2d.shape.basic.Label({text:"draw2d.shape.basic.Oval", x:200, y:55});
     var oval  = new draw2d.shape.basic.Oval({width:80,height:30, x:50, y:50});

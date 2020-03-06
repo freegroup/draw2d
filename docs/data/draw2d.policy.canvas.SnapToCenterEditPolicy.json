@@ -238,58 +238,6 @@
       "examples": []
     },
     {
-      "name": "onClick",
-      "access": "",
-      "virtual": false,
-      "deprecated": "",
-      "description": "<p>Called by the canvas if the user click on a figure.</p>",
-      "parameters": [
-        {
-          "name": "the",
-          "type": "draw2d.Figure",
-          "description": "<p>figure under the click event. Can be null</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        },
-        {
-          "name": "mouseX",
-          "type": "Number",
-          "description": "<p>the x coordinate of the mouse during the click event</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        },
-        {
-          "name": "mouseY",
-          "type": "Number",
-          "description": "<p>the y coordinate of the mouse during the click event</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        },
-        {
-          "name": "shiftKey",
-          "type": "Boolean",
-          "description": "<p>true if the shift key has been pressed during this event</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        },
-        {
-          "name": "ctrlKey",
-          "type": "Boolean",
-          "description": "<p>true if the ctrl key has been pressed during the event</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        }
-      ],
-      "inherited": true,
-      "since": "3.0.0",
-      "examples": []
-    },
-    {
       "name": "onMouseMove",
       "access": "",
       "virtual": false,
@@ -339,58 +287,6 @@
       ],
       "inherited": true,
       "since": "",
-      "examples": []
-    },
-    {
-      "name": "onDoubleClick",
-      "access": "",
-      "virtual": false,
-      "deprecated": "",
-      "description": "<p>Called by the canvas if the user double click on a figure.</p>",
-      "parameters": [
-        {
-          "name": "the",
-          "type": "draw2d.Figure",
-          "description": "<p>figure under the double click event. Can be null</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        },
-        {
-          "name": "mouseX",
-          "type": "Number",
-          "description": "<p>the x coordinate of the mouse during the click event</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        },
-        {
-          "name": "mouseY",
-          "type": "Number",
-          "description": "<p>the y coordinate of the mouse during the click event</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        },
-        {
-          "name": "shiftKey",
-          "type": "Boolean",
-          "description": "<p>true if the shift key has been pressed during this event</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        },
-        {
-          "name": "ctrlKey",
-          "type": "Boolean",
-          "description": "<p>true if the ctrl key has been pressed during the event</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        }
-      ],
-      "inherited": true,
-      "since": "4.1.0",
       "examples": []
     },
     {
@@ -566,6 +462,110 @@
       ],
       "inherited": true,
       "since": "4.4.0",
+      "examples": []
+    },
+    {
+      "name": "onClick",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Called by the canvas if the user click on a figure.</p>",
+      "parameters": [
+        {
+          "name": "figure",
+          "type": "draw2d.Figure",
+          "description": "<p>the figure under the click event. Can be null</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "mouseX",
+          "type": "Number",
+          "description": "<p>the x coordinate of the mouse during the click event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "mouseY",
+          "type": "Number",
+          "description": "<p>the y coordinate of the mouse during the click event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "shiftKey",
+          "type": "Boolean",
+          "description": "<p>true if the shift key has been pressed during this event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "ctrlKey",
+          "type": "Boolean",
+          "description": "<p>true if the ctrl key has been pressed during the event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "3.0.0",
+      "examples": []
+    },
+    {
+      "name": "onDoubleClick",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Called by the canvas if the user double click on a figure.</p>",
+      "parameters": [
+        {
+          "name": "figure",
+          "type": "draw2d.Figure",
+          "description": "<p>the figure under the double click event. Can be null</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "mouseX",
+          "type": "Number",
+          "description": "<p>the x coordinate of the mouse during the click event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "mouseY",
+          "type": "Number",
+          "description": "<p>the y coordinate of the mouse during the click event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "shiftKey",
+          "type": "Boolean",
+          "description": "<p>true if the shift key has been pressed during this event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "ctrlKey",
+          "type": "Boolean",
+          "description": "<p>true if the ctrl key has been pressed during the event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "4.1.0",
       "examples": []
     },
     {

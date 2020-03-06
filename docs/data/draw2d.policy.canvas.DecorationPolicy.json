@@ -60,58 +60,6 @@
       "examples": []
     },
     {
-      "name": "onClick",
-      "access": "",
-      "virtual": false,
-      "deprecated": "",
-      "description": "<p>Called by the canvas if the user click on a figure.</p>",
-      "parameters": [
-        {
-          "name": "the",
-          "type": "draw2d.Figure",
-          "description": "<p>figure under the click event. Can be null</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        },
-        {
-          "name": "mouseX",
-          "type": "Number",
-          "description": "<p>the x coordinate of the mouse during the click event</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        },
-        {
-          "name": "mouseY",
-          "type": "Number",
-          "description": "<p>the y coordinate of the mouse during the click event</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        },
-        {
-          "name": "shiftKey",
-          "type": "Boolean",
-          "description": "<p>true if the shift key has been pressed during this event</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        },
-        {
-          "name": "ctrlKey",
-          "type": "Boolean",
-          "description": "<p>true if the ctrl key has been pressed during the event</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        }
-      ],
-      "inherited": true,
-      "since": "3.0.0",
-      "examples": []
-    },
-    {
       "name": "onMouseMove",
       "access": "",
       "virtual": false,
@@ -161,58 +109,6 @@
       ],
       "inherited": true,
       "since": "",
-      "examples": []
-    },
-    {
-      "name": "onDoubleClick",
-      "access": "",
-      "virtual": false,
-      "deprecated": "",
-      "description": "<p>Called by the canvas if the user double click on a figure.</p>",
-      "parameters": [
-        {
-          "name": "the",
-          "type": "draw2d.Figure",
-          "description": "<p>figure under the double click event. Can be null</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        },
-        {
-          "name": "mouseX",
-          "type": "Number",
-          "description": "<p>the x coordinate of the mouse during the click event</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        },
-        {
-          "name": "mouseY",
-          "type": "Number",
-          "description": "<p>the y coordinate of the mouse during the click event</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        },
-        {
-          "name": "shiftKey",
-          "type": "Boolean",
-          "description": "<p>true if the shift key has been pressed during this event</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        },
-        {
-          "name": "ctrlKey",
-          "type": "Boolean",
-          "description": "<p>true if the ctrl key has been pressed during the event</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        }
-      ],
-      "inherited": true,
-      "since": "4.1.0",
       "examples": []
     },
     {
@@ -343,8 +239,8 @@
       "description": "",
       "parameters": [
         {
-          "name": "figure",
-          "type": "draw2d.Figure",
+          "name": "canvas",
+          "type": "draw2d.Canvas",
           "description": "<p>the shape below the mouse or null</p>",
           "default": "",
           "optional": "",
@@ -443,6 +339,110 @@
       "examples": []
     },
     {
+      "name": "onClick",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Called by the canvas if the user click on a figure.</p>",
+      "parameters": [
+        {
+          "name": "figure",
+          "type": "draw2d.Figure",
+          "description": "<p>the figure under the click event. Can be null</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "mouseX",
+          "type": "Number",
+          "description": "<p>the x coordinate of the mouse during the click event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "mouseY",
+          "type": "Number",
+          "description": "<p>the y coordinate of the mouse during the click event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "shiftKey",
+          "type": "Boolean",
+          "description": "<p>true if the shift key has been pressed during this event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "ctrlKey",
+          "type": "Boolean",
+          "description": "<p>true if the ctrl key has been pressed during the event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "3.0.0",
+      "examples": []
+    },
+    {
+      "name": "onDoubleClick",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Called by the canvas if the user double click on a figure.</p>",
+      "parameters": [
+        {
+          "name": "figure",
+          "type": "draw2d.Figure",
+          "description": "<p>the figure under the double click event. Can be null</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "mouseX",
+          "type": "Number",
+          "description": "<p>the x coordinate of the mouse during the click event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "mouseY",
+          "type": "Number",
+          "description": "<p>the y coordinate of the mouse during the click event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "shiftKey",
+          "type": "Boolean",
+          "description": "<p>true if the shift key has been pressed during this event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "ctrlKey",
+          "type": "Boolean",
+          "description": "<p>true if the ctrl key has been pressed during the event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "4.1.0",
+      "examples": []
+    },
+    {
       "name": "onMouseWheel",
       "access": "",
       "virtual": false,
@@ -496,54 +496,6 @@
       "returns": {
         "type": "Boolean",
         "description": "<p>return <b>false</b> to preven tthe default event operation (e.g. scrolling)</p>"
-      }
-    },
-    {
-      "name": "snap",
-      "access": "",
-      "virtual": false,
-      "deprecated": "",
-      "description": "<p>Adjust the coordinates to the given constraint.</p>",
-      "parameters": [
-        {
-          "name": "canvas",
-          "type": "draw2d.Canvas",
-          "description": "<p>the related canvas</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        },
-        {
-          "name": "figure",
-          "type": "draw2d.Figure",
-          "description": "<p>the figure to snap</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        },
-        {
-          "name": "modifiedPos",
-          "type": "draw2d.geo.Point",
-          "description": "<p>the already modified position of the figure (e.g. from an another Policy)</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        },
-        {
-          "name": "originalPos",
-          "type": "draw2d.geo.Point",
-          "description": "<p>the original requested position of the figure</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        }
-      ],
-      "inherited": true,
-      "since": "",
-      "examples": [],
-      "returns": {
-        "type": "draw2d.geo.Point",
-        "description": "<p>the constraint position of the figure</p>"
       }
     },
     {

@@ -79,6 +79,45 @@
       }
     },
     {
+      "name": "setSemanticGroup",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Set the semantic group of this port. Only ports in the same semantic group\ncan be connected.</p>\n<p>The default for all ports is &quot;global&quot;</p>",
+      "parameters": [
+        {
+          "name": "group",
+          "type": "String",
+          "description": "<p>the semantic group of this port</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
+    },
+    {
+      "name": "getSemanticGroup",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Get the semantic group of this port. Only ports in the same semantic group\ncan be connected.</p>\n<p>The default for all ports is &quot;global&quot;</p>",
+      "parameters": [],
+      "inherited": true,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "String",
+        "description": ""
+      }
+    },
+    {
       "name": "setConnectionAnchor",
       "access": "",
       "virtual": false,

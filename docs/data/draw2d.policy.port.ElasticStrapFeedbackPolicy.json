@@ -77,7 +77,11 @@
       ],
       "inherited": false,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "Boolean",
+        "description": "<p>return <b>false</b> to send a veto to the drag operation</p>"
+      }
     },
     {
       "name": "onDrag",

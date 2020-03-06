@@ -73,7 +73,11 @@
       ],
       "inherited": false,
       "since": "4.8.2",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "adjustPosition",
@@ -120,7 +124,7 @@
     },
     {
       "name": "adjustDimension",
-      "access": "private",
+      "access": "",
       "virtual": false,
       "deprecated": "",
       "description": "<p>Adjust the dimension of the rectangle to fit into the region of the policy</p>",
@@ -152,7 +156,11 @@
       ],
       "inherited": false,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "draw2d.geo.Rectangle",
+        "description": "<p>the constraint position of the figure</p>"
+      }
     },
     {
       "name": "onInstall",

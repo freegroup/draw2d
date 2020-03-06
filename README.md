@@ -18,14 +18,13 @@ npm install
 DIR=/examples yarn dev
 ```
 
+## build
+``` 
+./build.sh
+```
+
 ## publish new version
 ``` 
-yarn build
-cd jsdoc
-jsdoc -c ./jsdoc.conf
-npm run build
-cd ..
-git commit....
 npm version patch
 npm publish
 ```
