@@ -694,6 +694,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
         draw2d.Connection.DROP_FILTER = canvas.paper.createFilter()
         draw2d.Connection.DROP_FILTER.element.setAttribute("width", "250%")
         draw2d.Connection.DROP_FILTER.element.setAttribute("height", "250%")
+        draw2d.Connection.DROP_FILTER.element.setAttribute("filterUnits", "userSpaceOnUse")
         draw2d.Connection.DROP_FILTER.createShadow(1, 1, 2, 0.3)
       }
 
