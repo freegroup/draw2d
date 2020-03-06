@@ -21,6 +21,11 @@ DIR=/examples yarn dev
 ## publish new version
 ``` 
 yarn build
+cd jsdoc
+jsdoc -c ./jsdoc.conf
+npm run build
+cd ..
+git commit....
 npm version patch
 npm publish
 ```
