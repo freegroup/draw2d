@@ -11,7 +11,7 @@ import draw2d from '../../packages'
  * @example
  *
  *    canvas.installEditPolicy(new draw2d.policy.canvas.ShowGridEditPolicy());
- *    var shape =  new draw2d.shape.basic.Text({text:"This is a simple text in a canvas with grid background."});
+ *    let shape =  new draw2d.shape.basic.Text({text:"This is a simple text in a canvas with grid background."});
  *
  *    canvas.add(shape,40,10);
  *
@@ -88,11 +88,11 @@ draw2d.policy.canvas.ShowGridEditPolicy = draw2d.policy.canvas.DecorationPolicy.
         this.svg.remove()
       }
 
-      var r = this.canvas.paper
-      var d = this.grid, i
-      var w = r.width
-      var h = r.height
-      var props = {stroke: this.color.rgba()}
+      let r = this.canvas.paper
+      let d = this.grid, i
+      let w = r.width
+      let h = r.height
+      let props = {stroke: this.color.rgba()}
       r.setStart()
       // horizontal
       for (let i = d + 0.5; i < h; i += d) {

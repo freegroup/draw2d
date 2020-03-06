@@ -7493,7 +7493,7 @@ _packages2.default.Canvas = Class.extend(
    * @param {Number} left the left scroll offset of the canvas
    **/
   setScrollLeft: function setScrollLeft(left) {
-    this.getScrollArea().scrollLeft();
+    this.getScrollArea().scrollLeft(left);
 
     return this;
   },
@@ -7505,7 +7505,7 @@ _packages2.default.Canvas = Class.extend(
    * @param {Number} top the top scroll offset of the canvas.
    **/
   setScrollTop: function setScrollTop(top) {
-    this.getScrollArea().scrollTop();
+    this.getScrollArea().scrollTop(top);
 
     return this;
   },
@@ -7665,6 +7665,8 @@ _packages2.default.Canvas = Class.extend(
    * @param {draw2d.Figure} figure The figure to remove
    **/
   remove: function remove(figure) {
+    var _this4 = this;
+
     // don't fire events of calll callbacks if the fire isn'T part of this canvas
     //
     if (figure.getCanvas() !== this) {
@@ -7673,11 +7675,10 @@ _packages2.default.Canvas = Class.extend(
 
     // remove the figure from a selection handler as well and cleanup the
     // selection feedback
-    var _this = this;
     if (this.getSelection().contains(figure)) {
       this.editPolicy.each(function (i, policy) {
         if (typeof policy.unselect === "function") {
-          policy.unselect(_this, figure);
+          policy.unselect(_this4, figure);
         }
       });
     }
@@ -7771,7 +7772,7 @@ _packages2.default.Canvas = Class.extend(
 
     this.lineIntersections.each(function (i, entry) {
       if (entry.line === line) {
-        entry.intersection.each(function (i, p) {
+        entry.intersection.each(function (j, p) {
           result.add({ x: p.x, y: p.y, justTouching: p.justTouching, other: entry.other });
         });
       }
@@ -7791,17 +7792,20 @@ _packages2.default.Canvas = Class.extend(
    * @private
    **/
   snapToHelper: function snapToHelper(figure, pos) {
-    // disable snapToPos if we have sleect more than one element
+    var _this5 = this;
+
+    // disable snapToPos if we have select more than one element
     // which are currently in Drag&Drop operation
     //
     if (this.getSelection().getSize() > 1) {
       return pos;
     }
 
-    var _this = this;
     var orig = pos.clone();
     this.editPolicy.each(function (i, policy) {
-      pos = policy.snap(_this, figure, pos, orig);
+      if (policy instanceof _packages2.default.policy.canvas.SnapToEditPolicy) {
+        pos = policy.snap(_this5, figure, pos, orig);
+      }
     });
 
     return pos;
@@ -7888,15 +7892,15 @@ _packages2.default.Canvas = Class.extend(
    * @returns {this}
    **/
   setCurrentSelection: function setCurrentSelection(object) {
-    var _this4 = this;
+    var _this6 = this;
 
     // deselect the current selected figures
     //
     // clone the array (getAll) before iterate and modify the initial array
     this.selection.getAll().each(function (i, e) {
-      _this4.editPolicy.each(function (i, policy) {
+      _this6.editPolicy.each(function (i, policy) {
         if (typeof policy.unselect === "function") {
-          policy.unselect(_this4, e);
+          policy.unselect(_this6, e);
         }
       });
     });
@@ -29747,21 +29751,6 @@ _packages2.default.policy.canvas.CanvasPolicy = _packages2.default.policy.EditPo
 
   /**
    *
-   * Adjust the coordinates to the given constraint.
-   *
-   * @param {draw2d.Canvas} canvas the related canvas
-   * @param {draw2d.Figure} figure the figure to snap
-   * @param {draw2d.geo.Point} modifiedPos the already modified position of the figure (e.g. from an another Policy)
-   * @param {draw2d.geo.Point} originalPos the original requested position of the figure
-   *
-   * @returns {draw2d.geo.Point} the constraint position of the figure
-   */
-  snap: function snap(canvas, figure, modifiedPos, originalPos) {
-    return modifiedPos;
-  },
-
-  /**
-   *
    * Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: let pixels = new Array(W*H);.
    * Then, for each pixel X,Y that should be opaque, store a 1 at the proper location: pixels[X+Y*W] = 1;.
    * Finally, create the image: let my_gif = createGif(W, H, pixels, color);
@@ -31412,7 +31401,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @example
  *
  *    canvas.installEditPolicy(new draw2d.policy.canvas.ShowGridEditPolicy());
- *    var shape =  new draw2d.shape.basic.Text({text:"This is a simple text in a canvas with grid background."});
+ *    let shape =  new draw2d.shape.basic.Text({text:"This is a simple text in a canvas with grid background."});
  *
  *    canvas.add(shape,40,10);
  *
@@ -31490,7 +31479,7 @@ _packages2.default.policy.canvas.ShowGridEditPolicy = _packages2.default.policy.
 
       var r = this.canvas.paper;
       var d = this.grid,
-          i;
+          i = void 0;
       var w = r.width;
       var h = r.height;
       var props = { stroke: this.color.rgba() };
@@ -31719,7 +31708,7 @@ _packages2.default.policy.canvas.SingleSelectionPolicy = _packages2.default.poli
   /**
    * 
    *
-   * @param {draw2d.Figure} figure the shape below the mouse or null
+   * @param {draw2d.Canvas} canvas the related Canvas
    * @param {Number} x the x-coordinate of the mouse down event
    * @param {Number} y the y-coordinate of the mouse down event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
@@ -32813,7 +32802,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  *
  * @extends draw2d.policy.canvas.ShowGridEditPolicy
  */
-_packages2.default.policy.canvas.SnapToGridEditPolicy = _packages2.default.policy.canvas.ShowGridEditPolicy.extend(
+_packages2.default.policy.canvas.SnapToGridEditPolicy = _packages2.default.policy.canvas.SnapToEditPolicy.extend(
 /** @lends draw2d.policy.canvas.SnapToGridEditPolicy.prototype */
 {
 
@@ -32824,20 +32813,48 @@ _packages2.default.policy.canvas.SnapToGridEditPolicy = _packages2.default.polic
    *
    * @param {Number} grid the grid width of the canvas
    */
-  init: function init(grid) {
-    this._super(grid);
+  init: function init(grid, showGrid) {
+    this._super();
+    this.grid = grid || 20;
+
+    // Default Value for "showGrid=true"
+    if (typeof showGrid === "undefined" || showGrid === true) {
+      this.renderer = new _packages2.default.policy.canvas.ShowGridEditPolicy(this.grid);
+    }
+  },
+
+  onInstall: function onInstall(canvas) {
+    this._super(canvas);
+    if (this.renderer) this.renderer.onInstall(canvas);
+  },
+
+  onUninstall: function onUninstall(canvas) {
+    this._super(canvas);
+    if (this.renderer) this.renderer.onUninstall(canvas);
   },
 
   /**
    *
-   * Applies a snapping correction to the given result.
+   * Set a new grid width/height
    *
-   * @param {draw2d.Canvas} canvas the related canvas
-   * @param {draw2d.Figure} figure the figure to snap
-   * @param {draw2d.geo.Point} modifiedPos the already modified position of the figure (e.g. from an another Policy)
-   * @param {draw2d.geo.Point} originalPos the original requested position of the figure
-   * @since 2.3.0
+   * @param {Number} grid
+   * @since 5.0.3
    */
+  setGrid: function setGrid(grid) {
+    this.grid = grid;
+    if (this.renderer) this.renderer.setGrid(grid);
+  },
+
+  /**
+  *
+  * Applies a snapping correction to the given result.
+  *
+  * @param {draw2d.Canvas} canvas the related canvas
+  * @param {draw2d.Figure} figure the figure to snap
+  * @param {draw2d.geo.Point} modifiedPos the already modified position of the figure (e.g. from an another Policy)
+  * @param {draw2d.geo.Point} originalPos the original requested position of the figure
+  * @since 2.3.0
+  */
   snap: function snap(canvas, figure, modifiedPos, originalPos) {
     // do nothing for lines
     if (figure instanceof _packages2.default.shape.basic.Line) {

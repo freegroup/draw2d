@@ -792,7 +792,7 @@ draw2d.Canvas = Class.extend(
      * @param {Number} left the left scroll offset of the canvas
      **/
     setScrollLeft: function (left) {
-      this.getScrollArea().scrollLeft()
+      this.getScrollArea().scrollLeft(left)
 
       return this
     },
@@ -804,7 +804,7 @@ draw2d.Canvas = Class.extend(
      * @param {Number} top the top scroll offset of the canvas.
      **/
     setScrollTop: function (top) {
-      this.getScrollArea().scrollTop()
+      this.getScrollArea().scrollTop(top)
 
       return this
     },
@@ -978,11 +978,10 @@ draw2d.Canvas = Class.extend(
 
       // remove the figure from a selection handler as well and cleanup the
       // selection feedback
-      let _this = this
       if (this.getSelection().contains(figure)) {
-        this.editPolicy.each(function (i, policy) {
+        this.editPolicy.each( (i, policy) => {
           if (typeof policy.unselect === "function") {
-            policy.unselect(_this, figure)
+            policy.unselect(this, figure)
           }
         })
       }
@@ -1055,7 +1054,7 @@ draw2d.Canvas = Class.extend(
      **/
     getFigure: function (id) {
       let figure = null
-      this.figures.each(function (i, e) {
+      this.figures.each((i, e) =>{
         if (e.id === id) {
           figure = e
           return false
@@ -1075,9 +1074,9 @@ draw2d.Canvas = Class.extend(
     getIntersection: function (line) {
       let result = new draw2d.util.ArrayList()
 
-      this.lineIntersections.each(function (i, entry) {
+      this.lineIntersections.each((i, entry) => {
         if (entry.line === line) {
-          entry.intersection.each(function (i, p) {
+          entry.intersection.each((j, p) => {
             result.add({x: p.x, y: p.y, justTouching: p.justTouching, other: entry.other})
           })
         }
@@ -1098,17 +1097,18 @@ draw2d.Canvas = Class.extend(
      * @private
      **/
     snapToHelper: function (figure, pos) {
-      // disable snapToPos if we have sleect more than one element
+      // disable snapToPos if we have select more than one element
       // which are currently in Drag&Drop operation
       //
       if (this.getSelection().getSize() > 1) {
         return pos
       }
 
-      let _this = this
       let orig = pos.clone()
-      this.editPolicy.each(function (i, policy) {
-        pos = policy.snap(_this, figure, pos, orig)
+      this.editPolicy.each((i, policy) => {
+        if(policy instanceof draw2d.policy.canvas.SnapToEditPolicy) {
+          pos = policy.snap(this, figure, pos, orig)
+        }
       })
 
       return pos

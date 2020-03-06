@@ -168,22 +168,6 @@ draw2d.policy.canvas.CanvasPolicy = draw2d.policy.EditPolicy.extend(
     return true
   },
 
-
-  /**
-   *
-   * Adjust the coordinates to the given constraint.
-   *
-   * @param {draw2d.Canvas} canvas the related canvas
-   * @param {draw2d.Figure} figure the figure to snap
-   * @param {draw2d.geo.Point} modifiedPos the already modified position of the figure (e.g. from an another Policy)
-   * @param {draw2d.geo.Point} originalPos the original requested position of the figure
-   *
-   * @returns {draw2d.geo.Point} the constraint position of the figure
-   */
-  snap: function (canvas, figure, modifiedPos, originalPos) {
-    return modifiedPos
-  },
-
   /**
    *
    * Helper method to make an monochrome GIF image WxH pixels big, first create a properly sized array: let pixels = new Array(W*H);.

@@ -195,7 +195,7 @@ draw2d.policy.canvas.SingleSelectionPolicy = draw2d.policy.canvas.SelectionPolic
   /**
    * 
    *
-   * @param {draw2d.Figure} figure the shape below the mouse or null
+   * @param {draw2d.Canvas} canvas the related Canvas
    * @param {Number} x the x-coordinate of the mouse down event
    * @param {Number} y the y-coordinate of the mouse down event
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
