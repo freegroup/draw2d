@@ -84,7 +84,11 @@
           ],
           "inherited": false,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": "<p>return <b>false</b> to send a veto to the drag operation</p>"
+          }
         },
         {
           "name": "onDrag",
@@ -555,6 +559,38 @@
               "name": "figure",
               "type": "draw2d.Figure",
               "description": "<p>The related figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "x",
+              "type": "Number",
+              "description": "<p>the x-coordinate of the mouse event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "y",
+              "type": "Number",
+              "description": "<p>the y-coordinate of the mouse event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "shiftKey",
+              "type": "Boolean",
+              "description": "<p>true if the shift key has been pressed during this event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "ctrlKey",
+              "type": "Boolean",
+              "description": "<p>true if the ctrl key has been pressed during the event</p>",
               "default": "",
               "optional": "",
               "nullable": ""

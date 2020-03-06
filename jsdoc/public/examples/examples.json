@@ -284,6 +284,14 @@
     "text": "Managing port",
     "children": [
       {
+        "name": "port_semantic_group",
+        "text": "Restricted Connections",
+        "description": "Only ports in the same semantic group can be connected.",
+        "url": "port_semantic_group/index.html",
+        "icon": "port_semantic_group/icon.png",
+        "status": "normal"
+      },
+      {
         "name": "port_locator",
         "text": "Position of ports",
         "description": "Add ports to a figure via API call with an locator for position calculation.",

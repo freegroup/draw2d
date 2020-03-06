@@ -2569,23 +2569,28 @@ const routes = [
         component: () => import(/* webpackChunkName: "example_resizehandle_styled_css" */ '../views/example.vue')
       },
       {
-        path: '/examples/port_locator',
+        path: '/examples/port_semantic_group',
         props: { section: 5, example: 0 },
+        component: () => import(/* webpackChunkName: "example_port_semantic_group" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/port_locator',
+        props: { section: 5, example: 1 },
         component: () => import(/* webpackChunkName: "example_port_locator" */ '../views/example.vue')
       },
       {
         path: '/examples/port_serialize',
-        props: { section: 5, example: 1 },
+        props: { section: 5, example: 2 },
         component: () => import(/* webpackChunkName: "example_port_serialize" */ '../views/example.vue')
       },
       {
         path: '/examples/port_decoration',
-        props: { section: 5, example: 2 },
+        props: { section: 5, example: 3 },
         component: () => import(/* webpackChunkName: "example_port_decoration" */ '../views/example.vue')
       },
       {
         path: '/examples/port_hide',
-        props: { section: 5, example: 3 },
+        props: { section: 5, example: 4 },
         component: () => import(/* webpackChunkName: "example_port_hide" */ '../views/example.vue')
       },
       {
@@ -3332,6 +3337,17 @@ const examples = [
   {
     'text': 'Managing port',
     'children': [
+      {
+        'name': 'port_semantic_group',
+        'text': 'Restricted Connections',
+        'description': 'Only ports in the same semantic group can be connected.',
+        'url': 'port_semantic_group/index.html',
+        'icon': 'port_semantic_group/icon.png',
+        'status': 'normal',
+        'data': {
+          'path': '/examples/port_semantic_group'
+        }
+      },
       {
         'name': 'port_locator',
         'text': 'Position of ports',

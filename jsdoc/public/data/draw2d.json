@@ -962,7 +962,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Called by the framework during drag&amp;drop operations.<br>\nDroppable can be setup with:</p>\n<pre>\n   $(\".draw2d_droppable\").draggable({\n        appendTo:\"#container\",\n        stack:\"#container\",\n        zIndex: 27000,\n        helper:\"clone\",\n        start: function(e, ui){$(ui.helper).addClass(\"shadow\");}\n   });\n</pre>\n<p>Graphiti use the jQuery draggable/droppable lib. Please inspect\nhttp://jqueryui.com/demos/droppable/ for further information.</p>",
+          "description": "<p>Called by the framework during drag&amp;drop operations.<br>\nDroppable can be setup with:</p>\n<pre>\n   $(\".draw2d_droppable\").draggable({\n        appendTo:\"#container\",\n        stack:\"#container\",\n        zIndex: 27000,\n        helper:\"clone\",\n        start: function(e, ui){$(ui.helper).addClass(\"shadow\");}\n   });\n</pre>\n<p>Draw2D use the jQuery draggable/droppable lib. Please inspect\nhttp://jqueryui.com/demos/droppable/ for further information.</p>",
           "parameters": [
             {
               "name": "draggedDomNode",
@@ -982,7 +982,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Called if the DragDrop object is moving around.<br>\n<br>\nGraphiti use the jQuery draggable/droppable lib. Please inspect\nhttp://jqueryui.com/demos/droppable/ for further information.</p>",
+          "description": "<p>Called if the DragDrop object is moving around.<br>\n<br>\nDraw2D use the jQuery draggable/droppable lib. Please inspect\nhttp://jqueryui.com/demos/droppable/ for further information.</p>",
           "parameters": [
             {
               "name": "draggedDomNode",
@@ -7498,6 +7498,45 @@
           }
         },
         {
+          "name": "setSemanticGroup",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the semantic group of this port. Only ports in the same semantic group\ncan be connected.</p>\n<p>The default for all ports is &quot;global&quot;</p>",
+          "parameters": [
+            {
+              "name": "group",
+              "type": "String",
+              "description": "<p>the semantic group of this port</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
+        },
+        {
+          "name": "getSemanticGroup",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Get the semantic group of this port. Only ports in the same semantic group\ncan be connected.</p>\n<p>The default for all ports is &quot;global&quot;</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "String",
+            "description": ""
+          }
+        },
+        {
           "name": "setConnectionAnchor",
           "access": "",
           "virtual": false,
@@ -10705,6 +10744,45 @@
           }
         },
         {
+          "name": "setSemanticGroup",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the semantic group of this port. Only ports in the same semantic group\ncan be connected.</p>\n<p>The default for all ports is &quot;global&quot;</p>",
+          "parameters": [
+            {
+              "name": "group",
+              "type": "String",
+              "description": "<p>the semantic group of this port</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
+        },
+        {
+          "name": "getSemanticGroup",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Get the semantic group of this port. Only ports in the same semantic group\ncan be connected.</p>\n<p>The default for all ports is &quot;global&quot;</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "String",
+            "description": ""
+          }
+        },
+        {
           "name": "setConnectionAnchor",
           "access": "",
           "virtual": false,
@@ -13853,6 +13931,45 @@
           "examples": [],
           "returns": {
             "type": "Number",
+            "description": ""
+          }
+        },
+        {
+          "name": "setSemanticGroup",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the semantic group of this port. Only ports in the same semantic group\ncan be connected.</p>\n<p>The default for all ports is &quot;global&quot;</p>",
+          "parameters": [
+            {
+              "name": "group",
+              "type": "String",
+              "description": "<p>the semantic group of this port</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": false,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
+        },
+        {
+          "name": "getSemanticGroup",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Get the semantic group of this port. Only ports in the same semantic group\ncan be connected.</p>\n<p>The default for all ports is &quot;global&quot;</p>",
+          "parameters": [],
+          "inherited": false,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "String",
             "description": ""
           }
         },
