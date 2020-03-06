@@ -9174,6 +9174,7 @@ _packages2.default.Connection = _packages2.default.shape.basic.PolyLine.extend(
       _packages2.default.Connection.DROP_FILTER = canvas.paper.createFilter();
       _packages2.default.Connection.DROP_FILTER.element.setAttribute("width", "250%");
       _packages2.default.Connection.DROP_FILTER.element.setAttribute("height", "250%");
+      _packages2.default.Connection.DROP_FILTER.element.setAttribute("filterUnits", "userSpaceOnUse");
       _packages2.default.Connection.DROP_FILTER.createShadow(1, 1, 2, 0.3);
     }
 
