@@ -109,9 +109,9 @@ draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.Connect
     // 4. Calculate the shortest path from source to target based on the grid
     //
     let path = this.finder.findPath(
-      fromPt.x >> shift, fromPt.y >> shift,
-      toPt.x >> shift, toPt.y >> shift,
-      grid)
+        Math.max(fromPt.x) >> shift, Math.max(fromPt.y) >> shift,
+        Math.max(toPt.x )>> shift, Math.max(0,toPt.y) >> shift,
+        grid)
 
     // transfer the path from the grid based coordinates back to the real coordinates
     //
