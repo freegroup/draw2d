@@ -1296,7 +1296,9 @@ draw2d.Figure = Class.extend(
    * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
    **/
   onDrag: function (dx, dy, dx2, dy2, shiftKey, ctrlKey) {
-    // apply all EditPolicy for DragDrop Operations
+    // apply all EditPolicy for DragDrop Operations. This is something like
+    // an policy that forces that an object can only move vertical, horizontal or in a given
+    // rectangle.
     //
     this.editPolicy.each( (i, e) => {
       if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
@@ -1307,7 +1309,6 @@ draw2d.Figure = Class.extend(
         }
       }
     })
-
     let newPos = new draw2d.geo.Point(this.ox + dx, this.oy + dy)
 
     // Adjust the new location if the object can snap to a helper
@@ -1320,7 +1321,7 @@ draw2d.Figure = Class.extend(
 
     this.setPosition(newPos)
 
-    // notify all installed policies
+    // notify all installed policies that the object has moved.
     //
     this.editPolicy.each( (i, e) =>{
       if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
@@ -1329,7 +1330,7 @@ draw2d.Figure = Class.extend(
     })
 
 
-    // fire an event
+    // notify all installed listener that th object has moved
     // @since 5.3.3
     this.fireEvent("drag", {dx: dx, dy: dy, dx2: dx2, dy2: dy2, shiftKey: shiftKey, ctrlKey: ctrlKey})
   },
@@ -1381,7 +1382,6 @@ draw2d.Figure = Class.extend(
    * @param {Boolean} shiftKey true if the shift key has been pressed during this event
    * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
    *
-   * @template
    **/
   onDragEnd: function (x, y, shiftKey, ctrlKey) {
     // Element ist zwar schon an seine Position, das Command muss aber trotzdem

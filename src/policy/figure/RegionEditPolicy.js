@@ -45,6 +45,7 @@ draw2d.policy.figure.RegionEditPolicy = draw2d.policy.figure.DragDropEditPolicy.
    *
    * @param {draw2d.geo.Rectangle} boundingBox the constraint rectangle
    * @since 4.8.2
+   * @returns {this}
    */
   setBoundingBox: function (boundingBox) {
     this.constRect = boundingBox
@@ -63,7 +64,7 @@ draw2d.policy.figure.RegionEditPolicy = draw2d.policy.figure.DragDropEditPolicy.
    * @returns {draw2d.geo.Point} the constraint position of the figure
    */
   adjustPosition: function (figure, x, y) {
-    var r = null
+    let r = null
     if (x instanceof draw2d.geo.Point) {
       r = new draw2d.geo.Rectangle(x.x, x.y, figure.getWidth(), figure.getHeight())
     }
@@ -81,12 +82,11 @@ draw2d.policy.figure.RegionEditPolicy = draw2d.policy.figure.DragDropEditPolicy.
    * @param {draw2d.Figure} figure
    * @param {Number} w
    * @param {Number} h
-   *
-   * @private
+   * @returns {draw2d.geo.Rectangle} the constraint position of the figure
    */
   adjustDimension: function (figure, w, h) {
-    var diffW = (figure.getAbsoluteX() + w) - this.constRect.getRight()
-    var diffH = (figure.getAbsoluteY() + h) - this.constRect.getBottom()
+    let diffW = (figure.getAbsoluteX() + w) - this.constRect.getRight()
+    let diffH = (figure.getAbsoluteY() + h) - this.constRect.getBottom()
 
     if (diffW > 0) {
       w = w - diffW
@@ -95,6 +95,6 @@ draw2d.policy.figure.RegionEditPolicy = draw2d.policy.figure.DragDropEditPolicy.
       h = h - diffH
     }
 
-    return {w: w, h: h}
+    return new draw2d.geo.Rectangle(0, 0, w, h)
   }
 })

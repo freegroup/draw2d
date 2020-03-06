@@ -38,7 +38,7 @@ draw2d.policy.canvas.DropInterceptorPolicy = draw2d.policy.canvas.CanvasPolicy.e
    * Return a non <b>null</b> value if the interceptor accept the connect event.<br>
    * <br>
    * It is possible to delegate the drop event to another figure if the policy
-   * returns another figure. This is usefull if a figure want to accept a port
+   * returns another figure. This is useful if a figure want to accept a port
    * drop event and delegates this drop event to another port.<br>
    *
    *
@@ -52,6 +52,14 @@ draw2d.policy.canvas.DropInterceptorPolicy = draw2d.policy.canvas.CanvasPolicy.e
     //
     if (!(connectInquirer instanceof draw2d.Port) && connectIntent instanceof draw2d.shape.composite.StrongComposite) {
       return connectIntent
+    }
+
+    // Ports accepts only Ports from the same semanticGroup as DropTarget
+    //
+    if ((connectIntent instanceof draw2d.Port) && (connectInquirer instanceof draw2d.Port)) {
+      if(connectIntent.getSemanticGroup() !== connectInquirer.getSemanticGroup()) {
+        return null
+      }
     }
 
     // Ports accepts only Ports as DropTarget

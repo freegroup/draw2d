@@ -9,8 +9,8 @@ import draw2d from 'packages'
  * @author Andreas Herz
  */
 draw2d.Canvas = Class.extend(
-   /** @lends draw2d.Canvas.prototype */
-    {
+  /** @lends draw2d.Canvas.prototype */
+  {
 
     NAME: "draw2d.Canvas",
 
@@ -33,8 +33,7 @@ draw2d.Canvas = Class.extend(
         this.html
           .height(this.initialHeight)
           .width(this.initialWidth)
-      }
-      else {
+      } else {
         this.initialWidth = this.getWidth()
         this.initialHeight = this.getHeight()
       }
@@ -90,8 +89,7 @@ draw2d.Canvas = Class.extend(
       //
       if (!isNaN(parseFloat(height))) {
         this.paper = Raphael(canvasId, width, height)
-      }
-      else {
+      } else {
         this.paper = Raphael(canvasId, this.getWidth(), this.getHeight())
       }
       this.paper.canvas.style.position = "absolute"
@@ -207,8 +205,7 @@ draw2d.Canvas = Class.extend(
               _this.fireEvent("mouseenter", {figure: hover})
             }
             _this.currentHoverFigure = hover
-          }
-          catch (exc) {
+          } catch (exc) {
             // just write it to the console
             console.log(exc)
           }
@@ -223,8 +220,7 @@ draw2d.Canvas = Class.extend(
             ctrlKey: event.ctrlKey,
             hoverFigure: _this.currentHoverFigure
           })
-        }
-        else {
+        } else {
           let diffXAbs = (event.clientX - _this.mouseDownX) * _this.zoomFactor
           let diffYAbs = (event.clientY - _this.mouseDownY) * _this.zoomFactor
           _this.editPolicy.each(function (i, policy) {
@@ -260,8 +256,7 @@ draw2d.Canvas = Class.extend(
                 _this.editPolicy.each(function (i, policy) {
                   policy.onMouseDown(_this, pos.x, pos.y, event.shiftKey, event.ctrlKey)
                 })
-              }
-              catch (exc) {
+              } catch (exc) {
                 console.log(exc)
               }
               break
@@ -280,8 +275,7 @@ draw2d.Canvas = Class.extend(
             default:
             //You have a strange mouse
           }
-        }
-        catch (exc) {
+        } catch (exc) {
           console.log(exc)
         }
       })
@@ -319,10 +313,9 @@ draw2d.Canvas = Class.extend(
         let pos = _this.fromDocumentToCanvasCoordinate(event.originalEvent.clientX, event.originalEvent.clientY)
 
         let delta = 0
-        if (e.type == 'mousewheel') {
+        if (e.type === 'mousewheel') {
           delta = (e.originalEvent.wheelDelta * -1)
-        }
-        else if (e.type == 'DOMMouseScroll') {
+        } else if (e.type === 'DOMMouseScroll') {
           delta = 40 * e.originalEvent.detail
         }
 
@@ -472,7 +465,7 @@ draw2d.Canvas = Class.extend(
       let lines = this.getLines().clone()
       while (lines.getSize() > 0) {
         let l1 = lines.removeElementAt(0)
-        lines.each( (ii, l2) =>{
+        lines.each((ii, l2) => {
           let partInter = l1.intersection(l2)
           if (partInter.getSize() > 0) {
             this.lineIntersections.add({line: l1, other: l2, intersection: partInter})
@@ -499,12 +492,12 @@ draw2d.Canvas = Class.extend(
       //
       if (policy instanceof draw2d.policy.canvas.SelectionPolicy) {
         // reset old selection before install new selection strategy
-        this.getSelection().getAll().each( (i, figure)=> {
+        this.getSelection().getAll().each((i, figure) => {
           figure.unselect()
         })
 
         // remove existing selection policy
-        this.editPolicy.grep( (p) =>{
+        this.editPolicy.grep((p) => {
           let stay = !(p instanceof draw2d.policy.canvas.SelectionPolicy)
           if (stay === false) {
             p.onUninstall(this)
@@ -516,7 +509,7 @@ draw2d.Canvas = Class.extend(
       //
       else if (policy instanceof draw2d.policy.canvas.ZoomPolicy) {
         // remove existing zoom policy
-        this.editPolicy.grep( (p) =>{
+        this.editPolicy.grep((p) => {
           let stay = !(p instanceof draw2d.policy.canvas.ZoomPolicy)
           if (stay === false) {
             p.onUninstall(this)
@@ -525,17 +518,15 @@ draw2d.Canvas = Class.extend(
         })
         // replace the short cut handle for faster access
         this.zoomPolicy = policy
-      }
-      else if (policy instanceof draw2d.policy.connection.ConnectionCreatePolicy) {
-        this.editPolicy.grep( (p) =>{
+      } else if (policy instanceof draw2d.policy.connection.ConnectionCreatePolicy) {
+        this.editPolicy.grep((p) => {
           let stay = !(p instanceof draw2d.policy.connection.ConnectionCreatePolicy)
           if (stay === false) {
             p.onUninstall(this)
           }
           return stay
         })
-      }
-      else if (policy instanceof draw2d.policy.canvas.DropInterceptorPolicy) {
+      } else if (policy instanceof draw2d.policy.canvas.DropInterceptorPolicy) {
         // think about if I allow to install only one drop policy
       }
 
@@ -566,8 +557,7 @@ draw2d.Canvas = Class.extend(
         if (removed instanceof draw2d.policy.canvas.ZoomPolicy) {
           this.zoomPolicy = null
         }
-      }
-      else {
+      } else {
         // ..or all of the same class if the policy isn't installed before
         // With this kind of behaviour it is possible to deinstall all policies with
         // the same class at once
@@ -656,16 +646,13 @@ draw2d.Canvas = Class.extend(
         })
         this.initialHeight = Math.max(...heights.asArray())
         this.initialWidth = Math.max(...widths.asArray())
-      }
-      else if (dim instanceof draw2d.geo.Rectangle) {
+      } else if (dim instanceof draw2d.geo.Rectangle) {
         this.initialWidth = dim.w
         this.initialHeight = dim.h
-      }
-      else if (typeof dim.width === "number" && typeof dim.height === "number") {
+      } else if (typeof dim.width === "number" && typeof dim.height === "number") {
         this.initialWidth = dim.width
         this.initialHeight = dim.height
-      }
-      else if (typeof dim === "number" && typeof height === "number") {
+      } else if (typeof dim === "number" && typeof height === "number") {
         this.initialWidth = dim
         this.initialHeight = height
       }
@@ -898,13 +885,11 @@ draw2d.Canvas = Class.extend(
       if (figure instanceof draw2d.shape.basic.Line) {
         this.lines.add(figure)
         this.linesToRepaintAfterDragDrop = this.lines
-      }
-      else {
+      } else {
         this.figures.add(figure)
         if (typeof y !== "undefined") {
           figure.setPosition(x, y)
-        }
-        else if (typeof x !== "undefined") {
+        } else if (typeof x !== "undefined") {
           figure.setPosition(x)
         }
       }
@@ -979,7 +964,7 @@ draw2d.Canvas = Class.extend(
       // remove the figure from a selection handler as well and cleanup the
       // selection feedback
       if (this.getSelection().contains(figure)) {
-        this.editPolicy.each( (i, policy) => {
+        this.editPolicy.each((i, policy) => {
           if (typeof policy.unselect === "function") {
             policy.unselect(this, figure)
           }
@@ -988,8 +973,7 @@ draw2d.Canvas = Class.extend(
 
       if (figure instanceof draw2d.shape.basic.Line) {
         this.lines.remove(figure)
-      }
-      else {
+      } else {
         this.figures.remove(figure)
       }
 
@@ -1054,7 +1038,7 @@ draw2d.Canvas = Class.extend(
      **/
     getFigure: function (id) {
       let figure = null
-      this.figures.each((i, e) =>{
+      this.figures.each((i, e) => {
         if (e.id === id) {
           figure = e
           return false
@@ -1106,7 +1090,7 @@ draw2d.Canvas = Class.extend(
 
       let orig = pos.clone()
       this.editPolicy.each((i, policy) => {
-        if(policy instanceof draw2d.policy.canvas.SnapToEditPolicy) {
+        if (policy instanceof draw2d.policy.canvas.SnapToEditPolicy) {
           pos = policy.snap(this, figure, pos, orig)
         }
       })
@@ -1199,8 +1183,8 @@ draw2d.Canvas = Class.extend(
       // deselect the current selected figures
       //
       // clone the array (getAll) before iterate and modify the initial array
-      this.selection.getAll().each( (i, e) =>{
-        this.editPolicy.each( (i, policy) =>{
+      this.selection.getAll().each((i, e) => {
+        this.editPolicy.each((i, policy) => {
           if (typeof policy.unselect === "function") {
             policy.unselect(this, e)
           }
@@ -1233,8 +1217,7 @@ draw2d.Canvas = Class.extend(
 
       if (object instanceof draw2d.util.ArrayList) {
         object.each(add)
-      }
-      else {
+      } else {
         add(0, object)
       }
 
@@ -1281,8 +1264,7 @@ draw2d.Canvas = Class.extend(
             if (testFigure instanceof considering) {
               return true
             }
-          }
-          else if ((considering === testFigure) || (considering.contains(testFigure))) {
+          } else if ((considering === testFigure) || (considering.contains(testFigure))) {
             return true
           }
         }
@@ -1362,7 +1344,6 @@ draw2d.Canvas = Class.extend(
       result = null;
 
 
-
       // Check the children of the lines as well
       // Not selectable/draggable. But should receive onClick/onDoubleClick events
       // as well.
@@ -1382,19 +1363,19 @@ draw2d.Canvas = Class.extend(
 
       lineResult = this.getBestLine(x, y, blacklist, whitelist)
 
-      let figureIndex = figureResult!==null? $(figureResult.shape.node).index():-1
-      let childIndex  = childResult!==null? $(childResult.shape.node).index():-1
-      let lineIndex   = lineResult!==null? $(lineResult.shape.node).index():-1
+      let figureIndex = figureResult !== null ? $(figureResult.shape.node).index() : -1
+      let childIndex = childResult !== null ? $(childResult.shape.node).index() : -1
+      let lineIndex = lineResult !== null ? $(lineResult.shape.node).index() : -1
       let array = [
-        {i:figureIndex, f:figureResult},
-        {i:childIndex, f:childResult},
-        {i:lineIndex, f:lineResult}
+        {i: figureIndex, f: figureResult},
+        {i: childIndex, f: childResult},
+        {i: lineIndex, f: lineResult}
       ]
-      array = array.filter((e) =>  e.i !== -1 );
-      array = array.sort((a,b) => b.i-a.i)
+      array = array.filter((e) => e.i !== -1);
+      array = array.sort((a, b) => b.i - a.i)
 
       //console.log(array)
-      if(array.length>0) {
+      if (array.length > 0) {
         result = array[0].f
       }
 
@@ -1417,8 +1398,7 @@ draw2d.Canvas = Class.extend(
       if (!Array.isArray(lineToIgnore)) {
         if (lineToIgnore instanceof draw2d.Figure) {
           lineToIgnore = [lineToIgnore]
-        }
-        else {
+        } else {
           lineToIgnore = []
         }
       }
@@ -1447,7 +1427,7 @@ draw2d.Canvas = Class.extend(
      *         start: function(e, ui){$(ui.helper).addClass("shadow");}
      *    });
      * </pre>
-     * Graphiti use the jQuery draggable/droppable lib. Please inspect
+     * Draw2D use the jQuery draggable/droppable lib. Please inspect
      * http://jqueryui.com/demos/droppable/ for further information.
      *
      * @param {HTMLElement} draggedDomNode The DOM element which is currently dragging
@@ -1462,7 +1442,7 @@ draw2d.Canvas = Class.extend(
      *
      * Called if the DragDrop object is moving around.<br>
      * <br>
-     * Graphiti use the jQuery draggable/droppable lib. Please inspect
+     * Draw2D use the jQuery draggable/droppable lib. Please inspect
      * http://jqueryui.com/demos/droppable/ for further information.
      *
      * @param {HTMLElement} draggedDomNode The dragged DOM element.
@@ -1646,8 +1626,7 @@ draw2d.Canvas = Class.extend(
       for (let i = 0; i < subscribers.length; i++) {
         try {
           subscribers[i](this, args)
-        }
-        catch (exc) {
+        } catch (exc) {
           console.log(exc)
           console.log(subscribers[i])
           debugger
@@ -1713,11 +1692,9 @@ draw2d.Canvas = Class.extend(
     off: function (eventOrFunction) {
       if (typeof eventOrFunction === "undefined") {
         this.eventSubscriptions = {}
-      }
-      else if (typeof eventOrFunction === 'string') {
+      } else if (typeof eventOrFunction === 'string') {
         this.eventSubscriptions[eventOrFunction] = []
-      }
-      else {
+      } else {
         for (let event in this.eventSubscriptions) {
           this.eventSubscriptions[event] = this.eventSubscriptions[event].filter(function (callback) {
             return callback !== eventOrFunction

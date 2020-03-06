@@ -26,29 +26,29 @@ draw2d.policy.figure.HorizontalEditPolicy = draw2d.policy.figure.DragDropEditPol
   /** @lends draw2d.policy.figure.HorizontalEditPolicy.prototype */
   {
 
-  NAME: "draw2d.policy.figure.HorizontalEditPolicy",
+    NAME: "draw2d.policy.figure.HorizontalEditPolicy",
 
-  /**
-   * Creates a new constraint object
-   *
-   */
-  init: function (attr, setter, getter) {
-    this._super(attr, setter, getter)
-  },
+    /**
+     * Creates a new constraint object
+     *
+     */
+    init: function (attr, setter, getter) {
+      this._super(attr, setter, getter)
+    },
 
 
-  /**
-   * 
-   * It is only possible to drag&drop the element in a horizontal line
-   *
-   * @param figure
-   * @param {Number|draw2d.geo.Point} x
-   * @param {number} [y]
-   *
-   * @returns {draw2d.geo.Point} the constraint position of the figure
-   */
-  adjustPosition: function (figure, x, y) {
-    return new draw2d.geo.Point(x, figure.getY())
-  }
+    /**
+     *
+     * It is only possible to drag&drop the element in a horizontal line
+     *
+     * @param figure
+     * @param {Number|draw2d.geo.Point} x
+     * @param {number} [y]
+     *
+     * @returns {draw2d.geo.Point} the constraint position of the figure
+     */
+    adjustPosition: function (figure, x, y) {
+      return new draw2d.geo.Point(x, figure.getY())
+    }
 
-})
+  })

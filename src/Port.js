@@ -1,4 +1,5 @@
 import draw2d from 'packages'
+import extend from "./util/extend";
 
 
 /**
@@ -32,11 +33,15 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
         color: "#1B1B1B",
         selectable: false
       }, attr),
-      setter,
-      getter)
+      extend({
+        semanticGroup : this.setSemanticGroup
+      },setter),
+      extend({
+        semanticGroup : this.getSemanticGroup
+      },getter))
 
 
-    // status let for user interaction
+    // status vars for user interaction
     //
     this.ox = this.x
     this.oy = this.y
@@ -64,13 +69,17 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
     this.value = null
     this.maxFanOut = Number.MAX_SAFE_INTEGER
 
+    // semantic group. Only ports in the same semantic group can be connected
+    //
+    this.semanticGroup = "global"
+
     this.setCanSnapToHelper(false)
 
     // uninstall all default selection policies. This is not required for Ports
     this.editPolicy.each( (i, policy) => this.uninstallEditPolicy(policy))
 
     this.installEditPolicy(new draw2d.policy.port.IntrusivePortsFeedbackPolicy())
-    //    this.installEditPolicy(new draw2d.policy.port.ElasticStrapFeedbackPolicy());
+    // this.installEditPolicy(new draw2d.policy.port.ElasticStrapFeedbackPolicy());
 
     // a port handles the selection handling always by its own regardless if
     // the port is part of an composite, node, group or whatever.
@@ -106,6 +115,36 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
   getMaxFanOut: function () {
     return this.maxFanOut
   },
+
+    /**
+     *
+     * Set the semantic group of this port. Only ports in the same semantic group
+     * can be connected.
+     *
+     * The default for all ports is "global"
+     *
+     * @param {String} group the semantic group of this port
+     * @returns {this}
+     */
+    setSemanticGroup: function (group) {
+      this.semanticGroup = group
+      this.fireEvent("change:semanticGroup", {value: this.semanticGroup})
+
+      return this
+    },
+
+    /**
+     *
+     * Get the semantic group of this port. Only ports in the same semantic group
+     * can be connected.
+     *
+     * The default for all ports is "global"
+     *
+     * @returns {String}
+     */
+    getSemanticGroup: function () {
+      return this.semanticGroup
+    },
 
   /**
    * 
@@ -620,6 +659,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
 
     memento.maxFanOut = this.maxFanOut
     memento.name = this.name
+    memento.semanticGroup = this.semanticGroup
 
     // defined by the locator. Don't persist
     //
@@ -657,8 +697,13 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
         this.maxFanOut = Math.max(1, parseInt(memento.maxFanOut))
       }
     }
+
     if (typeof memento.name !== "undefined") {
       this.setName(memento.name)
+    }
+
+    if (typeof memento.semanticGroup !== "undefined") {
+      this.setSemanticGroup(memento.semanticGroup)
     }
 
     return this
