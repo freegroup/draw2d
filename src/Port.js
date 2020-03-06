@@ -666,7 +666,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
     delete memento.x
     delete memento.y
 
-    // ports didn'T have children ports. In this case we
+    // ports didn't have children ports. In this case we
     // delete this attribute as well to avoid confusions.
     //
     delete memento.ports

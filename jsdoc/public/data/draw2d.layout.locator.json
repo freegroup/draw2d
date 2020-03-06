@@ -59,7 +59,7 @@
         "description": "",
         "parameters": [],
         "examples": [
-          "// create a basic figure and add a Label/child via API call\n   //\n   var circle = new draw2d.shape.basic.Circle({\n       x:100,\n       y:50,\n       diameter:100,\n       stroke: 3,\n       color:\"#A63343\",\n       bgColor:\"#E65159\"\n   });\n\n   circle.add(new draw2d.shape.basic.Label({text:\"Bottom Label\"}), new draw2d.layout.locator.BottomLocator());\n   canvas.add( circle);"
+          "// create a basic figure and add a Label/child via API call\n   //\n   let circle = new draw2d.shape.basic.Circle({\n       x:100,\n       y:50,\n       diameter:100,\n       stroke: 3,\n       color:\"#A63343\",\n       bgColor:\"#E65159\"\n   });\n\n   circle.add(new draw2d.shape.basic.Label({text:\"Bottom Label\"}), new draw2d.layout.locator.BottomLocator());\n   canvas.add( circle);"
         ]
       }
     },
@@ -250,8 +250,24 @@
           "parameters": [
             {
               "name": "attr",
-              "type": "",
-              "description": "",
+              "type": "Object",
+              "description": "<p>additional init attributes</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "setter",
+              "type": "Object",
+              "description": "<p>key/value map of injected setter-methods</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "getter",
+              "type": "Object",
+              "description": "<p>key/value map of injected getter-methods</p>",
               "default": "",
               "optional": "",
               "nullable": ""
@@ -314,10 +330,67 @@
           "virtual": false,
           "deprecated": "",
           "description": "<p>Initial Constructor</p>",
-          "parameters": [],
+          "parameters": [
+            {
+              "name": "attr",
+              "type": "Object",
+              "description": "<p>additional init attributes</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "setter",
+              "type": "Object",
+              "description": "<p>key/value map of injected setter-methods</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "getter",
+              "type": "Object",
+              "description": "<p>key/value map of injected getter-methods</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
           "inherited": false,
           "since": "",
           "examples": []
+        },
+        {
+          "name": "attr",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Read or set locator attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>\n<p>// multiple attributes:\nlocator.attr({\nx: 30,\ny: 40\n});</p>\n<p>let data = locator.attr()</p>",
+          "parameters": [
+            {
+              "name": "name",
+              "type": "String/Object",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "value",
+              "type": "Object",
+              "description": "",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "inherited": false,
+          "since": "5.0.1",
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": "<p>either the requested attribute if this method used as getter or <code>this</code> if the method uses as setter</p>"
+          }
         },
         {
           "name": "bind",
@@ -564,12 +637,12 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Constructs a ParallelMidpointLocator with optional padding to the connection.</p>\n<p>if the parameter <b>distanceFromConnection</b> is less than zero the label is\nplaced above of the connection. Else the label is below the connection.</p>",
+          "description": "<p>Constructs a ParallelMidpointLocator with optional padding to the connection.</p>\n<p>if the parameter <b>distance</b> is less than zero the label is\nplaced above of the connection. Else the label is below the connection.</p>",
           "parameters": [
             {
-              "name": "distanceFromConnection",
-              "type": "Number",
-              "description": "<p>the distance of the label to the connection.</p>",
+              "name": "attr",
+              "type": "Object",
+              "description": "<p>object with {distance: <NUMBER>&gt;} distance of the label to the connection.</p>",
               "default": "",
               "optional": "",
               "nullable": ""
@@ -578,6 +651,45 @@
           "inherited": false,
           "since": "",
           "examples": []
+        },
+        {
+          "name": "setDistance",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the distance to the connection</p>",
+          "parameters": [
+            {
+              "name": "distance",
+              "type": "Number",
+              "description": "<p>the distance to the connection</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": false,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
+        },
+        {
+          "name": "getDistance",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Returns the distance to the connection</p>",
+          "parameters": [],
+          "inherited": false,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Number",
+            "description": ""
+          }
         },
         {
           "name": "relocate",
@@ -909,6 +1021,76 @@
           "examples": []
         },
         {
+          "name": "setX",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the X Offset for the Locator</p>",
+          "parameters": [
+            {
+              "name": "x",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": false,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "setY",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the y-offset of the locator</p>",
+          "parameters": [
+            {
+              "name": "y",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": false,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "getX",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Get the X-Offset of the Locator</p>",
+          "parameters": [],
+          "inherited": false,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Number",
+            "description": ""
+          }
+        },
+        {
+          "name": "getY",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Returns the Y-Offset of the Locator</p>",
+          "parameters": [],
+          "inherited": false,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Number",
+            "description": ""
+          }
+        },
+        {
           "name": "relocate",
           "access": "",
           "virtual": false,
@@ -982,6 +1164,76 @@
           "inherited": false,
           "since": "",
           "examples": []
+        },
+        {
+          "name": "setX",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the X Offset for the Locator</p>",
+          "parameters": [
+            {
+              "name": "x",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": false,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "setY",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the y-offset of the locator</p>",
+          "parameters": [
+            {
+              "name": "y",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": false,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "getX",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Get the X-Offset of the Locator</p>",
+          "parameters": [],
+          "inherited": false,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Number",
+            "description": ""
+          }
+        },
+        {
+          "name": "getY",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Returns the Y-Offset of the Locator</p>",
+          "parameters": [],
+          "inherited": false,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Number",
+            "description": ""
+          }
         },
         {
           "name": "relocate",

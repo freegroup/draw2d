@@ -22,8 +22,8 @@ draw2d.layout.locator.ConnectionLocator = draw2d.layout.locator.Locator.extend(
    * {@link draw2d.Connector}
    *
    */
-  init: function () {
-    this._super()
+  init: function (attr, setter, getter) {
+    this._super(attr, setter, getter)
   }
 
 })

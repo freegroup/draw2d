@@ -25,7 +25,7 @@ draw2d.Figure = Class.extend(
 
     // @private
     this.setterWhitelist = extend({
-      //  id the unique id of the figu re 
+      //  id the unique id of the figure
       id: this.setId,
       //  x the x offset of the figure in relation to the parent figure or canvas 
       x: this.setX,

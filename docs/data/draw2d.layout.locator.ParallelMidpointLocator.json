@@ -11,12 +11,12 @@
       "access": "",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>Constructs a ParallelMidpointLocator with optional padding to the connection.</p>\n<p>if the parameter <b>distanceFromConnection</b> is less than zero the label is\nplaced above of the connection. Else the label is below the connection.</p>",
+      "description": "<p>Constructs a ParallelMidpointLocator with optional padding to the connection.</p>\n<p>if the parameter <b>distance</b> is less than zero the label is\nplaced above of the connection. Else the label is below the connection.</p>",
       "parameters": [
         {
-          "name": "distanceFromConnection",
-          "type": "Number",
-          "description": "<p>the distance of the label to the connection.</p>",
+          "name": "attr",
+          "type": "Object",
+          "description": "<p>object with {distance: <NUMBER>&gt;} distance of the label to the connection.</p>",
           "default": "",
           "optional": "",
           "nullable": ""
@@ -25,6 +25,45 @@
       "inherited": false,
       "since": "",
       "examples": []
+    },
+    {
+      "name": "setDistance",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Set the distance to the connection</p>",
+      "parameters": [
+        {
+          "name": "distance",
+          "type": "Number",
+          "description": "<p>the distance to the connection</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": false,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
+    },
+    {
+      "name": "getDistance",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Returns the distance to the connection</p>",
+      "parameters": [],
+      "inherited": false,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": ""
+      }
     },
     {
       "name": "relocate",

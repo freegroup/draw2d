@@ -15,8 +15,24 @@
       "parameters": [
         {
           "name": "attr",
-          "type": "",
-          "description": "",
+          "type": "Object",
+          "description": "<p>additional init attributes</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "setter",
+          "type": "Object",
+          "description": "<p>key/value map of injected setter-methods</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "getter",
+          "type": "Object",
+          "description": "<p>key/value map of injected getter-methods</p>",
           "default": "",
           "optional": "",
           "nullable": ""

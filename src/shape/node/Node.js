@@ -591,10 +591,13 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
     if (this.persistPorts === true) {
       memento.ports = []
       this.getPorts().each(function (i, port) {
+        console.log(port.getLocator())
+        console.log(port.getLocator().attr())
         memento.ports.push(extend(port.getPersistentAttributes(), {
           name: port.getName(),
           port: port.NAME,
-          locator: port.getLocator().NAME
+          locator: port.getLocator().NAME,
+          locatorAttr: port.getLocator().attr()
         }))
       })
     }
@@ -623,11 +626,14 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
       // and restore all ports of the JSON document instead.
       //
       memento.ports.forEach((e) => {
-        let port = eval("new " + e.port + "()")
         let locator = eval("new " + e.locator + "()")
+        if(e.locatorAttr) {
+          locator.attr(e.locatorAttr)
+        }
+
+        let port = eval("new " + e.port + "()")
         port.setPersistentAttributes(e)
         this.addPort(port, locator)
-        port.setName(e.name)
       })
     }
 

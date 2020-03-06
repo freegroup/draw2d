@@ -25,16 +25,18 @@ import draw2d from '../../packages'
 draw2d.layout.locator.LeftLocator = draw2d.layout.locator.Locator.extend(
   /** @lends draw2d.layout.locator.LeftLocator.prototype */
   {
-  
+
   NAME: "draw2d.layout.locator.LeftLocator",
 
   /**
    * Constructs a locator with associated parent.
    *
-   * @param attr
+   * @param {Object} attr additional init attributes
+   * @param {Object} setter key/value map of injected setter-methods
+   * @param {Object} getter key/value map of injected getter-methods
    */
-  init: function (attr) {
-    this._super()
+  init: function (attr, setter, getter) {
+    this._super(attr, setter,getter)
 
     this.margin = (attr && ("margin" in attr)) ? attr.margin : 5
   },

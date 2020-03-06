@@ -1,0 +1,105 @@
+﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<title></title>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <link type="text/css" rel="stylesheet" href="./css/example.css" />
+
+  <script src="./lib/jquery.js"></script>
+  <script src="./lib/jquery-ui.js"></script>
+
+  <script src="../draw2d.js"></script>
+
+<script type="text/javascript">
+
+// the document to load....in this case a simple JSON Object
+var jsonDocument =
+    [
+      {
+        "type": "draw2d.shape.basic.Rectangle",
+        "id": "ebfb35bb-5767-8155-c804-14bda7759dc2",
+        "x": 72,
+        "y": 45,
+        "width": 50,
+        "height": 50,
+        "persistPorts": true,
+        "radius": 2,
+        "bgColor": "#ff0000",
+        "ports": [
+          {
+            "type": "draw2d.OutputPort",
+            "id": "72da97f1-a496-8c0b-1f0e-345a3aa1d684",
+            "width": 10,
+            "height": 10,
+            "alpha": 1,
+            "selectable": false,
+            "draggable": true,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_OutputPort",
+            "bgColor": "rgba(79,104,112,1)",
+            "color": "rgba(27,27,27,1)",
+            "stroke": 1,
+            "dasharray": null,
+            "maxFanOut": 9007199254740991,
+            "name": "output0",
+            "semanticGroup": "global",
+            "port": "draw2d.OutputPort",
+            "locator": "draw2d.layout.locator.XYAbsPortLocator",
+            "locatorAttr": {
+                "x": 10,
+                "y": 10
+            }
+          }
+      ]
+      }
+     ];
+
+document.addEventListener("DOMContentLoaded",function () {
+
+	  // create the canvas for the user interaction
+	  //
+	  var canvas = new draw2d.Canvas("gfx_holder");
+
+	  // unmarshal the JSON document into the canvas
+	  // (load)
+	  var reader = new draw2d.io.json.Reader();
+	  reader.unmarshal(canvas, jsonDocument);
+
+	  // display the JSON document in the preview DIV
+	  //
+	  displayJSON(canvas);
+
+
+	  // add an event listener to the Canvas for change notifications.
+	  // We just dump the current canvas document into the DIV
+	  //
+	  canvas.getCommandStack().addEventListener(function(e){
+	      if(e.isPostChangeEvent()){
+	          displayJSON(canvas);
+	      }
+	  });
+
+});
+
+function displayJSON(canvas){
+    var writer = new draw2d.io.json.Writer();
+    writer.marshal(canvas,function(json){
+        $("#json").text(JSON.stringify(json, null, 2));
+    });
+}
+
+</script>
+
+</head>
+
+<body>
+<div  onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:3000px; height:3000px;">
+</div>
+
+<pre id="json" style="overflow:auto;position:absolute; top:10px; right:10px; width:350; height:500;background:white;border:1px solid gray">
+</pre>
+</body>
+</html>

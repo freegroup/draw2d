@@ -22,8 +22,8 @@ draw2d.layout.locator.OutputPortLocator = draw2d.layout.locator.PortLocator.exte
    * {@link draw2d.shape.node.Node}
    *
    */
-  init: function () {
-    this._super()
+  init: function (attr, setter, getter) {
+    this._super(attr, setter, getter)
   },
 
   /**

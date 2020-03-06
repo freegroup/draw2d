@@ -20,8 +20,8 @@ draw2d.layout.locator.PortLocator = draw2d.layout.locator.Locator.extend(
    * Default constructor for a Locator which can layout a port in context of a
    *
    */
-  init: function () {
-    this._super()
+  init: function (attr, setter, getter) {
+    this._super(attr, setter, getter)
   },
 
   applyConsiderRotation: function (port, x, y) {

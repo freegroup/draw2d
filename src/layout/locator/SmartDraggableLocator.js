@@ -22,8 +22,8 @@ draw2d.layout.locator.SmartDraggableLocator = draw2d.layout.locator.Locator.exte
    * Constructs a locator with associated parent.
    *
    */
-  init: function () {
-    this._super()
+  init: function (attr, setter, getter) {
+    this._super(attr, setter, getter)
 
     // description see "bind" method
     this.boundedCorners = {

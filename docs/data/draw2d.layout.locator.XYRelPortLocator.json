@@ -35,6 +35,76 @@
       "examples": []
     },
     {
+      "name": "setX",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Set the X Offset for the Locator</p>",
+      "parameters": [
+        {
+          "name": "x",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": false,
+      "since": "",
+      "examples": []
+    },
+    {
+      "name": "setY",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Set the y-offset of the locator</p>",
+      "parameters": [
+        {
+          "name": "y",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": false,
+      "since": "",
+      "examples": []
+    },
+    {
+      "name": "getX",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Get the X-Offset of the Locator</p>",
+      "parameters": [],
+      "inherited": false,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": ""
+      }
+    },
+    {
+      "name": "getY",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Returns the Y-Offset of the Locator</p>",
+      "parameters": [],
+      "inherited": false,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": ""
+      }
+    },
+    {
       "name": "relocate",
       "access": "",
       "virtual": false,

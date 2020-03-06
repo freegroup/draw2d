@@ -1,4 +1,5 @@
 import draw2d from '../../packages'
+import extend from "../../util/extend";
 
 
 /**
@@ -27,41 +28,86 @@ draw2d.layout.locator.XYRelPortLocator = draw2d.layout.locator.PortLocator.exten
   /** @lends draw2d.layout.locator.XYRelPortLocator.prototype */
   {
 
-  NAME: "draw2d.layout.locator.XYRelPortLocator",
+    NAME: "draw2d.layout.locator.XYRelPortLocator",
 
-  /**
-   *
-   *
-   * @param {Number} xPercentage the x coordinate in percent of the port relative to the left of the parent
-   * @param {Number} yPercentage the y coordinate in percent of the port relative to the top of the parent
-   */
-  init: function (xPercentage, yPercentage) {
-    this._super()
+    /**
+     *
+     *
+     * @param {Number} xPercentage the x coordinate in percent of the port relative to the left of the parent
+     * @param {Number} yPercentage the y coordinate in percent of the port relative to the top of the parent
+     */
+    init: function (attr, setter, getter) {
 
-    this.x = xPercentage
-    this.y = yPercentage
-  },
+      this.x = 0
+      this.y = 0
 
-  /**
-   *
-   * Controls the location of an I{@link draw2d.Figure}
-   *
-   * @param {Number} index child index of the figure
-   * @param {draw2d.Figure} figure the figure to control
-   *
-   * @template
-   **/
-  relocate: function (index, figure) {
-    let parent = figure.getParent()
+      this._super(attr,
+        extend({
+          x: this.setX,
+          y: this.setY
+        }, setter),
+        extend({
+          x: this.getX,
+          y: this.getY
+        }, getter))
+    },
 
-    this.applyConsiderRotation(
-      figure,
-      parent.getWidth() / 100 * this.x,
-      parent.getHeight() / 100 * this.y
-    )
-  }
 
-})
+    /**
+     * Set the X Offset for the Locator
+     * @param {Number} x
+     */
+    setX: function (x) {
+      this.x = x
+    },
+
+    /**
+     * Set the y-offset of the locator
+     *
+     * @param {Number} y
+     */
+    setY: function (y) {
+      this.y = y
+    },
+
+    /**
+     * Get the X-Offset of the Locator
+     *
+     * @returns {Number}
+     */
+    getX: function () {
+      return this.x
+    },
+
+    /**
+     * Returns the Y-Offset of the Locator
+     *
+     * @returns {Number}
+     */
+    getY: function () {
+      return this.y
+    },
+
+    /**
+     *
+     * Controls the location of an I{@link draw2d.Figure}
+     *
+     * @param {Number} index child index of the figure
+     * @param {draw2d.Figure} figure the figure to control
+     *
+     * @template
+     **/
+    relocate: function (index, figure) {
+      let parent = figure.getParent()
+
+      this.applyConsiderRotation(
+        figure,
+        parent.getWidth() / 100 * this.x,
+        parent.getHeight() / 100 * this.y
+      )
+    }
+
+  })
 
 
 

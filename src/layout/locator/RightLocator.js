@@ -33,8 +33,8 @@ draw2d.layout.locator.RightLocator = draw2d.layout.locator.Locator.extend(
    * Constructs a locator with associated parent.
    *
    */
-  init: function (attr) {
-    this._super()
+  init: function (attr, setter, getter) {
+    this._super(attr, setter, getter)
 
     this.margin = (attr && ("margin" in attr)) ? attr.margin : 5
   },

@@ -49,8 +49,8 @@ draw2d.layout.locator.ManhattanMidpointLocator = draw2d.layout.locator.Connectio
    * Constructs a ManhattanMidpointLocator with associated Connection c.
    *
    */
-  init: function () {
-    this._super()
+  init: function (attr, setter, getter) {
+    this._super(attr, setter, getter)
   },
 
 

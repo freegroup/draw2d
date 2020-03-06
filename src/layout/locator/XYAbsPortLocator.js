@@ -1,4 +1,5 @@
 import draw2d from '../../packages'
+import extend from "../../util/extend";
 
 
 /**
@@ -23,36 +24,80 @@ draw2d.layout.locator.XYAbsPortLocator = draw2d.layout.locator.PortLocator.exten
   /** @lends draw2d.layout.locator.XYAbsPortLocator.prototype */
   {
 
-  NAME: "draw2d.layout.locator.XYAbsPortLocator",
+    NAME: "draw2d.layout.locator.XYAbsPortLocator",
 
-  /**
-   *
-   * {@link draw2d.shape.node.Node}
-   *
-   * @param {Number} x the x coordinate of the port relative to the left of the parent
-   * @param {Number} y the y coordinate of the port relative to the top of the parent
-   */
-  init: function (x, y) {
-    this._super()
+    /**
+     *
+     * {@link draw2d.shape.node.Node}
+     *
+     * @param {Number} x the x coordinate of the port relative to the left of the parent
+     * @param {Number} y the y coordinate of the port relative to the top of the parent
+     */
+    init: function (attr, setter, getter) {
+      this.x = 0
+      this.y = 0
 
-    this.x = x
-    this.y = y
-  },
+      this._super(attr,
+        extend({
+          x: this.setX,
+          y: this.setY
+        }, setter),
+        extend({
+          x: this.getX,
+          y: this.getY
+        }, getter))
 
-  /**
-   *
-   * Controls the location of an {@link draw2d.Figure}
-   *
-   * @param {Number} index child index of the figure
-   * @param {draw2d.Figure} figure the figure to control
-   *
-   * @template
-   **/
-  relocate: function (index, figure) {
-    this.applyConsiderRotation(figure, this.x, this.y)
-  }
+    },
 
-})
+    /**
+     * Set the X Offset for the Locator
+     * @param {Number} x
+     */
+    setX: function (x) {
+      this.x = x
+    },
+
+    /**
+     * Set the y-offset of the locator
+     *
+     * @param {Number} y
+     */
+    setY: function (y) {
+      this.y = y
+    },
+
+    /**
+     * Get the X-Offset of the Locator
+     *
+     * @returns {Number}
+     */
+    getX: function(){
+      return this.x
+    },
+
+    /**
+     * Returns the Y-Offset of the Locator
+     *
+     * @returns {Number}
+     */
+    getY: function(){
+      return this.y
+    },
+
+    /**
+     *
+     * Controls the location of an {@link draw2d.Figure}
+     *
+     * @param {Number} index child index of the figure
+     * @param {draw2d.Figure} figure the figure to control
+     *
+     * @template
+     **/
+    relocate: function (index, figure) {
+      this.applyConsiderRotation(figure, this.x, this.y)
+    }
+
+  })
 
 
 

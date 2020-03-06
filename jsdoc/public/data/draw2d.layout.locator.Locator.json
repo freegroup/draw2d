@@ -12,10 +12,67 @@
       "virtual": false,
       "deprecated": "",
       "description": "<p>Initial Constructor</p>",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "attr",
+          "type": "Object",
+          "description": "<p>additional init attributes</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "setter",
+          "type": "Object",
+          "description": "<p>key/value map of injected setter-methods</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "getter",
+          "type": "Object",
+          "description": "<p>key/value map of injected getter-methods</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
       "inherited": false,
       "since": "",
       "examples": []
+    },
+    {
+      "name": "attr",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Read or set locator attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>\n<p>// multiple attributes:\nlocator.attr({\nx: 30,\ny: 40\n});</p>\n<p>let data = locator.attr()</p>",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "String/Object",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "value",
+          "type": "Object",
+          "description": "",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "inherited": false,
+      "since": "5.0.1",
+      "examples": [],
+      "returns": {
+        "type": "Object",
+        "description": "<p>either the requested attribute if this method used as getter or <code>this</code> if the method uses as setter</p>"
+      }
     },
     {
       "name": "bind",

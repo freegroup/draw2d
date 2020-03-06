@@ -12,7 +12,7 @@ import draw2d from '../../packages'
  *
  *    // create a basic figure and add a Label/child via API call
  *    //
- *    var circle = new draw2d.shape.basic.Circle({
+ *    let circle = new draw2d.shape.basic.Circle({
  *        x:100,
  *        y:50,
  *        diameter:100,
@@ -38,8 +38,8 @@ draw2d.layout.locator.BottomLocator = draw2d.layout.locator.Locator.extend(
    *
    *
    */
-  init: function () {
-    this._super()
+  init: function (attr, setter, getter) {
+    this._super(attr, setter, getter)
   },
 
 
@@ -51,15 +51,15 @@ draw2d.layout.locator.BottomLocator = draw2d.layout.locator.Locator.extend(
    * @param {draw2d.Figure} target The figure to relocate
    **/
   relocate: function (index, target) {
-    var parent = target.getParent()
-    var boundingBox = parent.getBoundingBox()
+    let parent = target.getParent()
+    let boundingBox = parent.getBoundingBox()
     // I made a wrong decision in the port handling: anchor point
     // is in the center and not topLeft. Now I must correct this flaw here, and there, and...
     // shit happens.
-    var offset = (parent instanceof draw2d.Port) ? boundingBox.w / 2 : 0
+    let offset = (parent instanceof draw2d.Port) ? boundingBox.w / 2 : 0
 
 
-    var targetBoundingBox = target.getBoundingBox()
+    let targetBoundingBox = target.getBoundingBox()
     if (target instanceof draw2d.Port) {
       target.setPosition(boundingBox.w / 2 - offset, boundingBox.h)
     }
