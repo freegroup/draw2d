@@ -1652,14 +1652,13 @@ draw2d.Canvas = Class.extend(
      *     });
      *
      *     canvas.on("select", function(emitter,event){
-     *         if(event.figure!==null){
-     *             alert("figure selected");
-     *         }
-     *         else{
-     *             alert("selection cleared");
-     *         }
+     *        alert("figure selected");
      *     });
      *
+     *     canvas.on("unselect", function(emitter,event){
+     *        alert("figure unselected");
+     *     });
+     * 
      * @param {String}   event One or more space-separated event types
      * @param {Function} callback A function to execute when the event is triggered.
      * @param {draw2d.Canvas} callback.emitter the emitter of the event
