@@ -13,7 +13,6 @@ import draw2d from '../packages'
 draw2d.command.CommandMove = draw2d.command.Command.extend(
   /** @lends draw2d.command.CommandMove.prototype */
   {
-
   NAME: "draw2d.command.CommandMove",
 
   /**

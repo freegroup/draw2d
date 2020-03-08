@@ -45,9 +45,7 @@ import draw2d from '../../packages'
 draw2d.layout.connection.SketchConnectionRouter = draw2d.layout.connection.MazeConnectionRouter.extend(
   /** @lends draw2d.layout.connection.SketchConnectionRouter.prototype */
   {
-
   NAME: "draw2d.layout.connection.SketchConnectionRouter",
-
 
   /**
    * Creates a new Router object.
@@ -73,5 +71,4 @@ draw2d.layout.connection.SketchConnectionRouter = draw2d.layout.connection.MazeC
     connection.installEditPolicy(new draw2d.policy.line.LineSelectionFeedbackPolicy())
 
   }
-
 })

@@ -8303,7 +8303,7 @@ _packages2.default.Canvas = Class.extend(
    *
    * @param {String} event the event to trigger
    * @param {Object} [args] optional parameters for the triggered event callback
-   *
+   * @private
    * @since 5.0.0
    */
   fireEvent: function fireEvent(event, args) {
@@ -8368,7 +8368,7 @@ _packages2.default.Canvas = Class.extend(
 
   /**
    *
-   * The .off() method removes event handlers that were attached with {@link #on}.<br>
+   * The `off()` method removes event handlers that were attached with {@link #on}.<br>
    * Calling .off() with no arguments removes all handlers attached to the canvas.<br>
    * <br>
    * If a simple event name such as "reset" is provided, all events of that type are removed from the canvas.
@@ -23873,6 +23873,7 @@ _packages2.default.layout.connection.MazeConnectionRouter = _packages2.default.l
    *
    * @param conn
    * @returns {PF.Grid}
+   * @private
    */
   generateNoGoGrid: function generateNoGoGrid(conn, fromPt, fromDir, toPt, toDir) {
     var shift = this.useShift;
@@ -29205,7 +29206,10 @@ exports.default = {
    * */
   geo: {},
 
-  /** @namespace draw2d.io */
+  /** 
+   * Contains classes to load and save Draw2D files into, or from, a Canvas.
+   * @namespace draw2d.io 
+   **/
   io: {
     /** @namespace draw2d.io.json
      * */
@@ -29243,19 +29247,31 @@ exports.default = {
      * @namespace draw2d.policy.canvas
      * */
     canvas: {},
-    /** @namespace draw2d.policy.connection */
+    /** 
+     * Policies for Connection creation. Like 'ClickPolicy'...creates a connection if you click into the canvas. 
+     * @namespace draw2d.policy.connection 
+     **/
     connection: {},
     /** @namespace draw2d.policy.line */
     line: {},
     /** @namespace draw2d.policy.port */
     port: {},
-    /** @namespace draw2d.policy.figure */
+    /** 
+     * Selection decorations for figures. Movement contrains. Width limitation,...
+     * @namespace draw2d.policy.figure 
+     **/
     figure: {}
   },
 
-  /** @namespace draw2d.shape */
+  /** 
+   * Contains all predefined visual shapes of Draw2D
+   *  
+   * @namespace draw2d.shape 
+   **/
   shape: {
-    /** @namespace draw2d.shape.basic */
+    /** 
+     * @namespace draw2d.shape.basic 
+     **/
     basic: {},
     /** @namespace draw2d.shape.dimetric */
     dimetric: {},
@@ -29285,7 +29301,16 @@ exports.default = {
     widget: {}
   },
 
-  /** @namespace draw2d.command */
+  /** 
+   * The command is what eventually changes the model. Figures are asked for a command for a given request. Commands also help 
+   * determine if the interaction is possible. If there is no command, or it is not executable, the UI will indicate that the 
+   * interaction is not allowed. 
+   * 
+   * All commands (move, drag&drop, insert, remove,....) are stored on top of a CommandStack and available for undo and redo.
+   * An `draw2d.Canvas` has a single command stack. **Commands must be executed using the command stack rather than directly calling execute.**
+   * 
+   * @namespace draw2d.command 
+   **/
   command: {},
 
   /** @namespace draw2d.decoration */

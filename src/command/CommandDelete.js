@@ -10,7 +10,6 @@ import draw2d from '../packages'
 draw2d.command.CommandDelete = draw2d.command.Command.extend(
   /** @lends draw2d.command.CommandDelete.prototype */
   {
-  
   NAME: "draw2d.command.CommandDelete",
 
   /**
