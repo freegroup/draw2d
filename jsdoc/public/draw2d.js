@@ -8341,14 +8341,13 @@ _packages2.default.Canvas = Class.extend(
    *     });
    *
    *     canvas.on("select", function(emitter,event){
-   *         if(event.figure!==null){
-   *             alert("figure selected");
-   *         }
-   *         else{
-   *             alert("selection cleared");
-   *         }
+   *        alert("figure selected");
    *     });
    *
+   *     canvas.on("unselect", function(emitter,event){
+   *        alert("figure unselected");
+   *     });
+   * 
    * @param {String}   event One or more space-separated event types
    * @param {Function} callback A function to execute when the event is triggered.
    * @param {draw2d.Canvas} callback.emitter the emitter of the event
@@ -8471,7 +8470,7 @@ _packages2.default.Configuration = {
         createOutputPort: function createOutputPort(relatedFigure) {
             return new _packages2.default.OutputPort();
         },
-        // @since 5.3.0
+        // @since 5.3.0^
         createHybridPort: function createHybridPort(relatedFigure) {
             return new _packages2.default.HybridPort();
         }
@@ -9447,7 +9446,7 @@ _packages2.default.Figure = Class.extend(
 
     // @private
     this.setterWhitelist = (0, _extend2.default)({
-      //  id the unique id of the figu re 
+      //  id the unique id of the figure
       id: this.setId,
       //  x the x offset of the figure in relation to the parent figure or canvas 
       x: this.setX,
@@ -13310,7 +13309,7 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
     delete memento.x;
     delete memento.y;
 
-    // ports didn'T have children ports. In this case we
+    // ports didn't have children ports. In this case we
     // delete this attribute as well to avoid confusions.
     //
     delete memento.ports;
@@ -23743,7 +23742,7 @@ _packages2.default.layout.connection.MazeConnectionRouter = _packages2.default.l
 
     // 4. Calculate the shortest path from source to target based on the grid
     //
-    var path = this.finder.findPath(fromPt.x >> shift, fromPt.y >> shift, toPt.x >> shift, toPt.y >> shift, grid);
+    var path = this.finder.findPath(Math.max(fromPt.x) >> shift, Math.max(fromPt.y) >> shift, Math.max(toPt.x) >> shift, Math.max(0, toPt.y) >> shift, grid);
 
     // transfer the path from the grid based coordinates back to the real coordinates
     //
@@ -25282,7 +25281,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  *
  *    // create a basic figure and add a Label/child via API call
  *    //
- *    var circle = new draw2d.shape.basic.Circle({
+ *    let circle = new draw2d.shape.basic.Circle({
  *        x:100,
  *        y:50,
  *        diameter:100,
@@ -25308,8 +25307,8 @@ _packages2.default.layout.locator.BottomLocator = _packages2.default.layout.loca
    *
    *
    */
-  init: function init() {
-    this._super();
+  init: function init(attr, setter, getter) {
+    this._super(attr, setter, getter);
   },
 
   /**
@@ -25387,8 +25386,8 @@ _packages2.default.layout.locator.CenterLocator = _packages2.default.layout.loca
    * Constructs a locator with associated parent.
    *
    */
-  init: function init() {
-    this._super();
+  init: function init(attr, setter, getter) {
+    this._super(attr, setter, getter);
   },
 
   /**
@@ -25453,8 +25452,8 @@ _packages2.default.layout.locator.ConnectionLocator = _packages2.default.layout.
    * {@link draw2d.Connector}
    *
    */
-  init: function init() {
-    this._super();
+  init: function init(attr, setter, getter) {
+    this._super(attr, setter, getter);
   }
 
 });
@@ -25498,8 +25497,8 @@ _packages2.default.layout.locator.DraggableLocator = _packages2.default.layout.l
    * Constructs a locator with associated parent.
    *
    */
-  init: function init() {
-    this._super();
+  init: function init(attr, setter, getter) {
+    this._super(attr, setter, getter);
   },
 
   bind: function bind(parent, child) {
@@ -25560,8 +25559,8 @@ _packages2.default.layout.locator.InputPortLocator = _packages2.default.layout.l
    * {@link draw2d.shape.node.Node}
    *
    */
-  init: function init() {
-    this._super();
+  init: function init(attr, setter, getter) {
+    this._super(attr, setter, getter);
   },
 
   /**
@@ -25636,10 +25635,12 @@ _packages2.default.layout.locator.LeftLocator = _packages2.default.layout.locato
   /**
    * Constructs a locator with associated parent.
    *
-   * @param attr
+   * @param {Object} attr additional init attributes
+   * @param {Object} setter key/value map of injected setter-methods
+   * @param {Object} getter key/value map of injected getter-methods
    */
-  init: function init(attr) {
-    this._super();
+  init: function init(attr, setter, getter) {
+    this._super(attr, setter, getter);
 
     this.margin = attr && "margin" in attr ? attr.margin : 5;
   },
@@ -25685,7 +25686,19 @@ var _packages = __webpack_require__(/*! ../../packages */ "./src/packages.js");
 
 var _packages2 = _interopRequireDefault(_packages);
 
+var _extend = __webpack_require__(/*! ../../util/extend */ "./src/util/extend.js");
+
+var _extend2 = _interopRequireDefault(_extend);
+
+var _JSONUtil = __webpack_require__(/*! ../../util/JSONUtil */ "./src/util/JSONUtil.js");
+
+var _JSONUtil2 = _interopRequireDefault(_JSONUtil);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 /**
  * @class
@@ -25703,8 +25716,90 @@ _packages2.default.layout.locator.Locator = Class.extend(
   /**
    * Initial Constructor
    *
+   * @param {Object} attr additional init attributes
+   * @param {Object} setter key/value map of injected setter-methods
+   * @param {Object} getter key/value map of injected getter-methods
    */
-  init: function init() {},
+  init: function init(attr, setter, getter) {
+
+    this.setterWhitelist = (0, _extend2.default)({}, setter);
+    this.getterWhitelist = (0, _extend2.default)({}, getter);
+  },
+
+  /**
+   *
+   * Read or set locator attributes.<br>
+   * When no value is given, reads specified attribute from the element.<br>
+   * When value is given, sets the attribute to that value.
+   * Multiple attributes can be set by passing an object with name-value pairs.
+   *
+   *
+   *    // multiple attributes:
+   *    locator.attr({
+   *      x: 30,
+   *      y: 40
+   *    });
+   *
+   *    let data = locator.attr()
+   *
+   *
+   * @param {String/Object} name
+   * @param {Object} [value]
+   * @since 5.0.1
+   * @experimental
+   * @returns {Object} either the requested attribute if this method used as getter or `this` if the method uses as setter
+   **/
+  attr: function attr(name, value) {
+    var _this = this;
+
+    // call of attr as setter method with {name1:val1, name2:val2 }  argument list
+    //
+    if ($.isPlainObject(name)) {
+      for (var key in name) {
+        var func = this.setterWhitelist[key];
+        var param = name[key];
+        if (func && param !== undefined) {
+          func.call(this, param);
+        }
+      }
+    } else if (typeof name === "string") {
+      // call attr as getter
+      //
+      if (typeof value === "undefined") {
+        var getter = this.getterWhitelist[name];
+        if (typeof getter === "function") {
+          return getter.call(this);
+        }
+        return; // undefined
+      }
+
+      // the value can be a function. In this case we must call the value().
+      if (typeof value === "function") {
+        value = value();
+      }
+      var setter = this.setterWhitelist[name];
+      if (setter) {
+        setter.call(this, value);
+      }
+    }
+    // may it is a array of attributes used for the getter
+    //
+    else if (Array.isArray(name)) {
+        return Object.assign.apply(Object, [{}].concat(_toConsumableArray(Object.keys(name).map(function (k) {
+          return _defineProperty({}, k, _this.attr(k));
+        }))));
+      }
+      // generic getter of all registered attributes
+      else if (typeof name === "undefined") {
+          var result = {};
+          for (var _key in this.getterWhitelist) {
+            result[_key] = this.getterWhitelist[_key].call(this);
+          }
+          return result;
+        }
+
+    return this;
+  },
 
   /**
    *
@@ -25831,8 +25926,8 @@ _packages2.default.layout.locator.ManhattanMidpointLocator = _packages2.default.
    * Constructs a ManhattanMidpointLocator with associated Connection c.
    *
    */
-  init: function init() {
-    this._super();
+  init: function init(attr, setter, getter) {
+    this._super(attr, setter, getter);
   },
 
   /**
@@ -25895,8 +25990,8 @@ _packages2.default.layout.locator.OutputPortLocator = _packages2.default.layout.
    * {@link draw2d.shape.node.Node}
    *
    */
-  init: function init() {
-    this._super();
+  init: function init(attr, setter, getter) {
+    this._super(attr, setter, getter);
   },
 
   /**
@@ -25938,6 +26033,10 @@ var _packages = __webpack_require__(/*! ../../packages */ "./src/packages.js");
 
 var _packages2 = _interopRequireDefault(_packages);
 
+var _extend = __webpack_require__(/*! ../../util/extend */ "./src/util/extend.js");
+
+var _extend2 = _interopRequireDefault(_extend);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
@@ -25961,19 +26060,41 @@ _packages2.default.layout.locator.ParallelMidpointLocator = _packages2.default.l
   /**
    * Constructs a ParallelMidpointLocator with optional padding to the connection.
    *
-   * if the parameter <b>distanceFromConnection</b> is less than zero the label is
+   * if the parameter <b>distance</b> is less than zero the label is
    * placed above of the connection. Else the label is below the connection.
    *
-   * @param {Number} distanceFromConnection the distance of the label to the connection.
+   * @param {Object} attr object with {distance: <NUMBER>>} distance of the label to the connection.
    */
-  init: function init(distanceFromConnection) {
-    this._super();
+  init: function init(attr, setter, getter) {
+    this.distance = 0;
 
-    if (typeof distanceFromConnection !== "undefined") {
-      this.distanceFromConnection = parseFloat(distanceFromConnection);
-    } else {
-      this.distanceFromConnection = -5;
-    }
+    this._super((0, _extend2.default)({
+      distance: -5
+    }, attr), (0, _extend2.default)({
+      x: this.setDistance
+    }, setter), (0, _extend2.default)({
+      distance: this.getDistance
+    }, getter));
+  },
+
+  /**
+   * Set the distance to the connection
+   *
+   * @param {Number} distance the distance to the connection
+   * @returns {this}
+   */
+  setDistance: function setDistance(distance) {
+    this.distance = distance;
+    return this;
+  },
+
+  /**
+   * Returns the distance to the connection
+   *
+   * @returns {Number}
+   */
+  getDistance: function getDistance() {
+    return this.distance;
   },
 
   /**
@@ -25996,7 +26117,7 @@ _packages2.default.layout.locator.ParallelMidpointLocator = _packages2.default.l
     var p2 = points.get(segmentIndex + 1);
 
     // calculate the distance of the label (above or below the connection)
-    var distance = this.distanceFromConnection <= 0 ? this.distanceFromConnection - target.getHeight() : this.distanceFromConnection;
+    var distance = this.distance <= 0 ? this.distance - target.getHeight() : this.distance;
 
     // get the angle of the segment
     var nx = p1.x - p2.x;
@@ -26084,8 +26205,8 @@ _packages2.default.layout.locator.PolylineMidpointLocator = _packages2.default.l
    * Constructs a ManhattanMidpointLocator with associated Connection c.
    *
    */
-  init: function init() {
-    this._super();
+  init: function init(attr, setter, getter) {
+    this._super(attr, setter, getter);
   },
 
   /**
@@ -26150,8 +26271,8 @@ _packages2.default.layout.locator.PortLocator = _packages2.default.layout.locato
    * Default constructor for a Locator which can layout a port in context of a
    *
    */
-  init: function init() {
-    this._super();
+  init: function init(attr, setter, getter) {
+    this._super(attr, setter, getter);
   },
 
   applyConsiderRotation: function applyConsiderRotation(port, x, y) {
@@ -26224,8 +26345,8 @@ _packages2.default.layout.locator.RightLocator = _packages2.default.layout.locat
    * Constructs a locator with associated parent.
    *
    */
-  init: function init(attr) {
-    this._super();
+  init: function init(attr, setter, getter) {
+    this._super(attr, setter, getter);
 
     this.margin = attr && "margin" in attr ? attr.margin : 5;
   },
@@ -26294,8 +26415,8 @@ _packages2.default.layout.locator.SmartDraggableLocator = _packages2.default.lay
    * Constructs a locator with associated parent.
    *
    */
-  init: function init() {
-    this._super();
+  init: function init(attr, setter, getter) {
+    this._super(attr, setter, getter);
 
     // description see "bind" method
     this.boundedCorners = {
@@ -26462,8 +26583,8 @@ _packages2.default.layout.locator.TopLocator = _packages2.default.layout.locator
    * Constructs a ManhattanMidpointLocator with associated Connection c.
    *
    */
-  init: function init() {
-    this._super();
+  init: function init(attr, setter, getter) {
+    this._super(attr, setter, getter);
   },
 
   /**
@@ -26507,6 +26628,10 @@ var _packages = __webpack_require__(/*! ../../packages */ "./src/packages.js");
 
 var _packages2 = _interopRequireDefault(_packages);
 
+var _extend = __webpack_require__(/*! ../../util/extend */ "./src/util/extend.js");
+
+var _extend2 = _interopRequireDefault(_extend);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
@@ -26540,11 +26665,52 @@ _packages2.default.layout.locator.XYAbsPortLocator = _packages2.default.layout.l
    * @param {Number} x the x coordinate of the port relative to the left of the parent
    * @param {Number} y the y coordinate of the port relative to the top of the parent
    */
-  init: function init(x, y) {
-    this._super();
+  init: function init(attr, setter, getter) {
+    this.x = 0;
+    this.y = 0;
 
+    this._super(attr, (0, _extend2.default)({
+      x: this.setX,
+      y: this.setY
+    }, setter), (0, _extend2.default)({
+      x: this.getX,
+      y: this.getY
+    }, getter));
+  },
+
+  /**
+   * Set the X Offset for the Locator
+   * @param {Number} x
+   */
+  setX: function setX(x) {
     this.x = x;
+  },
+
+  /**
+   * Set the y-offset of the locator
+   *
+   * @param {Number} y
+   */
+  setY: function setY(y) {
     this.y = y;
+  },
+
+  /**
+   * Get the X-Offset of the Locator
+   *
+   * @returns {Number}
+   */
+  getX: function getX() {
+    return this.x;
+  },
+
+  /**
+   * Returns the Y-Offset of the Locator
+   *
+   * @returns {Number}
+   */
+  getY: function getY() {
+    return this.y;
   },
 
   /**
@@ -26577,6 +26743,10 @@ _packages2.default.layout.locator.XYAbsPortLocator = _packages2.default.layout.l
 var _packages = __webpack_require__(/*! ../../packages */ "./src/packages.js");
 
 var _packages2 = _interopRequireDefault(_packages);
+
+var _extend = __webpack_require__(/*! ../../util/extend */ "./src/util/extend.js");
+
+var _extend2 = _interopRequireDefault(_extend);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26614,11 +26784,53 @@ _packages2.default.layout.locator.XYRelPortLocator = _packages2.default.layout.l
    * @param {Number} xPercentage the x coordinate in percent of the port relative to the left of the parent
    * @param {Number} yPercentage the y coordinate in percent of the port relative to the top of the parent
    */
-  init: function init(xPercentage, yPercentage) {
-    this._super();
+  init: function init(attr, setter, getter) {
 
-    this.x = xPercentage;
-    this.y = yPercentage;
+    this.x = 0;
+    this.y = 0;
+
+    this._super(attr, (0, _extend2.default)({
+      x: this.setX,
+      y: this.setY
+    }, setter), (0, _extend2.default)({
+      x: this.getX,
+      y: this.getY
+    }, getter));
+  },
+
+  /**
+   * Set the X Offset for the Locator
+   * @param {Number} x
+   */
+  setX: function setX(x) {
+    this.x = x;
+  },
+
+  /**
+   * Set the y-offset of the locator
+   *
+   * @param {Number} y
+   */
+  setY: function setY(y) {
+    this.y = y;
+  },
+
+  /**
+   * Get the X-Offset of the Locator
+   *
+   * @returns {Number}
+   */
+  getX: function getX() {
+    return this.x;
+  },
+
+  /**
+   * Returns the Y-Offset of the Locator
+   *
+   * @returns {Number}
+   */
+  getY: function getY() {
+    return this.y;
   },
 
   /**
@@ -39327,9 +39539,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /**
  * @class
  * Oval figure.
- *
- *
- *
  * @example
  *
  *    let arc =  new draw2d.shape.basic.Arc({diameter:150, x:50, y:10, startAngle:0, endAngle:45});
@@ -40024,7 +40233,7 @@ _packages2.default.shape.basic.Label = _packages2.default.SetFigure.extend(
     this.lastAppliedTextAttributes = lattr;
 
     // the two "attr" calls takes 2/3 of the complete method call (chrome performance check).
-    // now we check if any changes happens and call this method only if neccessary.
+    // now we check if any changes happens and call this method only if necessary.
     if (Object.getOwnPropertyNames(attrDiff).length > 0) {
       this.svgNodes.attr(lattr);
       // set of the x/y must be done AFTER the font-size and bold has been set.
@@ -61297,10 +61506,13 @@ _packages2.default.shape.node.Node = _packages2.default.Figure.extend(
     if (this.persistPorts === true) {
       memento.ports = [];
       this.getPorts().each(function (i, port) {
+        console.log(port.getLocator());
+        console.log(port.getLocator().attr());
         memento.ports.push((0, _extend2.default)(port.getPersistentAttributes(), {
           name: port.getName(),
           port: port.NAME,
-          locator: port.getLocator().NAME
+          locator: port.getLocator().NAME,
+          locatorAttr: port.getLocator().attr()
         }));
       });
     }
@@ -61331,11 +61543,14 @@ _packages2.default.shape.node.Node = _packages2.default.Figure.extend(
       // and restore all ports of the JSON document instead.
       //
       memento.ports.forEach(function (e) {
-        var port = eval("new " + e.port + "()");
         var locator = eval("new " + e.locator + "()");
+        if (e.locatorAttr) {
+          locator.attr(e.locatorAttr);
+        }
+
+        var port = eval("new " + e.port + "()");
         port.setPersistentAttributes(e);
         _this4.addPort(port, locator);
-        port.setName(e.name);
       });
     }
 

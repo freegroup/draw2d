@@ -60,7 +60,6 @@ draw2d.HeadlessCanvas = Class.extend(
 
     calculateConnectionIntersection:function()
     {
-
     },
 
     /**

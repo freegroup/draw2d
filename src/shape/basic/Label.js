@@ -156,7 +156,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
     this.lastAppliedTextAttributes = lattr
 
     // the two "attr" calls takes 2/3 of the complete method call (chrome performance check).
-    // now we check if any changes happens and call this method only if neccessary.
+    // now we check if any changes happens and call this method only if necessary.
     if (Object.getOwnPropertyNames(attrDiff).length > 0) {
       this.svgNodes.attr(lattr)
       // set of the x/y must be done AFTER the font-size and bold has been set.

@@ -2,6 +2,7 @@
 
 # generate the jsDoc
 cd ./jsdoc/
+npm install
 jsdoc -c ./jsdoc.conf
 
 # generate the VUEjs app

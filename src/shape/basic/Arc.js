@@ -1,13 +1,9 @@
 import draw2d from '../../packages'
 import extend from '../../util/extend'
 
-
 /**
  * @class
  * Oval figure.
- *
- *
- *
  * @example
  *
  *    let arc =  new draw2d.shape.basic.Arc({diameter:150, x:50, y:10, startAngle:0, endAngle:45});

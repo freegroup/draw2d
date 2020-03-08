@@ -1,5 +1,5 @@
 {
-  "name": "jsdoc",
+  "name": "draw2d-doc",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -33,6 +33,7 @@
     "babel-eslint": "^10.0.3",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "jsdoc": "^3.6.3",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
     "liquor-tree": "^0.2.70",
