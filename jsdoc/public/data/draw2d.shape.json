@@ -1,7 +1,7 @@
 {
   "name": "shape",
   "namespace": "draw2d",
-  "description": "",
+  "description": "<p>Contains all predefined visual shapes of Draw2D</p>",
   "access": "",
   "virtual": false,
   "namespaces": [

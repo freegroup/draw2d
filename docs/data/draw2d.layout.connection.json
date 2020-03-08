@@ -3385,7 +3385,7 @@
         },
         {
           "name": "generateNoGoGrid",
-          "access": "",
+          "access": "private",
           "virtual": false,
           "deprecated": "",
           "description": "<p>Generate a grid base no go map required for the path finding algorithm</p>",

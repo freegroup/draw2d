@@ -1,7 +1,7 @@
 {
   "name": "figure",
   "namespace": "draw2d.policy",
-  "description": "",
+  "description": "<p>Selection decorations for figures. Movement contrains. Width limitation,...</p>",
   "access": "",
   "virtual": false,
   "classes": [

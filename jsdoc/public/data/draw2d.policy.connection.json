@@ -1,7 +1,7 @@
 {
   "name": "connection",
   "namespace": "draw2d.policy",
-  "description": "",
+  "description": "<p>Policies for Connection creation. Like 'ClickPolicy'...creates a connection if you click into the canvas.</p>",
   "access": "",
   "virtual": false,
   "namespaces": []

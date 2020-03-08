@@ -1,7 +1,7 @@
 {
   "name": "io",
   "namespace": "draw2d",
-  "description": "",
+  "description": "<p>Contains classes to load and save Draw2D files into, or from, a Canvas.</p>",
   "access": "",
   "virtual": false,
   "classes": [

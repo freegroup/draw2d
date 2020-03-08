@@ -16,7 +16,7 @@ let ROUTER_RECTS = null
 draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.ConnectionRouter.extend(
   /** @lends draw2d.layout.connection.MazeConnectionRouter.prototype */
   {
-  
+
   NAME: "draw2d.layout.connection.MazeConnectionRouter",
 
 
@@ -249,6 +249,7 @@ draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.Connect
    *
    * @param conn
    * @returns {PF.Grid}
+   * @private
    */
   generateNoGoGrid: function (conn, fromPt, fromDir, toPt, toDir) {
     let shift = this.useShift

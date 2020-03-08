@@ -14,7 +14,10 @@ export default {
    * */
   geo: {},
 
-  /** @namespace draw2d.io */
+  /** 
+   * Contains classes to load and save Draw2D files into, or from, a Canvas.
+   * @namespace draw2d.io 
+   **/
   io: {
     /** @namespace draw2d.io.json
      * */
@@ -52,19 +55,31 @@ export default {
      * @namespace draw2d.policy.canvas
      * */
     canvas: {},
-    /** @namespace draw2d.policy.connection */
+    /** 
+     * Policies for Connection creation. Like 'ClickPolicy'...creates a connection if you click into the canvas. 
+     * @namespace draw2d.policy.connection 
+     **/
     connection: {},
     /** @namespace draw2d.policy.line */
     line: {},
     /** @namespace draw2d.policy.port */
     port: {},
-    /** @namespace draw2d.policy.figure */
+    /** 
+     * Selection decorations for figures. Movement contrains. Width limitation,...
+     * @namespace draw2d.policy.figure 
+     **/
     figure: {}
   },
 
-  /** @namespace draw2d.shape */
+  /** 
+   * Contains all predefined visual shapes of Draw2D
+   *  
+   * @namespace draw2d.shape 
+   **/
   shape: {
-    /** @namespace draw2d.shape.basic */
+    /** 
+     * @namespace draw2d.shape.basic 
+     **/
     basic: {},
     /** @namespace draw2d.shape.dimetric */
     dimetric: {},
@@ -94,7 +109,16 @@ export default {
     widget: {}
   },
 
-  /** @namespace draw2d.command */
+  /** 
+   * The command is what eventually changes the model. Figures are asked for a command for a given request. Commands also help 
+   * determine if the interaction is possible. If there is no command, or it is not executable, the UI will indicate that the 
+   * interaction is not allowed. 
+   * 
+   * All commands (move, drag&drop, insert, remove,....) are stored on top of a CommandStack and available for undo and redo.
+   * An `draw2d.Canvas` has a single command stack. **Commands must be executed using the command stack rather than directly calling execute.**
+   * 
+   * @namespace draw2d.command 
+   **/
   command: {},
 
   /** @namespace draw2d.decoration */

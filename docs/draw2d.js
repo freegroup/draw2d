@@ -8341,14 +8341,13 @@ _packages2.default.Canvas = Class.extend(
    *     });
    *
    *     canvas.on("select", function(emitter,event){
-   *         if(event.figure!==null){
-   *             alert("figure selected");
-   *         }
-   *         else{
-   *             alert("selection cleared");
-   *         }
+   *        alert("figure selected");
    *     });
    *
+   *     canvas.on("unselect", function(emitter,event){
+   *        alert("figure unselected");
+   *     });
+   * 
    * @param {String}   event One or more space-separated event types
    * @param {Function} callback A function to execute when the event is triggered.
    * @param {draw2d.Canvas} callback.emitter the emitter of the event
@@ -8471,7 +8470,7 @@ _packages2.default.Configuration = {
         createOutputPort: function createOutputPort(relatedFigure) {
             return new _packages2.default.OutputPort();
         },
-        // @since 5.3.0
+        // @since 5.3.0^
         createHybridPort: function createHybridPort(relatedFigure) {
             return new _packages2.default.HybridPort();
         }
@@ -39540,9 +39539,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /**
  * @class
  * Oval figure.
- *
- *
- *
  * @example
  *
  *    let arc =  new draw2d.shape.basic.Arc({diameter:150, x:50, y:10, startAngle:0, endAngle:45});
@@ -40237,7 +40233,7 @@ _packages2.default.shape.basic.Label = _packages2.default.SetFigure.extend(
     this.lastAppliedTextAttributes = lattr;
 
     // the two "attr" calls takes 2/3 of the complete method call (chrome performance check).
-    // now we check if any changes happens and call this method only if neccessary.
+    // now we check if any changes happens and call this method only if necessary.
     if (Object.getOwnPropertyNames(attrDiff).length > 0) {
       this.svgNodes.attr(lattr);
       // set of the x/y must be done AFTER the font-size and bold has been set.

@@ -1614,7 +1614,7 @@ draw2d.Canvas = Class.extend(
      *
      * @param {String} event the event to trigger
      * @param {Object} [args] optional parameters for the triggered event callback
-     *
+     * @private
      * @since 5.0.0
      */
     fireEvent: function (event, args) {
@@ -1679,7 +1679,7 @@ draw2d.Canvas = Class.extend(
 
     /**
      *
-     * The .off() method removes event handlers that were attached with {@link #on}.<br>
+     * The `off()` method removes event handlers that were attached with {@link #on}.<br>
      * Calling .off() with no arguments removes all handlers attached to the canvas.<br>
      * <br>
      * If a simple event name such as "reset" is provided, all events of that type are removed from the canvas.

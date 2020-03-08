@@ -6,40 +6,37 @@
     @example
         ./jsdoc scratch/jsdoc_test.js -t templates/haruki -d console -q format=xml
 */
-const xml = require('js2xmlparser');
+const hasOwnProp = Object.prototype.hasOwnProperty
 
-const hasOwnProp = Object.prototype.hasOwnProperty;
-
-function graft(parentNode, childNodes, parentLongname) {
+function graft (parentNode, childNodes, parentLongname) {
     childNodes
-    .filter(({memberof}) => memberof === parentLongname)
+    .filter(({ memberof }) => memberof === parentLongname)
     .forEach(element => {
-        let i;
-        let len;
-        let thisClass;
-        let thisEvent;
-        let thisFunction;
-        let thisMixin;
-        let thisNamespace;
+        let i
+        let len
+        let thisClass
+        let thisEvent
+        let thisFunction
+        let thisMixin
+        let thisNamespace
 
         if (element.kind === 'namespace') {
             if (!parentNode.namespaces) {
-                parentNode.namespaces = [];
+                parentNode.namespaces = []
             }
             thisNamespace = {
                 'name': element.name,
-                'namespace': parentNode.name?(parentNode.namespace?parentNode.namespace+".":"")+parentNode.name:"",
+                'namespace': parentNode.name?(parentNode.namespace?parentNode.namespace+'.':'')+parentNode.name:'',
                 'description': element.description || '',
                 'access': element.access || '',
                 'virtual': Boolean(element.virtual)
-            };
-            parentNode.namespaces.push(thisNamespace);
+            }
+            parentNode.namespaces.push(thisNamespace)
 
-            graft(thisNamespace, childNodes, element.longname);
-        }
-        else if (element.kind === 'mixin') {
+            graft(thisNamespace, childNodes, element.longname)
+        } else if (element.kind === 'mixin') {
             if (!parentNode.mixins) {
-                parentNode.mixins = [];
+                parentNode.mixins = []
             }
 
             thisMixin = {
@@ -47,15 +44,14 @@ function graft(parentNode, childNodes, parentLongname) {
                 'description': element.description || '',
                 'access': element.access || '',
                 'virtual': Boolean(element.virtual)
-            };
+            }
 
-            parentNode.mixins.push(thisMixin);
+            parentNode.mixins.push(thisMixin)
 
-            graft(thisMixin, childNodes, element.longname);
-        }
-        else if (element.kind === 'function') {
+            graft(thisMixin, childNodes, element.longname)
+        } else if (element.kind === 'function') {
             if (!parentNode.functions) {
-                parentNode.functions = [];
+                parentNode.functions = []
             }
 
             thisFunction = {
@@ -68,20 +64,20 @@ function graft(parentNode, childNodes, parentLongname) {
                 'inherited': Boolean(element.inherited),
                 'since': element.since || '',
                 'examples': []
-            };
+            }
 
-            parentNode.functions.push(thisFunction);
+            parentNode.functions.push(thisFunction)
 
             if (element.returns && element.returns[0]) {
                 thisFunction.returns = {
                     'type': element.returns[0].type? (element.returns[0].type.names.length === 1? element.returns[0].type.names[0] : element.returns[0].type.names) : '',
                     'description': element.returns[0].description || ''
-                };
+                }
             }
 
             if (element.examples) {
                 for (i = 0, len = element.examples.length; i < len; i++) {
-                    thisFunction.examples.push(element.examples[i]);
+                    thisFunction.examples.push(element.examples[i])
                 }
             }
 
@@ -94,13 +90,12 @@ function graft(parentNode, childNodes, parentLongname) {
                         'default': hasOwnProp.call(element.params[i], 'defaultvalue') ? element.params[i].defaultvalue : '',
                         'optional': typeof element.params[i].optional === 'boolean'? element.params[i].optional : '',
                         'nullable': typeof element.params[i].nullable === 'boolean'? element.params[i].nullable : ''
-                    });
+                    })
                 }
             }
-        }
-        else if (element.kind === 'member') {
+        } else if (element.kind === 'member') {
             if (!parentNode.properties) {
-                parentNode.properties = [];
+                parentNode.properties = []
             }
             parentNode.properties.push({
                 'name': element.name,
@@ -108,12 +103,10 @@ function graft(parentNode, childNodes, parentLongname) {
                 'virtual': Boolean(element.virtual),
                 'description': element.description || '',
                 'type': element.type? (element.type.length === 1? element.type[0] : element.type) : ''
-            });
-        }
-
-        else if (element.kind === 'event') {
+            })
+        } else if (element.kind === 'event') {
             if (!parentNode.events) {
-                parentNode.events = [];
+                parentNode.events = []
             }
 
             thisEvent = {
@@ -123,20 +116,20 @@ function graft(parentNode, childNodes, parentLongname) {
                 'description': element.description || '',
                 'parameters': [],
                 'examples': []
-            };
+            }
 
-            parentNode.events.push(thisEvent);
+            parentNode.events.push(thisEvent)
 
             if (element.returns) {
                 thisEvent.returns = {
                     'type': element.returns.type ? (element.returns.type.names.length === 1 ? element.returns.type.names[0] : element.returns.type.names) : '',
                     'description': element.returns.description || ''
-                };
+                }
             }
 
             if (element.examples) {
                 for (i = 0, len = element.examples.length; i < len; i++) {
-                    thisEvent.examples.push(element.examples[i]);
+                    thisEvent.examples.push(element.examples[i])
                 }
             }
 
@@ -149,18 +142,17 @@ function graft(parentNode, childNodes, parentLongname) {
                         'default': hasOwnProp.call(element.params[i], 'defaultvalue') ? element.params[i].defaultvalue : '',
                         'optional': typeof element.params[i].optional === 'boolean'? element.params[i].optional : '',
                         'nullable': typeof element.params[i].nullable === 'boolean'? element.params[i].nullable : ''
-                    });
+                    })
                 }
             }
-        }
-        else if (element.kind === 'class') {
+        } else if (element.kind === 'class') {
             if (!parentNode.classes) {
-                parentNode.classes = [];
+                parentNode.classes = []
             }
 
             thisClass = {
                 'name': element.name,
-                'namespace': parentNode.name?(parentNode.namespace?parentNode.namespace+".":"")+parentNode.name:"",
+                'namespace': parentNode.name?(parentNode.namespace?parentNode.namespace+'.':'')+parentNode.name:'',
                 'description': element.classdesc || '',
                 'extends': element.augments || [],
                 'access': element.access || '',
@@ -174,13 +166,13 @@ function graft(parentNode, childNodes, parentLongname) {
                     ],
                     'examples': []
                 }
-            };
+            }
 
-            parentNode.classes.push(thisClass);
+            parentNode.classes.push(thisClass)
 
             if (element.examples) {
                 for (i = 0, len = element.examples.length; i < len; i++) {
-                    thisClass.constructor.examples.push(element.examples[i]);
+                    thisClass.constructor.examples.push(element.examples[i])
                 }
             }
 
@@ -193,23 +185,22 @@ function graft(parentNode, childNodes, parentLongname) {
                         'default': hasOwnProp.call(element.params[i], 'defaultvalue') ? element.params[i].defaultvalue : '',
                         'optional': typeof element.params[i].optional === 'boolean'? element.params[i].optional : '',
                         'nullable': typeof element.params[i].nullable === 'boolean'? element.params[i].nullable : ''
-                    });
+                    })
                 }
             }
 
-            graft(thisClass, childNodes, element.longname);
+            graft(thisClass, childNodes, element.longname)
        }
-    });
+    })
 }
 
-
-function writeRouter(namespaces){
+function writeRouter (namespaces) {
   const fs = require('fs')
 
   let contents = fs.readFileSync('../examples/examples.json')
   let examples = JSON.parse(contents)
 
-  const stream = fs.createWriteStream("./src/router/index.js")
+  const stream = fs.createWriteStream('./src/router/index.js')
 
   stream.write('import Vue from \'vue\'\n')
   stream.write('import VueRouter from \'vue-router\'\n\n')
@@ -218,7 +209,7 @@ function writeRouter(namespaces){
   stream.write('const routes = [\n')
   stream.write('  {\n')
   stream.write('    path: \'/\',\n')
-  stream.write('    component: () => import(/* webpackChunkName: "home" */ \'../views/api.vue\')\n')
+  stream.write('    redirect: \'/api/draw2d\'\n')
   stream.write('  },\n')
   stream.write('  {\n')
   stream.write('    path: \'/api\',\n')
@@ -227,21 +218,20 @@ function writeRouter(namespaces){
   namespaces.forEach((namespace, idx, array) => {
     let last = (idx === array.length - 1)
     let path = `/api/${namespace.name.toLowerCase()}`
-    let component = path.replace('/','').split("/").join("_")
-    if(namespace.namespaces) {
-      namespace.namespaces.forEach( (n, idx, array) => dumpRoutes(n, stream, '      ', (idx === array.length - 1), path, 'package'))
+    let component = path.replace('/', '').split('/').join('_')
+    if (namespace.namespaces) {
+      namespace.namespaces.forEach((n, idx, array) => dumpRoutes(n, stream, '      ', (idx === array.length - 1), path, 'package'))
     }
-    if(namespace.classes){
-      namespace.classes.forEach( (clz, idx, array) => dumpRoutes(clz, stream, '      ', (idx === array.length - 1), path, 'clazz'))
+    if (namespace.classes) {
+      namespace.classes.forEach((clz, idx, array) => dumpRoutes(clz, stream, '      ', (idx === array.length - 1), path, 'clazz'))
     }
     stream.write('      {\n')
     stream.write(`        path: '${path}',\n`)
     stream.write(`        props: { className: '${namespace.name}' },\n`)
     stream.write(`        component: () => import(/* webpackChunkName: "${component}" */ '../views/package.vue')\n`)
-    if(!last){
+    if (!last) {
       stream.write('      },\n')
-    }
-    else{
+    } else {
       stream.write('      }\n')
     }
   })
@@ -251,25 +241,24 @@ function writeRouter(namespaces){
   stream.write('    path: \'/examples\',\n')
   stream.write('    component: () => import(/* webpackChunkName: "examples" */ \'../views/examples.vue\'),\n')
   stream.write('    children: [\n')
-  examples.forEach( (section, idx, array) => {
-    section.data = {path: '/examples/section'+idx }
+  examples.forEach((section, idx, array) => {
+    section.data = { path: '/examples/section'+idx }
     stream.write('      {\n')
     stream.write(`        path: '/examples/section${idx}',\n`)
     stream.write(`        props: { index: ${idx} },\n`)
     stream.write(`        component: () => import(/* webpackChunkName: "example_section${idx}" */ '../views/example_section.vue')\n`)
     stream.write('      },\n')
   })
-  examples.forEach( (section, idx, array) => {
-    section.children.forEach( (example, idx2, array2) => {
-      example.data = {path: '/examples/'+example.name }
+  examples.forEach((section, idx, array) => {
+    section.children.forEach((example, idx2, array2) => {
+      example.data = { path: '/examples/'+example.name }
       stream.write('      {\n')
       stream.write(`        path: '${example.data.path}',\n`)
       stream.write(`        props: { section: ${idx}, example: ${idx2} },\n`)
       stream.write(`        component: () => import(/* webpackChunkName: "example_${example.name}" */ '../views/example.vue')\n`)
       if ((idx === array.length - 1) && (idx2 === array2.length - 1)) {
         stream.write('      }\n')
-      }
-      else {
+      } else {
         stream.write('      },\n')
       }
     })
@@ -285,21 +274,20 @@ function writeRouter(namespaces){
     let path = `/api/${namespace.name.toLowerCase()}`
     stream.write('  {\n')
     stream.write(`    data: { path: '${path}' },\n`)
-    if(namespace.namespaces) {
+    if (namespace.namespaces) {
       stream.write(`    text: '${namespace.name}',\n`)
       stream.write('    children: [\n')
-      namespace.namespaces.forEach( (n, idx, array) => dumpTree(n, stream, '      ', (idx === array.length - 1), path))
+      namespace.namespaces.forEach((n, idx, array) => dumpTree(n, stream, '      ', (idx === array.length - 1), path))
       stream.write('    ]\n')
-    }
-    else{
+    } else {
       stream.write(`    text: '${namespace.name}'\n`)
     }
     stream.write('  }\n')
   })
   stream.write(']\n\n')
 
-  stream.write('const examples = ');
-  stream.write(JSON.stringify(examples, undefined, 2).replace(/\'/g,"\\'").replace(/\"/g,"'"))
+  stream.write('const examples = ')
+  stream.write(JSON.stringify(examples, undefined, 2).replace(/'/g, "\\'").replace(/"/g, "'"))
   stream.write('\n\n')
 
   stream.write('const router = new VueRouter({\n')
@@ -314,91 +302,88 @@ function writeRouter(namespaces){
   stream.end()
 }
 
-function dumpTree(namespace, stream, ident, isLastElement, path){
+function dumpTree (namespace, stream, ident, isLastElement, path) {
   path = path +'/'+namespace.name.toLowerCase()
   stream.write(ident+'{\n')
   stream.write(ident+`  data: { path: '${path}' },\n`)
-  if(namespace.namespaces) {
+  if (namespace.namespaces) {
     stream.write(ident+`  text: '${namespace.name}',\n`)
     stream.write(ident+'  children: [\n')
-    namespace.namespaces.forEach( (n, idx, array) => {
+    namespace.namespaces.forEach((n, idx, array) => {
       dumpTree(n, stream, '    ' + ident, (idx === array.length - 1), path)
     })
     stream.write(ident+'  ]\n')
-  }
-  else{
+  } else {
     stream.write(ident+`  text: '${namespace.name}'\n`)
   }
 
-  if(isLastElement){
+  if (isLastElement) {
     stream.write(ident+'}\n')
-  }
-  else{
+  } else {
     stream.write(ident+'},\n')
   }
 }
 
-function dumpRoutes(namespace, stream, ident, isLastElement, path, template){
+function dumpRoutes (namespace, stream, ident, isLastElement, path, template) {
   path = path +'/'+namespace.name.toLowerCase()
-  let component = path.replace('/','').split("/").join("_")
+  let component = path.replace('/', '').split('/').join('_')
   stream.write(ident+'{\n')
   stream.write(ident+`  path: '${path}',\n`)
   stream.write(ident+`  props: { className: '${namespace.namespace}.${namespace.name}' },\n`)
   stream.write(ident+`  component: () => import(/* webpackChunkName: "${component}" */ '../views/${template}.vue')\n`)
   stream.write(ident+'},\n')
-  if(namespace.namespaces) {
-    namespace.namespaces.forEach( (n, idx, array) => {
+  if (namespace.namespaces) {
+    namespace.namespaces.forEach((n, idx, array) => {
       dumpRoutes(n, stream, ident, (idx === array.length - 1), path, 'package')
     })
   }
-  if(namespace.classes) {
-    namespace.classes.forEach( (n, idx, array) => {
+  if (namespace.classes) {
+    namespace.classes.forEach((n, idx, array) => {
       dumpRoutes(n, stream, ident, (idx === array.length - 1), path, 'clazz')
     })
   }
 }
 
-function dumpClasses(data){
-  const fs = require('fs');
-  if(data.classes) {
+function dumpClasses (data) {
+  const fs = require('fs')
+  if (data.classes) {
     data.classes.forEach(clazz => {
-      let pathName = './public/data/' + clazz.namespace+"."+clazz.name + '.json'
-      if( clazz.namespace.length==0){
+      let pathName = './public/data/' + clazz.namespace+ '.' + clazz.name + '.json'
+      if (clazz.namespace.length === 0) {
         pathName = './public/data/' + clazz.name + '.json'
       }
-      const stream = fs.createWriteStream(pathName);
-      stream.once('open', function(fd) {
+      const stream = fs.createWriteStream(pathName)
+      stream.once('open', function (fd) {
         stream.write(JSON.stringify(clazz, undefined, 2))
-        stream.end();
-      }, () => {});
+        stream.end()
+      }, () => {})
     })
   }
-  if(data.namespaces) {
+  if (data.namespaces) {
     data.namespaces.forEach(dumpClasses)
   }
 }
 
-function dumpNamespaces(data){
-  const fs = require('fs');
-  if(data.namespaces) {
+function dumpNamespaces (data) {
+  const fs = require('fs')
+  if (data.namespaces) {
     data.namespaces.forEach(ns => {
-      let pathName = './public/data/' + ns.namespace+"."+ns.name + '.json'
-      if( ns.namespace.length==0){
+      let pathName = './public/data/' + ns.namespace+'.'+ns.name + '.json'
+      if (ns.namespace.length ===0) {
         pathName = './public/data/' + ns.name + '.json'
       }
-      const stream = fs.createWriteStream(pathName);
-      stream.once('open', function(fd) {
+      const stream = fs.createWriteStream(pathName)
+      stream.once('open', function (fd) {
         let nss = ns.namespaces
-        if(ns.namespaces) {
-          ns.namespaces = ns.namespaces.map(n => { return { name: n.name, namespace: n.namespace} })
-        }
-        else{
+        if (ns.namespaces) {
+          ns.namespaces = ns.namespaces.map(n => { return { name: n.name, namespace: n.namespace } })
+        } else {
           ns.namespaces = []
         }
         stream.write(JSON.stringify(ns, undefined, 2))
-        stream.end();
+        stream.end()
         ns.namespaces = nss
-      }, () => {});
+      }, () => {})
     })
     data.namespaces.forEach(dumpNamespaces)
   }
@@ -408,24 +393,24 @@ function dumpNamespaces(data){
     @param {TAFFY} data
     @param {object} opts
  */
-exports.publish = (data, {destination, query}) => {
-    let docs;
-    const root = {};
+exports.publish = (data, { destination, query }) => {
+    let docs
+    const root = {}
 
-    data({undocumented: true}).remove();
-    docs = data().get(); // <-- an array of Doclet objects
+    data({ undocumented: true }).remove()
+    docs = data().get() // <-- an array of Doclet objects
 
-    graft(root, docs);
+    graft(root, docs)
 
     writeRouter(root.namespaces)
     dumpClasses(root)
     dumpNamespaces(root)
 
-    const ncp = require('ncp').ncp;
+    const ncp = require('ncp').ncp
     ncp('../examples', './public/examples', function (err) {
       if (err) {
-        return console.error(err);
+        return console.error(err)
       }
-      console.log('done!');
-    });
-};
+      console.log('done!')
+    })
+}

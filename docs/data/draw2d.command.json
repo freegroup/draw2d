@@ -1,7 +1,7 @@
 {
   "name": "command",
   "namespace": "draw2d",
-  "description": "",
+  "description": "<p>The command is what eventually changes the model. Figures are asked for a command for a given request. Commands also help\ndetermine if the interaction is possible. If there is no command, or it is not executable, the UI will indicate that the\ninteraction is not allowed.</p>\n<p>All commands (move, drag&amp;drop, insert, remove,....) are stored on top of a CommandStack and available for undo and redo.\nAn <code>draw2d.Canvas</code> has a single command stack. <strong>Commands must be executed using the command stack rather than directly calling execute.</strong></p>",
   "access": "",
   "virtual": false,
   "classes": [

@@ -1238,7 +1238,7 @@
         },
         {
           "name": "fireEvent",
-          "access": "",
+          "access": "private",
           "virtual": false,
           "deprecated": "",
           "description": "<p>Execute all handlers and behaviors attached to the canvas for the given event type.</p>",
@@ -1313,7 +1313,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>The .off() method removes event handlers that were attached with {@link #on}.<br>\nCalling .off() with no arguments removes all handlers attached to the canvas.<br>\n<br>\nIf a simple event name such as &quot;reset&quot; is provided, all events of that type are removed from the canvas.</p>",
+          "description": "<p>The <code>off()</code> method removes event handlers that were attached with {@link #on}.<br>\nCalling .off() with no arguments removes all handlers attached to the canvas.<br>\n<br>\nIf a simple event name such as &quot;reset&quot; is provided, all events of that type are removed from the canvas.</p>",
           "parameters": [
             {
               "name": "eventOrFunction",

@@ -8470,7 +8470,7 @@ _packages2.default.Configuration = {
         createOutputPort: function createOutputPort(relatedFigure) {
             return new _packages2.default.OutputPort();
         },
-        // @since 5.3.0^
+        // @since 5.3.0
         createHybridPort: function createHybridPort(relatedFigure) {
             return new _packages2.default.HybridPort();
         }

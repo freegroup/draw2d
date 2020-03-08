@@ -6,7 +6,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    component: () => import(/* webpackChunkName: "home" */ '../views/api.vue')
+    redirect: '/api/draw2d'
   },
   {
     path: '/api',
