@@ -8303,7 +8303,7 @@ _packages2.default.Canvas = Class.extend(
    *
    * @param {String} event the event to trigger
    * @param {Object} [args] optional parameters for the triggered event callback
-   *
+   * @private
    * @since 5.0.0
    */
   fireEvent: function fireEvent(event, args) {
@@ -8341,14 +8341,13 @@ _packages2.default.Canvas = Class.extend(
    *     });
    *
    *     canvas.on("select", function(emitter,event){
-   *         if(event.figure!==null){
-   *             alert("figure selected");
-   *         }
-   *         else{
-   *             alert("selection cleared");
-   *         }
+   *        alert("figure selected");
    *     });
    *
+   *     canvas.on("unselect", function(emitter,event){
+   *        alert("figure unselected");
+   *     });
+   * 
    * @param {String}   event One or more space-separated event types
    * @param {Function} callback A function to execute when the event is triggered.
    * @param {draw2d.Canvas} callback.emitter the emitter of the event
@@ -8369,7 +8368,7 @@ _packages2.default.Canvas = Class.extend(
 
   /**
    *
-   * The .off() method removes event handlers that were attached with {@link #on}.<br>
+   * The `off()` method removes event handlers that were attached with {@link #on}.<br>
    * Calling .off() with no arguments removes all handlers attached to the canvas.<br>
    * <br>
    * If a simple event name such as "reset" is provided, all events of that type are removed from the canvas.
@@ -16142,7 +16141,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 _packages2.default.command.CommandDelete = _packages2.default.command.Command.extend(
 /** @lends draw2d.command.CommandDelete.prototype */
 {
-
   NAME: "draw2d.command.CommandDelete",
 
   /**
@@ -16505,7 +16503,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 _packages2.default.command.CommandMove = _packages2.default.command.Command.extend(
 /** @lends draw2d.command.CommandMove.prototype */
 {
-
   NAME: "draw2d.command.CommandMove",
 
   /**
@@ -23874,6 +23871,7 @@ _packages2.default.layout.connection.MazeConnectionRouter = _packages2.default.l
    *
    * @param conn
    * @returns {PF.Grid}
+   * @private
    */
   generateNoGoGrid: function generateNoGoGrid(conn, fromPt, fromDir, toPt, toDir) {
     var shift = this.useShift;
@@ -24874,7 +24872,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 _packages2.default.layout.connection.SketchConnectionRouter = _packages2.default.layout.connection.MazeConnectionRouter.extend(
 /** @lends draw2d.layout.connection.SketchConnectionRouter.prototype */
 {
-
   NAME: "draw2d.layout.connection.SketchConnectionRouter",
 
   /**
@@ -24900,7 +24897,6 @@ _packages2.default.layout.connection.SketchConnectionRouter = _packages2.default
   onInstall: function onInstall(connection) {
     connection.installEditPolicy(new _packages2.default.policy.line.LineSelectionFeedbackPolicy());
   }
-
 });
 
 /***/ }),
@@ -29206,7 +29202,10 @@ exports.default = {
    * */
   geo: {},
 
-  /** @namespace draw2d.io */
+  /** 
+   * Contains classes to load and save Draw2D files into, or from, a Canvas.
+   * @namespace draw2d.io 
+   **/
   io: {
     /** @namespace draw2d.io.json
      * */
@@ -29244,19 +29243,31 @@ exports.default = {
      * @namespace draw2d.policy.canvas
      * */
     canvas: {},
-    /** @namespace draw2d.policy.connection */
+    /** 
+     * Policies for Connection creation. Like 'ClickPolicy'...creates a connection if you click into the canvas. 
+     * @namespace draw2d.policy.connection 
+     **/
     connection: {},
     /** @namespace draw2d.policy.line */
     line: {},
     /** @namespace draw2d.policy.port */
     port: {},
-    /** @namespace draw2d.policy.figure */
+    /** 
+     * Selection decorations for figures. Movement contrains. Width limitation,...
+     * @namespace draw2d.policy.figure 
+     **/
     figure: {}
   },
 
-  /** @namespace draw2d.shape */
+  /** 
+   * Contains all predefined visual shapes of Draw2D
+   *  
+   * @namespace draw2d.shape 
+   **/
   shape: {
-    /** @namespace draw2d.shape.basic */
+    /** 
+     * @namespace draw2d.shape.basic 
+     **/
     basic: {},
     /** @namespace draw2d.shape.dimetric */
     dimetric: {},
@@ -29286,7 +29297,16 @@ exports.default = {
     widget: {}
   },
 
-  /** @namespace draw2d.command */
+  /** 
+   * The command is what eventually changes the model. Figures are asked for a command for a given request. Commands also help 
+   * determine if the interaction is possible. If there is no command, or it is not executable, the UI will indicate that the 
+   * interaction is not allowed. 
+   * 
+   * All commands (move, drag&drop, insert, remove,....) are stored on top of a CommandStack and available for undo and redo.
+   * An `draw2d.Canvas` has a single command stack. **Commands must be executed using the command stack rather than directly calling execute.**
+   * 
+   * @namespace draw2d.command 
+   **/
   command: {},
 
   /** @namespace draw2d.decoration */
@@ -30180,7 +30200,7 @@ _packages2.default.policy.canvas.CoronaDecorationPolicy = _packages2.default.pol
     this._super(canvas);
     canvas.getFigures().each(function (i, figure) {
       figure.getPorts().each(function (i, p) {
-        return p.setVisible(false);
+        return p.setAlpha(0.0);
       });
     });
   },
@@ -30197,7 +30217,6 @@ _packages2.default.policy.canvas.CoronaDecorationPolicy = _packages2.default.pol
           p.setAlpha(p.__origAlpha);
           delete p.__origAlpha;
         }
-        p.setVisible(true);
       });
     });
   },
@@ -30247,15 +30266,10 @@ _packages2.default.policy.canvas.CoronaDecorationPolicy = _packages2.default.pol
             var dist = figure.getBoundingBox().getDistance(new _packages2.default.geo.Point(x, y));
             var alpha = 1 - 100 / (_this.diameterToBeVisible - _this.diameterToBeFullVisible) * dist / 100.0;
             p.setAlpha(alpha);
-            p.setVisible(true);
           });
         } else {
           figure.getPorts().each(function (i, p) {
-            if (p.__origAlpha) {
-              p.setAlpha(p.__origAlpha);
-              delete p.__origAlpha;
-            }
-            p.setVisible(false);
+            p.setAlpha(0.0);
           });
         }
       }
@@ -39540,9 +39554,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /**
  * @class
  * Oval figure.
- *
- *
- *
  * @example
  *
  *    let arc =  new draw2d.shape.basic.Arc({diameter:150, x:50, y:10, startAngle:0, endAngle:45});

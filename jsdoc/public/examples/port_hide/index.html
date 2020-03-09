@@ -21,8 +21,11 @@ document.addEventListener("DOMContentLoaded",function () {
 
      var canvas = new draw2d.Canvas("gfx_holder");
 
+    canvas.installEditPolicy(new draw2d.policy.canvas.CoronaDecorationPolicy()); 
+
     canvas.add( new CustomFigure({x:100, y:100}));
     canvas.add( new CustomFigure({x:400, y:150}));
+    canvas.add( new CustomFigure({x:600, y:150}));
 
      /////////////////////////////////////////////////////////////////////
      // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
