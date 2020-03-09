@@ -81,7 +81,7 @@ draw2d.policy.canvas.CoronaDecorationPolicy = draw2d.policy.canvas.DecorationPol
   onInstall: function (canvas) {
     this._super(canvas)
     canvas.getFigures().each((i, figure) => {
-      figure.getPorts().each((i, p) => p.setVisible(false))
+      figure.getPorts().each((i, p) => p.setAlpha(0.0))
     })
   },
 
@@ -97,7 +97,6 @@ draw2d.policy.canvas.CoronaDecorationPolicy = draw2d.policy.canvas.DecorationPol
           p.setAlpha(p.__origAlpha)
           delete p.__origAlpha
         }
-        p.setVisible(true)
       })
     })
   },
@@ -147,16 +146,11 @@ draw2d.policy.canvas.CoronaDecorationPolicy = draw2d.policy.canvas.DecorationPol
             let dist = figure.getBoundingBox().getDistance(new draw2d.geo.Point(x, y))
             let alpha = 1 - ((100 / (this.diameterToBeVisible - this.diameterToBeFullVisible)) * dist) / 100.0
             p.setAlpha(alpha)
-            p.setVisible(true)
           })
         }
         else {
           figure.getPorts().each((i, p) => {
-            if (p.__origAlpha) {
-              p.setAlpha(p.__origAlpha)
-              delete p.__origAlpha
-            }
-            p.setVisible(false)
+              p.setAlpha(0.0)
           })
         }
       }
