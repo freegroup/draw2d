@@ -44,17 +44,16 @@ draw2d.policy.canvas.ShowDotEditPolicy = draw2d.policy.canvas.DecorationPolicy.e
     this.dotDistance = dotDistance ? dotDistance : this.DOT_DISTANCE
     this.dotRadius = dotRadius ? dotRadius : this.DOT_RADIUS
     this.dotColor = new draw2d.util.Color(dotColor ? dotColor : this.DOT_COLOR)
+    this.onZoomCallback =(emitterFigure, zoomData) => {
+      this.setGrid(1/zoomData.value)
+    }
   },
-
 
   onInstall: function (canvas) {
     this._super(canvas)
 
     this.oldBg = this.canvas.html.css("background")
     this.setGrid(1/canvas.getZoom())
-    this.onZoomCallback =(emitterFigure, zoomData) => {
-      this.setGrid(1/zoomData.value)
-    }
     canvas.on("zoom", this.onZoomCallback)
   },
 
@@ -64,6 +63,10 @@ draw2d.policy.canvas.ShowDotEditPolicy = draw2d.policy.canvas.DecorationPolicy.e
     canvas.off(this.onZoomCallback)
   },
 
+  /**
+   * @private
+   * @param {Number} zoom 
+   */
   setGrid: function (zoom) {
     let bgColor = "#FFFFFF"
     let dotColor = this.dotColor.rgba()
