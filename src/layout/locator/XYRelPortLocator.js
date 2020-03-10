@@ -37,18 +37,28 @@ draw2d.layout.locator.XYRelPortLocator = draw2d.layout.locator.PortLocator.exten
      * @param {Number} yPercentage the y coordinate in percent of the port relative to the top of the parent
      */
     init: function (attr, setter, getter) {
-      this.x = 0
-      this.y = 0
-
-      this._super(attr,
-        extend({
-          x: this.setX,
-          y: this.setY
-        }, setter),
-        extend({
-          x: this.getX,
-          y: this.getY
-        }, getter))
+      // legacy code handling
+      // new draw2d.layout.locator.XYRelPortLocator(10,30)
+      if(typeof attr ==="number" && typeof setter === "number"){
+        this.x = attr
+        this.y = setter
+        this._super()
+      }
+      // new constructor
+      // new draw2d.layout.locator.XYRelPortLocator({x:10, y:30}})
+      else {
+        this.x = 0
+        this.y = 0
+        this._super(attr,
+          extend({
+            x: this.setX,
+            y: this.setY
+          }, setter),
+          extend({
+            x: this.getX,
+            y: this.getY
+          }, getter))
+      }
     },
 
 
