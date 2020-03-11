@@ -805,8 +805,7 @@ draw2d.Canvas = Class.extend(
      * @since 5.8.0
      **/
     scrollTo: function (top, left) {
-      this.getScrollArea().scrollTop(top)
-      this.getScrollArea().scrollLeft(left)
+      this.getScrollArea().scrollTop(top).scrollLeft(left)
 
       return this
     },

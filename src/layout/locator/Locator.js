@@ -27,6 +27,9 @@ draw2d.layout.locator.Locator = Class.extend(
 
       this.setterWhitelist = extend({}, setter)
       this.getterWhitelist = extend({}, getter)
+      
+      // propagate the attr to the new instance
+      this.attr(attr)
     },
 
     /**
