@@ -7519,8 +7519,7 @@ _packages2.default.Canvas = Class.extend(
    * @since 5.8.0
    **/
   scrollTo: function scrollTo(top, left) {
-    this.getScrollArea().scrollTop(top);
-    this.getScrollArea().scrollLeft(left);
+    this.getScrollArea().scrollTop(top).scrollLeft(left);
 
     return this;
   },
@@ -9818,6 +9817,8 @@ _packages2.default.Figure = Class.extend(
       this.canvas.getSelection().add(this);
     }
 
+    this.fireEvent("select", { figure: this });
+
     return this;
   },
 
@@ -9841,6 +9842,7 @@ _packages2.default.Figure = Class.extend(
       this.canvas.getSelection().remove(this);
     }
 
+    this.fireEvent("unselect", { figure: this });
     return this;
   },
 
@@ -25721,6 +25723,9 @@ _packages2.default.layout.locator.Locator = Class.extend(
 
     this.setterWhitelist = (0, _extend2.default)({}, setter);
     this.getterWhitelist = (0, _extend2.default)({}, getter);
+
+    // propagate the attr to the new instance
+    this.attr(attr);
   },
 
   /**
@@ -40726,12 +40731,21 @@ _packages2.default.shape.basic.Label = _packages2.default.SetFigure.extend(
 
   /**
    *
-   * @param x
-   * @param y
+   * Detect whenever the hands over coordinate is inside the figure.
+   * The default implementation is a simple bounding box test.
+   *
+   * @param {Number} iX
+   * @param {Number} iY
+   * @param {Number} [corona]
+   *
    * @returns {Boolean}
-   * @private
    */
-  hitTest: function hitTest(x, y) {
+  hitTest: function hitTest(x, y, corona) {
+    var boundingBox = this.getBoundingBox();
+    if (typeof corona === "number") {
+      boundingBox.scale(corona, corona);
+    }
+
     // apply a simple bounding box test if the label isn'T rotated
     //
     if (this.rotationAngle === 0) {
@@ -40741,7 +40755,7 @@ _packages2.default.shape.basic.Label = _packages2.default.SetFigure.extend(
     // rotate the box with the current matrix of the
     // shape
     var matrix = this.shape.matrix;
-    var points = this.getBoundingBox().getVertices();
+    var points = boundingBox.getVertices();
     points.each(function (i, point) {
       var x = matrix.x(point.x, point.y);
       var y = matrix.y(point.x, point.y);

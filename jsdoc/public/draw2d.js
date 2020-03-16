@@ -9817,6 +9817,8 @@ _packages2.default.Figure = Class.extend(
       this.canvas.getSelection().add(this);
     }
 
+    this.fireEvent("select", { figure: this });
+
     return this;
   },
 
@@ -9840,6 +9842,7 @@ _packages2.default.Figure = Class.extend(
       this.canvas.getSelection().remove(this);
     }
 
+    this.fireEvent("unselect", { figure: this });
     return this;
   },
 
@@ -40728,12 +40731,21 @@ _packages2.default.shape.basic.Label = _packages2.default.SetFigure.extend(
 
   /**
    *
-   * @param x
-   * @param y
+   * Detect whenever the hands over coordinate is inside the figure.
+   * The default implementation is a simple bounding box test.
+   *
+   * @param {Number} iX
+   * @param {Number} iY
+   * @param {Number} [corona]
+   *
    * @returns {Boolean}
-   * @private
    */
-  hitTest: function hitTest(x, y) {
+  hitTest: function hitTest(x, y, corona) {
+    var boundingBox = this.getBoundingBox();
+    if (typeof corona === "number") {
+      boundingBox.scale(corona, corona);
+    }
+
     // apply a simple bounding box test if the label isn'T rotated
     //
     if (this.rotationAngle === 0) {
@@ -40743,7 +40755,7 @@ _packages2.default.shape.basic.Label = _packages2.default.SetFigure.extend(
     // rotate the box with the current matrix of the
     // shape
     var matrix = this.shape.matrix;
-    var points = this.getBoundingBox().getVertices();
+    var points = boundingBox.getVertices();
     points.each(function (i, point) {
       var x = matrix.x(point.x, point.y);
       var y = matrix.y(point.x, point.y);

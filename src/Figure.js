@@ -401,6 +401,8 @@ draw2d.Figure = Class.extend(
       this.canvas.getSelection().add(this)
     }
 
+    this.fireEvent("select", {figure: this})
+
     return this
   },
 
@@ -424,6 +426,7 @@ draw2d.Figure = Class.extend(
       this.canvas.getSelection().remove(this)
     }
 
+    this.fireEvent("unselect", {figure: this})
     return this
   },
 
