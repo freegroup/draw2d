@@ -1373,7 +1373,7 @@ draw2d.Canvas = Class.extend(
       array = array.filter((e) => e.i !== -1);
       array = array.sort((a, b) => b.i - a.i)
 
-      //console.log(array)
+
       if (array.length > 0) {
         result = array[0].f
       }
