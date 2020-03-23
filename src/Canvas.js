@@ -421,11 +421,6 @@ draw2d.Canvas = Class.extend(
       this.linesToRepaintAfterDragDrop = new draw2d.util.ArrayList()
       this.lineIntersections = new draw2d.util.ArrayList()
 
-      // Inform all listener that the selection has been cleanup. Normally this will be done
-      // by the edit policies of the canvas..but exceptional this is done in the clear method as well -
-      // Design flaw.
-      this.fireEvent("select", {figure: null})
-
       return this
     },
 

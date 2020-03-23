@@ -40741,15 +40741,16 @@ _packages2.default.shape.basic.Label = _packages2.default.SetFigure.extend(
    * @returns {Boolean}
    */
   hitTest: function hitTest(x, y, corona) {
-    var boundingBox = this.getBoundingBox();
-    if (typeof corona === "number") {
-      boundingBox.scale(corona, corona);
-    }
 
     // apply a simple bounding box test if the label isn'T rotated
     //
     if (this.rotationAngle === 0) {
-      return this._super(x, y);
+      return this._super(x, y, corona);
+    }
+
+    var boundingBox = this.getBoundingBox();
+    if (typeof corona === "number") {
+      boundingBox.scale(corona, corona);
     }
 
     // rotate the box with the current matrix of the

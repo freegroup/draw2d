@@ -7,6 +7,7 @@ import draw2d from '../../packages'
  * NOT FOR PRODUCTIVE
  *
  * Checkout [Wikipedia PERT][1] for more information.
+ * [1] http://en.wikipedia.org/wiki/Program_Evaluation_and_Review_Technique
  *
  * Double click on the Task name or the top middle number to change the value.
  *
@@ -17,7 +18,8 @@ import draw2d from '../../packages'
  *    canvas.add( new draw2d.shape.pert.Activity(),80,130);
  *    canvas.add( new draw2d.shape.pert.Activity(),180,50);
  *
- * [1] http://en.wikipedia.org/wiki/Program_Evaluation_and_Review_Technique
+ *
+ *
  *
  * @extends draw2d.shape.layout.VerticalLayout
  */

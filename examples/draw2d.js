@@ -7519,8 +7519,7 @@ _packages2.default.Canvas = Class.extend(
    * @since 5.8.0
    **/
   scrollTo: function scrollTo(top, left) {
-    this.getScrollArea().scrollTop(top);
-    this.getScrollArea().scrollLeft(left);
+    this.getScrollArea().scrollTop(top).scrollLeft(left);
 
     return this;
   },
@@ -8075,7 +8074,6 @@ _packages2.default.Canvas = Class.extend(
       return b.i - a.i;
     });
 
-    //console.log(array)
     if (array.length > 0) {
       result = array[0].f;
     }
@@ -9818,6 +9816,8 @@ _packages2.default.Figure = Class.extend(
       this.canvas.getSelection().add(this);
     }
 
+    this.fireEvent("select", { figure: this });
+
     return this;
   },
 
@@ -9841,6 +9841,7 @@ _packages2.default.Figure = Class.extend(
       this.canvas.getSelection().remove(this);
     }
 
+    this.fireEvent("unselect", { figure: this });
     return this;
   },
 
@@ -25721,6 +25722,9 @@ _packages2.default.layout.locator.Locator = Class.extend(
 
     this.setterWhitelist = (0, _extend2.default)({}, setter);
     this.getterWhitelist = (0, _extend2.default)({}, getter);
+
+    // propagate the attr to the new instance
+    this.attr(attr);
   },
 
   /**
@@ -26782,16 +26786,26 @@ _packages2.default.layout.locator.XYRelPortLocator = _packages2.default.layout.l
    * @param {Number} yPercentage the y coordinate in percent of the port relative to the top of the parent
    */
   init: function init(attr, setter, getter) {
-    this.x = 0;
-    this.y = 0;
-
-    this._super(attr, (0, _extend2.default)({
-      x: this.setX,
-      y: this.setY
-    }, setter), (0, _extend2.default)({
-      x: this.getX,
-      y: this.getY
-    }, getter));
+    // legacy code handling
+    // new draw2d.layout.locator.XYRelPortLocator(10,30)
+    if (typeof attr === "number" && typeof setter === "number") {
+      this.x = attr;
+      this.y = setter;
+      this._super();
+    }
+    // new constructor
+    // new draw2d.layout.locator.XYRelPortLocator({x:10, y:30}})
+    else {
+        this.x = 0;
+        this.y = 0;
+        this._super(attr, (0, _extend2.default)({
+          x: this.setX,
+          y: this.setY
+        }, setter), (0, _extend2.default)({
+          x: this.getX,
+          y: this.getY
+        }, getter));
+      }
   },
 
   /**
@@ -40716,22 +40730,32 @@ _packages2.default.shape.basic.Label = _packages2.default.SetFigure.extend(
 
   /**
    *
-   * @param x
-   * @param y
+   * Detect whenever the hands over coordinate is inside the figure.
+   * The default implementation is a simple bounding box test.
+   *
+   * @param {Number} iX
+   * @param {Number} iY
+   * @param {Number} [corona]
+   *
    * @returns {Boolean}
-   * @private
    */
-  hitTest: function hitTest(x, y) {
+  hitTest: function hitTest(x, y, corona) {
+
     // apply a simple bounding box test if the label isn'T rotated
     //
     if (this.rotationAngle === 0) {
-      return this._super(x, y);
+      return this._super(x, y, corona);
+    }
+
+    var boundingBox = this.getBoundingBox();
+    if (typeof corona === "number") {
+      boundingBox.scale(corona, corona);
     }
 
     // rotate the box with the current matrix of the
     // shape
     var matrix = this.shape.matrix;
-    var points = this.getBoundingBox().getVertices();
+    var points = boundingBox.getVertices();
     points.each(function (i, point) {
       var x = matrix.x(point.x, point.y);
       var y = matrix.y(point.x, point.y);

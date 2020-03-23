@@ -8074,7 +8074,6 @@ _packages2.default.Canvas = Class.extend(
       return b.i - a.i;
     });
 
-    //console.log(array)
     if (array.length > 0) {
       result = array[0].f;
     }
