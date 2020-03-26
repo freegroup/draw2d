@@ -2654,7 +2654,7 @@ draw2d.Figure = Class.extend(
    * @experimental
    */
   clone: function (cloneMetaData) {
-    cloneMetaData = extend({exludeChildren: false}, cloneMetaData)
+    cloneMetaData = extend({excludeChildren: false}, cloneMetaData)
 
     let clone = eval("new " + this.NAME + "();")
     let initialId = clone.id
@@ -2665,7 +2665,7 @@ draw2d.Figure = Class.extend(
 
     // add all decorations to the memento
     //
-    if (cloneMetaData.exludeChildren === false) {
+    if (cloneMetaData.excludeChildren === false) {
       clone.resetChildren()
       this.children.each( (i, entry) =>{
         let child = entry.figure.clone()
