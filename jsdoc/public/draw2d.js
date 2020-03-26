@@ -7137,11 +7137,6 @@ _packages2.default.Canvas = Class.extend(
     this.linesToRepaintAfterDragDrop = new _packages2.default.util.ArrayList();
     this.lineIntersections = new _packages2.default.util.ArrayList();
 
-    // Inform all listener that the selection has been cleanup. Normally this will be done
-    // by the edit policies of the canvas..but exceptional this is done in the clear method as well -
-    // Design flaw.
-    this.fireEvent("select", { figure: null });
-
     return this;
   },
 
@@ -61819,6 +61814,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * NOT FOR PRODUCTIVE
  *
  * Checkout [Wikipedia PERT][1] for more information.
+ * [1] http://en.wikipedia.org/wiki/Program_Evaluation_and_Review_Technique
  *
  * Double click on the Task name or the top middle number to change the value.
  *
@@ -61829,7 +61825,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  *    canvas.add( new draw2d.shape.pert.Activity(),80,130);
  *    canvas.add( new draw2d.shape.pert.Activity(),180,50);
  *
- * [1] http://en.wikipedia.org/wiki/Program_Evaluation_and_Review_Technique
+ *
+ *
  *
  * @extends draw2d.shape.layout.VerticalLayout
  */
