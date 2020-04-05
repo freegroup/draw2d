@@ -238,7 +238,7 @@ draw2d.Canvas = Class.extend(
         }
       })
 
-      this.html.bind("mousedown touchstart", function (event) {
+      this.html.bind("mousedown", function (event) {
         try {
           let pos = null
           switch (event.which) {
@@ -268,7 +268,6 @@ draw2d.Canvas = Class.extend(
               pos = _this.fromDocumentToCanvasCoordinate(event.clientX, event.clientY)
               _this.onRightMouseDown(pos.x, pos.y, event.shiftKey, event.ctrlKey)
               return false
-              break
             case 2:
               //Middle mouse button pressed
               break
@@ -1334,8 +1333,8 @@ draw2d.Canvas = Class.extend(
 
       let figureResult = result
       let childResult = null
-      let lineResult = null
-      result = null;
+      let lineResult = this.getBestLine(x, y, blacklist, whitelist)
+      result = null
 
 
       // Check the children of the lines as well
@@ -1353,9 +1352,6 @@ draw2d.Canvas = Class.extend(
           break
         }
       }
-
-
-      lineResult = this.getBestLine(x, y, blacklist, whitelist)
 
       let figureIndex = figureResult !== null ? $(figureResult.shape.node).index() : -1
       let childIndex = childResult !== null ? $(childResult.shape.node).index() : -1

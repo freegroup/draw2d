@@ -6956,7 +6956,7 @@ _packages2.default.Canvas = Class.extend(
       }
     });
 
-    this.html.bind("mousedown touchstart", function (event) {
+    this.html.bind("mousedown", function (event) {
       try {
         var pos = null;
         switch (event.which) {
@@ -6987,7 +6987,6 @@ _packages2.default.Canvas = Class.extend(
             pos = _this.fromDocumentToCanvasCoordinate(event.clientX, event.clientY);
             _this.onRightMouseDown(pos.x, pos.y, event.shiftKey, event.ctrlKey);
             return false;
-            break;
           case 2:
             //Middle mouse button pressed
             break;
@@ -8037,7 +8036,7 @@ _packages2.default.Canvas = Class.extend(
 
     var figureResult = result;
     var childResult = null;
-    var lineResult = null;
+    var lineResult = this.getBestLine(x, y, blacklist, whitelist);
     result = null;
 
     // Check the children of the lines as well
@@ -8055,8 +8054,6 @@ _packages2.default.Canvas = Class.extend(
         break;
       }
     }
-
-    lineResult = this.getBestLine(x, y, blacklist, whitelist);
 
     var figureIndex = figureResult !== null ? $(figureResult.shape.node).index() : -1;
     var childIndex = childResult !== null ? $(childResult.shape.node).index() : -1;
@@ -12007,7 +12004,7 @@ _packages2.default.Figure = Class.extend(
    * @experimental
    */
   clone: function clone(cloneMetaData) {
-    cloneMetaData = (0, _extend2.default)({ exludeChildren: false }, cloneMetaData);
+    cloneMetaData = (0, _extend2.default)({ excludeChildren: false }, cloneMetaData);
 
     var clone = eval("new " + this.NAME + "();");
     var initialId = clone.id;
@@ -12018,7 +12015,7 @@ _packages2.default.Figure = Class.extend(
 
     // add all decorations to the memento
     //
-    if (cloneMetaData.exludeChildren === false) {
+    if (cloneMetaData.excludeChildren === false) {
       clone.resetChildren();
       this.children.each(function (i, entry) {
         var child = entry.figure.clone();
