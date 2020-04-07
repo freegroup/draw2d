@@ -1,4 +1,5 @@
 import draw2d from '../../packages'
+import resolvePath from 'object-resolve-path'
 
 /**
  * @class
@@ -143,7 +144,8 @@ draw2d.io.json.Reader = draw2d.io.Reader.extend(
      * @returns {draw2d.Figure}
      */
     createFigureFromType: function (type) {
-      return eval("new " + type + "()");
+	let classType = resolvePath({"draw2d": draw2d},type)
+    return new classType()
     },
 
     /**
