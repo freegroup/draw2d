@@ -588,7 +588,7 @@ draw2d.Canvas = Class.extend(
      *         alert("canvas zoomed to:"+zoomData.value);
      *     });
      *
-     * @param {Number} zoomFactor new zoom factor.
+     * @param {Number} zoomFactor new zoom factor. range [0.001..10]. 1.0 is no zoom.
      * @param {Boolean} [animated] set it to true for smooth zoom in/out
      */
     setZoom: function (zoomFactor, animated) {

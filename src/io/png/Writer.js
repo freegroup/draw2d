@@ -10,7 +10,7 @@ const canvg = require('canvg-browser')
  *    // example how to create a PNG image and set an
  *    // image src attribute.
  *    //
- *    var writer = new draw2d.io.png.Writer();
+ *    let writer = new draw2d.io.png.Writer();
  *    writer.marshal(canvas, function(png){
  *        $("#preview").attr("src",png);
  *    });
@@ -51,14 +51,15 @@ draw2d.io.png.Writer = draw2d.io.Writer.extend(
       }
 
 
-      var svg = ""
+      let svg = ""
+      let canvasState = false
 
-      // the png.Writer can create Snapshots of a singel figure too.
+      // the png.Writer can create Snapshots of a single figure too.
       // Didn't work in IE <10
       // @status beta
       // @since 5.5.0
       if (canvas instanceof draw2d.Figure) {
-        var origPos = canvas.getPosition()
+        let origPos = canvas.getPosition()
         canvas.setPosition(1, 1)
         svg = "<svg xmlns:xlink=\"http://www.w3.org/1999/xlink\" >"
           + canvas.shape.node.outerHTML
@@ -70,6 +71,12 @@ draw2d.io.png.Writer = draw2d.io.Writer.extend(
       // create a snapshot of a complete canvas
       //
       else {
+        canvasState = {
+          zoom: canvas.getZoom(),
+          scrollLeft: canvas.getScrollLeft(),
+          scrollTop: canvas.getScrollTop(),
+        }
+        canvas.setZoom(1.0)
         canvas.hideDecoration()
         svg = canvas.getHtmlContainer().html().replace(/>\s+/g, ">").replace(/\s+</g, "<")
 
@@ -81,7 +88,7 @@ draw2d.io.png.Writer = draw2d.io.Writer.extend(
       }
 
       // required for IE9 support.
-      // The following table contains ready-to-use conditions to detec IE Browser versions
+      // The following table contains ready-to-use conditions to detect IE Browser versions
       //
       // IE versions     Condition to check for
       // ------------------------------------------------------------
@@ -106,8 +113,14 @@ draw2d.io.png.Writer = draw2d.io.Writer.extend(
         ignoreAnimation: true,
         renderCallback: function () {
           try {
-            if (canvas instanceof draw2d.Canvas)
+            if (canvas instanceof draw2d.Canvas) {
+              if(canvasState) {
+                canvas.setZoom(canvasState.zoom)
+                canvas.setScrollLeft(canvasState.scrollLeft)
+                canvas.setScrollTop(canvasState.scrollTop)
+              }
               canvas.showDecoration();
+            }
 
             if (typeof cropBoundingBox !== "undefined") {
               let sourceX = cropBoundingBox.x;
