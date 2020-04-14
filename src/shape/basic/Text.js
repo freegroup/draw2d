@@ -148,7 +148,7 @@ draw2d.shape.basic.Text = draw2d.shape.basic.Label.extend(
           }
           s.push(w)
         }
-        // set the wrapped text and get the resulted boudning box
+        // set the wrapped text and get the resulted bounding box
         //
         svgText.attr({text: s.join("")})
         let bbox = svgText.getBBox(true)

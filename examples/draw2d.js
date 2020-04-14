@@ -6956,7 +6956,7 @@ _packages2.default.Canvas = Class.extend(
       }
     });
 
-    this.html.bind("mousedown touchstart", function (event) {
+    this.html.bind("mousedown", function (event) {
       try {
         var pos = null;
         switch (event.which) {
@@ -6987,7 +6987,6 @@ _packages2.default.Canvas = Class.extend(
             pos = _this.fromDocumentToCanvasCoordinate(event.clientX, event.clientY);
             _this.onRightMouseDown(pos.x, pos.y, event.shiftKey, event.ctrlKey);
             return false;
-            break;
           case 2:
             //Middle mouse button pressed
             break;
@@ -7309,7 +7308,7 @@ _packages2.default.Canvas = Class.extend(
    *         alert("canvas zoomed to:"+zoomData.value);
    *     });
    *
-   * @param {Number} zoomFactor new zoom factor.
+   * @param {Number} zoomFactor new zoom factor. range [0.001..10]. 1.0 is no zoom.
    * @param {Boolean} [animated] set it to true for smooth zoom in/out
    */
   setZoom: function setZoom(zoomFactor, animated) {
@@ -7619,7 +7618,7 @@ _packages2.default.Canvas = Class.extend(
     figure.fireEvent("added", { figure: figure, canvas: this });
 
     // ...now we can fire the initial move event
-    figure.fireEvent("move", { figure: figure, dx: 0, dy: 0 });
+    figure.fireEvent("move", { figure: figure, x: figure.getX(), y: figure.getY(), dx: 0, dy: 0 });
 
     // this is only required if the used router requires the crossing information
     // of the connections
@@ -8037,7 +8036,7 @@ _packages2.default.Canvas = Class.extend(
 
     var figureResult = result;
     var childResult = null;
-    var lineResult = null;
+    var lineResult = this.getBestLine(x, y, blacklist, whitelist);
     result = null;
 
     // Check the children of the lines as well
@@ -8055,8 +8054,6 @@ _packages2.default.Canvas = Class.extend(
         break;
       }
     }
-
-    lineResult = this.getBestLine(x, y, blacklist, whitelist);
 
     var figureIndex = figureResult !== null ? $(figureResult.shape.node).index() : -1;
     var childIndex = childResult !== null ? $(childResult.shape.node).index() : -1;
@@ -9441,41 +9438,41 @@ _packages2.default.Figure = Class.extend(
     this.setterWhitelist = (0, _extend2.default)({
       //  id the unique id of the figure
       id: this.setId,
-      //  x the x offset of the figure in relation to the parent figure or canvas 
+      //  x the x offset of the figure in relation to the parent figure or canvas
       x: this.setX,
-      //  y the y offset of the figure in relation to the parent figure or canvas 
+      //  y the y offset of the figure in relation to the parent figure or canvas
       y: this.setY,
-      //  width the new width of the figure. Considering the minWidth of the shape 
+      //  width the new width of the figure. Considering the minWidth of the shape
       width: this.setWidth,
-      //  height the new height of the figure. Considering the minHeight of the shape 
+      //  height the new height of the figure. Considering the minHeight of the shape
       height: this.setHeight,
-      //  boundingBox set the new bounding box of the shape 
+      //  boundingBox set the new bounding box of the shape
       boundingBox: this.setBoundingBox,
-      //   minWidth the new min width of the figure. 
+      //   minWidth the new min width of the figure.
       minWidth: this.setMinWidth,
-      // minHeight the new min height of the figure. 
+      // minHeight the new min height of the figure.
       minHeight: this.setMinHeight,
-      //  cssClass the css class of the shape. can be used to style the shape via CSS3 (SVG only) 
+      //  cssClass the css class of the shape. can be used to style the shape via CSS3 (SVG only)
       cssClass: this.setCssClass,
-      //  userData additional custom data which can be stored by the shape 
+      //  userData additional custom data which can be stored by the shape
       userData: this.setUserData,
-      // draggable drives the dragging behaviour of the shape 
+      // draggable drives the dragging behaviour of the shape
       draggable: this.setDraggable,
-      //  resizeable drives the resizeable behaviour of the shape 
+      //  resizeable drives the resizeable behaviour of the shape
       resizeable: this.setResizeable,
-      //  selectable drives the selectable behaviour of the shape 
+      //  selectable drives the selectable behaviour of the shape
       selectable: this.setSelectable,
-      //  angle the rotation angle of the shape. At the moment only 90 degree increments are possible 
+      //  angle the rotation angle of the shape. At the moment only 90 degree increments are possible
       angle: this.setRotationAngle,
-      //  alpha the the alpha/opacity of the shape. value must be between [0..1] 
+      //  alpha the the alpha/opacity of the shape. value must be between [0..1]
       alpha: this.setAlpha,
-      //  opacity the the alpha/opacity of the shape. value must be between [0..1] 
+      //  opacity the the alpha/opacity of the shape. value must be between [0..1]
       opacity: this.setAlpha,
-      //  glow the glow flag for the shape. The representation of the "glow" depends on the shape 
+      //  glow the glow flag for the shape. The representation of the "glow" depends on the shape
       glow: this.setGlow,
-      //  visible set the visibility flag of the shape 
+      //  visible set the visibility flag of the shape
       visible: this.setVisible,
-      //  keepAspectRatio indicate if the shape should keep the aspect ratio during resize 
+      //  keepAspectRatio indicate if the shape should keep the aspect ratio during resize
       keepAspectRatio: this.setKeepAspectRatio
     }, setter);
 
@@ -9595,7 +9592,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Read or set shape attributes.<br>
    * When no value is given, reads specified attribute from the element.<br>
    * When value is given, sets the attribute to that value.
@@ -9787,7 +9784,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Add the figure to the current selection and propagate this to all edit policies.
    *
    * @param {Boolean} [asPrimarySelection] true if the element should be the primary selection
@@ -9817,7 +9814,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Unselect the figure and propagete this event to all edit policies.
    *
    * @private
@@ -9841,7 +9838,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Returns a function which returns the the figure which must handle the selection handling.
    *
    * @param {Function} [adapter] function which returns the figure which handles the selection handling
@@ -9857,7 +9854,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    *
    * @returns {Function}
    */
@@ -9866,7 +9863,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Returns true if the figure part of the current canvas selection.
    *
    * @since 5.5.6
@@ -9882,7 +9879,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Allows a user to attach (or remove) data to an element, without needing to create a custom figure or shape.
    * The data must be a valid JSON object.
    *
@@ -9901,7 +9898,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Returns any user data set previously on the given figure by setUserData.
    *
    * @since 2.7.2
@@ -9912,7 +9909,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Return the UUID of this element.
    *
    * @returns {String}
@@ -9922,7 +9919,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Set the id of this element.
    *
    *    // Alternatively you can use the attr method:
@@ -9939,7 +9936,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Return the css styling class name of the element.
    *
    *
@@ -9950,7 +9947,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Set the css class of the node.
    *
    *     // Alternatively you can use the attr method:
@@ -9979,7 +9976,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * The method will return true if the class is assigned to the element, even if other classes also are.
    *
    * @param {String} className the class name to check
@@ -9994,7 +9991,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Add a CSS class to the figure.<br>
    * It's important to note that this method does not replace a class. It simply adds the class,
    * appending it to any which may already be assigned to the elements.
@@ -10017,7 +10014,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    *
    * Remove the given css class name from the figure
    *
@@ -10038,7 +10035,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    *
    * Add or remove the given css class name from the figure
    *
@@ -10061,7 +10058,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Set the canvas element of this figures. This can be used to determine whenever an element
    * is added or removed to the canvas.
    *
@@ -10104,7 +10101,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Return the current assigned canvas container.
    *
    * @returns {draw2d.Canvas}
@@ -10114,7 +10111,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Start a timer which calls the onTimer method in the given interval.
    *
    * @param {Number} milliSeconds
@@ -10136,7 +10133,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Stop the internal timer.
    *
    */
@@ -10150,7 +10147,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Callback method for the internal timer handling<br>
    * Inherit classes must override this method if they want use the timer feature.
    *
@@ -10164,7 +10161,7 @@ _packages2.default.Figure = Class.extend(
   onTimer: function onTimer() {},
 
   /**
-   * 
+   *
    * Moves the element so it is the closest to the viewer’s eyes, on top of other elements. Additional
    * the internal model changed as well.
    *
@@ -10228,7 +10225,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Moves the element to the background. Additional
    * the internal model changed as well.
    *
@@ -10268,7 +10265,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Install a new edit policy to the figure. Each editpolicy is able to focus on a single editing
    * task or group of related tasks. This also allows editing behavior to be selectively reused across
    * different figure implementations. Also, behavior can change dynamically, such as when the layouts
@@ -10300,7 +10297,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    *
    * UnInstall the edit policy from the figure. Either the instance itself if found
    * or all kind of the given edit policies.
@@ -10344,7 +10341,7 @@ _packages2.default.Figure = Class.extend(
    *
    *    canvas.add( start);
    *
-   * 
+   *
    * @param {draw2d.Figure} child the figure to add as decoration to the connection.
    * @param {draw2d.layout.locator.Locator} locator the locator for the child.
    * @param {Number} [index] optional index where to insert the figure
@@ -10382,7 +10379,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Remove the child figure from this figure and the canvas
    *
    * @param {draw2d.Figure} child the figure to remove.
@@ -10422,7 +10419,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Return all children/decorations of this shape which has been added with
    * draw2d.Figure.add
    *
@@ -10435,7 +10432,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Remove all children/decorations of this shape
    *
    */
@@ -10450,7 +10447,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * return the current SVG shape element or create it on demand.
    *
    * @protected
@@ -10475,7 +10472,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Get the top level shape element. May the figure has a set of SVG elements. In this case this
    * method must return the top level node.<br>
    * This method is used for the toFront/toBack method to order the nodes in the correct way.
@@ -10488,7 +10485,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Inherited classes must override this method to implement it's own draw functionality.
    *
    * @template
@@ -10499,7 +10496,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * propagate all attributes like color, stroke,... to the shape element
    *
    * @param {Object} [attributes] the style attributes for the SVG shape
@@ -10564,7 +10561,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * apply a transformation to the shape like rotation, translate,..
    *
    * @private
@@ -10575,7 +10572,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Highlight the element or remove the highlighting
    *
    *     // Alternatively you can use the attr method:
@@ -10594,7 +10591,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Allow dragging only when the cursor is over a specific part of the figure.
    * <br>
    * Override this method to specify the bounding box of an element or a draw2d.util.ArrayList
@@ -10613,7 +10610,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Called if the drag and drop action begins. You can return [false] if you
    * want avoid that the figure can be move.
    *
@@ -10674,7 +10671,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Don't call them manually. This will be done by the framework.<br>
    * Will be called if the object are moved via drag and drop.
    * Sub classes can override this method to implement additional stuff. Don't forget to call
@@ -10729,7 +10726,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Called by the framework if the figure returns false for the drag operation. In this
    * case we send a "panning" event - mouseDown + mouseMove. This is very useful for
    * UI-Widget like slider, spinner,...
@@ -10750,7 +10747,7 @@ _packages2.default.Figure = Class.extend(
   onPanning: function onPanning(dx, dy, dx2, dy2, shiftKey, ctrlKey) {},
 
   /**
-   * 
+   *
    * Called by the framework if the panning event of the figures ends. This happens
    * after the mous up event if the panning is active.
    *
@@ -10763,7 +10760,7 @@ _packages2.default.Figure = Class.extend(
   onPanningEnd: function onPanningEnd() {},
 
   /**
-   * 
+   *
    * Will be called after a drag and drop action.<br>
    * Sub classes can override this method to implement additional stuff. Don't forget to call
    * the super implementation via <code>this._super();</code>
@@ -10796,9 +10793,9 @@ _packages2.default.Figure = Class.extend(
       }
     });
 
-    this.fireEvent("move", { figure: this, dx: 0, dy: 0 });
-    this.fireEvent("change:x", { figure: this, dx: 0 });
-    this.fireEvent("change:y", { figure: this, dy: 0 });
+    this.fireEvent("move", { x: this.getX(), y: this.getY(), dx: 0, dy: 0 });
+    this.fireEvent("change:x", { x: this.getX(), dx: 0 });
+    this.fireEvent("change:y", { y: this.getY(), dy: 0 });
 
     // fire an event
     // @since 5.3.3
@@ -10806,7 +10803,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Called by the framework during drag&drop operations if the user drag a figure over this figure
    *
    * @param {draw2d.Figure} draggedFigure The figure which is currently dragging
@@ -10830,7 +10827,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Called by the framework during drag&drop operations if the user drag a figure over this figure
    *
    * @param {draw2d.Figure} draggedFigure The figure which is currently dragging
@@ -10840,7 +10837,7 @@ _packages2.default.Figure = Class.extend(
   onDragEnter: function onDragEnter(draggedFigure) {},
 
   /**
-   * 
+   *
    * Called if the DragDrop object leaving the current hover figure.
    *
    * @param {draw2d.Figure} draggedFigure The figure which is currently dragging
@@ -10849,7 +10846,7 @@ _packages2.default.Figure = Class.extend(
   onDragLeave: function onDragLeave(draggedFigure) {},
 
   /**
-   * 
+   *
    * Called if the user drop this element onto the dropTarget. This event is ONLY fired if the
    * shape return "this" in the {@link draw2d.Figure#onDragEnter} method.
    *
@@ -10864,7 +10861,7 @@ _packages2.default.Figure = Class.extend(
   onDrop: function onDrop(dropTarget, x, y, shiftKey, ctrlKey) {},
 
   /**
-   * 
+   *
    * Called if the user dropped an figure onto this element. This event is ONLY fired if the
    * in the canvas installed {@link draw2d.policy.canvas.DropInterceptorPolicy} allow this.
    *
@@ -10880,7 +10877,7 @@ _packages2.default.Figure = Class.extend(
   onCatch: function onCatch(droppedFigure, x, y, shiftKey, ctrlKey) {},
 
   /**
-   * 
+   *
    * Callback method for the mouse enter event. Usefull for mouse hover-effects.
    * Override this method for your own effects. Don't call them manually.
    *
@@ -10889,7 +10886,7 @@ _packages2.default.Figure = Class.extend(
   onMouseEnter: function onMouseEnter() {},
 
   /**
-   * 
+   *
    * Callback method for the mouse leave event. Useful for mouse hover-effects.
    *
    * @template
@@ -10897,7 +10894,7 @@ _packages2.default.Figure = Class.extend(
   onMouseLeave: function onMouseLeave() {},
 
   /**
-   * 
+   *
    * Called when a user dbl clicks on the element
    *
    *     // Alternatively you can register an event with:
@@ -10911,7 +10908,7 @@ _packages2.default.Figure = Class.extend(
   onDoubleClick: function onDoubleClick() {},
 
   /**
-   * 
+   *
    * Called when a user clicks on the element.
    *
    *     // You can alternatively register an event handler with:
@@ -10925,7 +10922,7 @@ _packages2.default.Figure = Class.extend(
   onClick: function onClick() {},
 
   /**
-   * 
+   *
    * called by the framework if the figure should show the context menu.<br>
    * The strategy to show the context menu depends on the platform. Either looong press or
    * right click with the mouse.
@@ -10943,7 +10940,7 @@ _packages2.default.Figure = Class.extend(
   onContextMenu: function onContextMenu(x, y) {},
 
   /**
-   * 
+   *
    * Set the alpha blending of this figure.
    *
    *     // Alternatively you can use the attr method:
@@ -10972,7 +10969,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Return the alpha blending of the figure
    *
    * @returns {Number} the current alpha blending
@@ -10982,7 +10979,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Set the rotation angle in degree [0..356]<br>
    * <b>Only steps of 90 degree is working well</b>
    * <br>
@@ -11013,7 +11010,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * return the rotation angle of the figure in degree of [0..356].
    *
    * <br>
@@ -11026,7 +11023,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Show/hide the element. The element didn't receive any mouse events (click, dblclick) if you hide the
    * figure.
    *
@@ -11059,7 +11056,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Return true if the figure visible.
    *
    * @returns {Boolean}
@@ -11070,7 +11067,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Guarantee, that the figure width/height will not be distorted. Applicable before calling setDimension().
    * It is false by default.
    *
@@ -11084,7 +11081,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Return the flag if the shape keep the aspect ratio.
    *
    * @since 4.1.0
@@ -11094,7 +11091,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Return the current z-index of the element. Currently this is an expensive method. The index will be calculated
    * all the time. Caching is not implemented at the moment.
    *
@@ -11114,7 +11111,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Set the flag if this object can snap to grid or geometry.
    * A window of dialog should set this flag to false.
    *
@@ -11128,7 +11125,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Returns true if the figure can snap to any helper like a grid, guide, geometrie
    * or something else.
    *
@@ -11147,7 +11144,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Set the hot spot for all snapTo### operations.
    *
    * @param {draw2d.geo.Point} point
@@ -11159,7 +11156,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Set the width of the figure and consider the minWidth attribute
    *
    * @param {Number} width the new width of the figure
@@ -11173,7 +11170,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * The current width of the figure.
    *
    * @type {Number}
@@ -11183,7 +11180,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Set the heigth of the figure and consider the minWidth attribute
    *
    * @param {Number} height the new height of the figure
@@ -11197,7 +11194,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * The current height of the figure.
    *
    * @returns {Number}
@@ -11207,7 +11204,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * This value is relevant for the interactive resize of the figure.
    *
    * @returns {Number} Returns the min. width of this object.
@@ -11217,7 +11214,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Set the minimum width of this figure
    *
    * @param {Number} w
@@ -11233,7 +11230,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * This value is relevant for the interactive resize of the figure.
    *
    * @returns {Number} Returns the min. height of this object.
@@ -11243,7 +11240,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Set the minimum height of the figure.
    *
    * @param {Number} h
@@ -11259,7 +11256,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * the the x-offset related to the parent figure or canvas
    *
    * @param {Number} x the new x offset of the figure
@@ -11267,13 +11264,11 @@ _packages2.default.Figure = Class.extend(
    */
   setX: function setX(x) {
     this.setPosition(parseFloat(x), this.y);
-    this.fireEvent("change:x", { value: this.x });
-
     return this;
   },
 
   /**
-   * 
+   *
    * The x-offset related to the parent figure or canvas.
    *
    * @returns {Number} the x-offset to the parent figure
@@ -11283,7 +11278,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * the the y-offset related to the parent figure or canvas
    *
    * @param {Number} y the new x offset of the figure
@@ -11291,13 +11286,11 @@ _packages2.default.Figure = Class.extend(
    */
   setY: function setY(y) {
     this.setPosition(this.x, parseFloat(y));
-    this.fireEvent("change:y", { value: this.y });
-
     return this;
   },
 
   /**
-   * 
+   *
    * The y-offset related to the parent figure or canvas.
    *
    * @returns {Number} The y-offset to the parent figure.
@@ -11307,7 +11300,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * The x-offset related to the canvas.
    *
    * @returns {Number} the x-offset to the canvas
@@ -11321,7 +11314,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * The y-offset related to the canvas.
    *
    * @returns {Number} The y-offset to the canvas.
@@ -11334,7 +11327,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Returns the absolute y-position of the port.
    *
    * @type {draw2d.geo.Point}
@@ -11344,7 +11337,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Returns the absolute y-position of the port.
    *
    * @returns {draw2d.geo.Rectangle}
@@ -11354,7 +11347,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Set the position of the object.
    *
    *     // Alternatively you can use the attr method:
@@ -11402,7 +11395,12 @@ _packages2.default.Figure = Class.extend(
       }
     });
 
-    var event = { figure: this, dx: this.x - oldPos.x, dy: this.y - oldPos.y };
+    var event = {
+      x: this.x,
+      y: this.y,
+      dx: this.x - oldPos.x,
+      dy: this.y - oldPos.y
+    };
     this.fireEvent("move", event);
     this.fireEvent("change:x", event);
     this.fireEvent("change:y", event);
@@ -11411,7 +11409,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Get the current position of the figure
    *
    * @returns {draw2d.geo.Point}
@@ -11422,7 +11420,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Translate the figure with the given x/y offset.
    *
    * @param {Number} dx The x offset to translate
@@ -11435,7 +11433,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Set the new width and height of the figure.
    *
    *     // Alternatively you can use the attr method:
@@ -11497,7 +11495,7 @@ _packages2.default.Figure = Class.extend(
     this.repaint();
 
     this.fireEvent("resize");
-    this.fireEvent("change:dimension", { value: { height: this.height, width: this.width, old: old } });
+    this.fireEvent("change:dimension", { height: this.height, width: this.width, old: old });
 
     // Update the resize handles if the user change the position of the element via an API call.
     //
@@ -11511,7 +11509,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Set the bounding box of the figure
    *
    *     // Alternatively you can use the attr method:
@@ -11543,7 +11541,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Returns the bounding box of the figure in absolute position to the canvas.
    *
    * @returns {draw2d.geo.Rectangle}
@@ -11553,7 +11551,23 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
+   * Returns the bounding box of the figure in absolute position to the canvas. All child shapes included.
+   * The result BoundingBox spans the parent figured plus all children.
+   *
+   * @returns {draw2d.geo.Rectangle}
+   **/
+  getOuterBoundingBox: function getOuterBoundingBox() {
+    var parentBB = new _packages2.default.geo.Rectangle(this.getAbsoluteX(), this.getAbsoluteY(), this.getWidth(), this.getHeight());
+    this.getChildren().each(function (i, child) {
+      var childBB = child.getOuterBoundingBox();
+      parentBB.merge(childBB);
+    });
+    return parentBB;
+  },
+
+  /**
+   *
    * Detect whenever the hands over coordinate is inside the figure.
    * The default implementation is a simple bounding box test.
    *
@@ -11571,7 +11585,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Switch on/off the drag drop behaviour of this object
    *
    * @param {Boolean} flag The new drag drop indicator
@@ -11583,7 +11597,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Get the Drag drop enable flag
    *
    * @returns {Boolean} The new drag drop indicator
@@ -11598,7 +11612,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Returns the true if the figure can be resized.
    *
    * @returns {Boolean}
@@ -11608,7 +11622,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * You can change the resizeable behaviour of this object. Hands over [false] and
    * the figure has no resizehandles if you select them with the mouse.<br>
    *
@@ -11627,7 +11641,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Indicates whenever the element is selectable by user interaction or API.
    *
    * @returns {Boolean}
@@ -11642,7 +11656,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * You can change the selectable behavior of this object. Hands over [false] and
    * the figure has no selection handles if you try to select them with the mouse.<br>
    *
@@ -11656,7 +11670,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Return true if the object doesn't care about the aspect ratio.
    * You can change the height and width independent.<br>
    *
@@ -11669,7 +11683,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Return false if you avoid that the user can delete your figure.
    * Sub class can override this method.
    *
@@ -11680,7 +11694,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Set the flag if the shape is deleteable.
    *
    * @param {Boolean} flag enable or disable flag for the delete operation
@@ -11693,7 +11707,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Set the parent of this figure.
    * Don't call them manually.
    *
@@ -11715,7 +11729,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Get the parent of this figure.
    *
    * @returns {draw2d.Figure}
@@ -11725,7 +11739,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Check to see if a figure is a descendant of another figure.
    * <br>
    * The contains() method returns true if the figure provided by the argument is a descendant of this figure,
@@ -11749,7 +11763,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Get the top most parent of this figure. This can be an layout figure or parent container
    *
    * @returns {draw2d.Figure}
@@ -11764,7 +11778,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Set the assigned composite of this figure.
    *
    * @param {draw2d.shape.composite.StrongComposite} composite The assigned composite of this figure
@@ -11781,7 +11795,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Get the assigned composite of this figure.
    *
    * @returns {draw2d.shape.composite.StrongComposite}
@@ -11792,7 +11806,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Execute all handlers and behaviors attached to the figure for the given event type.
    *
    *
@@ -11808,10 +11822,12 @@ _packages2.default.Figure = Class.extend(
       }
 
       // avoid recursion
-      if (this._inEvent === true) {
-        return;
+      if (this._inEvent) {
+        if (this._inEvent.figure === this && this._inEvent.event === event) {
+          return;
+        }
       }
-      this._inEvent = true;
+      this._inEvent = { figure: this, event: event };
       var subscribers = this.eventSubscriptions[event];
       for (var i = 0; i < subscribers.length; i++) {
         subscribers[i](this, args);
@@ -11820,7 +11836,7 @@ _packages2.default.Figure = Class.extend(
       console.log(exc);
       throw exc;
     } finally {
-      this._inEvent = false;
+      delete this._inEvent;
 
       // fire a generic change event if an attribute has changed
       // required for some DataBinding frameworks or for the Backbone.Model compatibility
@@ -11832,7 +11848,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Attach an event handler function for one or more events to the figure.
    * To remove events bound with .on(), see {@link #off}.
    *
@@ -11886,7 +11902,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * The .off() method removes event handlers that were attached with {@link #on}.<br>
    * Calling .off() with no arguments removes all handlers attached to the elements.<br>
    * <br>
@@ -11916,7 +11932,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Returns the best figure at the location [x,y]. It is a simple hit test. Keep in mind that only visible objects
    * are returned.
    *
@@ -11954,7 +11970,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Returns the Command to perform the specified Request or null.
    *
    * @param {draw2d.command.CommandType} request describes the Command being requested
@@ -11991,7 +12007,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Clone the figure. <br>
    * You must override and implement the methods <b>getPersistentAttributes</b> and <b>setPersistentAttributes</b> for your custom
    * figures if the have special attributes.
@@ -12035,7 +12051,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Return an objects with all important attributes for XML or JSON serialization
    *
    * @return {Object} all attributes of the figure required for the persistency
@@ -12069,7 +12085,7 @@ _packages2.default.Figure = Class.extend(
   },
 
   /**
-   * 
+   *
    * Read all attributes from the serialized properties and transfer them into the shape.
    *
    * @param {Object} memento
@@ -21116,7 +21132,7 @@ var canvg = __webpack_require__(/*! canvg-browser */ "./node_modules/canvg-brows
  *    // example how to create a PNG image and set an
  *    // image src attribute.
  *    //
- *    var writer = new draw2d.io.png.Writer();
+ *    let writer = new draw2d.io.png.Writer();
  *    writer.marshal(canvas, function(png){
  *        $("#preview").attr("src",png);
  *    });
@@ -21157,8 +21173,9 @@ _packages2.default.io.png.Writer = _packages2.default.io.Writer.extend(
     }
 
     var svg = "";
+    var canvasState = false;
 
-    // the png.Writer can create Snapshots of a singel figure too.
+    // the png.Writer can create Snapshots of a single figure too.
     // Didn't work in IE <10
     // @status beta
     // @since 5.5.0
@@ -21173,6 +21190,12 @@ _packages2.default.io.png.Writer = _packages2.default.io.Writer.extend(
     // create a snapshot of a complete canvas
     //
     else {
+        canvasState = {
+          zoom: canvas.getZoom(),
+          scrollLeft: canvas.getScrollLeft(),
+          scrollTop: canvas.getScrollTop()
+        };
+        canvas.setZoom(1.0);
         canvas.hideDecoration();
         svg = canvas.getHtmlContainer().html().replace(/>\s+/g, ">").replace(/\s+</g, "<");
 
@@ -21184,7 +21207,7 @@ _packages2.default.io.png.Writer = _packages2.default.io.Writer.extend(
       }
 
     // required for IE9 support.
-    // The following table contains ready-to-use conditions to detec IE Browser versions
+    // The following table contains ready-to-use conditions to detect IE Browser versions
     //
     // IE versions     Condition to check for
     // ------------------------------------------------------------
@@ -21209,7 +21232,14 @@ _packages2.default.io.png.Writer = _packages2.default.io.Writer.extend(
       ignoreAnimation: true,
       renderCallback: function renderCallback() {
         try {
-          if (canvas instanceof _packages2.default.Canvas) canvas.showDecoration();
+          if (canvas instanceof _packages2.default.Canvas) {
+            if (canvasState) {
+              canvas.setZoom(canvasState.zoom);
+              canvas.setScrollLeft(canvasState.scrollLeft);
+              canvas.setScrollTop(canvasState.scrollTop);
+            }
+            canvas.showDecoration();
+          }
 
           if (typeof cropBoundingBox !== "undefined") {
             var sourceX = cropBoundingBox.x;
@@ -44430,7 +44460,7 @@ _packages2.default.shape.basic.Text = _packages2.default.shape.basic.Label.exten
         }
         s.push(w);
       }
-      // set the wrapped text and get the resulted boudning box
+      // set the wrapped text and get the resulted bounding box
       //
       svgText.attr({ text: s.join("") });
       var bbox = svgText.getBBox(true);
@@ -64909,105 +64939,6 @@ global.extend = fn;
 
 "use strict";
 
-
-// hacking RaphaelJS to support groups of elements
-//
-(function () {
-    Raphael.fn.group = function (f, g) {
-        var enabled = document.getElementsByTagName("svg").length > 0;
-        if (!enabled) {
-            // return a stub for VML compatibility
-            return {
-                add: function add() {
-                    // intentionally left blank
-                }
-            };
-        }
-        var i;
-        this.svg = "http://www.w3.org/2000/svg";
-        this.defs = document.getElementsByTagName("defs")[f];
-        this.svgcanv = document.getElementsByTagName("svg")[f];
-        this.group = document.createElementNS(this.svg, "g");
-        for (i = 0; i < g.length; i++) {
-            this.group.appendChild(g[i].node);
-        }
-        this.svgcanv.appendChild(this.group);
-        this.group.translate = function (c, a) {
-            this.setAttribute("transform", "translate(" + c + "," + a + ") scale(" + this.getAttr("scale").x + "," + this.getAttr("scale").y + ")");
-        };
-        this.group.rotate = function (c, a, e) {
-            this.setAttribute("transform", "translate(" + this.getAttr("translate").x + "," + this.getAttr("translate").y + ") scale(" + this.getAttr("scale").x + "," + this.getAttr("scale").y + ") rotate(" + c + "," + a + "," + e + ")");
-        };
-        this.group.scale = function (c, a) {
-            this.setAttribute("transform", "scale(" + c + "," + a + ") translate(" + this.getAttr("translate").x + "," + this.getAttr("translate").y + ")");
-        };
-        this.group.push = function (c) {
-            this.appendChild(c.node);
-        };
-        this.group.getAttr = function (c) {
-            this.previous = this.getAttribute("transform") ? this.getAttribute("transform") : "";
-            var a = [],
-                e,
-                h,
-                j;
-            a = this.previous.split(" ");
-            for (i = 0; i < a.length; i++) {
-                if (a[i].substring(0, 1) == "t") {
-                    var d = a[i],
-                        b = [];
-                    b = d.split("(");
-                    d = b[1].substring(0, b[1].length - 1);
-                    b = [];
-                    b = d.split(",");
-                    e = b.length === 0 ? { x: 0, y: 0 } : { x: b[0], y: b[1] };
-                } else {
-                    if (a[i].substring(0, 1) === "r") {
-                        d = a[i];
-                        b = d.split("(");
-                        d = b[1].substring(0, b[1].length - 1);
-                        b = d.split(",");
-                        h = b.length === 0 ? { x: 0, y: 0, z: 0 } : { x: b[0], y: b[1], z: b[2] };
-                    } else {
-                        if (a[i].substring(0, 1) === "s") {
-                            d = a[i];
-                            b = d.split("(");
-                            d = b[1].substring(0, b[1].length - 1);
-                            b = d.split(",");
-                            j = b.length === 0 ? { x: 1, y: 1 } : { x: b[0], y: b[1] };
-                        }
-                    }
-                }
-            }
-            if (typeof e === "undefined") {
-                e = { x: 0, y: 0 };
-            }
-            if (typeof h === "undefined") {
-                h = { x: 0, y: 0, z: 0 };
-            }
-            if (typeof j === "undefined") {
-                j = { x: 1, y: 1 };
-            }
-
-            if (c == "translate") {
-                var k = e;
-            } else {
-                if (c == "rotate") {
-                    k = h;
-                } else {
-                    if (c == "scale") {
-                        k = j;
-                    }
-                }
-            }
-            return k;
-        };
-        this.group.copy = function (el) {
-            this.copy = el.node.cloneNode(true);
-            this.appendChild(this.copy);
-        };
-        return this.group;
-    };
-})();
 
 /**
  * adding support method to check if the node is already visible

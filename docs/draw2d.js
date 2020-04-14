@@ -7308,7 +7308,7 @@ _packages2.default.Canvas = Class.extend(
    *         alert("canvas zoomed to:"+zoomData.value);
    *     });
    *
-   * @param {Number} zoomFactor new zoom factor.
+   * @param {Number} zoomFactor new zoom factor. range [0.001..10]. 1.0 is no zoom.
    * @param {Boolean} [animated] set it to true for smooth zoom in/out
    */
   setZoom: function setZoom(zoomFactor, animated) {
@@ -11552,7 +11552,7 @@ _packages2.default.Figure = Class.extend(
   /**
    *
    * Returns the bounding box of the figure in absolute position to the canvas. All child shapes included.
-   * The result BoundingBox contains the parent figured plus all children
+   * The result BoundingBox spans the parent figured plus all children.
    *
    * @returns {draw2d.geo.Rectangle}
    **/
@@ -11821,10 +11821,12 @@ _packages2.default.Figure = Class.extend(
       }
 
       // avoid recursion
-      if (this._inEvent === true) {
-        return;
+      if (this._inEvent) {
+        if (this._inEvent.figure === this && this._inEvent.event === event) {
+          return;
+        }
       }
-      this._inEvent = true;
+      this._inEvent = { figure: this, event: event };
       var subscribers = this.eventSubscriptions[event];
       for (var i = 0; i < subscribers.length; i++) {
         subscribers[i](this, args);
@@ -11833,7 +11835,7 @@ _packages2.default.Figure = Class.extend(
       console.log(exc);
       throw exc;
     } finally {
-      this._inEvent = false;
+      delete this._inEvent;
 
       // fire a generic change event if an attribute has changed
       // required for some DataBinding frameworks or for the Backbone.Model compatibility
@@ -21129,7 +21131,7 @@ var canvg = __webpack_require__(/*! canvg-browser */ "./node_modules/canvg-brows
  *    // example how to create a PNG image and set an
  *    // image src attribute.
  *    //
- *    var writer = new draw2d.io.png.Writer();
+ *    let writer = new draw2d.io.png.Writer();
  *    writer.marshal(canvas, function(png){
  *        $("#preview").attr("src",png);
  *    });
@@ -21170,8 +21172,9 @@ _packages2.default.io.png.Writer = _packages2.default.io.Writer.extend(
     }
 
     var svg = "";
+    var canvasState = false;
 
-    // the png.Writer can create Snapshots of a singel figure too.
+    // the png.Writer can create Snapshots of a single figure too.
     // Didn't work in IE <10
     // @status beta
     // @since 5.5.0
@@ -21186,6 +21189,12 @@ _packages2.default.io.png.Writer = _packages2.default.io.Writer.extend(
     // create a snapshot of a complete canvas
     //
     else {
+        canvasState = {
+          zoom: canvas.getZoom(),
+          scrollLeft: canvas.getScrollLeft(),
+          scrollTop: canvas.getScrollTop()
+        };
+        canvas.setZoom(1.0);
         canvas.hideDecoration();
         svg = canvas.getHtmlContainer().html().replace(/>\s+/g, ">").replace(/\s+</g, "<");
 
@@ -21197,7 +21206,7 @@ _packages2.default.io.png.Writer = _packages2.default.io.Writer.extend(
       }
 
     // required for IE9 support.
-    // The following table contains ready-to-use conditions to detec IE Browser versions
+    // The following table contains ready-to-use conditions to detect IE Browser versions
     //
     // IE versions     Condition to check for
     // ------------------------------------------------------------
@@ -21222,7 +21231,14 @@ _packages2.default.io.png.Writer = _packages2.default.io.Writer.extend(
       ignoreAnimation: true,
       renderCallback: function renderCallback() {
         try {
-          if (canvas instanceof _packages2.default.Canvas) canvas.showDecoration();
+          if (canvas instanceof _packages2.default.Canvas) {
+            if (canvasState) {
+              canvas.setZoom(canvasState.zoom);
+              canvas.setScrollLeft(canvasState.scrollLeft);
+              canvas.setScrollTop(canvasState.scrollTop);
+            }
+            canvas.showDecoration();
+          }
 
           if (typeof cropBoundingBox !== "undefined") {
             var sourceX = cropBoundingBox.x;

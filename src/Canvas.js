@@ -57,10 +57,13 @@ draw2d.Canvas = Class.extend(
         out: function (event, ui) {
           _this.onDragLeave(ui.draggable)
         },
-        drop: function (event, ui) {
-          event = _this._getEvent(event)
-          let pos = _this.fromDocumentToCanvasCoordinate(event.clientX, event.clientY)
-          _this.onDrop(ui.draggable, pos.getX(), pos.getY(), event.shiftKey, event.ctrlKey)
+        drop: function drop(event, ui) {
+          event = _this._getEvent(event);
+          let helperPos = $(ui.helper).position()
+          let pos = _this.fromDocumentToCanvasCoordinate(event.clientX, event.clientY);
+          _this.onDrop(ui.draggable,
+            pos.getX()- (event.clientX-helperPos.left)+5,
+            pos.getY()- (event.clientY-helperPos.top)+5, event.shiftKey, event.ctrlKey);
         }
       })
 
@@ -629,6 +632,7 @@ draw2d.Canvas = Class.extend(
      *
      * @since 4.4.0
      * @param {draw2d.geo.Rectangle} [dim] the dimension to set or null for autodetect
+     * @param {Number} [height] the height of the canvas if the first argument is a number and not a Rectangle
      */
     setDimension: function (dim, height) {
       if (typeof dim === "undefined") {
@@ -907,7 +911,7 @@ draw2d.Canvas = Class.extend(
       figure.fireEvent("added", {figure: figure, canvas: this})
 
       // ...now we can fire the initial move event
-      figure.fireEvent("move", {figure: figure, dx: 0, dy: 0})
+      figure.fireEvent("move", {figure: figure, x: figure.getX(), y: figure.getY(), dx: 0, dy: 0})
 
       // this is only required if the used router requires the crossing information
       // of the connections

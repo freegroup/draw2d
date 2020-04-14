@@ -1392,9 +1392,9 @@ draw2d.Figure = Class.extend(
         }
       })
 
-      this.fireEvent("move", {figure: this, dx: 0, dy: 0})
-      this.fireEvent("change:x", {figure: this, dx: 0})
-      this.fireEvent("change:y", {figure: this, dy: 0})
+      this.fireEvent("move",     { x: this.getX(), y: this.getY(), dx: 0, dy: 0})
+      this.fireEvent("change:x", { x: this.getX(), dx: 0})
+      this.fireEvent("change:y", { y: this.getY(), dy: 0})
 
       // fire an event
       // @since 5.3.3
@@ -1878,8 +1878,6 @@ draw2d.Figure = Class.extend(
      */
     setX: function (x) {
       this.setPosition(parseFloat(x), this.y)
-      this.fireEvent("change:x", {value: this.x})
-
       return this
     },
 
@@ -1902,8 +1900,6 @@ draw2d.Figure = Class.extend(
      */
     setY: function (y) {
       this.setPosition(this.x, parseFloat(y))
-      this.fireEvent("change:y", {value: this.y})
-
       return this
     },
 
@@ -2018,7 +2014,12 @@ draw2d.Figure = Class.extend(
       })
 
 
-      let event = {figure: this, dx: this.x - oldPos.x, dy: this.y - oldPos.y}
+      let event = {
+        x: this.x,
+        y: this.y,
+        dx: this.x - oldPos.x,
+        dy: this.y - oldPos.y
+      }
       this.fireEvent("move", event)
       this.fireEvent("change:x", event)
       this.fireEvent("change:y", event)
@@ -2115,7 +2116,7 @@ draw2d.Figure = Class.extend(
       this.repaint()
 
       this.fireEvent("resize")
-      this.fireEvent("change:dimension", {value: {height: this.height, width: this.width, old: old}})
+      this.fireEvent("change:dimension", { height: this.height, width: this.width, old: old})
 
       // Update the resize handles if the user change the position of the element via an API call.
       //
@@ -2448,10 +2449,12 @@ draw2d.Figure = Class.extend(
         }
 
         // avoid recursion
-        if (this._inEvent === true) {
-          return
+        if (this._inEvent) {
+          if(this._inEvent.figure === this && this._inEvent.event=== event) {
+            return
+          }
         }
-        this._inEvent = true
+        this._inEvent = { figure: this, event: event}
         let subscribers = this.eventSubscriptions[event]
         for (let i = 0; i < subscribers.length; i++) {
           subscribers[i](this, args)
@@ -2460,7 +2463,7 @@ draw2d.Figure = Class.extend(
         console.log(exc)
         throw exc
       } finally {
-        this._inEvent = false
+        delete this._inEvent
 
         // fire a generic change event if an attribute has changed
         // required for some DataBinding frameworks or for the Backbone.Model compatibility
