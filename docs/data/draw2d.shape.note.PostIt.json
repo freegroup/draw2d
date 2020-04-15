@@ -528,25 +528,33 @@
     },
     {
       "name": "hitTest",
-      "access": "private",
+      "access": "",
       "virtual": false,
       "deprecated": "",
-      "description": "",
+      "description": "<p>Detect whenever the hands over coordinate is inside the figure.\nThe default implementation is a simple bounding box test.</p>",
       "parameters": [
         {
-          "name": "x",
-          "type": "",
+          "name": "iX",
+          "type": "Number",
           "description": "",
           "default": "",
           "optional": "",
           "nullable": ""
         },
         {
-          "name": "y",
-          "type": "",
+          "name": "iY",
+          "type": "Number",
           "description": "",
           "default": "",
           "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "corona",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": true,
           "nullable": ""
         }
       ],
@@ -2760,6 +2768,21 @@
       "virtual": false,
       "deprecated": "",
       "description": "<p>Returns the bounding box of the figure in absolute position to the canvas.</p>",
+      "parameters": [],
+      "inherited": true,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "draw2d.geo.Rectangle",
+        "description": ""
+      }
+    },
+    {
+      "name": "getOuterBoundingBox",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Returns the bounding box of the figure in absolute position to the canvas. All child shapes included.\nThe result BoundingBox spans the parent figured plus all children.</p>",
       "parameters": [],
       "inherited": true,
       "since": "",

@@ -895,7 +895,7 @@ draw2d.Canvas = Class.extend(
       // to avoid drag&drop outside of this canvas
       figure.installEditPolicy(this.regionDragDropConstraint)
 
-      // important inital call
+      // important initial call
       figure.getShapeElement()
 
       // init a repaint of the figure. This enforce that all properties

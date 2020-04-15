@@ -138,7 +138,7 @@
         {
           "name": "zoomFactor",
           "type": "Number",
-          "description": "<p>new zoom factor.</p>",
+          "description": "<p>new zoom factor. range [0.001..10]. 1.0 is no zoom.</p>",
           "default": "",
           "optional": "",
           "nullable": ""
@@ -197,6 +197,14 @@
           "name": "dim",
           "type": "draw2d.geo.Rectangle",
           "description": "<p>the dimension to set or null for autodetect</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "height",
+          "type": "Number",
+          "description": "<p>the height of the canvas if the first argument is a number and not a Rectangle</p>",
           "default": "",
           "optional": true,
           "nullable": ""

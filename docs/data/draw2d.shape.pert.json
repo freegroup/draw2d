@@ -8,7 +8,7 @@
     {
       "name": "Activity",
       "namespace": "draw2d.shape.pert",
-      "description": "<p>NOT FOR PRODUCTIVE</p>\n<p>Checkout [Wikipedia PERT][1] for more information.</p>\n<p>Double click on the Task name or the top middle number to change the value.</p>",
+      "description": "<p>NOT FOR PRODUCTIVE</p>\n<p>Checkout [Wikipedia PERT][1] for more information.\n[1] http://en.wikipedia.org/wiki/Program_Evaluation_and_Review_Technique</p>\n<p>Double click on the Task name or the top middle number to change the value.</p>",
       "extends": [
         "draw2d.shape.layout.VerticalLayout"
       ],
@@ -2474,6 +2474,21 @@
           }
         },
         {
+          "name": "getOuterBoundingBox",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Returns the bounding box of the figure in absolute position to the canvas. All child shapes included.\nThe result BoundingBox spans the parent figured plus all children.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.geo.Rectangle",
+            "description": ""
+          }
+        },
+        {
           "name": "hitTest",
           "access": "",
           "virtual": false,
@@ -2922,7 +2937,7 @@
         "description": "",
         "parameters": [],
         "examples": [
-          "canvas.add( new draw2d.shape.pert.Start(),10,10);\n   canvas.add( new draw2d.shape.pert.Activity(),80,130);\n   canvas.add( new draw2d.shape.pert.Activity(),180,50);\n\n[1] http://en.wikipedia.org/wiki/Program_Evaluation_and_Review_Technique"
+          "canvas.add( new draw2d.shape.pert.Start(),10,10);\n   canvas.add( new draw2d.shape.pert.Activity(),80,130);\n   canvas.add( new draw2d.shape.pert.Activity(),180,50);"
         ]
       }
     },
@@ -5385,6 +5400,21 @@
           "virtual": false,
           "deprecated": "",
           "description": "<p>Returns the bounding box of the figure in absolute position to the canvas.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.geo.Rectangle",
+            "description": ""
+          }
+        },
+        {
+          "name": "getOuterBoundingBox",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Returns the bounding box of the figure in absolute position to the canvas. All child shapes included.\nThe result BoundingBox spans the parent figured plus all children.</p>",
           "parameters": [],
           "inherited": true,
           "since": "",

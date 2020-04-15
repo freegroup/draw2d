@@ -71,6 +71,7 @@ draw2d.Figure = Class.extend(
         angle: this.getRotationAngle,
         x: this.getX,
         y: this.getY,
+        userData: this.getUserData,
         width: this.getWidth,
         height: this.getHeight,
         draggable: this.isDraggable,
@@ -875,12 +876,23 @@ draw2d.Figure = Class.extend(
         this.editPolicy.grep((p) => {
           let stay = !(p instanceof draw2d.policy.figure.SelectionFeedbackPolicy)
           if (!stay) {
-
             p.onUninstall(this)
           }
           return stay
         })
       }
+
+      // It is only allowed to install a policy of the same type once
+      //
+      this.editPolicy.grep((p) => {
+        let stay = p.__proto__ !== policy.__proto__
+        if (!stay) {
+          p.onUninstall(this)
+        }
+        return stay
+      })
+
+
       policy.onInstall(this)
       this.editPolicy.add(policy)
 
@@ -1145,14 +1157,14 @@ draw2d.Figure = Class.extend(
 
       this.applyTransformation()
 
-      // Relocate all children of the figure.
-      // This means that the Locator can calculate the new Position of the child.
-      // This is not the best place for this. Move it to dim/size/shape changing
-      // methods of the figure. A "repaint" isn't always dimension changing the figure.
+      // Relocate all children of the figure if the dimension or location of the
+      // shape has changed
       //
-      this.children.each(function (i, e) {
-        e.locator.relocate(i, e.figure)
-      })
+      if("x" in attributes || "width" in attributes || "rx" in attributes) {
+        this.children.each(function (i, e) {
+          e.locator.relocate(i, e.figure)
+        })
+      }
 
       return this
     },

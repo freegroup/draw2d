@@ -6782,8 +6782,9 @@ _packages2.default.Canvas = Class.extend(
       },
       drop: function drop(event, ui) {
         event = _this._getEvent(event);
+        var helperPos = $(ui.helper).position();
         var pos = _this.fromDocumentToCanvasCoordinate(event.clientX, event.clientY);
-        _this.onDrop(ui.draggable, pos.getX(), pos.getY(), event.shiftKey, event.ctrlKey);
+        _this.onDrop(ui.draggable, pos.getX() - (event.clientX - helperPos.left) + 5, pos.getY() - (event.clientY - helperPos.top) + 5, event.shiftKey, event.ctrlKey);
       }
     });
 
@@ -7349,6 +7350,7 @@ _packages2.default.Canvas = Class.extend(
    *
    * @since 4.4.0
    * @param {draw2d.geo.Rectangle} [dim] the dimension to set or null for autodetect
+   * @param {Number} [height] the height of the canvas if the first argument is a number and not a Rectangle
    */
   setDimension: function setDimension(dim, height) {
     if (typeof dim === "undefined") {
@@ -7618,7 +7620,7 @@ _packages2.default.Canvas = Class.extend(
     figure.fireEvent("added", { figure: figure, canvas: this });
 
     // ...now we can fire the initial move event
-    figure.fireEvent("move", { figure: figure, dx: 0, dy: 0 });
+    figure.fireEvent("move", { figure: figure, x: figure.getX(), y: figure.getY(), dx: 0, dy: 0 });
 
     // this is only required if the used router requires the crossing information
     // of the connections
@@ -10284,12 +10286,22 @@ _packages2.default.Figure = Class.extend(
       this.editPolicy.grep(function (p) {
         var stay = !(p instanceof _packages2.default.policy.figure.SelectionFeedbackPolicy);
         if (!stay) {
-
           p.onUninstall(_this4);
         }
         return stay;
       });
     }
+
+    // It is only allowed to install a policy of the same type once
+    //
+    this.editPolicy.grep(function (p) {
+      var stay = p.__proto__ !== policy.__proto__;
+      if (!stay) {
+        p.onUninstall(_this4);
+      }
+      return stay;
+    });
+
     policy.onInstall(this);
     this.editPolicy.add(policy);
 
@@ -10548,14 +10560,14 @@ _packages2.default.Figure = Class.extend(
 
     this.applyTransformation();
 
-    // Relocate all children of the figure.
-    // This means that the Locator can calculate the new Position of the child.
-    // This is not the best place for this. Move it to dim/size/shape changing
-    // methods of the figure. A "repaint" isn't always dimension changing the figure.
+    // Relocate all children of the figure if the dimension or location of the
+    // shape has changed
     //
-    this.children.each(function (i, e) {
-      e.locator.relocate(i, e.figure);
-    });
+    if ("x" in attributes || "width" in attributes || "rx" in attributes) {
+      this.children.each(function (i, e) {
+        e.locator.relocate(i, e.figure);
+      });
+    }
 
     return this;
   },
@@ -10793,9 +10805,9 @@ _packages2.default.Figure = Class.extend(
       }
     });
 
-    this.fireEvent("move", { figure: this, dx: 0, dy: 0 });
-    this.fireEvent("change:x", { figure: this, dx: 0 });
-    this.fireEvent("change:y", { figure: this, dy: 0 });
+    this.fireEvent("move", { x: this.getX(), y: this.getY(), dx: 0, dy: 0 });
+    this.fireEvent("change:x", { x: this.getX(), dx: 0 });
+    this.fireEvent("change:y", { y: this.getY(), dy: 0 });
 
     // fire an event
     // @since 5.3.3
@@ -11264,8 +11276,6 @@ _packages2.default.Figure = Class.extend(
    */
   setX: function setX(x) {
     this.setPosition(parseFloat(x), this.y);
-    this.fireEvent("change:x", { value: this.x });
-
     return this;
   },
 
@@ -11288,8 +11298,6 @@ _packages2.default.Figure = Class.extend(
    */
   setY: function setY(y) {
     this.setPosition(this.x, parseFloat(y));
-    this.fireEvent("change:y", { value: this.y });
-
     return this;
   },
 
@@ -11399,7 +11407,12 @@ _packages2.default.Figure = Class.extend(
       }
     });
 
-    var event = { figure: this, dx: this.x - oldPos.x, dy: this.y - oldPos.y };
+    var event = {
+      x: this.x,
+      y: this.y,
+      dx: this.x - oldPos.x,
+      dy: this.y - oldPos.y
+    };
     this.fireEvent("move", event);
     this.fireEvent("change:x", event);
     this.fireEvent("change:y", event);
@@ -11494,7 +11507,7 @@ _packages2.default.Figure = Class.extend(
     this.repaint();
 
     this.fireEvent("resize");
-    this.fireEvent("change:dimension", { value: { height: this.height, width: this.width, old: old } });
+    this.fireEvent("change:dimension", { height: this.height, width: this.width, old: old });
 
     // Update the resize handles if the user change the position of the element via an API call.
     //
@@ -12700,6 +12713,7 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
     this.locator = null;
     this.lighterBgColor = null;
     this.name = null;
+    this.coronaWidth = 5; // the corona width for the hitTest method. Useful during drag&drop of ports. Better SnapTo behavior.
 
     this._super((0, _extend2.default)({
       bgColor: "#4f6870",
@@ -12708,8 +12722,10 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
       color: "#1B1B1B",
       selectable: false
     }, attr), (0, _extend2.default)({
+      coronaWidth: this.setCoronaWidth,
       semanticGroup: this.setSemanticGroup
     }, setter), (0, _extend2.default)({
+      coronaWidth: this.getCoronaWidth,
       semanticGroup: this.getSemanticGroup
     }, getter));
 
@@ -12717,7 +12733,6 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
     //
     this.ox = this.x;
     this.oy = this.y;
-    this.coronaWidth = 5; // the corona width for the hitTest method. Useful during drag&drop of ports. Better SnapTo behavior.
     this.corona = null; // draw2d.shape.basic.Circle
     this.useGradient = true;
 
@@ -12766,7 +12781,7 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
   },
 
   /**
-   * 
+   *
    * set the maximal possible count of connections for this port.<br>
    * This method din't delete any connection if you reduce the number and a bunch of
    * connection are bounded already.
@@ -12782,7 +12797,7 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
   },
 
   /**
-   * 
+   *
    * return the maximal possible connections (in+out) for this port.
    *
    * @returns {Number}
@@ -12822,7 +12837,7 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
   },
 
   /**
-   * 
+   *
    * Set the Anchor for this object. An anchor is responsible for the endpoint calculation
    * of an connection. just visible representation.
    *
@@ -12854,7 +12869,7 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
   },
 
   /**
-   * 
+   *
    * Returns the **direction** for the connection in relation to the given port and it's parent.
    *
    * <p>
@@ -12882,7 +12897,7 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
   },
 
   /**
-   * 
+   *
    * Set the **direction** for the connection in relation to the given port and it's parent.
    *
    * <p>
@@ -12910,7 +12925,7 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
   },
 
   /**
-   * 
+   *
    * Set the locator/layouter of the port. A locator is responsive for the x/y arrangement of the
    * port in relation to the parent node.
    *
@@ -12924,7 +12939,7 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
   },
 
   /**
-   * 
+   *
    * Get the locator/layouter of the port. A locator is responsive for the x/y arrangement of the
    * port in relation to the parent node.
    *
@@ -12935,7 +12950,7 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
   },
 
   /**
-   * 
+   *
    * Set the new background color of the figure. It is possible to hands over
    * <code>null</code> to set the background transparent.
    *
@@ -12943,14 +12958,14 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
    * @returns {this}
    **/
   setBackgroundColor: function setBackgroundColor(color) {
+    this.lighterBgColor = new _packages2.default.util.Color(color).lighter(0.3).rgba();
     this._super(color);
-    this.lighterBgColor = this.bgColor.lighter(0.3).rgba();
 
     return this;
   },
 
   /**
-   * 
+   *
    * Set a value for the port. This is useful for interactive/dynamic diagrams like circuits, simulator,...
    *
    * @param {Object} value the new value for the port
@@ -12972,7 +12987,7 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
   },
 
   /**
-   * 
+   *
    * Return the user defined value of the port.
    *
    * @returns {Object}
@@ -13026,7 +13041,7 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
   },
 
   /**
-   * 
+   *
    * Returns a {@link draw2d.util.ArrayList} of {@link draw2d.Connection}s of all related connections to this port.
    *
    * @returns {draw2d.util.ArrayList}
@@ -13051,7 +13066,7 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
   },
 
   /**
-   * 
+   *
    * Returns the corona width of the Port. The corona width will be used during the
    * drag&drop of a port.
    *
@@ -13062,10 +13077,10 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
   },
 
   /**
-   * 
+   *
    * Set the corona width of the Port. The corona width will be used during the
    * drag&drop of a port. You can drop a port in the corona of this port to create
-   * a connection. It is not neccessary to drop exactly on the port.
+   * a connection. It is not necessary to drop exactly on the port.
    *
    * @param {Number} width The new corona width of the port
    * @returns {this}
@@ -13153,7 +13168,7 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
   },
 
   /**
-   * 
+   *
    * Called if the user drop this element onto the dropTarget
    *
    * @param {draw2d.Figure} dropTarget The drop target.
@@ -13167,7 +13182,7 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
   onDrop: function onDrop(dropTarget, x, y, shiftKey, ctrlKey) {},
 
   /**
-   * 
+   *
    * Callback method if a new connection has created with this port
    *
    *     // Alternatively you register for this event with:
@@ -13183,7 +13198,7 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
   onConnect: function onConnect(connection) {},
 
   /**
-   * 
+   *
    * Callback method if a new connection has created with this port
    *
    *     // Alternatively you register for this event with:
@@ -13199,7 +13214,7 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
   onDisconnect: function onDisconnect(connection) {},
 
   /**
-   * 
+   *
    * Return the name of this port.
    *
    * @returns {String}
@@ -13209,7 +13224,7 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
   },
 
   /**
-   * 
+   *
    * Set the name of this port. The name of the port can be referenced by the lookup of
    * ports in the node.
    *
@@ -13224,7 +13239,7 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
   },
 
   /**
-   * 
+   *
    * Hit test for ports. This method respect the corona diameter of the port for the hit test.
    * The corona width can be set with {@link draw2d.Port#setCoronaWidth}
    *
@@ -13243,7 +13258,7 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
   },
 
   /**
-   * 
+   *
    * Highlight this port
    *
    * @param {Boolean} flag indicator if the figure should glow.
@@ -13269,6 +13284,25 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
   },
 
   /**
+   *
+   * Set the diameter of the port. The center of the circle will be retained.
+   *
+   * @param {Number} d The new diameter of the circle.
+   * @since 4.0.0
+   * @returns {this}
+   **/
+  setDiameter: function setDiameter(d) {
+    //let center = this.getCenter()
+    this.setDimension(d, d);
+    // the port has its center in the middle. In this case there is no need to shift the center of the circle
+    // like it is done in the base implementation.
+    //this.setCenter(center)
+    this.fireEvent("change:diameter", { value: d });
+
+    return this;
+  },
+
+  /**
    * @inheritdoc
    */
   createCommand: function createCommand(request) {
@@ -13285,7 +13319,7 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
   },
 
   /**
-   * 
+   *
    * Called from the figure itself when any position changes happens. All listener
    * will be informed.
    * <br>
@@ -13303,7 +13337,7 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
   },
 
   /**
-   * 
+   *
    * Return an objects with all important attributes for XML or JSON serialization
    *
    * @return {Object} all attributes required for the persistency
@@ -13329,7 +13363,7 @@ _packages2.default.Port = _packages2.default.shape.basic.Circle.extend(
   },
 
   /**
-   * 
+   *
    * Read all attributes from the serialized properties and transfer them into the shape.
    *
    * @param {Object} memento
@@ -13382,7 +13416,7 @@ _packages2.default.Corona = _packages2.default.shape.basic.Circle.extend(
   },
 
   /**
-   * 
+   *
    * the the opacity of the element.
    *
    * @param {Number} percent
@@ -30301,7 +30335,7 @@ _packages2.default.policy.canvas.CoronaDecorationPolicy = _packages2.default.pol
               p.__origAlpha = figure.getAlpha();
             }
             var dist = figure.getBoundingBox().getDistance(new _packages2.default.geo.Point(x, y));
-            var alpha = 1 - 100 / (_this.diameterToBeVisible - _this.diameterToBeFullVisible) * dist / 100.0;
+            var alpha = Math.max(0, 1 - 100 / (_this.diameterToBeVisible - _this.diameterToBeFullVisible) * dist / 100.0);
             p.setAlpha(alpha);
           });
         } else {
@@ -30729,8 +30763,10 @@ _packages2.default.policy.canvas.FadeoutDecorationPolicy = _packages2.default.po
    * @private
    **/
   onTimer: function onTimer() {
-    this.hidePortsCounter--;
     var _this = this;
+
+    this.hidePortsCounter--;
+
     if (this.hidePortsCounter <= 0 && this.alpha > 0) {
       this.alpha = Math.max(0, this.alpha - this.alphaDec);
 
@@ -38790,6 +38826,7 @@ _packages2.default.policy.port.IntrusivePortsFeedbackPolicy = _packages2.default
     this._super(attr, setter, getter);
     this.connectionLine = null;
     this.tweenable = null;
+    this.growFactor = 2;
   },
 
   /**
@@ -38805,14 +38842,7 @@ _packages2.default.policy.port.IntrusivePortsFeedbackPolicy = _packages2.default
    * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
    */
   onDragStart: function onDragStart(canvas, figure, x, y, shiftKey, ctrlKey) {
-    var start = 0;
     var allPorts = canvas.getAllPorts().clone();
-    allPorts.each(function (i, element) {
-      if (typeof element.__beforeInflate === "undefined") {
-        element.__beforeInflate = element.getWidth();
-      }
-      start = element.__beforeInflate;
-    });
 
     // filter all candidates for the DropEvent
     //
@@ -38820,12 +38850,20 @@ _packages2.default.policy.port.IntrusivePortsFeedbackPolicy = _packages2.default
       return p.NAME !== figure.NAME && p.parent !== figure.parent && p.getSemanticGroup() === figure.getSemanticGroup() || p instanceof _packages2.default.HybridPort || figure instanceof _packages2.default.HybridPort;
     });
 
+    var start = 0;
+    allPorts.each(function (i, element) {
+      if (typeof element.__beforeInflate === "undefined") {
+        element.__beforeInflate = element.getWidth();
+      }
+      start = element.__beforeInflate;
+    });
+
     // Animate the ports for a visual feedback
     //
     this.tweenable = new _shifty.Tweenable();
     this.tweenable.tween({
-      from: { 'size': start / 2 },
-      to: { 'size': start },
+      from: { 'size': start },
+      to: { 'size': start * this.growFactor },
       duration: 200,
       easing: "easeOutSine",
       step: function step(params) {
@@ -38833,8 +38871,9 @@ _packages2.default.policy.port.IntrusivePortsFeedbackPolicy = _packages2.default
           // IMPORTANT shortcut to avoid rendering errors!!
           // performance shortcut to avoid a lot of events and recalculate/routing of all related connections
           // for each setDimension call. Additional the connection is following a port during Drag&Drop operation
-          element.shape.attr({ rx: params.size, ry: params.size });
-          element.width = element.height = params.size * 2;
+          element.shape.attr({ rx: params.size / 2, ry: params.size / 2 });
+          element.width = element.height = params.size;
+          element.fireEvent("resize");
         });
       }
     });
@@ -42821,7 +42860,7 @@ _packages2.default.shape.basic.Oval = _packages2.default.VectorFigure.extend(
     var w2 = this.getWidth() / 2;
     var h2 = this.getHeight() / 2;
 
-    return this.getPosition().translate(w2, h2);
+    return this.getPosition().translated(w2, h2);
   },
 
   /**
@@ -44459,7 +44498,7 @@ _packages2.default.shape.basic.Text = _packages2.default.shape.basic.Label.exten
         }
         s.push(w);
       }
-      // set the wrapped text and get the resulted boudning box
+      // set the wrapped text and get the resulted bounding box
       //
       svgText.attr({ text: s.join("") });
       var bbox = svgText.getBBox(true);
@@ -64938,105 +64977,6 @@ global.extend = fn;
 
 "use strict";
 
-
-// hacking RaphaelJS to support groups of elements
-//
-(function () {
-    Raphael.fn.group = function (f, g) {
-        var enabled = document.getElementsByTagName("svg").length > 0;
-        if (!enabled) {
-            // return a stub for VML compatibility
-            return {
-                add: function add() {
-                    // intentionally left blank
-                }
-            };
-        }
-        var i;
-        this.svg = "http://www.w3.org/2000/svg";
-        this.defs = document.getElementsByTagName("defs")[f];
-        this.svgcanv = document.getElementsByTagName("svg")[f];
-        this.group = document.createElementNS(this.svg, "g");
-        for (i = 0; i < g.length; i++) {
-            this.group.appendChild(g[i].node);
-        }
-        this.svgcanv.appendChild(this.group);
-        this.group.translate = function (c, a) {
-            this.setAttribute("transform", "translate(" + c + "," + a + ") scale(" + this.getAttr("scale").x + "," + this.getAttr("scale").y + ")");
-        };
-        this.group.rotate = function (c, a, e) {
-            this.setAttribute("transform", "translate(" + this.getAttr("translate").x + "," + this.getAttr("translate").y + ") scale(" + this.getAttr("scale").x + "," + this.getAttr("scale").y + ") rotate(" + c + "," + a + "," + e + ")");
-        };
-        this.group.scale = function (c, a) {
-            this.setAttribute("transform", "scale(" + c + "," + a + ") translate(" + this.getAttr("translate").x + "," + this.getAttr("translate").y + ")");
-        };
-        this.group.push = function (c) {
-            this.appendChild(c.node);
-        };
-        this.group.getAttr = function (c) {
-            this.previous = this.getAttribute("transform") ? this.getAttribute("transform") : "";
-            var a = [],
-                e,
-                h,
-                j;
-            a = this.previous.split(" ");
-            for (i = 0; i < a.length; i++) {
-                if (a[i].substring(0, 1) == "t") {
-                    var d = a[i],
-                        b = [];
-                    b = d.split("(");
-                    d = b[1].substring(0, b[1].length - 1);
-                    b = [];
-                    b = d.split(",");
-                    e = b.length === 0 ? { x: 0, y: 0 } : { x: b[0], y: b[1] };
-                } else {
-                    if (a[i].substring(0, 1) === "r") {
-                        d = a[i];
-                        b = d.split("(");
-                        d = b[1].substring(0, b[1].length - 1);
-                        b = d.split(",");
-                        h = b.length === 0 ? { x: 0, y: 0, z: 0 } : { x: b[0], y: b[1], z: b[2] };
-                    } else {
-                        if (a[i].substring(0, 1) === "s") {
-                            d = a[i];
-                            b = d.split("(");
-                            d = b[1].substring(0, b[1].length - 1);
-                            b = d.split(",");
-                            j = b.length === 0 ? { x: 1, y: 1 } : { x: b[0], y: b[1] };
-                        }
-                    }
-                }
-            }
-            if (typeof e === "undefined") {
-                e = { x: 0, y: 0 };
-            }
-            if (typeof h === "undefined") {
-                h = { x: 0, y: 0, z: 0 };
-            }
-            if (typeof j === "undefined") {
-                j = { x: 1, y: 1 };
-            }
-
-            if (c == "translate") {
-                var k = e;
-            } else {
-                if (c == "rotate") {
-                    k = h;
-                } else {
-                    if (c == "scale") {
-                        k = j;
-                    }
-                }
-            }
-            return k;
-        };
-        this.group.copy = function (el) {
-            this.copy = el.node.cloneNode(true);
-            this.appendChild(this.copy);
-        };
-        return this.group;
-    };
-})();
 
 /**
  * adding support method to check if the node is already visible

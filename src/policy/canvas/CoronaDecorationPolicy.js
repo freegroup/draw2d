@@ -144,7 +144,7 @@ draw2d.policy.canvas.CoronaDecorationPolicy = draw2d.policy.canvas.DecorationPol
               p.__origAlpha = figure.getAlpha()
             }
             let dist = figure.getBoundingBox().getDistance(new draw2d.geo.Point(x, y))
-            let alpha = 1 - ((100 / (this.diameterToBeVisible - this.diameterToBeFullVisible)) * dist) / 100.0
+            let alpha = Math.max(0, (1 - (((100 / (this.diameterToBeVisible - this.diameterToBeFullVisible)) * dist) / 100.0)))
             p.setAlpha(alpha)
           })
         }

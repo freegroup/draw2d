@@ -53,13 +53,13 @@
     },
     {
       "name": "setGrid",
-      "access": "",
+      "access": "private",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>Set a new grid width/height</p>",
+      "description": "",
       "parameters": [
         {
-          "name": "grid",
+          "name": "zoom",
           "type": "Number",
           "description": "",
           "default": "",
@@ -68,7 +68,7 @@
         }
       ],
       "inherited": false,
-      "since": "5.0.3",
+      "since": "",
       "examples": []
     },
     {

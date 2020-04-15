@@ -338,7 +338,7 @@
       "access": "",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>Set the corona width of the Port. The corona width will be used during the\ndrag&amp;drop of a port. You can drop a port in the corona of this port to create\na connection. It is not neccessary to drop exactly on the port.</p>",
+      "description": "<p>Set the corona width of the Port. The corona width will be used during the\ndrag&amp;drop of a port. You can drop a port in the corona of this port to create\na connection. It is not necessary to drop exactly on the port.</p>",
       "parameters": [
         {
           "name": "width",
@@ -689,6 +689,30 @@
       }
     },
     {
+      "name": "setDiameter",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Set the diameter of the port. The center of the circle will be retained.</p>",
+      "parameters": [
+        {
+          "name": "d",
+          "type": "Number",
+          "description": "<p>The new diameter of the circle.</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": false,
+      "since": "4.0.0",
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
+    },
+    {
       "name": "createCommand",
       "access": "",
       "virtual": false,
@@ -804,30 +828,6 @@
       "inherited": true,
       "since": "",
       "examples": []
-    },
-    {
-      "name": "setDiameter",
-      "access": "",
-      "virtual": false,
-      "deprecated": "",
-      "description": "<p>Set the diameter of the circle. The center of the circle will be retained.</p>",
-      "parameters": [
-        {
-          "name": "d",
-          "type": "Number",
-          "description": "<p>The new diameter of the circle.</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        }
-      ],
-      "inherited": true,
-      "since": "4.0.0",
-      "examples": [],
-      "returns": {
-        "type": "this",
-        "description": ""
-      }
     },
     {
       "name": "getDiameter",
@@ -2978,6 +2978,21 @@
       "virtual": false,
       "deprecated": "",
       "description": "<p>Returns the bounding box of the figure in absolute position to the canvas.</p>",
+      "parameters": [],
+      "inherited": true,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "draw2d.geo.Rectangle",
+        "description": ""
+      }
+    },
+    {
+      "name": "getOuterBoundingBox",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Returns the bounding box of the figure in absolute position to the canvas. All child shapes included.\nThe result BoundingBox spans the parent figured plus all children.</p>",
       "parameters": [],
       "inherited": true,
       "since": "",

@@ -3,7 +3,7 @@
 # generate the jsDoc
 cd ./jsdoc/
 yarn install
-jsdoc -c ./jsdoc.conf
+./node_modules/jsdoc/jsdoc.js -c ./jsdoc.conf
 
 # generate the VUEjs app
 npm run build

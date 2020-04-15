@@ -2421,6 +2421,21 @@
           }
         },
         {
+          "name": "getOuterBoundingBox",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Returns the bounding box of the figure in absolute position to the canvas. All child shapes included.\nThe result BoundingBox spans the parent figured plus all children.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.geo.Rectangle",
+            "description": ""
+          }
+        },
+        {
           "name": "hitTest",
           "access": "",
           "virtual": false,
@@ -5353,6 +5368,21 @@
           }
         },
         {
+          "name": "getOuterBoundingBox",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Returns the bounding box of the figure in absolute position to the canvas. All child shapes included.\nThe result BoundingBox spans the parent figured plus all children.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.geo.Rectangle",
+            "description": ""
+          }
+        },
+        {
           "name": "hitTest",
           "access": "",
           "virtual": false,
@@ -8215,6 +8245,21 @@
           "virtual": false,
           "deprecated": "",
           "description": "<p>Returns the bounding box of the figure in absolute position to the canvas.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.geo.Rectangle",
+            "description": ""
+          }
+        },
+        {
+          "name": "getOuterBoundingBox",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Returns the bounding box of the figure in absolute position to the canvas. All child shapes included.\nThe result BoundingBox spans the parent figured plus all children.</p>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -11138,6 +11183,21 @@
           "virtual": false,
           "deprecated": "",
           "description": "<p>Returns the bounding box of the figure in absolute position to the canvas.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.geo.Rectangle",
+            "description": ""
+          }
+        },
+        {
+          "name": "getOuterBoundingBox",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Returns the bounding box of the figure in absolute position to the canvas. All child shapes included.\nThe result BoundingBox spans the parent figured plus all children.</p>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -14211,6 +14271,21 @@
           }
         },
         {
+          "name": "getOuterBoundingBox",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Returns the bounding box of the figure in absolute position to the canvas. All child shapes included.\nThe result BoundingBox spans the parent figured plus all children.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.geo.Rectangle",
+            "description": ""
+          }
+        },
+        {
           "name": "hitTest",
           "access": "",
           "virtual": false,
@@ -17122,6 +17197,21 @@
           "virtual": false,
           "deprecated": "",
           "description": "<p>Returns the bounding box of the figure in absolute position to the canvas.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.geo.Rectangle",
+            "description": ""
+          }
+        },
+        {
+          "name": "getOuterBoundingBox",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Returns the bounding box of the figure in absolute position to the canvas. All child shapes included.\nThe result BoundingBox spans the parent figured plus all children.</p>",
           "parameters": [],
           "inherited": true,
           "since": "",

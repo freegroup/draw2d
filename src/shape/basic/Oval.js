@@ -60,7 +60,7 @@ draw2d.shape.basic.Oval = draw2d.VectorFigure.extend(
       let w2 = this.getWidth() / 2
       let h2 = this.getHeight() / 2
 
-      return this.getPosition().translate(w2, h2)
+      return this.getPosition().translated(w2, h2)
     },
 
     /**

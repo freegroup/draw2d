@@ -48,6 +48,26 @@
       "examples": []
     },
     {
+      "name": "setGrid",
+      "access": "private",
+      "virtual": false,
+      "deprecated": "",
+      "description": "",
+      "parameters": [
+        {
+          "name": "zoom",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": false,
+      "since": "",
+      "examples": []
+    },
+    {
       "name": "onInstall",
       "access": "",
       "virtual": false,

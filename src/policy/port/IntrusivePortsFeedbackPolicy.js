@@ -21,7 +21,9 @@ draw2d.policy.port.IntrusivePortsFeedbackPolicy = draw2d.policy.port.PortFeedbac
       this._super(attr, setter, getter)
       this.connectionLine = null
       this.tweenable = null
+      this.growFactor = 2
     },
+
 
     /**
      *
@@ -36,15 +38,7 @@ draw2d.policy.port.IntrusivePortsFeedbackPolicy = draw2d.policy.port.PortFeedbac
      * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
      */
     onDragStart: function (canvas, figure, x, y, shiftKey, ctrlKey) {
-      let start = 0
       let allPorts = canvas.getAllPorts().clone()
-      allPorts.each(function (i, element) {
-        if (typeof element.__beforeInflate === "undefined") {
-          element.__beforeInflate = element.getWidth()
-        }
-        start = element.__beforeInflate
-      })
-
 
       // filter all candidates for the DropEvent
       //
@@ -54,12 +48,20 @@ draw2d.policy.port.IntrusivePortsFeedbackPolicy = draw2d.policy.port.PortFeedbac
           || (figure instanceof draw2d.HybridPort)
       })
 
+      let start = 0
+      allPorts.each(function (i, element) {
+        if (typeof element.__beforeInflate === "undefined") {
+          element.__beforeInflate = element.getWidth()
+        }
+        start = element.__beforeInflate
+      })
+
       // Animate the ports for a visual feedback
       //
       this.tweenable = new Tweenable()
       this.tweenable.tween({
-        from: {'size': start / 2},
-        to: {'size': start},
+        from: {'size': start},
+        to: {'size': start* this.growFactor},
         duration: 200,
         easing: "easeOutSine",
         step: function (params) {
@@ -67,8 +69,9 @@ draw2d.policy.port.IntrusivePortsFeedbackPolicy = draw2d.policy.port.PortFeedbac
             // IMPORTANT shortcut to avoid rendering errors!!
             // performance shortcut to avoid a lot of events and recalculate/routing of all related connections
             // for each setDimension call. Additional the connection is following a port during Drag&Drop operation
-            element.shape.attr({rx: params.size, ry: params.size})
-            element.width = element.height = params.size * 2
+            element.shape.attr({rx: params.size/2, ry: params.size/2})
+            element.width = element.height = params.size
+            element.fireEvent("resize")
           })
         }
       })

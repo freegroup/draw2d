@@ -25,8 +25,9 @@ document.addEventListener("DOMContentLoaded",function () {
     //
     canvas = new draw2d.Canvas("gfx_holder");
     canvas.installEditPolicy(new draw2d.policy.canvas.FadeoutDecorationPolicy());
-    // canvas.installEditPolicy(new draw2d.policy.canvas.ShowDotEditPolicy());
-    canvas.installEditPolicy(new draw2d.policy.canvas.ShowChessboardEditPolicy());
+    //canvas.installEditPolicy(new draw2d.policy.canvas.ShowDotEditPolicy());
+    canvas.installEditPolicy(new draw2d.policy.canvas.ShowGridEditPolicy());
+    //canvas.installEditPolicy(new draw2d.policy.canvas.ShowChessboardEditPolicy());
 
     canvas.add(new draw2d.shape.basic.Oval({width:80,height:30, x:50, y:50}));
 
