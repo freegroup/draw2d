@@ -94,6 +94,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
         color: this.setColor,
         // @attr {Number} stroke the line width of the color */
         stroke: this.setStroke,
+        corona: this.setCorona,
         // @attr {String} dasharray the line pattern see {@link draw2d.shape.basic.Line#setDashArray} for more information*/
         dasharray: this.setDashArray,
         // @attr {Boolean} glow the glow flag for the shape. The representation of the "glow" depends on the shape */
@@ -106,6 +107,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
         outlineColor: this.getOutlineColor,
         outlineStroke: this.getOutlineStroke,
         stroke: this.getStroke,
+        corona: this.getCorona,
         color: this.getColor,
         dasharray: this.getDashArray,
         vertices: this.getVertices
@@ -321,18 +323,6 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
   },
 
 
-  /**
-   *
-   * Set the width for the click hit test of this line.
-   *
-   * @param {Number} width the width of the line hit test.
-   **/
-  setCoronaWidth: function (width) {
-    this.corona = width
-
-    return this
-  },
-
 
   /**
    *
@@ -498,6 +488,33 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
     return this.stroke
   },
 
+
+
+    /**
+     *  click area for the line hit test.
+     *
+     *     // Alternatively you can use the attr method:
+     *     figure.attr({
+     *       corona: w
+     *     });
+     *
+     * @param {Number} w The new click hit offset
+     **/
+    setCorona: function (w) {
+      this.corona = parseFloat(w)
+      return this
+    },
+
+
+    /**
+     *
+     * The used corona hitTest area.
+     *
+     * @returns {Number}
+     **/
+    getCorona: function () {
+      return this.corona
+    },
 
   /**
    *

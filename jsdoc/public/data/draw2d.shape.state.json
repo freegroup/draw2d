@@ -1239,26 +1239,6 @@
           "examples": []
         },
         {
-          "name": "setCoronaWidth",
-          "access": "",
-          "virtual": false,
-          "deprecated": "",
-          "description": "<p>Set the width for the click hit test of this line.</p>",
-          "parameters": [
-            {
-              "name": "width",
-              "type": "Number",
-              "description": "<p>the width of the line hit test.</p>",
-              "default": "",
-              "optional": "",
-              "nullable": ""
-            }
-          ],
-          "inherited": true,
-          "since": "",
-          "examples": []
-        },
-        {
           "name": "createShapeElement",
           "access": "private",
           "virtual": false,
@@ -1315,6 +1295,41 @@
           "virtual": false,
           "deprecated": "",
           "description": "<p>The used line width.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Number",
+            "description": ""
+          }
+        },
+        {
+          "name": "setCorona",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>click area for the line hit test.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  corona: w\n});</code></pre>",
+          "parameters": [
+            {
+              "name": "w",
+              "type": "Number",
+              "description": "<p>The new click hit offset</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "getCorona",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>The used corona hitTest area.</p>",
           "parameters": [],
           "inherited": true,
           "since": "",

@@ -2461,12 +2461,10 @@ draw2d.Figure = Class.extend(
         }
 
         // avoid recursion
-        if (this._inEvent) {
-          if(this._inEvent.figure === this && this._inEvent.event=== event) {
-            return
-          }
+        if (this._inEvent === true) {
+          return
         }
-        this._inEvent = { figure: this, event: event}
+        this._inEvent = true
         let subscribers = this.eventSubscriptions[event]
         for (let i = 0; i < subscribers.length; i++) {
           subscribers[i](this, args)
@@ -2475,7 +2473,7 @@ draw2d.Figure = Class.extend(
         console.log(exc)
         throw exc
       } finally {
-        delete this._inEvent
+        this._inEvent = false
 
         // fire a generic change event if an attribute has changed
         // required for some DataBinding frameworks or for the Backbone.Model compatibility

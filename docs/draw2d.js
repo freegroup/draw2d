@@ -7604,7 +7604,7 @@ _packages2.default.Canvas = Class.extend(
     // to avoid drag&drop outside of this canvas
     figure.installEditPolicy(this.regionDragDropConstraint);
 
-    // important inital call
+    // important initial call
     figure.getShapeElement();
 
     // init a repaint of the figure. This enforce that all properties
@@ -9484,6 +9484,7 @@ _packages2.default.Figure = Class.extend(
       angle: this.getRotationAngle,
       x: this.getX,
       y: this.getY,
+      userData: this.getUserData,
       width: this.getWidth,
       height: this.getHeight,
       draggable: this.isDraggable,
@@ -11835,11 +11836,9 @@ _packages2.default.Figure = Class.extend(
 
       // avoid recursion
       if (this._inEvent) {
-        if (this._inEvent.figure === this && this._inEvent.event === event) {
-          return;
-        }
+        return;
       }
-      this._inEvent = { figure: this, event: event };
+      this._inEvent = true;
       var subscribers = this.eventSubscriptions[event];
       for (var i = 0; i < subscribers.length; i++) {
         subscribers[i](this, args);

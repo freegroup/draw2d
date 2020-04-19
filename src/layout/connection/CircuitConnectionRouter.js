@@ -74,7 +74,6 @@ draw2d.layout.connection.CircuitConnectionRouter = draw2d.layout.connection.Manh
    */
   init: function () {
     this._super()
-
     this.setBridgeRadius(4)
     this.setVertexRadius(2)
 
@@ -225,7 +224,7 @@ draw2d.layout.connection.CircuitConnectionRouter = draw2d.layout.connection.Manh
                   path = ["M", (interP.x | 0) + 0.5, " ", (interP.y | 0) + 0.5]
                   if (lastVertexNode !== null) {
                     lastVertexNode.remove()
-                    conn.vertexNodes.exclude(lastVerteNode)
+                    conn.vertexNodes.exclude(lastVertexNode)
                   }
                 }
                 lastVertexNode = vertexNode

@@ -591,8 +591,6 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
     if (this.persistPorts === true) {
       memento.ports = []
       this.getPorts().each(function (i, port) {
-        console.log(port.getLocator())
-        console.log(port.getLocator().attr())
         memento.ports.push(extend(port.getPersistentAttributes(), {
           name: port.getName(),
           port: port.NAME,

@@ -7604,7 +7604,7 @@ _packages2.default.Canvas = Class.extend(
     // to avoid drag&drop outside of this canvas
     figure.installEditPolicy(this.regionDragDropConstraint);
 
-    // important inital call
+    // important initial call
     figure.getShapeElement();
 
     // init a repaint of the figure. This enforce that all properties
@@ -9484,6 +9484,7 @@ _packages2.default.Figure = Class.extend(
       angle: this.getRotationAngle,
       x: this.getX,
       y: this.getY,
+      userData: this.getUserData,
       width: this.getWidth,
       height: this.getHeight,
       draggable: this.isDraggable,
@@ -11834,12 +11835,10 @@ _packages2.default.Figure = Class.extend(
       }
 
       // avoid recursion
-      if (this._inEvent) {
-        if (this._inEvent.figure === this && this._inEvent.event === event) {
-          return;
-        }
+      if (this._inEvent === true) {
+        return;
       }
-      this._inEvent = { figure: this, event: event };
+      this._inEvent = true;
       var subscribers = this.eventSubscriptions[event];
       for (var i = 0; i < subscribers.length; i++) {
         subscribers[i](this, args);
@@ -11848,7 +11847,7 @@ _packages2.default.Figure = Class.extend(
       console.log(exc);
       throw exc;
     } finally {
-      delete this._inEvent;
+      this._inEvent = false;
 
       // fire a generic change event if an attribute has changed
       // required for some DataBinding frameworks or for the Backbone.Model compatibility
@@ -22091,7 +22090,6 @@ _packages2.default.layout.connection.CircuitConnectionRouter = _packages2.defaul
    */
   init: function init() {
     this._super();
-
     this.setBridgeRadius(4);
     this.setVertexRadius(2);
 
@@ -22243,7 +22241,7 @@ _packages2.default.layout.connection.CircuitConnectionRouter = _packages2.defaul
                   path = ["M", (interP.x | 0) + 0.5, " ", (interP.y | 0) + 0.5];
                   if (lastVertexNode !== null) {
                     lastVertexNode.remove();
-                    conn.vertexNodes.exclude(lastVerteNode);
+                    conn.vertexNodes.exclude(lastVertexNode);
                   }
                 }
                 lastVertexNode = vertexNode;
@@ -41021,6 +41019,7 @@ _packages2.default.shape.basic.Line = _packages2.default.Figure.extend(
       color: this.setColor,
       // @attr {Number} stroke the line width of the color */
       stroke: this.setStroke,
+      corona: this.setCorona,
       // @attr {String} dasharray the line pattern see {@link draw2d.shape.basic.Line#setDashArray} for more information*/
       dasharray: this.setDashArray,
       // @attr {Boolean} glow the glow flag for the shape. The representation of the "glow" depends on the shape */
@@ -41031,6 +41030,7 @@ _packages2.default.shape.basic.Line = _packages2.default.Figure.extend(
       outlineColor: this.getOutlineColor,
       outlineStroke: this.getOutlineStroke,
       stroke: this.getStroke,
+      corona: this.getCorona,
       color: this.getColor,
       dasharray: this.getDashArray,
       vertices: this.getVertices
@@ -41246,18 +41246,6 @@ _packages2.default.shape.basic.Line = _packages2.default.Figure.extend(
 
   /**
    *
-   * Set the width for the click hit test of this line.
-   *
-   * @param {Number} width the width of the line hit test.
-   **/
-  setCoronaWidth: function setCoronaWidth(width) {
-    this.corona = width;
-
-    return this;
-  },
-
-  /**
-   *
    * Called by the framework. Don't call them manually.
    *
    * @private
@@ -41410,6 +41398,31 @@ _packages2.default.shape.basic.Line = _packages2.default.Figure.extend(
    **/
   getStroke: function getStroke() {
     return this.stroke;
+  },
+
+  /**
+   *  click area for the line hit test.
+   *
+   *     // Alternatively you can use the attr method:
+   *     figure.attr({
+   *       corona: w
+   *     });
+   *
+   * @param {Number} w The new click hit offset
+   **/
+  setCorona: function setCorona(w) {
+    this.corona = parseFloat(w);
+    return this;
+  },
+
+  /**
+   *
+   * The used corona hitTest area.
+   *
+   * @returns {Number}
+   **/
+  getCorona: function getCorona() {
+    return this.corona;
   },
 
   /**
@@ -61592,8 +61605,6 @@ _packages2.default.shape.node.Node = _packages2.default.Figure.extend(
     if (this.persistPorts === true) {
       memento.ports = [];
       this.getPorts().each(function (i, port) {
-        console.log(port.getLocator());
-        console.log(port.getLocator().attr());
         memento.ports.push((0, _extend2.default)(port.getPersistentAttributes(), {
           name: port.getName(),
           port: port.NAME,
