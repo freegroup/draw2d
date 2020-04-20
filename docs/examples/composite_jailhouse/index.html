@@ -14,6 +14,7 @@
     <script src="../draw2d.js"></script>
 
     <script src="CardJailhouse.js"></script>
+    <script src="CollapsibleJailhouse.js"></script>
 
     <script src="document.js"></script>
 
@@ -24,7 +25,7 @@ var canvas = null;
 var oval =null;
 var circle =null;
 var rect =null;
-var jail =null;
+
 // end debug variables
 
 document.addEventListener("DOMContentLoaded",function () {
@@ -38,24 +39,7 @@ document.addEventListener("DOMContentLoaded",function () {
     // install a custom connection create policy
     //
     var router = new draw2d.layout.connection.InteractiveManhattanConnectionRouter();
-    canvas.installEditPolicy( new draw2d.policy.connection.ComposedConnectionCreatePolicy(
-       [
-            // create a connection via Drag&Drop of ports
-            //
-            new draw2d.policy.connection.DragConnectionCreatePolicy({
-                createConnection:function(){
-                    return new draw2d.Connection({
-                        radius:3,
-                        stroke:2,
-                        color: "#129CE4",
-                        outlineStroke:1,
-                        outlineColor:"#ffffff",
-                        router: router});
-                }
-            }),
-            // or via click and point
-            //
-            new draw2d.policy.connection.OrthogonalConnectionCreatePolicy({
+    canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({
                 createConnection:function(){
                     return new draw2d.Connection({
                         radius:3,
@@ -66,7 +50,6 @@ document.addEventListener("DOMContentLoaded",function () {
                         router: router});
                 }
             })
-        ])
     );
 
 
@@ -74,6 +57,9 @@ document.addEventListener("DOMContentLoaded",function () {
     // (load)
     var reader = new draw2d.io.json.Reader();
     reader.unmarshal(canvas, jsonDocument);
+
+    var msg = new draw2d.shape.note.PostIt({text: "Example extension of a Jailhouse group with the feature expand/collapse\nDrag&Drop elements on the blue group, connect them and expand/collapse the group to see the effect"});
+    canvas.add(msg, 20,20);
 
 });
 

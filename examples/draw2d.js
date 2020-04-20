@@ -21223,12 +21223,13 @@ _packages2.default.io.png.Writer = _packages2.default.io.Writer.extend(
     // @status beta
     // @since 5.5.0
     if (canvas instanceof _packages2.default.Figure) {
-      var origPos = canvas.getPosition();
-      canvas.setPosition(1, 1);
-      svg = "<svg xmlns:xlink=\"http://www.w3.org/1999/xlink\" >" + canvas.shape.node.outerHTML + "</svg>";
-      canvas.setPosition(origPos);
-      canvas.initialWidth = canvas.getWidth() + 2;
-      canvas.initialHeight = canvas.getHeight() + 2;
+      var figure = canvas;
+      var origPos = figure.getPosition();
+      figure.setPosition(1, 1);
+      svg = "<svg xmlns:xlink=\"http://www.w3.org/1999/xlink\" >" + figure.shape.node.outerHTML + "</svg>";
+      figure.setPosition(origPos);
+      figure.initialWidth = figure.getWidth() + 2;
+      figure.initialHeight = figure.getHeight() + 2;
     }
     // create a snapshot of a complete canvas
     //
@@ -21240,31 +21241,10 @@ _packages2.default.io.png.Writer = _packages2.default.io.Writer.extend(
         };
         canvas.setZoom(1.0);
         canvas.hideDecoration();
-        svg = canvas.getHtmlContainer().html().replace(/>\s+/g, ">").replace(/\s+</g, "<");
-
-        // add missing namespace for images in SVG if missing
-        // depends on raphaelJS version
-        if (svg.indexOf("http://www.w3.org/1999/xlink") === -1) {
-          svg = svg.replace("<svg ", "<svg xmlns:xlink=\"http://www.w3.org/1999/xlink\" ");
-        }
+        svg = new XMLSerializer().serializeToString(canvas.getHtmlContainer().find("svg")[0]);
       }
 
-    // required for IE9 support.
-    // The following table contains ready-to-use conditions to detect IE Browser versions
-    //
-    // IE versions     Condition to check for
-    // ------------------------------------------------------------
-    // 10 or older     document.all
-    // 9 or older      document.all && !window.atob
-    // 8 or older      document.all && !document.addEventListener
-    // 7 or older      document.all && !document.querySelector
-    // 6 or older      document.all && !window.XMLHttpRequest
-    // 5.x             document.all && !document.compatMode
-    if (document.all) {
-      svg = svg.replace(/xmlns=\"http:\/\/www\.w3\.org\/2000\/svg\"/, '');
-    }
-
-    var canvasDomNode = $('<canvas id="canvas_png_export_for_draw2d" style="display:none"></canvas>');
+    var canvasDomNode = $('<canvas id="canvas_png_export_for_draw2d"></canvas>');
     $('body').append(canvasDomNode);
     var fullSizeCanvas = $("#canvas_png_export_for_draw2d")[0];
     fullSizeCanvas.width = canvas.initialWidth;

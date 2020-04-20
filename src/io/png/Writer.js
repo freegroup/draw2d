@@ -50,7 +50,6 @@ draw2d.io.png.Writer = draw2d.io.Writer.extend(
         throw "Writer.marshal method signature has been change from version 2.10.1 to version 3.0.0. Please consult the API documentation about this issue.";
       }
 
-
       let svg = ""
       let canvasState = false
 
@@ -59,14 +58,15 @@ draw2d.io.png.Writer = draw2d.io.Writer.extend(
       // @status beta
       // @since 5.5.0
       if (canvas instanceof draw2d.Figure) {
-        let origPos = canvas.getPosition()
-        canvas.setPosition(1, 1)
+        let figure = canvas
+        let origPos = figure.getPosition()
+        figure.setPosition(1, 1)
         svg = "<svg xmlns:xlink=\"http://www.w3.org/1999/xlink\" >"
-          + canvas.shape.node.outerHTML
+          + figure.shape.node.outerHTML
           + "</svg>";
-        canvas.setPosition(origPos);
-        canvas.initialWidth = canvas.getWidth() + 2
-        canvas.initialHeight = canvas.getHeight() + 2
+        figure.setPosition(origPos);
+        figure.initialWidth = figure.getWidth() + 2
+        figure.initialHeight = figure.getHeight() + 2
       }
       // create a snapshot of a complete canvas
       //
@@ -78,31 +78,10 @@ draw2d.io.png.Writer = draw2d.io.Writer.extend(
         }
         canvas.setZoom(1.0)
         canvas.hideDecoration()
-        svg = canvas.getHtmlContainer().html().replace(/>\s+/g, ">").replace(/\s+</g, "<")
-
-        // add missing namespace for images in SVG if missing
-        // depends on raphaelJS version
-        if (svg.indexOf("http://www.w3.org/1999/xlink") === -1) {
-          svg = svg.replace("<svg ", "<svg xmlns:xlink=\"http://www.w3.org/1999/xlink\" ")
-        }
+        svg = (new XMLSerializer()).serializeToString(canvas.getHtmlContainer().find("svg")[0]);
       }
 
-      // required for IE9 support.
-      // The following table contains ready-to-use conditions to detect IE Browser versions
-      //
-      // IE versions     Condition to check for
-      // ------------------------------------------------------------
-      // 10 or older     document.all
-      // 9 or older      document.all && !window.atob
-      // 8 or older      document.all && !document.addEventListener
-      // 7 or older      document.all && !document.querySelector
-      // 6 or older      document.all && !window.XMLHttpRequest
-      // 5.x             document.all && !document.compatMode
-      if (document.all) {
-        svg = svg.replace(/xmlns=\"http:\/\/www\.w3\.org\/2000\/svg\"/, '')
-      }
-
-      let canvasDomNode = $('<canvas id="canvas_png_export_for_draw2d" style="display:none"></canvas>')
+      let canvasDomNode = $('<canvas id="canvas_png_export_for_draw2d"></canvas>')
       $('body').append(canvasDomNode)
       let fullSizeCanvas = $("#canvas_png_export_for_draw2d")[0]
       fullSizeCanvas.width = canvas.initialWidth
@@ -123,23 +102,23 @@ draw2d.io.png.Writer = draw2d.io.Writer.extend(
             }
 
             if (typeof cropBoundingBox !== "undefined") {
-              let sourceX = cropBoundingBox.x;
-              let sourceY = cropBoundingBox.y;
-              let sourceWidth = cropBoundingBox.w;
-              let sourceHeight = cropBoundingBox.h;
+              let sourceX = cropBoundingBox.x
+              let sourceY = cropBoundingBox.y
+              let sourceWidth = cropBoundingBox.w
+              let sourceHeight = cropBoundingBox.h
 
-              let croppedCanvas = document.createElement('canvas');
-              croppedCanvas.width = sourceWidth;
-              croppedCanvas.height = sourceHeight;
+              let croppedCanvas = document.createElement('canvas')
+              croppedCanvas.width = sourceWidth
+              croppedCanvas.height = sourceHeight
 
               croppedCanvas.getContext("2d").drawImage(fullSizeCanvas, sourceX, sourceY, sourceWidth, sourceHeight, 0, 0, sourceWidth, sourceHeight);
 
-              let dataUrl = croppedCanvas.toDataURL("image/png");
-              let base64Image = dataUrl.replace("data:image/png;base64,", "");
-              resultCallback(dataUrl, base64Image);
+              let dataUrl = croppedCanvas.toDataURL("image/png")
+              let base64Image = dataUrl.replace("data:image/png;base64,", "")
+              resultCallback(dataUrl, base64Image)
             } else {
-              let img = fullSizeCanvas.toDataURL("image/png");
-              resultCallback(img, img.replace("data:image/png;base64,", ""));
+              let img = fullSizeCanvas.toDataURL("image/png")
+              resultCallback(img, img.replace("data:image/png;base64,", ""))
             }
           } finally {
             canvasDomNode.remove()

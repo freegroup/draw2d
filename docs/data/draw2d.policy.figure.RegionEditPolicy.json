@@ -80,6 +80,21 @@
       }
     },
     {
+      "name": "getBoundingBox",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Returns the constraint bounding box for the policy.</p>",
+      "parameters": [],
+      "inherited": false,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "draw2d.geo.Rectangle",
+        "description": ""
+      }
+    },
+    {
       "name": "adjustPosition",
       "access": "",
       "virtual": false,

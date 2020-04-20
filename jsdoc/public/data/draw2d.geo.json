@@ -1420,6 +1420,21 @@
           }
         },
         {
+          "name": "getCenterRight",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>The center right  of the dimension object.</p>",
+          "parameters": [],
+          "inherited": false,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.geo.Point",
+            "description": "<p>a new point objects which holds the coordinates</p>"
+          }
+        },
+        {
           "name": "getBottomLeft",
           "access": "",
           "virtual": false,
