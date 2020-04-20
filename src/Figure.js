@@ -803,14 +803,13 @@ draw2d.Figure = Class.extend(
       }
 
       // bring all children in front of the parent
-      let _this = this
-      this.children.each(function (i, child) {
-        child.figure.toFront(_this)
+      this.children.each( (i, child) =>{
+        child.figure.toFront(this)
       })
 
       // and last but not lease the ResizeHandles if any present
       //
-      this.selectionHandles.each(function (i, handle) {
+      this.selectionHandles.each( (i, handle) =>{
         handle.toFront()
       })
 

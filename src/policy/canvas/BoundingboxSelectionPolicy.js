@@ -321,7 +321,7 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
         //
         let selectionRect = this.boundingBoxFigure1.getBoundingBox()
         canvas.getFigures().each((i, figure) => {
-          if (figure.isSelectable() === true && this.decision(figure.getBoundingBox(), selectionRect)) {
+          if (figure.isSelectable() === true && figure.isVisible()===true && this.decision(figure.getBoundingBox(), selectionRect)) {
             let fakeDragX = 1
             let fakeDragY = 1
 

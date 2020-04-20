@@ -10174,6 +10174,8 @@ _packages2.default.Figure = Class.extend(
    * @since 3.0.0
    */
   toFront: function toFront(figure) {
+    var _this4 = this;
+
     // ensure that the z-oder is still correct if the figure is assigned
     // to a StrongComposite
     //
@@ -10213,9 +10215,8 @@ _packages2.default.Figure = Class.extend(
     }
 
     // bring all children in front of the parent
-    var _this = this;
     this.children.each(function (i, child) {
-      child.figure.toFront(_this);
+      child.figure.toFront(_this4);
     });
 
     // and last but not lease the ResizeHandles if any present
@@ -10279,7 +10280,7 @@ _packages2.default.Figure = Class.extend(
    * @param {draw2d.policy.EditPolicy} policy
    */
   installEditPolicy: function installEditPolicy(policy) {
-    var _this4 = this;
+    var _this5 = this;
 
     // it is only possible to install one SelectionFeedbackPolicy at once
     //
@@ -10287,7 +10288,7 @@ _packages2.default.Figure = Class.extend(
       this.editPolicy.grep(function (p) {
         var stay = !(p instanceof _packages2.default.policy.figure.SelectionFeedbackPolicy);
         if (!stay) {
-          p.onUninstall(_this4);
+          p.onUninstall(_this5);
         }
         return stay;
       });
@@ -10298,7 +10299,7 @@ _packages2.default.Figure = Class.extend(
     this.editPolicy.grep(function (p) {
       var stay = p.__proto__ !== policy.__proto__;
       if (!stay) {
-        p.onUninstall(_this4);
+        p.onUninstall(_this5);
       }
       return stay;
     });
@@ -10699,7 +10700,7 @@ _packages2.default.Figure = Class.extend(
    * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
    **/
   onDrag: function onDrag(dx, dy, dx2, dy2, shiftKey, ctrlKey) {
-    var _this5 = this;
+    var _this6 = this;
 
     // apply all EditPolicy for DragDrop Operations. This is something like
     // an policy that forces that an object can only move vertical, horizontal or in a given
@@ -10707,10 +10708,10 @@ _packages2.default.Figure = Class.extend(
     //
     this.editPolicy.each(function (i, e) {
       if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
-        var _newPos = e.adjustPosition(_this5, _this5.ox + dx, _this5.oy + dy);
+        var _newPos = e.adjustPosition(_this6, _this6.ox + dx, _this6.oy + dy);
         if (_newPos) {
-          dx = _newPos.x - _this5.ox;
-          dy = _newPos.y - _this5.oy;
+          dx = _newPos.x - _this6.ox;
+          dy = _newPos.y - _this6.oy;
         }
       }
     });
@@ -10729,7 +10730,7 @@ _packages2.default.Figure = Class.extend(
     //
     this.editPolicy.each(function (i, e) {
       if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
-        e.onDrag(_this5.canvas, _this5);
+        e.onDrag(_this6.canvas, _this6);
       }
     });
 
@@ -10785,7 +10786,7 @@ _packages2.default.Figure = Class.extend(
    *
    **/
   onDragEnd: function onDragEnd(x, y, shiftKey, ctrlKey) {
-    var _this6 = this;
+    var _this7 = this;
 
     // Element ist zwar schon an seine Position, das Command muss aber trotzdem
     // in dem CommandStack gelegt werden damit das Undo funktioniert.
@@ -10802,7 +10803,7 @@ _packages2.default.Figure = Class.extend(
     //
     this.editPolicy.each(function (i, e) {
       if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
-        e.onDragEnd(_this6.canvas, _this6, x, y, shiftKey, ctrlKey);
+        e.onDragEnd(_this7.canvas, _this7, x, y, shiftKey, ctrlKey);
       }
     });
 
@@ -10826,11 +10827,11 @@ _packages2.default.Figure = Class.extend(
    * @private
    **/
   delegateTarget: function delegateTarget(draggedFigure) {
-    var _this7 = this;
+    var _this8 = this;
 
     var delegate = draggedFigure;
     this.getCanvas().getDropInterceptorPolicies().each(function (i, policy) {
-      delegate = policy.delegateTarget(draggedFigure, _this7);
+      delegate = policy.delegateTarget(draggedFigure, _this8);
       if (delegate !== null) {
         return false; // break the loop
       }
@@ -11004,7 +11005,7 @@ _packages2.default.Figure = Class.extend(
    * @param {Number} angle the rotation angle in degree
    */
   setRotationAngle: function setRotationAngle(angle) {
-    var _this8 = this;
+    var _this9 = this;
 
     this.rotationAngle = angle;
 
@@ -11012,7 +11013,7 @@ _packages2.default.Figure = Class.extend(
     //
     this.editPolicy.each(function (i, e) {
       if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
-        e.moved(_this8.canvas, _this8);
+        e.moved(_this9.canvas, _this9);
       }
     });
 
@@ -11373,7 +11374,7 @@ _packages2.default.Figure = Class.extend(
    * @param {Number} [y] The new y coordinate of the figure
    **/
   setPosition: function setPosition(x, y) {
-    var _this9 = this;
+    var _this10 = this;
 
     if (typeof x === "undefined") {
       debugger;
@@ -11391,9 +11392,9 @@ _packages2.default.Figure = Class.extend(
 
     this.editPolicy.each(function (i, e) {
       if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
-        var newPos = e.adjustPosition(_this9, _this9.x, _this9.y);
-        _this9.x = newPos.x;
-        _this9.y = newPos.y;
+        var newPos = e.adjustPosition(_this10, _this10.x, _this10.y);
+        _this10.x = newPos.x;
+        _this10.y = newPos.y;
       }
     });
 
@@ -11404,7 +11405,7 @@ _packages2.default.Figure = Class.extend(
     //
     this.editPolicy.each(function (i, e) {
       if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
-        e.moved(_this9.canvas, _this9);
+        e.moved(_this10.canvas, _this10);
       }
     });
 
@@ -11459,7 +11460,7 @@ _packages2.default.Figure = Class.extend(
    * @param {Number} h The new height of the figure
    **/
   setDimension: function setDimension(w, h) {
-    var _this10 = this;
+    var _this11 = this;
 
     var old = { width: this.width, height: this.height };
 
@@ -11472,7 +11473,7 @@ _packages2.default.Figure = Class.extend(
       // because the minWidth/minHeight did have a higher prio.
       this.editPolicy.each(function (i, e) {
         if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
-          e.moved(_this10.canvas, _this10);
+          e.moved(_this11.canvas, _this11);
         }
       });
       return this;
@@ -11482,7 +11483,7 @@ _packages2.default.Figure = Class.extend(
     //
     this.editPolicy.each(function (i, e) {
       if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
-        var newDim = e.adjustDimension(_this10, w, h);
+        var newDim = e.adjustDimension(_this11, w, h);
         w = newDim.w;
         h = newDim.h;
       }
@@ -11514,7 +11515,7 @@ _packages2.default.Figure = Class.extend(
     //
     this.editPolicy.each(function (i, e) {
       if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
-        e.moved(_this10.canvas, _this10);
+        e.moved(_this11.canvas, _this11);
       }
     });
 
@@ -19740,6 +19741,16 @@ _packages2.default.geo.Rectangle = _packages2.default.geo.Point.extend(
    **/
   getCenterLeft: function getCenterLeft() {
     return new _packages2.default.geo.Point(this.x, this.y + this.h / 2);
+  },
+
+  /**
+   *
+   * The center right  of the dimension object.
+   *
+   * @returns {draw2d.geo.Point} a new point objects which holds the coordinates
+   **/
+  getCenterRight: function getCenterRight() {
+    return new _packages2.default.geo.Point(this.x + this.w, this.y + this.h / 2);
   },
 
   /**
@@ -29892,7 +29903,7 @@ _packages2.default.policy.canvas.BoundingboxSelectionPolicy = _packages2.default
         //
         var selectionRect = this.boundingBoxFigure1.getBoundingBox();
         canvas.getFigures().each(function (i, figure) {
-          if (figure.isSelectable() === true && _this3.decision(figure.getBoundingBox(), selectionRect)) {
+          if (figure.isSelectable() === true && figure.isVisible() === true && _this3.decision(figure.getBoundingBox(), selectionRect)) {
             var fakeDragX = 1;
             var fakeDragY = 1;
 
@@ -36981,7 +36992,7 @@ _packages2.default.policy.figure.RegionEditPolicy = _packages2.default.policy.fi
   },
 
   /**
-   * 
+   *
    * Update the constraint bounding box for the policy.
    *
    * @param {draw2d.geo.Rectangle} boundingBox the constraint rectangle
@@ -36995,7 +37006,17 @@ _packages2.default.policy.figure.RegionEditPolicy = _packages2.default.policy.fi
   },
 
   /**
-   * 
+   *
+   * Returns the constraint bounding box for the policy.
+   *
+   * @returns {draw2d.geo.Rectangle}
+   */
+  getBoundingBox: function getBoundingBox() {
+    return this.constRect;
+  },
+
+  /**
+   *
    * Adjust the coordinates to the rectangle/region of this constraint.
    *
    * @param {draw2d.Figure} figure
@@ -37016,7 +37037,7 @@ _packages2.default.policy.figure.RegionEditPolicy = _packages2.default.policy.fi
   },
 
   /**
-   * 
+   *
    * Adjust the dimension of the rectangle to fit into the region of the policy
    *
    * @param {draw2d.Figure} figure
@@ -45060,7 +45081,7 @@ _packages2.default.shape.composite.Jailhouse = _packages2.default.shape.composit
   },
 
   /**
-   * 
+   *
    * Set the new width and height of the figure and update the constraint policy for the assigned
    * figures..
    *
@@ -45073,7 +45094,7 @@ _packages2.default.shape.composite.Jailhouse = _packages2.default.shape.composit
   },
 
   /**
-   * 
+   *
    * Set the position of the object.
    *
    * @param {Number/draw2d.geo.Point} x The new x coordinate of the figure
@@ -45091,7 +45112,7 @@ _packages2.default.shape.composite.Jailhouse = _packages2.default.shape.composit
     if (dx === 0 && dy === 0) {
       return this;
     }
-    this.policy.setBoundingBox(this.getAbsoluteBounds());
+    this.policy.getBoundingBox().setPosition(x, y);
 
     if (this.stickFigures === false) {
       this.assignedFigures.each(function (i, figure) {
@@ -45103,7 +45124,7 @@ _packages2.default.shape.composite.Jailhouse = _packages2.default.shape.composit
   },
 
   /**
-   * 
+   *
    * Assign a figure to the given group.
    * The bounding box of the group is recalculated and the union of the current bounding box with the
    * figure bounding box.
@@ -45123,8 +45144,12 @@ _packages2.default.shape.composite.Jailhouse = _packages2.default.shape.composit
     return this;
   },
 
+  getAssignedFigures: function getAssignedFigures() {
+    return this.assignedFigures;
+  },
+
   /**
-   * 
+   *
    * Remove the given figure from the group assignment
    *
    * @param {draw2d.Figure} figure the figure to remove
@@ -45154,7 +45179,7 @@ _packages2.default.shape.composite.Jailhouse = _packages2.default.shape.composit
   },
 
   /**
-   * 
+   *
    * Return the minWidth of the jailhouse. The minWidth is calculated by care the assigned figures.
    *
    * @returns {Number} the minimum width for the figure
@@ -45168,7 +45193,7 @@ _packages2.default.shape.composite.Jailhouse = _packages2.default.shape.composit
   },
 
   /**
-   * 
+   *
    * @returns {Number} the minimum height of the figure
    */
   getMinHeight: function getMinHeight() {
@@ -51295,8 +51320,12 @@ _packages2.default.shape.icon.Icon = _packages2.default.SetFigure.extend(
    * @param {Object} attr the configuration of the shape
    */
   init: function init(attr, setter, getter) {
-    this._super(extend({ width: 50, height: 50 }, attr), setter, getter);
-    this.setBackgroundColor("#333333");
+    this._super(extend({
+      width: 50,
+      height: 50,
+      color: "#333333",
+      bgColor: null
+    }, attr), setter, getter);
     this.keepAspectRatio = false;
   },
 
@@ -51311,11 +51340,8 @@ _packages2.default.shape.icon.Icon = _packages2.default.SetFigure.extend(
 
     attributes = attributes || {};
 
-    // redirect the bgColor to the inner set and not to the outer container
-    //
-    attributes.fill = "none";
     if (this.svgNodes !== null) {
-      this.svgNodes.attr({ fill: this.bgColor.rgba(), stroke: "none" });
+      this.svgNodes.attr({ fill: this.color.rgba(), stroke: "none" });
     }
 
     this._super(attributes);

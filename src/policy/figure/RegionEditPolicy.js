@@ -15,86 +15,93 @@ import draw2d from '../../packages'
 draw2d.policy.figure.RegionEditPolicy = draw2d.policy.figure.DragDropEditPolicy.extend(
   /** @lends draw2d.policy.figure.RegionEditPolicy.prototype */
   {
-  
-  NAME: "draw2d.policy.figure.RegionEditPolicy",
 
-  /**
-   * Creates a new constraint object
-   *
-   * @param {Number|draw2d.geo.Rectangle} x x coordinate or a rectangle as constraint for the assigned figure.
-   * @param {Number} y
-   * @param {Number} w
-   * @param {Number} h
-   */
-  init: function (x, y, w, h) {
-    this._super()
-    if (x instanceof draw2d.geo.Rectangle) {
-      this.constRect = x
-    }
-    else if (typeof h === "number") {
-      this.constRect = new draw2d.geo.Rectangle(x, y, w, h)
-    }
-    else {
-      throw "Invalid parameter. RegionEditPolicy need a rectangle as parameter in the constructor"
-    }
-  },
+    NAME: "draw2d.policy.figure.RegionEditPolicy",
 
-  /**
-   * 
-   * Update the constraint bounding box for the policy.
-   *
-   * @param {draw2d.geo.Rectangle} boundingBox the constraint rectangle
-   * @since 4.8.2
-   * @returns {this}
-   */
-  setBoundingBox: function (boundingBox) {
-    this.constRect = boundingBox
+    /**
+     * Creates a new constraint object
+     *
+     * @param {Number|draw2d.geo.Rectangle} x x coordinate or a rectangle as constraint for the assigned figure.
+     * @param {Number} y
+     * @param {Number} w
+     * @param {Number} h
+     */
+    init: function (x, y, w, h) {
+      this._super()
+      if (x instanceof draw2d.geo.Rectangle) {
+        this.constRect = x
+      } else if (typeof h === "number") {
+        this.constRect = new draw2d.geo.Rectangle(x, y, w, h)
+      } else {
+        throw "Invalid parameter. RegionEditPolicy need a rectangle as parameter in the constructor"
+      }
+    },
 
-    return this
-  },
+    /**
+     *
+     * Update the constraint bounding box for the policy.
+     *
+     * @param {draw2d.geo.Rectangle} boundingBox the constraint rectangle
+     * @since 4.8.2
+     * @returns {this}
+     */
+    setBoundingBox: function (boundingBox) {
+      this.constRect = boundingBox
 
-  /**
-   * 
-   * Adjust the coordinates to the rectangle/region of this constraint.
-   *
-   * @param {draw2d.Figure} figure
-   * @param {Number|draw2d.geo.Point} x
-   * @param {Number} [y]
-   *
-   * @returns {draw2d.geo.Point} the constraint position of the figure
-   */
-  adjustPosition: function (figure, x, y) {
-    let r = null
-    if (x instanceof draw2d.geo.Point) {
-      r = new draw2d.geo.Rectangle(x.x, x.y, figure.getWidth(), figure.getHeight())
+      return this
+    },
+
+    /**
+     *
+     * Returns the constraint bounding box for the policy.
+     *
+     * @returns {draw2d.geo.Rectangle}
+     */
+    getBoundingBox: function () {
+      return this.constRect
+    },
+
+    /**
+     *
+     * Adjust the coordinates to the rectangle/region of this constraint.
+     *
+     * @param {draw2d.Figure} figure
+     * @param {Number|draw2d.geo.Point} x
+     * @param {Number} [y]
+     *
+     * @returns {draw2d.geo.Point} the constraint position of the figure
+     */
+    adjustPosition: function (figure, x, y) {
+      let r = null
+      if (x instanceof draw2d.geo.Point) {
+        r = new draw2d.geo.Rectangle(x.x, x.y, figure.getWidth(), figure.getHeight())
+      } else {
+        r = new draw2d.geo.Rectangle(x, y, figure.getWidth(), figure.getHeight())
+      }
+      r = this.constRect.moveInside(r)
+      return r.getTopLeft()
+    },
+
+    /**
+     *
+     * Adjust the dimension of the rectangle to fit into the region of the policy
+     *
+     * @param {draw2d.Figure} figure
+     * @param {Number} w
+     * @param {Number} h
+     * @returns {draw2d.geo.Rectangle} the constraint position of the figure
+     */
+    adjustDimension: function (figure, w, h) {
+      let diffW = (figure.getAbsoluteX() + w) - this.constRect.getRight()
+      let diffH = (figure.getAbsoluteY() + h) - this.constRect.getBottom()
+
+      if (diffW > 0) {
+        w = w - diffW
+      }
+      if (diffH > 0) {
+        h = h - diffH
+      }
+
+      return new draw2d.geo.Rectangle(0, 0, w, h)
     }
-    else {
-      r = new draw2d.geo.Rectangle(x, y, figure.getWidth(), figure.getHeight())
-    }
-    r = this.constRect.moveInside(r)
-    return r.getTopLeft()
-  },
-
-  /**
-   * 
-   * Adjust the dimension of the rectangle to fit into the region of the policy
-   *
-   * @param {draw2d.Figure} figure
-   * @param {Number} w
-   * @param {Number} h
-   * @returns {draw2d.geo.Rectangle} the constraint position of the figure
-   */
-  adjustDimension: function (figure, w, h) {
-    let diffW = (figure.getAbsoluteX() + w) - this.constRect.getRight()
-    let diffH = (figure.getAbsoluteY() + h) - this.constRect.getBottom()
-
-    if (diffW > 0) {
-      w = w - diffW
-    }
-    if (diffH > 0) {
-      h = h - diffH
-    }
-
-    return new draw2d.geo.Rectangle(0, 0, w, h)
-  }
-})
+  })

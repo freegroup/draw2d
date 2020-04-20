@@ -20,8 +20,12 @@ draw2d.shape.icon.Icon = draw2d.SetFigure.extend(
    * @param {Object} attr the configuration of the shape
    */
   init: function (attr, setter, getter) {
-    this._super(extend({width: 50, height: 50}, attr), setter, getter)
-    this.setBackgroundColor("#333333")
+    this._super(extend({
+      width: 50,
+      height: 50,
+      color:"#333333",
+      bgColor:null
+    }, attr), setter, getter)
     this.keepAspectRatio = false
   },
 
@@ -36,11 +40,8 @@ draw2d.shape.icon.Icon = draw2d.SetFigure.extend(
 
     attributes = attributes || {}
 
-    // redirect the bgColor to the inner set and not to the outer container
-    //
-    attributes.fill = "none"
     if (this.svgNodes !== null) {
-      this.svgNodes.attr({fill: this.bgColor.rgba(), stroke: "none"})
+      this.svgNodes.attr({fill: this.color.rgba(), stroke: "none"})
     }
 
     this._super(attributes)
@@ -48,7 +49,6 @@ draw2d.shape.icon.Icon = draw2d.SetFigure.extend(
 
   applyTransformation: function () {
     let trans = []
-
 
     if (this.rotationAngle !== 0) {
       trans.push("R" + this.rotationAngle)

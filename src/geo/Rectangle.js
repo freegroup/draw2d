@@ -309,6 +309,17 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend(
 
     /**
      *
+     * The center right  of the dimension object.
+     *
+     * @returns {draw2d.geo.Point} a new point objects which holds the coordinates
+     **/
+    getCenterRight: function () {
+      return new draw2d.geo.Point(this.x+ this.w, this.y + (this.h / 2));
+    },
+
+
+    /**
+     *
      * The bottom left corner of the dimension object.
      *
      * @returns {draw2d.geo.Point} a new point objects which holds the coordinates
