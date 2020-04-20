@@ -8685,7 +8685,8 @@ _packages2.default.Connection = _packages2.default.shape.basic.PolyLine.extend(
 
   /**
    * You can't drag&drop the resize handles of a connector.
-   * @type boolean
+   *
+   * @returns {Boolean}
    **/
   isResizeable: function isResizeable() {
     return this.isDraggable();
@@ -8700,6 +8701,7 @@ _packages2.default.Connection = _packages2.default.shape.basic.PolyLine.extend(
    * @param {draw2d.Figure} child the figure to add as decoration to the connection.
    * @param {draw2d.layout.locator.ConnectionLocator} locator the locator for the child.
    * @param {Number} [index] optional index where to insert the figure
+   * @returns {this}
    **/
   add: function add(child, locator, index) {
     // just to ensure the right interface for the locator.
@@ -10359,6 +10361,7 @@ _packages2.default.Figure = Class.extend(
    * @param {draw2d.Figure} child the figure to add as decoration to the connection.
    * @param {draw2d.layout.locator.Locator} locator the locator for the child.
    * @param {Number} [index] optional index where to insert the figure
+   * @returns {this}
    **/
   add: function add(child, locator, index) {
     if (typeof locator === "undefined" || locator === null) {
@@ -10565,7 +10568,7 @@ _packages2.default.Figure = Class.extend(
     // Relocate all children of the figure if the dimension or location of the
     // shape has changed
     //
-    if ("x" in attributes || "width" in attributes || "rx" in attributes) {
+    if ("x" in attributes || "width" in attributes || "cx" in attributes || "path" in attributes) {
       this.children.each(function (i, e) {
         e.locator.relocate(i, e.figure);
       });

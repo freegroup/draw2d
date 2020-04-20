@@ -1409,7 +1409,11 @@
           "parameters": [],
           "inherited": false,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
         },
         {
           "name": "add",
@@ -1445,7 +1449,11 @@
           ],
           "inherited": false,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "setSourceDecorator",
@@ -5334,7 +5342,11 @@
           ],
           "inherited": false,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "remove",
@@ -9433,7 +9445,11 @@
           ],
           "inherited": true,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "remove",
@@ -12718,7 +12734,11 @@
           ],
           "inherited": true,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "remove",
@@ -15955,7 +15975,11 @@
           ],
           "inherited": true,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "remove",
@@ -18969,7 +18993,11 @@
           ],
           "inherited": true,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "remove",
@@ -21684,7 +21712,11 @@
           ],
           "inherited": true,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "remove",
@@ -24762,7 +24794,11 @@
           ],
           "inherited": true,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "remove",
@@ -27583,7 +27619,11 @@
           ],
           "inherited": true,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "remove",

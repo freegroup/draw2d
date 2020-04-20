@@ -102,7 +102,11 @@
           ],
           "inherited": true,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "remove",
@@ -3049,7 +3053,11 @@
           ],
           "inherited": true,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "remove",
@@ -7147,7 +7155,11 @@
           ],
           "inherited": true,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "remove",
@@ -8874,7 +8886,11 @@
           ],
           "inherited": true,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "remove",
@@ -11990,7 +12006,11 @@
           ],
           "inherited": true,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "remove",
@@ -14888,7 +14908,11 @@
           ],
           "inherited": true,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "remove",

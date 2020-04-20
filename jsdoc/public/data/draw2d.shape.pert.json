@@ -135,7 +135,11 @@
           ],
           "inherited": true,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "setGap",
@@ -3071,7 +3075,11 @@
           ],
           "inherited": true,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "setGap",

@@ -202,7 +202,8 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
 
     /**
      * You can't drag&drop the resize handles of a connector.
-     * @type boolean
+     *
+     * @returns {Boolean}
      **/
     isResizeable: function () {
       return this.isDraggable()
@@ -218,6 +219,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
      * @param {draw2d.Figure} child the figure to add as decoration to the connection.
      * @param {draw2d.layout.locator.ConnectionLocator} locator the locator for the child.
      * @param {Number} [index] optional index where to insert the figure
+     * @returns {this}
      **/
     add: function (child, locator, index) {
       // just to ensure the right interface for the locator.
@@ -510,7 +512,6 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
           this.sourceDecoratorNode.insertAfter(this.shape)
         }
       }
-
 
       return this
     },

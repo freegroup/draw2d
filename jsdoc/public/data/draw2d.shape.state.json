@@ -119,7 +119,11 @@
           "parameters": [],
           "inherited": true,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
         },
         {
           "name": "add",
@@ -155,7 +159,11 @@
           ],
           "inherited": true,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "setSourceDecorator",
@@ -4880,7 +4888,11 @@
           ],
           "inherited": true,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "remove",
@@ -7683,7 +7695,11 @@
           ],
           "inherited": true,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "remove",
@@ -9399,7 +9415,11 @@
           ],
           "inherited": true,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "setGap",

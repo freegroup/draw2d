@@ -21250,7 +21250,6 @@ _packages2.default.io.png.Writer = _packages2.default.io.Writer.extend(
     fullSizeCanvas.width = canvas.initialWidth;
     fullSizeCanvas.height = canvas.initialHeight;
 
-    console.log(svg);
     canvg("canvas_png_export_for_draw2d", svg, {
       ignoreMouse: true,
       ignoreAnimation: true,
