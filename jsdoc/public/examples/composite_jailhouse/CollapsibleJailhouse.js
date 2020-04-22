@@ -7,6 +7,7 @@
 // Go to the Designer http://www.draw2d.org
 // to design your own shape or download user generated
 //
+
 let CollapsibleJailhouse = draw2d.shape.composite.Jailhouse.extend({
 
   NAME: "CollapsibleJailhouse",
@@ -40,9 +41,12 @@ let CollapsibleJailhouse = draw2d.shape.composite.Jailhouse.extend({
         this.assignedFigures.each((i, child)=>{
           child.setVisible(true)
           child.installEditPolicy(this.policy)
-          child.getOutputPorts().each( (i, port)=>{
+          child.getPorts().each( (i, port)=>{
             port.setLocator(port._originalLocator)
             port.setConnectionDirection(port._originalDirection)
+            port.getConnections().each((i, conn) => {
+              conn.setVisible(true)
+            })
           })
           child.portRelayoutRequired = true
           child.layoutPorts()
@@ -57,16 +61,30 @@ let CollapsibleJailhouse = draw2d.shape.composite.Jailhouse.extend({
           let offset = child.getAbsolutePosition().subtract(this.getAbsolutePosition())
           child.setVisible(false)
           child.uninstallEditPolicy(this.policy)
-          child.getOutputPorts().each( (i, port)=>{
+          child.getPorts().each( (i, port)=>{
             port._originalLocator = port.getLocator()
             // store the applied connection direction (if this used)
             port._originalDirection = port.preferredConnectionDirection
             // and force the current calculated direction
             port.setConnectionDirection(port.getConnectionDirection())
-            port.setLocator({
-              relocate:  (index, figure) =>{
-                figure.setPosition(-offset.x+this.collapsedWidth+1,-offset.y+this.collapsedHeight/2)
-              },
+            if(port.getConnectionDirection() === draw2d.geo.Rectangle.DIRECTION_RIGHT) {
+              port.setLocator({
+                relocate: (index, figure) => {
+                  figure.setPosition(-offset.x + this.collapsedWidth + 1, -offset.y + this.collapsedHeight / 2)
+                },
+              })
+            }
+            else {
+              port.setLocator({
+                relocate: (index, figure) => {
+                  figure.setPosition(-offset.x - 1, -offset.y + this.collapsedHeight / 2)
+                },
+              })
+            }
+            port.getConnections().each((i, conn) => {
+              let source = conn.getSource().getParent()
+              let target = conn.getTarget().getParent()
+              conn.setVisible(source.getComposite() !== target.getComposite())
             })
           })
           child.portRelayoutRequired = true
@@ -81,6 +99,9 @@ let CollapsibleJailhouse = draw2d.shape.composite.Jailhouse.extend({
   },
 
   assignFigure: function (figure) {
+    if(figure instanceof draw2d.Connection)
+      return
+
     this._super(figure)
 
     figure.getPorts().each((i, port) => {

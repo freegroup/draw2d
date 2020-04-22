@@ -34,6 +34,21 @@ var jsonDocument =
     },
     {
       "type": "draw2d.shape.node.End",
+      "id": "ebfb35bb-5767-8155-c804-14bda7759",
+      "x": 97,
+      "y": 353,
+      "width": 50,
+      "height": 50,
+      "userData": {},
+      "cssClass": "draw2d_shape_node_End",
+      "bgColor": "#4D90FE",
+      "color": "#000000",
+      "stroke": 1,
+      "alpha": 1,
+      "radius": 2
+    },
+    {
+      "type": "draw2d.shape.node.End",
       "id": "ebfb35bb-5767-8155-c804-14bda7759dc2",
       "x": 597,
       "y": 353,
