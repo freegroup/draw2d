@@ -389,8 +389,8 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
     if (port.getCanvas() !== null) {
       port.getCanvas().unregisterPort(port)
       // remove the related connections of the port too.
-      let connections = port.getConnections()
-      for (let i = 0; i < connections.getSize(); ++i) {
+      let connections = port.getConnections().clone()
+      for (let i = 0; i < connections.getSize(); i++) {
         port.getCanvas().remove(connections.get(i))
       }
     }
