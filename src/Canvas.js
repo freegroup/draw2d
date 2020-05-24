@@ -527,6 +527,11 @@ draw2d.Canvas = Class.extend(
         // think about if I allow to install only one drop policy
       }
 
+      // remove doublicate edit policies
+      if(policy.NAME) {
+        this.uninstallEditPolicy(policy.NAME)
+      }
+
       policy.onInstall(this)
       this.editPolicy.add(policy)
 
@@ -1202,17 +1207,16 @@ draw2d.Canvas = Class.extend(
      * @returns {this}
      **/
     addSelection: function (object) {
-      let _this = this
 
-      let add = function (i, figure) {
-        _this.editPolicy.each(function (i, policy) {
+      let add = (i, figure) =>{
+        this.editPolicy.each( (i, policy) =>{
           if (typeof policy.select === "function") {
-            policy.select(_this, figure)
+            policy.select(this, figure)
           }
         })
       }
 
-      if (object instanceof draw2d.util.ArrayList) {
+      if (object instanceof draw2d.util.ArrayList || object instanceof draw2d.Selection) {
         object.each(add)
       } else {
         add(0, object)

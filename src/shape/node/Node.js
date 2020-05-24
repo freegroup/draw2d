@@ -387,12 +387,13 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
     this.hybridPorts.remove(port)
 
     if (port.getCanvas() !== null) {
-      port.getCanvas().unregisterPort(port)
+      let canvas = port.getCanvas()
+      canvas.unregisterPort(port)
       // remove the related connections of the port too.
       let connections = port.getConnections().clone()
-      for (let i = 0; i < connections.getSize(); i++) {
-        port.getCanvas().remove(connections.get(i))
-      }
+      connections.each( (i, connection) => {
+        canvas.remove(connection)
+      })
     }
 
     port.setCanvas(null)

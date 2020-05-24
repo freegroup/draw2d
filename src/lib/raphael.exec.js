@@ -5903,7 +5903,12 @@
                     if (key.substring(0, 6) == "xlink:") {
                         el.setAttributeNS(xlink, key.substring(6), Str(attr[key]));
                     } else {
+                      try {
                         el.setAttribute(key, Str(attr[key]));
+                      }
+                      catch(e){
+                        debugger
+                      }
                     }
                 }
             } else {

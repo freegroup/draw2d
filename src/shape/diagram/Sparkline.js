@@ -54,7 +54,7 @@ draw2d.shape.diagram.Sparkline = draw2d.shape.diagram.Diagram.extend(
       this.max = 1
     }
 
-    if (this.max == this.min) {
+    if (this.max === this.min) {
       this.max = this.min + 1
     }
 
