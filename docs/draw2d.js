@@ -7241,9 +7241,14 @@ _packages2.default.Canvas = Class.extend(
           }
           return stay;
         });
-      } else if (policy instanceof _packages2.default.policy.canvas.DropInterceptorPolicy) {
-        // think about if I allow to install only one drop policy
-      }
+      } else if (policy instanceof _packages2.default.policy.canvas.DropInterceptorPolicy) {}
+      // think about if I allow to install only one drop policy
+
+
+      // remove doublicate edit policies
+    if (policy.NAME) {
+      this.uninstallEditPolicy(policy.NAME);
+    }
 
     policy.onInstall(this);
     this.editPolicy.add(policy);

@@ -16,6 +16,7 @@ https://freegroup.github.io/draw2d/index.html
 ``` 
 npm install
 DIR=/examples yarn dev
+
 ```
 
 ## build

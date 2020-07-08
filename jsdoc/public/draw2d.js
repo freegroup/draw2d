@@ -7919,17 +7919,17 @@ _packages2.default.Canvas = Class.extend(
    * @returns {this}
    **/
   addSelection: function addSelection(object) {
-    var _this = this;
+    var _this7 = this;
 
     var add = function add(i, figure) {
-      _this.editPolicy.each(function (i, policy) {
+      _this7.editPolicy.each(function (i, policy) {
         if (typeof policy.select === "function") {
-          policy.select(_this, figure);
+          policy.select(_this7, figure);
         }
       });
     };
 
-    if (object instanceof _packages2.default.util.ArrayList) {
+    if (object instanceof _packages2.default.util.ArrayList || object instanceof _packages2.default.Selection) {
       object.each(add);
     } else {
       add(0, object);
