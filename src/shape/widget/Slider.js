@@ -189,19 +189,19 @@ draw2d.shape.widget.Slider = draw2d.shape.widget.Widget.extend(
    * @param {Number} dx2 The x diff since the last call of this dragging operation
    * @param {Number} dy2 The y diff since the last call of this dragging operation
    */
+
+
   onPanning: function (dx, dy, dx2, dy2) {
     // calculate the current position of the mouse pos
     //
-    let thumbW2 = this.slideBoundingBox.w / 2
     let width = this.getWidth()
     let sliderWidth = width - this.padding.left - this.padding.right
 
     let figurePos = Math.min(width, Math.max(0, this.panningX + dx))
-    let sliderPos = Math.min(width - this.padding.left - this.padding.right, figurePos - this.padding.left) - thumbW2
+    let sliderPos = Math.min(width - this.padding.left - this.padding.right, figurePos)
 
     this.setValue(100 / sliderWidth * sliderPos)
   },
-
 
   /**
    * @inheritdoc

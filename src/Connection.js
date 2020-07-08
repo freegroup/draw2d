@@ -440,13 +440,11 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
 
       this.command.updateVertices(this.getVertices().clone())
 
-      let _this = this
-
       // notify all installed policies
       //
-      this.editPolicy.each(function (i, e) {
+      this.editPolicy.each( (i, e) =>{
         if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
-          e.onDrag(_this.canvas, _this)
+          e.onDrag(this.canvas, this)
         }
       })
 
@@ -456,9 +454,9 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
       // Update the resize handles if the user change the position of the
       // element via an API call.
       //
-      this.editPolicy.each(function (i, e) {
+      this.editPolicy.each((i, e) =>{
         if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
-          e.moved(_this.canvas, _this)
+          e.moved(this.canvas, this)
         }
       })
 
@@ -691,13 +689,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
 
       this._super(canvas)
 
-      if (canvas !== null && draw2d.Connection.DROP_FILTER === null) {
-        draw2d.Connection.DROP_FILTER = canvas.paper.createFilter()
-        draw2d.Connection.DROP_FILTER.element.setAttribute("width", "250%")
-        draw2d.Connection.DROP_FILTER.element.setAttribute("height", "250%")
-        draw2d.Connection.DROP_FILTER.element.setAttribute("filterUnits", "userSpaceOnUse")
-        draw2d.Connection.DROP_FILTER.createShadow(1, 1, 2, 0.3)
-      }
+
 
       if (this.sourceDecoratorNode !== null) {
         this.sourceDecoratorNode.remove()
@@ -721,7 +713,6 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
           this.targetPort.onDisconnect(this)
         }
       } else {
-        this.shape.items[0].filter(draw2d.Connection.DROP_FILTER)
 
         if (this.sourcePort !== null) {
           this.sourcePort.on("move", this.moveListener)
@@ -914,6 +905,3 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
 
     }
   })
-
-
-draw2d.Connection.DROP_FILTER = null
