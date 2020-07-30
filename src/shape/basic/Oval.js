@@ -52,6 +52,17 @@ draw2d.shape.basic.Oval = draw2d.VectorFigure.extend(
 
 
     /**
+    * @inheritdoc
+    */
+    applyTransformation: function applyTransformation() {
+        var ts = "R" + this.rotationAngle;
+
+        this.shape.transform(ts);
+
+        return this;
+    },
+
+    /**
      *
      * Get the center of the figure
      *
