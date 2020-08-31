@@ -96,7 +96,7 @@ draw2d.shape.basic.Circle = draw2d.shape.basic.Oval.extend(
      * @returns {Number} the radius of the circle
      */
     getRadius: function(){
-      return this.getWidth/2
+      return this.getWidth()/2
     },
 
     /**
