@@ -8912,6 +8912,8 @@ _packages2.default.Connection = _packages2.default.shape.basic.PolyLine.extend(
    * @param {Number} dy2 The y diff since the last call of this dragging operation
    **/
   onDrag: function onDrag(dx, dy, dx2, dy2) {
+    var _this3 = this;
+
     if (this.command === null) {
       return;
     }
@@ -8923,13 +8925,11 @@ _packages2.default.Connection = _packages2.default.shape.basic.PolyLine.extend(
 
     this.command.updateVertices(this.getVertices().clone());
 
-    var _this = this;
-
     // notify all installed policies
     //
     this.editPolicy.each(function (i, e) {
       if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
-        e.onDrag(_this.canvas, _this);
+        e.onDrag(_this3.canvas, _this3);
       }
     });
 
@@ -8941,7 +8941,7 @@ _packages2.default.Connection = _packages2.default.shape.basic.PolyLine.extend(
     //
     this.editPolicy.each(function (i, e) {
       if (e instanceof _packages2.default.policy.figure.DragDropEditPolicy) {
-        e.moved(_this.canvas, _this);
+        e.moved(_this3.canvas, _this3);
       }
     });
 
@@ -9168,14 +9168,6 @@ _packages2.default.Connection = _packages2.default.shape.basic.PolyLine.extend(
 
     this._super(canvas);
 
-    if (canvas !== null && _packages2.default.Connection.DROP_FILTER === null) {
-      _packages2.default.Connection.DROP_FILTER = canvas.paper.createFilter();
-      _packages2.default.Connection.DROP_FILTER.element.setAttribute("width", "250%");
-      _packages2.default.Connection.DROP_FILTER.element.setAttribute("height", "250%");
-      _packages2.default.Connection.DROP_FILTER.element.setAttribute("filterUnits", "userSpaceOnUse");
-      _packages2.default.Connection.DROP_FILTER.createShadow(1, 1, 2, 0.3);
-    }
-
     if (this.sourceDecoratorNode !== null) {
       this.sourceDecoratorNode.remove();
       this.sourceDecoratorNode = null;
@@ -9198,7 +9190,6 @@ _packages2.default.Connection = _packages2.default.shape.basic.PolyLine.extend(
         this.targetPort.onDisconnect(this);
       }
     } else {
-      this.shape.items[0].filter(_packages2.default.Connection.DROP_FILTER);
 
       if (this.sourcePort !== null) {
         this.sourcePort.on("move", this.moveListener);
@@ -9385,8 +9376,6 @@ _packages2.default.Connection = _packages2.default.shape.basic.PolyLine.extend(
     return this;
   }
 });
-
-_packages2.default.Connection.DROP_FILTER = null;
 
 /***/ }),
 
@@ -63005,15 +62994,15 @@ _packages2.default.shape.widget.Slider = _packages2.default.shape.widget.Widget.
    * @param {Number} dx2 The x diff since the last call of this dragging operation
    * @param {Number} dy2 The y diff since the last call of this dragging operation
    */
+
   onPanning: function onPanning(dx, dy, dx2, dy2) {
     // calculate the current position of the mouse pos
     //
-    var thumbW2 = this.slideBoundingBox.w / 2;
     var width = this.getWidth();
     var sliderWidth = width - this.padding.left - this.padding.right;
 
     var figurePos = Math.min(width, Math.max(0, this.panningX + dx));
-    var sliderPos = Math.min(width - this.padding.left - this.padding.right, figurePos - this.padding.left) - thumbW2;
+    var sliderPos = Math.min(width - this.padding.left - this.padding.right, figurePos);
 
     this.setValue(100 / sliderWidth * sliderPos);
   },
