@@ -1616,7 +1616,7 @@ draw2d.Figure = Class.extend(
      * @param {Number} angle the rotation angle in degree
      */
     setRotationAngle: function (angle) {
-      this.rotationAngle = angle
+      this.rotationAngle = angle % 360;
 
       // Update the resize handles if the user change the position of the element via an API call.
       //

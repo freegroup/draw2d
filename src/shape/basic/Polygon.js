@@ -426,7 +426,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend(
    * @inheritdoc
    */
   setRotationAngle: function (angle) {
-    this.rotationAngle = 360 % angle
+    this.rotationAngle = angle % 360;
 
     // The different to the other figures is, the the vertices must rotated instead of
     // transform the shape with SVG matrix.
@@ -462,6 +462,7 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend(
       }
     })
 
+    this.svgPathString = null; // force recalculation of svgPathString
     this.repaint()
     this.fireEvent("change:angle", {value: this.rotationAngle})
 
