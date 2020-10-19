@@ -155,7 +155,7 @@ draw2d.shape.basic.Text = draw2d.shape.basic.Label.extend(
         svgText.remove()
         this.cachedWrappedAttr = {
           text: s.join(""),
-          width: (Math.max(width, bbox.width) + this.padding.left + this.padding.right),
+          width: (Math.max(width, bbox.width)),
           height: (bbox.height + this.padding.top + this.padding.bottom)
         }
       }
