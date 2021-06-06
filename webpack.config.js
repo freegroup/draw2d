@@ -16,7 +16,8 @@ let outputPath = process.env.DIR || '/dist'
 const config = {
   entry: __dirname + '/src/index.js',
   devtool: 'source-map',
-  mode: 'development',
+//  mode: 'development',
+  mode: 'production', // by FR 210515
   output: {
     libraryTarget: 'umd', // make the bundle export
     path: __dirname + outputPath,

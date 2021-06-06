@@ -32,3 +32,4 @@ node_modules
 
 .DS_Store
 out
+/nbproject/private/

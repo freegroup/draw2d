@@ -42,6 +42,10 @@
       "namespace": "draw2d.shape"
     },
     {
+      "name": "chem",
+      "namespace": "draw2d.shape"
+    },
+    {
       "name": "icon",
       "namespace": "draw2d.shape"
     },

@@ -894,11 +894,11 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
       //
       // restore your custom attributes here
       if (typeof memento.target.decoration !== "undefined" && memento.target.decoration != null) {
-        this.setTargetDecorator(eval("new " + memento.target.decoration))
+        this.setTargetDecorator(getInstanceForName(memento.target.decoration))
       }
 
       if (typeof memento.source.decoration !== "undefined" && memento.source.decoration != null) {
-        this.setSourceDecorator(eval("new " + memento.source.decoration))
+        this.setSourceDecorator(getInstanceForName(memento.source.decoration))
       }
 
       return this

@@ -79,7 +79,7 @@ draw2d.command.CommandRotate = draw2d.command.Command.extend(
 
     this.figure.setRotationAngle(angle)
 
-    this.figure.setDimension(h, w)
+    this.figure.setDimension(w, h) // Bug: was swapped
 
     this.figure.portRelayoutRequired = true
   }

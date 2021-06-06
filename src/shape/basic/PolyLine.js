@@ -603,7 +603,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
 
     if (typeof memento.router !== "undefined") {
       try {
-        this.setRouter(eval("new " + memento.router + "()"))
+        this.setRouter(getInstanceForName(memento.router))
       }
       catch (exc) {
         debug.warn("Unable to install router '" + memento.router + "' forced by " + this.NAME + ".setPersistentAttributes. Using default")

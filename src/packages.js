@@ -97,6 +97,8 @@ export default {
     flowchart: {},
     /** @namespace draw2d.shape.analog */
     analog: {},
+    /** @namespace draw2d.shape.chem */
+    chem: {},
     /** @namespace draw2d.shape.icon */
     icon: {},
     /** @namespace draw2d.shape.layout */

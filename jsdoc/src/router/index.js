@@ -668,6 +668,31 @@ const routes = [
         component: () => import(/* webpackChunkName: "api_draw2d_shape_analog_voltagesupplyvertical" */ '../views/clazz.vue')
       },
       {
+        path: '/api/draw2d/shape/chem',
+        props: { className: 'draw2d.shape.chem' },
+        component: () => import(/* webpackChunkName: "api_draw2d_shape_chem" */ '../views/package.vue')
+      },
+      {
+        path: '/api/draw2d/shape/chem/heatexchanger',
+        props: { className: 'draw2d.shape.chem.HeatExchanger' },
+        component: () => import(/* webpackChunkName: "api_draw2d_shape_chem_heatexchanger" */ '../views/clazz.vue')
+      },
+      {
+        path: '/api/draw2d/shape/chem/mixer',
+        props: { className: 'draw2d.shape.chem.Mixer' },
+        component: () => import(/* webpackChunkName: "api_draw2d_shape_chem_mixer" */ '../views/clazz.vue')
+      },
+      {
+        path: '/api/draw2d/shape/chem/pump',
+        props: { className: 'draw2d.shape.chem.Pump' },
+        component: () => import(/* webpackChunkName: "api_draw2d_shape_chem_pump" */ '../views/clazz.vue')
+      },
+      {
+        path: '/api/draw2d/shape/chem/valve',
+        props: { className: 'draw2d.shape.chem.Valve' },
+        component: () => import(/* webpackChunkName: "api_draw2d_shape_chem_valve" */ '../views/clazz.vue')
+      },
+      {
         path: '/api/draw2d/shape/icon',
         props: { className: 'draw2d.shape.icon' },
         component: () => import(/* webpackChunkName: "api_draw2d_shape_icon" */ '../views/package.vue')
@@ -2874,6 +2899,10 @@ const tree = [
           {
             data: { path: '/api/draw2d/shape/analog' },
             text: 'analog'
+          },
+          {
+            data: { path: '/api/draw2d/shape/chem' },
+            text: 'chem'
           },
           {
             data: { path: '/api/draw2d/shape/icon' },

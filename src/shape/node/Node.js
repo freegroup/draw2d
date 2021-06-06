@@ -600,6 +600,16 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
         }))
       })
     }
+	
+	memento.children = []
+	this.children.each(function (i, child) { // getChildren() misses the locator
+	  memento.children.push(extend(child.figure.getPersistentAttributes(), {
+          // no child.figure.getName()
+          child: child.figure.NAME,
+          locator: child.locator.NAME,
+          locatorAttr: child.locator.attr()
+        }))
+      })
 
     return memento
   },
@@ -625,16 +635,33 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
       // and restore all ports of the JSON document instead.
       //
       memento.ports.forEach((e) => {
-        let locator = eval("new " + e.locator + "()")
+        let locator = getInstanceForName(e.locator)
         if(e.locatorAttr) {
           locator.attr(e.locatorAttr)
         }
 
-        let port = eval("new " + e.port + "()")
+        let port = getInstanceForName(e.port)
         port.setPersistentAttributes(e)
         this.addPort(port, locator)
       })
     }
+
+	// remove all children created in the init method
+	//
+	this.resetChildren()
+
+	// and restore all children of the JSON document instead.
+	//
+	memento.children.forEach((e) => {
+		let locator = getInstanceForName(e.locator)
+		if(e.locatorAttr) {
+		  locator.attr(e.locatorAttr)
+		}
+
+		let child = getInstanceForName(e.child)
+		child.setPersistentAttributes(e)
+		this.add(child, locator)
+	})
 
     return this
   }

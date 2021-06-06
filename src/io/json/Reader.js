@@ -143,7 +143,7 @@ draw2d.io.json.Reader = draw2d.io.Reader.extend(
      * @returns {draw2d.Figure}
      */
     createFigureFromType: function (type) {
-      return eval("new " + type + "()");
+      return getInstanceForName(type);
     },
 
     /**

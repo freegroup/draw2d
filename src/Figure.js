@@ -2663,7 +2663,7 @@ draw2d.Figure = Class.extend(
     clone: function (cloneMetaData) {
       cloneMetaData = extend({excludeChildren: false}, cloneMetaData)
 
-      let clone = eval("new " + this.NAME + "();")
+      let clone = getInstanceForName(this.NAME)
       let initialId = clone.id
 
       clone.setPersistentAttributes(this.getPersistentAttributes())
@@ -2680,7 +2680,7 @@ draw2d.Figure = Class.extend(
           // Layout shapes like VerticalLayout or Horziontal Layout. This figures injects it own kind
           // of layouter...so didn'T care about this.
 
-          let locator = entry.locator.NAME ? eval("new " + entry.locator.NAME + "();") : null
+          let locator = entry.locator.NAME ? getInstanceForName(entry.locator.NAME) : null
           clone.add(child, locator)
         })
       }

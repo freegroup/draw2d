@@ -1,15 +1,35 @@
 {
-  "name": "End",
-  "namespace": "draw2d.shape.state",
-  "description": "<p>The end node for a state diagram</p>",
+  "name": "Mixer",
+  "namespace": "draw2d.shape.chem",
+  "description": "",
   "extends": [
-    "draw2d.shape.basic.Circle"
+    "draw2d.SVGFigure"
   ],
   "access": "",
   "virtual": false,
   "functions": [
     {
-      "name": "setDimension",
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Create a new instance</p>",
+      "parameters": [
+        {
+          "name": "attr",
+          "type": "Object",
+          "description": "<p>the configuration of the shape</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "inherited": false,
+      "since": "",
+      "examples": []
+    },
+    {
+      "name": "getSVG",
       "access": "",
       "virtual": false,
       "deprecated": "",
@@ -20,15 +40,84 @@
       "examples": []
     },
     {
-      "name": "setAlpha",
+      "name": "createSet",
       "access": "",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>the the opacity of the element.</p>",
+      "description": "<p>Override this method to add your own SVG elements. See {@link draw2d.shape.basic.Label} as example.</p>",
+      "parameters": [],
+      "inherited": true,
+      "since": "",
+      "examples": []
+    },
+    {
+      "name": "getSVG",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Returns the current used SVG as string</p>",
+      "parameters": [],
+      "inherited": true,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "String",
+        "description": ""
+      }
+    },
+    {
+      "name": "setSVG",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Set the SVG of this shape</p>",
       "parameters": [
         {
-          "name": "percent",
+          "name": "svg",
+          "type": "String",
+          "description": "<p>The new SVG to render as String</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "duration",
           "type": "Number",
+          "description": "<p>the optional duration for the change of the SVG of the figure</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "draw2d.SVGFigure",
+        "description": ""
+      }
+    },
+    {
+      "name": "importSVG",
+      "access": "private",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Helper method to transform the SVG string into a raphaelJS set.</p>",
+      "parameters": [],
+      "inherited": true,
+      "since": "",
+      "examples": []
+    },
+    {
+      "name": "setPersistentAttributes",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Read all attributes from the serialized properties and transfer them into the shape.</p>",
+      "parameters": [
+        {
+          "name": "memento",
+          "type": "Object",
           "description": "",
           "default": "",
           "optional": "",
@@ -40,34 +129,18 @@
       "examples": []
     },
     {
-      "name": "init",
+      "name": "setCanvas",
       "access": "",
       "virtual": false,
       "deprecated": "",
-      "description": "",
+      "description": "<p>Set/Reset the canvas for the element.</p>",
       "parameters": [
         {
-          "name": "attr",
-          "type": "Object",
-          "description": "<p>the configuration of the shape</p>",
+          "name": "canvas",
+          "type": "draw2d.Canvas",
+          "description": "<p>the canvas to use</p>",
           "default": "",
-          "optional": true,
-          "nullable": ""
-        },
-        {
-          "name": "setter",
-          "type": "Object",
-          "description": "<p>add or replace setter methods</p>",
-          "default": "",
-          "optional": true,
-          "nullable": ""
-        },
-        {
-          "name": "getter",
-          "type": "Object",
-          "description": "<p>add or replace getter methods</p>",
-          "default": "",
-          "optional": true,
+          "optional": "",
           "nullable": ""
         }
       ],
@@ -76,104 +149,70 @@
       "examples": []
     },
     {
-      "name": "setDiameter",
+      "name": "setCssClass",
       "access": "",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>Set the diameter of the circle. The center of the circle will be retained.</p>",
+      "description": "<p>Set the css class if the node.</p>",
       "parameters": [
         {
-          "name": "d",
-          "type": "Number",
-          "description": "<p>The new diameter of the circle.</p>",
+          "name": "cssClass",
+          "type": "String",
+          "description": "<p>the new css class name of the node</p>",
           "default": "",
           "optional": "",
           "nullable": ""
         }
       ],
       "inherited": true,
-      "since": "4.0.0",
-      "examples": [],
-      "returns": {
-        "type": "this",
-        "description": ""
-      }
+      "since": "2.9.0",
+      "examples": []
     },
     {
-      "name": "getDiameter",
-      "access": "",
+      "name": "repaint",
+      "access": "protected",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>Get the diameter of the circle.</p>",
+      "description": "<p>propagate all attributes like color, stroke,... to the shape element and\nrepaint them.</p>",
       "parameters": [],
       "inherited": true,
-      "since": "4.0.0",
-      "examples": [],
-      "returns": {
-        "type": "Number",
-        "description": "<p>the diameter of the circle</p>"
-      }
+      "since": "",
+      "examples": []
     },
     {
-      "name": "setRadius",
+      "name": "setVisible",
       "access": "",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>Set the radius of the circle. The center of the circle will be retained.</p>",
+      "description": "<p>Show/hide the element. The element didn't receive any mouse events (click, dblclick) if you hide the\nfigure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  visible: flag\n});</code></pre>",
       "parameters": [
         {
-          "name": "r",
-          "type": "Number",
-          "description": "<p>The new radius of the circle.</p>",
+          "name": "flag",
+          "type": "Boolean",
+          "description": "",
           "default": "",
           "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "duration",
+          "type": "Number",
+          "description": "<p>the optional number for the fadeIn /fadeOut of the figure</p>",
+          "default": "",
+          "optional": true,
           "nullable": ""
         }
       ],
       "inherited": true,
-      "since": "4.0.0",
-      "examples": [],
-      "returns": {
-        "type": "this",
-        "description": ""
-      }
+      "since": "1.1.0",
+      "examples": []
     },
     {
-      "name": "getRadius",
-      "access": "",
+      "name": "applyAlpha",
+      "access": "private",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>Get the radius of the circle</p>",
-      "parameters": [],
-      "inherited": true,
-      "since": "",
-      "examples": [],
-      "returns": {
-        "type": "Number",
-        "description": "<p>the radius of the circle</p>"
-      }
-    },
-    {
-      "name": "getPersistentAttributes",
-      "access": "",
-      "virtual": false,
-      "deprecated": "",
-      "description": "<p>Return an objects with all important attributes for XML or JSON serialization</p>",
-      "parameters": [],
-      "inherited": true,
-      "since": "",
-      "examples": [],
-      "returns": {
-        "type": "Object",
-        "description": ""
-      }
-    },
-    {
-      "name": "createShapeElement",
-      "access": "",
-      "virtual": false,
-      "deprecated": "",
-      "description": "",
+      "description": "<p>Apply the opacity to all child set elements. Override this if you want to avoid opacity changes.</p>",
       "parameters": [],
       "inherited": true,
       "since": "",
@@ -184,75 +223,69 @@
       "access": "private",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>apply a transformation to the shape like rotation, translate,..</p>",
+      "description": "",
       "parameters": [],
       "inherited": true,
       "since": "",
       "examples": []
     },
     {
-      "name": "getCenter",
+      "name": "toFront",
       "access": "",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>Get the center of the figure</p>",
-      "parameters": [],
-      "inherited": true,
-      "since": "",
-      "examples": []
-    },
-    {
-      "name": "setCenter",
-      "access": "",
-      "virtual": false,
-      "deprecated": "",
-      "description": "<p>Set the center of the figure.</p>",
+      "description": "<p>Moves the element so it is the closest to the viewer’s eyes, on top of other elements. Additional\nthe internal model changed as well.</p>\n<p>Optional: Inserts current object in front of the given one.</p>",
       "parameters": [
         {
-          "name": "x",
-          "type": [
-            "Number",
-            "draw2d.geo.Point"
-          ],
-          "description": "<p>the new x coordinate of the center or a draw2d.geo.Point object with the center</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        },
-        {
-          "name": "y",
-          "type": "Number",
-          "description": "<p>the y coordinate of the new center of the first argument isn't a draw2d.geo.Point object</p>",
+          "name": "figure",
+          "type": "draw2d.Figure",
+          "description": "<p>move current object in front of the given one.</p>",
           "default": "",
           "optional": true,
           "nullable": ""
         }
       ],
       "inherited": true,
-      "since": "",
+      "since": "3.0.0",
       "examples": []
     },
     {
-      "name": "repaint",
+      "name": "toBack",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Moves the element to the background. Additional\nthe internal model changed as well.</p>\n<p>Optional: Inserts current object in front of the given one.</p>",
+      "parameters": [
+        {
+          "name": "figure",
+          "type": "draw2d.Figure",
+          "description": "<p>move current object in front of the given one.</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "4.7.2",
+      "examples": []
+    },
+    {
+      "name": "getTopLevelShapeElement",
+      "access": "private",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Get the top level shape element. May the figure has a set of SVG elements. In this case this\nmethod must return the top level node.<br>\nThis method is used for the toFront/toBack method to order the nodes in the correct way.</p>",
+      "parameters": [],
+      "inherited": true,
+      "since": "5.0.0",
+      "examples": []
+    },
+    {
+      "name": "createShapeElement",
       "access": "private",
       "virtual": false,
       "deprecated": "",
       "description": "",
-      "parameters": [],
-      "inherited": true,
-      "since": "",
-      "examples": [],
-      "returns": {
-        "type": "this",
-        "description": ""
-      }
-    },
-    {
-      "name": "intersectionWithLine",
-      "access": "",
-      "virtual": false,
-      "deprecated": "",
-      "description": "<p>NOTE: Rotation will need to be added to this function</p>",
       "parameters": [],
       "inherited": true,
       "since": "",
@@ -263,12 +296,12 @@
       "access": "",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>Set the line style for this object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  dash: dashPattern\n});</code></pre>",
+      "description": "<p>Set the line style for dot/dash styling. Possible values are\n[&quot;&quot;, &quot;-&quot;, &quot;.&quot;, &quot;-.&quot;, &quot;-..&quot;, &quot;. &quot;, &quot;- &quot;, &quot;--&quot;, &quot;- .&quot;, &quot;--.&quot;, &quot;--..&quot;]</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  dash: pattern\n});</code></pre>",
       "parameters": [
         {
-          "name": "dash",
+          "name": "pattern",
           "type": "String",
-          "description": "<p>can be one of this [&quot;&quot;, &quot;-&quot;, &quot;.&quot;, &quot;-.&quot;, &quot;-..&quot;, &quot;. &quot;, &quot;- &quot;, &quot;--&quot;, &quot;- .&quot;, &quot;--.&quot;, &quot;--..&quot;]</p>",
+          "description": "<p>the string with the dot/dash pattern. valid values: [&quot;&quot;, &quot;-&quot;, &quot;.&quot;, &quot;-.&quot;, &quot;-..&quot;, &quot;. &quot;, &quot;- &quot;, &quot;--&quot;, &quot;- .&quot;, &quot;--.&quot;, &quot;--..&quot;]</p>",
           "default": "",
           "optional": "",
           "nullable": ""
@@ -288,6 +321,56 @@
       "inherited": true,
       "since": "5.1.0",
       "examples": []
+    },
+    {
+      "name": "getPersistentAttributes",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Return an objects with all important attributes for XML or JSON serialization</p>",
+      "parameters": [],
+      "inherited": true,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "Object",
+        "description": ""
+      }
+    },
+    {
+      "name": "setRadius",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Sets the corner radius or the edges.</p>",
+      "parameters": [
+        {
+          "name": "radius",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "4.2.1",
+      "examples": []
+    },
+    {
+      "name": "getRadius",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Get the corner radius of the edges.</p>",
+      "parameters": [],
+      "inherited": true,
+      "since": "4.2.1",
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": ""
+      }
     },
     {
       "name": "setGlow",
@@ -421,30 +504,6 @@
       }
     },
     {
-      "name": "setPersistentAttributes",
-      "access": "",
-      "virtual": false,
-      "deprecated": "",
-      "description": "<p>Read all attributes from the serialized properties and transfer them into the shape.</p>",
-      "parameters": [
-        {
-          "name": "memento",
-          "type": "Object",
-          "description": "",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        }
-      ],
-      "inherited": true,
-      "since": "",
-      "examples": [],
-      "returns": {
-        "type": "this",
-        "description": ""
-      }
-    },
-    {
       "name": "setPersistPorts",
       "access": "",
       "virtual": false,
@@ -478,65 +537,6 @@
         "type": "Boolean",
         "description": ""
       }
-    },
-    {
-      "name": "toFront",
-      "access": "",
-      "virtual": false,
-      "deprecated": "",
-      "description": "<p>Moves the element so it is the closest to the viewer’s eyes, on top of other elements. Additional\nthe internal model changed as well.</p>\n<p>Optional: Inserts current object in front of the given one.</p>",
-      "parameters": [
-        {
-          "name": "figure",
-          "type": "draw2d.Figure",
-          "description": "<p>move current object in front of the given one.</p>",
-          "default": "",
-          "optional": true,
-          "nullable": ""
-        }
-      ],
-      "inherited": true,
-      "since": "3.0.0",
-      "examples": []
-    },
-    {
-      "name": "toBack",
-      "access": "",
-      "virtual": false,
-      "deprecated": "",
-      "description": "<p>Moves the element to the background. Additional\nthe internal model changed as well.</p>",
-      "parameters": [],
-      "inherited": true,
-      "since": "4.7.2",
-      "examples": []
-    },
-    {
-      "name": "setVisible",
-      "access": "",
-      "virtual": false,
-      "deprecated": "",
-      "description": "<p>Show/hide the element. The element didn't receive any mouse events (click, dblclick) if you hide the\nfigure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  visible: flag\n});</code></pre>",
-      "parameters": [
-        {
-          "name": "flag",
-          "type": "Boolean",
-          "description": "",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        },
-        {
-          "name": "duration",
-          "type": "Number",
-          "description": "<p>the optional number for the fadeIn /fadeOut of the figure</p>",
-          "default": "",
-          "optional": true,
-          "nullable": ""
-        }
-      ],
-      "inherited": true,
-      "since": "1.1.0",
-      "examples": []
     },
     {
       "name": "getPorts",
@@ -831,21 +831,6 @@
       "examples": [],
       "returns": {
         "type": "draw2d.util.ArrayList",
-        "description": ""
-      }
-    },
-    {
-      "name": "setCanvas",
-      "access": "",
-      "virtual": false,
-      "deprecated": "",
-      "description": "",
-      "parameters": [],
-      "inherited": true,
-      "since": "",
-      "examples": [],
-      "returns": {
-        "type": "this",
         "description": ""
       }
     },
@@ -1148,26 +1133,6 @@
       }
     },
     {
-      "name": "setCssClass",
-      "access": "",
-      "virtual": false,
-      "deprecated": "",
-      "description": "<p>Set the css class of the node.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;cssClass&quot;: &quot;red_border_figure&quot;\n});</code></pre>",
-      "parameters": [
-        {
-          "name": "cssClass",
-          "type": "String",
-          "description": "<p>the new css class name of the node</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        }
-      ],
-      "inherited": true,
-      "since": "2.9.0",
-      "examples": []
-    },
-    {
       "name": "hasCssClass",
       "access": "",
       "virtual": false,
@@ -1443,17 +1408,6 @@
       "parameters": [],
       "inherited": true,
       "since": "",
-      "examples": []
-    },
-    {
-      "name": "getTopLevelShapeElement",
-      "access": "private",
-      "virtual": false,
-      "deprecated": "",
-      "description": "<p>Get the top level shape element. May the figure has a set of SVG elements. In this case this\nmethod must return the top level node.<br>\nThis method is used for the toFront/toBack method to order the nodes in the correct way.</p>",
-      "parameters": [],
-      "inherited": true,
-      "since": "5.0.0",
       "examples": []
     },
     {
@@ -1935,6 +1889,26 @@
       ],
       "inherited": true,
       "since": "1.1.0",
+      "examples": []
+    },
+    {
+      "name": "setAlpha",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Set the alpha blending of this figure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;alpha&quot;: percent\n});\n\n// ...or:\nfigure.attr({\n  &quot;opacity&quot;: percent\n});</code></pre>",
+      "parameters": [
+        {
+          "name": "percent",
+          "type": "Number",
+          "description": "<p>value between [0..1].</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "",
       "examples": []
     },
     {
@@ -2929,11 +2903,11 @@
   ],
   "fires": "",
   "constructor": {
-    "name": "End",
+    "name": "Mixer",
     "description": "",
     "parameters": [],
     "examples": [
-      "let end   = new draw2d.shape.state.End();\n   // ...add it to the canvas\n   canvas.add( end, 230,80);"
+      "let figure =  new draw2d.shape.chem.Mixer({x:10, y:10});\n\n   canvas.add(figure);"
     ]
   }
 }

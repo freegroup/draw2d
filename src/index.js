@@ -7,6 +7,7 @@ import cl   from 'lib/Class.exec.js'
 import path from 'lib/pathfinding.exec.js'
 
 
+require('./util/OOHelper'); // secure replacement for eval("new " + string + "()")
 require('./util/raphael_ext');
 require('./util/Polyfill');
 require('./util/Base64');
@@ -209,6 +210,10 @@ require('./shape/analog/ResistorBridge');
 require('./shape/analog/ResistorVertical');
 require('./shape/analog/VoltageSupplyHorizontal');
 require('./shape/analog/VoltageSupplyVertical');
+require('./shape/chem/HeatExchanger');
+require('./shape/chem/Mixer');
+require('./shape/chem/Pump');
+require('./shape/chem/Valve');
 require('./shape/layout/Layout');
 require('./shape/layout/HorizontalLayout');
 require('./shape/layout/VerticalLayout');

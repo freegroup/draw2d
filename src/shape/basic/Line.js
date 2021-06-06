@@ -1161,7 +1161,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
     }
     if (typeof memento.policy !== "undefined") {
       try {
-        this.installEditPolicy(eval("new " + memento.policy + "()"))
+        this.installEditPolicy(getInstanceForName(memento.policy))
       }
       catch (exc) {
         debug.warn("Unable to install edit policy '" + memento.policy + "' forced by " + this.NAME + ".setPersistentAttributes. Using default.")

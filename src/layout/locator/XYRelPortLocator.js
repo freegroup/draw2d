@@ -114,7 +114,7 @@ draw2d.layout.locator.XYRelPortLocator = draw2d.layout.locator.PortLocator.exten
         parent.getWidth() / 100 * this.x,
         parent.getHeight() / 100 * this.y
       )
-    }
+  }
 
   })
 

@@ -153,7 +153,7 @@ draw2d.layout.locator.Locator = Class.extend(
       // of the parent.
       figure.repaint()
     },
-
+	
     /**
      *
      * Return a clone of the locator object
@@ -161,6 +161,8 @@ draw2d.layout.locator.Locator = Class.extend(
      * @returns {draw2d.layout.locator.Locator}
      */
     clone: function () {
-      return eval("new " + this.NAME + "()")
+	  let clone = getInstanceForName(this.NAME)
+	  clone.attr(this.attr()) // also clone properties
+      return clone
     }
   })

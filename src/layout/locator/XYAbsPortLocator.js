@@ -95,7 +95,7 @@ draw2d.layout.locator.XYAbsPortLocator = draw2d.layout.locator.PortLocator.exten
      **/
     relocate: function (index, figure) {
       this.applyConsiderRotation(figure, this.x, this.y)
-    }
+  }
 
   })
 
