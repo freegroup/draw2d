@@ -10326,7 +10326,7 @@ _packages2.default.Figure = Class.extend(
       return;
     }
 
-    // The policy isn'T part of the figure. In this case we "think" the user want
+    // The policy isn't part of the figure. In this case we "think" the user want
     // deinstall all instances of the policy
     //
     var _this = this;
@@ -39774,7 +39774,7 @@ _packages2.default.shape.basic.Circle = _packages2.default.shape.basic.Oval.exte
    * @returns {Number} the radius of the circle
    */
   getRadius: function getRadius() {
-    return this.getWidth / 2;
+    return this.getWidth() / 2;
   },
 
   /**
@@ -42860,6 +42860,17 @@ _packages2.default.shape.basic.Oval = _packages2.default.VectorFigure.extend(
     var halfH = this.getHeight() / 2;
 
     return this.canvas.paper.ellipse(this.getAbsoluteX() + halfW, this.getAbsoluteY() + halfH, halfW, halfH);
+  },
+
+  /**
+  * @inheritdoc
+  */
+  applyTransformation: function applyTransformation() {
+    var ts = "R" + this.rotationAngle;
+
+    this.shape.transform(ts);
+
+    return this;
   },
 
   /**

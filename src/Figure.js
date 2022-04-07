@@ -918,7 +918,7 @@ draw2d.Figure = Class.extend(
         return
       }
 
-      // The policy isn'T part of the figure. In this case we "think" the user want
+      // The policy isn't part of the figure. In this case we "think" the user want
       // deinstall all instances of the policy
       //
       let _this = this
