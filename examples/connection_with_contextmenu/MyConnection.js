@@ -7,7 +7,10 @@
  * @extend draw2d.Connection
  */
 var MyConnection= draw2d.Connection.extend({
-
+  
+    /** required for JSON serialize/deserialize. **/
+    NAME: "MyConnection",
+  
     init:function(attr)
     {
       this._super(attr);
