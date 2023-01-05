@@ -130,7 +130,7 @@ draw2d.util.ArrayList = Class.extend(
     /**
      *
      *
-     * The method removes items from an array as necessary so that all remaining items pass a
+     * The method modifies the array and removes items from an array as necessary so that all remaining items pass a
      * provided test. The test is a function that is passed an array item and the index of the
      * item within the array. Only if the test returns true will the item stay in the array.
      *
@@ -453,8 +453,6 @@ draw2d.util.ArrayList = Class.extend(
 
       return this
     }
-
-
   })
 
 draw2d.util.ArrayList.EMPTY_LIST = new draw2d.util.ArrayList()

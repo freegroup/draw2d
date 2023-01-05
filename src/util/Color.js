@@ -357,4 +357,4 @@ draw2d.util.Color = Class.extend(
 
 });
 
-module.exports = draw2d.util.Color;
+export default draw2d.util.Color;

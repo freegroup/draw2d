@@ -1,26 +1,15 @@
 /* global __dirname, require, module*/
 
 const path = require('path');
-const pkg = require('./package.json');
 
-
-
-let libraryName = pkg.name;
-
-let plugins = [], outputFile;
-
-
-outputFile = libraryName + '.js';
-
-let outputPath = process.env.DIR || '/dist'
 const config = {
   entry: __dirname + '/src/index.js',
   devtool: 'source-map',
   mode: 'development',
   output: {
-    libraryTarget: 'umd', // make the bundle export
-    path: __dirname + outputPath,
-    filename: outputFile,
+    //libraryTarget: 'umd', // make the bundle export
+    path: __dirname + '/dist',
+    filename: 'draw2d.js',
     library: 'draw2d'
   },
   module: {
@@ -28,12 +17,10 @@ const config = {
       {
         test: /(\.jsx|\.js)$/,
         loader: 'babel-loader',
-        exclude: /(node_modules|bower_components)/
-      },
-      {
-        test: /(\.jsx|\.js)$/,
-        loader: 'eslint-loader',
-        exclude: /node_modules/
+        exclude: /(node_modules|bower_components)/,
+        options: {
+          presets: ['modern-browsers'],
+        }
       },
       {
         test: /\.css$/,
@@ -49,7 +36,7 @@ const config = {
     modules: [path.resolve('./node_modules'), path.resolve('./src')],
     extensions: ['.json', '.js', '.css']
   },
-  plugins: plugins
+  plugins: [ ]
 };
 
 module.exports = config;

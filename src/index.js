@@ -1,5 +1,5 @@
 import draw2d from 'packages'
-module.exports = draw2d;
+export default draw2d;
 
 
 import raph from 'lib/raphael.exec.js'

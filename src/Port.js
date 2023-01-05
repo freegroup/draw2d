@@ -83,7 +83,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
       this.installEditPolicy(new draw2d.policy.port.IntrusivePortsFeedbackPolicy())
       // this.installEditPolicy(new draw2d.policy.port.ElasticStrapFeedbackPolicy());
 
-      // a port handles the selection handling always by its own regardless if
+      // a port handles the selection handling always by its own, regardless if
       // the port is part of an composite, node, group or whatever.
       this.portSelectionAdapter = () => this
     },
@@ -95,7 +95,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
     /**
      *
      * set the maximal possible count of connections for this port.<br>
-     * This method din't delete any connection if you reduce the number and a bunch of
+     * This method didn't delete any connection if you reduce the number and a bunch of
      * connection are bounded already.
      *
      * @param {Number} count the maximal number of connection related to this port
@@ -159,11 +159,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
      **/
     setConnectionAnchor: function (anchor) {
       // set some good defaults.
-      if (typeof anchor === "undefined" || anchor === null) {
-        anchor = new draw2d.layout.anchor.ConnectionAnchor()
-      }
-
-      this.connectionAnchor = anchor
+      this.connectionAnchor = anchor ?? new draw2d.layout.anchor.ConnectionAnchor()
       this.connectionAnchor.setOwner(this)
 
       // the anchor has changed. In this case all connections needs an change event to recalculate
@@ -375,15 +371,11 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
      * @private
      */
     setParent: function (parent) {
-      if (this.parent !== null) {
-        this.parent.off(this.moveListener)
-      }
+      this.parent?.off(this.moveListener)
 
       this._super(parent)
 
-      if (this.parent !== null) {
-        this.parent.on("move", this.moveListener)
-      }
+      this.parent?.on("move", this.moveListener)
     },
 
 
@@ -432,8 +424,6 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
         return false
       }
 
-      let _this = this
-
 //        this.getShapeElement().insertAfter(this.parent.getShapeElement());
       // don't call the super method. This creates a command and this is not necessary for a port
       this.ox = this.x
@@ -443,11 +433,11 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
 
       // notify all installed policies
       //
-      this.editPolicy.each(function (i, e) {
+      this.editPolicy.each( (i, e)=>  {
         if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
           // DragStart operation can send a veto for the dragStart
           // @since 6.1.0
-          canStartDrag = canStartDrag && e.onDragStart(_this.canvas, _this, x, y, shiftKey, ctrlKey)
+          canStartDrag = canStartDrag && e.onDragStart(this.canvas, this, x, y, shiftKey, ctrlKey)
         }
       })
 

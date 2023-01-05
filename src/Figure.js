@@ -278,9 +278,8 @@ draw2d.Figure = Class.extend(
             // index/brackets are allowed too.
             //
             if (key.substring(0, 9) === "userData.") {
-              if (this.userData === null) {
-                this.userData = {}
-              }
+              this.userData ??= {}
+
               jsonUtil.set({userData: this.userData}, key, name[key])
               this.fireEvent("change:" + key, {value: name[key]})
             } else {
@@ -326,16 +325,12 @@ draw2d.Figure = Class.extend(
             value = value()
           }
           if (name.substring(0, 9) === "userData.") {
-            if (this.userData === null) {
-              this.userData = {}
-            }
+            this.userData ??= {}
             jsonUtil.set({userData: this.userData}, name, value)
             this.fireEvent("change:" + name, {value: value})
           } else {
             let setter = this.setterWhitelist[name]
-            if (setter) {
-              setter.call(this, value)
-            }
+            setter?.call(this, value)
           }
         }
         // may it is a array of attributes used for the getter
@@ -354,8 +349,6 @@ draw2d.Figure = Class.extend(
       } finally {
         this.repaintBlocked = orig
       }
-      //  this.repaint();
-
       return this
     },
 
@@ -394,9 +387,7 @@ draw2d.Figure = Class.extend(
         }
       })
 
-      if (this.canvas !== null) {
-        this.canvas.getSelection().add(this)
-      }
+      this.canvas?.getSelection().add(this)
 
       this.fireEvent("select", {figure: this})
 
@@ -410,18 +401,15 @@ draw2d.Figure = Class.extend(
      * @private
      **/
     unselect: function () {
-      let _this = this
       // apply all EditPolicy for select Operations
       //
-      this.editPolicy.each(function (i, e) {
+      this.editPolicy.each((i, e) =>{
         if (e instanceof draw2d.policy.figure.SelectionPolicy) {
-          e.onUnselect(_this.canvas, _this)
+          e.onUnselect(this.canvas, this)
         }
       })
 
-      if (this.canvas !== null) {
-        this.canvas.getSelection().remove(this)
-      }
+      this.canvas?.getSelection().remove(this)
 
       this.fireEvent("unselect", {figure: this})
       return this
@@ -848,9 +836,8 @@ draw2d.Figure = Class.extend(
 
       // Bring all children in front of "this" figure
       //
-      let _this = this
-      this.children.each(function (i, child) {
-        child.figure.toFront(_this)
+      this.children.each((i, child) => {
+        child.figure.toFront(this)
       }, true)
 
       return this
@@ -921,11 +908,10 @@ draw2d.Figure = Class.extend(
       // The policy isn't part of the figure. In this case we "think" the user want
       // deinstall all instances of the policy
       //
-      let _this = this
       let name = (typeof policy === "string") ? policy : policy.NAME
-      this.editPolicy.grep(function (p) {
+      this.editPolicy.grep((p) =>{
         if (p.NAME === name) {
-          p.onUninstall(_this)
+          p.onUninstall(this)
           return false
         }
         return true
@@ -1029,9 +1015,7 @@ draw2d.Figure = Class.extend(
      * @returns {draw2d.util.ArrayList}
      */
     getChildren: function () {
-      return this.children.clone().map(function (e) {
-        return e.figure
-      })
+      return this.children.clone().map( e => e.figure)
     },
 
 
@@ -1041,9 +1025,7 @@ draw2d.Figure = Class.extend(
      *
      */
     resetChildren: function () {
-      this.children.each(function (i, e) {
-        e.figure.setCanvas(null)
-      })
+      this.children.each((i, e) => { e.figure.setCanvas(null)})
       this.children = new draw2d.util.ArrayList()
       this.repaint()
 
@@ -1161,9 +1143,7 @@ draw2d.Figure = Class.extend(
       // shape has changed
       //
       if("x" in attributes || "width" in attributes || "cx" in attributes || "path" in attributes) {
-        this.children.each(function (i, e) {
-          e.locator.relocate(i, e.figure)
-        })
+        this.children.each((i, e) => { e.locator.relocate(i, e.figure) })
       }
 
       return this
@@ -1669,11 +1649,7 @@ draw2d.Figure = Class.extend(
 
       this.repaint({visibleDuration: duration})
 
-      if (this.visible) {
-        this.fireEvent("show")
-      } else {
-        this.fireEvent("hide")
-      }
+      this.fireEvent(this.visible?"show":"hide")
       this.fireEvent("change:visibility", {value: this.visible})
 
       return this

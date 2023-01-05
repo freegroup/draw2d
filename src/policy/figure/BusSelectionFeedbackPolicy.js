@@ -31,10 +31,10 @@ draw2d.policy.figure.BusSelectionFeedbackPolicy = draw2d.policy.figure.Selection
    */
   onSelect: function (canvas, figure, isPrimarySelection) {
     if (figure.selectionHandles.isEmpty()) {
-      let r2 = draw2d.Configuration.factory.createResizeHandle(figure, 2) // 2 = CENTER_TOP
-      let r4 = draw2d.Configuration.factory.createResizeHandle(figure, 4) // 4 = RIGHT_MIDDLE
-      let r6 = draw2d.Configuration.factory.createResizeHandle(figure, 6) // 6 = CENTER_BOTTOM
-      let r8 = draw2d.Configuration.factory.createResizeHandle(figure, 8) // 8 = LEFT_MIDDLE
+      let r2 = this.createResizeHandle(figure, 2) // 2 = CENTER_TOP
+      let r4 = this.createResizeHandle(figure, 4) // 4 = RIGHT_MIDDLE
+      let r6 = this.createResizeHandle(figure, 6) // 6 = CENTER_BOTTOM
+      let r8 = this.createResizeHandle(figure, 8) // 8 = LEFT_MIDDLE
 
       figure.selectionHandles.add(r2, r4, r6, r8)
 
@@ -78,7 +78,9 @@ draw2d.policy.figure.BusSelectionFeedbackPolicy = draw2d.policy.figure.Selection
     r4.setPosition(xPos + objWidth, yPos + (objHeight / 2) - (r4.getHeight() / 2))
     r6.setPosition(xPos + (objWidth / 2) - (r6.getWidth() / 2), yPos + objHeight)
     r8.setPosition(xPos - r8.getWidth(), yPos + (objHeight / 2) - (r8.getHeight() / 2))
+  },
+
+  createResizeHandle: function (owner, type){
+    return new draw2d.ResizeHandle({ owner:owner, type:type, width:10, height:10 });
   }
-
-
 })

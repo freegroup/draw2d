@@ -148,22 +148,16 @@ draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend(
       // Create any Draw2D figure as decoration for the connection
       //
       if (this.label === null) {
-        let _this = this
 
         this.label = new draw2d.shape.basic.Label({text: label, color: "#0d0d0d", fontColor: "#0d0d0d", stroke: 0})
         // add the new decoration to the connection with a position locator.
         //
         this.add(this.label, new draw2d.layout.locator.CenterLocator())
-        this.label.setSelectionAdapter(function () {
-          return _this
-        })
-        this.label.delegateTarget = function () {
-          return _this.port
-        }
+        this.label.setSelectionAdapter( () => this )
+        this.label.delegateTarget = () => this.port
       } else {
         this.label.setText(label)
       }
-
     },
 
     /**

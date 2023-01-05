@@ -37,7 +37,7 @@ draw2d.layout.locator.XYRelPortLocator = draw2d.layout.locator.PortLocator.exten
      * @param {Number} yPercentage the y coordinate in percent of the port relative to the top of the parent
      */
     init: function (attr, setter, getter) {
-      // legacy code handling
+      // legacy code handling for calls like this:
       // new draw2d.layout.locator.XYRelPortLocator(10,30)
       if(typeof attr ==="number" && typeof setter === "number"){
         this.x = attr

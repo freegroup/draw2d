@@ -59,6 +59,5 @@ draw2d.shape.basic.Arc = draw2d.SetFigure.extend(
     return this.canvas.paper.setFinish()
 
   }
-
 })
 
