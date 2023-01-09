@@ -24,7 +24,7 @@ draw2d.Figure = Class.extend(
     init: function (attr, setter, getter) {
 
       // @private
-      this.setterWhitelist = extend({
+      this.setterWhitelist = {
         //  id the unique id of the figure
         id: this.setId,
         //  x the x offset of the figure in relation to the parent figure or canvas
@@ -62,10 +62,11 @@ draw2d.Figure = Class.extend(
         //  visible set the visibility flag of the shape
         visible: this.setVisible,
         //  keepAspectRatio indicate if the shape should keep the aspect ratio during resize
-        keepAspectRatio: this.setKeepAspectRatio
-      }, setter)
+        keepAspectRatio: this.setKeepAspectRatio,
+        ...setter
+      }
 
-      this.getterWhitelist = extend({
+      this.getterWhitelist = {
         id: this.getId,
         visible: this.isVisible,
         angle: this.getRotationAngle,
@@ -78,11 +79,14 @@ draw2d.Figure = Class.extend(
         resizeable: this.isResizeable,
         selectable: this.isSelectable,
         alpha: this.getAlpha,
-        opacity: this.getAlpha
-      }, getter)
+        opacity: this.getAlpha,
+        ...getter
+      }
 
       // all figures has an unique id. Required for figure get and persistence storage
       this.id = UUID.create()
+
+      this.cachedZOrder = -1
 
       // required for the SelectionEditPolicy to indicate the type of figure
       // which the user clicks
@@ -380,10 +384,9 @@ draw2d.Figure = Class.extend(
 
       // apply all EditPolicy for select Operations
       //
-      let _this = this
-      this.editPolicy.each(function (i, e) {
+      this.editPolicy.each( (i, e) => {
         if (e instanceof draw2d.policy.figure.SelectionPolicy) {
-          e.onSelect(_this.canvas, _this, asPrimarySelection)
+          e.onSelect(this.canvas, this, asPrimarySelection)
         }
       })
 
@@ -422,12 +425,7 @@ draw2d.Figure = Class.extend(
      * @param {Function} [adapter] function which returns the figure which handles the selection handling
      */
     setSelectionAdapter: function (adapter) {
-      if (adapter == null) {
-        this.selectionAdapter = this.defaultSelectionAdapter
-      } else {
-        this.selectionAdapter = adapter
-      }
-
+      this.selectionAdapter = adapter ?? this.defaultSelectionAdapter
       return this
     },
 
@@ -449,11 +447,7 @@ draw2d.Figure = Class.extend(
      * @returns {Boolean}
      */
     isSelected: function () {
-      if (this.canvas !== null) {
-        return this.canvas.getSelection().contains(this)
-      }
-
-      return false
+        return this.canvas?.getSelection().contains(this)
     },
 
     /**
@@ -674,9 +668,7 @@ draw2d.Figure = Class.extend(
         }
       }
 
-      this.children.each(function (i, e) {
-        e.figure.setCanvas(canvas)
-      })
+      this.children.each( (i, e) => { e.figure.setCanvas(canvas)})
 
       return this
     },
@@ -791,16 +783,13 @@ draw2d.Figure = Class.extend(
       }
 
       // bring all children in front of the parent
-      this.children.each( (i, child) =>{
-        child.figure.toFront(this)
-      })
+      this.children.each( (i, child) =>child.figure.toFront(this))
 
-      // and last but not lease the ResizeHandles if any present
+      // and last but not least, the ResizeHandles if any present
       //
-      this.selectionHandles.each( (i, handle) =>{
-        handle.toFront()
-      })
+      this.selectionHandles.each( (i, handle) => handle.toFront())
 
+      this.cachedZOrder = -1
       return this
     },
 
@@ -840,6 +829,7 @@ draw2d.Figure = Class.extend(
         child.figure.toFront(this)
       }, true)
 
+      this.cachedZOrder = -1
       return this
     },
 
@@ -1698,16 +1688,13 @@ draw2d.Figure = Class.extend(
      * @returns {Number}
      */
     getZOrder: function () {
-      if (this.shape === null) {
-        return -1
+      let child = this.shape?.node
+      if(!child || this.cachedZOrder>=0){
+        return this.cachedZOrder
       }
-
-      let i = 0
-      let child = this.shape.node
-      while ((child = child.previousSibling) !== null) {
-        i++
-      }
-      return i
+      this.cachedZOrder = Array.from(child.parentNode.children).indexOf(child)
+      
+      return this.cachedZOrder
     },
 
     /**

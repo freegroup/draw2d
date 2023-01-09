@@ -1,11 +1,15 @@
 /* global __dirname, require, module*/
-
+const TerserPlugin = require("terser-webpack-plugin");
 const path = require('path');
 
 const config = {
   entry: __dirname + '/src/index.js',
   devtool: 'source-map',
   mode: 'development',
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin()],
+  },
   output: {
     //libraryTarget: 'umd', // make the bundle export
     path: __dirname + '/dist',

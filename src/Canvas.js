@@ -151,7 +151,7 @@ draw2d.Canvas = Class.extend(
       this.commandStack.addEventListener(function (event) {
         if (event.isPostChangeEvent() === true) {
           _this.calculateConnectionIntersection()
-          _this.linesToRepaintAfterDragDrop.each(function (i, line) {
+          _this.linesToRepaintAfterDragDrop.each((i, line) => {
             line.svgPathString = null
             line.repaint()
           })
@@ -922,7 +922,7 @@ draw2d.Canvas = Class.extend(
       // of the connections
       if (figure instanceof draw2d.shape.basic.PolyLine) {
         this.calculateConnectionIntersection()
-        this.linesToRepaintAfterDragDrop.each(function (i, line) {
+        this.linesToRepaintAfterDragDrop.each((i, line) => {
           line.svgPathString = null
           line.repaint()
         })

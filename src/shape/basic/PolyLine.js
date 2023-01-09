@@ -121,10 +121,9 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
 
     this.repaint()
 
-    let _this = this
-    this.editPolicy.each(function (i, e) {
+    this.editPolicy.each( (i, e) => {
       if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
-        e.moved(_this.canvas, _this)
+        e.moved(this.canvas, this)
       }
     })
 
@@ -154,10 +153,10 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
 
     this.repaint()
 
-    let _this = this
-    this.editPolicy.each(function (i, e) {
+
+    this.editPolicy.each( (i, e) => {
       if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
-        e.moved(_this.canvas, _this)
+        e.moved(this.canvas, this)
       }
     })
     this.fireEvent("change:end", {value: this.end})
@@ -184,11 +183,11 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
     this.repaint()
 
     if (!this.selectionHandles.isEmpty()) {
-      let _this = this
-      this.editPolicy.each(function (i, e) {
+
+      this.editPolicy.each( (i, e) => {
         if (e instanceof draw2d.policy.figure.SelectionFeedbackPolicy) {
-          e.onUnselect(_this.canvas, _this)
-          e.onSelect(_this.canvas, _this)
+          e.onUnselect(this.canvas, this)
+          e.onSelect(this.canvas, this)
         }
       })
     }
@@ -220,11 +219,10 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
     this.repaint()
 
     if (!this.selectionHandles.isEmpty()) {
-      let _this = this
-      this.editPolicy.each(function (i, e) {
+      this.editPolicy.each( (i, e) => {
         if (e instanceof draw2d.policy.figure.SelectionFeedbackPolicy) {
-          e.onUnselect(_this.canvas, _this)
-          e.onSelect(_this.canvas, _this)
+          e.onUnselect(this.canvas, this)
+          e.onSelect(this.canvas, this)
         }
       })
     }
@@ -253,11 +251,10 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
     this.repaint()
 
     if (!this.selectionHandles.isEmpty()) {
-      let _this = this
-      this.editPolicy.each(function (i, e) {
+      this.editPolicy.each( (i, e) => {
         if (e instanceof draw2d.policy.figure.SelectionFeedbackPolicy) {
-          e.onUnselect(_this.canvas, _this)
-          e.onSelect(_this.canvas, _this)
+          e.onUnselect(this.canvas, this)
+          e.onSelect(this.canvas, this)
         }
       })
     }
@@ -278,12 +275,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
       this.router.onUninstall(this)
     }
 
-    if (typeof router === "undefined" || router === null) {
-      this.router = new draw2d.layout.connection.DirectRouter()
-    }
-    else {
-      this.router = router
-    }
+    this.router = router ?? new draw2d.layout.connection.DirectRouter()
 
     this.router.onInstall(this)
 
@@ -355,14 +347,12 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
       this.calculatePath()
     }
 
-    if (typeof attributes === "undefined") {
-      attributes = {}
-    }
-    attributes.path = this.svgPathString
-    jsonUtil.ensureDefault(attributes, "stroke-linecap", "round")
-    jsonUtil.ensureDefault(attributes, "stroke-linejoin", "round")
-
-    return this._super(attributes)
+    return this._super({ 
+      "stroke-linecap": "round",
+      "stroke-linejoin": "round",
+      ...attributes,
+      path: this.svgPathString
+    })
   },
 
 
