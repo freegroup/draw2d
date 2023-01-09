@@ -71,13 +71,13 @@ draw2d.policy.figure.BusSelectionFeedbackPolicy = draw2d.policy.figure.Selection
 
     let objHeight = figure.getHeight()
     let objWidth = figure.getWidth()
-
     let xPos = figure.getX()
     let yPos = figure.getY()
-    r2.setPosition(xPos + (objWidth / 2) - (r2.getWidth() / 2), yPos - r2.getHeight())
-    r4.setPosition(xPos + objWidth, yPos + (objHeight / 2) - (r4.getHeight() / 2))
-    r6.setPosition(xPos + (objWidth / 2) - (r6.getWidth() / 2), yPos + objHeight)
-    r8.setPosition(xPos - r8.getWidth(), yPos + (objHeight / 2) - (r8.getHeight() / 2))
+
+    r2?.setPosition(xPos + (objWidth / 2) - (r2.getWidth() / 2), yPos - r2.getHeight())
+    r4?.setPosition(xPos + objWidth, yPos + (objHeight / 2) - (r4.getHeight() / 2))
+    r6?.setPosition(xPos + (objWidth / 2) - (r6.getWidth() / 2), yPos + objHeight)
+    r8?.setPosition(xPos - r8.getWidth(), yPos + (objHeight / 2) - (r8.getHeight() / 2))
   },
 
   createResizeHandle: function (owner, type){

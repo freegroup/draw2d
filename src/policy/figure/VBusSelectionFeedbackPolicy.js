@@ -23,6 +23,27 @@ draw2d.policy.figure.VBusSelectionFeedbackPolicy = draw2d.policy.figure.BusSelec
     },
 
 
+  /**
+   * 
+   * Called by the framework of the Policy should show a resize handle for the given shape
+   *
+   * @param {Boolean} isPrimarySelection
+   */
+  onSelect: function (canvas, figure, isPrimarySelection) {
+    if (figure.selectionHandles.isEmpty()) {
+      let r2 = this.createResizeHandle(figure, 2) // 2 = CENTER_TOP
+      let r6 = this.createResizeHandle(figure, 6) // 6 = CENTER_BOTTOM
+
+      figure.selectionHandles.add(r2, r6)
+
+      r2.setDraggable(figure.isResizeable())
+      r6.setDraggable(figure.isResizeable())
+
+      r2.show(canvas)
+      r6.show(canvas)
+    }
+    this.moved(canvas, figure)
+  },
     /**
      *
      * Callback if the figure has been moved
@@ -37,8 +58,8 @@ draw2d.policy.figure.VBusSelectionFeedbackPolicy = draw2d.policy.figure.BusSelec
             return; // silently
         }
 
-        var r2= figure.selectionHandles.find(function(handle){return handle.type===2});
-        var r6= figure.selectionHandles.find(function(handle){return handle.type===6});
+        var r2= figure.selectionHandles.find( handle => handle.type===2);
+        var r6= figure.selectionHandles.find( handle => handle.type===6);
 
         var objWidth = figure.getWidth();
         // adjust the resize handles on the left/right to the new dimension of the shape
