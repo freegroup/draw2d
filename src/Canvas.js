@@ -885,16 +885,16 @@ draw2d.Canvas = Class.extend(
       }
 
       if (figure instanceof draw2d.shape.basic.Line) {
-        this.lines.add(figure)
         this.linesToRepaintAfterDragDrop = this.lines
+        this.lines.add(figure)
       } else {
         this.figures.add(figure)
-        if (typeof y !== "undefined") {
-          figure.setPosition(x, y)
-        } else if (typeof x !== "undefined") {
-          figure.setPosition(x)
-        }
       }
+      
+      if (typeof x !== "undefined") {
+        figure.setPosition(x,y)
+      }
+
       figure.setCanvas(this)
 
       // to avoid drag&drop outside of this canvas
