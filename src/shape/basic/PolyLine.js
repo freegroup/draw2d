@@ -347,12 +347,20 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
       this.calculatePath()
     }
 
-    return this._super({ 
-      "stroke-linecap": "round",
-      "stroke-linejoin": "round",
-      ...attributes,
-      path: this.svgPathString
-    })
+    // It is important, that we keep the original "attributes" object and mutating them
+    // Maybe the caller needs the modified 'attributes' object. The "electra.academy designer"
+    // uses this pattern
+    //
+    // Won't work: attributes = {...attributes ,  path: this.svgPathString})
+    //
+
+    attributes ??={}
+    attributes.path = this.svgPathString
+    // set some good defaults
+    attributes["stroke-linecap"] ??= "round"
+    attributes["stroke-linejoin"] ??= "round"
+
+    return this._super(attributes)
   },
 
 
