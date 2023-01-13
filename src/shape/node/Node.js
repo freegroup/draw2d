@@ -256,14 +256,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
       return this.inputPorts.get(portNameOrIndex)
     }
 
-    for (let i = 0; i < this.inputPorts.getSize(); i++) {
-      let port = this.inputPorts.get(i)
-      if (port.getName() === portNameOrIndex) {
-        return port
-      }
-    }
-
-    return null
+    return this.inputPorts.find( port => port.getName()===portNameOrIndex )
   },
 
   /**
@@ -278,14 +271,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
       return this.outputPorts.get(portNameOrIndex)
     }
 
-    for (let i = 0; i < this.outputPorts.getSize(); i++) {
-      let port = this.outputPorts.get(i)
-      if (port.getName() === portNameOrIndex) {
-        return port
-      }
-    }
-
-    return null
+    return this.outputPorts.find( port => port.getName()===portNameOrIndex )
   },
 
   /**
@@ -301,14 +287,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
       return this.hybridPorts.get(portNameOrIndex)
     }
 
-    for (let i = 0; i < this.hybridPorts.getSize(); i++) {
-      let port = this.hybridPorts.get(i)
-      if (port.getName() === portNameOrIndex) {
-        return port
-      }
-    }
-
-    return null
+    return this.hybridPorts.find( port => port.getName()===portNameOrIndex )
   },
 
   /**
