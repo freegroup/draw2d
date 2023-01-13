@@ -136,8 +136,11 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend(
     if (this.svgPathString === null) {
       this.calculatePath()
     }
+    //
+    attributes ??={}
+    attributes.path ??= this.svgPathString
 
-    this._super({ "path": this.svgPathString, ...attributes})
+    this._super(attributes)
   },
 
   /**
