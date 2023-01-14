@@ -280,7 +280,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
      *
      * Set a value for the port. This is useful for interactive/dynamic diagrams like circuits, simulator,...
      *
-     * @param {Object} value the new value for the port
+     * @param {Object} value the new value for the port. Can be "undefined" or "null"
      * @returns {this}
      */
     setValue: function (value) {
@@ -290,9 +290,9 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
       }
       let old = this.value
       this.value = value
-      if (this.getParent() !== null) {
-        this.getParent().onPortValueChanged(this)
-      }
+
+      this.getParent()?.onPortValueChanged(this)
+      
       this.fireEvent("change:value", {value: this.value, old: old})
 
       return this

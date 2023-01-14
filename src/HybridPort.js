@@ -55,7 +55,8 @@ draw2d.HybridPort = draw2d.Port.extend(
      *
      * @returns {Number}
      */
-    getMaxFanIn: function () {
+    getMaxFanIn: function () 
+    {
       return this.maxFanIn
     },
 

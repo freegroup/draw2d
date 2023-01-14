@@ -607,9 +607,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
      *
      */
     onDoubleClick: function () {
-      if (this.editor !== null) {
-        this.editor.start(this)
-      }
+        this.editor?.start(this)
     },
 
 
@@ -638,19 +636,16 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
       this.repaint()
       // Update the resize handles if the user change the position of the element via an API call.
       //
-      let _this = this
-      this.editPolicy.each(function (i, e) {
+      this.editPolicy.each((i, e) => {
         if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
-          e.moved(_this.canvas, _this)
+          e.moved(this.canvas, this)
         }
       })
 
       this.fireEvent("resize")
       this.fireEvent("change:text", {value: this.text})
 
-      if (this.parent !== null) {
-        this.parent.repaint()
-      }
+      this.parent?.repaint()
 
       return this
     },
