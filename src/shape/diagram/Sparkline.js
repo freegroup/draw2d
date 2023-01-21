@@ -79,7 +79,7 @@ draw2d.shape.diagram.Sparkline = draw2d.shape.diagram.Diagram.extend(
       return
     }
 
-    attributes = attributes || {}
+    attributes ??= {}
 
     attributes.fill = "90-#000:5-#4d4d4d:95"
 

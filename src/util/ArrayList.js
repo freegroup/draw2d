@@ -337,7 +337,7 @@ draw2d.util.ArrayList = Class.extend(
      * @returns {Boolean}
      */
     contains: function (obj) {
-      return this.indexOf(obj) !== -1
+      return this.data.includes(obj)
     },
 
 

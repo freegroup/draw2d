@@ -263,7 +263,7 @@ draw2d.shape.widget.Slider = draw2d.shape.widget.Widget.extend(
       return
     }
 
-    attributes = attributes || {}
+    attributes ??= {}
 
     // adjust the slider to the current value and the new dimension of the widget
     //

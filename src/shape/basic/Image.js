@@ -71,7 +71,7 @@ draw2d.shape.basic.Image = draw2d.shape.node.Node.extend(
       return this
     }
 
-    attributes = attributes || {}
+    attributes ??= {}
 
     attributes.x = this.getAbsoluteX()
     attributes.y = this.getAbsoluteY()

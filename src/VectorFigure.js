@@ -157,7 +157,7 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend(
             return;
         }
 
-        attributes ??={};
+        attributes??={};
 
         attributes.x = this.getAbsoluteX();
         attributes.y = this.getAbsoluteY();

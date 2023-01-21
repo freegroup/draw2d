@@ -311,7 +311,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
    * @private
    */
   calculatePath: function (routingHints) {
-    routingHints = routingHints || {}
+    routingHints ??= {}
 
     if (this.shape === null) {
       return
@@ -354,11 +354,11 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
     // Won't work: attributes = {...attributes ,  path: this.svgPathString})
     //
 
-    attributes ??={}
+    attributes??={}
     attributes.path = this.svgPathString
     // set some good defaults
-    attributes["stroke-linecap"] ??= "round"
-    attributes["stroke-linejoin"] ??= "round"
+    attributes["stroke-linecap"]??= "round"
+    attributes["stroke-linejoin"]??= "round"
 
     return this._super(attributes)
   },

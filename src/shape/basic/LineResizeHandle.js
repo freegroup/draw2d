@@ -151,7 +151,7 @@ draw2d.shape.basic.LineResizeHandle = draw2d.shape.basic.Circle.extend(
       return
     }
 
-    attributes = attributes || {}
+    attributes ??= {}
 
 
     if (this.bgColor.hash() === "none") {

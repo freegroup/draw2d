@@ -402,11 +402,11 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
       if (typeof attributes.path === "undefined") {
         attributes.path = ["M", this.start.x, this.start.y, "L", this.end.x, this.end.y].join(" ")
       }
-      jsonUtil.ensureDefault(attributes, "stroke", this.lineColor.rgba())
-      jsonUtil.ensureDefault(attributes, "stroke-width", this.stroke)
+      attributes.stroke??=this.lineColor.rgba()
+      attributes["stroke-width"]??=this.stroke
     }
 
-    jsonUtil.ensureDefault(attributes, "stroke-dasharray", this.dasharray)
+    attributes["stroke-dasharray"]??=this.dasharray
     this._super(attributes)
 
     if (this.outlineStroke > 0) {

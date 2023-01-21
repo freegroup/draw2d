@@ -70,7 +70,7 @@ draw2d.shape.analog.OpAmp = draw2d.SVGFigure.extend(
       return
     }
 
-    attributes = attributes || {}
+    attributes ??= {}
 
     // redirect the backgroundColor to an internal SVG node.
     // In this case only a small part of the shape are filled with the background color

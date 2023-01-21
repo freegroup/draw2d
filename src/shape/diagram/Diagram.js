@@ -106,9 +106,9 @@ draw2d.shape.diagram.Diagram = draw2d.SetFigure.extend(
       return this
     }
 
-    attributes = attributes || {}
+    attributes ??= {}
 
-    jsonUtil.ensureDefault(attributes, "fill", "none")
+    attributes.fill ??= "none"
 
     return this._super(attributes)
   },

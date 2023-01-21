@@ -557,7 +557,7 @@ draw2d.ResizeHandle = draw2d.shape.basic.Rectangle.extend(
       return
     }
 
-    attributes = attributes || {}
+    attributes ??= {}
 
     if (this.bgColor.hash() === "none") {
       attributes.fill = "none"

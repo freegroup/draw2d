@@ -103,7 +103,7 @@ draw2d.SetFigure = draw2d.shape.basic.Rectangle.extend(
       this.scaleY = this.height / this.originalHeight
     }
 
-    attributes = attributes || {}
+    attributes ??= {}
 
     this.applyAlpha()
 
@@ -204,9 +204,7 @@ draw2d.SetFigure = draw2d.shape.basic.Rectangle.extend(
 
       // and all inner children
       //
-      if (this.svgNodes !== null) {
-        this.svgNodes.toFront()
-      }
+      this.svgNodes?.toFront()
 
       if (this.canvas !== null) {
         let figures = this.canvas.getFigures()

@@ -117,7 +117,7 @@ draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend(
         return
       }
 
-      attributes = attributes || {}
+      attributes ??= {}
 
       // set some good defaults if the parent didn't
       if (typeof attributes.fill === "undefined") {

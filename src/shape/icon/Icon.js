@@ -38,11 +38,9 @@ draw2d.shape.icon.Icon = draw2d.SetFigure.extend(
       return
     }
 
-    attributes = attributes || {}
+    attributes ??= {}
 
-    if (this.svgNodes !== null) {
-      this.svgNodes.attr({fill: this.color.rgba(), stroke: "none"})
-    }
+    this.svgNodes?.attr({fill: this.color.rgba(), stroke: "none"})
 
     this._super(attributes)
   },

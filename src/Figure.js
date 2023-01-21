@@ -269,7 +269,6 @@ draw2d.Figure = Class.extend(
      * @returns {Object} either the requested attribute if this method used as getter or `this` if the method uses as setter
      **/
     attr: function (name, value) {
-      let _this = this
       let orig = this.repaintBlocked
 
       try {
@@ -303,7 +302,6 @@ draw2d.Figure = Class.extend(
               else if (typeof name[key] === "function") {
                 this[key] = param.bind(this)
               }
-
             }
           }
         } else if (typeof name === "string") {
@@ -340,7 +338,7 @@ draw2d.Figure = Class.extend(
         // may it is a array of attributes used for the getter
         //
         else if (Array.isArray(name)) {
-          return Object.assign({}, ...Object.keys(name).map(k => ({[k]: _this.attr(k)})))
+          return Object.assign({}, ...Object.keys(name).map(k => ({[k]: this.attr(k)})))
         }
         // generic getter of all registered attributes
         else if (typeof name === "undefined") {
@@ -1085,16 +1083,13 @@ draw2d.Figure = Class.extend(
       if (this.repaintBlocked === true || this.shape === null) {
         return this
       }
-      let _this = this
-      attributes = attributes || {}
 
+      attributes ??= {}
 
       if (this.visible === true) {
         if (this.shape.isVisible() === false) {
           if (!isNaN(parseFloat(attributes.visibleDuration))) {
-            $(this.shape.node).fadeIn(attributes.visibleDuration, function () {
-              _this.shape.show()
-            })
+            $(this.shape.node).fadeIn(attributes.visibleDuration, () =>  this.shape.show())
           } else {
             this.shape.show()
           }
@@ -1102,9 +1097,7 @@ draw2d.Figure = Class.extend(
       } else {
         if (this.shape.isVisible() === true) {
           if (!isNaN(parseFloat(attributes.visibleDuration))) {
-            $(this.shape.node).fadeOut(attributes.visibleDuration, function () {
-              _this.shape.hide()
-            })
+            $(this.shape.node).fadeOut(attributes.visibleDuration, () => this.shape.hide())
           } else {
             this.shape.hide()
           }
@@ -1120,12 +1113,12 @@ draw2d.Figure = Class.extend(
       // because the raphael shape isn't redraw at all.
       //
       attributes = jsonUtil.flatDiff(attributes, this.lastAppliedAttributes)
-      this.lastAppliedAttributes = attributes
-
 
       if (Object.getOwnPropertyNames(attributes).length > 0) {
         this.shape.attr(attributes)
       }
+      this.lastAppliedAttributes = attributes
+
 
       this.applyTransformation()
 

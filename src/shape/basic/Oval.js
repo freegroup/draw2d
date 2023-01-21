@@ -105,7 +105,7 @@ draw2d.shape.basic.Oval = draw2d.VectorFigure.extend(
         return
       }
 
-      attributes = attributes || {}
+      attributes ??= {}
 
 
       // don't override cx/cy if inherited class has set the center already.

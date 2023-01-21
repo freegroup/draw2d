@@ -316,8 +316,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
         return
       }
 
-      attributes = attributes || {}
-
+      attributes ??= {}
 
       // a port did have the 0/0 coordinate in the center and not in the top/left corner
       //

@@ -50,10 +50,10 @@ draw2d.shape.node.Fulcrum = draw2d.shape.node.Hub.extend(
       return this
     }
 
-    attributes = attributes || {}
+    attributes ??= {}
 
     // set some good defaults if the parent didn't
-    jsonUtil.ensureDefault(attributes, "fill", this.bgColor.rgba())
+    attributes.fill ??=this.bgColor.rgba()
 
     return this._super(attributes)
   }
