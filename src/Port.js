@@ -270,7 +270,7 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
      * @returns {this}
      **/
     setBackgroundColor: function (color) {
-      this.lighterBgColor = new draw2d.util.Color(color).lighter(0.3).rgba()
+      this.lighterBgColor = new draw2d.util.Color(color).lighter(0.3).hash()
       this._super(color)
 
       return this

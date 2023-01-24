@@ -139,7 +139,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
 
         // fire the events to all listener
         this.sourcePort.fireEvent("disconnect", {port: this.sourcePort, connection: this})
-        this.canvas?.fireEvent("disconnect", {"port": this.sourcePort, "connection": this})
+        this.canvas?.fireEvent("disconnect", {port: this.sourcePort, connection: this})
         this.sourcePort.onDisconnect(this)
 
         this.fireSourcePortRouteEvent()
@@ -151,7 +151,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
 
         // fire the events to all listener
         this.targetPort.fireEvent("disconnect", {port: this.targetPort, connection: this})
-        this.canvas?.fireEvent("disconnect", {"port": this.targetPort, "connection": this})
+        this.canvas?.fireEvent("disconnect", {port: this.targetPort, connection: this})
         this.targetPort.onDisconnect(this)
 
         this.fireTargetPortRouteEvent()
@@ -169,7 +169,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
 
         // fire the events to all listener
         this.sourcePort.fireEvent("connect", {port: this.sourcePort, connection: this})
-        this.canvas?.fireEvent("connect", {"port": this.sourcePort, "connection": this})
+        this.canvas?.fireEvent("connect", {port: this.sourcePort, connection: this})
         this.sourcePort.onConnect(this)
 
         this.fireSourcePortRouteEvent()
@@ -181,7 +181,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
 
         // fire the events to all listener
         this.targetPort.fireEvent("connect", {port: this.targetPort, connection: this})
-        this.canvas?.fireEvent("connect", {"port": this.targetPort, "connection": this})
+        this.canvas?.fireEvent("connect", {port: this.targetPort, connection: this})
         this.targetPort.onConnect(this)
 
         this.fireTargetPortRouteEvent()
@@ -309,7 +309,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
       if (this.shape !== null) {
         let z1 = this.sourcePort.getZOrder()
         let z2 = this.targetPort.getZOrder()
-        z1 < z2 ? this.toBack(this.sourcePort) : this.toBack(this.targetPort)
+        this.toBack(z1 < z2 ? this.sourcePort:this.targetPort)
       }
 
       return this
@@ -319,11 +319,10 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
      * @private
      **/
     repaint: function (attributes) {
-      if (this.repaintBlocked === true || this.shape === null) {
-        return
-      }
-
-      if (this.sourcePort === null || this.targetPort === null) {
+      if (this.repaintBlocked === true || 
+          this.shape          === null || 
+          this.sourcePort     === null || 
+          this.targetPort     === null) {
         return
       }
 
@@ -365,9 +364,9 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
         this.targetDecoratorNode.attr({opacity: this.alpha})
         // apply the color of the connection if the decoration doesn't have any
         if (this.targetDecorator.getColor() === null) {
-          this.targetDecoratorNode.attr({"stroke": "#" + this.lineColor.hex()})
+          this.targetDecoratorNode.attr({stroke: this.lineColor.hash()})
         } else {
-          this.targetDecoratorNode.attr({"stroke": "#" + this.targetDecorator.getColor().hex()})
+          this.targetDecoratorNode.attr({stroke: this.targetDecorator.getColor().hash()})
         }
         this.targetDecoratorNode.forEach(shape => {
           shape.node.setAttribute("class", this.cssClass !== null ? this.cssClass : "")
@@ -470,12 +469,8 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
       // ensure that the decoration is always in front of the connection
       //
       if (this.shape !== null) {
-        if (this.targetDecoratorNode !== null) {
-          this.targetDecoratorNode.insertAfter(this.shape)
-        }
-        if (this.sourceDecoratorNode !== null) {
-          this.sourceDecoratorNode.insertAfter(this.shape)
-        }
+        this.targetDecoratorNode?.insertAfter(this.shape)
+        this.sourceDecoratorNode?.insertAfter(this.shape)
       }
 
       return this
@@ -561,7 +556,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
         this.sourcePort.fireEvent("disconnect", {port: this.sourcePort, connection: this})
         // it is possible that a connection has already a port but is not assigned to
         // a canvas. In this case we must check if the canvas set correct before we fire this event
-        this.canvas?.fireEvent("disconnect", {"port": this.sourcePort, "connection": this})
+        this.canvas?.fireEvent("disconnect", {port: this.sourcePort, connection: this})
 
         this.sourcePort.onDisconnect(this)
       }
@@ -576,13 +571,13 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
       this.sourcePort.connections.add(this)
       this.sourcePort.on("move", this.moveListener)
 
-      this.canvas?.fireEvent("connect", {"port": this.sourcePort, "connection": this})
+      this.canvas?.fireEvent("connect", {port: this.sourcePort, connection: this})
 
       this.sourcePort.fireEvent("connect", {port: this.sourcePort, connection: this})
       this.sourcePort.onConnect(this)
 
       this.setStartPoint(port.getAbsoluteX(), port.getAbsoluteY())
-      this.fireEvent("connect", {"port": this.sourcePort, "connection": this})
+      this.fireEvent("connect", {port: this.sourcePort, connection: this})
     },
 
     /**
@@ -608,7 +603,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
         this.targetPort.fireEvent("disconnect", {port: this.targetPort, connection: this})
         // it is possible that a connection has already a port but is not assigned to
         // a canvas. In this case we must check if the canvas set correct before we fire this event
-        this.canvas?.fireEvent("disconnect", {"port": this.targetPort, "connection": this})
+        this.canvas?.fireEvent("disconnect", {port: this.targetPort, connection: this})
 
         this.targetPort.onDisconnect(this)
       }
@@ -622,12 +617,12 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
       this.fireTargetPortRouteEvent()
       this.targetPort.connections.add(this)
       this.targetPort.on("move", this.moveListener)
-      this.canvas?.fireEvent("connect", {"port": this.targetPort, "connection": this})
+      this.canvas?.fireEvent("connect", {port: this.targetPort, connection: this})
       this.targetPort.fireEvent("connect", {port: this.targetPort, connection: this})
       this.targetPort.onConnect(this)
 
       this.setEndPoint(port.getAbsoluteX(), port.getAbsoluteY())
-      this.fireEvent("connect", {"port": this.targetPort, "connection": this})
+      this.fireEvent("connect", {port: this.targetPort, connection: this})
     },
 
     /**
@@ -682,7 +677,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
         return // nothing to do
       }
 
-      let notiCanvas = this.canvas == null ? canvas : this.canvas
+      let notiCanvas = this.canvas === null ? canvas : this.canvas
 
       this._super(canvas)
 
@@ -695,28 +690,27 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
       if (this.canvas === null) {
         if (this.sourcePort !== null) {
           this.sourcePort.off(this.moveListener)
-          notiCanvas.fireEvent("disconnect", {"port": this.sourcePort, "connection": this})
+          notiCanvas.fireEvent("disconnect", { port: this.sourcePort, connection: this})
           this.sourcePort.onDisconnect(this)
         }
         if (this.targetPort !== null) {
           this.targetPort.off(this.moveListener)
-          notiCanvas.fireEvent("disconnect", {"port": this.targetPort, "connection": this})
+          notiCanvas.fireEvent("disconnect", { port: this.targetPort, connection: this})
           this.targetPort.onDisconnect(this)
         }
       } else {
 
         if (this.sourcePort !== null) {
           this.sourcePort.on("move", this.moveListener)
-          this.canvas.fireEvent("connect", {"port": this.sourcePort, "connection": this})
+          this.canvas.fireEvent("connect", { port: this.sourcePort, connection: this})
           this.sourcePort.onConnect(this)
         }
         if (this.targetPort !== null) {
           this.targetPort.on("move", this.moveListener)
-          this.canvas.fireEvent("connect", {"port": this.targetPort, "connection": this})
+          this.canvas.fireEvent("connect", { port: this.targetPort, connection: this})
           this.targetPort.onConnect(this)
         }
       }
-
     },
 
 

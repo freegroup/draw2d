@@ -5918,8 +5918,12 @@
             return el;
         },
         addGradientFill = function (element, gradient) {
+            // even called if we reset the fill of an shape.
+            if (gradient === null)
+                return
+
             var type = "linear",
-                id = element.id + gradient,
+                id = gradient.replace(/[\(\)\s,\xb0#]/g, "_"),
                 fx = .5, fy = .5,
                 o = element.node,
                 SVG = element.paper,
@@ -6424,6 +6428,7 @@
                             }
                         // fall
                         case "fill-opacity":
+
                             if (attrs.gradient) {
                                 gradient = R._g.doc.getElementById(node.getAttribute("fill").replace(/^url\(#|\)$/g, E));
                                 if (gradient) {

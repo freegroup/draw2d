@@ -69,12 +69,12 @@ draw2d.SetFigure = draw2d.shape.basic.Rectangle.extend(
     }
 
     if (this.cssClass === null) {
-      this.svgNodes.forEach(function (e) {
+      this.svgNodes.forEach( (e) => {
         e.node.removeAttribute("class")
       })
     }
     else {
-      this.svgNodes.forEach(function (e) {
+      this.svgNodes.forEach( (e) => {
         e.node.setAttribute("class", cssClass)
       })
     }
@@ -298,7 +298,7 @@ draw2d.SetFigure = draw2d.shape.basic.Rectangle.extend(
 
     // bring all children figures in front of the parent
     // run reverse to the collection to care about the z-order of the children)
-    this.children.each(function (i, child) {
+    this.children.each( (i, child) => {
       child.figure.toBack(figure)
     }, true)
 
@@ -323,15 +323,14 @@ draw2d.SetFigure = draw2d.shape.basic.Rectangle.extend(
 
     // and last but not least - the ports are always on top
     //
-    let _this = this
-    this.getPorts().each(function (i, port) {
-      port.getConnections().each(function (i, connection) {
-        connection.toFront(_this)
+    this.getPorts().each((i, port) => {
+      port.getConnections().each((i, connection) =>  {
+        connection.toFront(this)
       })
       // a port should always be in front of the shape doesn't matter what the
       // "figure" parameter says.
       //
-      port.toFront(_this)
+      port.toFront(this)
     })
 
     return this

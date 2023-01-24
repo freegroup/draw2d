@@ -101,9 +101,7 @@ draw2d.shape.basic.Text = draw2d.shape.basic.Label.extend(
       if (this.cachedMinWidth === null) {
         // get the longest word in the text
         //
-        let longestWord = this.text.split(" ").reduce(function (arg1, arg2) {
-          return arg1.length > arg2.length ? arg1 : arg2
-        })
+        let longestWord = this.text.split(" ").reduce( (arg1, arg2)=>arg1.length>arg2.length?arg1:arg2)
         let svgText = this.canvas.paper
           .text(0, 0, longestWord)
           .attr(extend({}, this.calculateTextAttr(), {text: longestWord}))
@@ -129,7 +127,9 @@ draw2d.shape.basic.Text = draw2d.shape.basic.Label.extend(
 
       if (this.cachedWrappedAttr === null) {
         let abc = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        let svgText = this.canvas.paper.text(0, 0, "").attr(extend({}, this.calculateTextAttr(), {text: abc}))
+        let svgText = this.canvas.paper.text(0, 0, "")
+        
+        svgText.attr({ ...this.calculateTextAttr(), text: abc})
 
         // get a good estimation of a letter width...not correct but this is working for the very first draft implementation
         let letterWidth = svgText.getBBox(true).width / abc.length

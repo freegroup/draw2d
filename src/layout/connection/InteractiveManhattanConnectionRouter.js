@@ -68,13 +68,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
 
   onInstall: function (conn) {
     conn.installEditPolicy(new draw2d.policy.line.OrthogonalSelectionFeedbackPolicy())
-    if (!conn._routingMetaData) {
-      conn._routingMetaData = {
-        routedByUserInteraction: false,
-        fromDir: -1,
-        toDir: -1
-      }
-    }
+    conn._routingMetaData ??= { routedByUserInteraction: false,fromDir: -1,toDir: -1}
   },
 
   onUninstall: function (conn) {
@@ -117,7 +111,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
     let max = Math.max
     let min = Math.min
 
-    routingHints = routingHints || {oldVertices: new draw2d.util.ArrayList()}
+    routingHints ??= {oldVertices: new draw2d.util.ArrayList()}
     let oldVertices = routingHints.oldVertices
     let vertexCount = oldVertices.getSize()
 
@@ -126,7 +120,6 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
 
     let toPt = conn.getEndPosition()
     let toDir = conn.getTarget().getConnectionDirection(conn.getSource())
-
 
     // the port orientation has been changed. This can happen if the node rotates. In this case
     // we must recalculate the routing.
@@ -549,13 +542,6 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
       line.lineSegments = new draw2d.util.ArrayList()
 
       line.setVertices(memento.vertex)
-
-      /*
-       line.vertices     = new draw2d.util.ArrayList();
-       $.each(memento.vertex, function(i,e){
-       line.addPoint(e.x, e.y);
-       });
-       */
     }
 
     if (typeof memento.routingMetaData !== "undefined") {
