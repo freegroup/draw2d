@@ -89,7 +89,14 @@ draw2d.policy.canvas.SingleSelectionPolicy = draw2d.policy.canvas.SelectionPolic
 
       this.mouseDownElement = figure
       if (this.mouseDownElement !== null) {
-        this.mouseDownElement.fireEvent("mousedown", {x: x, y: y, shiftKey: shiftKey, ctrlKey: ctrlKey})
+        this.mouseDownElement.fireEvent("mousedown", {
+          x: x, 
+          y: y, 
+          relX: x - this.mouseDownElement.getAbsoluteX(),
+          relY: y - this.mouseDownElement.getAbsoluteY(),
+          shiftKey: shiftKey, 
+          ctrlKey: ctrlKey
+        })
       }
 
       if (figure !== canvas.getSelection().getPrimary() && figure !== null && figure.isSelectable() === true) {
@@ -263,7 +270,14 @@ draw2d.policy.canvas.SingleSelectionPolicy = draw2d.policy.canvas.SelectionPolic
         this.select(canvas, null)
       }
 
-      this.mouseDownElement?.fireEvent("mouseup", {x: x, y: y, shiftKey: shiftKey, ctrlKey: ctrlKey})
+      this.mouseDownElement?.fireEvent("mouseup", {
+        x: x, 
+        y: y, 
+        relX: x - this.mouseDownElement.getAbsoluteX(),
+        relY: y - this.mouseDownElement.getAbsoluteY(),
+        shiftKey: shiftKey, 
+        ctrlKey: ctrlKey
+      })
 
       this.mouseDownElement = null
       this.mouseMovedDuringMouseDown = false
@@ -311,7 +325,15 @@ draw2d.policy.canvas.SingleSelectionPolicy = draw2d.policy.canvas.SelectionPolic
      */
     onDoubleClick: function (figure, mouseX, mouseY, shiftKey, ctrlKey) {
       if (figure !== null) {
-        figure.fireEvent("dblclick", {x: mouseX, y: mouseY, shiftKey: shiftKey, ctrlKey: ctrlKey})
+        figure.fireEvent("dblclick", 
+        {
+          x: mouseX, 
+          y: mouseY, 
+          relX: mouseX - figure.getAbsoluteX(),
+          relY: mouseX - figure.getAbsoluteY(),  
+          shiftKey: shiftKey,
+          ctrlKey: ctrlKey
+        })
         figure.onDoubleClick()
       }
     }

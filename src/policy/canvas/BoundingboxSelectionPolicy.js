@@ -154,7 +154,16 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
 
       this.mouseDownElement = figure
 
-      this.mouseDownElement?.fireEvent("mousedown", {x: x, y: y, shiftKey: shiftKey, ctrlKey: ctrlKey})
+      this.mouseDownElement?.fireEvent("mousedown",
+       {
+        x: x, 
+        y: y, 
+        relX: x - this.mouseDownElement.getAbsoluteX(),
+        relY: y - this.mouseDownElement.getAbsoluteY(),
+        shiftKey: 
+        shiftKey, 
+        ctrlKey: ctrlKey
+      })
 
       // we click on an element which are not part of the current selection
       // => reset the "old" current selection if we didn't press the shift key
