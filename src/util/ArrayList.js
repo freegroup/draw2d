@@ -161,11 +161,7 @@ draw2d.util.ArrayList = Class.extend(
      * @since 2.0.0
      */
     find: function (func) {
-      let result = this.data.filter(func)
-      if (result.length === 0) {
-        return null
-      }
-      return result[0]
+      return this.data.find(func)
     },
 
     /**

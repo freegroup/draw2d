@@ -1,5 +1,4 @@
 import draw2d from '../../packages'
-import extend from '../../util/extend'
 
 
 /**
@@ -35,23 +34,23 @@ draw2d.shape.basic.LineResizeHandle = draw2d.shape.basic.Circle.extend(
     }
 
     this._super(
-      extend({
+     {
         bgColor: "#5bcaff",
         stroke: 1,
         width: 10,
         height: 10,
         minWidth: 0.3,
         minHeight: 0.3,
-        selectable: false
-      }, attr),
-      extend({
+        selectable: false,
+        ...attr},
+      {
         owner: this.setOwner,
-        index: this.setIndex
-      }, setter),
-      extend({
+        index: this.setIndex,
+        ...setter},
+      {
         owner: this.getOwner,
-        index: this.getIndex
-      }, getter))
+        index: this.getIndex,
+        ...getter})
 
     // required in the SelectionEditPolicy to indicate the type of figure
     // which the user clicks

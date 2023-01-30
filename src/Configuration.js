@@ -36,9 +36,8 @@ draw2d.Configuration = {
     	// It is possible to replace this method with a custom implementation
     	// @since 5.2.0
     	createResizeHandle: function(owner, type, width, height){
-        // create a custom SelectionPolicy instead
-        console.log("deprecated call factory.createResizeHandle");
-
+            // create a custom SelectionPolicy instead
+            console.log("deprecated call factory.createResizeHandle");
     		return new draw2d.ResizeHandle({ owner, type, width, height });
     	},
     	// The commands an canvas calles this method to create a new connection.

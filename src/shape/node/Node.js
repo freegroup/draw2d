@@ -1,5 +1,4 @@
 import draw2d from '../../packages'
-import extend from '../../util/extend'
 
 
 /**
@@ -41,14 +40,16 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
     this.cachedPorts = null
 
     this._super(
-      extend({width: 50, height: 50}, attr),
-      extend({
+      {width: 50, height: 50, ...attr},
+      {
         // @attr {Number} indicate whenever you want persists the ports too */
-        persistPorts: this.setPersistPorts
-      }, setter),
-      extend({
-        persistPorts: this.getPersistPorts
-      }, getter))
+        persistPorts: this.setPersistPorts,
+        ...setter
+      },
+      {
+        persistPorts: this.getPersistPorts,
+        ...getter
+      })
   },
 
 
@@ -114,13 +115,13 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
     // adjust the visibility of the ports to the parent state
     //
     if (!flag) {
-      this.getPorts().each(function (i, port) {
+      this.getPorts().each( (i, port) => {
         port.__initialVisibilityState = port.isVisible()
         port.setVisible(false, duration)
       })
     }
     else {
-      this.getPorts().each(function (i, port) {
+      this.getPorts().each( (i, port) => {
         if (typeof port.__initialVisibilityState !== "undefined") {
           port.setVisible(port.__initialVisibilityState, duration)
         }
@@ -210,7 +211,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
    * @experimental
    */
   clone: function (cloneMetaData) {
-    cloneMetaData = extend({excludePorts: false}, cloneMetaData)
+    cloneMetaData = {excludePorts: false, ...cloneMetaData}
 
     let clone = this._super(cloneMetaData)
 
@@ -571,12 +572,14 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
     if (this.persistPorts === true) {
       memento.ports = []
       this.getPorts().each(function (i, port) {
-        memento.ports.push(extend(port.getPersistentAttributes(), {
-          name: port.getName(),
-          port: port.NAME,
-          locator: port.getLocator().NAME,
-          locatorAttr: port.getLocator().attr()
-        }))
+        memento.ports.push(
+          {...port.getPersistentAttributes(), 
+            name: port.getName(),
+            port: port.NAME,
+            locator: port.getLocator().NAME,
+            locatorAttr: port.getLocator().attr()
+          }
+        )
       })
     }
 

@@ -1,5 +1,4 @@
 import draw2d from '../../packages'
-import extend from '../../util/extend'
 
 
 /**
@@ -43,17 +42,20 @@ draw2d.policy.canvas.CoronaDecorationPolicy = draw2d.policy.canvas.DecorationPol
     this.sumDiameter = 0
 
     this._super(
-      extend({diameterToBeVisible: 200, diameterToBeFullVisible: 20}, attr),
-
-      extend({
+      {
+        diameterToBeVisible: 200, 
+        diameterToBeFullVisible: 20,
+        ...attr
+      },
+      {
         diameterToBeVisible: this.setDiameterToBeVisible,
-        diameterToBeFullVisible: this.setDiameterToBeFullVisible
-      }, setter),
+        diameterToBeFullVisible: this.setDiameterToBeFullVisible,
+        ...setter},
 
-      extend({
+      {
         diameterToBeVisible: this.getDiameterToBeVisible,
-        diameterToBeFullVisible: this.getDiameterToBeFullVisible
-      }, getter)
+        diameterToBeFullVisible: this.getDiameterToBeFullVisible,
+        ...getter}
     )
   },
 

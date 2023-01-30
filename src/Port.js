@@ -1,6 +1,4 @@
 import draw2d from 'packages'
-import extend from "./util/extend";
-
 
 /**
  * @class
@@ -27,21 +25,21 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
       this.name = null
       this.coronaWidth = 5 // the corona width for the hitTest method. Useful during drag&drop of ports. Better SnapTo behavior.
 
-      this._super(extend({
+      this._super({
           bgColor: "#4f6870",
           stroke: 1,
           diameter: 10,
           color: "#1B1B1B",
           selectable: false
-        }, attr),
-        extend({
+          , ...attr},
+        {
           coronaWidth: this.setCoronaWidth,
-          semanticGroup: this.setSemanticGroup
-        }, setter),
-        extend({
+          semanticGroup: this.setSemanticGroup,
+          ...setter},
+        {
           coronaWidth: this.getCoronaWidth,
-          semanticGroup: this.getSemanticGroup
-        }, getter))
+          semanticGroup: this.getSemanticGroup,
+          ...getter})
 
 
       // status vars for user interaction

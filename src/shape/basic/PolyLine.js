@@ -1,6 +1,4 @@
 import draw2d from '../../packages'
-import jsonUtil from '../../util/JSONUtil'
-import extend from '../../util/extend'
 
 
 /**
@@ -45,20 +43,17 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
     this.radius = ""
 
     this._super(
-      extend(
-        {
-          router: new draw2d.layout.connection.VertexRouter()
-        }, attr),
-      extend({}, {
-        // @attr {draw2d.layout.connection.ConnectionRouter} the router to use to layout the polyline */
+      {router: new draw2d.layout.connection.VertexRouter(), ...attr},
+      {
         router: this.setRouter,
-        // @attr {Number} radius the radius to render the line edges */
-        radius: this.setRadius
-      }, setter),
-      extend({}, {
+        radius: this.setRadius,
+        ...setter,
+      },
+      {
         router: this.getRouter,
-        radius: this.getRadius
-      }, getter)
+        radius: this.getRadius,
+        ...getter
+      }
     )
   },
 
@@ -357,7 +352,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
     attributes??={}
     attributes.path = this.svgPathString
     // set some good defaults
-    attributes["stroke-linecap"]??= "round"
+    attributes["stroke-linecap"] ??= "round"
     attributes["stroke-linejoin"]??= "round"
 
     return this._super(attributes)
@@ -429,12 +424,11 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
    **/
   getLength: function () {
     let result = 0
-    for (let i = 0; i < this.lineSegments.getSize(); i++) {
-      let segment = this.lineSegments.get(i)
+    this.lineSegments.each( segment => {
       let p1 = segment.start
       let p2 = segment.end
       result += Math.sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y))
-    }
+    })
     return result
   },
 
@@ -463,8 +457,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
       segment = null
     let lastDist = Number.MAX_SAFE_INTEGER
     let pt = new draw2d.geo.Point(px, py)
-    for (let i = 0; i < this.lineSegments.getSize(); i++) {
-      segment = this.lineSegments.get(i)
+    this.lineSegments.each( segment => {
       p1 = segment.start
       p2 = segment.end
       projection = draw2d.geo.Line.pointProjection(p1.x, p1.y, p2.x, p2.y, pt.x, pt.y)
@@ -476,16 +469,14 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
           lastDist = dist
         }
       }
-    }
+    })
 
     if (result !== null) {
       let length = 0
-      let segment
-      for (let i = 0; i < result.index; i++) {
-        segment = this.lineSegments.get(i)
+      this.lineSegments.each( segment => {
         length += segment.start.distance(segment.end)
-      }
-      segment = this.lineSegments.get(result.index)
+      })
+      let segment = this.lineSegments.get(result.index)
       p1 = segment.start
       p2 = segment.end
       length += p1.distance(p2) * draw2d.geo.Line.inverseLerp(p2.x, p2.y, p1.x, p1.y, result.x, result.y)
@@ -583,14 +574,10 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
    * @inheritdoc
    */
   getPersistentAttributes: function () {
-    let memento = extend(this._super(), {
+    return this.router.getPersistentAttributes(this, {...this._super(), 
       router: this.router.NAME,
       radius: this.radius
     })
-
-    memento = this.router.getPersistentAttributes(this, memento)
-
-    return memento
   },
 
   /**

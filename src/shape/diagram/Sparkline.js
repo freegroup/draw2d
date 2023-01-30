@@ -1,5 +1,5 @@
 import draw2d from '../../packages'
-import extend from '../../util/extend'
+
 /**
  * @class
  *
@@ -37,7 +37,7 @@ draw2d.shape.diagram.Sparkline = draw2d.shape.diagram.Diagram.extend(
     this.max = 10
     this.padding = 4
 
-    this._super(extend({width: 180, height: 50}, attr), setter, getter)
+    this._super({width: 180, height: 50,...attr}, setter, getter)
   },
 
   /**

@@ -32,7 +32,7 @@ draw2d.shape.basic.Text = draw2d.shape.basic.Label.extend(
     init: function (attr, setter, getter) {
       this.cachedWrappedAttr = null
 
-      this._super(extend({width: 100, height: 50, resizeable: true}, attr), setter, getter)
+      this._super({ width: 100, height: 50, resizeable: true,...attr}, setter, getter)
 
       this.installEditPolicy(new draw2d.policy.figure.WidthSelectionFeedbackPolicy())
     },
@@ -47,7 +47,7 @@ draw2d.shape.basic.Text = draw2d.shape.basic.Label.extend(
       }
 
       // style the label
-      this.svgNodes.attr(extend({}, this.calculateTextAttr(), this.wrappedTextAttr(this.text, this.getWidth() - this.padding.left - this.padding.right)))
+      this.svgNodes.attr({...this.calculateTextAttr(), ...this.wrappedTextAttr(this.text, this.getWidth() - this.padding.left - this.padding.right)})
 
       // set of the x/y must be done AFTER the font-size and bold has been set.
       // Reason: the getHeight method needs the font-size for calculation because
@@ -104,7 +104,7 @@ draw2d.shape.basic.Text = draw2d.shape.basic.Label.extend(
         let longestWord = this.text.split(" ").reduce( (arg1, arg2)=>arg1.length>arg2.length?arg1:arg2)
         let svgText = this.canvas.paper
           .text(0, 0, longestWord)
-          .attr(extend({}, this.calculateTextAttr(), {text: longestWord}))
+          .attr({...this.calculateTextAttr(), text: longestWord})
         this.cachedMinWidth = svgText.getBBox(true).width + this.padding.left + this.padding.right + 2 * this.getStroke()
         svgText.remove()
       }
@@ -161,7 +161,6 @@ draw2d.shape.basic.Text = draw2d.shape.basic.Label.extend(
       }
       return this.cachedWrappedAttr
     }
-
   })
 
 

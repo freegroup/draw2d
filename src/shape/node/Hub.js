@@ -34,7 +34,11 @@ draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend(
       this.label = null
 
       this._super(
-        extend({color: this.DEFAULT_COLOR.darker(), bgColor: this.BACKGROUND_COLOR}, attr),
+        {
+          color: this.DEFAULT_COLOR.darker(), 
+          bgColor: this.BACKGROUND_COLOR, 
+          ...attr
+        },
         extend({
           // deprecated
           label: this.setLabel,

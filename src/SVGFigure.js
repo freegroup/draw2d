@@ -1,6 +1,5 @@
 
 import draw2d from 'packages'
-import extend from 'util/extend'
 
 /**
  * @class
@@ -22,18 +21,16 @@ draw2d.SVGFigure = draw2d.SetFigure.extend(
      */
     init: function(attr, setter, getter)
     {
-        this.svg = null;
-
+        this.svg = null
         this._super(
-            extend({},attr),
-            extend({
-                svg : this.setSVG
-            },setter),
-            extend({
-                svg : this.getSVG
-            },getter)
-
-        );
+            attr,
+            {
+                svg : this.setSVG,
+                ...setter},
+            {
+                svg : this.getSVG,
+                ...getter}
+        )
     },
 
     /**
@@ -45,12 +42,8 @@ draw2d.SVGFigure = draw2d.SetFigure.extend(
         // in this case we must call the overridden method "getSVG" to retrieve the SVG from inherit
         // the inherit class.
         //
-        if(this.svg === null) {
-            this.svg = this.getSVG();
-        }
-
-
-		return this.importSVG(this.canvas, this.svg);
+        this.svg ??= this.getSVG()
+		return this.importSVG(this.canvas, this.svg)
 	},
 
     /**
@@ -60,7 +53,7 @@ draw2d.SVGFigure = draw2d.SetFigure.extend(
      */
     getSVG: function()
     {
-        return this.svg;
+        return this.svg
     },
 
     /**
@@ -74,7 +67,7 @@ draw2d.SVGFigure = draw2d.SetFigure.extend(
      */
     setSVG: function(svg, duration)
     {
-        this.svg = svg;
+        this.svg = svg
 
         // SVG has changed. Update the rendering
         //
@@ -115,8 +108,7 @@ draw2d.SVGFigure = draw2d.SetFigure.extend(
      */
     importSVG : function (canvas, rawSVG)
     {
-
-      let set = canvas.paper.set();
+      let set = canvas.paper.set()
 
       try {
         if (typeof rawSVG === 'undefined'){
@@ -125,7 +117,7 @@ draw2d.SVGFigure = draw2d.SetFigure.extend(
 
         // Override the dimension from the JSON if the SVG contains any
         //
-        let svgDOM= $(rawSVG);
+        let svgDOM= $(rawSVG)
 
         // set the dimension of the element if the JSON import didn't provide
         // a dimension already
@@ -134,7 +126,7 @@ draw2d.SVGFigure = draw2d.SetFigure.extend(
             if(svgDOM.attr("width") && svgDOM.attr("height")){
                 this.setDimension(parseFloat(svgDOM.attr("width")), parseFloat(svgDOM.attr("height")));
             }
-            delete this._dimensionReadFromJSON;
+            delete this._dimensionReadFromJSON
         }
 
         let findStyle = new RegExp('([a-z0-9\-]+) ?: ?([^ ;]+)[ ;]?','gi');

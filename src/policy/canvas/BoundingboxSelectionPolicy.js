@@ -146,7 +146,6 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
 
       this.canDrawBoundingBox = true
 
-
       if (figure !== null && figure.isDraggable()) {
         canDragStart = figure.onDragStart(x - figure.getAbsoluteX(), y - figure.getAbsoluteY(), shiftKey, ctrlKey)
         // Element send a veto about the drag&drop operation
@@ -155,9 +154,7 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
 
       this.mouseDownElement = figure
 
-      if (this.mouseDownElement !== null) {
-        this.mouseDownElement.fireEvent("mousedown", {x: x, y: y, shiftKey: shiftKey, ctrlKey: ctrlKey})
-      }
+      this.mouseDownElement?.fireEvent("mousedown", {x: x, y: y, shiftKey: shiftKey, ctrlKey: ctrlKey})
 
       // we click on an element which are not part of the current selection
       // => reset the "old" current selection if we didn't press the shift key
@@ -269,11 +266,12 @@ draw2d.policy.canvas.BoundingboxSelectionPolicy = draw2d.policy.canvas.SingleSel
         this.boundingBoxFigure2.setCanvas(canvas)
       }
       let abs = Math.abs
+      let min = Math.min
       if (this.boundingBoxFigure1 !== null) {
         this.boundingBoxFigure1.setDimension(abs(dx), abs(dy))
-        this.boundingBoxFigure1.setPosition(this.x + Math.min(0, dx), this.y + Math.min(0, dy))
+        this.boundingBoxFigure1.setPosition(this.x + min(0, dx), this.y + min(0, dy))
         this.boundingBoxFigure2.setDimension(abs(dx), abs(dy))
-        this.boundingBoxFigure2.setPosition(this.x + Math.min(0, dx), this.y + Math.min(0, dy))
+        this.boundingBoxFigure2.setPosition(this.x + min(0, dx), this.y + min(0, dy))
       }
     }
     catch (exc) {

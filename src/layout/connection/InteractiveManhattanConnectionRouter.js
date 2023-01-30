@@ -1,6 +1,4 @@
 import draw2d from '../../packages'
-import extend from '../../util/extend'
-
 
 /**
  * @class
@@ -518,10 +516,10 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
   getPersistentAttributes: function (line, memento) {
     memento.vertex = []
 
-    line.getVertices().each(function (i, e) {
+    line.getVertices().each( (i, e) =>{
       memento.vertex.push({x: e.x, y: e.y})
     })
-    memento.routingMetaData = extend({}, line._routingMetaData)
+    memento.routingMetaData = { ...line._routingMetaData}
 
     return memento
   },
@@ -545,7 +543,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
     }
 
     if (typeof memento.routingMetaData !== "undefined") {
-      line._routingMetaData = extend({}, memento.routingMetaData)
+      line._routingMetaData = {...memento.routingMetaData}
     }
   }
 

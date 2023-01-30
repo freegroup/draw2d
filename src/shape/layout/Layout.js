@@ -1,6 +1,4 @@
 import draw2d from '../../packages'
-import extend from '../../util/extend'
-
 
 /**
  * @class
@@ -27,14 +25,17 @@ draw2d.shape.layout.Layout = draw2d.shape.basic.Rectangle.extend(
     // @since 4.3.3
     this.padding = {top: 0, right: 0, bottom: 0, left: 0}
 
-    this._super(extend({bgColor: null, radius: 0, stroke: 0}, attr),
-      extend({
+    this._super({bgColor: null, radius: 0, stroke: 0, ...attr},
+      {
         // @attr {Number} padding the padding in pixel around the text */
-        padding: this.setPadding
-      }, setter),
-      extend({
-        padding: this.getPadding
-      }, getter))
+        padding: this.setPadding,
+        ...setter
+      },
+      {
+        padding: this.getPadding,
+        ...getter
+      }
+    )
 
 
     this.resizeListener =  figure => {
@@ -107,7 +108,7 @@ draw2d.shape.layout.Layout = draw2d.shape.basic.Rectangle.extend(
       this.padding = {top: padding, right: padding, bottom: padding, left: padding}
     }
     else {
-      this.padding = extend(this.padding, padding)
+      this.padding = {...this.padding, ...padding}
     }
     this.fireEvent("change:padding", {value: this.padding})
 

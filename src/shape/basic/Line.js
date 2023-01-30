@@ -1,7 +1,4 @@
 import draw2d from '../../packages'
-import jsonUtil from '../../util/JSONUtil'
-import extend from '../../util/extend'
-
 
 /**
  * @class
@@ -67,11 +64,11 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
     this.vertices.add(this.end.clone())
 
     this._super(
-      extend({
+      {
         deleteable: false,
-        selectable: true
-      }, attr),
-      extend({}, {
+        selectable: true,
+        ...attr},
+       {
         // @attr {Number} start the  coordinates of the start point */
         start: this.setStartPosition,
         // @attr {Number} startX the x coordinate of the start point */
@@ -98,10 +95,10 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
         // @attr {String} dasharray the line pattern see {@link draw2d.shape.basic.Line#setDashArray} for more information*/
         dasharray: this.setDashArray,
         // @attr {Boolean} glow the glow flag for the shape. The representation of the "glow" depends on the shape */
-        glow: this.setGlow
-      }, setter),
+        glow: this.setGlow,
+        ...setter},
 
-      extend({}, {
+      {
         start: this.getStartPosition,
         end: this.getEndPosition,
         outlineColor: this.getOutlineColor,
@@ -110,8 +107,8 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
         corona: this.getCorona,
         color: this.getColor,
         dasharray: this.getDashArray,
-        vertices: this.getVertices
-      }, getter))
+        vertices: this.getVertices,
+        ...getter})
 
     // some router installs a edit policy. In this case we want delete them
     //

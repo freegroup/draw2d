@@ -1,6 +1,4 @@
 import draw2d from 'packages'
-import jsonUtil from 'util/JSONUtil'
-import extend from 'util/extend'
 
 /**
  * @class
@@ -16,7 +14,7 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend(
     {
     
     NAME: "draw2d.VectorFigure",
-
+    
     /**
      * Creates a new figure element which are not assigned to any canvas.
      *
@@ -36,7 +34,7 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend(
         this.glowIsActive = false;
 
         this._super( attr,
-            extend({
+            {
                 // @attr {String} dasharray the line pattern see {@link draw2d.shape.basic.Line#setDashArray} for more information*/
                 dasharray : this.setDashArray,
                 // @attr {Number} radius the radius to render the line edges */
@@ -46,16 +44,16 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend(
                 // @attr {String|draw2d.util.Color} color the main color of the shape */
                 color  : this.setColor,
                 // @attr {Number} stroke the stroke width */
-                stroke : this.setStroke
-            }, setter),
-            extend({
+                stroke : this.setStroke,
+                ...setter},
+            {
                dasharray: this.getDashArray,
                radius :   this.getRadius,
                bgColor:   this.getBackgroundColor,
                color  :   this.getColor,
-               stroke :   this.getStroke
-            }, getter)
-        );
+               stroke :   this.getStroke,
+               ...getter}
+        )
     },
 
     /**
@@ -288,13 +286,13 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend(
     */
    getPersistentAttributes: function()
    {
-       return  extend(this._super(), {
+       return  {...this._super(), 
            bgColor : this.bgColor.rgba(),
            color   : this.color.rgba(),
            stroke  : this.stroke,
            radius  : this.radius,
            dasharray : this.dasharray
-       });
+       }
    },
 
    /**

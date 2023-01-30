@@ -1,5 +1,4 @@
 import draw2d from 'packages'
-import extend from 'util/extend'
 
 /**
  * @class
@@ -106,26 +105,27 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
       }
 
       this._super(
-        extend({
+        {
           color: "#129CE4",
           stroke: 2,
           //    outlineStroke:1,
           //    outlineColor:"#ffffff",
-          radius: 3
-        }, attr),
-        extend({
+          radius: 3,
+          ...attr},
+        {
           sourceDecorator: this.setSourceDecorator,
           targetDecorator: this.setTargetDecorator,
           source: this.setSource,
-          target: this.setTarget
-        }, setter),
-        extend({
+          target: this.setTarget,
+          ...setter
+       },
+        {
           sourceDecorator: this.getSourceDecorator,
           targetDecorator: this.getTargetDecorator,
           source: this.getSource,
-          target: this.getTarget
-        }, getter)
-      )
+          target: this.getTarget,
+          ...getter
+      })
     },
 
 

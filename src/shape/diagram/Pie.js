@@ -1,5 +1,4 @@
 import draw2d from '../../packages'
-import extend from '../../util/extend'
 
 /**
  * @class
@@ -33,17 +32,22 @@ draw2d.shape.diagram.Pie = draw2d.shape.diagram.Diagram.extend(
 
 
     this._super(
-      extend({stroke: 0}, attr),
-      extend({
+      {
+        stroke: 0,
+        ...attr
+      },
+      {
         // @attr {Number} diameter the diameter of the pie chart */
         diameter: this.setDiameter,
         // @attr {Number} radius the radius of the pie chart */
-        radius: this.setRadius
-      }, setter),
-      extend({
+        radius: this.setRadius,
+        ...setter
+      },
+      {
         diameter: this.getDiameter,
-        radius: this.getRadius
-      }, getter))
+        radius: this.getRadius,
+        ...getter
+      })
   },
 
   /**

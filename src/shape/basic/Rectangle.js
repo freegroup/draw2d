@@ -1,5 +1,4 @@
 import draw2d from '../../packages'
-import extend from '../../util/extend'
 
 /**
  * @class
@@ -44,17 +43,19 @@ draw2d.shape.basic.Rectangle = draw2d.VectorFigure.extend(
     this.dasharray = null
 
     this._super(
-      extend({bgColor: "#a0a0a0", color: "#1B1B1B"}, attr),
-      extend({}, {
-        // @attr {String} dash The dot/dash pattern for the line style. Valid values: ["", "-", ".", "-.", "-..", ". ", "- ", "--", "- .", "--.", "--.."]*/
+      {
+        bgColor: "#a0a0a0", color: "#1B1B1B",
+        ...attr},
+      {
         dash: this.setDashArray,
-        // @attr {String} dasharray The dot/dash pattern for the line style. Valid values: ["", "-", ".", "-.", "-..", ". ", "- ", "--", "- .", "--.", "--.."]*/
-        dasharray: this.setDashArray
-      }, setter),
-      extend({}, {
+        dasharray: this.setDashArray,
+        ...setter,
+      },
+      { 
         dash: this.getDashArray,
-        dasharray: this.getDashArray
-      }, getter)
+        dasharray: this.getDashArray,
+        ...getter
+      }
     )
   },
 
@@ -66,12 +67,10 @@ draw2d.shape.basic.Rectangle = draw2d.VectorFigure.extend(
       return
     }
 
-    attributes = extend({}, {
-      width: this.getWidth(),
-      height: this.getHeight(),
-      r: this.getRadius()
-    }, attributes)
-
+    attributes ??={}
+    attributes.width  ??= this.getWidth()
+    attributes.height ??= this.getHeight()
+    attributes.r      ??= this.getRadius()
     if (this.dasharray !== null) {
       attributes["stroke-dasharray"] = this.dasharray
     }

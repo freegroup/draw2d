@@ -2617,7 +2617,7 @@ draw2d.Figure = Class.extend(
      * @experimental
      */
     clone: function (cloneMetaData) {
-      cloneMetaData = extend({excludeChildren: false}, cloneMetaData)
+      cloneMetaData = {excludeChildren: false, ...cloneMetaData}
 
       let clone = eval("new " + this.NAME + "();")
       let initialId = clone.id
@@ -2687,7 +2687,11 @@ draw2d.Figure = Class.extend(
      */
     setPersistentAttributes: function (memento) {
       this.id = memento.id
-      this.setPosition(parseFloat(memento.x), parseFloat(memento.y))
+      // in some cases, e.g. a Connection, the x/y attribute is not set.
+      //
+      if(memento.x && memento.y){
+        this.setPosition(parseFloat(memento.x), parseFloat(memento.y))
+      }
 
       // width and height are optional parameter for the JSON stuff.
       // We use the defaults if the attributes not present

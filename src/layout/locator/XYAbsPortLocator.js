@@ -1,5 +1,4 @@
 import draw2d from '../../packages'
-import extend from "../../util/extend";
 
 
 /**
@@ -38,15 +37,14 @@ draw2d.layout.locator.XYAbsPortLocator = draw2d.layout.locator.PortLocator.exten
       this.y = 0
 
       this._super(attr,
-        extend({
+        {
           x: this.setX,
-          y: this.setY
-        }, setter),
-        extend({
+          y: this.setY,
+         ...setter},
+        {
           x: this.getX,
-          y: this.getY
-        }, getter))
-
+          y: this.getY,
+          ...getter})
     },
 
     /**

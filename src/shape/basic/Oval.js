@@ -1,6 +1,4 @@
 import draw2d from '../../packages'
-import extend from '../../util/extend'
-
 
 /**
  * @class
@@ -29,13 +27,15 @@ draw2d.shape.basic.Oval = draw2d.VectorFigure.extend(
      */
     init: function (attr, setter, getter) {
       this._super(
-        extend({
+        {
           bgColor: "#C02B1D",
-          color: "#1B1B1B"
-        }, attr),
-        extend({
-          center: this.setCenter
-        }, setter),
+          color: "#1B1B1B",
+          ...attr
+        },
+        {
+          center: this.setCenter,
+          ...setter
+        },
         getter)
     },
 

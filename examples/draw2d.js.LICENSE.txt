@@ -336,6 +336,8 @@
 
 /*! ./policy/figure/HorizontalEditPolicy */
 
+/*! ./policy/figure/RaftSelectionFeedbackPolicy */
+
 /*! ./policy/figure/RectangleSelectionFeedbackPolicy */
 
 /*! ./policy/figure/RegionEditPolicy */
@@ -425,6 +427,8 @@
 /*! ./shape/composite/Jailhouse */
 
 /*! ./shape/composite/Raft */
+
+/*! ./shape/composite/RaftResizeHandle */
 
 /*! ./shape/composite/StrongComposite */
 
@@ -2520,6 +2524,10 @@
   !*** ./src/policy/figure/VerticalEditPolicy.js ***!
   \*************************************************/
 
+/*!*************************************************!*\
+  !*** ./src/shape/composite/RaftResizeHandle.js ***!
+  \*************************************************/
+
 /*!**************************************************!*\
   !*** ./src/command/CommandStackEventListener.js ***!
   \**************************************************/
@@ -2734,6 +2742,10 @@
 
 /*!**********************************************************!*\
   !*** ./src/policy/figure/HBusSelectionFeedbackPolicy.js ***!
+  \**********************************************************/
+
+/*!**********************************************************!*\
+  !*** ./src/policy/figure/RaftSelectionFeedbackPolicy.js ***!
   \**********************************************************/
 
 /*!**********************************************************!*\

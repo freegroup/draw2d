@@ -1,5 +1,4 @@
 import draw2d from '../../packages'
-import extend from '../../util/extend'
 
 /**
  * @class
@@ -162,9 +161,9 @@ draw2d.shape.layout.FlexGridLayout = draw2d.shape.layout.Layout.extend(
     }
 
     this._super(
-      extend({stroke: 2}, attr),
-      extend({}, setter),
-      extend({}, getter))
+      {stroke: 2, ...attr},
+      setter,
+      getter)
 
     this.resizeListener =  (figure) => {
       this.gridDef.layoutRequired = true
@@ -197,7 +196,7 @@ draw2d.shape.layout.FlexGridLayout = draw2d.shape.layout.Layout.extend(
 
   add: function (figure, cellConstraint) {
 
-    figure.__cellConstraint = extend({}, {
+    figure.__cellConstraint = {
       row: 0,
       col: 0,
       rowspan: 1,
@@ -205,8 +204,8 @@ draw2d.shape.layout.FlexGridLayout = draw2d.shape.layout.Layout.extend(
       align: "left",
       valign: "top",
       width: 1,
-      height: 1
-    }, cellConstraint)
+      height: 1,
+      ...cellConstraint}
     this.gridDef.layoutRequired = true
     this._super(figure, this.cellLocator)
     this._layout()
