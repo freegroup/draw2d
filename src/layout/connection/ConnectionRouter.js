@@ -43,7 +43,7 @@ draw2d.layout.connection.ConnectionRouter = Class.extend(
     //            With this offset the canvas can paint the line on a "full pixel" instead
     //            of subpixel rendering.
 //    let adjust = val => (val| 0) +0.5
-    let adjust = val => val
+    let adjust = val => val.toFixed(2)
 
     let ps = conn.getVertices()
     let p = ps.get(0)
