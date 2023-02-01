@@ -1154,7 +1154,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
     // attribute because the start/end is defined by the ports and the vertices in between are
     // calculated by a router.
     memento.vertex = []
-    this.getVertices().each(function (i, e) {
+    this.getVertices().each( (i, e) => {
       memento.vertex.push({x: e.x, y: e.y})
     })
 

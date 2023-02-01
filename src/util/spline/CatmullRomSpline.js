@@ -26,7 +26,8 @@ draw2d.util.spline.CatmullRomSpline = draw2d.util.spline.CubicSpline.extend(
     },
 
 
-    blend: function(i, t) {
+    blend: function(i, t) 
+    {
         if (i == -2)
             return ((-t + 2) * t - 1) * t / 2;
         else if (i == -1)

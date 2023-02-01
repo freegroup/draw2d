@@ -727,9 +727,14 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
 
       let p1 = this.lineSegments.get(0).start
       let p2 = this.lineSegments.get(0).end
+      // Since the points are too close to each other in a spline routing, an 
+      // angle is obtained which does not correspond to the optical impression. 
+      // In this case, a point is taken which is a little further away 
+      // from the port....if ppossible
       if (this.router instanceof draw2d.layout.connection.SplineConnectionRouter) {
-        p2 = this.lineSegments.get(5).end
+        p2 = this.lineSegments.get(5)?.end ?? p2
       }
+
       let length = Math.sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y))
       let angle = -(180 / Math.PI) * Math.asin((p1.y - p2.y) / length)
 
@@ -756,9 +761,15 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
 
       let p1 = this.lineSegments.get(this.lineSegments.getSize() - 1).end
       let p2 = this.lineSegments.get(this.lineSegments.getSize() - 1).start
+
+      // Since the points are too close to each other in a spline routing, an 
+      // angle is obtained which does not correspond to the optical impression. 
+      // In this case, a point is taken which is a little further away 
+      // from the port....if ppossible
       if (this.router instanceof draw2d.layout.connection.SplineConnectionRouter) {
-        p2 = this.lineSegments.get(this.lineSegments.getSize() - 5).end
+        p2 = this.lineSegments.get(this.lineSegments.getSize() - 5)?.end ?? p2
       }
+
       let length = Math.sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y))
       let angle = -(180 / Math.PI) * Math.asin((p1.y - p2.y) / length)
 
