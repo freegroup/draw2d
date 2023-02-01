@@ -95,7 +95,7 @@ draw2d.layout.connection.SplineConnectionRouter = draw2d.layout.connection.Manha
     conn.vertices = new draw2d.util.ArrayList()
 
     let splinePoints = this.spline.generate(ps, 8)
-    splinePoints.each(function (i, e) {
+    splinePoints.each( (i, e) => {
       conn.addPoint(e)
     })
 
@@ -104,10 +104,10 @@ draw2d.layout.connection.SplineConnectionRouter = draw2d.layout.connection.Manha
     ps = conn.getVertices()
     let length = ps.getSize()
     let p = ps.get(0)
-    let path = ["M", p.x, " ", p.y]
+    let path = ["M", p.x.toFixed(2), " ", p.y.toFixed(2)]
     for (i = 1; i < length; i++) {
       p = ps.get(i)
-      path.push("L", p.x, " ", p.y)
+      path.push("L", p.x.toFixed(2), " ", p.y.toFixed(2))
     }
     conn.svgPathString = path.join("")
   }

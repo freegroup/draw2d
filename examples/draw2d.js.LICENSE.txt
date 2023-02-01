@@ -56,11 +56,7 @@
 
 /*! ../../util/JSONUtil */
 
-/*! ../../util/extend */
-
 /*! ../packages */
-
-/*! ../util/extend */
 
 /*! ./Canvas */
 
@@ -935,8 +931,6 @@
 /*! ./util/Polyfill */
 
 /*! ./util/SVGUtil */
-
-/*! ./util/extend */
 
 /*! ./util/raphael_ext */
 

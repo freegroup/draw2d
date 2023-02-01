@@ -150,14 +150,16 @@ draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.Connect
       path.forEach(e => {
         ROUTER_RECTS.push(conn.canvas.paper.rect(e.x - 3, e.y - 3, 6, 6).attr({"fill": "#0000ff", "opacity": "0.8"}))
       })
-      let p = path[0]
-      let svgPathBefore = ["M", p.x, " ", p.y]
-      for (let i = 1; i < path.length; i++) {
-        p = path[i]
-        svgPathBefore.push("L", p.x, " ", p.y)
+      if(path.length>0){
+        let p = path[0]
+        let svgPathBefore = ["M", p.x.toFixed(2), " ", p.y.toFixed(2)]
+        for (let i = 1; i < path.length; i++) {
+          p = path[i]
+          svgPathBefore.push("L", p.x.toFixed(2), " ", p.y.toFixed(2))
+        }
+        svgPathBefore = svgPathBefore.join("")
+        ROUTER_RECTS.push(conn.canvas.paper.path(svgPathBefore).attr({"stroke": "#0000ff"}))
       }
-      svgPathBefore = svgPathBefore.join("")
-      ROUTER_RECTS.push(conn.canvas.paper.path(svgPathBefore).attr({"stroke": "#0000ff"}))
     }
 
 
@@ -185,10 +187,10 @@ draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.Connect
           ROUTER_RECTS.push(conn.canvas.paper.rect(e.x - 3, e.y - 3, 6, 6).attr({"fill": "#00ff00", "opacity": "0.8"}))
         })
         let pt = path[0]
-        let svgPathBefore = ["M", pt.x, " ", pt.y]
+        let svgPathBefore = ["M", pt.x.toFixed(2), " ", pt.y.toFixed(2)]
         for (let i = 1; i < path.length; i++) {
           pt = path[i]
-          svgPathBefore.push("L", pt.x, " ", pt.y)
+          svgPathBefore.push("L", pt.x.toFixed(2), " ", pt.y.toFixed(2))
         }
         svgPathBefore = svgPathBefore.join("")
         ROUTER_RECTS.push(conn.canvas.paper.path(svgPathBefore).attr({"stroke": "#00ff00"}))
@@ -223,14 +225,16 @@ draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.Connect
         path.forEach(e => {
           ROUTER_RECTS.push(conn.canvas.paper.rect(e.x - 3, e.y - 3, 6, 6).attr({"fill": "#00ff00", "opacity": "0.8"}))
         })
-        let p = path[0]
-        let svgPathBefore = ["M", p.x, " ", p.y]
-        for (let i = 1; i < path.length; i++) {
-          p = path[i]
-          svgPathBefore.push("L", p.x, " ", p.y)
+        if(path.length>0){
+          let p = path[0]
+          let svgPathBefore = ["M", p.x.toFixed(2), " ", p.y.toFixed(2)]
+          for (let i = 1; i < path.length; i++) {
+            p = path[i]
+            svgPathBefore.push("L", p.x.toFixed(2), " ", p.y.toFixed(2))
+          }
+          svgPathBefore = svgPathBefore.join("")
+          ROUTER_RECTS.push(conn.canvas.paper.path(svgPathBefore).attr({"stroke": "#00ff00"}))
         }
-        svgPathBefore = svgPathBefore.join("")
-        ROUTER_RECTS.push(conn.canvas.paper.path(svgPathBefore).attr({"stroke": "#00ff00"}))
       }
 
       conn.addPoint(oldFromPt)
