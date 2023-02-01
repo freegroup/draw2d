@@ -117,7 +117,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
      * @private
      **/
     createSet: function () {
-      return this.canvas.paper.set([this.canvas.paper.text(0, 0, this.text)])
+      return this.canvas.paper.set([this.canvas.paper.text(0, 0, this.text, this.href)])
     },
 
     /**
