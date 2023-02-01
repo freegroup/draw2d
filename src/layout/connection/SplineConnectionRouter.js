@@ -83,11 +83,6 @@ draw2d.layout.connection.SplineConnectionRouter = draw2d.layout.connection.Manha
 
     let toPt = conn.getEndPoint()
     let toDir = conn.getTarget().getConnectionDirection(conn.getSource())
-
-    // prevent script error in spline generate function
-    if (fromPt.x === toPt.x && fromPt.y === toPt.y) {
-      return;
-    }
     
     // calculate the manhatten bend points between start/end.
     //

@@ -70,8 +70,8 @@ draw2d.util.spline.CubicSpline = draw2d.util.spline.Spline.extend(
         for (var j = -2; j <= 1; j++) {
           var b = this.blend (j, t);
           var p = cp.get(k++);
-          x += b * p.x;
-          y += b * p.y;
+          x += b * p?.x || 0;
+          y += b * p?.y || 0;
         }
 
        return new draw2d.geo.Point(x, y);

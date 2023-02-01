@@ -67,8 +67,8 @@ draw2d.util.spline.BezierSpline = draw2d.util.spline.Spline.extend(
       for (var j = 0; j <= 3; j++) {
         var b = this.blend (j, t);
         var p = cp.get(k++);
-        x += b * p.x;
-        y += b * p.y;
+        x += b * p?.x || 0;
+        y += b * p?.y || 0;
      }
 
       return new draw2d.geo.Point( x, y);
