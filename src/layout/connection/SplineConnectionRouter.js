@@ -84,16 +84,16 @@ draw2d.layout.connection.SplineConnectionRouter = draw2d.layout.connection.Manha
     let toPt = conn.getEndPoint()
     let toDir = conn.getTarget().getConnectionDirection(conn.getSource())
 
-    // prevent script error in spline generate function
-    if (fromPt.x === toPt.x && fromPt.y === toPt.y) {
-      return;
-    }
-    
     // calculate the manhatten bend points between start/end.
     //
     this._route(conn, toPt, toDir, fromPt, fromDir)
 
     let ps = conn.getVertices()
+    // if the start/end are too close, the router do not route anything at all - shortcut. But for the drawing routine
+    // and the later processing, we need at least two points - "start" and "end". we fix this here
+    if(ps.getSize()<2){
+      conn.addPoint(fromPt)
+    }
 
     conn.oldPoint = null
     conn.lineSegments = new draw2d.util.ArrayList()
