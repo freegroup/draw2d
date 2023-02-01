@@ -46,6 +46,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
     init: function (attr, setter, getter) {
 
       this.text = ""
+      this.href = null;
       // for performance reasons
       //
       this.cachedWidth = null
@@ -74,6 +75,8 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
         {
           // @attr {String} text the text to show */
           text: this.setText,
+          // @attr {String} set the href to use */
+          href: this.setHref,
           // @attr {String} set the editor to use see {@link draw2d.ui.LabelEditor} */
           editor: this.installEditor,
           // @attr {Number} outlineStroke the line width of the text to draw. Fill color and outline of the text can be different. */
@@ -93,6 +96,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
           ...setter},
         {
           text: this.getText,
+          href: this.getHref,
           outlineStroke: this.getOutlineStroke,
           outlineColor: this.getOutlineColor,
           fontFamily: this.getFontFamily,
@@ -629,6 +633,27 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
       return this
     },
 
+    /**
+     *
+     * Returns the current href of the label.
+     *
+     * @returns the current href of the label
+     * @type {String}
+     **/
+    getHref: function () {
+      return this.href;
+    },
+
+    /**
+     *
+     * Set the href for the label.
+     *
+     * @param {String} href The new href for the label.
+     * @returns {this}
+     **/
+    setHref: function (href) {
+      this.href = href;
+    },
 
     /**
      *
