@@ -942,7 +942,7 @@
 
 /*! ./util/spline/Spline */
 
-/*! 2.3.1 */
+/*! For license information please see shifty.js.LICENSE.txt */
 
 /*! canvg-browser */
 

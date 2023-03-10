@@ -71,7 +71,8 @@ draw2d.policy.canvas.ShowDotEditPolicy = draw2d.policy.canvas.DecorationPolicy.e
     let bgColor = "#FFFFFF"
     let dotColor = this.dotColor.rgba()
 
-    let background = `linear-gradient(90deg, ${bgColor} ${(this.dotDistance - this.dotRadius)*zoom}px, transparent 1%) center, linear-gradient(${bgColor} ${(this.dotDistance - this.dotRadius)*zoom}px, transparent 1%) center, ${dotColor}`
+    let background = `linear-gradient(90deg, ${bgColor} ${(this.dotDistance - this.dotRadius)*zoom}px, transparent 1%) center, 
+                      linear-gradient(${bgColor} ${(this.dotDistance - this.dotRadius)*zoom}px, transparent 1%) center, ${dotColor}`
     let backgroundSize = `${this.dotDistance*zoom}px ${this.dotDistance*zoom}px`
 
     $(this.canvas.paper.canvas).css({

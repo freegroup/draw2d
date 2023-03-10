@@ -159,6 +159,6 @@ draw2d.layout.locator.Locator = Class.extend(
      * @returns {draw2d.layout.locator.Locator}
      */
     clone: function () {
-      return eval("new " + this.NAME + "()")
+      return Function(`return new ${this.NAME}()`)()
     }
   })

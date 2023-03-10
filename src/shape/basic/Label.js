@@ -573,7 +573,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
      */
     installEditor: function (editor) {
       if (typeof editor === "string") {
-        editor = eval("new " + editor + "()")
+        editor = Function(`return new ${editor}()`)()
       }
       this.editor = editor
 
@@ -736,7 +736,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
       }
 
       if (typeof memento.editor === "string") {
-        this.installEditor(eval("new " + memento.editor + "()"))
+        this.installEditor(Function(`return new ${memento.editor}()`)())
       }
 
       return this

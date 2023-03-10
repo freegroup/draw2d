@@ -607,12 +607,12 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
       // and restore all ports of the JSON document instead.
       //
       memento.ports.forEach((e) => {
-        let locator = eval("new " + e.locator + "()")
+        let locator = Function(`return new ${e.locator}()`)()
         if(e.locatorAttr) {
           locator.attr(e.locatorAttr)
         }
 
-        let port = eval("new " + e.port + "()")
+        let port = Function(`return new ${e.port}()`)()
         port.setPersistentAttributes(e)
         this.addPort(port, locator)
       })

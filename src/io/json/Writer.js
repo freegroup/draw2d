@@ -58,11 +58,11 @@ draw2d.io.json.Writer = draw2d.io.Writer.extend(
 
       var result = [];
 
-      canvas.getFigures().each(function (i, figure) {
+      canvas.getFigures().each( (i, figure)=> {
         result.push(figure.getPersistentAttributes());
       });
 
-      canvas.getLines().each(function (i, element) {
+      canvas.getLines().each( (i, element)=> {
         result.push(element.getPersistentAttributes());
       });
 
