@@ -232,7 +232,7 @@ draw2d.policy.connection.DragConnectionCreatePolicy = draw2d.policy.connection.C
 
             // fire an event
             // @since 5.3.3
-            de.fireEvent("dragend",{x:x, y:y, shiftKey:shiftKey, ctrlKey:ctrlKey});
+            de.fireEvent("dragend",{x:x, y:y, shiftKey:shiftKey, ctrlKey:ctrlKey, target: ct});
 
 
             // check if we drop the port onto a valid
