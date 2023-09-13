@@ -37,7 +37,10 @@ draw2d.shape.composite.Raft = draw2d.shape.composite.WeakComposite.extend(
 
       this.aboardFigures = new draw2d.util.ArrayList()
 
-      this._super(extend({bgColor: "#f0f0f0", color: "#1B1B1B"}, attr), setter, getter)
+      this._super({bgColor: "#f0f0f0", color: "#1B1B1B",...attr}, setter, getter)
+      // install default selection handler. Can be overridden or replaced
+
+      this.installEditPolicy(new draw2d.policy.figure.RaftSelectionFeedbackPolicy())
     },
 
 
@@ -93,7 +96,7 @@ draw2d.shape.composite.Raft = draw2d.shape.composite.WeakComposite.extend(
       //
       if (this.canvas !== null) {
         aboardedFigures = aboardedFigures.clone()
-        this.canvas.getLines().each(function (i, line) {
+        this.canvas.getLines().each( (i, line) => {
           if (line instanceof draw2d.Connection) {
             if (aboardedFigures.contains(line.getSource().getRoot()) && aboardedFigures.contains(line.getTarget().getRoot())) {
               aboardedFigures.add(line)
@@ -102,25 +105,22 @@ draw2d.shape.composite.Raft = draw2d.shape.composite.WeakComposite.extend(
         })
       }
 
-      aboardedFigures.each(function (i, figure) {
-        figure.translate(dx, dy)
-      })
+      aboardedFigures.each( (i, figure) => { figure.translate(dx, dy) })
 
       return this
     },
 
 
     onDrag: function (dx, dy, dx2, dy2, shiftKey, ctrlKey) {
-      let _this = this
 
       // apply all EditPolicy for DragDrop Operations
       //
-      this.editPolicy.each(function (i, e) {
+      this.editPolicy.each( (i, e) => {
         if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
-          let newPos = e.adjustPosition(_this, _this.ox + dx, _this.oy + dy)
+          let newPos = e.adjustPosition(this, this.ox + dx, this.oy + dy)
           if (newPos) {
-            dx = newPos.x - _this.ox
-            dy = newPos.y - _this.oy
+            dx = newPos.x - this.ox
+            dy = newPos.y - this.oy
           }
         }
       })
@@ -134,19 +134,17 @@ draw2d.shape.composite.Raft = draw2d.shape.composite.WeakComposite.extend(
         newPos = this.getCanvas().snapToHelper(this, newPos)
       }
 
-
       // push the shiftKey to the setPosition method and avoid to move the children objects
       // if the user press the shift key
       this.setPosition(newPos.x, newPos.y, shiftKey)
 
       // notify all installed policies
       //
-      this.editPolicy.each(function (i, e) {
+      this.editPolicy.each((i, e) => {
         if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
-          e.onDrag(_this.canvas, _this)
+          e.onDrag(this.canvas, this)
         }
       })
-
 
       // fire an event
       // @since 5.3.3
@@ -193,7 +191,7 @@ draw2d.shape.composite.Raft = draw2d.shape.composite.WeakComposite.extend(
      */
     getNextComposite: function (figureToTest) {
       let nextComposite = null
-      this.getCanvas().getFigures().each(function (i, figure) {
+      this.getCanvas().getFigures().each( (i, figure) => {
         if (figureToTest === figure) {
           return
         }
@@ -210,7 +208,7 @@ draw2d.shape.composite.Raft = draw2d.shape.composite.WeakComposite.extend(
 
       return nextComposite
     }
-  })
+})
 
 
 

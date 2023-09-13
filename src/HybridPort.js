@@ -24,6 +24,40 @@ draw2d.HybridPort = draw2d.Port.extend(
         // responsive for the arrangement of the port
         // calculates the x/y coordinates in relation to the parent node
         this.locator=new draw2d.layout.locator.InputPortLocator();
+
+        // a Hybrid port has fanIn and fanOut connections. All of them can be handeled 
+        // differently. 
+        this.maxFanIn = Number.MAX_SAFE_INTEGER
+    },
+
+
+    /**
+     *
+     * set the maximal possible count of incomming connections for this port.<br>
+     * A "incomming" connection has always either a hybrid or output source port.
+     * 
+     * This method didn't delete any connection if you reduce the number and a bunch of
+     * connection are bounded already.
+     *
+     * @param {Number} count the maximal number of connection related to this port
+     * @returns {this}
+     */
+    setMaxFanIn: function (count) {
+      this.maxFanIn = Math.max(1, count)
+      this.fireEvent("change:maxFanIn", {value: this.maxFanIn})
+
+      return this
+    },
+
+    /**
+     *
+     * return the maximal possible connections (in+out) for this port.
+     *
+     * @returns {Number}
+     */
+    getMaxFanIn: function () 
+    {
+      return this.maxFanIn
     },
 
     /**

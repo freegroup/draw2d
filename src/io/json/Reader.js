@@ -95,16 +95,16 @@ draw2d.io.json.Reader = draw2d.io.Reader.extend(
             // don't change the order or the source/target set.
             // TARGET must always be the second one because some applications needs the "source"
             // port in the "connect" event of the target.
-            o.setSource(source);
-            o.setTarget(target);
+            o.setSource(source)
+            o.setTarget(target)
           }
-          o.setPersistentAttributes(element);
-          canvas.add(o);
-          result.add(o);
+          o.setPersistentAttributes(element)
+          canvas.add(o)
+          result.add(o)
         } catch (exc) {
           debug.error(element, "Unable to instantiate figure type '" + element.type + "' with id '" + element.id + "' during unmarshal by " + this.NAME + ". Skipping figure..");
-          debug.error(exc);
-          debug.warn(element);
+          debug.error(exc)
+          debug.warn(element)
         }
       });
 
@@ -143,7 +143,7 @@ draw2d.io.json.Reader = draw2d.io.Reader.extend(
      * @returns {draw2d.Figure}
      */
     createFigureFromType: function (type) {
-      return eval("new " + type + "()");
+      return Function(`return new ${type}()`)()
     },
 
     /**

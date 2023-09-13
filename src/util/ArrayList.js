@@ -130,7 +130,7 @@ draw2d.util.ArrayList = Class.extend(
     /**
      *
      *
-     * The method removes items from an array as necessary so that all remaining items pass a
+     * The method modifies the array and removes items from an array as necessary so that all remaining items pass a
      * provided test. The test is a function that is passed an array item and the index of the
      * item within the array. Only if the test returns true will the item stay in the array.
      *
@@ -161,11 +161,7 @@ draw2d.util.ArrayList = Class.extend(
      * @since 2.0.0
      */
     find: function (func) {
-      let result = this.data.filter(func)
-      if (result.length === 0) {
-        return null
-      }
-      return result[0]
+      return this.data.find(func)
     },
 
     /**
@@ -337,7 +333,7 @@ draw2d.util.ArrayList = Class.extend(
      * @returns {Boolean}
      */
     contains: function (obj) {
-      return this.indexOf(obj) !== -1
+      return this.data.includes(obj)
     },
 
 
@@ -453,8 +449,6 @@ draw2d.util.ArrayList = Class.extend(
 
       return this
     }
-
-
   })
 
 draw2d.util.ArrayList.EMPTY_LIST = new draw2d.util.ArrayList()

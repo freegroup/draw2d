@@ -89,13 +89,18 @@ draw2d.layout.connection.SplineConnectionRouter = draw2d.layout.connection.Manha
     this._route(conn, toPt, toDir, fromPt, fromDir)
 
     let ps = conn.getVertices()
+    // if the start/end are too close, the router do not route anything at all - shortcut. But for the drawing routine
+    // and the later processing, we need at least two points - "start" and "end". we fix this here
+    if(ps.getSize()<2){
+      conn.addPoint(fromPt)
+    }
 
     conn.oldPoint = null
     conn.lineSegments = new draw2d.util.ArrayList()
     conn.vertices = new draw2d.util.ArrayList()
 
     let splinePoints = this.spline.generate(ps, 8)
-    splinePoints.each(function (i, e) {
+    splinePoints.each( (i, e) => {
       conn.addPoint(e)
     })
 
@@ -104,10 +109,10 @@ draw2d.layout.connection.SplineConnectionRouter = draw2d.layout.connection.Manha
     ps = conn.getVertices()
     let length = ps.getSize()
     let p = ps.get(0)
-    let path = ["M", p.x, " ", p.y]
+    let path = ["M", p.x.toFixed(2), " ", p.y.toFixed(2)]
     for (i = 1; i < length; i++) {
       p = ps.get(i)
-      path.push("L", p.x, " ", p.y)
+      path.push("L", p.x.toFixed(2), " ", p.y.toFixed(2))
     }
     conn.svgPathString = path.join("")
   }

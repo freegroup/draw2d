@@ -1,5 +1,4 @@
 import draw2d from 'packages'
-import extend from './util/extend'
 
 
 /**
@@ -52,7 +51,7 @@ draw2d.ResizeHandle = draw2d.shape.basic.Rectangle.extend(
     }
 
     this._super(
-      extend({
+      {
         // set some good defaults
         bgColor: "#FDFDFD",
         stroke: 0.5,
@@ -64,15 +63,15 @@ draw2d.ResizeHandle = draw2d.shape.basic.Rectangle.extend(
         radius: 1,
         selectable:false
         // and allow to override them
-      }, attr),
-      extend({
+      , ...attr},
+      {
         owner : this.setOwner,
-        type : this.setType
-      },setter),
-      extend({
+        type : this.setType,
+        ...setter},
+      {
         owner : this.getOwner,
-        type : this.getType
-      },getter))
+        type : this.getType,
+        ...getter})
 
     // required in the SelectionEditPolicy to indicate the type of figure
     // which the user clicks
@@ -185,6 +184,17 @@ draw2d.ResizeHandle = draw2d.shape.basic.Rectangle.extend(
       return this
     }
 
+    /*
+    *   1             2               3
+    *    O-----------O-------------O
+    *    |                         |
+    *    |                         |
+    *   8 O           + 9           O 4
+    *    |                         |
+    *    |                         |
+    *    O-----------O-------------O
+    *   7             6               5
+    */
     switch (this.type) {
       case 1:
         shape.attr({"cursor": "nw-resize"})
@@ -270,9 +280,11 @@ draw2d.ResizeHandle = draw2d.shape.basic.Rectangle.extend(
    * @param {Number} dy the move y offset
    * @param {Number} dx2 The x diff since the last call of this dragging operation
    * @param {Number} dy2 The y diff since the last call of this dragging operation
+   * @param {Boolean} shiftKey true if the shift key has been pressed during this event
+   * @param {Boolean} ctrlKey true if the ctrl key has been pressed during the event
    *
    */
-  onDrag: function (dx, dy, dx2, dy2) {
+  onDrag: function (dx, dy, dx2, dy2, shiftKey, ctrlKey) {
     if (this.isDraggable() === false) {
       return
     }
@@ -295,6 +307,17 @@ draw2d.ResizeHandle = draw2d.shape.basic.Rectangle.extend(
     let newX = null
     let newY = null
     let corrPos = null
+    /*
+    *   1             2               3
+    *    O-----------O-------------O
+    *    |                         |
+    *    |                         |
+    *   8 O           + 9           O 4
+    *    |                         |
+    *    |                         |
+    *    O-----------O-------------O
+    *   7             6               5
+    */
     switch (this.type) {
       case 1:
         obj.setDimension(objWidth - diffX, objHeight - diffY)
@@ -557,7 +580,7 @@ draw2d.ResizeHandle = draw2d.shape.basic.Rectangle.extend(
       return
     }
 
-    attributes = attributes || {}
+    attributes ??= {}
 
     if (this.bgColor.hash() === "none") {
       attributes.fill = "none"

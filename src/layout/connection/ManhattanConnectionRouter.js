@@ -91,6 +91,12 @@ draw2d.layout.connection.ManhattanConnectionRouter = draw2d.layout.connection.Co
     // calculate the lines between the two points.
     //
     this._route(conn, toPt, toDir, fromPt, fromDir)
+    // if the start/end are too close, the router do not route anything at all - shortcut. But for the drawing routine
+    // and the later processing, we need at least two points - "start" and "end". we fix this here
+    if(conn.getVertices().getSize()<2){
+      conn.addPoint(fromPt)
+    }
+    
     this._paint(conn)
   },
 

@@ -1,7 +1,5 @@
 import draw2d from '../../packages'
 import jsonUtil from '../../util/JSONUtil'
-import extend from '../../util/extend'
-
 
 /**
  * @class
@@ -72,8 +70,8 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
       this.editor = null
 
       this._super(
-        extend({stroke: 1, width: 1, height: 1, resizeable: false}, attr),
-        extend({
+        {stroke: 1, width: 1, height: 1, resizeable: false, ...attr},
+        {
           // @attr {String} text the text to show */
           text: this.setText,
           // @attr {String} set the editor to use see {@link draw2d.ui.LabelEditor} */
@@ -91,9 +89,9 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
           // @attr {Number} padding the padding in pixel around the text */
           padding: this.setPadding,
           // @attr {Boolean} bold indicator if bold text should be used*/
-          bold: this.setBold
-        }, setter),
-        extend({
+          bold: this.setBold,
+          ...setter},
+        {
           text: this.getText,
           outlineStroke: this.getOutlineStroke,
           outlineColor: this.getOutlineColor,
@@ -101,13 +99,12 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
           fontSize: this.getFontSize,
           fontColor: this.getFontColor,
           padding: this.getPadding,
-          bold: this.isBold
-        }, getter))
-
+          bold: this.isBold,
+          ...getter
+        }
+      )
 
       this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy())
-
-
       // some performance improvements
       this.lastAppliedLabelRotation = ""
       this.lastAppliedTextAttributes = {}
@@ -120,7 +117,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
      * @private
      **/
     createSet: function () {
-      return this.canvas.paper.text(0, 0, this.text)
+      return this.canvas.paper.set([this.canvas.paper.text(0, 0, this.text)])
     },
 
     /**
@@ -195,10 +192,8 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
      */
     applyTransformation: function () {
       let ts = "R" + this.rotationAngle
-      //    if(ts!==this.lastAppliedLabelRotation){
       this.shape.transform(ts)
       this.lastAppliedLabelRotation = ts
-      //    }
 
       this.svgNodes.transform(
         "R" + this.rotationAngle +
@@ -226,13 +221,11 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
 
       // Update the resize handles if the user change the position of the element via an API call.
       //
-      let _this = this
-      this.editPolicy.each(function (i, e) {
+      this.editPolicy.each( (i, e) =>{
         if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
-          e.moved(_this.canvas, _this)
+          e.moved(this.canvas, this)
         }
       })
-
 
       return this
     },
@@ -267,10 +260,9 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
 
       // Update the resize handles if the user change the position of the element via an API call.
       //
-      let _this = this
-      this.editPolicy.each(function (i, e) {
+      this.editPolicy.each((i, e) =>{
         if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
-          e.moved(_this.canvas, _this)
+          e.moved(this.canvas, this)
         }
       })
 
@@ -391,7 +383,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
       if (typeof padding === "number") {
         this.padding = {top: padding, right: padding, bottom: padding, left: padding}
       } else {
-        this.padding = extend(this.padding, padding)
+        this.padding = {...this.padding, ...padding}
       }
       this.repaint()
       this.fireEvent("change:padding", {value: this.padding})
@@ -512,12 +504,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
         return 0
       }
 
-      if (this.cachedMinWidth === null) {
-        this.cachedMinWidth = this.svgNodes.getBBox(true).width
-          + this.padding.left
-          + this.padding.right
-          + 2 * this.getStroke()
-      }
+      this.cachedMinWidth ??= (this.svgNodes.getBBox(true).width + this.padding.left+ this.padding.right + 2*this.getStroke())
 
       return this.cachedMinWidth
     },
@@ -532,13 +519,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
       if (this.shape === null) {
         return 0
       }
-
-      if (this.cachedMinHeight === null) {
-        this.cachedMinHeight = this.svgNodes.getBBox(true).height
-          + this.padding.top
-          + this.padding.bottom
-          + (2 * this.getStroke())
-      }
+      this.cachedMinHeight ??= (this.svgNodes.getBBox(true).height+ this.padding.top+ this.padding.bottom+ 2*this.getStroke())
 
       return this.cachedMinHeight
     },
@@ -577,9 +558,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
         return 0
       }
 
-      if (this.cachedHeight === null) {
-        this.cachedHeight = Math.max(this.height, this.getMinHeight())
-      }
+      this.cachedHeight ??= Math.max(this.height, this.getMinHeight())
 
       return this.cachedHeight
     },
@@ -594,7 +573,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
      */
     installEditor: function (editor) {
       if (typeof editor === "string") {
-        editor = eval("new " + editor + "()")
+        editor = Function(`return new ${editor}()`)()
       }
       this.editor = editor
 
@@ -607,9 +586,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
      *
      */
     onDoubleClick: function () {
-      if (this.editor !== null) {
-        this.editor.start(this)
-      }
+        this.editor?.start(this)
     },
 
 
@@ -638,19 +615,16 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
       this.repaint()
       // Update the resize handles if the user change the position of the element via an API call.
       //
-      let _this = this
-      this.editPolicy.each(function (i, e) {
+      this.editPolicy.each((i, e) => {
         if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
-          e.moved(_this.canvas, _this)
+          e.moved(this.canvas, this)
         }
       })
 
       this.fireEvent("resize")
       this.fireEvent("change:text", {value: this.text})
 
-      if (this.parent !== null) {
-        this.parent.repaint()
-      }
+      this.parent?.repaint()
 
       return this
     },
@@ -684,11 +658,9 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
       // shape
       let matrix = this.shape.matrix
       let points = boundingBox.getVertices()
-      points.each(function (i, point) {
-        let x = matrix.x(point.x, point.y)
-        let y = matrix.y(point.x, point.y)
-        point.x = x
-        point.y = y
+      points.each( (i, point) => {
+        point.x = matrix.x(point.x, point.y)
+        point.y = matrix.y(point.x, point.y)
       })
 
       let polySides = 4
@@ -764,7 +736,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
       }
 
       if (typeof memento.editor === "string") {
-        this.installEditor(eval("new " + memento.editor + "()"))
+        this.installEditor(Function(`return new ${memento.editor}()`)())
       }
 
       return this

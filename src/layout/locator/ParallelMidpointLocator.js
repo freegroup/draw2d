@@ -1,5 +1,4 @@
 import draw2d from '../../packages'
-import extend from "../../util/extend";
 
 
 /**
@@ -31,15 +30,11 @@ draw2d.layout.locator.ParallelMidpointLocator = draw2d.layout.locator.Connection
     init: function (attr, setter, getter) {
       this.distance = 0
 
-      this._super(extend({
-          distance: -5
-        }, attr),
-        extend({
-          x: this.setDistance
-        }, setter),
-        extend({
-          distance: this.getDistance
-        }, getter))
+      this._super(
+        {distance: -5, ...attr},
+        {x: this.setDistance,...setter},
+        {distance: this.getDistance,...getter}
+      )
     },
 
     /**

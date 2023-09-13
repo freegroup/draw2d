@@ -29,4 +29,4 @@ draw2d.util.UUID = {
   }
 }
 
-module.exports = draw2d.util.UUID
+export default draw2d.util.UUID

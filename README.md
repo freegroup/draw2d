@@ -14,6 +14,8 @@ https://freegroup.github.io/draw2d/index.html
 
 ## Local Development
 ``` 
+nvm use v14.15.0
+
 npm install
 DIR=/examples yarn dev
 
@@ -32,11 +34,11 @@ npm publish
 
 ## Projects using Draw2D
 
-### Brainbox
+### Electra.Academy
 Connect your Raspi, Arduino or an WebUSB enabled Device. Use a visual programming language to connect, control, 
 and play with all the sensors and tools.
 
-[Github Repo](https://freegroup.github.io/brainbox/)
+[Github Repo](https://electra.academy/)
 
 ### YOUR Project
 **Feel free to contact me if you want list your project here**

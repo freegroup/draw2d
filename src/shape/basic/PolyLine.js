@@ -1,6 +1,4 @@
 import draw2d from '../../packages'
-import jsonUtil from '../../util/JSONUtil'
-import extend from '../../util/extend'
 
 
 /**
@@ -45,20 +43,17 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
     this.radius = ""
 
     this._super(
-      extend(
-        {
-          router: new draw2d.layout.connection.VertexRouter()
-        }, attr),
-      extend({}, {
-        // @attr {draw2d.layout.connection.ConnectionRouter} the router to use to layout the polyline */
+      {router: new draw2d.layout.connection.VertexRouter(), ...attr},
+      {
         router: this.setRouter,
-        // @attr {Number} radius the radius to render the line edges */
-        radius: this.setRadius
-      }, setter),
-      extend({}, {
+        radius: this.setRadius,
+        ...setter,
+      },
+      {
         router: this.getRouter,
-        radius: this.getRadius
-      }, getter)
+        radius: this.getRadius,
+        ...getter
+      }
     )
   },
 
@@ -121,10 +116,9 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
 
     this.repaint()
 
-    let _this = this
-    this.editPolicy.each(function (i, e) {
+    this.editPolicy.each( (i, e) => {
       if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
-        e.moved(_this.canvas, _this)
+        e.moved(this.canvas, this)
       }
     })
 
@@ -154,10 +148,10 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
 
     this.repaint()
 
-    let _this = this
-    this.editPolicy.each(function (i, e) {
+
+    this.editPolicy.each( (i, e) => {
       if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
-        e.moved(_this.canvas, _this)
+        e.moved(this.canvas, this)
       }
     })
     this.fireEvent("change:end", {value: this.end})
@@ -184,11 +178,11 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
     this.repaint()
 
     if (!this.selectionHandles.isEmpty()) {
-      let _this = this
-      this.editPolicy.each(function (i, e) {
+
+      this.editPolicy.each( (i, e) => {
         if (e instanceof draw2d.policy.figure.SelectionFeedbackPolicy) {
-          e.onUnselect(_this.canvas, _this)
-          e.onSelect(_this.canvas, _this)
+          e.onUnselect(this.canvas, this)
+          e.onSelect(this.canvas, this)
         }
       })
     }
@@ -220,11 +214,10 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
     this.repaint()
 
     if (!this.selectionHandles.isEmpty()) {
-      let _this = this
-      this.editPolicy.each(function (i, e) {
+      this.editPolicy.each( (i, e) => {
         if (e instanceof draw2d.policy.figure.SelectionFeedbackPolicy) {
-          e.onUnselect(_this.canvas, _this)
-          e.onSelect(_this.canvas, _this)
+          e.onUnselect(this.canvas, this)
+          e.onSelect(this.canvas, this)
         }
       })
     }
@@ -253,11 +246,10 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
     this.repaint()
 
     if (!this.selectionHandles.isEmpty()) {
-      let _this = this
-      this.editPolicy.each(function (i, e) {
+      this.editPolicy.each( (i, e) => {
         if (e instanceof draw2d.policy.figure.SelectionFeedbackPolicy) {
-          e.onUnselect(_this.canvas, _this)
-          e.onSelect(_this.canvas, _this)
+          e.onUnselect(this.canvas, this)
+          e.onSelect(this.canvas, this)
         }
       })
     }
@@ -278,12 +270,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
       this.router.onUninstall(this)
     }
 
-    if (typeof router === "undefined" || router === null) {
-      this.router = new draw2d.layout.connection.DirectRouter()
-    }
-    else {
-      this.router = router
-    }
+    this.router = router ?? new draw2d.layout.connection.DirectRouter()
 
     this.router.onInstall(this)
 
@@ -319,7 +306,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
    * @private
    */
   calculatePath: function (routingHints) {
-    routingHints = routingHints || {}
+    routingHints ??= {}
 
     if (this.shape === null) {
       return
@@ -355,12 +342,18 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
       this.calculatePath()
     }
 
-    if (typeof attributes === "undefined") {
-      attributes = {}
-    }
+    // It is important, that we keep the original "attributes" object and mutating them
+    // Maybe the caller needs the modified 'attributes' object. The "electra.academy designer"
+    // uses this pattern
+    //
+    // Won't work: attributes = {...attributes ,  path: this.svgPathString})
+    //
+
+    attributes??={}
     attributes.path = this.svgPathString
-    jsonUtil.ensureDefault(attributes, "stroke-linecap", "round")
-    jsonUtil.ensureDefault(attributes, "stroke-linejoin", "round")
+    // set some good defaults
+    attributes["stroke-linecap"] ??= "round"
+    attributes["stroke-linejoin"]??= "round"
 
     return this._super(attributes)
   },
@@ -431,12 +424,11 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
    **/
   getLength: function () {
     let result = 0
-    for (let i = 0; i < this.lineSegments.getSize(); i++) {
-      let segment = this.lineSegments.get(i)
+    this.lineSegments.each( segment => {
       let p1 = segment.start
       let p2 = segment.end
       result += Math.sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y))
-    }
+    })
     return result
   },
 
@@ -465,8 +457,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
       segment = null
     let lastDist = Number.MAX_SAFE_INTEGER
     let pt = new draw2d.geo.Point(px, py)
-    for (let i = 0; i < this.lineSegments.getSize(); i++) {
-      segment = this.lineSegments.get(i)
+    this.lineSegments.each( segment => {
       p1 = segment.start
       p2 = segment.end
       projection = draw2d.geo.Line.pointProjection(p1.x, p1.y, p2.x, p2.y, pt.x, pt.y)
@@ -478,16 +469,14 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
           lastDist = dist
         }
       }
-    }
+    })
 
     if (result !== null) {
       let length = 0
-      let segment
-      for (let i = 0; i < result.index; i++) {
-        segment = this.lineSegments.get(i)
+      this.lineSegments.each( segment => {
         length += segment.start.distance(segment.end)
-      }
-      segment = this.lineSegments.get(result.index)
+      })
+      let segment = this.lineSegments.get(result.index)
       p1 = segment.start
       p2 = segment.end
       length += p1.distance(p2) * draw2d.geo.Line.inverseLerp(p2.x, p2.y, p1.x, p1.y, result.x, result.y)
@@ -585,14 +574,10 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
    * @inheritdoc
    */
   getPersistentAttributes: function () {
-    let memento = extend(this._super(), {
+    return this.router.getPersistentAttributes(this, {...this._super(), 
       router: this.router.NAME,
       radius: this.radius
     })
-
-    memento = this.router.getPersistentAttributes(this, memento)
-
-    return memento
   },
 
   /**
@@ -603,7 +588,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
 
     if (typeof memento.router !== "undefined") {
       try {
-        this.setRouter(eval("new " + memento.router + "()"))
+        this.setRouter(Function(`return new ${memento.router}()`)())
       }
       catch (exc) {
         debug.warn("Unable to install router '" + memento.router + "' forced by " + this.NAME + ".setPersistentAttributes. Using default")

@@ -11,7 +11,6 @@ import draw2d from '../../packages'
 draw2d.policy.canvas.SingleSelectionPolicy = draw2d.policy.canvas.SelectionPolicy.extend(
   /** @lends draw2d.policy.canvas.SingleSelectionPolicy.prototype */
   {
-
     NAME: "draw2d.policy.canvas.SingleSelectionPolicy",
 
     /**
@@ -33,13 +32,11 @@ draw2d.policy.canvas.SingleSelectionPolicy = draw2d.policy.canvas.SelectionPolic
       }
 
       let oldSelection = canvas.getSelection().getPrimary()
-      if (canvas.getSelection().getPrimary() !== null) {
-        this.unselect(canvas, canvas.getSelection().getPrimary())
+      if (oldSelection) {
+        this.unselect(canvas, oldSelection)
       }
 
-      if (figure !== null) {
-        figure.select(true) // primary selection
-      }
+      figure?.select(true) // primary selection
 
       canvas.getSelection().setPrimary(figure)
 
@@ -92,7 +89,14 @@ draw2d.policy.canvas.SingleSelectionPolicy = draw2d.policy.canvas.SelectionPolic
 
       this.mouseDownElement = figure
       if (this.mouseDownElement !== null) {
-        this.mouseDownElement.fireEvent("mousedown", {x: x, y: y, shiftKey: shiftKey, ctrlKey: ctrlKey})
+        this.mouseDownElement.fireEvent("mousedown", {
+          x: x, 
+          y: y, 
+          relX: x - this.mouseDownElement.getAbsoluteX(),
+          relY: y - this.mouseDownElement.getAbsoluteY(),
+          shiftKey: shiftKey, 
+          ctrlKey: ctrlKey
+        })
       }
 
       if (figure !== canvas.getSelection().getPrimary() && figure !== null && figure.isSelectable() === true) {
@@ -135,12 +139,10 @@ draw2d.policy.canvas.SingleSelectionPolicy = draw2d.policy.canvas.SelectionPolic
         // mouseDraggingElement be a ResizeHandle...in this case it is not part of the selection
         //
         let sel = canvas.getSelection()
-        if (!sel.contains(this.mouseDraggingElement)) {
-          this.mouseDraggingElement.onDrag(dx, dy, dx2, dy2, shiftKey, ctrlKey)
+        if (sel.contains(this.mouseDraggingElement)) {
+          sel.each((i, figure) => { figure.onDrag(dx, dy, dx2, dy2, shiftKey, ctrlKey) })
         } else {
-          sel.each(function (i, figure) {
-            figure.onDrag(dx, dy, dx2, dy2, shiftKey, ctrlKey)
-          })
+          this.mouseDraggingElement.onDrag(dx, dy, dx2, dy2, shiftKey, ctrlKey)
         }
 
         let p = canvas.fromDocumentToCanvasCoordinate(canvas.mouseDownX + (dx / canvas.zoomFactor), canvas.mouseDownY + (dy / canvas.zoomFactor))
@@ -192,7 +194,6 @@ draw2d.policy.canvas.SingleSelectionPolicy = draw2d.policy.canvas.SelectionPolic
     },
 
     /**
-     *
      *
      * @param {draw2d.Canvas} canvas the related Canvas
      * @param {Number} x the x-coordinate of the mouse down event
@@ -269,9 +270,14 @@ draw2d.policy.canvas.SingleSelectionPolicy = draw2d.policy.canvas.SelectionPolic
         this.select(canvas, null)
       }
 
-      if (this.mouseDownElement !== null) {
-        this.mouseDownElement.fireEvent("mouseup", {x: x, y: y, shiftKey: shiftKey, ctrlKey: ctrlKey})
-      }
+      this.mouseDownElement?.fireEvent("mouseup", {
+        x: x, 
+        y: y, 
+        relX: x - this.mouseDownElement.getAbsoluteX(),
+        relY: y - this.mouseDownElement.getAbsoluteY(),
+        shiftKey: shiftKey, 
+        ctrlKey: ctrlKey
+      })
 
       this.mouseDownElement = null
       this.mouseMovedDuringMouseDown = false
@@ -319,9 +325,16 @@ draw2d.policy.canvas.SingleSelectionPolicy = draw2d.policy.canvas.SelectionPolic
      */
     onDoubleClick: function (figure, mouseX, mouseY, shiftKey, ctrlKey) {
       if (figure !== null) {
-        figure.fireEvent("dblclick", {x: mouseX, y: mouseY, shiftKey: shiftKey, ctrlKey: ctrlKey})
+        figure.fireEvent("dblclick", 
+        {
+          x: mouseX, 
+          y: mouseY, 
+          relX: mouseX - figure.getAbsoluteX(),
+          relY: mouseX - figure.getAbsoluteY(),  
+          shiftKey: shiftKey,
+          ctrlKey: ctrlKey
+        })
         figure.onDoubleClick()
       }
     }
-
   })

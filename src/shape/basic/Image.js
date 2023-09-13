@@ -1,5 +1,4 @@
 import draw2d from '../../packages'
-import extend from '../../util/extend'
 
 
 /**
@@ -22,14 +21,17 @@ draw2d.shape.basic.Image = draw2d.shape.node.Node.extend(
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {
-    this._super(attr,
-      extend({
+    this._super(
+      attr,
+      {
         // @attr {String} path the image path (absolute or relative) of the shape */
-        path: this.setPath
-      }, setter),
-      extend({
-        path: this.getPath
-      }, getter))
+        path: this.setPath,
+        ...setter
+      },
+      {
+        path: this.getPath,
+        ...getter
+      })
   },
 
 
@@ -44,9 +46,7 @@ draw2d.shape.basic.Image = draw2d.shape.node.Node.extend(
   setPath: function (path) {
     this.path = path
 
-    if (this.shape !== null) {
-      this.shape.attr({src: this.path})
-    }
+    this.shape?.attr({src: this.path})
     this.fireEvent("change:path", {value: this.path})
 
     return this
@@ -71,7 +71,7 @@ draw2d.shape.basic.Image = draw2d.shape.node.Node.extend(
       return this
     }
 
-    attributes = attributes || {}
+    attributes ??= {}
 
     attributes.x = this.getAbsoluteX()
     attributes.y = this.getAbsoluteY()
@@ -100,9 +100,10 @@ draw2d.shape.basic.Image = draw2d.shape.node.Node.extend(
    * @inheritdoc
    */
   getPersistentAttributes: function () {
-    return extend(this._super(), {
+    return {
+      ...this._super(),
       path: this.path
-    })
+    }
   },
 
   /**

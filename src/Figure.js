@@ -24,7 +24,7 @@ draw2d.Figure = Class.extend(
     init: function (attr, setter, getter) {
 
       // @private
-      this.setterWhitelist = extend({
+      this.setterWhitelist = {
         //  id the unique id of the figure
         id: this.setId,
         //  x the x offset of the figure in relation to the parent figure or canvas
@@ -62,10 +62,11 @@ draw2d.Figure = Class.extend(
         //  visible set the visibility flag of the shape
         visible: this.setVisible,
         //  keepAspectRatio indicate if the shape should keep the aspect ratio during resize
-        keepAspectRatio: this.setKeepAspectRatio
-      }, setter)
+        keepAspectRatio: this.setKeepAspectRatio,
+        ...setter
+      }
 
-      this.getterWhitelist = extend({
+      this.getterWhitelist = {
         id: this.getId,
         visible: this.isVisible,
         angle: this.getRotationAngle,
@@ -78,11 +79,14 @@ draw2d.Figure = Class.extend(
         resizeable: this.isResizeable,
         selectable: this.isSelectable,
         alpha: this.getAlpha,
-        opacity: this.getAlpha
-      }, getter)
+        opacity: this.getAlpha,
+        ...getter
+      }
 
       // all figures has an unique id. Required for figure get and persistence storage
       this.id = UUID.create()
+
+      this.cachedZOrder = -1
 
       // required for the SelectionEditPolicy to indicate the type of figure
       // which the user clicks
@@ -265,7 +269,6 @@ draw2d.Figure = Class.extend(
      * @returns {Object} either the requested attribute if this method used as getter or `this` if the method uses as setter
      **/
     attr: function (name, value) {
-      let _this = this
       let orig = this.repaintBlocked
 
       try {
@@ -278,9 +281,8 @@ draw2d.Figure = Class.extend(
             // index/brackets are allowed too.
             //
             if (key.substring(0, 9) === "userData.") {
-              if (this.userData === null) {
-                this.userData = {}
-              }
+              this.userData ??= {}
+
               jsonUtil.set({userData: this.userData}, key, name[key])
               this.fireEvent("change:" + key, {value: name[key]})
             } else {
@@ -300,7 +302,6 @@ draw2d.Figure = Class.extend(
               else if (typeof name[key] === "function") {
                 this[key] = param.bind(this)
               }
-
             }
           }
         } else if (typeof name === "string") {
@@ -326,22 +327,18 @@ draw2d.Figure = Class.extend(
             value = value()
           }
           if (name.substring(0, 9) === "userData.") {
-            if (this.userData === null) {
-              this.userData = {}
-            }
+            this.userData ??= {}
             jsonUtil.set({userData: this.userData}, name, value)
             this.fireEvent("change:" + name, {value: value})
           } else {
             let setter = this.setterWhitelist[name]
-            if (setter) {
-              setter.call(this, value)
-            }
+            setter?.call(this, value)
           }
         }
         // may it is a array of attributes used for the getter
         //
         else if (Array.isArray(name)) {
-          return Object.assign({}, ...Object.keys(name).map(k => ({[k]: _this.attr(k)})))
+          return Object.assign({}, ...Object.keys(name).map(k => ({[k]: this.attr(k)})))
         }
         // generic getter of all registered attributes
         else if (typeof name === "undefined") {
@@ -354,8 +351,6 @@ draw2d.Figure = Class.extend(
       } finally {
         this.repaintBlocked = orig
       }
-      //  this.repaint();
-
       return this
     },
 
@@ -387,16 +382,13 @@ draw2d.Figure = Class.extend(
 
       // apply all EditPolicy for select Operations
       //
-      let _this = this
-      this.editPolicy.each(function (i, e) {
+      this.editPolicy.each( (i, e) => {
         if (e instanceof draw2d.policy.figure.SelectionPolicy) {
-          e.onSelect(_this.canvas, _this, asPrimarySelection)
+          e.onSelect(this.canvas, this, asPrimarySelection)
         }
       })
 
-      if (this.canvas !== null) {
-        this.canvas.getSelection().add(this)
-      }
+      this.canvas?.getSelection().add(this)
 
       this.fireEvent("select", {figure: this})
 
@@ -410,18 +402,15 @@ draw2d.Figure = Class.extend(
      * @private
      **/
     unselect: function () {
-      let _this = this
       // apply all EditPolicy for select Operations
       //
-      this.editPolicy.each(function (i, e) {
+      this.editPolicy.each((i, e) =>{
         if (e instanceof draw2d.policy.figure.SelectionPolicy) {
-          e.onUnselect(_this.canvas, _this)
+          e.onUnselect(this.canvas, this)
         }
       })
 
-      if (this.canvas !== null) {
-        this.canvas.getSelection().remove(this)
-      }
+      this.canvas?.getSelection().remove(this)
 
       this.fireEvent("unselect", {figure: this})
       return this
@@ -434,12 +423,7 @@ draw2d.Figure = Class.extend(
      * @param {Function} [adapter] function which returns the figure which handles the selection handling
      */
     setSelectionAdapter: function (adapter) {
-      if (adapter == null) {
-        this.selectionAdapter = this.defaultSelectionAdapter
-      } else {
-        this.selectionAdapter = adapter
-      }
-
+      this.selectionAdapter = adapter ?? this.defaultSelectionAdapter
       return this
     },
 
@@ -461,11 +445,7 @@ draw2d.Figure = Class.extend(
      * @returns {Boolean}
      */
     isSelected: function () {
-      if (this.canvas !== null) {
-        return this.canvas.getSelection().contains(this)
-      }
-
-      return false
+        return this.canvas?.getSelection().contains(this)
     },
 
     /**
@@ -686,9 +666,7 @@ draw2d.Figure = Class.extend(
         }
       }
 
-      this.children.each(function (i, e) {
-        e.figure.setCanvas(canvas)
-      })
+      this.children.each( (i, e) => { e.figure.setCanvas(canvas)})
 
       return this
     },
@@ -803,16 +781,13 @@ draw2d.Figure = Class.extend(
       }
 
       // bring all children in front of the parent
-      this.children.each( (i, child) =>{
-        child.figure.toFront(this)
-      })
+      this.children.each( (i, child) =>child.figure.toFront(this))
 
-      // and last but not lease the ResizeHandles if any present
+      // and last but not least, the ResizeHandles if any present
       //
-      this.selectionHandles.each( (i, handle) =>{
-        handle.toFront()
-      })
+      this.selectionHandles.each( (i, handle) => handle.toFront())
 
+      this.cachedZOrder = -1
       return this
     },
 
@@ -848,11 +823,11 @@ draw2d.Figure = Class.extend(
 
       // Bring all children in front of "this" figure
       //
-      let _this = this
-      this.children.each(function (i, child) {
-        child.figure.toFront(_this)
+      this.children.each((i, child) => {
+        child.figure.toFront(this)
       }, true)
 
+      this.cachedZOrder = -1
       return this
     },
 
@@ -921,11 +896,10 @@ draw2d.Figure = Class.extend(
       // The policy isn't part of the figure. In this case we "think" the user want
       // deinstall all instances of the policy
       //
-      let _this = this
       let name = (typeof policy === "string") ? policy : policy.NAME
-      this.editPolicy.grep(function (p) {
+      this.editPolicy.grep((p) =>{
         if (p.NAME === name) {
-          p.onUninstall(_this)
+          p.onUninstall(this)
           return false
         }
         return true
@@ -1029,9 +1003,7 @@ draw2d.Figure = Class.extend(
      * @returns {draw2d.util.ArrayList}
      */
     getChildren: function () {
-      return this.children.clone().map(function (e) {
-        return e.figure
-      })
+      return this.children.clone().map( e => e.figure)
     },
 
 
@@ -1041,9 +1013,7 @@ draw2d.Figure = Class.extend(
      *
      */
     resetChildren: function () {
-      this.children.each(function (i, e) {
-        e.figure.setCanvas(null)
-      })
+      this.children.each((i, e) => { e.figure.setCanvas(null)})
       this.children = new draw2d.util.ArrayList()
       this.repaint()
 
@@ -1113,16 +1083,13 @@ draw2d.Figure = Class.extend(
       if (this.repaintBlocked === true || this.shape === null) {
         return this
       }
-      let _this = this
-      attributes = attributes || {}
 
+      attributes ??= {}
 
       if (this.visible === true) {
         if (this.shape.isVisible() === false) {
           if (!isNaN(parseFloat(attributes.visibleDuration))) {
-            $(this.shape.node).fadeIn(attributes.visibleDuration, function () {
-              _this.shape.show()
-            })
+            $(this.shape.node).fadeIn(attributes.visibleDuration, () =>  this.shape.show())
           } else {
             this.shape.show()
           }
@@ -1130,9 +1097,7 @@ draw2d.Figure = Class.extend(
       } else {
         if (this.shape.isVisible() === true) {
           if (!isNaN(parseFloat(attributes.visibleDuration))) {
-            $(this.shape.node).fadeOut(attributes.visibleDuration, function () {
-              _this.shape.hide()
-            })
+            $(this.shape.node).fadeOut(attributes.visibleDuration, () => this.shape.hide())
           } else {
             this.shape.hide()
           }
@@ -1148,12 +1113,12 @@ draw2d.Figure = Class.extend(
       // because the raphael shape isn't redraw at all.
       //
       attributes = jsonUtil.flatDiff(attributes, this.lastAppliedAttributes)
-      this.lastAppliedAttributes = attributes
-
 
       if (Object.getOwnPropertyNames(attributes).length > 0) {
         this.shape.attr(attributes)
       }
+      this.lastAppliedAttributes = attributes
+
 
       this.applyTransformation()
 
@@ -1161,9 +1126,7 @@ draw2d.Figure = Class.extend(
       // shape has changed
       //
       if("x" in attributes || "width" in attributes || "cx" in attributes || "path" in attributes) {
-        this.children.each(function (i, e) {
-          e.locator.relocate(i, e.figure)
-        })
+        this.children.each((i, e) => { e.locator.relocate(i, e.figure) })
       }
 
       return this
@@ -1669,11 +1632,7 @@ draw2d.Figure = Class.extend(
 
       this.repaint({visibleDuration: duration})
 
-      if (this.visible) {
-        this.fireEvent("show")
-      } else {
-        this.fireEvent("hide")
-      }
+      this.fireEvent(this.visible?"show":"hide")
       this.fireEvent("change:visibility", {value: this.visible})
 
       return this
@@ -1722,16 +1681,13 @@ draw2d.Figure = Class.extend(
      * @returns {Number}
      */
     getZOrder: function () {
-      if (this.shape === null) {
-        return -1
+      let child = this.shape?.node
+      if(!child || this.cachedZOrder>=0){
+        return this.cachedZOrder
       }
-
-      let i = 0
-      let child = this.shape.node
-      while ((child = child.previousSibling) !== null) {
-        i++
-      }
-      return i
+      this.cachedZOrder = Array.from(child.parentNode.children).indexOf(child)
+      
+      return this.cachedZOrder
     },
 
     /**
@@ -2661,9 +2617,9 @@ draw2d.Figure = Class.extend(
      * @experimental
      */
     clone: function (cloneMetaData) {
-      cloneMetaData = extend({excludeChildren: false}, cloneMetaData)
+      cloneMetaData = {excludeChildren: false, ...cloneMetaData}
 
-      let clone = eval("new " + this.NAME + "();")
+      let clone = Function(`return new ${this.NAME}()`)()
       let initialId = clone.id
 
       clone.setPersistentAttributes(this.getPersistentAttributes())
@@ -2680,7 +2636,7 @@ draw2d.Figure = Class.extend(
           // Layout shapes like VerticalLayout or Horziontal Layout. This figures injects it own kind
           // of layouter...so didn'T care about this.
 
-          let locator = entry.locator.NAME ? eval("new " + entry.locator.NAME + "();") : null
+          let locator = entry.locator.NAME ? Function(`return new ${entry.locator.NAME}()`)() : null
           clone.add(child, locator)
         })
       }
@@ -2731,7 +2687,11 @@ draw2d.Figure = Class.extend(
      */
     setPersistentAttributes: function (memento) {
       this.id = memento.id
-      this.setPosition(parseFloat(memento.x), parseFloat(memento.y))
+      // in some cases, e.g. a Connection, the x/y attribute is not set.
+      //
+      if(memento.x && memento.y){
+        this.setPosition(parseFloat(memento.x), parseFloat(memento.y))
+      }
 
       // width and height are optional parameter for the JSON stuff.
       // We use the defaults if the attributes not present

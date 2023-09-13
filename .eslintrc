@@ -19,11 +19,9 @@
     "sinon": true
   },
 
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
 
-  "plugins": [
-
-  ],
+  "plugins": ["@babel/plugin-syntax-logical-assignment-operators"],
 
   "rules": {
   }

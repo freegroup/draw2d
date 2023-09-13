@@ -3824,8 +3824,8 @@
      > Usage
      | var t = paper.text(50, 50, "Raphaël\nkicks\nbutt!");
      \*/
-    paperproto.text = function (x, y, text) {
-        var out = R._engine.text(this, x || 0, y || 0, Str(text));
+    paperproto.text = function (x, y, text, href) {
+        var out = R._engine.text(this, x || 0, y || 0, Str(text), href);
         this.__set__ && this.__set__.push(out);
         return out;
     };
@@ -5918,8 +5918,12 @@
             return el;
         },
         addGradientFill = function (element, gradient) {
+            // even called if we reset the fill of an shape.
+            if (gradient === null)
+                return
+
             var type = "linear",
-                id = element.id + gradient,
+                id = gradient.replace(/[\(\)\s,\xb0#]/g, "_"),
                 fx = .5, fy = .5,
                 o = element.node,
                 SVG = element.paper,
@@ -6424,6 +6428,7 @@
                             }
                         // fall
                         case "fill-opacity":
+
                             if (attrs.gradient) {
                                 gradient = R._g.doc.getElementById(node.getAttribute("fill").replace(/^url\(#|\)$/g, E));
                                 if (gradient) {
@@ -7113,7 +7118,7 @@
         res.type = "image";
         return res;
     };
-    R._engine.text = function (svg, x, y, text) {
+    R._engine.text = function (svg, x, y, text, href) {
         var el = $("text");
         svg.canvas && svg.canvas.appendChild(el);
         var res = new Element(el, svg);
@@ -7125,7 +7130,8 @@
             "font-family": R._availableAttrs["font-family"],
             "font-size": R._availableAttrs["font-size"],
             stroke: "none",
-            fill: "#000"
+            fill: "#000",
+            ...(href ? { href } : null),
         };
         res.type = "text";
         setFillAndStroke(res, res.attrs);

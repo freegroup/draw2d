@@ -214,7 +214,7 @@ draw2d.shape.pert.Start = draw2d.shape.layout.VerticalLayout.extend(
     }
 
 
-    attributes = attributes || {}
+    attributes ??= {}
 
     if (this.getAlpha() < 0.9) {
       attributes.fill = this.bgColor.rgba()

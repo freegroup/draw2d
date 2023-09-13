@@ -1,5 +1,4 @@
 import draw2d from '../packages'
-import extend from '../util/extend'
 
 
 /**
@@ -29,9 +28,8 @@ draw2d.policy.EditPolicy = Class.extend(
    *
    */
   init: function (attr, setter, getter) {
-    this.setterWhitelist = extend({}, setter)
-
-    this.getterWhitelist = extend({}, getter)
+    this.setterWhitelist = { ...setter}
+    this.getterWhitelist = { ...getter}
 
     this.attr(attr)
   },

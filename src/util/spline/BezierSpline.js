@@ -41,6 +41,12 @@ draw2d.util.spline.BezierSpline = draw2d.util.spline.Spline.extend(
     generate: function(controlPoints, parts)
     {
       var n = controlPoints.getSize();
+      // This implementation of an bezier Spline needs at least 4 control points. Return the 
+      // original point if they do not meet them
+      if(n<4) {
+        return controlPoints.clone(true)
+      }
+
       var spline = new draw2d.util.ArrayList();
 
       spline.add(this.p(0, 0, controlPoints));
@@ -50,13 +56,8 @@ draw2d.util.spline.BezierSpline = draw2d.util.spline.Spline.extend(
            spline.add(this.p (i, j /  parts, controlPoints));
         }
       }
-
-  //    spline.add(controlPoints.get(controlPoints.getSize()-1));
-
       return spline;
     },
-
-
 
     p: function( i,  t,  cp)
     {
@@ -73,8 +74,6 @@ draw2d.util.spline.BezierSpline = draw2d.util.spline.Spline.extend(
 
       return new draw2d.geo.Point( x, y);
     },
-
-
 
     blend: function ( i,  t)
     {

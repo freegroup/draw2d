@@ -37,17 +37,12 @@ draw2d.ui.LabelEditor = Class.extend(
      * @param {Object} attr callback handler and configuration. **{ onCommit:function(){}}, onCancel: function(){}, onStart: function(){}, text:'My Dialog Title' }**
      */
     init: function (attr) {
-      // register some default listener and override this with the handover one
-      this.configuration = extend({
-          onCommit: function () {
-          },
-          onCancel: function () {
-          },
-          onStart: function () {
-          },
+     this.configuration = {
+          onCommit:  () =>{},
+          onCancel:  () =>{},
+          onStart:   () =>{},
           text: "Value"
-        },
-        attr)
+        ,...attr}
     },
 
     /**

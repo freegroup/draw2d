@@ -1,5 +1,4 @@
 import draw2d from '../../packages'
-import extend from '../../util/extend'
 
 /**
  * @class
@@ -97,11 +96,10 @@ draw2d.shape.layout.FlexGridLayout = draw2d.shape.layout.Layout.extend(
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {
-    let _this = this
     this.cellLocator = {
-      relocate: function (index, figure) {
-        if (_this.gridDef.layoutRequired === true) {
-          _this._layout()
+      relocate: (index, figure) => {
+        if (this.gridDef.layoutRequired === true) {
+          this._layout()
         }
         let cell = figure.__cellConstraint
         let x = cell.x
@@ -121,10 +119,10 @@ draw2d.shape.layout.FlexGridLayout = draw2d.shape.layout.Layout.extend(
           //
           switch (cell.valign) {
             case "middle":
-              y = y + (cell.height - figure.getHeight()) / 2
+              y += (cell.height - figure.getHeight()) / 2
               break
             case "bottom":
-              y = y + (cell.height - figure.getHeight())
+              y += (cell.height - figure.getHeight())
               break
           }
 
@@ -132,20 +130,18 @@ draw2d.shape.layout.FlexGridLayout = draw2d.shape.layout.Layout.extend(
           //
           switch (cell.align) {
             case "center":
-              x = x + (cell.width - figure.getWidth()) / 2
+              x += (cell.width - figure.getWidth()) / 2
               break
             case "right":
-              x = x + (cell.width - figure.getWidth())
+              x += (cell.width - figure.getWidth())
               break
           }
         }
         figure.setPosition(x, y)
       },
-      bind: function () {
-      },
-      unbind: function () {
-      },
-      translate: function (figure, diff) {
+      bind: () => {},
+      unbind: () => { },
+      translate: (figure, diff) => {
         figure.setPosition(figure.x + diff.x, figure.y + diff.y)
       }
     }
@@ -165,24 +161,23 @@ draw2d.shape.layout.FlexGridLayout = draw2d.shape.layout.Layout.extend(
     }
 
     this._super(
-      extend({stroke: 2}, attr),
-      extend({}, setter),
-      extend({}, getter))
+      {stroke: 2, ...attr},
+      setter,
+      getter)
 
-    this.resizeListener = function (figure) {
-      _this.gridDef.layoutRequired = true
+    this.resizeListener =  (figure) => {
+      this.gridDef.layoutRequired = true
       // propagate the event to the parent or other listener if existing
       //
-      if (_this.getParent() instanceof draw2d.shape.layout.Layout) {
-        _this.fireEvent("resize")
+      if (this.getParent() instanceof draw2d.shape.layout.Layout) {
+        this.fireEvent("resize")
       }
       // or we are the parent and must consume it self
       else {
-        _this.setDimension(
-          _this.gridDef.hResizeable === true ? _this.getWidth() : 1,
-          _this.gridDef.vResizeable === true ? _this.getHeight() : 1
+        this.setDimension(
+          this.gridDef.hResizeable === true ? this.getWidth() : 1,
+          this.gridDef.vResizeable === true ? this.getHeight() : 1
         )
-
       }
     }
 
@@ -201,7 +196,7 @@ draw2d.shape.layout.FlexGridLayout = draw2d.shape.layout.Layout.extend(
 
   add: function (figure, cellConstraint) {
 
-    figure.__cellConstraint = extend({}, {
+    figure.__cellConstraint = {
       row: 0,
       col: 0,
       rowspan: 1,
@@ -209,8 +204,8 @@ draw2d.shape.layout.FlexGridLayout = draw2d.shape.layout.Layout.extend(
       align: "left",
       valign: "top",
       width: 1,
-      height: 1
-    }, cellConstraint)
+      height: 1,
+      ...cellConstraint}
     this.gridDef.layoutRequired = true
     this._super(figure, this.cellLocator)
     this._layout()

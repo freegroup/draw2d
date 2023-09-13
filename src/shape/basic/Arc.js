@@ -1,5 +1,4 @@
 import draw2d from '../../packages'
-import extend from '../../util/extend'
 
 /**
  * @class
@@ -30,7 +29,7 @@ draw2d.shape.basic.Arc = draw2d.SetFigure.extend(
     this.startAngle = 180
     this.endAngle = 360
 
-    this._super(extend({width: 80, height: 50, bgColor: null, color: "#1B1B1B"}, attr), setter, getter)
+    this._super({width: 80, height: 50, bgColor: null, color: "#1B1B1B", ...attr}, setter, getter)
     this.strokeScale = false // scale the stroke width of the children nodes if the parent resize
   },
 
@@ -59,6 +58,5 @@ draw2d.shape.basic.Arc = draw2d.SetFigure.extend(
     return this.canvas.paper.setFinish()
 
   }
-
 })
 

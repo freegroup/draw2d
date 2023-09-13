@@ -30,7 +30,7 @@ draw2d.shape.widget.Slider = draw2d.shape.widget.Widget.extend(
     this.thumbGrow = 0
 
     this._super(
-      extend({
+      {
         width: 150,
         height: 15,
         stroke: 1,
@@ -38,8 +38,8 @@ draw2d.shape.widget.Slider = draw2d.shape.widget.Widget.extend(
         resizeable: true,
         color: this.DEFAULT_COLOR_THUMB,
         bgColor: this.DEFAULT_COLOR_BG,
-        value: 50
-      }, attr),
+        value: 50,
+        ...attr},
       extend({
         // @attr {Number} padding the padding in pixel around the text */
         padding: this.setPadding,
@@ -263,7 +263,7 @@ draw2d.shape.widget.Slider = draw2d.shape.widget.Widget.extend(
       return
     }
 
-    attributes = attributes || {}
+    attributes ??= {}
 
     // adjust the slider to the current value and the new dimension of the widget
     //

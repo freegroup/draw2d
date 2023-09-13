@@ -1,6 +1,4 @@
 import draw2d from '../../packages'
-import extend from '../../util/extend'
-import jsonUtil from '../../util/JSONUtil'
 
 /**
  * @class
@@ -19,14 +17,23 @@ draw2d.shape.diagram.Diagram = draw2d.SetFigure.extend(
     this.cache = {}
 
     this._super(
-      extend({data: [], bgColor: "#8dabf2", stroke: 1, color: "#f0f0f0", radius: 2, resizeable: true}, attr),
-      extend({}, {
+      {
+        data: [], 
+        bgColor: "#8dabf2", 
+        stroke: 1, 
+        color: "#f0f0f0", 
+        radius: 2, 
+        resizeable: true,
+        ...attr},
+      {
         // @attr {Array} data the data to display in the diagram */
-        data: this.setData
-      }, setter),
-      extend({}, {
-        data: this.getData
-      }, getter)
+        data: this.setData,
+        ...setter
+      },
+      {
+        data: this.getData,
+        ...getter
+      }
     )
   },
 
@@ -106,9 +113,9 @@ draw2d.shape.diagram.Diagram = draw2d.SetFigure.extend(
       return this
     }
 
-    attributes = attributes || {}
+    attributes ??= {}
 
-    jsonUtil.ensureDefault(attributes, "fill", "none")
+    attributes.fill ??= "none"
 
     return this._super(attributes)
   },

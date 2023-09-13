@@ -1,6 +1,4 @@
 import draw2d from '../../packages'
-import extend from "../../util/extend";
-import jsonUtil from "../../util/JSONUtil";
 
 
 /**
@@ -25,8 +23,8 @@ draw2d.layout.locator.Locator = Class.extend(
      */
     init: function (attr, setter, getter) {
 
-      this.setterWhitelist = extend({}, setter)
-      this.getterWhitelist = extend({}, getter)
+      this.setterWhitelist = {...setter}
+      this.getterWhitelist = {...getter}
       
       // propagate the attr to the new instance
       this.attr(attr)
@@ -161,6 +159,6 @@ draw2d.layout.locator.Locator = Class.extend(
      * @returns {draw2d.layout.locator.Locator}
      */
     clone: function () {
-      return eval("new " + this.NAME + "()")
+      return Function(`return new ${this.NAME}()`)()
     }
   })

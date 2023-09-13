@@ -77,9 +77,8 @@ draw2d.decoration.connection.Decorator = Class.extend(
      */
     setColor: function (c) {
       this.color = new Color(c);
-      if(this.parent!==null){
-        this.parent.repaint()
-      }
+
+      this.parent?.repaint()
       return this
     },
 
@@ -101,9 +100,8 @@ draw2d.decoration.connection.Decorator = Class.extend(
      */
     setBackgroundColor: function (c) {
       this.backgroundColor = new Color(c)
-      if(this.parent!==null){
-        this.parent.repaint()
-      }
+      
+      this.parent?.repaint()
 
       return this
     },

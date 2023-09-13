@@ -1,6 +1,4 @@
 import draw2d from '../../packages'
-import extend from '../../util/extend'
-
 
 /**
  * @class
@@ -27,12 +25,12 @@ draw2d.shape.layout.StackLayout = draw2d.shape.layout.Layout.extend(
     this.locator = new draw2d.layout.locator.XYAbsPortLocator(0, 0)
 
     this._super(
-      extend({resizeable: true, width: 10, height: 10}, attr),
-      extend({}, setter),
-      extend({}, getter))
+      {resizeable: true, width: 10, height: 10, ...attr},
+      { ...setter},
+      { ...getter})
 
-    this.resizeListener = function (figure) {
-    }
+    this.resizeListener =  () => {}
+
     // install default selection handler. Can be overridden or replaced
     this.installEditPolicy(new draw2d.policy.figure.RectangleSelectionFeedbackPolicy())
   },
@@ -41,13 +39,17 @@ draw2d.shape.layout.StackLayout = draw2d.shape.layout.Layout.extend(
    *
    * Set the current visible layer of the stack layout
    *
-   * @param {Number} visibleLayer
+   * @param {Number} visibleLayer the layer to show or -1 to hide all of them
    */
   setVisibleLayer: function (visibleLayer, duration) {
-    this.getChildren().get(this.visibleLayer).setVisible(false, duration)
-    this.visibleLayer = Math.min(this.getChildren().getSize() - 1, Math.max(0, visibleLayer))
+    if(this.visibleLayer>=0) {
+      this.getChildren().get(this.visibleLayer).setVisible(false, duration)
+    }
+    this.visibleLayer = Math.min(this.getChildren().getSize() - 1, Math.max(-1, visibleLayer))
 
-    this.getChildren().get(this.visibleLayer).setVisible(true, duration)
+    if(this.visibleLayer>=0){
+      this.getChildren().get(this.visibleLayer).setVisible(true, duration)
+    }
     return this
   },
 
@@ -65,15 +67,13 @@ draw2d.shape.layout.StackLayout = draw2d.shape.layout.Layout.extend(
    * @inheritdoc
    */
   add: function (child, locator, index) {
-    // the child didn'T care about events...at the moment
+    // the child didn't care about events...at the moment
     //
-    child.hitTest = function () {
-      return false
-    }
+    child.hitTest =  () =>  false
 
     // make all existing shapes invisible
     //
-    this.getChildren().each(function (i, c) {
+    this.getChildren().each( (i, c) => {
       c.setVisible(false)
     })
     this.visibleLayer = this.getChildren().getSize()
@@ -99,7 +99,7 @@ draw2d.shape.layout.StackLayout = draw2d.shape.layout.Layout.extend(
   getMinWidth: function () {
     let markup = (this.stroke * 2) + this.padding.left + this.padding.right
     let width = 10
-    this.children.each(function (i, e) {
+    this.children.each( (i, e)=> {
       width = Math.max(width, e.figure.isResizeable() ? e.figure.getMinWidth() : e.figure.getWidth())
     })
     return width + markup
@@ -111,7 +111,7 @@ draw2d.shape.layout.StackLayout = draw2d.shape.layout.Layout.extend(
   getMinHeight: function () {
     let markup = (this.stroke * 2) + this.padding.top + this.padding.bottom
     let height = 10
-    this.children.each(function (i, e) {
+    this.children.each( (i, e) =>{
       height = Math.max(height, e.figure.isResizeable() ? e.figure.getMinHeight() : e.figure.getHeight())
     })
     return height + markup
@@ -131,7 +131,7 @@ draw2d.shape.layout.StackLayout = draw2d.shape.layout.Layout.extend(
     this._recursiveHeight = height
     this._recursiveWidth = width
 
-    this.children.each(function (i, e) {
+    this.children.each( (i, e) =>{
       if (e.figure.isResizeable()) {
         e.figure.setDimension(width, height)
       }

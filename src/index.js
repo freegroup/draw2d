@@ -1,5 +1,5 @@
 import draw2d from 'packages'
-module.exports = draw2d;
+export default draw2d;
 
 
 import raph from 'lib/raphael.exec.js'
@@ -128,6 +128,7 @@ require('./policy/figure/SelectionPolicy');
 require('./policy/figure/SelectionFeedbackPolicy');
 require('./policy/figure/ResizeSelectionFeedbackPolicy');
 require('./policy/figure/RectangleSelectionFeedbackPolicy');
+require('./policy/figure/RaftSelectionFeedbackPolicy');
 require('./policy/figure/BigRectangleSelectionFeedbackPolicy');
 require('./policy/figure/RoundRectangleSelectionFeedbackPolicy');
 require('./policy/figure/BusSelectionFeedbackPolicy');
@@ -178,6 +179,7 @@ require('./shape/composite/Raft');
 require('./Connection');
 require('./VectorFigure');
 require('./ResizeHandle');
+require('./shape/composite/RaftResizeHandle');
 require('./shape/basic/LineResizeHandle');
 require('./shape/basic/LineStartResizeHandle');
 require('./shape/basic/LineEndResizeHandle');

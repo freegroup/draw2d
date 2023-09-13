@@ -1,5 +1,4 @@
 import draw2d from '../../packages'
-import extend from '../../util/extend'
 
 /**
  * @class
@@ -32,16 +31,18 @@ draw2d.shape.basic.Circle = draw2d.shape.basic.Oval.extend(
     init: function (attr, setter, getter) {
       this._super(
         attr,
-        extend({
+        {
           // @attr {Number} diameter the diameter of the circle */
           diameter: this.setDiameter,
           // @attr {Number} radius the radius of the circle */
-          radius: this.setRadius
-        }, setter),
-        extend({
+          radius: this.setRadius,
+          ...setter},
+        {
           diameter: this.getDiameter,
-          radius: this.getRadius
-        }, getter))
+          radius: this.getRadius,
+          ...getter
+        }
+      )
 
       this.setKeepAspectRatio(true)
     },

@@ -1,5 +1,4 @@
 import draw2d from '../../packages'
-import extend from "../../util/extend";
 
 
 /**
@@ -37,7 +36,7 @@ draw2d.layout.locator.XYRelPortLocator = draw2d.layout.locator.PortLocator.exten
      * @param {Number} yPercentage the y coordinate in percent of the port relative to the top of the parent
      */
     init: function (attr, setter, getter) {
-      // legacy code handling
+      // legacy code handling for calls like this:
       // new draw2d.layout.locator.XYRelPortLocator(10,30)
       if(typeof attr ==="number" && typeof setter === "number"){
         this.x = attr
@@ -50,14 +49,14 @@ draw2d.layout.locator.XYRelPortLocator = draw2d.layout.locator.PortLocator.exten
         this.x = 0
         this.y = 0
         this._super(attr,
-          extend({
+          {
             x: this.setX,
-            y: this.setY
-          }, setter),
-          extend({
+            y: this.setY,
+            ...setter},
+          {
             x: this.getX,
-            y: this.getY
-          }, getter))
+            y: this.getY,
+            ...getter})
       }
     },
 

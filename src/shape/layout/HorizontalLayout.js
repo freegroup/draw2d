@@ -1,6 +1,4 @@
 import draw2d from '../../packages'
-import extend from '../../util/extend'
-
 
 /**
  * @class
@@ -88,14 +86,15 @@ draw2d.shape.layout.HorizontalLayout = draw2d.shape.layout.Layout.extend(
       }
 
       this._super(
-        extend({width: 1, height: 1, gap: 0}, attr),
-        extend({
+        {width: 1, height: 1, gap: 0, ...attr},
+        {
           // @attr {Number} gap the gap between the children shapes */
-          gap: this.setGap
-        }, setter),
-        extend({
-          gap: this.getGap
-        }, getter))
+          gap: this.setGap,
+          ...setter},
+        {
+          gap: this.getGap,
+          ...getter}
+      )
 
     },
 

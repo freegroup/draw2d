@@ -1,5 +1,4 @@
 import draw2d from 'packages'
-import extend from 'util/extend'
 
 /**
  * @class
@@ -97,36 +96,36 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
       // again.
       this.isMoving = false
 
-      let _this = this
-      this.moveListener = function (figure) {
-        if (figure === _this.sourcePort) {
-          _this.setStartPoint(_this.sourcePort.getAbsoluteX(), _this.sourcePort.getAbsoluteY())
+      this.moveListener = (figure) => {
+        if (figure === this.sourcePort) {
+          this.setStartPoint(this.sourcePort.getAbsoluteX(), this.sourcePort.getAbsoluteY())
         } else {
-          _this.setEndPoint(_this.targetPort.getAbsoluteX(), _this.targetPort.getAbsoluteY())
+          this.setEndPoint(this.targetPort.getAbsoluteX(), this.targetPort.getAbsoluteY())
         }
       }
 
       this._super(
-        extend({
+        {
           color: "#129CE4",
           stroke: 2,
           //    outlineStroke:1,
           //    outlineColor:"#ffffff",
-          radius: 3
-        }, attr),
-        extend({
+          radius: 3,
+          ...attr},
+        {
           sourceDecorator: this.setSourceDecorator,
           targetDecorator: this.setTargetDecorator,
           source: this.setSource,
-          target: this.setTarget
-        }, setter),
-        extend({
+          target: this.setTarget,
+          ...setter
+       },
+        {
           sourceDecorator: this.getSourceDecorator,
           targetDecorator: this.getTargetDecorator,
           source: this.getSource,
-          target: this.getTarget
-        }, getter)
-      )
+          target: this.getTarget,
+          ...getter
+      })
     },
 
 
@@ -140,9 +139,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
 
         // fire the events to all listener
         this.sourcePort.fireEvent("disconnect", {port: this.sourcePort, connection: this})
-        if (this.canvas !== null) {
-          this.canvas.fireEvent("disconnect", {"port": this.sourcePort, "connection": this})
-        }
+        this.canvas?.fireEvent("disconnect", {port: this.sourcePort, connection: this})
         this.sourcePort.onDisconnect(this)
 
         this.fireSourcePortRouteEvent()
@@ -154,9 +151,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
 
         // fire the events to all listener
         this.targetPort.fireEvent("disconnect", {port: this.targetPort, connection: this})
-        if (this.canvas !== null) {
-          this.canvas.fireEvent("disconnect", {"port": this.targetPort, "connection": this})
-        }
+        this.canvas?.fireEvent("disconnect", {port: this.targetPort, connection: this})
         this.targetPort.onDisconnect(this)
 
         this.fireTargetPortRouteEvent()
@@ -174,9 +169,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
 
         // fire the events to all listener
         this.sourcePort.fireEvent("connect", {port: this.sourcePort, connection: this})
-        if (this.canvas !== null) {
-          this.canvas.fireEvent("connect", {"port": this.sourcePort, "connection": this})
-        }
+        this.canvas?.fireEvent("connect", {port: this.sourcePort, connection: this})
         this.sourcePort.onConnect(this)
 
         this.fireSourcePortRouteEvent()
@@ -188,9 +181,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
 
         // fire the events to all listener
         this.targetPort.fireEvent("connect", {port: this.targetPort, connection: this})
-        if (this.canvas !== null) {
-          this.canvas.fireEvent("connect", {"port": this.targetPort, "connection": this})
-        }
+        this.canvas?.fireEvent("connect", {port: this.targetPort, connection: this})
         this.targetPort.onConnect(this)
 
         this.fireTargetPortRouteEvent()
@@ -240,16 +231,16 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
      * @returns {this}
      **/
     setSourceDecorator: function (decorator) {
-      if(this.sourceDecorator){
-        this.sourceDecorator.setParent(null)
-      }
+
+      this.sourceDecorator?.setParent(null)
+
       this.sourceDecorator = decorator
       this.routingRequired = true
       this.sourceDecorator.setParent(this)
-      if (this.sourceDecoratorNode !== null) {
-        this.sourceDecoratorNode.remove()
-        this.sourceDecoratorNode = null
-      }
+
+      this.sourceDecoratorNode?.remove()
+      this.sourceDecoratorNode = null
+
       this.repaint()
 
       return this
@@ -273,16 +264,15 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
      * @returns {this}
      **/
     setTargetDecorator: function (decorator) {
-      if(this.targetDecorator){
-        this.targetDecorator.setParent(null)
-      }
+      this.targetDecorator?.setParent(null)
+
       this.targetDecorator = decorator
       this.routingRequired = true
       this.targetDecorator.setParent(this)
-      if (this.targetDecoratorNode !== null) {
-        this.targetDecoratorNode.remove()
-        this.targetDecoratorNode = null
-      }
+
+      this.targetDecoratorNode?.remove()
+      this.targetDecoratorNode = null
+
       this.repaint()
 
       return this
@@ -319,7 +309,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
       if (this.shape !== null) {
         let z1 = this.sourcePort.getZOrder()
         let z2 = this.targetPort.getZOrder()
-        z1 < z2 ? this.toBack(this.sourcePort) : this.toBack(this.targetPort)
+        this.toBack(z1 < z2 ? this.sourcePort:this.targetPort)
       }
 
       return this
@@ -329,11 +319,10 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
      * @private
      **/
     repaint: function (attributes) {
-      if (this.repaintBlocked === true || this.shape === null) {
-        return
-      }
-
-      if (this.sourcePort === null || this.targetPort === null) {
+      if (this.repaintBlocked === true || 
+          this.shape          === null || 
+          this.sourcePort     === null || 
+          this.targetPort     === null) {
         return
       }
 
@@ -375,9 +364,9 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
         this.targetDecoratorNode.attr({opacity: this.alpha})
         // apply the color of the connection if the decoration doesn't have any
         if (this.targetDecorator.getColor() === null) {
-          this.targetDecoratorNode.attr({"stroke": "#" + this.lineColor.hex()})
+          this.targetDecoratorNode.attr({stroke: this.lineColor.hash()})
         } else {
-          this.targetDecoratorNode.attr({"stroke": "#" + this.targetDecorator.getColor().hex()})
+          this.targetDecoratorNode.attr({stroke: this.targetDecorator.getColor().hash()})
         }
         this.targetDecoratorNode.forEach(shape => {
           shape.node.setAttribute("class", this.cssClass !== null ? this.cssClass : "")
@@ -480,12 +469,8 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
       // ensure that the decoration is always in front of the connection
       //
       if (this.shape !== null) {
-        if (this.targetDecoratorNode !== null) {
-          this.targetDecoratorNode.insertAfter(this.shape)
-        }
-        if (this.sourceDecoratorNode !== null) {
-          this.sourceDecoratorNode.insertAfter(this.shape)
-        }
+        this.targetDecoratorNode?.insertAfter(this.shape)
+        this.sourceDecoratorNode?.insertAfter(this.shape)
       }
 
       return this
@@ -503,12 +488,8 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
       this._super(figure)
 
       if (this.shape !== null) {
-        if (this.targetDecoratorNode !== null) {
-          this.targetDecoratorNode.insertAfter(this.shape)
-        }
-        if (this.sourceDecoratorNode !== null) {
-          this.sourceDecoratorNode.insertAfter(this.shape)
-        }
+        this.targetDecoratorNode?.insertAfter(this.shape)
+        this.sourceDecoratorNode?.insertAfter(this.shape)
       }
 
       return this
@@ -575,9 +556,8 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
         this.sourcePort.fireEvent("disconnect", {port: this.sourcePort, connection: this})
         // it is possible that a connection has already a port but is not assigned to
         // a canvas. In this case we must check if the canvas set correct before we fire this event
-        if (this.canvas !== null) {
-          this.canvas.fireEvent("disconnect", {"port": this.sourcePort, "connection": this})
-        }
+        this.canvas?.fireEvent("disconnect", {port: this.sourcePort, connection: this})
+
         this.sourcePort.onDisconnect(this)
       }
 
@@ -590,14 +570,14 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
       this.fireSourcePortRouteEvent()
       this.sourcePort.connections.add(this)
       this.sourcePort.on("move", this.moveListener)
-      if (this.canvas !== null) {
-        this.canvas.fireEvent("connect", {"port": this.sourcePort, "connection": this})
-      }
+
+      this.canvas?.fireEvent("connect", {port: this.sourcePort, connection: this})
+
       this.sourcePort.fireEvent("connect", {port: this.sourcePort, connection: this})
       this.sourcePort.onConnect(this)
 
       this.setStartPoint(port.getAbsoluteX(), port.getAbsoluteY())
-      this.fireEvent("connect", {"port": this.sourcePort, "connection": this})
+      this.fireEvent("connect", {port: this.sourcePort, connection: this})
     },
 
     /**
@@ -623,9 +603,8 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
         this.targetPort.fireEvent("disconnect", {port: this.targetPort, connection: this})
         // it is possible that a connection has already a port but is not assigned to
         // a canvas. In this case we must check if the canvas set correct before we fire this event
-        if (this.canvas !== null) {
-          this.canvas.fireEvent("disconnect", {"port": this.targetPort, "connection": this})
-        }
+        this.canvas?.fireEvent("disconnect", {port: this.targetPort, connection: this})
+
         this.targetPort.onDisconnect(this)
       }
 
@@ -638,14 +617,12 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
       this.fireTargetPortRouteEvent()
       this.targetPort.connections.add(this)
       this.targetPort.on("move", this.moveListener)
-      if (this.canvas !== null) {
-        this.canvas.fireEvent("connect", {"port": this.targetPort, "connection": this})
-      }
+      this.canvas?.fireEvent("connect", {port: this.targetPort, connection: this})
       this.targetPort.fireEvent("connect", {port: this.targetPort, connection: this})
       this.targetPort.onConnect(this)
 
       this.setEndPoint(port.getAbsoluteX(), port.getAbsoluteY())
-      this.fireEvent("connect", {"port": this.targetPort, "connection": this})
+      this.fireEvent("connect", {port: this.targetPort, connection: this})
     },
 
     /**
@@ -659,6 +636,21 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
     },
 
     /**
+     * Returns the peer port of the connection for a given port or nulll if `port` not part of this connection
+     * @param {draw2d.Port} port 
+     * @returns  {draw2d.Port}
+     */
+    getPeerPort: function(port) {
+      if(port === this.sourcePort){
+        return this.targetPort
+      }
+      if(port === this.targetPort){
+        return this.sourcePort
+      }
+      return null
+    },
+
+    /**
      *
      * Method returns true if the connection has at least one common draw2d.Port with the given connection.
      *
@@ -668,9 +660,9 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
      */
     sharingPorts: function (other) {
       return this.sourcePort == other.sourcePort ||
-        this.sourcePort == other.targetPort ||
-        this.targetPort == other.sourcePort ||
-        this.targetPort == other.targetPort
+             this.sourcePort == other.targetPort ||
+             this.targetPort == other.sourcePort ||
+             this.targetPort == other.targetPort
     },
 
 
@@ -685,47 +677,40 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
         return // nothing to do
       }
 
-      let notiCanvas = this.canvas == null ? canvas : this.canvas
+      let notiCanvas = this.canvas === null ? canvas : this.canvas
 
       this._super(canvas)
 
+      this.sourceDecoratorNode?.remove()
+      this.sourceDecoratorNode = null
 
-
-      if (this.sourceDecoratorNode !== null) {
-        this.sourceDecoratorNode.remove()
-        this.sourceDecoratorNode = null
-      }
-
-      if (this.targetDecoratorNode !== null) {
-        this.targetDecoratorNode.remove()
-        this.targetDecoratorNode = null
-      }
+      this.targetDecoratorNode?.remove()
+      this.targetDecoratorNode = null
 
       if (this.canvas === null) {
         if (this.sourcePort !== null) {
           this.sourcePort.off(this.moveListener)
-          notiCanvas.fireEvent("disconnect", {"port": this.sourcePort, "connection": this})
+          notiCanvas.fireEvent("disconnect", { port: this.sourcePort, connection: this})
           this.sourcePort.onDisconnect(this)
         }
         if (this.targetPort !== null) {
           this.targetPort.off(this.moveListener)
-          notiCanvas.fireEvent("disconnect", {"port": this.targetPort, "connection": this})
+          notiCanvas.fireEvent("disconnect", { port: this.targetPort, connection: this})
           this.targetPort.onDisconnect(this)
         }
       } else {
 
         if (this.sourcePort !== null) {
           this.sourcePort.on("move", this.moveListener)
-          this.canvas.fireEvent("connect", {"port": this.sourcePort, "connection": this})
+          this.canvas.fireEvent("connect", { port: this.sourcePort, connection: this})
           this.sourcePort.onConnect(this)
         }
         if (this.targetPort !== null) {
           this.targetPort.on("move", this.moveListener)
-          this.canvas.fireEvent("connect", {"port": this.targetPort, "connection": this})
+          this.canvas.fireEvent("connect", { port: this.targetPort, connection: this})
           this.targetPort.onConnect(this)
         }
       }
-
     },
 
 
@@ -742,9 +727,14 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
 
       let p1 = this.lineSegments.get(0).start
       let p2 = this.lineSegments.get(0).end
+      // Since the points are too close to each other in a spline routing, an 
+      // angle is obtained which does not correspond to the optical impression. 
+      // In this case, a point is taken which is a little further away 
+      // from the port....if ppossible
       if (this.router instanceof draw2d.layout.connection.SplineConnectionRouter) {
-        p2 = this.lineSegments.get(5).end
+        p2 = this.lineSegments.get(5)?.end ?? p2
       }
+
       let length = Math.sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y))
       let angle = -(180 / Math.PI) * Math.asin((p1.y - p2.y) / length)
 
@@ -771,9 +761,15 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
 
       let p1 = this.lineSegments.get(this.lineSegments.getSize() - 1).end
       let p2 = this.lineSegments.get(this.lineSegments.getSize() - 1).start
+
+      // Since the points are too close to each other in a spline routing, an 
+      // angle is obtained which does not correspond to the optical impression. 
+      // In this case, a point is taken which is a little further away 
+      // from the port....if ppossible
       if (this.router instanceof draw2d.layout.connection.SplineConnectionRouter) {
-        p2 = this.lineSegments.get(this.lineSegments.getSize() - 5).end
+        p2 = this.lineSegments.get(this.lineSegments.getSize() - 5)?.end ?? p2
       }
+
       let length = Math.sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y))
       let angle = -(180 / Math.PI) * Math.asin((p1.y - p2.y) / length)
 
@@ -796,7 +792,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
      * @private
      **/
     fireSourcePortRouteEvent: function () {
-      this.sourcePort.getConnections().each(function (i, conn) {
+      this.sourcePort.getConnections().each((i, conn) => {
         conn.routingRequired = true
         conn.repaint()
       })
@@ -809,7 +805,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
       // enforce a repaint of all connections which are related to this port
       // this is required for a "FanConnectionRouter" or "ShortesPathConnectionRouter"
       //
-      this.targetPort.getConnections().each(function (i, conn) {
+      this.targetPort.getConnections().each((i, conn) => {
         conn.routingRequired = true
         conn.repaint()
       })
@@ -894,11 +890,11 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
       //
       // restore your custom attributes here
       if (typeof memento.target.decoration !== "undefined" && memento.target.decoration != null) {
-        this.setTargetDecorator(eval("new " + memento.target.decoration))
+        this.setTargetDecorator(Function(`return new ${memento.target.decoration}()`)())
       }
 
       if (typeof memento.source.decoration !== "undefined" && memento.source.decoration != null) {
-        this.setSourceDecorator(eval("new " + memento.source.decoration))
+        this.setSourceDecorator(Function(`return new ${memento.source.decoration}()`)())
       }
 
       return this

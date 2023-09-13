@@ -1,5 +1,4 @@
 import draw2d from '../../packages'
-import extend from '../../util/extend'
 
 
 /**
@@ -41,14 +40,16 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
     this.cachedPorts = null
 
     this._super(
-      extend({width: 50, height: 50}, attr),
-      extend({
+      {width: 50, height: 50, ...attr},
+      {
         // @attr {Number} indicate whenever you want persists the ports too */
-        persistPorts: this.setPersistPorts
-      }, setter),
-      extend({
-        persistPorts: this.getPersistPorts
-      }, getter))
+        persistPorts: this.setPersistPorts,
+        ...setter
+      },
+      {
+        persistPorts: this.getPersistPorts,
+        ...getter
+      })
   },
 
 
@@ -114,13 +115,13 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
     // adjust the visibility of the ports to the parent state
     //
     if (!flag) {
-      this.getPorts().each(function (i, port) {
+      this.getPorts().each( (i, port) => {
         port.__initialVisibilityState = port.isVisible()
         port.setVisible(false, duration)
       })
     }
     else {
-      this.getPorts().each(function (i, port) {
+      this.getPorts().each( (i, port) => {
         if (typeof port.__initialVisibilityState !== "undefined") {
           port.setVisible(port.__initialVisibilityState, duration)
         }
@@ -210,7 +211,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
    * @experimental
    */
   clone: function (cloneMetaData) {
-    cloneMetaData = extend({excludePorts: false}, cloneMetaData)
+    cloneMetaData = {excludePorts: false, ...cloneMetaData}
 
     let clone = this._super(cloneMetaData)
 
@@ -256,14 +257,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
       return this.inputPorts.get(portNameOrIndex)
     }
 
-    for (let i = 0; i < this.inputPorts.getSize(); i++) {
-      let port = this.inputPorts.get(i)
-      if (port.getName() === portNameOrIndex) {
-        return port
-      }
-    }
-
-    return null
+    return this.inputPorts.find( port => port.getName()===portNameOrIndex )
   },
 
   /**
@@ -278,14 +272,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
       return this.outputPorts.get(portNameOrIndex)
     }
 
-    for (let i = 0; i < this.outputPorts.getSize(); i++) {
-      let port = this.outputPorts.get(i)
-      if (port.getName() === portNameOrIndex) {
-        return port
-      }
-    }
-
-    return null
+    return this.outputPorts.find( port => port.getName()===portNameOrIndex )
   },
 
   /**
@@ -301,14 +288,7 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
       return this.hybridPorts.get(portNameOrIndex)
     }
 
-    for (let i = 0; i < this.hybridPorts.getSize(); i++) {
-      let port = this.hybridPorts.get(i)
-      if (port.getName() === portNameOrIndex) {
-        return port
-      }
-    }
-
-    return null
+    return this.hybridPorts.find( port => port.getName()===portNameOrIndex )
   },
 
   /**
@@ -592,12 +572,14 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
     if (this.persistPorts === true) {
       memento.ports = []
       this.getPorts().each(function (i, port) {
-        memento.ports.push(extend(port.getPersistentAttributes(), {
-          name: port.getName(),
-          port: port.NAME,
-          locator: port.getLocator().NAME,
-          locatorAttr: port.getLocator().attr()
-        }))
+        memento.ports.push(
+          {...port.getPersistentAttributes(), 
+            name: port.getName(),
+            port: port.NAME,
+            locator: port.getLocator().NAME,
+            locatorAttr: port.getLocator().attr()
+          }
+        )
       })
     }
 
@@ -625,12 +607,12 @@ draw2d.shape.node.Node = draw2d.Figure.extend(
       // and restore all ports of the JSON document instead.
       //
       memento.ports.forEach((e) => {
-        let locator = eval("new " + e.locator + "()")
+        let locator = Function(`return new ${e.locator}()`)()
         if(e.locatorAttr) {
           locator.attr(e.locatorAttr)
         }
 
-        let port = eval("new " + e.port + "()")
+        let port = Function(`return new ${e.port}()`)()
         port.setPersistentAttributes(e)
         this.addPort(port, locator)
       })

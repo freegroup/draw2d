@@ -1,7 +1,4 @@
 import draw2d from '../../packages'
-import jsonUtil from '../../util/JSONUtil'
-import extend from '../../util/extend'
-
 
 /**
  * @class
@@ -67,11 +64,11 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
     this.vertices.add(this.end.clone())
 
     this._super(
-      extend({
+      {
         deleteable: false,
-        selectable: true
-      }, attr),
-      extend({}, {
+        selectable: true,
+        ...attr},
+       {
         // @attr {Number} start the  coordinates of the start point */
         start: this.setStartPosition,
         // @attr {Number} startX the x coordinate of the start point */
@@ -98,10 +95,10 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
         // @attr {String} dasharray the line pattern see {@link draw2d.shape.basic.Line#setDashArray} for more information*/
         dasharray: this.setDashArray,
         // @attr {Boolean} glow the glow flag for the shape. The representation of the "glow" depends on the shape */
-        glow: this.setGlow
-      }, setter),
+        glow: this.setGlow,
+        ...setter},
 
-      extend({}, {
+      {
         start: this.getStartPosition,
         end: this.getEndPosition,
         outlineColor: this.getOutlineColor,
@@ -110,8 +107,8 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
         corona: this.getCorona,
         color: this.getColor,
         dasharray: this.getDashArray,
-        vertices: this.getVertices
-      }, getter))
+        vertices: this.getVertices,
+        ...getter})
 
     // some router installs a edit policy. In this case we want delete them
     //
@@ -276,6 +273,38 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
 
   /**
    *
+   * Set the position of the object.
+   *
+   *     // Alternatively you can use the attr method:
+   *     figure.attr({
+   *       x: x,
+   *       y: y
+   *     });
+   *
+   * @param {Number|draw2d.geo.Point} x The new x coordinate of the figure or the x/y coordinate if it is an draw2d.geo.Point
+   * @param {Number} [y] The new y coordinate of the figure
+   **/
+  setPosition: function (x, y) {
+    if (typeof x === "undefined") {
+      debugger
+    }
+
+    // get the top left corner of the Line
+    let topLeft = {x: this.getX(), y: this.getY()}
+    let diff = {x:0 , y:0}
+
+    if (x instanceof draw2d.geo.Point) {
+      diff.x = x.x - topLeft.x
+      diff.y = x.y - topLeft.y
+    } else {
+      diff.x = x - topLeft.x
+      diff.y = y - topLeft.y
+    }
+    this.translate(diff.x, diff.y)
+  },
+
+  /**
+   *
    * Called when a user clicks on the element.
    *
    *     // Alternatively you can register for this event with
@@ -370,11 +399,11 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
       if (typeof attributes.path === "undefined") {
         attributes.path = ["M", this.start.x, this.start.y, "L", this.end.x, this.end.y].join(" ")
       }
-      jsonUtil.ensureDefault(attributes, "stroke", this.lineColor.rgba())
-      jsonUtil.ensureDefault(attributes, "stroke-width", this.stroke)
+      attributes.stroke??=this.lineColor.rgba()
+      attributes["stroke-width"]??=this.stroke
     }
 
-    jsonUtil.ensureDefault(attributes, "stroke-dasharray", this.dasharray)
+    attributes["stroke-dasharray"]??=this.dasharray
     this._super(attributes)
 
     if (this.outlineStroke > 0) {
@@ -680,10 +709,9 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
     this.vertices.last().setPosition(pos)
     this.repaint()
 
-    let _this = this
-    this.editPolicy.each(function (i, e) {
+    this.editPolicy.each((i, e) => {
       if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
-        e.moved(_this.canvas, _this)
+        e.moved(this.canvas, this)
       }
     })
 
@@ -836,10 +864,9 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
     this.routingRequired = true
     this.repaint()
 
-    let _this = this
-    this.editPolicy.each(function (i, e) {
+    this.editPolicy.each((i, e) => {
       if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
-        e.moved(_this.canvas, _this)
+        e.moved(this.canvas, this)
       }
     })
     this.fireEvent("change:vertices", {value: this.vertices})
@@ -866,7 +893,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
    * @since 4.0.1
    */
   setVertices: function (vertices) {
-    let _this = this
+
     // convert json document/array to draw2d ArrayList
     //
     if (Array.isArray(vertices)) {
@@ -899,18 +926,18 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
     // This is a Hack....normally this should be done below and the Line shouldn't know
     // something about this issue....this is complete a "EditPolicy" domain to handle this.
     if (!this.selectionHandles.isEmpty()) {
-      this.editPolicy.each(function (i, e) {
+      this.editPolicy.each((i, e) =>{
         if (e instanceof draw2d.policy.figure.SelectionFeedbackPolicy) {
-          e.onUnselect(_this.canvas, _this)
-          e.onSelect(_this.canvas, _this)
+          e.onUnselect(this.canvas, this)
+          e.onSelect(this.canvas, this)
         }
       })
     }
 
     // notify the listener about the changes
-    this.editPolicy.each(function (i, e) {
+    this.editPolicy.each( (i, e) => {
       if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
-        e.moved(_this.canvas, _this)
+        e.moved(this.canvas, this)
       }
     })
 
@@ -1127,7 +1154,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
     // attribute because the start/end is defined by the ports and the vertices in between are
     // calculated by a router.
     memento.vertex = []
-    this.getVertices().each(function (i, e) {
+    this.getVertices().each( (i, e) => {
       memento.vertex.push({x: e.x, y: e.y})
     })
 
@@ -1161,7 +1188,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
     }
     if (typeof memento.policy !== "undefined") {
       try {
-        this.installEditPolicy(eval("new " + memento.policy + "()"))
+        this.installEditPolicy(Function(`return new ${memento.policy}()`)())
       }
       catch (exc) {
         debug.warn("Unable to install edit policy '" + memento.policy + "' forced by " + this.NAME + ".setPersistentAttributes. Using default.")

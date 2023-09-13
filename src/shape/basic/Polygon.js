@@ -136,10 +136,9 @@ draw2d.shape.basic.Polygon = draw2d.VectorFigure.extend(
     if (this.svgPathString === null) {
       this.calculatePath()
     }
-
-    attributes = attributes || {}
-
-    jsonUtil.ensureDefault(attributes, "path", this.svgPathString)
+    //
+    attributes??={}
+    attributes.path ??= this.svgPathString
 
     this._super(attributes)
   },
