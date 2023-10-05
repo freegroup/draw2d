@@ -1,6 +1,6 @@
 {
-  "name": "draw2d",
-  "version": "1.0.38",
+  "name": "automatica-draw2d",
+  "version": "1.0.45",
   "description": "JS drag&drop lib",
   "main": "dist/draw2d.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/freegroup/draw2d.git"
+    "url": "https://github.com/automatica-core/draw2d"
   },
   "keywords": [
     "draw2d",
