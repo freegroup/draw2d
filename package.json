@@ -43,6 +43,7 @@
     "yargs": "^17.6.2"
   },
   "dependencies": {
+    "canvg": "^4.0.1",
     "shifty": "2.20.0"
   }
 }
