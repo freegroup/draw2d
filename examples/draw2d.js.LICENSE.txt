@@ -46,6 +46,21 @@
 
 /*! !../../node_modules/style-loader/dist/runtime/styleTagTransform.js */
 
+/*! *****************************************************************************
+    Copyright (c) Microsoft Corporation.
+
+    Permission to use, copy, modify, and/or distribute this software for any
+    purpose with or without fee is hereby granted.
+
+    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+    REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+    AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+    INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+    LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+    OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+    PERFORMANCE OF THIS SOFTWARE.
+    ***************************************************************************** */
+
 /*! ../../node_modules/css-loader/dist/runtime/api.js */
 
 /*! ../../node_modules/css-loader/dist/runtime/sourceMaps.js */
@@ -147,8 +162,6 @@
 /*! ./decoration/connection/Decorator */
 
 /*! ./decoration/connection/DiamondDecorator */
-
-/*! ./dom */
 
 /*! ./geo/Line */
 
@@ -367,8 +380,6 @@
 /*! ./policy/port/IntrusivePortsFeedbackPolicy */
 
 /*! ./policy/port/PortFeedbackPolicy */
-
-/*! ./sax */
 
 /*! ./shape/analog/OpAmp */
 
@@ -944,7 +955,7 @@
 
 /*! For license information please see shifty.js.LICENSE.txt */
 
-/*! canvg-browser */
+/*! canvg */
 
 /*! css/contextmenu.css */
 
@@ -960,19 +971,23 @@
 
 /*! packages */
 
+/*! performance-now */
+
+/*! raf */
+
 /*! rgbcolor */
 
 /*! shifty */
 
-/*! stackblur */
+/*! stackblur-canvas */
+
+/*! svg-pathdata */
 
 /*! util/JSONUtil */
 
 /*! util/UUID */
 
 /*! util/extend */
-
-/*! xmldom */
 
 /*!*********************!*\
   !*** ./src/Port.js ***!
@@ -1735,6 +1750,10 @@
   \**********************************/
 
 /*!***********************************!*\
+  !*** ./node_modules/raf/index.js ***!
+  \***********************************/
+
+/*!***********************************!*\
   !*** ./src/command/CommandAdd.js ***!
   \***********************************/
 
@@ -1889,14 +1908,6 @@
 /*!***********************************!*\
   !*** ./src/util/spline/Spline.js ***!
   \***********************************/
-
-/*!************************************!*\
-  !*** ./node_modules/xmldom/dom.js ***!
-  \************************************/
-
-/*!************************************!*\
-  !*** ./node_modules/xmldom/sax.js ***!
-  \************************************/
 
 /*!************************************!*\
   !*** ./src/command/CommandAttr.js ***!
@@ -2235,10 +2246,6 @@
   \****************************************/
 
 /*!*****************************************!*\
-  !*** ./node_modules/stackblur/index.js ***!
-  \*****************************************/
-
-/*!*****************************************!*\
   !*** ./src/command/CommandAddVertex.js ***!
   \*****************************************/
 
@@ -2303,7 +2310,7 @@
   \******************************************/
 
 /*!*******************************************!*\
-  !*** ./node_modules/xmldom/dom-parser.js ***!
+  !*** ./node_modules/canvg/dist/index.cjs ***!
   \*******************************************/
 
 /*!*******************************************!*\
@@ -2361,10 +2368,6 @@
 /*!********************************************!*\
   !*** ./src/shape/layout/VerticalLayout.js ***!
   \********************************************/
-
-/*!*********************************************!*\
-  !*** ./node_modules/canvg-browser/index.js ***!
-  \*********************************************/
 
 /*!*********************************************!*\
   !*** ./src/layout/locator/BottomLocator.js ***!
@@ -2639,6 +2642,10 @@
   \******************************************************/
 
 /*!*******************************************************!*\
+  !*** ./node_modules/svg-pathdata/lib/SVGPathData.cjs ***!
+  \*******************************************************/
+
+/*!*******************************************************!*\
   !*** ./src/decoration/connection/DiamondDecorator.js ***!
   \*******************************************************/
 
@@ -2767,6 +2774,10 @@
   \************************************************************/
 
 /*!************************************************************!*\
+  !*** ./node_modules/stackblur-canvas/dist/stackblur-es.js ***!
+  \************************************************************/
+
+/*!************************************************************!*\
   !*** ./src/layout/connection/ManhattanConnectionRouter.js ***!
   \************************************************************/
 
@@ -2777,6 +2788,10 @@
 /*!************************************************************!*\
   !*** ./src/policy/figure/VertexSelectionFeedbackPolicy.js ***!
   \************************************************************/
+
+/*!*************************************************************!*\
+  !*** ./node_modules/performance-now/lib/performance-now.js ***!
+  \*************************************************************/
 
 /*!*************************************************************!*\
   !*** ./src/policy/connection/DragConnectionCreatePolicy.js ***!
