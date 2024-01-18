@@ -63,7 +63,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
       this.outlineStroke = 0
       this.outlineColor = new draw2d.util.Color(null)
 
-      this.textAlign = "left";
+      this.textAlign = "start";
 
       this.bold = false
 
@@ -178,8 +178,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
      */
     calculateTextAttr: function () {
       let lattr = {
-        "text-anchor": "start",
-        "text-align": this.textAlign,
+        "text-anchor": this.textAlign,
         "font-size": this.fontSize,
         "font-weight": (this.bold === true) ? "bold" : "normal",
         fill: this.fontColor.rgba(),
