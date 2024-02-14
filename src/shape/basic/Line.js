@@ -59,6 +59,8 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
     this.start = new draw2d.geo.Point(30, 30)
     this.end = new draw2d.geo.Point(100, 100)
 
+    this.glowColor = new draw2d.util.Color("#3f72bf")
+
     this.vertices = new draw2d.util.ArrayList()
     this.vertices.add(this.start.clone())
     this.vertices.add(this.end.clone())
@@ -441,6 +443,19 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
   },
 
 
+  setGlowColor: function (w) {
+    this.glowColor = w
+    this.repaint()
+    this.fireEvent("change:glowColor", {value: this.glowColor})
+
+    return this
+  },
+
+
+  getGlowColor: function () {
+    return this.glowColor
+  },
+  
   /**
    *
    * Highlight the element or remove the highlighting
@@ -463,7 +478,7 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
       this._lineColor = this.lineColor
       this._stroke = this.stroke
 
-      this.setColor(new draw2d.util.Color("#3f72bf"))
+      this.setColor(this.glowColor)
       this.setStroke((this.stroke * 4) | 0)
     }
     else {

@@ -87,7 +87,7 @@ draw2d.layout.connection.ManhattanBridgedConnectionRouter = draw2d.layout.connec
 
       // line goes from right->left. Inverse the bridge and the bridgeWidth
       //
-      if (oldP.x > p.x) {
+      if (oldP.x >= p.x) {
         intersectionForCalc = intersectionsDESC
         bridgeCode = this.BRIDGE_HORIZONTAL_RL
         bridgeWidth = -bridgeWidth
@@ -97,7 +97,7 @@ draw2d.layout.connection.ManhattanBridgedConnectionRouter = draw2d.layout.connec
         if (interP.justTouching === false && draw2d.shape.basic.Line.hit(1, oldP.x, oldP.y, p.x, p.y, interP.x, interP.y) === true) {
           // we draw only horizontal bridges. Just a design decision
           //
-          if (p.y === interP.y) {
+          if (Math.floor(p.y) === Math.floor(interP.y)) {
             path.push(" L", ((interP.x - bridgeWidth) | 0) + 0.5, " ", (interP.y | 0) + 0.5)
             path.push(bridgeCode)
           }
