@@ -1,6 +1,6 @@
 {
   "name": "automatica-draw2d",
-  "version": "1.0.8",
+  "version": "1.1.4",
   "description": "JS drag&drop lib",
   "main": "dist/draw2d.js",
   "scripts": {
