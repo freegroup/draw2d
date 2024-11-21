@@ -2,6 +2,7 @@
 
 # generate the jsDoc
 cd ./jsdoc/
+yarn upgrade caniuse-lite browserslist
 yarn install
 ./node_modules/jsdoc/jsdoc.js -c ./jsdoc.conf
 

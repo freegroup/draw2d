@@ -115,6 +115,18 @@ draw2d.Selection = Class.extend(
     return this.all.contains(figure);
   },
 
+
+  /**
+   * 
+   * Return if the selection is empty
+   *
+   * @since 4.8.0
+   */
+  isEmpty: function () {
+    return this.all.isEmpty();
+  },
+
+
   /**
    * 
    * Return the size of the selection

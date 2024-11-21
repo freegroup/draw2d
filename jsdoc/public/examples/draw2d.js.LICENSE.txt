@@ -1,0 +1,2863 @@
+/*!
+ * JavaScript Debug - v0.4 - 6/22/2010
+ * http://benalman.com/projects/javascript-debug-console-log/
+ *
+ * Copyright (c) 2010 "Cowboy" Ben Alman
+ * Dual licensed under the MIT and GPL licenses.
+ * http://benalman.com/about/license/
+ *
+ * With lots of help from Paul Irish!
+ * http://paulirish.com/
+ */
+
+/*!
+ * jQuery contextMenu - Plugin for simple contextMenu handling
+ *
+ * Version: 1.6.5
+ *
+ * Authors: Rodney Rehm, Addy Osmani (patches for FF)
+ * Web: http://medialize.github.com/jQuery-contextMenu/
+ *
+ * Licensed under
+ *   MIT License http://www.opensource.org/licenses/mit-license
+ *   GPL v3 http://opensource.org/licenses/GPL-3.0
+ *
+ */
+
+/*! !!../../node_modules/css-loader/dist/cjs.js!./contextmenu.css */
+
+/*! !!./node_modules/raw-loader/index.js!./src/lib/Class.exec.js */
+
+/*! !!./node_modules/raw-loader/index.js!./src/lib/pathfinding.exec.js */
+
+/*! !!./node_modules/raw-loader/index.js!./src/lib/raphael.exec.js */
+
+/*! !!./node_modules/script-loader/addScript.js */
+
+/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */
+
+/*! !../../node_modules/style-loader/dist/runtime/insertBySelector.js */
+
+/*! !../../node_modules/style-loader/dist/runtime/insertStyleElement.js */
+
+/*! !../../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */
+
+/*! !../../node_modules/style-loader/dist/runtime/styleDomAPI.js */
+
+/*! !../../node_modules/style-loader/dist/runtime/styleTagTransform.js */
+
+/*! ../../node_modules/css-loader/dist/runtime/api.js */
+
+/*! ../../node_modules/css-loader/dist/runtime/sourceMaps.js */
+
+/*! ../../packages */
+
+/*! ../../util/Color */
+
+/*! ../../util/JSONUtil */
+
+/*! ../packages */
+
+/*! ./Canvas */
+
+/*! ./Configuration */
+
+/*! ./Connection */
+
+/*! ./Figure */
+
+/*! ./HeadlessCanvas */
+
+/*! ./HybridPort */
+
+/*! ./InputPort */
+
+/*! ./OutputPort */
+
+/*! ./Port */
+
+/*! ./ResizeHandle */
+
+/*! ./SVGFigure */
+
+/*! ./Selection */
+
+/*! ./SetFigure */
+
+/*! ./VectorFigure */
+
+/*! ./command/Command */
+
+/*! ./command/CommandAdd */
+
+/*! ./command/CommandAddVertex */
+
+/*! ./command/CommandAssignFigure */
+
+/*! ./command/CommandAttr */
+
+/*! ./command/CommandBoundingBox */
+
+/*! ./command/CommandCollection */
+
+/*! ./command/CommandConnect */
+
+/*! ./command/CommandDelete */
+
+/*! ./command/CommandDeleteGroup */
+
+/*! ./command/CommandGroup */
+
+/*! ./command/CommandMove */
+
+/*! ./command/CommandMoveConnection */
+
+/*! ./command/CommandMoveLine */
+
+/*! ./command/CommandMoveVertex */
+
+/*! ./command/CommandMoveVertices */
+
+/*! ./command/CommandReconnect */
+
+/*! ./command/CommandRemoveVertex */
+
+/*! ./command/CommandReplaceVertices */
+
+/*! ./command/CommandResize */
+
+/*! ./command/CommandRotate */
+
+/*! ./command/CommandStack */
+
+/*! ./command/CommandStackEvent */
+
+/*! ./command/CommandStackEventListener */
+
+/*! ./command/CommandType */
+
+/*! ./command/CommandUngroup */
+
+/*! ./decoration/connection/ArrowDecorator */
+
+/*! ./decoration/connection/BarDecorator */
+
+/*! ./decoration/connection/CircleDecorator */
+
+/*! ./decoration/connection/Decorator */
+
+/*! ./decoration/connection/DiamondDecorator */
+
+/*! ./dom */
+
+/*! ./geo/Line */
+
+/*! ./geo/Point */
+
+/*! ./geo/PositionConstants */
+
+/*! ./geo/Ray */
+
+/*! ./geo/Rectangle */
+
+/*! ./geo/Util */
+
+/*! ./io/Reader */
+
+/*! ./io/Writer */
+
+/*! ./io/json/Reader */
+
+/*! ./io/json/Writer */
+
+/*! ./io/png/Writer */
+
+/*! ./io/svg/Writer */
+
+/*! ./layout/anchor/CenterEdgeConnectionAnchor */
+
+/*! ./layout/anchor/ChopboxConnectionAnchor */
+
+/*! ./layout/anchor/ConnectionAnchor */
+
+/*! ./layout/anchor/FanConnectionAnchor */
+
+/*! ./layout/anchor/ShortesPathConnectionAnchor */
+
+/*! ./layout/connection/CircuitConnectionRouter */
+
+/*! ./layout/connection/ConnectionRouter */
+
+/*! ./layout/connection/DirectRouter */
+
+/*! ./layout/connection/FanConnectionRouter */
+
+/*! ./layout/connection/InteractiveManhattanConnectionRouter */
+
+/*! ./layout/connection/ManhattanBridgedConnectionRouter */
+
+/*! ./layout/connection/ManhattanConnectionRouter */
+
+/*! ./layout/connection/MazeConnectionRouter */
+
+/*! ./layout/connection/MuteableManhattanConnectionRouter */
+
+/*! ./layout/connection/RubberbandRouter */
+
+/*! ./layout/connection/SketchConnectionRouter */
+
+/*! ./layout/connection/SplineConnectionRouter */
+
+/*! ./layout/connection/VertexRouter */
+
+/*! ./layout/locator/BottomLocator */
+
+/*! ./layout/locator/CenterLocator */
+
+/*! ./layout/locator/ConnectionLocator */
+
+/*! ./layout/locator/DraggableLocator */
+
+/*! ./layout/locator/InputPortLocator */
+
+/*! ./layout/locator/LeftLocator */
+
+/*! ./layout/locator/Locator */
+
+/*! ./layout/locator/ManhattanMidpointLocator */
+
+/*! ./layout/locator/OutputPortLocator */
+
+/*! ./layout/locator/ParallelMidpointLocator */
+
+/*! ./layout/locator/PolylineMidpointLocator */
+
+/*! ./layout/locator/PortLocator */
+
+/*! ./layout/locator/RightLocator */
+
+/*! ./layout/locator/SmartDraggableLocator */
+
+/*! ./layout/locator/TopLocator */
+
+/*! ./layout/locator/XYAbsPortLocator */
+
+/*! ./layout/locator/XYRelPortLocator */
+
+/*! ./layout/mesh/ExplodeLayouter */
+
+/*! ./layout/mesh/MeshLayouter */
+
+/*! ./layout/mesh/ProposedMeshChange */
+
+/*! ./policy/EditPolicy */
+
+/*! ./policy/canvas/BoundingboxSelectionPolicy */
+
+/*! ./policy/canvas/CanvasPolicy */
+
+/*! ./policy/canvas/CoronaDecorationPolicy */
+
+/*! ./policy/canvas/DecorationPolicy */
+
+/*! ./policy/canvas/DefaultKeyboardPolicy */
+
+/*! ./policy/canvas/DropInterceptorPolicy */
+
+/*! ./policy/canvas/ExtendedKeyboardPolicy */
+
+/*! ./policy/canvas/FadeoutDecorationPolicy */
+
+/*! ./policy/canvas/GhostMoveSelectionPolicy */
+
+/*! ./policy/canvas/KeyboardPolicy */
+
+/*! ./policy/canvas/PanningSelectionPolicy */
+
+/*! ./policy/canvas/ReadOnlySelectionPolicy */
+
+/*! ./policy/canvas/SelectionPolicy */
+
+/*! ./policy/canvas/ShowChessboardEditPolicy */
+
+/*! ./policy/canvas/ShowDimetricGridEditPolicy */
+
+/*! ./policy/canvas/ShowDotEditPolicy */
+
+/*! ./policy/canvas/ShowGridEditPolicy */
+
+/*! ./policy/canvas/SingleSelectionPolicy */
+
+/*! ./policy/canvas/SnapToCenterEditPolicy */
+
+/*! ./policy/canvas/SnapToDimetricGridEditPolicy */
+
+/*! ./policy/canvas/SnapToEditPolicy */
+
+/*! ./policy/canvas/SnapToGeometryEditPolicy */
+
+/*! ./policy/canvas/SnapToGridEditPolicy */
+
+/*! ./policy/canvas/SnapToInBetweenEditPolicy */
+
+/*! ./policy/canvas/SnapToVerticesEditPolicy */
+
+/*! ./policy/canvas/WheelZoomPolicy */
+
+/*! ./policy/canvas/ZoomPolicy */
+
+/*! ./policy/connection/ClickConnectionCreatePolicy */
+
+/*! ./policy/connection/ComposedConnectionCreatePolicy */
+
+/*! ./policy/connection/ConnectionCreatePolicy */
+
+/*! ./policy/connection/DragConnectionCreatePolicy */
+
+/*! ./policy/connection/OrthogonalConnectionCreatePolicy */
+
+/*! ./policy/figure/AntSelectionFeedbackPolicy */
+
+/*! ./policy/figure/BigRectangleSelectionFeedbackPolicy */
+
+/*! ./policy/figure/BusSelectionFeedbackPolicy */
+
+/*! ./policy/figure/DragDropEditPolicy */
+
+/*! ./policy/figure/FigureEditPolicy */
+
+/*! ./policy/figure/GlowSelectionFeedbackPolicy */
+
+/*! ./policy/figure/HBusSelectionFeedbackPolicy */
+
+/*! ./policy/figure/HorizontalEditPolicy */
+
+/*! ./policy/figure/RaftSelectionFeedbackPolicy */
+
+/*! ./policy/figure/RectangleSelectionFeedbackPolicy */
+
+/*! ./policy/figure/RegionEditPolicy */
+
+/*! ./policy/figure/ResizeSelectionFeedbackPolicy */
+
+/*! ./policy/figure/RoundRectangleSelectionFeedbackPolicy */
+
+/*! ./policy/figure/SelectionFeedbackPolicy */
+
+/*! ./policy/figure/SelectionPolicy */
+
+/*! ./policy/figure/SlimSelectionFeedbackPolicy */
+
+/*! ./policy/figure/VBusSelectionFeedbackPolicy */
+
+/*! ./policy/figure/VertexSelectionFeedbackPolicy */
+
+/*! ./policy/figure/VerticalEditPolicy */
+
+/*! ./policy/figure/WidthSelectionFeedbackPolicy */
+
+/*! ./policy/line/LineSelectionFeedbackPolicy */
+
+/*! ./policy/line/OrthogonalSelectionFeedbackPolicy */
+
+/*! ./policy/line/VertexSelectionFeedbackPolicy */
+
+/*! ./policy/port/ElasticStrapFeedbackPolicy */
+
+/*! ./policy/port/IntrusivePortsFeedbackPolicy */
+
+/*! ./policy/port/PortFeedbackPolicy */
+
+/*! ./sax */
+
+/*! ./shape/analog/OpAmp */
+
+/*! ./shape/analog/ResistorBridge */
+
+/*! ./shape/analog/ResistorVertical */
+
+/*! ./shape/analog/VoltageSupplyHorizontal */
+
+/*! ./shape/analog/VoltageSupplyVertical */
+
+/*! ./shape/arrow/CalligrapherArrowDownLeft */
+
+/*! ./shape/arrow/CalligrapherArrowLeft */
+
+/*! ./shape/basic/Arc */
+
+/*! ./shape/basic/Circle */
+
+/*! ./shape/basic/Diamond */
+
+/*! ./shape/basic/GhostVertexResizeHandle */
+
+/*! ./shape/basic/Image */
+
+/*! ./shape/basic/Label */
+
+/*! ./shape/basic/Line */
+
+/*! ./shape/basic/LineEndResizeHandle */
+
+/*! ./shape/basic/LineResizeHandle */
+
+/*! ./shape/basic/LineStartResizeHandle */
+
+/*! ./shape/basic/Oval */
+
+/*! ./shape/basic/PolyLine */
+
+/*! ./shape/basic/Polygon */
+
+/*! ./shape/basic/Rectangle */
+
+/*! ./shape/basic/Text */
+
+/*! ./shape/basic/VertexResizeHandle */
+
+/*! ./shape/composite/Composite */
+
+/*! ./shape/composite/Group */
+
+/*! ./shape/composite/Jailhouse */
+
+/*! ./shape/composite/Raft */
+
+/*! ./shape/composite/RaftResizeHandle */
+
+/*! ./shape/composite/StrongComposite */
+
+/*! ./shape/composite/WeakComposite */
+
+/*! ./shape/diagram/Diagram */
+
+/*! ./shape/diagram/Pie */
+
+/*! ./shape/diagram/Sparkline */
+
+/*! ./shape/dimetric/Rectangle */
+
+/*! ./shape/flowchart/Document */
+
+/*! ./shape/icon/Acw */
+
+/*! ./shape/icon/Alarm */
+
+/*! ./shape/icon/Anonymous */
+
+/*! ./shape/icon/Apple */
+
+/*! ./shape/icon/Apps */
+
+/*! ./shape/icon/ArrowDown */
+
+/*! ./shape/icon/ArrowLeft */
+
+/*! ./shape/icon/ArrowLeft2 */
+
+/*! ./shape/icon/ArrowRight */
+
+/*! ./shape/icon/ArrowRight2 */
+
+/*! ./shape/icon/ArrowUp */
+
+/*! ./shape/icon/Aumade */
+
+/*! ./shape/icon/BarChart */
+
+/*! ./shape/icon/BioHazard */
+
+/*! ./shape/icon/Book */
+
+/*! ./shape/icon/Bookmark */
+
+/*! ./shape/icon/Books */
+
+/*! ./shape/icon/Bubble */
+
+/*! ./shape/icon/Bug */
+
+/*! ./shape/icon/Calendar */
+
+/*! ./shape/icon/Cart */
+
+/*! ./shape/icon/Ccw */
+
+/*! ./shape/icon/Chat */
+
+/*! ./shape/icon/Check */
+
+/*! ./shape/icon/Chrome */
+
+/*! ./shape/icon/Clip */
+
+/*! ./shape/icon/Clock */
+
+/*! ./shape/icon/Cloud */
+
+/*! ./shape/icon/Cloud2 */
+
+/*! ./shape/icon/CloudDown */
+
+/*! ./shape/icon/CloudUp */
+
+/*! ./shape/icon/Cloudy */
+
+/*! ./shape/icon/Code */
+
+/*! ./shape/icon/CodeTalk */
+
+/*! ./shape/icon/CommandLine */
+
+/*! ./shape/icon/Connect */
+
+/*! ./shape/icon/Contract */
+
+/*! ./shape/icon/Crop */
+
+/*! ./shape/icon/Cross */
+
+/*! ./shape/icon/Cube */
+
+/*! ./shape/icon/Customer */
+
+/*! ./shape/icon/Db */
+
+/*! ./shape/icon/Detour */
+
+/*! ./shape/icon/Diagram */
+
+/*! ./shape/icon/Disconnect */
+
+/*! ./shape/icon/DockBottom */
+
+/*! ./shape/icon/DockLeft */
+
+/*! ./shape/icon/DockRight */
+
+/*! ./shape/icon/DockTop */
+
+/*! ./shape/icon/Download */
+
+/*! ./shape/icon/Dry */
+
+/*! ./shape/icon/Employee */
+
+/*! ./shape/icon/End */
+
+/*! ./shape/icon/Ethernet */
+
+/*! ./shape/icon/Exchange */
+
+/*! ./shape/icon/Expand */
+
+/*! ./shape/icon/Export */
+
+/*! ./shape/icon/Fave */
+
+/*! ./shape/icon/Feed */
+
+/*! ./shape/icon/Ff */
+
+/*! ./shape/icon/Firefox */
+
+/*! ./shape/icon/Flag */
+
+/*! ./shape/icon/Flickr */
+
+/*! ./shape/icon/Folder */
+
+/*! ./shape/icon/Font */
+
+/*! ./shape/icon/Fork */
+
+/*! ./shape/icon/ForkAlt */
+
+/*! ./shape/icon/FullCube */
+
+/*! ./shape/icon/Future */
+
+/*! ./shape/icon/GRaphael */
+
+/*! ./shape/icon/Gear */
+
+/*! ./shape/icon/Gear2 */
+
+/*! ./shape/icon/GitHub */
+
+/*! ./shape/icon/GitHubAlt */
+
+/*! ./shape/icon/Glasses */
+
+/*! ./shape/icon/Globe */
+
+/*! ./shape/icon/GlobeAlt */
+
+/*! ./shape/icon/GlobeAlt2 */
+
+/*! ./shape/icon/Hail */
+
+/*! ./shape/icon/Hammer */
+
+/*! ./shape/icon/HammerAndScrewDriver */
+
+/*! ./shape/icon/HangUp */
+
+/*! ./shape/icon/Help */
+
+/*! ./shape/icon/History */
+
+/*! ./shape/icon/Home */
+
+/*! ./shape/icon/IMac */
+
+/*! ./shape/icon/Icon */
+
+/*! ./shape/icon/Icons */
+
+/*! ./shape/icon/Ie */
+
+/*! ./shape/icon/Ie9 */
+
+/*! ./shape/icon/Import */
+
+/*! ./shape/icon/InkScape */
+
+/*! ./shape/icon/Ipad */
+
+/*! ./shape/icon/Iphone */
+
+/*! ./shape/icon/JQuery */
+
+/*! ./shape/icon/Jigsaw */
+
+/*! ./shape/icon/Key */
+
+/*! ./shape/icon/Lab */
+
+/*! ./shape/icon/Lamp */
+
+/*! ./shape/icon/Lamp_alt */
+
+/*! ./shape/icon/Landing */
+
+/*! ./shape/icon/Landscape1 */
+
+/*! ./shape/icon/Landscape2 */
+
+/*! ./shape/icon/LineChart */
+
+/*! ./shape/icon/Link */
+
+/*! ./shape/icon/LinkedIn */
+
+/*! ./shape/icon/Linux */
+
+/*! ./shape/icon/List */
+
+/*! ./shape/icon/Location */
+
+/*! ./shape/icon/Lock */
+
+/*! ./shape/icon/Locked */
+
+/*! ./shape/icon/Magic */
+
+/*! ./shape/icon/Magnet */
+
+/*! ./shape/icon/Mail */
+
+/*! ./shape/icon/Man */
+
+/*! ./shape/icon/Merge */
+
+/*! ./shape/icon/Mic */
+
+/*! ./shape/icon/MicMute */
+
+/*! ./shape/icon/Minus */
+
+/*! ./shape/icon/NewWindow */
+
+/*! ./shape/icon/No */
+
+/*! ./shape/icon/NoMagnet */
+
+/*! ./shape/icon/NodeJs */
+
+/*! ./shape/icon/Notebook */
+
+/*! ./shape/icon/Noview */
+
+/*! ./shape/icon/Opera */
+
+/*! ./shape/icon/Package */
+
+/*! ./shape/icon/Page */
+
+/*! ./shape/icon/Page2 */
+
+/*! ./shape/icon/Pallete */
+
+/*! ./shape/icon/Palm */
+
+/*! ./shape/icon/Paper */
+
+/*! ./shape/icon/Parent */
+
+/*! ./shape/icon/Pc */
+
+/*! ./shape/icon/Pen */
+
+/*! ./shape/icon/Pensil */
+
+/*! ./shape/icon/People */
+
+/*! ./shape/icon/Phone */
+
+/*! ./shape/icon/Photo */
+
+/*! ./shape/icon/Picker */
+
+/*! ./shape/icon/Picture */
+
+/*! ./shape/icon/PieChart */
+
+/*! ./shape/icon/Plane */
+
+/*! ./shape/icon/Plugin */
+
+/*! ./shape/icon/Plus */
+
+/*! ./shape/icon/Power */
+
+/*! ./shape/icon/Ppt */
+
+/*! ./shape/icon/Printer */
+
+/*! ./shape/icon/Quote */
+
+/*! ./shape/icon/Rain */
+
+/*! ./shape/icon/Raphael */
+
+/*! ./shape/icon/ReflectH */
+
+/*! ./shape/icon/ReflectV */
+
+/*! ./shape/icon/Refresh */
+
+/*! ./shape/icon/Resize2 */
+
+/*! ./shape/icon/Rotate */
+
+/*! ./shape/icon/Ruler */
+
+/*! ./shape/icon/Run */
+
+/*! ./shape/icon/Rw */
+
+/*! ./shape/icon/Safari */
+
+/*! ./shape/icon/ScrewDriver */
+
+/*! ./shape/icon/Search */
+
+/*! ./shape/icon/Sencha */
+
+/*! ./shape/icon/Settings */
+
+/*! ./shape/icon/SettingsAlt */
+
+/*! ./shape/icon/Shuffle */
+
+/*! ./shape/icon/Skull */
+
+/*! ./shape/icon/Skype */
+
+/*! ./shape/icon/SlideShare */
+
+/*! ./shape/icon/Smile */
+
+/*! ./shape/icon/Smile2 */
+
+/*! ./shape/icon/Snow */
+
+/*! ./shape/icon/Split */
+
+/*! ./shape/icon/Star */
+
+/*! ./shape/icon/Star2 */
+
+/*! ./shape/icon/Star2Off */
+
+/*! ./shape/icon/Star3 */
+
+/*! ./shape/icon/Star3Off */
+
+/*! ./shape/icon/StarOff */
+
+/*! ./shape/icon/Start */
+
+/*! ./shape/icon/Sticker */
+
+/*! ./shape/icon/Stop */
+
+/*! ./shape/icon/StopWatch */
+
+/*! ./shape/icon/Sun */
+
+/*! ./shape/icon/Svg */
+
+/*! ./shape/icon/TShirt */
+
+/*! ./shape/icon/Tag */
+
+/*! ./shape/icon/TakeOff */
+
+/*! ./shape/icon/Talke */
+
+/*! ./shape/icon/Talkq */
+
+/*! ./shape/icon/Thunder */
+
+/*! ./shape/icon/Trash */
+
+/*! ./shape/icon/Twitter */
+
+/*! ./shape/icon/TwitterBird */
+
+/*! ./shape/icon/Umbrella */
+
+/*! ./shape/icon/Undo */
+
+/*! ./shape/icon/Unlock */
+
+/*! ./shape/icon/Usb */
+
+/*! ./shape/icon/User */
+
+/*! ./shape/icon/Users */
+
+/*! ./shape/icon/Video */
+
+/*! ./shape/icon/View */
+
+/*! ./shape/icon/Vim */
+
+/*! ./shape/icon/Volume0 */
+
+/*! ./shape/icon/Volume1 */
+
+/*! ./shape/icon/Volume2 */
+
+/*! ./shape/icon/Volume3 */
+
+/*! ./shape/icon/Warning */
+
+/*! ./shape/icon/WheelChair */
+
+/*! ./shape/icon/Windows */
+
+/*! ./shape/icon/Woman */
+
+/*! ./shape/icon/Wrench */
+
+/*! ./shape/icon/Wrench2 */
+
+/*! ./shape/icon/Wrench3 */
+
+/*! ./shape/icon/ZoomIn */
+
+/*! ./shape/icon/ZoomOut */
+
+/*! ./shape/layout/FlexGridLayout */
+
+/*! ./shape/layout/HorizontalLayout */
+
+/*! ./shape/layout/Layout */
+
+/*! ./shape/layout/StackLayout */
+
+/*! ./shape/layout/TableLayout */
+
+/*! ./shape/layout/VerticalLayout */
+
+/*! ./shape/node/Between */
+
+/*! ./shape/node/End */
+
+/*! ./shape/node/Fulcrum */
+
+/*! ./shape/node/HorizontalBus */
+
+/*! ./shape/node/Hub */
+
+/*! ./shape/node/Node */
+
+/*! ./shape/node/Start */
+
+/*! ./shape/node/VerticalBus */
+
+/*! ./shape/note/PostIt */
+
+/*! ./shape/pert/Activity */
+
+/*! ./shape/pert/Start */
+
+/*! ./shape/state/Connection */
+
+/*! ./shape/state/End */
+
+/*! ./shape/state/Start */
+
+/*! ./shape/state/State */
+
+/*! ./shape/widget/Slider */
+
+/*! ./shape/widget/Widget */
+
+/*! ./ui/LabelEditor */
+
+/*! ./ui/LabelInplaceEditor */
+
+/*! ./util/ArrayList */
+
+/*! ./util/Base64 */
+
+/*! ./util/Debug */
+
+/*! ./util/Polyfill */
+
+/*! ./util/SVGUtil */
+
+/*! ./util/raphael_ext */
+
+/*! ./util/spline/BezierSpline */
+
+/*! ./util/spline/CatmullRomSpline */
+
+/*! ./util/spline/CubicSpline */
+
+/*! ./util/spline/Spline */
+
+/*! For license information please see shifty.js.LICENSE.txt */
+
+/*! canvg-browser */
+
+/*! css/contextmenu.css */
+
+/*! lib/Class.exec.js */
+
+/*! lib/jquery.autoresize */
+
+/*! lib/jquery.contextmenu */
+
+/*! lib/pathfinding.exec.js */
+
+/*! lib/raphael.exec.js */
+
+/*! packages */
+
+/*! rgbcolor */
+
+/*! shifty */
+
+/*! stackblur */
+
+/*! util/JSONUtil */
+
+/*! util/UUID */
+
+/*! util/extend */
+
+/*! xmldom */
+
+/*!*********************!*\
+  !*** ./src/Port.js ***!
+  \*********************/
+
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+
+/*!***********************!*\
+  !*** ./src/Canvas.js ***!
+  \***********************/
+
+/*!***********************!*\
+  !*** ./src/Figure.js ***!
+  \***********************/
+
+/*!************************!*\
+  !*** ./src/geo/Ray.js ***!
+  \************************/
+
+/*!*************************!*\
+  !*** ./src/geo/Line.js ***!
+  \*************************/
+
+/*!*************************!*\
+  !*** ./src/geo/Util.js ***!
+  \*************************/
+
+/*!*************************!*\
+  !*** ./src/packages.js ***!
+  \*************************/
+
+/*!**************************!*\
+  !*** ./src/InputPort.js ***!
+  \**************************/
+
+/*!**************************!*\
+  !*** ./src/SVGFigure.js ***!
+  \**************************/
+
+/*!**************************!*\
+  !*** ./src/Selection.js ***!
+  \**************************/
+
+/*!**************************!*\
+  !*** ./src/SetFigure.js ***!
+  \**************************/
+
+/*!**************************!*\
+  !*** ./src/geo/Point.js ***!
+  \**************************/
+
+/*!**************************!*\
+  !*** ./src/io/Reader.js ***!
+  \**************************/
+
+/*!**************************!*\
+  !*** ./src/io/Writer.js ***!
+  \**************************/
+
+/*!**************************!*\
+  !*** ./src/util/UUID.js ***!
+  \**************************/
+
+/*!***************************!*\
+  !*** ./src/Connection.js ***!
+  \***************************/
+
+/*!***************************!*\
+  !*** ./src/HybridPort.js ***!
+  \***************************/
+
+/*!***************************!*\
+  !*** ./src/OutputPort.js ***!
+  \***************************/
+
+/*!***************************!*\
+  !*** ./src/util/Color.js ***!
+  \***************************/
+
+/*!***************************!*\
+  !*** ./src/util/Debug.js ***!
+  \***************************/
+
+/*!****************************!*\
+  !*** ./src/util/Base64.js ***!
+  \****************************/
+
+/*!****************************!*\
+  !*** ./src/util/extend.js ***!
+  \****************************/
+
+/*!*****************************!*\
+  !*** ./src/ResizeHandle.js ***!
+  \*****************************/
+
+/*!*****************************!*\
+  !*** ./src/VectorFigure.js ***!
+  \*****************************/
+
+/*!*****************************!*\
+  !*** ./src/util/SVGUtil.js ***!
+  \*****************************/
+
+/*!******************************!*\
+  !*** ./src/Configuration.js ***!
+  \******************************/
+
+/*!******************************!*\
+  !*** ./src/geo/Rectangle.js ***!
+  \******************************/
+
+/*!******************************!*\
+  !*** ./src/io/png/Writer.js ***!
+  \******************************/
+
+/*!******************************!*\
+  !*** ./src/io/svg/Writer.js ***!
+  \******************************/
+
+/*!******************************!*\
+  !*** ./src/shape/icon/Db.js ***!
+  \******************************/
+
+/*!******************************!*\
+  !*** ./src/shape/icon/Ff.js ***!
+  \******************************/
+
+/*!******************************!*\
+  !*** ./src/shape/icon/Ie.js ***!
+  \******************************/
+
+/*!******************************!*\
+  !*** ./src/shape/icon/No.js ***!
+  \******************************/
+
+/*!******************************!*\
+  !*** ./src/shape/icon/Pc.js ***!
+  \******************************/
+
+/*!******************************!*\
+  !*** ./src/shape/icon/Rw.js ***!
+  \******************************/
+
+/*!******************************!*\
+  !*** ./src/util/JSONUtil.js ***!
+  \******************************/
+
+/*!******************************!*\
+  !*** ./src/util/Polyfill.js ***!
+  \******************************/
+
+/*!*******************************!*\
+  !*** ./src/HeadlessCanvas.js ***!
+  \*******************************/
+
+/*!*******************************!*\
+  !*** ./src/io/json/Reader.js ***!
+  \*******************************/
+
+/*!*******************************!*\
+  !*** ./src/io/json/Writer.js ***!
+  \*******************************/
+
+/*!*******************************!*\
+  !*** ./src/lib/Class.exec.js ***!
+  \*******************************/
+
+/*!*******************************!*\
+  !*** ./src/shape/icon/Acw.js ***!
+  \*******************************/
+
+/*!*******************************!*\
+  !*** ./src/shape/icon/Bug.js ***!
+  \*******************************/
+
+/*!*******************************!*\
+  !*** ./src/shape/icon/Ccw.js ***!
+  \*******************************/
+
+/*!*******************************!*\
+  !*** ./src/shape/icon/Dry.js ***!
+  \*******************************/
+
+/*!*******************************!*\
+  !*** ./src/shape/icon/End.js ***!
+  \*******************************/
+
+/*!*******************************!*\
+  !*** ./src/shape/icon/Ie9.js ***!
+  \*******************************/
+
+/*!*******************************!*\
+  !*** ./src/shape/icon/Key.js ***!
+  \*******************************/
+
+/*!*******************************!*\
+  !*** ./src/shape/icon/Lab.js ***!
+  \*******************************/
+
+/*!*******************************!*\
+  !*** ./src/shape/icon/Man.js ***!
+  \*******************************/
+
+/*!*******************************!*\
+  !*** ./src/shape/icon/Mic.js ***!
+  \*******************************/
+
+/*!*******************************!*\
+  !*** ./src/shape/icon/Pen.js ***!
+  \*******************************/
+
+/*!*******************************!*\
+  !*** ./src/shape/icon/Ppt.js ***!
+  \*******************************/
+
+/*!*******************************!*\
+  !*** ./src/shape/icon/Run.js ***!
+  \*******************************/
+
+/*!*******************************!*\
+  !*** ./src/shape/icon/Sun.js ***!
+  \*******************************/
+
+/*!*******************************!*\
+  !*** ./src/shape/icon/Svg.js ***!
+  \*******************************/
+
+/*!*******************************!*\
+  !*** ./src/shape/icon/Tag.js ***!
+  \*******************************/
+
+/*!*******************************!*\
+  !*** ./src/shape/icon/Usb.js ***!
+  \*******************************/
+
+/*!*******************************!*\
+  !*** ./src/shape/icon/Vim.js ***!
+  \*******************************/
+
+/*!*******************************!*\
+  !*** ./src/shape/node/End.js ***!
+  \*******************************/
+
+/*!*******************************!*\
+  !*** ./src/shape/node/Hub.js ***!
+  \*******************************/
+
+/*!*******************************!*\
+  !*** ./src/ui/LabelEditor.js ***!
+  \*******************************/
+
+/*!*******************************!*\
+  !*** ./src/util/ArrayList.js ***!
+  \*******************************/
+
+/*!********************************!*\
+  !*** ./src/command/Command.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/basic/Arc.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/Apps.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/Book.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/Cart.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/Chat.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/Clip.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/Code.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/Crop.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/Cube.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/Fave.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/Feed.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/Flag.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/Font.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/Fork.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/Gear.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/Hail.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/Help.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/Home.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/IMac.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/Icon.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/Ipad.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/Lamp.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/Link.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/List.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/Lock.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/Mail.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/Page.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/Palm.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/Plus.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/Rain.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/Snow.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/Star.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/Stop.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/Undo.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/User.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/icon/View.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/node/Node.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/shape/state/End.js ***!
+  \********************************/
+
+/*!*********************************!*\
+  !*** ./src/css/contextmenu.css ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/lib/raphael.exec.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/basic/Line.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/basic/Oval.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/basic/Text.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Alarm.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Apple.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Books.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Check.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Clock.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Cloud.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Cross.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Gear2.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Globe.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Icons.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Linux.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Magic.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Merge.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Minus.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Opera.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Page2.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Paper.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Phone.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Photo.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Plane.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Power.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Quote.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Ruler.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Skull.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Skype.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Smile.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Split.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Star2.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Star3.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Start.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Talke.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Talkq.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Trash.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Users.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Video.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/icon/Woman.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/node/Start.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/shape/pert/Start.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/util/raphael_ext.js ***!
+  \*********************************/
+
+/*!**********************************!*\
+  !*** ./src/policy/EditPolicy.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/basic/Image.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/basic/Label.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/diagram/Pie.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/Aumade.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/Bubble.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/Chrome.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/Cloud2.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/Cloudy.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/Detour.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/Expand.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/Export.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/Flickr.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/Folder.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/Future.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/GitHub.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/Hammer.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/HangUp.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/Import.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/Iphone.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/JQuery.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/Jigsaw.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/Locked.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/Magnet.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/NodeJs.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/Noview.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/Parent.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/Pensil.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/People.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/Picker.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/Plugin.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/Rotate.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/Safari.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/Search.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/Sencha.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/Smile2.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/TShirt.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/Unlock.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/Wrench.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/icon/ZoomIn.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/note/PostIt.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/state/Start.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/shape/state/State.js ***!
+  \**********************************/
+
+/*!***********************************!*\
+  !*** ./src/command/CommandAdd.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/analog/OpAmp.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/basic/Circle.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/ArrowUp.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/CloudUp.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/Connect.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/Diagram.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/DockTop.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/Firefox.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/ForkAlt.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/Glasses.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/History.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/Landing.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/MicMute.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/Package.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/Pallete.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/Picture.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/Printer.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/Raphael.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/Refresh.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/Resize2.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/Shuffle.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/StarOff.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/Sticker.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/TakeOff.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/Thunder.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/Twitter.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/Volume0.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/Volume1.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/Volume2.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/Volume3.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/Warning.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/Windows.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/Wrench2.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/Wrench3.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/icon/ZoomOut.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/node/Between.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/shape/node/Fulcrum.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/util/spline/Spline.js ***!
+  \***********************************/
+
+/*!************************************!*\
+  !*** ./node_modules/xmldom/dom.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./node_modules/xmldom/sax.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/command/CommandAttr.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/command/CommandMove.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/command/CommandType.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/basic/Diamond.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/basic/Polygon.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/icon/BarChart.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/icon/Bookmark.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/icon/Calendar.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/icon/CodeTalk.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/icon/Contract.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/icon/Customer.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/icon/DockLeft.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/icon/Download.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/icon/Employee.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/icon/Ethernet.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/icon/Exchange.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/icon/FullCube.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/icon/GRaphael.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/icon/GlobeAlt.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/icon/InkScape.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/icon/Lamp_alt.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/icon/LinkedIn.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/icon/Location.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/icon/NoMagnet.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/icon/Notebook.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/icon/PieChart.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/icon/ReflectH.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/icon/ReflectV.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/icon/Settings.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/icon/Star2Off.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/icon/Star3Off.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/icon/Umbrella.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/layout/Layout.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/pert/Activity.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/widget/Slider.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/shape/widget/Widget.js ***!
+  \************************************/
+
+/*!*************************************!*\
+  !*** ./src/command/CommandGroup.js ***!
+  \*************************************/
+
+/*!*************************************!*\
+  !*** ./src/command/CommandStack.js ***!
+  \*************************************/
+
+/*!*************************************!*\
+  !*** ./src/lib/pathfinding.exec.js ***!
+  \*************************************/
+
+/*!*************************************!*\
+  !*** ./src/shape/basic/PolyLine.js ***!
+  \*************************************/
+
+/*!*************************************!*\
+  !*** ./src/shape/composite/Raft.js ***!
+  \*************************************/
+
+/*!*************************************!*\
+  !*** ./src/shape/icon/Anonymous.js ***!
+  \*************************************/
+
+/*!*************************************!*\
+  !*** ./src/shape/icon/ArrowDown.js ***!
+  \*************************************/
+
+/*!*************************************!*\
+  !*** ./src/shape/icon/ArrowLeft.js ***!
+  \*************************************/
+
+/*!*************************************!*\
+  !*** ./src/shape/icon/BioHazard.js ***!
+  \*************************************/
+
+/*!*************************************!*\
+  !*** ./src/shape/icon/CloudDown.js ***!
+  \*************************************/
+
+/*!*************************************!*\
+  !*** ./src/shape/icon/DockRight.js ***!
+  \*************************************/
+
+/*!*************************************!*\
+  !*** ./src/shape/icon/GitHubAlt.js ***!
+  \*************************************/
+
+/*!*************************************!*\
+  !*** ./src/shape/icon/GlobeAlt2.js ***!
+  \*************************************/
+
+/*!*************************************!*\
+  !*** ./src/shape/icon/LineChart.js ***!
+  \*************************************/
+
+/*!*************************************!*\
+  !*** ./src/shape/icon/NewWindow.js ***!
+  \*************************************/
+
+/*!*************************************!*\
+  !*** ./src/shape/icon/StopWatch.js ***!
+  \*************************************/
+
+/*!**************************************!*\
+  !*** ./src/command/CommandDelete.js ***!
+  \**************************************/
+
+/*!**************************************!*\
+  !*** ./src/command/CommandResize.js ***!
+  \**************************************/
+
+/*!**************************************!*\
+  !*** ./src/command/CommandRotate.js ***!
+  \**************************************/
+
+/*!**************************************!*\
+  !*** ./src/geo/PositionConstants.js ***!
+  \**************************************/
+
+/*!**************************************!*\
+  !*** ./src/lib/jquery.autoresize.js ***!
+  \**************************************/
+
+/*!**************************************!*\
+  !*** ./src/shape/basic/Rectangle.js ***!
+  \**************************************/
+
+/*!**************************************!*\
+  !*** ./src/shape/composite/Group.js ***!
+  \**************************************/
+
+/*!**************************************!*\
+  !*** ./src/shape/diagram/Diagram.js ***!
+  \**************************************/
+
+/*!**************************************!*\
+  !*** ./src/shape/icon/ArrowLeft2.js ***!
+  \**************************************/
+
+/*!**************************************!*\
+  !*** ./src/shape/icon/ArrowRight.js ***!
+  \**************************************/
+
+/*!**************************************!*\
+  !*** ./src/shape/icon/Disconnect.js ***!
+  \**************************************/
+
+/*!**************************************!*\
+  !*** ./src/shape/icon/DockBottom.js ***!
+  \**************************************/
+
+/*!**************************************!*\
+  !*** ./src/shape/icon/Landscape1.js ***!
+  \**************************************/
+
+/*!**************************************!*\
+  !*** ./src/shape/icon/Landscape2.js ***!
+  \**************************************/
+
+/*!**************************************!*\
+  !*** ./src/shape/icon/SlideShare.js ***!
+  \**************************************/
+
+/*!**************************************!*\
+  !*** ./src/shape/icon/WheelChair.js ***!
+  \**************************************/
+
+/*!**************************************!*\
+  !*** ./src/ui/LabelInplaceEditor.js ***!
+  \**************************************/
+
+/*!***************************************!*\
+  !*** ./src/command/CommandConnect.js ***!
+  \***************************************/
+
+/*!***************************************!*\
+  !*** ./src/command/CommandUngroup.js ***!
+  \***************************************/
+
+/*!***************************************!*\
+  !*** ./src/layout/locator/Locator.js ***!
+  \***************************************/
+
+/*!***************************************!*\
+  !*** ./src/lib/jquery.contextmenu.js ***!
+  \***************************************/
+
+/*!***************************************!*\
+  !*** ./src/shape/icon/ArrowRight2.js ***!
+  \***************************************/
+
+/*!***************************************!*\
+  !*** ./src/shape/icon/CommandLine.js ***!
+  \***************************************/
+
+/*!***************************************!*\
+  !*** ./src/shape/icon/ScrewDriver.js ***!
+  \***************************************/
+
+/*!***************************************!*\
+  !*** ./src/shape/icon/SettingsAlt.js ***!
+  \***************************************/
+
+/*!***************************************!*\
+  !*** ./src/shape/icon/TwitterBird.js ***!
+  \***************************************/
+
+/*!***************************************!*\
+  !*** ./src/shape/node/VerticalBus.js ***!
+  \***************************************/
+
+/*!***************************************!*\
+  !*** ./src/shape/state/Connection.js ***!
+  \***************************************/
+
+/*!****************************************!*\
+  !*** ./node_modules/rgbcolor/index.js ***!
+  \****************************************/
+
+/*!****************************************!*\
+  !*** ./src/command/CommandMoveLine.js ***!
+  \****************************************/
+
+/*!****************************************!*\
+  !*** ./src/shape/diagram/Sparkline.js ***!
+  \****************************************/
+
+/*!****************************************!*\
+  !*** ./src/util/spline/CubicSpline.js ***!
+  \****************************************/
+
+/*!*****************************************!*\
+  !*** ./node_modules/stackblur/index.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./src/command/CommandAddVertex.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./src/command/CommandReconnect.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./src/layout/mesh/MeshLayouter.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./src/policy/canvas/ZoomPolicy.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./src/shape/dimetric/Rectangle.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./src/shape/flowchart/Document.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./src/shape/layout/StackLayout.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./src/shape/layout/TableLayout.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./src/shape/node/HorizontalBus.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./src/util/spline/BezierSpline.js ***!
+  \*****************************************/
+
+/*!******************************************!*\
+  !*** ./src/command/CommandCollection.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./src/command/CommandMoveVertex.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./src/command/CommandStackEvent.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./src/layout/locator/TopLocator.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./src/shape/composite/Composite.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./src/shape/composite/Jailhouse.js ***!
+  \******************************************/
+
+/*!*******************************************!*\
+  !*** ./node_modules/xmldom/dom-parser.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./src/command/CommandBoundingBox.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./src/command/CommandDeleteGroup.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./src/layout/locator/LeftLocator.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./src/layout/locator/PortLocator.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./src/policy/canvas/CanvasPolicy.js ***!
+  \*******************************************/
+
+/*!********************************************!*\
+  !*** ./node_modules/shifty/dist/shifty.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./src/command/CommandAssignFigure.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./src/command/CommandMoveVertices.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./src/command/CommandRemoveVertex.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./src/layout/locator/RightLocator.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./src/layout/mesh/ExplodeLayouter.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./src/shape/analog/ResistorBridge.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./src/shape/layout/FlexGridLayout.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./src/shape/layout/VerticalLayout.js ***!
+  \********************************************/
+
+/*!*********************************************!*\
+  !*** ./node_modules/canvg-browser/index.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./src/layout/locator/BottomLocator.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./src/layout/locator/CenterLocator.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./src/policy/canvas/KeyboardPolicy.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./src/shape/basic/LineResizeHandle.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./src/util/spline/CatmullRomSpline.js ***!
+  \*********************************************/
+
+/*!**********************************************!*\
+  !*** ./src/command/CommandMoveConnection.js ***!
+  \**********************************************/
+
+/*!**********************************************!*\
+  !*** ./src/policy/canvas/SelectionPolicy.js ***!
+  \**********************************************/
+
+/*!**********************************************!*\
+  !*** ./src/policy/canvas/WheelZoomPolicy.js ***!
+  \**********************************************/
+
+/*!**********************************************!*\
+  !*** ./src/policy/figure/SelectionPolicy.js ***!
+  \**********************************************/
+
+/*!**********************************************!*\
+  !*** ./src/shape/analog/ResistorVertical.js ***!
+  \**********************************************/
+
+/*!**********************************************!*\
+  !*** ./src/shape/composite/WeakComposite.js ***!
+  \**********************************************/
+
+/*!**********************************************!*\
+  !*** ./src/shape/layout/HorizontalLayout.js ***!
+  \**********************************************/
+
+/*!***********************************************!*\
+  !*** ./src/command/CommandReplaceVertices.js ***!
+  \***********************************************/
+
+/*!***********************************************!*\
+  !*** ./src/layout/anchor/ConnectionAnchor.js ***!
+  \***********************************************/
+
+/*!***********************************************!*\
+  !*** ./src/layout/connection/DirectRouter.js ***!
+  \***********************************************/
+
+/*!***********************************************!*\
+  !*** ./src/layout/connection/VertexRouter.js ***!
+  \***********************************************/
+
+/*!***********************************************!*\
+  !*** ./src/layout/mesh/ProposedMeshChange.js ***!
+  \***********************************************/
+
+/*!***********************************************!*\
+  !*** ./src/policy/canvas/DecorationPolicy.js ***!
+  \***********************************************/
+
+/*!***********************************************!*\
+  !*** ./src/policy/canvas/SnapToEditPolicy.js ***!
+  \***********************************************/
+
+/*!***********************************************!*\
+  !*** ./src/policy/figure/FigureEditPolicy.js ***!
+  \***********************************************/
+
+/*!***********************************************!*\
+  !*** ./src/policy/figure/RegionEditPolicy.js ***!
+  \***********************************************/
+
+/*!***********************************************!*\
+  !*** ./src/policy/port/PortFeedbackPolicy.js ***!
+  \***********************************************/
+
+/*!***********************************************!*\
+  !*** ./src/shape/basic/VertexResizeHandle.js ***!
+  \***********************************************/
+
+/*!************************************************!*\
+  !*** ./src/decoration/connection/Decorator.js ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./src/layout/locator/DraggableLocator.js ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./src/layout/locator/InputPortLocator.js ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./src/layout/locator/XYAbsPortLocator.js ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./src/layout/locator/XYRelPortLocator.js ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./src/policy/canvas/ShowDotEditPolicy.js ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./src/shape/basic/LineEndResizeHandle.js ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./src/shape/composite/StrongComposite.js ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./src/shape/icon/HammerAndScrewDriver.js ***!
+  \************************************************/
+
+/*!*************************************************!*\
+  !*** ./node_modules/script-loader/addScript.js ***!
+  \*************************************************/
+
+/*!*************************************************!*\
+  !*** ./src/layout/locator/ConnectionLocator.js ***!
+  \*************************************************/
+
+/*!*************************************************!*\
+  !*** ./src/layout/locator/OutputPortLocator.js ***!
+  \*************************************************/
+
+/*!*************************************************!*\
+  !*** ./src/policy/canvas/ShowGridEditPolicy.js ***!
+  \*************************************************/
+
+/*!*************************************************!*\
+  !*** ./src/policy/figure/DragDropEditPolicy.js ***!
+  \*************************************************/
+
+/*!*************************************************!*\
+  !*** ./src/policy/figure/VerticalEditPolicy.js ***!
+  \*************************************************/
+
+/*!*************************************************!*\
+  !*** ./src/shape/composite/RaftResizeHandle.js ***!
+  \*************************************************/
+
+/*!**************************************************!*\
+  !*** ./src/command/CommandStackEventListener.js ***!
+  \**************************************************/
+
+/*!**************************************************!*\
+  !*** ./src/layout/anchor/FanConnectionAnchor.js ***!
+  \**************************************************/
+
+/*!**************************************************!*\
+  !*** ./src/shape/arrow/CalligrapherArrowLeft.js ***!
+  \**************************************************/
+
+/*!**************************************************!*\
+  !*** ./src/shape/basic/LineStartResizeHandle.js ***!
+  \**************************************************/
+
+/*!***************************************************!*\
+  !*** ./src/decoration/connection/BarDecorator.js ***!
+  \***************************************************/
+
+/*!***************************************************!*\
+  !*** ./src/layout/connection/ConnectionRouter.js ***!
+  \***************************************************/
+
+/*!***************************************************!*\
+  !*** ./src/layout/connection/RubberbandRouter.js ***!
+  \***************************************************/
+
+/*!***************************************************!*\
+  !*** ./src/policy/canvas/SnapToGridEditPolicy.js ***!
+  \***************************************************/
+
+/*!***************************************************!*\
+  !*** ./src/policy/figure/HorizontalEditPolicy.js ***!
+  \***************************************************/
+
+/*!***************************************************!*\
+  !*** ./src/shape/analog/VoltageSupplyVertical.js ***!
+  \***************************************************/
+
+/*!****************************************************!*\
+  !*** ./src/policy/canvas/DefaultKeyboardPolicy.js ***!
+  \****************************************************/
+
+/*!****************************************************!*\
+  !*** ./src/policy/canvas/DropInterceptorPolicy.js ***!
+  \****************************************************/
+
+/*!****************************************************!*\
+  !*** ./src/policy/canvas/SingleSelectionPolicy.js ***!
+  \****************************************************/
+
+/*!****************************************************!*\
+  !*** ./src/shape/basic/GhostVertexResizeHandle.js ***!
+  \****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/api.js ***!
+  \*****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./src/decoration/connection/ArrowDecorator.js ***!
+  \*****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./src/layout/locator/SmartDraggableLocator.js ***!
+  \*****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./src/policy/canvas/CoronaDecorationPolicy.js ***!
+  \*****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./src/policy/canvas/ExtendedKeyboardPolicy.js ***!
+  \*****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./src/policy/canvas/PanningSelectionPolicy.js ***!
+  \*****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./src/policy/canvas/SnapToCenterEditPolicy.js ***!
+  \*****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./src/shape/analog/VoltageSupplyHorizontal.js ***!
+  \*****************************************************/
+
+/*!******************************************************!*\
+  !*** ./src/decoration/connection/CircleDecorator.js ***!
+  \******************************************************/
+
+/*!******************************************************!*\
+  !*** ./src/layout/anchor/ChopboxConnectionAnchor.js ***!
+  \******************************************************/
+
+/*!******************************************************!*\
+  !*** ./src/layout/connection/FanConnectionRouter.js ***!
+  \******************************************************/
+
+/*!******************************************************!*\
+  !*** ./src/policy/canvas/FadeoutDecorationPolicy.js ***!
+  \******************************************************/
+
+/*!******************************************************!*\
+  !*** ./src/policy/canvas/ReadOnlySelectionPolicy.js ***!
+  \******************************************************/
+
+/*!******************************************************!*\
+  !*** ./src/policy/figure/SelectionFeedbackPolicy.js ***!
+  \******************************************************/
+
+/*!******************************************************!*\
+  !*** ./src/shape/arrow/CalligrapherArrowDownLeft.js ***!
+  \******************************************************/
+
+/*!*******************************************************!*\
+  !*** ./src/decoration/connection/DiamondDecorator.js ***!
+  \*******************************************************/
+
+/*!*******************************************************!*\
+  !*** ./src/layout/connection/MazeConnectionRouter.js ***!
+  \*******************************************************/
+
+/*!*******************************************************!*\
+  !*** ./src/layout/locator/ParallelMidpointLocator.js ***!
+  \*******************************************************/
+
+/*!*******************************************************!*\
+  !*** ./src/layout/locator/PolylineMidpointLocator.js ***!
+  \*******************************************************/
+
+/*!*******************************************************!*\
+  !*** ./src/policy/canvas/GhostMoveSelectionPolicy.js ***!
+  \*******************************************************/
+
+/*!*******************************************************!*\
+  !*** ./src/policy/canvas/ShowChessboardEditPolicy.js ***!
+  \*******************************************************/
+
+/*!*******************************************************!*\
+  !*** ./src/policy/canvas/SnapToGeometryEditPolicy.js ***!
+  \*******************************************************/
+
+/*!*******************************************************!*\
+  !*** ./src/policy/canvas/SnapToVerticesEditPolicy.js ***!
+  \*******************************************************/
+
+/*!*******************************************************!*\
+  !*** ./src/policy/port/ElasticStrapFeedbackPolicy.js ***!
+  \*******************************************************/
+
+/*!********************************************************!*\
+  !*** ./src/layout/locator/ManhattanMidpointLocator.js ***!
+  \********************************************************/
+
+/*!********************************************************!*\
+  !*** ./src/policy/canvas/SnapToInBetweenEditPolicy.js ***!
+  \********************************************************/
+
+/*!********************************************************!*\
+  !*** ./src/policy/line/LineSelectionFeedbackPolicy.js ***!
+  \********************************************************/
+
+/*!*********************************************************!*\
+  !*** ./src/layout/anchor/CenterEdgeConnectionAnchor.js ***!
+  \*********************************************************/
+
+/*!*********************************************************!*\
+  !*** ./src/layout/connection/SketchConnectionRouter.js ***!
+  \*********************************************************/
+
+/*!*********************************************************!*\
+  !*** ./src/layout/connection/SplineConnectionRouter.js ***!
+  \*********************************************************/
+
+/*!*********************************************************!*\
+  !*** ./src/policy/canvas/BoundingboxSelectionPolicy.js ***!
+  \*********************************************************/
+
+/*!*********************************************************!*\
+  !*** ./src/policy/canvas/ShowDimetricGridEditPolicy.js ***!
+  \*********************************************************/
+
+/*!*********************************************************!*\
+  !*** ./src/policy/connection/ConnectionCreatePolicy.js ***!
+  \*********************************************************/
+
+/*!*********************************************************!*\
+  !*** ./src/policy/figure/AntSelectionFeedbackPolicy.js ***!
+  \*********************************************************/
+
+/*!*********************************************************!*\
+  !*** ./src/policy/figure/BusSelectionFeedbackPolicy.js ***!
+  \*********************************************************/
+
+/*!*********************************************************!*\
+  !*** ./src/policy/port/IntrusivePortsFeedbackPolicy.js ***!
+  \*********************************************************/
+
+/*!**********************************************************!*\
+  !*** ./src/layout/anchor/ShortesPathConnectionAnchor.js ***!
+  \**********************************************************/
+
+/*!**********************************************************!*\
+  !*** ./src/layout/connection/CircuitConnectionRouter.js ***!
+  \**********************************************************/
+
+/*!**********************************************************!*\
+  !*** ./src/policy/figure/GlowSelectionFeedbackPolicy.js ***!
+  \**********************************************************/
+
+/*!**********************************************************!*\
+  !*** ./src/policy/figure/HBusSelectionFeedbackPolicy.js ***!
+  \**********************************************************/
+
+/*!**********************************************************!*\
+  !*** ./src/policy/figure/RaftSelectionFeedbackPolicy.js ***!
+  \**********************************************************/
+
+/*!**********************************************************!*\
+  !*** ./src/policy/figure/SlimSelectionFeedbackPolicy.js ***!
+  \**********************************************************/
+
+/*!**********************************************************!*\
+  !*** ./src/policy/figure/VBusSelectionFeedbackPolicy.js ***!
+  \**********************************************************/
+
+/*!**********************************************************!*\
+  !*** ./src/policy/line/VertexSelectionFeedbackPolicy.js ***!
+  \**********************************************************/
+
+/*!***********************************************************!*\
+  !*** ./src/policy/canvas/SnapToDimetricGridEditPolicy.js ***!
+  \***********************************************************/
+
+/*!***********************************************************!*\
+  !*** ./src/policy/figure/WidthSelectionFeedbackPolicy.js ***!
+  \***********************************************************/
+
+/*!************************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/sourceMaps.js ***!
+  \************************************************************/
+
+/*!************************************************************!*\
+  !*** ./src/layout/connection/ManhattanConnectionRouter.js ***!
+  \************************************************************/
+
+/*!************************************************************!*\
+  !*** ./src/policy/figure/ResizeSelectionFeedbackPolicy.js ***!
+  \************************************************************/
+
+/*!************************************************************!*\
+  !*** ./src/policy/figure/VertexSelectionFeedbackPolicy.js ***!
+  \************************************************************/
+
+/*!*************************************************************!*\
+  !*** ./src/policy/connection/DragConnectionCreatePolicy.js ***!
+  \*************************************************************/
+
+/*!**************************************************************!*\
+  !*** ./src/policy/connection/ClickConnectionCreatePolicy.js ***!
+  \**************************************************************/
+
+/*!**************************************************************!*\
+  !*** ./src/policy/line/OrthogonalSelectionFeedbackPolicy.js ***!
+  \**************************************************************/
+
+/*!***************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/styleDomAPI.js ***!
+  \***************************************************************/
+
+/*!***************************************************************!*\
+  !*** ./src/policy/figure/RectangleSelectionFeedbackPolicy.js ***!
+  \***************************************************************/
+
+/*!*****************************************************************!*\
+  !*** ./src/policy/connection/ComposedConnectionCreatePolicy.js ***!
+  \*****************************************************************/
+
+/*!******************************************************************!*\
+  !*** ./node_modules/raw-loader/index.js!./src/lib/Class.exec.js ***!
+  \******************************************************************/
+
+/*!******************************************************************!*\
+  !*** ./src/policy/figure/BigRectangleSelectionFeedbackPolicy.js ***!
+  \******************************************************************/
+
+/*!*******************************************************************!*\
+  !*** ./src/layout/connection/ManhattanBridgedConnectionRouter.js ***!
+  \*******************************************************************/
+
+/*!*******************************************************************!*\
+  !*** ./src/policy/connection/OrthogonalConnectionCreatePolicy.js ***!
+  \*******************************************************************/
+
+/*!********************************************************************!*\
+  !*** ./node_modules/raw-loader/index.js!./src/lib/raphael.exec.js ***!
+  \********************************************************************/
+
+/*!********************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/insertBySelector.js ***!
+  \********************************************************************/
+
+/*!********************************************************************!*\
+  !*** ./src/layout/connection/MuteableManhattanConnectionRouter.js ***!
+  \********************************************************************/
+
+/*!********************************************************************!*\
+  !*** ./src/policy/figure/RoundRectangleSelectionFeedbackPolicy.js ***!
+  \********************************************************************/
+
+/*!*********************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/styleTagTransform.js ***!
+  \*********************************************************************/
+
+/*!**********************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/insertStyleElement.js ***!
+  \**********************************************************************/
+
+/*!***********************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/css/contextmenu.css ***!
+  \***********************************************************************/
+
+/*!***********************************************************************!*\
+  !*** ./src/layout/connection/InteractiveManhattanConnectionRouter.js ***!
+  \***********************************************************************/
+
+/*!************************************************************************!*\
+  !*** ./node_modules/raw-loader/index.js!./src/lib/pathfinding.exec.js ***!
+  \************************************************************************/
+
+/*!****************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
+  \****************************************************************************/
+
+/*!**********************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js ***!
+  \**********************************************************************************/

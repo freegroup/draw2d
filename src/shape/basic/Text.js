@@ -3,7 +3,7 @@ import draw2d from '../../packages'
 
 /**
  * @class
- * Implements a simple text with word wrapping.<br>The height of the element is automatic calculated. The widht of
+ * Implements a simple text with word wrapping.<br>The height of the element is automatic calculated. The width of
  * the element is changeable by the user and respect the minWidth constraint.
  * <br>
  *

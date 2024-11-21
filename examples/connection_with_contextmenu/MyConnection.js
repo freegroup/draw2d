@@ -34,7 +34,7 @@ var MyConnection= draw2d.Connection.extend({
      * @since 1.1.0
      */
     onContextMenu:function(x,y){
-/*
+
         $.contextMenu({
             selector: 'body',
             events:
@@ -76,7 +76,7 @@ var MyConnection= draw2d.Connection.extend({
                 "delete": {name: "Delete"}
             }
         });
-*/
+
    }
 
 });

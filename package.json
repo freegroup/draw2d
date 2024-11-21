@@ -1,6 +1,6 @@
 {
   "name": "draw2d",
-  "version": "1.0.38",
+  "version": "1.0.39",
   "description": "JS drag&drop lib",
   "main": "dist/draw2d.js",
   "scripts": {

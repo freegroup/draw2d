@@ -23,6 +23,9 @@ DIR=/examples yarn dev
 
 ## build
 ``` 
+python3.9 -m venv venv  
+source ./venv/bin/activate 
+
 ./build.sh
 ```
 
