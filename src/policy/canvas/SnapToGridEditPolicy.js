@@ -30,7 +30,7 @@ draw2d.policy.canvas.SnapToGridEditPolicy = draw2d.policy.canvas.SnapToEditPolic
 
       // Default Value for "showGrid=true"
       if (typeof showGrid ==="undefined" || showGrid===true) {
-        this.renderer = new draw2d.policy.canvas.ShowGridEditPolicy(this.grid)
+        this.renderer = new draw2d.policy.canvas.ShowGridEditPolicy({width: this.grid})
       }
     },
 

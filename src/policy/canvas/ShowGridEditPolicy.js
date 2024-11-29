@@ -25,19 +25,28 @@ draw2d.policy.canvas.ShowGridEditPolicy = draw2d.policy.canvas.DecorationPolicy.
   
   NAME: "draw2d.policy.canvas.ShowGridEditPolicy",
 
-  GRID_COLOR: "#f0f0f0",
-  GRID_WIDTH: 20,
-  GRID_STOKE: 1,
+  DEFAULTS: {
+    width: 20,
+    stroke: 1,
+    color: "#f0f0f0",
+    bgColor: "#FFFFFF"
+  },
 
   /**
    * Creates a new constraint policy for snap to grid
    *
    * @param {Number} [grid] the grid width of the canvas
    */
-  init: function (gridDistance, gridStroke, gridColor) {
-    this.gridWidth = gridDistance || this.GRID_WIDTH
-    this.gridStroke = gridStroke || this.GRID_STOKE
-    this.gridColor = new draw2d.util.Color(gridColor || this.GRID_COLOR)
+  init: function (attr) {
+ 
+    // Merge defaults with the provided attr object
+    const config = { ...this.DEFAULTS, ...attr };
+
+    this.gridWidth = config.width;
+    this.gridStroke = config.stroke;
+    this.gridColor = new draw2d.util.Color(config.color);
+    this.bgColor = config.bgColor;
+
     this._super()
     this.onZoomCallback =(emitterFigure, zoomData) => {
       this.setGrid(1/zoomData.value)
@@ -76,12 +85,11 @@ draw2d.policy.canvas.ShowGridEditPolicy = draw2d.policy.canvas.DecorationPolicy.
    * @param {Number} zoom 
    */
   setGrid: function (zoom) {
-    let bgColor = "#FFFFFF"
     let color = this.gridColor.rgba()
 
     let background = 
     ` linear-gradient(to right,  ${color} ${this.gridStroke}px, transparent ${this.gridStroke}px),
-      linear-gradient(to bottom, ${color} ${this.gridStroke}px, ${bgColor}  ${this.gridStroke}px)`
+      linear-gradient(to bottom, ${color} ${this.gridStroke}px, ${this.bgColor}  ${this.gridStroke}px)`
     let backgroundSize = `${this.gridWidth*zoom}px ${this.gridWidth*zoom}px`
 
     $(this.canvas.paper.canvas).css({
