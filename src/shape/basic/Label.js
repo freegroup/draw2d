@@ -699,6 +699,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
       memento.fontSize = this.fontSize
       memento.fontColor = this.fontColor.rgba()
       memento.fontFamily = this.fontFamily
+      memento.bold = this.bold
 
       if (this.editor !== null) {
         memento.editor = this.editor.NAME
@@ -733,6 +734,9 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
       }
       if (typeof memento.fontColor !== "undefined") {
         this.setFontColor(memento.fontColor)
+      }
+      if (typeof memento.bold !== "undefined") {
+        this.setBold(memento.bold)
       }
 
       if (typeof memento.editor === "string") {
