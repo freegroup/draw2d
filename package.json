@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "canvg": "^4.0.1",
+    "rgbcolor": "^1.0.1",
     "shifty": "2.20.0"
   }
 }
