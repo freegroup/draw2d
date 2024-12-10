@@ -63,6 +63,8 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
       this.outlineStroke = 0
       this.outlineColor = new draw2d.util.Color(null)
 
+      this.textAlign = "start";
+
       this.bold = false
 
       // behavior of the shape
@@ -90,6 +92,8 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
           padding: this.setPadding,
           // @attr {Boolean} bold indicator if bold text should be used*/
           bold: this.setBold,
+
+          textAlign: this.textAlign,
           ...setter},
         {
           text: this.getText,
@@ -100,6 +104,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
           fontColor: this.getFontColor,
           padding: this.getPadding,
           bold: this.isBold,
+          textAlign: this.textAlign,
           ...getter
         }
       )
@@ -173,12 +178,12 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
      */
     calculateTextAttr: function () {
       let lattr = {
-        "text-anchor": "start",
+        "text-anchor": this.textAlign,
         "font-size": this.fontSize,
         "font-weight": (this.bold === true) ? "bold" : "normal",
         fill: this.fontColor.rgba(),
         stroke: this.outlineColor.rgba(),
-        "stroke-width": this.outlineStroke
+        "stroke-width": this.outlineStroke,
       }
       if (this.fontFamily !== null) {
         lattr["font-family"] = this.fontFamily
@@ -237,8 +242,35 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
      * @returns {Number}
      * @since 4.0.1
      */
-    getFontSize: function () {
-      return this.fontSize
+    getTextAlign: function () {
+      return this.textAlign
+    },
+
+     /**
+     *
+     * Set the new text align in [pt].
+     *
+     * @returns {this}
+     * @param {String} textAlign The new textAlign in <code>pt</code>
+     **/
+     setTextAlign: function (textAlign) {
+      this.clearCache()
+      this.textAlign = textAlign
+
+      this.repaint()
+
+      this.fireEvent("change:textAlign", {value: this.textAlign})
+      this.fireEvent("resize")
+
+      // Update the resize handles if the user change the position of the element via an API call.
+      //
+      this.editPolicy.each( (i, e) =>{
+        if (e instanceof draw2d.policy.figure.DragDropEditPolicy) {
+          e.moved(this.canvas, this)
+        }
+      })
+
+      return this
     },
 
 

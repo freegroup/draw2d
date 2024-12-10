@@ -137,7 +137,7 @@ draw2d.VectorFigure = draw2d.shape.node.Node.extend(
         this.glowIsActive = flag;
         if(flag===true){
             this.strokeBeforeGlow = this.getStroke();
-            this.setStroke(this.strokeBeforeGlow*2.5);
+            this.setStroke(this.strokeBeforeGlow*1.5);
         }
         else {
             this.setStroke(this.strokeBeforeGlow);

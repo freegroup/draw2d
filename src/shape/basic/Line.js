@@ -55,9 +55,15 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
     this.draggedSegment = null
 
     this.dasharray = null
+    this.dasharrayOffset = null;
+    this.animate = false;
+    this.animateDirection = false;
 
     this.start = new draw2d.geo.Point(30, 30)
     this.end = new draw2d.geo.Point(100, 100)
+
+    this.glowColor = new draw2d.util.Color("#3f72bf")
+    this.glowStrokeSize = this.stroke * 2.5;
 
     this.vertices = new draw2d.util.ArrayList()
     this.vertices.add(this.start.clone())
@@ -96,8 +102,12 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
         dasharray: this.setDashArray,
         // @attr {Boolean} glow the glow flag for the shape. The representation of the "glow" depends on the shape */
         glow: this.setGlow,
-        ...setter},
+        glowStrokeSize: this.setGlowStrokeSize,
+        animate: this.setAnmiate,
+        animateDirection: this.setAnimateDirection,
+        dasharrayOffset: this.setDasharrayOffset,
 
+        ...setter},
       {
         start: this.getStartPosition,
         end: this.getEndPosition,
@@ -108,6 +118,11 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
         color: this.getColor,
         dasharray: this.getDashArray,
         vertices: this.getVertices,
+        glowStrokeSize: this.getGlowStrokeSize,
+        animate: this.getAnmiate,
+        animateDirection: this.getAnimateDirection,
+        dasharrayOffset: this.getDasharrayOffset,
+        
         ...getter})
 
     // some router installs a edit policy. In this case we want delete them
@@ -404,8 +419,10 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
     }
 
     attributes["stroke-dasharray"]??=this.dasharray
+ 
     this._super(attributes)
 
+ 
     if (this.outlineStroke > 0) {
       this.shape.items[0].attr({
         "stroke-width": (this.outlineStroke + this.stroke),
@@ -420,6 +437,9 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
       this.shape.items[0].attr({"stroke-width": 0, "stroke": "none"})
       this.shape.items[0].hide()
       this.outlineVisible = false
+    }
+    if(this.animate) {
+      $(this.shape.items[1].node).css({"stroke-dashoffset": this.animateDirection ? "200" : "-200", "animation": "lineAnimation 5s linear infinite"});
     }
   },
 
@@ -441,6 +461,68 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
   },
 
 
+  setGlowColor: function (w) {
+    this.glowColor = w
+    this.repaint()
+    this.fireEvent("change:glowColor", {value: this.glowColor})
+
+    return this
+  },
+
+
+  getGlowStrokeSize: function () {
+    return this.glowStrokeSize
+  },
+
+  setGlowStrokeSize: function (w) {
+    this.glowStrokeSize = w
+    this.repaint()
+    this.fireEvent("change:glowStrokeSize", {value: this.glowStrokeSize})
+
+    return this
+  },
+
+
+  getGlowColor: function () {
+    return this.glowColor
+  },
+
+  getDasharrayOffset: function () {
+    return this.dasharrayOffset
+  },
+
+  setDasharrayOffset: function (w) {
+    this.dasharrayOffset = w
+    this.repaint()
+    this.fireEvent("change:dasharrayOffset", {value: this.dasharrayOffset})
+
+    return this
+  },
+
+  getAnimate: function () {
+    return this.animate
+  },
+
+  setAnimate: function (w) {
+    this.animate = w
+    this.repaint()
+    this.fireEvent("change:animate", {value: this.animate})
+
+    return this
+  },
+
+  getAnimateDirection: function () {
+    return this.animateDirection
+  },
+
+  setAnimateDirection: function (w) {
+    this.animateDirection = w
+    this.repaint()
+    this.fireEvent("change:animateDirection", {value: this.animateDirection})
+
+    return this
+  },
+  
   /**
    *
    * Highlight the element or remove the highlighting
@@ -463,8 +545,8 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
       this._lineColor = this.lineColor
       this._stroke = this.stroke
 
-      this.setColor(new draw2d.util.Color("#3f72bf"))
-      this.setStroke((this.stroke * 4) | 0)
+      this.setColor(this.glowColor) 
+      this.setStroke(this.glowStrokeSize)
     }
     else {
       this.setColor(this._lineColor)
