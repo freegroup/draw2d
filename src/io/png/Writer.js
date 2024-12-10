@@ -1,5 +1,5 @@
 import draw2d from '../../packages'
-const canvg = require('canvg-browser')
+const canvg = require('canvg')
 
 /**
  * @class
