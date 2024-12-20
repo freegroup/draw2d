@@ -25,6 +25,7 @@ draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend(
 
     DEFAULT_COLOR: new Color("#4DF0FE"),
     BACKGROUND_COLOR: new Color("#29AA77"),
+    IS_HUB: true,
 
     /**
      *

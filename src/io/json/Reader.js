@@ -73,21 +73,25 @@ draw2d.io.json.Reader = draw2d.io.Reader.extend(
             let val = element[i];
             if (i === "source") {
               node = canvas.getFigure(val.node);
-              if (node === null) {
-                throw "Source figure with id '" + val.node + "' not found";
-              }
-              source = node.getPort(val.port);
-              if (source === null) {
-                throw "Unable to find source port '" + val.port + "' at figure '" + val.node + "' to unmarschal '" + element.type + "'";
+              if (node.isHub == false) {
+                if (node === null) {
+                  throw "Source figure with id '" + val.node + "' not found";
+                }
+                source = node.getPort(val.port);
+                if (source === null) {
+                  throw "Unable to find source port '" + val.port + "' at figure '" + val.node + "' to unmarschal '" + element.type + "'";
+                }
               }
             } else if (i === "target") {
               node = canvas.getFigure(val.node);
-              if (node === null) {
-                throw "Target figure with id '" + val.node + "' not found";
-              }
-              target = node.getPort(val.port);
-              if (target === null) {
-                throw "Unable to find target port '" + val.port + "' at figure '" + val.node + "' to unmarschal '" + element.type + "'";
+              if (node.isHub == false) {
+                if (node === null) {
+                  throw "Target figure with id '" + val.node + "' not found";
+                }
+                target = node.getPort(val.port);
+                if (target === null) {
+                  throw "Unable to find target port '" + val.port + "' at figure '" + val.node + "' to unmarschal '" + element.type + "'";
+                }
               }
             }
           }

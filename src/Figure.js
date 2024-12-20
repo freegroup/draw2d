@@ -2664,7 +2664,8 @@ draw2d.Figure = Class.extend(
         selectable: this.selectable,
         draggable: this.draggable,
         angle: this.rotationAngle,
-        userData: extend(true, {}, this.userData)
+        userData: extend(true, {}, this.userData),
+        isHub: this.IS_HUB || false
       }
 
 
@@ -2705,6 +2706,10 @@ draw2d.Figure = Class.extend(
 
       if (typeof memento.userData !== "undefined") {
         this.userData = memento.userData
+      }
+
+      if (typeof memento.isHub !== "undefined") {
+        this.isHub = memento.isHub
       }
 
       if (typeof memento.selectable !== "undefined") {
