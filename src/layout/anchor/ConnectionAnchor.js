@@ -10,8 +10,8 @@ import draw2d from '../../packages'
  */
 
 draw2d.layout.anchor.ConnectionAnchor = Class.extend(
-/** @lends draw2d.layout.anchor.ConnectionAnchor.prototype */
-{
+  /** @lends draw2d.layout.anchor.ConnectionAnchor.prototype */
+  {
 
   NAME: "draw2d.layout.anchor.ConnectionAnchor",
 
