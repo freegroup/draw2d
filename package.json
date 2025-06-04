@@ -43,7 +43,7 @@
     "yargs": "^17.6.2"
   },
   "dependencies": {
-    "canvg-browser": "1.0.0",
+    "canvg": "4.0.3",
     "shifty": "2.20.0"
   }
 }
