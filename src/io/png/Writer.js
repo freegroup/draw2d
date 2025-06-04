@@ -1,5 +1,5 @@
 import draw2d from '../../packages'
-const canvg = require('canvg-browser')
+import { Canvg } from 'canvg';
 
 /**
  * @class
@@ -86,11 +86,14 @@ draw2d.io.png.Writer = draw2d.io.Writer.extend(
       let fullSizeCanvas = $("#canvas_png_export_for_draw2d")[0]
       fullSizeCanvas.width = canvas.initialWidth
       fullSizeCanvas.height = canvas.initialHeight
+      const ctx = fullSizeCanvas.getContext('2d');
 
-      canvg("canvas_png_export_for_draw2d", svg, {
+      Canvg.from(ctx, svg, {
         ignoreMouse: true,
-        ignoreAnimation: true,
-        renderCallback: function () {
+        ignoreAnimation: true
+      })
+      .then((cvg) =>
+        {
           try {
             if (canvas instanceof draw2d.Canvas) {
               if(canvasState) {
@@ -123,7 +126,6 @@ draw2d.io.png.Writer = draw2d.io.Writer.extend(
           } finally {
             canvasDomNode.remove()
           }
-        }
-      })
+        });
     }
   })
