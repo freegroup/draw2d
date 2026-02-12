@@ -78,8 +78,8 @@ draw2d.policy.figure.WidthSelectionFeedbackPolicy = draw2d.policy.figure.Selecti
 
     let objWidth = figure.getWidth()
 
-    let xPos = figure.getX()
-    let yPos = figure.getY()
+    let xPos = figure.getAbsoluteX()
+    let yPos = figure.getAbsoluteY()
     r4.setDimension(r4.getWidth(), figure.getHeight())
     r8.setDimension(r8.getWidth(), figure.getHeight())
     r4.setPosition(xPos + objWidth, yPos)

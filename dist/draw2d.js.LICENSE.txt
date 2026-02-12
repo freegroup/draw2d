@@ -148,6 +148,8 @@
 
 /*! ./decoration/connection/DiamondDecorator */
 
+/*! ./decoration/connection/OpenArrowDecorator */
+
 /*! ./dom */
 
 /*! ./geo/Line */
@@ -2685,6 +2687,10 @@
 /*!********************************************************!*\
   !*** ./src/policy/line/LineSelectionFeedbackPolicy.js ***!
   \********************************************************/
+
+/*!*********************************************************!*\
+  !*** ./src/decoration/connection/OpenArrowDecorator.js ***!
+  \*********************************************************/
 
 /*!*********************************************************!*\
   !*** ./src/layout/anchor/CenterEdgeConnectionAnchor.js ***!

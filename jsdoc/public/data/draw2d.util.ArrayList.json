@@ -164,7 +164,7 @@
       "access": "",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>The method removes items from an array as necessary so that all remaining items pass a\nprovided test. The test is a function that is passed an array item and the index of the\nitem within the array. Only if the test returns true will the item stay in the array.</p>",
+      "description": "<p>The method modifies the array and removes items from an array as necessary so that all remaining items pass a\nprovided test. The test is a function that is passed an array item and the index of the\nitem within the array. Only if the test returns true will the item stay in the array.</p>",
       "parameters": [
         {
           "name": "func",

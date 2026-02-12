@@ -184,7 +184,7 @@ draw2d.policy.connection.ClickConnectionCreatePolicy = draw2d.policy.connection.
 
         if(command!==null){
             this.vertices.push(port.getPosition());
-            command.setConnection( this.createConnection());
+            command.setConnection( this.createConnection(command.source, command.target));
             figure.getCanvas().getCommandStack().execute(command);
             this.beeline.hide();
             this.tempConnection.hide();
@@ -243,9 +243,9 @@ draw2d.policy.connection.ClickConnectionCreatePolicy = draw2d.policy.connection.
     },
 
 
-    createConnection: function()
+    createConnection: function(source, target)
     {
-        var connection = this._super();
+        var connection = this._super(source, target);
         if(this.vertices.length===2){
             connection.setRouter(new draw2d.layout.connection.DirectRouter());
         }

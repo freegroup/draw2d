@@ -44,7 +44,7 @@
       "access": "",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>set the maximal possible count of connections for this port.<br>\nThis method din't delete any connection if you reduce the number and a bunch of\nconnection are bounded already.</p>",
+      "description": "<p>set the maximal possible count of connections for this port.<br>\nThis method didn't delete any connection if you reduce the number and a bunch of\nconnection are bounded already.</p>",
       "parameters": [
         {
           "name": "count",
@@ -261,7 +261,7 @@
         {
           "name": "value",
           "type": "Object",
-          "description": "<p>the new value for the port</p>",
+          "description": "<p>the new value for the port. Can be &quot;undefined&quot; or &quot;null&quot;</p>",
           "default": "",
           "optional": "",
           "nullable": ""
@@ -913,6 +913,17 @@
       "virtual": false,
       "deprecated": "",
       "description": "",
+      "parameters": [],
+      "inherited": true,
+      "since": "",
+      "examples": []
+    },
+    {
+      "name": "applyTransformation",
+      "access": "private",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>apply a transformation to the shape like rotation, translate,..</p>",
       "parameters": [],
       "inherited": true,
       "since": "",
@@ -2061,17 +2072,6 @@
       "parameters": [],
       "inherited": true,
       "since": "5.0.0",
-      "examples": []
-    },
-    {
-      "name": "applyTransformation",
-      "access": "private",
-      "virtual": false,
-      "deprecated": "",
-      "description": "<p>apply a transformation to the shape like rotation, translate,..</p>",
-      "parameters": [],
-      "inherited": true,
-      "since": "",
       "examples": []
     },
     {

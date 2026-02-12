@@ -1,20 +1,33 @@
 #!/usr/bin/env bash
 
-# generate the jsDoc
-cd ./jsdoc/
-yarn upgrade caniuse-lite browserslist
-yarn install
-./node_modules/jsdoc/jsdoc.js -c ./jsdoc.conf
+set -e  # Exit on error
 
-# generate the VUEjs app
-npm run build
+echo "=== Building draw2d.js ==="
 
-# delete old docu
-cd ..
-rm -r ./docs/
-cp -r ./jsdoc/dist/ ./docs
-
-# build the dist folder
-cp ./dist/draw2d.js ./jsdoc/public/
+# Build the main library first
+echo "1/4 Building main library..."
 npm install
 npm run build
+
+# Copy built library to jsdoc public folder and examples
+echo "2/4 Copying draw2d.js to jsdoc and examples..."
+cp ./dist/draw2d.js ./jsdoc/public/
+cp ./dist/draw2d.js ./examples/
+
+# Generate the jsDoc
+echo "3/4 Generating JSDoc..."
+cd ./jsdoc/
+npm install
+./node_modules/jsdoc/jsdoc.js -c ./jsdoc.conf
+
+# Generate the VUEjs app
+echo "4/4 Building documentation site..."
+npm run build
+
+# Deploy to docs folder
+cd ..
+echo "=== Deploying to docs/ ==="
+rm -rf ./docs/
+cp -r ./jsdoc/dist/ ./docs
+
+echo "=== Build complete! ==="

@@ -3003,6 +3003,17 @@
           "examples": []
         },
         {
+          "name": "applyTransformation",
+          "access": "private",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>apply a transformation to the shape like rotation, translate,..</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
           "name": "getCenter",
           "access": "",
           "virtual": false,
@@ -4281,17 +4292,6 @@
           "parameters": [],
           "inherited": true,
           "since": "5.0.0",
-          "examples": []
-        },
-        {
-          "name": "applyTransformation",
-          "access": "private",
-          "virtual": false,
-          "deprecated": "",
-          "description": "<p>apply a transformation to the shape like rotation, translate,..</p>",
-          "parameters": [],
-          "inherited": true,
-          "since": "",
           "examples": []
         },
         {
@@ -9087,6 +9087,17 @@
           }
         },
         {
+          "name": "applyTransformation",
+          "access": "private",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>apply a transformation to the shape like rotation, translate,..</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
           "name": "getCenter",
           "access": "",
           "virtual": false,
@@ -10312,17 +10323,6 @@
           "parameters": [],
           "inherited": true,
           "since": "5.0.0",
-          "examples": []
-        },
-        {
-          "name": "applyTransformation",
-          "access": "private",
-          "virtual": false,
-          "deprecated": "",
-          "description": "<p>apply a transformation to the shape like rotation, translate,..</p>",
-          "parameters": [],
-          "inherited": true,
-          "since": "",
           "examples": []
         },
         {
@@ -17805,6 +17805,37 @@
           "examples": []
         },
         {
+          "name": "setPosition",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the position of the object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  x: x,\n  y: y\n});</code></pre>",
+          "parameters": [
+            {
+              "name": "x",
+              "type": [
+                "Number",
+                "draw2d.geo.Point"
+              ],
+              "description": "<p>The new x coordinate of the figure or the x/y coordinate if it is an draw2d.geo.Point</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "y",
+              "type": "Number",
+              "description": "<p>The new y coordinate of the figure</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "inherited": false,
+          "since": "",
+          "examples": []
+        },
+        {
           "name": "onClick",
           "access": "",
           "virtual": false,
@@ -20101,37 +20132,6 @@
           }
         },
         {
-          "name": "setPosition",
-          "access": "",
-          "virtual": false,
-          "deprecated": "",
-          "description": "<p>Set the position of the object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  x: x,\n  y: y\n});</code></pre>",
-          "parameters": [
-            {
-              "name": "x",
-              "type": [
-                "Number",
-                "draw2d.geo.Point"
-              ],
-              "description": "<p>The new x coordinate of the figure or the x/y coordinate if it is an draw2d.geo.Point</p>",
-              "default": "",
-              "optional": "",
-              "nullable": ""
-            },
-            {
-              "name": "y",
-              "type": "Number",
-              "description": "<p>The new y coordinate of the figure</p>",
-              "default": "",
-              "optional": true,
-              "nullable": ""
-            }
-          ],
-          "inherited": true,
-          "since": "",
-          "examples": []
-        },
-        {
           "name": "getPosition",
           "access": "",
           "virtual": false,
@@ -21170,6 +21170,17 @@
             "type": "Object",
             "description": ""
           }
+        },
+        {
+          "name": "applyTransformation",
+          "access": "private",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>apply a transformation to the shape like rotation, translate,..</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": []
         },
         {
           "name": "getCenter",
@@ -22397,17 +22408,6 @@
           "parameters": [],
           "inherited": true,
           "since": "5.0.0",
-          "examples": []
-        },
-        {
-          "name": "applyTransformation",
-          "access": "private",
-          "virtual": false,
-          "deprecated": "",
-          "description": "<p>apply a transformation to the shape like rotation, translate,..</p>",
-          "parameters": [],
-          "inherited": true,
-          "since": "",
           "examples": []
         },
         {
@@ -24165,6 +24165,17 @@
           "examples": []
         },
         {
+          "name": "applyTransformation",
+          "access": "private",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>apply a transformation to the shape like rotation, translate,..</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
           "name": "getCenter",
           "access": "",
           "virtual": false,
@@ -25428,17 +25439,6 @@
           "parameters": [],
           "inherited": true,
           "since": "5.0.0",
-          "examples": []
-        },
-        {
-          "name": "applyTransformation",
-          "access": "private",
-          "virtual": false,
-          "deprecated": "",
-          "description": "<p>apply a transformation to the shape like rotation, translate,..</p>",
-          "parameters": [],
-          "inherited": true,
-          "since": "",
           "examples": []
         },
         {
@@ -27305,6 +27305,17 @@
           }
         },
         {
+          "name": "applyTransformation",
+          "access": "private",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>apply a transformation to the shape like rotation, translate,..</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
           "name": "getCenter",
           "access": "",
           "virtual": false,
@@ -28530,17 +28541,6 @@
           "parameters": [],
           "inherited": true,
           "since": "5.0.0",
-          "examples": []
-        },
-        {
-          "name": "applyTransformation",
-          "access": "private",
-          "virtual": false,
-          "deprecated": "",
-          "description": "<p>apply a transformation to the shape like rotation, translate,..</p>",
-          "parameters": [],
-          "inherited": true,
-          "since": "",
           "examples": []
         },
         {
@@ -29850,6 +29850,17 @@
         },
         {
           "name": "createShapeElement",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "",
+          "parameters": [],
+          "inherited": false,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "applyTransformation",
           "access": "",
           "virtual": false,
           "deprecated": "",
@@ -33421,6 +33432,37 @@
           "examples": []
         },
         {
+          "name": "setPosition",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the position of the object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  x: x,\n  y: y\n});</code></pre>",
+          "parameters": [
+            {
+              "name": "x",
+              "type": [
+                "Number",
+                "draw2d.geo.Point"
+              ],
+              "description": "<p>The new x coordinate of the figure or the x/y coordinate if it is an draw2d.geo.Point</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "y",
+              "type": "Number",
+              "description": "<p>The new y coordinate of the figure</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
           "name": "onClick",
           "access": "",
           "virtual": false,
@@ -35444,37 +35486,6 @@
             "type": "draw2d.geo.Rectangle",
             "description": ""
           }
-        },
-        {
-          "name": "setPosition",
-          "access": "",
-          "virtual": false,
-          "deprecated": "",
-          "description": "<p>Set the position of the object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  x: x,\n  y: y\n});</code></pre>",
-          "parameters": [
-            {
-              "name": "x",
-              "type": [
-                "Number",
-                "draw2d.geo.Point"
-              ],
-              "description": "<p>The new x coordinate of the figure or the x/y coordinate if it is an draw2d.geo.Point</p>",
-              "default": "",
-              "optional": "",
-              "nullable": ""
-            },
-            {
-              "name": "y",
-              "type": "Number",
-              "description": "<p>The new y coordinate of the figure</p>",
-              "default": "",
-              "optional": true,
-              "nullable": ""
-            }
-          ],
-          "inherited": true,
-          "since": "",
-          "examples": []
         },
         {
           "name": "getPosition",
@@ -41967,7 +41978,7 @@
     {
       "name": "Text",
       "namespace": "draw2d.shape.basic",
-      "description": "<p>Implements a simple text with word wrapping.<br>The height of the element is automatic calculated. The widht of\nthe element is changeable by the user and respect the minWidth constraint.\n<br></p>",
+      "description": "<p>Implements a simple text with word wrapping.<br>The height of the element is automatic calculated. The width of\nthe element is changeable by the user and respect the minWidth constraint.\n<br></p>",
       "extends": [
         "draw2d.shape.basic.Label"
       ],

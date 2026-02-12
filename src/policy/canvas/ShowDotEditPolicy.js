@@ -27,6 +27,7 @@ draw2d.policy.canvas.ShowDotEditPolicy = draw2d.policy.canvas.DecorationPolicy.e
 
   NAME: "draw2d.policy.canvas.ShowDotEditPolicy",
 
+  BG_COLOR: "#FFFFFF",
   DOT_COLOR: "#999999",
   DOT_RADIUS: 1,
   DOT_DISTANCE: 20,
@@ -37,13 +38,15 @@ draw2d.policy.canvas.ShowDotEditPolicy = draw2d.policy.canvas.DecorationPolicy.e
    * @param {Number} [dotDistance] the distance or grid width between the dots.
    * @param {Number} [dotRadius] the radius of the dots.
    * @param {draw2d.util.Color|String} [dotColor] the color for the dots.
+   * @param {draw2d.util.Color|String} [bgColor] the background color of the canvas.
    */
-  init: function (dotDistance, dotRadius, dotColor) {
+  init: function (dotDistance, dotRadius, dotColor, bgColor) {
     this._super()
 
     this.dotDistance = dotDistance ? dotDistance : this.DOT_DISTANCE
     this.dotRadius = dotRadius ? dotRadius : this.DOT_RADIUS
     this.dotColor = new draw2d.util.Color(dotColor ? dotColor : this.DOT_COLOR)
+    this.bgColor = new draw2d.util.Color(bgColor ? bgColor : this.BG_COLOR)
     this.onZoomCallback =(emitterFigure, zoomData) => {
       this.setGrid(1/zoomData.value)
     }
@@ -68,7 +71,7 @@ draw2d.policy.canvas.ShowDotEditPolicy = draw2d.policy.canvas.DecorationPolicy.e
    * @param {Number} zoom 
    */
   setGrid: function (zoom) {
-    let bgColor = "#FFFFFF"
+    let bgColor = this.bgColor.rgba()
     let dotColor = this.dotColor.rgba()
 
     let background = `linear-gradient(90deg, ${bgColor} ${(this.dotDistance - this.dotRadius)*zoom}px, transparent 1%) center, 

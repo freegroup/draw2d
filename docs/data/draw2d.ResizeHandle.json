@@ -1,7 +1,7 @@
 {
   "name": "ResizeHandle",
   "namespace": "draw2d",
-  "description": "<p>The Resizehandles for Figures.</p>\n<pre>\nPossible Type:\n\n  1             2               3\n   O-----------O-------------O\n   |                         |\n   |                         |\n  8 O           + 9           O 4\n   |                         |\n   |                         |\n   O-----------O-------------O\n  7             6               5\n</pre>",
+  "description": "<p>The Resizehandles for Figures.</p>\n<pre>\nPossible Type:\n\n  1             2               3\n   O-----------O-------------O\n   |                         |\n   |                         |\n 8 O           + 9           O 4\n   |                         |\n   |                         |\n   O-----------O-------------O\n  7             6               5\n</pre>",
   "extends": [
     "draw2d.shape.basic.Rectangle"
   ],
@@ -210,6 +210,22 @@
           "name": "dy2",
           "type": "Number",
           "description": "<p>The y diff since the last call of this dragging operation</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "shiftKey",
+          "type": "Boolean",
+          "description": "<p>true if the shift key has been pressed during this event</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "ctrlKey",
+          "type": "Boolean",
+          "description": "<p>true if the ctrl key has been pressed during the event</p>",
           "default": "",
           "optional": "",
           "nullable": ""

@@ -33,7 +33,7 @@ draw2d.policy.connection.ConnectionCreatePolicy = draw2d.policy.canvas.KeyboardP
      * @returns {draw2d.Connection}
      * @template
      */
-    createConnection:function()
+    createConnection:function(source, target)
     {
         return new draw2d.Connection({
             router: new draw2d.layout.connection.DirectRouter()

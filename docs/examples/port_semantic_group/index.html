@@ -12,23 +12,33 @@
 
   <script src="../draw2d.js"></script>
 
-  <script src="StartTypA.js"></script>
-  <script src="EndTypA.js"></script>
-  <script src="StartTypB.js"></script>
-  <script src="EndTypB.js"></script>
 
   <script type="text/javascript">
 
 
     document.addEventListener("DOMContentLoaded", function () {
 
+      draw2d.Configuration.factory.createInputPort= function(){
+        let port = new draw2d.InputPort();
+        port.uninstallEditPolicy("draw2d.policy.port.IntrusivePortsFeedbackPolicy")
+        port.installEditPolicy(new draw2d.policy.port.ElasticStrapFeedbackPolicy())
+        return port
+      }
+      draw2d.Configuration.factory.createOutputPort= function(){
+        let port = new draw2d.OutputPort();
+        port.uninstallEditPolicy("draw2d.policy.port.IntrusivePortsFeedbackPolicy")
+        port.installEditPolicy(new draw2d.policy.port.ElasticStrapFeedbackPolicy())
+        return port
+      }
+
       var canvas = new draw2d.Canvas("gfx_holder");
 
-      canvas.add(new StartTypA(), 100, 100)
-      canvas.add(new EndTypA(), 500, 100)
 
-      canvas.add(new StartTypB(), 100, 300)
-      canvas.add(new EndTypB(), 500, 300)
+      canvas.add(new draw2d.shape.node.Start(), 100, 100)
+      canvas.add(new draw2d.shape.node.End(), 500, 100)
+
+      canvas.add(new draw2d.shape.node.Start(), 100, 300)
+      canvas.add(new draw2d.shape.node.End(), 500, 300)
 
 
       // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN

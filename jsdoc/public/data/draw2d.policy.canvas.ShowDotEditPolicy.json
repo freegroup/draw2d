@@ -41,6 +41,17 @@
           "default": "",
           "optional": true,
           "nullable": ""
+        },
+        {
+          "name": "bgColor",
+          "type": [
+            "draw2d.util.Color",
+            "String"
+          ],
+          "description": "<p>the background color of the canvas.</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
         }
       ],
       "inherited": false,

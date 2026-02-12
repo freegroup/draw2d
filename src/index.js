@@ -443,6 +443,7 @@ require('./ui/LabelEditor');
 require('./ui/LabelInplaceEditor');
 require('./decoration/connection/Decorator');
 require('./decoration/connection/ArrowDecorator');
+require('./decoration/connection/OpenArrowDecorator');
 require('./decoration/connection/DiamondDecorator');
 require('./decoration/connection/CircleDecorator');
 require('./decoration/connection/BarDecorator');

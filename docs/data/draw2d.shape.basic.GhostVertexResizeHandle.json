@@ -494,6 +494,17 @@
       }
     },
     {
+      "name": "applyTransformation",
+      "access": "private",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>apply a transformation to the shape like rotation, translate,..</p>",
+      "parameters": [],
+      "inherited": true,
+      "since": "",
+      "examples": []
+    },
+    {
       "name": "getCenter",
       "access": "",
       "virtual": false,
@@ -1719,17 +1730,6 @@
       "parameters": [],
       "inherited": true,
       "since": "5.0.0",
-      "examples": []
-    },
-    {
-      "name": "applyTransformation",
-      "access": "private",
-      "virtual": false,
-      "deprecated": "",
-      "description": "<p>apply a transformation to the shape like rotation, translate,..</p>",
-      "parameters": [],
-      "inherited": true,
-      "since": "",
       "examples": []
     },
     {

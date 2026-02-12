@@ -200,7 +200,7 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
             }
 
             if (command !== null) {
-                var connection = this.createConnection();
+                var connection = this.createConnection(command.source, command.target);
                 command.setConnection(connection);
                 port.getCanvas().getCommandStack().execute(command);
 
@@ -911,9 +911,9 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
         return yDist>xDist? {x: p.x, y:anchor.y}:{x: anchor.x, y: p.y};
     },
 
-    createConnection: function()
+    createConnection: function(source, target)
     {
-        var connection = this._super();
+        var connection = this._super(source, target);
         connection.attr({radius:7, stroke:3});
         connection.setRouter(new draw2d.layout.connection.InteractiveManhattanConnectionRouter());
         return connection;

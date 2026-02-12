@@ -353,6 +353,11 @@ const routes = [
         component: () => import(/* webpackChunkName: "api_draw2d_policy_figure_horizontaleditpolicy" */ '../views/clazz.vue')
       },
       {
+        path: '/api/draw2d/policy/figure/raftselectionfeedbackpolicy',
+        props: { className: 'draw2d.policy.figure.RaftSelectionFeedbackPolicy' },
+        component: () => import(/* webpackChunkName: "api_draw2d_policy_figure_raftselectionfeedbackpolicy" */ '../views/clazz.vue')
+      },
+      {
         path: '/api/draw2d/policy/figure/rectangleselectionfeedbackpolicy',
         props: { className: 'draw2d.policy.figure.RectangleSelectionFeedbackPolicy' },
         component: () => import(/* webpackChunkName: "api_draw2d_policy_figure_rectangleselectionfeedbackpolicy" */ '../views/clazz.vue')
@@ -526,6 +531,11 @@ const routes = [
         path: '/api/draw2d/shape/composite/raft',
         props: { className: 'draw2d.shape.composite.Raft' },
         component: () => import(/* webpackChunkName: "api_draw2d_shape_composite_raft" */ '../views/clazz.vue')
+      },
+      {
+        path: '/api/draw2d/shape/composite/raftresizehandle',
+        props: { className: 'draw2d.shape.composite.RaftResizeHandle' },
+        component: () => import(/* webpackChunkName: "api_draw2d_shape_composite_raftresizehandle" */ '../views/clazz.vue')
       },
       {
         path: '/api/draw2d/shape/composite/strongcomposite',
@@ -2056,6 +2066,11 @@ const routes = [
         path: '/api/draw2d/decoration/connection/diamonddecorator',
         props: { className: 'draw2d.decoration.connection.DiamondDecorator' },
         component: () => import(/* webpackChunkName: "api_draw2d_decoration_connection_diamonddecorator" */ '../views/clazz.vue')
+      },
+      {
+        path: '/api/draw2d/decoration/connection/openarrowdecorator',
+        props: { className: 'draw2d.decoration.connection.OpenArrowDecorator' },
+        component: () => import(/* webpackChunkName: "api_draw2d_decoration_connection_openarrowdecorator" */ '../views/clazz.vue')
       },
       {
         path: '/api/draw2d/layout',

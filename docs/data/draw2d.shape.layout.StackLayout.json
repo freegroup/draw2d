@@ -38,7 +38,7 @@
         {
           "name": "visibleLayer",
           "type": "Number",
-          "description": "",
+          "description": "<p>the layer to show or -1 to hide all of them</p>",
           "default": "",
           "optional": "",
           "nullable": ""

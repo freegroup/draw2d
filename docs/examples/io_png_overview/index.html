@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded",function () {
   // create the canvas for the user interaction
   //
   canvas = new draw2d.Canvas("gfx_holder");
-  canvas.installEditPolicy(new draw2d.policy.canvas.ShowGridEditPolicy(20));
+  canvas.installEditPolicy(new draw2d.policy.canvas.ShowGridEditPolicy());
 
   // unmarshal the JSON document into the canvas
   // (load)

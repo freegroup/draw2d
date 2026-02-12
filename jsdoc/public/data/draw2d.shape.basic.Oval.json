@@ -40,6 +40,17 @@
       "examples": []
     },
     {
+      "name": "applyTransformation",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "",
+      "parameters": [],
+      "inherited": false,
+      "since": "",
+      "examples": []
+    },
+    {
       "name": "getCenter",
       "access": "",
       "virtual": false,

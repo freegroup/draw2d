@@ -62,26 +62,24 @@ draw2d.shape.layout.VerticalLayout = draw2d.shape.layout.Layout.extend(
     //
     this.gap = 0
 
-    // "this" shortcut to avoid $.proxy
-    let _this = this
 
     this.locator = {
-      translate: function (figure, diff) {
+      translate:  (figure, diff)=> {
         figure.setPosition(figure.x + diff.x, figure.y + diff.y)
       },
-      bind: function () {
+      bind:  () => {
       },
-      unbind: function () {
+      unbind: () => {
       },
-      relocate: function (index, target) {
-        let stroke = _this.getStroke()
-        let yPos = stroke + _this.padding.top // respect the border and padding of the shape
-        let xPos = _this.padding.left
+      relocate: (index, target) => {
+        let stroke = this.getStroke()
+        let yPos = stroke + this.padding.top // respect the border and padding of the shape
+        let xPos = this.padding.left
 
         for (let i = 0; i < index; i++) {
-          let child = _this.children.get(i).figure
-          if (child.isVisible()) {
-            yPos += child.getHeight() + _this.gap
+          let child = this.children.get(i).figure
+          if (child.isVisible() && child.useVerticalLayout===true) {
+            yPos += child.getHeight() + this.gap
           }
         }
 
@@ -106,7 +104,14 @@ draw2d.shape.layout.VerticalLayout = draw2d.shape.layout.Layout.extend(
    * @inheritdoc
    */
   add: function (child, locator, index) {
-    this._super(child, this.locator, index)
+    // do not use "===". "==" checks for null and undefined. "===" only for null.
+    child.useVerticalLayout = locator == null;
+
+    // der Aufrufer kann einen Locator übergeben, zum Beispiel für decorations. Dann wird 
+    // dieses Element nicht im Layout berücksichtigt sondern der locator muß alles selber machen.
+    locator ??= this.locator
+
+    this._super(child, locator, index)
 
     this.setDimension(1, 1)
 
@@ -134,7 +139,7 @@ draw2d.shape.layout.VerticalLayout = draw2d.shape.layout.Layout.extend(
     let markup = (this.stroke * 2) + this.padding.left + this.padding.right
     let width = 10
     this.children.each(function (i, e) {
-      if (e.figure.isVisible())
+      if (e.figure.isVisible() && e.figure.useVerticalLayout===true)
         width = Math.max(width, e.figure.isResizeable() ? e.figure.getMinWidth() : e.figure.getWidth())
     })
     return width + markup
@@ -150,7 +155,7 @@ draw2d.shape.layout.VerticalLayout = draw2d.shape.layout.Layout.extend(
     let height = 0
 
     this.children.each(function (i, e) {
-      if (e.figure.isVisible()) {
+      if (e.figure.isVisible() && e.figure.useVerticalLayout===true) {
         height += ((e.figure.isResizeable() ? e.figure.getMinHeight() : e.figure.getHeight()) + gap)
         // first element is iterated. Now we must add the gap to all next elements
         gap = _this.gap
@@ -173,7 +178,7 @@ draw2d.shape.layout.VerticalLayout = draw2d.shape.layout.Layout.extend(
     this._recursiveWidth = width
 
     this.children.each(function (i, e) {
-      if (e.figure.isResizeable() && e.figure.isVisible()) {
+      if (e.figure.isResizeable() && e.figure.isVisible() && e.figure.useVerticalLayout===true) {
         e.figure.setDimension(width, e.figure.getMinHeight())
       }
     })

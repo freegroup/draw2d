@@ -7,7 +7,10 @@
  * @extend draw2d.Connection
  */
 var MyConnection= draw2d.Connection.extend({
-
+  
+    /** required for JSON serialize/deserialize. **/
+    NAME: "MyConnection",
+  
     init:function(attr)
     {
       this._super(attr);
@@ -31,7 +34,7 @@ var MyConnection= draw2d.Connection.extend({
      * @since 1.1.0
      */
     onContextMenu:function(x,y){
-/*
+
         $.contextMenu({
             selector: 'body',
             events:
@@ -73,7 +76,7 @@ var MyConnection= draw2d.Connection.extend({
                 "delete": {name: "Delete"}
             }
         });
-*/
+
    }
 
 });

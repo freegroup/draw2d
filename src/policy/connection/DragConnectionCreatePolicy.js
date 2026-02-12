@@ -253,7 +253,7 @@ draw2d.policy.connection.DragConnectionCreatePolicy = draw2d.policy.connection.C
                     var command = this.mouseDraggingElement.createCommand(request);
 
                     if(command!==null){
-                        command.setConnection(this.createConnection());
+                        command.setConnection(this.createConnection(command.source, command.target));
                         canvas.getCommandStack().execute(command);
                         this.currentDropTarget.onCatch(this.mouseDraggingElement, x, y, shiftKey, ctrlKey);
                     }
@@ -268,9 +268,9 @@ draw2d.policy.connection.DragConnectionCreatePolicy = draw2d.policy.connection.C
     },
 
 
-    createConnection: function()
+    createConnection: function(source, target)
     {
-        var connection = this._super();
+        var connection = this._super(source, target);
         connection.setRouter(new draw2d.layout.connection.DirectRouter());
 
         return connection;

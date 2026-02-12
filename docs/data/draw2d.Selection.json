@@ -136,6 +136,17 @@
       }
     },
     {
+      "name": "isEmpty",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Return if the selection is empty</p>",
+      "parameters": [],
+      "inherited": false,
+      "since": "4.8.0",
+      "examples": []
+    },
+    {
       "name": "getSize",
       "access": "",
       "virtual": false,
