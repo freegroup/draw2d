@@ -59,7 +59,7 @@
 // <debug.setLevel>.
 
 window.debug = (function(){
-  var window = this,
+  let window = this,
 
     // Some convenient shortcuts.
     aps = Array.prototype.slice,
@@ -174,7 +174,7 @@ window.debug = (function(){
       //  object - (Object) Any valid JavaScript object.
 
       that[ level ] = function() {
-        var args = aps.call( arguments ),
+        let args = aps.call( arguments ),
           log_arr = [ level ].concat( args );
 
         logs.push( log_arr );
@@ -249,7 +249,7 @@ window.debug = (function(){
   //    to.
 
   that.setCallback = function() {
-    var args = aps.call( arguments ),
+    let args = aps.call( arguments ),
       max = logs.length,
       i = max;
 

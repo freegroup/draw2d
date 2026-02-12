@@ -58,10 +58,10 @@ draw2d.policy.figure.VBusSelectionFeedbackPolicy = draw2d.policy.figure.BusSelec
             return; // silently
         }
 
-        var r2= figure.selectionHandles.find( handle => handle.type===2);
-        var r6= figure.selectionHandles.find( handle => handle.type===6);
+        let r2= figure.selectionHandles.find( handle => handle.type===2);
+        let r6= figure.selectionHandles.find( handle => handle.type===6);
 
-        var objWidth = figure.getWidth();
+        let objWidth = figure.getWidth();
         // adjust the resize handles on the left/right to the new dimension of the shape
         //
         r2.setDimension(objWidth, r2.getHeight());

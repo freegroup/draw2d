@@ -8,10 +8,10 @@ import draw2d from '../../packages'
  *
  *     // Create a JSON writer and convert it into a JSON-String representation.
  *     //
- *     var writer = new draw2d.io.json.Writer();
+ *     let writer = new draw2d.io.json.Writer();
  *     writer.marshal(canvas, function(json){
  *        // convert the json object into string representation
- *        var jsonTxt = JSON.stringify(json,null,2);
+ *        let jsonTxt = JSON.stringify(json,null,2);
  *     
  *        // insert the json string into a DIV for preview or post
  *        // it via ajax to the server....
@@ -56,7 +56,7 @@ draw2d.io.json.Writer = draw2d.io.Writer.extend(
         throw "Writer.marshal method signature has been change from version 2.10.1 to version 3.0.0. Please consult the API documentation about this issue.";
       }
 
-      var result = [];
+      let result = [];
 
       canvas.getFigures().each( (i, figure)=> {
         result.push(figure.getPersistentAttributes());
@@ -66,7 +66,7 @@ draw2d.io.json.Writer = draw2d.io.Writer.extend(
         result.push(element.getPersistentAttributes());
       });
 
-      var base64Content = draw2d.util.Base64.encode(JSON.stringify(result, null, 2));
+      let base64Content = draw2d.util.Base64.encode(JSON.stringify(result, null, 2));
 
       resultCallback(result, base64Content);
     }

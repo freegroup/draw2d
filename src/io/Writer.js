@@ -70,8 +70,8 @@ draw2d.io.Writer = Class.extend(
                 indent = 0;
             }
 
-            var padding = '';
-            for (var i = 0; i < pad; i++) {
+            let padding = '';
+            for (let i = 0; i < pad; i++) {
                 padding += '  ';
             }
 

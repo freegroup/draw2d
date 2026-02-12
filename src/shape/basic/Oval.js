@@ -55,7 +55,7 @@ draw2d.shape.basic.Oval = draw2d.VectorFigure.extend(
     * @inheritdoc
     */
     applyTransformation: function applyTransformation() {
-        var ts = "R" + this.rotationAngle;
+        let ts = "R" + this.rotationAngle;
 
         this.shape.transform(ts);
 

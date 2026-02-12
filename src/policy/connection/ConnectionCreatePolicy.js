@@ -45,8 +45,8 @@ draw2d.policy.connection.ConnectionCreatePolicy = draw2d.policy.canvas.KeyboardP
     {
         switch(type){
             case 0:
-                var circle = this.canvas.paper.circle(x, y, 3, 3).attr({fill: null, stroke:"#d0d0ff"});
-                var anim = Raphael.animation(
+                let circle = this.canvas.paper.circle(x, y, 3, 3).attr({fill: null, stroke:"#d0d0ff"});
+                let anim = Raphael.animation(
                     {transform: "s6", opacity:0.0, "stroke-width":3 },
                     500,
                     "linear",
@@ -58,15 +58,15 @@ draw2d.policy.connection.ConnectionCreatePolicy = draw2d.policy.canvas.KeyboardP
                 return this.canvas.paper.set();
                 break;
             case 1:
-                var circle1 = this.canvas.paper.circle(x, y, 3, 3).attr({fill: null, stroke:"#3f72bf"});
-                var circle2 = this.canvas.paper.circle(x, y, 3, 3).attr({fill: null, stroke:"#ff0000"});
-                var anim1 = Raphael.animation(
+                let circle1 = this.canvas.paper.circle(x, y, 3, 3).attr({fill: null, stroke:"#3f72bf"});
+                let circle2 = this.canvas.paper.circle(x, y, 3, 3).attr({fill: null, stroke:"#ff0000"});
+                let anim1 = Raphael.animation(
                     {transform: "s6", opacity:0.0, "stroke-width":1 },
                     1200,
                     "linear"
                 ).repeat(Infinity);
                 circle1.animate(anim1);
-                var anim2 = Raphael.animation(
+                let anim2 = Raphael.animation(
                     {transform: "s12", opacity:0.0, "stroke-width":4 },
                     500,
                     "linear",

@@ -163,10 +163,10 @@ draw2d.HeadlessCanvas = Class.extend(
      **/
     getLine: function( id)
     {
-      var count = this.lines.getSize();
-      for(var i=0; i<count;i++)
+      let count = this.lines.getSize();
+      for(let i=0; i<count;i++)
       {
-         var line = this.lines.get(i);
+         let line = this.lines.get(i);
          if(line.getId()===id){
             return line;
          }
@@ -183,7 +183,7 @@ draw2d.HeadlessCanvas = Class.extend(
      **/
     getFigure: function( id)
     {
-      var figure = null;
+      let figure = null;
       this.figures.each(function(i,e){
           if(e.id===id){
               figure=e;
@@ -249,8 +249,8 @@ draw2d.HeadlessCanvas = Class.extend(
             return;
         }
 
-        var subscribers = this.eventSubscriptions[event];
-        for (var i=0; i<subscribers.length; i++) {
+        let subscribers = this.eventSubscriptions[event];
+        for (let i=0; i<subscribers.length; i++) {
             try{
                 subscribers[i](this, args);
             }
@@ -297,8 +297,8 @@ draw2d.HeadlessCanvas = Class.extend(
      */
     on: function(event, callback)
     {
-        var events = event.split(" ");
-        for(var i=0; i<events.length; i++){
+        let events = event.split(" ");
+        for(let i=0; i<events.length; i++){
             if (typeof this.eventSubscriptions[events[i]] === 'undefined') {
                 this.eventSubscriptions[events[i]] = [];
             }
@@ -327,7 +327,7 @@ draw2d.HeadlessCanvas = Class.extend(
             this.eventSubscriptions[eventOrFunction] = [];
         }
         else{
-            for(var event in this.eventSubscriptions ){
+            for(let event in this.eventSubscriptions ){
                 this.eventSubscriptions[event] =this.eventSubscriptions[event].filter( callback => { return callback !== eventOrFunction; });
             }
         }

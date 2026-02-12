@@ -35,8 +35,8 @@ draw2d.layout.locator.PolylineMidpointLocator = draw2d.layout.locator.ManhattanM
    * @param {draw2d.Figure} target The figure to relocate
    **/
   relocate: function (index, target) {
-    var conn = target.getParent()
-    var points = conn.getVertices()
+    let conn = target.getParent()
+    let points = conn.getVertices()
 
     // it has an event count of points -> use the manhattan algorithm...this is working
     // well in this case
@@ -45,8 +45,8 @@ draw2d.layout.locator.PolylineMidpointLocator = draw2d.layout.locator.ManhattanM
     }
     // odd count of points. take the center point as fulcrum
     else {
-      var index = Math.floor(points.getSize() / 2)
-      var p1 = points.get(index)
+      let index = Math.floor(points.getSize() / 2)
+      let p1 = points.get(index)
       target.setPosition(p1.x - (target.getWidth() / 2), p1.y - (target.getHeight() / 2))
     }
   }

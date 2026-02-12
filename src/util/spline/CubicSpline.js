@@ -46,18 +46,18 @@ draw2d.util.spline.CubicSpline = draw2d.util.spline.Spline.extend(
 
       // Endpoints are added twice to get them include in the
       // generated array
-      var cp = new draw2d.util.ArrayList();
+      let cp = new draw2d.util.ArrayList();
       cp.add(controlPoints.get(0));
       cp.addAll(controlPoints);
       cp.add(controlPoints.get(controlPoints.getSize()-1));
 
-      var n = cp.getSize();
-      var spline = new draw2d.util.ArrayList();
+      let n = cp.getSize();
+      let spline = new draw2d.util.ArrayList();
       spline.add(controlPoints.get(0));
       spline.add( this.p(1, 0, cp) );
 
-      for (var i = 1; i < n - 2; i++) {
-        for (var j = 1; j <= parts; j++) {
+      for (let i = 1; i < n - 2; i++) {
+        for (let j = 1; j <= parts; j++) {
           spline.add( this.p(i, j / parts, cp));
         }
       }
@@ -69,13 +69,13 @@ draw2d.util.spline.CubicSpline = draw2d.util.spline.Spline.extend(
 
     p: function( i,  t,  cp)
     {
-      var x = 0.0;
-      var y = 0.0;
+      let x = 0.0;
+      let y = 0.0;
 
-      var k = i-1;
-      for (var j = -2; j <= 1; j++) {
-        var b = this.blend (j, t);
-        var p = cp.get(k++);
+      let k = i-1;
+      for (let j = -2; j <= 1; j++) {
+        let b = this.blend (j, t);
+        let p = cp.get(k++);
         if(!p){
           console.log("error")
         }

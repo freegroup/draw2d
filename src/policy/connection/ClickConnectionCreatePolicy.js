@@ -30,8 +30,8 @@
  *
  *    // create and add two Node which contains Ports (In and OUT)
  *    //
- *    var start = new draw2d.shape.node.Start({x:50, y:50});
- *    var endNode   = new draw2d.shape.node.End({x:200, y:70});
+ *    let start = new draw2d.shape.node.Start({x:50, y:50});
+ *    let endNode   = new draw2d.shape.node.End({x:200, y:70});
  *
  *    // add the two nodes to the canvas
  *    //
@@ -82,8 +82,8 @@ draw2d.policy.connection.ClickConnectionCreatePolicy = draw2d.policy.connection.
      */
     onClick: function(figure, x, y, shiftKey, ctrlKey)
     {
-        var _this = this;
-        var port = figure;
+        let _this = this;
+        let port = figure;
 
         if(port === null && this.port1 === null){
             return;
@@ -112,7 +112,7 @@ draw2d.policy.connection.ClickConnectionCreatePolicy = draw2d.policy.connection.
         // start connection create by selection the start port
         //
         if(this.port1===null){
-            var canvas = port.getCanvas();
+            let canvas = port.getCanvas();
             this.port1 = port;
             this.vertices.push(port.getAbsolutePosition());
             this.beeline = new draw2d.shape.basic.Line({
@@ -150,31 +150,31 @@ draw2d.policy.connection.ClickConnectionCreatePolicy = draw2d.policy.connection.
             this.tempConnection.show(canvas);
             this.tempConnection.setVertices([this.port1.getAbsolutePosition(),this.port1.getAbsolutePosition()]);
 
-            var a= function() {
+            let a= function() {
                 _this.tempConnection.shape.animate({"stroke-width" : 2}, 800, b);
             };
-            var b=function() {
+            let b=function() {
                 _this.tempConnection.shape.animate({"stroke-width":1}, 800, a);
             };
             a();
 
-            var pos = port.getAbsolutePosition();
+            let pos = port.getAbsolutePosition();
             this.pulse =this.ripple(pos.x, pos.y, 1);
             return;
         }
 
 
-        var possibleTarget = port.delegateTarget(this.port1);
+        let possibleTarget = port.delegateTarget(this.port1);
 
         if(!(possibleTarget instanceof draw2d.Port)){
             return; // silently
         }
 
-        var request = new draw2d.command.CommandType(draw2d.command.CommandType.CONNECT);
+        let request = new draw2d.command.CommandType(draw2d.command.CommandType.CONNECT);
         request.source = this.port1;
         request.target = port;
 
-        var command = null;
+        let command = null;
         if(this.port1 instanceof draw2d.InputPort) {
              command = this.port1.createCommand(request);
         }
@@ -227,8 +227,8 @@ draw2d.policy.connection.ClickConnectionCreatePolicy = draw2d.policy.connection.
      **/
     onKeyDown: function(canvas, keyCode, shiftKey, ctrlKey)
     {
-        var KEYCODE_ENTER = 13;
-        var KEYCODE_ESC = 27;
+        let KEYCODE_ENTER = 13;
+        let KEYCODE_ESC = 27;
         if (keyCode === KEYCODE_ESC && this.beeline!==null){
             this.beeline.hide();
             this.tempConnection.hide();
@@ -245,7 +245,7 @@ draw2d.policy.connection.ClickConnectionCreatePolicy = draw2d.policy.connection.
 
     createConnection: function(source, target)
     {
-        var connection = this._super(source, target);
+        let connection = this._super(source, target);
         if(this.vertices.length===2){
             connection.setRouter(new draw2d.layout.connection.DirectRouter());
         }

@@ -33,8 +33,8 @@ draw2d.policy.figure.HBusSelectionFeedbackPolicy = draw2d.policy.figure.BusSelec
         if(figure.selectionHandles.isEmpty()){
             return; // silently
         }
-        var r4= figure.selectionHandles.find(function(handle){return handle.type===4});
-        var r8= figure.selectionHandles.find(function(handle){return handle.type===8});
+        let r4= figure.selectionHandles.find(function(handle){return handle.type===4});
+        let r8= figure.selectionHandles.find(function(handle){return handle.type===8});
 
         r4.setDimension(r4.getWidth(), figure.getHeight());
         r8.setDimension(r4.getWidth(), figure.getHeight());

@@ -37,7 +37,7 @@ draw2d.layout.mesh.ExplodeLayouter = draw2d.layout.mesh.MeshLayouter.extend(
     add: function( canvas, figureToAdd)
     {
     	// changes for the different octant areas
-    	var changes = [];
+    	let changes = [];
     	changes[0]= {x:0, y:0};
     	changes[1]= {x:0, y:0};
     	changes[2]= {x:0, y:0};
@@ -48,15 +48,15 @@ draw2d.layout.mesh.ExplodeLayouter = draw2d.layout.mesh.MeshLayouter.extend(
     	changes[7]= {x:0, y:0};
     	changes[8]= {x:0, y:0};
 
-    	var boundingBox = figureToAdd.getBoundingBox();
+    	let boundingBox = figureToAdd.getBoundingBox();
 
-    	var figures = canvas.getFigures();
-    	var figure = null;
+    	let figures = canvas.getFigures();
+    	let figure = null;
     	
-    	var dis=0;
-    	var oct =0;
-    	var currentOctChanges =null;
-    	var i=0;
+    	let dis=0;
+    	let oct =0;
+    	let currentOctChanges =null;
+    	let i=0;
     	for( i=0; i< figures.getSize();i++){
     		
     		figure = figures.get(i);
@@ -123,7 +123,7 @@ draw2d.layout.mesh.ExplodeLayouter = draw2d.layout.mesh.MeshLayouter.extend(
 
     	// calculate the adjustment for each figure
     	//
-    	var result = new draw2d.util.ArrayList();
+    	let result = new draw2d.util.ArrayList();
     	for( i=0; i< figures.getSize();i++){
     		figure = figures.get(i);
     		if(figure !== figureToAdd ){
@@ -152,16 +152,16 @@ draw2d.layout.mesh.ExplodeLayouter = draw2d.layout.mesh.MeshLayouter.extend(
 	 * @returns {Number}
      */
     determineOctant: function(r1, r2){
-		var ox = r1.x;
-		var oy = r1.y;
-		var ow = r1.w;
-		var oh = r1.h;
+		let ox = r1.x;
+		let oy = r1.y;
+		let ow = r1.w;
+		let oh = r1.h;
 		
-		var cx = r2.x;
-		var cy = r2.y;
-		var cw = r2.w;
-		var ch = r2.h;
-		var oct =0;
+		let cx = r2.x;
+		let cy = r2.y;
+		let cw = r2.w;
+		let ch = r2.h;
+		let oct =0;
 
 		if(cx + cw <= ox){
 			if((cy + ch) <= oy){

@@ -108,7 +108,7 @@
     {
       "name": "Writer",
       "namespace": "draw2d.io.json",
-      "description": "<p>Serialize the canvas document into a JSON object which can be read from the corresponding\n{@link draw2d.io.json.Reader}.</p>\n<pre><code>// Create a JSON writer and convert it into a JSON-String representation.\n//\nvar writer = new draw2d.io.json.Writer();\nwriter.marshal(canvas, function(json){\n   // convert the json object into string representation\n   var jsonTxt = JSON.stringify(json,null,2);\n\n   // insert the json string into a DIV for preview or post\n   // it via ajax to the server....\n   $(&quot;#json&quot;).text(jsonTxt);\n\n});</code></pre>",
+      "description": "<p>Serialize the canvas document into a JSON object which can be read from the corresponding\n{@link draw2d.io.json.Reader}.</p>\n<pre><code>// Create a JSON writer and convert it into a JSON-String representation.\n//\nlet writer = new draw2d.io.json.Writer();\nwriter.marshal(canvas, function(json){\n   // convert the json object into string representation\n   let jsonTxt = JSON.stringify(json,null,2);\n\n   // insert the json string into a DIV for preview or post\n   // it via ajax to the server....\n   $(&quot;#json&quot;).text(jsonTxt);\n\n});</code></pre>",
       "extends": [
         "draw2d.io.Writer"
       ],

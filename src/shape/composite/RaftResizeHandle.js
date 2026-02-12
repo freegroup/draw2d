@@ -73,7 +73,7 @@ draw2d.shape.composite.RaftResizeHandle = draw2d.ResizeHandle.extend(
     let newX = null
     let newY = null
     let corrPos = null
-    // declare new var just to make the semantic behind the flag more clear
+    // declare new let just to make the semantic behind the flag more clear
     let dontMoveChildren = shiftKey===true
 
     /*

@@ -47,10 +47,10 @@ draw2d.policy.figure.ResizeSelectionFeedbackPolicy = draw2d.policy.figure.Select
     if (figure.selectionHandles.isEmpty()) {
       // create standard Resize handles for the figure
       //
-      var r1 = draw2d.Configuration.factory.createResizeHandle(figure, 1) // 1 = LEFT TOP
-      var r3 = draw2d.Configuration.factory.createResizeHandle(figure, 3) // 3 = RIGHT_TOP
-      var r5 = draw2d.Configuration.factory.createResizeHandle(figure, 5) // 5 = RIGHT_BOTTOM
-      var r7 = draw2d.Configuration.factory.createResizeHandle(figure, 7) // 7 = LEFT_BOTTOM
+      let r1 = draw2d.Configuration.factory.createResizeHandle(figure, 1) // 1 = LEFT TOP
+      let r3 = draw2d.Configuration.factory.createResizeHandle(figure, 3) // 3 = RIGHT_TOP
+      let r5 = draw2d.Configuration.factory.createResizeHandle(figure, 5) // 5 = RIGHT_BOTTOM
+      let r7 = draw2d.Configuration.factory.createResizeHandle(figure, 7) // 7 = LEFT_BOTTOM
       figure.selectionHandles.add(r1, r3, r5, r7)
       r1.show(canvas)
       r3.show(canvas)
@@ -78,10 +78,10 @@ draw2d.policy.figure.ResizeSelectionFeedbackPolicy = draw2d.policy.figure.Select
       // show only the additional resizehandles if the figure is resizeable
       //
       if ((!figure.getKeepAspectRatio()) && figure.isResizeable()) {
-        var r2 = draw2d.Configuration.factory.createResizeHandle(figure, 2) // 2 = CENTER_TOP
-        var r4 = draw2d.Configuration.factory.createResizeHandle(figure, 4) // 4 = RIGHT_MIDDLE
-        var r6 = draw2d.Configuration.factory.createResizeHandle(figure, 6) // 6 = CENTER_BOTTOM
-        var r8 = draw2d.Configuration.factory.createResizeHandle(figure, 8) // 8 = LEFT_MIDDLE
+        let r2 = draw2d.Configuration.factory.createResizeHandle(figure, 2) // 2 = CENTER_TOP
+        let r4 = draw2d.Configuration.factory.createResizeHandle(figure, 4) // 4 = RIGHT_MIDDLE
+        let r6 = draw2d.Configuration.factory.createResizeHandle(figure, 6) // 6 = CENTER_BOTTOM
+        let r8 = draw2d.Configuration.factory.createResizeHandle(figure, 8) // 8 = LEFT_MIDDLE
         figure.selectionHandles.add(r2, r4, r6, r8)
         r2.show(canvas)
         r4.show(canvas)
@@ -106,21 +106,21 @@ draw2d.policy.figure.ResizeSelectionFeedbackPolicy = draw2d.policy.figure.Select
       return // silently
     }
 
-    var objHeight = figure.getHeight()
-    var objWidth = figure.getWidth()
-    var xPos = figure.getX()
-    var yPos = figure.getY()
+    let objHeight = figure.getHeight()
+    let objWidth = figure.getWidth()
+    let xPos = figure.getX()
+    let yPos = figure.getY()
 
-    var r1 = figure.selectionHandles.find(function (handle) {
+    let r1 = figure.selectionHandles.find(function (handle) {
       return handle.type === 1
     })
-    var r3 = figure.selectionHandles.find(function (handle) {
+    let r3 = figure.selectionHandles.find(function (handle) {
       return handle.type === 3
     })
-    var r5 = figure.selectionHandles.find(function (handle) {
+    let r5 = figure.selectionHandles.find(function (handle) {
       return handle.type === 5
     })
-    var r7 = figure.selectionHandles.find(function (handle) {
+    let r7 = figure.selectionHandles.find(function (handle) {
       return handle.type === 7
     })
     r1.setPosition(xPos - r1.getWidth(), yPos - r1.getHeight())
@@ -129,16 +129,16 @@ draw2d.policy.figure.ResizeSelectionFeedbackPolicy = draw2d.policy.figure.Select
     r7.setPosition(xPos - r7.getWidth(), yPos + objHeight)
 
     if (!figure.getKeepAspectRatio()) {
-      var r2 = figure.selectionHandles.find(function (handle) {
+      let r2 = figure.selectionHandles.find(function (handle) {
         return handle.type === 2
       })
-      var r4 = figure.selectionHandles.find(function (handle) {
+      let r4 = figure.selectionHandles.find(function (handle) {
         return handle.type === 4
       })
-      var r6 = figure.selectionHandles.find(function (handle) {
+      let r6 = figure.selectionHandles.find(function (handle) {
         return handle.type === 6
       })
-      var r8 = figure.selectionHandles.find(function (handle) {
+      let r8 = figure.selectionHandles.find(function (handle) {
         return handle.type === 8
       })
 

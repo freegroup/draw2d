@@ -866,7 +866,7 @@
         "description": "",
         "parameters": [],
         "examples": [
-          "// create a basic figure and add a Label/child via API call\n   //\n   var end = new draw2d.shape.node.End();\n   end.add(new draw2d.shape.basic.Label({text:\"Right Label\"}), new draw2d.layout.locator.RightLocator({\n        margin: 10 // distance to the parent shape\n   }));\n   canvas.add( end, 50,50);"
+          "// create a basic figure and add a Label/child via API call\n   //\n   let end = new draw2d.shape.node.End();\n   end.add(new draw2d.shape.basic.Label({text:\"Right Label\"}), new draw2d.layout.locator.RightLocator({\n        margin: 10 // distance to the parent shape\n   }));\n   canvas.add( end, 50,50);"
         ]
       }
     },

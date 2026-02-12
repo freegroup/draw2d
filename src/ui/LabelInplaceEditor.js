@@ -9,7 +9,7 @@ import r from "lib/jquery.autoresize"
  *
  * @example
  *
- *    var label =  new draw2d.shape.basic.Label({text:"Double Click on me"});
+ *    let label =  new draw2d.shape.basic.Label({text:"Double Click on me"});
  *
  *    label.installEditor(new draw2d.ui.LabelInplaceEditor({
  *       // called after the value has been set to the LabelFigure
@@ -94,13 +94,13 @@ draw2d.ui.LabelInplaceEditor = draw2d.ui.LabelEditor.extend(
 
       // Position the INPUT and init the autoresize of the element
       //
-      var canvas = this.label.getCanvas();
-      var bb = this.label.getBoundingBox();
+      let canvas = this.label.getCanvas();
+      let bb = this.label.getBoundingBox();
 
       bb.setPosition(canvas.fromCanvasToDocumentCoordinate(bb.x, bb.y));
 
       // remove the scroll from the body if we add the canvas directly into the body
-      var scrollDiv = canvas.getScrollArea();
+      let scrollDiv = canvas.getScrollArea();
       if (scrollDiv.is($("body"))) {
         bb.translate(canvas.getScrollLeft(), canvas.getScrollTop());
       }
@@ -131,8 +131,8 @@ draw2d.ui.LabelInplaceEditor = draw2d.ui.LabelEditor.extend(
     commit: function () {
       this.html.unbind("blur", this.commitCallback);
       $("body").unbind("click", this.commitCallback);
-      var label = this.html.val();
-      var cmd = new draw2d.command.CommandAttr(this.label, {text: label});
+      let label = this.html.val();
+      let cmd = new draw2d.command.CommandAttr(this.label, {text: label});
       this.label.getCanvas().getCommandStack().execute(cmd);
       this.html.fadeOut(() => {
         this.html.remove();

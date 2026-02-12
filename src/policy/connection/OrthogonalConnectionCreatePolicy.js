@@ -29,8 +29,8 @@
  *
  *    // create and add two Node which contains Ports (In and OUT)
  *    //
- *    var start = new draw2d.shape.node.Start({x:50, y:50});
- *    var endNode   = new draw2d.shape.node.End({x:200, y:70});
+ *    let start = new draw2d.shape.node.Start({x:50, y:50});
+ *    let endNode   = new draw2d.shape.node.End({x:200, y:70});
  *
  *    // add the two nodes to the canvas
  *    //
@@ -82,13 +82,13 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
      */
     onClick: function(figure, x, y, shiftKey, ctrlKey)
     {
-        var UP   = draw2d.geo.Rectangle.DIRECTION_UP;
-        var RIGHT= draw2d.geo.Rectangle.DIRECTION_RIGHT;
-        var DOWN = draw2d.geo.Rectangle.DIRECTION_DOWN;
-        var LEFT = draw2d.geo.Rectangle.DIRECTION_LEFT;
+        let UP   = draw2d.geo.Rectangle.DIRECTION_UP;
+        let RIGHT= draw2d.geo.Rectangle.DIRECTION_RIGHT;
+        let DOWN = draw2d.geo.Rectangle.DIRECTION_DOWN;
+        let LEFT = draw2d.geo.Rectangle.DIRECTION_LEFT;
 
-        var _this = this;
-        var port = figure;// .getCanvas().getBestFigure(x, y);
+        let _this = this;
+        let port = figure;// .getCanvas().getBestFigure(x, y);
 
         // nothing to do
         if(port === null && this.port1 === null){
@@ -98,8 +98,8 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
         // nothing found at all
         //
         if(port===null){
-            var canvas = this.port1.getCanvas();
-            var newPos = this.beeline.getEndPosition();
+            let canvas = this.port1.getCanvas();
+            let newPos = this.beeline.getEndPosition();
             this.vertices.add(newPos);
             this.beeline.setStartPosition(this.beeline.getEndPosition());
             this.tempConnection.setVertices(this.vertices);
@@ -120,7 +120,7 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
         // start connection create by selection the start port
         //
         if(this.port1===null){
-            var canvas = port.getCanvas();
+            let canvas = port.getCanvas();
             this.port1 = port;
             this.vertices.add(port.getAbsolutePosition());
             this.beeline = new draw2d.shape.basic.Line({
@@ -158,10 +158,10 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
             this.tempConnection.show(canvas);
             this.tempConnection.setVertices([this.port1.getAbsolutePosition(),this.port1.getAbsolutePosition()]);
 
-            var a= function() {
+            let a= function() {
                 _this.tempConnection.shape.animate({"stroke-width" : 2}, 800, b);
             };
-            var b=function() {
+            let b=function() {
                 _this.tempConnection.shape.animate({"stroke-width":1}, 800, a);
             };
             a();
@@ -175,12 +175,12 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
                 this.pulse = null;
             }
 
-            var pos = port.getAbsolutePosition();
+            let pos = port.getAbsolutePosition();
             this.ripple(pos.x, pos.y, 1);
             this.pulse = canvas.paper.setFinish();
         }
         else {
-            var possibleTarget = port.delegateTarget(this.port1);
+            let possibleTarget = port.delegateTarget(this.port1);
 
             if (!(possibleTarget instanceof draw2d.Port)) {
                 return; // silently
@@ -188,10 +188,10 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
 
             // check whenever the target port allows a connection
             //
-            var request = new draw2d.command.CommandType(draw2d.command.CommandType.CONNECT);
+            let request = new draw2d.command.CommandType(draw2d.command.CommandType.CONNECT);
             request.source = this.port1;
             request.target = port;
-            var command = null;
+            let command = null;
             if (this.port1 instanceof draw2d.InputPort) {
                 command = this.port1.createCommand(request);
             }
@@ -200,7 +200,7 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
             }
 
             if (command !== null) {
-                var connection = this.createConnection(command.source, command.target);
+                let connection = this.createConnection(command.source, command.target);
                 command.setConnection(connection);
                 port.getCanvas().getCommandStack().execute(command);
 
@@ -220,11 +220,11 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
                     return;
                 }
 
-                var MINDIST = command.getConnection().getRouter().MINDIST;
-                var beforeVertex = this.vertices.get(this.vertices.getSize()-2);
-                var lastVertex   = this.vertices.last();
-                var portPos      = port.getAbsolutePosition();
-                var lastSegmentDir = UP;
+                let MINDIST = command.getConnection().getRouter().MINDIST;
+                let beforeVertex = this.vertices.get(this.vertices.getSize()-2);
+                let lastVertex   = this.vertices.last();
+                let portPos      = port.getAbsolutePosition();
+                let lastSegmentDir = UP;
                 if(lastVertex.x === beforeVertex.x){
                     lastSegmentDir = lastVertex.y< beforeVertex.y ? UP : DOWN;
                 }
@@ -716,7 +716,7 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
                                 //        +----------+
                                 //
                                 if(lastVertex.y<portPos.y && lastVertex.x > (portPos.x-MINDIST)){
-                                    var center = portPos.y-(portPos.y-lastVertex.y)/2;
+                                    let center = portPos.y-(portPos.y-lastVertex.y)/2;
                                     this.vertices.add(new draw2d.geo.Point(lastVertex.x, center));
                                     this.vertices.add(new draw2d.geo.Point(portPos.x-MINDIST, center));
                                     this.vertices.add(new draw2d.geo.Point(portPos.x-MINDIST, portPos.y));
@@ -734,7 +734,7 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
                                 //    beforeVertex     lastVertex
                                 //
                                 else if(lastVertex.y>portPos.y && lastVertex.x > (portPos.x-MINDIST)){
-                                    var center = portPos.y+(lastVertex.y-portPos.y)/2;
+                                    let center = portPos.y+(lastVertex.y-portPos.y)/2;
                                     this.vertices.add(new draw2d.geo.Point(lastVertex.x, center));
                                     this.vertices.add(new draw2d.geo.Point(portPos.x-MINDIST, center));
                                     this.vertices.add(new draw2d.geo.Point(portPos.x-MINDIST, portPos.y));
@@ -881,8 +881,8 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
      **/
     onKeyDown: function(canvas, keyCode, shiftKey, ctrlKey)
     {
-        var KEYCODE_ENTER = 13;
-        var KEYCODE_ESC = 27;
+        let KEYCODE_ENTER = 13;
+        let KEYCODE_ESC = 27;
         if (keyCode === KEYCODE_ESC && this.beeline!==null){
             this.beeline.hide();
             this.tempConnection.hide();
@@ -900,20 +900,20 @@ draw2d.policy.connection.OrthogonalConnectionCreatePolicy = draw2d.policy.connec
     {
         // calculate vertical line distance
         //
-        var xDiff = Math.abs(anchor.x- p.x)+10;
-        var xDist = draw2d.geo.Line.distance(anchor.x-xDiff, anchor.y, anchor.x+xDiff, anchor.y, p.x, p.y);
+        let xDiff = Math.abs(anchor.x- p.x)+10;
+        let xDist = draw2d.geo.Line.distance(anchor.x-xDiff, anchor.y, anchor.x+xDiff, anchor.y, p.x, p.y);
 
         // calculate horizontal line distance
         //
-        var yDiff = Math.abs(anchor.y- p.y)+10;
-        var yDist = draw2d.geo.Line.distance(anchor.x, anchor.y-yDiff, anchor.x, anchor.y+yDiff, p.x, p.y);
+        let yDiff = Math.abs(anchor.y- p.y)+10;
+        let yDist = draw2d.geo.Line.distance(anchor.x, anchor.y-yDiff, anchor.x, anchor.y+yDiff, p.x, p.y);
 
         return yDist>xDist? {x: p.x, y:anchor.y}:{x: anchor.x, y: p.y};
     },
 
     createConnection: function(source, target)
     {
-        var connection = this._super(source, target);
+        let connection = this._super(source, target);
         connection.attr({radius:7, stroke:3});
         connection.setRouter(new draw2d.layout.connection.InteractiveManhattanConnectionRouter());
         return connection;

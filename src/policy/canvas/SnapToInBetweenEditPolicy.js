@@ -76,15 +76,15 @@ draw2d.policy.canvas.SnapToInBetweenEditPolicy = draw2d.policy.canvas.SnapToEdit
     }
 
 
-    var allowXChanges = modifiedPos.x === originalPos.x
-    var allowYChanges = modifiedPos.y === originalPos.y
+    let allowXChanges = modifiedPos.x === originalPos.x
+    let allowYChanges = modifiedPos.y === originalPos.y
 
-    var inputBounds = new draw2d.geo.Rectangle(modifiedPos.x, modifiedPos.y, figure.getWidth(), figure.getHeight())
+    let inputBounds = new draw2d.geo.Rectangle(modifiedPos.x, modifiedPos.y, figure.getWidth(), figure.getHeight())
 
     modifiedPos = modifiedPos.clone()
 
     if (allowXChanges === true) {
-      var horizontal = this.snapHorizontal(inputBounds)
+      let horizontal = this.snapHorizontal(inputBounds)
 
       // Show a horizontal line if the snapper has modified the inputPoint
       //
@@ -104,7 +104,7 @@ draw2d.policy.canvas.SnapToInBetweenEditPolicy = draw2d.policy.canvas.SnapToEdit
     }
 
     if (allowYChanges === true) {
-      var vertical = this.snapVertical(inputBounds)
+      let vertical = this.snapVertical(inputBounds)
 
       // Show a vertical guides if the snapper has modified the inputPoint
       //
@@ -128,18 +128,18 @@ draw2d.policy.canvas.SnapToInBetweenEditPolicy = draw2d.policy.canvas.SnapToEdit
 
 
   snapHorizontal: function (boundingBox) {
-    var center = boundingBox.getCenter()
+    let center = boundingBox.getCenter()
     if (this.bounds === null)
       this.populateBounds()
 
-    var result = {
+    let result = {
       point: center,
       snapped: false,
       snappedBox: boundingBox.clone()
     }
 
 
-    var intersectionPoint = null
+    let intersectionPoint = null
 
     // Calculate the intersections points p(i) of all left side edges of the bounding boxes
     // and the ray from the center of the drag&drop object to the left edge of the canva
@@ -156,8 +156,8 @@ draw2d.policy.canvas.SnapToInBetweenEditPolicy = draw2d.policy.canvas.SnapToEdit
     //                 ........
     //
     //
-    var leftIntersections = []
-    var leftInputPoint = center.clone()
+    let leftIntersections = []
+    let leftInputPoint = center.clone()
     leftInputPoint.x = 0
     this.bounds.forEach(function (bbox, index) {
       intersectionPoint = draw2d.shape.basic.Line.intersection(bbox.getTopRight(), bbox.getBottomRight(), center, leftInputPoint)
@@ -195,8 +195,8 @@ draw2d.policy.canvas.SnapToInBetweenEditPolicy = draw2d.policy.canvas.SnapToEdit
     //                 ........             |         |
     //                                      ...........
     //
-    var rightIntersections = []
-    var rightInputPoint = center.clone()
+    let rightIntersections = []
+    let rightInputPoint = center.clone()
     rightInputPoint.x = Number.MAX_SAFE_INTEGER
     this.bounds.forEach(function (bbox, index) {
       intersectionPoint = draw2d.shape.basic.Line.intersection(bbox.getTopLeft(), bbox.getBottomLeft(), center, rightInputPoint)
@@ -233,8 +233,8 @@ draw2d.policy.canvas.SnapToInBetweenEditPolicy = draw2d.policy.canvas.SnapToEdit
     //                 ........             |         |
     //                                      ...........
     //
-    var snappedRect = boundingBox.clone()
-    var diff = ((leftIntersections[0].x + rightIntersections[0].x) / 2) - center.x
+    let snappedRect = boundingBox.clone()
+    let diff = ((leftIntersections[0].x + rightIntersections[0].x) / 2) - center.x
 
     snappedRect.x += diff
 
@@ -249,20 +249,20 @@ draw2d.policy.canvas.SnapToInBetweenEditPolicy = draw2d.policy.canvas.SnapToEdit
 
 
   snapVertical: function (boundingBox) {
-    var center = boundingBox.getCenter()
+    let center = boundingBox.getCenter()
 
     if (this.bounds === null) {
       this.populateBounds()
     }
 
-    var result = {
+    let result = {
       point: center,
       snapped: false,
       snappedBox: boundingBox.clone()
     }
 
 
-    var intersectionPoint = null
+    let intersectionPoint = null
 
     // Calculate the intersections points p(i) of all left side edges of the bounding boxes
     // and the ray from the center of the drag&drop object to the left edge of the canva
@@ -279,8 +279,8 @@ draw2d.policy.canvas.SnapToInBetweenEditPolicy = draw2d.policy.canvas.SnapToEdit
     //                 ........
     //
     //
-    var topIntersections = []
-    var topInputPoint = center.clone()
+    let topIntersections = []
+    let topInputPoint = center.clone()
     topInputPoint.y = 0
     this.bounds.forEach(function (bbox) {
       intersectionPoint = draw2d.shape.basic.Line.intersection(bbox.getBottomLeft(), bbox.getBottomRight(), center, topInputPoint)
@@ -318,8 +318,8 @@ draw2d.policy.canvas.SnapToInBetweenEditPolicy = draw2d.policy.canvas.SnapToEdit
     //                 ........             |         |
     //                                      ...........
     //
-    var bottomIntersections = []
-    var bottomInputPoint = center.clone()
+    let bottomIntersections = []
+    let bottomInputPoint = center.clone()
     bottomInputPoint.y = Number.MAX_SAFE_INTEGER
     this.bounds.forEach(function (bbox) {
       intersectionPoint = draw2d.shape.basic.Line.intersection(bbox.getTopLeft(), bbox.getTopRight(), center, bottomInputPoint)
@@ -356,8 +356,8 @@ draw2d.policy.canvas.SnapToInBetweenEditPolicy = draw2d.policy.canvas.SnapToEdit
     //                 ........             |         |
     //                                      ...........
     //
-    var snappedRect = boundingBox.clone()
-    var diff = ((topIntersections[0].y + bottomIntersections[0].y) / 2) - center.y
+    let snappedRect = boundingBox.clone()
+    let diff = ((topIntersections[0].y + bottomIntersections[0].y) / 2) - center.y
 
     snappedRect.y += diff
 
@@ -371,10 +371,10 @@ draw2d.policy.canvas.SnapToInBetweenEditPolicy = draw2d.policy.canvas.SnapToEdit
   },
 
   populateBounds: function () {
-    var selection = this.canvas.getSelection().getAll(true)
-    var bounds = this.bounds = []
+    let selection = this.canvas.getSelection().getAll(true)
+    let bounds = this.bounds = []
 
-    var figures = this.canvas.getFigures()
+    let figures = this.canvas.getFigures()
     figures.each(function (index, figure) {
       if (!selection.contains(figure)) {
         bounds.push(figure.getBoundingBox())
@@ -388,9 +388,9 @@ draw2d.policy.canvas.SnapToInBetweenEditPolicy = draw2d.policy.canvas.SnapToEdit
       this.horizontalGuideLines.remove()
     }
 
-    var snapTopLeft = constraint.snappedRect.getTopLeft()
-    var snapTopRight = constraint.snappedRect.getTopRight()
-    var y = ((Math.min(constraint.leftSide.causedBBox.getTopRight().y, Math.min(constraint.rightSide.causedBBox.y, causedFigure.getY())) - 50) | 0) + 0.5
+    let snapTopLeft = constraint.snappedRect.getTopLeft()
+    let snapTopRight = constraint.snappedRect.getTopRight()
+    let y = ((Math.min(constraint.leftSide.causedBBox.getTopRight().y, Math.min(constraint.rightSide.causedBBox.y, causedFigure.getY())) - 50) | 0) + 0.5
 
     this.canvas.paper.setStart()
 
@@ -490,9 +490,9 @@ draw2d.policy.canvas.SnapToInBetweenEditPolicy = draw2d.policy.canvas.SnapToEdit
       this.verticalGuideLines.remove()
     }
 
-    var snapTopRight = constraint.snappedRect.getTopRight()
-    var snapBottomRight = constraint.snappedRect.getBottomRight()
-    var x = ((Math.max(constraint.topSide.causedBBox.getRight(), Math.max(constraint.bottomSide.causedBBox.getRight(), causedFigure.getX())) + 40) | 0) + 0.5
+    let snapTopRight = constraint.snappedRect.getTopRight()
+    let snapBottomRight = constraint.snappedRect.getBottomRight()
+    let x = ((Math.max(constraint.topSide.causedBBox.getRight(), Math.max(constraint.bottomSide.causedBBox.getRight(), causedFigure.getX())) + 40) | 0) + 0.5
 
     this.canvas.paper.setStart()
 

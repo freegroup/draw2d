@@ -68,8 +68,8 @@ draw2d.policy.canvas.SnapToVerticesEditPolicy = draw2d.policy.canvas.SnapToEditP
       return modifiedPos
     }
 
-    var allowXChanges = modifiedPos.x === originalPos.x
-    var allowYChanges = modifiedPos.y === originalPos.y
+    let allowXChanges = modifiedPos.x === originalPos.x
+    let allowYChanges = modifiedPos.y === originalPos.y
 
     // Coordinates already snapped to an x/y coordinate.
     // Don't change them and in this case no further calculation is required.
@@ -78,8 +78,8 @@ draw2d.policy.canvas.SnapToVerticesEditPolicy = draw2d.policy.canvas.SnapToEditP
       return modifiedPos
     }
 
-    var result = modifiedPos.clone()
-    var correction = this.getCorrectionFor(figure, originalPos)
+    let result = modifiedPos.clone()
+    let correction = this.getCorrectionFor(figure, originalPos)
 
     if (allowXChanges && (correction.vertical.x !== Number.MAX_SAFE_INTEGER)) {
       result.x = correction.vertical.x
@@ -103,11 +103,11 @@ draw2d.policy.canvas.SnapToVerticesEditPolicy = draw2d.policy.canvas.SnapToEditP
 
 
   getCorrectionFor: function (vertexResizeHandle, point) {
-    var _this = this
+    let _this = this
     if (this.constraints === null) {
       this.constraints = []
 
-      var lines = this.canvas.getLines()
+      let lines = this.canvas.getLines()
       lines.each(function (i, line) {
         line.getVertices().each(function (ii, vertex) {
           if (vertexResizeHandle.index !== ii || vertexResizeHandle.owner !== line)
@@ -116,14 +116,14 @@ draw2d.policy.canvas.SnapToVerticesEditPolicy = draw2d.policy.canvas.SnapToEditP
       })
     }
 
-    var SNAP = this.SNAP_THRESHOLD
-    var vertical = {x: Number.MAX_SAFE_INTEGER, y: Number.MAX_SAFE_INTEGER, diffy: Number.MAX_SAFE_INTEGER}
-    var horizontal = {x: Number.MAX_SAFE_INTEGER, y: Number.MAX_SAFE_INTEGER, diffx: Number.MAX_SAFE_INTEGER}
-    var diffx, diffy
+    let SNAP = this.SNAP_THRESHOLD
+    let vertical = {x: Number.MAX_SAFE_INTEGER, y: Number.MAX_SAFE_INTEGER, diffy: Number.MAX_SAFE_INTEGER}
+    let horizontal = {x: Number.MAX_SAFE_INTEGER, y: Number.MAX_SAFE_INTEGER, diffx: Number.MAX_SAFE_INTEGER}
+    let diffx, diffy
 
 
-    for (var i = 0; i < this.constraints.length; i++) {
-      var entry = this.constraints[i]
+    for (let i = 0; i < this.constraints.length; i++) {
+      let entry = this.constraints[i]
 
       diffx = Math.abs(point.x - entry.x)
       diffy = Math.abs(point.y - entry.y)
@@ -153,8 +153,8 @@ draw2d.policy.canvas.SnapToVerticesEditPolicy = draw2d.policy.canvas.SnapToEditP
     }
 
 
-    var maxLength = this.canvas.getHeight()
-    var x = (snappedPos.x | 0) + 0.5 // force a .5 number to avoid subpixel rendering. Blurry lines...
+    let maxLength = this.canvas.getHeight()
+    let x = (snappedPos.x | 0) + 0.5 // force a .5 number to avoid subpixel rendering. Blurry lines...
     this.canvas.paper.setStart()
     this.canvas.paper.path("M " + x + " 0 l 0 " + maxLength)
       .attr({"stroke": this.lineColor.rgba(), "stroke-width": 1, "stroke-dasharray": ". "})
@@ -187,8 +187,8 @@ draw2d.policy.canvas.SnapToVerticesEditPolicy = draw2d.policy.canvas.SnapToEditP
       this.hline.remove()
     }
 
-    var maxLength = this.canvas.getWidth()
-    var y = (snappedPos.y | 0) + 0.5 // force a .5 number to avoid subpixel rendering. Blurry lines...
+    let maxLength = this.canvas.getWidth()
+    let y = (snappedPos.y | 0) + 0.5 // force a .5 number to avoid subpixel rendering. Blurry lines...
 
     this.canvas.paper.setStart()
     this.canvas.paper.path("M 0 " + y + " l " + maxLength + " 0")

@@ -24,8 +24,8 @@
  *
  *    // create and add two Node which contains Ports (In and OUT)
  *    //
- *    var start = new draw2d.shape.node.Start({x:50, y:50});
- *    var endNode   = new draw2d.shape.node.End({x:200, y:70});
+ *    let start = new draw2d.shape.node.Start({x:50, y:50});
+ *    let endNode   = new draw2d.shape.node.End({x:200, y:70});
  *
  *    // add the two nodes to the canvas
  *    //
@@ -70,7 +70,7 @@ draw2d.policy.connection.DragConnectionCreatePolicy = draw2d.policy.connection.C
     {
         //just consider ports
         //
-        var port = canvas.getBestFigure(x, y);
+        let port = canvas.getBestFigure(x, y);
 
 
         // nothing found at all
@@ -97,7 +97,7 @@ draw2d.policy.connection.DragConnectionCreatePolicy = draw2d.policy.connection.C
         // introspect the port only if it is draggable at all
         //
         if (port.isDraggable()) {
-            var canDragStart = port.onDragStart(x - port.getAbsoluteX(), y - port.getAbsoluteY(), shiftKey, ctrlKey);
+            let canDragStart = port.onDragStart(x - port.getAbsoluteX(), y - port.getAbsoluteY(), shiftKey, ctrlKey);
             if(canDragStart) {
                 port.fireEvent("dragstart", {x: x - port.getAbsoluteX(), y: y - port.getAbsoluteY(), shiftKey: shiftKey, ctrlKey: ctrlKey});
             }
@@ -122,13 +122,13 @@ draw2d.policy.connection.DragConnectionCreatePolicy = draw2d.policy.connection.C
     {
         try{
             if (this.mouseDraggingElement !== null) {
-                var de = this.mouseDraggingElement;
-                var ct = this.currentTarget;
+                let de = this.mouseDraggingElement;
+                let ct = this.currentTarget;
 
                 de.isInDragDrop = true;
                 de.onDrag(dx, dy, dx2, dy2, shiftKey, ctrlKey);
 
-                var target=canvas.getBestFigure(de.getAbsoluteX(),de.getAbsoluteY(), de);
+                let target=canvas.getBestFigure(de.getAbsoluteX(),de.getAbsoluteY(), de);
 
                 // the hovering element has been changed
                 if(target!==ct){
@@ -162,17 +162,17 @@ draw2d.policy.connection.DragConnectionCreatePolicy = draw2d.policy.connection.C
                 }
 
 
-                var p = canvas.fromDocumentToCanvasCoordinate(canvas.mouseDownX + (dx/canvas.zoomFactor), canvas.mouseDownY + (dy/canvas.zoomFactor));
-                var target = canvas.getBestFigure(p.x, p.y,this.mouseDraggingElement);
+                let p = canvas.fromDocumentToCanvasCoordinate(canvas.mouseDownX + (dx/canvas.zoomFactor), canvas.mouseDownY + (dy/canvas.zoomFactor));
+                let dropTarget = canvas.getBestFigure(p.x, p.y,this.mouseDraggingElement);
 
-                if (target !== this.currentDropTarget) {
+                if (dropTarget !== this.currentDropTarget) {
                     if (this.currentDropTarget !== null) {
                         this.currentDropTarget.onDragLeave(this.mouseDraggingElement);
                         this.currentDropTarget.fireEvent("dragLeave",{draggingElement:this.mouseDraggingElement});
                         this.currentDropTarget = null;
                     }
-                    if (target !== null) {
-                        this.currentDropTarget = target.delegateTarget(this.mouseDraggingElement);
+                    if (dropTarget !== null) {
+                        this.currentDropTarget = dropTarget.delegateTarget(this.mouseDraggingElement);
                         // inform all listener that the element has accept the dragEnter event
                         //
                         if( this.currentDropTarget !==null) {
@@ -203,8 +203,8 @@ draw2d.policy.connection.DragConnectionCreatePolicy = draw2d.policy.connection.C
     {
         if (this.mouseDraggingElement !== null) {
 
-            var de = this.mouseDraggingElement;
-            var ct = this.currentTarget;
+            let de = this.mouseDraggingElement;
+            let ct = this.currentTarget;
             // start CommandStack transaction
             canvas.getCommandStack().startTransaction();
 
@@ -247,10 +247,10 @@ draw2d.policy.connection.DragConnectionCreatePolicy = draw2d.policy.connection.C
                 // Ports accepts only Ports as DropTarget
                 //
                 if(this.currentDropTarget instanceof draw2d.Port){
-                    var request = new draw2d.command.CommandType(draw2d.command.CommandType.CONNECT);
+                    let request = new draw2d.command.CommandType(draw2d.command.CommandType.CONNECT);
                     request.source = this.currentDropTarget;
                     request.target = this.mouseDraggingElement;
-                    var command = this.mouseDraggingElement.createCommand(request);
+                    let command = this.mouseDraggingElement.createCommand(request);
 
                     if(command!==null){
                         command.setConnection(this.createConnection(command.source, command.target));
@@ -270,7 +270,7 @@ draw2d.policy.connection.DragConnectionCreatePolicy = draw2d.policy.connection.C
 
     createConnection: function(source, target)
     {
-        var connection = this._super(source, target);
+        let connection = this._super(source, target);
         connection.setRouter(new draw2d.layout.connection.DirectRouter());
 
         return connection;

@@ -21,9 +21,8 @@ if ((typeof Blob === "function" || typeof Blob === "object") && typeof webkitURL
 else var Blob = (function (view) {
     "use strict";
 
-    var BlobBuilder = view.BlobBuilder || view.WebKitBlobBuilder || view.MozBlobBuilder || view.MSBlobBuilder || (function(view) {
-        var
-              get_class = function(object) {
+    let BlobBuilder = view.BlobBuilder || view.WebKitBlobBuilder || view.MozBlobBuilder || view.MSBlobBuilder || (function(view) {
+        let               get_class = function(object) {
                 return Object.prototype.toString.call(object).match(/^\[object\s(.*)\]$/)[1];
             }
             , FakeBlobBuilder = function BlobBuilder() {
@@ -64,8 +63,7 @@ else var Blob = (function (view) {
             URL = view.URL = {};
         }
         URL.createObjectURL = function(blob) {
-            var
-                  type = blob.type
+            let                   type = blob.type
                 , data_URI_header
             ;
             if (type === null) {
@@ -92,11 +90,10 @@ else var Blob = (function (view) {
             }
         };
         FBB_proto.append = function(data/*, endings*/) {
-            var bb = this.data;
+            let bb = this.data;
             // decode data to a binary string
             if (Uint8Array && (data instanceof ArrayBuffer || data instanceof Uint8Array)) {
-                var
-                      str = ""
+                let                       str = ""
                     , buf = new Uint8Array(data)
                     , i = 0
                     , buf_len = buf.length
@@ -107,7 +104,7 @@ else var Blob = (function (view) {
                 bb.push(str);
             } else if (get_class(data) === "Blob" || get_class(data) === "File") {
                 if (FileReaderSync) {
-                    var fr = new FileReaderSync;
+                    let fr = new FileReaderSync;
                     bb.push(fr.readAsBinaryString(data));
                 } else {
                     // async FileReader won't work as BlobBuilder is sync
@@ -139,7 +136,7 @@ else var Blob = (function (view) {
             return "[object BlobBuilder]";
         };
         FB_proto.slice = function(start, end, type) {
-            var args = arguments.length;
+            let args = arguments.length;
             if (args < 3) {
                 type = null;
             }
@@ -156,10 +153,10 @@ else var Blob = (function (view) {
     }(view));
 
     return function Blob(blobParts, options) {
-        var type = options ? (options.type || "") : "";
-        var builder = new BlobBuilder();
+        let type = options ? (options.type || "") : "";
+        let builder = new BlobBuilder();
         if (blobParts) {
-            for (var i = 0, len = blobParts.length; i < len; i++) {
+            for (let i = 0, len = blobParts.length; i < len; i++) {
                 builder.append(blobParts[i]);
             }
         }
@@ -184,12 +181,11 @@ else var Blob = (function (view) {
 
 /*! @source http://purl.eligrey.com/github/FileSaver.js/blob/master/FileSaver.js */
 
-var saveAs = saveAs
+let saveAs = saveAs
   || (typeof navigator !== "undefined" && navigator.msSaveOrOpenBlob && navigator.msSaveOrOpenBlob.bind(navigator))
   || (function(view) {
     "use strict";
-    var
-          doc = view.document
+    let           doc = view.document
           // only get URL when necessary in case BlobBuilder.js hasn't overridden it yet
         , get_URL = function() {
             return view.URL || view.webkitURL || view;
@@ -198,7 +194,7 @@ var saveAs = saveAs
         , save_link = doc.createElementNS("http://www.w3.org/1999/xhtml", "a")
         , can_use_save_link =  !view.externalHost && "download" in save_link
         , click = function(node) {
-            var event = doc.createEvent("MouseEvents");
+            let event = doc.createEvent("MouseEvents");
             event.initMouseEvent(
                 "click", true, false, view, 0, 0, 0, 0, 0
                 , false, false, false, false, 0, null
@@ -216,9 +212,9 @@ var saveAs = saveAs
         , fs_min_size = 0
         , deletion_queue = []
         , process_deletion_queue = function() {
-            var i = deletion_queue.length;
+            let i = deletion_queue.length;
             while (i--) {
-                var file = deletion_queue[i];
+                let file = deletion_queue[i];
                 if (typeof file === "string") { // file is an object URL
                     URL.revokeObjectURL(file);
                 } else { // file is a File
@@ -229,9 +225,9 @@ var saveAs = saveAs
         }
         , dispatch = function(filesaver, event_types, event) {
             event_types = [].concat(event_types);
-            var i = event_types.length;
+            let i = event_types.length;
             while (i--) {
-                var listener = filesaver["on" + event_types[i]];
+                let listener = filesaver["on" + event_types[i]];
                 if (typeof listener === "function") {
                     try {
                         listener.call(filesaver, event || filesaver);
@@ -243,14 +239,13 @@ var saveAs = saveAs
         }
         , FileSaver = function(blob, name) {
             // First try a.download, then web filesystem, then object URLs
-            var
-                  filesaver = this
+            let                   filesaver = this
                 , type = blob.type
                 , blob_changed = false
                 , object_url
                 , target_view
                 , get_object_url = function() {
-                    var object_url = get_URL().createObjectURL(blob);
+                    let object_url = get_URL().createObjectURL(blob);
                     deletion_queue.push(object_url);
                     return object_url;
                 }
@@ -295,7 +290,7 @@ var saveAs = saveAs
                 save_link = doc.createElementNS("http://www.w3.org/1999/xhtml", "a");
                 save_link.href = object_url;
                 save_link.download = name;
-                var event = doc.createEvent("MouseEvents");
+                let event = doc.createEvent("MouseEvents");
                 event.initMouseEvent(
                     "click", true, false, view, 0, 0, 0, 0, 0
                     , false, false, false, false, 0, null
@@ -329,7 +324,7 @@ var saveAs = saveAs
             fs_min_size += blob.size;
             req_fs(view.TEMPORARY, fs_min_size, abortable(function(fs) {
                 fs.root.getDirectory("saved", create_if_not_found, abortable(function(dir) {
-                    var save = function() {
+                    let save = function() {
                         dir.getFile(name, create_if_not_found, abortable(function(file) {
                             file.createWriter(abortable(function(writer) {
                                 writer.onwriteend = function(event) {
@@ -339,7 +334,7 @@ var saveAs = saveAs
                                     dispatch(filesaver, "writeend", event);
                                 };
                                 writer.onerror = function() {
-                                    var error = writer.error;
+                                    let error = writer.error;
                                     if (error.code !== error.ABORT_ERR) {
                                         fs_error();
                                     }
@@ -376,7 +371,7 @@ var saveAs = saveAs
         }
     ;
     FS_proto.abort = function() {
-        var filesaver = this;
+        let filesaver = this;
         filesaver.readyState = filesaver.DONE;
         dispatch(filesaver, "abort");
     };

@@ -58,21 +58,21 @@ draw2d.util.Base64 = {
     encodeByteArray: function(input, opt_webSafe) {
         draw2d.util.Base64.init();
 
-        var byteToCharMap = opt_webSafe ?  draw2d.util.Base64.byteToCharMapWebSafe_ : draw2d.util.Base64.byteToCharMap_;
+        let byteToCharMap = opt_webSafe ?  draw2d.util.Base64.byteToCharMapWebSafe_ : draw2d.util.Base64.byteToCharMap_;
 
-        var output = [];
+        let output = [];
 
-        for (var i = 0; i < input.length; i += 3) {
-          var byte1 = input[i];
-          var haveByte2 = i + 1 < input.length;
-          var byte2 = haveByte2 ? input[i + 1] : 0;
-          var haveByte3 = i + 2 < input.length;
-          var byte3 = haveByte3 ? input[i + 2] : 0;
+        for (let i = 0; i < input.length; i += 3) {
+          let byte1 = input[i];
+          let haveByte2 = i + 1 < input.length;
+          let byte2 = haveByte2 ? input[i + 1] : 0;
+          let haveByte3 = i + 2 < input.length;
+          let byte3 = haveByte3 ? input[i + 2] : 0;
 
-          var outByte1 = byte1 >> 2;
-          var outByte2 = ((byte1 & 0x03) << 4) | (byte2 >> 4);
-          var outByte3 = ((byte2 & 0x0F) << 2) | (byte3 >> 6);
-          var outByte4 = byte3 & 0x3F;
+          let outByte1 = byte1 >> 2;
+          let outByte2 = ((byte1 & 0x03) << 4) | (byte2 >> 4);
+          let outByte3 = ((byte2 & 0x0F) << 2) | (byte3 >> 6);
+          let outByte4 = byte3 & 0x3F;
 
           if (!haveByte3) {
             outByte4 = 64;
@@ -117,23 +117,23 @@ draw2d.util.Base64 = {
       decode: function(input, opt_webSafe) {
         draw2d.util.Base64.init();
 
-        var charToByteMap = opt_webSafe ?draw2d.util.Base64.charToByteMapWebSafe_ : draw2d.util.Base64.charToByteMap_;
+        let charToByteMap = opt_webSafe ?draw2d.util.Base64.charToByteMapWebSafe_ : draw2d.util.Base64.charToByteMap_;
 
-        var output = [];
+        let output = [];
 
-        for (var i = 0; i < input.length; ) {
-          var byte1 = charToByteMap[input.charAt(i++)];
+        for (let i = 0; i < input.length; ) {
+          let byte1 = charToByteMap[input.charAt(i++)];
 
-          var haveByte2 = i < input.length;
-          var byte2 = haveByte2 ? charToByteMap[input.charAt(i)] : 0;
+          let haveByte2 = i < input.length;
+          let byte2 = haveByte2 ? charToByteMap[input.charAt(i)] : 0;
           ++i;
 
-          var haveByte3 = i < input.length;
-          var byte3 = haveByte3 ? charToByteMap[input.charAt(i)] : 0;
+          let haveByte3 = i < input.length;
+          let byte3 = haveByte3 ? charToByteMap[input.charAt(i)] : 0;
           ++i;
 
-          var haveByte4 = i < input.length;
-          var byte4 = haveByte4 ? charToByteMap[input.charAt(i)] : 0;
+          let haveByte4 = i < input.length;
+          let byte4 = haveByte4 ? charToByteMap[input.charAt(i)] : 0;
           ++i;
 
           if (byte1 == null || byte2 == null ||
@@ -141,15 +141,15 @@ draw2d.util.Base64 = {
             throw Error();
           }
 
-          var outByte1 = (byte1 << 2) | (byte2 >> 4);
+          let outByte1 = (byte1 << 2) | (byte2 >> 4);
           output.push(outByte1);
 
           if (byte3 != 64) {
-            var outByte2 = ((byte2 << 4) & 0xF0) | (byte3 >> 2);
+            let outByte2 = ((byte2 << 4) & 0xF0) | (byte3 >> 2);
             output.push(outByte2);
 
             if (byte4 != 64) {
-              var outByte3 = ((byte3 << 6) & 0xC0) | byte4;
+              let outByte3 = ((byte3 << 6) & 0xC0) | byte4;
               output.push(outByte3);
             }
           }
@@ -166,9 +166,9 @@ draw2d.util.Base64 = {
      *    UCS character codes of each character in str.
      */
     stringToByteArray: function(str) {
-      var output = [], p = 0;
-      for (var i = 0; i < str.length; i++) {
-        var c = str.charCodeAt(i);
+      let output = [], p = 0;
+      for (let i = 0; i < str.length; i++) {
+        let c = str.charCodeAt(i);
         while (c > 0xff) {
           output[p++] = c & 0xff;
           c >>= 8;
@@ -186,7 +186,7 @@ draw2d.util.Base64 = {
             draw2d.util.Base64.charToByteMapWebSafe_ = {};
 
           // We want quick mappings back and forth, so we precompute two maps.
-          for (var i = 0; i < draw2d.util.Base64.ENCODED_VALS.length; i++) {
+          for (let i = 0; i < draw2d.util.Base64.ENCODED_VALS.length; i++) {
               draw2d.util.Base64.byteToCharMap_[i] = draw2d.util.Base64.ENCODED_VALS.charAt(i);
               draw2d.util.Base64.charToByteMap_[draw2d.util.Base64.byteToCharMap_[i]] = i;
               draw2d.util.Base64.byteToCharMapWebSafe_[i] = draw2d.util.Base64.ENCODED_VALS_WEBSAFE.charAt(i);
