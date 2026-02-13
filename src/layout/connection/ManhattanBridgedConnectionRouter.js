@@ -6,6 +6,9 @@ import draw2d from '../../packages'
  * Provides a {@link draw2d.Connection} with an orthogonal route between the Connection's source
  * and target anchors. Draws a bridge (arc) where connections cross.
  *
+ * The connection with the HIGHER z-index draws the arc, ensuring the bridge is always
+ * rendered on top of the crossing line. Supports both horizontal and vertical bridges.
+ *
  * Use {@link draw2d.layout.connection.CircuitConnectionRouter} if you need vertex dots
  * at crossings with shared ports (typical for circuit diagrams).
  *
@@ -21,15 +24,13 @@ draw2d.layout.connection.ManhattanBridgedConnectionRouter = draw2d.layout.connec
 
   NAME: "draw2d.layout.connection.ManhattanBridgedConnectionRouter",
 
-  BRIDGE_HORIZONTAL_LR: " r 0 0 3 -4 7 -4 10 0 13 0 ", // Left to right
-  BRIDGE_HORIZONTAL_RL: " r 0 0 -3 -4 -7 -4 -10 0 -13 0 ", // right to left
-
   /**
    * Creates a new Router object.
    *
    */
   init: function () {
     this._super()
+    this.bridgeRadius = 5
   },
 
 
@@ -56,6 +57,18 @@ draw2d.layout.connection.ManhattanBridgedConnectionRouter = draw2d.layout.connec
   onUninstall: function (connection) {
     // Clean up the bridge invalidation flag to avoid stale state when router is changed
     delete connection._bridgesInvalidated
+  },
+
+  /**
+   * 
+   * Set the radius of the bridge arc.
+   *
+   * @param {Number} radius the radius of the arc in pixels
+   * @returns {this}
+   */
+  setBridgeRadius: function (radius) {
+    this.bridgeRadius = radius
+    return this
   },
 
   /**
@@ -119,38 +132,63 @@ draw2d.layout.connection.ManhattanBridgedConnectionRouter = draw2d.layout.connec
     let p = ps.get(0)
     let path = ["M", (p.x | 0) + 0.5, " ", (p.y | 0) + 0.5]
     let oldP = p
+    let r = this.bridgeRadius
+    
     for (let i = 1; i < ps.getSize(); i++) {
       p = ps.get(i)
 
-      // check for intersection and paint a bridge if required
-      // line goes from left to right
-      //
-      let bridgeWidth = 5
-      let bridgeCode = this.BRIDGE_HORIZONTAL_LR
-
-      // line goes from right->left. Inverse the bridge and the bridgeWidth
-      //
+      // line goes from right->left. Inverse the intersection order
       if (oldP.x > p.x) {
         intersectionForCalc = intersectionsDESC
-        bridgeCode = this.BRIDGE_HORIZONTAL_RL
-        bridgeWidth = -bridgeWidth
+      } else {
+        intersectionForCalc = intersectionsASC
       }
 
-      intersectionForCalc.each(function (ii, interP) {
+      intersectionForCalc.each((ii, interP) => {
         if (interP.justTouching === false && draw2d.shape.basic.Line.hit(1, oldP.x, oldP.y, p.x, p.y, interP.x, interP.y) === true) {
-          // We draw only horizontal bridges. Just a design decision.
-          // 
-          // IMPORTANT: We use integer truncation (| 0) for the Y-coordinate comparison because:
-          // - The path rendering adds +0.5 to coordinates for crisp subpixel rendering (anti-aliasing)
-          // - The intersection calculation returns original integer coordinates
-          // - Without truncation, 303.5 !== 303 would fail even though they represent the same line
-          //
-          if ((oldP.y | 0) === (p.y | 0) && (p.y | 0) === (interP.y | 0)) {
-            path.push(" L", ((interP.x - bridgeWidth) | 0) + 0.5, " ", (interP.y | 0) + 0.5)
-            path.push(bridgeCode)
+          
+          let other = interP.other
+          let otherZ = other.getZOrder()
+          let connZ = conn.getZOrder()
+          
+          // Only draw the arc if THIS connection has the higher z-index
+          // This ensures the arc is always on top of the crossing line
+          if (connZ > otherZ) {
+            let isHorizontalSegment = (oldP.y | 0) === (p.y | 0)
+            let isVerticalSegment = (oldP.x | 0) === (p.x | 0)
+            
+            // The arc is centered on the intersection point (interP.x, interP.y)
+            // We draw from (interP - radius) to (interP + radius)
+            
+            if (isHorizontalSegment) {
+              // Horizontal segment: draw arc that curves upward, centered on intersection
+              let startX = ((interP.x - r) | 0) + 0.5
+              let y = (interP.y | 0) + 0.5
+              
+              // SVG arc: a rx ry x-rotation large-arc sweep-flag dx dy
+              // sweep-flag=1 means clockwise (arc goes upward for left-to-right)
+              path.push(" L", startX, " ", y)
+              path.push(" a", r, " ", r, " 0 0 1 ", (r * 2), " 0")
+            }
+            else if (isVerticalSegment) {
+              // Vertical segment: draw arc that curves to the right, centered on intersection
+              let x = (interP.x | 0) + 0.5
+              
+              // For top-to-bottom: arc curves to the right (sweep=1)
+              // For bottom-to-top: arc curves to the right (sweep=0, going upward)
+              if (oldP.y < p.y) {
+                // Top to bottom
+                let startY = ((interP.y - r) | 0) + 0.5
+                path.push(" L", x, " ", startY)
+                path.push(" a", r, " ", r, " 0 0 1 0 ", (r * 2))
+              } else {
+                // Bottom to top
+                path.push(" L", x, " ", ((interP.y + r) | 0) + 0.5)
+                path.push(" a", r, " ", r, " 0 0 1 0 ", (-r * 2))
+              }
+            }
           }
         }
-
       })
 
       path.push(" L", (p.x | 0) + 0.5, " ", (p.y | 0) + 0.5)
