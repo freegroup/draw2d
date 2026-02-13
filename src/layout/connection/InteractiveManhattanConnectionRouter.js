@@ -436,7 +436,9 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
     //  x Px
     //
     let distance = 0
-    if (p0.y === p1.y) {
+    // Use tolerance for comparison to handle floating point rounding errors
+    let TOLERANCE = 0.5
+    if (Math.abs(p0.y - p1.y) < TOLERANCE) {
       // ensure that the segment is the min distance away from the source/target port
       // (Px is endpoints of the connection and bounded to a port)
       if (i === 1) distance = p0.y - lp0.y
@@ -456,7 +458,7 @@ draw2d.layout.connection.InteractiveManhattanConnectionRouter = draw2d.layout.co
     }
     // vertical segment movement
     //
-    else if (p0.x === p1.x) {
+    else if (Math.abs(p0.x - p1.x) < TOLERANCE) {
       // ensure that the segment is the min distance away from the source/target port
       //
       if (i === 1) {

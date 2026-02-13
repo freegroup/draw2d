@@ -14171,14 +14171,13 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
 /**
  * @class
  *
- * Provides a {@link draw2d.Connection} with an orthogonal route between the Connection's source
- * and target anchors.
- * <br>
- * Additional a <b>bridge</b> is added to each connection which didn't have a common source or target
- * port.<br>
- * A <b>dot</b> is added at the crossing if the two connections have a common spurce or target port.
+ * Orthogonal router for circuit/schematic diagrams.
  *
- * <br>
+ * - **Bridge (arc):** drawn at crossings where connections have NO shared ports
+ * - **Vertex (dot):** drawn at crossings where connections share a source or target port
+ *
+ * Use {@link draw2d.layout.connection.ManhattanBridgedConnectionRouter} if you only need bridges.
+ *
  *
  * @example
  *
@@ -15245,7 +15244,9 @@ _packages.default.layout.connection.InteractiveManhattanConnectionRouter = _pack
     //  x Px
     //
     let distance = 0;
-    if (p0.y === p1.y) {
+    // Use tolerance for comparison to handle floating point rounding errors
+    let TOLERANCE = 0.5;
+    if (Math.abs(p0.y - p1.y) < TOLERANCE) {
       // ensure that the segment is the min distance away from the source/target port
       // (Px is endpoints of the connection and bounded to a port)
       if (i === 1) distance = p0.y - lp0.y;
@@ -15261,7 +15262,7 @@ _packages.default.layout.connection.InteractiveManhattanConnectionRouter = _pack
     }
     // vertical segment movement
     //
-    else if (p0.x === p1.x) {
+    else if (Math.abs(p0.x - p1.x) < TOLERANCE) {
       // ensure that the segment is the min distance away from the source/target port
       //
       if (i === 1) {
@@ -15365,7 +15366,10 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
 /**
  * @class
  * Provides a {@link draw2d.Connection} with an orthogonal route between the Connection's source
- * and target anchors.
+ * and target anchors. Draws a bridge (arc) where connections cross.
+ *
+ * Use {@link draw2d.layout.connection.CircuitConnectionRouter} if you need vertex dots
+ * at crossings with shared ports (typical for circuit diagrams).
  *
  * @inheritable
  * @author Andreas Herz
