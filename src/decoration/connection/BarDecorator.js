@@ -8,8 +8,8 @@ import draw2d from '../../packages'
  *
  *    // create and add two nodes which contains Ports (In and OUT)
  *    //
- *    var start = new draw2d.shape.node.Start();
- *    var end   = new draw2d.shape.node.End();
+ *    let start = new draw2d.shape.node.Start();
+ *    let end   = new draw2d.shape.node.End();
 
  *    // ...add it to the canvas
  *    canvas.add( start, 50,50);
@@ -17,7 +17,7 @@ import draw2d from '../../packages'
  *
  *    // Create a Connection and connect the Start and End node
  *    //
- *    var c = new draw2d.Connection();
+ *    let c = new draw2d.Connection();
  *
  *    // toggle from ManhattenRouter to DirectRouter to show the rotation of decorations
  *    c.setRouter(new draw2d.layout.connection.DirectRouter());
@@ -37,7 +37,7 @@ import draw2d from '../../packages'
  * @author Andreas Herz
  * @param {Number} [width] the width of the bar
  * @param {Number} [height] the height of the bar
- * @extend draw2d.decoration.connection.Decorator
+ * @extends draw2d.decoration.connection.Decorator
  */
 draw2d.decoration.connection.BarDecorator = draw2d.decoration.connection.Decorator.extend(
   /** @lends draw2d.decoration.connection.BarDecorator */
@@ -75,6 +75,12 @@ draw2d.decoration.connection.BarDecorator = draw2d.decoration.connection.Decorat
 
       st.push(paper.path(path.join("")))
       st.attr({fill: this.backgroundColor.rgba()})
+      
+      // Use stroke width from parent connection if available
+      if (this.parent !== null) {
+        st.attr({"stroke-width": this.parent.getStroke()})
+      }
+      
       return st
     }
   })

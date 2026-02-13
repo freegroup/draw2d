@@ -447,6 +447,7 @@ require('./decoration/connection/OpenArrowDecorator');
 require('./decoration/connection/DiamondDecorator');
 require('./decoration/connection/CircleDecorator');
 require('./decoration/connection/BarDecorator');
+require('./decoration/connection/DoubleBarDecorator');
 require('./io/Reader');
 require('./io/Writer');
 require('./io/svg/Writer');

@@ -8,15 +8,15 @@ import draw2d from '../../packages'
  *
  *    // create and add two nodes which contains Ports (In and OUT)
  *    //
- *    var start = new draw2d.shape.node.Start();
- *    var end   = new draw2d.shape.node.End();
+ *    let start = new draw2d.shape.node.Start();
+ *    let end   = new draw2d.shape.node.End();
  *    // ...add it to the canvas
  *    canvas.add( start, 50,50);
  *    canvas.add( end, 230,80);
  *
  *    // Create a Connection and connect the Start and End node
  *    //
- *    var c = new draw2d.Connection();
+ *    let c = new draw2d.Connection();
  *
  *    // toggle from ManhattenRouter to DirectRouter to show the rotation of decorations
  *    c.setRouter(new draw2d.layout.connection.DirectRouter());
@@ -38,7 +38,7 @@ import draw2d from '../../packages'
  * @author Andreas Herz
  * @param {Number} [width] the width of the arrow
  * @param {Number} [height] the height of the arrow
- * @extend draw2d.decoration.connection.Decorator
+ * @extends draw2d.decoration.connection.Decorator
  */
 draw2d.decoration.connection.ArrowDecorator = draw2d.decoration.connection.Decorator.extend(
   /** @lends draw2d.decoration.connection.ArrowDecorator */

@@ -14,7 +14,7 @@
 
 <script type="text/javascript">
 
-var canvas = null;
+let canvas = null;
 
 document.addEventListener("DOMContentLoaded",function () {
 
@@ -25,8 +25,8 @@ document.addEventListener("DOMContentLoaded",function () {
 
 	     // create and add two nodes which contains Ports (In and OUT)
 	     //
-		 var start = new draw2d.shape.node.Start({x:50, y:250});
-		 var end   = new draw2d.shape.node.End({x:430, y:150});
+		 let start = new draw2d.shape.node.Start({x:50, y:250});
+		 let end   = new draw2d.shape.node.End({x:430, y:150});
 
 		 // ...add it to the canvas
 		 canvas.add( start);
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded",function () {
 
 		 // Create a Connection and connect the Start and End node
 		 //
-		 var c = new draw2d.Connection({
+		 let c = new draw2d.Connection({
 		     sourceDecorator: new draw2d.decoration.connection.BarDecorator(),
 		     targetDecorator: new draw2d.decoration.connection.DiamondDecorator(),
 		     source: start.getOutputPort(0),
@@ -66,11 +66,80 @@ document.addEventListener("DOMContentLoaded",function () {
 		 c.getTargetDecorator().setColor('#FF0000')
 		 canvas.add(c);
 
+		 // Add a third connection with DoubleBarDecorator
+		 //
+		 start = new draw2d.shape.node.Start({x:50, y:650});
+		 end   = new draw2d.shape.node.End({x:430, y:550});
+		 canvas.add( start);
+		 canvas.add( end);
+
+		 c = new draw2d.Connection({
+		     router:new draw2d.layout.connection.DirectRouter(),
+         sourceDecorator: new draw2d.decoration.connection.DoubleBarDecorator(),
+         targetDecorator: new draw2d.decoration.connection.ArrowDecorator(),
+         source: start.getOutputPort(0),
+         target:end.getInputPort(0)
+		 });
+		 canvas.add(c);
+
+		 /////////////////////////////////////////////////////////////////////
+		 // RIGHT SIDE: Same connections but with thick stroke (stroke: 5)
+		 /////////////////////////////////////////////////////////////////////
+
+		 // Thick stroke version of first connection
+		 start = new draw2d.shape.node.Start({x:550, y:250});
+		 end   = new draw2d.shape.node.End({x:930, y:150});
+		 canvas.add( start);
+		 canvas.add( end);
+
+		 c = new draw2d.Connection({
+		     stroke: 5,
+		     sourceDecorator: new draw2d.decoration.connection.BarDecorator(),
+		     targetDecorator: new draw2d.decoration.connection.DiamondDecorator(),
+		     source: start.getOutputPort(0),
+		     target:end.getInputPort(0)
+		 });
+		 canvas.add(c);
+	     c.toFront();
+
+		 // Thick stroke version of second connection
+		 start = new draw2d.shape.node.Start({x:550, y:450});
+		 end   = new draw2d.shape.node.End({x:930, y:350});
+		 canvas.add( start);
+		 canvas.add( end);
+
+		 c = new draw2d.Connection({
+		     stroke: 5,
+		     router:new draw2d.layout.connection.DirectRouter(),
+         sourceDecorator: new draw2d.decoration.connection.BarDecorator(),
+         targetDecorator: new draw2d.decoration.connection.DiamondDecorator(),
+         source: start.getOutputPort(0),
+         target:end.getInputPort(0)
+		 });
+		 c.getTargetDecorator().setColor('#FF0000')
+		 canvas.add(c);
+
+		 // Thick stroke version of third connection with DoubleBarDecorator
+		 start = new draw2d.shape.node.Start({x:550, y:650});
+		 end   = new draw2d.shape.node.End({x:930, y:550});
+		 canvas.add( start);
+		 canvas.add( end);
+
+		 c = new draw2d.Connection({
+		     stroke: 5,
+		     router:new draw2d.layout.connection.DirectRouter(),
+         sourceDecorator: new draw2d.decoration.connection.DoubleBarDecorator(),
+         targetDecorator: new draw2d.decoration.connection.ArrowDecorator(),
+         source: start.getOutputPort(0),
+         target:end.getInputPort(0)
+		 });
+		 canvas.add(c);
+
 		 /////////////////////////////////////////////////////////////////////
 		 // THIS IS ONLY FOR THE ARROW AND THE POST-IT
 		 /////////////////////////////////////////////////////////////////////
 
-		 var msg = new draw2d.shape.note.PostIt({text:"Add to the standard connector some endpoint decorations."});
+		 let msg = new draw2d.shape.note.PostIt({text:"Add to the standard connector some endpoint decorations."});
 		 canvas.add(msg, 20,20);
 
 		 $("body").scrollTop(0)
