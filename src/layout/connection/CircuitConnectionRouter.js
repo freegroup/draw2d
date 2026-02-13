@@ -156,6 +156,10 @@ draw2d.layout.connection.CircuitConnectionRouter = draw2d.layout.connection.Manh
     //
     this._route(conn, toPt, toDir, fromPt, fromDir)
 
+    // Ensure perfect orthogonal lines by normalizing internal vertices
+    // This corrects any floating point errors from division operations in _route()
+    this._normalizeVertices(conn)
+
     // get the intersections to the other connections
     //
     let intersectionsASC = conn.getCanvas().getIntersection(conn).sort("x")
@@ -230,9 +234,14 @@ draw2d.layout.connection.CircuitConnectionRouter = draw2d.layout.connection.Manh
               }
             }
           }
-          // ..or a bridge. We draw only horizontal bridges. Just a design decision
+          // ..or a bridge. We draw only horizontal bridges. Just a design decision.
+          // 
+          // IMPORTANT: We use integer truncation (| 0) for the Y-coordinate comparison because:
+          // - The path rendering adds +0.5 to coordinates for crisp subpixel rendering (anti-aliasing)
+          // - The intersection calculation returns original integer coordinates
+          // - Without truncation, 303.5 !== 303 would fail even though they represent the same line
           //
-          else if (p.y === interP.y) {
+          else if ((oldP.y | 0) === (p.y | 0) && (p.y | 0) === (interP.y | 0)) {
             path.push(" L", ((interP.x - bridgeWidth) | 0) + 0.5, " ", (interP.y | 0) + 0.5)
             path.push(bridgeCode)
           }

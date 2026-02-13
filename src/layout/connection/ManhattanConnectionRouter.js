@@ -97,7 +97,57 @@ draw2d.layout.connection.ManhattanConnectionRouter = draw2d.layout.connection.Co
       conn.addPoint(fromPt)
     }
     
+    // Ensure perfect orthogonal lines by aligning coordinates
+    // Horizontal segments must have identical Y values
+    // Vertical segments must have identical X values
+    this._normalizeVertices(conn)
+    
     this._paint(conn)
+  },
+
+  /**
+   * Normalize vertices to ensure perfect orthogonal lines.
+   * This corrects floating point errors from division operations.
+   * Only internal vertices are modified - start and end points remain unchanged
+   * to preserve port attachment.
+   * 
+   * Manhattan routes always alternate between horizontal and vertical segments.
+   * We determine the first segment direction from start point and align accordingly.
+   * 
+   * @private
+   * @param {draw2d.Connection} conn
+   */
+  _normalizeVertices: function(conn) {
+    let vertices = conn.getVertices()
+    let count = vertices.getSize()
+    
+    // Need at least 3 vertices to have internal points to correct
+    if (count < 3) return
+    
+    let first = vertices.get(0)
+    let second = vertices.get(1)
+    
+    // Determine if first segment is horizontal or vertical
+    let firstSegmentHorizontal = Math.abs(first.x - second.x) > Math.abs(first.y - second.y)
+    
+    // Iterate only internal vertices (skip first and last)
+    for (let i = 1; i < count - 1; i++) {
+      let prev = vertices.get(i - 1)
+      let curr = vertices.get(i)
+      
+      // Segments alternate: if first is horizontal, segment 0 is H, segment 1 is V, etc.
+      // Segment i-1 connects prev to curr
+      let segmentIndex = i - 1
+      let isHorizontal = (segmentIndex % 2 === 0) ? firstSegmentHorizontal : !firstSegmentHorizontal
+      
+      if (isHorizontal) {
+        // Horizontal segment: Y must match
+        curr.y = prev.y
+      } else {
+        // Vertical segment: X must match
+        curr.x = prev.x
+      }
+    }
   },
 
   /**

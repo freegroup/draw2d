@@ -63,6 +63,10 @@ draw2d.layout.connection.ManhattanBridgedConnectionRouter = draw2d.layout.connec
     if(conn.getVertices().getSize()<2){
       conn.addPoint(fromPt)
     }
+
+    // Ensure perfect orthogonal lines by normalizing internal vertices
+    // This corrects any floating point errors from division operations in _route()
+    this._normalizeVertices(conn)
     
     // calculate the path string for the SVG rendering
     //
@@ -98,9 +102,14 @@ draw2d.layout.connection.ManhattanBridgedConnectionRouter = draw2d.layout.connec
 
       intersectionForCalc.each(function (ii, interP) {
         if (interP.justTouching === false && draw2d.shape.basic.Line.hit(1, oldP.x, oldP.y, p.x, p.y, interP.x, interP.y) === true) {
-          // we draw only horizontal bridges. Just a design decision
+          // We draw only horizontal bridges. Just a design decision.
+          // 
+          // IMPORTANT: We use integer truncation (| 0) for the Y-coordinate comparison because:
+          // - The path rendering adds +0.5 to coordinates for crisp subpixel rendering (anti-aliasing)
+          // - The intersection calculation returns original integer coordinates
+          // - Without truncation, 303.5 !== 303 would fail even though they represent the same line
           //
-          if (p.y === interP.y) {
+          if ((oldP.y | 0) === (p.y | 0) && (p.y | 0) === (interP.y | 0)) {
             path.push(" L", ((interP.x - bridgeWidth) | 0) + 0.5, " ", (interP.y | 0) + 0.5)
             path.push(bridgeCode)
           }
