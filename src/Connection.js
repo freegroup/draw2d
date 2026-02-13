@@ -349,9 +349,9 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
         this.sourceDecoratorNode.attr({opacity: this.alpha})
         // apply the color of the connection if the decoration doesn't have any
         if (this.sourceDecorator.getColor() === null) {
-          this.sourceDecoratorNode.attr({"stroke": "#" + this.lineColor.hex()})
+          this.sourceDecoratorNode.attr({stroke: this.lineColor.hash()})
         } else {
-          this.sourceDecoratorNode.attr({"stroke": "#" + this.sourceDecorator.getColor().hex()})
+          this.sourceDecoratorNode.attr({stroke: this.sourceDecorator.getColor().hash()})
         }
         this.sourceDecoratorNode.forEach(shape => {
           shape.node.setAttribute("class", this.cssClass !== null ? this.cssClass : "")
@@ -736,6 +736,9 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
       }
 
       let length = Math.sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y))
+      if (length === 0) {
+        return 0
+      }
       let angle = -(180 / Math.PI) * Math.asin((p1.y - p2.y) / length)
 
       if (angle < 0) {
@@ -771,6 +774,9 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
       }
 
       let length = Math.sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y))
+      if (length === 0) {
+        return 90
+      }
       let angle = -(180 / Math.PI) * Math.asin((p1.y - p2.y) / length)
 
       if (angle < 0) {

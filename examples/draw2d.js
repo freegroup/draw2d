@@ -2067,11 +2067,11 @@ _packages.default.Connection = _packages.default.shape.basic.PolyLine.extend(/**
       // apply the color of the connection if the decoration doesn't have any
       if (this.sourceDecorator.getColor() === null) {
         this.sourceDecoratorNode.attr({
-          "stroke": "#" + this.lineColor.hex()
+          stroke: this.lineColor.hash()
         });
       } else {
         this.sourceDecoratorNode.attr({
-          "stroke": "#" + this.sourceDecorator.getColor().hex()
+          stroke: this.sourceDecorator.getColor().hash()
         });
       }
       this.sourceDecoratorNode.forEach(shape => {
@@ -2454,6 +2454,9 @@ _packages.default.Connection = _packages.default.shape.basic.PolyLine.extend(/**
       p2 = this.lineSegments.get(5)?.end ?? p2;
     }
     let length = Math.sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y));
+    if (length === 0) {
+      return 0;
+    }
     let angle = -(180 / Math.PI) * Math.asin((p1.y - p2.y) / length);
     if (angle < 0) {
       if (p2.x < p1.x) {
@@ -2485,6 +2488,9 @@ _packages.default.Connection = _packages.default.shape.basic.PolyLine.extend(/**
       p2 = this.lineSegments.get(this.lineSegments.getSize() - 5)?.end ?? p2;
     }
     let length = Math.sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y));
+    if (length === 0) {
+      return 90;
+    }
     let angle = -(180 / Math.PI) * Math.asin((p1.y - p2.y) / length);
     if (angle < 0) {
       if (p2.x < p1.x) {
