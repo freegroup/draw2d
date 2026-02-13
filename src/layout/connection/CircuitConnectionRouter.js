@@ -105,8 +105,10 @@ draw2d.layout.connection.CircuitConnectionRouter = draw2d.layout.connection.Manh
   onUninstall: function (connection) {
     if (typeof connection.vertexNodes !== "undefined" && connection.vertexNodes !== null) {
       connection.vertexNodes.remove()
-      connection.vertexNodes = null
+      delete connection.vertexNodes
     }
+    // Clean up the bridge invalidation flag to avoid stale state when router is changed
+    delete connection._bridgesInvalidated
   },
 
   /**
@@ -160,9 +162,32 @@ draw2d.layout.connection.CircuitConnectionRouter = draw2d.layout.connection.Manh
     // This corrects any floating point errors from division operations in _route()
     this._normalizeVertices(conn)
 
-    // get the intersections to the other connections
+    // Get the intersections to the other connections.
+    // During drag operations, the intersection data is stale because
+    // calculateConnectionIntersection() is only called on mouseup. To prevent
+    // "ghost bridges" from appearing at old intersection positions, we skip
+    // bridge drawing entirely while ANY figure/connection is being moved.
+    // The bridge may be on a stationary horizontal line crossed by a moving vertical line.
     //
-    let intersectionsASC = conn.getCanvas().getIntersection(conn).sort("x")
+    let canvas = conn.getCanvas()
+    let anyFigureMoving = canvas.mouseDown === true
+    
+    // If dragging started, invalidate crossing connections so they redraw without bridges
+    if (anyFigureMoving && !conn._bridgesInvalidated) {
+      conn._bridgesInvalidated = true
+      canvas.lineIntersections.each((i, entry) => {
+        if (entry.line === conn && entry.other !== conn) {
+          entry.other.svgPathString = null
+          entry.other.repaint()
+        }
+      })
+    } else if (!anyFigureMoving) {
+      conn._bridgesInvalidated = false
+    }
+    
+    let intersectionsASC = anyFigureMoving 
+      ? new draw2d.util.ArrayList() 
+      : canvas.getIntersection(conn).sort("x")
     let intersectionsDESC = intersectionsASC.clone().reverse()
 
     let intersectionForCalc = intersectionsASC
