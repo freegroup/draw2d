@@ -32,7 +32,7 @@ draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.Connect
     this.useSimplifyValue = 2
     this.useDebug = false
     this.useShift = 4
-    this.portOutletOffset = 15
+    this.portOutletOffset = 30  // Distance from port before first direction change
 
 
 //    	this.finder = new PF.AStarFinder();
@@ -54,6 +54,30 @@ draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.Connect
    */
   onInstall: function (connection) {
     connection.installEditPolicy(new draw2d.policy.line.LineSelectionFeedbackPolicy())
+  },
+
+  /**
+   * 
+   * Set the minimum distance from port before the first direction change.
+   * This creates a "outlet" segment that goes straight out from the port
+   * before the router makes any turns.
+   *
+   * @param {Number} offset The distance in pixels (default: 30)
+   * @returns {this}
+   */
+  setPortOutletOffset: function (offset) {
+    this.portOutletOffset = offset
+    return this
+  },
+
+  /**
+   * 
+   * Get the current port outlet offset.
+   *
+   * @returns {Number} The distance in pixels
+   */
+  getPortOutletOffset: function () {
+    return this.portOutletOffset
   },
 
   /**
@@ -167,6 +191,12 @@ draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.Connect
     path.reverse()
     this.adjustPath(toPt, path, toDir)
     path.reverse()
+
+    // Straighten path segments to remove small bumps from grid-based routing
+    path = this.straightenPath(path, 1 << (this.useShift - 1))
+    
+    // Remove unnecessary collinear points
+    path = this.removeCollinearPoints(path)
 
     path.forEach(e => {
       e.x = e[0]
@@ -384,6 +414,133 @@ draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.Connect
         return false
       }
     })
+  },
+
+  /**
+   * 
+   * Straighten orthogonal segments in the path.
+   * This removes small "bumps" caused by grid-based routing.
+   * 
+   * If multiple consecutive points have nearly the same X or Y coordinate,
+   * they are aligned to the average value.
+   * 
+   * @param {Array} path Array of points with x,y coordinates
+   * @param {Number} tolerance Maximum deviation to consider points as aligned
+   * @returns {Array} The straightened path
+   * @private
+   */
+  straightenPath: function (path, tolerance) {
+    if (path.length < 3) return path
+    
+    tolerance = tolerance || 3
+    
+    // First pass: straighten horizontal segments (same Y)
+    let i = 0
+    while (i < path.length) {
+      let segmentStart = i
+      let sumY = path[i].y || path[i][1]
+      let count = 1
+      
+      // Find consecutive points with similar Y
+      while (i + 1 < path.length) {
+        let currentY = path[i].y !== undefined ? path[i].y : path[i][1]
+        let nextY = path[i + 1].y !== undefined ? path[i + 1].y : path[i + 1][1]
+        if (Math.abs(currentY - nextY) <= tolerance) {
+          i++
+          sumY += nextY
+          count++
+        } else {
+          break
+        }
+      }
+      
+      // If we found a horizontal segment, align all points to average Y
+      if (count >= 2) {
+        let avgY = Math.round(sumY / count)
+        for (let j = segmentStart; j <= i; j++) {
+          if (path[j].y !== undefined) {
+            path[j].y = avgY
+          }
+          path[j][1] = avgY
+        }
+      }
+      i++
+    }
+    
+    // Second pass: straighten vertical segments (same X)
+    i = 0
+    while (i < path.length) {
+      let segmentStart = i
+      let sumX = path[i].x || path[i][0]
+      let count = 1
+      
+      // Find consecutive points with similar X
+      while (i + 1 < path.length) {
+        let currentX = path[i].x !== undefined ? path[i].x : path[i][0]
+        let nextX = path[i + 1].x !== undefined ? path[i + 1].x : path[i + 1][0]
+        if (Math.abs(currentX - nextX) <= tolerance) {
+          i++
+          sumX += nextX
+          count++
+        } else {
+          break
+        }
+      }
+      
+      // If we found a vertical segment, align all points to average X
+      if (count >= 2) {
+        let avgX = Math.round(sumX / count)
+        for (let j = segmentStart; j <= i; j++) {
+          if (path[j].x !== undefined) {
+            path[j].x = avgX
+          }
+          path[j][0] = avgX
+        }
+      }
+      i++
+    }
+    
+    return path
+  },
+
+  /**
+   * 
+   * Remove collinear points from the path.
+   * Points that lie on a straight line between their neighbors are removed.
+   * 
+   * @param {Array} path Array of points with x,y coordinates
+   * @returns {Array} The cleaned path without collinear points
+   * @private
+   */
+  removeCollinearPoints: function (path) {
+    if (path.length < 3) return path
+    
+    let result = [path[0]]
+    
+    for (let i = 1; i < path.length - 1; i++) {
+      let prev = result[result.length - 1]
+      let curr = path[i]
+      let next = path[i + 1]
+      
+      let prevX = prev.x !== undefined ? prev.x : prev[0]
+      let prevY = prev.y !== undefined ? prev.y : prev[1]
+      let currX = curr.x !== undefined ? curr.x : curr[0]
+      let currY = curr.y !== undefined ? curr.y : curr[1]
+      let nextX = next.x !== undefined ? next.x : next[0]
+      let nextY = next.y !== undefined ? next.y : next[1]
+      
+      // Check if points are collinear (on the same line)
+      // Using cross product: (curr-prev) x (next-prev) = 0 means collinear
+      let cross = (currX - prevX) * (nextY - prevY) - (currY - prevY) * (nextX - prevX)
+      
+      // If not collinear, keep the point
+      if (Math.abs(cross) > 0.5) {
+        result.push(curr)
+      }
+    }
+    
+    result.push(path[path.length - 1])
+    return result
   },
 
 
