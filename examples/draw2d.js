@@ -34368,12 +34368,13 @@ _packages.default.shape.basic.Polygon = _packages.default.VectorFigure.extend(/*
       this.maxX = this.x + this.width;
       this.maxY = this.y + this.height;
     } else {
-      this.minX = this.x = Math.min(...this.vertices.asArray().map(n => n.x));
-      this.minY = this.y = Math.min(...this.vertices.asArray().map(n => n.y));
-      this.maxX = Math.max(...this.vertices.asArray().map(n => n.x));
-      this.maxY = Math.max(...this.vertices.asArray().map(n => n.y));
-      this.width = this.maxX - this.minX;
-      this.height = this.maxY - this.minY;
+      let bbox = _packages.default.geo.Rectangle.boundingBox(this.vertices);
+      this.minX = this.x = bbox.x;
+      this.minY = this.y = bbox.y;
+      this.maxX = bbox.x + bbox.w;
+      this.maxY = bbox.y + bbox.h;
+      this.width = bbox.w;
+      this.height = bbox.h;
     }
   },
   /**
