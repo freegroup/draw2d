@@ -101,6 +101,8 @@ export default {
     icon: {},
     /** @namespace draw2d.shape.layout */
     layout: {},
+    /** @namespace draw2d.shape.box */
+    box: {},
     /** @namespace draw2d.shape.pert */
     pert: {},
     /** @namespace draw2d.shape.state */

@@ -53,6 +53,51 @@
     ]
   },
   {
+    "text": "Box Layout (Experimental)",
+    "children": [
+      {
+        "name": "galerie_box",
+        "text": "Box Gallery",
+        "description": "Gallery of draw2d.shape.box.* classes: VBox, HBox, GridBox",
+        "url": "galerie_box/index.html",
+        "icon": "galerie_box/icon.png",
+        "status": "new"
+      },
+      {
+        "name": "box_collapsible",
+        "text": "Collapsible Box",
+        "description": "Collapsible shape using VBox and HBox",
+        "url": "box_collapsible/index.html",
+        "icon": "box_collapsible/icon.png",
+        "status": "new"
+      },
+      {
+        "name": "box_tablelayout",
+        "text": "Table with VBox",
+        "description": "Simple table layout using VBox",
+        "url": "box_tablelayout/index.html",
+        "icon": "box_tablelayout/icon.png",
+        "status": "new"
+      },
+      {
+        "name": "box_zoom_stack",
+        "text": "Zoom StackBox",
+        "description": "StackBox that changes layers on zoom",
+        "url": "box_zoom_stack/index.html",
+        "icon": "box_zoom_stack/icon.png",
+        "status": "new"
+      },
+      {
+        "name": "box_icon_decoration",
+        "text": "Icon Decoration Box",
+        "description": "Complex shape with icons using VBox and HBox",
+        "url": "box_icon_decoration/index.html",
+        "icon": "box_icon_decoration/icon.png",
+        "status": "new"
+      }
+    ]
+  },
+  {
     "text": "Composite Figures",
     "children": [
       {
