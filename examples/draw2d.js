@@ -36001,9 +36001,9 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  *    canvas.add(stack, 50, 50);
  * 
  * @author Andreas Herz
- * @extends draw2d.shape.layout.Layout
+ * @extends draw2d.shape.box.Box
  */
-_packages.default.shape.box.StackBox = _packages.default.shape.layout.Layout.extend(/** @lends draw2d.shape.box.StackBox.prototype */
+_packages.default.shape.box.StackBox = _packages.default.shape.box.Box.extend(/** @lends draw2d.shape.box.StackBox.prototype */
 {
   NAME: "draw2d.shape.box.StackBox",
   /**

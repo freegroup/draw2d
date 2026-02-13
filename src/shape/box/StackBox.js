@@ -15,9 +15,9 @@ import draw2d from '../../packages'
  *    canvas.add(stack, 50, 50);
  * 
  * @author Andreas Herz
- * @extends draw2d.shape.layout.Layout
+ * @extends draw2d.shape.box.Box
  */
-draw2d.shape.box.StackBox = draw2d.shape.layout.Layout.extend(
+draw2d.shape.box.StackBox = draw2d.shape.box.Box.extend(
   /** @lends draw2d.shape.box.StackBox.prototype */
   {
 
