@@ -1,7 +1,7 @@
 {
   "name": "CircuitConnectionRouter",
   "namespace": "draw2d.layout.connection",
-  "description": "<p>Provides a {@link draw2d.Connection} with an orthogonal route between the Connection's source\nand target anchors.\n<br>\nAdditional a <b>bridge</b> is added to each connection which didn't have a common source or target\nport.<br>\nA <b>dot</b> is added at the crossing if the two connections have a common spurce or target port.</p>\n<br>",
+  "description": "<p>Orthogonal router for circuit/schematic diagrams.</p>\n<ul>\n<li><strong>Bridge (arc):</strong> drawn at crossings where connections have NO shared ports</li>\n<li><strong>Vertex (dot):</strong> drawn at crossings where connections share a source or target port</li>\n</ul>\n<p>Use {@link draw2d.layout.connection.ManhattanBridgedConnectionRouter} if you only need bridges.</p>",
   "extends": [
     "draw2d.layout.connection.ManhattanConnectionRouter"
   ],
@@ -100,7 +100,7 @@
         {
           "name": "radius",
           "type": "Number",
-          "description": "",
+          "description": "<p>the radius of the arc in pixels</p>",
           "default": "",
           "optional": "",
           "nullable": ""
@@ -108,7 +108,11 @@
       ],
       "inherited": false,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "route",
@@ -166,6 +170,26 @@
           "description": "<p>the vertices before the reroute has been triggered</p>",
           "default": "",
           "optional": true,
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "",
+      "examples": []
+    },
+    {
+      "name": "_normalizeVertices",
+      "access": "private",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Normalize vertices to ensure perfect orthogonal lines.\nThis corrects floating point errors from division operations.\nOnly internal vertices are modified - start and end points remain unchanged\nto preserve port attachment.</p>\n<p>Manhattan routes always alternate between horizontal and vertical segments.\nWe determine the first segment direction from start point and align accordingly.</p>",
+      "parameters": [
+        {
+          "name": "conn",
+          "type": "draw2d.Connection",
+          "description": "",
+          "default": "",
+          "optional": "",
           "nullable": ""
         }
       ],

@@ -795,7 +795,7 @@ draw2d.geo.Rectangle.DIRECTION_LEFT = 3;
  * @param {draw2d.util.ArrayList|Array} points Collection of draw2d.geo.Point objects
  * @returns {draw2d.geo.Rectangle} The bounding box containing all points
  * @static
- * @since 8.0.0
+ * @since 6.2.0
  */
 draw2d.geo.Rectangle.boundingBox = function(points) {
   let _points = (points instanceof draw2d.util.ArrayList) ? points.asArray() : points

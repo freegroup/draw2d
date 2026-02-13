@@ -113,6 +113,14 @@
           "default": "",
           "optional": "",
           "nullable": ""
+        },
+        {
+          "name": "count",
+          "type": "Number",
+          "description": "<p>Total number of overlapping connections</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
         }
       ],
       "inherited": false,

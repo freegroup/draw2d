@@ -829,6 +829,33 @@
       }
     },
     {
+      "name": "boundingBox",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Creates a bounding box Rectangle from a collection of points.</p>",
+      "parameters": [
+        {
+          "name": "points",
+          "type": [
+            "draw2d.util.ArrayList",
+            "Array"
+          ],
+          "description": "<p>Collection of draw2d.geo.Point objects</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": false,
+      "since": "6.2.0",
+      "examples": [],
+      "returns": {
+        "type": "draw2d.geo.Rectangle",
+        "description": "<p>The bounding box containing all points</p>"
+      }
+    },
+    {
       "name": "setBoundary",
       "access": "",
       "virtual": false,

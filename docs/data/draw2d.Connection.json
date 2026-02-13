@@ -1413,7 +1413,7 @@
       "access": "",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>return the bounding box of the line or polygon</p>\n<p>TODO: precalculate or cache this values</p>",
+      "description": "<p>return the bounding box of the line or polygon</p>",
       "parameters": [],
       "inherited": true,
       "since": "4.8.2",

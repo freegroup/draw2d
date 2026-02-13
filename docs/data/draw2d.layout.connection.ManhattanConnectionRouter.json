@@ -51,6 +51,26 @@
       "examples": []
     },
     {
+      "name": "_normalizeVertices",
+      "access": "private",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Normalize vertices to ensure perfect orthogonal lines.\nThis corrects floating point errors from division operations.\nOnly internal vertices are modified - start and end points remain unchanged\nto preserve port attachment.</p>\n<p>Manhattan routes always alternate between horizontal and vertical segments.\nWe determine the first segment direction from start point and align accordingly.</p>",
+      "parameters": [
+        {
+          "name": "conn",
+          "type": "draw2d.Connection",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": false,
+      "since": "",
+      "examples": []
+    },
+    {
       "name": "_route",
       "access": "private",
       "virtual": false,

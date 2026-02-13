@@ -1,7 +1,7 @@
 {
   "name": "ManhattanBridgedConnectionRouter",
   "namespace": "draw2d.layout.connection",
-  "description": "<p>Provides a {@link draw2d.Connection} with an orthogonal route between the Connection's source\nand target anchors.</p>",
+  "description": "<p>Provides a {@link draw2d.Connection} with an orthogonal route between the Connection's source\nand target anchors. Draws a bridge (arc) where connections cross.</p>\n<p>The connection with the HIGHER z-index draws the arc, ensuring the bridge is always\nrendered on top of the crossing line. Supports both horizontal and vertical bridges.</p>\n<p>Use {@link draw2d.layout.connection.CircuitConnectionRouter} if you need vertex dots\nat crossings with shared ports (typical for circuit diagrams).</p>",
   "extends": [
     "draw2d.layout.connection.ManhattanConnectionRouter"
   ],
@@ -38,6 +38,50 @@
       "inherited": false,
       "since": "2.7.2",
       "examples": []
+    },
+    {
+      "name": "onUninstall",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Callback method if the router has been removed from the connection.</p>",
+      "parameters": [
+        {
+          "name": "connection",
+          "type": "draw2d.Connection",
+          "description": "<p>The related connection</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": false,
+      "since": "2.7.2",
+      "examples": []
+    },
+    {
+      "name": "setBridgeRadius",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Set the radius of the bridge arc.</p>",
+      "parameters": [
+        {
+          "name": "radius",
+          "type": "Number",
+          "description": "<p>the radius of the arc in pixels</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": false,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
       "name": "route",
@@ -103,6 +147,26 @@
       "examples": []
     },
     {
+      "name": "_normalizeVertices",
+      "access": "private",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Normalize vertices to ensure perfect orthogonal lines.\nThis corrects floating point errors from division operations.\nOnly internal vertices are modified - start and end points remain unchanged\nto preserve port attachment.</p>\n<p>Manhattan routes always alternate between horizontal and vertical segments.\nWe determine the first segment direction from start point and align accordingly.</p>",
+      "parameters": [
+        {
+          "name": "conn",
+          "type": "draw2d.Connection",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "",
+      "examples": []
+    },
+    {
       "name": "_route",
       "access": "private",
       "virtual": false,
@@ -152,26 +216,6 @@
       ],
       "inherited": true,
       "since": "",
-      "examples": []
-    },
-    {
-      "name": "onUninstall",
-      "access": "",
-      "virtual": false,
-      "deprecated": "",
-      "description": "<p>Callback method if the router has been removed from the connection.</p>",
-      "parameters": [
-        {
-          "name": "connection",
-          "type": "draw2d.shape.basic.PolyLine",
-          "description": "<p>The related connection</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        }
-      ],
-      "inherited": true,
-      "since": "2.7.2",
       "examples": []
     },
     {

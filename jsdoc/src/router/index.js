@@ -2068,6 +2068,11 @@ const routes = [
         component: () => import(/* webpackChunkName: "api_draw2d_decoration_connection_diamonddecorator" */ '../views/clazz.vue')
       },
       {
+        path: '/api/draw2d/decoration/connection/doublebardecorator',
+        props: { className: 'draw2d.decoration.connection.DoubleBarDecorator' },
+        component: () => import(/* webpackChunkName: "api_draw2d_decoration_connection_doublebardecorator" */ '../views/clazz.vue')
+      },
+      {
         path: '/api/draw2d/decoration/connection/openarrowdecorator',
         props: { className: 'draw2d.decoration.connection.OpenArrowDecorator' },
         component: () => import(/* webpackChunkName: "api_draw2d_decoration_connection_openarrowdecorator" */ '../views/clazz.vue')

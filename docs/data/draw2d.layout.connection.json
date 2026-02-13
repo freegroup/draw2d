@@ -8,7 +8,7 @@
     {
       "name": "CircuitConnectionRouter",
       "namespace": "draw2d.layout.connection",
-      "description": "<p>Provides a {@link draw2d.Connection} with an orthogonal route between the Connection's source\nand target anchors.\n<br>\nAdditional a <b>bridge</b> is added to each connection which didn't have a common source or target\nport.<br>\nA <b>dot</b> is added at the crossing if the two connections have a common spurce or target port.</p>\n<br>",
+      "description": "<p>Orthogonal router for circuit/schematic diagrams.</p>\n<ul>\n<li><strong>Bridge (arc):</strong> drawn at crossings where connections have NO shared ports</li>\n<li><strong>Vertex (dot):</strong> drawn at crossings where connections share a source or target port</li>\n</ul>\n<p>Use {@link draw2d.layout.connection.ManhattanBridgedConnectionRouter} if you only need bridges.</p>",
       "extends": [
         "draw2d.layout.connection.ManhattanConnectionRouter"
       ],
@@ -107,7 +107,7 @@
             {
               "name": "radius",
               "type": "Number",
-              "description": "",
+              "description": "<p>the radius of the arc in pixels</p>",
               "default": "",
               "optional": "",
               "nullable": ""
@@ -115,7 +115,11 @@
           ],
           "inherited": false,
           "since": "",
-          "examples": []
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "route",
@@ -173,6 +177,26 @@
               "description": "<p>the vertices before the reroute has been triggered</p>",
               "default": "",
               "optional": true,
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "_normalizeVertices",
+          "access": "private",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Normalize vertices to ensure perfect orthogonal lines.\nThis corrects floating point errors from division operations.\nOnly internal vertices are modified - start and end points remain unchanged\nto preserve port attachment.</p>\n<p>Manhattan routes always alternate between horizontal and vertical segments.\nWe determine the first segment direction from start point and align accordingly.</p>",
+          "parameters": [
+            {
+              "name": "conn",
+              "type": "draw2d.Connection",
+              "description": "",
+              "default": "",
+              "optional": "",
               "nullable": ""
             }
           ],
@@ -1152,6 +1176,14 @@
               "default": "",
               "optional": "",
               "nullable": ""
+            },
+            {
+              "name": "count",
+              "type": "Number",
+              "description": "<p>Total number of overlapping connections</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
             }
           ],
           "inherited": false,
@@ -1672,6 +1704,26 @@
           "examples": []
         },
         {
+          "name": "_normalizeVertices",
+          "access": "private",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Normalize vertices to ensure perfect orthogonal lines.\nThis corrects floating point errors from division operations.\nOnly internal vertices are modified - start and end points remain unchanged\nto preserve port attachment.</p>\n<p>Manhattan routes always alternate between horizontal and vertical segments.\nWe determine the first segment direction from start point and align accordingly.</p>",
+          "parameters": [
+            {
+              "name": "conn",
+              "type": "draw2d.Connection",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
           "name": "_route",
           "access": "private",
           "virtual": false,
@@ -1777,7 +1829,7 @@
     {
       "name": "ManhattanBridgedConnectionRouter",
       "namespace": "draw2d.layout.connection",
-      "description": "<p>Provides a {@link draw2d.Connection} with an orthogonal route between the Connection's source\nand target anchors.</p>",
+      "description": "<p>Provides a {@link draw2d.Connection} with an orthogonal route between the Connection's source\nand target anchors. Draws a bridge (arc) where connections cross.</p>\n<p>The connection with the HIGHER z-index draws the arc, ensuring the bridge is always\nrendered on top of the crossing line. Supports both horizontal and vertical bridges.</p>\n<p>Use {@link draw2d.layout.connection.CircuitConnectionRouter} if you need vertex dots\nat crossings with shared ports (typical for circuit diagrams).</p>",
       "extends": [
         "draw2d.layout.connection.ManhattanConnectionRouter"
       ],
@@ -1814,6 +1866,50 @@
           "inherited": false,
           "since": "2.7.2",
           "examples": []
+        },
+        {
+          "name": "onUninstall",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Callback method if the router has been removed from the connection.</p>",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "draw2d.Connection",
+              "description": "<p>The related connection</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": false,
+          "since": "2.7.2",
+          "examples": []
+        },
+        {
+          "name": "setBridgeRadius",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the radius of the bridge arc.</p>",
+          "parameters": [
+            {
+              "name": "radius",
+              "type": "Number",
+              "description": "<p>the radius of the arc in pixels</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": false,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
         },
         {
           "name": "route",
@@ -1879,6 +1975,26 @@
           "examples": []
         },
         {
+          "name": "_normalizeVertices",
+          "access": "private",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Normalize vertices to ensure perfect orthogonal lines.\nThis corrects floating point errors from division operations.\nOnly internal vertices are modified - start and end points remain unchanged\nto preserve port attachment.</p>\n<p>Manhattan routes always alternate between horizontal and vertical segments.\nWe determine the first segment direction from start point and align accordingly.</p>",
+          "parameters": [
+            {
+              "name": "conn",
+              "type": "draw2d.Connection",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
           "name": "_route",
           "access": "private",
           "virtual": false,
@@ -1928,26 +2044,6 @@
           ],
           "inherited": true,
           "since": "",
-          "examples": []
-        },
-        {
-          "name": "onUninstall",
-          "access": "",
-          "virtual": false,
-          "deprecated": "",
-          "description": "<p>Callback method if the router has been removed from the connection.</p>",
-          "parameters": [
-            {
-              "name": "connection",
-              "type": "draw2d.shape.basic.PolyLine",
-              "description": "<p>The related connection</p>",
-              "default": "",
-              "optional": "",
-              "nullable": ""
-            }
-          ],
-          "inherited": true,
-          "since": "2.7.2",
           "examples": []
         },
         {
@@ -2183,6 +2279,26 @@
           "deprecated": "",
           "description": "",
           "parameters": [],
+          "inherited": false,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "_normalizeVertices",
+          "access": "private",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Normalize vertices to ensure perfect orthogonal lines.\nThis corrects floating point errors from division operations.\nOnly internal vertices are modified - start and end points remain unchanged\nto preserve port attachment.</p>\n<p>Manhattan routes always alternate between horizontal and vertical segments.\nWe determine the first segment direction from start point and align accordingly.</p>",
+          "parameters": [
+            {
+              "name": "conn",
+              "type": "draw2d.Connection",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
           "inherited": false,
           "since": "",
           "examples": []
@@ -2693,6 +2809,26 @@
               "description": "<p>the vertices before the reroute has been triggered</p>",
               "default": "",
               "optional": true,
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "_normalizeVertices",
+          "access": "private",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Normalize vertices to ensure perfect orthogonal lines.\nThis corrects floating point errors from division operations.\nOnly internal vertices are modified - start and end points remain unchanged\nto preserve port attachment.</p>\n<p>Manhattan routes always alternate between horizontal and vertical segments.\nWe determine the first segment direction from start point and align accordingly.</p>",
+          "parameters": [
+            {
+              "name": "conn",
+              "type": "draw2d.Connection",
+              "description": "",
+              "default": "",
+              "optional": "",
               "nullable": ""
             }
           ],
@@ -3321,6 +3457,45 @@
           "examples": []
         },
         {
+          "name": "setPortOutletOffset",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the minimum distance from port before the first direction change.\nThis creates a &quot;outlet&quot; segment that goes straight out from the port\nbefore the router makes any turns.</p>",
+          "parameters": [
+            {
+              "name": "offset",
+              "type": "Number",
+              "description": "<p>The distance in pixels (default: 30)</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
+        },
+        {
+          "name": "getPortOutletOffset",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Get the current port outlet offset.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Number",
+            "description": "<p>The distance in pixels</p>"
+          }
+        },
+        {
           "name": "route",
           "access": "",
           "virtual": false,
@@ -3446,6 +3621,62 @@
             "type": "draw2d.geo.Point",
             "description": ""
           }
+        },
+        {
+          "name": "straightenPath",
+          "access": "private",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Straighten orthogonal segments in the path.\nThis removes small &quot;bumps&quot; caused by grid-based routing.</p>\n<p>If multiple consecutive points have nearly the same X or Y coordinate,\nthey are aligned to the average value.</p>",
+          "parameters": [
+            {
+              "name": "path",
+              "type": "Array",
+              "description": "<p>Array of points with x,y coordinates</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "tolerance",
+              "type": "Number",
+              "description": "<p>Maximum deviation to consider points as aligned</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Array",
+            "description": "<p>The straightened path</p>"
+          }
+        },
+        {
+          "name": "removeCollinearPoints",
+          "access": "private",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Remove collinear points from the path.\nPoints that lie on a straight line between their neighbors are removed.</p>",
+          "parameters": [
+            {
+              "name": "path",
+              "type": "Array",
+              "description": "<p>Array of points with x,y coordinates</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Array",
+            "description": "<p>The cleaned path without collinear points</p>"
+          }
         }
       ],
       "fires": "",
@@ -3555,6 +3786,26 @@
               "description": "<p>the vertices before the reroute has been triggered</p>",
               "default": "",
               "optional": true,
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "_normalizeVertices",
+          "access": "private",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Normalize vertices to ensure perfect orthogonal lines.\nThis corrects floating point errors from division operations.\nOnly internal vertices are modified - start and end points remain unchanged\nto preserve port attachment.</p>\n<p>Manhattan routes always alternate between horizontal and vertical segments.\nWe determine the first segment direction from start point and align accordingly.</p>",
+          "parameters": [
+            {
+              "name": "conn",
+              "type": "draw2d.Connection",
+              "description": "",
+              "default": "",
+              "optional": "",
               "nullable": ""
             }
           ],
