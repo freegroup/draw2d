@@ -4,14 +4,13 @@ import draw2d from '../../packages'
 /**
  * @class
  *
- * Provides a {@link draw2d.Connection} with an orthogonal route between the Connection's source
- * and target anchors.
- * <br>
- * Additional a <b>bridge</b> is added to each connection which didn't have a common source or target
- * port.<br>
- * A <b>dot</b> is added at the crossing if the two connections have a common spurce or target port.
+ * Orthogonal router for circuit/schematic diagrams.
  *
- * <br>
+ * - **Bridge (arc):** drawn at crossings where connections have NO shared ports
+ * - **Vertex (dot):** drawn at crossings where connections share a source or target port
+ *
+ * Use {@link draw2d.layout.connection.ManhattanBridgedConnectionRouter} if you only need bridges.
+ *
  *
  * @example
  *

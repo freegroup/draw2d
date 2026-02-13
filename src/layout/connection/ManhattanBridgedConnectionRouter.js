@@ -4,7 +4,10 @@ import draw2d from '../../packages'
 /**
  * @class
  * Provides a {@link draw2d.Connection} with an orthogonal route between the Connection's source
- * and target anchors.
+ * and target anchors. Draws a bridge (arc) where connections cross.
+ *
+ * Use {@link draw2d.layout.connection.CircuitConnectionRouter} if you need vertex dots
+ * at crossings with shared ports (typical for circuit diagrams).
  *
  * @inheritable
  * @author Andreas Herz
