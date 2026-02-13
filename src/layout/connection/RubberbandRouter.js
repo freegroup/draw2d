@@ -128,8 +128,15 @@ draw2d.layout.connection.RubberbandRouter = draw2d.layout.connection.ConnectionR
     // 4. Add (−v,u) to A to get C. Also add (−v,u) to B to get D.
 
     let uv = end.subtract(start)
-    let uv2 = uv.clone()
     let length = uv.length()
+
+    // Fallback für identische oder sehr nahe Punkte (verhindert Division durch Null)
+    if (length < 0.001) {
+      connection.addPoint(start)
+      connection.addPoint(end)
+      connection.svgPathString = `M ${start.x},${start.y} L ${end.x},${end.y}`
+      return
+    }
 
     let strength = 1 - Math.min(0.75, (1 / 500 * length))
     let first = start.lerp(end, 0.25 * strength)     // go closer to the start point if the strength grows
@@ -138,11 +145,19 @@ draw2d.layout.connection.RubberbandRouter = draw2d.layout.connection.ConnectionR
 
     thickness = Math.max(5, thickness * strength)
 
-    uv.x = uv.x / length * thickness
-    uv.y = uv.y / length * thickness
+    // Normalisierter Richtungsvektor
+    let normalizedX = uv.x / length
+    let normalizedY = uv.y / length
 
-    uv2.x = uv2.x / length * (thickness * (strength))
-    uv2.y = uv2.y / length * (thickness * (strength))
+    // Skalierter Vektor für Start/End-Bögen
+    uv.x = normalizedX * thickness
+    uv.y = normalizedY * thickness
+
+    // Skalierter Vektor für Zwischenpunkte (mit zusätzlicher Strength-Skalierung)
+    let uv2 = new draw2d.geo.Point(
+      normalizedX * thickness * strength,
+      normalizedY * thickness * strength
+    )
 
     // anchor points for the 180 arc at the start point of the connection
     //
@@ -176,7 +191,7 @@ draw2d.layout.connection.RubberbandRouter = draw2d.layout.connection.ConnectionR
 
     // calculate the path
     let path = ["M", start90.x, ",", start90.y]
-    path.push("A", thickness, ",", thickness, "0 0 1 ", start270.x, ",", start270.y)
+    path.push("A", thickness, ",", thickness, "0 0 1", start270.x, ",", start270.y)
     path.push("C", start270.x, ",", start270.y, first270.x, ",", first270.y, second270.x, ",", second270.y)
     path.push("C", second270.x, ",", second270.y, third270.x, ",", third270.y, end270.x, ",", end270.y)
     path.push("A", thickness, ",", thickness, "0 0 1", end90.x, ",", end90.y)
