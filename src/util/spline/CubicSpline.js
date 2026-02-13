@@ -39,19 +39,20 @@ draw2d.util.spline.CubicSpline = draw2d.util.spline.Spline.extend(
     generate: function(controlPoints, parts)
     {
       // This implementation of an cubic spline needs at least 3 control points. Return the 
-      // original point if they do not meet them
-      if(n<3) {
+      // original points if they do not meet this requirement
+      let n = controlPoints.getSize()
+      if(n < 3) {
         return controlPoints.clone(true)
       }
 
-      // Endpoints are added twice to get them include in the
+      // Endpoints are added twice to get them included in the
       // generated array
       let cp = new draw2d.util.ArrayList();
       cp.add(controlPoints.get(0));
       cp.addAll(controlPoints);
       cp.add(controlPoints.get(controlPoints.getSize()-1));
 
-      let n = cp.getSize();
+      n = cp.getSize();
       let spline = new draw2d.util.ArrayList();
       spline.add(controlPoints.get(0));
       spline.add( this.p(1, 0, cp) );
