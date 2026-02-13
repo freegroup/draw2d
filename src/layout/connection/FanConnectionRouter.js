@@ -103,7 +103,7 @@ draw2d.layout.connection.FanConnectionRouter = draw2d.layout.connection.DirectRo
     lines.grep( other => other.getTarget() === conn.getTarget() || other.getSource() === conn.getTarget())
 
     if (lines.getSize() > 1) {
-      this.routeCollision(conn, lines.indexOf(conn))
+      this.routeCollision(conn, lines.indexOf(conn), lines.getSize())
     }
     else {
       this._super(conn, routingHints)
@@ -117,16 +117,24 @@ draw2d.layout.connection.FanConnectionRouter = draw2d.layout.connection.DirectRo
    *
    * @param {draw2d.Connection} conn
    * @param {Number} index
+   * @param {Number} count Total number of overlapping connections
    */
-  routeCollision: function (conn, index) {
-    index = index + 1
+  routeCollision: function (conn, index, count) {
     let start = conn.getStartPoint()
     let end = conn.getEndPoint()
 
     let separation = 15
 
+    // Calculate the midpoint between start and end - this is where the bend will be centered
     let midPoint = new draw2d.geo.Point((end.x + start.x) / 2, (end.y + start.y) / 2)
+    
+    // Determine the relative position of end point to start point
+    // This is used to ensure consistent fan direction regardless of connection direction
     let position = end.getPosition(start)
+    
+    // Calculate the direction vector (ray) from start to end
+    // We flip the direction for NORTH/WEST positions to ensure the fan always spreads
+    // in a consistent direction (perpendicular to the connection line)
     let ray
     if (position === draw2d.geo.PositionConstants.SOUTH || position === draw2d.geo.PositionConstants.EAST) {
       ray = new draw2d.geo.Point(end.x - start.x, end.y - start.y)
@@ -135,19 +143,30 @@ draw2d.layout.connection.FanConnectionRouter = draw2d.layout.connection.DirectRo
       ray = new draw2d.geo.Point(start.x - end.x, start.y - end.y)
     }
 
+    // Normalize the ray vector to unit length
+    // This gives us a direction vector with length 1
     let length = Math.sqrt(ray.x * ray.x + ray.y * ray.y)
 
+    // Calculate the perpendicular offset components
+    // The separation is applied perpendicular to the connection line:
+    // - xSeparation and ySeparation represent the normalized direction vector
+    // - When applied with (-ySeparation, +xSeparation), we get a perpendicular vector
+    //   (rotating 90 degrees counterclockwise)
     let xSeparation = separation * ray.x / length
     let ySeparation = separation * ray.y / length
 
     let bendPoint
 
-    if (index % 2 === 0) {
-      bendPoint = new draw2d.geo.Point(midPoint.x + (index / 2) * (-1 * ySeparation), midPoint.y + (index / 2) * xSeparation)
-    }
-    else {
-      bendPoint = new draw2d.geo.Point(midPoint.x + (index / 2) * ySeparation, midPoint.y + (index / 2) * (-1 * xSeparation))
-    }
+    // Symmetric distribution: spread connections evenly around the midpoint
+    // For count=2: offsets are -0.5, +0.5 (both equally distant from center)
+    // For count=3: offsets are -1, 0, +1 (center one on midline)
+    // For count=4: offsets are -1.5, -0.5, +0.5, +1.5
+    let offset = index - (count - 1) / 2
+
+    bendPoint = new draw2d.geo.Point(
+      midPoint.x + offset * (-ySeparation), 
+      midPoint.y + offset * xSeparation
+    )
 
     // required for hit tests
     conn.addPoint(start)
