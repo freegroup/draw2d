@@ -100,8 +100,11 @@ draw2d.shape.box.StackBox = draw2d.shape.box.Box.extend(
     // New child becomes visible layer
     this.visibleLayer = this.children.getSize()
     
-    // Call parent (locator is ignored - stack handles positioning)
-    this._super(child, locator, index)
+    // Use a default locator if none provided (required by Figure.add)
+    const actualLocator = locator || new draw2d.layout.locator.XYAbsPortLocator(0, 0)
+    
+    // Call parent
+    this._super(child, actualLocator, index)
     
     return this
   },
