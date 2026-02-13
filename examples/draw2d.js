@@ -12533,6 +12533,31 @@ _packages.default.geo.Rectangle.DIRECTION_RIGHT = 1;
 _packages.default.geo.Rectangle.DIRECTION_DOWN = 2;
 _packages.default.geo.Rectangle.DIRECTION_LEFT = 3;
 
+/**
+ * Creates a bounding box Rectangle from a collection of points.
+ *
+ * @param {draw2d.util.ArrayList|Array} points Collection of draw2d.geo.Point objects
+ * @returns {draw2d.geo.Rectangle} The bounding box containing all points
+ * @static
+ * @since 8.0.0
+ */
+_packages.default.geo.Rectangle.boundingBox = function (points) {
+  let _points = points instanceof _packages.default.util.ArrayList ? points.asArray() : points;
+  if (_points.length === 0) {
+    return new _packages.default.geo.Rectangle(0, 0, 0, 0);
+  }
+  let minX = _points[0].x;
+  let maxX = minX;
+  let minY = _points[0].y;
+  let maxY = minY;
+  for (let i = 1; i < _points.length; i++) {
+    let p = _points[i];
+    if (p.x < minX) minX = p.x;else if (p.x > maxX) maxX = p.x;
+    if (p.y < minY) minY = p.y;else if (p.y > maxY) maxY = p.y;
+  }
+  return new _packages.default.geo.Rectangle(minX, minY, maxX - minX, maxY - minY);
+};
+
 /***/ }),
 
 /***/ "./src/geo/Util.js":
@@ -32007,19 +32032,11 @@ _packages.default.shape.basic.Line = _packages.default.Figure.extend(/** @lends 
    *
    * return the bounding box of the line or polygon
    *
-   * TODO: precalculate or cache this values
-   *
    * @returns {draw2d.geo.Rectangle}
    * @since 4.8.2
    */
   getBoundingBox: function () {
-    let minX = Math.min(...this.vertices.asArray().map(n => n.x));
-    let minY = Math.min(...this.vertices.asArray().map(n => n.y));
-    let maxX = Math.max(...this.vertices.asArray().map(n => n.x));
-    let maxY = Math.max(...this.vertices.asArray().map(n => n.y));
-    let width = maxX - minX;
-    let height = maxY - minY;
-    return new _packages.default.geo.Rectangle(minX, minY, width, height);
+    return _packages.default.geo.Rectangle.boundingBox(this.vertices);
   },
   /**
    *
@@ -32454,6 +32471,11 @@ _packages.default.shape.basic.Line = _packages.default.Figure.extend(/** @lends 
 
     // empty result. the lines are equal...infinit array
     if (other === this) {
+      return result;
+    }
+
+    // Early exit: if bounding boxes don't overlap, no intersection possible
+    if (!this.getBoundingBox().intersects(other.getBoundingBox())) {
       return result;
     }
     let segments1 = this.getSegments();

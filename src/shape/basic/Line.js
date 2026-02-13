@@ -610,20 +610,11 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
    *
    * return the bounding box of the line or polygon
    *
-   * TODO: precalculate or cache this values
-   *
    * @returns {draw2d.geo.Rectangle}
    * @since 4.8.2
    */
   getBoundingBox: function () {
-    let minX = Math.min(...this.vertices.asArray().map(n => n.x))
-    let minY = Math.min(...this.vertices.asArray().map(n => n.y))
-    let maxX = Math.max(...this.vertices.asArray().map(n => n.x))
-    let maxY = Math.max(...this.vertices.asArray().map(n => n.y))
-    let width = maxX - minX
-    let height = maxY - minY
-
-    return new draw2d.geo.Rectangle(minX, minY, width, height)
+    return draw2d.geo.Rectangle.boundingBox(this.vertices)
   },
 
 
@@ -1106,6 +1097,11 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
 
     // empty result. the lines are equal...infinit array
     if (other === this) {
+      return result
+    }
+
+    // Early exit: if bounding boxes don't overlap, no intersection possible
+    if (!this.getBoundingBox().intersects(other.getBoundingBox())) {
       return result
     }
 

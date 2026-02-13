@@ -789,3 +789,34 @@ draw2d.geo.Rectangle.DIRECTION_RIGHT = 1;
 draw2d.geo.Rectangle.DIRECTION_DOWN = 2;
 draw2d.geo.Rectangle.DIRECTION_LEFT = 3;
 
+/**
+ * Creates a bounding box Rectangle from a collection of points.
+ *
+ * @param {draw2d.util.ArrayList|Array} points Collection of draw2d.geo.Point objects
+ * @returns {draw2d.geo.Rectangle} The bounding box containing all points
+ * @static
+ * @since 8.0.0
+ */
+draw2d.geo.Rectangle.boundingBox = function(points) {
+  let _points = (points instanceof draw2d.util.ArrayList) ? points.asArray() : points
+
+  if (_points.length === 0) {
+    return new draw2d.geo.Rectangle(0, 0, 0, 0)
+  }
+
+  let minX = _points[0].x
+  let maxX = minX
+  let minY = _points[0].y
+  let maxY = minY
+
+  for (let i = 1; i < _points.length; i++) {
+    let p = _points[i]
+    if (p.x < minX) minX = p.x
+    else if (p.x > maxX) maxX = p.x
+    if (p.y < minY) minY = p.y
+    else if (p.y > maxY) maxY = p.y
+  }
+
+  return new draw2d.geo.Rectangle(minX, minY, maxX - minX, maxY - minY)
+}
+
