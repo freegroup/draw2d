@@ -50,8 +50,6 @@ draw2d.shape.box.TableBox = draw2d.shape.box.Box.extend(
       }
     )
 
-    this.installEditPolicy(new draw2d.policy.figure.RectangleSelectionFeedbackPolicy())
-    
     // TableBox locator - positions children based on cell
     let _this = this
     this.locator = {
@@ -61,7 +59,35 @@ draw2d.shape.box.TableBox = draw2d.shape.box.Box.extend(
       bind: function () {},
       unbind: function () {},
       relocate: function (index, target) {
-        // Position is calculated in _renderLayout based on cell
+        // Compute grid dimensions if not already computed
+        _this._computeGrid()
+        
+        const cell = target._tableCell
+        if (!cell) return
+        
+        // Calculate position based on cell
+        let x = _this.stroke
+        let y = _this.stroke
+        
+        // Add up column widths before this cell
+        for (let c = 0; c < cell.col; c++) {
+          x += (_this.colWidths[c] || 0) + _this.cellPadding.left + _this.cellPadding.right
+        }
+        
+        // Add up row heights before this cell
+        for (let r = 0; r < cell.row; r++) {
+          y += (_this.rowHeights[r] || 0) + _this.cellPadding.top + _this.cellPadding.bottom
+        }
+        
+        // Add padding
+        x += _this.cellPadding.left
+        y += _this.cellPadding.top
+        
+        // Center vertically in cell
+        const cellHeight = _this.rowHeights[cell.row] || 0
+        const yOffset = (cellHeight - target.getHeight()) / 2
+        
+        target.setPosition(x, y + yOffset)
       }
     }
   },
@@ -133,7 +159,8 @@ draw2d.shape.box.TableBox = draw2d.shape.box.Box.extend(
     const rowIndex = this.grid.length - 1
     row.forEach((figure, colIndex) => {
       figure._tableCell = {row: rowIndex, col: colIndex}
-      this._super(figure, this.locator)
+      // Use inherited add method
+      this.add(figure, this.locator)
     })
     
     // Schedule layout

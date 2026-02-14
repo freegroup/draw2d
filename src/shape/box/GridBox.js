@@ -56,8 +56,6 @@ draw2d.shape.box.GridBox = draw2d.shape.box.Box.extend(
       this.grid.rowDefs = this._parseDefs(attr.rows)
     }
 
-    this.installEditPolicy(new draw2d.policy.figure.RectangleSelectionFeedbackPolicy())
-    
     // GridBox locator - positions children based on grid cell
     let _this = this
     this.locator = {
@@ -67,7 +65,51 @@ draw2d.shape.box.GridBox = draw2d.shape.box.Box.extend(
       bind: function () {},
       unbind: function () {},
       relocate: function (index, target) {
-        // Position is calculated in _renderLayout based on cell
+        // Compute grid dimensions if not already computed
+        _this._computeGrid()
+        
+        const cell = target._gridCell
+        if (!cell) return
+        
+        // Calculate cell position
+        let x = _this.stroke
+        let y = _this.stroke
+        
+        for (let c = 0; c < cell.col; c++) {
+          x += _this.grid.colWidths[c] || 0
+        }
+        for (let r = 0; r < cell.row; r++) {
+          y += _this.grid.rowHeights[r] || 0
+        }
+        
+        // Calculate cell size
+        let cellWidth = 0
+        let cellHeight = 0
+        
+        for (let c = 0; c < cell.colspan; c++) {
+          cellWidth += _this.grid.colWidths[cell.col + c] || 0
+        }
+        for (let r = 0; r < cell.rowspan; r++) {
+          cellHeight += _this.grid.rowHeights[cell.row + r] || 0
+        }
+        
+        // Apply alignment
+        let finalX = x
+        let finalY = y
+        
+        if (cell.align === 'center') {
+          finalX += (cellWidth - target.getWidth()) / 2
+        } else if (cell.align === 'right') {
+          finalX += cellWidth - target.getWidth()
+        }
+        
+        if (cell.valign === 'middle') {
+          finalY += (cellHeight - target.getHeight()) / 2
+        } else if (cell.valign === 'bottom') {
+          finalY += cellHeight - target.getHeight()
+        }
+        
+        target.setPosition(finalX, finalY)
       }
     }
   },

@@ -7,51 +7,74 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
   <link type="text/css" rel="stylesheet" href="./css/example.css" />
+  <style>
+    #toolbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 40px;
+      background: linear-gradient(to bottom, #f8f8f8 0%, #e0e0e0 100%);
+      border-bottom: 1px solid #ccc;
+      padding: 5px 10px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    #toolbar button {
+      padding: 5px 15px;
+      border: 1px solid #999;
+      border-radius: 4px;
+      background: linear-gradient(to bottom, #fff 0%, #e8e8e8 100%);
+      cursor: pointer;
+    }
+    #toolbar button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    #toolbar button:hover:not(:disabled) {
+      background: linear-gradient(to bottom, #fff 0%, #d8d8d8 100%);
+    }
+    #toolbar .title {
+      font-weight: bold;
+      margin-right: 20px;
+    }
+    #gfx_holder {
+      margin-top: 50px;
+    }
+  </style>
 
   <script src="./lib/jquery.js"></script>
   <script src="./lib/jquery-ui.js"></script>
   <script src="../draw2d.js"></script>
 
-<style>
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-#container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-#toolbar {
-  background: #cecece;
-  background: linear-gradient(to bottom, #cecece 0%, #a8a8a8 100%);
-  padding: 8px;
-  border-bottom: 1px solid #515151;
-  flex-shrink: 0;
-}
-
-#canvas-wrapper {
-  flex: 1;
-  overflow: auto;
-}
-
-#canvas {
-  width: 2000px;
-  height: 2000px;
-  background-color: #FAFAFA;
-}
-</style>
-
 <script type="text/javascript">
+var canvas;
+
+function undo() {
+  canvas.getCommandStack().undo();
+}
+
+function redo() {
+  canvas.getCommandStack().redo();
+}
+
+function updateButtons() {
+  document.getElementById('undoBtn').disabled = !canvas.getCommandStack().canUndo();
+  document.getElementById('redoBtn').disabled = !canvas.getCommandStack().canRedo();
+}
+
 document.addEventListener("DOMContentLoaded", function() {
-  var canvas = new draw2d.Canvas("canvas");
+  canvas = new draw2d.Canvas("gfx_holder");
+  
+  // Listen to command stack changes
+  canvas.getCommandStack().addEventListener(function(e) {
+    updateButtons();
+  });
+  updateButtons();
 
   // Example 1: Simple 3-column grid with fixed and grow columns
-  // columns: "100px, grow, 80px" - first fixed, middle grows, last fixed
   var grid1 = new draw2d.shape.box.GridBox({
     columns: "100px, grow, 80px",
     rows: "pref, pref",
@@ -66,6 +89,10 @@ document.addEventListener("DOMContentLoaded", function() {
   grid1.add(new draw2d.shape.basic.Label({text: "Row 2, Col 1", bgColor: "#C8E6C9"}), {row: 1, col: 0});
   grid1.add(new draw2d.shape.basic.Label({text: "Row 2, Col 2 - this is longer", bgColor: "#C8E6C9"}), {row: 1, col: 1});
   grid1.add(new draw2d.shape.basic.Label({text: "Row 2", bgColor: "#C8E6C9"}), {row: 1, col: 2});
+
+  // Add ports
+  grid1.createPort("input");
+  grid1.createPort("output");
   
   canvas.add(grid1, 50, 50);
 
@@ -103,6 +130,10 @@ document.addEventListener("DOMContentLoaded", function() {
   formGrid.add(new draw2d.shape.basic.Label({text: "Phone:", fontColor: "#E65100"}), {row: 2, col: 0});
   formGrid.add(new draw2d.shape.basic.Label({text: "+1 555 123 4567", bgColor: "#FFE0B2", resizeable: true}), {row: 2, col: 1});
 
+  // Add ports
+  formGrid.createPort("input");
+  formGrid.createPort("output");
+
   canvas.add(formGrid, 350, 50);
 
   // Info note
@@ -112,14 +143,16 @@ document.addEventListener("DOMContentLoaded", function() {
   canvas.add(note, 50, 380);
 });
 </script>
+
 </head>
 
-<body id="container">
-  <div id="toolbar">
-    <strong>GridBox Example</strong> - CSS Grid-like 2D layout with columns and rows definitions
-  </div>
-  <div id="canvas-wrapper">
-    <div id="canvas"></div>
-  </div>
+<body>
+<div id="toolbar">
+  <span class="title">GridBox Example</span>
+  <button id="undoBtn" onclick="undo()" disabled>↩ Undo</button>
+  <button id="redoBtn" onclick="redo()" disabled>↪ Redo</button>
+</div>
+<div onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:3000px; height:3000px;">
+</div>
 </body>
 </html>

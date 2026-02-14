@@ -153,22 +153,26 @@ export default {
 /* Global styles for v-treeview - reduced indentation */
 .nav-sidebar .v-treeview {
   padding: 4px 8px !important;
+  background: white !important;
 }
 
 .nav-sidebar .v-treeview-node__root {
   min-height: 28px !important;
   padding-left: 0 !important;
+  background: white !important;
+  color: #333 !important;
 }
 
 .nav-sidebar .v-treeview-node__content {
   margin-left: 0 !important;
+  background: white !important;
 }
 
 .nav-sidebar .v-treeview-node__label {
   font-size: 13px !important;
+  color: #333 !important;
 }
-
-.nav-sidebar .v-treeview-node__level {
+nav-sidebar .v-treeview-node__level {
   width: 12px !important;
 }
 
@@ -183,5 +187,14 @@ export default {
 
 .nav-sidebar .v-treeview-node__prepend {
   min-width: 0 !important;
+}
+
+/* Fix for collapsed/expanded children visibility */
+.nav-sidebar .v-treeview-node__children {
+  background: white !important;
+}
+
+.nav-sidebar .v-treeview-node {
+  background: white !important;
 }
 </style>
