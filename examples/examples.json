@@ -102,6 +102,22 @@
         "url": "box_db/index.html",
         "icon": "box_db/icon.png",
         "status": "new"
+      },
+      {
+        "name": "box_gridbox",
+        "text": "GridBox Layout",
+        "description": "CSS Grid-like 2D layout with column/row definitions (fixed, pref, grow).",
+        "url": "box_gridbox/index.html",
+        "icon": "box_gridbox/icon.png",
+        "status": "new"
+      },
+      {
+        "name": "box_tablebox",
+        "text": "TableBox Layout",
+        "description": "Simple row-based table with addRow() API for easy data display.",
+        "url": "box_tablebox/index.html",
+        "icon": "box_tablebox/icon.png",
+        "status": "new"
       }
     ]
   },

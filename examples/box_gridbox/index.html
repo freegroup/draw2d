@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GridBox Example</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <link type="text/css" rel="stylesheet" href="./css/example.css" />
+
+  <script src="./lib/jquery.js"></script>
+  <script src="./lib/jquery-ui.js"></script>
+  <script src="../draw2d.js"></script>
+
+<style>
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#toolbar {
+  background: #cecece;
+  background: linear-gradient(to bottom, #cecece 0%, #a8a8a8 100%);
+  padding: 8px;
+  border-bottom: 1px solid #515151;
+  flex-shrink: 0;
+}
+
+#canvas-wrapper {
+  flex: 1;
+  overflow: auto;
+}
+
+#canvas {
+  width: 2000px;
+  height: 2000px;
+  background-color: #FAFAFA;
+}
+</style>
+
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+  var canvas = new draw2d.Canvas("canvas");
+
+  // Example 1: Simple 3-column grid with fixed and grow columns
+  // columns: "100px, grow, 80px" - first fixed, middle grows, last fixed
+  var grid1 = new draw2d.shape.box.GridBox({
+    columns: "100px, grow, 80px",
+    rows: "pref, pref",
+    bgColor: "#E8F5E9",
+    stroke: 2,
+    color: "#4CAF50"
+  });
+  
+  grid1.add(new draw2d.shape.basic.Label({text: "Fixed 100px", bgColor: "#A5D6A7"}), {row: 0, col: 0});
+  grid1.add(new draw2d.shape.basic.Label({text: "Grows to fill", bgColor: "#81C784"}), {row: 0, col: 1});
+  grid1.add(new draw2d.shape.basic.Label({text: "Fixed 80px", bgColor: "#66BB6A"}), {row: 0, col: 2});
+  grid1.add(new draw2d.shape.basic.Label({text: "Row 2, Col 1", bgColor: "#C8E6C9"}), {row: 1, col: 0});
+  grid1.add(new draw2d.shape.basic.Label({text: "Row 2, Col 2 - this is longer", bgColor: "#C8E6C9"}), {row: 1, col: 1});
+  grid1.add(new draw2d.shape.basic.Label({text: "Row 2", bgColor: "#C8E6C9"}), {row: 1, col: 2});
+  
+  canvas.add(grid1, 50, 50);
+
+  // Example 2: Cell spanning and alignment
+  var grid2 = new draw2d.shape.box.GridBox({
+    columns: "80px, 80px, 80px",
+    rows: "pref, pref, pref",
+    bgColor: "#E3F2FD",
+    stroke: 2,
+    color: "#2196F3"
+  });
+
+  grid2.add(new draw2d.shape.basic.Label({text: "Col Span 2", bgColor: "#90CAF9"}), {row: 0, col: 0, colspan: 2});
+  grid2.add(new draw2d.shape.basic.Label({text: "Normal", bgColor: "#64B5F6"}), {row: 0, col: 2});
+  grid2.add(new draw2d.shape.basic.Label({text: "Left", bgColor: "#BBDEFB"}), {row: 1, col: 0, align: "left"});
+  grid2.add(new draw2d.shape.basic.Label({text: "Center", bgColor: "#BBDEFB"}), {row: 1, col: 1, align: "center"});
+  grid2.add(new draw2d.shape.basic.Label({text: "Right", bgColor: "#BBDEFB"}), {row: 1, col: 2, align: "right"});
+  grid2.add(new draw2d.shape.basic.Label({text: "Row Span 2", bgColor: "#42A5F5"}), {row: 1, col: 0, rowspan: 2});
+  
+  canvas.add(grid2, 50, 200);
+
+  // Example 3: Form-like layout with labels and inputs
+  var formGrid = new draw2d.shape.box.GridBox({
+    columns: "pref, grow",
+    rows: "pref, pref, pref",
+    bgColor: "#FFF3E0",
+    stroke: 2,
+    color: "#FF9800"
+  });
+
+  formGrid.add(new draw2d.shape.basic.Label({text: "Name:", fontColor: "#E65100"}), {row: 0, col: 0});
+  formGrid.add(new draw2d.shape.basic.Label({text: "John Doe", bgColor: "#FFE0B2", resizeable: true}), {row: 0, col: 1});
+  formGrid.add(new draw2d.shape.basic.Label({text: "Email:", fontColor: "#E65100"}), {row: 1, col: 0});
+  formGrid.add(new draw2d.shape.basic.Label({text: "john@example.com", bgColor: "#FFE0B2", resizeable: true}), {row: 1, col: 1});
+  formGrid.add(new draw2d.shape.basic.Label({text: "Phone:", fontColor: "#E65100"}), {row: 2, col: 0});
+  formGrid.add(new draw2d.shape.basic.Label({text: "+1 555 123 4567", bgColor: "#FFE0B2", resizeable: true}), {row: 2, col: 1});
+
+  canvas.add(formGrid, 350, 50);
+
+  // Info note
+  var note = new draw2d.shape.note.PostIt({
+    text: "GridBox - CSS Grid-like Layout\n\nColumn/Row definitions:\n• '100px' - Fixed size\n• 'pref' - Preferred (child's min)\n• 'grow' - Expands to fill\n\nCell options:\n• row, col - Cell position\n• colspan, rowspan - Spanning\n• align: left|center|right\n• valign: top|middle|bottom"
+  });
+  canvas.add(note, 50, 380);
+});
+</script>
+</head>
+
+<body id="container">
+  <div id="toolbar">
+    <strong>GridBox Example</strong> - CSS Grid-like 2D layout with columns and rows definitions
+  </div>
+  <div id="canvas-wrapper">
+    <div id="canvas"></div>
+  </div>
+</body>
+</html>
