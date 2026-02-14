@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 90">
+  <defs>
+    <linearGradient id="tbBgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fefce8"/>
+      <stop offset="100%" style="stop-color:#fef3c7"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect x="10" y="8" width="100" height="74" rx="6" fill="url(#tbBgGrad)" stroke="#eab308" stroke-width="1.5"/>
+  
+  <!-- Table rows -->
+  <!-- Row 1 -->
+  <rect x="16" y="14" width="20" height="14" rx="2" fill="#64748b"/>
+  <rect x="40" y="14" width="64" height="14" rx="2" fill="#f1f5f9"/>
+  
+  <!-- Row 2 -->
+  <rect x="16" y="32" width="20" height="14" rx="2" fill="#64748b"/>
+  <rect x="40" y="32" width="64" height="14" rx="2" fill="#f1f5f9"/>
+  
+  <!-- Row 3 -->
+  <rect x="16" y="50" width="20" height="14" rx="2" fill="#64748b"/>
+  <rect x="40" y="50" width="64" height="14" rx="2" fill="#f1f5f9"/>
+  
+  <!-- Row 4 -->
+  <rect x="16" y="68" width="20" height="8" rx="2" fill="#64748b"/>
+  <rect x="40" y="68" width="64" height="8" rx="2" fill="#f1f5f9"/>
+  
+  <!-- Icon symbols in first column -->
+  <circle cx="26" cy="21" r="4" fill="#fff"/>
+  <rect x="22" y="37" width="8" height="5" rx="1" fill="#fff"/>
+  <path d="M23 55 L26 52 L29 55 L26 61 Z" fill="#fff"/>
+  
+  <!-- Ports -->
+  <circle cx="10" cy="45" r="4" fill="#64748b"/>
+  <circle cx="110" cy="45" r="4" fill="#64748b"/>
+</svg>

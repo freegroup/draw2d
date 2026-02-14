@@ -1,7 +1,7 @@
 {
   "name": "Layout",
   "namespace": "draw2d.shape.layout",
-  "description": "<p>A base class for positioning child figures and determining the ideal size for\na figure with children.</p>",
+  "description": "",
   "extends": [
     "draw2d.shape.basic.Rectangle"
   ],

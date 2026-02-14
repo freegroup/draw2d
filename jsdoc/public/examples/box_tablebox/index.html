@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TableBox Example</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <link type="text/css" rel="stylesheet" href="./css/example.css" />
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;  /* Verhindert Body/Window Scroll */
+    }
+    #container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+    }
+    #toolbar {
+      flex-shrink: 0;
+      height: 40px;
+      background: linear-gradient(to bottom, #f8f8f8 0%, #e0e0e0 100%);
+      border-bottom: 1px solid #ccc;
+      padding: 5px 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    #toolbar button {
+      padding: 5px 15px;
+      border: 1px solid #999;
+      border-radius: 4px;
+      background: linear-gradient(to bottom, #fff 0%, #e8e8e8 100%);
+      cursor: pointer;
+    }
+    #toolbar button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    #toolbar button:hover:not(:disabled) {
+      background: linear-gradient(to bottom, #fff 0%, #d8d8d8 100%);
+    }
+    #scrollarea {
+      flex: 1;
+      overflow: auto;
+      background-color: #FAFAFA;
+      position: relative;
+    }
+    #gfx_holder {
+      min-width: 3000px;
+      min-height: 3000px;
+      width: 3000px;
+      height: 3000px;
+    }
+  </style>
+
+  <script src="./lib/jquery.js"></script>
+  <script src="./lib/jquery-ui.js"></script>
+  <script src="../draw2d.js"></script>
+
+<script type="text/javascript">
+var canvas;
+
+function undo() {
+  canvas.getCommandStack().undo();
+}
+
+function redo() {
+  canvas.getCommandStack().redo();
+}
+
+function updateButtons() {
+  document.getElementById('undoBtn').disabled = !canvas.getCommandStack().canUndo();
+  document.getElementById('redoBtn').disabled = !canvas.getCommandStack().canRedo();
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  canvas = new draw2d.Canvas("gfx_holder");
+  canvas.setScrollArea("#gfx_holder");
+  
+  // Listen to command stack changes
+  canvas.getCommandStack().addEventListener(function(e) {
+    updateButtons();
+  });
+  updateButtons();
+
+  // Example 1: Simple table with addRow()
+  var table1 = new draw2d.shape.box.TableBox({
+    bgColor: "#f8fafc",
+    stroke: 1,
+    color: "#64748b",
+    radius: 8
+  });
+  
+  // Add rows - strings are auto-converted to Labels
+  table1.addRow("Name", "John Doe");
+  table1.addRow("Email", "john@example.com");
+  table1.addRow("Phone", "+1 555 123 4567");
+  table1.addRow("Address", "123 Main Street");
+  
+  // Add input/output ports
+  table1.createPort("input");
+  table1.createPort("output");
+  
+  canvas.add(table1, 50, 50);
+
+  // Example 2: Mixed content table
+  var table2 = new draw2d.shape.box.TableBox({
+    bgColor: "#fefefe",
+    stroke: 1,
+    color: "#3b82f6",
+    cellPadding: 8,
+    radius: 8
+  });
+  
+  // Header row with styled labels
+  var header1 = new draw2d.shape.basic.Label({text: "Product", bgColor: "#3b82f6", fontColor: "#FFFFFF", bold: true});
+  var header2 = new draw2d.shape.basic.Label({text: "Price", bgColor: "#3b82f6", fontColor: "#FFFFFF", bold: true});
+  var header3 = new draw2d.shape.basic.Label({text: "Qty", bgColor: "#3b82f6", fontColor: "#FFFFFF", bold: true});
+  table2.addRow(header1, header2, header3);
+  
+  // Data rows
+  table2.addRow("Apple", "$1.50", "10");
+  table2.addRow("Banana", "$0.75", "25");
+  table2.addRow("Orange", "$2.00", "15");
+  table2.addRow("Mango", "$3.50", "8");
+  
+  canvas.add(table2, 50, 220);
+
+  // Example 3: Styled table with icons
+  var table3 = new draw2d.shape.box.TableBox({
+    bgColor: "#fefce8",
+    stroke: 1,
+    color: "#eab308",
+    cellPadding: 6,
+    radius: 8
+  });
+  
+  // Icons: 15x15 Größe, resizeable: false verhindert dass das Layout sie verkleinert
+  var icon1 = new draw2d.shape.icon.User({width: 15, height: 15, color: "#ca8a04", resizeable: false});
+  var icon2 = new draw2d.shape.icon.Mail({width: 15, height: 15, color: "#ca8a04", resizeable: false});
+  var icon3 = new draw2d.shape.icon.Phone({width: 15, height: 15, color: "#ca8a04", resizeable: false});
+  
+  table3.addRow(icon1, new draw2d.shape.basic.Label({text: "Contact Person"}));
+  table3.addRow(icon2, new draw2d.shape.basic.Label({text: "support@example.com"}));
+  table3.addRow(icon3, new draw2d.shape.basic.Label({text: "+1 800 555 0123"}));
+  
+  // Add ports for connections
+  table3.createPort("input");
+  table3.createPort("output");
+  
+  canvas.add(table3, 350, 50);
+
+  // Info note
+  var note = new draw2d.shape.note.PostIt({
+    text: "TableBox - Simple Row-based Layout\n\nKey features:\n• addRow(...) - Add a row of cells\n• Strings become Labels automatically\n• Mixed content (Labels, Icons, etc)\n• Auto column sizing\n• cellPadding for spacing\n• removeRow(index) supported"
+  });
+  canvas.add(note, 350, 220);
+});
+</script>
+
+</head>
+
+<body>
+<div id="container">
+  <div id="toolbar">
+    <button id="undoBtn" onclick="undo()" disabled>↩ Undo</button>
+    <button id="redoBtn" onclick="redo()" disabled>↪ Redo</button>
+  </div>
+  <div id="scrollarea">
+    <div id="gfx_holder" style="width:3000px; height:3000px;"></div>
+  </div>
+</div>
+</body>
+</html>

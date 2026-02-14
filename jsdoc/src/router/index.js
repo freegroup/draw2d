@@ -1868,6 +1868,11 @@ const routes = [
         component: () => import(/* webpackChunkName: "api_draw2d_shape_box_stackbox" */ '../views/clazz.vue')
       },
       {
+        path: '/api/draw2d/shape/box/tablebox',
+        props: { className: 'draw2d.shape.box.TableBox' },
+        component: () => import(/* webpackChunkName: "api_draw2d_shape_box_tablebox" */ '../views/clazz.vue')
+      },
+      {
         path: '/api/draw2d/shape/box/vbox',
         props: { className: 'draw2d.shape.box.VBox' },
         component: () => import(/* webpackChunkName: "api_draw2d_shape_box_vbox" */ '../views/clazz.vue')
@@ -2524,6 +2529,16 @@ const routes = [
         component: () => import(/* webpackChunkName: "example_box_db" */ '../views/example.vue')
       },
       {
+        path: '/examples/box_gridbox',
+        props: { section: 1, example: 6 },
+        component: () => import(/* webpackChunkName: "example_box_gridbox" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/box_tablebox',
+        props: { section: 1, example: 7 },
+        component: () => import(/* webpackChunkName: "example_box_tablebox" */ '../views/example.vue')
+      },
+      {
         path: '/examples/composite_raft',
         props: { section: 2, example: 0 },
         component: () => import(/* webpackChunkName: "example_composite_raft" */ '../views/example.vue')
@@ -3172,6 +3187,28 @@ const examples = [
         'status': 'new',
         'data': {
           'path': '/examples/box_db'
+        }
+      },
+      {
+        'name': 'box_gridbox',
+        'text': 'GridBox Layout',
+        'description': 'CSS Grid-like 2D layout with flexible column/row definitions: \'100px\' (fixed), \'pref\' (content size), \'grow\' (fill available). Supports colspan, rowspan, and cell alignment.',
+        'url': 'box_gridbox/index.html',
+        'icon': 'box_gridbox/icon.png',
+        'status': 'new',
+        'data': {
+          'path': '/examples/box_gridbox'
+        }
+      },
+      {
+        'name': 'box_tablebox',
+        'text': 'TableBox Layout',
+        'description': 'Simple table layout with addRow(...) API. Strings auto-convert to Labels. Supports mixed content (Labels, Icons), auto column sizing, and cellPadding. Ideal for key-value displays.',
+        'url': 'box_tablebox/index.html',
+        'icon': 'box_tablebox/icon.png',
+        'status': 'new',
+        'data': {
+          'path': '/examples/box_tablebox'
         }
       }
     ],

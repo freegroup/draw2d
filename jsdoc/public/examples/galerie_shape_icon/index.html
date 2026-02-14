@@ -1,6 +1,7 @@
-﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+﻿<!DOCTYPE html>
+<html>
 <head>
-<title></title>
+<title>Gallery</title>
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -17,11 +18,29 @@
 document.addEventListener("DOMContentLoaded",function () {
 
 
-     // create the canvas for the user interaction
      //
-     var canvas = new draw2d.Canvas("gfx_holder");
+function undo() {
+  canvas.getCommandStack().undo();
+}
 
-     // add all icons to the canvas
+function redo() {
+  canvas.getCommandStack().redo();
+}
+
+function updateButtons() {
+  document.getElementById("undoBtn").disabled = !canvas.getCommandStack().canUndo();
+  document.getElementById("redoBtn").disabled = !canvas.getCommandStack().canRedo();
+}
+
+     var canvas = new draw2d.Canvas("gfx_holder");
+    canvas.setScrollArea("#gfx_holder");
+    
+    
+    canvas.getCommandStack().addEventListener(function(e) {
+      updateButtons();
+    });
+    updateButtons();
+
      //
      canvas.add(new draw2d.shape.icon.Thunder({width:30, height:30}),50,100);
      canvas.add(new draw2d.shape.icon.Snow({width:30, height:30}),100,100);
@@ -241,7 +260,6 @@ document.addEventListener("DOMContentLoaded",function () {
 
 
    	 /////////////////////////////////////////////////////////////////////
-   	 // THIS IS ONLY FOR THE POST-IT
    	 /////////////////////////////////////////////////////////////////////
 
    	 var msg = new draw2d.shape.note.PostIt({text:"Icons copied from raphaeljs.com"});
@@ -255,11 +273,68 @@ document.addEventListener("DOMContentLoaded",function () {
 
 </script>
 
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;  /* Verhindert Body/Window Scroll */
+    }
+    #container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+    }
+    #toolbar {
+      flex-shrink: 0;
+      height: 40px;
+      background: linear-gradient(to bottom, #f8f8f8 0%, #e0e0e0 100%);
+      border-bottom: 1px solid #ccc;
+      padding: 5px 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    #toolbar button {
+      padding: 5px 15px;
+      border: 1px solid #999;
+      border-radius: 4px;
+      background: linear-gradient(to bottom, #fff 0%, #e8e8e8 100%);
+      cursor: pointer;
+    }
+    #toolbar button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    #toolbar button:hover:not(:disabled) {
+      background: linear-gradient(to bottom, #fff 0%, #d8d8d8 100%);
+    }
+    #scrollarea {
+      flex: 1;
+      overflow: auto;
+      background-color: #FAFAFA;
+      position: relative;
+    }
+    #gfx_holder {
+      min-width: 3000px;
+      min-height: 3000px;
+      width: 3000px;
+      height: 3000px;
+    }
+  </style>
 </head>
 
 <body>
-<div  onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:3000px; height:3000px;">
+<div id="container">
+  <div id="toolbar">
+  <button id="undoBtn" onclick="undo()" disabled>↩ Undo</button>
+  <button id="redoBtn" onclick="redo()" disabled>↪ Redo</button>
 </div>
-
+  <div id="scrollarea">
+    <div id="gfx_holder" style="width:3000px; height:3000px;"></div>
+  </div>
+</div>
 </body>
 </html>

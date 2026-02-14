@@ -1,9 +1,9 @@
 {
-  "name": "StackLayout",
-  "namespace": "draw2d.shape.layout",
-  "description": "",
+  "name": "TableBox",
+  "namespace": "draw2d.shape.box",
+  "description": "<p>Table Layout - Simple row-based grid layout.</p>\n<p>Arranges children in a table with automatic column sizing.\nAdd rows using the addRow() method - columns are created automatically.</p>",
   "extends": [
-    "draw2d.shape.layout.Layout"
+    "draw2d.shape.box.Box"
   ],
   "access": "",
   "virtual": false,
@@ -18,27 +18,7 @@
         {
           "name": "attr",
           "type": "Object",
-          "description": "<p>the configuration of the shape</p>",
-          "default": "",
-          "optional": true,
-          "nullable": ""
-        }
-      ],
-      "inherited": false,
-      "since": "",
-      "examples": []
-    },
-    {
-      "name": "setVisibleLayer",
-      "access": "",
-      "virtual": false,
-      "deprecated": "",
-      "description": "<p>Set the current visible layer of the stack layout</p>",
-      "parameters": [
-        {
-          "name": "visibleLayer",
-          "type": "Number",
-          "description": "<p>the layer to show or -1 to hide all of them</p>",
+          "description": "<p>Configuration</p>",
           "default": "",
           "optional": "",
           "nullable": ""
@@ -49,11 +29,104 @@
       "examples": []
     },
     {
-      "name": "getVisibleLayer",
+      "name": "setCellPadding",
       "access": "",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>Returns the current visible layer</p>",
+      "description": "<p>Set the cell padding.</p>",
+      "parameters": [
+        {
+          "name": "padding",
+          "type": [
+            "Number",
+            "Object"
+          ],
+          "description": "<p>Padding value or {top, right, bottom, left}</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": false,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
+    },
+    {
+      "name": "getCellPadding",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Get the cell padding.</p>",
+      "parameters": [],
+      "inherited": false,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "Object",
+        "description": ""
+      }
+    },
+    {
+      "name": "addRow",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Add a row to the table.</p>\n<p>Each argument becomes a cell in the row. Strings are automatically\nconverted to Label figures.</p>",
+      "parameters": [
+        {
+          "name": "figures",
+          "type": [
+            "draw2d.Figure",
+            "String"
+          ],
+          "description": "<p>Figures or strings for each cell</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": false,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
+    },
+    {
+      "name": "removeRow",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Remove a row from the table.</p>",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "Number",
+          "description": "<p>Row index to remove</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": false,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "Array",
+        "description": "<p>The removed row of figures</p>"
+      }
+    },
+    {
+      "name": "getRowCount",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Get the number of rows.</p>",
       "parameters": [],
       "inherited": false,
       "since": "",
@@ -64,7 +137,98 @@
       }
     },
     {
-      "name": "add",
+      "name": "getColumnCount",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Get the number of columns.</p>",
+      "parameters": [],
+      "inherited": false,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": ""
+      }
+    },
+    {
+      "name": "getCell",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Get a figure at a specific cell.</p>",
+      "parameters": [
+        {
+          "name": "row",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "col",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": false,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "draw2d.Figure|null",
+        "description": ""
+      }
+    },
+    {
+      "name": "computeMinIntrinsicWidth",
+      "access": "protected",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Compute minimum width.</p>",
+      "parameters": [],
+      "inherited": false,
+      "since": "",
+      "examples": []
+    },
+    {
+      "name": "computeMinIntrinsicHeight",
+      "access": "protected",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Compute minimum height.</p>",
+      "parameters": [],
+      "inherited": false,
+      "since": "",
+      "examples": []
+    },
+    {
+      "name": "_computeGrid",
+      "access": "private",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Compute grid column widths and row heights based on children.</p>",
+      "parameters": [],
+      "inherited": false,
+      "since": "",
+      "examples": []
+    },
+    {
+      "name": "_renderLayout",
+      "access": "protected",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Perform the layout.</p>",
+      "parameters": [],
+      "inherited": false,
+      "since": "",
+      "examples": []
+    },
+    {
+      "name": "getPersistentAttributes",
       "access": "",
       "virtual": false,
       "deprecated": "",
@@ -75,7 +239,7 @@
       "examples": []
     },
     {
-      "name": "setVisible",
+      "name": "setPersistentAttributes",
       "access": "",
       "virtual": false,
       "deprecated": "",
@@ -86,37 +250,73 @@
       "examples": []
     },
     {
-      "name": "getMinWidth",
+      "name": "scheduleLayout",
       "access": "",
       "virtual": false,
       "deprecated": "",
-      "description": "",
+      "description": "<p>Schedule a layout pass for the next animation frame.\nMultiple calls will only result in ONE layout pass.</p>",
       "parameters": [],
-      "inherited": false,
+      "inherited": true,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
-      "name": "getMinHeight",
+      "name": "cancelLayout",
       "access": "",
       "virtual": false,
       "deprecated": "",
-      "description": "",
+      "description": "<p>Cancel any pending layout.\nCall this when the element is removed from the canvas.</p>",
       "parameters": [],
-      "inherited": false,
+      "inherited": true,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
     },
     {
-      "name": "setDimension",
+      "name": "forceLayout",
       "access": "",
       "virtual": false,
       "deprecated": "",
-      "description": "",
+      "description": "<p>Execute layout immediately, bypassing the deferred mechanism.\nUse sparingly - prefer scheduleLayout() for better performance.</p>",
       "parameters": [],
-      "inherited": false,
+      "inherited": true,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
+    },
+    {
+      "name": "createCommand",
+      "access": "private",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Returns the Command to perform the specified Request or null.</p>",
+      "parameters": [
+        {
+          "name": "request",
+          "type": "draw2d.command.CommandType",
+          "description": "<p>describes the Command being requested</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "draw2d.command.Command",
+        "description": "<p>null or a Command</p>"
+      }
     },
     {
       "name": "add",
@@ -247,30 +447,6 @@
       "inherited": true,
       "since": "1.1.0",
       "examples": []
-    },
-    {
-      "name": "createCommand",
-      "access": "private",
-      "virtual": false,
-      "deprecated": "",
-      "description": "<p>Returns the Command to perform the specified Request or null.</p>",
-      "parameters": [
-        {
-          "name": "request",
-          "type": "draw2d.command.CommandType",
-          "description": "<p>describes the Command being requested</p>",
-          "default": "",
-          "optional": "",
-          "nullable": ""
-        }
-      ],
-      "inherited": true,
-      "since": "",
-      "examples": [],
-      "returns": {
-        "type": "draw2d.command.Command",
-        "description": "<p>null or a Command</p>"
-      }
     },
     {
       "name": "repaint",
@@ -2931,9 +3107,11 @@
   ],
   "fires": "",
   "constructor": {
-    "name": "StackLayout",
+    "name": "TableBox",
     "description": "",
     "parameters": [],
-    "examples": []
+    "examples": [
+      "let table = new draw2d.shape.box.TableBox();\n   \n   let label1 = new draw2d.shape.basic.Label({text: \"Name:\"});\n   let label2 = new draw2d.shape.basic.Label({text: \"John Doe\"});\n   \n   table.addRow(label1, label2);\n   table.addRow(\"Email:\", \"john@example.com\");  // Strings become Labels\n   \n   canvas.add(table, 50, 50);"
+    ]
   }
 }
