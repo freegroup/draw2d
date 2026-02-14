@@ -4,9 +4,10 @@ import draw2d from '../../packages'
 /**
  * @class
  *
- * A RightLocator is used to place figures to the right of a parent shape.
- *
- *
+ * A RightLocator is used to place child figures to the right of a parent shape.
+ * The child figure follows the parent during drag and drop operations and 
+ * automatically updates its position when the parent moves. The child figure 
+ * can also be used for drag and drop operations and responds to selection events.
  *
  * @example
  *

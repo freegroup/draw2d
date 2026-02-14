@@ -11788,7 +11788,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the color of the snap line.</p>\n<pre><code>// Alternatively you can use the attr method:\npolicy.attr({\n  lineColor: color\n});</code></pre>",
+          "description": "<p>Set the color of the snap line.</p>\n<pre><code>// Alternatively you can use the attr method:\npolicy.attr({\n  lineColor: color\n});\n</code></pre>",
           "parameters": [
             {
               "name": "color",
@@ -13048,7 +13048,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the color of the snap line.</p>\n<pre><code>// Alternatively you can use the attr method:\npolicy.attr({\n  lineColor: color\n});</code></pre>",
+          "description": "<p>Set the color of the snap line.</p>\n<pre><code>// Alternatively you can use the attr method:\npolicy.attr({\n  lineColor: color\n});\n</code></pre>",
           "parameters": [
             {
               "name": "color",
@@ -13843,7 +13843,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the color of the snap line.</p>\n<pre><code>// Alternatively you can use the attr method:\npolicy.attr({\n  lineColor: color\n});</code></pre>",
+          "description": "<p>Set the color of the snap line.</p>\n<pre><code>// Alternatively you can use the attr method:\npolicy.attr({\n  lineColor: color\n});\n</code></pre>",
           "parameters": [
             {
               "name": "color",
@@ -15223,7 +15223,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the color of the snap line.</p>\n<pre><code>// Alternatively you can use the attr method:\npolicy.attr({\n  lineColor: color\n});</code></pre>",
+          "description": "<p>Set the color of the snap line.</p>\n<pre><code>// Alternatively you can use the attr method:\npolicy.attr({\n  lineColor: color\n});\n</code></pre>",
           "parameters": [
             {
               "name": "color",
@@ -15898,7 +15898,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the color of the snap line.</p>\n<pre><code>// Alternatively you can use the attr method:\npolicy.attr({\n  lineColor: color\n});</code></pre>",
+          "description": "<p>Set the color of the snap line.</p>\n<pre><code>// Alternatively you can use the attr method:\npolicy.attr({\n  lineColor: color\n});\n</code></pre>",
           "parameters": [
             {
               "name": "color",

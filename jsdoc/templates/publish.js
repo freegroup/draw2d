@@ -69,8 +69,19 @@ function graft (parentNode, childNodes, parentLongname) {
             parentNode.functions.push(thisFunction)
 
             if (element.returns && element.returns[0]) {
+                // Preserve original type expression if available, otherwise use parsed names
+                let returnType = ''
+                if (element.returns[0].type) {
+                    if (element.returns[0].type.parsedType && element.returns[0].type.parsedType.typeExpression) {
+                        returnType = element.returns[0].type.parsedType.typeExpression
+                    } else if (element.returns[0].type.names.length === 1) {
+                        returnType = element.returns[0].type.names[0]
+                    } else {
+                        returnType = element.returns[0].type.names.join(' | ')
+                    }
+                }
                 thisFunction.returns = {
-                    'type': element.returns[0].type? (element.returns[0].type.names.length === 1? element.returns[0].type.names[0] : element.returns[0].type.names) : '',
+                    'type': returnType,
                     'description': element.returns[0].description || ''
                 }
             }

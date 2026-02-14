@@ -133,7 +133,7 @@
       "access": "",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>Set the new zoom factor for the canvas. The value must be between [0.01..10]</p>\n<pre><code>// you can register an eventhandler if the zoom factor did change\ncanvas.on(&quot;zoom&quot;, function(emitterFigure, zoomData){\n    alert(&quot;canvas zoomed to:&quot;+zoomData.value);\n});</code></pre>",
+      "description": "<p>Set the new zoom factor for the canvas. The value must be between [0.01..10]</p>\n<pre><code>// you can register an eventhandler if the zoom factor did change\ncanvas.on(&quot;zoom&quot;, function(emitterFigure, zoomData){\n    alert(&quot;canvas zoomed to:&quot;+zoomData.value);\n});\n</code></pre>",
       "parameters": [
         {
           "name": "zoomFactor",
@@ -519,7 +519,7 @@
       "access": "",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>Add a figure at the given x/y coordinate. This method fires an event.</p>\n<p>Example:</p>\n<pre><code>canvas.on(&quot;figure:add&quot;, function(emitter, event){\n   alert(&quot;figure added:&quot;);\n});\n\n// or more general if you want catch all figure related events\n//\ncanvas.on(&quot;figure&quot;, function(emitter, event){\n   // use event.figure.getCanvas()===null to determine if the\n   // figure part of the canvas\n\n   alert(&quot;figure added or removed:&quot;);\n});</code></pre>",
+      "description": "<p>Add a figure at the given x/y coordinate. This method fires an event.</p>\n<p>Example:</p>\n<pre><code>canvas.on(&quot;figure:add&quot;, function(emitter, event){\n   alert(&quot;figure added:&quot;);\n});\n\n// or more general if you want catch all figure related events\n//\ncanvas.on(&quot;figure&quot;, function(emitter, event){\n   // use event.figure.getCanvas()===null to determine if the\n   // figure part of the canvas\n\n   alert(&quot;figure added or removed:&quot;);\n});\n</code></pre>",
       "parameters": [
         {
           "name": "figure",
@@ -555,7 +555,7 @@
       "access": "",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>Remove a figure or connection from the Canvas. This method fires an event\nwhich can be catched.</p>\n<p>Example:</p>\n<pre><code>canvas.on(&quot;figure:remove&quot;, function(emitter, event){\n   alert(&quot;figure removed:&quot;);\n});\n\n// or more general if you want catch all figure related events\n//\ncanvas.on(&quot;figure&quot;, function(emitter, event){\n   // use event.figure.getCanvas()===null to determine if the\n   // figure part of the canvas\n\n   alert(&quot;figure added or removed:&quot;);\n});</code></pre>",
+      "description": "<p>Remove a figure or connection from the Canvas. This method fires an event\nwhich can be catched.</p>\n<p>Example:</p>\n<pre><code>canvas.on(&quot;figure:remove&quot;, function(emitter, event){\n   alert(&quot;figure removed:&quot;);\n});\n\n// or more general if you want catch all figure related events\n//\ncanvas.on(&quot;figure&quot;, function(emitter, event){\n   // use event.figure.getCanvas()===null to determine if the\n   // figure part of the canvas\n\n   alert(&quot;figure added or removed:&quot;);\n});\n</code></pre>",
       "parameters": [
         {
           "name": "figure",
@@ -1270,7 +1270,7 @@
       "access": "",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>Attach an event handler function for one or more events to the canvas.\nTo remove events bound with .on(), see {@link #off}.</p>\n<p>possible events are:<br></p>\n<ul>\n  <li>reset</li>\n  <li>select</li>\n</ul>\n<p>Example:</p>\n<pre><code>canvas.on(&quot;clear&quot;, function(emitter, event){\n   alert(&quot;canvas.clear() called.&quot;);\n});\n\ncanvas.on(&quot;select&quot;, function(emitter,event){\n   alert(&quot;figure selected&quot;);\n});\n\ncanvas.on(&quot;unselect&quot;, function(emitter,event){\n   alert(&quot;figure unselected&quot;);\n});</code></pre>",
+      "description": "<p>Attach an event handler function for one or more events to the canvas.\nTo remove events bound with .on(), see {@link #off}.</p>\n<p>possible events are:<br></p>\n<ul>\n  <li>reset</li>\n  <li>select</li>\n</ul>\n<p>Example:</p>\n<pre><code>canvas.on(&quot;clear&quot;, function(emitter, event){\n   alert(&quot;canvas.clear() called.&quot;);\n});\n\ncanvas.on(&quot;select&quot;, function(emitter,event){\n   alert(&quot;figure selected&quot;);\n});\n\ncanvas.on(&quot;unselect&quot;, function(emitter,event){\n   alert(&quot;figure unselected&quot;);\n});\n</code></pre>",
       "parameters": [
         {
           "name": "event",

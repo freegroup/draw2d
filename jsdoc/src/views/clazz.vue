@@ -1,231 +1,232 @@
 <template>
-  <div class="ma-2" style="min-height: 100vw">
-    <v-breadcrumbs :items="items"></v-breadcrumbs>
-    <div class="page">
-      <h2>{{ $attrs.className }}  <v-chip v-if="clazz.access === 'private'" class="ma-2" color="red" text-color="white" x-small>private</v-chip></h2>
+  <div class="api-container">
+    <div class="api-card">
+      <div class="api-header">
+        <v-breadcrumbs :items="items" class="api-breadcrumbs"></v-breadcrumbs>
+      </div>
+      <div class="api-content">
+        <h2 class="api-title">{{ $attrs.className }} <v-chip v-if="clazz.access === 'private'" class="ma-2" color="red" text-color="white" x-small>private</v-chip></h2>
 
-            <span v-html="clazz.description"></span>
+        <p class="api-description" v-html="clazz.description"></p>
 
-            <div v-for="(example, index) in clazz.constructor.examples" :key="'example'+index"
-              class="codepen"
-              data-height="350"
-              data-theme-id="1"
-              data-default-tab="js,result"
-              data-prefill='{"scripts":[ "https://freegroup.github.io/draw2d/jquery.js", "https://freegroup.github.io/draw2d/jquery-ui.js", "https://freegroup.github.io/draw2d/draw2d.js" ]}'
-              >
-              <pre data-lang="javascript">
+        <div v-for="(example, index) in clazz.constructor.examples" :key="'example'+index"
+          class="codepen"
+          data-height="350"
+          data-theme-id="1"
+          data-default-tab="js,result"
+          data-prefill='{"scripts":[ "https://freegroup.github.io/draw2d/jquery.js", "https://freegroup.github.io/draw2d/jquery-ui.js", "https://freegroup.github.io/draw2d/draw2d.js" ]}'
+        >
+          <pre data-lang="javascript">
 canvas = new draw2d.Canvas("gfx_holder");
 // only required on codepen...
 canvas.setScrollArea(window);
 
 {{example.replace(/\n\s\s\s\s/g,'\n')}}
-              </pre>
-              <pre data-lang="html">
+          </pre>
+          <pre data-lang="html">
 &lt;div id="gfx_holder" style="width:2500px; height:2500px; "&gt;
-              </pre>
-            </div>
+          </pre>
+        </div>
 
-      <v-divider v-if="clazz.constructor.examples.length === 0"></v-divider>
-      <template  v-if="initFunction">
-        <h3>Constructor</h3>
-        <v-expansion-panels focusable multiple>
-          <v-expansion-panel>
-          <v-expansion-panel-header>
-            <span>
-              <span class="function">new {{clazz.namespace}}.{{clazz.name}}</span> (
-              <span class="arguments" v-for="(param, index) in initFunction.parameters" :key="param.name">
-                  <template>{{param.name}}</template><template v-if="index+1 < initFunction.parameters.length">, </template>
-              </span>
-              )
-            </span>
-          </v-expansion-panel-header>
-            <v-expansion-panel-content>
-              <h4>Arguments</h4>
-              <v-simple-table :dense="true" dark>
-                <template v-slot:default>
-                  <thead>
-                  <tr>
-                    <th class="text-left">Name</th>
-                    <th class="text-left">Type</th>
-                    <th class="text-left">Description</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr v-for="param in initFunction.parameters" :key="initFunction.name+param.name">
-                    <td>{{ param.name }}</td>
-                    <td>{{ param.type }}</td>
-                    <td v-html="param.description"></td>
-                  </tr>
-                  </tbody>
-                </template>
-              </v-simple-table>
-            </v-expansion-panel-content>
-          </v-expansion-panel>
-        </v-expansion-panels>
-      </template>
+        <v-divider v-if="clazz.constructor.examples.length === 0" class="my-4"></v-divider>
 
-      <template v-if="publicFunctions.length>0">
-        <h3>Public Methods</h3>
-        <v-expansion-panels focusable multiple>
-          <v-expansion-panel
-            v-for="func in publicFunctions"
-            :key="func.name"
-          >
-            <v-expansion-panel-header>
-              <span>
-                <span class="function">{{func.name}}</span> (
-                <span class="arguments" v-for="(param, index) in func.parameters" :key="param.name">
-                  <template>{{param.name}}</template><template v-if="index+1 < func.parameters.length">, </template>
-                </span>
-                )
-                <template v-if="func.returns">
-                  <v-icon>arrow_forward</v-icon> {{func.returns.type}}
-                  <template v-if="func.returns.type === 'this'">
-                     <v-chip class="ma-2" color="green" text-color="white" x-small>chainable</v-chip>
-                  </template>
-                </template>
-                <template v-if="func.deprecated.length>0">
-                  <span class="text--disabled">
-                    <v-chip class="ma-2" color="red" text-color="white" x-small>deprecated</v-chip>
-                    <span v-html="func.deprecated"></span>
+        <template v-if="initFunction">
+          <h3 class="section-title">Constructor</h3>
+          <v-expansion-panels focusable multiple class="method-panels">
+            <v-expansion-panel>
+              <v-expansion-panel-header>
+                <span>
+                  <span class="function">new {{clazz.namespace}}.{{clazz.name}}</span> (
+                  <span class="arguments" v-for="(param, index) in initFunction.parameters" :key="param.name">
+                    <template>{{param.name}}</template><template v-if="index+1 < initFunction.parameters.length">, </template>
                   </span>
-                </template>
-
-              </span>
-            </v-expansion-panel-header>
-            <v-expansion-panel-content>
-              <span v-html="func.description"></span>
-              <template v-if="func.returns && func.returns.type !== 'this' ">
-                <h4>Returns</h4>
-                <v-simple-table :dense="true" dark>
-                  <template v-slot:default>
-                    <thead>
-                    <tr>
-                      <th class="text-left">Type</th>
-                      <th class="text-left">Description</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                      <td>{{ func.returns.type }}</td>
-                      <td v-html="func.returns.description"></td>
-                    </tr>
-                    </tbody>
-                  </template>
-                </v-simple-table>
-              </template>
-
-              <template v-if="func.returns && func.returns.type === 'this' ">
-                <h4>Method call is designed to be chainable</h4>
-              </template>
-
-              <h4>Arguments</h4>
-              <v-simple-table :dense="true" dark>
-                <template v-slot:default>
-                  <thead>
-                  <tr>
-                    <th class="text-left">Name</th>
-                    <th class="text-left">Type</th>
-                    <th class="text-left">Description</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr v-for="param in func.parameters" :key="func.name+param.name">
-                    <td>{{ param.name }}</td>
-                    <td>{{ param.type }}</td>
-                    <td v-html="param.description"></td>
-                  </tr>
-                  </tbody>
-                </template>
-              </v-simple-table>
-
-            </v-expansion-panel-content>
-          </v-expansion-panel>
-        </v-expansion-panels>
-      </template>
-
-      <template v-if="privateFunctions.length>0">
-        <h3>Private Methods</h3>
-        <v-expansion-panels focusable multiple>
-          <v-expansion-panel
-            v-for="func in privateFunctions"
-            :key="func.name"
-          >
-            <v-expansion-panel-header>
-              <span>
-                <span class="function">{{func.name}}</span> (
-                <span class="arguments" v-for="(param, index) in func.parameters" :key="param.name">
-                  <template>{{param.name}}</template><template v-if="index+1 < func.parameters.length">, </template>
+                  )
                 </span>
-                )
-                <template v-if="func.returns">
-                  <v-icon>arrow_forward</v-icon> {{func.returns.type}}
-                  <template v-if="func.returns.type === 'this'">
-                     <v-chip class="ma-2" color="green" text-color="white" x-small>chainable</v-chip>
-                  </template>
-                </template>
-              </span>
-            </v-expansion-panel-header>
-            <v-expansion-panel-content>
-              <span v-html="func.description"></span>
-              <template v-if="func.returns && func.returns.type !== 'this' ">
-                <h4>Returns</h4>
-                <v-simple-table :dense="true" dark>
+              </v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <h4 class="subsection-title">Arguments</h4>
+                <v-simple-table :dense="true" dark class="params-table">
                   <template v-slot:default>
                     <thead>
-                    <tr>
-                      <th class="text-left">Type</th>
-                      <th class="text-left">Description</th>
-                    </tr>
+                      <tr>
+                        <th class="text-left">Name</th>
+                        <th class="text-left">Type</th>
+                        <th class="text-left">Description</th>
+                      </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                      <td>{{ func.returns.type }}</td>
-                      <td v-html="func.returns.description"></td>
-                    </tr>
+                      <tr v-for="param in initFunction.parameters" :key="initFunction.name+param.name">
+                        <td>{{ param.name }}</td>
+                        <td>{{ param.type }}</td>
+                        <td v-html="param.description"></td>
+                      </tr>
                     </tbody>
                   </template>
                 </v-simple-table>
-              </template>
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+          </v-expansion-panels>
+        </template>
 
-              <template v-if="func.returns && func.returns.type === 'this' ">
-                <h4>Method call is designed to be chainable</h4>
-              </template>
-
-              <h4>Arguments</h4>
-              <v-simple-table :dense="true" dark>
-                <template v-slot:default>
-                  <thead>
-                  <tr>
-                    <th class="text-left">Name</th>
-                    <th class="text-left">Type</th>
-                    <th class="text-left">Description</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr v-for="param in func.parameters" :key="func.name+param.name">
-                    <td>{{ param.name }}</td>
-                    <td>{{ param.type }}</td>
-                    <td v-html="param.description"></td>
-                  </tr>
-                  </tbody>
+        <template v-if="publicFunctions.length>0">
+          <h3 class="section-title">Public Methods</h3>
+          <v-expansion-panels focusable multiple class="method-panels">
+            <v-expansion-panel
+              v-for="func in publicFunctions"
+              :key="func.name"
+            >
+              <v-expansion-panel-header>
+                <span>
+                  <span class="function">{{func.name}}</span> (
+                  <span class="arguments" v-for="(param, index) in func.parameters" :key="param.name">
+                    <template>{{param.name}}</template><template v-if="index+1 < func.parameters.length">, </template>
+                  </span>
+                  )
+                  <template v-if="func.returns">
+                    <v-icon>arrow_forward</v-icon> {{ formatType(func.returns.type) }}
+                    <template v-if="func.returns.type === 'this'">
+                      <v-chip class="ma-2" color="green" text-color="white" x-small>chainable</v-chip>
+                    </template>
+                  </template>
+                  <template v-if="func.deprecated.length>0">
+                    <span class="text--disabled">
+                      <v-chip class="ma-2" color="red" text-color="white" x-small>deprecated</v-chip>
+                      <span v-html="func.deprecated"></span>
+                    </span>
+                  </template>
+                </span>
+              </v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <span v-html="func.description"></span>
+                <template v-if="func.returns && func.returns.type !== 'this'">
+                  <h4 class="subsection-title">Returns</h4>
+                  <v-simple-table :dense="true" dark class="params-table">
+                    <template v-slot:default>
+                      <thead>
+                        <tr>
+                          <th class="text-left">Type</th>
+                          <th class="text-left">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>{{ formatType(func.returns.type) }}</td>
+                          <td v-html="func.returns.description"></td>
+                        </tr>
+                      </tbody>
+                    </template>
+                  </v-simple-table>
                 </template>
-              </v-simple-table>
 
-            </v-expansion-panel-content>
-          </v-expansion-panel>
-        </v-expansion-panels>
-      </template>
+                <template v-if="func.returns && func.returns.type === 'this'">
+                  <h4 class="subsection-title">Method call is designed to be chainable</h4>
+                </template>
 
+                <h4 class="subsection-title">Arguments</h4>
+                <v-simple-table :dense="true" dark class="params-table">
+                  <template v-slot:default>
+                    <thead>
+                      <tr>
+                        <th class="text-left">Name</th>
+                        <th class="text-left">Type</th>
+                        <th class="text-left">Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="param in func.parameters" :key="func.name+param.name">
+                        <td>{{ param.name }}</td>
+                        <td>{{ formatType(param.type) }}</td>
+                        <td v-html="param.description"></td>
+                      </tr>
+                    </tbody>
+                  </template>
+                </v-simple-table>
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+          </v-expansion-panels>
+        </template>
+
+        <template v-if="privateFunctions.length>0">
+          <h3 class="section-title">Private Methods</h3>
+          <v-expansion-panels focusable multiple class="method-panels">
+            <v-expansion-panel
+              v-for="func in privateFunctions"
+              :key="func.name"
+            >
+              <v-expansion-panel-header>
+                <span>
+                  <span class="function">{{func.name}}</span> (
+                  <span class="arguments" v-for="(param, index) in func.parameters" :key="param.name">
+                    <template>{{param.name}}</template><template v-if="index+1 < func.parameters.length">, </template>
+                  </span>
+                  )
+                  <template v-if="func.returns">
+                    <v-icon>arrow_forward</v-icon> {{ formatType(func.returns.type) }}
+                    <template v-if="func.returns.type === 'this'">
+                      <v-chip class="ma-2" color="green" text-color="white" x-small>chainable</v-chip>
+                    </template>
+                  </template>
+                </span>
+              </v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <span v-html="func.description"></span>
+                <template v-if="func.returns && func.returns.type !== 'this'">
+                  <h4 class="subsection-title">Returns</h4>
+                  <v-simple-table :dense="true" dark class="params-table">
+                    <template v-slot:default>
+                      <thead>
+                        <tr>
+                          <th class="text-left">Type</th>
+                          <th class="text-left">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>{{ formatType(func.returns.type) }}</td>
+                          <td v-html="func.returns.description"></td>
+                        </tr>
+                      </tbody>
+                    </template>
+                  </v-simple-table>
+                </template>
+
+                <template v-if="func.returns && func.returns.type === 'this'">
+                  <h4 class="subsection-title">Method call is designed to be chainable</h4>
+                </template>
+
+                <h4 class="subsection-title">Arguments</h4>
+                <v-simple-table :dense="true" dark class="params-table">
+                  <template v-slot:default>
+                    <thead>
+                      <tr>
+                        <th class="text-left">Name</th>
+                        <th class="text-left">Type</th>
+                        <th class="text-left">Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="param in func.parameters" :key="func.name+param.name">
+                        <td>{{ param.name }}</td>
+                        <td>{{ formatType(param.type) }}</td>
+                        <td v-html="param.description"></td>
+                      </tr>
+                    </tbody>
+                  </template>
+                </v-simple-table>
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+          </v-expansion-panels>
+        </template>
+      </div>
     </div>
   </div>
 </template>
+
 <script>
 import axios from 'axios'
 
 export default {
-  components: {
-  },
+  components: {},
   updated () {
     let script = document.createElement('script')
     script.async = true
@@ -247,7 +248,6 @@ export default {
     this.fetchData()
   },
   watch: {
-    // call again the method if the route changes
     '$route': 'fetchData'
   },
   computed: {
@@ -292,6 +292,12 @@ export default {
     }
   },
   methods: {
+    formatType (type) {
+      if (Array.isArray(type)) {
+        return type.join(' | ')
+      }
+      return type
+    },
     fetchData () {
       this.loading = true
       axios.get('./data/' + this.$attrs.className + '.json')
@@ -308,49 +314,99 @@ export default {
 </script>
 
 <style scoped>
-h2{
-  margin-top: 0;
-  margin-bottom: 10.5px;
+.api-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0 20px 20px 20px;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+.api-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  min-height: calc(100% - 20px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.api-header {
+  padding: 12px 20px 0 20px;
+  background: linear-gradient(135deg, #fafbfc 0%, #f5f7fa 100%);
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.api-breadcrumbs {
+  padding: 0 !important;
+  padding-bottom: 8px !important;
+}
+
+.api-content {
+  flex: 1;
+  padding: 24px;
+  overflow: auto;
+}
+
+.api-title {
+  margin: 0 0 12px 0;
   font-size: 32px;
   font-weight: 300;
   color: #00BCD4;
+  letter-spacing: -0.5px;
 }
 
-h3{
-  margin-top: 21px;
-  margin-bottom: 10.5px;
-  font-size: 26px;
-  font-weight: 300;
+.api-description {
+  color: #4a5568;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 16px;
 }
 
-h4{
-  margin-top: 16px;
-  margin-bottom: 10.5px;
-  font-size: 19px;
-  font-weight: 300;
+.section-title {
+  margin: 24px 0 12px 0;
+  font-size: 22px;
+  font-weight: 500;
+  color: #2d3748;
 }
 
-.page{
-  padding:15px;
-  padding-left:0px;
-  padding-top:0;
+.subsection-title {
+  margin: 16px 0 8px 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #4a5568;
 }
 
-.function{
-  font-weight: bold;
-  color:#083772;
-}
-.arguments{
-  color: #aaaaaa;
+.method-panels {
+  margin-bottom: 16px;
 }
 
-.example .v-expansion-panel-content__wrap{
-  padding:0 !important;
+.function {
+  font-weight: 600;
+  color: #1976D2;
 }
-.example code{
-  width:100% !important;
+
+.arguments {
+  color: #718096;
+}
+
+.params-table {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.example .v-expansion-panel-content__wrap {
   padding: 0 !important;
-  display:block;
+}
+
+.example code {
+  width: 100% !important;
+  padding: 0 !important;
+  display: block;
   background-color: #607d8b03;
 }
 
@@ -362,14 +418,7 @@ h4{
 </style>
 
 <style>
-body{
-  font-family: "Source Sans Pro", Calibri, Candara, Arial, sans-serif;
-}
-.v-breadcrumbs{
-  padding-bottom:0;
-  padding-left:0 !important;
-}
-.v-data-table p{
-  margin:0 !important;
+.api-content .v-data-table p {
+  margin: 0 !important;
 }
 </style>

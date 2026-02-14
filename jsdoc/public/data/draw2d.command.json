@@ -949,10 +949,7 @@
           "since": "6.1.0",
           "examples": [],
           "returns": {
-            "type": [
-              "null",
-              "draw2d.Connection"
-            ],
+            "type": "null|draw2d.Connection",
             "description": ""
           }
         },

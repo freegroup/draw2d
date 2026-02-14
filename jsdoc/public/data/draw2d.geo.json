@@ -2146,7 +2146,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "",
+          "description": "<p>Calculates a point along a line at a specified distance from the start.</p>",
           "parameters": [
             {
               "name": "start",
@@ -2177,11 +2177,8 @@
           "since": "",
           "examples": [],
           "returns": {
-            "type": [
-              "Object",
-              "*"
-            ],
-            "description": "<p>a new point with the distance <em>distanceFromStart</em> from the start point</p>"
+            "type": "Object",
+            "description": "<p>Point-like object {x, y} - returns start point if start equals end</p>"
           }
         }
       ],

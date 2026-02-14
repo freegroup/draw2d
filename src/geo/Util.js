@@ -10,11 +10,12 @@ import draw2d from '../packages'
 draw2d.geo.Util = {
 
   /**
+   * Calculates a point along a line at a specified distance from the start.
    *
-   * @param start {draw2d.geo.Point} start point of a line
-   * @param end  {draw2d.geo.Point} end point of a line
-   * @param distanceFromStart {Number} distance from the start point to extrapolate a new point
-   * @returns {{x: *, y: *}|*} a new point with the distance *distanceFromStart* from the start point
+   * @param {draw2d.geo.Point} start start point of a line
+   * @param {draw2d.geo.Point} end end point of a line
+   * @param {Number} distanceFromStart distance from the start point to extrapolate a new point
+   * @returns {Object} Point-like object {x, y} - returns start point if start equals end
    */
     insetPoint: function (start, end, distanceFromStart) {
       if (start.equals(end)) {
@@ -23,10 +24,12 @@ draw2d.geo.Util = {
       let vx = start.x - end.x
       let vy = start.y - end.y
       let length = Math.sqrt(vx * vx + vy * vy)
-      let localDistance = Math.min(length / 2, distanceFromStart)
+      // t = ratio along line from start (0.0) to end (1.0)
+      // We want point at distanceFromStart from start, clamped to half the line length
+      let t = Math.min(distanceFromStart, length * 0.5) / length
       return {
-        x: end.x + vx / length * (length - localDistance),
-        y: end.y + vy / length * (length - localDistance)
+        x: start.x + (end.x - start.x) * t,
+        y: start.y + (end.y - start.y) * t
       }
     }
 }

@@ -1,25 +1,30 @@
 <template>
-  <div class="ma-2" style="min-height: 100vw">
-    <v-breadcrumbs :items="items"></v-breadcrumbs>
-    <div class="page">
-      <h2>{{ $attrs.className }}</h2>
-      <span v-html="clazz.description"></span>
-      <div v-if="clazz.namespaces.length > 0 ">
-        <h3>Namespaces</h3>
-        <ul class="namespaces">
-          <li v-for="item in clazz.namespaces" :key="item.name">
-            <router-link :to="'/api/'+item.namespace.split('.').join('/')+'/'+item.name.toLowerCase()">{{item.name}}</router-link>
-          </li>
-        </ul>
+  <div class="api-container">
+    <div class="api-card">
+      <div class="api-header">
+        <v-breadcrumbs :items="items" class="api-breadcrumbs"></v-breadcrumbs>
       </div>
+      <div class="api-content">
+        <h2 class="api-title">{{ $attrs.className }}</h2>
+        <p class="api-description" v-html="clazz.description"></p>
 
-      <div v-if="clazz.classes.length > 0 ">
-        <h3>Classes</h3>
-        <ul class="classes">
-          <li v-for="item in clazz.classes" :key="item.name">
-            <router-link :to="'/api/'+item.namespace.split('.').join('/')+'/'+item.name.toLowerCase()">{{item.name}}</router-link>
-          </li>
-        </ul>
+        <div v-if="clazz.namespaces.length > 0" class="api-section">
+          <h3 class="section-title">Namespaces</h3>
+          <ul class="namespaces">
+            <li v-for="item in clazz.namespaces" :key="item.name">
+              <router-link :to="'/api/'+item.namespace.split('.').join('/')+'/'+item.name.toLowerCase()">{{item.name}}</router-link>
+            </li>
+          </ul>
+        </div>
+
+        <div v-if="clazz.classes.length > 0" class="api-section">
+          <h3 class="section-title">Classes</h3>
+          <ul class="classes">
+            <li v-for="item in clazz.classes" :key="item.name">
+              <router-link :to="'/api/'+item.namespace.split('.').join('/')+'/'+item.name.toLowerCase()">{{item.name}}</router-link>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -42,7 +47,6 @@ export default {
     this.fetchData()
   },
   watch: {
-    // call again the method if the route changes
     '$route': 'fetchData'
   },
   computed: {
@@ -77,64 +81,116 @@ export default {
 }
 </script>
 
-<style>
-body{
-  font-family: "Source Sans Pro", Calibri, Candara, Arial, sans-serif;
+<style scoped>
+.api-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0 20px 20px 20px;
+  box-sizing: border-box;
+  overflow: auto;
 }
-h2{
-  margin-top: 0;
-  margin-bottom: 10.5px;
+
+.api-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  min-height: calc(100% - 20px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.api-header {
+  padding: 12px 20px 0 20px;
+  background: linear-gradient(135deg, #fafbfc 0%, #f5f7fa 100%);
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.api-breadcrumbs {
+  padding: 0 !important;
+  padding-bottom: 8px !important;
+}
+
+.api-content {
+  flex: 1;
+  padding: 24px;
+  overflow: auto;
+}
+
+.api-title {
+  margin: 0 0 12px 0;
   font-size: 32px;
   font-weight: 300;
   color: #dd6288;
+  letter-spacing: -0.5px;
 }
 
-h3{
-  margin-top: 21px;
-  margin-bottom: 10.5px;
-  font-size: 26px;
-  font-weight: 300;
+.api-description {
+  color: #4a5568;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 24px;
 }
 
-h4{
-  margin-top: 16px;
-  margin-bottom: 10.5px;
-  font-size: 19px;
-  font-weight: 300;
+.api-section {
+  margin-top: 24px;
 }
-.page{
-  padding:15px;
-  padding-left:0px;
-  padding-top:0;
+
+.section-title {
+  margin: 0 0 12px 0;
+  font-size: 22px;
+  font-weight: 500;
+  color: #2d3748;
 }
 
 .classes {
-  border-left: 8px solid #00BCD4;
+  border-left: 4px solid #00BCD4;
   list-style-type: none;
-  background-color: rgba(0,0,0,0.02);
-  padding-top: 10px;
-  padding-bottom: 10px;
+  background: linear-gradient(135deg, rgba(0,188,212,0.05) 0%, rgba(0,188,212,0.02) 100%);
+  padding: 16px 20px;
+  margin: 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.classes li {
+  padding: 6px 0;
+}
+
+.classes a {
+  color: #00838f;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.classes a:hover {
+  color: #006064;
 }
 
 .namespaces {
-  border-left: 8px solid #dd6288;
+  border-left: 4px solid #dd6288;
   list-style-type: none;
-  background-color: rgba(0,0,0,0.02);
-  padding-top: 10px;
-  padding-bottom: 10px;
+  background: linear-gradient(135deg, rgba(221,98,136,0.05) 0%, rgba(221,98,136,0.02) 100%);
+  padding: 16px 20px;
+  margin: 0;
+  border-radius: 0 8px 8px 0;
 }
 
-</style>
+.namespaces li {
+  padding: 6px 0;
+}
 
-<style>
-  body{
-    font-family: "Source Sans Pro", Calibri, Candara, Arial, sans-serif;
-  }
-  .v-breadcrumbs{
-    padding-bottom:0;
-    padding-left:0 !important;
-  }
-  .v-data-table p{
-    margin:0 !important;
-  }
+.namespaces a {
+  color: #c2185b;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.namespaces a:hover {
+  color: #880e4f;
+}
 </style>

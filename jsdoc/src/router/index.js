@@ -1843,6 +1843,36 @@ const routes = [
         component: () => import(/* webpackChunkName: "api_draw2d_shape_layout_verticallayout" */ '../views/clazz.vue')
       },
       {
+        path: '/api/draw2d/shape/box',
+        props: { className: 'draw2d.shape.box' },
+        component: () => import(/* webpackChunkName: "api_draw2d_shape_box" */ '../views/package.vue')
+      },
+      {
+        path: '/api/draw2d/shape/box/box',
+        props: { className: 'draw2d.shape.box.Box' },
+        component: () => import(/* webpackChunkName: "api_draw2d_shape_box_box" */ '../views/clazz.vue')
+      },
+      {
+        path: '/api/draw2d/shape/box/gridbox',
+        props: { className: 'draw2d.shape.box.GridBox' },
+        component: () => import(/* webpackChunkName: "api_draw2d_shape_box_gridbox" */ '../views/clazz.vue')
+      },
+      {
+        path: '/api/draw2d/shape/box/hbox',
+        props: { className: 'draw2d.shape.box.HBox' },
+        component: () => import(/* webpackChunkName: "api_draw2d_shape_box_hbox" */ '../views/clazz.vue')
+      },
+      {
+        path: '/api/draw2d/shape/box/stackbox',
+        props: { className: 'draw2d.shape.box.StackBox' },
+        component: () => import(/* webpackChunkName: "api_draw2d_shape_box_stackbox" */ '../views/clazz.vue')
+      },
+      {
+        path: '/api/draw2d/shape/box/vbox',
+        props: { className: 'draw2d.shape.box.VBox' },
+        component: () => import(/* webpackChunkName: "api_draw2d_shape_box_vbox" */ '../views/clazz.vue')
+      },
+      {
         path: '/api/draw2d/shape/pert',
         props: { className: 'draw2d.shape.pert' },
         component: () => import(/* webpackChunkName: "api_draw2d_shape_pert" */ '../views/package.vue')
@@ -2429,6 +2459,11 @@ const routes = [
         component: () => import(/* webpackChunkName: "example_section11" */ '../views/example_section.vue')
       },
       {
+        path: '/examples/section12',
+        props: { index: 12 },
+        component: () => import(/* webpackChunkName: "example_section12" */ '../views/example_section.vue')
+      },
+      {
         path: '/examples/galerie_shape_basic',
         props: { section: 0, example: 0 },
         component: () => import(/* webpackChunkName: "example_galerie_shape_basic" */ '../views/example.vue')
@@ -2459,333 +2494,363 @@ const routes = [
         component: () => import(/* webpackChunkName: "example_galerie_shape_node" */ '../views/example.vue')
       },
       {
-        path: '/examples/composite_raft',
+        path: '/examples/galerie_box',
         props: { section: 1, example: 0 },
+        component: () => import(/* webpackChunkName: "example_galerie_box" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/box_collapsible',
+        props: { section: 1, example: 1 },
+        component: () => import(/* webpackChunkName: "example_box_collapsible" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/box_tablelayout',
+        props: { section: 1, example: 2 },
+        component: () => import(/* webpackChunkName: "example_box_tablelayout" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/box_zoom_stack',
+        props: { section: 1, example: 3 },
+        component: () => import(/* webpackChunkName: "example_box_zoom_stack" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/box_icon_decoration',
+        props: { section: 1, example: 4 },
+        component: () => import(/* webpackChunkName: "example_box_icon_decoration" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/box_db',
+        props: { section: 1, example: 5 },
+        component: () => import(/* webpackChunkName: "example_box_db" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/composite_raft',
+        props: { section: 2, example: 0 },
         component: () => import(/* webpackChunkName: "example_composite_raft" */ '../views/example.vue')
       },
       {
         path: '/examples/composite_group',
-        props: { section: 1, example: 1 },
+        props: { section: 2, example: 1 },
         component: () => import(/* webpackChunkName: "example_composite_group" */ '../views/example.vue')
       },
       {
         path: '/examples/composite_jailhouse',
-        props: { section: 1, example: 2 },
+        props: { section: 2, example: 2 },
         component: () => import(/* webpackChunkName: "example_composite_jailhouse" */ '../views/example.vue')
       },
       {
         path: '/examples/shape_custom_simple',
-        props: { section: 2, example: 0 },
+        props: { section: 3, example: 0 },
         component: () => import(/* webpackChunkName: "example_shape_custom_simple" */ '../views/example.vue')
       },
       {
         path: '/examples/shape_timer',
-        props: { section: 2, example: 1 },
+        props: { section: 3, example: 1 },
         component: () => import(/* webpackChunkName: "example_shape_timer" */ '../views/example.vue')
       },
       {
         path: '/examples/shape_anim_circle',
-        props: { section: 2, example: 2 },
+        props: { section: 3, example: 2 },
         component: () => import(/* webpackChunkName: "example_shape_anim_circle" */ '../views/example.vue')
       },
       {
         path: '/examples/figure_locator',
-        props: { section: 2, example: 3 },
+        props: { section: 3, example: 3 },
         component: () => import(/* webpackChunkName: "example_figure_locator" */ '../views/example.vue')
       },
       {
         path: '/examples/connection_with_contextmenu',
-        props: { section: 2, example: 4 },
+        props: { section: 3, example: 4 },
         component: () => import(/* webpackChunkName: "example_connection_with_contextmenu" */ '../views/example.vue')
       },
       {
         path: '/examples/policy_selectionmenu',
-        props: { section: 2, example: 5 },
+        props: { section: 3, example: 5 },
         component: () => import(/* webpackChunkName: "example_policy_selectionmenu" */ '../views/example.vue')
       },
       {
         path: '/examples/shape_db',
-        props: { section: 2, example: 6 },
+        props: { section: 3, example: 6 },
         component: () => import(/* webpackChunkName: "example_shape_db" */ '../views/example.vue')
       },
       {
         path: '/examples/shape_collapsible',
-        props: { section: 2, example: 7 },
+        props: { section: 3, example: 7 },
         component: () => import(/* webpackChunkName: "example_shape_collapsible" */ '../views/example.vue')
       },
       {
         path: '/examples/shape_zoom_stack',
-        props: { section: 2, example: 8 },
+        props: { section: 3, example: 8 },
         component: () => import(/* webpackChunkName: "example_shape_zoom_stack" */ '../views/example.vue')
       },
       {
         path: '/examples/shape_zoom_svg',
-        props: { section: 2, example: 9 },
+        props: { section: 3, example: 9 },
         component: () => import(/* webpackChunkName: "example_shape_zoom_svg" */ '../views/example.vue')
       },
       {
         path: '/examples/shape_tablelayout',
-        props: { section: 2, example: 10 },
+        props: { section: 3, example: 10 },
         component: () => import(/* webpackChunkName: "example_shape_tablelayout" */ '../views/example.vue')
       },
       {
         path: '/examples/interaction_dblclick_figure',
-        props: { section: 3, example: 0 },
+        props: { section: 4, example: 0 },
         component: () => import(/* webpackChunkName: "example_interaction_dblclick_figure" */ '../views/example.vue')
       },
       {
         path: '/examples/interaction_dblclick_policy',
-        props: { section: 3, example: 1 },
+        props: { section: 4, example: 1 },
         component: () => import(/* webpackChunkName: "example_interaction_dblclick_policy" */ '../views/example.vue')
       },
       {
         path: '/examples/interaction_labeledit_inplace',
-        props: { section: 3, example: 2 },
+        props: { section: 4, example: 2 },
         component: () => import(/* webpackChunkName: "example_interaction_labeledit_inplace" */ '../views/example.vue')
       },
       {
         path: '/examples/interaction_click',
-        props: { section: 3, example: 3 },
+        props: { section: 4, example: 3 },
         component: () => import(/* webpackChunkName: "example_interaction_click" */ '../views/example.vue')
       },
       {
         path: '/examples/interaction_slider',
-        props: { section: 3, example: 4 },
+        props: { section: 4, example: 4 },
         component: () => import(/* webpackChunkName: "example_interaction_slider" */ '../views/example.vue')
       },
       {
         path: '/examples/interaction_pie',
-        props: { section: 3, example: 5 },
+        props: { section: 4, example: 5 },
         component: () => import(/* webpackChunkName: "example_interaction_pie" */ '../views/example.vue')
       },
       {
         path: '/examples/connection_labeledit_dialog',
-        props: { section: 3, example: 6 },
+        props: { section: 4, example: 6 },
         component: () => import(/* webpackChunkName: "example_connection_labeledit_dialog" */ '../views/example.vue')
       },
       {
         path: '/examples/connection_labeledit_inplace',
-        props: { section: 3, example: 7 },
+        props: { section: 4, example: 7 },
         component: () => import(/* webpackChunkName: "example_connection_labeledit_inplace" */ '../views/example.vue')
       },
       {
         path: '/examples/interaction_toFront',
-        props: { section: 3, example: 8 },
+        props: { section: 4, example: 8 },
         component: () => import(/* webpackChunkName: "example_interaction_toFront" */ '../views/example.vue')
       },
       {
         path: '/examples/interaction_draggable_decoration',
-        props: { section: 3, example: 9 },
+        props: { section: 4, example: 9 },
         component: () => import(/* webpackChunkName: "example_interaction_draggable_decoration" */ '../views/example.vue')
       },
       {
         path: '/examples/resizehandle_replace_global',
-        props: { section: 4, example: 0 },
+        props: { section: 5, example: 0 },
         component: () => import(/* webpackChunkName: "example_resizehandle_replace_global" */ '../views/example.vue')
       },
       {
         path: '/examples/resizehandle_styled_css',
-        props: { section: 4, example: 1 },
+        props: { section: 5, example: 1 },
         component: () => import(/* webpackChunkName: "example_resizehandle_styled_css" */ '../views/example.vue')
       },
       {
         path: '/examples/port_semantic_group',
-        props: { section: 5, example: 0 },
+        props: { section: 6, example: 0 },
         component: () => import(/* webpackChunkName: "example_port_semantic_group" */ '../views/example.vue')
       },
       {
         path: '/examples/port_locator',
-        props: { section: 5, example: 1 },
+        props: { section: 6, example: 1 },
         component: () => import(/* webpackChunkName: "example_port_locator" */ '../views/example.vue')
       },
       {
         path: '/examples/port_serialize',
-        props: { section: 5, example: 2 },
+        props: { section: 6, example: 2 },
         component: () => import(/* webpackChunkName: "example_port_serialize" */ '../views/example.vue')
       },
       {
         path: '/examples/port_decoration',
-        props: { section: 5, example: 3 },
+        props: { section: 6, example: 3 },
         component: () => import(/* webpackChunkName: "example_port_decoration" */ '../views/example.vue')
       },
       {
         path: '/examples/port_hide',
-        props: { section: 5, example: 4 },
+        props: { section: 6, example: 4 },
         component: () => import(/* webpackChunkName: "example_port_hide" */ '../views/example.vue')
       },
       {
         path: '/examples/buildin_commandstack',
-        props: { section: 6, example: 0 },
+        props: { section: 7, example: 0 },
         component: () => import(/* webpackChunkName: "example_buildin_commandstack" */ '../views/example.vue')
       },
       {
         path: '/examples/buildin_zoom',
-        props: { section: 6, example: 1 },
+        props: { section: 7, example: 1 },
         component: () => import(/* webpackChunkName: "example_buildin_zoom" */ '../views/example.vue')
       },
       {
         path: '/examples/buildin_bridge',
-        props: { section: 6, example: 2 },
+        props: { section: 7, example: 2 },
         component: () => import(/* webpackChunkName: "example_buildin_bridge" */ '../views/example.vue')
       },
       {
         path: '/examples/buildin_event',
-        props: { section: 6, example: 3 },
+        props: { section: 7, example: 3 },
         component: () => import(/* webpackChunkName: "example_buildin_event" */ '../views/example.vue')
       },
       {
         path: '/examples/tooltip_diy',
-        props: { section: 7, example: 0 },
+        props: { section: 8, example: 0 },
         component: () => import(/* webpackChunkName: "example_tooltip_diy" */ '../views/example.vue')
       },
       {
         path: '/examples/databinding_watchjs',
-        props: { section: 8, example: 0 },
+        props: { section: 9, example: 0 },
         component: () => import(/* webpackChunkName: "example_databinding_watchjs" */ '../views/example.vue')
       },
       {
         path: '/examples/databinding_backbone',
-        props: { section: 8, example: 1 },
+        props: { section: 9, example: 1 },
         component: () => import(/* webpackChunkName: "example_databinding_backbone" */ '../views/example.vue')
       },
       {
         path: '/examples/databinding_backbone_modelbinder',
-        props: { section: 8, example: 2 },
+        props: { section: 9, example: 2 },
         component: () => import(/* webpackChunkName: "example_databinding_backbone_modelbinder" */ '../views/example.vue')
       },
       {
         path: '/examples/databinding_js',
-        props: { section: 8, example: 3 },
+        props: { section: 9, example: 3 },
         component: () => import(/* webpackChunkName: "example_databinding_js" */ '../views/example.vue')
       },
       {
         path: '/examples/databinding_rivets',
-        props: { section: 8, example: 4 },
+        props: { section: 9, example: 4 },
         component: () => import(/* webpackChunkName: "example_databinding_rivets" */ '../views/example.vue')
       },
       {
         path: '/examples/policy_canvas_decoration',
-        props: { section: 9, example: 0 },
+        props: { section: 10, example: 0 },
         component: () => import(/* webpackChunkName: "example_policy_canvas_decoration" */ '../views/example.vue')
       },
       {
         path: '/examples/policy_selection_handling',
-        props: { section: 9, example: 1 },
+        props: { section: 10, example: 1 },
         component: () => import(/* webpackChunkName: "example_policy_selection_handling" */ '../views/example.vue')
       },
       {
         path: '/examples/policy_selection_feedback',
-        props: { section: 9, example: 2 },
+        props: { section: 10, example: 2 },
         component: () => import(/* webpackChunkName: "example_policy_selection_feedback" */ '../views/example.vue')
       },
       {
         path: '/examples/policy_snap_to',
-        props: { section: 9, example: 3 },
+        props: { section: 10, example: 3 },
         component: () => import(/* webpackChunkName: "example_policy_snap_to" */ '../views/example.vue')
       },
       {
         path: '/examples/policy_figure_constraint',
-        props: { section: 9, example: 4 },
+        props: { section: 10, example: 4 },
         component: () => import(/* webpackChunkName: "example_policy_figure_constraint" */ '../views/example.vue')
       },
       {
         path: '/examples/policy_drag_copy',
-        props: { section: 9, example: 5 },
+        props: { section: 10, example: 5 },
         component: () => import(/* webpackChunkName: "example_policy_drag_copy" */ '../views/example.vue')
       },
       {
         path: '/examples/io_json_basic',
-        props: { section: 10, example: 0 },
+        props: { section: 11, example: 0 },
         component: () => import(/* webpackChunkName: "example_io_json_basic" */ '../views/example.vue')
       },
       {
         path: '/examples/io_json_extend',
-        props: { section: 10, example: 1 },
+        props: { section: 11, example: 1 },
         component: () => import(/* webpackChunkName: "example_io_json_extend" */ '../views/example.vue')
       },
       {
         path: '/examples/io_json_connections',
-        props: { section: 10, example: 2 },
+        props: { section: 11, example: 2 },
         component: () => import(/* webpackChunkName: "example_io_json_connections" */ '../views/example.vue')
       },
       {
         path: '/examples/io_json_dyn_labels',
-        props: { section: 10, example: 3 },
+        props: { section: 11, example: 3 },
         component: () => import(/* webpackChunkName: "example_io_json_dyn_labels" */ '../views/example.vue')
       },
       {
         path: '/examples/io_svg_basic',
-        props: { section: 10, example: 4 },
+        props: { section: 11, example: 4 },
         component: () => import(/* webpackChunkName: "example_io_svg_basic" */ '../views/example.vue')
       },
       {
         path: '/examples/io_json_multi_document',
-        props: { section: 10, example: 5 },
+        props: { section: 11, example: 5 },
         component: () => import(/* webpackChunkName: "example_io_json_multi_document" */ '../views/example.vue')
       },
       {
         path: '/examples/io_png_overview',
-        props: { section: 10, example: 6 },
+        props: { section: 11, example: 6 },
         component: () => import(/* webpackChunkName: "example_io_png_overview" */ '../views/example.vue')
       },
       {
         path: '/examples/io_png_crop',
-        props: { section: 10, example: 7 },
+        props: { section: 11, example: 7 },
         component: () => import(/* webpackChunkName: "example_io_png_crop" */ '../views/example.vue')
       },
       {
         path: '/examples/connection_drop',
-        props: { section: 11, example: 0 },
+        props: { section: 12, example: 0 },
         component: () => import(/* webpackChunkName: "example_connection_drop" */ '../views/example.vue')
       },
       {
         path: '/examples/connection_vertex',
-        props: { section: 11, example: 1 },
+        props: { section: 12, example: 1 },
         component: () => import(/* webpackChunkName: "example_connection_vertex" */ '../views/example.vue')
       },
       {
         path: '/examples/connection_locator',
-        props: { section: 11, example: 2 },
+        props: { section: 12, example: 2 },
         component: () => import(/* webpackChunkName: "example_connection_locator" */ '../views/example.vue')
       },
       {
         path: '/examples/connection_decoration',
-        props: { section: 11, example: 3 },
+        props: { section: 12, example: 3 },
         component: () => import(/* webpackChunkName: "example_connection_decoration" */ '../views/example.vue')
       },
       {
         path: '/examples/connection_with_contextmenu',
-        props: { section: 11, example: 4 },
+        props: { section: 12, example: 4 },
         component: () => import(/* webpackChunkName: "example_connection_with_contextmenu" */ '../views/example.vue')
       },
       {
         path: '/examples/connection_router',
-        props: { section: 11, example: 5 },
+        props: { section: 12, example: 5 },
         component: () => import(/* webpackChunkName: "example_connection_router" */ '../views/example.vue')
       },
       {
         path: '/examples/connection_rubberband',
-        props: { section: 11, example: 6 },
+        props: { section: 12, example: 6 },
         component: () => import(/* webpackChunkName: "example_connection_rubberband" */ '../views/example.vue')
       },
       {
         path: '/examples/connection_segment_handling',
-        props: { section: 11, example: 7 },
+        props: { section: 12, example: 7 },
         component: () => import(/* webpackChunkName: "example_connection_segment_handling" */ '../views/example.vue')
       },
       {
         path: '/examples/buildin_bridge',
-        props: { section: 11, example: 8 },
+        props: { section: 12, example: 8 },
         component: () => import(/* webpackChunkName: "example_buildin_bridge" */ '../views/example.vue')
       },
       {
         path: '/examples/connection_anchor_chopbox',
-        props: { section: 11, example: 9 },
+        props: { section: 12, example: 9 },
         component: () => import(/* webpackChunkName: "example_connection_anchor_chopbox" */ '../views/example.vue')
       },
       {
         path: '/examples/connection_anchor_fan',
-        props: { section: 11, example: 10 },
+        props: { section: 12, example: 10 },
         component: () => import(/* webpackChunkName: "example_connection_anchor_fan" */ '../views/example.vue')
       }
     ]
@@ -2904,6 +2969,10 @@ const tree = [
             text: 'layout'
           },
           {
+            data: { path: '/api/draw2d/shape/box' },
+            text: 'box'
+          },
+          {
             data: { path: '/api/draw2d/shape/pert' },
             text: 'pert'
           },
@@ -2968,7 +3037,7 @@ const examples = [
       {
         'name': 'galerie_shape_basic',
         'text': 'draw2d.shape.basic.*',
-        'description': 'Figures in the draw2d.shape.basic.* package',
+        'description': 'Gallery of basic shapes: rectangles, circles, lines, polygons and more.',
         'url': 'galerie_shape_basic/index.html',
         'icon': 'galerie_shape_basic/icon.png',
         'status': 'normal',
@@ -2979,7 +3048,7 @@ const examples = [
       {
         'name': 'galerie_shape_diagram',
         'text': 'draw2d.shape.diagram.*',
-        'description': 'Figures in the draw2d.shape.diagram.* package',
+        'description': 'Diagram elements: pie charts, sparklines, bar charts for data visualization.',
         'url': 'galerie_shape_diagram/index.html',
         'icon': 'galerie_shape_diagram/icon.png',
         'status': 'normal',
@@ -2990,7 +3059,7 @@ const examples = [
       {
         'name': 'galerie_shape_analog',
         'text': 'draw2d.shape.analog.*',
-        'description': 'Figures in the draw2d.shape.analog.* package',
+        'description': 'Analog components: resistors, capacitors, LEDs for circuit diagrams.',
         'url': 'galerie_shape_analog/index.html',
         'icon': 'galerie_shape_analog/icon.png',
         'status': 'normal',
@@ -3001,7 +3070,7 @@ const examples = [
       {
         'name': 'galerie_shape_widget',
         'text': 'draw2d.shape.widget.*',
-        'description': 'Figures in the draw2d.shape.widget.* package',
+        'description': 'Interactive widgets: sliders, buttons, and form elements.',
         'url': 'galerie_shape_widget/index.html',
         'icon': 'galerie_shape_widget/icon.png',
         'status': 'normal',
@@ -3012,7 +3081,7 @@ const examples = [
       {
         'name': 'galerie_shape_icon',
         'text': 'draw2d.shape.icon.*',
-        'description': 'Figures in the draw2d.shape.icon.* package',
+        'description': 'Vector icons collection for use in diagrams and flowcharts.',
         'url': 'galerie_shape_icon/index.html',
         'icon': 'galerie_shape_icon/icon.png',
         'status': 'normal',
@@ -3023,7 +3092,7 @@ const examples = [
       {
         'name': 'galerie_shape_node',
         'text': 'draw2d.shape.node.*',
-        'description': 'Figures in the draw2d.shape.node.* package. Some standard in/out nodes.',
+        'description': 'Node shapes with built-in ports for flow-based diagrams.',
         'url': 'galerie_shape_node/index.html',
         'icon': 'galerie_shape_node/icon.png',
         'status': 'normal',
@@ -3037,12 +3106,86 @@ const examples = [
     }
   },
   {
+    'text': 'Box Layout (Experimental)',
+    'children': [
+      {
+        'name': 'galerie_box',
+        'text': 'Box Gallery',
+        'description': 'New layout system: VBox, HBox, and GridBox for automatic child positioning.',
+        'url': 'galerie_box/index.html',
+        'icon': 'galerie_box/icon.png',
+        'status': 'new',
+        'data': {
+          'path': '/examples/galerie_box'
+        }
+      },
+      {
+        'name': 'box_collapsible',
+        'text': 'Collapsible Box',
+        'description': 'Expandable/collapsible container using VBox and HBox layouts.',
+        'url': 'box_collapsible/index.html',
+        'icon': 'box_collapsible/icon.png',
+        'status': 'new',
+        'data': {
+          'path': '/examples/box_collapsible'
+        }
+      },
+      {
+        'name': 'box_tablelayout',
+        'text': 'Table with VBox',
+        'description': 'Table-like structure with rows using VBox layout.',
+        'url': 'box_tablelayout/index.html',
+        'icon': 'box_tablelayout/icon.png',
+        'status': 'new',
+        'data': {
+          'path': '/examples/box_tablelayout'
+        }
+      },
+      {
+        'name': 'box_zoom_stack',
+        'text': 'Zoom StackBox',
+        'description': 'StackBox that switches visible layer based on zoom level.',
+        'url': 'box_zoom_stack/index.html',
+        'icon': 'box_zoom_stack/icon.png',
+        'status': 'new',
+        'data': {
+          'path': '/examples/box_zoom_stack'
+        }
+      },
+      {
+        'name': 'box_icon_decoration',
+        'text': 'Icon Decoration Box',
+        'description': 'Complex shape with icon decorations using nested box layouts.',
+        'url': 'box_icon_decoration/index.html',
+        'icon': 'box_icon_decoration/icon.png',
+        'status': 'new',
+        'data': {
+          'path': '/examples/box_icon_decoration'
+        }
+      },
+      {
+        'name': 'box_db',
+        'text': 'Database Table (VBox)',
+        'description': 'Database table with dynamic rows and ports using VBox layout.',
+        'url': 'box_db/index.html',
+        'icon': 'box_db/icon.png',
+        'status': 'new',
+        'data': {
+          'path': '/examples/box_db'
+        }
+      }
+    ],
+    'data': {
+      'path': '/examples/section1'
+    }
+  },
+  {
     'text': 'Composite Figures',
     'children': [
       {
         'name': 'composite_raft',
         'text': 'Raft Composite',
-        'description': 'Raft shape is a shape, which aggregate multiple primitive figures which are aboard the raft shape.',
+        'description': 'Container that moves child figures along when dragged.',
         'url': 'composite_raft/index.html',
         'icon': 'composite_raft/icon.png',
         'status': 'normal',
@@ -3053,7 +3196,7 @@ const examples = [
       {
         'name': 'composite_group',
         'text': 'Group Composite',
-        'description': 'A group is a figure that acts as a transparent container for other figures.',
+        'description': 'Transparent group container for organizing related figures.',
         'url': 'composite_group/index.html',
         'icon': 'composite_group/icon.png',
         'status': 'normal',
@@ -3064,7 +3207,7 @@ const examples = [
       {
         'name': 'composite_jailhouse',
         'text': 'Jailhouse Composite',
-        'description': 'A jailhouse organizes graphical objects into groups that share a common set of default properties and Z-order. Figures cannot moved outside of a jailhouse composite.',
+        'description': 'Bounded container that restricts child figure movement.',
         'url': 'composite_jailhouse/index.html',
         'icon': 'composite_jailhouse/icon.png',
         'status': 'normal',
@@ -3074,7 +3217,7 @@ const examples = [
       }
     ],
     'data': {
-      'path': '/examples/section1'
+      'path': '/examples/section2'
     }
   },
   {
@@ -3083,7 +3226,7 @@ const examples = [
       {
         'name': 'shape_custom_simple',
         'text': 'Triangle Figure',
-        'description': 'Create a simple triangle figure. No magic, just to show how to implement your own vector figure.',
+        'description': 'How to create a custom vector shape from scratch.',
         'url': 'shape_custom_simple/index.html',
         'icon': 'shape_custom_simple/icon.png',
         'status': 'normal',
@@ -3094,7 +3237,7 @@ const examples = [
       {
         'name': 'shape_timer',
         'text': 'Timer Label',
-        'description': 'A custom label with an internal timer which updates the text.',
+        'description': 'Label with internal timer that auto-updates its text.',
         'url': 'shape_timer/index.html',
         'icon': 'shape_timer/icon.png',
         'status': 'normal',
@@ -3105,7 +3248,7 @@ const examples = [
       {
         'name': 'shape_anim_circle',
         'text': 'Animated Figure',
-        'description': 'A SetFigure and a little bit of sinus/cosinus mathematics. It is possible to drag&drop the figure as well.',
+        'description': 'Continuously animated shape with drag&drop support.',
         'url': 'shape_anim_circle/index.html',
         'icon': 'shape_anim_circle/icon.png',
         'status': 'normal',
@@ -3116,7 +3259,7 @@ const examples = [
       {
         'name': 'figure_locator',
         'text': 'Locator for children shapes',
-        'description': 'Usage of a \'Locator\' for a label which is bounded to a shape.',
+        'description': 'Position child figures relative to parent using locators.',
         'url': 'figure_locator/index.html',
         'icon': 'figure_locator/icon.png',
         'status': 'normal',
@@ -3127,7 +3270,7 @@ const examples = [
       {
         'name': 'connection_with_contextmenu',
         'text': 'Connection with context menu',
-        'description': 'A Connections which provides a simple context menu. Overrides the default connection type.',
+        'description': 'Custom connection class with right-click context menu.',
         'url': 'connection_with_contextmenu/index.html',
         'icon': 'connection_with_contextmenu/icon.png',
         'status': 'normal',
@@ -3138,7 +3281,7 @@ const examples = [
       {
         'name': 'policy_selectionmenu',
         'text': 'Show menu on selection',
-        'description': 'Install a menu policy into a shape to provide a flyout menu on selection.',
+        'description': 'Flyout menu appears when a figure is selected.',
         'url': 'policy_selectionmenu/index.html',
         'icon': 'policy_selectionmenu/icon.png',
         'status': 'normal',
@@ -3149,7 +3292,7 @@ const examples = [
       {
         'name': 'shape_db',
         'text': 'Dynamic ports and rows in a shape',
-        'description': 'Shape with a method to add or remove a row and the related ports.',
+        'description': 'Database table with add/remove row functionality and dynamic ports.',
         'url': 'shape_db/index.html',
         'icon': 'shape_db/icon.png',
         'status': 'normal',
@@ -3160,7 +3303,7 @@ const examples = [
       {
         'name': 'shape_collapsible',
         'text': 'Collapsible shape',
-        'description': 'Example implementation of an collapsible shape',
+        'description': 'Shape that can expand/collapse to show/hide details.',
         'url': 'shape_collapsible/index.html',
         'icon': 'shape_collapsible/icon.png',
         'status': 'normal',
@@ -3171,7 +3314,7 @@ const examples = [
       {
         'name': 'shape_zoom_stack',
         'text': 'Change figure on Zoom',
-        'description': 'Change the visual representation if you zoom in/out to the canvas',
+        'description': 'Different visual representation at different zoom levels.',
         'url': 'shape_zoom_stack/index.html',
         'icon': 'shape_zoom_stack/icon.png',
         'status': 'normal',
@@ -3182,7 +3325,7 @@ const examples = [
       {
         'name': 'shape_zoom_svg',
         'text': 'Change SVG on Zoom',
-        'description': 'Change the SVG of a figure if you zoom in/out to the canvas',
+        'description': 'SVG content changes based on canvas zoom level.',
         'url': 'shape_zoom_svg/index.html',
         'icon': 'shape_zoom_svg/icon.png',
         'status': 'normal',
@@ -3193,7 +3336,7 @@ const examples = [
       {
         'name': 'shape_tablelayout',
         'text': 'Table layout',
-        'description': 'Place child figures in the parent table layout.',
+        'description': 'Grid-based layout for positioning child figures in cells.',
         'url': 'shape_tablelayout/index.html',
         'icon': 'shape_tablelayout/icon.png',
         'status': 'updated',
@@ -3203,7 +3346,7 @@ const examples = [
       }
     ],
     'data': {
-      'path': '/examples/section2'
+      'path': '/examples/section3'
     }
   },
   {
@@ -3212,7 +3355,7 @@ const examples = [
       {
         'name': 'interaction_dblclick_figure',
         'text': 'DblClick Figure',
-        'description': 'Example how to handle a double click within a figure.',
+        'description': 'Handle double-click events directly in a figure class.',
         'url': 'interaction_dblclick_figure/index.html',
         'icon': 'interaction_dblclick_figure/icon.png',
         'status': 'normal',
@@ -3223,7 +3366,7 @@ const examples = [
       {
         'name': 'interaction_dblclick_policy',
         'text': 'DblClick Policy',
-        'description': 'Example how to handle a double click with a policy.',
+        'description': 'Handle double-click events using an edit policy.',
         'url': 'interaction_dblclick_policy/index.html',
         'icon': 'interaction_dblclick_policy/icon.png',
         'status': 'normal',
@@ -3234,7 +3377,7 @@ const examples = [
       {
         'name': 'interaction_labeledit_inplace',
         'text': 'DblClick Figure with label',
-        'description': 'Event handling of a shape with children',
+        'description': 'Edit labels directly on the canvas with double-click.',
         'url': 'interaction_labeledit_inplace/index.html',
         'icon': 'interaction_labeledit_inplace/icon.png',
         'status': 'normal',
@@ -3245,7 +3388,7 @@ const examples = [
       {
         'name': 'interaction_click',
         'text': 'Click Figure with Sparkline',
-        'description': 'Using timer, Sparkline and a simple click event to create a simple flow diagram',
+        'description': 'Click events combined with animated sparkline charts.',
         'url': 'interaction_click/index.html',
         'icon': 'interaction_click/icon.png',
         'status': 'normal',
@@ -3256,7 +3399,7 @@ const examples = [
       {
         'name': 'interaction_slider',
         'text': 'Slider / Sparkline',
-        'description': 'Connect a slider as input for a animated Sparkline',
+        'description': 'Connect slider input to animated sparkline output.',
         'url': 'interaction_slider/index.html',
         'icon': 'interaction_slider/icon.png',
         'status': 'normal',
@@ -3267,7 +3410,7 @@ const examples = [
       {
         'name': 'interaction_pie',
         'text': 'Slider with Pie Chart',
-        'description': 'Using 3 sliders in combination with a pie chart. The sliders are the data source for the pie chart.',
+        'description': 'Three sliders controlling pie chart segment sizes.',
         'url': 'interaction_pie/index.html',
         'icon': 'interaction_pie/icon.png',
         'status': 'normal',
@@ -3278,7 +3421,7 @@ const examples = [
       {
         'name': 'connection_labeledit_dialog',
         'text': 'Edit a Label with a dialog',
-        'description': 'How to register a default editor for a label',
+        'description': 'Edit connection labels using a popup dialog.',
         'url': 'connection_labeledit_dialog/index.html',
         'icon': 'connection_labeledit_dialog/icon.png',
         'status': 'normal',
@@ -3289,7 +3432,7 @@ const examples = [
       {
         'name': 'connection_labeledit_inplace',
         'text': 'Inplace label editor',
-        'description': 'How to register an inplace editor for a label',
+        'description': 'Edit connection labels directly on the canvas.',
         'url': 'connection_labeledit_inplace/index.html',
         'icon': 'connection_labeledit_inplace/icon.png',
         'status': 'normal',
@@ -3300,7 +3443,7 @@ const examples = [
       {
         'name': 'interaction_toFront',
         'text': 'Bring to front',
-        'description': 'Bring an shape to front if the user click on them',
+        'description': 'Clicked figure moves to front of Z-order.',
         'url': 'interaction_toFront/index.html',
         'icon': 'interaction_toFront/icon.png',
         'status': 'normal',
@@ -3311,7 +3454,7 @@ const examples = [
       {
         'name': 'interaction_draggable_decoration',
         'text': 'Draggable figure decoration',
-        'description': 'A dynamic figure decoration which can be move via drag&drop',
+        'description': 'Decorations that can be repositioned via drag&drop.',
         'url': 'interaction_draggable_decoration/index.html',
         'icon': 'interaction_draggable_decoration/icon.png',
         'status': 'updated',
@@ -3321,7 +3464,7 @@ const examples = [
       }
     ],
     'data': {
-      'path': '/examples/section3'
+      'path': '/examples/section4'
     }
   },
   {
@@ -3330,7 +3473,7 @@ const examples = [
       {
         'name': 'resizehandle_replace_global',
         'text': 'Custom ResizeHandles',
-        'description': 'Replace the default ResizeHandles with your custom implementation',
+        'description': 'Replace default resize handles with custom shapes.',
         'url': 'resizehandle_replace_global/index.html',
         'icon': 'resizehandle_replace_global/icon.png',
         'status': 'normal',
@@ -3341,7 +3484,7 @@ const examples = [
       {
         'name': 'resizehandle_styled_css',
         'text': 'Style ResizeHandles via CSS',
-        'description': 'Override the default color of the resize handles with CSS',
+        'description': 'Style resize handle appearance using CSS rules.',
         'url': 'resizehandle_styled_css/index.html',
         'icon': 'resizehandle_styled_css/icon.png',
         'status': 'normal',
@@ -3351,7 +3494,7 @@ const examples = [
       }
     ],
     'data': {
-      'path': '/examples/section4'
+      'path': '/examples/section5'
     }
   },
   {
@@ -3360,7 +3503,7 @@ const examples = [
       {
         'name': 'port_semantic_group',
         'text': 'Restricted Connections',
-        'description': 'Only ports in the same semantic group can be connected.',
+        'description': 'Only ports in the same semantic group can connect.',
         'url': 'port_semantic_group/index.html',
         'icon': 'port_semantic_group/icon.png',
         'status': 'normal',
@@ -3371,7 +3514,7 @@ const examples = [
       {
         'name': 'port_locator',
         'text': 'Position of ports',
-        'description': 'Add ports to a figure via API call with an locator for position calculation.',
+        'description': 'Place ports at specific positions using locators.',
         'url': 'port_locator/index.html',
         'icon': 'port_locator/icon.png',
         'status': 'normal',
@@ -3382,7 +3525,7 @@ const examples = [
       {
         'name': 'port_serialize',
         'text': 'Create ports from JSON',
-        'description': 'Load and save ports of shape to JSON',
+        'description': 'Save and restore port configurations via JSON.',
         'url': 'port_serialize/index.html',
         'icon': 'port_serialize/icon.png',
         'status': 'normal',
@@ -3393,7 +3536,7 @@ const examples = [
       {
         'name': 'port_decoration',
         'text': 'Create ports with configurable default values',
-        'description': 'Create a port with a visual configuration shape to select the default value to use',
+        'description': 'Ports with visual config panel for default values.',
         'url': 'port_decoration/index.html',
         'icon': 'port_decoration/icon.png',
         'status': 'normal',
@@ -3404,7 +3547,7 @@ const examples = [
       {
         'name': 'port_hide',
         'text': 'Hide/Show ports if connected',
-        'description': 'Dynamic show or hides ports if they are connected. Show them again if you remove the connection',
+        'description': 'Automatically hide connected ports, show on disconnect.',
         'url': 'port_hide/index.html',
         'icon': 'port_hide/icon.png',
         'status': 'normal',
@@ -3414,7 +3557,7 @@ const examples = [
       }
     ],
     'data': {
-      'path': '/examples/section5'
+      'path': '/examples/section6'
     }
   },
   {
@@ -3423,7 +3566,7 @@ const examples = [
       {
         'name': 'buildin_commandstack',
         'text': 'Undo & Redo',
-        'description': 'Usage of the internal CommandStack for Undo/Redo operations',
+        'description': 'Built-in command stack for undo/redo operations.',
         'url': 'buildin_commandstack/index.html',
         'icon': 'buildin_commandstack/icon.png',
         'status': 'normal',
@@ -3434,7 +3577,7 @@ const examples = [
       {
         'name': 'buildin_zoom',
         'text': 'Zoom',
-        'description': 'Simple setZoom and getZoom method in the Canvas class',
+        'description': 'Canvas zoom in/out functionality with slider control.',
         'url': 'buildin_zoom/index.html',
         'icon': 'buildin_zoom/icon.png',
         'status': 'normal',
@@ -3445,7 +3588,7 @@ const examples = [
       {
         'name': 'buildin_bridge',
         'text': 'Bridge',
-        'description': 'Automatic bridging of crossing connectors',
+        'description': 'Automatic bridge rendering at connection crossings.',
         'url': 'buildin_bridge/index.html',
         'icon': 'buildin_bridge/icon.png',
         'status': 'normal',
@@ -3456,7 +3599,7 @@ const examples = [
       {
         'name': 'buildin_event',
         'text': 'Canvas events',
-        'description': 'Canvas events for figure add, remove, zoom, clear,..',
+        'description': 'Listen to canvas events: add, remove, select, zoom, clear.',
         'url': 'buildin_event/index.html',
         'icon': 'buildin_event/icon.png',
         'status': 'normal',
@@ -3466,7 +3609,7 @@ const examples = [
       }
     ],
     'data': {
-      'path': '/examples/section6'
+      'path': '/examples/section7'
     }
   },
   {
@@ -3475,7 +3618,7 @@ const examples = [
       {
         'name': 'tooltip_diy',
         'text': 'Basic Tooltip',
-        'description': 'Tooltip implementation without any third party lib.',
+        'description': 'Custom tooltip implementation without external libraries.',
         'url': 'tooltip_diy/index.html',
         'icon': 'tooltip_diy/icon.png',
         'status': 'normal',
@@ -3485,7 +3628,7 @@ const examples = [
       }
     ],
     'data': {
-      'path': '/examples/section7'
+      'path': '/examples/section8'
     }
   },
   {
@@ -3494,7 +3637,7 @@ const examples = [
       {
         'name': 'databinding_watchjs',
         'text': 'Watch.JS',
-        'description': 'Create a property sheet and sync the data with the third party lib watch.JS',
+        'description': 'Two-way data binding using Watch.JS library.',
         'url': 'databinding_watchjs/index.html',
         'icon': 'databinding_watchjs/icon.png',
         'status': 'normal',
@@ -3505,7 +3648,7 @@ const examples = [
       {
         'name': 'databinding_backbone',
         'text': 'Backbone.JS',
-        'description': 'Databinding with backboneJS without epoxy',
+        'description': 'Data binding with Backbone.js models.',
         'url': 'databinding_backbone/index.html',
         'icon': 'databinding_backbone/icon.png',
         'status': 'normal',
@@ -3516,7 +3659,7 @@ const examples = [
       {
         'name': 'databinding_backbone_modelbinder',
         'text': 'Backbone.ModelBinder',
-        'description': 'Databinding with backboneJS with the support of the ModelBinder lib',
+        'description': 'Enhanced Backbone binding with ModelBinder plugin.',
         'url': 'databinding_backbone_modelbinder/index.html',
         'icon': 'databinding_backbone_modelbinder/icon.png',
         'status': 'normal',
@@ -3527,7 +3670,7 @@ const examples = [
       {
         'name': 'databinding_js',
         'text': 'JavaScript',
-        'description': 'Implementation of a property view without any additional lib for the databinding',
+        'description': 'Simple property view with pure JavaScript binding.',
         'url': 'databinding_js/index.html',
         'icon': 'databinding_js/icon.png',
         'status': 'normal',
@@ -3538,7 +3681,7 @@ const examples = [
       {
         'name': 'databinding_rivets',
         'text': 'RivetsJS',
-        'description': 'Databinding with the integration of the RivetsJS lib',
+        'description': 'Declarative data binding using Rivets.js.',
         'url': 'databinding_rivets/index.html',
         'icon': 'databinding_rivets/icon.png',
         'status': 'normal',
@@ -3548,7 +3691,7 @@ const examples = [
       }
     ],
     'data': {
-      'path': '/examples/section8'
+      'path': '/examples/section9'
     }
   },
   {
@@ -3557,7 +3700,7 @@ const examples = [
       {
         'name': 'policy_canvas_decoration',
         'text': 'Canvas Decoration',
-        'description': 'Add special behavior to the canvas related the port visibility.',
+        'description': 'Control port visibility with canvas decoration policies.',
         'url': 'policy_canvas_decoration/index.html',
         'icon': 'policy_canvas_decoration/icon.png',
         'status': 'normal',
@@ -3568,7 +3711,7 @@ const examples = [
       {
         'name': 'policy_selection_handling',
         'text': 'Selection Handling',
-        'description': 'Different kind of policies for selection handling, panning and editing',
+        'description': 'Different selection policies: single, multi, panning.',
         'url': 'policy_selection_handling/index.html',
         'icon': 'policy_selection_handling/icon.png',
         'status': 'normal',
@@ -3579,7 +3722,7 @@ const examples = [
       {
         'name': 'policy_selection_feedback',
         'text': 'Selection Feedback',
-        'description': 'Using different policies for the selection feedback of a shape',
+        'description': 'Customize visual feedback when figures are selected.',
         'url': 'policy_selection_feedback/index.html',
         'icon': 'policy_selection_feedback/icon.png',
         'status': 'normal',
@@ -3590,7 +3733,7 @@ const examples = [
       {
         'name': 'policy_snap_to',
         'text': 'SnapTo Policy',
-        'description': 'Canvas policy for snap shapes during drag&drop within a grid or the geometry of other shapes',
+        'description': 'Snap figures to grid or other figure edges during drag.',
         'url': 'policy_snap_to/index.html',
         'icon': 'policy_snap_to/icon.png',
         'status': 'normal',
@@ -3601,7 +3744,7 @@ const examples = [
       {
         'name': 'policy_figure_constraint',
         'text': 'Drag&Drop edit policy',
-        'description': 'Install drag&drop edit policy. Constraint the region or direction for drag&drop operations.',
+        'description': 'Constrain drag movement: horizontal, vertical, or bounded.',
         'url': 'policy_figure_constraint/index.html',
         'icon': 'policy_figure_constraint/icon.png',
         'status': 'normal',
@@ -3612,7 +3755,7 @@ const examples = [
       {
         'name': 'policy_drag_copy',
         'text': 'Copy during Drag&Drop',
-        'description': 'Copy the dragged shape if the user press the [shift] key during the drag&drop operation instead on moving the figure.',
+        'description': 'Hold [Shift] while dragging to copy instead of move.',
         'url': 'policy_drag_copy/index.html',
         'icon': 'policy_drag_copy/icon.png',
         'status': 'normal',
@@ -3622,7 +3765,7 @@ const examples = [
       }
     ],
     'data': {
-      'path': '/examples/section9'
+      'path': '/examples/section10'
     }
   },
   {
@@ -3631,7 +3774,7 @@ const examples = [
       {
         'name': 'io_json_basic',
         'text': 'Basic JSON',
-        'description': 'Load a JSON document into the canvas. Additional the current canvas will be dumped as JSON.',
+        'description': 'Load and save canvas content as JSON.',
         'url': 'io_json_basic/index.html',
         'icon': 'io_json_basic/icon.png',
         'status': 'normal',
@@ -3642,7 +3785,7 @@ const examples = [
       {
         'name': 'io_json_extend',
         'text': 'Extended JSON',
-        'description': 'Read/Write a JSON document with custom attributes into the canvas.',
+        'description': 'Save custom figure attributes to JSON.',
         'url': 'io_json_extend/index.html',
         'icon': 'io_json_extend/icon.png',
         'status': 'normal',
@@ -3653,7 +3796,7 @@ const examples = [
       {
         'name': 'io_json_connections',
         'text': 'JSON with Connections',
-        'description': 'Load a JSON document into the canvas which respects connections too.',
+        'description': 'Load/save diagrams including all connections.',
         'url': 'io_json_connections/index.html',
         'icon': 'io_json_connections/icon.png',
         'status': 'normal',
@@ -3664,7 +3807,7 @@ const examples = [
       {
         'name': 'io_json_dyn_labels',
         'text': 'Figure with dynamic labels',
-        'description': 'Load a figure with dynamic count if labels. Additional one label is draggable',
+        'description': 'Save figures with variable number of child labels.',
         'url': 'io_json_dyn_labels/index.html',
         'icon': 'io_json_dyn_labels/icon.png',
         'status': 'normal',
@@ -3675,7 +3818,7 @@ const examples = [
       {
         'name': 'io_svg_basic',
         'text': 'SVG Export',
-        'description': 'Export the canvas into a SVG document. The document can be loaded with any SVG editor like Inkscape or Sodipodi',
+        'description': 'Export canvas to SVG for Inkscape or other editors.',
         'url': 'io_svg_basic/index.html',
         'icon': 'io_svg_basic/icon.png',
         'status': 'normal',
@@ -3686,7 +3829,7 @@ const examples = [
       {
         'name': 'io_json_multi_document',
         'text': 'Reading multiple JSON files',
-        'description': 'Loading multiple JSON documents into one canvas without to clear the cnavas before',
+        'description': 'Merge multiple JSON files into one canvas.',
         'url': 'io_json_multi_document/index.html',
         'icon': 'io_json_multi_document/icon.png',
         'status': 'normal',
@@ -3697,7 +3840,7 @@ const examples = [
       {
         'name': 'io_png_overview',
         'text': 'PNG Export',
-        'description': 'Export the canvas into a PNG image and show them as preview window.',
+        'description': 'Export canvas as PNG image with preview.',
         'url': 'io_png_overview/index.html',
         'icon': 'io_png_overview/icon.png',
         'status': 'normal',
@@ -3708,7 +3851,7 @@ const examples = [
       {
         'name': 'io_png_crop',
         'text': 'Crop PNG Export',
-        'description': 'Export the canvas area that actually has objects in it to a PNG',
+        'description': 'Export only the area containing figures to PNG.',
         'url': 'io_png_crop/index.html',
         'icon': 'io_png_crop/icon.png',
         'status': 'normal',
@@ -3718,7 +3861,7 @@ const examples = [
       }
     ],
     'data': {
-      'path': '/examples/section10'
+      'path': '/examples/section11'
     }
   },
   {
@@ -3727,7 +3870,7 @@ const examples = [
       {
         'name': 'connection_drop',
         'text': 'Connection Drop',
-        'description': 'Show how to infix a node into a Connection with a Drag&Drop operation',
+        'description': 'Drop a figure onto a connection to insert it inline.',
         'url': 'connection_drop/index.html',
         'icon': 'connection_drop/icon.png',
         'status': 'normal',
@@ -3738,7 +3881,7 @@ const examples = [
       {
         'name': 'connection_vertex',
         'text': 'Editable Vertex Locator',
-        'description': 'Add, delete or move the vertex points of a connection.',
+        'description': 'Add, remove, or drag connection vertices interactively.',
         'url': 'connection_vertex/index.html',
         'icon': 'connection_vertex/icon.png',
         'status': 'normal',
@@ -3749,7 +3892,7 @@ const examples = [
       {
         'name': 'connection_locator',
         'text': 'Connection Locator',
-        'description': 'Usage of a \'Locator\' for a label which is bounded to a connection.',
+        'description': 'Attach labels at specific positions along connections.',
         'url': 'connection_locator/index.html',
         'icon': 'connection_locator/icon.png',
         'status': 'normal',
@@ -3760,7 +3903,7 @@ const examples = [
       {
         'name': 'connection_decoration',
         'text': 'Connection Decoration',
-        'description': 'Decorate the endpoints of a connections with different symbols like a Diamond, Circle, Arrow,...',
+        'description': 'Arrow, diamond, circle decorations at connection endpoints.',
         'url': 'connection_decoration/index.html',
         'icon': 'connection_decoration/icon.png',
         'status': 'normal',
@@ -3771,7 +3914,7 @@ const examples = [
       {
         'name': 'connection_with_contextmenu',
         'text': 'Connection with context menu',
-        'description': 'A Connections which provides a simple context menu. Overrides the default connection type.',
+        'description': 'Custom connection with right-click context menu.',
         'url': 'connection_with_contextmenu/index.html',
         'icon': 'connection_with_contextmenu/icon.png',
         'status': 'normal',
@@ -3782,7 +3925,7 @@ const examples = [
       {
         'name': 'connection_router',
         'text': 'Connection Router',
-        'description': 'Different Connection router implementation for test purpose.',
+        'description': 'Different routing algorithms: direct, manhattan, spline.',
         'url': 'connection_router/index.html',
         'icon': 'connection_router/icon.png',
         'status': 'normal',
@@ -3793,7 +3936,7 @@ const examples = [
       {
         'name': 'connection_rubberband',
         'text': 'Rubber band Router',
-        'description': 'Example implementation for a custom router - a rubber band router.',
+        'description': 'Custom router with elastic rubber band behavior.',
         'url': 'connection_rubberband/index.html',
         'icon': 'connection_rubberband/icon.png',
         'status': 'updated',
@@ -3804,7 +3947,7 @@ const examples = [
       {
         'name': 'connection_segment_handling',
         'text': 'Connection segment add/remove',
-        'description': 'Use the conext menu to add or remove segments to the connection',
+        'description': 'Right-click to add or remove connection segments.',
         'url': 'connection_segment_handling/index.html',
         'icon': 'connection_segment_handling/icon.png',
         'status': 'normal',
@@ -3815,7 +3958,7 @@ const examples = [
       {
         'name': 'buildin_bridge',
         'text': 'Bridge',
-        'description': 'Automatic bridging of crossing connectors',
+        'description': 'Automatic bridge rendering at connection crossings.',
         'url': 'buildin_bridge/index.html',
         'icon': 'buildin_bridge/icon.png',
         'status': 'normal',
@@ -3826,7 +3969,7 @@ const examples = [
       {
         'name': 'connection_anchor_chopbox',
         'text': 'Chopbox Anchor',
-        'description': 'Set the anchor of an connection to the bounding box of the shape instead bounded to a port',
+        'description': 'Connect to figure bounding box instead of fixed ports.',
         'url': 'connection_anchor_chopbox/index.html',
         'icon': 'connection_anchor_chopbox/icon.png',
         'status': 'normal',
@@ -3837,7 +3980,7 @@ const examples = [
       {
         'name': 'connection_anchor_fan',
         'text': 'Parallel Connections',
-        'description': 'Create parallel connections with the combination of an FanChonnectionAnchor and DirectRouter',
+        'description': 'Multiple parallel connections using FanConnectionAnchor.',
         'url': 'connection_anchor_fan/index.html',
         'icon': 'connection_anchor_fan/icon.png',
         'status': 'normal',
@@ -3847,7 +3990,7 @@ const examples = [
       }
     ],
     'data': {
-      'path': '/examples/section11'
+      'path': '/examples/section12'
     }
   }
 ]

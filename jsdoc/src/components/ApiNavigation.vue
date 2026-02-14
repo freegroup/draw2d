@@ -1,114 +1,186 @@
 <template>
-  <v-navigation-drawer app clipped permanent >
-    <input type="text" placeholder="Type to filter..." v-model="treeFilter" class="filter-field">
-    <tree
-      :data="routes"
-      :options="treeOptions"
-      :filter="treeFilter"
-      v-model="selectedNode">
-      <div slot-scope="{ node }">
-        <router-link class="node-text" :to="node.data.path" exact>{{ node.text }}</router-link>
-      </div>
-    </tree>
+  <v-navigation-drawer app clipped permanent class="nav-sidebar">
+    <div class="sidebar-header">
+      <img src="../assets/logo.svg" alt="Draw2D" class="sidebar-logo" />
+      <span class="sidebar-title">Draw2D</span>
+    </div>
+    <div class="search-container">
+      <v-icon class="search-icon" size="18">search</v-icon>
+      <input type="text" placeholder="Search API..." v-model="searchText" class="filter-field">
+    </div>
+    <v-treeview
+      :items="treeItems"
+      :search="searchText"
+      :open.sync="openItems"
+      item-key="id"
+      item-text="name"
+      dense
+      hoverable
+      activatable
+      :active.sync="activeItems"
+      open-on-click
+      class="nav-tree"
+    >
+      <template v-slot:label="{ item }">
+        <router-link
+          :to="item.path"
+          class="tree-link"
+          :class="{ 'active-link': isActive(item.path) }"
+        >
+          {{ item.name }}
+        </router-link>
+      </template>
+    </v-treeview>
   </v-navigation-drawer>
 </template>
-<style>
-
-  .filter-field {
-    display: block;
-    width: 100%;
-    padding: 3px;
-    border: 1px solid #e8e8e8;
-  }
-  .tree-root {
-    padding: 1px;
-    box-sizing: border-box;
-    font-size: 12px;
-    font-family: sans-serif;
-  }
-  .tree-content {
-    display: flex;
-    align-items: center;
-    padding: 0 !important;
-    cursor: pointer;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  .tree-children {
-    padding: 0 !important;
-    padding-left: 15px !important;
-  }
-  .tree-node.selected>.tree-content {
-    background-color: rgba(231, 238, 247, 0.19) !important;
-  }
-  .tree-node:not(.selected)>.tree-content:hover {
-    background: rgba(246, 248, 251, 0.13) !important;
-  }
-
-  .tree-arrow.expanded.has-child:after {
-    transform: rotate(45deg) translateY(-50%) translateX(-2px) !important;
-  }
-  .tree-arrow {
-    margin-left: 15px !important;
-  }
-  .tree-arrow.has-child {
-    width: 15px !important;
-    margin-left: 0px !important;
-  }
-  .tree-arrow.has-child:after {
-    position: absolute;
-    left: 5px !important;
-    top: 50%;
-    height: 5px !important;
-    width: 5px !important;
-    transform: rotate(-45deg) translateY(-50%) translateX(0);
-    transition: transform .25s;
-    transform-origin: center;
-    border: 1px solid black !important;
-    border-left: 0 !important;
-    border-top: 0 !important;
-  }
-  .tree-anchor {
-    flex-grow: 2;
-    outline: 0;
-    display: flex;
-    text-decoration: none;
-    vertical-align: top;
-    margin-left: 0 !important;
-    padding: 0 !important;
-    user-select: none;
-  }
-
-  .node-text{
-    color: #2196f3 !important;
-    font-size: 14px !important;
-    padding-left: 5px !important;
-    text-decoration: none  !important;
-  }
-
-</style>
 
 <script>
 export default {
-  props: [
-  ],
-  name: 'home',
-  computed: {
-    routes () {
-      return this.$router.options.tree
+  name: 'ApiNavigation',
+  data () {
+    return {
+      searchText: '',
+      openItems: [],
+      activeItems: []
     }
   },
-  data: () => {
-    return {
-      selectedNode: null,
-      treeFilter: '',
-      treeOptions: {
-        multiple: false,
-        filter: {
-          plainList: true
+  computed: {
+    treeItems () {
+      return this.convertTree(this.$router.options.tree)
+    }
+  },
+  methods: {
+    convertTree (nodes, parentId = '') {
+      if (!nodes) return []
+      return nodes.map((node, index) => {
+        const id = parentId ? `${parentId}-${index}` : `${index}`
+        return {
+          id,
+          name: node.text,
+          path: node.data?.path || '',
+          children: node.children ? this.convertTree(node.children, id) : undefined
         }
-      }
+      })
+    },
+    isActive (path) {
+      return this.$route.path === path
     }
   }
 }
 </script>
+
+<style scoped>
+.nav-sidebar {
+  background: white !important;
+  border-right: 1px solid #eee !important;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.sidebar-logo {
+  width: 28px;
+  height: 28px;
+}
+
+.sidebar-title {
+  color: #1a1a2e;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.search-container {
+  position: relative;
+  padding: 12px 16px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+}
+
+.filter-field {
+  display: block;
+  width: 100%;
+  padding: 10px 10px 10px 36px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background: #f5f5f5;
+  color: #333;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.filter-field::placeholder {
+  color: #999;
+}
+
+.filter-field:focus {
+  border-color: #667eea;
+  background: white;
+}
+
+.tree-link {
+  color: #333 !important;
+  text-decoration: none !important;
+  font-size: 13px;
+  display: block;
+  padding: 2px 0;
+}
+
+.tree-link:hover {
+  color: #1976D2 !important;
+}
+
+.tree-link.active-link {
+  color: #D81B60 !important;
+  font-weight: 600;
+}
+</style>
+
+<style>
+/* Global styles for v-treeview - reduced indentation */
+.nav-sidebar .v-treeview {
+  padding: 4px 8px !important;
+}
+
+.nav-sidebar .v-treeview-node__root {
+  min-height: 28px !important;
+  padding-left: 0 !important;
+}
+
+.nav-sidebar .v-treeview-node__content {
+  margin-left: 0 !important;
+}
+
+.nav-sidebar .v-treeview-node__label {
+  font-size: 13px !important;
+}
+
+.nav-sidebar .v-treeview-node__level {
+  width: 12px !important;
+}
+
+.nav-sidebar .v-treeview-node--leaf > .v-treeview-node__root {
+  padding-left: 8px !important;
+}
+
+.nav-sidebar .v-treeview-node__toggle {
+  color: #666 !important;
+  width: 20px !important;
+}
+
+.nav-sidebar .v-treeview-node__prepend {
+  min-width: 0 !important;
+}
+</style>

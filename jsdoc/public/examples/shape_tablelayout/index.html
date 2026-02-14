@@ -12,14 +12,52 @@
 
   <script src="../draw2d.js"></script>
 
-	<script src="TableTestFigure.js"></script>
+  <script src="TableTestFigure.js"></script>
+
+<style>
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#toolbar {
+  background: #cecece;
+  background: linear-gradient(to bottom, #cecece 0%, #a8a8a8 100%);
+  padding: 8px;
+  margin: 0;
+  border-bottom: 1px solid #515151;
+  flex-shrink: 0;
+}
+
+#canvas-wrapper {
+  flex: 1;
+  overflow: auto;
+  position: relative;
+}
+
+#canvas {
+  width: 3000px;
+  height: 3000px;
+  background-color: #FAFAFA;
+}
+</style>
 
 <script type="text/javascript">
 
 document.addEventListener("DOMContentLoaded",function () {
 
 
-     var canvas = new draw2d.Canvas("gfx_holder");
+     var canvas = new draw2d.Canvas("canvas");
 
      var figure = new TableTestFigure({x:100, y:100});
      canvas.add( figure);
@@ -47,14 +85,14 @@ document.addEventListener("DOMContentLoaded",function () {
 
 </head>
 
-<body>
-<button id="set-default-name">Set Default</button>
-<button id="set-short-name">Set Short Name</button>
-<button id="set-long-name">Set Long Name</button>
-
-<div  oncontextmenu="return false;" onselectstart="javascript:/*IE8 hack*/return false"  id="gfx_holder" style="width:3000px; height:3000px;">
-</div>
-
-
+<body id="container">
+  <div id="toolbar">
+    <button id="set-default-name">Set Default</button>
+    <button id="set-short-name">Set Short Name</button>
+    <button id="set-long-name">Set Long Name</button>
+  </div>
+  <div id="canvas-wrapper">
+    <div id="canvas"></div>
+  </div>
 </body>
 </html>

@@ -1,0 +1,89 @@
+﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<title>Box Layout Galerie</title>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <link type="text/css" rel="stylesheet" href="./css/example.css" />
+
+  <script src="./lib/jquery.js"></script>
+  <script src="./lib/jquery-ui.js"></script>
+
+  <script src="../draw2d.js"></script>
+
+<script type="text/javascript">
+
+document.addEventListener("DOMContentLoaded",function () {
+
+    // create the canvas for the user interaction
+    //
+    var canvas = new draw2d.Canvas("gfx_holder");
+
+    // ============================================
+    // VBox Example
+    // ============================================
+    var vbox = new draw2d.shape.box.VBox({stroke:2, bgColor:"#f0f0f0"});
+    vbox.add(new draw2d.shape.basic.Label({text:"VBox Header", bold:true}));
+    vbox.add(new draw2d.shape.basic.Label({text:"Item 1"}));
+    vbox.add(new draw2d.shape.basic.Label({text:"Item 2"}));
+    vbox.add(new draw2d.shape.basic.Label({text:"Item 3"}));
+    vbox.setGap(5);
+    canvas.add(vbox, 50, 50);
+
+    // ============================================
+    // HBox Example
+    // ============================================
+    var hbox = new draw2d.shape.box.HBox({stroke:2, bgColor:"#e0f0e0"});
+    hbox.add(new draw2d.shape.basic.Label({text:"A"}));
+    hbox.add(new draw2d.shape.basic.Label({text:"B"}));
+    hbox.add(new draw2d.shape.basic.Label({text:"C"}));
+    hbox.setGap(10);
+    canvas.add(hbox, 250, 50);
+
+    // ============================================
+    // GridBox Example
+    // ============================================
+    var gridbox = new draw2d.shape.box.GridBox({
+        rows:"pref, pref, pref",
+        columns:"pref, grow",
+        stroke:2,
+        bgColor:"#e0e0f0"
+    });
+    gridbox.add(new draw2d.shape.basic.Label({text:"Key 1"}), {row:0, col:0});
+    gridbox.add(new draw2d.shape.basic.Label({text:"Value 1", resizeable:true}), {row:0, col:1});
+    gridbox.add(new draw2d.shape.basic.Label({text:"Key 2"}), {row:1, col:0});
+    gridbox.add(new draw2d.shape.basic.Label({text:"Value 2"}), {row:1, col:1});
+    gridbox.add(new draw2d.shape.basic.Label({text:"Key 3"}), {row:2, col:0});
+    gridbox.add(new draw2d.shape.basic.Label({text:"Value 3"}), {row:2, col:1});
+    canvas.add(gridbox, 50, 200);
+
+    // ============================================
+    // Nested Box Example
+    // ============================================
+    var outer = new draw2d.shape.box.VBox({stroke:2, bgColor:"#f0e0e0"});
+    outer.add(new draw2d.shape.basic.Label({text:"Nested Boxes", bold:true}));
+    
+    var inner = new draw2d.shape.box.HBox({stroke:1, bgColor:"#ffffff"});
+    inner.add(new draw2d.shape.basic.Label({text:"Left"}));
+    inner.add(new draw2d.shape.basic.Label({text:"Right"}));
+    inner.setGap(5);
+    
+    outer.add(inner);
+    outer.add(new draw2d.shape.basic.Label({text:"Footer"}));
+    outer.setGap(5);
+    canvas.add(outer, 250, 200);
+
+});
+
+</script>
+
+</head>
+
+<body>
+<div onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:1500px; height:1500px; ">
+</div>
+
+
+</body>
+</html>

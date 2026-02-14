@@ -1,5 +1,4 @@
-
- {
+{
   "name": "draw2d-doc",
   "version": "0.1.0",
   "private": true,
@@ -22,27 +21,26 @@
     "material-design-icons-iconfont": "^5.0.1",
     "ncp": "^2.0.0",
     "typeface-source-sans-pro": "0.0.75",
-    "vue": "^2.6.10",
+    "vue": "^2.7.16",
     "vue-fixed-header": "^3.2.14",
-    "vue-router": "^3.1.3",
-    "vuetify": "^2.1.0"
+    "vue-router": "^3.6.5",
+    "vuetify": "^2.7.2"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.1.0",
-    "@vue/cli-plugin-eslint": "^4.1.0",
-    "@vue/cli-plugin-router": "^4.1.0",
-    "@vue/cli-service": "^4.1.0",
+    "@vue/cli-plugin-babel": "^4.5.19",
+    "@vue/cli-plugin-eslint": "^4.5.19",
+    "@vue/cli-plugin-router": "^4.5.19",
+    "@vue/cli-service": "^4.5.19",
     "@vue/eslint-config-standard": "^4.0.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "jsdoc": "^3.6.3",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
-    "liquor-tree": "^0.2.70",
     "sass": "^1.19.0",
     "sass-loader": "^8.0.0",
     "vue-cli-plugin-vuetify": "^2.0.4",
-    "vue-template-compiler": "^2.6.10",
+    "vue-template-compiler": "^2.7.16",
     "vuetify-loader": "^1.3.0"
   }
 }

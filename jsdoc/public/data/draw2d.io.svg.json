@@ -8,7 +8,7 @@
     {
       "name": "Writer",
       "namespace": "draw2d.io.svg",
-      "description": "<p>Serialize the canvas document into a SVG document.</p>\n<pre><code>// Create a SVG writer and convert the canvas into a SVG document.\n//\nvar writer = new draw2d.io.svg.Writer();\nwriter.marshal(canvas, function(svg){\n    // insert the svg string into a DIV for preview or post\n    // it via ajax to the server....\n    $(&quot;#svg&quot;).text(svg);\n});</code></pre>",
+      "description": "<p>Serialize the canvas document into a SVG document.</p>\n<pre><code>// Create a SVG writer and convert the canvas into a SVG document.\n//\nvar writer = new draw2d.io.svg.Writer();\nwriter.marshal(canvas, function(svg){\n    // insert the svg string into a DIV for preview or post\n    // it via ajax to the server....\n    $(&quot;#svg&quot;).text(svg);\n});\n</code></pre>",
       "extends": [
         "draw2d.io.Writer"
       ],

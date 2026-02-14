@@ -50,6 +50,10 @@
       "namespace": "draw2d.shape"
     },
     {
+      "name": "box",
+      "namespace": "draw2d.shape"
+    },
+    {
       "name": "pert",
       "namespace": "draw2d.shape"
     },

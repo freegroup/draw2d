@@ -49,6 +49,11 @@ bump_version() {
 # ============================================
 echo "=== Building draw2d.js ==="
 
+# Run tests first
+echo ""
+echo "Running unit tests..."
+npm test || { echo "❌ Tests failed! Build aborted."; exit 1; }
+
 # Ask for version bump
 bump_version
 
@@ -64,9 +69,13 @@ echo "Replacing @VERSION@ with $VERSION in dist/draw2d.js..."
 sed -i '' "s/@VERSION@/$VERSION/g" ./dist/draw2d.js
 
 # Copy built library to jsdoc public folder and examples
-echo "2/4 Copying draw2d.js to jsdoc and examples..."
+echo "2/4 Copying draw2d.js and examples to jsdoc..."
 cp ./dist/draw2d.js ./jsdoc/public/
 cp ./dist/draw2d.js ./examples/
+
+# Sync examples to jsdoc/public/examples (for Vue.js app)
+echo "    Syncing examples to jsdoc/public/examples..."
+rsync -av --delete --exclude='.DS_Store' ./examples/ ./jsdoc/public/examples/
 
 # Generate the jsDoc
 echo "3/4 Generating JSDoc..."

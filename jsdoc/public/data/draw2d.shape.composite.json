@@ -176,7 +176,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the line style for dot/dash styling. Possible values are\n[&quot;&quot;, &quot;-&quot;, &quot;.&quot;, &quot;-.&quot;, &quot;-..&quot;, &quot;. &quot;, &quot;- &quot;, &quot;--&quot;, &quot;- .&quot;, &quot;--.&quot;, &quot;--..&quot;]</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  dash: pattern\n});</code></pre>",
+          "description": "<p>Set the line style for dot/dash styling. Possible values are\n[&quot;&quot;, &quot;-&quot;, &quot;.&quot;, &quot;-.&quot;, &quot;-..&quot;, &quot;. &quot;, &quot;- &quot;, &quot;--&quot;, &quot;- .&quot;, &quot;--.&quot;, &quot;--..&quot;]</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  dash: pattern\n});\n</code></pre>",
           "parameters": [
             {
               "name": "pattern",
@@ -196,7 +196,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Get the line style for this object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr(&quot;dash&quot;);</code></pre>",
+          "description": "<p>Get the line style for this object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr(&quot;dash&quot;);\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "5.1.0",
@@ -301,7 +301,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the new background color of the figure. It is possible to hands over\n<code>null</code> to set the background transparent.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;bgColor&quot;: &quot;#f0f0f0&quot;\n});</code></pre>",
+          "description": "<p>Set the new background color of the figure. It is possible to hands over\n<code>null</code> to set the background transparent.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;bgColor&quot;: &quot;#f0f0f0&quot;\n});\n</code></pre>",
           "parameters": [
             {
               "name": "color",
@@ -324,7 +324,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>The current used background color.</p>\n<pre><code>// Alternatively you can use the attr method:\nvar color =figure.attr(&quot;bgColor&quot;);</code></pre>",
+          "description": "<p>The current used background color.</p>\n<pre><code>// Alternatively you can use the attr method:\nvar color =figure.attr(&quot;bgColor&quot;);\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -339,7 +339,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the stroke to use.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;stroke&quot;: 2\n});</code></pre>",
+          "description": "<p>Set the stroke to use.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;stroke&quot;: 2\n});\n</code></pre>",
           "parameters": [
             {
               "name": "w",
@@ -374,7 +374,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the foreground color of the figure.\nThis method fires a <i>document dirty</i> event.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;color&quot;: &quot;#f3f3f3&quot;\n});</code></pre>",
+          "description": "<p>Set the foreground color of the figure.\nThis method fires a <i>document dirty</i> event.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;color&quot;: &quot;#f3f3f3&quot;\n});\n</code></pre>",
           "parameters": [
             {
               "name": "color",
@@ -478,7 +478,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Show/hide the element. The element didn't receive any mouse events (click, dblclick) if you hide the\nfigure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  visible: flag\n});</code></pre>",
+          "description": "<p>Show/hide the element. The element didn't receive any mouse events (click, dblclick) if you hide the\nfigure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  visible: flag\n});\n</code></pre>",
           "parameters": [
             {
               "name": "flag",
@@ -1015,7 +1015,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Allows a user to attach (or remove) data to an element, without needing to create a custom figure or shape.\nThe data must be a valid JSON object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  userData: object\n});</code></pre>",
+          "description": "<p>Allows a user to attach (or remove) data to an element, without needing to create a custom figure or shape.\nThe data must be a valid JSON object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  userData: object\n});\n</code></pre>",
           "parameters": [
             {
               "name": "object",
@@ -1100,7 +1100,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the css class of the node.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;cssClass&quot;: &quot;red_border_figure&quot;\n});</code></pre>",
+          "description": "<p>Set the css class of the node.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;cssClass&quot;: &quot;red_border_figure&quot;\n});\n</code></pre>",
           "parameters": [
             {
               "name": "cssClass",
@@ -1246,7 +1246,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Callback method for the internal timer handling<br>\nInherit classes must override this method if they want use the timer feature.</p>\n<pre><code>// Alternatively you can register for this event with\nfigure.on(&quot;timer&quot;, function(emitter){\n    alert(&quot;timer fired&quot;);\n});</code></pre>",
+          "description": "<p>Callback method for the internal timer handling<br>\nInherit classes must override this method if they want use the timer feature.</p>\n<pre><code>// Alternatively you can register for this event with\nfigure.on(&quot;timer&quot;, function(emitter){\n    alert(&quot;timer fired&quot;);\n});\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -1415,10 +1415,7 @@
           "since": "5.6.0",
           "examples": [],
           "returns": {
-            "type": [
-              "draw2d.geo.Rectangle",
-              "draw2d.util.ArrayList"
-            ],
+            "type": "draw2d.geo.Rectangle | draw2d.util.ArrayList",
             "description": ""
           }
         },
@@ -1535,7 +1532,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Called by the framework if the figure returns false for the drag operation. In this\ncase we send a &quot;panning&quot; event - mouseDown + mouseMove. This is very useful for\nUI-Widget like slider, spinner,...</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panning&quot;, function(emitter, eventData){\n    alert(&quot;panning of the figure called&quot;);\n});</code></pre>",
+          "description": "<p>Called by the framework if the figure returns false for the drag operation. In this\ncase we send a &quot;panning&quot; event - mouseDown + mouseMove. This is very useful for\nUI-Widget like slider, spinner,...</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panning&quot;, function(emitter, eventData){\n    alert(&quot;panning of the figure called&quot;);\n});\n</code></pre>",
           "parameters": [
             {
               "name": "dx",
@@ -1595,7 +1592,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Called by the framework if the panning event of the figures ends. This happens\nafter the mous up event if the panning is active.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panningEnd&quot;, function(emitter){\n    alert(&quot;panning of the figure called&quot;);\n});</code></pre>",
+          "description": "<p>Called by the framework if the panning event of the figures ends. This happens\nafter the mous up event if the panning is active.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panningEnd&quot;, function(emitter){\n    alert(&quot;panning of the figure called&quot;);\n});\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -1840,7 +1837,7 @@
           "access": "",
           "virtual": false,
           "deprecated": true,
-          "description": "<p>Called when a user clicks on the element.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;click&quot;, function(emitter, event){\n    alert(&quot;user click on the figure&quot;);\n});</code></pre>",
+          "description": "<p>Called when a user clicks on the element.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;click&quot;, function(emitter, event){\n    alert(&quot;user click on the figure&quot;);\n});\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -1851,7 +1848,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>called by the framework if the figure should show the context menu.<br>\nThe strategy to show the context menu depends on the platform. Either looong press or\nright click with the mouse.</p>\n<pre><code>// Alternatively you register for this event with:\nfigure.on(&quot;contextmenu&quot;, function(emitter, event){\n    alert(&quot;user press the right mouse button for a context menu&quot;);\n});</code></pre>",
+          "description": "<p>called by the framework if the figure should show the context menu.<br>\nThe strategy to show the context menu depends on the platform. Either looong press or\nright click with the mouse.</p>\n<pre><code>// Alternatively you register for this event with:\nfigure.on(&quot;contextmenu&quot;, function(emitter, event){\n    alert(&quot;user press the right mouse button for a context menu&quot;);\n});\n</code></pre>",
           "parameters": [
             {
               "name": "x",
@@ -1879,7 +1876,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the alpha blending of this figure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;alpha&quot;: percent\n});\n\n// ...or:\nfigure.attr({\n  &quot;opacity&quot;: percent\n});</code></pre>",
+          "description": "<p>Set the alpha blending of this figure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;alpha&quot;: percent\n});\n\n// ...or:\nfigure.attr({\n  &quot;opacity&quot;: percent\n});\n</code></pre>",
           "parameters": [
             {
               "name": "percent",
@@ -2322,7 +2319,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the position of the object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  x: x,\n  y: y\n});</code></pre>",
+          "description": "<p>Set the position of the object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  x: x,\n  y: y\n});\n</code></pre>",
           "parameters": [
             {
               "name": "x",
@@ -2396,7 +2393,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the bounding box of the figure</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  width: w,\n  height: h,\n  x: x,\n  y: y\n});\n\n// or\nfigure.attr({\n  boundingBox: {x:1, y:100, width:30, height:30}\n});</code></pre>",
+          "description": "<p>Set the bounding box of the figure</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  width: w,\n  height: h,\n  x: x,\n  y: y\n});\n\n// or\nfigure.attr({\n  boundingBox: {x:1, y:100, width:30, height:30}\n});\n</code></pre>",
           "parameters": [
             {
               "name": "rect",
@@ -2536,7 +2533,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>You can change the resizeable behaviour of this object. Hands over [false] and\nthe figure has no resizehandles if you select them with the mouse.<br></p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  resizeable: flag\n});</code></pre>",
+          "description": "<p>You can change the resizeable behaviour of this object. Hands over [false] and\nthe figure has no resizehandles if you select them with the mouse.<br></p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  resizeable: flag\n});\n</code></pre>",
           "parameters": [
             {
               "name": "flag",
@@ -3324,7 +3321,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the line style for dot/dash styling. Possible values are\n[&quot;&quot;, &quot;-&quot;, &quot;.&quot;, &quot;-.&quot;, &quot;-..&quot;, &quot;. &quot;, &quot;- &quot;, &quot;--&quot;, &quot;- .&quot;, &quot;--.&quot;, &quot;--..&quot;]</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  dash: pattern\n});</code></pre>",
+          "description": "<p>Set the line style for dot/dash styling. Possible values are\n[&quot;&quot;, &quot;-&quot;, &quot;.&quot;, &quot;-.&quot;, &quot;-..&quot;, &quot;. &quot;, &quot;- &quot;, &quot;--&quot;, &quot;- .&quot;, &quot;--.&quot;, &quot;--..&quot;]</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  dash: pattern\n});\n</code></pre>",
           "parameters": [
             {
               "name": "pattern",
@@ -3344,7 +3341,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Get the line style for this object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr(&quot;dash&quot;);</code></pre>",
+          "description": "<p>Get the line style for this object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr(&quot;dash&quot;);\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "5.1.0",
@@ -3449,7 +3446,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the new background color of the figure. It is possible to hands over\n<code>null</code> to set the background transparent.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;bgColor&quot;: &quot;#f0f0f0&quot;\n});</code></pre>",
+          "description": "<p>Set the new background color of the figure. It is possible to hands over\n<code>null</code> to set the background transparent.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;bgColor&quot;: &quot;#f0f0f0&quot;\n});\n</code></pre>",
           "parameters": [
             {
               "name": "color",
@@ -3472,7 +3469,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>The current used background color.</p>\n<pre><code>// Alternatively you can use the attr method:\nvar color =figure.attr(&quot;bgColor&quot;);</code></pre>",
+          "description": "<p>The current used background color.</p>\n<pre><code>// Alternatively you can use the attr method:\nvar color =figure.attr(&quot;bgColor&quot;);\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -3487,7 +3484,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the stroke to use.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;stroke&quot;: 2\n});</code></pre>",
+          "description": "<p>Set the stroke to use.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;stroke&quot;: 2\n});\n</code></pre>",
           "parameters": [
             {
               "name": "w",
@@ -3522,7 +3519,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the foreground color of the figure.\nThis method fires a <i>document dirty</i> event.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;color&quot;: &quot;#f3f3f3&quot;\n});</code></pre>",
+          "description": "<p>Set the foreground color of the figure.\nThis method fires a <i>document dirty</i> event.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;color&quot;: &quot;#f3f3f3&quot;\n});\n</code></pre>",
           "parameters": [
             {
               "name": "color",
@@ -3595,7 +3592,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Show/hide the element. The element didn't receive any mouse events (click, dblclick) if you hide the\nfigure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  visible: flag\n});</code></pre>",
+          "description": "<p>Show/hide the element. The element didn't receive any mouse events (click, dblclick) if you hide the\nfigure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  visible: flag\n});\n</code></pre>",
           "parameters": [
             {
               "name": "flag",
@@ -4132,7 +4129,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Allows a user to attach (or remove) data to an element, without needing to create a custom figure or shape.\nThe data must be a valid JSON object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  userData: object\n});</code></pre>",
+          "description": "<p>Allows a user to attach (or remove) data to an element, without needing to create a custom figure or shape.\nThe data must be a valid JSON object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  userData: object\n});\n</code></pre>",
           "parameters": [
             {
               "name": "object",
@@ -4217,7 +4214,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the css class of the node.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;cssClass&quot;: &quot;red_border_figure&quot;\n});</code></pre>",
+          "description": "<p>Set the css class of the node.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;cssClass&quot;: &quot;red_border_figure&quot;\n});\n</code></pre>",
           "parameters": [
             {
               "name": "cssClass",
@@ -4363,7 +4360,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Callback method for the internal timer handling<br>\nInherit classes must override this method if they want use the timer feature.</p>\n<pre><code>// Alternatively you can register for this event with\nfigure.on(&quot;timer&quot;, function(emitter){\n    alert(&quot;timer fired&quot;);\n});</code></pre>",
+          "description": "<p>Callback method for the internal timer handling<br>\nInherit classes must override this method if they want use the timer feature.</p>\n<pre><code>// Alternatively you can register for this event with\nfigure.on(&quot;timer&quot;, function(emitter){\n    alert(&quot;timer fired&quot;);\n});\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -4532,10 +4529,7 @@
           "since": "5.6.0",
           "examples": [],
           "returns": {
-            "type": [
-              "draw2d.geo.Rectangle",
-              "draw2d.util.ArrayList"
-            ],
+            "type": "draw2d.geo.Rectangle | draw2d.util.ArrayList",
             "description": ""
           }
         },
@@ -4652,7 +4646,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Called by the framework if the figure returns false for the drag operation. In this\ncase we send a &quot;panning&quot; event - mouseDown + mouseMove. This is very useful for\nUI-Widget like slider, spinner,...</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panning&quot;, function(emitter, eventData){\n    alert(&quot;panning of the figure called&quot;);\n});</code></pre>",
+          "description": "<p>Called by the framework if the figure returns false for the drag operation. In this\ncase we send a &quot;panning&quot; event - mouseDown + mouseMove. This is very useful for\nUI-Widget like slider, spinner,...</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panning&quot;, function(emitter, eventData){\n    alert(&quot;panning of the figure called&quot;);\n});\n</code></pre>",
           "parameters": [
             {
               "name": "dx",
@@ -4712,7 +4706,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Called by the framework if the panning event of the figures ends. This happens\nafter the mous up event if the panning is active.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panningEnd&quot;, function(emitter){\n    alert(&quot;panning of the figure called&quot;);\n});</code></pre>",
+          "description": "<p>Called by the framework if the panning event of the figures ends. This happens\nafter the mous up event if the panning is active.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panningEnd&quot;, function(emitter){\n    alert(&quot;panning of the figure called&quot;);\n});\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -4853,7 +4847,7 @@
           "access": "",
           "virtual": false,
           "deprecated": true,
-          "description": "<p>Called when a user clicks on the element.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;click&quot;, function(emitter, event){\n    alert(&quot;user click on the figure&quot;);\n});</code></pre>",
+          "description": "<p>Called when a user clicks on the element.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;click&quot;, function(emitter, event){\n    alert(&quot;user click on the figure&quot;);\n});\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -4864,7 +4858,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>called by the framework if the figure should show the context menu.<br>\nThe strategy to show the context menu depends on the platform. Either looong press or\nright click with the mouse.</p>\n<pre><code>// Alternatively you register for this event with:\nfigure.on(&quot;contextmenu&quot;, function(emitter, event){\n    alert(&quot;user press the right mouse button for a context menu&quot;);\n});</code></pre>",
+          "description": "<p>called by the framework if the figure should show the context menu.<br>\nThe strategy to show the context menu depends on the platform. Either looong press or\nright click with the mouse.</p>\n<pre><code>// Alternatively you register for this event with:\nfigure.on(&quot;contextmenu&quot;, function(emitter, event){\n    alert(&quot;user press the right mouse button for a context menu&quot;);\n});\n</code></pre>",
           "parameters": [
             {
               "name": "x",
@@ -4892,7 +4886,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the alpha blending of this figure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;alpha&quot;: percent\n});\n\n// ...or:\nfigure.attr({\n  &quot;opacity&quot;: percent\n});</code></pre>",
+          "description": "<p>Set the alpha blending of this figure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;alpha&quot;: percent\n});\n\n// ...or:\nfigure.attr({\n  &quot;opacity&quot;: percent\n});\n</code></pre>",
           "parameters": [
             {
               "name": "percent",
@@ -5378,7 +5372,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the bounding box of the figure</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  width: w,\n  height: h,\n  x: x,\n  y: y\n});\n\n// or\nfigure.attr({\n  boundingBox: {x:1, y:100, width:30, height:30}\n});</code></pre>",
+          "description": "<p>Set the bounding box of the figure</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  width: w,\n  height: h,\n  x: x,\n  y: y\n});\n\n// or\nfigure.attr({\n  boundingBox: {x:1, y:100, width:30, height:30}\n});\n</code></pre>",
           "parameters": [
             {
               "name": "rect",
@@ -5518,7 +5512,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>You can change the resizeable behaviour of this object. Hands over [false] and\nthe figure has no resizehandles if you select them with the mouse.<br></p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  resizeable: flag\n});</code></pre>",
+          "description": "<p>You can change the resizeable behaviour of this object. Hands over [false] and\nthe figure has no resizehandles if you select them with the mouse.<br></p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  resizeable: flag\n});\n</code></pre>",
           "parameters": [
             {
               "name": "flag",
@@ -6321,7 +6315,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the line style for dot/dash styling. Possible values are\n[&quot;&quot;, &quot;-&quot;, &quot;.&quot;, &quot;-.&quot;, &quot;-..&quot;, &quot;. &quot;, &quot;- &quot;, &quot;--&quot;, &quot;- .&quot;, &quot;--.&quot;, &quot;--..&quot;]</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  dash: pattern\n});</code></pre>",
+          "description": "<p>Set the line style for dot/dash styling. Possible values are\n[&quot;&quot;, &quot;-&quot;, &quot;.&quot;, &quot;-.&quot;, &quot;-..&quot;, &quot;. &quot;, &quot;- &quot;, &quot;--&quot;, &quot;- .&quot;, &quot;--.&quot;, &quot;--..&quot;]</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  dash: pattern\n});\n</code></pre>",
           "parameters": [
             {
               "name": "pattern",
@@ -6341,7 +6335,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Get the line style for this object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr(&quot;dash&quot;);</code></pre>",
+          "description": "<p>Get the line style for this object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr(&quot;dash&quot;);\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "5.1.0",
@@ -6446,7 +6440,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the new background color of the figure. It is possible to hands over\n<code>null</code> to set the background transparent.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;bgColor&quot;: &quot;#f0f0f0&quot;\n});</code></pre>",
+          "description": "<p>Set the new background color of the figure. It is possible to hands over\n<code>null</code> to set the background transparent.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;bgColor&quot;: &quot;#f0f0f0&quot;\n});\n</code></pre>",
           "parameters": [
             {
               "name": "color",
@@ -6469,7 +6463,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>The current used background color.</p>\n<pre><code>// Alternatively you can use the attr method:\nvar color =figure.attr(&quot;bgColor&quot;);</code></pre>",
+          "description": "<p>The current used background color.</p>\n<pre><code>// Alternatively you can use the attr method:\nvar color =figure.attr(&quot;bgColor&quot;);\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -6484,7 +6478,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the stroke to use.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;stroke&quot;: 2\n});</code></pre>",
+          "description": "<p>Set the stroke to use.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;stroke&quot;: 2\n});\n</code></pre>",
           "parameters": [
             {
               "name": "w",
@@ -6519,7 +6513,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the foreground color of the figure.\nThis method fires a <i>document dirty</i> event.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;color&quot;: &quot;#f3f3f3&quot;\n});</code></pre>",
+          "description": "<p>Set the foreground color of the figure.\nThis method fires a <i>document dirty</i> event.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;color&quot;: &quot;#f3f3f3&quot;\n});\n</code></pre>",
           "parameters": [
             {
               "name": "color",
@@ -6592,7 +6586,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Show/hide the element. The element didn't receive any mouse events (click, dblclick) if you hide the\nfigure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  visible: flag\n});</code></pre>",
+          "description": "<p>Show/hide the element. The element didn't receive any mouse events (click, dblclick) if you hide the\nfigure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  visible: flag\n});\n</code></pre>",
           "parameters": [
             {
               "name": "flag",
@@ -7114,7 +7108,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Allows a user to attach (or remove) data to an element, without needing to create a custom figure or shape.\nThe data must be a valid JSON object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  userData: object\n});</code></pre>",
+          "description": "<p>Allows a user to attach (or remove) data to an element, without needing to create a custom figure or shape.\nThe data must be a valid JSON object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  userData: object\n});\n</code></pre>",
           "parameters": [
             {
               "name": "object",
@@ -7199,7 +7193,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the css class of the node.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;cssClass&quot;: &quot;red_border_figure&quot;\n});</code></pre>",
+          "description": "<p>Set the css class of the node.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;cssClass&quot;: &quot;red_border_figure&quot;\n});\n</code></pre>",
           "parameters": [
             {
               "name": "cssClass",
@@ -7345,7 +7339,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Callback method for the internal timer handling<br>\nInherit classes must override this method if they want use the timer feature.</p>\n<pre><code>// Alternatively you can register for this event with\nfigure.on(&quot;timer&quot;, function(emitter){\n    alert(&quot;timer fired&quot;);\n});</code></pre>",
+          "description": "<p>Callback method for the internal timer handling<br>\nInherit classes must override this method if they want use the timer feature.</p>\n<pre><code>// Alternatively you can register for this event with\nfigure.on(&quot;timer&quot;, function(emitter){\n    alert(&quot;timer fired&quot;);\n});\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -7514,10 +7508,7 @@
           "since": "5.6.0",
           "examples": [],
           "returns": {
-            "type": [
-              "draw2d.geo.Rectangle",
-              "draw2d.util.ArrayList"
-            ],
+            "type": "draw2d.geo.Rectangle | draw2d.util.ArrayList",
             "description": ""
           }
         },
@@ -7634,7 +7625,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Called by the framework if the figure returns false for the drag operation. In this\ncase we send a &quot;panning&quot; event - mouseDown + mouseMove. This is very useful for\nUI-Widget like slider, spinner,...</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panning&quot;, function(emitter, eventData){\n    alert(&quot;panning of the figure called&quot;);\n});</code></pre>",
+          "description": "<p>Called by the framework if the figure returns false for the drag operation. In this\ncase we send a &quot;panning&quot; event - mouseDown + mouseMove. This is very useful for\nUI-Widget like slider, spinner,...</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panning&quot;, function(emitter, eventData){\n    alert(&quot;panning of the figure called&quot;);\n});\n</code></pre>",
           "parameters": [
             {
               "name": "dx",
@@ -7694,7 +7685,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Called by the framework if the panning event of the figures ends. This happens\nafter the mous up event if the panning is active.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panningEnd&quot;, function(emitter){\n    alert(&quot;panning of the figure called&quot;);\n});</code></pre>",
+          "description": "<p>Called by the framework if the panning event of the figures ends. This happens\nafter the mous up event if the panning is active.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panningEnd&quot;, function(emitter){\n    alert(&quot;panning of the figure called&quot;);\n});\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -7835,7 +7826,7 @@
           "access": "",
           "virtual": false,
           "deprecated": true,
-          "description": "<p>Called when a user clicks on the element.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;click&quot;, function(emitter, event){\n    alert(&quot;user click on the figure&quot;);\n});</code></pre>",
+          "description": "<p>Called when a user clicks on the element.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;click&quot;, function(emitter, event){\n    alert(&quot;user click on the figure&quot;);\n});\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -7846,7 +7837,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>called by the framework if the figure should show the context menu.<br>\nThe strategy to show the context menu depends on the platform. Either looong press or\nright click with the mouse.</p>\n<pre><code>// Alternatively you register for this event with:\nfigure.on(&quot;contextmenu&quot;, function(emitter, event){\n    alert(&quot;user press the right mouse button for a context menu&quot;);\n});</code></pre>",
+          "description": "<p>called by the framework if the figure should show the context menu.<br>\nThe strategy to show the context menu depends on the platform. Either looong press or\nright click with the mouse.</p>\n<pre><code>// Alternatively you register for this event with:\nfigure.on(&quot;contextmenu&quot;, function(emitter, event){\n    alert(&quot;user press the right mouse button for a context menu&quot;);\n});\n</code></pre>",
           "parameters": [
             {
               "name": "x",
@@ -7874,7 +7865,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the alpha blending of this figure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;alpha&quot;: percent\n});\n\n// ...or:\nfigure.attr({\n  &quot;opacity&quot;: percent\n});</code></pre>",
+          "description": "<p>Set the alpha blending of this figure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;alpha&quot;: percent\n});\n\n// ...or:\nfigure.attr({\n  &quot;opacity&quot;: percent\n});\n</code></pre>",
           "parameters": [
             {
               "name": "percent",
@@ -8330,7 +8321,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the bounding box of the figure</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  width: w,\n  height: h,\n  x: x,\n  y: y\n});\n\n// or\nfigure.attr({\n  boundingBox: {x:1, y:100, width:30, height:30}\n});</code></pre>",
+          "description": "<p>Set the bounding box of the figure</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  width: w,\n  height: h,\n  x: x,\n  y: y\n});\n\n// or\nfigure.attr({\n  boundingBox: {x:1, y:100, width:30, height:30}\n});\n</code></pre>",
           "parameters": [
             {
               "name": "rect",
@@ -8470,7 +8461,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>You can change the resizeable behaviour of this object. Hands over [false] and\nthe figure has no resizehandles if you select them with the mouse.<br></p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  resizeable: flag\n});</code></pre>",
+          "description": "<p>You can change the resizeable behaviour of this object. Hands over [false] and\nthe figure has no resizehandles if you select them with the mouse.<br></p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  resizeable: flag\n});\n</code></pre>",
           "parameters": [
             {
               "name": "flag",
@@ -9100,7 +9091,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the line style for dot/dash styling. Possible values are\n[&quot;&quot;, &quot;-&quot;, &quot;.&quot;, &quot;-.&quot;, &quot;-..&quot;, &quot;. &quot;, &quot;- &quot;, &quot;--&quot;, &quot;- .&quot;, &quot;--.&quot;, &quot;--..&quot;]</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  dash: pattern\n});</code></pre>",
+          "description": "<p>Set the line style for dot/dash styling. Possible values are\n[&quot;&quot;, &quot;-&quot;, &quot;.&quot;, &quot;-.&quot;, &quot;-..&quot;, &quot;. &quot;, &quot;- &quot;, &quot;--&quot;, &quot;- .&quot;, &quot;--.&quot;, &quot;--..&quot;]</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  dash: pattern\n});\n</code></pre>",
           "parameters": [
             {
               "name": "pattern",
@@ -9120,7 +9111,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Get the line style for this object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr(&quot;dash&quot;);</code></pre>",
+          "description": "<p>Get the line style for this object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr(&quot;dash&quot;);\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "5.1.0",
@@ -9225,7 +9216,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the new background color of the figure. It is possible to hands over\n<code>null</code> to set the background transparent.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;bgColor&quot;: &quot;#f0f0f0&quot;\n});</code></pre>",
+          "description": "<p>Set the new background color of the figure. It is possible to hands over\n<code>null</code> to set the background transparent.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;bgColor&quot;: &quot;#f0f0f0&quot;\n});\n</code></pre>",
           "parameters": [
             {
               "name": "color",
@@ -9248,7 +9239,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>The current used background color.</p>\n<pre><code>// Alternatively you can use the attr method:\nvar color =figure.attr(&quot;bgColor&quot;);</code></pre>",
+          "description": "<p>The current used background color.</p>\n<pre><code>// Alternatively you can use the attr method:\nvar color =figure.attr(&quot;bgColor&quot;);\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -9263,7 +9254,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the stroke to use.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;stroke&quot;: 2\n});</code></pre>",
+          "description": "<p>Set the stroke to use.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;stroke&quot;: 2\n});\n</code></pre>",
           "parameters": [
             {
               "name": "w",
@@ -9298,7 +9289,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the foreground color of the figure.\nThis method fires a <i>document dirty</i> event.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;color&quot;: &quot;#f3f3f3&quot;\n});</code></pre>",
+          "description": "<p>Set the foreground color of the figure.\nThis method fires a <i>document dirty</i> event.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;color&quot;: &quot;#f3f3f3&quot;\n});\n</code></pre>",
           "parameters": [
             {
               "name": "color",
@@ -9402,7 +9393,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Show/hide the element. The element didn't receive any mouse events (click, dblclick) if you hide the\nfigure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  visible: flag\n});</code></pre>",
+          "description": "<p>Show/hide the element. The element didn't receive any mouse events (click, dblclick) if you hide the\nfigure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  visible: flag\n});\n</code></pre>",
           "parameters": [
             {
               "name": "flag",
@@ -9939,7 +9930,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Allows a user to attach (or remove) data to an element, without needing to create a custom figure or shape.\nThe data must be a valid JSON object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  userData: object\n});</code></pre>",
+          "description": "<p>Allows a user to attach (or remove) data to an element, without needing to create a custom figure or shape.\nThe data must be a valid JSON object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  userData: object\n});\n</code></pre>",
           "parameters": [
             {
               "name": "object",
@@ -10024,7 +10015,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the css class of the node.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;cssClass&quot;: &quot;red_border_figure&quot;\n});</code></pre>",
+          "description": "<p>Set the css class of the node.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;cssClass&quot;: &quot;red_border_figure&quot;\n});\n</code></pre>",
           "parameters": [
             {
               "name": "cssClass",
@@ -10170,7 +10161,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Callback method for the internal timer handling<br>\nInherit classes must override this method if they want use the timer feature.</p>\n<pre><code>// Alternatively you can register for this event with\nfigure.on(&quot;timer&quot;, function(emitter){\n    alert(&quot;timer fired&quot;);\n});</code></pre>",
+          "description": "<p>Callback method for the internal timer handling<br>\nInherit classes must override this method if they want use the timer feature.</p>\n<pre><code>// Alternatively you can register for this event with\nfigure.on(&quot;timer&quot;, function(emitter){\n    alert(&quot;timer fired&quot;);\n});\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -10339,10 +10330,7 @@
           "since": "5.6.0",
           "examples": [],
           "returns": {
-            "type": [
-              "draw2d.geo.Rectangle",
-              "draw2d.util.ArrayList"
-            ],
+            "type": "draw2d.geo.Rectangle | draw2d.util.ArrayList",
             "description": ""
           }
         },
@@ -10411,7 +10399,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Called by the framework if the figure returns false for the drag operation. In this\ncase we send a &quot;panning&quot; event - mouseDown + mouseMove. This is very useful for\nUI-Widget like slider, spinner,...</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panning&quot;, function(emitter, eventData){\n    alert(&quot;panning of the figure called&quot;);\n});</code></pre>",
+          "description": "<p>Called by the framework if the figure returns false for the drag operation. In this\ncase we send a &quot;panning&quot; event - mouseDown + mouseMove. This is very useful for\nUI-Widget like slider, spinner,...</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panning&quot;, function(emitter, eventData){\n    alert(&quot;panning of the figure called&quot;);\n});\n</code></pre>",
           "parameters": [
             {
               "name": "dx",
@@ -10471,7 +10459,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Called by the framework if the panning event of the figures ends. This happens\nafter the mous up event if the panning is active.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panningEnd&quot;, function(emitter){\n    alert(&quot;panning of the figure called&quot;);\n});</code></pre>",
+          "description": "<p>Called by the framework if the panning event of the figures ends. This happens\nafter the mous up event if the panning is active.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panningEnd&quot;, function(emitter){\n    alert(&quot;panning of the figure called&quot;);\n});\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -10716,7 +10704,7 @@
           "access": "",
           "virtual": false,
           "deprecated": true,
-          "description": "<p>Called when a user clicks on the element.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;click&quot;, function(emitter, event){\n    alert(&quot;user click on the figure&quot;);\n});</code></pre>",
+          "description": "<p>Called when a user clicks on the element.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;click&quot;, function(emitter, event){\n    alert(&quot;user click on the figure&quot;);\n});\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -10727,7 +10715,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>called by the framework if the figure should show the context menu.<br>\nThe strategy to show the context menu depends on the platform. Either looong press or\nright click with the mouse.</p>\n<pre><code>// Alternatively you register for this event with:\nfigure.on(&quot;contextmenu&quot;, function(emitter, event){\n    alert(&quot;user press the right mouse button for a context menu&quot;);\n});</code></pre>",
+          "description": "<p>called by the framework if the figure should show the context menu.<br>\nThe strategy to show the context menu depends on the platform. Either looong press or\nright click with the mouse.</p>\n<pre><code>// Alternatively you register for this event with:\nfigure.on(&quot;contextmenu&quot;, function(emitter, event){\n    alert(&quot;user press the right mouse button for a context menu&quot;);\n});\n</code></pre>",
           "parameters": [
             {
               "name": "x",
@@ -10755,7 +10743,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the alpha blending of this figure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;alpha&quot;: percent\n});\n\n// ...or:\nfigure.attr({\n  &quot;opacity&quot;: percent\n});</code></pre>",
+          "description": "<p>Set the alpha blending of this figure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;alpha&quot;: percent\n});\n\n// ...or:\nfigure.attr({\n  &quot;opacity&quot;: percent\n});\n</code></pre>",
           "parameters": [
             {
               "name": "percent",
@@ -11241,7 +11229,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the bounding box of the figure</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  width: w,\n  height: h,\n  x: x,\n  y: y\n});\n\n// or\nfigure.attr({\n  boundingBox: {x:1, y:100, width:30, height:30}\n});</code></pre>",
+          "description": "<p>Set the bounding box of the figure</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  width: w,\n  height: h,\n  x: x,\n  y: y\n});\n\n// or\nfigure.attr({\n  boundingBox: {x:1, y:100, width:30, height:30}\n});\n</code></pre>",
           "parameters": [
             {
               "name": "rect",
@@ -11381,7 +11369,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>You can change the resizeable behaviour of this object. Hands over [false] and\nthe figure has no resizehandles if you select them with the mouse.<br></p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  resizeable: flag\n});</code></pre>",
+          "description": "<p>You can change the resizeable behaviour of this object. Hands over [false] and\nthe figure has no resizehandles if you select them with the mouse.<br></p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  resizeable: flag\n});\n</code></pre>",
           "parameters": [
             {
               "name": "flag",
@@ -12232,7 +12220,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the line style for dot/dash styling. Possible values are\n[&quot;&quot;, &quot;-&quot;, &quot;.&quot;, &quot;-.&quot;, &quot;-..&quot;, &quot;. &quot;, &quot;- &quot;, &quot;--&quot;, &quot;- .&quot;, &quot;--.&quot;, &quot;--..&quot;]</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  dash: pattern\n});</code></pre>",
+          "description": "<p>Set the line style for dot/dash styling. Possible values are\n[&quot;&quot;, &quot;-&quot;, &quot;.&quot;, &quot;-.&quot;, &quot;-..&quot;, &quot;. &quot;, &quot;- &quot;, &quot;--&quot;, &quot;- .&quot;, &quot;--.&quot;, &quot;--..&quot;]</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  dash: pattern\n});\n</code></pre>",
           "parameters": [
             {
               "name": "pattern",
@@ -12252,7 +12240,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Get the line style for this object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr(&quot;dash&quot;);</code></pre>",
+          "description": "<p>Get the line style for this object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr(&quot;dash&quot;);\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "5.1.0",
@@ -12357,7 +12345,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>The current used background color.</p>\n<pre><code>// Alternatively you can use the attr method:\nvar color =figure.attr(&quot;bgColor&quot;);</code></pre>",
+          "description": "<p>The current used background color.</p>\n<pre><code>// Alternatively you can use the attr method:\nvar color =figure.attr(&quot;bgColor&quot;);\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -12372,7 +12360,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the stroke to use.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;stroke&quot;: 2\n});</code></pre>",
+          "description": "<p>Set the stroke to use.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;stroke&quot;: 2\n});\n</code></pre>",
           "parameters": [
             {
               "name": "w",
@@ -12407,7 +12395,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the foreground color of the figure.\nThis method fires a <i>document dirty</i> event.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;color&quot;: &quot;#f3f3f3&quot;\n});</code></pre>",
+          "description": "<p>Set the foreground color of the figure.\nThis method fires a <i>document dirty</i> event.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;color&quot;: &quot;#f3f3f3&quot;\n});\n</code></pre>",
           "parameters": [
             {
               "name": "color",
@@ -12511,7 +12499,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Show/hide the element. The element didn't receive any mouse events (click, dblclick) if you hide the\nfigure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  visible: flag\n});</code></pre>",
+          "description": "<p>Show/hide the element. The element didn't receive any mouse events (click, dblclick) if you hide the\nfigure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  visible: flag\n});\n</code></pre>",
           "parameters": [
             {
               "name": "flag",
@@ -13048,7 +13036,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Allows a user to attach (or remove) data to an element, without needing to create a custom figure or shape.\nThe data must be a valid JSON object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  userData: object\n});</code></pre>",
+          "description": "<p>Allows a user to attach (or remove) data to an element, without needing to create a custom figure or shape.\nThe data must be a valid JSON object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  userData: object\n});\n</code></pre>",
           "parameters": [
             {
               "name": "object",
@@ -13133,7 +13121,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the css class of the node.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;cssClass&quot;: &quot;red_border_figure&quot;\n});</code></pre>",
+          "description": "<p>Set the css class of the node.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;cssClass&quot;: &quot;red_border_figure&quot;\n});\n</code></pre>",
           "parameters": [
             {
               "name": "cssClass",
@@ -13279,7 +13267,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Callback method for the internal timer handling<br>\nInherit classes must override this method if they want use the timer feature.</p>\n<pre><code>// Alternatively you can register for this event with\nfigure.on(&quot;timer&quot;, function(emitter){\n    alert(&quot;timer fired&quot;);\n});</code></pre>",
+          "description": "<p>Callback method for the internal timer handling<br>\nInherit classes must override this method if they want use the timer feature.</p>\n<pre><code>// Alternatively you can register for this event with\nfigure.on(&quot;timer&quot;, function(emitter){\n    alert(&quot;timer fired&quot;);\n});\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -13448,10 +13436,7 @@
           "since": "5.6.0",
           "examples": [],
           "returns": {
-            "type": [
-              "draw2d.geo.Rectangle",
-              "draw2d.util.ArrayList"
-            ],
+            "type": "draw2d.geo.Rectangle | draw2d.util.ArrayList",
             "description": ""
           }
         },
@@ -13460,7 +13445,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Called by the framework if the figure returns false for the drag operation. In this\ncase we send a &quot;panning&quot; event - mouseDown + mouseMove. This is very useful for\nUI-Widget like slider, spinner,...</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panning&quot;, function(emitter, eventData){\n    alert(&quot;panning of the figure called&quot;);\n});</code></pre>",
+          "description": "<p>Called by the framework if the figure returns false for the drag operation. In this\ncase we send a &quot;panning&quot; event - mouseDown + mouseMove. This is very useful for\nUI-Widget like slider, spinner,...</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panning&quot;, function(emitter, eventData){\n    alert(&quot;panning of the figure called&quot;);\n});\n</code></pre>",
           "parameters": [
             {
               "name": "dx",
@@ -13520,7 +13505,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Called by the framework if the panning event of the figures ends. This happens\nafter the mous up event if the panning is active.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panningEnd&quot;, function(emitter){\n    alert(&quot;panning of the figure called&quot;);\n});</code></pre>",
+          "description": "<p>Called by the framework if the panning event of the figures ends. This happens\nafter the mous up event if the panning is active.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panningEnd&quot;, function(emitter){\n    alert(&quot;panning of the figure called&quot;);\n});\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -13721,7 +13706,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Called when a user dbl clicks on the element</p>\n<pre><code>// Alternatively you can register an event with:\n//\nfigure.on(&quot;dblclick&quot;, function(emitter, event){\n    alert(&quot;user dbl click on the figure&quot;);\n});</code></pre>",
+          "description": "<p>Called when a user dbl clicks on the element</p>\n<pre><code>// Alternatively you can register an event with:\n//\nfigure.on(&quot;dblclick&quot;, function(emitter, event){\n    alert(&quot;user dbl click on the figure&quot;);\n});\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -13732,7 +13717,7 @@
           "access": "",
           "virtual": false,
           "deprecated": true,
-          "description": "<p>Called when a user clicks on the element.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;click&quot;, function(emitter, event){\n    alert(&quot;user click on the figure&quot;);\n});</code></pre>",
+          "description": "<p>Called when a user clicks on the element.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;click&quot;, function(emitter, event){\n    alert(&quot;user click on the figure&quot;);\n});\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -13743,7 +13728,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>called by the framework if the figure should show the context menu.<br>\nThe strategy to show the context menu depends on the platform. Either looong press or\nright click with the mouse.</p>\n<pre><code>// Alternatively you register for this event with:\nfigure.on(&quot;contextmenu&quot;, function(emitter, event){\n    alert(&quot;user press the right mouse button for a context menu&quot;);\n});</code></pre>",
+          "description": "<p>called by the framework if the figure should show the context menu.<br>\nThe strategy to show the context menu depends on the platform. Either looong press or\nright click with the mouse.</p>\n<pre><code>// Alternatively you register for this event with:\nfigure.on(&quot;contextmenu&quot;, function(emitter, event){\n    alert(&quot;user press the right mouse button for a context menu&quot;);\n});\n</code></pre>",
           "parameters": [
             {
               "name": "x",
@@ -13771,7 +13756,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the alpha blending of this figure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;alpha&quot;: percent\n});\n\n// ...or:\nfigure.attr({\n  &quot;opacity&quot;: percent\n});</code></pre>",
+          "description": "<p>Set the alpha blending of this figure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;alpha&quot;: percent\n});\n\n// ...or:\nfigure.attr({\n  &quot;opacity&quot;: percent\n});\n</code></pre>",
           "parameters": [
             {
               "name": "percent",
@@ -14257,7 +14242,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the bounding box of the figure</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  width: w,\n  height: h,\n  x: x,\n  y: y\n});\n\n// or\nfigure.attr({\n  boundingBox: {x:1, y:100, width:30, height:30}\n});</code></pre>",
+          "description": "<p>Set the bounding box of the figure</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  width: w,\n  height: h,\n  x: x,\n  y: y\n});\n\n// or\nfigure.attr({\n  boundingBox: {x:1, y:100, width:30, height:30}\n});\n</code></pre>",
           "parameters": [
             {
               "name": "rect",
@@ -14377,7 +14362,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>You can change the resizeable behaviour of this object. Hands over [false] and\nthe figure has no resizehandles if you select them with the mouse.<br></p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  resizeable: flag\n});</code></pre>",
+          "description": "<p>You can change the resizeable behaviour of this object. Hands over [false] and\nthe figure has no resizehandles if you select them with the mouse.<br></p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  resizeable: flag\n});\n</code></pre>",
           "parameters": [
             {
               "name": "flag",
@@ -15086,7 +15071,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the line style for dot/dash styling. Possible values are\n[&quot;&quot;, &quot;-&quot;, &quot;.&quot;, &quot;-.&quot;, &quot;-..&quot;, &quot;. &quot;, &quot;- &quot;, &quot;--&quot;, &quot;- .&quot;, &quot;--.&quot;, &quot;--..&quot;]</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  dash: pattern\n});</code></pre>",
+          "description": "<p>Set the line style for dot/dash styling. Possible values are\n[&quot;&quot;, &quot;-&quot;, &quot;.&quot;, &quot;-.&quot;, &quot;-..&quot;, &quot;. &quot;, &quot;- &quot;, &quot;--&quot;, &quot;- .&quot;, &quot;--.&quot;, &quot;--..&quot;]</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  dash: pattern\n});\n</code></pre>",
           "parameters": [
             {
               "name": "pattern",
@@ -15106,7 +15091,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Get the line style for this object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr(&quot;dash&quot;);</code></pre>",
+          "description": "<p>Get the line style for this object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr(&quot;dash&quot;);\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "5.1.0",
@@ -15211,7 +15196,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the new background color of the figure. It is possible to hands over\n<code>null</code> to set the background transparent.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;bgColor&quot;: &quot;#f0f0f0&quot;\n});</code></pre>",
+          "description": "<p>Set the new background color of the figure. It is possible to hands over\n<code>null</code> to set the background transparent.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;bgColor&quot;: &quot;#f0f0f0&quot;\n});\n</code></pre>",
           "parameters": [
             {
               "name": "color",
@@ -15234,7 +15219,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>The current used background color.</p>\n<pre><code>// Alternatively you can use the attr method:\nvar color =figure.attr(&quot;bgColor&quot;);</code></pre>",
+          "description": "<p>The current used background color.</p>\n<pre><code>// Alternatively you can use the attr method:\nvar color =figure.attr(&quot;bgColor&quot;);\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -15249,7 +15234,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the stroke to use.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;stroke&quot;: 2\n});</code></pre>",
+          "description": "<p>Set the stroke to use.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;stroke&quot;: 2\n});\n</code></pre>",
           "parameters": [
             {
               "name": "w",
@@ -15284,7 +15269,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the foreground color of the figure.\nThis method fires a <i>document dirty</i> event.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;color&quot;: &quot;#f3f3f3&quot;\n});</code></pre>",
+          "description": "<p>Set the foreground color of the figure.\nThis method fires a <i>document dirty</i> event.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;color&quot;: &quot;#f3f3f3&quot;\n});\n</code></pre>",
           "parameters": [
             {
               "name": "color",
@@ -15357,7 +15342,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Show/hide the element. The element didn't receive any mouse events (click, dblclick) if you hide the\nfigure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  visible: flag\n});</code></pre>",
+          "description": "<p>Show/hide the element. The element didn't receive any mouse events (click, dblclick) if you hide the\nfigure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  visible: flag\n});\n</code></pre>",
           "parameters": [
             {
               "name": "flag",
@@ -15894,7 +15879,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Allows a user to attach (or remove) data to an element, without needing to create a custom figure or shape.\nThe data must be a valid JSON object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  userData: object\n});</code></pre>",
+          "description": "<p>Allows a user to attach (or remove) data to an element, without needing to create a custom figure or shape.\nThe data must be a valid JSON object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  userData: object\n});\n</code></pre>",
           "parameters": [
             {
               "name": "object",
@@ -15979,7 +15964,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the css class of the node.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;cssClass&quot;: &quot;red_border_figure&quot;\n});</code></pre>",
+          "description": "<p>Set the css class of the node.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;cssClass&quot;: &quot;red_border_figure&quot;\n});\n</code></pre>",
           "parameters": [
             {
               "name": "cssClass",
@@ -16125,7 +16110,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Callback method for the internal timer handling<br>\nInherit classes must override this method if they want use the timer feature.</p>\n<pre><code>// Alternatively you can register for this event with\nfigure.on(&quot;timer&quot;, function(emitter){\n    alert(&quot;timer fired&quot;);\n});</code></pre>",
+          "description": "<p>Callback method for the internal timer handling<br>\nInherit classes must override this method if they want use the timer feature.</p>\n<pre><code>// Alternatively you can register for this event with\nfigure.on(&quot;timer&quot;, function(emitter){\n    alert(&quot;timer fired&quot;);\n});\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -16294,10 +16279,7 @@
           "since": "5.6.0",
           "examples": [],
           "returns": {
-            "type": [
-              "draw2d.geo.Rectangle",
-              "draw2d.util.ArrayList"
-            ],
+            "type": "draw2d.geo.Rectangle | draw2d.util.ArrayList",
             "description": ""
           }
         },
@@ -16414,7 +16396,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Called by the framework if the figure returns false for the drag operation. In this\ncase we send a &quot;panning&quot; event - mouseDown + mouseMove. This is very useful for\nUI-Widget like slider, spinner,...</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panning&quot;, function(emitter, eventData){\n    alert(&quot;panning of the figure called&quot;);\n});</code></pre>",
+          "description": "<p>Called by the framework if the figure returns false for the drag operation. In this\ncase we send a &quot;panning&quot; event - mouseDown + mouseMove. This is very useful for\nUI-Widget like slider, spinner,...</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panning&quot;, function(emitter, eventData){\n    alert(&quot;panning of the figure called&quot;);\n});\n</code></pre>",
           "parameters": [
             {
               "name": "dx",
@@ -16474,7 +16456,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Called by the framework if the panning event of the figures ends. This happens\nafter the mous up event if the panning is active.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panningEnd&quot;, function(emitter){\n    alert(&quot;panning of the figure called&quot;);\n});</code></pre>",
+          "description": "<p>Called by the framework if the panning event of the figures ends. This happens\nafter the mous up event if the panning is active.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panningEnd&quot;, function(emitter){\n    alert(&quot;panning of the figure called&quot;);\n});\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -16615,7 +16597,7 @@
           "access": "",
           "virtual": false,
           "deprecated": true,
-          "description": "<p>Called when a user clicks on the element.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;click&quot;, function(emitter, event){\n    alert(&quot;user click on the figure&quot;);\n});</code></pre>",
+          "description": "<p>Called when a user clicks on the element.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;click&quot;, function(emitter, event){\n    alert(&quot;user click on the figure&quot;);\n});\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -16626,7 +16608,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>called by the framework if the figure should show the context menu.<br>\nThe strategy to show the context menu depends on the platform. Either looong press or\nright click with the mouse.</p>\n<pre><code>// Alternatively you register for this event with:\nfigure.on(&quot;contextmenu&quot;, function(emitter, event){\n    alert(&quot;user press the right mouse button for a context menu&quot;);\n});</code></pre>",
+          "description": "<p>called by the framework if the figure should show the context menu.<br>\nThe strategy to show the context menu depends on the platform. Either looong press or\nright click with the mouse.</p>\n<pre><code>// Alternatively you register for this event with:\nfigure.on(&quot;contextmenu&quot;, function(emitter, event){\n    alert(&quot;user press the right mouse button for a context menu&quot;);\n});\n</code></pre>",
           "parameters": [
             {
               "name": "x",
@@ -16654,7 +16636,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the alpha blending of this figure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;alpha&quot;: percent\n});\n\n// ...or:\nfigure.attr({\n  &quot;opacity&quot;: percent\n});</code></pre>",
+          "description": "<p>Set the alpha blending of this figure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;alpha&quot;: percent\n});\n\n// ...or:\nfigure.attr({\n  &quot;opacity&quot;: percent\n});\n</code></pre>",
           "parameters": [
             {
               "name": "percent",
@@ -17097,7 +17079,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the position of the object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  x: x,\n  y: y\n});</code></pre>",
+          "description": "<p>Set the position of the object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  x: x,\n  y: y\n});\n</code></pre>",
           "parameters": [
             {
               "name": "x",
@@ -17171,7 +17153,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the bounding box of the figure</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  width: w,\n  height: h,\n  x: x,\n  y: y\n});\n\n// or\nfigure.attr({\n  boundingBox: {x:1, y:100, width:30, height:30}\n});</code></pre>",
+          "description": "<p>Set the bounding box of the figure</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  width: w,\n  height: h,\n  x: x,\n  y: y\n});\n\n// or\nfigure.attr({\n  boundingBox: {x:1, y:100, width:30, height:30}\n});\n</code></pre>",
           "parameters": [
             {
               "name": "rect",
@@ -17311,7 +17293,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>You can change the resizeable behaviour of this object. Hands over [false] and\nthe figure has no resizehandles if you select them with the mouse.<br></p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  resizeable: flag\n});</code></pre>",
+          "description": "<p>You can change the resizeable behaviour of this object. Hands over [false] and\nthe figure has no resizehandles if you select them with the mouse.<br></p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  resizeable: flag\n});\n</code></pre>",
           "parameters": [
             {
               "name": "flag",
@@ -17818,7 +17800,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the line style for dot/dash styling. Possible values are\n[&quot;&quot;, &quot;-&quot;, &quot;.&quot;, &quot;-.&quot;, &quot;-..&quot;, &quot;. &quot;, &quot;- &quot;, &quot;--&quot;, &quot;- .&quot;, &quot;--.&quot;, &quot;--..&quot;]</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  dash: pattern\n});</code></pre>",
+          "description": "<p>Set the line style for dot/dash styling. Possible values are\n[&quot;&quot;, &quot;-&quot;, &quot;.&quot;, &quot;-.&quot;, &quot;-..&quot;, &quot;. &quot;, &quot;- &quot;, &quot;--&quot;, &quot;- .&quot;, &quot;--.&quot;, &quot;--..&quot;]</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  dash: pattern\n});\n</code></pre>",
           "parameters": [
             {
               "name": "pattern",
@@ -17838,7 +17820,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Get the line style for this object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr(&quot;dash&quot;);</code></pre>",
+          "description": "<p>Get the line style for this object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr(&quot;dash&quot;);\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "5.1.0",
@@ -17943,7 +17925,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the new background color of the figure. It is possible to hands over\n<code>null</code> to set the background transparent.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;bgColor&quot;: &quot;#f0f0f0&quot;\n});</code></pre>",
+          "description": "<p>Set the new background color of the figure. It is possible to hands over\n<code>null</code> to set the background transparent.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;bgColor&quot;: &quot;#f0f0f0&quot;\n});\n</code></pre>",
           "parameters": [
             {
               "name": "color",
@@ -17966,7 +17948,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>The current used background color.</p>\n<pre><code>// Alternatively you can use the attr method:\nvar color =figure.attr(&quot;bgColor&quot;);</code></pre>",
+          "description": "<p>The current used background color.</p>\n<pre><code>// Alternatively you can use the attr method:\nvar color =figure.attr(&quot;bgColor&quot;);\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -17981,7 +17963,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the stroke to use.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;stroke&quot;: 2\n});</code></pre>",
+          "description": "<p>Set the stroke to use.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;stroke&quot;: 2\n});\n</code></pre>",
           "parameters": [
             {
               "name": "w",
@@ -18016,7 +17998,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the foreground color of the figure.\nThis method fires a <i>document dirty</i> event.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;color&quot;: &quot;#f3f3f3&quot;\n});</code></pre>",
+          "description": "<p>Set the foreground color of the figure.\nThis method fires a <i>document dirty</i> event.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;color&quot;: &quot;#f3f3f3&quot;\n});\n</code></pre>",
           "parameters": [
             {
               "name": "color",
@@ -18120,7 +18102,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Show/hide the element. The element didn't receive any mouse events (click, dblclick) if you hide the\nfigure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  visible: flag\n});</code></pre>",
+          "description": "<p>Show/hide the element. The element didn't receive any mouse events (click, dblclick) if you hide the\nfigure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  visible: flag\n});\n</code></pre>",
           "parameters": [
             {
               "name": "flag",
@@ -18657,7 +18639,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Allows a user to attach (or remove) data to an element, without needing to create a custom figure or shape.\nThe data must be a valid JSON object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  userData: object\n});</code></pre>",
+          "description": "<p>Allows a user to attach (or remove) data to an element, without needing to create a custom figure or shape.\nThe data must be a valid JSON object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  userData: object\n});\n</code></pre>",
           "parameters": [
             {
               "name": "object",
@@ -18742,7 +18724,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the css class of the node.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;cssClass&quot;: &quot;red_border_figure&quot;\n});</code></pre>",
+          "description": "<p>Set the css class of the node.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;cssClass&quot;: &quot;red_border_figure&quot;\n});\n</code></pre>",
           "parameters": [
             {
               "name": "cssClass",
@@ -18888,7 +18870,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Callback method for the internal timer handling<br>\nInherit classes must override this method if they want use the timer feature.</p>\n<pre><code>// Alternatively you can register for this event with\nfigure.on(&quot;timer&quot;, function(emitter){\n    alert(&quot;timer fired&quot;);\n});</code></pre>",
+          "description": "<p>Callback method for the internal timer handling<br>\nInherit classes must override this method if they want use the timer feature.</p>\n<pre><code>// Alternatively you can register for this event with\nfigure.on(&quot;timer&quot;, function(emitter){\n    alert(&quot;timer fired&quot;);\n});\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -19057,10 +19039,7 @@
           "since": "5.6.0",
           "examples": [],
           "returns": {
-            "type": [
-              "draw2d.geo.Rectangle",
-              "draw2d.util.ArrayList"
-            ],
+            "type": "draw2d.geo.Rectangle | draw2d.util.ArrayList",
             "description": ""
           }
         },
@@ -19177,7 +19156,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Called by the framework if the figure returns false for the drag operation. In this\ncase we send a &quot;panning&quot; event - mouseDown + mouseMove. This is very useful for\nUI-Widget like slider, spinner,...</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panning&quot;, function(emitter, eventData){\n    alert(&quot;panning of the figure called&quot;);\n});</code></pre>",
+          "description": "<p>Called by the framework if the figure returns false for the drag operation. In this\ncase we send a &quot;panning&quot; event - mouseDown + mouseMove. This is very useful for\nUI-Widget like slider, spinner,...</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panning&quot;, function(emitter, eventData){\n    alert(&quot;panning of the figure called&quot;);\n});\n</code></pre>",
           "parameters": [
             {
               "name": "dx",
@@ -19237,7 +19216,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Called by the framework if the panning event of the figures ends. This happens\nafter the mous up event if the panning is active.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panningEnd&quot;, function(emitter){\n    alert(&quot;panning of the figure called&quot;);\n});</code></pre>",
+          "description": "<p>Called by the framework if the panning event of the figures ends. This happens\nafter the mous up event if the panning is active.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panningEnd&quot;, function(emitter){\n    alert(&quot;panning of the figure called&quot;);\n});\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -19482,7 +19461,7 @@
           "access": "",
           "virtual": false,
           "deprecated": true,
-          "description": "<p>Called when a user clicks on the element.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;click&quot;, function(emitter, event){\n    alert(&quot;user click on the figure&quot;);\n});</code></pre>",
+          "description": "<p>Called when a user clicks on the element.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;click&quot;, function(emitter, event){\n    alert(&quot;user click on the figure&quot;);\n});\n</code></pre>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -19493,7 +19472,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>called by the framework if the figure should show the context menu.<br>\nThe strategy to show the context menu depends on the platform. Either looong press or\nright click with the mouse.</p>\n<pre><code>// Alternatively you register for this event with:\nfigure.on(&quot;contextmenu&quot;, function(emitter, event){\n    alert(&quot;user press the right mouse button for a context menu&quot;);\n});</code></pre>",
+          "description": "<p>called by the framework if the figure should show the context menu.<br>\nThe strategy to show the context menu depends on the platform. Either looong press or\nright click with the mouse.</p>\n<pre><code>// Alternatively you register for this event with:\nfigure.on(&quot;contextmenu&quot;, function(emitter, event){\n    alert(&quot;user press the right mouse button for a context menu&quot;);\n});\n</code></pre>",
           "parameters": [
             {
               "name": "x",
@@ -19521,7 +19500,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the alpha blending of this figure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;alpha&quot;: percent\n});\n\n// ...or:\nfigure.attr({\n  &quot;opacity&quot;: percent\n});</code></pre>",
+          "description": "<p>Set the alpha blending of this figure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;alpha&quot;: percent\n});\n\n// ...or:\nfigure.attr({\n  &quot;opacity&quot;: percent\n});\n</code></pre>",
           "parameters": [
             {
               "name": "percent",
@@ -19964,7 +19943,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the position of the object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  x: x,\n  y: y\n});</code></pre>",
+          "description": "<p>Set the position of the object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  x: x,\n  y: y\n});\n</code></pre>",
           "parameters": [
             {
               "name": "x",
@@ -20038,7 +20017,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Set the bounding box of the figure</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  width: w,\n  height: h,\n  x: x,\n  y: y\n});\n\n// or\nfigure.attr({\n  boundingBox: {x:1, y:100, width:30, height:30}\n});</code></pre>",
+          "description": "<p>Set the bounding box of the figure</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  width: w,\n  height: h,\n  x: x,\n  y: y\n});\n\n// or\nfigure.attr({\n  boundingBox: {x:1, y:100, width:30, height:30}\n});\n</code></pre>",
           "parameters": [
             {
               "name": "rect",
@@ -20178,7 +20157,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>You can change the resizeable behaviour of this object. Hands over [false] and\nthe figure has no resizehandles if you select them with the mouse.<br></p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  resizeable: flag\n});</code></pre>",
+          "description": "<p>You can change the resizeable behaviour of this object. Hands over [false] and\nthe figure has no resizehandles if you select them with the mouse.<br></p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  resizeable: flag\n});\n</code></pre>",
           "parameters": [
             {
               "name": "flag",
