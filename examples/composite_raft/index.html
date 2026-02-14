@@ -1,75 +1,170 @@
-﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+﻿<!DOCTYPE html>
+<html>
 <head>
-<title></title>
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="viewport" content="width=device-width, minimum-scale=1.0" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Raft Composite Example</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <link type="text/css" rel="stylesheet" href="./css/example.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+    #container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
+    }
+    #toolbar {
+      flex-shrink: 0;
+      height: 40px;
+      background: linear-gradient(to bottom, #f8f8f8 0%, #e0e0e0 100%);
+      border-bottom: 1px solid #ccc;
+      padding: 5px 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    #toolbar button {
+      padding: 5px 15px;
+      border: 1px solid #999;
+      border-radius: 4px;
+      background: linear-gradient(to bottom, #fff 0%, #e8e8e8 100%);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    #toolbar button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    #toolbar button:hover:not(:disabled) {
+      background: linear-gradient(to bottom, #fff 0%, #d8d8d8 100%);
+    }
+    #content {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+    #canvasArea {
+      flex: 1;
+      overflow: auto;
+      background-color: #f0f0f0;
+      position: relative;
+    }
+    #gfx_holder {
+      min-width: 1500px;
+      min-height: 1500px;
+      width: 1500px;
+      height: 1500px;
+    }
+    #jsonPanel {
+      flex-shrink: 0;
+      width: 450px;
+      background: white;
+      border-left: 1px solid #ccc;
+      display: flex;
+      flex-direction: column;
+    }
+    #jsonHeader {
+      padding: 8px 10px;
+      background: #f5f5f5;
+      border-bottom: 1px solid #ddd;
+      font-weight: bold;
+      font-size: 13px;
+    }
+    #json {
+      flex: 1;
+      overflow: auto;
+      padding: 10px;
+      margin: 0;
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      line-height: 1.4;
+      white-space: pre;
+    }
+  </style>
 
-    <script src="./lib/jquery.js"></script>
-    <script src="./lib/jquery-ui.js"></script>
+  <script src="./lib/jquery.js"></script>
+  <script src="./lib/jquery-ui.js"></script>
+  <script src="../draw2d.js"></script>
+  <script src="CardRaft.js"></script>
 
-    <script src="../draw2d.js"></script>
+  <script type="text/javascript">
+    let canvas;
 
-    <script src="CardRaft.js"></script>
+    function undo() {
+      canvas.getCommandStack().undo();
+    }
 
-    <script type="text/javascript">
+    function redo() {
+      canvas.getCommandStack().redo();
+    }
 
-var textFigure = null;
-var canvas = null;
-document.addEventListener("DOMContentLoaded",function () {
+    function updateButtons() {
+      document.getElementById('undoBtn').disabled = !canvas.getCommandStack().canUndo();
+      document.getElementById('redoBtn').disabled = !canvas.getCommandStack().canRedo();
+    }
 
+    function displayJSON(canvas) {
+      const writer = new draw2d.io.json.Writer();
+      writer.marshal(canvas, function(json) {
+        document.getElementById("json").textContent = JSON.stringify(json, null, 2);
+      });
+    }
 
-    // create the canvas for the user interaction
-    //
-    canvas = new draw2d.Canvas("gfx_holder");
-    canvas.installEditPolicy(new draw2d.policy.canvas.FadeoutDecorationPolicy());
-    //canvas.installEditPolicy(new draw2d.policy.canvas.ShowDotEditPolicy());
-    canvas.installEditPolicy(new draw2d.policy.canvas.ShowGridEditPolicy());
-    //canvas.installEditPolicy(new draw2d.policy.canvas.ShowChessboardEditPolicy());
+    document.addEventListener("DOMContentLoaded", function () {
+      canvas = new draw2d.Canvas("gfx_holder");
+      canvas.setScrollArea("#canvasArea");
+      canvas.installEditPolicy(new draw2d.policy.canvas.FadeoutDecorationPolicy());
+      canvas.installEditPolicy(new draw2d.policy.canvas.ShowGridEditPolicy());
 
-    canvas.add(new draw2d.shape.basic.Oval({width:80,height:30, x:50, y:50}));
+      canvas.add(new draw2d.shape.basic.Oval({width: 80, height: 30, x: 50, y: 50}));
+      canvas.add(new draw2d.shape.basic.Circle({radius: 40, x: 50, y: 150}));
+      canvas.add(new draw2d.shape.basic.Rectangle({width: 80, height: 40, x: 50, y: 300}));
+      canvas.add(new draw2d.shape.composite.Raft({width: 200, height: 150, x: 250, y: 150}));
+      canvas.add(new CardRaft({width: 200, height: 150, x: 250, y: 350}));
 
-    canvas.add(new draw2d.shape.basic.Circle({radius:40, x:50, y:150}));
+      // Display initial JSON
+      displayJSON(canvas);
 
-    canvas.add(new draw2d.shape.basic.Rectangle({width:80, height:40, x:50, y:300}));
+      // Listen to command stack changes
+      canvas.getCommandStack().addEventListener(function(e) {
+        if (e.isPostChangeEvent()) {
+          displayJSON(canvas);
+          updateButtons();
+        }
+      });
 
-    canvas.add(new draw2d.shape.composite.Raft({width:200,height:150,x:250,y:150}));
-    canvas.add(new CardRaft({width:200,height:150,x:250,y:350}));
-
-
-    // display the SVG into the preview DIV
-	  //
-	  displayJSON(canvas);
-
-
-	  // add an event listener to the Canvas for change notifications.
-	  // We just dump the current canvas document into the DIV
-	  //
-	  canvas.getCommandStack().addEventListener(function(e){
-	      if(e.isPostChangeEvent()){
-	          displayJSON(canvas);
-	      }
-	  });
-});
-
-function displayJSON(canvas){
-    var writer = new draw2d.io.json.Writer();
-    writer.marshal(canvas,function(json){
-        $("#json").text(JSON.stringify(json, null, 2));
+      updateButtons();
     });
-}
-
-</script>
-
+  </script>
 </head>
 
 <body>
-<div  onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:1500px; height:1500px; ">
-</div>
-
-<pre id="json" style="overflow:auto;position:absolute; top:10px; right:10px; width:450; height:500;background:white;border:1px solid gray">
-</pre>
+  <div id="container">
+    <div id="toolbar">
+      <button id="undoBtn" onclick="undo()" disabled>↩ Undo</button>
+      <button id="redoBtn" onclick="redo()" disabled>↪ Redo</button>
+    </div>
+    <div id="content">
+      <div id="canvasArea">
+        <div id="gfx_holder"></div>
+      </div>
+      <div id="jsonPanel">
+        <div id="jsonHeader">JSON Document</div>
+        <pre id="json"></pre>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
