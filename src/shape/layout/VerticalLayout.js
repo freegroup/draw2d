@@ -3,6 +3,9 @@ import draw2d from '../../packages'
 
 /**
  * @class
+ * 
+ * @deprecated Use {@link draw2d.shape.box.VBox} instead. The layout package will be removed in a future version.
+ * 
  * The VerticalLayout class arranges the layout elements in a vertical sequence,
  * left to right, with optional gaps between the elements.
  *

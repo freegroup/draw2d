@@ -222,6 +222,7 @@ require('./shape/box/VBox');
 require('./shape/box/HBox');
 require('./shape/box/StackBox');
 require('./shape/box/GridBox');
+require('./shape/box/TableBox');
 require('./shape/icon/Icon');
 require('./shape/icon/Thunder');
 require('./shape/icon/Snow');

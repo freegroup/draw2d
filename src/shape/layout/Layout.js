@@ -2,6 +2,9 @@ import draw2d from '../../packages'
 
 /**
  * @class
+ * 
+ * @deprecated Use {@link draw2d.shape.box.Box} and its subclasses (VBox, HBox, StackBox, GridBox) instead.
+ * The layout package will be removed in a future version.
  *
  * A base class for positioning child figures and determining the ideal size for
  * a figure with children.

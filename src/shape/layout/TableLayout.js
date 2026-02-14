@@ -3,6 +3,8 @@ import draw2d from '../../packages'
 
 /**
  * @class
+ * 
+ * @deprecated Use {@link draw2d.shape.box.TableBox} instead. The layout package will be removed in a future version.
  *
  * The TableLayout class arranges the children in a row/column order. Each cell can be styled
  * with valign, align and padding.

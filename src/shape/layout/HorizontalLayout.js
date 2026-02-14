@@ -2,6 +2,9 @@ import draw2d from '../../packages'
 
 /**
  * @class
+ * 
+ * @deprecated Use {@link draw2d.shape.box.HBox} instead. The layout package will be removed in a future version.
+ * 
  * The HorizontalLayout class arranges the layout elements in a horizontal sequence,
  * left to right, with optional gaps between the elements.
  *

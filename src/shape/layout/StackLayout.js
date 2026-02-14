@@ -2,6 +2,9 @@ import draw2d from '../../packages'
 
 /**
  * @class
+ * 
+ * @deprecated Use {@link draw2d.shape.box.StackBox} instead. The layout package will be removed in a future version.
+ * 
  * Using the StackLayout as their layout shape have their children placed on top of one another.
  * Order of placement is determined by the order in which the children were added, first child
  * added placed on the bottom. Only one child is visible at once.

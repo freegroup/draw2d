@@ -2,6 +2,8 @@ import draw2d from '../../packages'
 
 /**
  * @class
+ * 
+ * @deprecated Use {@link draw2d.shape.box.GridBox} instead. The layout package will be removed in a future version.
  *
  * FlexGridLayout is a powerful, flexible and precise layout manager that aligns components vertically and
  * horizontally in a dynamic rectangular grid of cells, with each component occupying in one or more cell.
