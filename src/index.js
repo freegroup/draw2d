@@ -174,6 +174,7 @@ require('./shape/composite/Composite');
 require('./shape/composite/StrongComposite');
 require('./shape/composite/Group');
 require('./shape/composite/Jailhouse');
+require('./shape/composite/CollapsibleJailhouse');
 require('./shape/composite/WeakComposite');
 require('./shape/composite/Raft');
 require('./Connection');

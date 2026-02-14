@@ -94,7 +94,7 @@ var jsonDocument =
       "radius": 2
     },
     {
-      "type": "CollapsibleJailhouse",
+      "type": "draw2d.shape.composite.CollapsibleJailhouse",
       "id": "6b19ac35-562b-3902-9483-ec3b9e19",
       "x": 207,
       "y": 162,

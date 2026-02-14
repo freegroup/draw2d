@@ -25,3 +25,5 @@
  */
 
 /*! For license information please see shifty.js.LICENSE.txt */
+
+/*! markdown-it 10.0.0 https://github.com//markdown-it/markdown-it @license MIT */
