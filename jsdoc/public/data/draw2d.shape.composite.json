@@ -6,6 +6,3009 @@
   "virtual": false,
   "classes": [
     {
+      "name": "CollapsibleJailhouse",
+      "namespace": "draw2d.shape.composite",
+      "description": "",
+      "extends": [
+        "draw2d.shape.composite.Jailhouse"
+      ],
+      "access": "",
+      "virtual": false,
+      "functions": [
+        {
+          "name": "init",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Creates a new CollapsibleJailhouse instance.</p>",
+          "parameters": [
+            {
+              "name": "attr",
+              "type": "Object",
+              "description": "<p>Configuration attributes</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "attr.stroke",
+              "type": "Number",
+              "description": "<p>Border width in pixels</p>",
+              "default": 1,
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "attr.radius",
+              "type": "Number",
+              "description": "<p>Corner radius in pixels</p>",
+              "default": 4,
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "attr.color",
+              "type": "String",
+              "description": "<p>Border color</p>",
+              "default": "\"#1E88E5\"",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "attr.bgColor",
+              "type": "String",
+              "description": "<p>Background color</p>",
+              "default": "\"#BBDEFB\"",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "setter",
+              "type": "function",
+              "description": "<p>Optional setter function</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "getter",
+              "type": "function",
+              "description": "<p>Optional getter function</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "inherited": false,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "assignFigure",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Assigns a figure to this Jailhouse container. Once assigned, the figure moves with the container\nand cannot be dragged out (hence &quot;Jailhouse&quot;). Connections are rejected as they cannot be\nchildren of composites.</p>",
+          "parameters": [
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "<p>The figure to assign to this container</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": false,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.shape.composite.CollapsibleJailhouse",
+            "description": "<p>this instance for method chaining</p>"
+          }
+        },
+        {
+          "name": "getMinWidth",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Return the minWidth of the jailhouse. The minWidth is calculated by care the assigned figures.</p>",
+          "parameters": [],
+          "inherited": false,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Number",
+            "description": "<p>the minimum width for the figure</p>"
+          }
+        },
+        {
+          "name": "getMinHeight",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Return the minimum height of the figure</p>",
+          "parameters": [],
+          "inherited": false,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Number",
+            "description": "<p>the minimum height of the figure</p>"
+          }
+        },
+        {
+          "name": "setDimension",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the new width and height of the figure and update the constraint policy for the assigned\nfigures..</p>",
+          "parameters": [
+            {
+              "name": "w",
+              "type": "Number",
+              "description": "<p>The new width of the figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "h",
+              "type": "Number",
+              "description": "<p>The new height of the figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "setPosition",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the position of the object.</p>",
+          "parameters": [
+            {
+              "name": "x",
+              "type": "Number/draw2d.geo.Point",
+              "description": "<p>The new x coordinate of the figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "y",
+              "type": "Number",
+              "description": "<p>The new y coordinate of the figure</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "unassignFigure",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Remove the given figure from the group assignment</p>",
+          "parameters": [
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "<p>the figure to remove</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "contains",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Check to see if a figure is a descendant of another figure.\n<br>\nThe contains() method returns true if the figure provided by the argument is a descendant of this figure,\nwhether it is a direct child or nested more deeply. Otherwise, it returns false.</p>",
+          "parameters": [
+            {
+              "name": "containedFigure",
+              "type": "draw2d.Figure",
+              "description": "<p>The figure that may be contained by (a descendant of) this figure.</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "5.5.4",
+          "examples": []
+        },
+        {
+          "name": "getAssignedFigures",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Return all assigned figures of the composite</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.util.ArrayList",
+            "description": ""
+          }
+        },
+        {
+          "name": "onDrop",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Called if the user drop this element onto the dropTarget. This event is ONLY fired if the\nshape return &quot;this&quot; in the onDragEnter method.</p>",
+          "parameters": [
+            {
+              "name": "dropTarget",
+              "type": "draw2d.Figure",
+              "description": "<p>The drop target.</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "x",
+              "type": "Number",
+              "description": "<p>the x-coordinate of the mouse up event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "y",
+              "type": "Number",
+              "description": "<p>the y-coordinate of the mouse up event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "shiftKey",
+              "type": "Boolean",
+              "description": "<p>true if the shift key has been pressed during this event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "ctrlKey",
+              "type": "Boolean",
+              "description": "<p>true if the ctrl key has been pressed during the event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "4.7.4",
+          "examples": []
+        },
+        {
+          "name": "onCatch",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Called if the user dropped an figure onto this element. This event is ONLY fired if the\nshape return &quot;this&quot; in the onDragEnter method.</p>",
+          "parameters": [
+            {
+              "name": "droppedFigure",
+              "type": "draw2d.Figure",
+              "description": "<p>The dropped figure.</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "x",
+              "type": "Number",
+              "description": "<p>the x-coordinate of the mouse up event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "y",
+              "type": "Number",
+              "description": "<p>the y-coordinate of the mouse up event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "shiftKey",
+              "type": "Boolean",
+              "description": "<p>true if the shift key has been pressed during this event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "ctrlKey",
+              "type": "Boolean",
+              "description": "<p>true if the ctrl key has been pressed during the event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "4.7.4",
+          "examples": []
+        },
+        {
+          "name": "toFront",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Moves the element so it is the closest to the viewer’s eyes, on top of other elements. Additional\nthe internal model changed as well.</p>\n<p>Optional: Inserts current object in front of the given one.</p>",
+          "parameters": [
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "<p>move current object in front of the given one.</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "toBack",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Moves the element to the background. Additional\nthe internal model changed as well.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "4.7.2",
+          "examples": []
+        },
+        {
+          "name": "onDoubleClick",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Called when a user dbl clicks on the element</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "isMemberSelectable",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Delegate method to calculate if a figure is selectable. A composite has the right to override the\ninitial selectable flag of the figure.</p>",
+          "parameters": [
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "<p>the figure to test</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "selectable",
+              "type": "Boolean",
+              "description": "<p>the initial selectable flag of the figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": "<p>returns <code>selectable</code>. A figure in a composite is per default selectable if the figure itself allows it.</p>"
+          }
+        },
+        {
+          "name": "isMemberDraggable",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Delegate method to calculate if a figure is draggable. A composite has the right to override the\ninitial draggable flag of the figure.</p>",
+          "parameters": [
+            {
+              "name": "figure",
+              "type": "draw2d.Figure",
+              "description": "<p>the figure to test</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "draggable",
+              "type": "Boolean",
+              "description": "<p>the initial draggable flag of the figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": "<p>returns <code>draggable</code>. A figure in a composite is per default draggable if the figure itself allows it.</p>"
+          }
+        },
+        {
+          "name": "setCanvas",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the canvas element of this figures. This can be used to determine whenever an element\nis added or removed to the canvas.</p>",
+          "parameters": [
+            {
+              "name": "canvas",
+              "type": "draw2d.Canvas",
+              "description": "<p>the new parent of the figure or null</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
+        },
+        {
+          "name": "repaint",
+          "access": "private",
+          "virtual": false,
+          "deprecated": "",
+          "description": "",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
+        },
+        {
+          "name": "applyTransformation",
+          "access": "private",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>apply a transformation to the shape like rotation, translate,..</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "createShapeElement",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Inherited classes must override this method to implement it's own draw functionality.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "setDashArray",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the line style for dot/dash styling. Possible values are\n[&quot;&quot;, &quot;-&quot;, &quot;.&quot;, &quot;-.&quot;, &quot;-..&quot;, &quot;. &quot;, &quot;- &quot;, &quot;--&quot;, &quot;- .&quot;, &quot;--.&quot;, &quot;--..&quot;]</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  dash: pattern\n});\n</code></pre>",
+          "parameters": [
+            {
+              "name": "pattern",
+              "type": "String",
+              "description": "<p>the string with the dot/dash pattern. valid values: [&quot;&quot;, &quot;-&quot;, &quot;.&quot;, &quot;-.&quot;, &quot;-..&quot;, &quot;. &quot;, &quot;- &quot;, &quot;--&quot;, &quot;- .&quot;, &quot;--.&quot;, &quot;--..&quot;]</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "getDashArray",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Get the line style for this object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr(&quot;dash&quot;);\n</code></pre>",
+          "parameters": [],
+          "inherited": true,
+          "since": "5.1.0",
+          "examples": []
+        },
+        {
+          "name": "getPersistentAttributes",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Return an objects with all important attributes for XML or JSON serialization</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": ""
+          }
+        },
+        {
+          "name": "setPersistentAttributes",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Read all attributes from the serialized properties and transfer them into the shape.</p>",
+          "parameters": [
+            {
+              "name": "memento",
+              "type": "Object",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
+        },
+        {
+          "name": "setRadius",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Sets the corner radius or the edges.</p>",
+          "parameters": [
+            {
+              "name": "radius",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "4.2.1",
+          "examples": []
+        },
+        {
+          "name": "getRadius",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Get the corner radius of the edges.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "4.2.1",
+          "examples": [],
+          "returns": {
+            "type": "Number",
+            "description": ""
+          }
+        },
+        {
+          "name": "setGlow",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Highlight the element or remove the highlighting</p>",
+          "parameters": [
+            {
+              "name": "flag",
+              "type": "Boolean",
+              "description": "<p>indicates glow/noGlow</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "setBackgroundColor",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the new background color of the figure. It is possible to hands over\n<code>null</code> to set the background transparent.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;bgColor&quot;: &quot;#f0f0f0&quot;\n});\n</code></pre>",
+          "parameters": [
+            {
+              "name": "color",
+              "type": [
+                "String",
+                "draw2d.util.Color"
+              ],
+              "description": "<p>The new background color of the figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "getBackgroundColor",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>The current used background color.</p>\n<pre><code>// Alternatively you can use the attr method:\nvar color =figure.attr(&quot;bgColor&quot;);\n</code></pre>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.util.Color",
+            "description": ""
+          }
+        },
+        {
+          "name": "setStroke",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the stroke to use.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;stroke&quot;: 2\n});\n</code></pre>",
+          "parameters": [
+            {
+              "name": "w",
+              "type": "Number",
+              "description": "<p>The new line width of the figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "getStroke",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>The used line width.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Number",
+            "description": ""
+          }
+        },
+        {
+          "name": "setColor",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the foreground color of the figure.\nThis method fires a <i>document dirty</i> event.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;color&quot;: &quot;#f3f3f3&quot;\n});\n</code></pre>",
+          "parameters": [
+            {
+              "name": "color",
+              "type": [
+                "String",
+                "draw2d.util.Color"
+              ],
+              "description": "<p>The new color of the line.</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "getColor",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Get the current used foreground color</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.util.Color",
+            "description": ""
+          }
+        },
+        {
+          "name": "setPersistPorts",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Indicates if the node should read/write the ports via the draw2d.Figure.getPersistenAttributes\nto the JSON object</p>",
+          "parameters": [
+            {
+              "name": "flag",
+              "type": "Boolean",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "5.0.4",
+          "examples": []
+        },
+        {
+          "name": "getPersistPorts",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Indicates if the figure writes the ports to the JSON structore too.\nDefault is &quot;false&quot;</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "setVisible",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Show/hide the element. The element didn't receive any mouse events (click, dblclick) if you hide the\nfigure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  visible: flag\n});\n</code></pre>",
+          "parameters": [
+            {
+              "name": "flag",
+              "type": "Boolean",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "duration",
+              "type": "Number",
+              "description": "<p>the optional number for the fadeIn /fadeOut of the figure</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "1.1.0",
+          "examples": []
+        },
+        {
+          "name": "getPorts",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Return all ports of the node. The results contains\nall ports of the children too per default. Set <b>recursive</b>\nto false to retrieve direct assigned ports only.</p>",
+          "parameters": [
+            {
+              "name": "recursive",
+              "type": "Boolean",
+              "description": "<p>indicates if the method should return children ports too. Default is <b>true</b></p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.util.ArrayList",
+            "description": ""
+          }
+        },
+        {
+          "name": "getInputPorts",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Return all input ports of the node.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.util.ArrayList",
+            "description": ""
+          }
+        },
+        {
+          "name": "getOutputPorts",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Return all output ports of the node.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.util.ArrayList",
+            "description": ""
+          }
+        },
+        {
+          "name": "clone",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Clone the figure. <br>\nYou must override and implement the methods <b>getPersistentAttributes</b> and <b>setPersistentAttributes</b> for your custom\nfigures if the have special attributes.</p>\n<p>The clone() method performs a deep copy of the object, meaning that it copies the children, ports and decorations\nper default. You can control the clone procedure with the 'cloneMetaData'.</p>",
+          "parameters": [
+            {
+              "name": "cloneMetaData",
+              "type": "Object",
+              "description": "<p>controls the clone procedure</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "cloneMetaData.excludeChildren",
+              "type": "Boolean",
+              "description": "<p>set it to true if you want exclude the children.</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "cloneMetaData.excludePorts",
+              "type": "Boolean",
+              "description": "<p>set it to true if you want exclude the ports of the node.</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "4.1.0",
+          "examples": []
+        },
+        {
+          "name": "getPort",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Return the port with the corresponding name.</p>",
+          "parameters": [
+            {
+              "name": "portName",
+              "type": "String",
+              "description": "<p>The name of the port to return.</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.Port",
+            "description": "<p>Returns the port with the hands over name or null.</p>"
+          }
+        },
+        {
+          "name": "getInputPort",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Return the input port with the corresponding name.</p>",
+          "parameters": [
+            {
+              "name": "portNameOrIndex",
+              "type": "String/Number",
+              "description": "<p>The name or numeric index of the port to return.</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.InputPort",
+            "description": "<p>Returns the port with the hands over name or null.</p>"
+          }
+        },
+        {
+          "name": "getOutputPort",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Return the output port with the corresponding name.</p>",
+          "parameters": [
+            {
+              "name": "portNameOrIndex",
+              "type": "String/Number",
+              "description": "<p>The name or the numeric index of the port to return.</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.OutputPort",
+            "description": "<p>Returns the port with the hands over name or null.</p>"
+          }
+        },
+        {
+          "name": "getHybridPort",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Return the input port with the corresponding name.</p>",
+          "parameters": [
+            {
+              "name": "portNameOrIndex",
+              "type": "String/Number",
+              "description": "<p>The name or numeric index of the port to return.</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.InputPort",
+            "description": "<p>Returns the port with the hands over name or null.</p>"
+          }
+        },
+        {
+          "name": "addPort",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Add a port to this node at the given position.<br></p>",
+          "parameters": [
+            {
+              "name": "port",
+              "type": "draw2d.Port",
+              "description": "<p>The new port to add.</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "locator",
+              "type": "draw2d.layout.locator.Locator",
+              "description": "<p>The layout for the port.</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "resetPorts",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Remove all ports of this node</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "5.0.0",
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
+        },
+        {
+          "name": "removePort",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Removes a port and all related connections from this node.<br></p>",
+          "parameters": [
+            {
+              "name": "port",
+              "type": "draw2d.Port",
+              "description": "<p>The port to remove.</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
+        },
+        {
+          "name": "createPort",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Create a standard Port for this element. Inherited class can override this\nmethod to create its own type of ports.</p>",
+          "parameters": [
+            {
+              "name": "type",
+              "type": "String",
+              "description": "<p>the type of the requested port. possible [&quot;input&quot;, &quot;output&quot;]</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "locator",
+              "type": "draw2d.layout.locator.Locator",
+              "description": "<p>the layouter to use for this port</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "getConnections",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Return all connections related to this node.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.util.ArrayList",
+            "description": ""
+          }
+        },
+        {
+          "name": "setRotationAngle",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
+        },
+        {
+          "name": "onPortValueChanged",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Called if the value of any port has been changed</p>",
+          "parameters": [
+            {
+              "name": "relatedPort",
+              "type": "draw2d.Port",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "layoutPorts",
+          "access": "private",
+          "virtual": false,
+          "deprecated": "",
+          "description": "",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
+        },
+        {
+          "name": "createCommand",
+          "access": "private",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Returns the Command to perform the specified Request or null.</p>",
+          "parameters": [
+            {
+              "name": "request",
+              "type": "draw2d.command.CommandType",
+              "description": "<p>describes the Command being requested</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.command.Command",
+            "description": "<p>null or a Command</p>"
+          }
+        },
+        {
+          "name": "attr",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Read or set shape attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>\n<p>let figure = new draw2d.shape.basic.Rectangle();\nfigure.attr('x');      //=&gt; read value\nfigure.attr('x', 30);  //=&gt; set value</p>\n<p>// multiple attributes:\nfigure.attr({\nx: 30,\ny: 40,\nwidth : 200,\nheight: 50,\ncssClass: &quot;red_border_figure&quot;\n});</p>\n<p>// it is possible to override any method of the figure as well\n// Instead of inheritance you can just override the callback methods\n// like\n//\nfigure.attr({\nonClick : function(){\nalert(&quot;click&quot;);\n}\n});</p>\n<p>// or you can pass the attr values in the constructor\n//\nlet clickFigure = new draw2d.shape.basic.Rectangle({\nonClick : function(){\nalert(&quot;click&quot;);\n}\n});</p>\n<p>Additional you can set the user defined values (userData) with this method\nusing the dot-notation. User defined values are always part of the exported\nJSON data.</p>\n<p>// setting multiple attributes:\nfigure.attr({\n&quot;userData.my.property.x&quot;: 30,\n&quot;userData.my.property.y&quot;: 40\n});</p>\n<p>Also set using array notation is possible for the userData:</p>\n<p>// dot notation and array brackets:\nfigure.attr({\n&quot;userData.my.names[0]&quot;: &quot;John&quot;,\n&quot;userData.my.names[1]&quot;: &quot;Doe&quot;\n});</p>\n<p>The Object returned should be the equivalent structured object:</p>\n<p>let obj = figure.getUserData();</p>\n<p>That is, where obj is equivalent to:</p>\n<p>let obj = {\nmy:{\nproperty:{\nx: 30,\ny: 40\n},\nnames:  [&quot;John&quot;, &quot;Doe&quot;]\n}\n};</p>",
+          "parameters": [
+            {
+              "name": "name",
+              "type": "String/Object",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "value",
+              "type": "Object",
+              "description": "",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "5.0.1",
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": "<p>either the requested attribute if this method used as getter or <code>this</code> if the method uses as setter</p>"
+          }
+        },
+        {
+          "name": "pick",
+          "access": "",
+          "virtual": false,
+          "deprecated": true,
+          "description": "<p>Return a copy of the object, filtered to only have values for the whitelisted keys.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "select",
+          "access": "private",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Add the figure to the current selection and propagate this to all edit policies.</p>",
+          "parameters": [
+            {
+              "name": "asPrimarySelection",
+              "type": "Boolean",
+              "description": "<p>true if the element should be the primary selection</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "unselect",
+          "access": "private",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Unselect the figure and propagete this event to all edit policies.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "setSelectionAdapter",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Returns a function which returns the the figure which must handle the selection handling.</p>",
+          "parameters": [
+            {
+              "name": "adapter",
+              "type": "function",
+              "description": "<p>function which returns the figure which handles the selection handling</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "getSelectionAdapter",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "function",
+            "description": ""
+          }
+        },
+        {
+          "name": "isSelected",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Returns true if the figure part of the current canvas selection.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "5.5.6",
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "setUserData",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Allows a user to attach (or remove) data to an element, without needing to create a custom figure or shape.\nThe data must be a valid JSON object.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  userData: object\n});\n</code></pre>",
+          "parameters": [
+            {
+              "name": "object",
+              "type": "Object",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "2.7.2",
+          "examples": []
+        },
+        {
+          "name": "getUserData",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Returns any user data set previously on the given figure by setUserData.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "2.7.2",
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": ""
+          }
+        },
+        {
+          "name": "getId",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Return the UUID of this element.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "String",
+            "description": ""
+          }
+        },
+        {
+          "name": "setId",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the id of this element.</p>\n<p>// Alternatively you can use the attr method:\nfigure.attr({\nid: newId\n});</p>",
+          "parameters": [
+            {
+              "name": "newId",
+              "type": "String",
+              "description": "<p>the new id for this figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "getCssClass",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Return the css styling class name of the element.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "String",
+            "description": ""
+          }
+        },
+        {
+          "name": "setCssClass",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the css class of the node.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;cssClass&quot;: &quot;red_border_figure&quot;\n});\n</code></pre>",
+          "parameters": [
+            {
+              "name": "cssClass",
+              "type": "String",
+              "description": "<p>the new css class name of the node</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "2.9.0",
+          "examples": []
+        },
+        {
+          "name": "hasCssClass",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>The method will return true if the class is assigned to the element, even if other classes also are.</p>",
+          "parameters": [
+            {
+              "name": "className",
+              "type": "String",
+              "description": "<p>the class name to check</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "2.9.0",
+          "examples": []
+        },
+        {
+          "name": "addCssClass",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Add a CSS class to the figure.<br>\nIt's important to note that this method does not replace a class. It simply adds the class,\nappending it to any which may already be assigned to the elements.</p>",
+          "parameters": [
+            {
+              "name": "className",
+              "type": "String",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "2.9.0",
+          "examples": []
+        },
+        {
+          "name": "removeCssClass",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Remove the given css class name from the figure</p>",
+          "parameters": [
+            {
+              "name": "className",
+              "type": "String",
+              "description": "<p>the css class name to add</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "toggleCssClass",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Add or remove the given css class name from the figure</p>",
+          "parameters": [
+            {
+              "name": "className",
+              "type": "String",
+              "description": "<p>the class name to toggle</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "getCanvas",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Return the current assigned canvas container.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.Canvas",
+            "description": ""
+          }
+        },
+        {
+          "name": "startTimer",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Start a timer which calls the onTimer method in the given interval.</p>",
+          "parameters": [
+            {
+              "name": "milliSeconds",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "stopTimer",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Stop the internal timer.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "onTimer",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Callback method for the internal timer handling<br>\nInherit classes must override this method if they want use the timer feature.</p>\n<pre><code>// Alternatively you can register for this event with\nfigure.on(&quot;timer&quot;, function(emitter){\n    alert(&quot;timer fired&quot;);\n});\n</code></pre>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "installEditPolicy",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Install a new edit policy to the figure. Each editpolicy is able to focus on a single editing\ntask or group of related tasks. This also allows editing behavior to be selectively reused across\ndifferent figure implementations. Also, behavior can change dynamically, such as when the layouts\nor routing methods change.</p>\n<p>Example for limited DragDrop behavior can be a draw2d.layout.constraint.RegionConstriantPolicy.</p>",
+          "parameters": [
+            {
+              "name": "policy",
+              "type": "draw2d.policy.EditPolicy",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "uninstallEditPolicy",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>UnInstall the edit policy from the figure. Either the instance itself if found\nor all kind of the given edit policies.</p>",
+          "parameters": [
+            {
+              "name": "policy",
+              "type": "draw2d.policy.EditPolicy",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "4.81",
+          "examples": []
+        },
+        {
+          "name": "add",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Add a child figure to the figure. The hands over figure doesn't support drag&amp;drop\noperations. It's only a decorator for the connection.<br>\nMainly for labels or other decorations</p>\n<p>let start = new draw2d.shape.node.Start({x:80, y:150});\nstart.add(new draw2d.shape.basic.Label({text:&quot;Test Label&quot;}), new draw2d.layout.locator.TopLocator());</p>\n<p>canvas.add( start);</p>",
+          "parameters": [
+            {
+              "name": "child",
+              "type": "draw2d.Figure",
+              "description": "<p>the figure to add as decoration to the connection.</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "locator",
+              "type": "draw2d.layout.locator.Locator",
+              "description": "<p>the locator for the child.</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "index",
+              "type": "Number",
+              "description": "<p>optional index where to insert the figure</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "this",
+            "description": ""
+          }
+        },
+        {
+          "name": "remove",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Remove the child figure from this figure and the canvas</p>",
+          "parameters": [
+            {
+              "name": "child",
+              "type": "draw2d.Figure",
+              "description": "<p>the figure to remove.</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "5.0.0",
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": "<p>the removed tupple of figure/locator or null if the child isn't found</p>"
+          }
+        },
+        {
+          "name": "getChildren",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Return all children/decorations of this shape which has been added with\ndraw2d.Figure.add</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.util.ArrayList",
+            "description": ""
+          }
+        },
+        {
+          "name": "resetChildren",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Remove all children/decorations of this shape</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "getShapeElement",
+          "access": "protected",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>return the current SVG shape element or create it on demand.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "getTopLevelShapeElement",
+          "access": "private",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Get the top level shape element. May the figure has a set of SVG elements. In this case this\nmethod must return the top level node.<br>\nThis method is used for the toFront/toBack method to order the nodes in the correct way.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "5.0.0",
+          "examples": []
+        },
+        {
+          "name": "getHandleBBox",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Allow dragging only when the cursor is over a specific part of the figure.\n<br>\nOverride this method to specify the bounding box of an element or a draw2d.util.ArrayList\nof draw2d.geo.Rectangle of bounding boxes used to drag the figure. The returned coordinates\nare absolute coordinates to the canvas.\n<br>\n<br>\nDefault implementation returns <b>null</b> to indicate to use the complete figures as\ndrag handle.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "5.6.0",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.geo.Rectangle | draw2d.util.ArrayList",
+            "description": ""
+          }
+        },
+        {
+          "name": "onDragStart",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Called if the drag and drop action begins. You can return [false] if you\nwant avoid that the figure can be move.</p>",
+          "parameters": [
+            {
+              "name": "x",
+              "type": "Number",
+              "description": "<p>the x-coordinate of the mouse up event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "y",
+              "type": "Number",
+              "description": "<p>the y-coordinate of the mouse up event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "shiftKey",
+              "type": "Boolean",
+              "description": "<p>true if the shift key has been pressed during this event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "ctrlKey",
+              "type": "Boolean",
+              "description": "<p>true if the ctrl key has been pressed during the event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": "<p>true if the figure accepts dragging</p>"
+          }
+        },
+        {
+          "name": "onDrag",
+          "access": "private",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Don't call them manually. This will be done by the framework.<br>\nWill be called if the object are moved via drag and drop.\nSub classes can override this method to implement additional stuff. Don't forget to call\nthe super implementation via <code>this._super(dx, dy, dx2, dy2);</code></p>",
+          "parameters": [
+            {
+              "name": "dx",
+              "type": "Number",
+              "description": "<p>the x difference between the start of the drag drop operation and now</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dy",
+              "type": "Number",
+              "description": "<p>the y difference between the start of the drag drop operation and now</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dx2",
+              "type": "Number",
+              "description": "<p>The x diff since the last call of this dragging operation</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dy2",
+              "type": "Number",
+              "description": "<p>The y diff since the last call of this dragging operation</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "shiftKey",
+              "type": "Boolean",
+              "description": "<p>true if the shift key has been pressed during this event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "ctrlKey",
+              "type": "Boolean",
+              "description": "<p>true if the ctrl key has been pressed during the event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "onPanning",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Called by the framework if the figure returns false for the drag operation. In this\ncase we send a &quot;panning&quot; event - mouseDown + mouseMove. This is very useful for\nUI-Widget like slider, spinner,...</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panning&quot;, function(emitter, eventData){\n    alert(&quot;panning of the figure called&quot;);\n});\n</code></pre>",
+          "parameters": [
+            {
+              "name": "dx",
+              "type": "Number",
+              "description": "<p>the x difference between the mouse down operation and now</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dy",
+              "type": "Number",
+              "description": "<p>the y difference between the mouse down operation and now</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dx2",
+              "type": "Number",
+              "description": "<p>The x diff since the last call of this dragging operation</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dy2",
+              "type": "Number",
+              "description": "<p>The y diff since the last call of this dragging operation</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "shiftKey",
+              "type": "Boolean",
+              "description": "<p>true if the shift key has been pressed during this event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "ctrlKey",
+              "type": "Boolean",
+              "description": "<p>true if the ctrl key has been pressed during the event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "onPanningEnd",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Called by the framework if the panning event of the figures ends. This happens\nafter the mous up event if the panning is active.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;panningEnd&quot;, function(emitter){\n    alert(&quot;panning of the figure called&quot;);\n});\n</code></pre>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "onDragEnd",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Will be called after a drag and drop action.<br>\nSub classes can override this method to implement additional stuff. Don't forget to call\nthe super implementation via <code>this._super();</code></p>",
+          "parameters": [
+            {
+              "name": "x",
+              "type": "Number",
+              "description": "<p>the x-coordinate of the mouse event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "y",
+              "type": "Number",
+              "description": "<p>the y-coordinate of the mouse event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "shiftKey",
+              "type": "Boolean",
+              "description": "<p>true if the shift key has been pressed during this event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "ctrlKey",
+              "type": "Boolean",
+              "description": "<p>true if the ctrl key has been pressed during the event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "delegateTarget",
+          "access": "private",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Called by the framework during drag&amp;drop operations if the user drag a figure over this figure</p>",
+          "parameters": [
+            {
+              "name": "draggedFigure",
+              "type": "draw2d.Figure",
+              "description": "<p>The figure which is currently dragging</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "6.1.0",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.Figure",
+            "description": "<p>the figure which should receive the drop event or null if the element didn't want a drop event</p>"
+          }
+        },
+        {
+          "name": "onDragEnter",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Called by the framework during drag&amp;drop operations if the user drag a figure over this figure</p>",
+          "parameters": [
+            {
+              "name": "draggedFigure",
+              "type": "draw2d.Figure",
+              "description": "<p>The figure which is currently dragging</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "onDragLeave",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Called if the DragDrop object leaving the current hover figure.</p>",
+          "parameters": [
+            {
+              "name": "draggedFigure",
+              "type": "draw2d.Figure",
+              "description": "<p>The figure which is currently dragging</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "onMouseEnter",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Callback method for the mouse enter event. Usefull for mouse hover-effects.\nOverride this method for your own effects. Don't call them manually.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "onMouseLeave",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Callback method for the mouse leave event. Useful for mouse hover-effects.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "onClick",
+          "access": "",
+          "virtual": false,
+          "deprecated": true,
+          "description": "<p>Called when a user clicks on the element.</p>\n<pre><code>// You can alternatively register an event handler with:\nfigure.on(&quot;click&quot;, function(emitter, event){\n    alert(&quot;user click on the figure&quot;);\n});\n</code></pre>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "onContextMenu",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>called by the framework if the figure should show the context menu.<br>\nThe strategy to show the context menu depends on the platform. Either looong press or\nright click with the mouse.</p>\n<pre><code>// Alternatively you register for this event with:\nfigure.on(&quot;contextmenu&quot;, function(emitter, event){\n    alert(&quot;user press the right mouse button for a context menu&quot;);\n});\n</code></pre>",
+          "parameters": [
+            {
+              "name": "x",
+              "type": "Number",
+              "description": "<p>the x-coordinate to show the menu</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "y",
+              "type": "Number",
+              "description": "<p>the y-coordinate to show the menu</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "1.1.0",
+          "examples": []
+        },
+        {
+          "name": "setAlpha",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the alpha blending of this figure.</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  &quot;alpha&quot;: percent\n});\n\n// ...or:\nfigure.attr({\n  &quot;opacity&quot;: percent\n});\n</code></pre>",
+          "parameters": [
+            {
+              "name": "percent",
+              "type": "Number",
+              "description": "<p>value between [0..1].</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "getAlpha",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Return the alpha blending of the figure</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Number",
+            "description": "<p>the current alpha blending</p>"
+          }
+        },
+        {
+          "name": "getRotationAngle",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>return the rotation angle of the figure in degree of [0..356].</p>\n<br>\n<b>NOTE: this method is pre alpha and not for production. Only steps of 90 degree is working well</b>\n<br>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Number",
+            "description": ""
+          }
+        },
+        {
+          "name": "isVisible",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Return true if the figure visible.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "1.1.0",
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "setKeepAspectRatio",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Guarantee, that the figure width/height will not be distorted. Applicable before calling setDimension().\nIt is false by default.</p>",
+          "parameters": [
+            {
+              "name": "flag",
+              "type": "Boolean",
+              "description": "<p>boolean flag if the figure should respect the aspect ratio</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "4.1.0",
+          "examples": []
+        },
+        {
+          "name": "getKeepAspectRatio",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Return the flag if the shape keep the aspect ratio.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "4.1.0",
+          "examples": []
+        },
+        {
+          "name": "getZOrder",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Return the current z-index of the element. Currently this is an expensive method. The index will be calculated\nall the time. Caching is not implemented at the moment.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Number",
+            "description": ""
+          }
+        },
+        {
+          "name": "setCanSnapToHelper",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the flag if this object can snap to grid or geometry.\nA window of dialog should set this flag to false.</p>",
+          "parameters": [
+            {
+              "name": "flag",
+              "type": "Boolean",
+              "description": "<p>The snap to grid/geometry enable flag.</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "getCanSnapToHelper",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Returns true if the figure can snap to any helper like a grid, guide, geometrie\nor something else.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "getSnapToGridAnchor",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.geo.Point",
+            "description": ""
+          }
+        },
+        {
+          "name": "setSnapToGridAnchor",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the hot spot for all snapTo### operations.</p>",
+          "parameters": [
+            {
+              "name": "point",
+              "type": "draw2d.geo.Point",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "setWidth",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the width of the figure and consider the minWidth attribute</p>",
+          "parameters": [
+            {
+              "name": "width",
+              "type": "Number",
+              "description": "<p>the new width of the figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "5.1.0",
+          "examples": []
+        },
+        {
+          "name": "getWidth",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>The current width of the figure.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "setHeight",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the heigth of the figure and consider the minWidth attribute</p>",
+          "parameters": [
+            {
+              "name": "height",
+              "type": "Number",
+              "description": "<p>the new height of the figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "5.1.0",
+          "examples": []
+        },
+        {
+          "name": "getHeight",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>The current height of the figure.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Number",
+            "description": ""
+          }
+        },
+        {
+          "name": "setMinWidth",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the minimum width of this figure</p>",
+          "parameters": [
+            {
+              "name": "w",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "setMinHeight",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the minimum height of the figure.</p>",
+          "parameters": [
+            {
+              "name": "h",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "setX",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>the the x-offset related to the parent figure or canvas</p>",
+          "parameters": [
+            {
+              "name": "x",
+              "type": "Number",
+              "description": "<p>the new x offset of the figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "5.0.8",
+          "examples": []
+        },
+        {
+          "name": "getX",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>The x-offset related to the parent figure or canvas.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Number",
+            "description": "<p>the x-offset to the parent figure</p>"
+          }
+        },
+        {
+          "name": "setY",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>the the y-offset related to the parent figure or canvas</p>",
+          "parameters": [
+            {
+              "name": "y",
+              "type": "Number",
+              "description": "<p>the new x offset of the figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "5.0.8",
+          "examples": []
+        },
+        {
+          "name": "getY",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>The y-offset related to the parent figure or canvas.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Number",
+            "description": "<p>The y-offset to the parent figure.</p>"
+          }
+        },
+        {
+          "name": "getAbsoluteX",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>The x-offset related to the canvas.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Number",
+            "description": "<p>the x-offset to the canvas</p>"
+          }
+        },
+        {
+          "name": "getAbsoluteY",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>The y-offset related to the canvas.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Number",
+            "description": "<p>The y-offset to the canvas.</p>"
+          }
+        },
+        {
+          "name": "getAbsolutePosition",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Returns the absolute y-position of the port.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "getAbsoluteBounds",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Returns the absolute y-position of the port.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.geo.Rectangle",
+            "description": ""
+          }
+        },
+        {
+          "name": "getPosition",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Get the current position of the figure</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "2.0.0",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.geo.Point",
+            "description": ""
+          }
+        },
+        {
+          "name": "translate",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Translate the figure with the given x/y offset.</p>",
+          "parameters": [
+            {
+              "name": "dx",
+              "type": "Number",
+              "description": "<p>The x offset to translate</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "dy",
+              "type": "Number",
+              "description": "<p>The y offset to translate</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "setBoundingBox",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the bounding box of the figure</p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  width: w,\n  height: h,\n  x: x,\n  y: y\n});\n\n// or\nfigure.attr({\n  boundingBox: {x:1, y:100, width:30, height:30}\n});\n</code></pre>",
+          "parameters": [
+            {
+              "name": "rect",
+              "type": "draw2d.geo.Rectangle",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "4.8.0",
+          "examples": []
+        },
+        {
+          "name": "getBoundingBox",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Returns the bounding box of the figure in absolute position to the canvas.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.geo.Rectangle",
+            "description": ""
+          }
+        },
+        {
+          "name": "getOuterBoundingBox",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Returns the bounding box of the figure in absolute position to the canvas. All child shapes included.\nThe result BoundingBox spans the parent figured plus all children.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.geo.Rectangle",
+            "description": ""
+          }
+        },
+        {
+          "name": "hitTest",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Detect whenever the hands over coordinate is inside the figure.\nThe default implementation is a simple bounding box test.</p>",
+          "parameters": [
+            {
+              "name": "iX",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "iY",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "corona",
+              "type": "Number",
+              "description": "",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "setDraggable",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Switch on/off the drag drop behaviour of this object</p>",
+          "parameters": [
+            {
+              "name": "flag",
+              "type": "Boolean",
+              "description": "<p>The new drag drop indicator</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "isDraggable",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Get the Drag drop enable flag</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": "<p>The new drag drop indicator</p>"
+          }
+        },
+        {
+          "name": "isResizeable",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Returns the true if the figure can be resized.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "setResizeable",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>You can change the resizeable behaviour of this object. Hands over [false] and\nthe figure has no resizehandles if you select them with the mouse.<br></p>\n<pre><code>// Alternatively you can use the attr method:\nfigure.attr({\n  resizeable: flag\n});\n</code></pre>",
+          "parameters": [
+            {
+              "name": "flag",
+              "type": "Boolean",
+              "description": "<p>The resizeable flag.</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "isSelectable",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Indicates whenever the element is selectable by user interaction or API.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "setSelectable",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>You can change the selectable behavior of this object. Hands over [false] and\nthe figure has no selection handles if you try to select them with the mouse.<br></p>",
+          "parameters": [
+            {
+              "name": "flag",
+              "type": "Boolean",
+              "description": "<p>The selectable flag.</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "isStrechable",
+          "access": "",
+          "virtual": false,
+          "deprecated": true,
+          "description": "<p>Return true if the object doesn't care about the aspect ratio.\nYou can change the height and width independent.<br></p>\n<p>Replaced with &quot;getKeepAspectRatio&quot;</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "isDeleteable",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Return false if you avoid that the user can delete your figure.\nSub class can override this method.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": ""
+          }
+        },
+        {
+          "name": "setDeleteable",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the flag if the shape is deleteable.</p>",
+          "parameters": [
+            {
+              "name": "flag",
+              "type": "Boolean",
+              "description": "<p>enable or disable flag for the delete operation</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "setParent",
+          "access": "private",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the parent of this figure.\nDon't call them manually.</p>",
+          "parameters": [
+            {
+              "name": "parent",
+              "type": "draw2d.Figure",
+              "description": "<p>The new parent of this figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "getParent",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Get the parent of this figure.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.Figure",
+            "description": ""
+          }
+        },
+        {
+          "name": "getRoot",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Get the top most parent of this figure. This can be an layout figure or parent container</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "5.0.6",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.Figure",
+            "description": ""
+          }
+        },
+        {
+          "name": "setComposite",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the assigned composite of this figure.</p>",
+          "parameters": [
+            {
+              "name": "composite",
+              "type": "draw2d.shape.composite.StrongComposite",
+              "description": "<p>The assigned composite of this figure</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "4.8.0",
+          "examples": []
+        },
+        {
+          "name": "getComposite",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Get the assigned composite of this figure.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "4.8.0",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.shape.composite.StrongComposite",
+            "description": ""
+          }
+        },
+        {
+          "name": "fireEvent",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Execute all handlers and behaviors attached to the figure for the given event type.</p>",
+          "parameters": [
+            {
+              "name": "event",
+              "type": "String",
+              "description": "<p>the event to trigger</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "args",
+              "type": "Object",
+              "description": "<p>optional parameters for the triggered event callback</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "5.0.0",
+          "examples": []
+        },
+        {
+          "name": "on",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Attach an event handler function for one or more events to the figure.\nTo remove events bound with .on(), see {@link #off}.</p>\n<p>possible events are:<br></p>\n<ul>\n  <li>click</li>\n  <li>dblclick</li>\n  <li>move</li>\n  <li>resize</li>\n  <li>timer</li>\n  <li>contextmenu</li>\n  <li>show</li>\n  <li>hide</li>\n  <li>added</li>\n  <li>removed</li>\n  <li>change:[attr]</li>\n</ul>",
+          "parameters": [
+            {
+              "name": "event",
+              "type": "String",
+              "description": "<p>One or more space-separated event types</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "callback",
+              "type": "function",
+              "description": "<p>A function to execute when the event is triggered.</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "callback.emitter",
+              "type": "draw2d.Figure",
+              "description": "<p>the emitter of the event</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "callback.obj",
+              "type": "Object",
+              "description": "<p>optional event related data</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "context",
+              "type": "Object",
+              "description": "<p>optional context of the function callback.</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "5.0.0",
+          "examples": []
+        },
+        {
+          "name": "off",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>The .off() method removes event handlers that were attached with {@link #on}.<br>\nCalling .off() with no arguments removes all handlers attached to the elements.<br>\n<br>\nIf a simple event name such as &quot;move&quot; is provided, all events of that type are removed from the figure.</p>",
+          "parameters": [
+            {
+              "name": "eventOrFunction",
+              "type": [
+                "String",
+                "function"
+              ],
+              "description": "<p>the event name of the registerd function or the function itself</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "5.0.0",
+          "examples": []
+        },
+        {
+          "name": "getBestChild",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Returns the best figure at the location [x,y]. It is a simple hit test. Keep in mind that only visible objects\nare returned.</p>",
+          "parameters": [
+            {
+              "name": "x",
+              "type": "Number",
+              "description": "<p>The x position.</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "y",
+              "type": "Number",
+              "description": "<p>The y position.</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "figureToIgnore",
+              "type": [
+                "draw2d.Figure",
+                "Array"
+              ],
+              "description": "<p>The figures which should be ignored.</p>",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        }
+      ],
+      "fires": "",
+      "constructor": {
+        "name": "CollapsibleJailhouse",
+        "description": "<p>A collapsible Jailhouse container that can expand/collapse to show/hide assigned child figures.</p>\n<p>When collapsed:</p>\n<ul>\n<li>Children are hidden but their ports remain visible at the container edges</li>\n<li>Connections between internal children are hidden</li>\n<li>Only external connections (to figures outside the container) remain visible</li>\n<li>Container shrinks to a compact size showing only collapse/expand controls</li>\n</ul>\n<p>When expanded:</p>\n<ul>\n<li>All children and connections are visible</li>\n<li>Container returns to its original dimensions</li>\n<li>Full interaction with children is restored</li>\n</ul>",
+        "parameters": [],
+        "examples": [
+          "let container = new draw2d.shape.composite.CollapsibleJailhouse({\n  x: 100,\n  y: 100,\n  width: 300,\n  height: 200\n});\ncanvas.add(container);\n\n// Add some figures to the container\nlet node1 = new draw2d.shape.node.Between();\nlet node2 = new draw2d.shape.node.Between();\ncanvas.add(node1, 150, 150);\ncanvas.add(node2, 250, 150);\n\n// Figures become children of the container automatically when dragged onto it"
+        ]
+      }
+    },
+    {
       "name": "Composite",
       "namespace": "draw2d.shape.composite",
       "description": "<p>Base interface for the composite shapes</p>",

@@ -1,75 +1,143 @@
-﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+﻿<!DOCTYPE html>
+<html>
 <head>
-<title></title>
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="viewport" content="width=device-width, minimum-scale=1.0" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>CollapsibleJailhouse Example</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <link type="text/css" rel="stylesheet" href="./css/example.css" />
+  <link type="text/css" rel="stylesheet" href="./css/example.css" />
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    #container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+    }
+    #toolbar {
+      flex-shrink: 0;
+      height: 40px;
+      background: linear-gradient(to bottom, #f8f8f8 0%, #e0e0e0 100%);
+      border-bottom: 1px solid #ccc;
+      padding: 5px 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    #toolbar button {
+      padding: 5px 15px;
+      border: 1px solid #999;
+      border-radius: 4px;
+      background: linear-gradient(to bottom, #fff 0%, #e8e8e8 100%);
+      cursor: pointer;
+    }
+    #toolbar button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    #toolbar button:hover:not(:disabled) {
+      background: linear-gradient(to bottom, #fff 0%, #d8d8d8 100%);
+    }
+    #scrollarea {
+      flex: 1;
+      overflow: auto;
+      background-color: #FAFAFA;
+      position: relative;
+    }
+    #gfx_holder {
+      min-width: 3000px;
+      min-height: 3000px;
+      width: 3000px;
+      height: 3000px;
+    }
+  </style>
 
-    <script src="./lib/jquery.js"></script>
-    <script src="./lib/jquery-ui.js"></script>
-
-
-    <script src="../draw2d.js"></script>
-
-    <script src="CardJailhouse.js"></script>
-    <script src="CollapsibleJailhouse.js"></script>
-
-    <script src="document.js"></script>
+  <script src="./lib/jquery.js"></script>
+  <script src="./lib/jquery-ui.js"></script>
+  <script src="../draw2d.js"></script>
+  <script src="CardJailhouse.js"></script>
+  <script src="document.js"></script>
 
 <script type="text/javascript">
+var canvas;
 
-// just for debugging
-var canvas = null;
-var oval =null;
-var circle =null;
-var rect =null;
+function undo() {
+  canvas.getCommandStack().undo();
+}
 
-// end debug variables
+function redo() {
+  canvas.getCommandStack().redo();
+}
 
-document.addEventListener("DOMContentLoaded",function () {
+function updateButtons() {
+  document.getElementById('undoBtn').disabled = !canvas.getCommandStack().canUndo();
+  document.getElementById('redoBtn').disabled = !canvas.getCommandStack().canRedo();
+}
 
-    // create the canvas for the user interaction
-    //
-    canvas = new draw2d.Canvas("gfx_holder");
-    canvas.installEditPolicy(new draw2d.policy.canvas.FadeoutDecorationPolicy());
-    canvas.installEditPolicy(new draw2d.policy.canvas.ExtendedKeyboardPolicy());
+document.addEventListener("DOMContentLoaded", function() {
+  canvas = new draw2d.Canvas("gfx_holder");
+  canvas.setScrollArea("#gfx_holder");
+  canvas.installEditPolicy(new draw2d.policy.canvas.FadeoutDecorationPolicy());
+  canvas.installEditPolicy(new draw2d.policy.canvas.ExtendedKeyboardPolicy());
 
-    // install a custom connection create policy
-    //
-    var router = new draw2d.layout.connection.InteractiveManhattanConnectionRouter();
-    canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({
-                createConnection:function(){
-                    return new draw2d.Connection({
-                        radius:3,
-                        stroke:2,
-                        color: "#129CE4",
-                        outlineStroke:1,
-                        outlineColor:"#ffffff",
-                        router: router});
-                }
-            })
-    );
+  // Listen to command stack changes
+  canvas.getCommandStack().addEventListener(function(e) {
+    updateButtons();
+  });
+  updateButtons();
 
+  // Install a custom connection create policy
+  var router = new draw2d.layout.connection.InteractiveManhattanConnectionRouter();
+  canvas.installEditPolicy(new draw2d.policy.connection.DragConnectionCreatePolicy({
+    createConnection: function() {
+      return new draw2d.Connection({
+        radius: 3,
+        stroke: 2,
+        color: "#129CE4",
+        outlineStroke: 1,
+        outlineColor: "#ffffff",
+        router: router
+      });
+    }
+  }));
 
-    // unmarshal the JSON document into the canvas
-    // (load)
-    var reader = new draw2d.io.json.Reader();
-    reader.unmarshal(canvas, jsonDocument);
+  // Unmarshal the JSON document into the canvas
+  var reader = new draw2d.io.json.Reader();
+  reader.unmarshal(canvas, jsonDocument);
 
-    var msg = new draw2d.shape.note.PostIt({text: "Example extension of a Jailhouse group with the feature expand/collapse\nDrag&Drop elements on the blue group, connect them and expand/collapse the group to see the effect"});
-    canvas.add(msg, 20,20);
-
+  var msg = new draw2d.shape.note.PostIt({
+    text: "CollapsibleJailhouse - Expandable Container\n\n" +
+          "Features:\n" +
+          "• Click expand/collapse icon to toggle\n" +
+          "• Children hidden when collapsed\n" +
+          "• Ports remain visible at edges\n" +
+          "• Internal connections hidden\n" +
+          "• External connections stay visible\n\n" +
+          "Drag & drop elements onto the blue group\n" +
+          "and connect them to see the effect!"
+  });
+  canvas.add(msg, 20, 20);
 });
-
 </script>
 
 </head>
 
 <body>
-<div  onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:3000px; height:3000px; ">
+<div id="container">
+  <div id="toolbar">
+    <button id="undoBtn" onclick="undo()" disabled>↩ Undo</button>
+    <button id="redoBtn" onclick="redo()" disabled>↪ Redo</button>
+  </div>
+  <div id="scrollarea">
+    <div id="gfx_holder"></div>
+  </div>
 </div>
-
 </body>
 </html>

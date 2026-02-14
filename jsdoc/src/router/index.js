@@ -513,6 +513,11 @@ const routes = [
         component: () => import(/* webpackChunkName: "api_draw2d_shape_composite" */ '../views/package.vue')
       },
       {
+        path: '/api/draw2d/shape/composite/collapsiblejailhouse',
+        props: { className: 'draw2d.shape.composite.CollapsibleJailhouse' },
+        component: () => import(/* webpackChunkName: "api_draw2d_shape_composite_collapsiblejailhouse" */ '../views/clazz.vue')
+      },
+      {
         path: '/api/draw2d/shape/composite/composite',
         props: { className: 'draw2d.shape.composite.Composite' },
         component: () => import(/* webpackChunkName: "api_draw2d_shape_composite_composite" */ '../views/clazz.vue')

@@ -97,7 +97,7 @@ var jsonDocument =
       "type": "draw2d.shape.composite.CollapsibleJailhouse",
       "id": "6b19ac35-562b-3902-9483-ec3b9e19",
       "x": 207,
-      "y": 162,
+      "y": 262,
       "width": 150,
       "height": 200,
       "alpha": 1,
