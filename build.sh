@@ -93,6 +93,10 @@ echo "=== Deploying to docs/ ==="
 rm -rf ./docs/
 cp -r ./jsdoc/dist/ ./docs
 
+# Replace @VERSION@ in all JS files in docs
+echo "Replacing @VERSION@ with $VERSION in docs/js/*.js..."
+find ./docs/js -name "*.js" -exec sed -i '' "s/@VERSION@/$VERSION/g" {} \;
+
 # Show final version
 echo ""
 echo "=== Build complete! ==="

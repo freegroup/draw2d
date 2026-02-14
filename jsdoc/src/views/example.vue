@@ -66,6 +66,7 @@ export default {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  border: 1px solid lightgray;
 }
 
 .example-header {

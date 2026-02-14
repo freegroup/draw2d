@@ -1,45 +1,83 @@
 <template>
-  <v-app class="beemusic-app">
-    <v-app-bar app
-               clipped-left
-               height="56"
-               flat
-               class="beemusic-header">
-      <div class="header-content">
-        <div class="d-flex align-center">
-          <v-img
-            alt="Draw2D Logo"
-            class="shrink mr-3"
-            contain
-            src="./assets/logo.svg"
-            transition="scale-transition"
-            width="28"
-          />
-          <span class="header-title">Draw2D JavaScript graph and diagramming lib</span>
+  <v-app>
+    <!-- Hauptbereich mit AppBar oben -->
+    <v-app-bar
+      app
+      clipped-left
+      height="100"
+      extension-height="50"
+      flat
+      dark
+      color="#1a1a2e"
+      :style="{ background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)' }"
+    >
+      <!-- Hauptbereich der AppBar -->
+      <v-toolbar-title class="d-flex align-center">
+        <v-img
+          alt="Draw2D Logo"
+          contain
+          src="./assets/logo.svg"
+          max-width="36"
+          class="mr-3"
+        />
+        <div class="d-flex flex-column">
+          <span class="text-h6 font-weight-bold white--text">Draw2D</span>
+          <span class="caption white--text text--lighten-2" style="opacity: 0.7">
+            Interactive diagrams & visual editing
+          </span>
         </div>
-        <v-spacer></v-spacer>
-        <a href="https://github.com/freegroup/draw2d/releases/latest" target="_blank" class="release-btn">
-          <span>Latest Release</span>
-          <v-icon small class="ml-1">open_in_new</v-icon>
-        </a>
-      </div>
+      </v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
+      <!-- GitHub Link -->
+      <v-btn
+        href="https://github.com/freegroup/draw2d"
+        target="_blank"
+        text
+        class="mr-2"
+      >
+        <v-icon left small>mdi-github</v-icon>GitHub
+      </v-btn>
+
+      <!-- Release Button -->
+      <v-btn
+        href="https://github.com/freegroup/draw2d/releases/latest"
+        target="_blank"
+        rounded
+        small
+        color="#667eea"
+        class="font-weight-bold"
+      >
+        v@VERSION@
+        <v-icon right small>mdi-open-in-new</v-icon>
+      </v-btn>
+
+      <!-- Extension Slot für Tabs -->
       <template v-slot:extension>
-        <div class="tabs-container">
-          <router-link to="/api" class="nav-tab" :class="{ active: $route.path.startsWith('/api') }">
-            API
-          </router-link>
-          <router-link to="/examples" class="nav-tab" :class="{ active: $route.path.startsWith('/examples') }">
-            Examples
-          </router-link>
-        </div>
+        <v-tabs
+          background-color="white"
+          color="#1a1a2e"
+          slider-color="#1a1a2e"
+        >
+          <v-tab to="/api" class="tab-item">
+            <v-icon left small>mdi-book-open-variant</v-icon>API Reference
+          </v-tab>
+
+          <v-tab to="/examples" class="tab-item">
+            <v-icon left small>mdi-view-grid</v-icon>Examples
+          </v-tab>
+
+        </v-tabs>
       </template>
     </v-app-bar>
 
-    <v-content class="main-content">
-      <v-container fluid ma-0 pa-0 fill-height>
+    <!-- Hauptinhalt -->
+    <v-main>
+      <v-container fluid class="pt-5 fill-height">
         <router-view></router-view>
       </v-container>
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 
@@ -51,87 +89,32 @@ export default {
 </script>
 
 <style>
-/* BeeMusic-inspired App Styles */
-.beemusic-app {
-  background: #f8f9fa !important;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.v-application {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
 }
 
-.beemusic-header {
-  background: white !important;
-  border-bottom: 1px solid #eee !important;
-  box-shadow: none !important;
+/* Schatten für AppBar */
+.v-app-bar {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
 }
 
-.header-content {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  padding: 0 8px;
-}
-
-.header-title {
-  color: #1a1a2e;
-  font-size: 20px;
+/* Tabs styling */
+.v-tabs .v-tab {
+  text-transform: none;
   font-weight: 500;
-  letter-spacing: -0.5px;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  letter-spacing: 0;
+  color: rgba(0, 0, 0, 0.6) !important;
 }
 
-.release-btn {
-  display: flex;
-  align-items: center;
-  color: #667eea;
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 500;
-  padding: 8px 16px;
-  border-radius: 20px;
-  background: rgba(102, 126, 234, 0.1);
-  transition: all 0.2s;
-}
-
-.release-btn:hover {
-  background: rgba(102, 126, 234, 0.2);
-}
-
-.tabs-container {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  width: 100%;
-  background: #f8f9fa;
-  border-top: 1px solid #eee;
-}
-
-.nav-tab {
-  color: #666;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  padding: 10px 20px;
-  border-radius: 10px;
-  transition: all 0.2s ease;
-  background: transparent;
-}
-
-.nav-tab:hover {
-  background: #e9ecef;
-  color: #333;
-}
-
-.nav-tab.active {
-  color: white;
-  background: #1a1a2e;
+.v-tabs .v-tab--active {
   font-weight: 600;
+  color: #1a1a2e !important;
 }
 
-.main-content {
-  background: transparent !important;
-}
-
-/* Override Vuetify defaults */
-.v-toolbar__extension {
-  padding: 0 !important;
+/* Main content spacing - add extra margin below the app bar */
+.v-main__wrap {
+  margin-top: 20px;
 }
 </style>

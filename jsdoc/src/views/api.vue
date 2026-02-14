@@ -1,5 +1,5 @@
 <template>
-  <div style="width:100%">
+  <div style="width:100%" class="mt-5">
     <Navigation/>
     <router-view></router-view>
   </div>

@@ -73,6 +73,7 @@ export default {
 .nav-sidebar {
   background: white !important;
   border-right: 1px solid #eee !important;
+  padding-top: 20px !important;
 }
 
 .sidebar-header {
