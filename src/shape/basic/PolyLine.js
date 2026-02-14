@@ -424,7 +424,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
    **/
   getLength: function () {
     let result = 0
-    this.lineSegments.each( segment => {
+    this.lineSegments.each( (i, segment) => {
       let p1 = segment.start
       let p2 = segment.end
       result += Math.sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y))
@@ -457,7 +457,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
       segment = null
     let lastDist = Number.MAX_SAFE_INTEGER
     let pt = new draw2d.geo.Point(px, py)
-    this.lineSegments.each( segment => {
+    this.lineSegments.each( (i, segment) => {
       p1 = segment.start
       p2 = segment.end
       projection = draw2d.geo.Line.pointProjection(p1.x, p1.y, p2.x, p2.y, pt.x, pt.y)
@@ -473,7 +473,7 @@ draw2d.shape.basic.PolyLine = draw2d.shape.basic.Line.extend(
 
     if (result !== null) {
       let length = 0
-      this.lineSegments.each( segment => {
+      this.lineSegments.each( (i, segment) => {
         length += segment.start.distance(segment.end)
       })
       let segment = this.lineSegments.get(result.index)
