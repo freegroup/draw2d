@@ -60,8 +60,8 @@ document.addEventListener("DOMContentLoaded",function () {
      }));
 
      // create and add two Node which contains Ports (In and OUT)
-	 var start  = new draw2d.shape.node.Start({x:50, y:250});
-	 var endNode= new draw2d.shape.node.End({x:230, y:150});
+	 var start  = new draw2d.shape.node.Start({x:50, y:150});
+	 var endNode= new draw2d.shape.node.End({x:230, y:250});
 
 	 canvas.add( start);
 	 canvas.add( endNode);
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded",function () {
 	 // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
 	 /////////////////////////////////////////////////////////////////////
 
-	 var msg = new draw2d.shape.note.PostIt({text:"connect two ports to se a dotted line as connection."});
+	 var msg = new draw2d.shape.note.PostIt({text:"Custom Connection Styles:\nDrag from port to port to create a dashed connection.\n\nConnection properties:\n• dasharray: '- ' (dash pattern)\n• stroke: 3 (line width)\n\nUseful for:\n• Optional relationships\n• Temporary connections\n• Visual differentiation"});
 	 canvas.add(msg, 20,20);
 
 	 $("body").scrollTop(0)
