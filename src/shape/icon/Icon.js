@@ -59,15 +59,19 @@ draw2d.shape.icon.Icon = draw2d.SetFigure.extend(
     }
     else {
       trans.push("T" + (-this.offsetX) + "," + (-this.offsetY))
-
     }
-    if (this.isResizeable() === true) {
+
+    // Apply scaling if width/height differ from original SVG dimensions.
+    // This ensures the SVG is rendered at the requested size.
+    // The original resizeable check prevented scaling for non-resizeable icons,
+    // but that caused icons to render at their native SVG size (~30x30) instead
+    // of the requested size (e.g., 15x15).
+    if (this.scaleX !== 1 || this.scaleY !== 1) {
       trans.push(
         "T" + this.getAbsoluteX() + "," + this.getAbsoluteY() +
         "S" + this.scaleX + "," + this.scaleY + "," + this.getAbsoluteX() + "," + this.getAbsoluteY()
       )
-    }
-    else {
+    } else {
       trans.push("T" + this.getAbsoluteX() + "," + this.getAbsoluteY())
     }
 
