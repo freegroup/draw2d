@@ -1,29 +1,100 @@
-﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+﻿<!DOCTYPE html>
+<html>
 <head>
-<title></title>
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="viewport" content="width=device-width, minimum-scale=1.0" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Basic Shapes Gallery</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
   <link type="text/css" rel="stylesheet" href="./css/example.css" />
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;  /* Verhindert Body/Window Scroll */
+    }
+    #container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+    }
+    #toolbar {
+      flex-shrink: 0;
+      height: 40px;
+      background: linear-gradient(to bottom, #f8f8f8 0%, #e0e0e0 100%);
+      border-bottom: 1px solid #ccc;
+      padding: 5px 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    #toolbar button {
+      padding: 5px 15px;
+      border: 1px solid #999;
+      border-radius: 4px;
+      background: linear-gradient(to bottom, #fff 0%, #e8e8e8 100%);
+      cursor: pointer;
+    }
+    #toolbar button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    #toolbar button:hover:not(:disabled) {
+      background: linear-gradient(to bottom, #fff 0%, #d8d8d8 100%);
+    }
+    #scrollarea {
+      flex: 1;
+      overflow: auto;
+      background-color: #FAFAFA;
+      position: relative;
+    }
+    #gfx_holder {
+      min-width: 3000px;
+      min-height: 3000px;
+      width: 3000px;
+      height: 3000px;
+    }
+  </style>
 
   <script src="./lib/jquery.js"></script>
   <script src="./lib/jquery-ui.js"></script>
-
   <script src="../draw2d.js"></script>
 
 <script type="text/javascript">
-
 var textFigure = null;
 var canvas = null;
-var label=null;
+var label = null;
 var line = null;
 var circle = null;
-document.addEventListener("DOMContentLoaded",function () {
 
-    // create the canvas for the user interaction
-    //
+function undo() {
+  canvas.getCommandStack().undo();
+}
+
+function redo() {
+  canvas.getCommandStack().redo();
+}
+
+function updateButtons() {
+  document.getElementById('undoBtn').disabled = !canvas.getCommandStack().canUndo();
+  document.getElementById('redoBtn').disabled = !canvas.getCommandStack().canRedo();
+}
+
+document.addEventListener("DOMContentLoaded", function() {
     canvas = new draw2d.Canvas("gfx_holder");
+    canvas.setScrollArea("#gfx_holder");
+    
+    
+    canvas.getCommandStack().addEventListener(function(e) {
+      updateButtons();
+      if(e.isPostChangeEvent()){
+        displayJSON(canvas);
+      }
+    });
+    updateButtons();
     canvas.installEditPolicy(new draw2d.policy.canvas.FadeoutDecorationPolicy());
     canvas.installEditPolicy(new draw2d.policy.canvas.SnapToGridEditPolicy())
 
@@ -84,7 +155,6 @@ document.addEventListener("DOMContentLoaded",function () {
             }
         ]
     }];
-    // create a default JSON reader
     var reader = new draw2d.io.json.Reader();
     reader.unmarshal(canvas, lineJson);
 
@@ -93,30 +163,7 @@ document.addEventListener("DOMContentLoaded",function () {
     line.setVertices([{x:10,y:10},{x:80,y:70},{x:100,y:110}]);
     canvas.add(line);
 
-    // display the SVG into the preview DIV
-	//
-	displayJSON(canvas);
-
-
-
-
-    /* just for debug purpose
-    var policy = new draw2d.policy.canvas.SingleSelectionPolicy();
-    policy.onClick= function(figure, position){
-        if(figure!=null)
-            figure.toFront();
-    };
-    canvas.installEditPolicy(policy);
-    */
-
-	  // add an event listener to the Canvas for change notifications.
-	  // We just dump the current canvas document into the DIV
-	  //
-	  canvas.getCommandStack().addEventListener(function(e){
-	      if(e.isPostChangeEvent()){
-	          displayJSON(canvas);
-	      }
-	  });
+    displayJSON(canvas);
 
     canvas.on("mousemove",function(emitter, event){
         var projection =line.pointProjection(event.x,event.y);
@@ -140,7 +187,11 @@ function displayJSON(canvas){
 </head>
 
 <body>
-<div  onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:3000px; height:3000px;">
+<div id="toolbar">
+  <button id="undoBtn" onclick="undo()" disabled>↩ Undo</button>
+  <button id="redoBtn" onclick="redo()" disabled>↪ Redo</button>
+</div>
+<div onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:3000px; height:3000px;">
 </div>
 
 <pre id="json" style="overflow:auto;position:absolute; top:10px; right:10px; width:450; height:500;background:white;border:1px solid gray">

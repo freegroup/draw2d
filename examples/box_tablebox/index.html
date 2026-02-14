@@ -8,16 +8,25 @@
 
   <link type="text/css" rel="stylesheet" href="./css/example.css" />
   <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;  /* Verhindert Body/Window Scroll */
+    }
+    #container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+    }
     #toolbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      flex-shrink: 0;
       height: 40px;
       background: linear-gradient(to bottom, #f8f8f8 0%, #e0e0e0 100%);
       border-bottom: 1px solid #ccc;
       padding: 5px 10px;
-      z-index: 1000;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -36,12 +45,17 @@
     #toolbar button:hover:not(:disabled) {
       background: linear-gradient(to bottom, #fff 0%, #d8d8d8 100%);
     }
-    #toolbar .title {
-      font-weight: bold;
-      margin-right: 20px;
+    #scrollarea {
+      flex: 1;
+      overflow: auto;
+      background-color: #FAFAFA;
+      position: relative;
     }
     #gfx_holder {
-      margin-top: 50px;
+      min-width: 3000px;
+      min-height: 3000px;
+      width: 3000px;
+      height: 3000px;
     }
   </style>
 
@@ -67,6 +81,7 @@ function updateButtons() {
 
 document.addEventListener("DOMContentLoaded", function() {
   canvas = new draw2d.Canvas("gfx_holder");
+  canvas.setScrollArea("#gfx_holder");
   
   // Listen to command stack changes
   canvas.getCommandStack().addEventListener(function(e) {
@@ -76,9 +91,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Example 1: Simple table with addRow()
   var table1 = new draw2d.shape.box.TableBox({
-    bgColor: "#E8F5E9",
-    stroke: 2,
-    color: "#4CAF50"
+    bgColor: "#f8fafc",
+    stroke: 1,
+    color: "#64748b",
+    radius: 8
   });
   
   // Add rows - strings are auto-converted to Labels
@@ -95,16 +111,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Example 2: Mixed content table
   var table2 = new draw2d.shape.box.TableBox({
-    bgColor: "#E3F2FD",
-    stroke: 2,
-    color: "#2196F3",
-    cellPadding: 8
+    bgColor: "#fefefe",
+    stroke: 1,
+    color: "#3b82f6",
+    cellPadding: 8,
+    radius: 8
   });
   
   // Header row with styled labels
-  var header1 = new draw2d.shape.basic.Label({text: "Product", bgColor: "#1976D2", fontColor: "#FFFFFF", bold: true});
-  var header2 = new draw2d.shape.basic.Label({text: "Price", bgColor: "#1976D2", fontColor: "#FFFFFF", bold: true});
-  var header3 = new draw2d.shape.basic.Label({text: "Qty", bgColor: "#1976D2", fontColor: "#FFFFFF", bold: true});
+  var header1 = new draw2d.shape.basic.Label({text: "Product", bgColor: "#3b82f6", fontColor: "#FFFFFF", bold: true});
+  var header2 = new draw2d.shape.basic.Label({text: "Price", bgColor: "#3b82f6", fontColor: "#FFFFFF", bold: true});
+  var header3 = new draw2d.shape.basic.Label({text: "Qty", bgColor: "#3b82f6", fontColor: "#FFFFFF", bold: true});
   table2.addRow(header1, header2, header3);
   
   // Data rows
@@ -117,15 +134,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Example 3: Styled table with icons
   var table3 = new draw2d.shape.box.TableBox({
-    bgColor: "#FFF3E0",
-    stroke: 2,
-    color: "#FF9800",
-    cellPadding: 6
+    bgColor: "#fefce8",
+    stroke: 1,
+    color: "#eab308",
+    cellPadding: 6,
+    radius: 8
   });
   
-  var icon1 = new draw2d.shape.icon.User({width: 15, height: 15, color: "#E65100", resizeable: false});
-  var icon2 = new draw2d.shape.icon.Mail({width: 15, height: 15, color: "#E65100", resizeable: false});
-  var icon3 = new draw2d.shape.icon.Phone({width: 15, height: 15, color: "#E65100", resizeable: false});
+  // Icons: 15x15 Größe, resizeable: false verhindert dass das Layout sie verkleinert
+  var icon1 = new draw2d.shape.icon.User({width: 15, height: 15, color: "#ca8a04", resizeable: false});
+  var icon2 = new draw2d.shape.icon.Mail({width: 15, height: 15, color: "#ca8a04", resizeable: false});
+  var icon3 = new draw2d.shape.icon.Phone({width: 15, height: 15, color: "#ca8a04", resizeable: false});
   
   table3.addRow(icon1, new draw2d.shape.basic.Label({text: "Contact Person"}));
   table3.addRow(icon2, new draw2d.shape.basic.Label({text: "support@example.com"}));
@@ -148,12 +167,14 @@ document.addEventListener("DOMContentLoaded", function() {
 </head>
 
 <body>
-<div id="toolbar">
-  <span class="title">TableBox Example</span>
-  <button id="undoBtn" onclick="undo()" disabled>↩ Undo</button>
-  <button id="redoBtn" onclick="redo()" disabled>↪ Redo</button>
-</div>
-<div onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:3000px; height:3000px;">
+<div id="container">
+  <div id="toolbar">
+    <button id="undoBtn" onclick="undo()" disabled>↩ Undo</button>
+    <button id="redoBtn" onclick="redo()" disabled>↪ Redo</button>
+  </div>
+  <div id="scrollarea">
+    <div id="gfx_holder" style="width:3000px; height:3000px;"></div>
+  </div>
 </div>
 </body>
 </html>

@@ -8,16 +8,25 @@
 
   <link type="text/css" rel="stylesheet" href="./css/example.css" />
   <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;  /* Verhindert Body/Window Scroll */
+    }
+    #container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+    }
     #toolbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      flex-shrink: 0;
       height: 40px;
       background: linear-gradient(to bottom, #f8f8f8 0%, #e0e0e0 100%);
       border-bottom: 1px solid #ccc;
       padding: 5px 10px;
-      z-index: 1000;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -36,12 +45,17 @@
     #toolbar button:hover:not(:disabled) {
       background: linear-gradient(to bottom, #fff 0%, #d8d8d8 100%);
     }
-    #toolbar .title {
-      font-weight: bold;
-      margin-right: 20px;
+    #scrollarea {
+      flex: 1;
+      overflow: auto;
+      background-color: #FAFAFA;
+      position: relative;
     }
     #gfx_holder {
-      margin-top: 50px;
+      min-width: 3000px;
+      min-height: 3000px;
+      width: 3000px;
+      height: 3000px;
     }
   </style>
 
@@ -67,6 +81,7 @@ function updateButtons() {
 
 document.addEventListener("DOMContentLoaded", function() {
   canvas = new draw2d.Canvas("gfx_holder");
+  canvas.setScrollArea("#gfx_holder");
   
   // Listen to command stack changes
   canvas.getCommandStack().addEventListener(function(e) {
@@ -78,17 +93,18 @@ document.addEventListener("DOMContentLoaded", function() {
   var grid1 = new draw2d.shape.box.GridBox({
     columns: "100px, grow, 80px",
     rows: "pref, pref",
-    bgColor: "#E8F5E9",
-    stroke: 2,
-    color: "#4CAF50"
+    bgColor: "#f8fafc",
+    stroke: 1,
+    color: "#10b981",
+    radius: 8
   });
   
-  grid1.add(new draw2d.shape.basic.Label({text: "Fixed 100px", bgColor: "#A5D6A7"}), {row: 0, col: 0});
-  grid1.add(new draw2d.shape.basic.Label({text: "Grows to fill", bgColor: "#81C784"}), {row: 0, col: 1});
-  grid1.add(new draw2d.shape.basic.Label({text: "Fixed 80px", bgColor: "#66BB6A"}), {row: 0, col: 2});
-  grid1.add(new draw2d.shape.basic.Label({text: "Row 2, Col 1", bgColor: "#C8E6C9"}), {row: 1, col: 0});
-  grid1.add(new draw2d.shape.basic.Label({text: "Row 2, Col 2 - this is longer", bgColor: "#C8E6C9"}), {row: 1, col: 1});
-  grid1.add(new draw2d.shape.basic.Label({text: "Row 2", bgColor: "#C8E6C9"}), {row: 1, col: 2});
+  grid1.add(new draw2d.shape.basic.Label({text: "Fixed 100px", bgColor: "#d1fae5"}), {row: 0, col: 0});
+  grid1.add(new draw2d.shape.basic.Label({text: "Grows to fill", bgColor: "#a7f3d0"}), {row: 0, col: 1});
+  grid1.add(new draw2d.shape.basic.Label({text: "Fixed 80px", bgColor: "#6ee7b7"}), {row: 0, col: 2});
+  grid1.add(new draw2d.shape.basic.Label({text: "Row 2, Col 1", bgColor: "#ecfdf5"}), {row: 1, col: 0});
+  grid1.add(new draw2d.shape.basic.Label({text: "Row 2, Col 2 - this is longer", bgColor: "#ecfdf5"}), {row: 1, col: 1});
+  grid1.add(new draw2d.shape.basic.Label({text: "Row 2", bgColor: "#ecfdf5"}), {row: 1, col: 2});
 
   // Add ports
   grid1.createPort("input");
@@ -100,17 +116,18 @@ document.addEventListener("DOMContentLoaded", function() {
   var grid2 = new draw2d.shape.box.GridBox({
     columns: "80px, 80px, 80px",
     rows: "pref, pref, pref",
-    bgColor: "#E3F2FD",
-    stroke: 2,
-    color: "#2196F3"
+    bgColor: "#fefefe",
+    stroke: 1,
+    color: "#8b5cf6",
+    radius: 8
   });
 
-  grid2.add(new draw2d.shape.basic.Label({text: "Col Span 2", bgColor: "#90CAF9"}), {row: 0, col: 0, colspan: 2});
-  grid2.add(new draw2d.shape.basic.Label({text: "Normal", bgColor: "#64B5F6"}), {row: 0, col: 2});
-  grid2.add(new draw2d.shape.basic.Label({text: "Left", bgColor: "#BBDEFB"}), {row: 1, col: 0, align: "left"});
-  grid2.add(new draw2d.shape.basic.Label({text: "Center", bgColor: "#BBDEFB"}), {row: 1, col: 1, align: "center"});
-  grid2.add(new draw2d.shape.basic.Label({text: "Right", bgColor: "#BBDEFB"}), {row: 1, col: 2, align: "right"});
-  grid2.add(new draw2d.shape.basic.Label({text: "Row Span 2", bgColor: "#42A5F5"}), {row: 1, col: 0, rowspan: 2});
+  grid2.add(new draw2d.shape.basic.Label({text: "Col Span 2", bgColor: "#c4b5fd"}), {row: 0, col: 0, colspan: 2});
+  grid2.add(new draw2d.shape.basic.Label({text: "Normal", bgColor: "#a78bfa"}), {row: 0, col: 2});
+  grid2.add(new draw2d.shape.basic.Label({text: "Left", bgColor: "#ddd6fe"}), {row: 1, col: 0, align: "left"});
+  grid2.add(new draw2d.shape.basic.Label({text: "Center", bgColor: "#ddd6fe"}), {row: 1, col: 1, align: "center"});
+  grid2.add(new draw2d.shape.basic.Label({text: "Right", bgColor: "#ddd6fe"}), {row: 1, col: 2, align: "right"});
+  grid2.add(new draw2d.shape.basic.Label({text: "Row Span 2", bgColor: "#8b5cf6", fontColor: "#fff"}), {row: 1, col: 0, rowspan: 2});
   
   canvas.add(grid2, 50, 200);
 
@@ -118,17 +135,18 @@ document.addEventListener("DOMContentLoaded", function() {
   var formGrid = new draw2d.shape.box.GridBox({
     columns: "pref, grow",
     rows: "pref, pref, pref",
-    bgColor: "#FFF3E0",
-    stroke: 2,
-    color: "#FF9800"
+    bgColor: "#fef2f2",
+    stroke: 1,
+    color: "#f43f5e",
+    radius: 8
   });
 
-  formGrid.add(new draw2d.shape.basic.Label({text: "Name:", fontColor: "#E65100"}), {row: 0, col: 0});
-  formGrid.add(new draw2d.shape.basic.Label({text: "John Doe", bgColor: "#FFE0B2", resizeable: true}), {row: 0, col: 1});
-  formGrid.add(new draw2d.shape.basic.Label({text: "Email:", fontColor: "#E65100"}), {row: 1, col: 0});
-  formGrid.add(new draw2d.shape.basic.Label({text: "john@example.com", bgColor: "#FFE0B2", resizeable: true}), {row: 1, col: 1});
-  formGrid.add(new draw2d.shape.basic.Label({text: "Phone:", fontColor: "#E65100"}), {row: 2, col: 0});
-  formGrid.add(new draw2d.shape.basic.Label({text: "+1 555 123 4567", bgColor: "#FFE0B2", resizeable: true}), {row: 2, col: 1});
+  formGrid.add(new draw2d.shape.basic.Label({text: "Name:", fontColor: "#be123c"}), {row: 0, col: 0});
+  formGrid.add(new draw2d.shape.basic.Label({text: "John Doe", bgColor: "#fecdd3", resizeable: true}), {row: 0, col: 1});
+  formGrid.add(new draw2d.shape.basic.Label({text: "Email:", fontColor: "#be123c"}), {row: 1, col: 0});
+  formGrid.add(new draw2d.shape.basic.Label({text: "john@example.com", bgColor: "#fecdd3", resizeable: true}), {row: 1, col: 1});
+  formGrid.add(new draw2d.shape.basic.Label({text: "Phone:", fontColor: "#be123c"}), {row: 2, col: 0});
+  formGrid.add(new draw2d.shape.basic.Label({text: "+1 555 123 4567", bgColor: "#fecdd3", resizeable: true}), {row: 2, col: 1});
 
   // Add ports
   formGrid.createPort("input");
@@ -147,12 +165,14 @@ document.addEventListener("DOMContentLoaded", function() {
 </head>
 
 <body>
-<div id="toolbar">
-  <span class="title">GridBox Example</span>
-  <button id="undoBtn" onclick="undo()" disabled>↩ Undo</button>
-  <button id="redoBtn" onclick="redo()" disabled>↪ Redo</button>
-</div>
-<div onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:3000px; height:3000px;">
+<div id="container">
+  <div id="toolbar">
+    <button id="undoBtn" onclick="undo()" disabled>↩ Undo</button>
+    <button id="redoBtn" onclick="redo()" disabled>↪ Redo</button>
+  </div>
+  <div id="scrollarea">
+    <div id="gfx_holder" style="width:3000px; height:3000px;"></div>
+  </div>
 </div>
 </body>
 </html>

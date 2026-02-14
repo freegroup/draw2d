@@ -1,6 +1,7 @@
-﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<!DOCTYPE html>
+<html>
 <head>
-<title></title>
+<title>Database Table Example</title>
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -9,8 +10,6 @@
 
   <script src="./lib/jquery.js"></script>
   <script src="./lib/jquery-ui.js"></script>
-  <script src="./lib/jquery.browser.js"></script>
-
   <script src="../draw2d.js"></script>
 
     <script src="./app/Application.js"></script>
@@ -20,16 +19,6 @@
 
     <script src="document.js"></script>
 
-	<style>
-	.draw2d_InputPort{
-	   fill:#F7F7F7;
-	   stroke:#d7d7d7;
-	}
-    .draw2d_OutputPort{
-       fill:#F7F7F7;
-       stroke:#d7d7d7;
-    }
-	</style>
 <script type="text/javascript">
 
 /**
@@ -59,6 +48,8 @@ document.addEventListener("DOMContentLoaded",function () {
             return connection;
         }
     }));
+        app.view.setScrollArea(document.body);
+    
 
 
     // unmarshal the JSON document into the canvas
@@ -71,6 +62,16 @@ document.addEventListener("DOMContentLoaded",function () {
 
 </script>
 
+<style>
+  .draw2d_InputPort {
+    fill: #F7F7F7;
+    stroke: #d7d7d7;
+  }
+  .draw2d_OutputPort {
+    fill: #F7F7F7;
+    stroke: #d7d7d7;
+  }
+</style>
 </head>
 
 <body id="container">

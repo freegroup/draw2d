@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 90">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc"/>
+      <stop offset="100%" style="stop-color:#e2e8f0"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect x="5" y="5" width="110" height="80" rx="6" fill="url(#bgGrad)" stroke="#94a3b8" stroke-width="1"/>
+  
+  <!-- Grid lines - vertical -->
+  <line x1="40" y1="10" x2="40" y2="80" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="2,2"/>
+  <line x1="80" y1="10" x2="80" y2="80" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="2,2"/>
+  
+  <!-- Grid lines - horizontal -->
+  <line x1="10" y1="35" x2="110" y2="35" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="2,2"/>
+  <line x1="10" y1="60" x2="110" y2="60" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="2,2"/>
+  
+  <!-- Cells with content -->
+  <rect x="12" y="12" width="24" height="18" rx="3" fill="#10b981"/>
+  <rect x="44" y="12" width="32" height="18" rx="3" fill="#6ee7b7"/>
+  <rect x="84" y="12" width="22" height="18" rx="3" fill="#a7f3d0"/>
+  
+  <rect x="12" y="40" width="64" height="15" rx="3" fill="#8b5cf6"/>
+  <rect x="84" y="40" width="22" height="15" rx="3" fill="#c4b5fd"/>
+  
+  <rect x="12" y="64" width="24" height="18" rx="3" fill="#f43f5e"/>
+  <rect x="44" y="64" width="32" height="18" rx="3" fill="#fecdd3"/>
+  <rect x="84" y="64" width="22" height="18" rx="3" fill="#fecdd3"/>
+  
+  <!-- Ports -->
+  <circle cx="5" cy="45" r="4" fill="#64748b"/>
+  <circle cx="115" cy="45" r="4" fill="#64748b"/>
+</svg>

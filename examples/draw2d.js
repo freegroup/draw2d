@@ -34140,7 +34140,7 @@ _packages.default.shape.basic.PolyLine = _packages.default.shape.basic.Line.exte
    **/
   getLength: function () {
     let result = 0;
-    this.lineSegments.each(segment => {
+    this.lineSegments.each((i, segment) => {
       let p1 = segment.start;
       let p2 = segment.end;
       result += Math.sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y));
@@ -34169,7 +34169,7 @@ _packages.default.shape.basic.PolyLine = _packages.default.shape.basic.Line.exte
       segment = null;
     let lastDist = Number.MAX_SAFE_INTEGER;
     let pt = new _packages.default.geo.Point(px, py);
-    this.lineSegments.each(segment => {
+    this.lineSegments.each((i, segment) => {
       p1 = segment.start;
       p2 = segment.end;
       projection = _packages.default.geo.Line.pointProjection(p1.x, p1.y, p2.x, p2.y, pt.x, pt.y);
@@ -34184,7 +34184,7 @@ _packages.default.shape.basic.PolyLine = _packages.default.shape.basic.Line.exte
     });
     if (result !== null) {
       let length = 0;
-      this.lineSegments.each(segment => {
+      this.lineSegments.each((i, segment) => {
         length += segment.start.distance(segment.end);
       });
       let segment = this.lineSegments.get(result.index);
@@ -42867,7 +42867,13 @@ _packages.default.shape.icon.Icon = _packages.default.SetFigure.extend(/** @lend
     } else {
       trans.push("T" + -this.offsetX + "," + -this.offsetY);
     }
-    if (this.isResizeable() === true) {
+
+    // Apply scaling if width/height differ from original SVG dimensions.
+    // This ensures the SVG is rendered at the requested size.
+    // The original resizeable check prevented scaling for non-resizeable icons,
+    // but that caused icons to render at their native SVG size (~30x30) instead
+    // of the requested size (e.g., 15x15).
+    if (this.scaleX !== 1 || this.scaleY !== 1) {
       trans.push("T" + this.getAbsoluteX() + "," + this.getAbsoluteY() + "S" + this.scaleX + "," + this.scaleY + "," + this.getAbsoluteX() + "," + this.getAbsoluteY());
     } else {
       trans.push("T" + this.getAbsoluteX() + "," + this.getAbsoluteY());
