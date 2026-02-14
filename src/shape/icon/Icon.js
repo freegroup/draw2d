@@ -20,12 +20,12 @@ draw2d.shape.icon.Icon = draw2d.SetFigure.extend(
    * @param {Object} attr the configuration of the shape
    */
   init: function (attr, setter, getter) {
-    this._super(extend({
+    this._super( {
       width: 50,
       height: 50,
       color:"#333333",
       bgColor:null
-    }, attr), setter, getter)
+    , ...attr}, setter, getter)
     this.keepAspectRatio = false
   },
 

@@ -49,7 +49,7 @@ draw2d.shape.analog.VoltageSupplyHorizontal = draw2d.SVGFigure.extend(
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {
-    this._super(extend({width: 50, height: 30}, attr), setter, getter)
+    this._super({width: 50, height: 30, ...attr}, setter, getter)
 
     this.createPort("hybrid", new this.MyInputPortLocator())  // GND
     this.createPort("hybrid", new this.MyOutputPortLocator()) // VCC

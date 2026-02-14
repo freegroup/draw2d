@@ -39,16 +39,16 @@ draw2d.shape.node.Hub = draw2d.shape.basic.Rectangle.extend(
           bgColor: this.BACKGROUND_COLOR, 
           ...attr
         },
-        extend({
+        {
           // deprecated
           label: this.setLabel,
           // @attr {String} text the text to display in the center of the hub */
           text: this.setLabel
-        }, setter),
-        extend({
+        , setter},
+        {
           label: this.getLabel,
           text: this.getLabel
-        }, getter))
+        , getter})
 
       let _port = this.port = this.createPort("hybrid", new draw2d.layout.locator.CenterLocator())
 

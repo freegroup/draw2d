@@ -31,7 +31,7 @@ draw2d.shape.basic.Diamond = draw2d.shape.basic.Polygon.extend(
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {
-    this._super(extend({bgColor: "#00a3f6", color: "#1B1B1B"}, attr), setter, getter)
+    this._super( {bgColor: "#00a3f6", color: "#1B1B1B", ...attr}, setter, getter)
 
     let pos = this.getPosition()
 

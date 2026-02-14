@@ -50,7 +50,7 @@ draw2d.shape.analog.ResistorVertical = draw2d.SetFigure.extend(
    */
   init: function (attr, setter, getter) {
 
-    this._super(extend({width: 30, height: 50, bgColor: null}, attr), setter, getter)
+    this._super({width: 30, height: 50, bgColor: null, ...attr}, setter, getter)
 
     this.inputLocator = new this.MyInputPortLocator()
     this.outputLocator = new this.MyOutputPortLocator()

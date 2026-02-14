@@ -60,7 +60,7 @@ import draw2d from '../../packages'
  *         //
  *        init: function(attr, setter, getter)
  *        {
- *           this._super(extend({
+ *           this._super( {
  *                columns:"10px, grow, 10px",
  *                rows:   "grow",
  *                bgColor:"#FFFFFF",

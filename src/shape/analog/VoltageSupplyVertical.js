@@ -49,7 +49,7 @@ draw2d.shape.analog.VoltageSupplyVertical = draw2d.SVGFigure.extend(
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {
-    this._super(extend({width: 30, height: 50}, attr), setter, getter)
+    this._super({width: 30, height: 50, ...attr}, setter, getter)
 
     this.inputLocator = new this.MyInputPortLocator()
     this.outputLocator = new this.MyOutputPortLocator()

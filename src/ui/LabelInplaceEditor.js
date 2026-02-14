@@ -36,14 +36,14 @@ draw2d.ui.LabelInplaceEditor = draw2d.ui.LabelEditor.extend(
       this._super();
 
       // register some default listener and override this with the handover one
-      this.listener = extend({
+      this.listener = {
         onCommit: function () {
         },
         onCancel: function () {
         },
         onStart: function () {
         }
-      }, listener);
+      , ...listener};
     },
 
     /**

@@ -31,15 +31,20 @@ draw2d.shape.note.PostIt = draw2d.shape.basic.Label.extend(
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {
-    this._super(attr, setter, getter)
-
-    this.setStroke(1)
-    this.setBackgroundColor("#5b5b5b")
-    this.setColor("#FFFFFF")
-    this.setFontColor("#ffffff")
-    this.setFontSize(14)
-    this.setPadding(5)
-    this.setRadius(5)
+    this._super(
+      {
+        stroke: 1,
+        bgColor: "#5b5b5b",
+        color: "#FFFFFF",
+        fontColor: "#ffffff",
+        fontSize: 14,
+        padding: 5,
+        radius: 5,
+        ...attr
+      },
+      {...setter},
+      {...getter}
+    )
   }
 })
 

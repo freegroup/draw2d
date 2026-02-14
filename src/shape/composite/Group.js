@@ -26,7 +26,7 @@ draw2d.shape.composite.Group = draw2d.shape.composite.StrongComposite.extend(
      * @param {Object} [attr] the configuration of the shape
      */
     init: function (attr, setter, getter) {
-      this._super(extend({bgColor: null, color: null, resizeable: false}, attr), setter, getter)
+      this._super( {bgColor: null, color: null, resizeable: false, ...attr}, setter, getter)
 
       // used during figure assignment/unassignment. The Group is resizing during figure assignment
       // and we want avoid that already assigned figures are moving during this resize.

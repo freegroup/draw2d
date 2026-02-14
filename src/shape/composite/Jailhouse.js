@@ -27,7 +27,7 @@ draw2d.shape.composite.Jailhouse = draw2d.shape.composite.StrongComposite.extend
      */
     init: function (attr, setter, getter) {
       this.policy = new draw2d.policy.figure.RegionEditPolicy(0, 0, 10, 10)
-      this._super(extend({bgColor: "#f0f0f0", color: "#333333"}, attr), setter, getter)
+      this._super( {bgColor: "#f0f0f0", color: "#333333", ...attr}, setter, getter)
 
       this.stickFigures = false
     },

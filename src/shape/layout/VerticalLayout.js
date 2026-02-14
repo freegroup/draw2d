@@ -91,14 +91,14 @@ draw2d.shape.layout.VerticalLayout = draw2d.shape.layout.Layout.extend(
     }
 
     this._super(
-      extend({width: 10, height: 10}, attr),
-      extend({
+      {width: 10, height: 10, ...attr},
+      {
         // @attr {Number} gap the gap between the children shapes */
         gap: this.setGap
-      }, setter),
-      extend({
+      , ...setter},
+      {
         gap: this.getGap
-      }, getter))
+      , ...getter})
 
   },
 

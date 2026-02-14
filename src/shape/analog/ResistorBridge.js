@@ -52,7 +52,7 @@ draw2d.shape.analog.ResistorBridge = draw2d.SVGFigure.extend(
    */
   init: function (attr, setter, getter) {
 
-    this._super(extend({width: 50, height: 50}, attr), setter, getter)
+    this._super({width: 50, height: 50, ...attr}, setter, getter)
 
     this.inputLocator = new this.MyInputPortLocator()
     this.outputLocator = new this.MyOutputPortLocator()

@@ -40,7 +40,7 @@ draw2d.shape.state.Connection = draw2d.Connection.extend(
   DEFAULT_COLOR: new draw2d.util.Color("#4D90FE"),
 
   init: function (attr, setter, getter) {
-    this._super(extend({router: null, stroke: 2}, attr), setter, getter)
+    this._super( {router: null, stroke: 2, ...attr}, setter, getter)
 
     this.setTargetDecorator(new draw2d.decoration.connection.ArrowDecorator(17, 8))
 
@@ -83,9 +83,9 @@ draw2d.shape.state.Connection = draw2d.Connection.extend(
    * @inheritdoc
    */
   getPersistentAttributes: function () {
-    return extend(this._super(), {
+    return {...this._super(), 
       label: this.getLabel()
-    })
+    }
   },
 
   /**

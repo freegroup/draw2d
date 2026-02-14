@@ -28,7 +28,7 @@ draw2d.shape.icon.Employee = draw2d.shape.icon.Icon.extend(
    * @param {Object} attr the configuration of the shape
    */
   init: function (attr, setter, getter) {
-    this._super(extend({width: 50, height: 50}, attr), setter, getter)
+    this._super({width: 50, height: 50, ...attr}, setter, getter)
   },
 
   /**

@@ -40,16 +40,16 @@ draw2d.shape.widget.Slider = draw2d.shape.widget.Widget.extend(
         bgColor: this.DEFAULT_COLOR_BG,
         value: 50,
         ...attr},
-      extend({
+      {
         // @attr {Number} padding the padding in pixel around the text */
         padding: this.setPadding,
         // @attr {Number} value the new value of the slider. values must be in range of [0..100] */
         value: this.setValue
-      }, setter),
-      extend({
+      , ...setter},
+      {
         padding: this.getPadding,
         value: this.getValue
-      }, getter))
+      , ...getter})
 
     this.setMinHeight(15)
     this.setMinWidth(80)
@@ -108,7 +108,7 @@ draw2d.shape.widget.Slider = draw2d.shape.widget.Widget.extend(
       this.padding = {top: padding, right: padding, bottom: padding, left: padding}
     }
     else {
-      this.padding = extend(this.padding, padding)
+      this.padding = {...this.padding, ...padding}
     }
     this.repaint()
     this.fireEvent("change:padding", {value: this.padding})

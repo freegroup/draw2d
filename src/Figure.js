@@ -1,7 +1,6 @@
 import draw2d from 'packages'
 import jsonUtil from 'util/JSONUtil'
 import UUID from 'util/UUID'
-import extend from 'util/extend'
 
 /**
  * @class
@@ -2664,7 +2663,7 @@ draw2d.Figure = Class.extend(
         selectable: this.selectable,
         draggable: this.draggable,
         angle: this.rotationAngle,
-        userData: extend(true, {}, this.userData)
+        userData: this.userData ? structuredClone(this.userData) : null
       }
 
 

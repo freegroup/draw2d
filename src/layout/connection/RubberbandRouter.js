@@ -13,7 +13,7 @@ import draw2d from '../../packages'
  *
  *        init:function(attr, setter, getter)
  *        {
- *          this._super(extend({
+ *          this._super( {
  *              color: "#33691e",
  *              stroke:1,
  *              outlineStroke:0,

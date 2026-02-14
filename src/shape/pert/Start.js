@@ -48,7 +48,7 @@ draw2d.shape.pert.Start = draw2d.shape.layout.VerticalLayout.extend(
     this.darkerBgColor = this.bgColor.darker(0.2).rgba()
 
 
-    this._super(extend({bgColor: this.bgColor, stroke: 2, radius: 2, color: this.darkerBgColor}, attr), setter, getter)
+    this._super( {bgColor: this.bgColor, stroke: 2, radius: 2, color: this.darkerBgColor, ...attr}, setter, getter)
 
     // Compose the top row of the shape
     //

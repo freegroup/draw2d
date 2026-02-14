@@ -5,7 +5,7 @@ export default draw2d;
 import raph from 'lib/raphael.exec.js'
 import cl   from 'lib/Class.exec.js'
 import path from 'lib/pathfinding.exec.js'
-
+import md   from 'lib/markdown-it.js'
 
 require('./util/raphael_ext');
 require('./util/Polyfill');
@@ -200,6 +200,32 @@ require('./shape/node/Start');
 require('./shape/node/End');
 require('./shape/node/Between');
 require('./shape/note/PostIt');
+require('./shape/note/Markdown');
+
+// Initialize markdown-it and attach to Markdown class
+if (md) {
+  draw2d.shape.note.Markdown.markdown = md({
+    html: true,
+    linkify: true,
+    typographer: true
+  });
+
+  // Configure links to open in new tab
+  let defaultRender = draw2d.shape.note.Markdown.markdown.renderer.rules.link_open || function(tokens, idx, options, env, self) {
+    return self.renderToken(tokens, idx, options);
+  };
+
+  draw2d.shape.note.Markdown.markdown.renderer.rules.link_open = function (tokens, idx, options, env, self) {
+    let aIndex = tokens[idx].attrIndex('target');
+    if (aIndex < 0) {
+      tokens[idx].attrPush(['target', '_blank']);
+    } else {
+      tokens[idx].attrs[aIndex][1] = '_blank';
+    }
+    return defaultRender(tokens, idx, options, env, self);
+  };
+}
+
 require('./shape/flowchart/Document');
 require('./shape/widget/Widget');
 require('./shape/widget/Slider');

@@ -33,13 +33,13 @@ draw2d.shape.flowchart.Document = draw2d.VectorFigure.extend(
   init: function (attr, setter, getter) {
     this.amplitude = 0.08 // percentage of height
 
-    this._super(extend({
+    this._super( {
       width: 80,
       height: 50,
       bgColor: "#2196f3",
       color: "#1B1B1B",
       stroke: 1
-    }, attr), setter, getter)
+    , ...attr}, setter, getter)
   },
 
   /**
@@ -74,9 +74,10 @@ draw2d.shape.flowchart.Document = draw2d.VectorFigure.extend(
       return
     }
 
-    attributes = extend({}, {
-      path: this.calcPath()
-    }, attributes)
+    attributes = {
+      path: this.calcPath(),
+      ...attributes
+    }
 
     this._super(attributes)
 

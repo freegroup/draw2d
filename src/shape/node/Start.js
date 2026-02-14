@@ -27,12 +27,12 @@ draw2d.shape.node.Start = draw2d.shape.basic.Rectangle.extend(
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {
-    this._super(extend({
+    this._super( {
       bgColor: this.DEFAULT_COLOR,
       color: this.DEFAULT_COLOR.darker(),
       width: 50,
       height: 50
-    }, attr), setter, getter)
+    , ...attr}, setter, getter)
     this.createPort("output")
   }
 

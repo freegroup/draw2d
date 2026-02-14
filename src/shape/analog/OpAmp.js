@@ -38,7 +38,7 @@ draw2d.shape.analog.OpAmp = draw2d.SVGFigure.extend(
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr, setter, getter) {
-    this._super(extend({stroke: 0, bgColor: "#f0f0ff"}, attr), setter, getter)
+    this._super({stroke: 0, bgColor: "#f0f0ff", ...attr}, setter, getter)
 
     this.inputLocator = new this.MyInputPortLocator()
 
