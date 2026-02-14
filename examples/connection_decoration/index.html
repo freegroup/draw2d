@@ -15,8 +15,6 @@
 
 <script type="text/javascript">
 
-let canvas = null;
-
 var canvas;
 
 function undo() {
@@ -162,7 +160,7 @@ document.addEventListener("DOMContentLoaded",function () {
 		 // THIS IS ONLY FOR THE ARROW AND THE POST-IT
 		 /////////////////////////////////////////////////////////////////////
 
-		 let msg = new draw2d.shape.note.PostIt({text:"Add to the standard connector some endpoint decorations."});
+		 let msg = new draw2d.shape.note.PostIt({text:"Connection Decorators:\nAdd visual markers to connection endpoints.\n\nAvailable decorators:\n• Bar, DoubleBar\n• Arrow, Diamond\n• Circle, OpenArrow\n\nUseful for:\n• ER diagrams\n• State machines\n• UML diagrams"});
 		 canvas.add(msg, 20,20);
 
 		 $("body").scrollTop(0)
