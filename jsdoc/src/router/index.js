@@ -613,6 +613,11 @@ const routes = [
         component: () => import(/* webpackChunkName: "api_draw2d_shape_note" */ '../views/package.vue')
       },
       {
+        path: '/api/draw2d/shape/note/markdown',
+        props: { className: 'draw2d.shape.note.Markdown' },
+        component: () => import(/* webpackChunkName: "api_draw2d_shape_note_markdown" */ '../views/clazz.vue')
+      },
+      {
         path: '/api/draw2d/shape/note/postit',
         props: { className: 'draw2d.shape.note.PostIt' },
         component: () => import(/* webpackChunkName: "api_draw2d_shape_note_postit" */ '../views/clazz.vue')
@@ -2499,6 +2504,11 @@ const routes = [
         component: () => import(/* webpackChunkName: "example_galerie_shape_node" */ '../views/example.vue')
       },
       {
+        path: '/examples/galerie_shape_note',
+        props: { section: 0, example: 6 },
+        component: () => import(/* webpackChunkName: "example_galerie_shape_note" */ '../views/example.vue')
+      },
+      {
         path: '/examples/galerie_box',
         props: { section: 1, example: 0 },
         component: () => import(/* webpackChunkName: "example_galerie_box" */ '../views/example.vue')
@@ -2519,9 +2529,9 @@ const routes = [
         component: () => import(/* webpackChunkName: "example_box_zoom_stack" */ '../views/example.vue')
       },
       {
-        path: '/examples/box_icon_decoration',
+        path: '/examples/box_mixed_layout',
         props: { section: 1, example: 4 },
-        component: () => import(/* webpackChunkName: "example_box_icon_decoration" */ '../views/example.vue')
+        component: () => import(/* webpackChunkName: "example_box_mixed_layout" */ '../views/example.vue')
       },
       {
         path: '/examples/box_db',
@@ -3107,12 +3117,23 @@ const examples = [
       {
         'name': 'galerie_shape_node',
         'text': 'draw2d.shape.node.*',
-        'description': 'Node shapes with built-in ports for flow-based diagrams.',
+        'description': 'Base shapes with ports (visible or hidden) - the foundation for any shape that can have connections.',
         'url': 'galerie_shape_node/index.html',
         'icon': 'galerie_shape_node/icon.png',
         'status': 'normal',
         'data': {
           'path': '/examples/galerie_shape_node'
+        }
+      },
+      {
+        'name': 'galerie_shape_note',
+        'text': 'draw2d.shape.note.*',
+        'description': 'Note shapes: PostIt for sticky notes, Markdown for rich text annotations.',
+        'url': 'galerie_shape_note/index.html',
+        'icon': 'galerie_shape_note/icon.png',
+        'status': 'new',
+        'data': {
+          'path': '/examples/galerie_shape_note'
         }
       }
     ],
@@ -3147,8 +3168,8 @@ const examples = [
       },
       {
         'name': 'box_tablelayout',
-        'text': 'Table with VBox',
-        'description': 'Table-like structure with rows using VBox layout.',
+        'text': 'Dynamic Layout Sizing',
+        'description': 'VBox/HBox that automatically calculates and adapts to children\'s size constraints (min/max width/height).',
         'url': 'box_tablelayout/index.html',
         'icon': 'box_tablelayout/icon.png',
         'status': 'new',
@@ -3168,14 +3189,14 @@ const examples = [
         }
       },
       {
-        'name': 'box_icon_decoration',
-        'text': 'Icon Decoration Box',
-        'description': 'Complex shape with icon decorations using nested box layouts.',
-        'url': 'box_icon_decoration/index.html',
-        'icon': 'box_icon_decoration/icon.png',
+        'name': 'box_mixed_layout',
+        'text': 'Mixed Figure Layouts',
+        'description': 'Combine different figure types (icons, labels, shapes) in nested VBox/HBox layouts.',
+        'url': 'box_mixed_layout/index.html',
+        'icon': 'box_mixed_layout/icon.png',
         'status': 'new',
         'data': {
-          'path': '/examples/box_icon_decoration'
+          'path': '/examples/box_mixed_layout'
         }
       },
       {
@@ -3222,7 +3243,7 @@ const examples = [
       {
         'name': 'composite_raft',
         'text': 'Raft Composite',
-        'description': 'Container that moves child figures along when dragged.',
+        'description': 'Soft grouping - figures on the \'raft\' move together when dragged, but can be freely removed. Loosely coupled container.',
         'url': 'composite_raft/index.html',
         'icon': 'composite_raft/icon.png',
         'status': 'normal',
@@ -3244,7 +3265,7 @@ const examples = [
       {
         'name': 'composite_jailhouse',
         'text': 'Jailhouse Composite',
-        'description': 'Bounded container that restricts child figure movement.',
+        'description': 'Strong grouping - figures placed inside are trapped and move together. Cannot be dragged out once added.',
         'url': 'composite_jailhouse/index.html',
         'icon': 'composite_jailhouse/icon.png',
         'status': 'normal',
