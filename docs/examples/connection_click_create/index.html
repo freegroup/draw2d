@@ -1,6 +1,7 @@
-﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<!DOCTYPE html>
+﻿<html>
 <head>
-<title></title>
+<title>Connection Example</title>
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, , maximum-scale=1.0" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -15,12 +16,34 @@
 <script type="text/javascript">
 
 
+var canvas;
+
+function undo() {
+  canvas.getCommandStack().undo();
+}
+
+function redo() {
+  canvas.getCommandStack().redo();
+}
+
+function updateButtons() {
+  document.getElementById("undoBtn").disabled = !canvas.getCommandStack().canUndo();
+  document.getElementById("redoBtn").disabled = !canvas.getCommandStack().canRedo();
+}
+
+
 document.addEventListener("DOMContentLoaded",function () {
 
 
      // create the paint area. The id in the constructor must be
      // an existing DIV
-	 var canvas = new draw2d.Canvas("gfx_holder");
+	 canvas = new draw2d.Canvas("gfx_holder");
+    canvas.setScrollArea("#gfx_holder");
+    
+    canvas.getCommandStack().addEventListener(function(e) {
+      updateButtons();
+    });
+    updateButtons();
 
      canvas.installEditPolicy(new draw2d.policy.canvas.FadeoutDecorationPolicy());
 
@@ -41,16 +64,74 @@ document.addEventListener("DOMContentLoaded",function () {
 	 // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
 	 /////////////////////////////////////////////////////////////////////
 
-	 var msg = new draw2d.shape.note.PostIt({text:"connect two ports to se a dotted line as connection."});
+	 var msg = new draw2d.shape.note.PostIt({text:"Click-to-Connect Pattern:\n1. Click on a port to start\n2. Click again to add waypoints (optional)\n3. Click on target port to finish\n\nVisual feedback shows the connection path as you create it."});
 	 canvas.add(msg, 20,20);
 });
 </script>
 
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    #container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+    }
+    #toolbar {
+      flex-shrink: 0;
+      height: 40px;
+      background: linear-gradient(to bottom, #f8f8f8 0%, #e0e0e0 100%);
+      border-bottom: 1px solid #ccc;
+      padding: 5px 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    #toolbar button {
+      padding: 5px 15px;
+      border: 1px solid #999;
+      border-radius: 4px;
+      background: linear-gradient(to bottom, #fff 0%, #e8e8e8 100%);
+      cursor: pointer;
+    }
+    #toolbar button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    #toolbar button:hover:not(:disabled) {
+      background: linear-gradient(to bottom, #fff 0%, #d8d8d8 100%);
+    }
+    #scrollarea {
+      flex: 1;
+      overflow: auto;
+      background-color: #FAFAFA;
+      position: relative;
+    }
+    #gfx_holder {
+      min-width: 3000px;
+      min-height: 3000px;
+      width: 3000px;
+      height: 3000px;
+    }
+  </style>
+
 </head>
 
 <body>
-   <div onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:1500px; height:1500px; ">
-   </div>
-
+<div id="container">
+  <div id="toolbar">
+    <button id="undoBtn" onclick="undo()" disabled>↩ Undo</button>
+    <button id="redoBtn" onclick="redo()" disabled>↪ Redo</button>
+  </div>
+  <div id="scrollarea">
+    <div id="gfx_holder" style="width:3000px; height:3000px;"></div>
+  </div>
+</div>
 </body>
 </html>
