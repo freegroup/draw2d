@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GridBox Example</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <link type="text/css" rel="stylesheet" href="./css/example.css" />
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;  /* Verhindert Body/Window Scroll */
+    }
+    #container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+    }
+    #toolbar {
+      flex-shrink: 0;
+      height: 40px;
+      background: linear-gradient(to bottom, #f8f8f8 0%, #e0e0e0 100%);
+      border-bottom: 1px solid #ccc;
+      padding: 5px 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    #toolbar button {
+      padding: 5px 15px;
+      border: 1px solid #999;
+      border-radius: 4px;
+      background: linear-gradient(to bottom, #fff 0%, #e8e8e8 100%);
+      cursor: pointer;
+    }
+    #toolbar button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    #toolbar button:hover:not(:disabled) {
+      background: linear-gradient(to bottom, #fff 0%, #d8d8d8 100%);
+    }
+    #scrollarea {
+      flex: 1;
+      overflow: auto;
+      background-color: #FAFAFA;
+      position: relative;
+    }
+    #gfx_holder {
+      min-width: 3000px;
+      min-height: 3000px;
+      width: 3000px;
+      height: 3000px;
+    }
+  </style>
+
+  <script src="./lib/jquery.js"></script>
+  <script src="./lib/jquery-ui.js"></script>
+  <script src="../draw2d.js"></script>
+
+<script type="text/javascript">
+var canvas;
+
+function undo() {
+  canvas.getCommandStack().undo();
+}
+
+function redo() {
+  canvas.getCommandStack().redo();
+}
+
+function updateButtons() {
+  document.getElementById('undoBtn').disabled = !canvas.getCommandStack().canUndo();
+  document.getElementById('redoBtn').disabled = !canvas.getCommandStack().canRedo();
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  canvas = new draw2d.Canvas("gfx_holder");
+  canvas.setScrollArea("#gfx_holder");
+  
+  // Listen to command stack changes
+  canvas.getCommandStack().addEventListener(function(e) {
+    updateButtons();
+  });
+  updateButtons();
+
+  // Example 1: Simple 3-column grid with fixed and grow columns
+  var grid1 = new draw2d.shape.box.GridBox({
+    columns: "100px, grow, 80px",
+    rows: "pref, pref",
+    bgColor: "#f8fafc",
+    stroke: 1,
+    color: "#10b981",
+    radius: 8
+  });
+  
+  grid1.add(new draw2d.shape.basic.Label({text: "Fixed 100px", bgColor: "#d1fae5"}), {row: 0, col: 0});
+  grid1.add(new draw2d.shape.basic.Label({text: "Grows to fill", bgColor: "#a7f3d0"}), {row: 0, col: 1});
+  grid1.add(new draw2d.shape.basic.Label({text: "Fixed 80px", bgColor: "#6ee7b7"}), {row: 0, col: 2});
+  grid1.add(new draw2d.shape.basic.Label({text: "Row 2, Col 1", bgColor: "#ecfdf5"}), {row: 1, col: 0});
+  grid1.add(new draw2d.shape.basic.Label({text: "Row 2, Col 2 - this is longer", bgColor: "#ecfdf5"}), {row: 1, col: 1});
+  grid1.add(new draw2d.shape.basic.Label({text: "Row 2", bgColor: "#ecfdf5"}), {row: 1, col: 2});
+
+  // Add ports
+  grid1.createPort("input");
+  grid1.createPort("output");
+  
+  canvas.add(grid1, 50, 50);
+
+  // Example 2: Cell spanning and alignment
+  var grid2 = new draw2d.shape.box.GridBox({
+    columns: "80px, 80px, 80px",
+    rows: "pref, pref, pref",
+    bgColor: "#fefefe",
+    stroke: 1,
+    color: "#8b5cf6",
+    radius: 8
+  });
+
+  grid2.add(new draw2d.shape.basic.Label({text: "Col Span 2", bgColor: "#c4b5fd"}), {row: 0, col: 0, colspan: 2});
+  grid2.add(new draw2d.shape.basic.Label({text: "Normal", bgColor: "#a78bfa"}), {row: 0, col: 2});
+  grid2.add(new draw2d.shape.basic.Label({text: "Left", bgColor: "#ddd6fe"}), {row: 1, col: 0, align: "left"});
+  grid2.add(new draw2d.shape.basic.Label({text: "Center", bgColor: "#ddd6fe"}), {row: 1, col: 1, align: "center"});
+  grid2.add(new draw2d.shape.basic.Label({text: "Right", bgColor: "#ddd6fe"}), {row: 1, col: 2, align: "right"});
+  grid2.add(new draw2d.shape.basic.Label({text: "Row Span 2", bgColor: "#8b5cf6", fontColor: "#fff"}), {row: 1, col: 0, rowspan: 2});
+  
+  canvas.add(grid2, 50, 200);
+
+  // Example 3: Form-like layout with labels and inputs
+  var formGrid = new draw2d.shape.box.GridBox({
+    columns: "pref, grow",
+    rows: "pref, pref, pref",
+    bgColor: "#fef2f2",
+    stroke: 1,
+    color: "#f43f5e",
+    radius: 8
+  });
+
+  formGrid.add(new draw2d.shape.basic.Label({text: "Name:", fontColor: "#be123c"}), {row: 0, col: 0});
+  formGrid.add(new draw2d.shape.basic.Label({text: "John Doe", bgColor: "#fecdd3", resizeable: true}), {row: 0, col: 1});
+  formGrid.add(new draw2d.shape.basic.Label({text: "Email:", fontColor: "#be123c"}), {row: 1, col: 0});
+  formGrid.add(new draw2d.shape.basic.Label({text: "john@example.com", bgColor: "#fecdd3", resizeable: true}), {row: 1, col: 1});
+  formGrid.add(new draw2d.shape.basic.Label({text: "Phone:", fontColor: "#be123c"}), {row: 2, col: 0});
+  formGrid.add(new draw2d.shape.basic.Label({text: "+1 555 123 4567", bgColor: "#fecdd3", resizeable: true}), {row: 2, col: 1});
+
+  // Add ports
+  formGrid.createPort("input");
+  formGrid.createPort("output");
+
+  canvas.add(formGrid, 350, 50);
+
+  // Info note
+  var note = new draw2d.shape.note.PostIt({
+    text: "GridBox - CSS Grid-like Layout\n\nColumn/Row definitions:\n• '100px' - Fixed size\n• 'pref' - Preferred (child's min)\n• 'grow' - Expands to fill\n\nCell options:\n• row, col - Cell position\n• colspan, rowspan - Spanning\n• align: left|center|right\n• valign: top|middle|bottom"
+  });
+  canvas.add(note, 50, 380);
+});
+</script>
+
+</head>
+
+<body>
+<div id="container">
+  <div id="toolbar">
+    <button id="undoBtn" onclick="undo()" disabled>↩ Undo</button>
+    <button id="redoBtn" onclick="redo()" disabled>↪ Redo</button>
+  </div>
+  <div id="scrollarea">
+    <div id="gfx_holder" style="width:3000px; height:3000px;"></div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,6 +1,7 @@
-﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+﻿<!DOCTYPE html>
+<html>
 <head>
-<title></title>
+<title>TableLayout Example</title>
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -31,12 +32,28 @@ html, body {
 }
 
 #toolbar {
-  background: #cecece;
-  background: linear-gradient(to bottom, #cecece 0%, #a8a8a8 100%);
+  background: linear-gradient(to bottom, #f8f8f8 0%, #e0e0e0 100%);
   padding: 8px;
   margin: 0;
-  border-bottom: 1px solid #515151;
+  border-bottom: 1px solid #ccc;
   flex-shrink: 0;
+}
+
+#toolbar button {
+  padding: 5px 15px;
+  border: 1px solid #999;
+  border-radius: 4px;
+  background: linear-gradient(to bottom, #fff 0%, #e8e8e8 100%);
+  cursor: pointer;
+}
+
+#toolbar button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#toolbar button:hover:not(:disabled) {
+  background: linear-gradient(to bottom, #fff 0%, #d8d8d8 100%);
 }
 
 #canvas-wrapper {
@@ -53,11 +70,29 @@ html, body {
 </style>
 
 <script type="text/javascript">
+var canvas;
 
-document.addEventListener("DOMContentLoaded",function () {
+function undo() {
+  canvas.getCommandStack().undo();
+}
 
+function redo() {
+  canvas.getCommandStack().redo();
+}
 
-     var canvas = new draw2d.Canvas("canvas");
+function updateButtons() {
+  document.getElementById('undoBtn').disabled = !canvas.getCommandStack().canUndo();
+  document.getElementById('redoBtn').disabled = !canvas.getCommandStack().canRedo();
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+     canvas = new draw2d.Canvas("canvas");
+     
+     // Listen to command stack changes
+     canvas.getCommandStack().addEventListener(function(e) {
+       updateButtons();
+     });
+     updateButtons();
 
      var figure = new TableTestFigure({x:100, y:100});
      canvas.add( figure);
@@ -87,6 +122,9 @@ document.addEventListener("DOMContentLoaded",function () {
 
 <body id="container">
   <div id="toolbar">
+    <button id="undoBtn" onclick="undo()" disabled>↩ Undo</button>
+    <button id="redoBtn" onclick="redo()" disabled>↪ Redo</button>
+    <span style="margin: 0 10px; border-left: 1px solid #888; height: 20px;"></span>
     <button id="set-default-name">Set Default</button>
     <button id="set-short-name">Set Short Name</button>
     <button id="set-long-name">Set Long Name</button>

@@ -1,7 +1,7 @@
 {
   "name": "FlexGridLayout",
   "namespace": "draw2d.shape.layout",
-  "description": "<p>FlexGridLayout is a powerful, flexible and precise layout manager that aligns components vertically and\nhorizontally in a dynamic rectangular grid of cells, with each component occupying in one or more cell.\nTo define a form layout you specify the form's columns, rows. Everyhing that applies to columns applies\nto rows too - just with a different orientation. FlexGridLayout uses the same API, algorithms and implementation\nfor column and rows.</p>\n<p>FlexGridLayout focuses on form-oriented panels much like the 'Segment' panel. Nevertheless, it is a general purpose\nlayout system that can be used for the vast majority of rectangular layouts.</p>\n<p>Define your layout with:</p>\n<ul>\n <li>[number]px</li>\n <li>grow</li>\n <li>pref</li>\n</ul>\n<p>e.g. we want build a shape with a border on the left and right and a label in the\ncenter. We allow the center to grow, the shape is resizeable.</p>\n<pre>\n   10px       grow         10px\n\n   -----+------------------+-----\n   |    |  [LABEL]         |    |\n   |    |                  |    |\n   |    |                  |    |    grow\n   |    |                  |    |\n   |    |                  |    |\n   -----+------------------+-----\n</pre>\n<p>The number forces the exact width or height of the cell. <b>grow</b> respect the minimum width of the\nelement and allows to resize the shape. The row/col with the <b>grow</b> declaration will be resized.\nThe <b>pref</b> declaration forces the cell to the minimum width/height of the embedded figure.</p>\n<p>Example Implementation of a shape:</p>",
+  "description": "",
   "extends": [
     "draw2d.shape.layout.Layout"
   ],
