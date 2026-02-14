@@ -1,105 +1,173 @@
-﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+﻿<!DOCTYPE html>
+<html>
 <head>
-<title></title>
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="viewport" content="width=device-width, minimum-scale=1.0" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Group Composite Example</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <link type="text/css" rel="stylesheet" href="./css/example.css" />
-    <link type="text/css" rel="stylesheet" href="./css/aristo/jquery-ui-1.8.16.custom.css" />
-    <link type="text/css" rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css" />
-    <link type="text/css" rel="stylesheet" href="./lib/bootstrap/css/bootstrap-theme.css" />
 
-    <script src="./lib/jquery.js"></script>
-    <script src="./lib/jquery-ui.js"></script>
-    <script src="./lib/bootstrap/js/bootstrap.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    #container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+    }
+    #toolbar {
+      flex-shrink: 0;
+      height: 40px;
+      background: linear-gradient(to bottom, #f8f8f8 0%, #e0e0e0 100%);
+      border-bottom: 1px solid #ccc;
+      padding: 5px 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    #toolbar button {
+      padding: 5px 15px;
+      border: 1px solid #999;
+      border-radius: 4px;
+      background: linear-gradient(to bottom, #fff 0%, #e8e8e8 100%);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    #toolbar button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    #toolbar button:hover:not(:disabled) {
+      background: linear-gradient(to bottom, #fff 0%, #d8d8d8 100%);
+    }
+    #toolbar button img {
+      width: 16px;
+      height: 16px;
+    }
+    #toolbar .separator {
+      width: 1px;
+      height: 24px;
+      background: #ccc;
+      margin: 0 5px;
+    }
+    #scrollarea {
+      flex: 1;
+      overflow: auto;
+      background-color: #FAFAFA;
+      position: relative;
+    }
+    #canvas {
+      min-width: 3000px;
+      min-height: 3000px;
+      width: 3000px;
+      height: 3000px;
+    }
+  </style>
 
-    <script src="../draw2d.js"></script>
-
-    <script src="document.js"></script>
-    <script src="LabelConnection.js"></script>
+  <script src="./lib/jquery.js"></script>
+  <script src="./lib/jquery-ui.js"></script>
+  <script src="../draw2d.js"></script>
+  <script src="document.js"></script>
+  <script src="LabelConnection.js"></script>
 
 <script type="text/javascript">
+var canvas;
 
-var canvas = null;
-document.addEventListener("DOMContentLoaded",function () {
+function undo() {
+  canvas.getCommandStack().undo();
+}
 
+function redo() {
+  canvas.getCommandStack().redo();
+}
 
-    // create the canvas for the user interaction
-    //
-    canvas = new draw2d.Canvas("canvas");
+function groupFigures() {
+  canvas.getCommandStack().execute(new draw2d.command.CommandGroup(canvas, canvas.getSelection()));
+}
 
+function ungroupFigures() {
+  canvas.getCommandStack().execute(new draw2d.command.CommandUngroup(canvas, canvas.getSelection()));
+}
 
-    // this example is different than the other ones. In this example the div is the scroll
-    // area and not the body itself
-    canvas.setScrollArea("#canvas");
+function updateButtons() {
+  document.getElementById('undoBtn').disabled = !canvas.getCommandStack().canUndo();
+  document.getElementById('redoBtn').disabled = !canvas.getCommandStack().canRedo();
+  
+  var selection = canvas.getSelection();
+  var isGroup = selection.getPrimary() instanceof draw2d.shape.composite.Group;
+  var hasMultiple = selection.getSize() >= 2;
+  
+  document.getElementById('groupBtn').disabled = !hasMultiple;
+  document.getElementById('ungroupBtn').disabled = !isGroup;
+}
 
-    // install some additional edit policies. An edit policy is responsible for
-    // user interaction or canvas decoration
-    //
-    canvas.installEditPolicy(new draw2d.policy.canvas.FadeoutDecorationPolicy());
-    canvas.installEditPolicy(new draw2d.policy.canvas.ExtendedKeyboardPolicy());
-    canvas.installEditPolicy(new draw2d.policy.connection.DragConnectionCreatePolicy({
-        createConnection: function(sourcePort, targetPort){
-            // return my special kind of connection
-            return  new LabelConnection();
-        }
-    }));
+document.addEventListener("DOMContentLoaded", function() {
+  canvas = new draw2d.Canvas("canvas");
+  canvas.setScrollArea("#canvas");
+  
+  // Install edit policies
+  canvas.installEditPolicy(new draw2d.policy.canvas.FadeoutDecorationPolicy());
+  canvas.installEditPolicy(new draw2d.policy.canvas.ExtendedKeyboardPolicy());
+  canvas.installEditPolicy(new draw2d.policy.connection.DragConnectionCreatePolicy({
+    createConnection: function(sourcePort, targetPort) {
+      return new LabelConnection();
+    }
+  }));
 
-    // Create the top toolbar with bootstrap.js element/buttons
-    //
-    var toolbarDiv = $("#toolbar");
-    var buttonGroup=$('<div class="btn-group" ></div>');
-    toolbarDiv.append(buttonGroup);
+  // Listen to command stack and selection changes
+  canvas.getCommandStack().addEventListener(function(e) {
+    updateButtons();
+  });
+  
+  canvas.on("select", function(emitter, event) {
+    updateButtons();
+  });
+  
+  canvas.on("unselect", function(emitter, event) {
+    updateButtons();
+  });
+  
+  updateButtons();
 
-    // Inject the GROUP Button and the callbacks
-    //
-    var groupButton  = $('<button title="Group figures" class=\"btn btn-default\" ><img src="./icons/group.png"></button>');
-    buttonGroup.append(groupButton);
-    groupButton.on("click",$.proxy(function(){
-        canvas.getCommandStack().execute(new draw2d.command.CommandGroup(canvas, canvas.getSelection()));
-    },this)).button().prop("disabled",true);
-
-    // Inject the UNGROUP Button and the callbacks
-    //
-    var ungroupButton  = $('<button title="Ungroup figures" class=\"btn btn-default\" ><img src="./icons/ungroup.png"></button>');
-    buttonGroup.append(ungroupButton);
-    ungroupButton.on("click",$.proxy(function(){
-        canvas.getCommandStack().execute(new draw2d.command.CommandUngroup(canvas, canvas.getSelection()));
-    },this)).button().prop("disabled",true);
-
-    buttonGroup.find(".btn").button();
-
-    canvas.on("select",function(emitter,event){
-        ungroupButton.prop("disabled",!(event.figure instanceof draw2d.shape.composite.Group) );
-        groupButton.prop("disabled", !(canvas.getSelection().getSize()>=2) );
-    });
-
-    // load an JSON document into the canvas
-    //
-    var reader = new draw2d.io.json.Reader();
-    reader.unmarshal(canvas, jsonDocument);
-
-
-    // for test purpose only
-    //
-//    canvas.installEditPolicy(new draw2d.policy.canvas.SnapToGeometryEditPolicy({lineColor:"#ff0000"}));
-//    canvas.installEditPolicy(new draw2d.policy.canvas.SnapToInBetweenEditPolicy({lineColor:"#ff0000"}));
-//    canvas.installEditPolicy(new draw2d.policy.canvas.SnapToCenterEditPolicy({lineColor:"#ff0000"}));
-
+  // Load JSON document into the canvas
+  var reader = new draw2d.io.json.Reader();
+  reader.unmarshal(canvas, jsonDocument);
 });
-
-
 </script>
 
 </head>
 
-<body id="container">
-
-   <div id="toolbar" class="navbar-default">
-   </div>
-   <div  onselectstart="javascript:/*IE8 hack*/return false" id="canvas" style="width:3000px; height:3000px;">
-   </div>
-
+<body>
+<div id="container">
+  <div id="toolbar">
+    <button id="undoBtn" onclick="undo()" disabled>↩ Undo</button>
+    <button id="redoBtn" onclick="redo()" disabled>↪ Redo</button>
+    
+    <div class="separator"></div>
+    
+    <button id="groupBtn" onclick="groupFigures()" title="Group selected figures" disabled>
+      <img src="./icons/group.png" alt="Group">
+      Group
+    </button>
+    <button id="ungroupBtn" onclick="ungroupFigures()" title="Ungroup selected group" disabled>
+      <img src="./icons/ungroup.png" alt="Ungroup">
+      Ungroup
+    </button>
+  </div>
+  <div id="scrollarea">
+    <div id="canvas"></div>
+  </div>
+</div>
 </body>
 </html>
