@@ -1,115 +1,57 @@
-﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+﻿<!DOCTYPE html>
+<html>
 <head>
-<title></title>
+<title>Connection Segment Handling</title>
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-  <link type="text/css" rel="stylesheet" href="./css/aristo/jquery-ui-1.8.16.custom.css" />
-  <link type="text/css" rel="stylesheet" href="./css/jquery.layout.css" />
-  <link type="text/css" rel="stylesheet" href="./css/application.css" />
+  <link type="text/css" rel="stylesheet" href="./css/example.css" />
 
   <script src="./lib/jquery.js"></script>
   <script src="./lib/jquery-ui.js"></script>
 
-  <script src="./lib/jquery.browser.js"></script>
-  <script src="./lib/jquery.layout.js"></script>
-
   <script src="../draw2d.js"></script>
 
-
-	<script src="./gui/Application.js"></script>
-	<script src="./gui/View.js"></script>
-	<script src="./gui/Toolbar.js"></script>
+  <script src="./document.js"></script>
+  <script src="./gui/Application.js"></script>
+  <script src="./gui/View.js"></script>
+  <script src="./gui/Toolbar.js"></script>
 
 <script type="text/javascript">
 
-// some test data
-//
-var jsonDocument =
-     [
-      {
-          "type": "draw2d.shape.note.PostIt",
-          "id": "ebfb35bb-5767-8155-c804-any",
-          "x": 20,
-          "y": 20,
-          "text":"Use the right mouse button on the \nconnection to add or remove segments"
-      },
-      {
-         "type": "draw2d.shape.node.Start",
-         "id": "354fa3b9-a834-0221-2009-abc2d6bd852a",
-         "x": 25,
-         "y": 120,
-         "width": 50,
-         "height": 50,
-         "radius": 2
-       },
-       {
-         "type": "draw2d.shape.node.End",
-         "id": "ebfb35bb-5767-8155-c804-14bda7759dc2",
-         "x": 332,
-         "y": 175,
-         "width": 50,
-         "height": 50,
-         "radius": 2
-       },
-       {
-         "type": "draw2d.Connection",
-         "id": "74ce9e7e-5f0e-8642-6bec-4ff9c54b3f0a",
-         "radius":8,
-         "stroke":3,
-         "color":'#00A8F0',
-         "outlineStroke":1,
-         "outlineColor":"#303030",
-         "router":"draw2d.layout.connection.InteractiveManhattanConnectionRouter",
-         "source": {
-           "node": "354fa3b9-a834-0221-2009-abc2d6bd852a",
-           "port": "output0"
-         },
-         "target": {
-           "node": "ebfb35bb-5767-8155-c804-14bda7759dc2",
-           "port": "input0"
-         }
-       }
-     ];
+document.addEventListener("DOMContentLoaded", function() {
 
+  var app = new example.Application();
 
-document.addEventListener("DOMContentLoaded",function () {
+  // and install a customized ConnectionCreatePolicy into the canvas
+  app.view.installEditPolicy(new draw2d.policy.connection.DragConnectionCreatePolicy({
+    createConnection: function(sourcePort, targetPort) {
+      var c = new draw2d.Connection();
+      c.setOutlineColor("#00A8F0");
+      c.setOutlineStroke(1);
+      c.setRadius(5);
+      c.setStroke(3);
+      c.setRouter(new draw2d.layout.connection.InteractiveManhattanConnectionRouter());
+      return c;
+    }
+  }));
 
-    // Everything is loaded - core and application. Now can create the
-    // application
-    //
-   	var app  = new example.Application();
-
-    // and install a customized ConnectionCreatePolicy into the canvas
-    //
-    app.view.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({
-        createConnection: function(sourcePort, targetPort){
-            var c = new draw2d.Connection();
-            c.setOutlineColor("#00A8F0");
-            c.setOutlineStroke(1);
-            c.setRadius(5);
-            c.setStroke(3);
-            c.setRouter(new draw2d.layout.connection.InteractiveManhattanConnectionRouter());
-            return c;
-        }
-    }));
-
-    // unmarshal the JSON document into the canvas
-    // (load)
-    var reader = new draw2d.io.json.Reader();
-    reader.unmarshal(app.view, jsonDocument);
+  // unmarshal the JSON document into the canvas
+  var reader = new draw2d.io.json.Reader();
+  reader.unmarshal(app.view, jsonDocument);
 });
-
 
 </script>
 
 </head>
 
-<body id="container">
-
-   		<div id="toolbar"></div>
-   		<div id="canvas" class="" style="width:3000px; height:3000px;"></div>
-
+<body>
+<div id="container">
+  <div id="toolbar"></div>
+  <div id="scrollarea">
+    <div id="gfx_holder" onselectstart="javascript:/*IE8 hack*/return false"></div>
+  </div>
+</div>
 </body>
 </html>

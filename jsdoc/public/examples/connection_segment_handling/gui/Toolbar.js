@@ -1,78 +1,52 @@
-
 example.Toolbar = Class.extend({
 	
-	init:function(elementId, app,view){
-		this.html = $("#"+elementId);
+	init: function(elementId, app, view) {
+		this.html = $("#" + elementId);
 		this.view = view;
 		this.app = app;
 		
-	      // register this class as event listener for the canvas
-        // CommandStack. This is required to update the state of 
-        // the Undo/Redo Buttons.
-        //
-        view.getCommandStack().addEventListener(this);
+		// Inject the UNDO Button
+		this.undoButton = $("<button disabled>↩ Undo</button>");
+		this.html.append(this.undoButton);
+		this.undoButton.click(() => {
+			this.view.getCommandStack().undo();
+		});
 
-        // Inject the UNDO Button and the callbacks
-        //
-        this.undoButton  = $("<button>Undo</button>");
-        this.html.append(this.undoButton);
-        this.undoButton.button().click($.proxy(function(){
-               this.view.getCommandStack().undo();
-        },this)).button( "option", "disabled", true );
-
-        // Inject the REDO Button and the callback
-        //
-        this.redoButton  = $("<button>Redo</button>");
-        this.html.append(this.redoButton);
-        this.redoButton.button().click($.proxy(function(){
-            this.view.getCommandStack().redo();
-        },this)).button( "option", "disabled", true );
+		// Inject the REDO Button
+		this.redoButton = $("<button disabled>↪ Redo</button>");
+		this.html.append(this.redoButton);
+		this.redoButton.click(() => {
+			this.view.getCommandStack().redo();
+		});
         
-        this.delimiter  = $("<span class='toolbar_delimiter'>&nbsp;</span>");
-        this.html.append(this.delimiter);
+		// Delimiter
+		this.html.append($("<span class='toolbar_delimiter'></span>"));
 		
-		// Inject the UNDO Button and the callbacks
-		//
-		this.zoomInButton  = $("<button>Zoom In</button>");
+		// Inject Zoom In Button
+		this.zoomInButton = $("<button>+ Zoom In</button>");
 		this.html.append(this.zoomInButton);
-		this.zoomInButton.button().click($.proxy(function(){
-		      this.view.setZoom(this.view.getZoom()*0.7,true);
-		      this.app.layout();
-		},this));
+		this.zoomInButton.click(() => {
+			this.view.setZoom(this.view.getZoom() * 0.7, true);
+		});
 
-		// Inject the DELETE Button
-		//
-		this.resetButton  = $("<button>1:1</button>");
+		// Inject 1:1 Reset Button
+		this.resetButton = $("<button>1:1</button>");
 		this.html.append(this.resetButton);
-		this.resetButton.button().click($.proxy(function(){
-		    this.view.setZoom(1.0, true);
-            this.app.layout();
-		},this));
+		this.resetButton.click(() => {
+			this.view.setZoom(1.0, true);
+		});
 		
-		// Inject the REDO Button and the callback
-		//
-		this.zoomOutButton  = $("<button>Zoom Out</button>");
+		// Inject Zoom Out Button
+		this.zoomOutButton = $("<button>- Zoom Out</button>");
 		this.html.append(this.zoomOutButton);
-		this.zoomOutButton.button().click($.proxy(function(){
-            this.view.setZoom(this.view.getZoom()*1.3, true);
-            this.app.layout();
-		},this));
-	},
-	
+		this.zoomOutButton.click(() => {
+			this.view.setZoom(this.view.getZoom() * 1.3, true);
+		});
 
-    /**
-     * @method
-     * Sent when an event occurs on the command stack. draw2d.command.CommandStackEvent.getDetail() 
-     * can be used to identify the type of event which has occurred.
-     * 
-     * @template
-     * 
-     * @param {draw2d.command.CommandStackEvent} event
-     **/
-    stackChanged:function(event)
-    {
-        this.undoButton.button( "option", "disabled", !event.getStack().canUndo() );
-        this.redoButton.button( "option", "disabled", !event.getStack().canRedo() );
-    }
-
+		// Register for command stack changes using modern .on() method
+		view.getCommandStack().on("change", (event) => {
+			this.undoButton.prop("disabled", !event.getStack().canUndo());
+			this.redoButton.prop("disabled", !event.getStack().canRedo());
+		});
+	}
 });
