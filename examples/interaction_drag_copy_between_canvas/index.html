@@ -1,0 +1,85 @@
+﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<title></title>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link type="text/css" rel="stylesheet" href="./css/example.css" />
+
+    <script src="./lib/jquery.js"></script>
+    <script src="./lib/jquery-ui.js"></script>
+
+    <script src="../draw2d.js"></script>
+
+    <script src="CopyInterceptorPolicy.js"></script>
+
+<script type="text/javascript">
+
+var canvas1 = null;
+var canvas2 = null;
+document.addEventListener("DOMContentLoaded",function () {
+
+    // create the canvas for the user interaction
+    // Canvas 1 with GRID background for visual distinction
+    canvas1 = new draw2d.Canvas("gfx_holder1");
+    canvas1.installEditPolicy(new CopyInterceptorPolicy());
+
+    canvas1.paper.canvas.style.position="relative";
+    canvas1.installEditPolicy(new draw2d.policy.canvas.FadeoutDecorationPolicy());
+    canvas1.installEditPolicy(new draw2d.policy.canvas.ShowGridEditPolicy());
+    canvas1.add(new draw2d.shape.basic.Circle({diameter: 80, x: 50, y: 150}));
+    canvas1.add(new draw2d.shape.basic.Rectangle({width: 80, height: 40, x: 50, y: 300, keepAspectRatio: true}));
+    canvas1.add(new draw2d.shape.basic.Diamond({width: 40, height: 60, x: 50, y: 450}));
+    canvas1.add(new draw2d.shape.node.Start({x:50, y:250}));
+    canvas1.add(new draw2d.shape.node.End({x:230, y:150}));
+
+    /////////////////////////////////////////////////////////////////////
+    // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
+    /////////////////////////////////////////////////////////////////////
+    var msg1 = new draw2d.shape.note.Markdown({
+        width: 450,
+        height: 120,
+        bgColor: "#f4f46d",
+        markdown: "## Canvas 1\nPress **SHIFT** key before drag&drop to **copy** a figure.\nYou can drop them on the second canvas as well."
+    });
+    canvas1.add(msg1, 20,20);
+
+    // create the canvas for the user interaction
+    // Canvas 2 with DOT background for visual distinction
+    canvas2 = new draw2d.Canvas("gfx_holder2");
+    canvas2.installEditPolicy(new CopyInterceptorPolicy());
+
+    canvas2.paper.canvas.style.position="relative";
+    canvas2.installEditPolicy(new draw2d.policy.canvas.FadeoutDecorationPolicy());
+    canvas2.installEditPolicy(new draw2d.policy.canvas.ShowDotEditPolicy());
+    canvas2.add(new draw2d.shape.basic.Circle({diameter: 80, x: 50, y: 150}));
+    canvas2.add(new draw2d.shape.basic.Rectangle({width: 80, height: 40, x: 50, y: 300, keepAspectRatio: true}));
+    canvas2.add(new draw2d.shape.basic.Diamond({width: 40, height: 60, x: 50, y: 450}));
+
+    var msg2 = new draw2d.shape.note.Markdown({
+        width: 450,
+        height: 120,
+        bgColor: "#f4f46d",
+        markdown: "## Canvas 2\nDrop canvas elements here from **Canvas 1**."
+    });
+    canvas2.add(msg2, 20,20);
+
+});
+
+</script>
+
+</head>
+
+<body>
+<div id="container1" >
+    <div  onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder1" style="width:3000px; height:3000px;">
+    </div>
+</div>
+<div id="container2">
+    <div  onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder2" style="width:3000px; height:3000px;">
+    </div>
+</div>
+
+</body>
+</html>
