@@ -47,7 +47,7 @@ draw2d.shape.note.Markdown = draw2d.shape.basic.Rectangle.extend(
   init: function(attr, setter, getter) {
     this._super(
       {
-        bgColor: "#00a3f6",
+        bgColor: "#E3F2FD",
         color: "#1B1B1B",
         markdown: "# Header\nDefault markdown content",
         textPadding: 10,
