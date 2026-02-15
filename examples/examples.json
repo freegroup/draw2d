@@ -179,7 +179,7 @@
       },
       {
         "name": "shape_custom_timer",
-        "text": "Custom Timer Label",
+        "text": "Timer Label",
         "description": "Custom label with internal timer that auto-updates its text every 500ms using the onTimer() callback.",
         "url": "shape_custom_timer/index.html",
         "icon": "shape_custom_timer/icon.png",
@@ -187,7 +187,7 @@
       },
       {
         "name": "shape_custom_timer_rotate",
-        "text": "Custom Timer with Rotation",
+        "text": "Timer with Rotation",
         "description": "Custom label with timer that continuously rotates using setRotationAngle(). IMPORTANT: Rotation works best with basic shapes (Label, Rectangle, Circle). For shapes with ports, rotation may cause connection routing issues.",
         "url": "shape_custom_timer_rotate/index.html",
         "icon": "shape_custom_timer_rotate/icon.png",
@@ -227,7 +227,7 @@
       },
       {
         "name": "shape_db",
-        "text": "Dynamic ports and rows in a shape",
+        "text": "Dynamic Ports & Rows",
         "description": "Database table with add/remove row functionality and dynamic ports.",
         "url": "shape_db/index.html",
         "icon": "shape_db/icon.png",
@@ -235,7 +235,7 @@
       },
       {
         "name": "shape_collapsible",
-        "text": "Collapsible shape",
+        "text": "Collapsible Shape",
         "description": "Shape that can expand/collapse to show/hide details.",
         "url": "shape_collapsible/index.html",
         "icon": "shape_collapsible/icon.png",
@@ -243,7 +243,7 @@
       },
       {
         "name": "shape_zoom_stack",
-        "text": "Change figure on Zoom",
+        "text": "Figure on Zoom",
         "description": "Different visual representation at different zoom levels.",
         "url": "shape_zoom_stack/index.html",
         "icon": "shape_zoom_stack/icon.png",
@@ -251,7 +251,7 @@
       },
       {
         "name": "shape_zoom_svg",
-        "text": "Change SVG on Zoom",
+        "text": "SVG on Zoom",
         "description": "SVG content changes based on canvas zoom level.",
         "url": "shape_zoom_svg/index.html",
         "icon": "shape_zoom_svg/icon.png",
@@ -259,7 +259,7 @@
       },
       {
         "name": "shape_tablelayout",
-        "text": "Table layout",
+        "text": "Table Layout",
         "description": "Grid-based layout for positioning child figures in cells.",
         "url": "shape_tablelayout/index.html",
         "icon": "shape_tablelayout/icon.png",
@@ -267,7 +267,7 @@
       },
       {
         "name": "shape_custom_tooltip",
-        "text": "Custom Tooltip",
+        "text": "Tooltip",
         "description": "Custom tooltip implementation without external libraries. Shows how to create figure-specific tooltips.",
         "url": "shape_custom_tooltip/index.html",
         "icon": "shape_custom_tooltip/icon.png",
@@ -296,7 +296,7 @@
       },
       {
         "name": "interaction_labeledit_inplace",
-        "text": "DblClick Figure with label",
+        "text": "DblClick Label Edit",
         "description": "Edit labels directly on the canvas with double-click.",
         "url": "interaction_labeledit_inplace/index.html",
         "icon": "interaction_labeledit_inplace/icon.png",
@@ -304,7 +304,7 @@
       },
       {
         "name": "interaction_click",
-        "text": "Click Figure with Sparkline",
+        "text": "Click Sparkline",
         "description": "Click events combined with animated sparkline charts.",
         "url": "interaction_click/index.html",
         "icon": "interaction_click/icon.png",
@@ -328,7 +328,7 @@
       },
       {
         "name": "connection_labeledit_dialog",
-        "text": "Edit a Label with a dialog",
+        "text": "Label Dialog Edit",
         "description": "Edit connection labels using a popup dialog.",
         "url": "connection_labeledit_dialog/index.html",
         "icon": "connection_labeledit_dialog/icon.png",
@@ -352,7 +352,7 @@
       },
       {
         "name": "interaction_draggable_decoration",
-        "text": "Draggable figure decoration",
+        "text": "Draggable Decoration",
         "description": "Decorations that can be repositioned via drag&drop.",
         "url": "interaction_draggable_decoration/index.html",
         "icon": "interaction_draggable_decoration/icon.png",
@@ -402,7 +402,7 @@
       },
       {
         "name": "port_locator",
-        "text": "Position of ports",
+        "text": "Port Positioning",
         "description": "Place ports at specific positions using locators.",
         "url": "port_locator/index.html",
         "icon": "port_locator/icon.png",
@@ -410,7 +410,7 @@
       },
       {
         "name": "port_serialize",
-        "text": "Create ports from JSON",
+        "text": "Ports from JSON",
         "description": "Save and restore port configurations via JSON.",
         "url": "port_serialize/index.html",
         "icon": "port_serialize/icon.png",
@@ -418,7 +418,7 @@
       },
       {
         "name": "port_decoration",
-        "text": "Create ports with configurable default values",
+        "text": "Configurable Port Values",
         "description": "Ports with visual config panel for default values.",
         "url": "port_decoration/index.html",
         "icon": "port_decoration/icon.png",
@@ -426,7 +426,7 @@
       },
       {
         "name": "port_hide",
-        "text": "Hide/Show ports if connected",
+        "text": "Auto-hide Ports",
         "description": "Automatically hide connected ports, show on disconnect.",
         "url": "port_hide/index.html",
         "icon": "port_hide/icon.png",
@@ -590,7 +590,7 @@
       },
       {
         "name": "io_json_dyn_labels",
-        "text": "Figure with dynamic labels",
+        "text": "Dynamic Labels",
         "description": "Save figures with variable number of child labels.",
         "url": "io_json_dyn_labels/index.html",
         "icon": "io_json_dyn_labels/icon.png",
@@ -606,7 +606,7 @@
       },
       {
         "name": "io_json_multi_document",
-        "text": "Reading multiple JSON files",
+        "text": "Multi-Document JSON",
         "description": "Merge multiple JSON files into one canvas.",
         "url": "io_json_multi_document/index.html",
         "icon": "io_json_multi_document/icon.png",
@@ -659,7 +659,7 @@
       },
       {
         "name": "connection_custom_labeld",
-        "text": "Custom Labeled Connection",
+        "text": "Labeled Connection",
         "description": "Create a custom Connection class with built-in label using ManhattanMidpointLocator. Demonstrates how to add child shapes (Gear icons) to figures and handle click events on parent and child shapes.",
         "url": "connection_custom_labeld/index.html",
         "icon": "connection_custom_labeld/icon.png",
@@ -683,7 +683,7 @@
       },
       {
         "name": "connection_with_contextmenu",
-        "text": "Connection with context menu",
+        "text": "Context Menu",
         "description": "Custom connection with right-click context menu.",
         "url": "connection_with_contextmenu/index.html",
         "icon": "connection_with_contextmenu/icon.png",
@@ -707,7 +707,7 @@
       },
       {
         "name": "connection_segment_handling",
-        "text": "Connection segment add/remove",
+        "text": "Segment Handling",
         "description": "Right-click to add or remove connection segments.",
         "url": "connection_segment_handling/index.html",
         "icon": "connection_segment_handling/icon.png",
