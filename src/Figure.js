@@ -684,16 +684,26 @@ draw2d.Figure = Class.extend(
     /**
      *
      * Start a timer which calls the onTimer method in the given interval.
+     * Optionally you can provide a custom callback function that will be called
+     * in addition to the onTimer method.
      *
-     * @param {Number} milliSeconds
+     * @param {Number} milliSeconds the interval in milliseconds
+     * @param {Function} [callback] optional callback function to call instead of or in addition to onTimer()
      */
-    startTimer: function (milliSeconds) {
+    startTimer: function (milliSeconds, callback) {
       this.stopTimer()
       this.timerInterval = Math.max(this.MIN_TIMER_INTERVAL, milliSeconds)
+      this.timerCallback = callback
 
       if (this.canvas !== null) {
         this.timerId = window.setInterval(() => {
+          // Call custom callback if provided
+          if (this.timerCallback) {
+            this.timerCallback.call(this)
+          }
+          // Always call the template method
           this.onTimer()
+          // Fire event for external listeners
           this.fireEvent("timer")
         }, this.timerInterval)
       }
@@ -703,13 +713,14 @@ draw2d.Figure = Class.extend(
 
     /**
      *
-     * Stop the internal timer.
+     * Stop the internal timer and cleanup callback references.
      *
      */
     stopTimer: function () {
       if (this.timerId >= 0) {
         window.clearInterval(this.timerId)
         this.timerId = -1
+        this.timerCallback = null
       }
 
       return this
