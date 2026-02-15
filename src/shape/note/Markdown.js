@@ -50,14 +50,19 @@ draw2d.shape.note.Markdown = draw2d.shape.basic.Rectangle.extend(
         bgColor: "#00a3f6",
         color: "#1B1B1B",
         markdown: "# Header\nDefault markdown content",
+        textPadding: 10,
         ...attr
       },
       {
         markdown: this.setMarkdown,
+        text: this.setMarkdown,  // alias for markdown
+        textPadding: this.setTextPadding,
         ...setter
       },
       {
         markdown: this.getMarkdown,
+        text: this.getMarkdown,  // alias for markdown
+        textPadding: this.getTextPadding,
         ...getter
       }
     );
@@ -81,7 +86,7 @@ draw2d.shape.note.Markdown = draw2d.shape.basic.Rectangle.extend(
     };
 
     this.on("added", (emitter, event) => {
-      this.overlay = $(`<div id="${this.id}" style="overflow:hidden;border:1px solid black;position:absolute; top:${this.getY()}px;left:${this.getX()}px;pointer-events:none;">
+      this.overlay = $(`<div id="${this.id}" style="overflow:hidden;border:1px solid black;position:absolute; top:${this.getY()}px;left:${this.getX()}px;pointer-events:none; padding:${this.textPadding}px; box-sizing:border-box;">
                       ${this.markdownHtml}
                       </div>`);
       event.canvas.html.append(this.overlay);
@@ -145,6 +150,31 @@ draw2d.shape.note.Markdown = draw2d.shape.basic.Rectangle.extend(
    */
   getMarkdown: function() {
     return this.markdown;
+  },
+
+  /**
+   * Set the text padding for the markdown content
+   * 
+   * @param {Number} padding The padding in pixels
+   */
+  setTextPadding: function(padding) {
+    this.textPadding = padding;
+    
+    if (this.overlay) {
+      this.overlay.css('padding', padding + 'px');
+    }
+    
+    this.fireEvent("change:textPadding", {value: this.textPadding});
+    return this;
+  },
+
+  /**
+   * Get the current text padding
+   * 
+   * @returns {Number}
+   */
+  getTextPadding: function() {
+    return this.textPadding;
   }
 
 })
