@@ -289,9 +289,10 @@ draw2d.layout.connection.InteractiveCircuitConnectionRouter = draw2d.layout.conn
             let otherZ = other.getZOrder()
             let connZ = conn.getZOrder()
             if (connZ < otherZ) {
-              // Style vertex node to match connection styling
+              // Style vertex node to match connection styling INCLUDING connection alpha
               let vertexAttrs = {
-                fill: conn.lineColor.rgba()
+                fill: conn.lineColor.rgba(),
+                opacity: conn.alpha  // Apply connection alpha/transparency
               }
               // Only add stroke if connection has an outlineWidth/stroke
               if (conn.outlineStroke > 0) {
