@@ -84,12 +84,12 @@ var SelectionMenuPolicy = draw2d.policy.figure.SelectionPolicy.extend({
 		var canvasElement = $(canvas.html);
 		var scrollContainer = canvasElement.parent();
 		var canvasOffset = canvasElement.position(); // position relative to parent
-		var scrollTop = scrollContainer.scrollTop();
-		var scrollLeft = scrollContainer.scrollLeft();
 		
-		// Calculate position: figure position + canvas offset - scroll offset
-		var top = figure.getAbsoluteY() + canvasOffset.top - scrollTop - 20;
-		var left = figure.getAbsoluteX() + canvasOffset.left - scrollLeft + figure.getWidth() + 10;
+		// Calculate position: figure position + canvas offset
+		// No need to subtract scroll offset because overlay is inside scrollContainer
+		// and scrolls naturally with the content
+		var top = figure.getAbsoluteY() + canvasOffset.top - 20;
+		var left = figure.getAbsoluteX() + canvasOffset.left + figure.getWidth() + 10;
 		
 		this.overlay.css({
 			"top": top,
