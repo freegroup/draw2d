@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-﻿<html>
+<html>
 <head>
 <title>Connection Example</title>
 <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -70,9 +70,18 @@ document.addEventListener("DOMContentLoaded",function () {
 	 /////////////////////////////////////////////////////////////////////
 	 // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
 	 /////////////////////////////////////////////////////////////////////
-
-	 var msg = new draw2d.shape.note.PostIt({text:"Use the context menu of the connection\nto change the color or delete the connection."});
-	 canvas.add(msg, 20,20);
+	     text: "# jQuery HTML Context Menu\n\n" +
+	           "Right-click on the **connection** to open a jQuery-based HTML context menu.\n\n" +
+	           "**Features:**\n" +
+	           "- Change connection color\n" +
+	           "- Delete connection\n" +
+	           "- Trigger custom actions via callbacks\n" +
+	           "- Modify object properties\n\n" +
+	           "*This demonstrates how to integrate standard jQuery menus with draw2d connections.*",
+	     width: 300,
+	     height: 250
+	 });
+	 canvas.add(msg, 20, 20);
 
 	 $("body").scrollTop(0)
 	          .scrollLeft(0);
