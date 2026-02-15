@@ -74,9 +74,9 @@ example.Application = Class.extend(
 	    
 	},
 	
-	setDefaultRouterClassName: function(  defaultRouterClassName){
-	    defaultRouterClassName=  defaultRouterClassName;
-        defaultRouter = eval("new "+defaultRouterClassName+"()");
+	setDefaultRouterClassName: function(routerClassName){
+	    window.defaultRouterClassName = routerClassName;
+        window.defaultRouter = eval("new "+routerClassName+"()");
 	},
 	
 	createConnection: function(){

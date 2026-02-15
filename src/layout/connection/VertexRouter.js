@@ -57,8 +57,8 @@ draw2d.layout.connection.VertexRouter = draw2d.layout.connection.ConnectionRoute
    * Creates a new Router object
    *
    */
-  init: function () {
-    this._super()
+  init: function (attr, setter, getter) {
+    this._super(attr, setter, getter)
   },
 
 

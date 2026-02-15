@@ -27,10 +27,26 @@ draw2d.layout.connection.ManhattanBridgedConnectionRouter = draw2d.layout.connec
   /**
    * Creates a new Router object.
    *
+   * @param {Object} [attr] optional attributes for the router
+   * @param {Number} [attr.bridgeRadius=5] the radius of the bridge arc in pixels
+   * @param {Object} [setter] optional key/value map of injected setter-methods
+   * @param {Object} [getter] optional key/value map of injected getter-methods
    */
-  init: function () {
-    this._super()
-    this.bridgeRadius = 5
+  init: function (attr, setter, getter) {
+    this._super(
+      {
+        bridgeRadius: 5,
+        ...attr
+      },
+      {
+        bridgeRadius: this.setBridgeRadius,
+        ...setter
+      },
+      {
+        bridgeRadius: this.getBridgeRadius,
+        ...getter
+      }
+    )
   },
 
 
@@ -72,6 +88,15 @@ draw2d.layout.connection.ManhattanBridgedConnectionRouter = draw2d.layout.connec
   },
 
   /**
+   * Get the bridge radius.
+   *
+   * @returns {Number}
+   */
+  getBridgeRadius: function () {
+    return this.bridgeRadius
+  },
+
+  /**
    * @inheritdoc
    */
   route: function (conn, routingHints) {
@@ -104,26 +129,57 @@ draw2d.layout.connection.ManhattanBridgedConnectionRouter = draw2d.layout.connec
     let canvas = conn.getCanvas()
     let anyFigureMoving = canvas.mouseDown === true
     
-    // If dragging started, invalidate crossing connections so they redraw without bridges
-    if (anyFigureMoving && !conn._bridgesInvalidated) {
-      conn._bridgesInvalidated = true
-      canvas.lineIntersections.each((i, entry) => {
-        if (entry.line === conn && entry.other !== conn) {
-          entry.other.svgPathString = null
-          entry.other.repaint()
-        }
-      })
-    } else if (!anyFigureMoving) {
+    // Cache invalidation: suppress bridges during drag, redraw all after drag ends
+    if (anyFigureMoving) {
+      if (!conn._bridgesInvalidated) {
+        conn._bridgesInvalidated = true
+        // Invalidate all connections during drag
+        canvas.getLines().each((i, line) => {
+          line.svgPathString = null
+          line.repaint()
+        })
+      }
+    } else if (conn._bridgesInvalidated) {
+      // Drag just ended - reset flag and redraw all connections
       conn._bridgesInvalidated = false
+      canvas.getLines().each((i, line) => {
+        line.svgPathString = null
+        line.repaint()
+      })
     }
     
-    let intersectionsASC = anyFigureMoving 
+    let allIntersections = anyFigureMoving 
       ? new draw2d.util.ArrayList() 
-      : canvas.getIntersection(conn).sort("x")
-    let intersectionsDESC = intersectionsASC.clone().reverse()
+      : canvas.getIntersection(conn)
 
-    let intersectionForCalc = intersectionsASC
+    // Filter out duplicate/near intersections ONCE (happens when multiple connections overlap)
+    // Use tolerance-based comparison instead of rounding to catch all near-duplicates
+    let uniqueIntersections = new draw2d.util.ArrayList()
+    let tolerance = 3  // pixels - intersections closer than this are considered duplicates
+    
+    allIntersections.each((i, interP) => {
+      let isDuplicate = false
+      
+      // Check if this intersection is too close to any already seen intersection
+      uniqueIntersections.each((j, seenP) => {
+        let dx = Math.abs(interP.x - seenP.x)
+        let dy = Math.abs(interP.y - seenP.y)
+        
+        if (dx < tolerance && dy < tolerance) {
+          isDuplicate = true
+          return false  // break out of loop
+        }
+      })
+      
+      if (!isDuplicate) {
+        uniqueIntersections.add(interP)
+      }
+    })
+    
+    allIntersections = uniqueIntersections
 
+    // Always invalidate to ensure fresh rendering (z-order can change via selection/reordering)
+    conn.svgPathString = null
 
     // ATTENTION: we cast all x/y coordinates to int and add 0.5 to avoid subpixel rendering of
     //            the connection. The 1px or 2px lines look much clearer than before.
@@ -137,58 +193,98 @@ draw2d.layout.connection.ManhattanBridgedConnectionRouter = draw2d.layout.connec
     for (let i = 1; i < ps.getSize(); i++) {
       p = ps.get(i)
 
-      // line goes from right->left. Inverse the intersection order
-      if (oldP.x > p.x) {
-        intersectionForCalc = intersectionsDESC
+      // Collect intersections on this segment and remove them from allIntersections
+      // This improves performance for subsequent segments
+      let segmentIntersections = []
+      let remainingIntersections = new draw2d.util.ArrayList()
+      
+      allIntersections.each((ii, interP) => {
+        if (interP.justTouching === false && draw2d.shape.basic.Line.hit(1, oldP.x, oldP.y, p.x, p.y, interP.x, interP.y) === true) {
+          segmentIntersections.push(interP)
+        } else {
+          remainingIntersections.add(interP)
+        }
+      })
+      
+      allIntersections = remainingIntersections
+      
+      // Determine segment direction once (will be reused for sorting and bridge drawing)
+      let isHorizontalSegment = (oldP.y | 0) === (p.y | 0)
+      
+      // Sort intersections by their position along the segment direction
+      if (isHorizontalSegment) {
+        // Horizontal: sort by X (ascending if left->right, descending if right->left)
+        if (oldP.x < p.x) {
+          segmentIntersections.sort((a, b) => a.x - b.x)
+        } else {
+          segmentIntersections.sort((a, b) => b.x - a.x)
+        }
       } else {
-        intersectionForCalc = intersectionsASC
+        // Vertical: sort by Y (ascending if top->bottom, descending if bottom->top)
+        if (oldP.y < p.y) {
+          segmentIntersections.sort((a, b) => a.y - b.y)
+        } else {
+          segmentIntersections.sort((a, b) => b.y - a.y)
+        }
       }
 
-      intersectionForCalc.each((ii, interP) => {
-        if (interP.justTouching === false && draw2d.shape.basic.Line.hit(1, oldP.x, oldP.y, p.x, p.y, interP.x, interP.y) === true) {
-          
-          let other = interP.other
-          let otherZ = other.getZOrder()
-          let connZ = conn.getZOrder()
-          
-          // Only draw the arc if THIS connection has the higher z-index
-          // This ensures the arc is always on top of the crossing line
-          if (connZ > otherZ) {
-            let isHorizontalSegment = (oldP.y | 0) === (p.y | 0)
-            let isVerticalSegment = (oldP.x | 0) === (p.x | 0)
+      // Process each intersection in order along the segment
+      segmentIntersections.forEach((interP) => {
+        let other = interP.other
+        let otherZ = other.getZOrder()
+        let connZ = conn.getZOrder()
+        
+        // Only draw the arc if THIS connection has the higher z-index
+        // This ensures the arc is always on top of the crossing line
+        if (connZ > otherZ) {
             
-            // The arc is centered on the intersection point (interP.x, interP.y)
-            // We draw from (interP - radius) to (interP + radius)
+            // Round intersection coordinates consistently with Line.intersection() which uses (| 0)
+            let interX = (interP.x | 0) + 0.5
+            let interY = (interP.y | 0) + 0.5
             
             if (isHorizontalSegment) {
-              // Horizontal segment: draw arc that curves upward, centered on intersection
-              let startX = ((interP.x - r) | 0) + 0.5
-              let y = (interP.y | 0) + 0.5
+              // Horizontal segment: draw arc that ALWAYS curves upward
+              // regardless of line direction (left-to-right or right-to-left)
+              let y = interY
               
-              // SVG arc: a rx ry x-rotation large-arc sweep-flag dx dy
-              // sweep-flag=1 means clockwise (arc goes upward for left-to-right)
-              path.push(" L", startX, " ", y)
-              path.push(" a", r, " ", r, " 0 0 1 ", (r * 2), " 0")
+              if (oldP.x < p.x) {
+                // Left to right: line, gap, arc, gap
+                let startX = ((interP.x - r) | 0) + 0.5
+                let endX = ((interP.x + r) | 0) + 0.5
+                path.push(" L", startX, " ", y)
+                path.push(" a", r, " ", r, " 0 0 1 ", (r * 2), " 0")
+                path.push(" M", endX, " ", y)  // Move creates gap after arc
+              } else {
+                // Right to left: line, gap, arc, gap
+                let startX = ((interP.x + r) | 0) + 0.5
+                let endX = ((interP.x - r) | 0) + 0.5
+                path.push(" L", startX, " ", y)
+                path.push(" a", r, " ", r, " 0 0 0 ", -(r * 2), " 0")
+                path.push(" M", endX, " ", y)  // Move creates gap after arc
+              }
             }
-            else if (isVerticalSegment) {
-              // Vertical segment: draw arc that curves to the right, centered on intersection
-              let x = (interP.x | 0) + 0.5
+            else {
+              // Vertical segment: draw arc that ALWAYS curves to the right
+              // regardless of line direction (top-to-bottom or bottom-to-top)
+              let x = interX
               
-              // For top-to-bottom: arc curves to the right (sweep=1)
-              // For bottom-to-top: arc curves to the right (sweep=0, going upward)
               if (oldP.y < p.y) {
-                // Top to bottom
+                // Top to bottom: line, gap, arc, gap
                 let startY = ((interP.y - r) | 0) + 0.5
+                let endY = ((interP.y + r) | 0) + 0.5
                 path.push(" L", x, " ", startY)
                 path.push(" a", r, " ", r, " 0 0 1 0 ", (r * 2))
+                path.push(" M", x, " ", endY)  // Move creates gap after arc
               } else {
-                // Bottom to top
-                path.push(" L", x, " ", ((interP.y + r) | 0) + 0.5)
-                path.push(" a", r, " ", r, " 0 0 1 0 ", (-r * 2))
+                // Bottom to top: line, gap, arc, gap
+                let startY = ((interP.y + r) | 0) + 0.5
+                let endY = ((interP.y - r) | 0) + 0.5
+                path.push(" L", x, " ", startY)
+                path.push(" a", r, " ", r, " 0 0 0 0 ", -(r * 2))
+                path.push(" M", x, " ", endY)  // Move creates gap after arc
               }
             }
           }
-        }
       })
 
       path.push(" L", (p.x | 0) + 0.5, " ", (p.y | 0) + 0.5)

@@ -24,8 +24,8 @@ draw2d.layout.connection.MazeConnectionRouter = draw2d.layout.connection.Connect
    * Creates a new Router object.
    *
    */
-  init: function () {
-    this._super()
+  init: function (attr, setter, getter) {
+    this._super(attr, setter, getter)
 
     this.useSpline = false
     this.useSimplify = true

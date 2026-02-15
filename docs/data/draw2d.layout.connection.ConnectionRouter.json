@@ -12,10 +12,72 @@
       "virtual": false,
       "deprecated": "",
       "description": "<p>Creates a new Router object</p>",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "attr",
+          "type": "Object",
+          "description": "<p>optional attributes for the router</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "setter",
+          "type": "Object",
+          "description": "<p>optional key/value map of injected setter-methods</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "getter",
+          "type": "Object",
+          "description": "<p>optional key/value map of injected getter-methods</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
       "inherited": false,
       "since": "",
       "examples": []
+    },
+    {
+      "name": "attr",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Read or set router attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
+      "parameters": [
+        {
+          "name": "name",
+          "type": [
+            "String",
+            "Object"
+          ],
+          "description": "<p>attribute name or object with name-value pairs</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "value",
+          "type": "Object",
+          "description": "<p>value to set (only if name is a string)</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "inherited": false,
+      "since": "7.0.0",
+      "examples": [
+        "// multiple attributes:\n   router.attr({\n     bridgeRadius: 8,\n     vertexRadius: 4\n   });\n\n   // single attribute getter:\n   let radius = router.attr(\"bridgeRadius\");\n\n   // all attributes getter:\n   let data = router.attr();"
+      ],
+      "returns": {
+        "type": "Object|this",
+        "description": "<p>either the requested attribute if this method used as getter or <code>this</code> if the method used as setter</p>"
+      }
     },
     {
       "name": "route",
@@ -284,6 +346,21 @@
       "inherited": false,
       "since": "",
       "examples": []
+    },
+    {
+      "name": "clone",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Return a clone of the router object</p>",
+      "parameters": [],
+      "inherited": false,
+      "since": "7.0.0",
+      "examples": [],
+      "returns": {
+        "type": "draw2d.layout.connection.ConnectionRouter",
+        "description": ""
+      }
     }
   ],
   "fires": "",

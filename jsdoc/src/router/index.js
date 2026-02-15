@@ -2153,6 +2153,16 @@ const routes = [
         component: () => import(/* webpackChunkName: "api_draw2d_layout_connection_fanconnectionrouter" */ '../views/clazz.vue')
       },
       {
+        path: '/api/draw2d/layout/connection/interactivecircuitconnectionrouter',
+        props: { className: 'draw2d.layout.connection.InteractiveCircuitConnectionRouter' },
+        component: () => import(/* webpackChunkName: "api_draw2d_layout_connection_interactivecircuitconnectionrouter" */ '../views/clazz.vue')
+      },
+      {
+        path: '/api/draw2d/layout/connection/interactivemanhattanbridgedconnectionrouter',
+        props: { className: 'draw2d.layout.connection.InteractiveManhattanBridgedConnectionRouter' },
+        component: () => import(/* webpackChunkName: "api_draw2d_layout_connection_interactivemanhattanbridgedconnectionrouter" */ '../views/clazz.vue')
+      },
+      {
         path: '/api/draw2d/layout/connection/interactivemanhattanconnectionrouter',
         props: { className: 'draw2d.layout.connection.InteractiveManhattanConnectionRouter' },
         component: () => import(/* webpackChunkName: "api_draw2d_layout_connection_interactivemanhattanconnectionrouter" */ '../views/clazz.vue')

@@ -14,7 +14,48 @@
       "virtual": false,
       "deprecated": "",
       "description": "<p>Creates a new Router object.</p>",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "attr",
+          "type": "Object",
+          "description": "<p>optional attributes for the router</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "attr.bridgeRadius",
+          "type": "Number",
+          "description": "<p>the radius of the bridge arc in pixels</p>",
+          "default": 5,
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "attr.vertexRadius",
+          "type": "Number",
+          "description": "<p>the radius of the vertex circle (default: connection stroke * 2)</p>",
+          "default": null,
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "setter",
+          "type": "Object",
+          "description": "<p>optional key/value map of injected setter-methods</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "getter",
+          "type": "Object",
+          "description": "<p>optional key/value map of injected getter-methods</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
       "inherited": false,
       "since": "",
       "examples": []
@@ -64,7 +105,7 @@
       "access": "",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>Set the radius of the vertex circle.</p>",
+      "description": "<p>Set the radius of the vertex circle.\nIf not set, defaults to connection stroke * 2.</p>",
       "parameters": [
         {
           "name": "radius",
@@ -77,7 +118,50 @@
       ],
       "inherited": false,
       "since": "",
-      "examples": []
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
+    },
+    {
+      "name": "getVertexRadius",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Get the vertex radius.</p>",
+      "parameters": [],
+      "inherited": false,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "Number|null",
+        "description": ""
+      }
+    },
+    {
+      "name": "_getVertexRadius",
+      "access": "private",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Get the vertex radius for drawing. Returns the set value or calculates default from connection stroke.</p>",
+      "parameters": [
+        {
+          "name": "conn",
+          "type": "draw2d.Connection",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": false,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": ""
+      }
     },
     {
       "name": "setJunctionRadius",
@@ -111,6 +195,21 @@
       "examples": [],
       "returns": {
         "type": "this",
+        "description": ""
+      }
+    },
+    {
+      "name": "getBridgeRadius",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Get the bridge radius.</p>",
+      "parameters": [],
+      "inherited": false,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "Number",
         "description": ""
       }
     },
@@ -248,6 +347,43 @@
       "inherited": true,
       "since": "",
       "examples": []
+    },
+    {
+      "name": "attr",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Read or set router attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
+      "parameters": [
+        {
+          "name": "name",
+          "type": [
+            "String",
+            "Object"
+          ],
+          "description": "<p>attribute name or object with name-value pairs</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "value",
+          "type": "Object",
+          "description": "<p>value to set (only if name is a string)</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "7.0.0",
+      "examples": [
+        "// multiple attributes:\n   router.attr({\n     bridgeRadius: 8,\n     vertexRadius: 4\n   });\n\n   // single attribute getter:\n   let radius = router.attr(\"bridgeRadius\");\n\n   // all attributes getter:\n   let data = router.attr();"
+      ],
+      "returns": {
+        "type": "Object | this",
+        "description": "<p>either the requested attribute if this method used as getter or <code>this</code> if the method used as setter</p>"
+      }
     },
     {
       "name": "canRemoveVertexAt",
@@ -424,6 +560,21 @@
       "inherited": true,
       "since": "",
       "examples": []
+    },
+    {
+      "name": "clone",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Return a clone of the router object</p>",
+      "parameters": [],
+      "inherited": true,
+      "since": "7.0.0",
+      "examples": [],
+      "returns": {
+        "type": "draw2d.layout.connection.ConnectionRouter",
+        "description": ""
+      }
     }
   ],
   "fires": "",

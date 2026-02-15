@@ -70,11 +70,33 @@ draw2d.layout.connection.CircuitConnectionRouter = draw2d.layout.connection.Manh
   /**
    * Creates a new Router object.
    *
+   * @param {Object} [attr] optional attributes for the router
+   * @param {Number} [attr.bridgeRadius=5] the radius of the bridge arc in pixels
+   * @param {Number} [attr.vertexRadius=null] the radius of the vertex circle (default: connection stroke * 2)
+   * @param {Object} [setter] optional key/value map of injected setter-methods
+   * @param {Object} [getter] optional key/value map of injected getter-methods
    */
-  init: function () {
-    this._super()
-    this.setBridgeRadius(5)
-    this.setVertexRadius(3)
+  init: function (attr, setter, getter) {
+    this._super(
+      // defaults first, then user attr overrides
+      {
+        bridgeRadius: 5,
+        vertexRadius: null,  // null = use default (connection stroke * 2)
+        ...attr
+      }, 
+      // setter whitelist
+      {
+        bridgeRadius: this.setBridgeRadius,
+        vertexRadius: this.setVertexRadius,
+        ...setter
+      },
+      // getter whitelist
+      {
+        bridgeRadius: this.getBridgeRadius,
+        vertexRadius: this.getVertexRadius,
+        ...getter
+      }
+    )
 
     // experimental
     this.abortRoutingOnFirstVertexNode = false
@@ -112,15 +134,39 @@ draw2d.layout.connection.CircuitConnectionRouter = draw2d.layout.connection.Manh
   },
 
   /**
-   * 
    * Set the radius of the vertex circle.
+   * If not set, defaults to connection stroke * 2.
    *
    * @param {Number} radius
+   * @returns {this}
    */
   setVertexRadius: function (radius) {
     this.vertexRadius = radius
-
     return this
+  },
+
+  /**
+   * Get the vertex radius.
+   *
+   * @returns {Number|null}
+   */
+  getVertexRadius: function () {
+    return this.vertexRadius
+  },
+
+  /**
+   * Get the vertex radius for drawing. Returns the set value or calculates default from connection stroke.
+   *
+   * @param {draw2d.Connection} conn
+   * @returns {Number}
+   * @private
+   */
+  _getVertexRadius: function (conn) {
+    if (this.vertexRadius !== null) {
+      return this.vertexRadius
+    }
+    // Default: connection stroke * 2
+    return conn.stroke * 2
   },
   /** deprecated
    * @private
@@ -130,7 +176,6 @@ draw2d.layout.connection.CircuitConnectionRouter = draw2d.layout.connection.Manh
   },
 
   /**
-   * 
    * Set the radius or span of the bridge. A bridge will be drawn if two connections are crossing and didn't have any
    * common port.
    *
@@ -154,6 +199,15 @@ draw2d.layout.connection.CircuitConnectionRouter = draw2d.layout.connection.Manh
     this.bridge_BT = [" r", (radius - radius / 4), -0.5, radius, -(radius - (radius / 2)), radius, -radius, (radius - radius / 4), -(radius + (radius / 2)), "0 ", -radius * 2].join(" ")
 
     return this
+  },
+
+  /**
+   * Get the bridge radius.
+   *
+   * @returns {Number}
+   */
+  getBridgeRadius: function () {
+    return this.bridgeRadius
   },
 
   /**
@@ -184,25 +238,49 @@ draw2d.layout.connection.CircuitConnectionRouter = draw2d.layout.connection.Manh
     let canvas = conn.getCanvas()
     let anyFigureMoving = canvas.mouseDown === true
     
-    // If dragging started, invalidate crossing connections so they redraw without bridges
-    if (anyFigureMoving && !conn._bridgesInvalidated) {
-      conn._bridgesInvalidated = true
-      canvas.lineIntersections.each((i, entry) => {
-        if (entry.line === conn && entry.other !== conn) {
-          entry.other.svgPathString = null
-          entry.other.repaint()
-        }
-      })
-    } else if (!anyFigureMoving) {
+    // Cache invalidation: suppress bridges during drag, redraw all after drag ends
+    if (anyFigureMoving) {
+      if (!conn._bridgesInvalidated) {
+        conn._bridgesInvalidated = true
+        // Invalidate all connections during drag
+        canvas.getLines().each((i, line) => {
+          line.svgPathString = null
+          line.repaint()
+        })
+      }
+    } else if (conn._bridgesInvalidated) {
+      // Drag just ended - reset flag and redraw all connections
       conn._bridgesInvalidated = false
+      canvas.getLines().each((i, line) => {
+        line.svgPathString = null
+        line.repaint()
+      })
     }
     
-    let intersectionsASC = anyFigureMoving 
+    let allIntersections = anyFigureMoving 
       ? new draw2d.util.ArrayList() 
-      : canvas.getIntersection(conn).sort("x")
-    let intersectionsDESC = intersectionsASC.clone().reverse()
+      : canvas.getIntersection(conn)
 
-    let intersectionForCalc = intersectionsASC
+    // Filter duplicates
+    let uniqueIntersections = new draw2d.util.ArrayList()
+    let tolerance = 3
+    allIntersections.each((i, interP) => {
+      let isDuplicate = false
+      uniqueIntersections.each((j, seenP) => {
+        if (Math.abs(interP.x - seenP.x) < tolerance && Math.abs(interP.y - seenP.y) < tolerance) {
+          isDuplicate = true
+          return false
+        }
+      })
+      if (!isDuplicate) {
+        uniqueIntersections.add(interP)
+      }
+    })
+    allIntersections = uniqueIntersections
+
+    if (allIntersections.getSize() > 0) {
+      conn.svgPathString = null
+    }
 
     // add a ArrayList of all added vertex nodes to the connection
     //
@@ -227,26 +305,40 @@ draw2d.layout.connection.CircuitConnectionRouter = draw2d.layout.connection.Manh
     for (let i = 1; i < ps.getSize(); i++) {
       p = ps.get(i)
 
-      // line goes from right->left.
-      if (oldP.x > p.x) {
-        intersectionForCalc = intersectionsDESC
-        bridgeCode = this.bridge_RL
-        bridgeWidth = -this.bridgeRadius
-      }
-      // line goes from left->right
-      else {
-        intersectionForCalc = intersectionsASC
-        bridgeCode = this.bridge_LR
-        bridgeWidth = this.bridgeRadius
+      // Collect intersections on this segment and remove from allIntersections
+      let segmentIntersections = []
+      let remainingIntersections = new draw2d.util.ArrayList()
+      
+      allIntersections.each((ii, interP) => {
+        if (draw2d.shape.basic.Line.hit(1, oldP.x, oldP.y, p.x, p.y, interP.x, interP.y) === true) {
+          segmentIntersections.push(interP)
+        } else {
+          remainingIntersections.add(interP)
+        }
+      })
+      
+      allIntersections = remainingIntersections
+      
+      // Determine segment direction
+      let isHorizontalSegment = (oldP.y | 0) === (p.y | 0)
+      
+      // Sort by position along segment
+      if (isHorizontalSegment) {
+        if (oldP.x < p.x) {
+          segmentIntersections.sort((a, b) => a.x - b.x)
+        } else {
+          segmentIntersections.sort((a, b) => b.x - a.x)
+        }
+      } else {
+        if (oldP.y < p.y) {
+          segmentIntersections.sort((a, b) => a.y - b.y)
+        } else {
+          segmentIntersections.sort((a, b) => b.y - a.y)
+        }
       }
 
-      // add a bridge or a vertex node depending to the intersection connection
-      //
-      // bridge   => the connections didn't have a common port
-      // vertex => the connections did have a common source or target port
-      //
-      intersectionForCalc.each((ii, interP) => {
-        if (draw2d.shape.basic.Line.hit(1, oldP.x, oldP.y, p.x, p.y, interP.x, interP.y) === true) {
+      // Process each intersection
+      segmentIntersections.forEach((interP) => {
 
           // It is a vertex node..
           //
@@ -255,7 +347,19 @@ draw2d.layout.connection.CircuitConnectionRouter = draw2d.layout.connection.Manh
             let otherZ = other.getZOrder()
             let connZ = conn.getZOrder()
             if (connZ < otherZ) {
-              let vertexNode = conn.canvas.paper.ellipse(interP.x, interP.y, this.vertexRadius, this.vertexRadius).attr({fill: conn.lineColor.rgba()})
+              // Style vertex node to match connection styling
+              let vertexAttrs = {
+                fill: conn.lineColor.rgba()
+              }
+              // Only add stroke if connection has an outlineWidth/stroke
+              if (conn.outlineStroke > 0) {
+                vertexAttrs.stroke = conn.outlineColor.rgba()
+                vertexAttrs["stroke-width"] = conn.outlineStroke
+              } else {
+                vertexAttrs.stroke = "none"
+              }
+              let vRadius = this._getVertexRadius(conn)
+              let vertexNode = conn.canvas.paper.ellipse(interP.x, interP.y, vRadius, vRadius).attr(vertexAttrs)
               conn.vertexNodes.push(vertexNode)
               // we found a vertex node. In this case an already existing connection did draw the connection.
               //
@@ -295,39 +399,41 @@ draw2d.layout.connection.CircuitConnectionRouter = draw2d.layout.connection.Manh
               // We draw from (interP - radius) to (interP + radius)
               
               if (isHorizontalSegment) {
-                // Horizontal segment: draw arc that curves upward, centered on intersection
-                // Line to start of arc (radius before intersection)
-                let startX = ((interP.x - r) | 0) + 0.5
+                // Horizontal segment: draw arc that ALWAYS curves upward
+                // regardless of line direction (left-to-right or right-to-left)
                 let y = (interP.y | 0) + 0.5
-                let endX = ((interP.x + r) | 0) + 0.5
                 
-                // SVG arc: a rx ry x-rotation large-arc sweep-flag dx dy
-                // sweep-flag=1 means clockwise (arc goes upward for left-to-right)
-                path.push(" L", startX, " ", y)
-                path.push(" a", r, " ", r, " 0 0 1 ", (r * 2), " 0")
+                if (oldP.x < p.x) {
+                  // Left to right: line comes from left, arc curves up (sweep=1)
+                  let startX = ((interP.x - r) | 0) + 0.5
+                  path.push(" L", startX, " ", y)
+                  path.push(" a", r, " ", r, " 0 0 1 ", (r * 2), " 0")
+                } else {
+                  // Right to left: line comes from right, arc curves up (sweep=0)
+                  let startX = ((interP.x + r) | 0) + 0.5
+                  path.push(" L", startX, " ", y)
+                  path.push(" a", r, " ", r, " 0 0 0 ", -(r * 2), " 0")
+                }
               }
               else if (isVerticalSegment) {
-                // Vertical segment: draw arc that curves to the right, centered on intersection
-                // Line to start of arc (radius before intersection)
+                // Vertical segment: draw arc that ALWAYS curves to the right
+                // regardless of line direction (top-to-bottom or bottom-to-top)
                 let x = (interP.x | 0) + 0.5
-                let startY = ((interP.y - r) | 0) + 0.5
-                let endY = ((interP.y + r) | 0) + 0.5
                 
-                // For top-to-bottom: arc curves to the right (sweep=1)
-                // For bottom-to-top: arc curves to the right (sweep=0, going upward)
                 if (oldP.y < p.y) {
-                  // Top to bottom
+                  // Top to bottom: line comes from top, arc curves right (sweep=1)
+                  let startY = ((interP.y - r) | 0) + 0.5
                   path.push(" L", x, " ", startY)
                   path.push(" a", r, " ", r, " 0 0 1 0 ", (r * 2))
                 } else {
-                  // Bottom to top
-                  path.push(" L", x, " ", ((interP.y + r) | 0) + 0.5)
-                  path.push(" a", r, " ", r, " 0 0 1 0 ", (-r * 2))
+                  // Bottom to top: line comes from bottom, arc curves right (sweep=0)
+                  let startY = ((interP.y + r) | 0) + 0.5
+                  path.push(" L", x, " ", startY)
+                  path.push(" a", r, " ", r, " 0 0 0 0 ", -(r * 2))
                 }
               }
             }
           }
-        }
       })
 
       path.push(" L", (p.x | 0) + 0.5, " ", (p.y | 0) + 0.5)

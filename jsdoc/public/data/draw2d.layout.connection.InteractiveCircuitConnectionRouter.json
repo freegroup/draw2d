@@ -1,0 +1,655 @@
+{
+  "name": "InteractiveCircuitConnectionRouter",
+  "namespace": "draw2d.layout.connection",
+  "description": "<p>Combines the interactive segment manipulation of {@link draw2d.layout.connection.InteractiveManhattanConnectionRouter}\nwith the circuit diagram features of {@link draw2d.layout.connection.CircuitConnectionRouter}.</p>\n<p>This router allows users to manually adjust connection segments by dragging them, while also\ndrawing:</p>\n<ul>\n<li><strong>Bridge (arc):</strong> at crossings where connections have NO shared ports</li>\n<li><strong>Vertex (dot):</strong> at crossings where connections share a source or target port</li>\n</ul>\n<p>Perfect for interactive circuit/schematic diagram editors.</p>",
+  "extends": [
+    "draw2d.layout.connection.InteractiveManhattanConnectionRouter"
+  ],
+  "access": "",
+  "virtual": false,
+  "functions": [
+    {
+      "name": "init",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Creates a new Router object.</p>",
+      "parameters": [
+        {
+          "name": "attr",
+          "type": "Object",
+          "description": "<p>optional attributes for the router</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "attr.bridgeRadius",
+          "type": "Number",
+          "description": "<p>the radius of the bridge arc in pixels</p>",
+          "default": 5,
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "attr.vertexRadius",
+          "type": "Number",
+          "description": "<p>the radius of the vertex circle (default: connection stroke * 2)</p>",
+          "default": null,
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "setter",
+          "type": "Object",
+          "description": "<p>optional key/value map of injected setter-methods</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "getter",
+          "type": "Object",
+          "description": "<p>optional key/value map of injected getter-methods</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "inherited": false,
+      "since": "",
+      "examples": []
+    },
+    {
+      "name": "onInstall",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "",
+      "parameters": [],
+      "inherited": false,
+      "since": "",
+      "examples": []
+    },
+    {
+      "name": "onUninstall",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "",
+      "parameters": [],
+      "inherited": false,
+      "since": "",
+      "examples": []
+    },
+    {
+      "name": "setVertexRadius",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Set the radius of the vertex circle (dot at shared port crossings).\nIf not set, defaults to connection stroke * 2.</p>",
+      "parameters": [
+        {
+          "name": "radius",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": false,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
+    },
+    {
+      "name": "getVertexRadius",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Get the vertex radius.</p>",
+      "parameters": [],
+      "inherited": false,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "Number|null",
+        "description": ""
+      }
+    },
+    {
+      "name": "_getVertexRadius",
+      "access": "private",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Get the vertex radius for drawing. Returns the set value or calculates default from connection stroke.</p>",
+      "parameters": [
+        {
+          "name": "conn",
+          "type": "draw2d.Connection",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": false,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": ""
+      }
+    },
+    {
+      "name": "setBridgeRadius",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Set the radius of the bridge arc (arc at non-shared crossings).</p>",
+      "parameters": [
+        {
+          "name": "radius",
+          "type": "Number",
+          "description": "<p>the radius of the arc in pixels</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": false,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
+    },
+    {
+      "name": "getBridgeRadius",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Get the bridge radius.</p>",
+      "parameters": [],
+      "inherited": false,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": ""
+      }
+    },
+    {
+      "name": "route",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "",
+      "parameters": [],
+      "inherited": false,
+      "since": "",
+      "examples": []
+    },
+    {
+      "name": "_paintWithCircuitFeatures",
+      "access": "private",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Override the paint method to draw bridges and vertex nodes at connection intersections</p>",
+      "parameters": [
+        {
+          "name": "conn",
+          "type": "draw2d.Connection",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": false,
+      "since": "",
+      "examples": []
+    },
+    {
+      "name": "route",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Routes the Connection.</p>",
+      "parameters": [
+        {
+          "name": "connection",
+          "type": "draw2d.Connection",
+          "description": "<p>The Connection to route</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "routingHints",
+          "type": "Object",
+          "description": "<p>some helper attributes for the router</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "routingHints.startMoved",
+          "type": "Boolean",
+          "description": "<p>is true if just the start location has moved</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "routingHints.endMoved",
+          "type": "Boolean",
+          "description": "<p>is true if the destination location has changed</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "routingHints.oldVertices",
+          "type": "draw2d.util.ArrayList",
+          "description": "<p>the vertices before the reroute has been triggered</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "",
+      "examples": []
+    },
+    {
+      "name": "halfRoute",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>The routing algorithm if the user has changed at least on of the vertices manually.\nThis kind of routing just align the start and end vertices to the new source/target port\nlocation.\nThe vertices between keep untouched. Modification of this vertices are done by the\ndraw2d.policy.line.OrthogonalSelectionFeedbackPolicy</p>",
+      "parameters": [
+        {
+          "name": "conn",
+          "type": "draw2d.Connection",
+          "description": "<p>the connection to route</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "routingHints",
+          "type": "Object",
+          "description": "<p>some helper attributes for the router</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "routingHints.startMoved",
+          "type": "Boolean",
+          "description": "<p>is true if just the start location has moved</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "routingHints.endMoved",
+          "type": "Boolean",
+          "description": "<p>is true if the destination location has changed</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "",
+      "examples": []
+    },
+    {
+      "name": "canRemoveSegmentAt",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Callback method for the PolyLine or Connection to verify that a segment is deletable.</p>",
+      "parameters": [
+        {
+          "name": "conn",
+          "type": "draw2d.Connection",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "index",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "4.2.3",
+      "examples": [],
+      "returns": {
+        "type": "Boolean",
+        "description": ""
+      }
+    },
+    {
+      "name": "onDrag",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>The draw2d.Connection delegates the drag operation to the router. The router can\nhandle the different constraints of the connection and just drag&amp;drop a single segment\ninstead of the complete connection.</p>",
+      "parameters": [
+        {
+          "name": "line",
+          "type": "draw2d.shape.basic.Line",
+          "description": "<p>the related line to handle</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "dx",
+          "type": "Number",
+          "description": "<p>the x difference between the start of the drag drop operation and now</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "dy",
+          "type": "Number",
+          "description": "<p>the y difference between the start of the drag drop operation and now</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "dx2",
+          "type": "Number",
+          "description": "<p>The x diff since the last call of this dragging operation</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "dy2",
+          "type": "Number",
+          "description": "<p>The y diff since the last call of this dragging operation</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "6.1.0",
+      "examples": []
+    },
+    {
+      "name": "verticesSet",
+      "access": "protected",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Called by the connection if the vertices set outside.\nThis enforce the router to avoid full autoroute. E.g. InteractiveManhattanRouter</p>",
+      "parameters": [],
+      "inherited": true,
+      "since": "",
+      "examples": []
+    },
+    {
+      "name": "getPersistentAttributes",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Tweak or enrich the polyline persistence data with routing information</p>",
+      "parameters": [
+        {
+          "name": "line",
+          "type": "draw2d.shape.basic.PolyLine",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "memento",
+          "type": "Object",
+          "description": "<p>The memento data of the polyline</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "2.10.0",
+      "examples": [],
+      "returns": {
+        "type": "Object",
+        "description": ""
+      }
+    },
+    {
+      "name": "setPersistentAttributes",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>set the attributes for the polyline with routing information of the interactive manhattan router.</p>",
+      "parameters": [
+        {
+          "name": "memento",
+          "type": "Object",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "4..0.0",
+      "examples": []
+    },
+    {
+      "name": "onInstall",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Callback method if the router has been assigned to a connection.</p>",
+      "parameters": [
+        {
+          "name": "connection",
+          "type": "draw2d.Connection",
+          "description": "<p>The assigned connection</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "2.7.2",
+      "examples": []
+    },
+    {
+      "name": "_normalizeVertices",
+      "access": "private",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Normalize vertices to ensure perfect orthogonal lines.\nThis corrects floating point errors from division operations.\nOnly internal vertices are modified - start and end points remain unchanged\nto preserve port attachment.</p>\n<p>Manhattan routes always alternate between horizontal and vertical segments.\nWe determine the first segment direction from start point and align accordingly.</p>",
+      "parameters": [
+        {
+          "name": "conn",
+          "type": "draw2d.Connection",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "",
+      "examples": []
+    },
+    {
+      "name": "_route",
+      "access": "private",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Internal routing algorithm.</p>",
+      "parameters": [
+        {
+          "name": "conn",
+          "type": "draw2d.Connection",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "fromPt",
+          "type": "draw2d.geo.Point",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "fromDir",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "toPt",
+          "type": "draw2d.geo.Point",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "toDir",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "",
+      "examples": []
+    },
+    {
+      "name": "attr",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Read or set router attributes.<br>\nWhen no value is given, reads specified attribute from the element.<br>\nWhen value is given, sets the attribute to that value.\nMultiple attributes can be set by passing an object with name-value pairs.</p>",
+      "parameters": [
+        {
+          "name": "name",
+          "type": [
+            "String",
+            "Object"
+          ],
+          "description": "<p>attribute name or object with name-value pairs</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "value",
+          "type": "Object",
+          "description": "<p>value to set (only if name is a string)</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "7.0.0",
+      "examples": [
+        "// multiple attributes:\n   router.attr({\n     bridgeRadius: 8,\n     vertexRadius: 4\n   });\n\n   // single attribute getter:\n   let radius = router.attr(\"bridgeRadius\");\n\n   // all attributes getter:\n   let data = router.attr();"
+      ],
+      "returns": {
+        "type": "Object | this",
+        "description": "<p>either the requested attribute if this method used as getter or <code>this</code> if the method used as setter</p>"
+      }
+    },
+    {
+      "name": "onUninstall",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Callback method if the router has been removed from the connection.</p>",
+      "parameters": [
+        {
+          "name": "connection",
+          "type": "draw2d.shape.basic.PolyLine",
+          "description": "<p>The related connection</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "2.7.2",
+      "examples": []
+    },
+    {
+      "name": "canRemoveVertexAt",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Callback method for the PolyLine or Connection to check if it possible to remove a vertex from\nthe list. The router can send an veto for this.\nPer default it is not possible to remove any vertex from the PolyLine exceptional if any interactive\nrouter is installed.</p>",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "Number",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "4.2.3",
+      "examples": []
+    },
+    {
+      "name": "clone",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Return a clone of the router object</p>",
+      "parameters": [],
+      "inherited": true,
+      "since": "7.0.0",
+      "examples": [],
+      "returns": {
+        "type": "draw2d.layout.connection.ConnectionRouter",
+        "description": ""
+      }
+    }
+  ],
+  "fires": "",
+  "constructor": {
+    "name": "InteractiveCircuitConnectionRouter",
+    "description": "",
+    "parameters": [],
+    "examples": [
+      "let createConnection = function() {\n      let con = new draw2d.Connection({\n        radius: 4,\n        router: new draw2d.layout.connection.InteractiveCircuitConnectionRouter()\n      });\n      return con;\n   };\n\n   canvas.installEditPolicy(new draw2d.policy.connection.DragConnectionCreatePolicy({\n          createConnection: createConnection\n   }));\n\n   let f1 = new draw2d.shape.analog.OpAmp({x:10, y:10});\n   let f2 = new draw2d.shape.analog.ResistorVertical({angle:90, height:20, x:300, y:150});\n\n   canvas.add(f1);\n   canvas.add(f2);\n\n   let c = createConnection();\n   c.setSource(f1.getOutputPort(0));\n   c.setTarget(f2.getHybridPort(0));\n   canvas.add(c);\n\n   // select the connection to show the segment handles\n   c.select();"
+    ]
+  }
+}

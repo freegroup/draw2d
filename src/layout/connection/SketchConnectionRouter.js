@@ -51,8 +51,8 @@ draw2d.layout.connection.SketchConnectionRouter = draw2d.layout.connection.MazeC
    * Creates a new Router object.
    *
    */
-  init: function () {
-    this._super()
+  init: function (attr, setter, getter) {
+    this._super(attr, setter, getter)
 
     this.useSpline = true
     this.useShift = 5

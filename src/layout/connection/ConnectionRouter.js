@@ -16,8 +16,92 @@ draw2d.layout.connection.ConnectionRouter = Class.extend(
 
   /**
    * Creates a new Router object
+   * 
+   * @param {Object} [attr] optional attributes for the router
+   * @param {Object} [setter] optional key/value map of injected setter-methods
+   * @param {Object} [getter] optional key/value map of injected getter-methods
    */
-  init: function () {
+  init: function (attr, setter, getter) {
+    // Merge with existing whitelists (allows subclasses to extend)
+    this.setterWhitelist = {...this.setterWhitelist, ...setter}
+    this.getterWhitelist = {...this.getterWhitelist, ...getter}
+    
+    // propagate the attr to the new instance
+    this.attr(attr)
+  },
+
+  /**
+   * Read or set router attributes.<br>
+   * When no value is given, reads specified attribute from the element.<br>
+   * When value is given, sets the attribute to that value.
+   * Multiple attributes can be set by passing an object with name-value pairs.
+   *
+   * @example
+   *    // multiple attributes:
+   *    router.attr({
+   *      bridgeRadius: 8,
+   *      vertexRadius: 4
+   *    });
+   *
+   *    // single attribute getter:
+   *    let radius = router.attr("bridgeRadius");
+   *
+   *    // all attributes getter:
+   *    let data = router.attr();
+   *
+   * @param {String|Object} [name] attribute name or object with name-value pairs
+   * @param {Object} [value] value to set (only if name is a string)
+   * @since 7.0.0
+   * @returns {Object|this} either the requested attribute if this method used as getter or `this` if the method used as setter
+   **/
+  attr: function (name, value) {
+    let _this = this
+
+    // call of attr as setter method with {name1:val1, name2:val2 }  argument list
+    //
+    if ($.isPlainObject(name)) {
+      for (let key in name) {
+        let func = this.setterWhitelist[key]
+        let param = name[key]
+        if (func && param !== undefined) {
+          func.call(this, param)
+        }
+      }
+    } else if (typeof name === "string") {
+      // call attr as getter
+      //
+      if (typeof value === "undefined") {
+        let getter = this.getterWhitelist[name]
+        if (typeof getter === "function") {
+          return getter.call(this)
+        }
+        return // undefined
+      }
+
+      // the value can be a function. In this case we must call the value().
+      if (typeof value === "function") {
+        value = value()
+      }
+      let setter = this.setterWhitelist[name]
+      if (setter) {
+        setter.call(this, value)
+      }
+    }
+    // may it is a array of attributes used for the getter
+    //
+    else if (Array.isArray(name)) {
+      return Object.assign({}, ...Object.keys(name).map(k => ({[k]: _this.attr(k)})))
+    }
+    // generic getter of all registered attributes
+    else if (typeof name === "undefined") {
+      let result = {}
+      for (let key in this.getterWhitelist) {
+        result[key] = this.getterWhitelist[key].call(this)
+      }
+      return result
+    }
+
+    return this
   },
 
 
@@ -174,6 +258,16 @@ draw2d.layout.connection.ConnectionRouter = Class.extend(
    * @param {draw2d.shape.basic.Line} line
    */
   verticesSet: function (line) {
+  },
+
+  /**
+   * Return a clone of the router object
+   *
+   * @returns {draw2d.layout.connection.ConnectionRouter}
+   * @since 7.0.0
+   */
+  clone: function () {
+    return eval(`new ${this.NAME}()`)
   }
 
 })

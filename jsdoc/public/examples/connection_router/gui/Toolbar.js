@@ -20,6 +20,13 @@ example.Toolbar = Class.extend({
             view.getLines().each(function(i,line){
                 line.setRouter(router);
             });
+            
+            // Recalculate intersections for new router and repaint all connections
+            view.calculateConnectionIntersection();
+            view.getLines().each(function(i,line){
+                line.svgPathString = null;
+                line.repaint();
+            });
         });
 	}
 });

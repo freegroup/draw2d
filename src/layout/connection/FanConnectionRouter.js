@@ -69,10 +69,12 @@ draw2d.layout.connection.FanConnectionRouter = draw2d.layout.connection.DirectRo
   /**
    * Creates a new Router object.
    *
+   * @param {Object} [attr] optional attributes for the router
+   * @param {Object} [setter] optional key/value map of injected setter-methods
+   * @param {Object} [getter] optional key/value map of injected getter-methods
    */
-  init: function () {
-    this._super()
-
+  init: function (attr, setter, getter) {
+    this._super(attr, setter, getter)
   },
 
 

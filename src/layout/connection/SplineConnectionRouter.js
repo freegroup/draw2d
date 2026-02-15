@@ -50,8 +50,8 @@ draw2d.layout.connection.SplineConnectionRouter = draw2d.layout.connection.Manha
   /**
    * Creates a new Router object
    */
-  init: function () {
-    this._super()
+  init: function (attr, setter, getter) {
+    this._super(attr, setter, getter)
 
 //        this.spline = new draw2d.util.spline.CatmullRomSpline();
     this.spline = new draw2d.util.spline.CubicSpline()
