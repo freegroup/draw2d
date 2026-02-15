@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded",function () {
 
      // create and add two Node which contains Ports (In and OUT)
 	 var start = new draw2d.shape.node.Start({x:50, y:450});
-	 var end   = new draw2d.shape.node.End({x:230, y:150});
+	 var end   = new draw2d.shape.node.End({x:630, y:350});
 
 	 canvas.add( start);
 	 canvas.add( end);
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded",function () {
 	 /////////////////////////////////////////////////////////////////////
 
 	 var msg = new draw2d.shape.note.Markdown({
-	     text: "### jQuery HTML Context Menu\n\n" +
+	     markdown: "### jQuery HTML Context Menu\n\n" +
 	           "Right-click on the **connection** to open a jQuery-based HTML context menu.\n\n" +
 	           "**Features:**\n" +
 	           "- Change connection color\n" +
@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded",function () {
 	           "- Modify object properties\n\n" +
 	           "*This demonstrates how to integrate standard jQuery menus with draw2d connections.*",
 	     width: 300,
-	     height: 250
+	     height: 350
 	 });
 	 canvas.add(msg, 20, 20);
 
