@@ -10,11 +10,13 @@ var TimerFigure = draw2d.shape.basic.Label.extend({
         // Override onTimer() to handle timer events
         this.startTimer(500);
         
-        // Option 2: Using both onTimer() and custom callback
-        // Both the callback and onTimer() will be called
-        // Uncomment to see both approaches working together:
+        // Option 2: Using a custom callback function (alternative approach)
+        // Pass a callback function to startTimer() instead of overriding onTimer()
+        // Note: Use arrow function () => or regular function, both work because
+        // the callback is called with .call(this) internally
+        // Uncomment to see this approach in action:
         /*
-        this.startTimer(500, function() {
+        this.startTimer(500, () => {
             this.setText("Counter: " + (++this.counter));
         });
         */

@@ -15,9 +15,11 @@ var TimerFigure = draw2d.shape.basic.Label.extend({
         
         // Option 2: Using a custom callback function (alternative approach)
         // Pass a callback function to startTimer() instead of overriding onTimer()
-        // Uncomment the following to see this approach in action:
+        // Note: Use arrow function () => or regular function, both work because
+        // the callback is called with .call(this) internally
+        // Uncomment to see this approach in action:
         /*
-        this.startTimer(10, function() {
+        this.startTimer(10, () => {
             this.counter += 4;
             this.setText("Counter: " + this.counter);
             this.setRotationAngle(this.counter % 360);
