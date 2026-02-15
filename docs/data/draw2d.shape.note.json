@@ -82,6 +82,41 @@
           }
         },
         {
+          "name": "setTextPadding",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Set the text padding for the markdown content</p>",
+          "parameters": [
+            {
+              "name": "padding",
+              "type": "Number",
+              "description": "<p>The padding in pixels</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": false,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "getTextPadding",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Get the current text padding</p>",
+          "parameters": [],
+          "inherited": false,
+          "since": "",
+          "examples": [],
+          "returns": {
+            "type": "Number",
+            "description": ""
+          }
+        },
+        {
           "name": "repaint",
           "access": "private",
           "virtual": false,

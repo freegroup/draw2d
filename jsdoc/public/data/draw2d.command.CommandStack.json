@@ -85,7 +85,7 @@
       "access": "",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>Opens a transaction for further multiple commands. If you execute a command all\n{@ #execute} calls will be ignored until you commit the current transaction.</p>",
+      "description": "<p>Opens a transaction for further multiple commands. If you execute a command all\n{@ #execute} calls will be ignored until you commit the current transaction.</p>\n<p>Nested transactions are supported: each startTransaction() pushes a new CommandCollection\nonto a stack. When commitTransaction() is called, the collection is either added to the\nparent collection (if nested) or executed on the command stack (if top-level).</p>",
       "parameters": [
         {
           "name": "commandLabel",
@@ -124,7 +124,7 @@
       "access": "",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>Commit the running transaction. All commands between the start/end of a transaction\ncan be undo/redo in a single step.</p>",
+      "description": "<p>Commit the running transaction. All commands between the start/end of a transaction\ncan be undo/redo in a single step.</p>\n<p>For nested transactions: the committed collection is added to the parent collection.\nFor top-level transactions: the collection is executed on the command stack.</p>",
       "parameters": [],
       "inherited": false,
       "since": "4.0.0",

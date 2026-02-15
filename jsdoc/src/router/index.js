@@ -2684,13 +2684,8 @@ const routes = [
         component: () => import(/* webpackChunkName: "example_interaction_drag_copy_between_canvas" */ '../views/example.vue')
       },
       {
-        path: '/examples/resizehandle_replace_global',
-        props: { section: 5, example: 0 },
-        component: () => import(/* webpackChunkName: "example_resizehandle_replace_global" */ '../views/example.vue')
-      },
-      {
         path: '/examples/resizehandle_styled_css',
-        props: { section: 5, example: 1 },
+        props: { section: 5, example: 0 },
         component: () => import(/* webpackChunkName: "example_resizehandle_styled_css" */ '../views/example.vue')
       },
       {
@@ -3582,17 +3577,6 @@ const examples = [
     'text': 'Customize defaults',
     'children': [
       {
-        'name': 'resizehandle_replace_global',
-        'text': 'Custom ResizeHandles',
-        'description': 'Replace default resize handles with custom shapes.',
-        'url': 'resizehandle_replace_global/index.html',
-        'icon': 'resizehandle_replace_global/icon.png',
-        'status': 'normal',
-        'data': {
-          'path': '/examples/resizehandle_replace_global'
-        }
-      },
-      {
         'name': 'resizehandle_styled_css',
         'text': 'Style ResizeHandles via CSS',
         'description': 'Style resize handle appearance using CSS rules.',
@@ -3636,10 +3620,10 @@ const examples = [
       {
         'name': 'port_serialize',
         'text': 'Ports from JSON',
-        'description': 'Save and restore port configurations via JSON.',
+        'description': 'Ports can be styled and configured via JSON input (color, size, semanticGroup). Shows how custom port classes can override getPersistentAttributes() and setPersistentAttributes() to save/restore additional properties.',
         'url': 'port_serialize/index.html',
         'icon': 'port_serialize/icon.png',
-        'status': 'normal',
+        'status': 'updated',
         'data': {
           'path': '/examples/port_serialize'
         }

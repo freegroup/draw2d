@@ -364,14 +364,6 @@
     "text": "Customize defaults",
     "children": [
       {
-        "name": "resizehandle_replace_global",
-        "text": "Custom ResizeHandles",
-        "description": "Replace default resize handles with custom shapes.",
-        "url": "resizehandle_replace_global/index.html",
-        "icon": "resizehandle_replace_global/icon.png",
-        "status": "normal"
-      },
-      {
         "name": "resizehandle_styled_css",
         "text": "Style ResizeHandles via CSS",
         "description": "Style resize handle appearance using CSS rules.",
@@ -403,10 +395,10 @@
       {
         "name": "port_serialize",
         "text": "Ports from JSON",
-        "description": "Save and restore port configurations via JSON.",
+        "description": "Ports can be styled and configured via JSON input (color, size, semanticGroup). Shows how custom port classes can override getPersistentAttributes() and setPersistentAttributes() to save/restore additional properties.",
         "url": "port_serialize/index.html",
         "icon": "port_serialize/icon.png",
-        "status": "normal"
+        "status": "updated"
       },
       {
         "name": "port_decoration",

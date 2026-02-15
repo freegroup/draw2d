@@ -1,70 +1,145 @@
-﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+﻿<!DOCTYPE html>
+<html>
 <head>
-<title></title>
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="viewport" content="width=device-width, minimum-scale=1.0, , maximum-scale=1.0" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Shape Decoration - Add Labels to Shapes</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
   <link type="text/css" rel="stylesheet" href="./css/example.css" />
   <script src="./lib/jquery.js"></script>
   <script src="./lib/jquery-ui.js"></script>
-
   <script src="../draw2d.js"></script>
-
   <script src="./LabeledEnd.js"></script>
 
-<script type="text/javascript">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
 
-document.addEventListener("DOMContentLoaded",function () {
+    #container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
 
-     // Create the paint area. The id in the constructor must be
-     // an existing DIV
-	 var canvas = new draw2d.Canvas("gfx_holder");
+    #toolbar {
+      background: #f5f5f5;
+      border-bottom: 1px solid #ddd;
+      padding: 10px;
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+    }
 
-     // create a basic figure and add a Label/child via API call
-     //
-	 var start = new draw2d.shape.node.Start();
-	 start.add(new draw2d.shape.basic.Label({text:"Test Label"}), new draw2d.layout.locator.TopLocator());
-	 canvas.add( start, 80,150);
+    #toolbar button {
+      padding: 8px 16px;
+      border: 1px solid #ccc;
+      background: white;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
 
-	 // Create a custom shape with a build in feature for decoration/labels
-	 // Good example for inheritence of shapes
-	 //
-	 var end = new LabeledEnd();
-	 canvas.add( end, 350,250);
+    #toolbar button:hover:not(:disabled) {
+      background: #e8e8e8;
+    }
 
-     // create a basic figure and add a Label/child via API call
-     //
-	 var start2 = new draw2d.shape.node.Start();
-	 start2.add(new draw2d.shape.basic.Label({text:"Left Label"}), new draw2d.layout.locator.LeftLocator());
-	 canvas.add( start2, 80,250);
+    #toolbar button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
 
-     // create a basic figure and add a Label/child via API call
-     //
-	 var end2 = new draw2d.shape.node.End();
-	 end2.add(new draw2d.shape.basic.Label({text:"Right Label"}), new draw2d.layout.locator.RightLocator());
-	 canvas.add( end2, 350,100);
+    #canvasWrapper {
+      flex: 1;
+      overflow: auto;
+      position: relative;
+    }
 
-    var end3 = new draw2d.shape.node.End();
-    end3.add(new draw2d.shape.basic.Label({text:"draggable Label", x:55, y:25}), new draw2d.layout.locator.DraggableLocator());
-    canvas.add( end3, 350,180);
+    #gfx_holder {
+      width: 1500px;
+      height: 1500px;
+    }
+  </style>
 
+  <script type="text/javascript">
+    let canvas;
 
-    /////////////////////////////////////////////////////////////////////
-	 // THIS IS ONLY FOR THE ARROW AND THE POST-IT
-	 /////////////////////////////////////////////////////////////////////
-	 var msg = new draw2d.shape.note.PostIt({text:"Drag&Drop the blue box and notice the label.\nIt sticks always on the top or bottom of the shape."});
-	 canvas.add(msg, 20,20);
-});
+    document.addEventListener("DOMContentLoaded", function () {
+      canvas = new draw2d.Canvas("gfx_holder");
 
-</script>
+      // Create a basic figure and add a Label/child via API call
+      var start = new draw2d.shape.node.Start();
+      start.add(new draw2d.shape.basic.Label({text: "Test Label"}), new draw2d.layout.locator.TopLocator());
+      canvas.add(start, 80, 150);
 
+      // Create a custom shape with a build in feature for decoration/labels
+      // Good example for inheritence of shapes
+      var end = new LabeledEnd();
+      canvas.add(end, 350, 250);
+
+      // Create a basic figure and add a Label/child via API call
+      var start2 = new draw2d.shape.node.Start();
+      start2.add(new draw2d.shape.basic.Label({text: "Left Label"}), new draw2d.layout.locator.LeftLocator());
+      canvas.add(start2, 80, 250);
+
+      // Create a basic figure and add a Label/child via API call
+      var end2 = new draw2d.shape.node.End();
+      end2.add(new draw2d.shape.basic.Label({text: "Right Label"}), new draw2d.layout.locator.RightLocator());
+      canvas.add(end2, 350, 100);
+
+      // Draggable label example
+      var end3 = new draw2d.shape.node.End();
+      end3.add(new draw2d.shape.basic.Label({text: "draggable Label", x: 55, y: 25}), new draw2d.layout.locator.DraggableLocator());
+      canvas.add(end3, 350, 180);
+
+      // Add documentation note
+      var msg = new draw2d.shape.note.PostIt({
+        text: "Drag&Drop the blue box and notice the label.\nIt sticks always on the top or bottom of the shape."
+      });
+      canvas.add(msg, 20, 20);
+
+      // Update toolbar button states
+      updateToolbarButtons();
+
+      // Listen to command stack changes
+      canvas.getCommandStack().addEventListener(function(e) {
+        updateToolbarButtons();
+      });
+    });
+
+    function undo() {
+      canvas.getCommandStack().undo();
+    }
+
+    function redo() {
+      canvas.getCommandStack().redo();
+    }
+
+    function updateToolbarButtons() {
+      const undoBtn = document.getElementById('undoBtn');
+      const redoBtn = document.getElementById('redoBtn');
+      
+      if (undoBtn && redoBtn) {
+        undoBtn.disabled = !canvas.getCommandStack().canUndo();
+        redoBtn.disabled = !canvas.getCommandStack().canRedo();
+      }
+    }
+  </script>
 </head>
 
 <body>
-
-   <div  onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:1500px; height:1500px; ">
-   </div>
-
+  <div id="container">
+    <div id="toolbar">
+      <button id="undoBtn" onclick="undo()" disabled>↩ Undo</button>
+      <button id="redoBtn" onclick="redo()" disabled>↪ Redo</button>
+    </div>
+    <div id="canvasWrapper">
+      <div id="gfx_holder"></div>
+    </div>
+  </div>
 </body>
 </html>

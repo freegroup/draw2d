@@ -24,11 +24,19 @@
           "nullable": ""
         },
         {
-          "name": "attributes",
+          "name": "newAttributes",
           "type": "Object",
           "description": "<p>new attributes to set</p>",
           "default": "",
           "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "oldAttributes",
+          "type": "Object",
+          "description": "<p>optional old attributes. If provided, these values will override/enrich the automatically determined values</p>",
+          "default": "",
+          "optional": true,
           "nullable": ""
         }
       ],

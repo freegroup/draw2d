@@ -1,59 +1,144 @@
-﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+﻿<!DOCTYPE html>
+<html>
 <head>
-  <title></title>
-  <meta name="apple-mobile-web-app-capable" content="yes"/>
-  <meta name="viewport" content="width=device-width, minimum-scale=1.0"/>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Port Semantic Groups</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-  <link type="text/css" rel="stylesheet" href="./css/example.css"/>
+  <link type="text/css" rel="stylesheet" href="./css/example.css" />
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    #container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+    }
+    #toolbar {
+      flex-shrink: 0;
+      height: 40px;
+      background: linear-gradient(to bottom, #f8f8f8 0%, #e0e0e0 100%);
+      border-bottom: 1px solid #ccc;
+      padding: 5px 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    #toolbar button {
+      padding: 5px 15px;
+      border: 1px solid #999;
+      border-radius: 4px;
+      background: linear-gradient(to bottom, #fff 0%, #e8e8e8 100%);
+      cursor: pointer;
+    }
+    #toolbar button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    #toolbar button:hover:not(:disabled) {
+      background: linear-gradient(to bottom, #fff 0%, #d8d8d8 100%);
+    }
+    #scrollarea {
+      flex: 1;
+      overflow: auto;
+      background-color: #FAFAFA;
+      position: relative;
+    }
+    #gfx_holder {
+      min-width: 3000px;
+      min-height: 3000px;
+      width: 3000px;
+      height: 3000px;
+    }
+  </style>
 
   <script src="./lib/jquery.js"></script>
   <script src="./lib/jquery-ui.js"></script>
-
   <script src="../draw2d.js"></script>
-
+  <script src="./SemanticGroupFigure.js"></script>
 
   <script type="text/javascript">
+    var canvas = null;
 
+    function undo() {
+      canvas.getCommandStack().undo();
+    }
 
-    document.addEventListener("DOMContentLoaded", function () {
+    function redo() {
+      canvas.getCommandStack().redo();
+    }
 
-      draw2d.Configuration.factory.createInputPort= function(){
-        let port = new draw2d.InputPort();
-        port.uninstallEditPolicy("draw2d.policy.port.IntrusivePortsFeedbackPolicy")
-        port.installEditPolicy(new draw2d.policy.port.ElasticStrapFeedbackPolicy())
-        return port
-      }
-      draw2d.Configuration.factory.createOutputPort= function(){
-        let port = new draw2d.OutputPort();
-        port.uninstallEditPolicy("draw2d.policy.port.IntrusivePortsFeedbackPolicy")
-        port.installEditPolicy(new draw2d.policy.port.ElasticStrapFeedbackPolicy())
-        return port
-      }
+    function updateButtons() {
+      document.getElementById('undoBtn').disabled = !canvas.getCommandStack().canUndo();
+      document.getElementById('redoBtn').disabled = !canvas.getCommandStack().canRedo();
+    }
 
-      var canvas = new draw2d.Canvas("gfx_holder");
+    document.addEventListener("DOMContentLoaded", function() {
+      canvas = new draw2d.Canvas("gfx_holder");
+      canvas.setScrollArea("#scrollarea");
 
+      canvas.getCommandStack().addEventListener(function(e) {
+        updateButtons();
+      });
+      updateButtons();
 
-      canvas.add(new draw2d.shape.node.Start(), 100, 100)
-      canvas.add(new draw2d.shape.node.End(), 500, 100)
+      // Create figures with semantic group ports
+      var fig1 = new SemanticGroupFigure();
+      var fig2 = new SemanticGroupFigure();
+      var fig3 = new SemanticGroupFigure();
 
-      canvas.add(new draw2d.shape.node.Start(), 100, 300)
-      canvas.add(new draw2d.shape.node.End(), 500, 300)
+      canvas.add(fig1, 80, 100);
+      canvas.add(fig2, 350, 80);
+      canvas.add(fig3, 350, 220);
 
+      // Add labels to explain the ports
+      canvas.add(new draw2d.shape.basic.Label({
+        text: "RED = 'data' group",
+        fontColor: "#e74c3c",
+        fontSize: 14,
+        bold: true
+      }), 80, 30);
 
-      // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
-      var msg = new draw2d.shape.note.PostIt({text:"Only ports in the same 'semanticGroup' can be connected.\nDrag&Drop a 'red' port and try to connect them to a 'green' one.", x:20, y:20});
+      canvas.add(new draw2d.shape.basic.Label({
+        text: "GREEN = 'control' group", 
+        fontColor: "#27ae60",
+        fontSize: 14,
+        bold: true
+      }), 80, 60);
+
+      // Info message
+      var msg = new draw2d.shape.note.PostIt({
+        text: "Only ports with the same semantic group can connect!\n\n" +
+              "• RED ports can only connect to RED ports\n" +
+              "• GREEN ports can only connect to GREEN ports\n\n" +
+              "Try dragging from a RED port to a GREEN port - it won't connect!",
+        x: 20,
+        y: 350,
+        width: 300
+      });
       canvas.add(msg);
-
     });
   </script>
 
 </head>
 
 <body>
-<div onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:3000px; height:3000px;">
+<div id="container">
+  <div id="toolbar">
+    <button id="undoBtn" onclick="undo()" disabled>↩ Undo</button>
+    <button id="redoBtn" onclick="redo()" disabled>↪ Redo</button>
+  </div>
+  <div id="scrollarea">
+    <div id="gfx_holder">
+    </div>
+  </div>
 </div>
-
-
 </body>
 </html>

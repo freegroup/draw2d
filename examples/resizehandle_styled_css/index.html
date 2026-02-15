@@ -1,49 +1,124 @@
-﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+﻿<!DOCTYPE html>
+<html>
 <head>
-<title></title>
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="viewport" content="width=device-width, minimum-scale=1.0" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>CSS Styled ResizeHandles</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
   <link type="text/css" rel="stylesheet" href="./css/example.css" />
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    #container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+    }
+    #toolbar {
+      flex-shrink: 0;
+      height: 40px;
+      background: linear-gradient(to bottom, #f8f8f8 0%, #e0e0e0 100%);
+      border-bottom: 1px solid #ccc;
+      padding: 5px 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    #toolbar button {
+      padding: 5px 15px;
+      border: 1px solid #999;
+      border-radius: 4px;
+      background: linear-gradient(to bottom, #fff 0%, #e8e8e8 100%);
+      cursor: pointer;
+    }
+    #toolbar button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    #toolbar button:hover:not(:disabled) {
+      background: linear-gradient(to bottom, #fff 0%, #d8d8d8 100%);
+    }
+    #scrollarea {
+      flex: 1;
+      overflow: auto;
+      background-color: #FAFAFA;
+      position: relative;
+    }
+    #gfx_holder {
+      min-width: 3000px;
+      min-height: 3000px;
+      width: 3000px;
+      height: 3000px;
+    }
+  </style>
 
   <script src="./lib/jquery.js"></script>
   <script src="./lib/jquery-ui.js"></script>
-
   <script src="../draw2d.js"></script>
 
 <script type="text/javascript">
+var canvas = null;
 
-document.addEventListener("DOMContentLoaded",function () {
+function undo() {
+  canvas.getCommandStack().undo();
+}
 
+function redo() {
+  canvas.getCommandStack().redo();
+}
 
-  var canvas = new draw2d.Canvas("gfx_holder");
+function updateButtons() {
+  document.getElementById('undoBtn').disabled = !canvas.getCommandStack().canUndo();
+  document.getElementById('redoBtn').disabled = !canvas.getCommandStack().canRedo();
+}
 
-  canvas.add( new draw2d.shape.basic.Oval(),100,100);
-  canvas.add( new draw2d.shape.basic.Rectangle(),120,150);
+document.addEventListener("DOMContentLoaded", function() {
+  canvas = new draw2d.Canvas("gfx_holder");
+  canvas.setScrollArea("#scrollarea");
+  
+  canvas.getCommandStack().addEventListener(function(e) {
+    updateButtons();
+  });
+  updateButtons();
 
-  canvas.add( new draw2d.shape.node.Start(), 80,80);
-  canvas.add( new draw2d.shape.node.Start(), 50,50);
+  canvas.add(new draw2d.shape.basic.Oval(), 100, 100);
+  canvas.add(new draw2d.shape.basic.Rectangle(), 120, 150);
 
-  canvas.add( new draw2d.shape.node.End(), 150,150);
-  canvas.add( new draw2d.shape.node.End(), 350,250);
+  canvas.add(new draw2d.shape.node.Start(), 80, 80);
+  canvas.add(new draw2d.shape.node.Start(), 50, 50);
 
-  /////////////////////////////////////////////////////////////////////
-  // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
-  /////////////////////////////////////////////////////////////////////
-  var msg = new draw2d.shape.note.PostIt({text:"Select a shape to see CSS styled resize handles", x:20, y:20});
+  canvas.add(new draw2d.shape.node.End(), 150, 150);
+  canvas.add(new draw2d.shape.node.End(), 350, 250);
+
+  // Info message
+  var msg = new draw2d.shape.note.PostIt({
+    text: "Select a shape to see CSS styled resize handles",
+    x: 20,
+    y: 20
+  });
   canvas.add(msg);
-
 });
-
 </script>
 
 </head>
 
 <body>
-<div  onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:3000px; height:3000px;">
+<div id="container">
+  <div id="toolbar">
+    <button id="undoBtn" onclick="undo()" disabled>↩ Undo</button>
+    <button id="redoBtn" onclick="redo()" disabled>↪ Redo</button>
+  </div>
+  <div id="scrollarea">
+    <div onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder">
+    </div>
+  </div>
 </div>
-
-
 </body>
 </html>
