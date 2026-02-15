@@ -52,17 +52,17 @@ var MySlider = draw2d.shape.widget.Slider.extend({
 
         // Create ONE command for undo/redo when drag ends
         // This ensures the entire slider operation can be undone/redone as a single action
-        // Uses CommandCollection to avoid nested transaction conflicts
         this.on("dragend", (element, event) => {
             try {
                 var canvas = this.getCanvas();
                 if (!canvas) return;
 
                 var connections = this.getOutputPort(0).getConnections();
+                var commandStack = canvas.getCommandStack();
                 
-                // Create our own CommandCollection to group all changes
-                // 
-                var collection = new draw2d.command.CommandCollection("Slider Value Change");
+                // Use transaction to group all changes as ONE undo/redo operation
+                // Nested transactions are now supported - no conflict even if shape is being dragged
+                commandStack.startTransaction("Slider Value Change");
                 
                 connections.each((i, conn) => {
                     var targetPort = conn.getTarget();
@@ -74,17 +74,13 @@ var MySlider = draw2d.shape.widget.Slider.extend({
                         {value: targetPort.getValue()},      // current value (new)
                         {value: targetPort._startValue}      // stored start value (old)
                     );
-                    
-                    // Add command to our collection instead of executing it
-                    collection.add(cmd);
+                    commandStack.execute(cmd);
                     
                     // Clean up temporary start value
                     delete targetPort._startValue;
                 });
 
-                // Execute the entire collection as ONE command on the stack
-                // This works even if another transaction is running
-                canvas.getCommandStack().execute(collection);
+                commandStack.commitTransaction();
             }
             catch (exc) {
                 console.error("Error in MySlider dragend handler:", exc);

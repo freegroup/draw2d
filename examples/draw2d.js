@@ -10089,6 +10089,7 @@ _packages.default.command.CommandStack = Class.extend(/** @lends draw2d.command.
     this.redostack = [];
     this.maxundo = 50;
     this.transactionCommand = null;
+    this.transactionStack = []; // Stack for nested transactions
     this.eventListeners = new _packages.default.util.ArrayList();
   },
   /**
@@ -10167,16 +10168,22 @@ _packages.default.command.CommandStack = Class.extend(/** @lends draw2d.command.
    *
    * Opens a transaction for further multiple commands. If you execute a command all
    * {@ #execute} calls will be ignored until you commit the current transaction.
+   * 
+   * Nested transactions are supported: each startTransaction() pushes a new CommandCollection
+   * onto a stack. When commitTransaction() is called, the collection is either added to the
+   * parent collection (if nested) or executed on the command stack (if top-level).
    *
    * @param {String} [commandLabel] the label to show for the undo/redo operation
    * @returns {this}
    * @since 4.0.0
    */
   startTransaction: function (commandLabel) {
+    // Push current transaction onto stack if one exists (nested transaction)
     if (this.transactionCommand !== null) {
-      debugger;
-      throw "CommandStack is already within transactional mode. Don't call 'startTransaction";
+      this.transactionStack.push(this.transactionCommand);
     }
+
+    // Create new transaction
     this.transactionCommand = new _packages.default.command.CommandCollection(commandLabel);
     return this;
   },
@@ -10196,6 +10203,9 @@ _packages.default.command.CommandStack = Class.extend(/** @lends draw2d.command.
    *
    * Commit the running transaction. All commands between the start/end of a transaction
    * can be undo/redo in a single step.
+   * 
+   * For nested transactions: the committed collection is added to the parent collection.
+   * For top-level transactions: the collection is executed on the command stack.
    *
    * @since 4.0.0
    * @returns {this}
@@ -10205,12 +10215,29 @@ _packages.default.command.CommandStack = Class.extend(/** @lends draw2d.command.
       return this; //silently
     }
     let cmd = this.transactionCommand;
-    this.transactionCommand = null;
-    // we can drop the CommandCollection if the collection contains only one command.
-    if (cmd.commands.getSize() === 1) {
-      this.execute(cmd.commands.first());
+
+    // Check if we have a parent transaction (nested transaction)
+    if (this.transactionStack.length > 0) {
+      // Pop parent transaction from stack
+      this.transactionCommand = this.transactionStack.pop();
+
+      // Add current collection to parent collection
+      // Optimize: if only one command, add it directly
+      if (cmd.commands.getSize() === 1) {
+        this.transactionCommand.add(cmd.commands.first());
+      } else if (cmd.commands.getSize() > 0) {
+        this.transactionCommand.add(cmd);
+      }
     } else {
-      this.execute(cmd);
+      // Top-level transaction: execute on command stack
+      this.transactionCommand = null;
+
+      // we can drop the CommandCollection if the collection contains only one command.
+      if (cmd.commands.getSize() === 1) {
+        this.execute(cmd.commands.first());
+      } else if (cmd.commands.getSize() > 0) {
+        this.execute(cmd);
+      }
     }
     return this;
   },
