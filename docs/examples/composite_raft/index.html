@@ -58,7 +58,7 @@
     #canvasArea {
       flex: 1;
       overflow: auto;
-      background-color: #f0f0f0;
+      background-color: #f8f7f7;
       position: relative;
     }
     #gfx_holder {
@@ -126,7 +126,6 @@
       canvas = new draw2d.Canvas("gfx_holder");
       canvas.setScrollArea("#canvasArea");
       canvas.installEditPolicy(new draw2d.policy.canvas.FadeoutDecorationPolicy());
-      canvas.installEditPolicy(new draw2d.policy.canvas.ShowGridEditPolicy());
 
       canvas.add(new draw2d.shape.basic.Oval({width: 80, height: 30, x: 50, y: 50}));
       canvas.add(new draw2d.shape.basic.Circle({radius: 40, x: 50, y: 150}));

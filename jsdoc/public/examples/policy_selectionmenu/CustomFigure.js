@@ -5,7 +5,7 @@ var CustomFigure = draw2d.shape.basic.Label.extend({
 	
     init : function(attr)
     {
-    	this._super($.extend({text:"FigureWith Flyout menu"},attr));
+    	this._super({text:"Figure with HTML flyout menu",...attr});
 
         this.installEditPolicy(new SelectionMenuPolicy());
     }

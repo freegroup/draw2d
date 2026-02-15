@@ -5,7 +5,7 @@ var SelectionMenuPolicy = draw2d.policy.figure.SelectionPolicy.extend({
     init : function(attr, setter, getter)
     {
 		this.overlay = null; // div DOM node
-		this.scrollHandler = null; // scroll event handler
+		this.zoomListener = null; // zoom event listener
 
         this._super(attr, setter, getter);
     },
@@ -25,11 +25,10 @@ var SelectionMenuPolicy = draw2d.policy.figure.SelectionPolicy.extend({
 		if (this.overlay === null) {
 			this.overlay= $("<div class='overlayMenu'>&#x2295;</div>");
 			
-			// Attach overlay to canvas parent (scrollarea) instead of body
-			// This ensures proper positioning relative to the scrollable canvas
-			var canvasElement = $(canvas.html);
-			var scrollContainer = canvasElement.parent();
-			scrollContainer.append(this.overlay);
+			// Attach overlay to parent of scrollArea (same level as canvas container)
+			// This keeps the overlay fixed in viewport while figure scrolls
+			var scrollArea = canvas.getScrollArea();
+			scrollArea.parent().append(this.overlay);
 			
 			this.overlay.on("click",function(){
 				// use a Command and CommandStack for undo/redo support
@@ -37,11 +36,11 @@ var SelectionMenuPolicy = draw2d.policy.figure.SelectionPolicy.extend({
 				canvas.getCommandStack().execute(command);
 			});
 			
-			// Add scroll event handler to update position when scrolling
-			this.scrollHandler = () => {
+			// Add zoom event listener to update position when zoom changes
+			this.zoomListener = () => {
 				this.posOverlay(canvas, figure);
 			};
-			scrollContainer.on("scroll", this.scrollHandler);
+			canvas.on("zoom", this.zoomListener);
 		}
 		this.posOverlay(canvas, figure);
 	},
@@ -58,12 +57,10 @@ var SelectionMenuPolicy = draw2d.policy.figure.SelectionPolicy.extend({
 		this._super(canvas, figure);
 
 		if(this.overlay) {
-			// Remove scroll event handler
-			if(this.scrollHandler) {
-				var canvasElement = $(canvas.html);
-				var scrollContainer = canvasElement.parent();
-				scrollContainer.off("scroll", this.scrollHandler);
-				this.scrollHandler = null;
+			// Remove zoom event listener
+			if(this.zoomListener) {
+				canvas.off("zoom", this.zoomListener);
+				this.zoomListener = null;
 			}
 			
 			this.overlay.remove();
@@ -80,16 +77,10 @@ var SelectionMenuPolicy = draw2d.policy.figure.SelectionPolicy.extend({
 
 	posOverlay:function(canvas, figure)
 	{
-		// Get canvas offset relative to its scroll container
-		var canvasElement = $(canvas.html);
-		var scrollContainer = canvasElement.parent();
-		var canvasOffset = canvasElement.position(); // position relative to parent
+		var zoom = canvas.getZoom();
 		
-		// Calculate position: figure position + canvas offset
-		// No need to subtract scroll offset because overlay is inside scrollContainer
-		// and scrolls naturally with the content
-		var top = figure.getAbsoluteY() + canvasOffset.top - 20;
-		var left = figure.getAbsoluteX() + canvasOffset.left + figure.getWidth() + 10;
+		var top = (figure.getAbsoluteY() * zoom) - 20;
+		var left = ((figure.getAbsoluteX() + figure.getWidth()) * zoom) + 10;
 		
 		this.overlay.css({
 			"top": top,

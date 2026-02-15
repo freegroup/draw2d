@@ -59,12 +59,12 @@
         "status": "new"
       },
       {
-        "name": "shape_text_wrapping",
-        "text": "Text Wrapping",
-        "description": "Resizable text box with automatic text wrapping. Uses draw2d.shape.basic.Text - when width changes, text automatically wraps to fit. Configure font family, size, colors.",
-        "url": "shape_text_wrapping/index.html",
-        "icon": "shape_text_wrapping/icon.png",
-        "status": "updated"
+        "name": "policy_selectionmenu",
+        "text": "HTML Selection Menu",
+        "description": "HTML overlay menu appears when a figure is selected. Demonstrates how to position HTML elements relative to canvas figures, handling scroll, zoom, and drag events.",
+        "url": "policy_selectionmenu/index.html",
+        "icon": "policy_selectionmenu/icon.png",
+        "status": "normal"
       }
     ]
   },
@@ -215,14 +215,6 @@
         "description": "Custom connection class with right-click context menu.",
         "url": "connection_with_contextmenu/index.html",
         "icon": "connection_with_contextmenu/icon.png",
-        "status": "normal"
-      },
-      {
-        "name": "policy_selectionmenu",
-        "text": "Show menu on selection",
-        "description": "Flyout menu appears when a figure is selected.",
-        "url": "policy_selectionmenu/index.html",
-        "icon": "policy_selectionmenu/icon.png",
         "status": "normal"
       },
       {
@@ -541,6 +533,14 @@
         "description": "Snap figures to grid or other figure edges during drag.",
         "url": "policy_snap_to/index.html",
         "icon": "policy_snap_to/icon.png",
+        "status": "normal"
+      },
+      {
+        "name": "policy_selectionmenu",
+        "text": "Selection Menu Policy",
+        "description": "Custom SelectionPolicy that displays a flyout menu when figure is selected. Shows how to extend SelectionPolicy, handle onSelect/onUnselect/onDrag events, and maintain overlay position during zoom.",
+        "url": "policy_selectionmenu/index.html",
+        "icon": "policy_selectionmenu/icon.png",
         "status": "normal"
       },
       {

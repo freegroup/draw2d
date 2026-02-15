@@ -5,6 +5,7 @@ var SelectionMenuPolicy = draw2d.policy.figure.SelectionPolicy.extend({
     init : function(attr, setter, getter)
     {
 		this.overlay = null; // div DOM node
+		this.zoomListener = null; // zoom event listener
 
         this._super(attr, setter, getter);
     },
@@ -23,16 +24,25 @@ var SelectionMenuPolicy = draw2d.policy.figure.SelectionPolicy.extend({
 
 		if (this.overlay === null) {
 			this.overlay= $("<div class='overlayMenu'>&#x2295;</div>");
-			$("body").append(this.overlay);
+			
+			// Attach overlay to parent of scrollArea (same level as canvas container)
+			// This keeps the overlay fixed in viewport while figure scrolls
+			var scrollArea = canvas.getScrollArea();
+			scrollArea.parent().append(this.overlay);
+			
 			this.overlay.on("click",function(){
-
 				// use a Command and CommandStack for undo/redo support
-				//
 				var command= new draw2d.command.CommandDelete(figure);
 				canvas.getCommandStack().execute(command);
-			})
+			});
+			
+			// Add zoom event listener to update position when zoom changes
+			this.zoomListener = () => {
+				this.posOverlay(canvas, figure);
+			};
+			canvas.on("zoom", this.zoomListener);
 		}
-		this.posOverlay(figure);
+		this.posOverlay(canvas, figure);
 	},
 
 
@@ -46,22 +56,35 @@ var SelectionMenuPolicy = draw2d.policy.figure.SelectionPolicy.extend({
 	{
 		this._super(canvas, figure);
 
-		this.overlay.remove();
-		this.overlay=null;
+		if(this.overlay) {
+			// Remove zoom event listener
+			if(this.zoomListener) {
+				canvas.off("zoom", this.zoomListener);
+				this.zoomListener = null;
+			}
+			
+			this.overlay.remove();
+			this.overlay=null;
+		}
 	},
 
 
     onDrag: function(canvas, figure)
 	{
 		this._super(canvas, figure);
-		this.posOverlay(figure);
+		this.posOverlay(canvas, figure);
 	},
 
-	posOverlay:function(figure)
+	posOverlay:function(canvas, figure)
 	{
+		var zoom = canvas.getZoom();
+		
+		var top = (figure.getAbsoluteY() * zoom) - 20;
+		var left = ((figure.getAbsoluteX() + figure.getWidth()) * zoom) + 10;
+		
 		this.overlay.css({
-			"top":figure.getAbsoluteY()-20,
-			"left":figure.getAbsoluteX()+ figure.getWidth()+10
+			"top": top,
+			"left": left
 		});
 	}
 });

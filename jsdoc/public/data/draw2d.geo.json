@@ -1796,6 +1796,21 @@
           }
         },
         {
+          "name": "getDimension",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Returns a new rectangle with the same dimensions but with origin at (0,0).\nThis is useful for converting absolute positioned rectangles to local coordinates.</p>",
+          "parameters": [],
+          "inherited": false,
+          "since": "6.x.x",
+          "examples": [],
+          "returns": {
+            "type": "draw2d.geo.Rectangle",
+            "description": "<p>Rectangle with same width/height but positioned at (0,0)</p>"
+          }
+        },
+        {
           "name": "toJSON",
           "access": "",
           "virtual": false,

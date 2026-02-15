@@ -1517,14 +1517,22 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Start a timer which calls the onTimer method in the given interval.</p>",
+          "description": "<p>Start a timer which calls the onTimer method in the given interval.\nOptionally you can provide a custom callback function that will be called\nin addition to the onTimer method.</p>",
           "parameters": [
             {
               "name": "milliSeconds",
               "type": "Number",
-              "description": "",
+              "description": "<p>the interval in milliseconds</p>",
               "default": "",
               "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "callback",
+              "type": "function",
+              "description": "<p>optional callback function to call instead of or in addition to onTimer()</p>",
+              "default": "",
+              "optional": true,
               "nullable": ""
             }
           ],
@@ -1537,7 +1545,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Stop the internal timer.</p>",
+          "description": "<p>Stop the internal timer and cleanup callback references.</p>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -4218,14 +4226,22 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Start a timer which calls the onTimer method in the given interval.</p>",
+          "description": "<p>Start a timer which calls the onTimer method in the given interval.\nOptionally you can provide a custom callback function that will be called\nin addition to the onTimer method.</p>",
           "parameters": [
             {
               "name": "milliSeconds",
               "type": "Number",
-              "description": "",
+              "description": "<p>the interval in milliseconds</p>",
               "default": "",
               "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "callback",
+              "type": "function",
+              "description": "<p>optional callback function to call instead of or in addition to onTimer()</p>",
+              "default": "",
+              "optional": true,
               "nullable": ""
             }
           ],
@@ -4238,7 +4254,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Stop the internal timer.</p>",
+          "description": "<p>Stop the internal timer and cleanup callback references.</p>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -7332,14 +7348,22 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Start a timer which calls the onTimer method in the given interval.</p>",
+          "description": "<p>Start a timer which calls the onTimer method in the given interval.\nOptionally you can provide a custom callback function that will be called\nin addition to the onTimer method.</p>",
           "parameters": [
             {
               "name": "milliSeconds",
               "type": "Number",
-              "description": "",
+              "description": "<p>the interval in milliseconds</p>",
               "default": "",
               "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "callback",
+              "type": "function",
+              "description": "<p>optional callback function to call instead of or in addition to onTimer()</p>",
+              "default": "",
+              "optional": true,
               "nullable": ""
             }
           ],
@@ -7352,7 +7376,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Stop the internal timer.</p>",
+          "description": "<p>Stop the internal timer and cleanup callback references.</p>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -10311,14 +10335,22 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Start a timer which calls the onTimer method in the given interval.</p>",
+          "description": "<p>Start a timer which calls the onTimer method in the given interval.\nOptionally you can provide a custom callback function that will be called\nin addition to the onTimer method.</p>",
           "parameters": [
             {
               "name": "milliSeconds",
               "type": "Number",
-              "description": "",
+              "description": "<p>the interval in milliseconds</p>",
               "default": "",
               "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "callback",
+              "type": "function",
+              "description": "<p>optional callback function to call instead of or in addition to onTimer()</p>",
+              "default": "",
+              "optional": true,
               "nullable": ""
             }
           ],
@@ -10331,7 +10363,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Stop the internal timer.</p>",
+          "description": "<p>Stop the internal timer and cleanup callback references.</p>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -13133,14 +13165,22 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Start a timer which calls the onTimer method in the given interval.</p>",
+          "description": "<p>Start a timer which calls the onTimer method in the given interval.\nOptionally you can provide a custom callback function that will be called\nin addition to the onTimer method.</p>",
           "parameters": [
             {
               "name": "milliSeconds",
               "type": "Number",
-              "description": "",
+              "description": "<p>the interval in milliseconds</p>",
               "default": "",
               "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "callback",
+              "type": "function",
+              "description": "<p>optional callback function to call instead of or in addition to onTimer()</p>",
+              "default": "",
+              "optional": true,
               "nullable": ""
             }
           ],
@@ -13153,7 +13193,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Stop the internal timer.</p>",
+          "description": "<p>Stop the internal timer and cleanup callback references.</p>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -16239,14 +16279,22 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Start a timer which calls the onTimer method in the given interval.</p>",
+          "description": "<p>Start a timer which calls the onTimer method in the given interval.\nOptionally you can provide a custom callback function that will be called\nin addition to the onTimer method.</p>",
           "parameters": [
             {
               "name": "milliSeconds",
               "type": "Number",
-              "description": "",
+              "description": "<p>the interval in milliseconds</p>",
               "default": "",
               "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "callback",
+              "type": "function",
+              "description": "<p>optional callback function to call instead of or in addition to onTimer()</p>",
+              "default": "",
+              "optional": true,
               "nullable": ""
             }
           ],
@@ -16259,7 +16307,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Stop the internal timer.</p>",
+          "description": "<p>Stop the internal timer and cleanup callback references.</p>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -19082,14 +19130,22 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Start a timer which calls the onTimer method in the given interval.</p>",
+          "description": "<p>Start a timer which calls the onTimer method in the given interval.\nOptionally you can provide a custom callback function that will be called\nin addition to the onTimer method.</p>",
           "parameters": [
             {
               "name": "milliSeconds",
               "type": "Number",
-              "description": "",
+              "description": "<p>the interval in milliseconds</p>",
               "default": "",
               "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "callback",
+              "type": "function",
+              "description": "<p>optional callback function to call instead of or in addition to onTimer()</p>",
+              "default": "",
+              "optional": true,
               "nullable": ""
             }
           ],
@@ -19102,7 +19158,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Stop the internal timer.</p>",
+          "description": "<p>Stop the internal timer and cleanup callback references.</p>",
           "parameters": [],
           "inherited": true,
           "since": "",
@@ -21842,14 +21898,22 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Start a timer which calls the onTimer method in the given interval.</p>",
+          "description": "<p>Start a timer which calls the onTimer method in the given interval.\nOptionally you can provide a custom callback function that will be called\nin addition to the onTimer method.</p>",
           "parameters": [
             {
               "name": "milliSeconds",
               "type": "Number",
-              "description": "",
+              "description": "<p>the interval in milliseconds</p>",
               "default": "",
               "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "callback",
+              "type": "function",
+              "description": "<p>optional callback function to call instead of or in addition to onTimer()</p>",
+              "default": "",
+              "optional": true,
               "nullable": ""
             }
           ],
@@ -21862,7 +21926,7 @@
           "access": "",
           "virtual": false,
           "deprecated": "",
-          "description": "<p>Stop the internal timer.</p>",
+          "description": "<p>Stop the internal timer and cleanup callback references.</p>",
           "parameters": [],
           "inherited": true,
           "since": "",
