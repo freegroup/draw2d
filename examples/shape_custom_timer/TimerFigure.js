@@ -38,10 +38,18 @@ var TimerFigure = draw2d.shape.basic.Label.extend({
      * 2. Pass callback to startTimer() and omit onTimer() (modern approach)
      * 3. Use both for combined behavior (e.g., callback for logic + onTimer for logging)
      * 
+     * API styles:
+     * Modern attr() API (shown in example) vs. conventional setter methods (commented):
+     *   this.attr({text: "Counter: " + this.counter});  // Modern
+     *   this.setText("Counter: " + this.counter);        // Conventional
+     * 
      * @private
      */
     onTimer:function(){
-        this.setText("Counter: "+(++this.counter));
+        this.attr({text: "Counter: "+(++this.counter)});
+        
+        // Conventional alternative using setter method:
+        // this.setText("Counter: " + (++this.counter));
     }
 
 });
