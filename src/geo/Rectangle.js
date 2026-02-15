@@ -766,6 +766,18 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend(
 
     /**
      *
+     * Returns a new rectangle with the same dimensions but with origin at (0,0).
+     * This is useful for converting absolute positioned rectangles to local coordinates.
+     *
+     * @returns {draw2d.geo.Rectangle} Rectangle with same width/height but positioned at (0,0)
+     * @since 6.x.x
+     */
+    getDimension: function () {
+      return new draw2d.geo.Rectangle(0, 0, this.w, this.h);
+    },
+
+    /**
+     *
      * converts the rectangle to JSON representation. required for the draw2d.io.Writer
      *
      * @returns {Object}

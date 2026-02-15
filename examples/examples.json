@@ -194,11 +194,11 @@
         "status": "updated"
       },
       {
-        "name": "shape_anim_circle",
-        "text": "Animated Figure",
-        "description": "Continuously animated shape with drag&drop support.",
-        "url": "shape_anim_circle/index.html",
-        "icon": "shape_anim_circle/icon.png",
+        "name": "shape_custom_timer_edge",
+        "text": "Timer Edge Animation",
+        "description": "SetFigure with rotating line following rectangle edge using draw2d.geo utilities.",
+        "url": "shape_custom_timer_edge/index.html",
+        "icon": "shape_custom_timer_edge/icon.png",
         "status": "normal"
       },
       {
