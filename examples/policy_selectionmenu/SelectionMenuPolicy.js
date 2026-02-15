@@ -5,6 +5,7 @@ var SelectionMenuPolicy = draw2d.policy.figure.SelectionPolicy.extend({
     init : function(attr, setter, getter)
     {
 		this.overlay = null; // div DOM node
+		this.scrollHandler = null; // scroll event handler
 
         this._super(attr, setter, getter);
     },
@@ -23,16 +24,26 @@ var SelectionMenuPolicy = draw2d.policy.figure.SelectionPolicy.extend({
 
 		if (this.overlay === null) {
 			this.overlay= $("<div class='overlayMenu'>&#x2295;</div>");
-			$("body").append(this.overlay);
+			
+			// Attach overlay to canvas parent (scrollarea) instead of body
+			// This ensures proper positioning relative to the scrollable canvas
+			var canvasElement = $(canvas.html);
+			var scrollContainer = canvasElement.parent();
+			scrollContainer.append(this.overlay);
+			
 			this.overlay.on("click",function(){
-
 				// use a Command and CommandStack for undo/redo support
-				//
 				var command= new draw2d.command.CommandDelete(figure);
 				canvas.getCommandStack().execute(command);
-			})
+			});
+			
+			// Add scroll event handler to update position when scrolling
+			this.scrollHandler = () => {
+				this.posOverlay(canvas, figure);
+			};
+			scrollContainer.on("scroll", this.scrollHandler);
 		}
-		this.posOverlay(figure);
+		this.posOverlay(canvas, figure);
 	},
 
 
@@ -46,22 +57,43 @@ var SelectionMenuPolicy = draw2d.policy.figure.SelectionPolicy.extend({
 	{
 		this._super(canvas, figure);
 
-		this.overlay.remove();
-		this.overlay=null;
+		if(this.overlay) {
+			// Remove scroll event handler
+			if(this.scrollHandler) {
+				var canvasElement = $(canvas.html);
+				var scrollContainer = canvasElement.parent();
+				scrollContainer.off("scroll", this.scrollHandler);
+				this.scrollHandler = null;
+			}
+			
+			this.overlay.remove();
+			this.overlay=null;
+		}
 	},
 
 
     onDrag: function(canvas, figure)
 	{
 		this._super(canvas, figure);
-		this.posOverlay(figure);
+		this.posOverlay(canvas, figure);
 	},
 
-	posOverlay:function(figure)
+	posOverlay:function(canvas, figure)
 	{
+		// Get canvas offset relative to its scroll container
+		var canvasElement = $(canvas.html);
+		var scrollContainer = canvasElement.parent();
+		var canvasOffset = canvasElement.position(); // position relative to parent
+		var scrollTop = scrollContainer.scrollTop();
+		var scrollLeft = scrollContainer.scrollLeft();
+		
+		// Calculate position: figure position + canvas offset - scroll offset
+		var top = figure.getAbsoluteY() + canvasOffset.top - scrollTop - 20;
+		var left = figure.getAbsoluteX() + canvasOffset.left - scrollLeft + figure.getWidth() + 10;
+		
 		this.overlay.css({
-			"top":figure.getAbsoluteY()-20,
-			"left":figure.getAbsoluteX()+ figure.getWidth()+10
+			"top": top,
+			"left": left
 		});
 	}
 });
