@@ -21,12 +21,13 @@ var canvas2 = null;
 document.addEventListener("DOMContentLoaded",function () {
 
     // create the canvas for the user interaction
-    //
+    // Canvas 1 with GRID background for visual distinction
     canvas1 = new draw2d.Canvas("gfx_holder1");
     canvas1.installEditPolicy(new CopyInterceptorPolicy());
 
     canvas1.paper.canvas.style.position="relative";
     canvas1.installEditPolicy(new draw2d.policy.canvas.FadeoutDecorationPolicy());
+    canvas1.installEditPolicy(new draw2d.policy.canvas.ShowGridEditPolicy());
     canvas1.add(new draw2d.shape.basic.Circle({diameter: 80, x: 50, y: 150}));
     canvas1.add(new draw2d.shape.basic.Rectangle({width: 80, height: 40, x: 50, y: 300, keepAspectRatio: true}));
     canvas1.add(new draw2d.shape.basic.Diamond({width: 40, height: 60, x: 50, y: 450}));
@@ -36,19 +37,33 @@ document.addEventListener("DOMContentLoaded",function () {
     /////////////////////////////////////////////////////////////////////
     // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
     /////////////////////////////////////////////////////////////////////
-    var msg = new draw2d.shape.note.PostIt({text: "Press SHIFT key before drag&drop to copy a figure.\nYou can drop them on the second canvas as well."});
-    canvas1.add(msg, 20,20);
+    var msg1 = new draw2d.shape.note.Markdown({
+        width: 450,
+        height: 120,
+        bgColor: "#f4f46d",
+        markdown: "## Canvas 1\nPress **SHIFT** key before drag&drop to **copy** a figure.\nYou can drop them on the second canvas as well."
+    });
+    canvas1.add(msg1, 20,20);
 
     // create the canvas for the user interaction
-    //
+    // Canvas 2 with DOT background for visual distinction
     canvas2 = new draw2d.Canvas("gfx_holder2");
     canvas2.installEditPolicy(new CopyInterceptorPolicy());
 
     canvas2.paper.canvas.style.position="relative";
     canvas2.installEditPolicy(new draw2d.policy.canvas.FadeoutDecorationPolicy());
+    canvas2.installEditPolicy(new draw2d.policy.canvas.ShowDotEditPolicy());
     canvas2.add(new draw2d.shape.basic.Circle({diameter: 80, x: 50, y: 150}));
     canvas2.add(new draw2d.shape.basic.Rectangle({width: 80, height: 40, x: 50, y: 300, keepAspectRatio: true}));
     canvas2.add(new draw2d.shape.basic.Diamond({width: 40, height: 60, x: 50, y: 450}));
+
+    var msg2 = new draw2d.shape.note.Markdown({
+        width: 450,
+        height: 120,
+        bgColor: "#f4f46d",
+        markdown: "## Canvas 2\nDrop canvas elements here from **Canvas 1**."
+    });
+    canvas2.add(msg2, 20,20);
 
 });
 
