@@ -21,19 +21,26 @@ draw2d.command.CommandAttr = draw2d.command.Command.extend(
    * Create a new Command objects which provides undo/redo for attributes.
    *
    * @param {draw2d.Figure} figure the figure to handle
-   * @param {Object} attributes new attributes to set
+   * @param {Object} newAttributes new attributes to set
+   * @param {Object} [oldAttributes] optional old attributes. If provided, these values will override/enrich the automatically determined values
    */
-  init: function (figure, newAttributes) {
+  init: function (figure, newAttributes, oldAttributes) {
     this._super(draw2d.Configuration.i18n.command.changeAttributes)
 
     this.figure = figure
     this.newAttributes = newAttributes
     this.oldAttributes = {}
-    // Get the current attributes from the shape before we modify them.
+    
+    // First: Get the current attributes from the figure (automatic)
     // Required for undo/redo
     Object.keys(newAttributes).forEach( (key) => {
       this.oldAttributes[key] = figure.attr(key)
     })
+    
+    // Second: Override/enrich with provided oldAttributes if available
+    if (oldAttributes) {
+      this.oldAttributes = {...this.oldAttributes, ...oldAttributes}
+    }
   },
 
 

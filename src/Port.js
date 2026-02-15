@@ -30,15 +30,18 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
           stroke: 1,
           diameter: 10,
           color: "#1B1B1B",
-          selectable: false
+          selectable: false,
+          value: null
           , ...attr},
         {
           coronaWidth: this.setCoronaWidth,
           semanticGroup: this.setSemanticGroup,
+          value: this.setValue,
           ...setter},
         {
           coronaWidth: this.getCoronaWidth,
           semanticGroup: this.getSemanticGroup,
+          value: this.getValue,
           ...getter})
 
 

@@ -158,6 +158,10 @@ draw2d.shape.widget.Slider = draw2d.shape.widget.Widget.extend(
       this.panningX = x
       this.panningY = y
       this.panning = true
+      
+      // Fire event when user starts dragging the slider
+      this.fireEvent("dragstart", {value: this.currentValue})
+      
       let tweenable = new Tweenable()
       tweenable.tween({
         from: {grow: this.thumbGrow},
@@ -208,6 +212,9 @@ draw2d.shape.widget.Slider = draw2d.shape.widget.Widget.extend(
    */
   onPanningEnd: function () {
     this.panning = false
+
+    // Fire event when user finishes dragging the slider
+    this.fireEvent("dragend", {value: this.currentValue})
 
     let tweenable = new Tweenable()
     tweenable.tween({

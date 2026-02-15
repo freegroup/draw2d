@@ -5691,14 +5691,17 @@ _packages.default.Port = _packages.default.shape.basic.Circle.extend(/** @lends 
       diameter: 10,
       color: "#1B1B1B",
       selectable: false,
+      value: null,
       ...attr
     }, {
       coronaWidth: this.setCoronaWidth,
       semanticGroup: this.setSemanticGroup,
+      value: this.setValue,
       ...setter
     }, {
       coronaWidth: this.getCoronaWidth,
       semanticGroup: this.getSemanticGroup,
+      value: this.getValue,
       ...getter
     });
 
@@ -8428,18 +8431,28 @@ _packages.default.command.CommandAttr = _packages.default.command.Command.extend
    * Create a new Command objects which provides undo/redo for attributes.
    *
    * @param {draw2d.Figure} figure the figure to handle
-   * @param {Object} attributes new attributes to set
+   * @param {Object} newAttributes new attributes to set
+   * @param {Object} [oldAttributes] optional old attributes. If provided, these values will override/enrich the automatically determined values
    */
-  init: function (figure, newAttributes) {
+  init: function (figure, newAttributes, oldAttributes) {
     this._super(_packages.default.Configuration.i18n.command.changeAttributes);
     this.figure = figure;
     this.newAttributes = newAttributes;
     this.oldAttributes = {};
-    // Get the current attributes from the shape before we modify them.
+
+    // First: Get the current attributes from the figure (automatic)
     // Required for undo/redo
     Object.keys(newAttributes).forEach(key => {
       this.oldAttributes[key] = figure.attr(key);
     });
+
+    // Second: Override/enrich with provided oldAttributes if available
+    if (oldAttributes) {
+      this.oldAttributes = {
+        ...this.oldAttributes,
+        ...oldAttributes
+      };
+    }
   },
   /**
    * 
@@ -63711,6 +63724,11 @@ _packages.default.shape.widget.Slider = _packages.default.shape.widget.Widget.ex
       this.panningX = x;
       this.panningY = y;
       this.panning = true;
+
+      // Fire event when user starts dragging the slider
+      this.fireEvent("dragstart", {
+        value: this.currentValue
+      });
       let tweenable = new _shifty.Tweenable();
       tweenable.tween({
         from: {
@@ -63759,6 +63777,11 @@ _packages.default.shape.widget.Slider = _packages.default.shape.widget.Widget.ex
    */
   onPanningEnd: function () {
     this.panning = false;
+
+    // Fire event when user finishes dragging the slider
+    this.fireEvent("dragend", {
+      value: this.currentValue
+    });
     let tweenable = new _shifty.Tweenable();
     tweenable.tween({
       from: {
