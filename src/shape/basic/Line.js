@@ -1033,11 +1033,10 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
 
   installEditPolicy: function (policy) {
     if (!(policy instanceof draw2d.policy.line.LineSelectionFeedbackPolicy) && policy instanceof draw2d.policy.figure.SelectionFeedbackPolicy) {
-      return// silently
+      return this // silent
     }
 
-    this._super(policy)
-
+    return this._super(policy)
   },
 
   /**

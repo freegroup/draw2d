@@ -549,7 +549,7 @@ draw2d.Canvas = Class.extend(
      */
     uninstallEditPolicy: function (policy) {
       if (policy === null) {
-        return //silently
+        return this //silently
       }
 
       // either remove exact the policy instance...

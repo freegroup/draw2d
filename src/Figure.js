@@ -900,7 +900,7 @@ draw2d.Figure = Class.extend(
       //
       if (removedPolicy !== null) {
         removedPolicy.onUninstall(this)
-        return
+        return this
       }
 
       // The policy isn't part of the figure. In this case we "think" the user want
@@ -914,6 +914,8 @@ draw2d.Figure = Class.extend(
         }
         return true
       })
+      
+      return this
     },
 
     /**
