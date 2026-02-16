@@ -1100,8 +1100,15 @@ draw2d.shape.basic.Line = draw2d.Figure.extend(
       return result
     }
 
-    // Early exit: if bounding boxes don't overlap, no intersection possible
-    if (!this.getBoundingBox().intersects(other.getBoundingBox())) {
+    let bbox1 = this.getBoundingBox()
+    let bbox2 = other.getBoundingBox()
+    
+    // Early exit: if bounding boxes don't intersect or touch, no intersection possible
+    // Use intersectsOrTouches() with 0.5 pixel tolerance instead of intersects() to include cases 
+    // where bounding boxes only share an edge or corner point, and to handle floating-point precision
+    let bboxCheck = bbox1.intersectsOrTouches(bbox2, 0.5)
+
+    if (!bboxCheck) {
       return result
     }
 

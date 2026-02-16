@@ -233,7 +233,7 @@ draw2d.layout.connection.InteractiveManhattanBridgedConnectionRouter = draw2d.la
         let otherZ = other.getZOrder()
         let connZ = conn.getZOrder()
         
-        if (connZ > otherZ) {
+        if (connZ >= otherZ) {
             
             // The arc is centered on the intersection point (interP.x, interP.y)
             // We draw from (interP - radius) to (interP + radius)

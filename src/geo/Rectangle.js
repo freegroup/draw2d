@@ -710,6 +710,47 @@ draw2d.geo.Rectangle = draw2d.geo.Point.extend(
     },
 
     /**
+     *
+     * Checks whenever the rectangles intersect or touch each other.
+     * Unlike intersects(), this method returns true even if the rectangles
+     * only share a common edge or corner point.
+     *
+     * This is useful for line intersection detection where lines can intersect
+     * even if their bounding boxes only touch.
+     *
+     * A small tolerance is applied to handle floating-point precision issues
+     * and to detect near-misses.
+     *
+     * @param {draw2d.geo.Rectangle} rect
+     * @param {Number} [tolerance=0.5] tolerance in pixels for near-touch detection
+     * @returns {Boolean} true if rectangles intersect or touch (within tolerance)
+     * @since 6.x.x
+     */
+    intersectsOrTouches: function (rect, tolerance) {
+      tolerance = tolerance ?? 0.5;
+
+      let x11 = rect.x,
+        y11 = rect.y,
+        x12 = rect.x + rect.w,
+        y12 = rect.y + rect.h,
+        x21 = this.x,
+        y21 = this.y,
+        x22 = this.x + this.w,
+        y22 = this.y + this.h;
+
+      // Check if rectangles are completely separate (no intersection or touch)
+      // They are separate if one is completely to the left, right, above, or below the other
+      // Apply tolerance to catch near-misses due to floating-point precision
+      if (x12 < x21 - tolerance || x11 > x22 + tolerance || 
+          y12 < y21 - tolerance || y11 > y22 + tolerance) {
+        return false;
+      }
+
+      // If not completely separate, they either intersect or touch (within tolerance)
+      return true;
+    },
+
+    /**
      * Merge this rectangle with the given one.
      *
      * @param {draw2d.geo.Rectangle} rect

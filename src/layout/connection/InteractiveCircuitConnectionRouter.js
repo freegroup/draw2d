@@ -288,11 +288,11 @@ draw2d.layout.connection.InteractiveCircuitConnectionRouter = draw2d.layout.conn
             let other = interP.other
             let otherZ = other.getZOrder()
             let connZ = conn.getZOrder()
-            if (connZ < otherZ) {
+            if (connZ >= otherZ) {
               // Style vertex node to match connection styling INCLUDING connection alpha
               let vertexAttrs = {
                 fill: conn.lineColor.rgba(),
-                opacity: conn.alpha  // Apply connection alpha/transparency
+                opacity: conn.getAlpha()
               }
               // Only add stroke if connection has an outlineWidth/stroke
               if (conn.outlineStroke > 0) {
@@ -324,7 +324,7 @@ draw2d.layout.connection.InteractiveCircuitConnectionRouter = draw2d.layout.conn
             let connZ = conn.getZOrder()
             
             // Only draw the arc if THIS connection has the higher z-index
-            if (connZ > otherZ) {
+            if (connZ >= otherZ) {
               let isHorizontalSegment = (oldP.y | 0) === (p.y | 0)
               let isVerticalSegment = (oldP.x | 0) === (p.x | 0)
               

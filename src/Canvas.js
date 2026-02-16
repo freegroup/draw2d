@@ -457,20 +457,21 @@ draw2d.Canvas = Class.extend(
      * @private
      */
     calculateConnectionIntersection: function () {
-
       this.lineIntersections = new draw2d.util.ArrayList()
       let lines = this.getLines().clone()
+      let _this = this
+      
       while (lines.getSize() > 0) {
         let l1 = lines.removeElementAt(0)
-        lines.each((ii, l2) => {
+        lines.each(function(ii, l2) {
           let partInter = l1.intersection(l2)
           if (partInter.getSize() > 0) {
-            this.lineIntersections.add({line: l1, other: l2, intersection: partInter})
-            this.lineIntersections.add({line: l2, other: l1, intersection: partInter})
+            _this.lineIntersections.add({line: l1, other: l2, intersection: partInter})
+            _this.lineIntersections.add({line: l2, other: l1, intersection: partInter})
           }
         })
       }
-
+      
       return this
     },
 
@@ -902,6 +903,20 @@ draw2d.Canvas = Class.extend(
 
       // important initial call
       figure.getShapeElement()
+      
+      // Invalidate Z-Order cache of figures/lines that come after this new figure in DOM order
+      // Only figures with cachedZOrder >= new figure's index need invalidation
+      let newIndex = figure.getZOrder()
+      this.figures.each((i, f) => { 
+        if (f.cachedZOrder >= newIndex && f !== figure) {
+          f.cachedZOrder = -1 
+        }
+      })
+      this.lines.each((i, l) => { 
+        if (l.cachedZOrder >= newIndex && l !== figure) {
+          l.cachedZOrder = -1 
+        }
+      })
 
       // init a repaint of the figure. This enforce that all properties
       // ( color, dim, stroke,...) will be set and pushed to SVG node.
