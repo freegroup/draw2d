@@ -1,7 +1,7 @@
 {
   "name": "SingleSelectionPolicy",
   "namespace": "draw2d.policy.canvas",
-  "description": "",
+  "description": "<p>Selection policy that allows only one figure to be selected at a time. When a new figure\nis selected, any previously selected figure is automatically unselected.</p>\n<p>This is the default selection policy for the canvas. It handles:</p>\n<ul>\n<li>Single figure selection with visual feedback (resize handles)</li>\n<li>Mouse events (mousedown, drag, mouseup, click, doubleclick)</li>\n<li>Drag and drop operations</li>\n<li>Connection line dragging</li>\n<li>Panning for figures that support it</li>\n</ul>",
   "extends": [
     "draw2d.policy.canvas.SelectionPolicy"
   ],
@@ -311,7 +311,7 @@
       "access": "",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>Selects the given figure within the canvas. The policy must unselect already selected\nfigures or show any decorations.</p>",
+      "description": "<p>Selects the given figure. Must be implemented by subclasses to define\nspecific selection behavior (single, multi, etc.) and visual feedback.</p>",
       "parameters": [
         {
           "name": "canvas",
@@ -324,7 +324,7 @@
         {
           "name": "figure",
           "type": "draw2d.Figure",
-          "description": "",
+          "description": "<p>The figure to select, or null to clear selection</p>",
           "default": "",
           "optional": "",
           "nullable": ""
@@ -339,7 +339,7 @@
       "access": "",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>Unselect the given figure in the canvas and remove all resize handles</p>",
+      "description": "<p>Unselects the given figure and removes all visual feedback.</p>",
       "parameters": [
         {
           "name": "canvas",
@@ -359,7 +359,7 @@
         }
       ],
       "inherited": true,
-      "since": "",
+      "since": "6.1.42",
       "examples": []
     },
     {
@@ -651,6 +651,9 @@
     "name": "SingleSelectionPolicy",
     "description": "",
     "parameters": [],
-    "examples": []
+    "examples": [
+      "// Install single selection policy (default)\ncanvas.installEditPolicy(new draw2d.policy.canvas.SingleSelectionPolicy());",
+      "// Custom selection feedback: double stroke width for selected connections\nlet MySelectionPolicy = draw2d.policy.canvas.SingleSelectionPolicy.extend({\n  NAME: \"MySelectionPolicy\",\n  \n  select: function(canvas, figure) {\n    this._super(canvas, figure);\n    \n    if (figure instanceof draw2d.Connection) {\n      figure.originalStroke = figure.getStroke();\n      figure.setStroke(figure.originalStroke * 2);\n    }\n  },\n  \n  unselect: function(canvas, figure) {\n    if (figure instanceof draw2d.Connection && figure.originalStroke) {\n      figure.setStroke(figure.originalStroke);\n      delete figure.originalStroke;\n    }\n    \n    this._super(canvas, figure);\n  }\n});\n\ncanvas.installEditPolicy(new MySelectionPolicy());"
+    ]
   }
 }

@@ -2902,6 +2902,11 @@ const routes = [
         path: '/examples/connection_anchor_fan',
         props: { section: 11, example: 12 },
         component: () => import(/* webpackChunkName: "example_connection_anchor_fan" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/connection_selection_feedback',
+        props: { section: 11, example: 13 },
+        component: () => import(/* webpackChunkName: "example_connection_selection_feedback" */ '../views/example.vue')
       }
     ]
   }
@@ -4094,6 +4099,17 @@ const examples = [
         'status': 'normal',
         'data': {
           'path': '/examples/connection_anchor_fan'
+        }
+      },
+      {
+        'name': 'connection_selection_feedback',
+        'text': 'Connection Selection Feedback',
+        'description': 'Shows how to build and install a custom selection feedback policy for connections. Demonstrates how connections can be displayed differently when selected.',
+        'url': 'connection_selection_feedback/index.html',
+        'icon': 'connection_selection_feedback/icon.png',
+        'status': 'new',
+        'data': {
+          'path': '/examples/connection_selection_feedback'
         }
       }
     ],

@@ -4,10 +4,9 @@ var TableTestFigure = draw2d.shape.box.VBox.extend({
     {
     	this._super($.extend({
             stroke: 1,
-            minWidth: 200,
             bgColor: '#FFFFFF',
             radius: 0,
-            gap: 0,
+            padding: 6,
             align: 'center'  // Center non-resizable children horizontally
         },attr ));
 
@@ -17,27 +16,21 @@ var TableTestFigure = draw2d.shape.box.VBox.extend({
         this.question = this.createQuestion('What is the meaning of Life?');
         this.add(this.stepName);
         this.add(this.question);
-
-        this.on("contextmenu", function(){
-            console.log("lll");
-        });
-
     },
 
 
     setText:function(text){
         this.stepName.setText(text);
-        this.setDimension(2,2);
     },
 
     createStepName: function(stepNameText)
     {
         return new draw2d.shape.basic.Label({
-            cssClass: 'step-name',
             text: stepNameText,
-            resizable: false,
+            resizable: true,
             stroke: 0,
             padding: 5,
+            textAlign: "center",
             bgColor: '#FF0000'
         });
     },
@@ -47,7 +40,7 @@ var TableTestFigure = draw2d.shape.box.VBox.extend({
         return new draw2d.shape.basic.Label({
             text: questionText,
             stroke: 0,
-            resizable: false,
+            resizable: true,
             radius: 2,
             padding: 5
         });

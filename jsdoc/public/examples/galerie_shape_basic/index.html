@@ -96,7 +96,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
     updateButtons();
     canvas.installEditPolicy(new draw2d.policy.canvas.FadeoutDecorationPolicy());
-    canvas.installEditPolicy(new draw2d.policy.canvas.SnapToGridEditPolicy())
 
     label = new draw2d.shape.basic.Label({text:"draw2d.shape.basic.Oval", x:200, y:55});
     var oval  = new draw2d.shape.basic.Oval({width:80,height:30, x:50, y:50});
@@ -106,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     circle =new draw2d.shape.basic.Circle({diameter:80, x:50, y:150, bgColor:"rgba(255,0,100,0.5)"});
     canvas.add(circle);
-    canvas.add(new draw2d.shape.basic.Label({text:"draw2d.shape.basic.Circle"}),200,175);
+    canvas.add(new draw2d.shape.basic.Label({text:"draw2d.shape.basic.Circle",  resizeable:true , width:400}),200,175);
 
     canvas.add(new draw2d.shape.basic.Rectangle({width:80,height:40, x:50, y:300, resizeable:false}));
     canvas.add(new draw2d.shape.basic.Label({text:"draw2d.shape.basic.Rectangle", x:200, y:305}));
@@ -134,45 +133,8 @@ document.addEventListener("DOMContentLoaded", function() {
     canvas.add(textFigure2);
     canvas.add(new draw2d.shape.basic.Label({text:"draw2d.shape.basic.Text", x:700, y:1205}));
 
-    var lineJson =[{
-        "type": "draw2d.shape.basic.Line",
-        "id": "4602d601-4db0-bc80-145f-eeae285e4e69",
-        "alpha": 1,
-        "userData": {},
-        "cssClass": "draw2d_shape_basic_Line",
-        "stroke": 1,
-        "color": "#f00000",
-        "outlineStroke": 0,
-        "outlineColor": "none",
-        "vertex": [
-            {
-                "x": 507,
-                "y": 478
-            },
-            {
-                "x": 518,
-                "y": 234
-            }
-        ]
-    }];
-    var reader = new draw2d.io.json.Reader();
-    reader.unmarshal(canvas, lineJson);
-
-
-    var line = new draw2d.shape.basic.PolyLine();
-    line.setVertices([{x:10,y:10},{x:80,y:70},{x:100,y:110}]);
-    canvas.add(line);
 
     displayJSON(canvas);
-
-    canvas.on("mousemove",function(emitter, event){
-        var projection =line.pointProjection(event.x,event.y);
-        if (projection !== null) {
-            var pos = line.lerp(projection.percentage);
-            label.setPosition(pos);
-            label.setText(projection.percentage);
-        }
-    })
 });
 
 function displayJSON(canvas){
@@ -191,7 +153,7 @@ function displayJSON(canvas){
   <button id="undoBtn" onclick="undo()" disabled>↩ Undo</button>
   <button id="redoBtn" onclick="redo()" disabled>↪ Redo</button>
 </div>
-<div onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:3000px; height:3000px;">
+<div id="gfx_holder" style="width:3000px; height:3000px;">
 </div>
 
 <pre id="json" style="overflow:auto;position:absolute; top:10px; right:10px; width:450; height:500;background:white;border:1px solid gray">

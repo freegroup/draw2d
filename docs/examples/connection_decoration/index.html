@@ -92,10 +92,12 @@ document.addEventListener("DOMContentLoaded",function () {
 		 canvas.add( start);
 		 canvas.add( end);
 
+		 let colorDeco = new draw2d.decoration.connection.ArrowDecorator()
+		 colorDeco.setBackgroundColor("#FF0000")
 		 c = new draw2d.Connection({
 		     router:new draw2d.layout.connection.DirectRouter(),
          sourceDecorator: new draw2d.decoration.connection.DoubleBarDecorator(),
-         targetDecorator: new draw2d.decoration.connection.ArrowDecorator(),
+         targetDecorator: colorDeco,
          source: start.getOutputPort(0),
          target:end.getInputPort(0)
 		 });

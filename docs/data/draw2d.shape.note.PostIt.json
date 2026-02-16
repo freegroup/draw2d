@@ -368,6 +368,45 @@
       }
     },
     {
+      "name": "setTextAlign",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Set the text alignment of the label.</p>",
+      "parameters": [
+        {
+          "name": "align",
+          "type": "String",
+          "description": "<p>The text alignment (&quot;left&quot;, &quot;center&quot;, or &quot;right&quot;)</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": true,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
+    },
+    {
+      "name": "getTextAlign",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Returns the current text alignment of the label.</p>",
+      "parameters": [],
+      "inherited": true,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "String",
+        "description": "<p>The text alignment (&quot;left&quot;, &quot;center&quot;, or &quot;right&quot;)</p>"
+      }
+    },
+    {
       "name": "setDimension",
       "access": "",
       "virtual": false,

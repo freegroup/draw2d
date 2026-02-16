@@ -3,8 +3,46 @@ import draw2d from '../../packages'
 
 /**
  * @class
- *
- *
+ * Selection policy that allows only one figure to be selected at a time. When a new figure
+ * is selected, any previously selected figure is automatically unselected.
+ * 
+ * This is the default selection policy for the canvas. It handles:
+ * - Single figure selection with visual feedback (resize handles)
+ * - Mouse events (mousedown, drag, mouseup, click, doubleclick)
+ * - Drag and drop operations
+ * - Connection line dragging
+ * - Panning for figures that support it
+ * 
+ * @example
+ * // Install single selection policy (default)
+ * canvas.installEditPolicy(new draw2d.policy.canvas.SingleSelectionPolicy());
+ * 
+ * @example
+ * // Custom selection feedback: double stroke width for selected connections
+ * let MySelectionPolicy = draw2d.policy.canvas.SingleSelectionPolicy.extend({
+ *   NAME: "MySelectionPolicy",
+ *   
+ *   select: function(canvas, figure) {
+ *     this._super(canvas, figure);
+ *     
+ *     if (figure instanceof draw2d.Connection) {
+ *       figure.originalStroke = figure.getStroke();
+ *       figure.setStroke(figure.originalStroke * 2);
+ *     }
+ *   },
+ *   
+ *   unselect: function(canvas, figure) {
+ *     if (figure instanceof draw2d.Connection && figure.originalStroke) {
+ *       figure.setStroke(figure.originalStroke);
+ *       delete figure.originalStroke;
+ *     }
+ *     
+ *     this._super(canvas, figure);
+ *   }
+ * });
+ * 
+ * canvas.installEditPolicy(new MySelectionPolicy());
+ * 
  * @author Andreas Herz
  * @extends draw2d.policy.canvas.SelectionPolicy
  */

@@ -59,6 +59,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
       this.fontColor = new draw2d.util.Color("#080808")
       this.fontFamily = null
       this.padding = {top: 4, right: 4, bottom: 4, left: 4}
+      this.textAlign = "left" // left, center, right
 
       this.outlineStroke = 0
       this.outlineColor = new draw2d.util.Color(null)
@@ -90,6 +91,8 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
           padding: this.setPadding,
           // @attr {Boolean} bold indicator if bold text should be used*/
           bold: this.setBold,
+          // @attr {String} textAlign the text alignment (left, center, right) */
+          textAlign: this.setTextAlign,
           ...setter},
         {
           text: this.getText,
@@ -100,6 +103,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
           fontColor: this.getFontColor,
           padding: this.getPadding,
           bold: this.isBold,
+          textAlign: this.getTextAlign,
           ...getter
         }
       )
@@ -158,8 +162,17 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
         this.svgNodes.attr(lattr)
         // set of the x/y must be done AFTER the font-size and bold has been set.
         // Reason: the getBBox method needs the font attributes for calculation
+        
+        // Calculate x position based on text alignment
+        let xPos = this.padding.left + this.stroke
+        if (this.textAlign === "center") {
+          xPos = this.getWidth() / 2
+        } else if (this.textAlign === "right") {
+          xPos = this.getWidth() - this.padding.right - this.stroke
+        }
+        
         this.svgNodes.attr({
-          x: (this.padding.left + this.stroke),
+          x: xPos,
           y: (this.svgNodes.getBBox(true).height / 2 + this.padding.top + this.getStroke())
         })
       }
@@ -172,8 +185,16 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
      * @private
      */
     calculateTextAttr: function () {
+      // Map textAlign to SVG text-anchor
+      let textAnchor = "start"
+      if (this.textAlign === "center") {
+        textAnchor = "middle"
+      } else if (this.textAlign === "right") {
+        textAnchor = "end"
+      }
+
       let lattr = {
-        "text-anchor": "start",
+        "text-anchor": textAnchor,
         "font-size": this.fontSize,
         "font-weight": (this.bold === true) ? "bold" : "normal",
         fill: this.fontColor.rgba(),
@@ -462,6 +483,32 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
       return this.fontFamily
     },
 
+    /**
+     *
+     * Set the text alignment of the label. 
+     *
+     * @param {String} align The text alignment ("left", "center", or "right")
+     * @returns {this}
+     **/
+    setTextAlign: function (align) {
+      this.clearCache()
+      this.textAlign = align
+      this.repaint()
+      this.fireEvent("change:textAlign", {value: this.textAlign})
+
+      return this
+    },
+
+    /**
+     *
+     * Returns the current text alignment of the label.
+     *
+     * @returns {String} The text alignment ("left", "center", or "right")
+     */
+    getTextAlign: function () {
+      return this.textAlign
+    },
+
 
     /**
      *
@@ -700,6 +747,7 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
       memento.fontColor = this.fontColor.rgba()
       memento.fontFamily = this.fontFamily
       memento.bold = this.bold
+      memento.textAlign = this.textAlign
 
       if (this.editor !== null) {
         memento.editor = this.editor.NAME
@@ -737,6 +785,9 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
       }
       if (typeof memento.bold !== "undefined") {
         this.setBold(memento.bold)
+      }
+      if (typeof memento.textAlign !== "undefined") {
+        this.setTextAlign(memento.textAlign)
       }
 
       if (typeof memento.editor === "string") {

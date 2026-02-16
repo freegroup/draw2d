@@ -130,9 +130,9 @@
     {
       "name": "select",
       "access": "",
-      "virtual": false,
+      "virtual": true,
       "deprecated": "",
-      "description": "<p>Selects the given figure within the canvas. The policy must unselect already selected\nfigures or show any decorations.</p>",
+      "description": "<p>Selects the given figure. Must be implemented by subclasses to define\nspecific selection behavior (single, multi, etc.) and visual feedback.</p>",
       "parameters": [
         {
           "name": "canvas",
@@ -145,7 +145,7 @@
         {
           "name": "figure",
           "type": "draw2d.Figure",
-          "description": "",
+          "description": "<p>The figure to select, or null to clear selection</p>",
           "default": "",
           "optional": "",
           "nullable": ""
@@ -160,7 +160,7 @@
       "access": "",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>Unselect the given figure in the canvas and remove all resize handles</p>",
+      "description": "<p>Unselects the given figure and removes all visual feedback.</p>",
       "parameters": [
         {
           "name": "canvas",
@@ -180,7 +180,7 @@
         }
       ],
       "inherited": true,
-      "since": "",
+      "since": "6.1.42",
       "examples": []
     },
     {

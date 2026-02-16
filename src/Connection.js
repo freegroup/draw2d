@@ -353,6 +353,9 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
         } else {
           this.sourceDecoratorNode.attr({stroke: this.sourceDecorator.getColor().hash()})
         }
+        if (this.sourceDecorator.getBackgroundColor() != null) {
+          this.sourceDecoratorNode.attr({fill: this.sourceDecorator.getBackgroundColor().hash()})
+        }
         this.sourceDecoratorNode.forEach(shape => {
           shape.node.setAttribute("class", this.cssClass !== null ? this.cssClass : "")
         })
@@ -367,6 +370,9 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
           this.targetDecoratorNode.attr({stroke: this.lineColor.hash()})
         } else {
           this.targetDecoratorNode.attr({stroke: this.targetDecorator.getColor().hash()})
+        }
+        if (this.targetDecorator.getBackgroundColor() != null) {
+          this.targetDecoratorNode.attr({fill: this.targetDecorator.getBackgroundColor().hash()})
         }
         this.targetDecoratorNode.forEach(shape => {
           shape.node.setAttribute("class", this.cssClass !== null ? this.cssClass : "")

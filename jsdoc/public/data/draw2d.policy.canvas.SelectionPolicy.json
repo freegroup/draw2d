@@ -1,7 +1,7 @@
 {
   "name": "SelectionPolicy",
   "namespace": "draw2d.policy.canvas",
-  "description": "",
+  "description": "<p>Abstract base class for selection policies. Controls how figures are selected and unselected,\nincluding visual feedback and selection behavior.</p>\n<p><strong>Important:</strong> Only one SelectionPolicy can be active at a time. When installing a new\nSelectionPolicy, all other SelectionPolicies are automatically removed from the canvas\nto avoid conflicts.</p>\n<p>Concrete implementations:</p>\n<ul>\n<li>{@link draw2d.policy.canvas.SingleSelectionPolicy} - Single selection behavior</li>\n<li>{@link draw2d.policy.canvas.BoundingboxSelectionPolicy} - Multiple selection via bounding box</li>\n<li>{@link draw2d.policy.canvas.ReadOnlySelectionPolicy} - Selection without editing</li>\n</ul>\n<p>When creating custom selection policies, extend from SingleSelectionPolicy or\nBoundingboxSelectionPolicy instead of this base class to inherit complete\nselection/deselection logic and mouse event handling.</p>",
   "extends": [
     "draw2d.policy.canvas.CanvasPolicy"
   ],
@@ -13,8 +13,33 @@
       "access": "",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>Creates a new selection policy</p>",
-      "parameters": [],
+      "description": "<p>Creates a new selection policy instance.</p>",
+      "parameters": [
+        {
+          "name": "attr",
+          "type": "Object",
+          "description": "",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "setter",
+          "type": "Object",
+          "description": "",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "getter",
+          "type": "Object",
+          "description": "",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
       "inherited": false,
       "since": "",
       "examples": []
@@ -22,9 +47,9 @@
     {
       "name": "select",
       "access": "",
-      "virtual": false,
+      "virtual": true,
       "deprecated": "",
-      "description": "<p>Selects the given figure within the canvas. The policy must unselect already selected\nfigures or show any decorations.</p>",
+      "description": "<p>Selects the given figure. Must be implemented by subclasses to define\nspecific selection behavior (single, multi, etc.) and visual feedback.</p>",
       "parameters": [
         {
           "name": "canvas",
@@ -37,7 +62,7 @@
         {
           "name": "figure",
           "type": "draw2d.Figure",
-          "description": "",
+          "description": "<p>The figure to select, or null to clear selection</p>",
           "default": "",
           "optional": "",
           "nullable": ""
@@ -52,7 +77,7 @@
       "access": "",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>Unselect the given figure in the canvas and remove all resize handles</p>",
+      "description": "<p>Unselects the given figure and removes all visual feedback.</p>",
       "parameters": [
         {
           "name": "canvas",
@@ -72,7 +97,7 @@
         }
       ],
       "inherited": false,
-      "since": "",
+      "since": "6.1.42",
       "examples": []
     },
     {

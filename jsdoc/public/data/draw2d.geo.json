@@ -1729,6 +1729,38 @@
           }
         },
         {
+          "name": "intersectsOrTouches",
+          "access": "",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Checks whenever the rectangles intersect or touch each other.\nUnlike intersects(), this method returns true even if the rectangles\nonly share a common edge or corner point.</p>\n<p>This is useful for line intersection detection where lines can intersect\neven if their bounding boxes only touch.</p>\n<p>A small tolerance is applied to handle floating-point precision issues\nand to detect near-misses.</p>",
+          "parameters": [
+            {
+              "name": "rect",
+              "type": "draw2d.geo.Rectangle",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "tolerance",
+              "type": "Number",
+              "description": "<p>tolerance in pixels for near-touch detection</p>",
+              "default": 0.5,
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "inherited": false,
+          "since": "6.x.x",
+          "examples": [],
+          "returns": {
+            "type": "Boolean",
+            "description": "<p>true if rectangles intersect or touch (within tolerance)</p>"
+          }
+        },
+        {
           "name": "merge",
           "access": "",
           "virtual": false,

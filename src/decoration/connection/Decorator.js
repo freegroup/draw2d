@@ -1,5 +1,4 @@
 import draw2d from '../../packages'
-import Color from '../../util/Color'
 
 /**
  * @class
@@ -28,7 +27,7 @@ draw2d.decoration.connection.Decorator = Class.extend(
       }
       this.parent = null
       this.color = null // null => use the color of the connection
-      this.backgroundColor = new Color(250, 250, 250)
+      this.backgroundColor = new draw2d.util.Color(250, 250, 250)
     },
 
     /**
@@ -66,6 +65,7 @@ draw2d.decoration.connection.Decorator = Class.extend(
      */
     setParent: function(parent){
       this.parent = parent
+      return this
     },
 
     /**
@@ -76,7 +76,7 @@ draw2d.decoration.connection.Decorator = Class.extend(
      * @returns {this}
      */
     setColor: function (c) {
-      this.color = new Color(c);
+      this.color = new draw2d.util.Color(c);
 
       this.parent?.repaint()
       return this
@@ -99,7 +99,7 @@ draw2d.decoration.connection.Decorator = Class.extend(
      * @returns {this}
      */
     setBackgroundColor: function (c) {
-      this.backgroundColor = new Color(c)
+      this.backgroundColor = new draw2d.util.Color(c)
       
       this.parent?.repaint()
 
