@@ -2904,9 +2904,14 @@ const routes = [
         component: () => import(/* webpackChunkName: "example_connection_anchor_fan" */ '../views/example.vue')
       },
       {
-        path: '/examples/connection_selection_feedback',
+        path: '/examples/connection_selection_feedback_canvas',
         props: { section: 11, example: 13 },
-        component: () => import(/* webpackChunkName: "example_connection_selection_feedback" */ '../views/example.vue')
+        component: () => import(/* webpackChunkName: "example_connection_selection_feedback_canvas" */ '../views/example.vue')
+      },
+      {
+        path: '/examples/connection_selection_feedback_figure',
+        props: { section: 11, example: 14 },
+        component: () => import(/* webpackChunkName: "example_connection_selection_feedback_figure" */ '../views/example.vue')
       }
     ]
   }
@@ -4102,14 +4107,25 @@ const examples = [
         }
       },
       {
-        'name': 'connection_selection_feedback',
-        'text': 'Connection Selection Feedback',
-        'description': 'Shows how to build and install a custom selection feedback policy for connections. Demonstrates how connections can be displayed differently when selected.',
-        'url': 'connection_selection_feedback/index.html',
-        'icon': 'connection_selection_feedback/icon.png',
+        'name': 'connection_selection_feedback_canvas',
+        'text': 'Selection Feedback (Canvas)',
+        'description': 'Canvas-level SelectionPolicy that provides visual feedback for all connections. Policy is installed on the canvas and affects all connections globally. Demonstrates stroke width doubling, color lightening, and outline addition.',
+        'url': 'connection_selection_feedback_canvas/index.html',
+        'icon': 'connection_selection_feedback_canvas/icon.png',
         'status': 'new',
         'data': {
-          'path': '/examples/connection_selection_feedback'
+          'path': '/examples/connection_selection_feedback_canvas'
+        }
+      },
+      {
+        'name': 'connection_selection_feedback_figure',
+        'text': 'Selection Feedback (Figure)',
+        'description': 'Figure-level SelectionFeedbackPolicy attached to individual connections. Each connection can have its own policy for granular control. Demonstrates the same visual feedback but with per-connection customization capability.',
+        'url': 'connection_selection_feedback_figure/index.html',
+        'icon': 'connection_selection_feedback_figure/icon.png',
+        'status': 'new',
+        'data': {
+          'path': '/examples/connection_selection_feedback_figure'
         }
       }
     ],

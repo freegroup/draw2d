@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128" height="128" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+      <feOffset dx="2" dy="4" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="128" height="128" fill="#e8e8e8"/>
+  
+  <g filter="url(#shadow)">
+    <!-- Three individual connections with different colors -->
+    <!-- Connection 1 (Purple) -->
+    <path d="M 20 30 Q 64 20 108 30" 
+          stroke="#5856D6" 
+          stroke-width="22" 
+          fill="none"
+          stroke-linecap="round"/>
+    
+    <!-- Connection 2 (Red) -->
+    <path d="M 20 64 Q 64 54 108 64" 
+          stroke="#FF2D55" 
+          stroke-width="22" 
+          fill="none"
+          stroke-linecap="round"/>
+    
+    <!-- Connection 3 (Green) -->
+    <path d="M 20 98 Q 64 88 108 98" 
+          stroke="#34C759" 
+          stroke-width="22" 
+          fill="none"
+          stroke-linecap="round"/>
+    
+    <!-- Central port/node -->
+    <circle cx="64" cy="64" r="24" fill="#2C2C2C"/>
+    <circle cx="64" cy="64" r="12" fill="#FFFFFF"/>
+  </g>
+</svg>

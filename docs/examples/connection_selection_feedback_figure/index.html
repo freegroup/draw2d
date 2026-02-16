@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Connection Selection Feedback (Figure Policy) Example</title>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <link type="text/css" rel="stylesheet" href="./css/example.css" />
+  <script src="./lib/jquery.js"></script>
+  <script src="./lib/jquery-ui.js"></script>
+  <script src="../draw2d.js"></script>
+  <script src="ConnectionSelectionFeedbackPolicy.js"></script>
+  <script src="MyRouter.js"></script>
+
+<script type="text/javascript">
+
+var canvas;
+
+function undo() {
+  canvas.getCommandStack().undo();
+}
+
+function redo() {
+  canvas.getCommandStack().redo();
+}
+
+function updateButtons() {
+  document.getElementById("undoBtn").disabled = !canvas.getCommandStack().canUndo();
+  document.getElementById("redoBtn").disabled = !canvas.getCommandStack().canRedo();
+}
+
+function createConnection(sourcePort, targetPort, attr) {
+  // Merge default attributes with provided attributes using spread operator
+  var config = {
+    stroke: 2,
+    outlineStroke: 1,
+    outlineColor: "#303030",
+    router: new MyRouter(),  // MyRouter installs our custom SelectionFeedbackPolicy
+    ...attr  // Provided attributes override defaults
+  };
+  
+  let con = new draw2d.Connection(config); 
+  if(sourcePort) {
+    con.setSource(sourcePort);
+    con.setTarget(targetPort);
+  }
+  return con
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Create the canvas
+  canvas = new draw2d.Canvas("gfx_holder");
+  canvas.setScrollArea("#gfx_holder");
+  
+  // Install DragConnectionCreatePolicy using our createConnection function
+  canvas.installEditPolicy(new draw2d.policy.connection.DragConnectionCreatePolicy({
+    createConnection: createConnection
+  }));
+  
+  canvas.getCommandStack().addEventListener(function(e) {
+    updateButtons();
+  });
+  updateButtons();
+
+  // Create some nodes
+  var start1 = new draw2d.shape.node.Start();
+  var start2 = new draw2d.shape.node.Start();
+  var start3 = new draw2d.shape.node.Start();
+  var end1 = new draw2d.shape.node.End();
+  var end2 = new draw2d.shape.node.End();
+  var end3 = new draw2d.shape.node.End();
+  
+  canvas.add(start1, 50, 150);
+  canvas.add(start2, 50, 250);
+  canvas.add(start3, 50, 350);
+  canvas.add(end1, 300, 150);
+  canvas.add(end2, 300, 250);
+  canvas.add(end3, 300, 350);
+
+  // Create connections using our createConnection function with color attributes
+  var connection1 = createConnection(
+    start1.getOutputPort(0),
+    end1.getInputPort(0),
+  { color: "#5856D6" });
+
+  canvas.add(connection1);
+
+
+  // Add informational markdown
+  var markdown = new draw2d.shape.note.Markdown({
+    text: [
+      "# Connection Selection Feedback",
+      "## Figure-Level Policy",
+      "",
+      "Click on a **connection** to select it.",
+      "",
+      "**Visual feedback:**",
+      "- Stroke width **doubles**",
+      "- Color becomes **lighter** (60%)",
+      "- **Black outline** appears (3px)",
+      "",
+      "**Implementation:**",
+      "The `SelectionFeedbackPolicy` is attached to each individual connection figure via `MyRouter.onInstall()`. This allows per-connection customization and granular control.",
+      "",
+      "**Try it:** Drag from port to port to create connections!"
+    ].join("\n"),
+      x: 400,
+    y: 100,
+    width:500,
+    height:450
+  });
+  canvas.add(markdown);
+});
+</script>
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    #container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+    }
+    #toolbar {
+      flex-shrink: 0;
+      height: 40px;
+      background: linear-gradient(to bottom, #f8f8f8 0%, #e0e0e0 100%);
+      border-bottom: 1px solid #ccc;
+      padding: 5px 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    #toolbar button {
+      padding: 5px 15px;
+      border: 1px solid #999;
+      border-radius: 4px;
+      background: linear-gradient(to bottom, #fff 0%, #e8e8e8 100%);
+      cursor: pointer;
+    }
+    #toolbar button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    #toolbar button:hover:not(:disabled) {
+      background: linear-gradient(to bottom, #fff 0%, #d8d8d8 100%);
+    }
+    #scrollarea {
+      flex: 1;
+      overflow: auto;
+      background-color: #FAFAFA;
+      position: relative;
+    }
+    #gfx_holder {
+      min-width: 3000px;
+      min-height: 3000px;
+      width: 3000px;
+      height: 3000px;
+    }
+  </style>
+
+</head>
+
+<body>
+<div id="container">
+  <div id="toolbar">
+    <button id="undoBtn" onclick="undo()" disabled>↩ Undo</button>
+    <button id="redoBtn" onclick="redo()" disabled>↪ Redo</button>
+  </div>
+  <div id="scrollarea">
+    <div id="gfx_holder" style="width:3000px; height:3000px;"></div>
+  </div>
+</div>
+</body>
+</html>
