@@ -81,7 +81,11 @@ draw2d.shape.basic.Image = draw2d.shape.node.Node.extend(
 
     // propagate the width/height and the display:inline-block as CSS attribute as well because Chrome
     // did some "flickering" in some versions and sometimes the image disappear complete
-    $(this.shape.node).css({display: "inline-block", "width": attributes.width, "height": attributes.height})
+    if (this.shape?.node?.style) {
+      this.shape.node.style.display = "inline-block"
+      this.shape.node.style.width = attributes.width + "px"
+      this.shape.node.style.height = attributes.height + "px"
+    }
 
     this._super(attributes)
 

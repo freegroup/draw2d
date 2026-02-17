@@ -1,6 +1,7 @@
 import draw2d from 'packages'
 import jsonUtil from 'util/JSONUtil'
 import UUID from 'util/UUID'
+import {fadeIn, fadeOut} from 'util/Animation'
 
 /**
  * @class
@@ -1101,7 +1102,7 @@ draw2d.Figure = Class.extend(
       if (this.visible === true) {
         if (this.shape.isVisible() === false) {
           if (!isNaN(parseFloat(attributes.visibleDuration))) {
-            $(this.shape.node).fadeIn(attributes.visibleDuration, () =>  this.shape.show())
+            fadeIn(this.shape.node, attributes.visibleDuration, () => this.shape.show())
           } else {
             this.shape.show()
           }
@@ -1109,7 +1110,7 @@ draw2d.Figure = Class.extend(
       } else {
         if (this.shape.isVisible() === true) {
           if (!isNaN(parseFloat(attributes.visibleDuration))) {
-            $(this.shape.node).fadeOut(attributes.visibleDuration, () => this.shape.hide())
+            fadeOut(this.shape.node, attributes.visibleDuration, () => this.shape.hide())
           } else {
             this.shape.hide()
           }

@@ -1,5 +1,6 @@
 import draw2d from '../packages'
 import r from "lib/jquery.autoresize"
+import {fadeIn, fadeOut} from '../util/Animation'
 
 
 /**
@@ -115,7 +116,7 @@ draw2d.ui.LabelInplaceEditor = draw2d.ui.LabelEditor.extend(
         "min-width": bb.w * (1 / canvas.getZoom()),
         "height": Math.max(25, bb.h * (1 / canvas.getZoom()))
       });
-      this.html.fadeIn(() => {
+      fadeIn(this.html[0], 200, () => {
         this.html.focus();
         this.listener.onStart()
       });
@@ -134,7 +135,7 @@ draw2d.ui.LabelInplaceEditor = draw2d.ui.LabelEditor.extend(
       let label = this.html.val();
       let cmd = new draw2d.command.CommandAttr(this.label, {text: label});
       this.label.getCanvas().getCommandStack().execute(cmd);
-      this.html.fadeOut(() => {
+      fadeOut(this.html[0], 200, () => {
         this.html.remove();
         this.html = null;
         this.listener.onCommit(this.label.getText());
@@ -150,7 +151,7 @@ draw2d.ui.LabelInplaceEditor = draw2d.ui.LabelEditor.extend(
     cancel: function () {
       this.html.unbind("blur", this.commitCallback);
       $("body").unbind("click", this.commitCallback);
-      this.html.fadeOut(() => {
+      fadeOut(this.html[0], 200, () => {
         this.html.remove();
         this.html = null;
         this.listener.onCancel();

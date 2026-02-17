@@ -1,5 +1,6 @@
 
 import draw2d from 'packages'
+import {fadeIn, fadeOut} from 'util/Animation'
 
 /**
  * @class
@@ -80,12 +81,12 @@ draw2d.SVGFigure = draw2d.SetFigure.extend(
                 this.svgNodes = newSVGNodes;
                 this.applyTransformation();
                 oldSVG.forEach(function ( shape) {
-                    $(shape.node).fadeOut(duration, function () {
+                    fadeOut(shape.node, duration, function () {
                         shape.remove();
                     });
                 });
                 newSVGNodes.forEach(function (shape) {
-                    $(shape.node).fadeIn(duration);
+                    fadeIn(shape.node, duration);
                 });
             }
             else {

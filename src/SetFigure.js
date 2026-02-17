@@ -1,4 +1,5 @@
 import draw2d from 'packages'
+import {fadeIn, fadeOut} from 'util/Animation'
 
 /**
  * @class
@@ -118,12 +119,12 @@ draw2d.SetFigure = draw2d.shape.basic.Rectangle.extend(
       if (duration) {
         if (this.visible === true) {
           this.svgNodes.forEach( (shape) =>{
-            $(shape.node).fadeIn(duration, ()=>shape.show())
+            fadeIn(shape.node, duration, ()=>shape.show())
           })
         }
         else {
           this.svgNodes.forEach( (shape) =>{
-            $(shape.node).fadeOut(duration, () => shape.hide())
+            fadeOut(shape.node, duration, () => shape.hide())
           })
         }
       }
