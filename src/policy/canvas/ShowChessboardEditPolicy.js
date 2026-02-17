@@ -33,7 +33,7 @@ draw2d.policy.canvas.ShowChessboardEditPolicy = draw2d.policy.canvas.DecorationP
      */
     init: function (grid) {
       this._super()
-      this.grid = grid || this.GRID_WIDTH
+      this.grid = grid ?? this.GRID_WIDTH
     },
 
 

@@ -42,10 +42,10 @@ draw2d.policy.canvas.ShowDotEditPolicy = draw2d.policy.canvas.DecorationPolicy.e
    */
   init: function (dotDistance, dotRadius, dotColor, bgColor) {
     this._super()
-    this.dotDistance = dotDistance || this.DOT_DISTANCE
-    this.dotRadius = dotRadius || this.DOT_RADIUS
-    this.dotColor = new draw2d.util.Color(dotColor || this.DOT_COLOR)
-    this.bgColor = new draw2d.util.Color(bgColor || this.BG_COLOR)
+    this.dotDistance = dotDistance ?? this.DOT_DISTANCE
+    this.dotRadius = dotRadius ?? this.DOT_RADIUS
+    this.dotColor = new draw2d.util.Color(dotColor ?? this.DOT_COLOR)
+    this.bgColor = new draw2d.util.Color(bgColor ?? this.BG_COLOR)
     this.onZoomCallback = (emitterFigure, zoomData) => this.setGrid(1/zoomData.value)
   },
 
