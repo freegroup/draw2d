@@ -44,26 +44,15 @@ function updateButtons() {
 
         //
         var router = new draw2d.layout.connection.InteractiveManhattanConnectionRouter();
-                [
-                    //
-                    new draw2d.policy.connection.DragConnectionCreatePolicy({
-                        createConnection:function(){
-                            return new draw2d.Connection({
-                                radius:2,
-                                stroke:2,
-                                router: router});
-                        }
-                    }),
-                    //
-                    new draw2d.policy.connection.OrthogonalConnectionCreatePolicy({
-                        createConnection:function(){
-                            return new draw2d.Connection({
-                                radius:2,
-                                stroke:2,
-                                router: router});
-                       }
-                    })
-                ])
+        canvas.installEditPolicy(
+            new draw2d.policy.connection.DragConnectionCreatePolicy({
+                createConnection:function(){
+                    return new draw2d.Connection({
+                        radius:2,
+                        stroke:2,
+                        router: router});
+                }
+            })
         );
 
         canvas.add(new draw2d.shape.analog.OpAmp({x:50,y:50}));
