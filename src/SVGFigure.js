@@ -80,12 +80,12 @@ draw2d.SVGFigure = draw2d.SetFigure.extend(
                 let oldSVG = this.svgNodes;
                 this.svgNodes = newSVGNodes;
                 this.applyTransformation();
-                oldSVG.forEach(function ( shape) {
-                    fadeOut(shape.node, duration, function () {
+                oldSVG.forEach((shape) => {
+                    fadeOut(shape.node, duration, () => {
                         shape.remove();
                     });
                 });
-                newSVGNodes.forEach(function (shape) {
+                newSVGNodes.forEach((shape) => {
                     fadeIn(shape.node, duration);
                 });
             }
@@ -117,23 +117,26 @@ draw2d.SVGFigure = draw2d.SetFigure.extend(
         }
 
         // Override the dimension from the JSON if the SVG contains any
+        // Parse the SVG string into a DOM document
         //
-        let svgDOM= $(rawSVG)
+        let parser = new DOMParser()
+        let svgDOM = parser.parseFromString(rawSVG, 'image/svg+xml')
+        let svgRoot = svgDOM.documentElement
 
         // set the dimension of the element if the JSON import didn't provide
         // a dimension already
         //
         if(typeof this._dimensionReadFromJSON ==="undefined"){
-            if(svgDOM.attr("width") && svgDOM.attr("height")){
-                this.setDimension(parseFloat(svgDOM.attr("width")), parseFloat(svgDOM.attr("height")));
+            if(svgRoot.getAttribute("width") && svgRoot.getAttribute("height")){
+                this.setDimension(parseFloat(svgRoot.getAttribute("width")), parseFloat(svgRoot.getAttribute("height")));
             }
             delete this._dimensionReadFromJSON
         }
 
         let findStyle = new RegExp('([a-z0-9\-]+) ?: ?([^ ;]+)[ ;]?','gi');
 
-        svgDOM.children().each(function(i,element){
-          //element = $(element);
+        // Native forEach: (element, index) - note the reversed parameter order vs jQuery!
+        Array.from(svgRoot.children).forEach((element, i) => {
           let shape=null;
           let style=null;
           let attr = { };
@@ -147,25 +150,25 @@ draw2d.SVGFigure = draw2d.SetFigure.extend(
 
           // map some element to Raphael specifix attributes or ignore some unknown attributes
           //
-          $(element.attributes).each(function() {
-            switch(this.nodeName) {
+          Array.from(element.attributes).forEach((attribute) => {
+            switch(attribute.nodeName) {
               case 'stroke-dasharray':
-                attr[this.nodeName] = '- ';
+                attr[attribute.nodeName] = '- ';
               break;
               case 'style':
-                style = this.nodeValue;
+                style = attribute.nodeValue;
               break;
               case 'id':
               case 'xml:space':
                   // just to ignore
                   break;
               default:
-                if(this.value){
-                    attr[this.nodeName] = this.value;
+                if(attribute.value){
+                    attr[attribute.nodeName] = attribute.value;
                 }
                 else{
                     // @deprecated
-                    attr[this.nodeName] = this.nodeValue;
+                    attr[attribute.nodeName] = attribute.nodeValue;
                 }
               break;
             }
@@ -243,7 +246,7 @@ draw2d.SVGFigure = draw2d.SetFigure.extend(
                             	break;
                             case 1://ELEMENT_NODE
                         }
-                        let subShape = canvas.paper.text(0,0,$(child).text());
+                        let subShape = canvas.paper.text(0,0,child.textContent);
                         let subAttr ={"x":parseFloat(child.attributes.x.value), "y":parseFloat(child.attributes.y.value)};
                         subAttr["text-anchor"] = "start";
                         if(typeof child.attributes["text-anchor"]!=="undefined"){
@@ -287,7 +290,7 @@ draw2d.SVGFigure = draw2d.SetFigure.extend(
                     }while(child && child.nodeType === 3); // 3= TEXT_NODE
                 }
                 else{
-                  shape = canvas.paper.text(0,0,$(element).html());
+                  shape = canvas.paper.text(0,0,element.innerHTML);
                   if(typeof attr["fill"]==="undefined")
                       attr["fill"] = "#000000";
                   if(typeof attr["text-anchor"]==="undefined")
