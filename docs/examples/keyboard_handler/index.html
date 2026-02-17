@@ -49,15 +49,20 @@
 		}));
 
 
-
 		// unmarshal the JSON document into the canvas
 		// (load)
 		var reader = new draw2d.io.json.Reader();
 		reader.unmarshal(canvas, jsonDocument);
 
 
-		var msg = new draw2d.shape.note.PostIt({text:"Select an object and press the 'DEL' key. \nA confirm dialog apears triggerd by a canvas keyboard policy"});
-		canvas.add(msg, 20,20);
+		var msg = new draw2d.shape.note.Markdown({
+			text: "## Keyboard Handler Demo\n\nSelect an object and press the **DEL** key.\n\nA confirm dialog appears triggered by a canvas keyboard policy.\n\n> **Mac Users:** use `fn` + `Delete`",
+			width: 400,
+		    height:300,
+			x: 650,
+			y: 50
+		});
+		canvas.add(msg);
 	});
 
 
