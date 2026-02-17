@@ -2,6 +2,7 @@ import draw2d from 'packages'
 import jsonUtil from 'util/JSONUtil'
 import UUID from 'util/UUID'
 import {fadeIn, fadeOut} from 'util/Animation'
+import {isPlainObject} from 'util/isPlainObject'
 
 /**
  * @class
@@ -274,7 +275,7 @@ draw2d.Figure = Class.extend(
       try {
         // call of attr as setter method with {name1:val1, name2:val2 }  argument list
         //
-        if ($.isPlainObject(name)) {
+        if (isPlainObject(name)) {
           for (let key in name) {
             // user can set the "userData" with path notation. In this case we
             // expand the path to a real JSON object and set the data.
@@ -2498,9 +2499,7 @@ draw2d.Figure = Class.extend(
           this.eventSubscriptions[events[i]] = []
         }
         // avoid duplicate registration for the same event with the same callback method
-        if (-1 !== $.inArray(callback, this.eventSubscriptions[events[i]])) {
-          //   debugger
-        } else {
+        if (!this.eventSubscriptions[events[i]].includes(callback)) {
           this.eventSubscriptions[events[i]].push(callback)
         }
       }
@@ -2564,7 +2563,7 @@ draw2d.Figure = Class.extend(
         children.each(function (i, e) {
           let c = e.figure
           checkRecursive(c.children)
-          if (result === null && c.isVisible() === true && c.hitTest(x, y) === true && $.inArray(c, figureToIgnore) === -1) {
+          if (result === null && c.isVisible() === true && c.hitTest(x, y) === true && !figureToIgnore.includes(c)) {
             result = c
           }
           return result === null // break the each-loop if we found an element

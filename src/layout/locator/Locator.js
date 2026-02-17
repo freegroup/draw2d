@@ -1,4 +1,5 @@
 import draw2d from '../../packages'
+import {isPlainObject} from '../../util/isPlainObject'
 
 
 /**
@@ -58,7 +59,7 @@ draw2d.layout.locator.Locator = Class.extend(
 
       // call of attr as setter method with {name1:val1, name2:val2 }  argument list
       //
-      if ($.isPlainObject(name)) {
+      if (isPlainObject(name)) {
         for (let key in name) {
           let func = this.setterWhitelist[key]
           let param = name[key]

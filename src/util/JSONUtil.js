@@ -1,4 +1,5 @@
 import draw2d from '../packages'
+import {isPlainObject} from './isPlainObject'
 
 
 draw2d.util.JSON = {
@@ -45,7 +46,7 @@ draw2d.util.JSON = {
             // String, treat it as a key
             }
             else if (typeof parentKey==="string") {
-              if(!$.isPlainObject(parent)) {
+              if(!isPlainObject(parent)) {
                 parent = {};
                 addObj(grandParent, grandParentKey, parent);
               }
