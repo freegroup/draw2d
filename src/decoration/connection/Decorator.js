@@ -115,18 +115,21 @@ draw2d.decoration.connection.Decorator = Class.extend(
       return this.backgroundColor
     },
 
-    /**
-     *
-     * Change the dimension of the decoration shape
-     *
-     * @param {Number} width  The new width of the decoration
-     * @param {Number} height The new height of the decoration
-     * @returns {this}
-     **/
-    setDimension: function (width, height) {
-      this.width = width
-      this.height = height
+  /**
+   *
+   * Change the dimension of the decoration shape
+   *
+   * @param {Number} width  The new width of the decoration
+   * @param {Number} height The new height of the decoration
+   * @returns {this}
+   **/
+  setDimension: function (width, height) {
+    this.width = width
+    this.height = height
 
-      return this
-    }
+    // Trigger repaint of the parent connection to redraw the decorator
+    this.parent?.repaint()
+
+    return this
+  }
   })

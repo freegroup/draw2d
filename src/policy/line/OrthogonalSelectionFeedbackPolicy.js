@@ -378,10 +378,20 @@ draw2d.policy.line.OrthogonalSelectionFeedbackPolicy = draw2d.policy.line.LineSe
 
   /**
    * 
+   * Called by the framework when the policy should show selection feedback for the given connection.
+   * Creates resize handles for all intermediate vertices of the connection.
+   * 
+   * The handles enforce orthogonal movement constraints based on the current segment orientation:
+   * - Horizontal segments: handles can only move vertically (changing Y coordinate)
+   * - Vertical segments: handles can only move horizontally (changing X coordinate)
+   * 
+   * This is achieved through the custom ResizeHandle implementation that analyzes the neighboring
+   * vertices and restricts movement accordingly.
    *
    * @template
-   * @param {draw2d.Connection} connection the selected figure
-   * @param {Boolean} isPrimarySelection
+   * @param {draw2d.Canvas} canvas the related canvas
+   * @param {draw2d.Connection} connection the selected connection
+   * @param {Boolean} isPrimarySelection true if this is the primary selection
    */
   onSelect: function (canvas, connection, isPrimarySelection) {
     this._super(canvas, connection, isPrimarySelection)
