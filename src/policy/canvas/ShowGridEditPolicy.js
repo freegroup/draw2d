@@ -48,9 +48,7 @@ draw2d.policy.canvas.ShowGridEditPolicy = draw2d.policy.canvas.DecorationPolicy.
     this.bgColor = config.bgColor;
 
     this._super()
-    this.onZoomCallback =(emitterFigure, zoomData) => {
-      this.setGrid(1/zoomData.value)
-    }
+    this.onZoomCallback = (emitterFigure, zoomData) => this.setGrid(1/zoomData.value)
   },
 
   /**
@@ -76,7 +74,9 @@ draw2d.policy.canvas.ShowGridEditPolicy = draw2d.policy.canvas.DecorationPolicy.
   onUninstall: function (canvas) {
     this._super(canvas)
     
-    $(canvas.paper.canvas).css({"background": this.oldBg})
+    if (canvas?.paper?.canvas) {
+      canvas.paper.canvas.style.background = this.oldBg
+    }
     canvas.off(this.onZoomCallback)
   },
 
@@ -85,16 +85,13 @@ draw2d.policy.canvas.ShowGridEditPolicy = draw2d.policy.canvas.DecorationPolicy.
    * @param {Number} zoom 
    */
   setGrid: function (zoom) {
-    let color = this.gridColor.rgba()
-
-    let background = 
-    ` linear-gradient(to right,  ${color} ${this.gridStroke}px, transparent ${this.gridStroke}px),
-      linear-gradient(to bottom, ${color} ${this.gridStroke}px, ${this.bgColor}  ${this.gridStroke}px)`
-    let backgroundSize = `${this.gridWidth*zoom}px ${this.gridWidth*zoom}px`
-
-    $(this.canvas.paper.canvas).css({
-      "background": background,
-      "background-size": backgroundSize
-    })
+    const canvasStyle = this.canvas?.paper?.canvas?.style
+    if (canvasStyle) {
+      const color = this.gridColor.rgba()
+      canvasStyle.background = 
+        `linear-gradient(to right,  ${color} ${this.gridStroke}px, transparent ${this.gridStroke}px),
+         linear-gradient(to bottom, ${color} ${this.gridStroke}px, ${this.bgColor}  ${this.gridStroke}px)`
+      canvasStyle.backgroundSize = `${this.gridWidth*zoom}px ${this.gridWidth*zoom}px`
+    }
   }
 })

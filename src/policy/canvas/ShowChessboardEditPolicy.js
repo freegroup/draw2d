@@ -33,11 +33,7 @@ draw2d.policy.canvas.ShowChessboardEditPolicy = draw2d.policy.canvas.DecorationP
      */
     init: function (grid) {
       this._super()
-      if (grid) {
-        this.grid = grid
-      } else {
-        this.grid = this.GRID_WIDTH
-      }
+      this.grid = grid || this.GRID_WIDTH
     },
 
 
@@ -46,15 +42,15 @@ draw2d.policy.canvas.ShowChessboardEditPolicy = draw2d.policy.canvas.DecorationP
 
       this.oldBg = this.canvas.html.css("background")
       this.setGrid(1/canvas.getZoom())
-      this.onZoomCallback =(emitterFigure, zoomData) => {
-        this.setGrid(1/zoomData.value)
-      }
+      this.onZoomCallback = (emitterFigure, zoomData) => this.setGrid(1/zoomData.value)
       canvas.on("zoom", this.onZoomCallback)
     },
 
     onUninstall: function (canvas) {
       this._super(canvas)
-      $(canvas.paper.canvas).css({"background": this.oldBg})
+      if (canvas?.paper?.canvas) {
+        canvas.paper.canvas.style.background = this.oldBg
+      }
       canvas.off(this.onZoomCallback)
     },
 
@@ -63,19 +59,14 @@ draw2d.policy.canvas.ShowChessboardEditPolicy = draw2d.policy.canvas.DecorationP
      * @private
      */
     setGrid: function(zoom){
-
-      let gridColor = this.GRID_COLOR
-
-      let background =
-        `linear-gradient(45deg, ${gridColor} 25%, transparent 25%, transparent 75%, ${gridColor} 75%, ${gridColor} 100%),\n` +
-        `linear-gradient(45deg, ${gridColor} 25%, transparent 25%, transparent 75%, ${gridColor} 75%, ${gridColor} 100%)`
-      let backgroundSize = `${(this.grid*2*zoom)}px ${(this.grid*2*zoom)}px`
-      let backgroundPosition = `0 0, ${(this.grid*zoom)}px ${(this.grid*zoom)}px`
-
-      $(this.canvas.paper.canvas).css({
-        "background": background,
-        "background-size": backgroundSize,
-        "background-position": backgroundPosition
-      })
+      const canvasStyle = this.canvas?.paper?.canvas?.style
+      if (canvasStyle) {
+        const gridColor = this.GRID_COLOR
+        canvasStyle.background =
+          `linear-gradient(45deg, ${gridColor} 25%, transparent 25%, transparent 75%, ${gridColor} 75%, ${gridColor} 100%),\n` +
+          `linear-gradient(45deg, ${gridColor} 25%, transparent 25%, transparent 75%, ${gridColor} 75%, ${gridColor} 100%)`
+        canvasStyle.backgroundSize = `${(this.grid*2*zoom)}px ${(this.grid*2*zoom)}px`
+        canvasStyle.backgroundPosition = `0 0, ${(this.grid*zoom)}px ${(this.grid*zoom)}px`
+      }
     }
   })
