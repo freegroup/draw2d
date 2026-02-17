@@ -12,7 +12,7 @@ const canvg = require('canvg-browser')
  *    //
  *    let writer = new draw2d.io.png.Writer();
  *    writer.marshal(canvas, function(png){
- *        $("#preview").attr("src",png);
+ *        document.getElementById("preview").src = png;
  *    });
  *
  * @author Andreas Herz
@@ -78,14 +78,19 @@ draw2d.io.png.Writer = draw2d.io.Writer.extend(
         }
         canvas.setZoom(1.0)
         canvas.hideDecoration()
-        svg = (new XMLSerializer()).serializeToString(canvas.getHtmlContainer().find("svg")[0]);
+        // canvas.getHtmlContainer() returns jQuery object, use [0] to get native element
+        // then use querySelector to find the SVG
+        let htmlContainer = canvas.getHtmlContainer()
+        let containerElement = htmlContainer[0] || htmlContainer
+        svg = (new XMLSerializer()).serializeToString(containerElement.querySelector("svg"));
       }
 
-      let canvasDomNode = $('<canvas id="canvas_png_export_for_draw2d"></canvas>')
-      $('body').append(canvasDomNode)
-      let fullSizeCanvas = $("#canvas_png_export_for_draw2d")[0]
+      // Create canvas element using native DOM
+      let fullSizeCanvas = document.createElement('canvas')
+      fullSizeCanvas.id = 'canvas_png_export_for_draw2d'
       fullSizeCanvas.width = canvas.initialWidth
       fullSizeCanvas.height = canvas.initialHeight
+      document.body.appendChild(fullSizeCanvas)
 
       canvg("canvas_png_export_for_draw2d", svg, {
         ignoreMouse: true,
@@ -121,7 +126,8 @@ draw2d.io.png.Writer = draw2d.io.Writer.extend(
               resultCallback(img, img.replace("data:image/png;base64,", ""))
             }
           } finally {
-            canvasDomNode.remove()
+            // Remove the canvas element using native DOM
+            fullSizeCanvas.remove()
           }
         }
       })
