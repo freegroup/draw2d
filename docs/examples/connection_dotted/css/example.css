@@ -1,0 +1,66 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+#toolbar {
+  flex-shrink: 0;
+  height: 40px;
+  background: linear-gradient(to bottom, #f8f8f8 0%, #e0e0e0 100%);
+  border-bottom: 1px solid #ccc;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#toolbar button {
+  padding: 5px 15px;
+  border: 1px solid #999;
+  border-radius: 4px;
+  background: linear-gradient(to bottom, #fff 0%, #e8e8e8 100%);
+  cursor: pointer;
+}
+
+#toolbar button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#toolbar button:hover:not(:disabled) {
+  background: linear-gradient(to bottom, #fff 0%, #d8d8d8 100%);
+}
+
+#scrollarea {
+  flex: 1;
+  overflow: auto;
+  background-color: #FAFAFA;
+  position: relative;
+}
+
+#gfx_holder {
+  min-width: 3000px;
+  min-height: 3000px;
+  width: 3000px;
+  height: 3000px;
+}
+
+code {
+  padding-left: 3px;
+  padding-right: 3px;
+  background-color: #00000010;
+  border-radius: 3px;
+  min-width: 20px;
+  display: inline-block;
+  text-align: center;
+}
