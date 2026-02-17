@@ -1,5 +1,4 @@
 import draw2d from '../packages'
-import r from "lib/jquery.autoresize"
 import {fadeIn, fadeOut} from '../util/Animation'
 
 
@@ -14,9 +13,9 @@ import {fadeIn, fadeOut} from '../util/Animation'
  *
  *    label.installEditor(new draw2d.ui.LabelInplaceEditor({
  *       // called after the value has been set to the LabelFigure
- *       onCommit: $.proxy(function(value){
+ *       onCommit: function(value){
  *           alert("new value set to:"+value);
- *       },this),
+ *       },
  *       // called if the user abort the operation
  *       onCancel: function(){
  *       }
@@ -34,7 +33,7 @@ draw2d.ui.LabelInplaceEditor = draw2d.ui.LabelEditor.extend(
     NAME: "draw2d.ui.LabelInplaceEditor",
 
     init: function (listener) {
-      this._super();
+      this._super()
 
       // register some default listener and override this with the handover one
       this.listener = {
@@ -44,7 +43,7 @@ draw2d.ui.LabelInplaceEditor = draw2d.ui.LabelEditor.extend(
         },
         onStart: function () {
         }
-      , ...listener};
+      , ...listener}
     },
 
     /**
@@ -54,72 +53,184 @@ draw2d.ui.LabelInplaceEditor = draw2d.ui.LabelEditor.extend(
      * @param {draw2d.shape.basic.Label} label the label to edit
      */
     start: function (label) {
-      this.label = label;
+      this.label = label
+      this.canvas = label.getCanvas()
 
-      this.commitCallback = this.commit.bind(this);
+      this.commitCallback = () => this.commit()
 
       // commit the editor if the user clicks anywhere in the document
       //
-      $("body").bind("click", this.commitCallback);
+      document.body.addEventListener("click", this.commitCallback)
 
       // append the input field to the document and register
       // the ENTER and ESC key to commit /cancel the operation
       //
-      this.html = $('<input id="inplaceeditor">');
-      this.html.val(label.getText());
-      this.html.hide();
+      this.html = document.createElement('input')
+      this.html.className = 'draw2d-label-inplace-editor'
+      this.html.value = label.getText()
+      this.html.style.display = 'none'
 
-      $("body").append(this.html);
+      document.body.appendChild(this.html)
 
-      this.html.autoResize();
+      this.installAutoResize(this.html)
 
-      this.html.bind("keyup", function (e) {
-        switch (e.which) {
-          case 13:
-            this.commit();
-            break;
-          case 27:
-            this.cancel();
-            break;
+      this.html.addEventListener("keyup", (e) => {
+        if (e.key === "Enter") {
+          this.commit()
+        } else if (e.key === "Escape") {
+          this.cancel()
         }
-      }.bind(this));
+      })
 
-      this.html.bind("blur", this.commitCallback);
+      this.html.addEventListener("blur", this.commitCallback)
 
       // avoid commit of the operation if we click inside the editor
       //
-      this.html.bind("click", function (e) {
-        e.stopPropagation();
-        e.preventDefault();
-      });
+      this.html.addEventListener("click", (e) => {
+        e.stopPropagation()
+        e.preventDefault()
+      })
 
-      // Position the INPUT and init the autoresize of the element
-      //
-      let canvas = this.label.getCanvas();
-      let bb = this.label.getBoundingBox();
+      // Position the INPUT element and install scroll/zoom handlers
+      this.positionInput()
+      this.installScrollHandler()
+      this.installZoomHandler()
+      
+      fadeIn(this.html, 200, () => {
+        this.html.focus()
+        this.listener.onStart()
+      })
+    },
 
-      bb.setPosition(canvas.fromCanvasToDocumentCoordinate(bb.x, bb.y));
+    /**
+     * Position the input element over the label
+     * @private
+     */
+    positionInput: function() {
+      let bb = this.label.getBoundingBox()
+      bb.setPosition(this.canvas.fromCanvasToDocumentCoordinate(bb.x, bb.y))
 
-      // remove the scroll from the body if we add the canvas directly into the body
-      let scrollDiv = canvas.getScrollArea();
-      if (scrollDiv.is($("body"))) {
-        bb.translate(canvas.getScrollLeft(), canvas.getScrollTop());
+      // If canvas is directly in body, we need to add back the scroll position
+      // because fromCanvasToDocumentCoordinate subtracts it, but the input element
+      // is position:absolute to body which doesn't account for scroll
+      let scrollArea = this.canvas.getScrollArea()
+      let scrollElement = scrollArea.jquery ? scrollArea[0] : scrollArea
+      if (scrollElement === document.body) {
+        bb.translate(this.canvas.getScrollLeft(), this.canvas.getScrollTop())
       }
 
-      bb.translate(-1, -1);
-      bb.resize(2, 2);
+      bb.translate(-1, -1)
+      bb.resize(2, 2)
 
-      this.html.css({
+      Object.assign(this.html.style, {
         position: "absolute",
-        "top": bb.y,
-        "left": bb.x,
-        "min-width": bb.w * (1 / canvas.getZoom()),
-        "height": Math.max(25, bb.h * (1 / canvas.getZoom()))
-      });
-      fadeIn(this.html[0], 200, () => {
-        this.html.focus();
-        this.listener.onStart()
-      });
+        top: bb.y + "px",
+        left: bb.x + "px",
+        minWidth: (bb.w * (1 / this.canvas.getZoom())) + "px",
+        height: Math.max(25, bb.h * (1 / this.canvas.getZoom())) + "px"
+      })
+    },
+
+    /**
+     * Install scroll handler to reposition input when scrollArea scrolls
+     * @private
+     */
+    installScrollHandler: function() {
+      this.scrollHandler = () => this.positionInput()
+      
+      // Get scroll area - can be jQuery object or native element
+      let scrollArea = this.canvas.getScrollArea()
+      let element = scrollArea.jquery ? scrollArea[0] : scrollArea
+      let parent = element.parentElement
+      
+      // Only add scroll handler if there's a custom scroll container (not body)
+      // When scrollArea is body or parent is body, the input (position:absolute to body)
+      // will automatically scroll with the page, no handler needed.
+      // fromCanvasToDocumentCoordinate already accounts for scroll position.
+      if (element !== document.body && parent && parent !== document.body) {
+        this.scrollElement = parent
+        this.scrollElement.addEventListener("scroll", this.scrollHandler)
+      }
+    },
+
+    /**
+     * Remove scroll handler
+     * @private
+     */
+    uninstallScrollHandler: function() {
+      if (this.scrollHandler) {
+        if (this.scrollElement) {
+          this.scrollElement.removeEventListener("scroll", this.scrollHandler)
+          this.scrollElement = null
+        }
+        this.scrollHandler = null
+      }
+    },
+
+    /**
+     * Install zoom handler to reposition input when canvas zooms
+     * @private
+     */
+    installZoomHandler: function() {
+      this.zoomHandler = () => this.positionInput()
+      this.canvas.on("zoom", this.zoomHandler)
+    },
+
+    /**
+     * Remove zoom handler
+     * @private
+     */
+    uninstallZoomHandler: function() {
+      if (this.zoomHandler) {
+        this.canvas.off(this.zoomHandler)
+        this.zoomHandler = null
+      }
+    },
+
+    /**
+     * Install auto-resize behavior on an input element.
+     * Automatically adjusts the input width based on content.
+     *
+     * @param {HTMLInputElement} input the input element to auto-resize
+     * @private
+     */
+    installAutoResize: function(input) {
+      // Create invisible measurement element
+      this.measureSpan = document.createElement('span')
+      this.measureSpan.style.cssText = `
+        position: absolute;
+        visibility: hidden;
+        white-space: nowrap;
+        font: ${getComputedStyle(input).font};
+        padding: ${getComputedStyle(input).padding};
+        letter-spacing: ${getComputedStyle(input).letterSpacing};
+      `
+      document.body.appendChild(this.measureSpan)
+      
+      // Resize function
+      this.resizeHandler = () => {
+        this.measureSpan.textContent = input.value || input.placeholder || 'M'
+        const newWidth = this.measureSpan.offsetWidth + 20
+        input.style.width = newWidth + 'px'
+      }
+      
+      input.addEventListener('input', this.resizeHandler)
+      this.resizeHandler() // Initial sizing
+    },
+
+    /**
+     * Remove auto-resize behavior and clean up
+     * @private
+     */
+    uninstallAutoResize: function() {
+      if (this.measureSpan) {
+        this.measureSpan.remove()
+        this.measureSpan = null
+      }
+      if (this.html && this.resizeHandler) {
+        this.html.removeEventListener('input', this.resizeHandler)
+        this.resizeHandler = null
+      }
     },
 
     /**
@@ -130,16 +241,19 @@ draw2d.ui.LabelInplaceEditor = draw2d.ui.LabelEditor.extend(
      * @private
      */
     commit: function () {
-      this.html.unbind("blur", this.commitCallback);
-      $("body").unbind("click", this.commitCallback);
-      let label = this.html.val();
-      let cmd = new draw2d.command.CommandAttr(this.label, {text: label});
-      this.label.getCanvas().getCommandStack().execute(cmd);
-      fadeOut(this.html[0], 200, () => {
-        this.html.remove();
-        this.html = null;
-        this.listener.onCommit(this.label.getText());
-      });
+      this.html.removeEventListener("blur", this.commitCallback)
+      document.body.removeEventListener("click", this.commitCallback)
+      this.uninstallScrollHandler()
+      this.uninstallZoomHandler()
+      this.uninstallAutoResize()
+      let labelText = this.html.value
+      let cmd = new draw2d.command.CommandAttr(this.label, {text: labelText})
+      this.label.getCanvas().getCommandStack().execute(cmd)
+      fadeOut(this.html, 200, () => {
+        this.html.remove()
+        this.html = null
+        this.listener.onCommit(this.label.getText())
+      })
     },
 
     /**
@@ -149,14 +263,15 @@ draw2d.ui.LabelInplaceEditor = draw2d.ui.LabelEditor.extend(
      * @private
      */
     cancel: function () {
-      this.html.unbind("blur", this.commitCallback);
-      $("body").unbind("click", this.commitCallback);
-      fadeOut(this.html[0], 200, () => {
-        this.html.remove();
-        this.html = null;
-        this.listener.onCancel();
-      });
-
+      this.html.removeEventListener("blur", this.commitCallback)
+      document.body.removeEventListener("click", this.commitCallback)
+      this.uninstallScrollHandler()
+      this.uninstallZoomHandler()
+      this.uninstallAutoResize()
+      fadeOut(this.html, 200, () => {
+        this.html.remove()
+        this.html = null
+        this.listener.onCancel()
+      })
     }
-  });
-
+  })
