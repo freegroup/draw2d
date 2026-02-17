@@ -95,6 +95,92 @@
           "examples": []
         },
         {
+          "name": "positionInput",
+          "access": "private",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Position the input element over the label</p>",
+          "parameters": [],
+          "inherited": false,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "installScrollHandler",
+          "access": "private",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Install scroll handler to reposition input when scrollArea scrolls</p>",
+          "parameters": [],
+          "inherited": false,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "uninstallScrollHandler",
+          "access": "private",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Remove scroll handler</p>",
+          "parameters": [],
+          "inherited": false,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "installZoomHandler",
+          "access": "private",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Install zoom handler to reposition input when canvas zooms</p>",
+          "parameters": [],
+          "inherited": false,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "uninstallZoomHandler",
+          "access": "private",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Remove zoom handler</p>",
+          "parameters": [],
+          "inherited": false,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "installAutoResize",
+          "access": "private",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Install auto-resize behavior on an input element.\nAutomatically adjusts the input width based on content.</p>",
+          "parameters": [
+            {
+              "name": "input",
+              "type": "HTMLInputElement",
+              "description": "<p>the input element to auto-resize</p>",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "inherited": false,
+          "since": "",
+          "examples": []
+        },
+        {
+          "name": "uninstallAutoResize",
+          "access": "private",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Remove auto-resize behavior and clean up</p>",
+          "parameters": [],
+          "inherited": false,
+          "since": "",
+          "examples": []
+        },
+        {
           "name": "commit",
           "access": "private",
           "virtual": false,
@@ -143,7 +229,7 @@
         "description": "",
         "parameters": [],
         "examples": [
-          "let label =  new draw2d.shape.basic.Label({text:\"Double Click on me\"});\n\n   label.installEditor(new draw2d.ui.LabelInplaceEditor({\n      // called after the value has been set to the LabelFigure\n      onCommit: $.proxy(function(value){\n          alert(\"new value set to:\"+value);\n      },this),\n      // called if the user abort the operation\n      onCancel: function(){\n      }\n   }));\n\n   canvas.add(label,50,10);"
+          "let label =  new draw2d.shape.basic.Label({text:\"Double Click on me\"});\n\n   label.installEditor(new draw2d.ui.LabelInplaceEditor({\n      // called after the value has been set to the LabelFigure\n      onCommit: function(value){\n          alert(\"new value set to:\"+value);\n      },\n      // called if the user abort the operation\n      onCancel: function(){\n      }\n   }));\n\n   canvas.add(label,50,10);"
         ]
       }
     }
