@@ -330,35 +330,35 @@ draw2d.Canvas = Class.extend(
 
       // Catch the keyUp and CTRL-key and route them to the Canvas hook.
       //
-      this.keyupCallback = function (event) {
+      this.keyupCallback = (event) => {
         // don't initiate the delete command if the event comes from an INPUT field. In this case the user want delete
         // a character in the input field and not the related shape
-        let target = $(event.target)
-        if (!target.is("input") && !target.is("textarea")) {
-          _this.editPolicy.each(function (i, policy) {
+        const target = event.target
+        if (target?.tagName !== "INPUT" && target?.tagName !== "TEXTAREA") {
+          this.editPolicy.each((i, policy) => {
             if (policy instanceof draw2d.policy.canvas.KeyboardPolicy) {
-              policy.onKeyUp(_this, event.keyCode, event.shiftKey, event.ctrlKey)
+              policy.onKeyUp(this, event.keyCode, event.shiftKey, event.ctrlKey)
             }
           })
         }
       }
-      $(document).bind("keyup", this.keyupCallback)
+      document.addEventListener("keyup", this.keyupCallback)
 
       // Catch the keyDown and CTRL-key and route them to the Canvas hook.
       //
-      this.keydownCallback = function (event) {
+      this.keydownCallback = (event) => {
         // don't initiate the delete command if the event comes from an INPUT field. In this case the user want delete
         // a character in the input field and not the related shape
-        let target = $(event.target)
-        if (!target.is("input") && !target.is("textarea")) {
-          _this.editPolicy.each(function (i, policy) {
+        const target = event.target
+        if (target?.tagName !== "INPUT" && target?.tagName !== "TEXTAREA") {
+          this.editPolicy.each((i, policy) => {
             if (policy instanceof draw2d.policy.canvas.KeyboardPolicy) {
-              policy.onKeyDown(_this, event.keyCode, event.shiftKey, event.ctrlKey)
+              policy.onKeyDown(this, event.keyCode, event.shiftKey, event.ctrlKey)
             }
           })
         }
       }
-      $(document).bind("keydown", this.keydownCallback)
+      document.addEventListener("keydown", this.keydownCallback)
 
     },
 
@@ -371,8 +371,8 @@ draw2d.Canvas = Class.extend(
      */
     destroy: function () {
       this.clear()
-      $(document).unbind("keydown", this.keydownCallback)
-      $(document).unbind("keyup", this.keyupCallback)
+      document.removeEventListener("keydown", this.keydownCallback)
+      document.removeEventListener("keyup", this.keyupCallback)
       // reset the event handlers of the canvas without any notice
       //
       this.eventSubscriptions = {}
