@@ -74,28 +74,40 @@ draw2d.shape.note.Markdown = draw2d.shape.basic.Rectangle.extend(
     this._zoomHandler = (emitter, {value}) => {
       value = value || 1;
       if (this.overlay) {
-        this.overlay.css({
-          width: this.getWidth(),
-          height: this.getHeight(),
-          top: this.getY() * (1/value),
-          left: this.getX() * (1/value),
-          transform: `scale(${1/value})`,
-          "transform-origin": "top left"
-        });
+        const style = this.overlay.style;
+        style.width = this.getWidth() + 'px';
+        style.height = this.getHeight() + 'px';
+        style.top = (this.getY() * (1/value)) + 'px';
+        style.left = (this.getX() * (1/value)) + 'px';
+        style.transform = `scale(${1/value})`;
+        style.transformOrigin = 'top left';
       }
     };
 
     this.on("added", (emitter, event) => {
-      this.overlay = $(`<div id="${this.id}" style="overflow:hidden;border:1px solid black;position:absolute; top:${this.getY()}px;left:${this.getX()}px;pointer-events:none; padding:${this.textPadding}px; box-sizing:border-box;">
-                      ${this.markdownHtml}
-                      </div>`);
-      event.canvas.html.append(this.overlay);
-      this.overlay.css({
-        width: this.getWidth(),
-        height: this.getHeight(),
-        top: this.getY(),
-        left: this.getX()
-      });
+      // Create overlay element using native DOM
+      this.overlay = document.createElement('div');
+      this.overlay.id = this.id;
+      this.overlay.innerHTML = this.markdownHtml;
+      
+      // Apply styles
+      const style = this.overlay.style;
+      style.overflow = 'hidden';
+      style.border = '1px solid black';
+      style.position = 'absolute';
+      style.top = this.getY() + 'px';
+      style.left = this.getX() + 'px';
+      style.pointerEvents = 'none';
+      style.padding = this.textPadding + 'px';
+      style.boxSizing = 'border-box';
+      style.width = this.getWidth() + 'px';
+      style.height = this.getHeight() + 'px';
+      
+      // Append to canvas HTML container
+      // canvas.html is a jQuery object, so we use [0] to get the native DOM element
+      const container = event.canvas.html[0] || event.canvas.html;
+      container.appendChild(this.overlay);
+      
       event.canvas.on("zoom", this._zoomHandler);
     })
     .on("removed", (emitter, event) => {
@@ -136,7 +148,7 @@ draw2d.shape.note.Markdown = draw2d.shape.basic.Rectangle.extend(
     this._renderMarkdown();
     
     if (this.overlay) {
-      this.overlay.html(this.markdownHtml);
+      this.overlay.innerHTML = this.markdownHtml;
     }
     
     this.fireEvent("change:markdown", {value: this.markdown});
@@ -161,7 +173,7 @@ draw2d.shape.note.Markdown = draw2d.shape.basic.Rectangle.extend(
     this.textPadding = padding;
     
     if (this.overlay) {
-      this.overlay.css('padding', padding + 'px');
+      this.overlay.style.padding = padding + 'px';
     }
     
     this.fireEvent("change:textPadding", {value: this.textPadding});
