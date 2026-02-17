@@ -67,7 +67,7 @@
     "description": "",
     "parameters": [],
     "examples": [
-      "// example how to create a PNG image and set an\n   // image src attribute.\n   //\n   let writer = new draw2d.io.png.Writer();\n   writer.marshal(canvas, function(png){\n       $(\"#preview\").attr(\"src\",png);\n   });"
+      "// example how to create a PNG image and set an\n   // image src attribute.\n   //\n   let writer = new draw2d.io.png.Writer();\n   writer.marshal(canvas, function(png){\n       document.getElementById(\"preview\").src = png;\n   });"
     ]
   }
 }
