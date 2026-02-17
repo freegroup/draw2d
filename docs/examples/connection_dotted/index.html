@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-﻿<html>
+<html>
 <head>
 <title>Connection Example</title>
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, , maximum-scale=1.0" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-  <link type="text/css" rel="stylesheet" href="./css/example.css" />
 
   <script src="./lib/jquery.js"></script>
   <script src="./lib/jquery-ui.js"></script>
@@ -34,7 +33,6 @@ function updateButtons() {
 
 document.addEventListener("DOMContentLoaded",function () {
 
-
      // create the paint area. The id in the constructor must be
      // an existing DIV
 	 canvas = new draw2d.Canvas("gfx_holder");
@@ -44,8 +42,6 @@ document.addEventListener("DOMContentLoaded",function () {
       updateButtons();
     });
     updateButtons();
-
-     canvas.installEditPolicy(new draw2d.policy.canvas.FadeoutDecorationPolicy());
 
      // Override the default connection type. This is used during drag&drop operations of ports.
      canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({
@@ -66,15 +62,29 @@ document.addEventListener("DOMContentLoaded",function () {
 	 canvas.add( start);
 	 canvas.add( endNode);
 
-	 /////////////////////////////////////////////////////////////////////
-	 // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
-	 /////////////////////////////////////////////////////////////////////
+	 var msg = new draw2d.shape.note.Markdown({
+	   text: "## Dashed Connections\n\n" +
+	             "Drag between ports to create dashed lines.\n\n" +
+	             "**Valid Patterns:**\n" +
+	             "- ` ` (solid)\n" +
+	             "- `-` (short dash)\n" +
+	             "- `.` (dot)\n" +
+	             "- `-.` (dash-dot)\n" +
+	             "- `-..` (dash-dot-dot)\n" +
+	             "- `. ` (spaced dot)\n" +
+	             "- `- ` (spaced dash)\n" +
+	             "- `--` (long dash)\n" +
+	             "- `- .` (spaced dash-dot)\n" +
+	             "- `--.` (long dash-dot)\n" +
+	             "- `--..` (long dash-dot-dot)\n\n" +
+	             "_See `Line.setDashArray()` for details_",
+      x:350,
+      y:50,
+      width:450,
+      height: 400});
 
-	 var msg = new draw2d.shape.note.PostIt({text:"Custom Connection Styles:\nDrag from port to port to create a dashed connection.\n\nConnection properties:\n• dasharray: '- ' (dash pattern)\n• stroke: 3 (line width)\n\nUseful for:\n• Optional relationships\n• Temporary connections\n• Visual differentiation"});
-	 canvas.add(msg, 20,20);
+	 canvas.add(msg);
 
-	 $("body").scrollTop(0)
-	          .scrollLeft(0);
 	});
 </script>
 
@@ -127,6 +137,15 @@ document.addEventListener("DOMContentLoaded",function () {
       min-height: 3000px;
       width: 3000px;
       height: 3000px;
+    }
+    code {
+      padding-left: 3px;
+      padding-right: 3px;
+      background-color: #00000010;
+      border-radius: 3px;
+      min-width: 20px;
+      display: inline-block;
+      text-align: center;
     }
   </style>
 
