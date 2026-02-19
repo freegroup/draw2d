@@ -112,6 +112,21 @@
       "examples": []
     },
     {
+      "name": "getAffectedFigures",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Returns the figures affected by this command.</p>",
+      "parameters": [],
+      "inherited": false,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "draw2d.Figure[]",
+        "description": "<p>Array of affected figures</p>"
+      }
+    },
+    {
       "name": "cancel",
       "access": "",
       "virtual": false,

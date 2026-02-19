@@ -88,4 +88,15 @@ draw2d.command.CommandMoveVertex = draw2d.command.Command.extend(
   redo: function () {
     this.line.setVertex(this.index, this.newPoint.x, this.newPoint.y)
   }
+  ,
+
+  /**
+   * 
+   * Returns the figures affected by this command.
+   *
+   * @returns {draw2d.Figure[]} Array of affected figures
+   **/
+  getAffectedFigures: function () {
+    return [this.line]
+  }
 })

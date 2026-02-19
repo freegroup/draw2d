@@ -85,5 +85,15 @@ draw2d.command.CommandAttr = draw2d.command.Command.extend(
    **/
   redo: function () {
     this.figure.attr(this.newAttributes)
+  },
+
+  /**
+   * 
+   * Returns the figures affected by this command.
+   *
+   * @returns {draw2d.Figure[]} Array of affected figures
+   **/
+  getAffectedFigures: function () {
+    return [this.figure]
   }
 })

@@ -75,5 +75,15 @@ draw2d.command.CommandAddVertex = draw2d.command.Command.extend(
    **/
   redo: function () {
     this.line.insertVertexAt(this.index, this.newPoint.x, this.newPoint.y)
+  },
+
+  /**
+   * 
+   * Returns the figures affected by this command.
+   *
+   * @returns {draw2d.Figure[]} Array of affected figures
+   **/
+  getAffectedFigures: function () {
+    return [this.line]
   }
 })

@@ -69,4 +69,15 @@ draw2d.command.CommandBoundingBox = draw2d.command.Command.extend(
   redo: function () {
     this.figure.setBoundingBox(this.newBoundingBox)
   }
+  ,
+
+  /**
+   * 
+   * Returns the figures affected by this command.
+   *
+   * @returns {draw2d.Figure[]} Array of affected figures
+   **/
+  getAffectedFigures: function () {
+    return [this.figure]
+  }
 })

@@ -68,6 +68,16 @@ draw2d.command.CommandAdd = draw2d.command.Command.extend(
    **/
   undo: function () {
     this.canvas.remove(this.figure)
+  },
+
+  /**
+   * 
+   * Returns the figures affected by this command.
+   *
+   * @returns {draw2d.Figure[]} Array of affected figures
+   **/
+  getAffectedFigures: function () {
+    return [this.figure]
   }
 
 })

@@ -83,4 +83,15 @@ draw2d.command.CommandRotate = draw2d.command.Command.extend(
 
     this.figure.portRelayoutRequired = true
   }
+  ,
+
+  /**
+   * 
+   * Returns the figures affected by this command.
+   *
+   * @returns {draw2d.Figure[]} Array of affected figures
+   **/
+  getAffectedFigures: function () {
+    return [this.figure]
+  }
 })

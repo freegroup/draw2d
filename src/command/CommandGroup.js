@@ -90,4 +90,15 @@ draw2d.command.CommandGroup = draw2d.command.Command.extend(
     this.canvas.add(this.group)
     this.canvas.setCurrentSelection(this.group)
   }
+  ,
+
+  /**
+   * 
+   * Returns the figures affected by this command.
+   *
+   * @returns {draw2d.Figure[]} Array of affected figures
+   **/
+  getAffectedFigures: function () {
+    return this.figures.asArray()
+  }
 })

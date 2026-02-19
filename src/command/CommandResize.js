@@ -88,4 +88,15 @@ draw2d.command.CommandResize = draw2d.command.Command.extend(
   redo: function () {
     this.figure.setDimension(this.newWidth, this.newHeight)
   }
+  ,
+
+  /**
+   * 
+   * Returns the figures affected by this command.
+   *
+   * @returns {draw2d.Figure[]} Array of affected figures
+   **/
+  getAffectedFigures: function () {
+    return [this.figure]
+  }
 })

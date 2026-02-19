@@ -104,4 +104,15 @@ draw2d.command.CommandConnect = draw2d.command.Command.extend(
   undo: function () {
     this.canvas.remove(this.connection)
   }
+  ,
+
+  /**
+   * 
+   * Returns the figures affected by this command.
+   *
+   * @returns {draw2d.Figure[]} Array of affected figures
+   **/
+  getAffectedFigures: function () {
+    return [this.connection]
+  }
 })

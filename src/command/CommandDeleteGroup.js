@@ -100,4 +100,15 @@ draw2d.command.CommandDeleteGroup = draw2d.command.Command.extend(
 
     this.batchDelete.execute()
   }
+  ,
+
+  /**
+   * 
+   * Returns the figures affected by this command.
+   *
+   * @returns {draw2d.Figure[]} Array of affected figures
+   **/
+  getAffectedFigures: function () {
+    return [this.group].concat(this.group.getAssignedFigures().asArray())
+  }
 })

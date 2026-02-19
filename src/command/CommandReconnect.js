@@ -128,4 +128,15 @@ draw2d.command.CommandReconnect = draw2d.command.Command.extend(
     this.con.repaint()
   }
 
+  ,
+
+  /**
+   * 
+   * Returns the figures affected by this command.
+   *
+   * @returns {draw2d.Figure[]} Array of affected figures
+   **/
+  getAffectedFigures: function () {
+    return [this.con]
+  }
 })

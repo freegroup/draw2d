@@ -84,4 +84,15 @@ draw2d.command.CommandUngroup = draw2d.command.Command.extend(
     this.canvas.setCurrentSelection(this.figures)
     this.canvas.remove(this.group)
   }
+  ,
+
+  /**
+   * 
+   * Returns the figures affected by this command.
+   *
+   * @returns {draw2d.Figure[]} Array of affected figures
+   **/
+  getAffectedFigures: function () {
+    return [this.group].concat(this.figures.asArray())
+  }
 })

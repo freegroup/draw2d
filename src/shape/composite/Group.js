@@ -106,7 +106,6 @@ draw2d.shape.composite.Group = draw2d.shape.composite.StrongComposite.extend(
      */
     assignFigure: function (figure) {
       if (!this.assignedFigures.contains(figure)) {
-        let _this = this
         this.stickFigures = true
         if (this.assignedFigures.isEmpty() === true) {
           this.setBoundingBox(figure.getBoundingBox())
@@ -117,9 +116,7 @@ draw2d.shape.composite.Group = draw2d.shape.composite.StrongComposite.extend(
         figure.setComposite(this)
         // the selection adapter defines which figure should be selected if the user clicks on
         // "figure". The "group" redirects to the group instead to allowing select the child.
-        figure.setSelectionAdapter(function () {
-          return _this
-        })
+        figure.setSelectionAdapter( () => this )
         this.stickFigures = false
       }
       return this

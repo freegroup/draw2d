@@ -99,6 +99,21 @@
       "inherited": false,
       "since": "",
       "examples": []
+    },
+    {
+      "name": "getAffectedFigures",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Returns the figures affected by this command.\nSub-classes must implement this method to return an array of figures\nthat are modified/affected by this command.</p>",
+      "parameters": [],
+      "inherited": false,
+      "since": "7.0.0",
+      "examples": [],
+      "returns": {
+        "type": "draw2d.Figure[]",
+        "description": "<p>Array of affected figures. Returns empty array if no figures are affected.</p>"
+      }
     }
   ],
   "fires": "",

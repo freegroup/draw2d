@@ -90,4 +90,15 @@ draw2d.command.CommandMoveConnection = draw2d.command.Command.extend(
     // required to update resize handles and the painting of the line
     this.line.setPosition(this.line.getStartPosition())
   }
+  ,
+
+  /**
+   * 
+   * Returns the figures affected by this command.
+   *
+   * @returns {draw2d.Figure[]} Array of affected figures
+   **/
+  getAffectedFigures: function () {
+    return [this.figure]
+  }
 })

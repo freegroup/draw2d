@@ -104,6 +104,16 @@ draw2d.command.CommandAssignFigure = draw2d.command.Command.extend(
     this.composite.setBoundingBox(this.oldBoundingBox)
     this.composite.assignFigure(this.figure)
     this.assignedConnections.each( (i, entry) => this.composite.assignFigure(entry.connection))
+  },
+
+  /**
+   * 
+   * Returns the figures affected by this command.
+   *
+   * @returns {draw2d.Figure[]} Array of affected figures
+   **/
+  getAffectedFigures: function () {
+    return [this.figure]
   }
 })
 

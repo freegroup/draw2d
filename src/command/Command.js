@@ -89,5 +89,19 @@ draw2d.command.Command = Class.extend(
    * @template
    **/
   redo: function () {
+  },
+
+  /**
+   * 
+   * Returns the figures affected by this command.
+   * Sub-classes must implement this method to return an array of figures
+   * that are modified/affected by this command.
+   *
+   * @returns {draw2d.Figure[]} Array of affected figures. Returns empty array if no figures are affected.
+   * @template
+   * @since 7.0.0
+   **/
+  getAffectedFigures: function () {
+    return []
   }
 })

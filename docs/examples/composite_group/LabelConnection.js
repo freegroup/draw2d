@@ -24,7 +24,9 @@ var LabelConnection= draw2d.Connection.extend({
       // add the new decoration to the connection with a position locator.
       //
       this.add(this.label, new draw2d.layout.locator.ManhattanMidpointLocator());
-      
+      // avoid drag/drop
+      this.label.setSelectionAdapter( null) 
+
       // Register a label editor with a dialog
       //
       this.label.installEditor(new draw2d.ui.LabelEditor());

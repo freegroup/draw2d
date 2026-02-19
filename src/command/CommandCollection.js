@@ -126,4 +126,19 @@ draw2d.command.CommandCollection = draw2d.command.Command.extend(
     })
     this.commands.reverse()
   }
+  ,
+
+  /**
+   * 
+   * Returns the figures affected by this command.
+   *
+   * @returns {draw2d.Figure[]} Array of affected figures
+   **/
+  getAffectedFigures: function () {
+    let figures = []
+    this.commands.each((i, cmd) => {
+      figures = figures.concat(cmd.getAffectedFigures())
+    })
+    return figures
+  }
 })
