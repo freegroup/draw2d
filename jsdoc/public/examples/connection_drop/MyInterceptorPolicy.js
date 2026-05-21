@@ -1,6 +1,11 @@
 
 var MyInterceptorPolicy = draw2d.policy.canvas.DropInterceptorPolicy.extend({
 
+    /**
+     * @param {Object} [attr] the configuration of the shape
+     * @param {Object} [setter] optional setter functions
+     * @param {Object} [getter] optional getter functions
+     */
     init : function(attr, setter, getter)
     {
         this._super(attr, setter, getter);

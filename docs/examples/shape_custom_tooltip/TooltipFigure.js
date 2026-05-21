@@ -3,9 +3,6 @@ TooltipFigure = draw2d.shape.basic.Rectangle.extend({
   NAME: "TooltipFigure",
 
   /**
-   * @constructor
-   * Creates a new figure element which is not assigned to any canvas.
-   *
    * @param {Object} [attr] the configuration of the shape
    */
   init: function (attr) {

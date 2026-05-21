@@ -13,6 +13,9 @@ var SemanticGroupFigure = draw2d.shape.basic.Rectangle.extend({
   COLOR_DATA: "#e74c3c",     // Red - "data" semantic group
   COLOR_CONTROL: "#249352",  // Green - "control" semantic group
 
+  /**
+   * @param {Object} [attr] the configuration of the shape
+   */
   init: function(attr) {
     this._super({
         width:100,

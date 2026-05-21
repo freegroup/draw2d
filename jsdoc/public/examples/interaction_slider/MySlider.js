@@ -3,11 +3,12 @@ MySlider = draw2d.shape.widget.Slider.extend({
 
     NAME : "MySlider",
     
+    /**
+     * @param {Object} [attr] the configuration of the shape
+     */
     init : function(attr)
     {
         this._super({
-            width:120,
-            height:20,
             ...attr
         });
 
@@ -21,5 +22,7 @@ MySlider = draw2d.shape.widget.Slider.extend({
                 targetPort.setValue(event.value);
             },this));
         },this));
+
+        this.setDimension(120, 20);
     }
 });

@@ -2,6 +2,9 @@
 
 var CustomFigure = draw2d.SVGFigure.extend({
 
+    /**
+     * @param {Object} [attr] the configuration of the shape
+     */
     init : function(attr)
     {
         this._super({

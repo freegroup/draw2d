@@ -3,6 +3,9 @@ SliderShape = draw2d.shape.layout.VerticalLayout.extend({
 
 	NAME: "SliderShape",
 	
+    /**
+     * @param {Object} [attr] the configuration of the shape
+     */
     init : function(attr)
     {
     	this._super({

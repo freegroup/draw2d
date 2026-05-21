@@ -8,6 +8,9 @@
  */
 var LabelRectangle= draw2d.shape.basic.Rectangle.extend({
     
+    /**
+     * @param {Object} [attr] the configuration of the shape
+     */
     init:function(attr)
     {
       this._super(attr);

@@ -2,6 +2,11 @@
 var SelectionMenuPolicy = draw2d.policy.figure.SelectionPolicy.extend({
 	NAME: "SelectionMenuPolicy",
 
+    /**
+     * @param {Object} [attr] the configuration of the shape
+     * @param {Object} [setter] optional setter functions
+     * @param {Object} [getter] optional getter functions
+     */
     init : function(attr, setter, getter)
     {
 		this.overlay = null; // div DOM node

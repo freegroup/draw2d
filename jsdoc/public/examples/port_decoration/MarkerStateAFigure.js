@@ -8,7 +8,9 @@ var MarkerStateAFigure = draw2d.shape.basic.Label.extend({
     NAME : "MarkerStateAFigure",
 
     /**
-     * @param attr
+     * @param {Object} [attr] the configuration of the shape
+     * @param {Object} [setter] optional setter functions
+     * @param {Object} [getter] optional getter functions
      */
     init : function(attr, setter, getter)
     {

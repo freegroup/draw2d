@@ -2,6 +2,9 @@ IconDecoShape = draw2d.shape.box.VBox.extend({
 
 	NAME: "IconDecoShape",
 	
+    /**
+     * @param {Object} [attr] the configuration of the shape
+     */
     init : function(attr)
     {
         this._super({

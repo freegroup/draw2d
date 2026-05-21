@@ -3,6 +3,9 @@ var CollapsibleShape = draw2d.shape.layout.VerticalLayout.extend({
 
 	NAME: "CollapsibleShape",
 	
+    /**
+     * @param {Object} [attr] the configuration of the shape
+     */
     init : function(attr)
     {
         this.inputLocator  = new CollapsibleInputLocator();

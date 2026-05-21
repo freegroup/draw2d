@@ -3,6 +3,9 @@ var MyPie = draw2d.shape.diagram.Pie.extend({
 
     NAME : "MyPie",
 
+    /**
+     * @param {Object} [attr] the configuration of the shape
+     */
     init : function(attr)
     {
         this._super({

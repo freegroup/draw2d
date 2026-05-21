@@ -1,6 +1,11 @@
 
 var CustomFigure = draw2d.shape.basic.Rectangle.extend({
 
+    /**
+     * @param {Object} [attr] the configuration of the shape
+     * @param {Object} [setter] optional setter functions
+     * @param {Object} [getter] optional getter functions
+     */
     init : function(attr, setter, getter)
     {
         this._super(

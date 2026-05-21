@@ -8,13 +8,13 @@
     <link type="text/css" rel="stylesheet" href="./css/example.css" />
 
     <script src="./lib/jquery.js"></script>
+    <script src="./lib/jquery.browser.js"></script>
     <script src="./lib/jquery-ui.js"></script>
 
     <script src="../draw2d.js"></script>
 
 <script type="text/javascript">
 
-var router = new draw2d.layout.connection.CircuitConnectionRouter();
 var router = new draw2d.layout.connection.InteractiveManhattanBridgedConnectionRouter();
 
 router.abortRoutingOnFirstVertexNode=false;
@@ -25,7 +25,7 @@ var createConnection=function(sourcePort, targetPort){
         color:"#000000",
         router: router,
         stroke:1,
-        radius:20
+        radius:2
     });
     if(sourcePort) {
         c.setSource(sourcePort);

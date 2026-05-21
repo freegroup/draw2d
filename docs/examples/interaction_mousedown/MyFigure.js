@@ -3,6 +3,9 @@ MyFigure = draw2d.shape.basic.Rectangle.extend({
 
     NAME : "MyFigure",
     
+    /**
+     * @param {Object} [attr] the configuration of the shape
+     */
     init : function(attr)
     {
         var _this = this;

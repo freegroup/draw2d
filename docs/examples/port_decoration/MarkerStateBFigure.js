@@ -3,7 +3,9 @@ var MarkerStateBFigure = draw2d.shape.layout.HorizontalLayout.extend({
     NAME : "MarkerStateBFigure",
 
     /**
-     * @param attr
+     * @param {Object} [attr] the configuration of the shape
+     * @param {Object} [setter] optional setter functions
+     * @param {Object} [getter] optional getter functions
      */
     init : function(attr, setter, getter)
     {

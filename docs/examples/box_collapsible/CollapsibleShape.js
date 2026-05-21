@@ -2,6 +2,9 @@ var CollapsibleShape = draw2d.shape.box.VBox.extend({
 
 	NAME: "CollapsibleShape",
 	
+    /**
+     * @param {Object} [attr] the configuration of the shape
+     */
     init : function(attr)
     {
         this.inputLocator  = new CollapsibleInputLocator();

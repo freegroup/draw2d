@@ -14,6 +14,11 @@ var PredefinedProcess = draw2d.shape.layout.FlexGridLayout.extend({
      *    
      * @param attr
      */
+    /**
+     * @param {Object} [attr] the configuration of the shape
+     * @param {Object} [setter] optional setter functions
+     * @param {Object} [getter] optional getter functions
+     */
     init : function(attr, setter, getter)
     {
         this._super({

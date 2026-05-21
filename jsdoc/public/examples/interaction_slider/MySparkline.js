@@ -3,6 +3,9 @@ MySparkline = draw2d.shape.diagram.Sparkline.extend({
 
     NAME : "MySparkline",
     
+    /**
+     * @param {Object} [attr] the configuration of the shape
+     */
     init : function(attr)
     {
         this._super(attr);

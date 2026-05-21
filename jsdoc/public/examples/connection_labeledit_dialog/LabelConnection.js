@@ -8,6 +8,9 @@
  */
 var LabelConnection= draw2d.Connection.extend({
     
+    /**
+     * @param {Object} [attr] the configuration of the shape
+     */
     init:function(attr)
     {
       this._super(attr);
