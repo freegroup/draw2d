@@ -1,4 +1,5 @@
 import draw2d from 'packages'
+import Raphael from 'util/NativeSVG'
 
 
 /**
@@ -26,7 +27,7 @@ draw2d.Canvas = Class.extend(
       this.setScrollArea(document.body)
       this.canvasId = canvasId
       this.html = $("#" + canvasId)
-      this.html.css({"cursor": "default"})
+      this.html.css({ "cursor": "default" })
       if (!isNaN(parseFloat(width)) && !isNaN(parseFloat(height))) {
         this.initialWidth = parseInt(width)
         this.initialHeight = parseInt(height)
@@ -40,7 +41,7 @@ draw2d.Canvas = Class.extend(
 
       // avoid the "highlighting" in iPad, iPhone if the user tab/touch on the canvas.
       // .... I didn't like this.
-      this.html.css({"-webkit-tap-highlight-color": "rgba(0,0,0,0)"})
+      this.html.css({ "-webkit-tap-highlight-color": "rgba(0,0,0,0)" })
 
       // Drag&Drop handling from foreign DIV into the Canvas
       // Only available in combination with jQuery-UI
@@ -62,8 +63,8 @@ draw2d.Canvas = Class.extend(
           let helperPos = $(ui.helper).position()
           let pos = _this.fromDocumentToCanvasCoordinate(event.clientX, event.clientY);
           _this.onDrop(ui.draggable,
-            pos.getX()- (event.clientX-helperPos.left)+5,
-            pos.getY()- (event.clientY-helperPos.top)+5, event.shiftKey, event.ctrlKey);
+            pos.getX() - (event.clientX - helperPos.left) + 5,
+            pos.getY() - (event.clientY - helperPos.top) + 5, event.shiftKey, event.ctrlKey);
         }
       })
 
@@ -200,12 +201,12 @@ draw2d.Canvas = Class.extend(
             if (hover !== _this.currentHoverFigure && _this.currentHoverFigure !== null) {
               _this.currentHoverFigure.onMouseLeave() // deprecated
               _this.currentHoverFigure.fireEvent("mouseleave")
-              _this.fireEvent("mouseleave", {figure: _this.currentHoverFigure})
+              _this.fireEvent("mouseleave", { figure: _this.currentHoverFigure })
             }
             if (hover !== _this.currentHoverFigure && hover !== null) {
               hover.onMouseEnter()
               hover.fireEvent("mouseenter")
-              _this.fireEvent("mouseenter", {figure: hover})
+              _this.fireEvent("mouseenter", { figure: hover })
             }
             _this.currentHoverFigure = hover
           } catch (exc) {
@@ -460,18 +461,18 @@ draw2d.Canvas = Class.extend(
       this.lineIntersections = new draw2d.util.ArrayList()
       let lines = this.getLines().clone()
       let _this = this
-      
+
       while (lines.getSize() > 0) {
         let l1 = lines.removeElementAt(0)
-        lines.each(function(ii, l2) {
+        lines.each(function (ii, l2) {
           let partInter = l1.intersection(l2)
           if (partInter.getSize() > 0) {
-            _this.lineIntersections.add({line: l1, other: l2, intersection: partInter})
-            _this.lineIntersections.add({line: l2, other: l1, intersection: partInter})
+            _this.lineIntersections.add({ line: l1, other: l2, intersection: partInter })
+            _this.lineIntersections.add({ line: l2, other: l1, intersection: partInter })
           }
         })
       }
-      
+
       return this
     },
 
@@ -529,7 +530,7 @@ draw2d.Canvas = Class.extend(
       }
 
       // remove doublicate edit policies
-      if(policy.NAME) {
+      if (policy.NAME) {
         this.uninstallEditPolicy(policy.NAME)
       }
 
@@ -660,7 +661,7 @@ draw2d.Canvas = Class.extend(
         this.initialWidth = dim
         this.initialHeight = height
       }
-      this.html.css({"width": this.initialWidth + "px", "height": this.initialHeight + "px"})
+      this.html.css({ "width": this.initialWidth + "px", "height": this.initialHeight + "px" })
       this.paper.setSize(this.initialWidth, this.initialHeight)
       this.setZoom(this.zoomFactor, false)
 
@@ -891,9 +892,9 @@ draw2d.Canvas = Class.extend(
       } else {
         this.figures.add(figure)
       }
-      
+
       if (typeof x !== "undefined") {
-        figure.setPosition(x,y)
+        figure.setPosition(x, y)
       }
 
       figure.setCanvas(this)
@@ -903,18 +904,18 @@ draw2d.Canvas = Class.extend(
 
       // important initial call
       figure.getShapeElement()
-      
+
       // Invalidate Z-Order cache of figures/lines that come after this new figure in DOM order
       // Only figures with cachedZOrder >= new figure's index need invalidation
       let newIndex = figure.getZOrder()
-      this.figures.each((i, f) => { 
+      this.figures.each((i, f) => {
         if (f.cachedZOrder >= newIndex && f !== figure) {
-          f.cachedZOrder = -1 
+          f.cachedZOrder = -1
         }
       })
-      this.lines.each((i, l) => { 
+      this.lines.each((i, l) => {
         if (l.cachedZOrder >= newIndex && l !== figure) {
-          l.cachedZOrder = -1 
+          l.cachedZOrder = -1
         }
       })
 
@@ -925,13 +926,13 @@ draw2d.Canvas = Class.extend(
       // fire the figure:add event before the "move" event and after the figure.repaint() call!
       //   - the move event can only be fired if the figure part of the canvas.
       //     and in this case the notification event should be fired to the listener before
-      this.fireEvent("figure:add", {figure: figure, canvas: this})
+      this.fireEvent("figure:add", { figure: figure, canvas: this })
 
       // fire the event that the figure is part of the canvas
-      figure.fireEvent("added", {figure: figure, canvas: this})
+      figure.fireEvent("added", { figure: figure, canvas: this })
 
       // ...now we can fire the initial move event
-      figure.fireEvent("move", {figure: figure, x: figure.getX(), y: figure.getY(), dx: 0, dy: 0})
+      figure.fireEvent("move", { figure: figure, x: figure.getX(), y: figure.getY(), dx: 0, dy: 0 })
 
       // this is only required if the used router requires the crossing information
       // of the connections
@@ -1000,9 +1001,9 @@ draw2d.Canvas = Class.extend(
         figure.disconnect()
       }
 
-      this.fireEvent("figure:remove", {figure: figure})
+      this.fireEvent("figure:remove", { figure: figure })
 
-      figure.fireEvent("removed", {figure: figure, canvas: this})
+      figure.fireEvent("removed", { figure: figure, canvas: this })
 
       return this
     },
@@ -1078,7 +1079,7 @@ draw2d.Canvas = Class.extend(
       this.lineIntersections.each((i, entry) => {
         if (entry.line === line) {
           entry.intersection.each((j, p) => {
-            result.add({x: p.x, y: p.y, justTouching: p.justTouching, other: entry.other})
+            result.add({ x: p.x, y: p.y, justTouching: p.justTouching, other: entry.other })
           })
         }
       })
@@ -1223,8 +1224,8 @@ draw2d.Canvas = Class.extend(
      **/
     addSelection: function (object) {
 
-      let add = (i, figure) =>{
-        this.editPolicy.each( (i, policy) =>{
+      let add = (i, figure) => {
+        this.editPolicy.each((i, policy) => {
           if (typeof policy.select === "function") {
             policy.select(this, figure)
           }
@@ -1380,9 +1381,9 @@ draw2d.Canvas = Class.extend(
       let childIndex = childResult !== null ? $(childResult.shape.node).index() : -1
       let lineIndex = lineResult !== null ? $(lineResult.shape.node).index() : -1
       let array = [
-        {i: figureIndex, f: figureResult},
-        {i: childIndex, f: childResult},
-        {i: lineIndex, f: lineResult}
+        { i: figureIndex, f: figureResult },
+        { i: childIndex, f: childResult },
+        { i: lineIndex, f: lineResult }
       ]
       array = array.filter((e) => e.i !== -1);
       array = array.sort((a, b) => b.i - a.i)
@@ -1520,7 +1521,7 @@ draw2d.Canvas = Class.extend(
         figure = this.getBestLine(x, y)
       }
 
-      this.fireEvent("dblclick", {figure: figure, x: x, y: y, shiftKey: shiftKey, ctrlKey: ctrlKey})
+      this.fireEvent("dblclick", { figure: figure, x: x, y: y, shiftKey: shiftKey, ctrlKey: ctrlKey })
 
       // forward the event to all install policies as well.
       // (since 4.0.0)
@@ -1573,10 +1574,10 @@ draw2d.Canvas = Class.extend(
      **/
     onRightMouseDown: function (x, y, shiftKey, ctrlKey) {
       let figure = this.getBestFigure(x, y)
-      this.fireEvent("contextmenu", {figure: figure, x: x, y: y, shiftKey: shiftKey, ctrlKey: ctrlKey})
+      this.fireEvent("contextmenu", { figure: figure, x: x, y: y, shiftKey: shiftKey, ctrlKey: ctrlKey })
 
       if (figure !== null) {
-        figure.fireEvent("contextmenu", {figure: figure, x: x, y: y, shiftKey: shiftKey, ctrlKey: ctrlKey})
+        figure.fireEvent("contextmenu", { figure: figure, x: x, y: y, shiftKey: shiftKey, ctrlKey: ctrlKey })
         // @deprecated legacy call
         figure.onContextMenu(x, y)
 
@@ -1607,7 +1608,7 @@ draw2d.Canvas = Class.extend(
      **/
     onMouseWheel: function (wheelDelta, x, y, shiftKey, ctrlKey) {
       let returnValue = true
-      this.fireEvent("wheel", {wheelDelta: wheelDelta, x: x, y: y, shiftKey: shiftKey, ctrlKey: ctrlKey})
+      this.fireEvent("wheel", { wheelDelta: wheelDelta, x: x, y: y, shiftKey: shiftKey, ctrlKey: ctrlKey })
 
       // forward the event to all install policies as well.
       // (since 3.0.0)

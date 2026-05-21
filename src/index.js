@@ -2,12 +2,11 @@ import draw2d from 'packages'
 export default draw2d;
 
 
-import raph from 'lib/raphael.exec.js'
-import cl   from 'lib/Class.exec.js'
+import raph from './util/NativeSVG'
+import cl from 'lib/Class.exec.js'
 import path from 'lib/pathfinding.exec.js'
-import md   from 'lib/markdown-it.js'
+import md from 'lib/markdown-it.js'
 
-require('./util/raphael_ext');
 require('./util/Polyfill');
 require('./util/Base64');
 require('./util/Debug');
@@ -214,7 +213,7 @@ if (md) {
   });
 
   // Configure links to open in new tab
-  let defaultRender = draw2d.shape.note.Markdown.markdown.renderer.rules.link_open || function(tokens, idx, options, env, self) {
+  let defaultRender = draw2d.shape.note.Markdown.markdown.renderer.rules.link_open || function (tokens, idx, options, env, self) {
     return self.renderToken(tokens, idx, options);
   };
 

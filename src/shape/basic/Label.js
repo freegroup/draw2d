@@ -164,22 +164,24 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
       // now we check if any changes happens and call this method only if necessary.
       if (Object.getOwnPropertyNames(attrDiff).length > 0) {
         this.svgNodes.attr(lattr)
-        // set of the x/y must be done AFTER the font-size and bold has been set.
-        // Reason: the getBBox method needs the font attributes for calculation
-        
-        // Calculate x position based on text alignment
-        let xPos = this.padding.left + this.stroke
-        if (this.textAlign === "center") {
-          xPos = this.getWidth() / 2
-        } else if (this.textAlign === "right") {
-          xPos = this.getWidth() - this.padding.right - this.stroke
-        }
-        
-        this.svgNodes.attr({
-          x: xPos,
-          y: (this.svgNodes.getBBox(true).height / 2 + this.padding.top + this.getStroke())
-        })
       }
+
+      // x/y must always be recalculated: dimensions can change (e.g. TableBox setDimension)
+      // without any font/text attribute change, so attrDiff would be empty but xPos/yPos
+      // would still be stale.
+      // set of the x/y must be done AFTER the font-size and bold has been set.
+      // Reason: the getBBox method needs the font attributes for calculation
+      let xPos = this.padding.left + this.stroke
+      if (this.textAlign === "center") {
+        xPos = this.getWidth() / 2
+      } else if (this.textAlign === "right") {
+        xPos = this.getWidth() - this.padding.right - this.stroke
+      }
+      this.svgNodes.attr({
+        x: xPos,
+        y: (this.svgNodes.getBBox(true).height / 2 + this.padding.top + this.getStroke())
+      })
+
       this._super(attributes)
     },
 
