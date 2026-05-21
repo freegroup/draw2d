@@ -3,12 +3,13 @@ var TableTestFigure = draw2d.shape.layout.TableLayout.extend({
 
     init : function(attr)
     {
-    	this._super($.extend({
-            stroke: 1,
-            minWidth: 200,
-            bgColor: '#FFFFFF',
-            radius: 0
-        },attr ));
+    	this._super({
+            stroke:1,
+            minWidth:200,
+            bgColor:'#FFFFFF',
+            radius:0,
+            ...attr
+        });
 
 
 

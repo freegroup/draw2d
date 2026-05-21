@@ -14,7 +14,8 @@
 
 <script type="text/javascript">
 
-var router = new draw2d.layout.connection.CircuitConnectionRouter();
+var router = new draw2d.layout.connection.InteractiveManhattanBridgedConnectionRouter();
+
 router.abortRoutingOnFirstVertexNode=false;
 var createConnection=function(sourcePort, targetPort){
     var c = new draw2d.Connection({

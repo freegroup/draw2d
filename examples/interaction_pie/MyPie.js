@@ -3,9 +3,15 @@ var MyPie = draw2d.shape.diagram.Pie.extend({
 
     NAME : "MyPie",
 
+    /**
+     * @param {Object} [attr] the configuration of the shape
+     */
     init : function(attr)
     {
-        this._super({diameter:200,...attr});
+        this._super({
+            diameter:200,
+            ...attr
+        });
 
         this.createPort("input");
         this.createPort("input");

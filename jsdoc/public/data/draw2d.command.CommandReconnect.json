@@ -151,7 +151,7 @@
       "description": "<p>Returns the figures affected by this command.</p>",
       "parameters": [],
       "inherited": false,
-      "since": "",
+      "since": "6.7.0",
       "examples": [],
       "returns": {
         "type": "draw2d.Figure[]",

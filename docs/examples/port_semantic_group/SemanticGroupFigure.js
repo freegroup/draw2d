@@ -14,13 +14,14 @@ var SemanticGroupFigure = draw2d.shape.basic.Rectangle.extend({
   COLOR_CONTROL: "#249352",  // Green - "control" semantic group
 
   init: function(attr) {
-    this._super($.extend({
-      width: 100,
-      height: 80,
-      bgColor: "#b1ecf6",
-      radius: 5,
-      stroke: 2
-    }, attr));
+    this._super({
+        width:100,
+        height:80,
+        bgColor:"#b1ecf6",
+        radius:5,
+        stroke:2,
+        ...attr
+    });
 
     // RED output port - "data" semantic group
     var redOut = this.createPort("output");

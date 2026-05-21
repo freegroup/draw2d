@@ -1,10 +1,18 @@
 var TimerFigure = draw2d.shape.basic.Label.extend({
 
+    /**
+     * @param {Object} [attr] the configuration of the shape
+     * @param {Object} [setter] optional setter functions
+     * @param {Object} [getter] optional getter functions
+     */
     init : function(attr, setter, getter)
     {
     	this.counter = 0;
     	
-        this._super($.extend({text:"Counter: 0"},attr), setter, getter);
+        this._super({
+            text:"Counter: 0",
+            ...attr
+        }, setter, getter);
         
         // Option 1: Using the onTimer() template method (shown in this example)
         // Override onTimer() to handle timer events

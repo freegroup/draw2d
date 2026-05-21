@@ -4,11 +4,7 @@ var CustomFigure = draw2d.shape.basic.Rectangle.extend({
     init : function(attr, setter, getter)
     {
         this._super(
-            $.extend({
-                width:50,
-                height:100,
-                x:100,
-                y:100},attr),
+            {width:50, height:100, x:100, y:100, ...attr},
             setter,
             getter);
 

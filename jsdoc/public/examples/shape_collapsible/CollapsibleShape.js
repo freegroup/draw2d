@@ -8,7 +8,14 @@ var CollapsibleShape = draw2d.shape.layout.VerticalLayout.extend({
         this.inputLocator  = new CollapsibleInputLocator();
         this.outputLocator = new CollapsibleOutputLocator();
         
-        this._super($.extend({bgColor:"#93d7f3", color:"#39b2e5", stroke:1, radius:2, gap:5},attr));
+        this._super({
+            bgColor:"#93d7f3",
+            color:"#39b2e5",
+            stroke:1,
+            radius:2,
+            gap:5,
+            ...attr
+        });
         
         this.header = new draw2d.shape.layout.HorizontalLayout({
             stroke: 0,

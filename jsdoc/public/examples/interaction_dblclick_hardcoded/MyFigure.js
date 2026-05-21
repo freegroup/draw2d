@@ -3,7 +3,11 @@ var MyFigure = draw2d.shape.basic.Rectangle.extend({
 
     init : function(attr, setter, getter)
     {
-        this._super($.extend({bgColor:"#ff765e", radius:5},attr), setter, getter);
+        this._super({
+            bgColor:"#ff765e",
+            radius:5,
+            ...attr
+        }, setter, getter);
  
     },
 

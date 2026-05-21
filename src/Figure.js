@@ -2701,7 +2701,7 @@ draw2d.Figure = Class.extend(
       this.id = memento.id
       // in some cases, e.g. a Connection, the x/y attribute is not set.
       //
-      if(memento.x && memento.y){
+      if(memento.x!==undefined && memento.y!==undefined){
         this.setPosition(parseFloat(memento.x), parseFloat(memento.y))
       }
 

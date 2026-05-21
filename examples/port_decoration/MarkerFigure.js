@@ -13,6 +13,11 @@ var MarkerFigure = draw2d.shape.layout.VerticalLayout.extend({
 
     NAME : "MarkerFigure",
 
+    /**
+     * @param {Object} [attr] the configuration of the shape
+     * @param {Object} [setter] optional setter functions
+     * @param {Object} [getter] optional getter functions
+     */
     init : function(attr, setter, getter)
     {
         var _this = this;
@@ -21,10 +26,11 @@ var MarkerFigure = draw2d.shape.layout.VerticalLayout.extend({
         this.stick       = false;        // indicator if the stateBFigure should always be visible
         this.defaultValue= true;         // current selected default value for the decoration
 
-        this._super($.extend({
-              stroke:0
-        },attr),
-        setter, 
+        this._super({
+            stroke:0,
+            ...attr
+        },
+        setter,
         getter);
 
 

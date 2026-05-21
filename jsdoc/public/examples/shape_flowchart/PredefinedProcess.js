@@ -16,13 +16,14 @@ var PredefinedProcess = draw2d.shape.layout.FlexGridLayout.extend({
      */
     init : function(attr, setter, getter)
     {
-        this._super($.extend({
+        this._super({
             columns:"10px, grow, 10px",
-            rows:   "grow",
+            rows:"grow",
             bgColor:"#FFFFFF",
-            stroke:2
-        },attr), 
-        setter, 
+            stroke:2,
+            ...attr
+        },
+        setter,
         getter);
         
         

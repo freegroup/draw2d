@@ -21,10 +21,11 @@ var MarkerFigure = draw2d.shape.layout.VerticalLayout.extend({
         this.stick       = false;        // indicator if the stateBFigure should always be visible
         this.defaultValue= true;         // current selected default value for the decoration
 
-        this._super($.extend({
-              stroke:0
-        },attr),
-        setter, 
+        this._super({
+            stroke:0,
+            ...attr
+        },
+        setter,
         getter);
 
 

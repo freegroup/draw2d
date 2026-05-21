@@ -13,11 +13,183 @@
       "access": "",
       "virtual": false,
       "deprecated": "",
-      "description": "<p>Creates a new Router object</p>",
-      "parameters": [],
+      "description": "<p>Creates a new selection feedback policy.</p>",
+      "parameters": [
+        {
+          "name": "attr",
+          "type": "Object",
+          "description": "<p>the configuration or attributes for the policy</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "attr.color",
+          "type": [
+            "draw2d.util.Color",
+            "String"
+          ],
+          "description": "<p>the color of the selection rectangle</p>",
+          "default": "#2C70FF",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "attr.stroke",
+          "type": "Number",
+          "description": "<p>the stroke width of the selection rectangle</p>",
+          "default": 1,
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "attr.dasharray",
+          "type": "String",
+          "description": "<p>the dasharray pattern for the selection rectangle (e.g., &quot;- &quot;, &quot;.&quot;, &quot;- .&quot;)</p>",
+          "default": "\"- \"",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "setter",
+          "type": "Object",
+          "description": "<p>custom setter methods to add</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "getter",
+          "type": "Object",
+          "description": "<p>custom getter methods to add</p>",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
       "inherited": false,
       "since": "",
       "examples": []
+    },
+    {
+      "name": "setColor",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Set the color of the selection frame.</p>",
+      "parameters": [
+        {
+          "name": "color",
+          "type": [
+            "draw2d.util.Color",
+            "String"
+          ],
+          "description": "<p>the new color</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": false,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
+    },
+    {
+      "name": "getColor",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Get the color of the selection frame.</p>",
+      "parameters": [],
+      "inherited": false,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "String",
+        "description": "<p>the color</p>"
+      }
+    },
+    {
+      "name": "setStroke",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Set the stroke width of the selection frame.</p>",
+      "parameters": [
+        {
+          "name": "stroke",
+          "type": "Number",
+          "description": "<p>the new stroke width</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": false,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
+    },
+    {
+      "name": "getStroke",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Get the stroke width of the selection frame.</p>",
+      "parameters": [],
+      "inherited": false,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "Number",
+        "description": "<p>the stroke width</p>"
+      }
+    },
+    {
+      "name": "setDasharray",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Set the dasharray pattern of the selection frame.</p>",
+      "parameters": [
+        {
+          "name": "dasharray",
+          "type": "String",
+          "description": "<p>the new dasharray pattern (e.g., &quot;- &quot;, &quot;.&quot;, &quot;- .&quot;)</p>",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "inherited": false,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "this",
+        "description": ""
+      }
+    },
+    {
+      "name": "getDasharray",
+      "access": "",
+      "virtual": false,
+      "deprecated": "",
+      "description": "<p>Get the dasharray pattern of the selection frame.</p>",
+      "parameters": [],
+      "inherited": false,
+      "since": "",
+      "examples": [],
+      "returns": {
+        "type": "String",
+        "description": "<p>the dasharray pattern</p>"
+      }
     },
     {
       "name": "onSelect",
@@ -492,7 +664,8 @@
     "description": "",
     "parameters": [],
     "examples": [
-      "circle =new draw2d.shape.basic.Circle({diameter:50, x:90, y:50});\n     circle.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());\n     canvas.add(circle);\n\n     canvas.add(new draw2d.shape.basic.Label({text:\"Click on the circle to see the selection feedback\"}),20,10);"
+      "circle =new draw2d.shape.basic.Circle({diameter:50, x:90, y:50});\n     circle.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());\n     canvas.add(circle);\n\n     canvas.add(new draw2d.shape.basic.Label({text:\"Click on the circle to see the selection feedback\"}),20,10);",
+      "// With custom color and stroke width\n     circle =new draw2d.shape.basic.Circle({diameter:50, x:90, y:50});\n     circle.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy({\n         color: \"#FF0000\",\n         stroke: 2,\n         dasharray: \"- .\"\n     }));\n     canvas.add(circle);"
     ]
   }
 }

@@ -1,8 +1,8 @@
 var ZoomFigure = draw2d.shape.box.StackBox.extend({
 
-    init : function(attr, getter, setter)
+    init : function(attr, setter, getter)
     {
-        this._super(attr, getter, setter);
+        this._super(attr, setter, getter);
 
         this.add(new FigureHighDetail(attr));
         this.add(new FigureLowDetail(attr));

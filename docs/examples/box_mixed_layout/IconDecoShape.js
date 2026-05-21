@@ -4,7 +4,14 @@ IconDecoShape = draw2d.shape.box.VBox.extend({
 	
     init : function(attr)
     {
-        this._super($.extend({bgColor:"#dbddde", color:"#d7d7d7", stroke:1, radius:2, gap:2},attr));
+        this._super({
+            bgColor:"#dbddde",
+            color:"#d7d7d7",
+            stroke:1,
+            radius:2,
+            gap:2,
+            ...attr
+        });
         
         
         this.icons = new draw2d.shape.box.HBox()

@@ -455,7 +455,7 @@ draw2d.Connection = draw2d.shape.basic.PolyLine.extend(
         }
       })
 
-      this.fireEvent("move", {figure: this, dx: dx, dy: dx})
+      this.fireEvent("move", {figure: this, dx: dx, dy: dy})
     },
 
 

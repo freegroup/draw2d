@@ -3262,6 +3262,17 @@
           }
         },
         {
+          "name": "_scheduleFontLoadCheck",
+          "access": "private",
+          "virtual": false,
+          "deprecated": "",
+          "description": "<p>Schedule a check to recalculate dimensions after fonts have loaded.\nThis handles the case where external fonts are used that need to be\ndownloaded first. The initial getBBox() call may return incorrect\ndimensions if the font isn't loaded yet.</p>",
+          "parameters": [],
+          "inherited": true,
+          "since": "",
+          "examples": []
+        },
+        {
           "name": "getFontFamily",
           "access": "",
           "virtual": false,

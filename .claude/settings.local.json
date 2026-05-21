@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "Bash(python3:*)",
+      "Bash(pip install:*)",
+      "Bash(./venv311/bin/python3:*)",
+      "Bash(./venv311/bin/pip install:*)",
+      "Bash(./venv311/bin/python:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:pypi.org)",
+      "Bash(ls:*)",
+      "Bash(du:*)",
+      "Bash(find . -name '*.vue' -exec sed -i '' 's/CustomActionButton/ThemedActionButton/g; s/CustomButton/ThemedButton/g; s/custom-action-btn/themed-action-btn/g; s/custom-btn/themed-btn/g' {} +)",
+      "Bash(find . -name '*.css' -exec sed -i '' 's/CustomActionButton/ThemedActionButton/g; s/CustomButton/ThemedButton/g; s/custom-action-btn/themed-action-btn/g; s/custom-btn/themed-btn/g' {} +)",
+      "WebSearch",
+      "Bash(for f:*)",
+      "Bash(do sed:*)",
+      "Bash(done)"
+    ]
+  }
+}

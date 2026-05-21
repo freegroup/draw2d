@@ -1,12 +1,21 @@
 var TimerFigure = draw2d.SetFigure.extend({
 
+    /**
+     * @param {Object} [attr] the configuration of the shape
+     * @param {Object} [setter] optional setter functions
+     * @param {Object} [getter] optional getter functions
+     */
     init : function(attr, setter, getter)
     {
     	this.degree = 0;
         this.shapeWidth = 100;
         this.shapeHeight = 100;
 
-    	this._super($.extend({width:this.shapeWidth, height:this.shapeHeight},attr), setter, getter);
+    	this._super({
+            width:this.shapeWidth,
+            height:this.shapeHeight,
+            ...attr
+        }, setter, getter);
 
         this.startTimer(100);
     },

@@ -302,7 +302,7 @@ draw2d.Canvas = Class.extend(
 
         // fire only the click event if we didn't move the mouse (drag&drop)
         //
-        if (_this.mouseDownX === event.clientX || _this.mouseDownY === event.clientY) {
+        if (_this.mouseDownX === event.clientX && _this.mouseDownY === event.clientY) {
           let pos = _this.fromDocumentToCanvasCoordinate(event.clientX, event.clientY)
           _this.onClick(pos.x, pos.y, event.shiftKey, event.ctrlKey)
         }

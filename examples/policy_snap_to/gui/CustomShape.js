@@ -7,15 +7,16 @@ CustomShape = draw2d.shape.basic.Diamond.extend({
 
     NAME: "CustomShape",
 
+    /**
+     * @param {Object} [attr] the configuration of the shape
+     * @param {Object} [setter] optional setter functions
+     * @param {Object} [getter] optional getter functions
+     */
     init: function (attr, setter, getter) {
 
         this._super(
-            $.extend({
-            bgColor:'#EDFEA9',
-            width:50,
-            height:50,
-            resizeable:false
-            },attr), setter, getter);
+            {bgColor:'#EDFEA9', width:50, height:50, resizeable:false, ...attr},
+            setter, getter);
 
 
         this.port = this.createPort(

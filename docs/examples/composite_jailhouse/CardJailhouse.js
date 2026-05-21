@@ -13,7 +13,13 @@ var CardJailhouse = draw2d.shape.composite.Jailhouse.extend({
 
     init:function(attr, setter, getter)
     {
-        this._super( $.extend({stroke:0, bgColor:null, width:270,height:184},attr), setter, getter);
+        this._super({
+            stroke:0,
+            bgColor:null,
+            width:270,
+            height:184,
+            ...attr
+        }, setter, getter);
         var port;
     },
 

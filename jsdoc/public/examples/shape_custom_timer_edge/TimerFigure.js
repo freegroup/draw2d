@@ -6,7 +6,11 @@ var TimerFigure = draw2d.SetFigure.extend({
         this.shapeWidth = 100;
         this.shapeHeight = 100;
 
-    	this._super($.extend({width:this.shapeWidth, height:this.shapeHeight},attr), setter, getter);
+    	this._super({
+            width:this.shapeWidth,
+            height:this.shapeHeight,
+            ...attr
+        }, setter, getter);
 
         this.startTimer(100);
     },

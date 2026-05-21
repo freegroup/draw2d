@@ -799,8 +799,9 @@ draw2d.shape.basic.Label = draw2d.SetFigure.extend(
       let matrix = this.shape.matrix
       let points = boundingBox.getVertices()
       points.each( (i, point) => {
-        point.x = matrix.x(point.x, point.y)
-        point.y = matrix.y(point.x, point.y)
+        let ox = point.x, oy = point.y
+        point.x = matrix.x(ox, oy)
+        point.y = matrix.y(ox, oy)
       })
 
       let polySides = 4

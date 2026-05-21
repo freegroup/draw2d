@@ -1,9 +1,9 @@
 
 var MyInterceptorPolicy = draw2d.policy.canvas.DropInterceptorPolicy.extend({
 
-    init : function(attr, getter, setter)
+    init : function(attr, setter, getter)
     {
-        this._super(attr, getter, setter);
+        this._super(attr, setter, getter);
     },
 
   

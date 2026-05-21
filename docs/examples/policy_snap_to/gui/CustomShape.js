@@ -10,12 +10,8 @@ CustomShape = draw2d.shape.basic.Diamond.extend({
     init: function (attr, setter, getter) {
 
         this._super(
-            $.extend({
-            bgColor:'#EDFEA9',
-            width:50,
-            height:50,
-            resizeable:false
-            },attr), setter, getter);
+            {bgColor:'#EDFEA9', width:50, height:50, resizeable:false, ...attr},
+            setter, getter);
 
 
         this.port = this.createPort(

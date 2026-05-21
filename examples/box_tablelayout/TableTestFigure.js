@@ -1,14 +1,18 @@
 var TableTestFigure = draw2d.shape.box.VBox.extend({
 
+    /**
+     * @param {Object} [attr] the configuration of the shape
+     */
     init : function(attr)
     {
-    	this._super($.extend({
-            stroke: 1,
-            bgColor: '#FFFFFF',
-            radius: 0,
-            padding: 6,
-            align: 'center'  // Center non-resizable children horizontally
-        },attr ));
+    	this._super({
+            stroke:1,
+            bgColor:'#FFFFFF',
+            radius:0,
+            padding:6,
+            align:'center',
+            ...attr
+        });
 
 
 

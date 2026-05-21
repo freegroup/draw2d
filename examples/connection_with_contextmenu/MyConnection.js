@@ -11,6 +11,9 @@ var MyConnection= draw2d.Connection.extend({
     /** required for JSON serialize/deserialize. **/
     NAME: "MyConnection",
   
+    /**
+     * @param {Object} [attr] the configuration of the shape
+     */
     init:function(attr)
     {
       this._super(attr);

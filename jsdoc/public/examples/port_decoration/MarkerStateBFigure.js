@@ -7,15 +7,16 @@ var MarkerStateBFigure = draw2d.shape.layout.HorizontalLayout.extend({
      */
     init : function(attr, setter, getter)
     {
-        this._super($.extend({
+        this._super({
             bgColor:"#FFFFFF",
             stroke:1,
             color:"#00bcd4",
             radius:2,
             padding:{left:3, top:3, bottom:3, right:8},
-            gap:5
-        },attr), 
-        setter, 
+            gap:5,
+            ...attr
+        },
+        setter,
         getter);
 
         this.stickTick = new draw2d.shape.basic.Circle({
@@ -29,7 +30,7 @@ var MarkerStateBFigure = draw2d.shape.layout.HorizontalLayout.extend({
         this.stickTick.addCssClass("cursorPointer");
 
         this.label = new draw2d.shape.basic.Label({
-            text:attr.text,
+            text: attr ? attr.text : "X",
             resizeable:false,
             stroke:0,
             padding:0,

@@ -11,9 +11,20 @@ var CardRaft = draw2d.shape.composite.Raft.extend({
 
     NAME: "CardRaft",
 
+    /**
+     * @param {Object} [attr] the configuration of the shape
+     * @param {Object} [setter] optional setter functions
+     * @param {Object} [getter] optional getter functions
+     */
     init:function(attr, setter, getter)
     {
-        this._super( $.extend({stroke:0,bgColor:null,width:210,height:179},attr), setter, getter);
+        this._super({
+            stroke:0,
+            bgColor:null,
+            width:210,
+            height:179,
+            ...attr
+        }, setter, getter);
     },
 
     createSet: function(){

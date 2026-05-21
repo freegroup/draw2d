@@ -8,19 +8,22 @@ var MarkerStateAFigure = draw2d.shape.basic.Label.extend({
     NAME : "MarkerStateAFigure",
 
     /**
-     * @param attr
+     * @param {Object} [attr] the configuration of the shape
+     * @param {Object} [setter] optional setter functions
+     * @param {Object} [getter] optional getter functions
      */
     init : function(attr, setter, getter)
     {
-        this._super($.extend({
+        this._super({
             padding:{left:5, top:2, bottom:2, right:10},
             bgColor:null,
             stroke:1,
             color:null,
             fontColor:null,
-            fontSize:10
-        },attr), 
-        setter, 
+            fontSize:10,
+            ...attr
+        },
+        setter,
         getter);
 
         // we must override the hitTest method to ensure that the parent can receive the mouseenter/mouseleave events.

@@ -7,12 +7,13 @@ LED = draw2d.shape.basic.Circle.extend({
     {
         var _this = this;
 
-    	this._super($.extend({
+    	this._super({
             bgColor:"#ff6d00",
             color:"#d7d7d7",
             stroke:3,
-            radius:15
-        },attr), setter,getter);
+            radius:15,
+            ...attr
+        }, setter, getter);
 
         var input= this.createPort("input");
 
@@ -45,7 +46,7 @@ LED = draw2d.shape.basic.Circle.extend({
         // don't recreate all children in the base class.
         // We add some eventhandler in the init method and this
         // get lost if we use the base implementation
-        var clone = this._super({exludeChildren:true, excludePorts:true});
+        var clone = this._super({excludeChildren:true, excludePorts:true});
 
         return clone;
     }

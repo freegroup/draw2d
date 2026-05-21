@@ -2,11 +2,16 @@
 
 var CustomFigure = draw2d.SVGFigure.extend({
 
+    /**
+     * @param {Object} [attr] the configuration of the shape
+     */
     init : function(attr)
     {
-        this._super(extend({width:100, height:100},attr));
-
-        this.index=0;
+        this._super({
+            width:100,
+            height:100,
+            ...attr
+        });
         this.svgs=[];
 
         this.svgs.push( '<svg xmlns="http://www.w3.org/2000/svg">'+

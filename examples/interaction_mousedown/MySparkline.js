@@ -3,11 +3,18 @@ MySparkline = draw2d.shape.diagram.Sparkline.extend({
 
     NAME : "MySparkline",
     
+    /**
+     * @param {Object} [attr] the configuration of the shape
+     */
     init : function(attr)
     {
         this.maxValues = 100;
         
-        this._super($.extend({bgColor:"#ff765e", radius:5},attr));
+        this._super({
+            bgColor:"#ff765e",
+            radius:5,
+            ...attr
+        });
 
         this.createPort("input");
         this.startTimer(500);

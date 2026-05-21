@@ -13,7 +13,13 @@ var CardRaft = draw2d.shape.composite.Raft.extend({
 
     init:function(attr, setter, getter)
     {
-        this._super( $.extend({stroke:0,bgColor:null,width:210,height:179},attr), setter, getter);
+        this._super({
+            stroke:0,
+            bgColor:null,
+            width:210,
+            height:179,
+            ...attr
+        }, setter, getter);
     },
 
     createSet: function(){

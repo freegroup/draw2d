@@ -3,9 +3,18 @@ TableShape = draw2d.shape.layout.VerticalLayout.extend({
 
 	NAME: "TableShape",
 	
+    /**
+     * @param {Object} [attr] the configuration of the shape
+     */
     init : function(attr)
     {
-    	this._super($.extend({bgColor:"#dbddde", color:"#d7d7d7", stroke:1, radius:3},attr));
+    	this._super({
+            bgColor:"#dbddde",
+            color:"#d7d7d7",
+            stroke:1,
+            radius:3,
+            ...attr
+        });
         
       
         this.classLabel = new draw2d.shape.basic.Label({

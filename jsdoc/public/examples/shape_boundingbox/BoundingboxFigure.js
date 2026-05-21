@@ -3,11 +3,12 @@ var BoundingboxFigure = draw2d.shape.basic.Rectangle.extend({
 
     init : function(attr, setter, getter)
     {
-        this._super($.extend({
+        this._super({
             width:100,
             height:90,
-            opacity:0.5
-        },attr));
+            opacity:0.5,
+            ...attr
+        }, setter, getter);
         
         var mainPort = this.createPort("hybrid", new draw2d.layout.locator.CenterLocator());
         

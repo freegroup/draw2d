@@ -1,9 +1,16 @@
 
 TriangleFigure = draw2d.shape.basic.Polygon.extend({
 
+    /**
+     * @param {Object} [attr] the configuration of the shape
+     */
     init : function(attr)
     {
-        this._super($.extend({bgColor:"#00a3f6",color:"#1B1B1B"},attr));
+        this._super({
+            bgColor:"#00a3f6",
+            color:"#1B1B1B",
+            ...attr
+        });
         
         this.resetVertices();
         

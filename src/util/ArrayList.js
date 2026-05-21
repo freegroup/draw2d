@@ -240,6 +240,7 @@ draw2d.util.ArrayList = Class.extend(
      */
     push: function (value) {
       this.add(value)
+      return this
     },
 
     /**

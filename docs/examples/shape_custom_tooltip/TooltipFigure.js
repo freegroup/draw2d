@@ -11,11 +11,12 @@ TooltipFigure = draw2d.shape.basic.Rectangle.extend({
   init: function (attr) {
     this.tooltip = null
     this.tooltipTimer = -1
-    this._super($.extend({
-      width: 50,
-      height: 50,
-      radius: 2
-    }, attr))
+    this._super({
+      width:50,
+      height:50,
+      radius:2,
+      ...attr
+    })
 
     this.createPort("input")
     this.createPort("output")

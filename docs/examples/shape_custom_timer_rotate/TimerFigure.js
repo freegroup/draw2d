@@ -4,7 +4,10 @@ var TimerFigure = draw2d.shape.basic.Label.extend({
     {
     	this.counter = 0;
     	
-        this._super($.extend({text:"Counter: 0"},attr), setter, getter);
+        this._super({
+            text:"Counter: 0",
+            ...attr
+        }, setter, getter);
         
         // Option 1: Using the onTimer() template method (shown in this example)
         // Override onTimer() to handle timer events

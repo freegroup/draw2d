@@ -11,9 +11,20 @@ var CardJailhouse = draw2d.shape.composite.Jailhouse.extend({
 
     NAME: "CardJailhouse",
 
+    /**
+     * @param {Object} [attr] the configuration of the shape
+     * @param {Object} [setter] optional setter functions
+     * @param {Object} [getter] optional getter functions
+     */
     init:function(attr, setter, getter)
     {
-        this._super( $.extend({stroke:0, bgColor:null, width:270,height:184},attr), setter, getter);
+        this._super({
+            stroke:0,
+            bgColor:null,
+            width:270,
+            height:184,
+            ...attr
+        }, setter, getter);
         var port;
     },
 

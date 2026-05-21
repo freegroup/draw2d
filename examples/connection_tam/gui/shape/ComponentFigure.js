@@ -3,14 +3,20 @@ var ComponentFigure = draw2d.shape.basic.Rectangle.extend({
 
     NAME : "ComponentFigure",
 
+    /**
+     * @param {Object} [attr] the configuration of the shape
+     * @param {Object} [setter] optional setter functions
+     * @param {Object} [getter] optional getter functions
+     */
     init : function(attr, setter, getter)
     {
-        this._super($.extend({
+        this._super({
             width:100,
             height:90,
             radius:4,
-            bgColor:"#e7e9fd"
-        },attr), setter, getter);
+            bgColor:"#e7e9fd",
+            ...attr
+        }, setter, getter);
         
         let mainPort = this.createPort("hybrid", new draw2d.layout.locator.CenterLocator());
         

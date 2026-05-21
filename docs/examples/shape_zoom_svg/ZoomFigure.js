@@ -8,8 +8,10 @@ ZoomFigure = draw2d.SVGFigure.extend({
      * Creates a new figure element which is not assigned to any canvas.
      * 
      * @param {Object} [attr] the configuration of the shape
+     * @param {Object} [setter] optional setter functions
+     * @param {Object} [getter] optional getter functions
      */
-    init : function(attr, getter, setter)
+    init : function(attr, setter, getter)
     {
 
         this.svg1 = '<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" ><rect id="Rectangle-1" stroke="#979797" fill="#D8D8D8" width="39" height="39" rx="8"></rect></svg>';
@@ -21,7 +23,12 @@ ZoomFigure = draw2d.SVGFigure.extend({
 
         this.lastZoom= 1;
 
-        this._super($.extend({svg: this.svg1, width:50, height:50},attr), getter, setter);
+        this._super({
+            svg: this.svg1,
+            width:50,
+            height:50,
+            ...attr
+        }, setter, getter);
 
 
         this.createPort("input");

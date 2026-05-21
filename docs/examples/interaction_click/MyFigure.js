@@ -11,7 +11,13 @@ MyFigure = draw2d.shape.basic.Rectangle.extend({
         this.colors[false]="#f00000";
         
 
-        this._super($.extend({ width:30, height:30, resizeable:false, bgColor:this.colors[this.value]},attr));
+        this._super({
+            width:30,
+            height:30,
+            resizeable:false,
+            bgColor:this.colors[this.value],
+            ...attr
+        });
         
         this.createPort("output");
 
