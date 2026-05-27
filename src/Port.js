@@ -170,6 +170,16 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
       return this
     },
 
+    /**
+     *
+     * Get the Anchor type of this object. An anchor is responsible for the endpoint calculation
+     * of an connection. just visible representation.
+     *
+     * @returns {String} type of the anchor
+     **/
+    getConnectionAnchorType: function (){
+      return this.connectionAnchor.getPersistentAttributes().type
+    },
     getConnectionAnchorLocation: function (referencePoint, inquiringConnection) {
       return this.connectionAnchor.getLocation(referencePoint, inquiringConnection)
     },
@@ -671,6 +681,8 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
       memento.maxFanOut = this.maxFanOut
       memento.name = this.name
       memento.semanticGroup = this.semanticGroup
+      memento.visible = this.isVisible()
+      memento.connectionAnchor = this.getConnectionAnchorType()
 
       // defined by the locator. Don't persist
       //
@@ -706,6 +718,15 @@ draw2d.Port = draw2d.shape.basic.Circle.extend(
         } else {
           this.maxFanOut = Math.max(1, parseInt(memento.maxFanOut))
         }
+      }
+
+      if (typeof memento.visible == "boolean") {
+        this.setVisible(memento.visible)
+      }
+
+      if (typeof memento.connectionAnchor !== "undefined") {
+        let anchor = Function(`return new ${memento.connectionAnchor}()`)()
+        this.setConnectionAnchor(anchor)
       }
 
       if (typeof memento.name !== "undefined") {

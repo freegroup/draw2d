@@ -83,5 +83,17 @@ draw2d.layout.anchor.ConnectionAnchor = Class.extend(
    */
   getReferencePoint: function (inquiringConnection) {
     return this.getOwner().getAbsolutePosition()
+  },
+  /**
+   *
+   * Return an objects with all important attributes for XML or JSON serialization
+   *
+   * @return {Object} all attributes required for the persistency
+   */
+  getPersistentAttributes: function () {
+    let memento = {
+      type: this.NAME,
+    }
+    return memento
   }
 })
